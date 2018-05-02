@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/glass
     module MirrorV1
       VERSION = 'V1'
-      REVISION = '20170419'
+      REVISION = '20180315'
 
       # View your location
       AUTH_GLASS_LOCATION = 'https://www.googleapis.com/auth/glass.location'

@@ -38,14 +38,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        #  Overrides userIp if both are provided.
+        #  An opaque string that represents a user for quota purposes. Must not exceed 40
+        #  characters.
         attr_accessor :quota_user
 
         # @return [String]
-        #  IP address of the site where the request originates. Use this if you want to
-        #  enforce per-user limits.
+        #  Deprecated. Please use quotaUser instead.
         attr_accessor :user_ip
 
         def initialize
@@ -63,12 +61,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -100,12 +96,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -137,12 +131,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -174,12 +166,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -214,12 +204,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -256,12 +244,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -300,12 +286,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -343,12 +327,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -385,12 +367,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -430,12 +410,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -477,12 +455,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -526,12 +502,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -565,12 +539,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -603,12 +575,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -641,12 +611,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -678,12 +646,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -721,12 +687,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -763,12 +727,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -805,12 +767,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -852,12 +812,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -896,12 +854,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -940,12 +896,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -984,12 +938,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1031,12 +983,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1080,12 +1030,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1129,12 +1077,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1216,12 +1162,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1292,12 +1236,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1350,12 +1292,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1419,12 +1359,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [IO, String] upload_source
         #   IO stream or filename containing content to upload
         # @param [String] content_type
@@ -1490,12 +1428,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1552,12 +1488,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1616,12 +1550,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
@@ -1686,12 +1618,10 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
         # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
+        #   Deprecated. Please use quotaUser instead.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #

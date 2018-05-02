@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/shopping-content
     module ContentV2sandbox
       VERSION = 'V2sandbox'
-      REVISION = '20180405'
+      REVISION = '20180410'
 
       # Manage your product listings and accounts for Google Shopping
       AUTH_CONTENT = 'https://www.googleapis.com/auth/content'

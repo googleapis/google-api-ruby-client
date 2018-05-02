@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/identity-toolkit/v3/
     module IdentitytoolkitV3
       VERSION = 'V3'
-      REVISION = '20170927'
+      REVISION = '20171122'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

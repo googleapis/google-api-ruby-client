@@ -1248,6 +1248,38 @@ module Google
         end
       end
       
+      # Information provided by the user when they complete the subscription
+      # cancellation flow (cancellation reason survey).
+      class SubscriptionCancelSurveyResult
+        include Google::Apis::Core::Hashable
+      
+        # The cancellation reason the user chose in the survey. Possible values are:
+        # - Other
+        # - I don't use this service enough
+        # - Technical issues
+        # - Cost-related reasons
+        # - I found a better app
+        # Corresponds to the JSON property `cancelSurveyReason`
+        # @return [Fixnum]
+        attr_accessor :cancel_survey_reason
+      
+        # The customized input cancel reason from the user. Only present when
+        # cancelReason is 0.
+        # Corresponds to the JSON property `userInputCancelReason`
+        # @return [String]
+        attr_accessor :user_input_cancel_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_survey_reason = args[:cancel_survey_reason] if args.key?(:cancel_survey_reason)
+          @user_input_cancel_reason = args[:user_input_cancel_reason] if args.key?(:user_input_cancel_reason)
+        end
+      end
+      
       # A SubscriptionDeferralInfo contains the data needed to defer a subscription
       # purchase to a future expiry time.
       class SubscriptionDeferralInfo
@@ -1299,6 +1331,12 @@ module Google
         # Corresponds to the JSON property `cancelReason`
         # @return [Fixnum]
         attr_accessor :cancel_reason
+      
+        # Information provided by the user when they complete the subscription
+        # cancellation flow (cancellation reason survey).
+        # Corresponds to the JSON property `cancelSurveyResult`
+        # @return [Google::Apis::AndroidpublisherV2::SubscriptionCancelSurveyResult]
+        attr_accessor :cancel_survey_result
       
         # ISO 3166-1 alpha-2 billing country/region code of the user at the time the
         # subscription was granted.
@@ -1422,6 +1460,7 @@ module Google
         def update!(**args)
           @auto_renewing = args[:auto_renewing] if args.key?(:auto_renewing)
           @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
+          @cancel_survey_result = args[:cancel_survey_result] if args.key?(:cancel_survey_result)
           @country_code = args[:country_code] if args.key?(:country_code)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @email_address = args[:email_address] if args.key?(:email_address)

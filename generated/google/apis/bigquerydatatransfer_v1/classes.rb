@@ -157,8 +157,7 @@ module Google
         attr_accessor :supports_custom_schedule
         alias_method :supports_custom_schedule?, :supports_custom_schedule
       
-        # Indicates whether the data source supports multiple transfers
-        # to different BigQuery targets.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `supportsMultipleTransfers`
         # @return [Boolean]
         attr_accessor :supports_multiple_transfers

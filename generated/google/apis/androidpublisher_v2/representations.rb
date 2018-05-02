@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscriptionCancelSurveyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscriptionDeferralInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -697,6 +703,14 @@ module Google
         end
       end
       
+      class SubscriptionCancelSurveyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_survey_reason, as: 'cancelSurveyReason'
+          property :user_input_cancel_reason, as: 'userInputCancelReason'
+        end
+      end
+      
       class SubscriptionDeferralInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -710,6 +724,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renewing, as: 'autoRenewing'
           property :cancel_reason, as: 'cancelReason'
+          property :cancel_survey_result, as: 'cancelSurveyResult', class: Google::Apis::AndroidpublisherV2::SubscriptionCancelSurveyResult, decorator: Google::Apis::AndroidpublisherV2::SubscriptionCancelSurveyResult::Representation
+      
           property :country_code, as: 'countryCode'
           property :developer_payload, as: 'developerPayload'
           property :email_address, as: 'emailAddress'
