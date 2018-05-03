@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/compute/docs/oslogin/rest/
     module OsloginV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20180413'
+      REVISION = '20180430'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

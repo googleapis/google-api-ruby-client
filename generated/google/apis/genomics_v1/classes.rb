@@ -533,6 +533,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :exit_status
       
+        # The tail end of any content written to standard error by the container.
+        # To prevent this from being recorded if the action is known to emit
+        # large amounts of debugging noise or sensitive information, set the
+        # DISABLE_STANDARD_ERROR_CAPTURE flag.
+        # Note that only a small amount of the end of the stream is captured here.
+        # The entire stream is stored in the /google/logs directory mounted into
+        # each action, and may be copied off the machine as described elsewhere.
+        # Corresponds to the JSON property `stderr`
+        # @return [String]
+        attr_accessor :stderr
+      
         def initialize(**args)
            update!(**args)
         end
@@ -541,6 +552,7 @@ module Google
         def update!(**args)
           @action_id = args[:action_id] if args.key?(:action_id)
           @exit_status = args[:exit_status] if args.key?(:exit_status)
+          @stderr = args[:stderr] if args.key?(:stderr)
         end
       end
       

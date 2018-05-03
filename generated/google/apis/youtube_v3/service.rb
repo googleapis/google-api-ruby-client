@@ -1367,59 +1367,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists fan funding events for a channel.
-        # @param [String] part
-        #   The part parameter specifies the fanFundingEvent resource parts that the API
-        #   response will include. Supported values are id and snippet.
-        # @param [String] hl
-        #   The hl parameter instructs the API to retrieve localized resource metadata for
-        #   a specific application language that the YouTube website supports. The
-        #   parameter value must be a language code included in the list returned by the
-        #   i18nLanguages.list method.
-        #   If localized resource details are available in that language, the resource's
-        #   snippet.localized object will contain the localized values. However, if
-        #   localized details are not available, the snippet.localized object will contain
-        #   resource details in the resource's default language.
-        # @param [Fixnum] max_results
-        #   The maxResults parameter specifies the maximum number of items that should be
-        #   returned in the result set.
-        # @param [String] page_token
-        #   The pageToken parameter identifies a specific page in the result set that
-        #   should be returned. In an API response, the nextPageToken and prevPageToken
-        #   properties identify other pages that could be retrieved.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::FanFundingEventListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::FanFundingEventListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_fan_funding_events(part, hl: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'fanFundingEvents', options)
-          command.response_representation = Google::Apis::YoutubeV3::FanFundingEventListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::FanFundingEventListResponse
-          command.query['hl'] = hl unless hl.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['part'] = part unless part.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns a list of categories that can be associated with YouTube channels.
         # @param [String] part
         #   The part parameter specifies the guideCategory resource properties that the

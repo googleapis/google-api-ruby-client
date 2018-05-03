@@ -2752,168 +2752,6 @@ module Google
         end
       end
       
-      # A fanFundingEvent resource represents a fan funding event on a YouTube channel.
-      # Fan funding events occur when a user gives one-time monetary support to the
-      # channel owner.
-      class FanFundingEvent
-        include Google::Apis::Core::Hashable
-      
-        # Etag of this resource.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # The ID that YouTube assigns to uniquely identify the fan funding event.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # fanFundingEvent".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The snippet object contains basic details about the fan funding event.
-        # Corresponds to the JSON property `snippet`
-        # @return [Google::Apis::YoutubeV3::FanFundingEventSnippet]
-        attr_accessor :snippet
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @snippet = args[:snippet] if args.key?(:snippet)
-        end
-      end
-      
-      # 
-      class FanFundingEventListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Etag of this resource.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Serialized EventId of the request which produced this response.
-        # Corresponds to the JSON property `eventId`
-        # @return [String]
-        attr_accessor :event_id
-      
-        # A list of fan funding events that match the request criteria.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::YoutubeV3::FanFundingEvent>]
-        attr_accessor :items
-      
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # fanFundingEventListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The token that can be used as the value of the pageToken parameter to retrieve
-        # the next page in the result set.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Paging details for lists of resources, including total number of items
-        # available and number of resources returned in a single page.
-        # Corresponds to the JSON property `pageInfo`
-        # @return [Google::Apis::YoutubeV3::PageInfo]
-        attr_accessor :page_info
-      
-        # Stub token pagination template to suppress results.
-        # Corresponds to the JSON property `tokenPagination`
-        # @return [Google::Apis::YoutubeV3::TokenPagination]
-        attr_accessor :token_pagination
-      
-        # The visitorId identifies the visitor.
-        # Corresponds to the JSON property `visitorId`
-        # @return [String]
-        attr_accessor :visitor_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @event_id = args[:event_id] if args.key?(:event_id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @page_info = args[:page_info] if args.key?(:page_info)
-          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
-          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
-        end
-      end
-      
-      # 
-      class FanFundingEventSnippet
-        include Google::Apis::Core::Hashable
-      
-        # The amount of funding in micros of fund_currency. e.g., 1 is represented
-        # Corresponds to the JSON property `amountMicros`
-        # @return [Fixnum]
-        attr_accessor :amount_micros
-      
-        # Channel id where the funding event occurred.
-        # Corresponds to the JSON property `channelId`
-        # @return [String]
-        attr_accessor :channel_id
-      
-        # The text contents of the comment left by the user.
-        # Corresponds to the JSON property `commentText`
-        # @return [String]
-        attr_accessor :comment_text
-      
-        # The date and time when the funding occurred. The value is specified in ISO
-        # 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-        # Corresponds to the JSON property `createdAt`
-        # @return [DateTime]
-        attr_accessor :created_at
-      
-        # The currency in which the fund was made. ISO 4217.
-        # Corresponds to the JSON property `currency`
-        # @return [String]
-        attr_accessor :currency
-      
-        # A rendered string that displays the fund amount and currency (e.g., "$1.00").
-        # The string is rendered for the given language.
-        # Corresponds to the JSON property `displayString`
-        # @return [String]
-        attr_accessor :display_string
-      
-        # Details about the supporter. Only filled if the event was made public by the
-        # user.
-        # Corresponds to the JSON property `supporterDetails`
-        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
-        attr_accessor :supporter_details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
-          @channel_id = args[:channel_id] if args.key?(:channel_id)
-          @comment_text = args[:comment_text] if args.key?(:comment_text)
-          @created_at = args[:created_at] if args.key?(:created_at)
-          @currency = args[:currency] if args.key?(:currency)
-          @display_string = args[:display_string] if args.key?(:display_string)
-          @supporter_details = args[:supporter_details] if args.key?(:supporter_details)
-        end
-      end
-      
       # Geographical coordinates of a point, in WGS84.
       class GeoPoint
         include Google::Apis::Core::Hashable
@@ -6331,11 +6169,6 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The ID that YouTube assigns to uniquely identify the sponsor.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
         # sponsor".
         # Corresponds to the JSON property `kind`
@@ -6354,7 +6187,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @snippet = args[:snippet] if args.key?(:snippet)
         end

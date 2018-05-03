@@ -666,6 +666,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
           property :exit_status, as: 'exitStatus'
+          property :stderr, as: 'stderr'
         end
       end
       

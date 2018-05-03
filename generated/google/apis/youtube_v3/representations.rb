@@ -328,24 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FanFundingEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FanFundingEventListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FanFundingEventSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GeoPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1780,49 +1762,6 @@ module Google
         end
       end
       
-      class FanFundingEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::FanFundingEventSnippet, decorator: Google::Apis::YoutubeV3::FanFundingEventSnippet::Representation
-      
-        end
-      end
-      
-      class FanFundingEventListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :event_id, as: 'eventId'
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::FanFundingEvent, decorator: Google::Apis::YoutubeV3::FanFundingEvent::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
-      
-          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
-      
-          property :visitor_id, as: 'visitorId'
-        end
-      end
-      
-      class FanFundingEventSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :amount_micros, :numeric_string => true, as: 'amountMicros'
-          property :channel_id, as: 'channelId'
-          property :comment_text, as: 'commentText'
-          property :created_at, as: 'createdAt', type: DateTime
-      
-          property :currency, as: 'currency'
-          property :display_string, as: 'displayString'
-          property :supporter_details, as: 'supporterDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
-      
-        end
-      end
-      
       class GeoPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2738,7 +2677,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
-          property :id, as: 'id'
           property :kind, as: 'kind'
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::SponsorSnippet, decorator: Google::Apis::YoutubeV3::SponsorSnippet::Representation
       

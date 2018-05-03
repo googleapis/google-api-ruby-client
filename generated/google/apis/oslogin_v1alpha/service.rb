@@ -121,6 +121,8 @@ module Google
         #   A reference to the POSIX account to update. POSIX accounts are identified
         #   by the project ID they are associated with. A reference to the POSIX
         #   account is in format `users/`user`/projects/`project``.
+        # @param [String] operating_system_type
+        #   The type of operating system associated with the account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -138,11 +140,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user_project(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_user_project(name, operating_system_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::OsloginV1alpha::Empty::Representation
           command.response_class = Google::Apis::OsloginV1alpha::Empty
           command.params['name'] = name unless name.nil?
+          command.query['operatingSystemType'] = operating_system_type unless operating_system_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

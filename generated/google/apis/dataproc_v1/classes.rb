@@ -721,9 +721,8 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
-        # Optional. The list of instance names. Cloud Dataproc derives the names from
-        # cluster_name, num_instances, and the instance group if not set by user (
-        # recommended practice is to let Cloud Dataproc derive the name).
+        # Output only. The list of instance names. Cloud Dataproc derives the names from
+        # cluster_name, num_instances, and the instance group.
         # Corresponds to the JSON property `instanceNames`
         # @return [Array<String>]
         attr_accessor :instance_names
