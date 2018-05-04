@@ -52,7 +52,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of trace records returned.
+        # List of trace records as specified by the view parameter.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces

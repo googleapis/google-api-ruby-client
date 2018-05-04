@@ -239,24 +239,24 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Approximate percentage processed thus far.
-        # Guaranteed to be 100 when fully processed.
+        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Time when the request was received.
+        # Output only. Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Time of the most recent update.
+        # Output only. Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -334,7 +334,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
@@ -1045,24 +1045,24 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Approximate percentage processed thus far.
-        # Guaranteed to be 100 when fully processed.
+        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Time when the request was received.
+        # Output only. Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Time of the most recent update.
+        # Output only. Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1140,7 +1140,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
@@ -1644,24 +1644,24 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Approximate percentage processed thus far.
-        # Guaranteed to be 100 when fully processed.
+        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Time when the request was received.
+        # Output only. Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Time of the most recent update.
+        # Output only. Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1744,7 +1744,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Video file location in
+        # Output only. Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
