@@ -856,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetThumbnailRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetThumbnailResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       

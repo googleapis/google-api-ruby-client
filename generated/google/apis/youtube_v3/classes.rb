@@ -6802,6 +6802,25 @@ module Google
       end
       
       # 
+      class SetThumbnailRequest
+        include Google::Apis::Core::Hashable
+
+        # Etag of this resource.
+        # Corresponds to the JSON property `video_id`
+        # @return [String]
+        attr_accessor :video_id
+
+        def initialize(**args)
+           update!(**args)
+        end
+
+        # Update properties of this object
+        def update!(**args)
+          @video_id = args[:video_id] if args.key?(:video_id)
+        end
+      end
+      
+      # 
       class SetThumbnailResponse
         include Google::Apis::Core::Hashable
       
