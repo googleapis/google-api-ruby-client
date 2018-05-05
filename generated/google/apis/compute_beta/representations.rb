@@ -772,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Http2HealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4405,6 +4411,18 @@ module Google
         end
       end
       
+      class Http2HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request_path, as: 'requestPath'
+          property :response, as: 'response'
+        end
+      end
+      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4436,6 +4454,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :healthy_threshold, as: 'healthyThreshold'
+          property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeBeta::Http2HealthCheck, decorator: Google::Apis::ComputeBeta::Http2HealthCheck::Representation
+      
           property :http_health_check, as: 'httpHealthCheck', class: Google::Apis::ComputeBeta::HttpHealthCheck, decorator: Google::Apis::ComputeBeta::HttpHealthCheck::Representation
       
           property :https_health_check, as: 'httpsHealthCheck', class: Google::Apis::ComputeBeta::HttpsHealthCheck, decorator: Google::Apis::ComputeBeta::HttpsHealthCheck::Representation

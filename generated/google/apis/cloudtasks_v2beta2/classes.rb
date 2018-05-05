@@ -1015,6 +1015,8 @@ module Google
         # Rate limits.
         # This message determines the maximum rate that tasks can be dispatched by a
         # queue, regardless of whether the dispatch is a first task attempt or a retry.
+        # Note: The debugging command, RunTask, will run a task
+        # even if the queue has reached its RateLimits.
         # Corresponds to the JSON property `rateLimits`
         # @return [Google::Apis::CloudtasksV2beta2::RateLimits]
         attr_accessor :rate_limits
@@ -1054,6 +1056,8 @@ module Google
       # Rate limits.
       # This message determines the maximum rate that tasks can be dispatched by a
       # queue, regardless of whether the dispatch is a first task attempt or a retry.
+      # Note: The debugging command, RunTask, will run a task
+      # even if the queue has reached its RateLimits.
       class RateLimits
         include Google::Apis::Core::Hashable
       
@@ -1095,9 +1099,11 @@ module Google
         # concurrent requests decreases.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # The maximum allowed value is 5,000. -1 indicates no limit.
+        # The maximum allowed value is 5,000.
         # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget) and always -1, which
+        # indicates no limit. No other queue types can have `max_concurrent_tasks`
+        # set to -1.
         # This field has the same meaning as
         # [max_concurrent_requests in queue.yaml/xml](/appengine/docs/standard/python/
         # config/queueref#max_concurrent_requests).

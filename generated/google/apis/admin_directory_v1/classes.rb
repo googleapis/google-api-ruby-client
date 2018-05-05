@@ -2515,6 +2515,11 @@ module Google
       class Schema
         include Google::Apis::Core::Hashable
       
+        # Display name for the schema.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -2546,6 +2551,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @fields = args[:fields] if args.key?(:fields)
           @kind = args[:kind] if args.key?(:kind)
@@ -2557,6 +2563,11 @@ module Google
       # JSON template for FieldSpec resource for Schemas in Directory API.
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
+      
+        # Display Name of the field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
@@ -2614,6 +2625,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @field_id = args[:field_id] if args.key?(:field_id)
           @field_name = args[:field_name] if args.key?(:field_name)
@@ -3821,6 +3833,11 @@ module Google
         # @return [String]
         attr_accessor :home_directory
       
+        # The operating system type for this account.
+        # Corresponds to the JSON property `operatingSystemType`
+        # @return [String]
+        attr_accessor :operating_system_type
+      
         # If this is user's primary account within the SystemId.
         # Corresponds to the JSON property `primary`
         # @return [Boolean]
@@ -3857,6 +3874,7 @@ module Google
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)
+          @operating_system_type = args[:operating_system_type] if args.key?(:operating_system_type)
           @primary = args[:primary] if args.key?(:primary)
           @shell = args[:shell] if args.key?(:shell)
           @system_id = args[:system_id] if args.key?(:system_id)

@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchEnableServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Billing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,7 +166,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnableFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnableServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +215,18 @@ module Google
       end
       
       class GoogleApiService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV1Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV1ServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -512,6 +548,16 @@ module Google
         end
       end
       
+      class BatchEnableServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failures, as: 'failures', class: Google::Apis::ServiceusageV1beta1::EnableFailure, decorator: Google::Apis::ServiceusageV1beta1::EnableFailure::Representation
+      
+          collection :services, as: 'services', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service::Representation
+      
+        end
+      end
+      
       class Billing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -592,6 +638,14 @@ module Google
         end
       end
       
+      class DisableServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service::Representation
+      
+        end
+      end
+      
       class Documentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -614,9 +668,25 @@ module Google
         end
       end
       
+      class EnableFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :service_id, as: 'serviceId'
+        end
+      end
+      
       class EnableServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1Service::Representation
+      
         end
       end
       
@@ -732,6 +802,37 @@ module Google
           property :title, as: 'title'
           collection :types, as: 'types', class: Google::Apis::ServiceusageV1beta1::Type, decorator: Google::Apis::ServiceusageV1beta1::Type::Representation
       
+          property :usage, as: 'usage', class: Google::Apis::ServiceusageV1beta1::Usage, decorator: Google::Apis::ServiceusageV1beta1::Usage::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV1Service
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1ServiceConfig, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1ServiceConfig::Representation
+      
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleApiServiceusageV1ServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apis, as: 'apis', class: Google::Apis::ServiceusageV1beta1::Api, decorator: Google::Apis::ServiceusageV1beta1::Api::Representation
+      
+          property :authentication, as: 'authentication', class: Google::Apis::ServiceusageV1beta1::Authentication, decorator: Google::Apis::ServiceusageV1beta1::Authentication::Representation
+      
+          property :documentation, as: 'documentation', class: Google::Apis::ServiceusageV1beta1::Documentation, decorator: Google::Apis::ServiceusageV1beta1::Documentation::Representation
+      
+          collection :endpoints, as: 'endpoints', class: Google::Apis::ServiceusageV1beta1::Endpoint, decorator: Google::Apis::ServiceusageV1beta1::Endpoint::Representation
+      
+          property :name, as: 'name'
+          property :quota, as: 'quota', class: Google::Apis::ServiceusageV1beta1::Quota, decorator: Google::Apis::ServiceusageV1beta1::Quota::Representation
+      
+          property :title, as: 'title'
           property :usage, as: 'usage', class: Google::Apis::ServiceusageV1beta1::Usage, decorator: Google::Apis::ServiceusageV1beta1::Usage::Representation
       
         end

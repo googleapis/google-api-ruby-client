@@ -22,8 +22,8 @@ module Google
     module AdminDirectoryV1
       # Admin Directory API
       #
-      # The Admin SDK Directory API lets you view and manage enterprise resources such
-      #  as users and groups, administrative notifications, security features, and more.
+      # Manages enterprise resources such as users and groups, administrative
+      #  notifications, security features, and more.
       #
       # @example
       #    require 'google/apis/admin_directory_v1'
@@ -925,7 +925,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all groups in a domain (paginated)
+        # Retrieve all groups of a domain or of a user given a userKey (paginated)
         # @param [String] customer
         #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
         #   groups for a customer, fill this field instead of domain.
@@ -934,11 +934,19 @@ module Google
         #   return all groups in a multi-domain fill customer field instead.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 200
+        # @param [String] order_by
+        #   Column to use for sorting results
         # @param [String] page_token
         #   Token to specify next page in the list
+        # @param [String] query
+        #   Query string search. Should be of the form "". Complete documentation is at
+        #   https://developers.google.com/admin-sdk/directory/v1/guides/search-users
+        # @param [String] sort_order
+        #   Whether to return results in ascending or descending order. Only of use when
+        #   orderBy is also used
         # @param [String] user_key
-        #   Email or immutable ID of the user if only those groups are to be listed, the
-        #   given user is a member of. If ID, it should match with id of user object
+        #   Email or immutable Id of the user if only those groups are to be listed, the
+        #   given user is a member of. If Id, it should match with id of user object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -958,14 +966,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_groups(customer: nil, domain: nil, max_results: nil, page_token: nil, user_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_groups(customer: nil, domain: nil, max_results: nil, order_by: nil, page_token: nil, query: nil, sort_order: nil, user_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'groups', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Groups::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Groups
           command.query['customer'] = customer unless customer.nil?
           command.query['domain'] = domain unless domain.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['sortOrder'] = sort_order unless sort_order.nil?
           command.query['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1298,6 +1309,8 @@ module Google
         # Retrieve all members in a group (paginated)
         # @param [String] group_key
         #   Email or immutable ID of the group
+        # @param [Boolean] include_derived_membership
+        #   Whether to list indirect memberships. Default: false.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 200
         # @param [String] page_token
@@ -1323,11 +1336,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_members(group_key, max_results: nil, page_token: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_members(group_key, include_derived_membership: nil, max_results: nil, page_token: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'groups/{groupKey}/members', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Members::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Members
           command.params['groupKey'] = group_key unless group_key.nil?
+          command.query['includeDerivedMembership'] = include_derived_membership unless include_derived_membership.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['roles'] = roles unless roles.nil?

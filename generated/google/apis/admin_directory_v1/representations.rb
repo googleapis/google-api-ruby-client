@@ -1132,6 +1132,7 @@ module Google
       class Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           collection :fields, as: 'fields', class: Google::Apis::AdminDirectoryV1::SchemaFieldSpec, decorator: Google::Apis::AdminDirectoryV1::SchemaFieldSpec::Representation
       
@@ -1144,6 +1145,7 @@ module Google
       class SchemaFieldSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :field_id, as: 'fieldId'
           property :field_name, as: 'fieldName'
@@ -1436,6 +1438,7 @@ module Google
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'
+          property :operating_system_type, as: 'operatingSystemType'
           property :primary, as: 'primary'
           property :shell, as: 'shell'
           property :system_id, as: 'systemId'

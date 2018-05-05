@@ -20,13 +20,13 @@ module Google
   module Apis
     # Admin Directory API
     #
-    # The Admin SDK Directory API lets you view and manage enterprise resources such
-    # as users and groups, administrative notifications, security features, and more.
+    # Manages enterprise resources such as users and groups, administrative
+    # notifications, security features, and more.
     #
     # @see https://developers.google.com/admin-sdk/directory/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20180316'
+      REVISION = '20180423'
 
       # View and manage customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
