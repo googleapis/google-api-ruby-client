@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddDimensionGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDimensionGroupResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddFilterViewRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateTimeRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteBandingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +461,18 @@ module Google
       end
       
       class DeleteDeveloperMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDimensionGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDimensionGroupResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -503,6 +533,12 @@ module Google
       end
       
       class DeveloperMetadataLookup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DimensionGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1000,6 +1036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDimensionGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDimensionPropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1133,6 +1175,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index, as: 'index'
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
+      
+        end
+      end
+      
+      class AddDimensionGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+        end
+      end
+      
+      class AddDimensionGroupResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_groups, as: 'dimensionGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
       
         end
       end
@@ -1816,6 +1874,13 @@ module Google
         end
       end
       
+      class DateTimeRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class DeleteBandingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1851,6 +1916,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted_developer_metadata, as: 'deletedDeveloperMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+        end
+      end
+      
+      class DeleteDimensionGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+        end
+      end
+      
+      class DeleteDimensionGroupResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_groups, as: 'dimensionGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
       
         end
       end
@@ -1941,6 +2022,16 @@ module Google
       
           property :metadata_value, as: 'metadataValue'
           property :visibility, as: 'visibility'
+        end
+      end
+      
+      class DimensionGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapsed, as: 'collapsed'
+          property :depth, as: 'depth'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
         end
       end
       
@@ -2147,10 +2238,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column_count, as: 'columnCount'
+          property :column_group_control_after, as: 'columnGroupControlAfter'
           property :frozen_column_count, as: 'frozenColumnCount'
           property :frozen_row_count, as: 'frozenRowCount'
           property :hide_gridlines, as: 'hideGridlines'
           property :row_count, as: 'rowCount'
+          property :row_group_control_after, as: 'rowGroupControlAfter'
         end
       end
       
@@ -2405,6 +2498,8 @@ module Google
       class PivotGroupRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_time_rule, as: 'dateTimeRule', class: Google::Apis::SheetsV4::DateTimeRule, decorator: Google::Apis::SheetsV4::DateTimeRule::Representation
+      
           property :histogram_rule, as: 'histogramRule', class: Google::Apis::SheetsV4::HistogramRule, decorator: Google::Apis::SheetsV4::HistogramRule::Representation
       
           property :manual_rule, as: 'manualRule', class: Google::Apis::SheetsV4::ManualRule, decorator: Google::Apis::SheetsV4::ManualRule::Representation
@@ -2503,6 +2598,8 @@ module Google
       
           property :add_conditional_format_rule, as: 'addConditionalFormatRule', class: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest::Representation
       
+          property :add_dimension_group, as: 'addDimensionGroup', class: Google::Apis::SheetsV4::AddDimensionGroupRequest, decorator: Google::Apis::SheetsV4::AddDimensionGroupRequest::Representation
+      
           property :add_filter_view, as: 'addFilterView', class: Google::Apis::SheetsV4::AddFilterViewRequest, decorator: Google::Apis::SheetsV4::AddFilterViewRequest::Representation
       
           property :add_named_range, as: 'addNamedRange', class: Google::Apis::SheetsV4::AddNamedRangeRequest, decorator: Google::Apis::SheetsV4::AddNamedRangeRequest::Representation
@@ -2534,6 +2631,8 @@ module Google
           property :delete_developer_metadata, as: 'deleteDeveloperMetadata', class: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest::Representation
       
           property :delete_dimension, as: 'deleteDimension', class: Google::Apis::SheetsV4::DeleteDimensionRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionRequest::Representation
+      
+          property :delete_dimension_group, as: 'deleteDimensionGroup', class: Google::Apis::SheetsV4::DeleteDimensionGroupRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionGroupRequest::Representation
       
           property :delete_embedded_object, as: 'deleteEmbeddedObject', class: Google::Apis::SheetsV4::DeleteEmbeddedObjectRequest, decorator: Google::Apis::SheetsV4::DeleteEmbeddedObjectRequest::Representation
       
@@ -2589,6 +2688,8 @@ module Google
       
           property :update_developer_metadata, as: 'updateDeveloperMetadata', class: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest::Representation
       
+          property :update_dimension_group, as: 'updateDimensionGroup', class: Google::Apis::SheetsV4::UpdateDimensionGroupRequest, decorator: Google::Apis::SheetsV4::UpdateDimensionGroupRequest::Representation
+      
           property :update_dimension_properties, as: 'updateDimensionProperties', class: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest, decorator: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest::Representation
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest::Representation
@@ -2613,6 +2714,8 @@ module Google
       
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartResponse, decorator: Google::Apis::SheetsV4::AddChartResponse::Representation
       
+          property :add_dimension_group, as: 'addDimensionGroup', class: Google::Apis::SheetsV4::AddDimensionGroupResponse, decorator: Google::Apis::SheetsV4::AddDimensionGroupResponse::Representation
+      
           property :add_filter_view, as: 'addFilterView', class: Google::Apis::SheetsV4::AddFilterViewResponse, decorator: Google::Apis::SheetsV4::AddFilterViewResponse::Representation
       
           property :add_named_range, as: 'addNamedRange', class: Google::Apis::SheetsV4::AddNamedRangeResponse, decorator: Google::Apis::SheetsV4::AddNamedRangeResponse::Representation
@@ -2626,6 +2729,8 @@ module Google
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse::Representation
       
           property :delete_developer_metadata, as: 'deleteDeveloperMetadata', class: Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse::Representation
+      
+          property :delete_dimension_group, as: 'deleteDimensionGroup', class: Google::Apis::SheetsV4::DeleteDimensionGroupResponse, decorator: Google::Apis::SheetsV4::DeleteDimensionGroupResponse::Representation
       
           property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewResponse, decorator: Google::Apis::SheetsV4::DuplicateFilterViewResponse::Representation
       
@@ -2693,6 +2798,8 @@ module Google
       
           collection :charts, as: 'charts', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
       
+          collection :column_groups, as: 'columnGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
+      
           collection :conditional_formats, as: 'conditionalFormats', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
           collection :data, as: 'data', class: Google::Apis::SheetsV4::GridData, decorator: Google::Apis::SheetsV4::GridData::Representation
@@ -2706,6 +2813,8 @@ module Google
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
       
           collection :protected_ranges, as: 'protectedRanges', class: Google::Apis::SheetsV4::ProtectedRange, decorator: Google::Apis::SheetsV4::ProtectedRange::Representation
+      
+          collection :row_groups, as: 'rowGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
       
         end
       end
@@ -2969,6 +3078,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
       
+        end
+      end
+      
+      class UpdateDimensionGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_group, as: 'dimensionGroup', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
+      
+          property :fields, as: 'fields'
         end
       end
       

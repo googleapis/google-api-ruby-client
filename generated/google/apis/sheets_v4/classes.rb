@@ -124,6 +124,62 @@ module Google
         end
       end
       
+      # Creates a group over the specified range.
+      # If the requested range is a superset of the range of an existing group G,
+      # then the depth of G will be incremented and this new group G' will have the
+      # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
+      # groups [B:E, depth 1] and [C:D, depth 2].
+      # If the requested range is a subset of the range of an existing group G,
+      # then the depth of the new group G' will be one greater than the depth of G.
+      # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
+      # and [C:D, depth 2].
+      # If the requested range starts before and ends within, or starts within and
+      # ends after, the range of an existing group G, then the range of the existing
+      # group G will become the union of the ranges, and the new group G' will have
+      # depth one greater than the depth of G and range as the intersection of the
+      # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
+      # depth 1] and [C:D, depth 2].
+      class AddDimensionGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # A range along a single dimension on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive
+        # and the end index is exclusive.
+        # Missing indexes indicate the range is unbounded on that side.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::DimensionRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # The result of adding a group.
+      class AddDimensionGroupResponse
+        include Google::Apis::Core::Hashable
+      
+        # All groups of a dimension after adding a group to that dimension.
+        # Corresponds to the JSON property `dimensionGroups`
+        # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
+        attr_accessor :dimension_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_groups = args[:dimension_groups] if args.key?(:dimension_groups)
+        end
+      end
+      
       # Adds a filter view.
       class AddFilterViewRequest
         include Google::Apis::Core::Hashable
@@ -3531,6 +3587,45 @@ module Google
         end
       end
       
+      # Allows you to organize the date-time values in a source data column into
+      # buckets based on selected parts of their date or time values. For example,
+      # consider a pivot table showing sales transactions by date:
+      # +----------+--------------+
+      # | Date     | SUM of Sales |
+      # +----------+--------------+
+      # | 1/1/2017 |      $621.14 |
+      # | 2/3/2017 |      $708.84 |
+      # | 5/8/2017 |      $326.84 |
+      # ...
+      # +----------+--------------+
+      # Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
+      # results in the following pivot table.
+      # +--------------+--------------+
+      # | Grouped Date | SUM of Sales |
+      # +--------------+--------------+
+      # | 2017-Jan     |   $53,731.78 |
+      # | 2017-Feb     |   $83,475.32 |
+      # | 2017-Mar     |   $94,385.05 |
+      # ...
+      # +--------------+--------------+
+      class DateTimeRule
+        include Google::Apis::Core::Hashable
+      
+        # The type of date-time grouping to apply.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Removes the banded range with the given ID from the spreadsheet.
       class DeleteBandingRequest
         include Google::Apis::Core::Hashable
@@ -3631,6 +3726,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deleted_developer_metadata = args[:deleted_developer_metadata] if args.key?(:deleted_developer_metadata)
+        end
+      end
+      
+      # Deletes a group over the specified range by decrementing the depth of the
+      # dimensions in the range.
+      # For example, assume the sheet has a depth-1 group over B:E and a depth-2
+      # group over C:D. Deleting a group over D:E would leave the sheet with a
+      # depth-1 group over B:D and a depth-2 group over C:C.
+      class DeleteDimensionGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # A range along a single dimension on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive
+        # and the end index is exclusive.
+        # Missing indexes indicate the range is unbounded on that side.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::DimensionRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # The result of deleting a group.
+      class DeleteDimensionGroupResponse
+        include Google::Apis::Core::Hashable
+      
+        # All groups of a dimension after deleting a group from that dimension.
+        # Corresponds to the JSON property `dimensionGroups`
+        # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
+        attr_accessor :dimension_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_groups = args[:dimension_groups] if args.key?(:dimension_groups)
         end
       end
       
@@ -3981,6 +4122,51 @@ module Google
           @metadata_location = args[:metadata_location] if args.key?(:metadata_location)
           @metadata_value = args[:metadata_value] if args.key?(:metadata_value)
           @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # A group over an interval of rows or columns on a sheet, which can contain or
+      # be contained within other groups. A group can be collapsed or expanded as a
+      # unit on the sheet.
+      class DimensionGroup
+        include Google::Apis::Core::Hashable
+      
+        # True if this group is collapsed. A collapsed group will remain collapsed if
+        # an overlapping group at a shallower depth is expanded.
+        # collapsed == true does not imply that all dimensions within the group are
+        # hidden, since a dimension's visibility can change independently from this
+        # group property. However, when this property is updated, all dimensions
+        # within it will be set to hidden if collapsed == true, or set to visible if
+        # collapsed == false.
+        # Corresponds to the JSON property `collapsed`
+        # @return [Boolean]
+        attr_accessor :collapsed
+        alias_method :collapsed?, :collapsed
+      
+        # The depth of the group, representing how many groups have a range that
+        # wholly contains the range of this group.
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # A range along a single dimension on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive
+        # and the end index is exclusive.
+        # Missing indexes indicate the range is unbounded on that side.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::DimensionRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collapsed = args[:collapsed] if args.key?(:collapsed)
+          @depth = args[:depth] if args.key?(:depth)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -4740,6 +4926,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :column_count
       
+        # True if the column grouping control toggle is shown after the group.
+        # Corresponds to the JSON property `columnGroupControlAfter`
+        # @return [Boolean]
+        attr_accessor :column_group_control_after
+        alias_method :column_group_control_after?, :column_group_control_after
+      
         # The number of columns that are frozen in the grid.
         # Corresponds to the JSON property `frozenColumnCount`
         # @return [Fixnum]
@@ -4761,6 +4953,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count
       
+        # True if the row grouping control toggle is shown after the group.
+        # Corresponds to the JSON property `rowGroupControlAfter`
+        # @return [Boolean]
+        attr_accessor :row_group_control_after
+        alias_method :row_group_control_after?, :row_group_control_after
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4768,10 +4966,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column_count = args[:column_count] if args.key?(:column_count)
+          @column_group_control_after = args[:column_group_control_after] if args.key?(:column_group_control_after)
           @frozen_column_count = args[:frozen_column_count] if args.key?(:frozen_column_count)
           @frozen_row_count = args[:frozen_row_count] if args.key?(:frozen_row_count)
           @hide_gridlines = args[:hide_gridlines] if args.key?(:hide_gridlines)
           @row_count = args[:row_count] if args.key?(:row_count)
+          @row_group_control_after = args[:row_group_control_after] if args.key?(:row_group_control_after)
         end
       end
       
@@ -6213,6 +6413,31 @@ module Google
       class PivotGroupRule
         include Google::Apis::Core::Hashable
       
+        # Allows you to organize the date-time values in a source data column into
+        # buckets based on selected parts of their date or time values. For example,
+        # consider a pivot table showing sales transactions by date:
+        # +----------+--------------+
+        # | Date     | SUM of Sales |
+        # +----------+--------------+
+        # | 1/1/2017 |      $621.14 |
+        # | 2/3/2017 |      $708.84 |
+        # | 5/8/2017 |      $326.84 |
+        # ...
+        # +----------+--------------+
+        # Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
+        # results in the following pivot table.
+        # +--------------+--------------+
+        # | Grouped Date | SUM of Sales |
+        # +--------------+--------------+
+        # | 2017-Jan     |   $53,731.78 |
+        # | 2017-Feb     |   $83,475.32 |
+        # | 2017-Mar     |   $94,385.05 |
+        # ...
+        # +--------------+--------------+
+        # Corresponds to the JSON property `dateTimeRule`
+        # @return [Google::Apis::SheetsV4::DateTimeRule]
+        attr_accessor :date_time_rule
+      
         # Allows you to organize the numeric values in a source data column into
         # buckets of a constant size. All values from HistogramRule.start to
         # HistogramRule.end will be placed into groups of size
@@ -6283,6 +6508,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @date_time_rule = args[:date_time_rule] if args.key?(:date_time_rule)
           @histogram_rule = args[:histogram_rule] if args.key?(:histogram_rule)
           @manual_rule = args[:manual_rule] if args.key?(:manual_rule)
         end
@@ -6701,6 +6927,25 @@ module Google
         # @return [Google::Apis::SheetsV4::AddConditionalFormatRuleRequest]
         attr_accessor :add_conditional_format_rule
       
+        # Creates a group over the specified range.
+        # If the requested range is a superset of the range of an existing group G,
+        # then the depth of G will be incremented and this new group G' will have the
+        # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
+        # groups [B:E, depth 1] and [C:D, depth 2].
+        # If the requested range is a subset of the range of an existing group G,
+        # then the depth of the new group G' will be one greater than the depth of G.
+        # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
+        # and [C:D, depth 2].
+        # If the requested range starts before and ends within, or starts within and
+        # ends after, the range of an existing group G, then the range of the existing
+        # group G will become the union of the ranges, and the new group G' will have
+        # depth one greater than the depth of G and range as the intersection of the
+        # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
+        # depth 1] and [C:D, depth 2].
+        # Corresponds to the JSON property `addDimensionGroup`
+        # @return [Google::Apis::SheetsV4::AddDimensionGroupRequest]
+        attr_accessor :add_dimension_group
+      
         # Adds a filter view.
         # Corresponds to the JSON property `addFilterView`
         # @return [Google::Apis::SheetsV4::AddFilterViewRequest]
@@ -6788,6 +7033,15 @@ module Google
         # Corresponds to the JSON property `deleteDimension`
         # @return [Google::Apis::SheetsV4::DeleteDimensionRequest]
         attr_accessor :delete_dimension
+      
+        # Deletes a group over the specified range by decrementing the depth of the
+        # dimensions in the range.
+        # For example, assume the sheet has a depth-1 group over B:E and a depth-2
+        # group over C:D. Deleting a group over D:E would leave the sheet with a
+        # depth-1 group over B:D and a depth-2 group over C:C.
+        # Corresponds to the JSON property `deleteDimensionGroup`
+        # @return [Google::Apis::SheetsV4::DeleteDimensionGroupRequest]
+        attr_accessor :delete_dimension_group
       
         # Deletes the embedded object with the given ID.
         # Corresponds to the JSON property `deleteEmbeddedObject`
@@ -6952,6 +7206,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest]
         attr_accessor :update_developer_metadata
       
+        # Updates the state of the specified group.
+        # Corresponds to the JSON property `updateDimensionGroup`
+        # @return [Google::Apis::SheetsV4::UpdateDimensionGroupRequest]
+        attr_accessor :update_dimension_group
+      
         # Updates properties of dimensions within the specified range.
         # Corresponds to the JSON property `updateDimensionProperties`
         # @return [Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest]
@@ -7000,6 +7259,7 @@ module Google
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
           @add_conditional_format_rule = args[:add_conditional_format_rule] if args.key?(:add_conditional_format_rule)
+          @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
           @add_filter_view = args[:add_filter_view] if args.key?(:add_filter_view)
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
@@ -7016,6 +7276,7 @@ module Google
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
+          @delete_dimension_group = args[:delete_dimension_group] if args.key?(:delete_dimension_group)
           @delete_embedded_object = args[:delete_embedded_object] if args.key?(:delete_embedded_object)
           @delete_filter_view = args[:delete_filter_view] if args.key?(:delete_filter_view)
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
@@ -7043,6 +7304,7 @@ module Google
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
+          @update_dimension_group = args[:update_dimension_group] if args.key?(:update_dimension_group)
           @update_dimension_properties = args[:update_dimension_properties] if args.key?(:update_dimension_properties)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
           @update_filter_view = args[:update_filter_view] if args.key?(:update_filter_view)
@@ -7066,6 +7328,11 @@ module Google
         # Corresponds to the JSON property `addChart`
         # @return [Google::Apis::SheetsV4::AddChartResponse]
         attr_accessor :add_chart
+      
+        # The result of adding a group.
+        # Corresponds to the JSON property `addDimensionGroup`
+        # @return [Google::Apis::SheetsV4::AddDimensionGroupResponse]
+        attr_accessor :add_dimension_group
       
         # The result of adding a filter view.
         # Corresponds to the JSON property `addFilterView`
@@ -7101,6 +7368,11 @@ module Google
         # Corresponds to the JSON property `deleteDeveloperMetadata`
         # @return [Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse]
         attr_accessor :delete_developer_metadata
+      
+        # The result of deleting a group.
+        # Corresponds to the JSON property `deleteDimensionGroup`
+        # @return [Google::Apis::SheetsV4::DeleteDimensionGroupResponse]
+        attr_accessor :delete_dimension_group
       
         # The result of a filter view being duplicated.
         # Corresponds to the JSON property `duplicateFilterView`
@@ -7140,6 +7412,7 @@ module Google
         def update!(**args)
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
+          @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
           @add_filter_view = args[:add_filter_view] if args.key?(:add_filter_view)
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
@@ -7147,6 +7420,7 @@ module Google
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
+          @delete_dimension_group = args[:delete_dimension_group] if args.key?(:delete_dimension_group)
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
@@ -7301,6 +7575,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::EmbeddedChart>]
         attr_accessor :charts
       
+        # All column groups on this sheet, ordered by increasing range start index,
+        # then by group depth.
+        # Corresponds to the JSON property `columnGroups`
+        # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
+        attr_accessor :column_groups
+      
         # The conditional format rules in this sheet.
         # Corresponds to the JSON property `conditionalFormats`
         # @return [Array<Google::Apis::SheetsV4::ConditionalFormatRule>]
@@ -7343,6 +7623,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ProtectedRange>]
         attr_accessor :protected_ranges
       
+        # All row groups on this sheet, ordered by increasing range start index, then
+        # by group depth.
+        # Corresponds to the JSON property `rowGroups`
+        # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
+        attr_accessor :row_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7352,6 +7638,7 @@ module Google
           @banded_ranges = args[:banded_ranges] if args.key?(:banded_ranges)
           @basic_filter = args[:basic_filter] if args.key?(:basic_filter)
           @charts = args[:charts] if args.key?(:charts)
+          @column_groups = args[:column_groups] if args.key?(:column_groups)
           @conditional_formats = args[:conditional_formats] if args.key?(:conditional_formats)
           @data = args[:data] if args.key?(:data)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
@@ -7359,6 +7646,7 @@ module Google
           @merges = args[:merges] if args.key?(:merges)
           @properties = args[:properties] if args.key?(:properties)
           @protected_ranges = args[:protected_ranges] if args.key?(:protected_ranges)
+          @row_groups = args[:row_groups] if args.key?(:row_groups)
         end
       end
       
@@ -9069,6 +9357,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+        end
+      end
+      
+      # Updates the state of the specified group.
+      class UpdateDimensionGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # A group over an interval of rows or columns on a sheet, which can contain or
+        # be contained within other groups. A group can be collapsed or expanded as a
+        # unit on the sheet.
+        # Corresponds to the JSON property `dimensionGroup`
+        # @return [Google::Apis::SheetsV4::DimensionGroup]
+        attr_accessor :dimension_group
+      
+        # The fields that should be updated.  At least one field must be specified.
+        # The root `dimensionGroup` is implied and should not be specified.
+        # A single `"*"` can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_group = args[:dimension_group] if args.key?(:dimension_group)
+          @fields = args[:fields] if args.key?(:fields)
         end
       end
       
