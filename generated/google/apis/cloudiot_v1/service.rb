@@ -63,6 +63,10 @@ module Google
         #   The fields of the `Device` resource to be returned in the response. The
         #   fields `id`, and `num_id` are always returned by default, along with any
         #   other fields specified.
+        # @param [String] gateway_type
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
+        #   specified, only non-gateway devices are returned. If
+        #   `GATEWAY_TYPE_UNSPECIFIED` specified, all devices are returned.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If this value
         #   is zero, the service will select a default size. A call may return fewer
@@ -89,7 +93,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
@@ -97,6 +101,7 @@ module Google
           command.query['deviceIds'] = device_ids unless device_ids.nil?
           command.query['deviceNumIds'] = device_num_ids unless device_num_ids.nil?
           command.query['fieldMask'] = field_mask unless field_mask.nil?
+          command.query['gatewayType'] = gateway_type unless gateway_type.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -508,6 +513,10 @@ module Google
         #   The fields of the `Device` resource to be returned in the response. The
         #   fields `id`, and `num_id` are always returned by default, along with any
         #   other fields specified.
+        # @param [String] gateway_type
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
+        #   specified, only non-gateway devices are returned. If
+        #   `GATEWAY_TYPE_UNSPECIFIED` specified, all devices are returned.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If this value
         #   is zero, the service will select a default size. A call may return fewer
@@ -534,7 +543,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_registry_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_registry_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
@@ -542,6 +551,7 @@ module Google
           command.query['deviceIds'] = device_ids unless device_ids.nil?
           command.query['deviceNumIds'] = device_num_ids unless device_num_ids.nil?
           command.query['fieldMask'] = field_mask unless field_mask.nil?
+          command.query['gatewayType'] = gateway_type unless gateway_type.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

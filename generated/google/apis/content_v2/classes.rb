@@ -2816,6 +2816,16 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
+        # The account ID by which this merchant is known to the POS provider.
+        # Corresponds to the JSON property `posExternalAccountId`
+        # @return [String]
+        attr_accessor :pos_external_account_id
+      
+        # The ID of POS provider. Required only for SetPosProvider.
+        # Corresponds to the JSON property `posProviderId`
+        # @return [Fixnum]
+        attr_accessor :pos_provider_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2831,6 +2841,8 @@ module Google
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @pos_external_account_id = args[:pos_external_account_id] if args.key?(:pos_external_account_id)
+          @pos_provider_id = args[:pos_provider_id] if args.key?(:pos_provider_id)
         end
       end
       
@@ -2890,6 +2902,11 @@ module Google
         # @return [Google::Apis::ContentV2::LiaSettings]
         attr_accessor :lia_settings
       
+        # The list of POS providers.
+        # Corresponds to the JSON property `posProviders`
+        # @return [Array<Google::Apis::ContentV2::PosProviders>]
+        attr_accessor :pos_providers
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2901,6 +2918,7 @@ module Google
           @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
           @kind = args[:kind] if args.key?(:kind)
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
+          @pos_providers = args[:pos_providers] if args.key?(:pos_providers)
         end
       end
       
@@ -6362,6 +6380,62 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class PosProviders
+        include Google::Apis::Core::Hashable
+      
+        # Country code.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # A list of POS providers.
+        # Corresponds to the JSON property `posProviders`
+        # @return [Array<Google::Apis::ContentV2::PosProvidersPosProvider>]
+        attr_accessor :pos_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @pos_providers = args[:pos_providers] if args.key?(:pos_providers)
+        end
+      end
+      
+      # 
+      class PosProvidersPosProvider
+        include Google::Apis::Core::Hashable
+      
+        # The display name of Pos Provider.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The full name of this POS Provider.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        # The ID of the account.
+        # Corresponds to the JSON property `providerId`
+        # @return [Fixnum]
+        attr_accessor :provider_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
         end
       end
       

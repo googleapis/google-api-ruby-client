@@ -61,8 +61,7 @@ module Google
         # @return [Array<Google::Apis::StorageV1::ObjectAccessControl>]
         attr_accessor :default_object_acl
       
-        # Encryption configuration used by default for newly inserted objects, when no
-        # encryption config is specified.
+        # Encryption configuration for a bucket.
         # Corresponds to the JSON property `encryption`
         # @return [Google::Apis::StorageV1::Bucket::Encryption]
         attr_accessor :encryption
@@ -270,14 +269,12 @@ module Google
           end
         end
         
-        # Encryption configuration used by default for newly inserted objects, when no
-        # encryption config is specified.
+        # Encryption configuration for a bucket.
         class Encryption
           include Google::Apis::Core::Hashable
         
           # A Cloud KMS key that will be used to encrypt objects inserted into this bucket,
-          # if no encryption method is specified. Limited availability; usable only by
-          # enabled projects.
+          # if no encryption method is specified.
           # Corresponds to the JSON property `defaultKmsKeyName`
           # @return [String]
           attr_accessor :default_kms_key_name

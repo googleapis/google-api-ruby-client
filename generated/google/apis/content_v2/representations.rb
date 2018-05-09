@@ -970,6 +970,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PosProviders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosProvidersPosProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PosSale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2070,6 +2082,8 @@ module Google
       
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :method_prop, as: 'method'
+          property :pos_external_account_id, as: 'posExternalAccountId'
+          property :pos_provider_id, :numeric_string => true, as: 'posProviderId'
         end
       end
       
@@ -2092,6 +2106,8 @@ module Google
       
           property :kind, as: 'kind'
           property :lia_settings, as: 'liaSettings', class: Google::Apis::ContentV2::LiaSettings, decorator: Google::Apis::ContentV2::LiaSettings::Representation
+      
+          collection :pos_providers, as: 'posProviders', class: Google::Apis::ContentV2::PosProviders, decorator: Google::Apis::ContentV2::PosProviders::Representation
       
         end
       end
@@ -3052,6 +3068,24 @@ module Google
           property :kind, as: 'kind'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2::PosStore, decorator: Google::Apis::ContentV2::PosStore::Representation
       
+        end
+      end
+      
+      class PosProviders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          collection :pos_providers, as: 'posProviders', class: Google::Apis::ContentV2::PosProvidersPosProvider, decorator: Google::Apis::ContentV2::PosProvidersPosProvider::Representation
+      
+        end
+      end
+      
+      class PosProvidersPosProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :full_name, as: 'fullName'
+          property :provider_id, :numeric_string => true, as: 'providerId'
         end
       end
       
