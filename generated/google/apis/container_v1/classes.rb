@@ -364,7 +364,6 @@ module Google
         # @return [Google::Apis::ContainerV1::MasterAuth]
         attr_accessor :master_auth
       
-        # Master authorized networks is a Beta feature.
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
         # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -543,7 +542,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :desired_locations
       
-        # Master authorized networks is a Beta feature.
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
         # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -1192,7 +1190,6 @@ module Google
         end
       end
       
-      # Master authorized networks is a Beta feature.
       # Configuration options for the master authorized networks feature. Enabled
       # master authorized networks will disallow all external traffic to access
       # Kubernetes master through HTTPS except traffic from the given CIDR blocks,

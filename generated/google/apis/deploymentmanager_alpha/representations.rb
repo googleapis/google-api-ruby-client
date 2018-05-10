@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,6 +676,17 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GlobalSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::DeploymentmanagerAlpha::Binding, decorator: Google::Apis::DeploymentmanagerAlpha::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::DeploymentmanagerAlpha::Policy, decorator: Google::Apis::DeploymentmanagerAlpha::Policy::Representation
+      
         end
       end
       

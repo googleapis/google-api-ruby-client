@@ -610,7 +610,7 @@ module Google
         end
       end
       
-      # Message representing a path in Cloud Storage.
+      # Message representing a single file or path in Cloud Storage.
       class GooglePrivacyDlpV2CloudStoragePath
         include Google::Apis::Core::Hashable
       
@@ -1499,7 +1499,7 @@ module Google
       class GooglePrivacyDlpV2Dictionary
         include Google::Apis::Core::Hashable
       
-        # Message representing a path in Cloud Storage.
+        # Message representing a single file or path in Cloud Storage.
         # Corresponds to the JSON property `cloudStoragePath`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath]
         attr_accessor :cloud_storage_path
