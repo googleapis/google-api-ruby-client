@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Bundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BundlesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Comment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -402,6 +414,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiry_time_seconds, as: 'expiryTimeSeconds'
           property :id, as: 'id'
+        end
+      end
+      
+      class Bundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sha1, as: 'sha1'
+          property :sha256, as: 'sha256'
+          property :version_code, as: 'versionCode'
+        end
+      end
+      
+      class BundlesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bundles, as: 'bundles', class: Google::Apis::AndroidpublisherV2::Bundle, decorator: Google::Apis::AndroidpublisherV2::Bundle::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       

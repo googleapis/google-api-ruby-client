@@ -1100,6 +1100,35 @@ module Google
         end
       end
       
+      # ListLocationsResponse returns the list of all GKE locations and their
+      # recommendation state.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A full list of GKE locations.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::ContainerV1beta1::Location>]
+        attr_accessor :locations
+      
+        # Only return ListLocationsResponse that occur after the page_token. This
+        # value should be populated from the ListLocationsResponse.next_page_token if
+        # that response token was set (which happens when listing more Locations than
+        # fit in a single ListLocationsResponse).
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # ListNodePoolsResponse is the result of ListNodePoolsRequest.
       class ListNodePoolsResponse
         include Google::Apis::Core::Hashable
@@ -1171,6 +1200,43 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # Location returns the location name, and if the location is recommended
+      # for GKE cluster scheduling.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # Contains the name of the resource requested.
+        # Specific in the format 'projects/*/locations/*'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Recommended is a bool combining the drain state of the location (ie- has
+        # the region been drained manually?), and the stockout status of any zone
+        # according to Zone Advisor. This will be internal only for use by pantheon.
+        # Corresponds to the JSON property `recommended`
+        # @return [Boolean]
+        attr_accessor :recommended
+        alias_method :recommended?, :recommended
+      
+        # Contains the type of location this Location is for.
+        # Regional or Zonal.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @recommended = args[:recommended] if args.key?(:recommended)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

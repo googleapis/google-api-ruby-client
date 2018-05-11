@@ -47,103 +47,6 @@ module Google
         end
       end
       
-      # Representation of an individual pre-defined panel object defining a targeted
-      # audience of opinion rewards mobile app users.
-      class MobileAppPanel
-        include Google::Apis::Core::Hashable
-      
-        # Country code for the country of the users that the panel contains. Uses
-        # standard ISO 3166-1 2-character language codes. For instance, 'US' for the
-        # United States, and 'GB' for the United Kingdom. Any survey created targeting
-        # this panel must also target the corresponding country.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # Whether or not the panel is accessible to all API users.
-        # Corresponds to the JSON property `isPublicPanel`
-        # @return [Boolean]
-        attr_accessor :is_public_panel
-        alias_method :is_public_panel?, :is_public_panel
-      
-        # Language code that the panel can target. For instance, 'en-US'. Uses standard
-        # BCP47 language codes. See specification. Any survey created targeting this
-        # panel must also target the corresponding language.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        # Unique panel ID string. This corresponds to the mobile_app_panel_id used in
-        # Survey Insert requests.
-        # Corresponds to the JSON property `mobileAppPanelId`
-        # @return [String]
-        attr_accessor :mobile_app_panel_id
-      
-        # Human readable name of the audience panel.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # List of email addresses for users who can target members of this panel. Must
-        # contain at least the address of the user making the API call for panels that
-        # are not public. This field will be empty for public panels.
-        # Corresponds to the JSON property `owners`
-        # @return [Array<String>]
-        attr_accessor :owners
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country = args[:country] if args.key?(:country)
-          @is_public_panel = args[:is_public_panel] if args.key?(:is_public_panel)
-          @language = args[:language] if args.key?(:language)
-          @mobile_app_panel_id = args[:mobile_app_panel_id] if args.key?(:mobile_app_panel_id)
-          @name = args[:name] if args.key?(:name)
-          @owners = args[:owners] if args.key?(:owners)
-        end
-      end
-      
-      # 
-      class MobileAppPanelsListResponse
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `pageInfo`
-        # @return [Google::Apis::SurveysV2::PageInfo]
-        attr_accessor :page_info
-      
-        # Unique request ID used for logging and debugging. Please include in any error
-        # reporting or troubleshooting requests.
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # An individual predefined panel of Opinion Rewards mobile users.
-        # Corresponds to the JSON property `resources`
-        # @return [Array<Google::Apis::SurveysV2::MobileAppPanel>]
-        attr_accessor :resources
-      
-        # 
-        # Corresponds to the JSON property `tokenPagination`
-        # @return [Google::Apis::SurveysV2::TokenPagination]
-        attr_accessor :token_pagination
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_info = args[:page_info] if args.key?(:page_info)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @resources = args[:resources] if args.key?(:resources)
-          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
-        end
-      end
-      
       # 
       class PageInfo
         include Google::Apis::Core::Hashable
@@ -342,13 +245,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
-        # Key for predefined panel that causes survey to be sent to a predefined set of
-        # Opinion Rewards App users. You must set PopulationSource to ANDROID_APP_PANEL
-        # to use this field.
-        # Corresponds to the JSON property `mobileAppPanelId`
-        # @return [String]
-        attr_accessor :mobile_app_panel_id
-      
         # Online population source where the respondents are sampled from.
         # Corresponds to the JSON property `populationSource`
         # @return [String]
@@ -365,7 +261,6 @@ module Google
           @country_subdivision = args[:country_subdivision] if args.key?(:country_subdivision)
           @gender = args[:gender] if args.key?(:gender)
           @languages = args[:languages] if args.key?(:languages)
-          @mobile_app_panel_id = args[:mobile_app_panel_id] if args.key?(:mobile_app_panel_id)
           @population_source = args[:population_source] if args.key?(:population_source)
         end
       end
@@ -385,21 +280,22 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Threshold to start a survey automatically if the quoted price is at most this
-        # value. When a survey has a Screener (threshold) question, it must go through
-        # an incidence pricing test to determine the final cost per response. Typically
-        # you will have to make a followup call to start the survey giving the final
-        # computed cost per response. If the survey has no threshold_answers, setting
-        # this property will return an error. By specifying this property, you indicate
-        # the max price per response you are willing to pay in advance of the incidence
-        # test. If the price turns out to be lower than the specified value, the survey
-        # will begin immediately and you will be charged at the rate determined by the
-        # incidence pricing test. If the price turns out to be greater than the
-        # specified value the survey will not be started and you will instead be
-        # notified what price was determined by the incidence test. At that point, you
-        # must raise the value of this property to be greater than or equal to that cost
-        # before attempting to start the survey again. This will immediately start the
-        # survey as long the incidence test was run within the last 21 days.
+        # *Deprecated* Threshold to start a survey automatically if the quoted price is
+        # at most this value. When a survey has a Screener (threshold) question, it must
+        # go through an incidence pricing test to determine the final cost per response.
+        # Typically you will have to make a followup call to start the survey giving the
+        # final computed cost per response. If the survey has no threshold_answers,
+        # setting this property will return an error. By specifying this property, you
+        # indicate the max price per response you are willing to pay in advance of the
+        # incidence test. If the price turns out to be lower than the specified value,
+        # the survey will begin immediately and you will be charged at the rate
+        # determined by the incidence pricing test. If the price turns out to be greater
+        # than the specified value the survey will not be started and you will instead
+        # be notified what price was determined by the incidence test. At that point,
+        # you must raise the value of this property to be greater than or equal to that
+        # cost before attempting to start the survey again. This will immediately start
+        # the survey as long the incidence test was run within the last 21 days. This
+        # will no longer be available after June 2018.
         # Corresponds to the JSON property `maxCostPerResponseNanos`
         # @return [Fixnum]
         attr_accessor :max_cost_per_response_nanos
@@ -709,8 +605,9 @@ module Google
       class SurveysStartRequest
         include Google::Apis::Core::Hashable
       
-        # Threshold to start a survey automically if the quoted prices is less than or
-        # equal to this value. See Survey.Cost for more details.
+        # *Deprecated* Threshold to start a survey automatically if the quoted prices is
+        # less than or equal to this value. See Survey.Cost for more details. This will
+        # no longer be available after June 2018.
         # Corresponds to the JSON property `maxCostPerResponseNanos`
         # @return [Fixnum]
         attr_accessor :max_cost_per_response_nanos

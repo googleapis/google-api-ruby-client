@@ -28,18 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MobileAppPanel
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MobileAppPanelsListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -145,31 +133,6 @@ module Google
         end
       end
       
-      class MobileAppPanel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :country, as: 'country'
-          property :is_public_panel, as: 'isPublicPanel'
-          property :language, as: 'language'
-          property :mobile_app_panel_id, as: 'mobileAppPanelId'
-          property :name, as: 'name'
-          collection :owners, as: 'owners'
-        end
-      end
-      
-      class MobileAppPanelsListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_info, as: 'pageInfo', class: Google::Apis::SurveysV2::PageInfo, decorator: Google::Apis::SurveysV2::PageInfo::Representation
-      
-          property :request_id, as: 'requestId'
-          collection :resources, as: 'resources', class: Google::Apis::SurveysV2::MobileAppPanel, decorator: Google::Apis::SurveysV2::MobileAppPanel::Representation
-      
-          property :token_pagination, as: 'tokenPagination', class: Google::Apis::SurveysV2::TokenPagination, decorator: Google::Apis::SurveysV2::TokenPagination::Representation
-      
-        end
-      end
-      
       class PageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -225,7 +188,6 @@ module Google
           property :country_subdivision, as: 'countrySubdivision'
           property :gender, as: 'gender'
           collection :languages, as: 'languages'
-          property :mobile_app_panel_id, as: 'mobileAppPanelId'
           property :population_source, as: 'populationSource'
         end
       end

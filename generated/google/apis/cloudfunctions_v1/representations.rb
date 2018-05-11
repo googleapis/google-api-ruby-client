@@ -170,6 +170,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :runtime, as: 'runtime'
           property :service_account_email, as: 'serviceAccountEmail'
           property :source_archive_url, as: 'sourceArchiveUrl'
           property :source_repository, as: 'sourceRepository', class: Google::Apis::CloudfunctionsV1::SourceRepository, decorator: Google::Apis::CloudfunctionsV1::SourceRepository::Representation

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudfunctionsV1
-      # Google Cloud Functions API
+      # Cloud Functions API
       #
       # Manages lightweight user-provided functions executed in response to events.
       #

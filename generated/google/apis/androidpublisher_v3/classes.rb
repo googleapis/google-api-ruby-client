@@ -209,6 +209,66 @@ module Google
       end
       
       # 
+      class Bundle
+        include Google::Apis::Core::Hashable
+      
+        # A sha1 hash of the upload payload, encoded as a hex string and matching the
+        # output of the sha1sum command.
+        # Corresponds to the JSON property `sha1`
+        # @return [String]
+        attr_accessor :sha1
+      
+        # A sha256 hash of the upload payload, encoded as a hex string and matching the
+        # output of the sha256sum command.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
+        # The version code of the Android App Bundle. As specified in the Android App
+        # Bundle's base module APK manifest file.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sha1 = args[:sha1] if args.key?(:sha1)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+          @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
+      # 
+      class BundlesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bundles`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Bundle>]
+        attr_accessor :bundles
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidpublisher#bundlesListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundles = args[:bundles] if args.key?(:bundles)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class Comment
         include Google::Apis::Core::Hashable
       
@@ -1618,13 +1678,15 @@ module Google
         attr_accessor :status
       
         # Fraction of users who are eligible to receive the release. 0 <= fraction < 1.
-        # To be set, release status must be IN_PROGRESS or HALTED.
+        # To be set, release status must be "inProgress" or "halted".
         # Corresponds to the JSON property `userFraction`
         # @return [Float]
         attr_accessor :user_fraction
       
-        # A list of version codes of APKs that will be exposed to the users of this
-        # track when this release is rolled out.
+        # A list of all version codes of APKs that will be exposed to the users of this
+        # track when this release is rolled out. Note that this list should contain all
+        # versions you wish to be active, including those you wish to retain from
+        # previous releases.
         # Corresponds to the JSON property `versionCodes`
         # @return [Array<Fixnum>]
         attr_accessor :version_codes

@@ -18,14 +18,14 @@ require 'google/apis/cloudfunctions_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Functions API
+    # Cloud Functions API
     #
     # Manages lightweight user-provided functions executed in response to events.
     #
     # @see https://cloud.google.com/functions
     module CloudfunctionsV1
       VERSION = 'V1'
-      REVISION = '20180416'
+      REVISION = '20180420'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -122,6 +122,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The runtime in which the function is going to run. If empty, defaults to
+        # Node.js 6.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
         # Output only. The email of the function's service account.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
@@ -182,6 +188,7 @@ module Google
           @https_trigger = args[:https_trigger] if args.key?(:https_trigger)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @runtime = args[:runtime] if args.key?(:runtime)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @source_archive_url = args[:source_archive_url] if args.key?(:source_archive_url)
           @source_repository = args[:source_repository] if args.key?(:source_repository)
