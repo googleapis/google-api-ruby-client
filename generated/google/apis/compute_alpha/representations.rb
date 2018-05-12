@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2434,6 +2440,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreconfiguredWafSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2704,6 +2716,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionUrlMapsValidateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2890,12 +2908,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RouterAdvertisedPrefix
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RouterAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3029,6 +3041,18 @@ module Google
       end
       
       class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesListPreconfiguredExpressionSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesWafConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3838,6 +3862,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewaysScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3898,6 +3988,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WafExpressionSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WafExpressionSetExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class XpnHostList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3947,6 +4049,12 @@ module Google
       end
       
       class ZoneSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5045,6 +5153,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :valid_disk_size, as: 'validDiskSize'
           property :zone, as: 'zone'
@@ -5434,6 +5543,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class GlobalSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeAlpha::Binding, decorator: Google::Apis::ComputeAlpha::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
+      
         end
       end
       
@@ -8415,6 +8535,7 @@ module Google
       class PerInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :instance, as: 'instance'
           property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
       
@@ -8433,6 +8554,14 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::Rule, decorator: Google::Apis::ComputeAlpha::Rule::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class PreconfiguredWafSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expression_sets, as: 'expressionSets', class: Google::Apis::ComputeAlpha::WafExpressionSet, decorator: Google::Apis::ComputeAlpha::WafExpressionSet::Representation
+      
         end
       end
       
@@ -8872,6 +9001,17 @@ module Google
         end
       end
       
+      class RegionSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeAlpha::Binding, decorator: Google::Apis::ComputeAlpha::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
+      
+        end
+      end
+      
       class RegionUrlMapsValidateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9042,7 +9182,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
-          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -9205,14 +9344,6 @@ module Google
         end
       end
       
-      class RouterAdvertisedPrefix
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :prefix, as: 'prefix'
-        end
-      end
-      
       class RouterAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9252,8 +9383,6 @@ module Google
           collection :advertised_groups, as: 'advertisedGroups'
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange::Representation
       
-          collection :advertised_prefixs, as: 'advertisedPrefixs', class: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix::Representation
-      
           property :asn, as: 'asn'
         end
       end
@@ -9264,8 +9393,6 @@ module Google
           property :advertise_mode, as: 'advertiseMode'
           collection :advertised_groups, as: 'advertisedGroups'
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange::Representation
-      
-          collection :advertised_prefixs, as: 'advertisedPrefixs', class: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix::Representation
       
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :interface_name, as: 'interfaceName'
@@ -9475,6 +9602,22 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SecurityPoliciesListPreconfiguredExpressionSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preconfigured_expression_sets, as: 'preconfiguredExpressionSets', class: Google::Apis::ComputeAlpha::SecurityPoliciesWafConfig, decorator: Google::Apis::ComputeAlpha::SecurityPoliciesWafConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPoliciesWafConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :waf_rules, as: 'wafRules', class: Google::Apis::ComputeAlpha::PreconfiguredWafSet, decorator: Google::Apis::ComputeAlpha::PreconfiguredWafSet::Representation
+      
         end
       end
       
@@ -10875,6 +11018,125 @@ module Google
         end
       end
       
+      class VpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :redundancy, as: 'redundancy'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface::Representation
+      
+        end
+      end
+      
+      class VpnGatewayAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::VpnGatewaysScopedList, decorator: Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::VpnGateway, decorator: Google::Apis::ComputeAlpha::VpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::VpnGatewayList::Warning, decorator: Google::Apis::ComputeAlpha::VpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::VpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::VpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class VpnGatewaysScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_gateways, as: 'vpnGateways', class: Google::Apis::ComputeAlpha::VpnGateway, decorator: Google::Apis::ComputeAlpha::VpnGateway::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10897,6 +11159,8 @@ module Google
           property :shared_secret_hash, as: 'sharedSecretHash'
           property :status, as: 'status'
           property :target_vpn_gateway, as: 'targetVpnGateway'
+          property :vpn_gateway, as: 'vpnGateway'
+          property :vpn_gateway_interface, as: 'vpnGatewayInterface'
         end
       end
       
@@ -10989,6 +11253,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class WafExpressionSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aliases, as: 'aliases'
+          collection :expressions, as: 'expressions', class: Google::Apis::ComputeAlpha::WafExpressionSetExpression, decorator: Google::Apis::ComputeAlpha::WafExpressionSetExpression::Representation
+      
+          property :id, as: 'id'
+        end
+      end
+      
+      class WafExpressionSetExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -11086,6 +11367,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class ZoneSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeAlpha::Binding, decorator: Google::Apis::ComputeAlpha::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
+      
         end
       end
     end

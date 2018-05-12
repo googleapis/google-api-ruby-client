@@ -2021,6 +2021,8 @@ module Google
       
           property :created, as: 'created', type: DateTime
       
+          property :data_retention_reset_on_new_activity, as: 'dataRetentionResetOnNewActivity'
+          property :data_retention_ttl, as: 'dataRetentionTtl'
           property :default_profile_id, :numeric_string => true, as: 'defaultProfileId'
           property :id, as: 'id'
           property :industry_vertical, as: 'industryVertical'

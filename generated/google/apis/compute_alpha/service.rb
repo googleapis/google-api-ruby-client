@@ -122,8 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified accelerator type. Gets a list of available accelerator
-        # types by making a list() request.
+        # Returns the specified accelerator type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1467,7 +1466,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1487,10 +1486,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_backend_bucket_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_backend_bucket_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/backendBuckets/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -2962,7 +2961,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2982,10 +2981,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_disk_iam_policy(project, zone, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_disk_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
+          command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -5811,7 +5810,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5831,10 +5830,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_host_iam_policy(project, zone, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_host_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/hosts/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
+          command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -6932,7 +6931,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6952,10 +6951,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_image_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_image_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/images/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -10166,7 +10165,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10186,10 +10185,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_iam_policy(project, zone, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
+          command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -11564,7 +11563,7 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11584,10 +11583,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_interconnect_attachment_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_interconnect_attachment_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -11892,7 +11891,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified interconnect. Gets a list of available interconnects by
+        # Returns the specified interconnect. Get a list of available interconnects by
         # making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -12145,7 +12144,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12165,10 +12164,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_interconnect_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_interconnect_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/interconnects/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -12338,7 +12337,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12358,10 +12357,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_license_code_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_license_code_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/licenseCodes/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -12582,7 +12581,7 @@ module Google
         
         # Retrieves the list of licenses available in the specified project. This method
         # does not get any licenses that belong to other projects, including licenses
-        # attached to publicly-available images, like Debian 8. If you want to get a
+        # attached to publicly-available images, like Debian 9. If you want to get a
         # list of publicly-available licenses, use this method to make a request to the
         # respective image project, such as debian-cloud or windows-cloud.
         # @param [String] project
@@ -12661,7 +12660,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12681,10 +12680,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_license_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_license_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/licenses/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -14434,7 +14433,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14454,10 +14453,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_node_group_iam_policy(project, zone, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_node_group_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
+          command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -14901,7 +14900,7 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14921,10 +14920,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_node_template_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_node_template_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/nodeTemplates/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -20455,7 +20454,7 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20475,10 +20474,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_resource_policy_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_resource_policy_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/resourcePolicies/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -21586,6 +21585,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the current list of preconfigured Web Application Firewall (WAF)
+        # expressions.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_security_policy_preconfigured_expression_sets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/securityPolicies/listPreconfiguredExpressionSets', options)
+          command.response_representation = Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches the specified policy with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
@@ -21964,7 +22035,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21984,10 +22055,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_snapshot_iam_policy(project, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_snapshot_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -23211,7 +23282,7 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
+        # @param [Google::Apis::ComputeAlpha::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23231,10 +23302,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_subnetwork_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_subnetwork_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -26762,6 +26833,391 @@ module Google
           command.response_class = Google::Apis::ComputeAlpha::UrlMapsValidateResponse
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of VPN gateways.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::VpnGatewayAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::VpnGatewayAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_vpn_gateway_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/vpnGateways', options)
+          command.response_representation = Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::VpnGatewayAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified VPN gateway.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] vpn_gateway
+        #   Name of the VPN gateway to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_vpn_gateway(project, region, vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['vpnGateway'] = vpn_gateway unless vpn_gateway.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified VPN gateway. Gets a list of available VPN gateways by
+        # making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] vpn_gateway
+        #   Name of the VPN gateway to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::VpnGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::VpnGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_vpn_gateway(project, region, vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::VpnGateway::Representation
+          command.response_class = Google::Apis::ComputeAlpha::VpnGateway
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['vpnGateway'] = vpn_gateway unless vpn_gateway.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a VPN gateway in the specified project and region using the data
+        # included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeAlpha::VpnGateway] vpn_gateway_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_vpn_gateway(project, region, vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways', options)
+          command.request_representation = Google::Apis::ComputeAlpha::VpnGateway::Representation
+          command.request_object = vpn_gateway_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of VPN gateways available to the specified project and region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::VpnGatewayList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::VpnGatewayList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/vpnGateways', options)
+          command.response_representation = Google::Apis::ComputeAlpha::VpnGatewayList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::VpnGatewayList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on a VpnGateway. To learn more about labels, read the Labeling
+        # Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_vpn_gateway_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeAlpha::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_vpn_gateway_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

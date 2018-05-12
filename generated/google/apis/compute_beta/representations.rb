@@ -2008,6 +2008,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4035,6 +4041,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :valid_disk_size, as: 'validDiskSize'
           property :zone, as: 'zone'
@@ -6704,6 +6711,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class RegionSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
+      
         end
       end
       

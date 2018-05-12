@@ -5558,6 +5558,23 @@ module Google
         # @return [DateTime]
         attr_accessor :created
       
+        # Set to true to reset the retention period of the user identifier with each new
+        # event from that user (thus setting the expiration date to current time plus
+        # retention period).
+        # Set to false to delete data associated with the user identifer automatically
+        # after the rentention period.
+        # This property cannot be set on insert.
+        # Corresponds to the JSON property `dataRetentionResetOnNewActivity`
+        # @return [Boolean]
+        attr_accessor :data_retention_reset_on_new_activity
+        alias_method :data_retention_reset_on_new_activity?, :data_retention_reset_on_new_activity
+      
+        # The length of time for which user and event data is retained.
+        # This property cannot be set on insert.
+        # Corresponds to the JSON property `dataRetentionTtl`
+        # @return [String]
+        attr_accessor :data_retention_ttl
+      
         # Default view (profile) ID.
         # Corresponds to the JSON property `defaultProfileId`
         # @return [Fixnum]
@@ -5639,6 +5656,8 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @child_link = args[:child_link] if args.key?(:child_link)
           @created = args[:created] if args.key?(:created)
+          @data_retention_reset_on_new_activity = args[:data_retention_reset_on_new_activity] if args.key?(:data_retention_reset_on_new_activity)
+          @data_retention_ttl = args[:data_retention_ttl] if args.key?(:data_retention_ttl)
           @default_profile_id = args[:default_profile_id] if args.key?(:default_profile_id)
           @id = args[:id] if args.key?(:id)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)

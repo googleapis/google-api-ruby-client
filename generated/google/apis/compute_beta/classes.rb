@@ -2936,7 +2936,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
         # authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@gmail.com` or `joe@example.com`.
+        # For example, `alice@gmail.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
@@ -4289,6 +4289,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the disk type resides. Only applicable
+        # for regional resources. You must specify this field as part of the HTTP
+        # request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -4320,6 +4327,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @valid_disk_size = args[:valid_disk_size] if args.key?(:valid_disk_size)
           @zone = args[:zone] if args.key?(:zone)
@@ -12861,7 +12869,8 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Reserved for future use.
+        # [Output Only] The value of `requestId` if you provided it in the request. Not
+        # present otherwise.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -14964,6 +14973,56 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # 
+      class RegionSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeBeta::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeBeta::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       

@@ -122,8 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified accelerator type. Gets a list of available accelerator
-        # types by making a list() request.
+        # Returns the specified accelerator type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9878,7 +9877,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified interconnect. Gets a list of available interconnects by
+        # Returns the specified interconnect. Get a list of available interconnects by
         # making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -10338,7 +10337,7 @@ module Google
         
         # Retrieves the list of licenses available in the specified project. This method
         # does not get any licenses that belong to other projects, including licenses
-        # attached to publicly-available images, like Debian 8. If you want to get a
+        # attached to publicly-available images, like Debian 9. If you want to get a
         # list of publicly-available licenses, use this method to make a request to the
         # respective image project, such as debian-cloud or windows-cloud.
         # @param [String] project
@@ -17185,7 +17184,7 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeBeta::Policy] policy_object
+        # @param [Google::Apis::ComputeBeta::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17205,10 +17204,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_subnetwork_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_subnetwork_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeBeta::Policy::Representation
-          command.request_object = policy_object
+          command.request_representation = Google::Apis::ComputeBeta::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?

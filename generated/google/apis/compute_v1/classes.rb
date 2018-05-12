@@ -3398,6 +3398,19 @@ module Google
         # @return [String]
         attr_accessor :options
       
+        # [Output Only] URL of the region where the disk resides. Only applicable for
+        # regional resources. You must specify this field as part of the HTTP request
+        # URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URLs of the zones where the disk should be replicated to. Only applicable for
+        # regional resources.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3516,6 +3529,8 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
+          @region = args[:region] if args.key?(:region)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -3840,6 +3855,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the disk type resides. Only applicable
+        # for regional resources. You must specify this field as part of the HTTP
+        # request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3871,6 +3893,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @valid_disk_size = args[:valid_disk_size] if args.key?(:valid_disk_size)
           @zone = args[:zone] if args.key?(:zone)
@@ -11537,7 +11560,8 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Reserved for future use.
+        # [Output Only] The value of `requestId` if you provided it in the request. Not
+        # present otherwise.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -12680,6 +12704,143 @@ module Google
         end
       end
       
+      # 
+      class RegionDiskTypeList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of DiskType resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::DiskType>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#regionDiskTypeList for region
+        # disk types.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RegionDiskTypeList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RegionDiskTypeList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RegionDisksResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The new size of the regional persistent disk, which is specified in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
       # Contains a list of InstanceGroup resources.
       class RegionInstanceGroupList
         include Google::Apis::Core::Hashable
@@ -13335,6 +13496,36 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class RegionSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fingerprint of the previous set of labels for this resource, used to
+        # detect conflicts. The fingerprint is initially generated by Compute Engine and
+        # changes after every request to modify or update labels. You must always
+        # provide an up-to-date fingerprint hash in order to update or change labels.
+        # Make a get() request to the resource to get the latest fingerprint.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # The labels to set for this resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -15446,6 +15637,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Whether to enable flow logging for this subnetwork.
+        # Corresponds to the JSON property `enableFlowLogs`
+        # @return [Boolean]
+        attr_accessor :enable_flow_logs
+        alias_method :enable_flow_logs?, :enable_flow_logs
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
@@ -15534,6 +15731,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_flow_logs = args[:enable_flow_logs] if args.key?(:enable_flow_logs)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)

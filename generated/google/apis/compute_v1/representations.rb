@@ -1702,6 +1702,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionDiskTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1818,6 +1842,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3564,6 +3594,8 @@ module Google
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
+          property :region, as: 'region'
+          collection :replica_zones, as: 'replicaZones'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
@@ -3664,6 +3696,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :valid_disk_size, as: 'validDiskSize'
           property :zone, as: 'zone'
@@ -5875,6 +5908,45 @@ module Google
         end
       end
       
+      class RegionDiskTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RegionDiskTypeList::Warning, decorator: Google::Apis::ComputeV1::RegionDiskTypeList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RegionDiskTypeList::Warning::Datum, decorator: Google::Apis::ComputeV1::RegionDiskTypeList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RegionDisksResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
       class RegionInstanceGroupList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6061,6 +6133,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RegionSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
         end
       end
       
@@ -6588,6 +6668,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_flow_logs, as: 'enableFlowLogs'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'

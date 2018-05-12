@@ -3248,7 +3248,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
         # authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@gmail.com` or `joe@example.com`.
+        # For example, `alice@gmail.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
@@ -4626,6 +4626,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] URL of the region where the disk type resides. Only applicable
+        # for regional resources. You must specify this field as part of the HTTP
+        # request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -4657,6 +4664,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @valid_disk_size = args[:valid_disk_size] if args.key?(:valid_disk_size)
           @zone = args[:zone] if args.key?(:zone)
@@ -6268,6 +6276,56 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # 
+      class GlobalSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeAlpha::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -15882,7 +15940,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] An optional textual description of the resource.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -17251,7 +17310,8 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Reserved for future use.
+        # [Output Only] The value of `requestId` if you provided it in the request. Not
+        # present otherwise.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -17948,8 +18008,18 @@ module Google
       class PerInstanceConfig
         include Google::Apis::Core::Hashable
       
+        # Fingerprint of this per-instance config. This field may be used in optimistic
+        # locking. It will be ignored when inserting a per-instance config. An up-to-
+        # date fingerprint must be provided in order to update an existing per-instance
+        # config or the field needs to be unset.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # The URL of the instance. Serves as a merge key during UpdatePerInstanceConfigs
-        # operation.
+        # operation, i.e. if per-instance config with the same instance URL exists then
+        # it will be updated, otherwise a new one will be created.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -17965,6 +18035,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @instance = args[:instance] if args.key?(:instance)
           @override = args[:override] if args.key?(:override)
         end
@@ -18049,6 +18120,25 @@ module Google
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
           @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PreconfiguredWafSet
+        include Google::Apis::Core::Hashable
+      
+        # List of entities that are currently supported for WAF rules.
+        # Corresponds to the JSON property `expressionSets`
+        # @return [Array<Google::Apis::ComputeAlpha::WafExpressionSet>]
+        attr_accessor :expression_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expression_sets = args[:expression_sets] if args.key?(:expression_sets)
         end
       end
       
@@ -19575,6 +19665,56 @@ module Google
       end
       
       # 
+      class RegionSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeAlpha::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
       class RegionUrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
@@ -20159,11 +20299,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
-        # Corresponds to the JSON property `storageLocations`
-        # @return [Array<String>]
-        attr_accessor :storage_locations
-      
         def initialize(**args)
            update!(**args)
         end
@@ -20172,7 +20307,6 @@ module Google
         def update!(**args)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
-          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -20808,31 +20942,6 @@ module Google
         end
       end
       
-      # Description-tagged prefixes for the router to advertise.
-      class RouterAdvertisedPrefix
-        include Google::Apis::Core::Hashable
-      
-        # User-specified description for the prefix.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The prefix to advertise. The value must be a CIDR-formatted string.
-        # Corresponds to the JSON property `prefix`
-        # @return [String]
-        attr_accessor :prefix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @prefix = args[:prefix] if args.key?(:prefix)
-        end
-      end
-      
       # Contains a list of routers.
       class RouterAggregatedList
         include Google::Apis::Core::Hashable
@@ -20975,14 +21084,6 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedIpRange>]
         attr_accessor :advertised_ip_ranges
       
-        # User-specified list of individual prefixes to advertise in custom mode. This
-        # field can only be populated if advertise_mode is CUSTOM and is advertised to
-        # all peers of the router. These prefixes will be advertised in addition to any
-        # specified groups. Leave this field blank to advertise no custom prefixes.
-        # Corresponds to the JSON property `advertisedPrefixs`
-        # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedPrefix>]
-        attr_accessor :advertised_prefixs
-      
         # Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN,
         # either 16-bit or 32-bit. The value will be fixed for this router resource. All
         # VPN tunnels that link to this router will have the same local ASN.
@@ -20999,7 +21100,6 @@ module Google
           @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
-          @advertised_prefixs = args[:advertised_prefixs] if args.key?(:advertised_prefixs)
           @asn = args[:asn] if args.key?(:asn)
         end
       end
@@ -21030,15 +21130,6 @@ module Google
         # Corresponds to the JSON property `advertisedIpRanges`
         # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedIpRange>]
         attr_accessor :advertised_ip_ranges
-      
-        # User-specified list of individual prefixes to advertise in custom mode. This
-        # field can only be populated if advertise_mode is CUSTOM and overrides the list
-        # defined for the router (in Bgp message). These prefixes will be advertised in
-        # addition to any specified groups. Leave this field blank to advertise no
-        # custom prefixes.
-        # Corresponds to the JSON property `advertisedPrefixs`
-        # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedPrefix>]
-        attr_accessor :advertised_prefixs
       
         # The priority of routes advertised to this BGP peer. In the case where there is
         # more than one matching route of maximum length, the routes with lowest
@@ -21093,7 +21184,6 @@ module Google
           @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
-          @advertised_prefixs = args[:advertised_prefixs] if args.key?(:advertised_prefixs)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -21892,6 +21982,44 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # 
+      class SecurityPoliciesListPreconfiguredExpressionSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `preconfiguredExpressionSets`
+        # @return [Google::Apis::ComputeAlpha::SecurityPoliciesWafConfig]
+        attr_accessor :preconfigured_expression_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preconfigured_expression_sets = args[:preconfigured_expression_sets] if args.key?(:preconfigured_expression_sets)
+        end
+      end
+      
+      # 
+      class SecurityPoliciesWafConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `wafRules`
+        # @return [Google::Apis::ComputeAlpha::PreconfiguredWafSet]
+        attr_accessor :waf_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @waf_rules = args[:waf_rules] if args.key?(:waf_rules)
         end
       end
       
@@ -27315,6 +27443,464 @@ module Google
         end
       end
       
+      # Represents a VPN gateway resource.
+      class VpnGateway
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this VpnGateway, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an VpnGateway.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this VpnGateway resource. These can be later modified by
+        # the setLabels method. Each label key/value must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # URL of the network to which this VPN gateway is attached. Provided by the
+        # client when the VPN gateway is created.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The redundancy mode configured for this VPN gateway. Possible values are
+        # ACTIVE_ACTIVE and NONE. If set to ACTIVE_ACTIVE, two VPN interfaces are
+        # created thereby providing higher availability. If set to NONE, only one
+        # interface is created with a lower availability SLA.
+        # If this field is specified, either 2 or 1 external IP addresses (depending on
+        # the value of specified redundancy) are automatically allocated for use with
+        # this VPN gateway, and incoming traffic on the external addresses to ports ESP,
+        # UDP:500 and UDP:4500 are automatically forwarded to this gateway.
+        # Corresponds to the JSON property `redundancy`
+        # @return [String]
+        attr_accessor :redundancy
+      
+        # [Output Only] URL of the region where the VPN gateway resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] A list of interfaces on this VPN gateway.
+        # Corresponds to the JSON property `vpnInterfaces`
+        # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface>]
+        attr_accessor :vpn_interfaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @redundancy = args[:redundancy] if args.key?(:redundancy)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @vpn_interfaces = args[:vpn_interfaces] if args.key?(:vpn_interfaces)
+        end
+      end
+      
+      # 
+      class VpnGatewayAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of VpnGateway resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::VpnGatewaysScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Contains a list of VpnGateway resources.
+      class VpnGatewayList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of VpnGateway resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::VpnGateway>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::VpnGatewayList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # A VPN gateway interface.
+      class VpnGatewayVpnGatewayInterface
+        include Google::Apis::Core::Hashable
+      
+        # The numeric ID of this VPN gateway interface.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The external IP address for this VPN gateway interface.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+        end
+      end
+      
+      # 
+      class VpnGatewaysScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of VPN gateways contained in this scope.
+        # Corresponds to the JSON property `vpnGateways`
+        # @return [Array<Google::Apis::ComputeAlpha::VpnGateway>]
+        attr_accessor :vpn_gateways
+      
+        # [Output Only] Informational warning which replaces the list of addresses when
+        # the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vpn_gateways = args[:vpn_gateways] if args.key?(:vpn_gateways)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of addresses when
+        # the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.
       # vpnTunnels ==)
       class VpnTunnel
@@ -27439,6 +28025,21 @@ module Google
         # @return [String]
         attr_accessor :target_vpn_gateway
       
+        # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
+        # the client when the VPN tunnel is created. This must be used (instead of
+        # target_vpn_gateway) if a VPN gateway resource is created with redundancy.
+        # VPN gateway resource provides a way to create a highly available VPN setup.
+        # Corresponds to the JSON property `vpnGateway`
+        # @return [String]
+        attr_accessor :vpn_gateway
+      
+        # The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        # If the VPN gateway has redundancy other than NONE, this field is required to
+        # identify which interface of the VPN gateway to use.
+        # Corresponds to the JSON property `vpnGatewayInterface`
+        # @return [Fixnum]
+        attr_accessor :vpn_gateway_interface
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27464,6 +28065,8 @@ module Google
           @shared_secret_hash = args[:shared_secret_hash] if args.key?(:shared_secret_hash)
           @status = args[:status] if args.key?(:status)
           @target_vpn_gateway = args[:target_vpn_gateway] if args.key?(:target_vpn_gateway)
+          @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
+          @vpn_gateway_interface = args[:vpn_gateway_interface] if args.key?(:vpn_gateway_interface)
         end
       end
       
@@ -27789,6 +28392,63 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class WafExpressionSet
+        include Google::Apis::Core::Hashable
+      
+        # A list of alternate IDs. The format should be: - E.g. XSS-stable Generic
+        # suffix like "stable" is particularly useful if a policy likes to avail newer
+        # set of expressions without having to change the policy. A given alias name can'
+        # t be used for more than one entity set.
+        # Corresponds to the JSON property `aliases`
+        # @return [Array<String>]
+        attr_accessor :aliases
+      
+        # List of available expressions.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<Google::Apis::ComputeAlpha::WafExpressionSetExpression>]
+        attr_accessor :expressions
+      
+        # Google specified expression set ID. The format should be: - E.g. XSS-20170329
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aliases = args[:aliases] if args.key?(:aliases)
+          @expressions = args[:expressions] if args.key?(:expressions)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # 
+      class WafExpressionSetExpression
+        include Google::Apis::Core::Hashable
+      
+        # Expression ID should uniquely identify the origin of the expression. E.g.
+        # owasp-crs-v020901-id973337 identifies Owasp core rule set version 2.9.1 rule
+        # id 973337. The ID could be used to determine the individual attack definition
+        # that has been detected. It could also be used to exclude it from the policy in
+        # case of false positive.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -28154,6 +28814,56 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # 
+      class ZoneSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeAlpha::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
     end
