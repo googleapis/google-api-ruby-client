@@ -1,3 +1,11 @@
+# 0.21.1
+* Backwards compatible changes:
+  * Updated `analytics_v3`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `sourcerepo_v1`
+
 # 0.21.0
 * Breaking changes:
   * Deleted `prediction_v1_2`
