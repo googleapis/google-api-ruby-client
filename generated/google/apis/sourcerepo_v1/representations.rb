@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Repo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,18 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateProjectConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateRepoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,12 +173,33 @@ module Google
         end
       end
       
+      class ProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_private_key_check, as: 'enablePrivateKeyCheck'
+          property :name, as: 'name'
+          hash :pubsub_configs, as: 'pubsubConfigs', class: Google::Apis::SourcerepoV1::PubsubConfig, decorator: Google::Apis::SourcerepoV1::PubsubConfig::Representation
+      
+        end
+      end
+      
+      class PubsubConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_format, as: 'messageFormat'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class Repo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mirror_config, as: 'mirrorConfig', class: Google::Apis::SourcerepoV1::MirrorConfig, decorator: Google::Apis::SourcerepoV1::MirrorConfig::Representation
       
           property :name, as: 'name'
+          hash :pubsub_configs, as: 'pubsubConfigs', class: Google::Apis::SourcerepoV1::PubsubConfig, decorator: Google::Apis::SourcerepoV1::PubsubConfig::Representation
+      
           property :size, :numeric_string => true, as: 'size'
           property :url, as: 'url'
         end
@@ -180,6 +225,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UpdateProjectConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_config, as: 'projectConfig', class: Google::Apis::SourcerepoV1::ProjectConfig, decorator: Google::Apis::SourcerepoV1::ProjectConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateRepoRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repo, as: 'repo', class: Google::Apis::SourcerepoV1::Repo, decorator: Google::Apis::SourcerepoV1::Repo::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end

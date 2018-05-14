@@ -73,7 +73,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The configuration for logging of each type of permission.
-        # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::SourcerepoV1::AuditLogConfig>]
         attr_accessor :audit_log_configs
@@ -150,7 +149,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` or `joe@example.com`.
+        # account. For example, `alice@gmail.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -264,11 +263,11 @@ module Google
       
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
       # `members` to a `role`, where the members can be user accounts, Google groups,
       # Google domains, and service accounts. A `role` is a named list of permissions
       # defined by IAM.
-      # **Example**
+      # **JSON Example**
       # `
       # "bindings": [
       # `
@@ -277,7 +276,7 @@ module Google
       # "user:mike@example.com",
       # "group:admins@example.com",
       # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
       # ]
       # `,
       # `
@@ -286,6 +285,17 @@ module Google
       # `
       # ]
       # `
+      # **YAML Example**
+      # bindings:
+      # - members:
+      # - user:mike@example.com
+      # - group:admins@example.com
+      # - domain:google.com
+      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+      # role: roles/owner
+      # - members:
+      # - user:sean@example.com
+      # role: roles/viewer
       # For a description of IAM and its features, see the
       # [IAM developer's guide](https://cloud.google.com/iam/docs).
       class Policy
@@ -334,6 +344,76 @@ module Google
         end
       end
       
+      # Cloud Source Repositories configuration of a project.
+      class ProjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Reject a Git push that contains a private key.
+        # Corresponds to the JSON property `enablePrivateKeyCheck`
+        # @return [Boolean]
+        attr_accessor :enable_private_key_check
+        alias_method :enable_private_key_check?, :enable_private_key_check
+      
+        # The name of the project. Values are of the form `projects/<project>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # How this project publishes a change in the repositories through Cloud
+        # Pub/Sub. Keyed by the topic names.
+        # Corresponds to the JSON property `pubsubConfigs`
+        # @return [Hash<String,Google::Apis::SourcerepoV1::PubsubConfig>]
+        attr_accessor :pubsub_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_key_check = args[:enable_private_key_check] if args.key?(:enable_private_key_check)
+          @name = args[:name] if args.key?(:name)
+          @pubsub_configs = args[:pubsub_configs] if args.key?(:pubsub_configs)
+        end
+      end
+      
+      # Configuration to publish a Cloud Pub/Sub message.
+      class PubsubConfig
+        include Google::Apis::Core::Hashable
+      
+        # The format of the Cloud Pub/Sub messages.
+        # Corresponds to the JSON property `messageFormat`
+        # @return [String]
+        attr_accessor :message_format
+      
+        # Email address of the service account used for publishing Cloud Pub/Sub
+        # messages. This service account needs to be in the same project as the
+        # PubsubConfig. When added, the caller needs to have
+        # iam.serviceAccounts.actAs permission on this service account. If
+        # unspecified, it defaults to the compute engine default service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # A topic of Cloud Pub/Sub. Values are of the form
+        # `projects/<project>/topics/<topic>`. The project needs to be the same
+        # project as this config is in.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_format = args[:message_format] if args.key?(:message_format)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # A repository (or repo) is a Git repository storing versioned source content.
       class Repo
         include Google::Apis::Core::Hashable
@@ -350,6 +430,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # How this repository publishes a change in the repository through Cloud
+        # Pub/Sub. Keyed by the topic names.
+        # Corresponds to the JSON property `pubsubConfigs`
+        # @return [Hash<String,Google::Apis::SourcerepoV1::PubsubConfig>]
+        attr_accessor :pubsub_configs
       
         # The disk usage of the repo, in bytes. Read-only field. Size is only
         # returned by GetRepo.
@@ -371,6 +457,7 @@ module Google
         def update!(**args)
           @mirror_config = args[:mirror_config] if args.key?(:mirror_config)
           @name = args[:name] if args.key?(:name)
+          @pubsub_configs = args[:pubsub_configs] if args.key?(:pubsub_configs)
           @size = args[:size] if args.key?(:size)
           @url = args[:url] if args.key?(:url)
         end
@@ -382,11 +469,11 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to
         # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
         # `members` to a `role`, where the members can be user accounts, Google groups,
         # Google domains, and service accounts. A `role` is a named list of permissions
         # defined by IAM.
-        # **Example**
+        # **JSON Example**
         # `
         # "bindings": [
         # `
@@ -395,7 +482,7 @@ module Google
         # "user:mike@example.com",
         # "group:admins@example.com",
         # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
         # ]
         # `,
         # `
@@ -404,6 +491,17 @@ module Google
         # `
         # ]
         # `
+        # **YAML Example**
+        # bindings:
+        # - members:
+        # - user:mike@example.com
+        # - group:admins@example.com
+        # - domain:google.com
+        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner
+        # - members:
+        # - user:sean@example.com
+        # role: roles/viewer
         # For a description of IAM and its features, see the
         # [IAM developer's guide](https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -469,6 +567,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request for UpdateProjectConfig.
+      class UpdateProjectConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Source Repositories configuration of a project.
+        # Corresponds to the JSON property `projectConfig`
+        # @return [Google::Apis::SourcerepoV1::ProjectConfig]
+        attr_accessor :project_config
+      
+        # A FieldMask specifying which fields of the project_config to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, this
+        # request is no-op.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_config = args[:project_config] if args.key?(:project_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request for UpdateRepo.
+      class UpdateRepoRequest
+        include Google::Apis::Core::Hashable
+      
+        # A repository (or repo) is a Git repository storing versioned source content.
+        # Corresponds to the JSON property `repo`
+        # @return [Google::Apis::SourcerepoV1::Repo]
+        attr_accessor :repo
+      
+        # A FieldMask specifying which fields of the repo to modify. Only the fields
+        # in the mask will be modified. If no mask is provided, this request is
+        # no-op.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repo = args[:repo] if args.key?(:repo)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
     end

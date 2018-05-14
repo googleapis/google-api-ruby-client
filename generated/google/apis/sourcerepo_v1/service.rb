@@ -47,6 +47,71 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns the Cloud Source Repositories configuration of the project.
+        # @param [String] name
+        #   The name of the requested project. Values are of the form
+        #   `projects/<project>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SourcerepoV1::ProjectConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SourcerepoV1::ProjectConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}/config', options)
+          command.response_representation = Google::Apis::SourcerepoV1::ProjectConfig::Representation
+          command.response_class = Google::Apis::SourcerepoV1::ProjectConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Cloud Source Repositories configuration of the project.
+        # @param [String] name
+        #   The name of the requested project. Values are of the form
+        #   `projects/<project>`.
+        # @param [Google::Apis::SourcerepoV1::UpdateProjectConfigRequest] update_project_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SourcerepoV1::ProjectConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SourcerepoV1::ProjectConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_config(name, update_project_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}/config', options)
+          command.request_representation = Google::Apis::SourcerepoV1::UpdateProjectConfigRequest::Representation
+          command.request_object = update_project_config_request_object
+          command.response_representation = Google::Apis::SourcerepoV1::ProjectConfig::Representation
+          command.response_class = Google::Apis::SourcerepoV1::ProjectConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a repo in the given project with the given name.
         # If the named repository already exists, `CreateRepo` returns
         # `ALREADY_EXISTS`.
@@ -214,6 +279,40 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates information about a repo.
+        # @param [String] name
+        #   The name of the requested repository. Values are of the form
+        #   `projects/<project>/repos/<repo>`.
+        # @param [Google::Apis::SourcerepoV1::UpdateRepoRequest] update_repo_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SourcerepoV1::Repo] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SourcerepoV1::Repo]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_repo(name, update_repo_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SourcerepoV1::UpdateRepoRequest::Representation
+          command.request_object = update_repo_request_object
+          command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation
+          command.response_class = Google::Apis::SourcerepoV1::Repo
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
