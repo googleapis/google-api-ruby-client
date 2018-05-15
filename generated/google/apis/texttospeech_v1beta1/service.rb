@@ -30,7 +30,7 @@ module Google
       #    Texttospeech = Google::Apis::TexttospeechV1beta1 # Alias the module
       #    service = Texttospeech::TexttospeechService.new
       #
-      # @see http://cloud.google.com/text-to-speech/
+      # @see https://cloud.google.com/text-to-speech/
       class TexttospeechService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

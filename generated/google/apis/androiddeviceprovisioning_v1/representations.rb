@@ -284,6 +284,7 @@ module Google
           property :company_name, as: 'companyName'
           property :name, as: 'name'
           collection :owner_emails, as: 'ownerEmails'
+          property :terms_status, as: 'termsStatus'
         end
       end
       

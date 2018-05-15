@@ -22,10 +22,10 @@ module Google
     #
     # Synthesizes natural-sounding speech by applying powerful neural network models.
     #
-    # @see http://cloud.google.com/text-to-speech/
+    # @see https://cloud.google.com/text-to-speech/
     module TexttospeechV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20180425'
+      REVISION = '20180512'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

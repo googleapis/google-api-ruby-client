@@ -393,6 +393,7 @@ module Google
         #   * skills
         #   * taglines
         #   * urls
+        #   * userDefined
         # @param [String] request_mask_include_field
         #   **Required.** Comma-separated list of person fields to be included in the
         #   response. Each path should start with `person.`: for example,
@@ -462,6 +463,7 @@ module Google
         #   * skills
         #   * taglines
         #   * urls
+        #   * userDefined
         # @param [String] request_mask_include_field
         #   **Required.** Comma-separated list of person fields to be included in the
         #   response. Each path should start with `person.`: for example,
@@ -541,6 +543,7 @@ module Google
         #   * relations
         #   * residences
         #   * urls
+        #   * userDefined
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -613,6 +616,7 @@ module Google
         #   * skills
         #   * taglines
         #   * urls
+        #   * userDefined
         # @param [String] request_mask_include_field
         #   **Required.** Comma-separated list of person fields to be included in the
         #   response. Each path should start with `person.`: for example,

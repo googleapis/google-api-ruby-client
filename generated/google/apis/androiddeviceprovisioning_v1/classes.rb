@@ -137,6 +137,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :owner_emails
       
+        # Output only. Whether any user from the company has accepted the latest
+        # Terms of Service (ToS). See
+        # TermsStatus.
+        # Corresponds to the JSON property `termsStatus`
+        # @return [String]
+        attr_accessor :terms_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -148,6 +155,7 @@ module Google
           @company_name = args[:company_name] if args.key?(:company_name)
           @name = args[:name] if args.key?(:name)
           @owner_emails = args[:owner_emails] if args.key?(:owner_emails)
+          @terms_status = args[:terms_status] if args.key?(:terms_status)
         end
       end
       
