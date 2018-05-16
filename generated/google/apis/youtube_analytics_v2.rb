@@ -22,10 +22,10 @@ module Google
     #
     # Retrieves your YouTube Analytics data.
     #
-    # @see http://developers.google.com/youtube/analytics
+    # @see https://developers.google.com/youtube/analytics
     module YoutubeAnalyticsV2
       VERSION = 'V2'
-      REVISION = '20180424'
+      REVISION = '20180514'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

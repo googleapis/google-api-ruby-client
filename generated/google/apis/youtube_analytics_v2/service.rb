@@ -30,7 +30,7 @@ module Google
       #    YoutubeAnalytics = Google::Apis::YoutubeAnalyticsV2 # Alias the module
       #    service = YoutubeAnalytics::YouTubeAnalyticsService.new
       #
-      # @see http://developers.google.com/youtube/analytics
+      # @see https://developers.google.com/youtube/analytics
       class YouTubeAnalyticsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

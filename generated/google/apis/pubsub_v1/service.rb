@@ -47,18 +47,21 @@ module Google
           @batch_path = 'batch'
         end
         
-        # [ALPHA] This method is a part of a closed Alpha API.
-        # Creates a snapshot from the requested subscription.
+        # Creates a snapshot from the requested subscription.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # If the snapshot already exists, returns `ALREADY_EXISTS`.
         # If the requested subscription doesn't exist, returns `NOT_FOUND`.
         # If the backlog in the subscription is too old -- and the resulting snapshot
         # would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
-        # See also the `Snapshot.expire_time` field.
-        # If the name is not provided in the request, the server will assign a random
+        # See also the `Snapshot.expire_time` field. If the name is not provided in
+        # the request, the server will assign a random
         # name for this snapshot on the same project as the subscription, conforming
-        # to the
-        # [resource name
-        # format](https://cloud.google.com/pubsub/docs/overview#names). The generated
+        # to the [resource name format](https://cloud.google.com/pubsub/docs/overview#
+        # names).
+        # The generated
         # name is populated in the returned Snapshot object. Note that for REST API
         # requests, you must specify a name in the request.
         # @param [String] name
@@ -97,11 +100,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes an existing snapshot. All messages retained in the snapshot
+        # Removes an existing snapshot. <br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
+        # When the snapshot is deleted, all messages retained in the snapshot
         # are immediately dropped. After a snapshot is deleted, a new one may be
         # created with the same name, but the new one has no association with the old
         # snapshot or its subscription, unless the same subscription is specified.
-        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] snapshot
         #   The name of the snapshot to delete.
         #   Format is `projects/`project`/snapshots/`snap``.
@@ -132,8 +139,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the configuration details of a snapshot.
-        # [ALPHA] This method is a part of a closed Alpha API.
+        # Gets the configuration details of a snapshot.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # @param [String] snapshot
         #   The name of the snapshot to get.
         #   Format is `projects/`project`/snapshots/`snap``.
@@ -197,8 +207,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the existing snapshots.
-        # [ALPHA] This method is a part of a closed Alpha API.
+        # Lists the existing snapshots.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # @param [String] project
         #   The name of the cloud project that snapshots belong to.
         #   Format is `projects/`project``.
@@ -237,9 +250,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing snapshot. Note that certain properties of a
-        # snapshot are not modifiable.
-        # [ALPHA] This method is a part of a closed Alpha API.
+        # Updates an existing snapshot.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
+        # Note that certain properties of a snapshot are not modifiable.
         # @param [String] name
         #   The name of the snapshot.
         # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
@@ -722,8 +738,11 @@ module Google
         end
         
         # Seeks an existing subscription to a point in time or to a given snapshot,
-        # whichever is provided in the request.
-        # [ALPHA] This method is a part of a closed Alpha API.
+        # whichever is provided in the request.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # @param [String] subscription
         #   The subscription to affect.
         # @param [Google::Apis::PubsubV1::SeekRequest] seek_request_object
@@ -1116,8 +1135,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the names of the snapshots on this topic.
-        # [ALPHA] This method is a part of a closed Alpha API.
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # @param [String] topic
         #   The name of the topic that snapshots are attached to.
         #   Format is `projects/`project`/topics/`topic``.

@@ -49,7 +49,7 @@ module Google
         
         # Create a new environment.
         # @param [String] parent
-        #   The parent must be of the form `projects/`projectId`/locations/`locationId``.
+        #   The parent must be of the form "projects/`projectId`/locations/`locationId`".
         # @param [Google::Apis::ComposerV1beta1::Environment] environment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -83,7 +83,7 @@ module Google
         # Delete an environment.
         # @param [String] name
         #   The environment to delete, in the form:
-        #   `projects/`projectId`/locations/`locationId`/environments/`environmentId``
+        #   "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,7 +114,7 @@ module Google
         # Get an existing environment.
         # @param [String] name
         #   The resource name of the environment to get, in the form:
-        #   `projects/`projectId`/locations/`locationId`/environments/`environmentId``
+        #   "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,7 +145,7 @@ module Google
         # List environments.
         # @param [String] parent
         #   List environments in the given project and location, in the form:
-        #   `projects/`projectId`/locations/`locationId``
+        #   "projects/`projectId`/locations/`locationId`"
         # @param [Fixnum] page_size
         #   The maximum number of environments to return.
         # @param [String] page_token
@@ -182,7 +182,7 @@ module Google
         # Update an environment.
         # @param [String] name
         #   The relative resource name of the environment to update, in the form:
-        #   `projects/`projectId`/locations/`locationId`/environments/`environmentId``
+        #   "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
         # @param [Google::Apis::ComposerV1beta1::Environment] environment_object
         # @param [String] update_mask
         #   Required. A comma-separated list of paths, relative to `Environment`, of

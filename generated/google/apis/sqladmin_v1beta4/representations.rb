@@ -190,7 +190,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesListServerCasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInstancesBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRotateServerCaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +281,12 @@ module Google
       end
       
       class RestoreBackupContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateServerCaContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -660,10 +678,28 @@ module Google
         end
       end
       
+      class InstancesListServerCasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_version, as: 'activeVersion'
+          collection :certs, as: 'certs', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class RestoreInstancesBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1beta4::RestoreBackupContext, decorator: Google::Apis::SqladminV1beta4::RestoreBackupContext::Representation
+      
+        end
+      end
+      
+      class InstancesRotateServerCaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotate_server_ca_context, as: 'rotateServerCaContext', class: Google::Apis::SqladminV1beta4::RotateServerCaContext, decorator: Google::Apis::SqladminV1beta4::RotateServerCaContext::Representation
       
         end
       end
@@ -811,6 +847,14 @@ module Google
           property :backup_run_id, :numeric_string => true, as: 'backupRunId'
           property :instance_id, as: 'instanceId'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class RotateServerCaContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_version, as: 'nextVersion'
         end
       end
       

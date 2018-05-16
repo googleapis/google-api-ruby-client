@@ -1191,6 +1191,37 @@ module Google
         end
       end
       
+      # Instances ListServerCas response.
+      class InstancesListServerCasResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `activeVersion`
+        # @return [String]
+        attr_accessor :active_version
+      
+        # List of server CA certificates for the instance.
+        # Corresponds to the JSON property `certs`
+        # @return [Array<Google::Apis::SqladminV1beta4::SslCert>]
+        attr_accessor :certs
+      
+        # This is always sql#instancesListServerCas.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_version = args[:active_version] if args.key?(:active_version)
+          @certs = args[:certs] if args.key?(:certs)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Database instance restore backup request.
       class RestoreInstancesBackupRequest
         include Google::Apis::Core::Hashable
@@ -1207,6 +1238,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
+        end
+      end
+      
+      # Rotate Server CA request.
+      class InstancesRotateServerCaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance rotate server CA context.
+        # Corresponds to the JSON property `rotateServerCaContext`
+        # @return [Google::Apis::SqladminV1beta4::RotateServerCaContext]
+        attr_accessor :rotate_server_ca_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotate_server_ca_context = args[:rotate_server_ca_context] if args.key?(:rotate_server_ca_context)
         end
       end
       
@@ -1750,6 +1800,32 @@ module Google
           @backup_run_id = args[:backup_run_id] if args.key?(:backup_run_id)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Instance rotate server CA context.
+      class RotateServerCaContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#rotateServerCaContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fingerprint of the next version to be rotated to. If left unspecified,
+        # will be rotated to the most recently added server CA version.
+        # Corresponds to the JSON property `nextVersion`
+        # @return [String]
+        attr_accessor :next_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_version = args[:next_version] if args.key?(:next_version)
         end
       end
       

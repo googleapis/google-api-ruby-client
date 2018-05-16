@@ -82,7 +82,11 @@ module Google
         end
       end
       
-      # Request for the `CreateSnapshot` method.
+      # Request for the `CreateSnapshot` method.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in
+      # backward-incompatible ways and is not recommended for production use.
+      # It is not subject to any SLA or deprecation policy.
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
@@ -128,7 +132,11 @@ module Google
         end
       end
       
-      # Response for the `ListSnapshots` method.
+      # Response for the `ListSnapshots` method.<br><br>
+      # Lists the names of the snapshots on this topic.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in backward-incompatible ways and is not recommended for production
+      # use. It is not subject to any SLA or deprecation policy.
       class ListSnapshotsResponse
         include Google::Apis::Core::Hashable
       
@@ -181,8 +189,11 @@ module Google
         end
       end
       
-      # Response for the `ListTopicSnapshots` method.
-      # [ALPHA] This method is a part of a closed Alpha API.
+      # Response for the `ListTopicSnapshots` method.<br><br>
+      # Lists the names of the snapshots on this topic.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in backward-incompatible ways and is not recommended for production
+      # use. It is not subject to any SLA or deprecation policy.
       class ListTopicSnapshotsResponse
         include Google::Apis::Core::Hashable
       
@@ -594,7 +605,11 @@ module Google
         end
       end
       
-      # Request for the `Seek` method.
+      # Request for the `Seek` method.<br><br>
+      # Lists the names of the snapshots on this topic.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in backward-incompatible ways and is not recommended for production
+      # use. It is not subject to any SLA or deprecation policy.
       class SeekRequest
         include Google::Apis::Core::Hashable
       
@@ -699,7 +714,11 @@ module Google
         end
       end
       
-      # A snapshot resource.
+      # A snapshot resource.<br><br>
+      # Lists the names of the snapshots on this topic.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in backward-incompatible ways and is not recommended for production
+      # use. It is not subject to any SLA or deprecation policy.
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -769,8 +788,11 @@ module Google
         # If `retain_acked_messages` is true, then this also configures the retention
         # of acknowledged messages, and thus configures how far back in time a `Seek`
         # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
-        # minutes.
-        # [ALPHA] This field is a part of a closed Alpha API.
+        # minutes.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `messageRetentionDuration`
         # @return [String]
         attr_accessor :message_retention_duration
@@ -793,8 +815,11 @@ module Google
         # Indicates whether to retain acknowledged messages. If true, then
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
-        # window.
-        # [ALPHA] This field is a part of a closed Alpha API.
+        # window.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `retainAckedMessages`
         # @return [Boolean]
         attr_accessor :retain_acked_messages
@@ -889,11 +914,19 @@ module Google
         end
       end
       
-      # Request for the UpdateSnapshot method.
+      # Request for the UpdateSnapshot method.<br><br>
+      # Lists the names of the snapshots on this topic.<br><br>
+      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # changed in backward-incompatible ways and is not recommended for production
+      # use. It is not subject to any SLA or deprecation policy.
       class UpdateSnapshotRequest
         include Google::Apis::Core::Hashable
       
-        # A snapshot resource.
+        # A snapshot resource.<br><br>
+        # Lists the names of the snapshots on this topic.<br><br>
+        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # changed in backward-incompatible ways and is not recommended for production
+        # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `snapshot`
         # @return [Google::Apis::PubsubV1::Snapshot]
         attr_accessor :snapshot

@@ -68,7 +68,7 @@ module Google
         attr_accessor :labels
       
         # The resource name of the environment, in the form:
-        # `projects/`projectId`/locations/`locationId`/environments/`environmentId``
+        # "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -133,19 +133,19 @@ module Google
         # @return [String]
         attr_accessor :gke_cluster
       
-        # The configuration information for the Container Engine nodes running
+        # The configuration information for the Kubernetes Engine nodes running
         # the Apache Airflow software.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ComposerV1beta1::NodeConfig]
         attr_accessor :node_config
       
-        # The number of nodes in the Container Engine cluster that will be
+        # The number of nodes in the Kubernetes Engine cluster that will be
         # used to run this environment.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Specifies the selection and config of software inside the environment.
+        # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1beta1::SoftwareConfig]
         attr_accessor :software_config
@@ -215,12 +215,12 @@ module Google
         end
       end
       
-      # The configuration information for the Container Engine nodes running
+      # The configuration information for the Kubernetes Engine nodes running
       # the Apache Airflow software.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The disk size in GB used for node VMs. Minimum is 10GB.
+        # Optional. The disk size in GB used for node VMs. Minimum size is 10GB.
         # If unspecified, defaults to 100GB. Cannot be updated.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
@@ -228,55 +228,54 @@ module Google
       
         # Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
         # to deploy the VMs used to run the Apache Airflow software, specified as a
-        # relative resource name](https://cloud.google.com/apis/design/resource_names#
-        # relative_resource_name).
-        # For example: `projects/`projectId`/zones/`zoneId``.
+        # [relative resource name](/apis/design/resource_names#relative_resource_name).
+        # For example: "projects/`projectId`/zones/`zoneId`".
         # This `location` must belong to the enclosing environment's project and
         # location. If both this field and `nodeConfig.machineType` are specified,
         # `nodeConfig.machineType` must belong to this `location`; if both are
         # unspecified, the service will pick a zone in the Compute Engine region
-        # corresponding to the Cloud Composer location and propagate that choice to
-        # both fields. If exactly one of this field and `nodeConfig.machineType` is
+        # corresponding to the Cloud Composer location, and propagate that choice to
+        # both fields. If only one field (`location` or `nodeConfig.machineType`) is
         # specified, the location information from the specified field will be
         # propagated to the unspecified field.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. The Google Compute Engine [machine type](
-        # /compute/docs/machine-types) used for cluster instances, specified as a
-        # [relative resource name](
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name).
+        # Optional. The Compute Engine
+        # [machine type](/compute/docs/machine-types) used for cluster instances,
+        # specified as a
+        # [relative resource name](/apis/design/resource_names#relative_resource_name).
         # For example:
-        # `projects/`projectId`/zones/`zoneId`/machineTypes/`machineTypeId``.
+        # "projects/`projectId`/zones/`zoneId`/machineTypes/`machineTypeId`".
         # The `machineType` must belong to the enclosing environment's project and
         # location. If both this field and `nodeConfig.location` are specified,
         # this `machineType` must belong to the `nodeConfig.location`; if both are
         # unspecified, the service will pick a zone in the Compute Engine region
-        # corresponding to the Cloud Composer location and propagate that choice to
+        # corresponding to the Cloud Composer location, and propagate that choice to
         # both fields. If exactly one of this field and `nodeConfig.location` is
         # specified, the location information from the specified field will be
         # propagated to the unspecified field.
-        # Furthermore, if this field is unspecified, the `machineTypeId` defaults
-        # to `n1-standard-1`.
+        # If this field is unspecified, the `machineTypeId` defaults
+        # to "n1-standard-1".
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
         # Optional. The Compute Engine network to be used for machine
-        # communications, specified as a [relative resource name](
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name).
-        # For example: `projects/`projectId`/global/networks/`networkId``.
+        # communications, specified as a
+        # [relative resource name](/apis/design/resource_names#relative_resource_name).
+        # For example: "projects/`projectId`/global/networks/`networkId`".
         # [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
         # network must belong to the environment's project. If unspecified, the
-        # "default" network ID in the environment's project is used.  If a "Custom
-        # Subnet Network" (see [Using Subnetworks](/compute/docs/subnetworks) for
-        # more information) is provided, `nodeConfig.subnetwork` must also be provided.
+        # "default" network ID in the environment's project is used.  If a
+        # [Custom Subnet Network]((/vpc/docs/vpc#vpc_networks_and_subnets)
+        # is provided, `nodeConfig.subnetwork` must also be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Optional. The set of Google API scopes to be made available on all of the
+        # Optional. The set of Google API scopes to be made available on all
         # node VMs. If `oauth_scopes` is empty, defaults to
         # ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
         # Corresponds to the JSON property `oauthScopes`
@@ -291,10 +290,10 @@ module Google
         attr_accessor :service_account
       
         # Optional. The Compute Engine subnetwork to be used for machine
-        # communications, specified as a [relative resource name](
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name).
+        # communications, specified as a
+        # [relative resource name](/apis/design/resource_names#relative_resource_name).
         # For example:
-        # `projects/`projectId`/regions/`regionId`/subnetworks/`subnetworkId``
+        # "projects/`projectId`/regions/`regionId`/subnetworks/`subnetworkId`"
         # If a subnetwork is provided, `nodeConfig.network` must also be provided,
         # and the subnetwork must belong to the enclosing environment's project and
         # location.
@@ -481,26 +480,24 @@ module Google
         end
       end
       
-      # Specifies the selection and config of software inside the environment.
+      # Specifies the selection and configuration of software inside the environment.
       class SoftwareConfig
         include Google::Apis::Core::Hashable
       
         # Optional. Apache Airflow configuration properties to override.
-        # Property keys contain the section and property name, separated by a hyphen,
-        # for example `core-dags_are_paused_at_creation`. Sections must not
+        # Property keys contain the section and property names, separated by a hyphen,
+        # for example "core-dags_are_paused_at_creation". Section names must not
         # contain hyphens ("-"), opening square brackets ("["),  or closing square
-        # brackets ("]"). The name must be non-empty and must not contain an equals
-        # sign ("=") or semicolon (";"). The section as well as the name must not
-        # contain a period ("."). Apache Airflow configuration property names must be
-        # written in
-        # [snake_case](https://www.google.com/url?sa=D&q=https%3A%2F%2Fen.wikipedia.org%
-        # 2Fwiki%2FSnake_case).
-        # Property values can contain any character and be written in any lower/upper
-        # case format.
+        # brackets ("]"). The property name must not be empty and must not contain
+        # an equals sign ("=") or semicolon (";"). Section and property names must
+        # not contain a period ("."). Apache Airflow configuration property names
+        # must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).
+        # Property values can contain any character, and can be written in any
+        # lower/upper case format.
         # Certain Apache Airflow configuration property values are
         # [blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#
-        # airflow_configuration_blacklists) and
-        # cannot be overridden.
+        # airflow_configuration_blacklists),
+        # and cannot be overridden.
         # Corresponds to the JSON property `airflowConfigOverrides`
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides
@@ -508,10 +505,10 @@ module Google
         # Optional. Additional environment variables to provide to the Apache Airflow
         # scheduler, worker, and webserver processes.
         # Environment variable names must match the regular expression
-        # `a-zA-Z_*`. Furthermore, they cannot specify Apache Airflow
-        # software configuration overrides (i.e., match the regular expression
-        # `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`); nor can they take any of the following
-        # reserved values:
+        # `a-zA-Z_*`. They cannot specify Apache Airflow
+        # software configuration overrides (they cannot match the regular expression
+        # `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the
+        # following reserved names:
         # * `AIRFLOW_HOME`
         # * `C_FORCE_ROOT`
         # * `CONTAINER_NAME`
@@ -534,10 +531,10 @@ module Google
         # This encapsulates both the version of Cloud Composer functionality and the
         # version of Apache Airflow. It must match the regular expression
         # `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
-        # The Cloud Composer portion of the version is a [semantic
-        # version](https://semver.org). The portion of the image version following
-        # <em>airflow-</em> is an official Apache Airflow repository [release
-        # name](https://github.com/apache/incubator-airflow/releases).
+        # The Cloud Composer portion of the version is a
+        # [semantic version](https://semver.org). The portion of the image version
+        # following <em>airflow-</em> is an official Apache Airflow repository
+        # [release name](https://github.com/apache/incubator-airflow/releases).
         # See also [Release Notes](/composer/docs/release-notes).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
@@ -545,9 +542,9 @@ module Google
       
         # Optional. Custom Python Package Index (PyPI) packages to be installed in
         # the environment.
-        # Keys refer to the lowercase package name such as `numpy`
+        # Keys refer to the lowercase package name such as "numpy"
         # and values are the lowercase extras and version specifier such as
-        # `==1.12.0`, `[devel,gcp_api]`, or `[devel]>=1.8.2, <1.9.2`. To specify a
+        # "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a
         # package without pinning it to a version specifier, use the empty string as
         # the value.
         # Corresponds to the JSON property `pypiPackages`
