@@ -315,6 +315,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The content of the input in string format.
+        # Cloud audit logging exempt since it is based on user data.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

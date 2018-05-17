@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AnalyticsreportingV4
-      # Google Analytics Reporting API
+      # Analytics Reporting API
       #
       # Accesses Analytics report data.
       #

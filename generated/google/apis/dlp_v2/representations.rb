@@ -963,6 +963,7 @@ module Google
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
           property :rows_limit, :numeric_string => true, as: 'rowsLimit'
+          property :sample_method, as: 'sampleMethod'
           property :table_reference, as: 'tableReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
         end
@@ -1075,6 +1076,8 @@ module Google
           property :file_set, as: 'fileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet::Representation
       
           collection :file_types, as: 'fileTypes'
+          property :files_limit_percent, as: 'filesLimitPercent'
+          property :sample_method, as: 'sampleMethod'
         end
       end
       

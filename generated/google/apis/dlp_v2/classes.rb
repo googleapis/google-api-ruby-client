@@ -208,6 +208,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :rows_limit
       
+        # 
+        # Corresponds to the JSON property `sampleMethod`
+        # @return [String]
+        attr_accessor :sample_method
+      
         # Message defining the location of a BigQuery table. A table is uniquely
         # identified  by its project_id, dataset_id, and table_name. Within a query
         # a table is often referenced with a string in the format of:
@@ -225,6 +230,7 @@ module Google
         def update!(**args)
           @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
           @rows_limit = args[:rows_limit] if args.key?(:rows_limit)
+          @sample_method = args[:sample_method] if args.key?(:sample_method)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
         end
       end
@@ -598,6 +604,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :file_types
       
+        # Limits the number of files to scan to this percentage of the input FileSet.
+        # Number of files scanned is rounded down. Must be between 0 and 100,
+        # inclusively. Both 0 and 100 means no limit. Defaults to 0.
+        # Corresponds to the JSON property `filesLimitPercent`
+        # @return [Fixnum]
+        attr_accessor :files_limit_percent
+      
+        # 
+        # Corresponds to the JSON property `sampleMethod`
+        # @return [String]
+        attr_accessor :sample_method
+      
         def initialize(**args)
            update!(**args)
         end
@@ -607,6 +625,8 @@ module Google
           @bytes_limit_per_file = args[:bytes_limit_per_file] if args.key?(:bytes_limit_per_file)
           @file_set = args[:file_set] if args.key?(:file_set)
           @file_types = args[:file_types] if args.key?(:file_types)
+          @files_limit_percent = args[:files_limit_percent] if args.key?(:files_limit_percent)
+          @sample_method = args[:sample_method] if args.key?(:sample_method)
         end
       end
       

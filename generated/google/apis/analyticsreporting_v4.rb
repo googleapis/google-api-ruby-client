@@ -18,14 +18,14 @@ require 'google/apis/analyticsreporting_v4/representations.rb'
 
 module Google
   module Apis
-    # Google Analytics Reporting API
+    # Analytics Reporting API
     #
     # Accesses Analytics report data.
     #
     # @see https://developers.google.com/analytics/devguides/reporting/core/v4/
     module AnalyticsreportingV4
       VERSION = 'V4'
-      REVISION = '20171108'
+      REVISION = '20180515'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'

@@ -2045,6 +2045,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Refund a user's subscription or in-app purchase order.
+        # @param [String] package_name
+        #   The package name of the application for which this subscription or in-app item
+        #   was purchased (for example, 'com.some.thing').
+        # @param [String] order_id
+        #   The order ID provided to the user when the subscription or in-app order was
+        #   purchased.
+        # @param [Boolean] revoke
+        #   Whether to revoke the purchased item. If set to true, access to the
+        #   subscription or in-app item will be terminated immediately. If the item is a
+        #   recurring subscription, all future payments will also be terminated. Consumed
+        #   in-app items need to be handled by developer's app. (optional)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def refund_order(package_name, order_id, revoke: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{packageName}/orders/{orderId}:refund', options)
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['revoke'] = revoke unless revoke.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks the purchase and consumption status of an inapp item.
         # @param [String] package_name
         #   The package name of the application the inapp product was sold in (for example,
