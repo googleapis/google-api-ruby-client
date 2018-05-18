@@ -1463,6 +1463,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')
+        # If unspecified, the default disk type is 'pd-standard'
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
         # The image type to use for this node. Note that for a given image type,
         # the latest version of it will be used.
         # Corresponds to the JSON property `imageType`
@@ -1592,6 +1598,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
           @labels = args[:labels] if args.key?(:labels)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)

@@ -5327,6 +5327,74 @@ module Google
         end
       end
       
+      # JSON template for a user deletion request resource.
+      class UserDeletionRequest
+        include Google::Apis::Core::Hashable
+      
+        # This marks the point in time for which all user data before should be deleted
+        # Corresponds to the JSON property `deletionRequestTime`
+        # @return [DateTime]
+        attr_accessor :deletion_request_time
+      
+        # Firebase Project Id
+        # Corresponds to the JSON property `firebaseProjectId`
+        # @return [String]
+        attr_accessor :firebase_project_id
+      
+        # User ID.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::AnalyticsV3::UserDeletionRequest::Id]
+        attr_accessor :id
+      
+        # Value is "analytics#userDeletionRequest".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Web property ID of the form UA-XXXXX-YY.
+        # Corresponds to the JSON property `webPropertyId`
+        # @return [String]
+        attr_accessor :web_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deletion_request_time = args[:deletion_request_time] if args.key?(:deletion_request_time)
+          @firebase_project_id = args[:firebase_project_id] if args.key?(:firebase_project_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+        end
+        
+        # User ID.
+        class Id
+          include Google::Apis::Core::Hashable
+        
+          # Type of user
+          # Corresponds to the JSON property `type`
+          # @return [String]
+          attr_accessor :type
+        
+          # The User's id
+          # Corresponds to the JSON property `userId`
+          # @return [String]
+          attr_accessor :user_id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @type = args[:type] if args.key?(:type)
+            @user_id = args[:user_id] if args.key?(:user_id)
+          end
+        end
+      end
+      
       # JSON template for a user reference.
       class UserRef
         include Google::Apis::Core::Hashable

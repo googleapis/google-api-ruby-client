@@ -31,7 +31,7 @@ module Google
       #    Clouddebugger = Google::Apis::ClouddebuggerV2 # Alias the module
       #    service = Clouddebugger::CloudDebuggerService.new
       #
-      # @see http://cloud.google.com/debugger
+      # @see https://cloud.google.com/debugger
       class CloudDebuggerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

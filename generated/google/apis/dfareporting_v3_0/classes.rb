@@ -501,7 +501,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :subaccount_id
       
-        # Trafficker type of this user profile.
+        # Trafficker type of this user profile. This is a read-only field.
         # Corresponds to the JSON property `traffickerType`
         # @return [String]
         attr_accessor :trafficker_type
@@ -2885,10 +2885,10 @@ module Google
         # @return [String]
         attr_accessor :commercial_id
       
-        # List of companion creatives assigned to an in-Stream videocreative. Acceptable
-        # values include IDs of existing flash and image creatives. Applicable to the
-        # following creative types: all VPAID and all INSTREAM_VIDEO with
-        # dynamicAssetSelection set to false.
+        # List of companion creatives assigned to an in-Stream video creative.
+        # Acceptable values include IDs of existing flash and image creatives.
+        # Applicable to the following creative types: all VPAID and all INSTREAM_VIDEO
+        # with dynamicAssetSelection set to false.
         # Corresponds to the JSON property `companionCreatives`
         # @return [Array<Fixnum>]
         attr_accessor :companion_creatives

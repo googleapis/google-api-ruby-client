@@ -7642,7 +7642,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of sizes, possibly filtered.
+        # Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally
+        # unique and may include values not currently in use by your account. Due to
+        # this, the list of sizes returned by this method may differ from the list seen
+        # in the Trafficking UI.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
         # @param [Fixnum] height

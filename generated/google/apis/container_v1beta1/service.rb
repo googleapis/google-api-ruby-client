@@ -296,7 +296,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the details of a specific cluster.
+        # Gets the details for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to retrieve.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -386,7 +386,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the addons of a specific cluster.
+        # Sets the addons for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set addons.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -454,7 +454,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the locations of a specific cluster.
+        # Sets the locations for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set locations.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -488,7 +488,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the logging service of a specific cluster.
+        # Sets the logging service for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set logging.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -558,7 +558,7 @@ module Google
         end
         
         # Used to set master auth materials. Currently supports :-
-        # Changing the admin password of a specific cluster.
+        # Changing the admin password for a specific cluster.
         # This can be either via password generation or explicitly set.
         # Modify basic_auth.csv and reset the K8S API server.
         # @param [String] name
@@ -594,7 +594,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the monitoring service of a specific cluster.
+        # Sets the monitoring service for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set monitoring.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -730,7 +730,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the settings of a specific cluster.
+        # Updates the settings for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to update.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -764,7 +764,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the master of a specific cluster.
+        # Updates the master for a specific cluster.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to update.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -1087,7 +1087,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the size of a specific node pool.
+        # Sets the size for a specific node pool.
         # @param [String] name
         #   The name (project, location, cluster, node pool id) of the node pool to set
         #   size.
@@ -1320,7 +1320,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the addons of a specific cluster.
+        # Sets the addons for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1512,7 +1512,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the details of a specific cluster.
+        # Gets the details for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1647,7 +1647,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the locations of a specific cluster.
+        # Sets the locations for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1692,7 +1692,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the logging service of a specific cluster.
+        # Sets the logging service for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1737,7 +1737,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the master of a specific cluster.
+        # Updates the master for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1782,7 +1782,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the monitoring service of a specific cluster.
+        # Sets the monitoring service for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1915,7 +1915,7 @@ module Google
         end
         
         # Used to set master auth materials. Currently supports :-
-        # Changing the admin password of a specific cluster.
+        # Changing the admin password for a specific cluster.
         # This can be either via password generation or explicitly set.
         # Modify basic_auth.csv and reset the K8S API server.
         # @param [String] project_id
@@ -2052,7 +2052,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the settings of a specific cluster.
+        # Updates the settings for a specific cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -2438,7 +2438,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the size of a specific node pool.
+        # Sets the size for a specific node pool.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).

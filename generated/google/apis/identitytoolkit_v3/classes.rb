@@ -419,6 +419,18 @@ module Google
         # @return [String]
         attr_accessor :session_id
       
+        # For multi-tenant use cases, in order to construct sign-in URL with the correct
+        # IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs
+        # from.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Tenant project number to be used for idp discovery.
+        # Corresponds to the JSON property `tenantProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :tenant_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -439,6 +451,8 @@ module Google
           @ota_app = args[:ota_app] if args.key?(:ota_app)
           @provider_id = args[:provider_id] if args.key?(:provider_id)
           @session_id = args[:session_id] if args.key?(:session_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @tenant_project_number = args[:tenant_project_number] if args.key?(:tenant_project_number)
         end
       end
       
@@ -1137,6 +1151,18 @@ module Google
         # @return [String]
         attr_accessor :photo_url
       
+        # For multi-tenant use cases, in order to construct sign-in URL with the correct
+        # IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs
+        # from.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Tenant project number to be used for idp discovery.
+        # Corresponds to the JSON property `tenantProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :tenant_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1155,6 +1181,8 @@ module Google
           @password = args[:password] if args.key?(:password)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @tenant_project_number = args[:tenant_project_number] if args.key?(:tenant_project_number)
         end
       end
       
@@ -1330,6 +1358,18 @@ module Google
         # @return [String]
         attr_accessor :session_id
       
+        # For multi-tenant use cases, in order to construct sign-in URL with the correct
+        # IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs
+        # from.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Tenant project number to be used for idp discovery.
+        # Corresponds to the JSON property `tenantProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :tenant_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1347,6 +1387,8 @@ module Google
           @return_refresh_token = args[:return_refresh_token] if args.key?(:return_refresh_token)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
           @session_id = args[:session_id] if args.key?(:session_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @tenant_project_number = args[:tenant_project_number] if args.key?(:tenant_project_number)
         end
       end
       
@@ -1440,6 +1482,18 @@ module Google
         attr_accessor :return_secure_token
         alias_method :return_secure_token?, :return_secure_token
       
+        # For multi-tenant use cases, in order to construct sign-in URL with the correct
+        # IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs
+        # from.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Tenant project number to be used for idp discovery.
+        # Corresponds to the JSON property `tenantProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :tenant_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1455,6 +1509,8 @@ module Google
           @password = args[:password] if args.key?(:password)
           @pending_id_token = args[:pending_id_token] if args.key?(:pending_id_token)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @tenant_project_number = args[:tenant_project_number] if args.key?(:tenant_project_number)
         end
       end
       

@@ -133,7 +133,8 @@ module Google
         # @return [String]
         attr_accessor :log_message_format
       
-        # The stack at breakpoint time.
+        # The stack at breakpoint time, where stack_frames[0] represents the most
+        # recently entered function.
         # Corresponds to the JSON property `stackFrames`
         # @return [Array<Google::Apis::ClouddebuggerV2::StackFrame>]
         attr_accessor :stack_frames

@@ -737,8 +737,6 @@ module Google
       
       # Input only.
       # Create job request.
-      # The job typically becomes searchable within 10 seconds, but it may take
-      # up to 5 minutes for the job to become searchable.
       class CreateJobRequest
         include Google::Apis::Core::Hashable
       
@@ -973,7 +971,7 @@ module Google
       # Input only.
       # Delete job by filter request.
       # The job typically becomes unsearchable within 10 seconds, but it may take
-      # up to 5 minutes for the job to become unsearchable.
+      # up to 5 minutes.
       class DeleteJobsByFilterRequest
         include Google::Apis::Core::Hashable
       
@@ -3307,8 +3305,6 @@ module Google
       
       # Input only.
       # Update job request.
-      # The job typically becomes searchable within 10 seconds, but it may take
-      # up to 5 minutes for the job to become searchable.
       class UpdateJobRequest
         include Google::Apis::Core::Hashable
       

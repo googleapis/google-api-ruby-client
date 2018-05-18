@@ -715,6 +715,7 @@ module Google
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1beta1::AcceleratorConfig, decorator: Google::Apis::ContainerV1beta1::AcceleratorConfig::Representation
       
           property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
           hash :labels, as: 'labels'
           property :local_ssd_count, as: 'localSsdCount'

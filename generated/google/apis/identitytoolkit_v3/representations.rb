@@ -375,6 +375,8 @@ module Google
           property :ota_app, as: 'otaApp'
           property :provider_id, as: 'providerId'
           property :session_id, as: 'sessionId'
+          property :tenant_id, as: 'tenantId'
+          property :tenant_project_number, :numeric_string => true, as: 'tenantProjectNumber'
         end
       end
       
@@ -555,6 +557,8 @@ module Google
           property :password, as: 'password'
           property :phone_number, as: 'phoneNumber'
           property :photo_url, as: 'photoUrl'
+          property :tenant_id, as: 'tenantId'
+          property :tenant_project_number, :numeric_string => true, as: 'tenantProjectNumber'
         end
       end
       
@@ -593,6 +597,8 @@ module Google
           property :return_refresh_token, as: 'returnRefreshToken'
           property :return_secure_token, as: 'returnSecureToken'
           property :session_id, as: 'sessionId'
+          property :tenant_id, as: 'tenantId'
+          property :tenant_project_number, :numeric_string => true, as: 'tenantProjectNumber'
         end
       end
       
@@ -618,6 +624,8 @@ module Google
           property :password, as: 'password'
           property :pending_id_token, as: 'pendingIdToken'
           property :return_secure_token, as: 'returnSecureToken'
+          property :tenant_id, as: 'tenantId'
+          property :tenant_project_number, :numeric_string => true, as: 'tenantProjectNumber'
         end
       end
       

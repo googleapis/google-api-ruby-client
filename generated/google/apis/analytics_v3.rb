@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/analytics/
     module AnalyticsV3
       VERSION = 'V3'
-      REVISION = '20180509'
+      REVISION = '20180514'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
@@ -44,6 +44,9 @@ module Google
 
       # View your Google Analytics data
       AUTH_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/analytics.readonly'
+
+      # Manage Google Analytics user deletion requests
+      AUTH_ANALYTICS_USER_DELETION = 'https://www.googleapis.com/auth/analytics.user.deletion'
     end
   end
 end

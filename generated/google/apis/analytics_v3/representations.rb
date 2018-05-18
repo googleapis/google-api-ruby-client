@@ -604,6 +604,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserDeletionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Id
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1959,6 +1971,27 @@ module Google
           property :previous_link, as: 'previousLink'
           property :start_index, as: 'startIndex'
           property :total_results, as: 'totalResults'
+        end
+      end
+      
+      class UserDeletionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_request_time, as: 'deletionRequestTime', type: DateTime
+      
+          property :firebase_project_id, as: 'firebaseProjectId'
+          property :id, as: 'id', class: Google::Apis::AnalyticsV3::UserDeletionRequest::Id, decorator: Google::Apis::AnalyticsV3::UserDeletionRequest::Id::Representation
+      
+          property :kind, as: 'kind'
+          property :web_property_id, as: 'webPropertyId'
+        end
+        
+        class Id
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :type, as: 'type'
+            property :user_id, as: 'userId'
+          end
         end
       end
       

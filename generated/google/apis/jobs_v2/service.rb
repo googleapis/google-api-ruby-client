@@ -338,6 +338,8 @@ module Google
         end
         
         # Creates a new job.
+        # Typically, the job becomes searchable within 10 seconds, but it may take
+        # up to 5 minutes.
         # @param [Google::Apis::JobsV2::CreateJobRequest] create_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -367,9 +369,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified job. You can specify whether to synchronously wait
-        # for validation, indexing, and general processing to be completed before
-        # the response is returned.
+        # Deletes the specified job.
+        # Typically, the job becomes unsearchable within 10 seconds, but it may take
+        # up to 5 minutes.
         # @param [String] name
         #   Required.
         #   The resource name of the job to be deleted, such as "jobs/11111111".
@@ -441,7 +443,7 @@ module Google
         end
         
         # Retrieves the specified job, whose status is OPEN or recently EXPIRED
-        # in 60 days.
+        # within the last 90 days.
         # @param [String] name
         #   Required.
         #   The resource name of the job to retrieve, such as "jobs/11111111".
@@ -568,12 +570,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified job. You can specify whether to synchronously wait
-        # for validation, indexing, and general processing to be completed before
-        # the response is returned.
-        # If this call is executed synchronously, the returned job
-        # is guaranteed to be fully processed and complete upon response.
-        # The `companyName` and `distributorCompanyId` job fields cannot be updated.
+        # Updates the specified job.
+        # Typically, the updated contents become visible in search results within 10
+        # seconds, but it may take up to 5 minutes.
         # @param [String] name
         #   Required during job update.
         #   Resource name assigned to a job by the API, for example, "/jobs/foo". Use

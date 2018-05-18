@@ -22,6 +22,32 @@ module Google
   module Apis
     module VisionV1
       
+      # Response to a single file annotation request. A file may contain one or more
+      # images, which individually have their own responses.
+      class AnnotateFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The desired input location and metadata.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::VisionV1::InputConfig]
+        attr_accessor :input_config
+      
+        # Individual responses to images found within the file.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::VisionV1::AnnotateImageResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
       # Request for performing Google Cloud Vision API tasks over a user-provided
       # image, with user-requested features.
       class AnnotateImageRequest
@@ -57,6 +83,12 @@ module Google
       # Response to an image annotation request.
       class AnnotateImageResponse
         include Google::Apis::Core::Hashable
+      
+        # If an image was produced from a file (e.g. a PDF), this message gives
+        # information about the source of that image.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::VisionV1::ImageAnnotationContext]
+        attr_accessor :context
       
         # Set of crop hints that are used to generate new crops when serving images.
         # Corresponds to the JSON property `cropHintsAnnotation`
@@ -165,6 +197,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context = args[:context] if args.key?(:context)
           @crop_hints_annotation = args[:crop_hints_annotation] if args.key?(:crop_hints_annotation)
           @error = args[:error] if args.key?(:error)
           @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
@@ -176,6 +209,102 @@ module Google
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
           @web_detection = args[:web_detection] if args.key?(:web_detection)
+        end
+      end
+      
+      # An offline file annotation request.
+      class AsyncAnnotateFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Requested features.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::VisionV1::Feature>]
+        attr_accessor :features
+      
+        # Image context and/or feature-specific parameters.
+        # Corresponds to the JSON property `imageContext`
+        # @return [Google::Apis::VisionV1::ImageContext]
+        attr_accessor :image_context
+      
+        # The desired input location and metadata.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::VisionV1::InputConfig]
+        attr_accessor :input_config
+      
+        # The desired output location and metadata.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::VisionV1::OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+          @image_context = args[:image_context] if args.key?(:image_context)
+          @input_config = args[:input_config] if args.key?(:input_config)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # The response for a single offline file annotation request.
+      class AsyncAnnotateFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The desired output location and metadata.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::VisionV1::OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Multiple async file annotation requests are batched into a single service
+      # call.
+      class AsyncBatchAnnotateFilesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Individual async file annotation requests for this batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::VisionV1::AsyncAnnotateFileRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response to an async batch file annotation request.
+      class AsyncBatchAnnotateFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of file annotation responses, one for each request in
+        # AsyncBatchAnnotateFilesRequest.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::VisionV1::AsyncAnnotateFileResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
         end
       end
       
@@ -264,6 +393,11 @@ module Google
       class BoundingPoly
         include Google::Apis::Core::Hashable
       
+        # The bounding polygon normalized vertices.
+        # Corresponds to the JSON property `normalizedVertices`
+        # @return [Array<Google::Apis::VisionV1::NormalizedVertex>]
+        attr_accessor :normalized_vertices
+      
         # The bounding polygon vertices.
         # Corresponds to the JSON property `vertices`
         # @return [Array<Google::Apis::VisionV1::Vertex>]
@@ -275,6 +409,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @normalized_vertices = args[:normalized_vertices] if args.key?(:normalized_vertices)
           @vertices = args[:vertices] if args.key?(:vertices)
         end
       end
@@ -956,6 +1091,56 @@ module Google
           @max_results = args[:max_results] if args.key?(:max_results)
           @model = args[:model] if args.key?(:model)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The Google Cloud Storage location where the output will be written to.
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage URI where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI. This field
+        # can either represent a single file, or a prefix for multiple outputs.
+        # Prefixes must end in a `/`.
+        # Examples:
+        # *    File: gs://bucket-name/filename.json
+        # *    Prefix: gs://bucket-name/prefix/here/
+        # *    File: gs://bucket-name/prefix/here
+        # If multiple outputs, each response is still AnnotateFileResponse, each of
+        # which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large
+        # and overflows into multiple sharded files.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The Google Cloud Storage location where the input will be read from.
+      class GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage URI for the input file. This must only be a
+        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2470,6 +2655,194 @@ module Google
         end
       end
       
+      # Metadata for the batch operations such as the current state.
+      # This is included in the `metadata` field of the `Operation` returned by the
+      # `GetOperation` call of the `google::longrunning::Operations` service.
+      class GoogleCloudVisionV1p3beta1BatchOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request is finished and
+        # google.longrunning.Operation.done is set to true.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the batch request was submitted to the server.
+        # Corresponds to the JSON property `submitTime`
+        # @return [String]
+        attr_accessor :submit_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @state = args[:state] if args.key?(:state)
+          @submit_time = args[:submit_time] if args.key?(:submit_time)
+        end
+      end
+      
+      # A bounding polygon for the detected image annotation.
+      class GoogleCloudVisionV1p3beta1BoundingPoly
+        include Google::Apis::Core::Hashable
+      
+        # The bounding polygon normalized vertices.
+        # Corresponds to the JSON property `normalizedVertices`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1NormalizedVertex>]
+        attr_accessor :normalized_vertices
+      
+        # The bounding polygon vertices.
+        # Corresponds to the JSON property `vertices`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1Vertex>]
+        attr_accessor :vertices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_vertices = args[:normalized_vertices] if args.key?(:normalized_vertices)
+          @vertices = args[:vertices] if args.key?(:vertices)
+        end
+      end
+      
+      # Response message for the `ImportProductSets` method.
+      # This message is returned by the
+      # google.longrunning.Operations.GetOperation method in the returned
+      # google.longrunning.Operation.response field.
+      class GoogleCloudVisionV1p3beta1ImportProductSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of reference_images that are imported successfully.
+        # Corresponds to the JSON property `referenceImages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ReferenceImage>]
+        attr_accessor :reference_images
+      
+        # The rpc status for each ImportProductSet request, including both successes
+        # and errors.
+        # The number of statuses here matches the number of lines in the csv file,
+        # and statuses[i] stores the success or failure status of processing the i-th
+        # line of the csv, starting from line 0.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::VisionV1::Status>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_images = args[:reference_images] if args.key?(:reference_images)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
+      # A vertex represents a 2D point in the image.
+      # NOTE: the normalized vertex coordinates are relative to the original image
+      # and range from 0 to 1.
+      class GoogleCloudVisionV1p3beta1NormalizedVertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # A `ReferenceImage` represents a product image and its associated metadata,
+      # such as bounding boxes.
+      class GoogleCloudVisionV1p3beta1ReferenceImage
+        include Google::Apis::Core::Hashable
+      
+        # Bounding polygons around the areas of interest in the reference image.
+        # Optional. If this field is empty, the system will try to detect regions of
+        # interest. At most 10 bounding polygons will be used.
+        # The provided shape is converted into a non-rotated rectangle. Once
+        # converted, the small edge of the rectangle must be greater than or equal
+        # to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
+        # is not).
+        # Corresponds to the JSON property `boundingPolys`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1BoundingPoly>]
+        attr_accessor :bounding_polys
+      
+        # The resource name of the reference image.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
+        # IMAGE_ID`.
+        # This field is ignored when creating a reference image.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Google Cloud Storage URI of the reference image.
+        # The URI must start with `gs://`.
+        # Required.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_polys = args[:bounding_polys] if args.key?(:bounding_polys)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A vertex represents a 2D point in the image.
+      # NOTE: the vertex coordinates are in the same scale as the original image.
+      class GoogleCloudVisionV1p3beta1Vertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Fixnum]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Fixnum]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
       # Client image to perform Google Cloud Vision API tasks over.
       class Image
         include Google::Apis::Core::Hashable
@@ -2495,6 +2868,33 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # If an image was produced from a file (e.g. a PDF), this message gives
+      # information about the source of that image.
+      class ImageAnnotationContext
+        include Google::Apis::Core::Hashable
+      
+        # If the file was a PDF or TIFF, this field gives the page number within
+        # the file used to produce the image.
+        # Corresponds to the JSON property `pageNumber`
+        # @return [Fixnum]
+        attr_accessor :page_number
+      
+        # The URI of the file used to produce the image.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_number = args[:page_number] if args.key?(:page_number)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2600,6 +3000,32 @@ module Google
         def update!(**args)
           @gcs_image_uri = args[:gcs_image_uri] if args.key?(:gcs_image_uri)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+        end
+      end
+      
+      # The desired input location and metadata.
+      class InputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location where the input will be read from.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::VisionV1::GcsSource]
+        attr_accessor :gcs_source
+      
+        # The type of the file. Currently only "application/pdf" and "image/tiff"
+        # are supported. Wildcards are not supported.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -2740,6 +3166,33 @@ module Google
         end
       end
       
+      # A vertex represents a 2D point in the image.
+      # NOTE: the normalized vertex coordinates are relative to the original image
+      # and range from 0 to 1.
+      class NormalizedVertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2834,6 +3287,70 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Contains metadata for the BatchAnnotateImages operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the operation result was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The desired output location and metadata.
+      class OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The max number of response protos to put into each output JSON file on
+        # Google Cloud Storage.
+        # The valid range is [1, 100]. If not specified, the default value is 20.
+        # For example, for one pdf file with 100 pages, 100 response protos will
+        # be generated. If `batch_size` = 20, then 5 json files each
+        # containing 20 response protos will be written under the prefix
+        # `gcs_destination`.`uri`.
+        # Currently, batch_size only applies to GcsDestination, with potential future
+        # support for other output configurations.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # The Google Cloud Storage location where the output will be written to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::VisionV1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
       

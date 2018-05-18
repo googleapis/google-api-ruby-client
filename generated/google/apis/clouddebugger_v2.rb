@@ -23,10 +23,10 @@ module Google
     # Examines the call stack and variables of a running application without
     # stopping or slowing it down.
     #
-    # @see http://cloud.google.com/debugger
+    # @see https://cloud.google.com/debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20180112'
+      REVISION = '20180516'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -22,7 +22,103 @@ module Google
   module Apis
     module VisionV1p2beta1
       
+      class AnnotateFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnnotateImageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsyncAnnotateFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsyncBatchAnnotateFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Block
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BoundingPoly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ColorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CropHint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CropHintsAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DetectedBreak
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DetectedLanguage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DominantColorsAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EntityAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FaceAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,7 +430,79 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p3beta1BatchOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1BoundingPoly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1ImportProductSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1NormalizedVertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1ReferenceImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1Vertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageAnnotationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Landmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatLng
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NormalizedVertex
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,10 +514,192 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Page
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Paragraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Property
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafeSearchAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Symbol
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Vertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebDetection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebPage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Word
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnnotateFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p2beta1::InputConfig, decorator: Google::Apis::VisionV1p2beta1::InputConfig::Representation
+      
+          collection :responses, as: 'responses', class: Google::Apis::VisionV1p2beta1::AnnotateImageResponse, decorator: Google::Apis::VisionV1p2beta1::AnnotateImageResponse::Representation
+      
+        end
+      end
+      
+      class AnnotateImageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::VisionV1p2beta1::ImageAnnotationContext, decorator: Google::Apis::VisionV1p2beta1::ImageAnnotationContext::Representation
+      
+          property :crop_hints_annotation, as: 'cropHintsAnnotation', class: Google::Apis::VisionV1p2beta1::CropHintsAnnotation, decorator: Google::Apis::VisionV1p2beta1::CropHintsAnnotation::Representation
+      
+          property :error, as: 'error', class: Google::Apis::VisionV1p2beta1::Status, decorator: Google::Apis::VisionV1p2beta1::Status::Representation
+      
+          collection :face_annotations, as: 'faceAnnotations', class: Google::Apis::VisionV1p2beta1::FaceAnnotation, decorator: Google::Apis::VisionV1p2beta1::FaceAnnotation::Representation
+      
+          property :full_text_annotation, as: 'fullTextAnnotation', class: Google::Apis::VisionV1p2beta1::TextAnnotation, decorator: Google::Apis::VisionV1p2beta1::TextAnnotation::Representation
+      
+          property :image_properties_annotation, as: 'imagePropertiesAnnotation', class: Google::Apis::VisionV1p2beta1::ImageProperties, decorator: Google::Apis::VisionV1p2beta1::ImageProperties::Representation
+      
+          collection :label_annotations, as: 'labelAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
+      
+          collection :landmark_annotations, as: 'landmarkAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
+      
+          collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
+      
+          property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1p2beta1::SafeSearchAnnotation, decorator: Google::Apis::VisionV1p2beta1::SafeSearchAnnotation::Representation
+      
+          collection :text_annotations, as: 'textAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
+      
+          property :web_detection, as: 'webDetection', class: Google::Apis::VisionV1p2beta1::WebDetection, decorator: Google::Apis::VisionV1p2beta1::WebDetection::Representation
+      
+        end
+      end
+      
+      class AsyncAnnotateFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1p2beta1::OutputConfig, decorator: Google::Apis::VisionV1p2beta1::OutputConfig::Representation
+      
+        end
+      end
+      
+      class AsyncBatchAnnotateFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::VisionV1p2beta1::AsyncAnnotateFileResponse, decorator: Google::Apis::VisionV1p2beta1::AsyncAnnotateFileResponse::Representation
+      
+        end
+      end
+      
+      class Block
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_type, as: 'blockType'
+          property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          collection :paragraphs, as: 'paragraphs', class: Google::Apis::VisionV1p2beta1::Paragraph, decorator: Google::Apis::VisionV1p2beta1::Paragraph::Representation
+      
+          property :property, as: 'property', class: Google::Apis::VisionV1p2beta1::TextProperty, decorator: Google::Apis::VisionV1p2beta1::TextProperty::Representation
+      
+        end
+      end
+      
+      class BoundingPoly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :normalized_vertices, as: 'normalizedVertices', class: Google::Apis::VisionV1p2beta1::NormalizedVertex, decorator: Google::Apis::VisionV1p2beta1::NormalizedVertex::Representation
+      
+          collection :vertices, as: 'vertices', class: Google::Apis::VisionV1p2beta1::Vertex, decorator: Google::Apis::VisionV1p2beta1::Vertex::Representation
+      
+        end
       end
       
       class Color
@@ -359,6 +709,114 @@ module Google
           property :blue, as: 'blue'
           property :green, as: 'green'
           property :red, as: 'red'
+        end
+      end
+      
+      class ColorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::VisionV1p2beta1::Color, decorator: Google::Apis::VisionV1p2beta1::Color::Representation
+      
+          property :pixel_fraction, as: 'pixelFraction'
+          property :score, as: 'score'
+        end
+      end
+      
+      class CropHint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          property :importance_fraction, as: 'importanceFraction'
+        end
+      end
+      
+      class CropHintsAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :crop_hints, as: 'cropHints', class: Google::Apis::VisionV1p2beta1::CropHint, decorator: Google::Apis::VisionV1p2beta1::CropHint::Representation
+      
+        end
+      end
+      
+      class DetectedBreak
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_prefix, as: 'isPrefix'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DetectedLanguage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class DominantColorsAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :colors, as: 'colors', class: Google::Apis::VisionV1p2beta1::ColorInfo, decorator: Google::Apis::VisionV1p2beta1::ColorInfo::Representation
+      
+        end
+      end
+      
+      class EntityAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          property :description, as: 'description'
+          property :locale, as: 'locale'
+          collection :locations, as: 'locations', class: Google::Apis::VisionV1p2beta1::LocationInfo, decorator: Google::Apis::VisionV1p2beta1::LocationInfo::Representation
+      
+          property :mid, as: 'mid'
+          collection :properties, as: 'properties', class: Google::Apis::VisionV1p2beta1::Property, decorator: Google::Apis::VisionV1p2beta1::Property::Representation
+      
+          property :score, as: 'score'
+          property :topicality, as: 'topicality'
+        end
+      end
+      
+      class FaceAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anger_likelihood, as: 'angerLikelihood'
+          property :blurred_likelihood, as: 'blurredLikelihood'
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :detection_confidence, as: 'detectionConfidence'
+          property :fd_bounding_poly, as: 'fdBoundingPoly', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :headwear_likelihood, as: 'headwearLikelihood'
+          property :joy_likelihood, as: 'joyLikelihood'
+          property :landmarking_confidence, as: 'landmarkingConfidence'
+          collection :landmarks, as: 'landmarks', class: Google::Apis::VisionV1p2beta1::Landmark, decorator: Google::Apis::VisionV1p2beta1::Landmark::Representation
+      
+          property :pan_angle, as: 'panAngle'
+          property :roll_angle, as: 'rollAngle'
+          property :sorrow_likelihood, as: 'sorrowLikelihood'
+          property :surprise_likelihood, as: 'surpriseLikelihood'
+          property :tilt_angle, as: 'tiltAngle'
+          property :under_exposed_likelihood, as: 'underExposedLikelihood'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -894,11 +1352,116 @@ module Google
         end
       end
       
+      class GoogleCloudVisionV1p3beta1BatchOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :state, as: 'state'
+          property :submit_time, as: 'submitTime'
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1BoundingPoly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :normalized_vertices, as: 'normalizedVertices', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1NormalizedVertex, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1NormalizedVertex::Representation
+      
+          collection :vertices, as: 'vertices', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1Vertex, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1Vertex::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1ImportProductSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_images, as: 'referenceImages', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1ReferenceImage, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1ReferenceImage::Representation
+      
+          collection :statuses, as: 'statuses', class: Google::Apis::VisionV1p2beta1::Status, decorator: Google::Apis::VisionV1p2beta1::Status::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1NormalizedVertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1ReferenceImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounding_polys, as: 'boundingPolys', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1BoundingPoly::Representation
+      
+          property :name, as: 'name'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1Vertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+        end
+      end
+      
+      class ImageAnnotationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_number, as: 'pageNumber'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ImageProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dominant_colors, as: 'dominantColors', class: Google::Apis::VisionV1p2beta1::DominantColorsAnnotation, decorator: Google::Apis::VisionV1p2beta1::DominantColorsAnnotation::Representation
+      
+        end
+      end
+      
+      class InputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::VisionV1p2beta1::GcsSource, decorator: Google::Apis::VisionV1p2beta1::GcsSource::Representation
+      
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class Landmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :position, as: 'position', class: Google::Apis::VisionV1p2beta1::Position, decorator: Google::Apis::VisionV1p2beta1::Position::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class LatLng
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
+        end
+      end
+      
+      class LocationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lat_lng, as: 'latLng', class: Google::Apis::VisionV1p2beta1::LatLng, decorator: Google::Apis::VisionV1p2beta1::LatLng::Representation
+      
+        end
+      end
+      
+      class NormalizedVertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
         end
       end
       
@@ -914,12 +1477,193 @@ module Google
         end
       end
       
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class OutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_size, as: 'batchSize'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::VisionV1p2beta1::GcsDestination, decorator: Google::Apis::VisionV1p2beta1::GcsDestination::Representation
+      
+        end
+      end
+      
+      class Page
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocks, as: 'blocks', class: Google::Apis::VisionV1p2beta1::Block, decorator: Google::Apis::VisionV1p2beta1::Block::Representation
+      
+          property :confidence, as: 'confidence'
+          property :height, as: 'height'
+          property :property, as: 'property', class: Google::Apis::VisionV1p2beta1::TextProperty, decorator: Google::Apis::VisionV1p2beta1::TextProperty::Representation
+      
+          property :width, as: 'width'
+        end
+      end
+      
+      class Paragraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          property :property, as: 'property', class: Google::Apis::VisionV1p2beta1::TextProperty, decorator: Google::Apis::VisionV1p2beta1::TextProperty::Representation
+      
+          collection :words, as: 'words', class: Google::Apis::VisionV1p2beta1::Word, decorator: Google::Apis::VisionV1p2beta1::Word::Representation
+      
+        end
+      end
+      
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+          property :z, as: 'z'
+        end
+      end
+      
+      class Property
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :uint64_value, :numeric_string => true, as: 'uint64Value'
+          property :value, as: 'value'
+        end
+      end
+      
+      class SafeSearchAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adult, as: 'adult'
+          property :medical, as: 'medical'
+          property :racy, as: 'racy'
+          property :spoof, as: 'spoof'
+          property :violence, as: 'violence'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Symbol
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          property :property, as: 'property', class: Google::Apis::VisionV1p2beta1::TextProperty, decorator: Google::Apis::VisionV1p2beta1::TextProperty::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class TextAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pages, as: 'pages', class: Google::Apis::VisionV1p2beta1::Page, decorator: Google::Apis::VisionV1p2beta1::Page::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class TextProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detected_break, as: 'detectedBreak', class: Google::Apis::VisionV1p2beta1::DetectedBreak, decorator: Google::Apis::VisionV1p2beta1::DetectedBreak::Representation
+      
+          collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::VisionV1p2beta1::DetectedLanguage, decorator: Google::Apis::VisionV1p2beta1::DetectedLanguage::Representation
+      
+        end
+      end
+      
+      class Vertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
+        end
+      end
+      
+      class WebDetection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :best_guess_labels, as: 'bestGuessLabels', class: Google::Apis::VisionV1p2beta1::WebLabel, decorator: Google::Apis::VisionV1p2beta1::WebLabel::Representation
+      
+          collection :full_matching_images, as: 'fullMatchingImages', class: Google::Apis::VisionV1p2beta1::WebImage, decorator: Google::Apis::VisionV1p2beta1::WebImage::Representation
+      
+          collection :pages_with_matching_images, as: 'pagesWithMatchingImages', class: Google::Apis::VisionV1p2beta1::WebPage, decorator: Google::Apis::VisionV1p2beta1::WebPage::Representation
+      
+          collection :partial_matching_images, as: 'partialMatchingImages', class: Google::Apis::VisionV1p2beta1::WebImage, decorator: Google::Apis::VisionV1p2beta1::WebImage::Representation
+      
+          collection :visually_similar_images, as: 'visuallySimilarImages', class: Google::Apis::VisionV1p2beta1::WebImage, decorator: Google::Apis::VisionV1p2beta1::WebImage::Representation
+      
+          collection :web_entities, as: 'webEntities', class: Google::Apis::VisionV1p2beta1::WebEntity, decorator: Google::Apis::VisionV1p2beta1::WebEntity::Representation
+      
+        end
+      end
+      
+      class WebEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :entity_id, as: 'entityId'
+          property :score, as: 'score'
+        end
+      end
+      
+      class WebImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+          property :url, as: 'url'
+        end
+      end
+      
+      class WebLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class WebPage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :full_matching_images, as: 'fullMatchingImages', class: Google::Apis::VisionV1p2beta1::WebImage, decorator: Google::Apis::VisionV1p2beta1::WebImage::Representation
+      
+          property :page_title, as: 'pageTitle'
+          collection :partial_matching_images, as: 'partialMatchingImages', class: Google::Apis::VisionV1p2beta1::WebImage, decorator: Google::Apis::VisionV1p2beta1::WebImage::Representation
+      
+          property :score, as: 'score'
+          property :url, as: 'url'
+        end
+      end
+      
+      class Word
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :confidence, as: 'confidence'
+          property :property, as: 'property', class: Google::Apis::VisionV1p2beta1::TextProperty, decorator: Google::Apis::VisionV1p2beta1::TextProperty::Representation
+      
+          collection :symbols, as: 'symbols', class: Google::Apis::VisionV1p2beta1::Symbol, decorator: Google::Apis::VisionV1p2beta1::Symbol::Representation
+      
         end
       end
     end
