@@ -1977,7 +1977,8 @@ module Google
         attr_accessor :job_id
       
         # [Experimental] The geographic location of the job. Required except for US and
-        # EU.
+        # EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#
+        # specifying_your_location.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3457,16 +3458,18 @@ module Google
       class TimePartitioning
         include Google::Apis::Core::Hashable
       
-        # [Optional] Number of milliseconds for which to keep the storage for a
-        # partition.
+        # [Optional] Number of milliseconds for which to keep the storage for partitions
+        # in the table. The storage in a partition will have an expiration time of its
+        # partition time plus this value.
         # Corresponds to the JSON property `expirationMs`
         # @return [Fixnum]
         attr_accessor :expiration_ms
       
         # [Experimental] [Optional] If not set, the table is partitioned by pseudo
-        # column '_PARTITIONTIME'; if set, the table is partitioned by this field. The
-        # field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE
-        # or REQUIRED.
+        # column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '
+        # _PARTITIONDATE' as DATE type. If field is specified, the table is instead
+        # partitioned by this field. The field must be a top-level TIMESTAMP or DATE
+        # field. Its mode must be NULLABLE or REQUIRED.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field

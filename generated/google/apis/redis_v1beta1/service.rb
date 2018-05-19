@@ -118,7 +118,7 @@ module Google
         end
         
         # Creates a Redis instance based on the specified tier and memory size.
-        # By default, the instance is peered to the project's
+        # By default, the instance is accessible from the project's
         # [default network](/compute/docs/networks-and-firewalls#networks).
         # The creation is executed asynchronously and callers may check the returned
         # operation to track its progress. Once the operation is completed the Redis
@@ -292,7 +292,7 @@ module Google
         #   location using the form:
         #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
         #   Note: Redis instances are managed and addressed at regional level so
-        #   location_id here refers to a GCP region; however, users get to choose which
+        #   location_id here refers to a GCP region; however, users may choose which
         #   specific zone (or collection of zones for cross-zone instances) an instance
         #   should be provisioned in. Refer to [location_id] and
         #   [alternative_location_id] fields for more details.
@@ -301,10 +301,10 @@ module Google
         #   Required. Mask of fields to update. At least one path must be supplied in
         #   this field. The elements of the repeated paths field may only include these
         #   fields from Instance:
-        #   * `display_name`
-        #   * `labels`
-        #   * `redis_config`
-        #   * `redis_version`
+        #   *   `displayName`
+        #   *   `labels`
+        #   *   `memorySizeGb`
+        #   *   `redisConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

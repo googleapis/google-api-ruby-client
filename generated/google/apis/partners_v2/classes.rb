@@ -363,6 +363,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_approval_email_domains
       
+        # Whether the company's badge authority is in AWN
+        # Corresponds to the JSON property `badgeAuthorityInAwn`
+        # @return [Boolean]
+        attr_accessor :badge_authority_in_awn
+        alias_method :badge_authority_in_awn?, :badge_authority_in_awn
+      
         # Partner badge tier
         # Corresponds to the JSON property `badgeTier`
         # @return [String]
@@ -473,6 +479,7 @@ module Google
         def update!(**args)
           @additional_websites = args[:additional_websites] if args.key?(:additional_websites)
           @auto_approval_email_domains = args[:auto_approval_email_domains] if args.key?(:auto_approval_email_domains)
+          @badge_authority_in_awn = args[:badge_authority_in_awn] if args.key?(:badge_authority_in_awn)
           @badge_tier = args[:badge_tier] if args.key?(:badge_tier)
           @certification_statuses = args[:certification_statuses] if args.key?(:certification_statuses)
           @company_types = args[:company_types] if args.key?(:company_types)

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/partners/
     module PartnersV2
       VERSION = 'V2'
-      REVISION = '20180403'
+      REVISION = '20180517'
     end
   end
 end

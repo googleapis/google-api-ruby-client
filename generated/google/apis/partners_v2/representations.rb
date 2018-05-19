@@ -405,6 +405,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_websites, as: 'additionalWebsites'
           collection :auto_approval_email_domains, as: 'autoApprovalEmailDomains'
+          property :badge_authority_in_awn, as: 'badgeAuthorityInAwn'
           property :badge_tier, as: 'badgeTier'
           collection :certification_statuses, as: 'certificationStatuses', class: Google::Apis::PartnersV2::CertificationStatus, decorator: Google::Apis::PartnersV2::CertificationStatus::Representation
       
