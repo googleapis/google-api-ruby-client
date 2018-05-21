@@ -572,7 +572,7 @@ module Google
         attr_accessor :parent
       
         # Concise user-visible strings indicating why an action cannot be performed
-        # on a resource. Maximum lenth of 200 characters.
+        # on a resource. Maximum length of 200 characters.
         # Example: 'Holds production API key'
         # Corresponds to the JSON property `reason`
         # @return [String]
