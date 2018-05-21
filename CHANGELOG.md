@@ -1,3 +1,45 @@
+# 0.21.2
+* Backwards compatible changes:
+  * Added `dfareporting_v3_1`
+  * Updated `admin_reports_v1`
+  * Updated `analytics_v3`
+  * Updated `analyticsreporting_v4`
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidpublisher_v2`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquery_v2`
+  * Updated `clouddebugger_v2`
+  * Updated `cloudiot_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `composer_v1beta1`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dfareporting_v2_8`
+  * Updated `dfareporting_v3_0`
+  * Updated `dlp_v2`
+  * Updated `identitytoolkit_v3`
+  * Updated `jobs_v2`
+  * Updated `language_v1`
+  * Updated `language_v1beta1`
+  * Updated `language_v1beta2`
+  * Updated `monitoring_v3`
+  * Updated `partners_v2`
+  * Updated `people_v1`
+  * Updated `redis_v1beta1`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `script_v1`
+  * Updated `spanner_v1`
+  * Updated `sqladmin_v1beta4`
+  * Updated `testing_v1`
+  * Updated `texttospeech_v1beta1`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+  * Updated `youtube_analytics_v2`
+  * Updated `youtube_partner_v1`
+
 # 0.21.1
 * Backwards compatible changes:
   * Updated `analytics_v3`
