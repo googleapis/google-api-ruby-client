@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplicationPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,18 @@ module Google
       end
       
       class ApplicationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChoosePrivateKeyRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -301,6 +319,14 @@ module Google
         end
       end
       
+      class ApplicationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :event_type, as: 'eventType'
+        end
+      end
+      
       class ApplicationPermission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -325,6 +351,32 @@ module Google
         end
       end
       
+      class ApplicationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_source, as: 'applicationSource'
+          property :display_name, as: 'displayName'
+          collection :events, as: 'events', class: Google::Apis::AndroidmanagementV1::ApplicationEvent, decorator: Google::Apis::AndroidmanagementV1::ApplicationEvent::Representation
+      
+          property :installer_package_name, as: 'installerPackageName'
+          property :package_name, as: 'packageName'
+          property :package_sha256_hash, as: 'packageSha256Hash'
+          collection :signing_key_cert_fingerprints, as: 'signingKeyCertFingerprints'
+          property :state, as: 'state'
+          property :version_code, as: 'versionCode'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class ChoosePrivateKeyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :package_names, as: 'packageNames'
+          property :private_key_alias, as: 'privateKeyAlias'
+          property :url_pattern, as: 'urlPattern'
+        end
+      end
+      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -346,6 +398,7 @@ module Google
           property :disable_apps, as: 'disableApps'
           property :non_compliance_detail_condition, as: 'nonComplianceDetailCondition', class: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition, decorator: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition::Representation
       
+          collection :package_names_to_disable, as: 'packageNamesToDisable'
         end
       end
       
@@ -353,6 +406,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_level, as: 'apiLevel'
+          collection :application_reports, as: 'applicationReports', class: Google::Apis::AndroidmanagementV1::ApplicationReport, decorator: Google::Apis::AndroidmanagementV1::ApplicationReport::Representation
+      
           property :applied_policy_name, as: 'appliedPolicyName'
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
@@ -665,6 +720,8 @@ module Google
           property :bluetooth_disabled, as: 'bluetoothDisabled'
           property :camera_disabled, as: 'cameraDisabled'
           property :cell_broadcasts_config_disabled, as: 'cellBroadcastsConfigDisabled'
+          collection :choose_private_key_rules, as: 'choosePrivateKeyRules', class: Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule, decorator: Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule::Representation
+      
           collection :compliance_rules, as: 'complianceRules', class: Google::Apis::AndroidmanagementV1::ComplianceRule, decorator: Google::Apis::AndroidmanagementV1::ComplianceRule::Representation
       
           property :create_windows_disabled, as: 'createWindowsDisabled'
@@ -703,6 +760,7 @@ module Google
       
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
       
+          property :private_key_selection_enabled, as: 'privateKeySelectionEnabled'
           property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       
           property :remove_user_disabled, as: 'removeUserDisabled'
@@ -787,6 +845,7 @@ module Google
       class StatusReportingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_reports_enabled, as: 'applicationReportsEnabled'
           property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
           property :hardware_status_enabled, as: 'hardwareStatusEnabled'

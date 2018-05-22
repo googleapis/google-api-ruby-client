@@ -885,7 +885,7 @@ module Google
         end
         
         # Restore a CryptoKeyVersion in the
-        # DESTROY_SCHEDULED,
+        # DESTROY_SCHEDULED
         # state.
         # Upon restoration of the CryptoKeyVersion, state
         # will be set to DISABLED,

@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CustomAuthRequirements
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CustomError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,8 +501,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_without_credential, as: 'allowWithoutCredential'
-          property :custom_auth, as: 'customAuth', class: Google::Apis::ServiceconsumermanagementV1::CustomAuthRequirements, decorator: Google::Apis::ServiceconsumermanagementV1::CustomAuthRequirements::Representation
-      
           property :oauth, as: 'oauth', class: Google::Apis::ServiceconsumermanagementV1::OAuthRequirements, decorator: Google::Apis::ServiceconsumermanagementV1::OAuthRequirements::Representation
       
           collection :requirements, as: 'requirements', class: Google::Apis::ServiceconsumermanagementV1::AuthRequirement, decorator: Google::Apis::ServiceconsumermanagementV1::AuthRequirement::Representation
@@ -609,13 +601,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tenancy_unit_id, as: 'tenancyUnitId'
-        end
-      end
-      
-      class CustomAuthRequirements
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :provider, as: 'provider'
         end
       end
       

@@ -272,11 +272,6 @@ module Google
         attr_accessor :allow_without_credential
         alias_method :allow_without_credential?, :allow_without_credential
       
-        # Configuration for a custom authentication provider.
-        # Corresponds to the JSON property `customAuth`
-        # @return [Google::Apis::ServiceusageV1beta1::CustomAuthRequirements]
-        attr_accessor :custom_auth
-      
         # OAuth scopes are a way to define data and permissions on data. For example,
         # there are scopes defined for "Read-only access to Google Calendar" and
         # "Access to Cloud Platform". Users can consent to a scope for an application,
@@ -313,7 +308,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_without_credential = args[:allow_without_credential] if args.key?(:allow_without_credential)
-          @custom_auth = args[:custom_auth] if args.key?(:custom_auth)
           @oauth = args[:oauth] if args.key?(:oauth)
           @requirements = args[:requirements] if args.key?(:requirements)
           @selector = args[:selector] if args.key?(:selector)
@@ -686,27 +680,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environment = args[:environment] if args.key?(:environment)
-        end
-      end
-      
-      # Configuration for a custom authentication provider.
-      class CustomAuthRequirements
-        include Google::Apis::Core::Hashable
-      
-        # A configuration string containing connection information for the
-        # authentication provider, typically formatted as a SmartService string
-        # (go/smartservice).
-        # Corresponds to the JSON property `provider`
-        # @return [String]
-        attr_accessor :provider
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @provider = args[:provider] if args.key?(:provider)
         end
       end
       

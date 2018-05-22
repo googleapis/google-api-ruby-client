@@ -109,6 +109,31 @@ module Google
         end
       end
       
+      # An app-related event.
+      class ApplicationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the event.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # App event type.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
       # A permission required by the app.
       class ApplicationPermission
         include Google::Apis::Core::Hashable
@@ -221,6 +246,123 @@ module Google
         end
       end
       
+      # Information reported about an installed app.
+      class ApplicationReport
+        include Google::Apis::Core::Hashable
+      
+        # The source of the package.
+        # Corresponds to the JSON property `applicationSource`
+        # @return [String]
+        attr_accessor :application_source
+      
+        # The display name of the app.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # List of app events. The most recent 20 events are stored in the list.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationEvent>]
+        attr_accessor :events
+      
+        # The package name of the app that installed this app.
+        # Corresponds to the JSON property `installerPackageName`
+        # @return [String]
+        attr_accessor :installer_package_name
+      
+        # Package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # The SHA-256 hash of the app's APK file, which can be used to verify the app
+        # hasn't been modified. Each byte of the hash value is represented as a two-
+        # digit hexadecimal number.
+        # Corresponds to the JSON property `packageSha256Hash`
+        # @return [String]
+        attr_accessor :package_sha256_hash
+      
+        # The SHA-1 hash of each android.content.pm.Signature (https://developer.android.
+        # com/reference/android/content/pm/Signature.html) associated with the app
+        # package. Each byte of each hash value is represented as a two-digit
+        # hexadecimal number.
+        # Corresponds to the JSON property `signingKeyCertFingerprints`
+        # @return [Array<String>]
+        attr_accessor :signing_key_cert_fingerprints
+      
+        # Application state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The app version code, which can be used to determine whether one version is
+        # more recent than another.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        # The app version as displayed to the user.
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_source = args[:application_source] if args.key?(:application_source)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @events = args[:events] if args.key?(:events)
+          @installer_package_name = args[:installer_package_name] if args.key?(:installer_package_name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @package_sha256_hash = args[:package_sha256_hash] if args.key?(:package_sha256_hash)
+          @signing_key_cert_fingerprints = args[:signing_key_cert_fingerprints] if args.key?(:signing_key_cert_fingerprints)
+          @state = args[:state] if args.key?(:state)
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # A rule for automatically choosing a private key and certificate to
+      # authenticate the device to a server.
+      class ChoosePrivateKeyRule
+        include Google::Apis::Core::Hashable
+      
+        # The package names for which outgoing requests are subject to this rule. If no
+        # package names are specified, then the rule applies to all packages. For each
+        # package name listed, the rule applies to that package and all other packages
+        # that shared the same Android UID. The SHA256 hash of the signing key
+        # signatures of each package_name will be verified against those provided by
+        # Play
+        # Corresponds to the JSON property `packageNames`
+        # @return [Array<String>]
+        attr_accessor :package_names
+      
+        # The alias of the private key to be used.
+        # Corresponds to the JSON property `privateKeyAlias`
+        # @return [String]
+        attr_accessor :private_key_alias
+      
+        # The URL pattern to match against the URL of the outgoing request. The pattern
+        # may contain asterisk (*) wildcards. Any URL is matched if unspecified.
+        # Corresponds to the JSON property `urlPattern`
+        # @return [String]
+        attr_accessor :url_pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_names = args[:package_names] if args.key?(:package_names)
+          @private_key_alias = args[:private_key_alias] if args.key?(:private_key_alias)
+          @url_pattern = args[:url_pattern] if args.key?(:url_pattern)
+        end
+      end
+      
       # A command.
       class Command
         include Google::Apis::Core::Hashable
@@ -316,6 +458,12 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition]
         attr_accessor :non_compliance_detail_condition
       
+        # If set, the rule includes a mitigating action to disable apps specified in the
+        # list, but app data is preserved.
+        # Corresponds to the JSON property `packageNamesToDisable`
+        # @return [Array<String>]
+        attr_accessor :package_names_to_disable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -325,6 +473,7 @@ module Google
           @api_level_condition = args[:api_level_condition] if args.key?(:api_level_condition)
           @disable_apps = args[:disable_apps] if args.key?(:disable_apps)
           @non_compliance_detail_condition = args[:non_compliance_detail_condition] if args.key?(:non_compliance_detail_condition)
+          @package_names_to_disable = args[:package_names_to_disable] if args.key?(:package_names_to_disable)
         end
       end
       
@@ -337,6 +486,12 @@ module Google
         # Corresponds to the JSON property `apiLevel`
         # @return [Fixnum]
         attr_accessor :api_level
+      
+        # Reports for apps installed on the device. This information is only available
+        # when application_reports_enabled is true in the device's policy.
+        # Corresponds to the JSON property `applicationReports`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationReport>]
+        attr_accessor :application_reports
       
         # The name of the policy currently applied to the device.
         # Corresponds to the JSON property `appliedPolicyName`
@@ -500,6 +655,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_level = args[:api_level] if args.key?(:api_level)
+          @application_reports = args[:application_reports] if args.key?(:application_reports)
           @applied_policy_name = args[:applied_policy_name] if args.key?(:applied_policy_name)
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
@@ -1707,6 +1863,14 @@ module Google
         attr_accessor :cell_broadcasts_config_disabled
         alias_method :cell_broadcasts_config_disabled?, :cell_broadcasts_config_disabled
       
+        # Rules for automatically choosing a private key and certificate to authenticate
+        # the device to a server. The rules are ordered by increasing precedence, so if
+        # an outgoing request matches more than one rule, the last rule defines which
+        # private key to use.
+        # Corresponds to the JSON property `choosePrivateKeyRules`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule>]
+        attr_accessor :choose_private_key_rules
+      
         # Rules declaring which mitigating actions to take when a device is not
         # compliant with its policy. When the conditions for multiple rules are
         # satisfied, all of the mitigating actions for the rules are taken. There is a
@@ -1909,6 +2073,14 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
       
+        # Allows showing UI on a device for a user to choose a private key alias if
+        # there are no matching rules in ChoosePrivateKeyRules. For devices below
+        # Android P, setting this may leave enterprise keys vulnerable.
+        # Corresponds to the JSON property `privateKeySelectionEnabled`
+        # @return [Boolean]
+        attr_accessor :private_key_selection_enabled
+        alias_method :private_key_selection_enabled?, :private_key_selection_enabled
+      
         # Configuration info for an HTTP proxy. For a direct proxy, set the host, port,
         # and excluded_hosts fields. For a PAC script proxy, set the pac_uri field.
         # Corresponds to the JSON property `recommendedGlobalProxy`
@@ -2071,6 +2243,7 @@ module Google
           @bluetooth_disabled = args[:bluetooth_disabled] if args.key?(:bluetooth_disabled)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
           @cell_broadcasts_config_disabled = args[:cell_broadcasts_config_disabled] if args.key?(:cell_broadcasts_config_disabled)
+          @choose_private_key_rules = args[:choose_private_key_rules] if args.key?(:choose_private_key_rules)
           @compliance_rules = args[:compliance_rules] if args.key?(:compliance_rules)
           @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
           @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
@@ -2103,6 +2276,7 @@ module Google
           @password_requirements = args[:password_requirements] if args.key?(:password_requirements)
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
+          @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
           @recommended_global_proxy = args[:recommended_global_proxy] if args.key?(:recommended_global_proxy)
           @remove_user_disabled = args[:remove_user_disabled] if args.key?(:remove_user_disabled)
           @safe_boot_disabled = args[:safe_boot_disabled] if args.key?(:safe_boot_disabled)
@@ -2368,6 +2542,12 @@ module Google
       class StatusReportingSettings
         include Google::Apis::Core::Hashable
       
+        # Whether app reports are enabled.
+        # Corresponds to the JSON property `applicationReportsEnabled`
+        # @return [Boolean]
+        attr_accessor :application_reports_enabled
+        alias_method :application_reports_enabled?, :application_reports_enabled
+      
         # Whether device settings reporting is enabled.
         # Corresponds to the JSON property `deviceSettingsEnabled`
         # @return [Boolean]
@@ -2416,6 +2596,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application_reports_enabled = args[:application_reports_enabled] if args.key?(:application_reports_enabled)
           @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
           @hardware_status_enabled = args[:hardware_status_enabled] if args.key?(:hardware_status_enabled)
