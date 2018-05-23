@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvidedSoftwareCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegularFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -648,6 +654,13 @@ module Google
         end
       end
       
+      class ProvidedSoftwareCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :orchestrator_version, as: 'orchestratorVersion'
+        end
+      end
+      
       class RegularFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -712,6 +725,8 @@ module Google
           property :android_device_catalog, as: 'androidDeviceCatalog', class: Google::Apis::TestingV1::AndroidDeviceCatalog, decorator: Google::Apis::TestingV1::AndroidDeviceCatalog::Representation
       
           property :network_configuration_catalog, as: 'networkConfigurationCatalog', class: Google::Apis::TestingV1::NetworkConfigurationCatalog, decorator: Google::Apis::TestingV1::NetworkConfigurationCatalog::Representation
+      
+          property :software_catalog, as: 'softwareCatalog', class: Google::Apis::TestingV1::ProvidedSoftwareCatalog, decorator: Google::Apis::TestingV1::ProvidedSoftwareCatalog::Representation
       
         end
       end

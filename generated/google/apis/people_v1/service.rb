@@ -390,6 +390,7 @@ module Google
         #   * relationshipInterests
         #   * relationshipStatuses
         #   * residences
+        #   * sipAddresses
         #   * skills
         #   * taglines
         #   * urls
@@ -460,6 +461,7 @@ module Google
         #   * relationshipInterests
         #   * relationshipStatuses
         #   * residences
+        #   * sipAddresses
         #   * skills
         #   * taglines
         #   * urls
@@ -542,6 +544,7 @@ module Google
         #   * phoneNumbers
         #   * relations
         #   * residences
+        #   * sipAddresses
         #   * urls
         #   * userDefined
         # @param [String] fields
@@ -613,6 +616,7 @@ module Google
         #   * relationshipInterests
         #   * relationshipStatuses
         #   * residences
+        #   * sipAddresses
         #   * skills
         #   * taglines
         #   * urls

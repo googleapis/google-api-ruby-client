@@ -126,16 +126,16 @@ module Google
       
       # Creates a group over the specified range.
       # If the requested range is a superset of the range of an existing group G,
-      # then the depth of G will be incremented and this new group G' will have the
+      # then the depth of G is incremented and this new group G' has the
       # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
       # groups [B:E, depth 1] and [C:D, depth 2].
       # If the requested range is a subset of the range of an existing group G,
-      # then the depth of the new group G' will be one greater than the depth of G.
+      # then the depth of the new group G' becomes one greater than the depth of G.
       # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
       # and [C:D, depth 2].
       # If the requested range starts before and ends within, or starts within and
       # ends after, the range of an existing group G, then the range of the existing
-      # group G will become the union of the ranges, and the new group G' will have
+      # group G becomes the union of the ranges, and the new group G' has
       # depth one greater than the depth of G and range as the intersection of the
       # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
       # depth 1] and [C:D, depth 2].
@@ -2458,7 +2458,7 @@ module Google
         # in a subsequent run (and properties of the first run will continue
         # the properties of the cell unless explicitly changed).
         # When writing, the new runs will overwrite any prior runs.  When writing a
-        # new user_entered_value, previous runs will be erased.
+        # new user_entered_value, previous runs are erased.
         # Corresponds to the JSON property `textFormatRuns`
         # @return [Array<Google::Apis::SheetsV4::TextFormatRun>]
         attr_accessor :text_format_runs
@@ -3193,7 +3193,7 @@ module Google
         attr_accessor :relative_date
       
         # A value the condition is based on.
-        # The value will be parsed as if the user typed into a cell.
+        # The value is parsed as if the user typed into a cell.
         # Formulas are supported (and must begin with an `=` or a '+').
         # Corresponds to the JSON property `userEnteredValue`
         # @return [String]
@@ -3227,7 +3227,7 @@ module Google
         # @return [Google::Apis::SheetsV4::GradientRule]
         attr_accessor :gradient_rule
       
-        # The ranges that will be formatted if the condition is true.
+        # The ranges that are formatted if the condition is true.
         # All the ranges must be on the same grid.
         # Corresponds to the JSON property `ranges`
         # @return [Array<Google::Apis::SheetsV4::GridRange>]
@@ -3354,7 +3354,7 @@ module Google
         # metadata is associated with row 5 and another row is then subsequently
         # inserted above row 5, that original metadata will still be associated with
         # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata will be deleted too.
+        # object is deleted its metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -3380,7 +3380,7 @@ module Google
         # metadata is associated with row 5 and another row is then subsequently
         # inserted above row 5, that original metadata will still be associated with
         # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata will be deleted too.
+        # object is deleted its metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -3732,7 +3732,7 @@ module Google
       # Deletes a group over the specified range by decrementing the depth of the
       # dimensions in the range.
       # For example, assume the sheet has a depth-1 group over B:E and a depth-2
-      # group over C:D. Deleting a group over D:E would leave the sheet with a
+      # group over C:D. Deleting a group over D:E leaves the sheet with a
       # depth-1 group over B:D and a depth-2 group over C:C.
       class DeleteDimensionGroupRequest
         include Google::Apis::Core::Hashable
@@ -3949,7 +3949,7 @@ module Google
       # metadata is associated with row 5 and another row is then subsequently
       # inserted above row 5, that original metadata will still be associated with
       # the row it was first associated with (what is now row 6). If the associated
-      # object is deleted its metadata will be deleted too.
+      # object is deleted its metadata is deleted too.
       class DeveloperMetadata
         include Google::Apis::Core::Hashable
       
@@ -4131,13 +4131,13 @@ module Google
       class DimensionGroup
         include Google::Apis::Core::Hashable
       
-        # True if this group is collapsed. A collapsed group will remain collapsed if
-        # an overlapping group at a shallower depth is expanded.
-        # collapsed == true does not imply that all dimensions within the group are
+        # This field is true if this group is collapsed. A collapsed group remains
+        # collapsed if an overlapping group at a shallower depth is expanded.
+        # A true value does not imply that all dimensions within the group are
         # hidden, since a dimension's visibility can change independently from this
         # group property. However, when this property is updated, all dimensions
-        # within it will be set to hidden if collapsed == true, or set to visible if
-        # collapsed == false.
+        # within it are set to hidden if this field is true, or set to visible if
+        # this field is false.
         # Corresponds to the JSON property `collapsed`
         # @return [Boolean]
         attr_accessor :collapsed
@@ -4416,7 +4416,7 @@ module Google
       class EmbeddedObjectPosition
         include Google::Apis::Core::Hashable
       
-        # If true, the embedded object will be put on a new sheet whose ID
+        # If true, the embedded object is put on a new sheet whose ID
         # is chosen for you. Used only when writing.
         # Corresponds to the JSON property `newSheet`
         # @return [Boolean]
@@ -5102,10 +5102,10 @@ module Google
       
       # Allows you to organize the numeric values in a source data column into
       # buckets of a constant size. All values from HistogramRule.start to
-      # HistogramRule.end will be placed into groups of size
+      # HistogramRule.end are placed into groups of size
       # HistogramRule.interval. In addition, all values below
-      # HistogramRule.start will be placed in one group, and all values above
-      # HistogramRule.end will be placed in another. Only
+      # HistogramRule.start are placed in one group, and all values above
+      # HistogramRule.end are placed in another. Only
       # HistogramRule.interval is required, though if HistogramRule.start
       # and HistogramRule.end are both provided, HistogramRule.start must
       # be less than HistogramRule.end. For example, a pivot table showing
@@ -5135,20 +5135,20 @@ module Google
       class HistogramRule
         include Google::Apis::Core::Hashable
       
-        # The maximum value at which items will be placed into buckets
-        # of constant size. Values above end will be lumped into a single bucket.
+        # The maximum value at which items are placed into buckets
+        # of constant size. Values above end are lumped into a single bucket.
         # This field is optional.
         # Corresponds to the JSON property `end`
         # @return [Float]
         attr_accessor :end
       
-        # The size of the buckets that will be created. Must be positive.
+        # The size of the buckets that are created. Must be positive.
         # Corresponds to the JSON property `interval`
         # @return [Float]
         attr_accessor :interval
       
-        # The minimum value at which items will be placed into buckets
-        # of constant size. Values below start will be lumped into a single bucket.
+        # The minimum value at which items are placed into buckets
+        # of constant size. Values below start are lumped into a single bucket.
         # This field is optional.
         # Corresponds to the JSON property `start`
         # @return [Float]
@@ -5575,7 +5575,7 @@ module Google
       # ...
       # +-------+-------------------+
       # could be turned into a pivot table that aggregates population by time zone
-      # by providing a list of groups (e.g. groupName = 'Central',
+      # by providing a list of groups (for example, groupName = 'Central',
       # items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
       # Note that a similar effect could be achieved by adding a time zone column
       # to the source data and adjusting the pivot table.
@@ -5652,7 +5652,7 @@ module Google
         # metadata is associated with row 5 and another row is then subsequently
         # inserted above row 5, that original metadata will still be associated with
         # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata will be deleted too.
+        # object is deleted its metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -6341,7 +6341,7 @@ module Google
         attr_accessor :label
       
         # True if the headings in this pivot group should be repeated.
-        # This is only valid for row groupings and will be ignored by columns.
+        # This is only valid for row groupings and is ignored by columns.
         # By default, we minimize repitition of headings by not showing higher
         # level headings where they are the same. For example, even though the
         # third row below corresponds to "Q1 Mar", "Q1" is not shown because
@@ -6440,10 +6440,10 @@ module Google
       
         # Allows you to organize the numeric values in a source data column into
         # buckets of a constant size. All values from HistogramRule.start to
-        # HistogramRule.end will be placed into groups of size
+        # HistogramRule.end are placed into groups of size
         # HistogramRule.interval. In addition, all values below
-        # HistogramRule.start will be placed in one group, and all values above
-        # HistogramRule.end will be placed in another. Only
+        # HistogramRule.start are placed in one group, and all values above
+        # HistogramRule.end are placed in another. Only
         # HistogramRule.interval is required, though if HistogramRule.start
         # and HistogramRule.end are both provided, HistogramRule.start must
         # be less than HistogramRule.end. For example, a pivot table showing
@@ -6486,7 +6486,7 @@ module Google
         # ...
         # +-------+-------------------+
         # could be turned into a pivot table that aggregates population by time zone
-        # by providing a list of groups (e.g. groupName = 'Central',
+        # by providing a list of groups (for example, groupName = 'Central',
         # items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
         # Note that a similar effect could be achieved by adding a time zone column
         # to the source data and adjusting the pivot table.
@@ -6583,7 +6583,7 @@ module Google
         attr_accessor :columns
       
         # An optional mapping of filters per source column offset.
-        # The filters will be applied before aggregating data into the pivot table.
+        # The filters are applied before aggregating data into the pivot table.
         # The map's key is the column offset of the source range that you want to
         # filter, and the value is the criteria for that column.
         # For example, if the source was `C10:E15`, a key of `0` will have the filter
@@ -6656,7 +6656,7 @@ module Google
         # If specified, indicates that pivot values should be displayed as
         # the result of a calculation with another pivot value. For example, if
         # calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
-        # pivot values will be displayed as the percentage of the grand total. In
+        # pivot values are displayed as the percentage of the grand total. In
         # the Sheets UI, this is referred to as "Show As" in the value section of a
         # pivot table.
         # Corresponds to the JSON property `calculatedDisplayType`
@@ -6929,16 +6929,16 @@ module Google
       
         # Creates a group over the specified range.
         # If the requested range is a superset of the range of an existing group G,
-        # then the depth of G will be incremented and this new group G' will have the
+        # then the depth of G is incremented and this new group G' has the
         # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
         # groups [B:E, depth 1] and [C:D, depth 2].
         # If the requested range is a subset of the range of an existing group G,
-        # then the depth of the new group G' will be one greater than the depth of G.
+        # then the depth of the new group G' becomes one greater than the depth of G.
         # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
         # and [C:D, depth 2].
         # If the requested range starts before and ends within, or starts within and
         # ends after, the range of an existing group G, then the range of the existing
-        # group G will become the union of the ranges, and the new group G' will have
+        # group G becomes the union of the ranges, and the new group G' has
         # depth one greater than the depth of G and range as the intersection of the
         # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
         # depth 1] and [C:D, depth 2].
@@ -7037,7 +7037,7 @@ module Google
         # Deletes a group over the specified range by decrementing the depth of the
         # dimensions in the range.
         # For example, assume the sheet has a depth-1 group over B:E and a depth-2
-        # group over C:D. Deleting a group over D:E would leave the sheet with a
+        # group over C:D. Deleting a group over D:E leaves the sheet with a
         # depth-1 group over B:D and a depth-2 group over C:C.
         # Corresponds to the JSON property `deleteDimensionGroup`
         # @return [Google::Apis::SheetsV4::DeleteDimensionGroupRequest]
@@ -7560,7 +7560,7 @@ module Google
       class Sheet
         include Google::Apis::Core::Hashable
       
-        # The banded (i.e. alternating colors) ranges on this sheet.
+        # The banded (alternating colors) ranges on this sheet.
         # Corresponds to the JSON property `bandedRanges`
         # @return [Array<Google::Apis::SheetsV4::BandedRange>]
         attr_accessor :banded_ranges
@@ -7667,12 +7667,12 @@ module Google
       
         # The index of the sheet within the spreadsheet.
         # When adding or updating sheet properties, if this field
-        # is excluded then the sheet will be added or moved to the end
+        # is excluded then the sheet is added or moved to the end
         # of the sheet list. When updating sheet indices or inserting
         # sheets, movement is considered in "before the move" indexes.
         # For example, if there were 3 sheets (S1, S2, S3) in order to
         # move S1 ahead of S2 the index would have to be set to 2. A sheet
-        # index update request will be ignored if the requested index is
+        # index update request is ignored if the requested index is
         # identical to the sheets current index or if the requested new
         # index is equal to the current sheet index + 1.
         # Corresponds to the JSON property `index`
@@ -9317,7 +9317,7 @@ module Google
         # metadata is associated with row 5 and another row is then subsequently
         # inserted above row 5, that original metadata will still be associated with
         # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata will be deleted too.
+        # object is deleted its metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata

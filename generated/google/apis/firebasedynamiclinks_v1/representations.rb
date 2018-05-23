@@ -305,6 +305,7 @@ module Google
           property :invitation_id, as: 'invitationId'
           property :is_strong_match_executable, as: 'isStrongMatchExecutable'
           property :match_message, as: 'matchMessage'
+          property :request_ip_version, as: 'requestIpVersion'
           property :requested_link, as: 'requestedLink'
           property :resolved_link, as: 'resolvedLink'
           property :utm_campaign, as: 'utmCampaign'

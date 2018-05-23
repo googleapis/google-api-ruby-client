@@ -1237,6 +1237,26 @@ module Google
         end
       end
       
+      # The currently provided software environment on the devices under test.
+      class ProvidedSoftwareCatalog
+        include Google::Apis::Core::Hashable
+      
+        # A string representing the current version of Android Test Orchestrator that
+        # is provided by TestExecutionService. Example: "1.0.2 beta"
+        # Corresponds to the JSON property `orchestratorVersion`
+        # @return [String]
+        attr_accessor :orchestrator_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @orchestrator_version = args[:orchestrator_version] if args.key?(:orchestrator_version)
+        end
+      end
+      
       # A file or directory to install on the device before the test starts
       class RegularFile
         include Google::Apis::Core::Hashable
@@ -1465,6 +1485,11 @@ module Google
         # @return [Google::Apis::TestingV1::NetworkConfigurationCatalog]
         attr_accessor :network_configuration_catalog
       
+        # The currently provided software environment on the devices under test.
+        # Corresponds to the JSON property `softwareCatalog`
+        # @return [Google::Apis::TestingV1::ProvidedSoftwareCatalog]
+        attr_accessor :software_catalog
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1473,6 +1498,7 @@ module Google
         def update!(**args)
           @android_device_catalog = args[:android_device_catalog] if args.key?(:android_device_catalog)
           @network_configuration_catalog = args[:network_configuration_catalog] if args.key?(:network_configuration_catalog)
+          @software_catalog = args[:software_catalog] if args.key?(:software_catalog)
         end
       end
       

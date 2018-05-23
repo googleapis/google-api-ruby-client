@@ -45,6 +45,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only.
+        # String containing the Deployment Manager deployment name that was created
+        # for this binding,
+        # Corresponds to the JSON property `deploymentName`
+        # @return [String]
+        attr_accessor :deployment_name
+      
         # Configuration options for the service binding.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
@@ -56,6 +63,14 @@ module Google
         # Corresponds to the JSON property `plan_id`
         # @return [String]
         attr_accessor :plan_id
+      
+        # Output only.
+        # The resource name of the binding, e.g.
+        # projects/project_id/brokers/broker_id/service_instances/instance_id/bindings/
+        # binding_id.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
       
         # The id of the service. Must be a valid identifier of a service
         # contained in the list from a `ListServices()` call.
@@ -74,8 +89,10 @@ module Google
           @bind_resource = args[:bind_resource] if args.key?(:bind_resource)
           @binding_id = args[:binding_id] if args.key?(:binding_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_name = args[:deployment_name] if args.key?(:deployment_name)
           @parameters = args[:parameters] if args.key?(:parameters)
           @plan_id = args[:plan_id] if args.key?(:plan_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @service_id = args[:service_id] if args.key?(:service_id)
         end
       end
@@ -309,6 +326,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :credentials
       
+        # String containing the Deployment Manager deployment name that was created
+        # for this binding,
+        # Corresponds to the JSON property `deploymentName`
+        # @return [String]
+        attr_accessor :deployment_name
+      
         # Used to communicate description of the response. Usually for non-standard
         # error codes.
         # https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#
@@ -316,6 +339,14 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Output only.
+        # The resource name of the binding, e.g.
+        # projects/project_id/brokers/broker_id/service_instances/instance_id/bindings/
+        # binding_id.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
       
         # A URL to which the platform may proxy requests for the address sent with
         # bind_resource.route
@@ -340,7 +371,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @credentials = args[:credentials] if args.key?(:credentials)
+          @deployment_name = args[:deployment_name] if args.key?(:deployment_name)
           @description = args[:description] if args.key?(:description)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @route_service_url = args[:route_service_url] if args.key?(:route_service_url)
           @syslog_drain_url = args[:syslog_drain_url] if args.key?(:syslog_drain_url)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
@@ -700,6 +733,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only.
+        # String containing the Deployment Manager deployment name that was created
+        # for this instance,
+        # Corresponds to the JSON property `deploymentName`
+        # @return [String]
+        attr_accessor :deployment_name
+      
         # To return errors when GetInstance call is done via HTTP to be unified with
         # other methods.
         # Corresponds to the JSON property `description`
@@ -768,6 +808,7 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_name = args[:deployment_name] if args.key?(:deployment_name)
           @description = args[:description] if args.key?(:description)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @organization_guid = args[:organization_guid] if args.key?(:organization_guid)

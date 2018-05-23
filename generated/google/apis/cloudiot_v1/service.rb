@@ -48,62 +48,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # List devices in a device registry.
-        # @param [String] parent
-        #   The device registry path. Required. For example,
-        #   `projects/my-project/locations/us-central1/registries/my-registry`.
-        # @param [Array<String>, String] device_ids
-        #   A list of device string identifiers. If empty, it will ignore this field.
-        #   For example, `['device0', 'device12']`. This field cannot hold more than
-        #   10,000 entries.
-        # @param [Array<Fixnum>, Fixnum] device_num_ids
-        #   A list of device numerical ids. If empty, it will ignore this field. This
-        #   field cannot hold more than 10,000 entries.
-        # @param [String] field_mask
-        #   The fields of the `Device` resource to be returned in the response. The
-        #   fields `id`, and `num_id` are always returned by default, along with any
-        #   other fields specified.
-        # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response. If this value
-        #   is zero, the service will select a default size. A call may return fewer
-        #   objects than requested, but if there is a non-empty `page_token`, it
-        #   indicates that more entries are available.
-        # @param [String] page_token
-        #   The value returned by the last `ListDevicesResponse`; indicates
-        #   that this is a continuation of a prior `ListDevices` call, and
-        #   that the system should return the next page of data.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudiotV1::ListDevicesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudiotV1::ListDevicesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
-          command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
-          command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['deviceIds'] = device_ids unless device_ids.nil?
-          command.query['deviceNumIds'] = device_num_ids unless device_num_ids.nil?
-          command.query['fieldMask'] = field_mask unless field_mask.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a device registry that contains devices.
         # @param [String] parent
         #   The project and cloud region where this device registry must be created.

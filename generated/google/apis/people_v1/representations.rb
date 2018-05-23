@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SipAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Skill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,6 +719,8 @@ module Google
           collection :residences, as: 'residences', class: Google::Apis::PeopleV1::Residence, decorator: Google::Apis::PeopleV1::Residence::Representation
       
           property :resource_name, as: 'resourceName'
+          collection :sip_addresses, as: 'sipAddresses', class: Google::Apis::PeopleV1::SipAddress, decorator: Google::Apis::PeopleV1::SipAddress::Representation
+      
           collection :skills, as: 'skills', class: Google::Apis::PeopleV1::Skill, decorator: Google::Apis::PeopleV1::Skill::Representation
       
           collection :taglines, as: 'taglines', class: Google::Apis::PeopleV1::Tagline, decorator: Google::Apis::PeopleV1::Tagline::Representation
@@ -815,6 +823,17 @@ module Google
           property :current, as: 'current'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
+          property :value, as: 'value'
+        end
+      end
+      
+      class SipAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
           property :value, as: 'value'
         end
       end

@@ -619,6 +619,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only.
+        # Name of the Deployment Manager deployment used for provisioning of this
+        # service instance.
+        # Corresponds to the JSON property `deploymentName`
+        # @return [String]
+        attr_accessor :deployment_name
+      
         # The id of the service instance. Must be unique within GCP project.
         # Maximum length is 64, GUID recommended.
         # Required.
@@ -681,6 +688,7 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_name = args[:deployment_name] if args.key?(:deployment_name)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @organization_guid = args[:organization_guid] if args.key?(:organization_guid)
           @parameters = args[:parameters] if args.key?(:parameters)

@@ -166,8 +166,10 @@ module Google
           hash :bind_resource, as: 'bind_resource'
           property :binding_id, as: 'binding_id'
           property :create_time, as: 'createTime'
+          property :deployment_name, as: 'deploymentName'
           hash :parameters, as: 'parameters'
           property :plan_id, as: 'plan_id'
+          property :resource_name, as: 'resourceName'
           property :service_id, as: 'service_id'
         end
       end
@@ -231,7 +233,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :credentials, as: 'credentials'
+          property :deployment_name, as: 'deploymentName'
           property :description, as: 'description'
+          property :resource_name, as: 'resourceName'
           property :route_service_url, as: 'route_service_url'
           property :syslog_drain_url, as: 'syslog_drain_url'
           collection :volume_mounts, as: 'volume_mounts'
@@ -323,6 +327,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :context, as: 'context'
           property :create_time, as: 'createTime'
+          property :deployment_name, as: 'deploymentName'
           property :description, as: 'description'
           property :instance_id, as: 'instance_id'
           property :organization_guid, as: 'organization_guid'

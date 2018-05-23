@@ -594,6 +594,11 @@ module Google
         # @return [String]
         attr_accessor :match_message
       
+        # Which IP version the request was made from.
+        # Corresponds to the JSON property `requestIpVersion`
+        # @return [String]
+        attr_accessor :request_ip_version
+      
         # Entire FDL (short or long) attributed post-install via one of several
         # techniques (fingerprint, copy unique).
         # Corresponds to the JSON property `requestedLink`
@@ -638,6 +643,7 @@ module Google
           @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
           @is_strong_match_executable = args[:is_strong_match_executable] if args.key?(:is_strong_match_executable)
           @match_message = args[:match_message] if args.key?(:match_message)
+          @request_ip_version = args[:request_ip_version] if args.key?(:request_ip_version)
           @requested_link = args[:requested_link] if args.key?(:requested_link)
           @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
           @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)

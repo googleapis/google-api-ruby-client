@@ -3522,12 +3522,14 @@ module Google
       class SlideProperties
         include Google::Apis::Core::Hashable
       
-        # The object ID of the layout that this slide is based on.
+        # The object ID of the layout that this slide is based on. This property is
+        # read-only.
         # Corresponds to the JSON property `layoutObjectId`
         # @return [String]
         attr_accessor :layout_object_id
       
-        # The object ID of the master that this slide is based on.
+        # The object ID of the master that this slide is based on. This property is
+        # read-only.
         # Corresponds to the JSON property `masterObjectId`
         # @return [String]
         attr_accessor :master_object_id

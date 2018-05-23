@@ -169,7 +169,7 @@ module Google
         attr_accessor :transfer_type
       
         # The number of seconds to wait for an update from the data source
-        # before BigQuery marks the transfer as failed.
+        # before the Data Transfer Service marks the transfer as FAILED.
         # Corresponds to the JSON property `updateDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :update_deadline_seconds
@@ -225,7 +225,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # When parameter is a record, describes child fields.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::BigquerydatatransferV1::DataSourceParameter>]
         attr_accessor :fields
@@ -251,14 +251,13 @@ module Google
         # @return [String]
         attr_accessor :param_id
       
-        # If set to true, schema should be taken from the parent with the same
-        # parameter_id. Only applicable when parameter type is RECORD.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `recurse`
         # @return [Boolean]
         attr_accessor :recurse
         alias_method :recurse?, :recurse
       
-        # Can parameter have multiple values.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `repeated`
         # @return [Boolean]
         attr_accessor :repeated

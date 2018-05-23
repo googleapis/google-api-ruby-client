@@ -85,8 +85,8 @@ module Google
         # @return [String]
         attr_accessor :street_address
       
-        # The type of the address. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the address. The type can be custom or one of these predefined
+        # values:
         # * `home`
         # * `work`
         # * `other`
@@ -330,8 +330,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The contact group ID for the contact group membership. The contact group
-        # ID can be custom or predefined. Possible values include, but are not
-        # limited to, the following:
+        # ID can be custom or one of these predefined values:
         # *  `myContacts`
         # *  `starred`
         # *  A numerical ID for user-created groups.
@@ -580,8 +579,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The type of the email address. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the email address. The type can be custom or one of these
+        # predefined values:
         # * `home`
         # * `work`
         # * `other`
@@ -654,8 +653,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The type of the event. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the event. The type can be custom or one of these predefined
+        # values:
         # * `anniversary`
         # * `other`
         # Corresponds to the JSON property `type`
@@ -726,9 +725,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The gender for the person. The gender can be custom or predefined.
-        # Possible values include, but are not limited to, the
-        # following:
+        # The gender for the person. The gender can be custom or one of these
+        # predefined values:
         # * `male`
         # * `female`
         # * `other`
@@ -789,8 +787,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The protocol of the IM client. The protocol can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The protocol of the IM client. The protocol can be custom or one of these
+        # predefined values:
         # * `aim`
         # * `msn`
         # * `yahoo`
@@ -804,8 +802,8 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # The type of the IM client. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the IM client. The type can be custom or one of these
+        # predefined values:
         # * `home`
         # * `work`
         # * `other`
@@ -1289,8 +1287,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The type of the organization. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the organization. The type can be custom or  one of these
+        # predefined values:
         # * `work`
         # * `school`
         # Corresponds to the JSON property `type`
@@ -1467,6 +1465,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # The person's SIP addresses.
+        # Corresponds to the JSON property `sipAddresses`
+        # @return [Array<Google::Apis::PeopleV1::SipAddress>]
+        attr_accessor :sip_addresses
+      
         # The person's skills.
         # Corresponds to the JSON property `skills`
         # @return [Array<Google::Apis::PeopleV1::Skill>]
@@ -1520,6 +1523,7 @@ module Google
           @relationship_statuses = args[:relationship_statuses] if args.key?(:relationship_statuses)
           @residences = args[:residences] if args.key?(:residences)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @sip_addresses = args[:sip_addresses] if args.key?(:sip_addresses)
           @skills = args[:skills] if args.key?(:skills)
           @taglines = args[:taglines] if args.key?(:taglines)
           @urls = args[:urls] if args.key?(:urls)
@@ -1687,8 +1691,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The type of the phone number. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the phone number. The type can be custom or one of these
+        # predefined values:
         # * `home`
         # * `work`
         # * `mobile`
@@ -1806,9 +1810,8 @@ module Google
         # @return [String]
         attr_accessor :person
       
-        # The person's relation to the other person. The type can be custom or
-        # predefined.
-        # Possible values include, but are not limited to, the following values:
+        # The person's relation to the other person. The type can be custom or one of
+        # these predefined values:
         # * `spouse`
         # * `child`
         # * `mother`
@@ -1857,8 +1860,7 @@ module Google
         attr_accessor :metadata
       
         # The kind of relationship the person is looking for. The value can be custom
-        # or predefined. Possible values include, but are not limited to, the
-        # following values:
+        # or one of these predefined values:
         # * `friend`
         # * `date`
         # * `relationship`
@@ -1894,8 +1896,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The relationship status. The value can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The relationship status. The value can be custom or one of these
+        # predefined values:
         # * `single`
         # * `inARelationship`
         # * `engaged`
@@ -1950,6 +1952,52 @@ module Google
         def update!(**args)
           @current = args[:current] if args.key?(:current)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A person's SIP address. Session Initial Protocol addresses are used for VoIP
+      # communications to make voice or video calls over the internet.
+      class SipAddress
+        include Google::Apis::Core::Hashable
+      
+        # The read-only type of the SIP address translated and formatted in the
+        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the SIP address. The type can be custom or or one of these
+        # predefined values:
+        # * `home`
+        # * `work`
+        # * `mobile`
+        # * `other`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The SIP address in the
+        # [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
+        # format.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -2157,8 +2205,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The type of the URL. The type can be custom or predefined.
-        # Possible values include, but are not limited to, the following:
+        # The type of the URL. The type can be custom or one of these predefined
+        # values:
         # * `home`
         # * `work`
         # * `blog`

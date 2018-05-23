@@ -285,6 +285,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :context, as: 'context'
           property :create_time, as: 'createTime'
+          property :deployment_name, as: 'deploymentName'
           property :instance_id, as: 'instance_id'
           property :organization_guid, as: 'organization_guid'
           hash :parameters, as: 'parameters'
