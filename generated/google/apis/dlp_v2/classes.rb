@@ -126,7 +126,13 @@ module Google
         end
       end
       
-      # 
+      # An auxiliary table contains statistical information on the relative
+      # frequency of different quasi-identifiers values. It has one or several
+      # quasi-identifiers columns, and one column that indicates the relative
+      # frequency of each quasi-identifier tuple.
+      # If a tuple is present in the data but not in the auxiliary table, the
+      # corresponding relative frequency is assumed to be zero (and thus, the
+      # tuple is highly reidentifiable).
       class GooglePrivacyDlpV2AuxiliaryTable
         include Google::Apis::Core::Hashable
       
@@ -1100,9 +1106,9 @@ module Google
       class GooglePrivacyDlpV2CustomInfoType
         include Google::Apis::Core::Hashable
       
-        # Set of detection rules to apply to all findings of this custom info type.
+        # Set of detection rules to apply to all findings of this CustomInfoType.
         # Rules are applied in order that they are specified. Not supported for the
-        # `surrogate_type` custom info type.
+        # `surrogate_type` CustomInfoType.
         # Corresponds to the JSON property `detectionRules`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DetectionRule>]
         attr_accessor :detection_rules
@@ -1134,7 +1140,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
         attr_accessor :info_type
       
-        # Likelihood to return for this custom info type. This base value can be
+        # Likelihood to return for this CustomInfoType. This base value can be
         # altered by a detection rule if the finding meets the criteria specified by
         # the rule. Defaults to `VERY_LIKELY` if not specified.
         # Corresponds to the JSON property `likelihood`
@@ -1153,7 +1159,7 @@ module Google
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
-        # transformation such as `surrogate_info_type`. This custom info type does
+        # transformation such as `surrogate_info_type`. This CustomInfoType does
         # not support the use of `detection_rules`.
         # Corresponds to the JSON property `surrogateType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType]
@@ -1476,7 +1482,7 @@ module Google
         end
       end
       
-      # Rule for modifying a custom info type to alter behavior under certain
+      # Rule for modifying a CustomInfoType to alter behavior under certain
       # circumstances, depending on the specific details of the rule. Not supported
       # for the `surrogate_type` custom info type.
       class GooglePrivacyDlpV2DetectionRule
@@ -2061,7 +2067,10 @@ module Google
       class GooglePrivacyDlpV2InfoType
         include Google::Apis::Core::Hashable
       
-        # Name of the information type.
+        # Name of the information type. Either a name of your choosing when
+        # creating a CustomInfoType, or one of the names listed
+        # at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
+        # a built-in type.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2239,7 +2248,8 @@ module Google
         alias_method :include_quote?, :include_quote
       
         # Restricts what info_types to look for. The values must correspond to
-        # InfoType values returned by ListInfoTypes or found in documentation.
+        # InfoType values returned by ListInfoTypes or listed at
+        # https://cloud.google.com/dlp/docs/infotypes-reference.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -4281,7 +4291,7 @@ module Google
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the
-      # transformation such as `surrogate_info_type`. This custom info type does
+      # transformation such as `surrogate_info_type`. This CustomInfoType does
       # not support the use of `detection_rules`.
       class GooglePrivacyDlpV2SurrogateType
         include Google::Apis::Core::Hashable

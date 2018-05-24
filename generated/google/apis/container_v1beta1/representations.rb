@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryAuthorization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,13 @@ module Google
         end
       end
       
+      class BinaryAuthorization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -429,6 +442,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
+      
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           property :create_time, as: 'createTime'
@@ -486,6 +501,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
+      
+          property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :desired_image_type, as: 'desiredImageType'
           collection :desired_locations, as: 'desiredLocations'

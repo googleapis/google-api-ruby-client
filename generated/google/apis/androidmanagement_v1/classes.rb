@@ -182,6 +182,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :delegated_scopes
       
+        # Whether the app should be disabled, but app data is preserved.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # The type of installation to perform.
         # Corresponds to the JSON property `installType`
         # @return [String]
@@ -237,6 +243,7 @@ module Google
         def update!(**args)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @install_type = args[:install_type] if args.key?(:install_type)
           @lock_task_allowed = args[:lock_task_allowed] if args.key?(:lock_task_allowed)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
@@ -458,12 +465,6 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition]
         attr_accessor :non_compliance_detail_condition
       
-        # If set, the rule includes a mitigating action to disable apps specified in the
-        # list, but app data is preserved.
-        # Corresponds to the JSON property `packageNamesToDisable`
-        # @return [Array<String>]
-        attr_accessor :package_names_to_disable
-      
         def initialize(**args)
            update!(**args)
         end
@@ -473,7 +474,6 @@ module Google
           @api_level_condition = args[:api_level_condition] if args.key?(:api_level_condition)
           @disable_apps = args[:disable_apps] if args.key?(:disable_apps)
           @non_compliance_detail_condition = args[:non_compliance_detail_condition] if args.key?(:non_compliance_detail_condition)
-          @package_names_to_disable = args[:package_names_to_disable] if args.key?(:package_names_to_disable)
         end
       end
       

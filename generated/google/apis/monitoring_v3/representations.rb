@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Exemplar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Explicit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,6 +549,8 @@ module Google
           property :bucket_options, as: 'bucketOptions', class: Google::Apis::MonitoringV3::BucketOptions, decorator: Google::Apis::MonitoringV3::BucketOptions::Representation
       
           property :count, :numeric_string => true, as: 'count'
+          collection :exemplars, as: 'exemplars', class: Google::Apis::MonitoringV3::Exemplar, decorator: Google::Apis::MonitoringV3::Exemplar::Representation
+      
           property :mean, as: 'mean'
           property :range, as: 'range', class: Google::Apis::MonitoringV3::Range, decorator: Google::Apis::MonitoringV3::Range::Representation
       
@@ -561,6 +569,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Exemplar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments'
+          property :timestamp, as: 'timestamp'
+          property :value, as: 'value'
         end
       end
       

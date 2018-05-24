@@ -711,6 +711,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Must be in increasing order of |value| field. The current requirement enforced
+        # by the backend is that at most one Exemplar will fall into any bucket.
+        # Corresponds to the JSON property `exemplars`
+        # @return [Array<Google::Apis::MonitoringV3::Exemplar>]
+        attr_accessor :exemplars
+      
         # The arithmetic mean of the values in the population. If count is zero then
         # this field must be zero.
         # Corresponds to the JSON property `mean`
@@ -741,6 +747,7 @@ module Google
           @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
           @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
           @count = args[:count] if args.key?(:count)
+          @exemplars = args[:exemplars] if args.key?(:exemplars)
           @mean = args[:mean] if args.key?(:mean)
           @range = args[:range] if args.key?(:range)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
@@ -792,6 +799,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Exemplars are example points that may be used to annotate aggregated
+      # distribution values. They are metadata that gives information about a
+      # particular value added to a Distribution bucket, such as a trace ID that was
+      # active when a value was added. They may contain further information, such as a
+      # example values and timestamps, origin, etc.
+      class Exemplar
+        include Google::Apis::Core::Hashable
+      
+        # Contextual information about the example value. Examples are:Trace ID: type.
+        # googleapis.com/google.devtools.cloudtrace.v1.TraceLiteral string: type.
+        # googleapis.com/google.protobuf.StringValueLabels dropped during aggregation:
+        # type.googleapis.com/google.monitoring.v3.DroppedLabelsThere may be only a
+        # single attachment of any given message type in a single exemplar, and this is
+        # enforced by the system.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :attachments
+      
+        # The observation (sampling) time of the above value.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Value of the exemplar point. This value determines to which bucket the
+        # exemplar belongs.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

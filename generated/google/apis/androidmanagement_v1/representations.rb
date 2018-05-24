@@ -341,6 +341,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
+          property :disabled, as: 'disabled'
           property :install_type, as: 'installType'
           property :lock_task_allowed, as: 'lockTaskAllowed'
           hash :managed_configuration, as: 'managedConfiguration'
@@ -398,7 +399,6 @@ module Google
           property :disable_apps, as: 'disableApps'
           property :non_compliance_detail_condition, as: 'nonComplianceDetailCondition', class: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition, decorator: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition::Representation
       
-          collection :package_names_to_disable, as: 'packageNamesToDisable'
         end
       end
       

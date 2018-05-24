@@ -120,6 +120,27 @@ module Google
         end
       end
       
+      # Configuration for Binary Authorization.
+      class BinaryAuthorization
+        include Google::Apis::Core::Hashable
+      
+        # Enable Binary Authorization for this cluster. If enabled, all container
+        # images will be validated by Google Binauthz.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # CancelOperationRequest cancels a single operation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -217,6 +238,11 @@ module Google
         # Corresponds to the JSON property `addonsConfig`
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
+      
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
+        attr_accessor :binary_authorization
       
         # The IP address range of the container pods in this cluster, in
         # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -503,6 +529,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
@@ -556,6 +583,11 @@ module Google
         # Corresponds to the JSON property `desiredAddonsConfig`
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :desired_addons_config
+      
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `desiredBinaryAuthorization`
+        # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
+        attr_accessor :desired_binary_authorization
       
         # The desired image type for the node pool.
         # NOTE: Set the "desired_node_pool" field as well.
@@ -641,6 +673,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
+          @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
