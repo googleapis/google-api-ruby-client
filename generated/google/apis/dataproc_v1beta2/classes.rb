@@ -919,6 +919,12 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
+        # Optional. Map from parameter names to values that should be used for those
+        # parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
         # Optional. The version of workflow template to instantiate. If specified, the
         # workflow will be instantiated only if the current version of the workflow
         # template has the supplied version.This option cannot be used to instantiate a
@@ -934,6 +940,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1608,6 +1615,31 @@ module Google
         end
       end
       
+      # Configuration for parameter validation.
+      class ParameterValidation
+        include Google::Apis::Core::Hashable
+      
+        # Validation based on regular expressions.
+        # Corresponds to the JSON property `regex`
+        # @return [Google::Apis::DataprocV1beta2::RegexValidation]
+        attr_accessor :regex
+      
+        # Validation based on a list of allowed values.
+        # Corresponds to the JSON property `values`
+        # @return [Google::Apis::DataprocV1beta2::ValueValidation]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regex = args[:regex] if args.key?(:regex)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
       # on YARN.
       class PigJob
@@ -1846,6 +1878,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @queries = args[:queries] if args.key?(:queries)
+        end
+      end
+      
+      # Validation based on regular expressions.
+      class RegexValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. RE2 regular expressions used to validate the parameter's value. The
+        # provided value must match the regexes in its entirety, e.g. substring matches
+        # are not enough.
+        # Corresponds to the JSON property `regexes`
+        # @return [Array<String>]
+        attr_accessor :regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regexes = args[:regexes] if args.key?(:regexes)
         end
       end
       
@@ -2164,6 +2217,73 @@ module Google
         end
       end
       
+      # A configurable parameter that replaces one or more fields in the template.
+      class TemplateParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-friendly description of the parameter. Must not exceed 1024
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Paths to all fields that this parameter replaces. Each field may
+        # appear in at most one Parameter's fields list.Field path syntax:A field path
+        # is similar to a FieldMask. For example, a field path that references the zone
+        # field of the template's cluster selector would look like:placement.
+        # clusterSelector.zoneThe only differences between field paths and standard
+        # field masks are that:
+        # Values in maps can be referenced by key.Example: placement.clusterSelector.
+        # clusterLabels'key'
+        # Jobs in the jobs list can be referenced by step id.Example: jobs'step-id'.
+        # hadoopJob.mainJarFileUri
+        # Items in repeated fields can be referenced by zero-based index.Example: jobs'
+        # step-id'.sparkJob.args0NOTE: Maps and repeated fields may not be parameterized
+        # in their entirety. Only individual map values and items in repeated fields may
+        # be referenced. For example, the following field paths are invalid: - placement.
+        # clusterSelector.clusterLabels - jobs'step-id'.sparkJob.argsParameterizable
+        # fields:Only certain types of fields may be parameterized, specifically: -
+        # Labels - File uris - Job properties - Job arguments - Script variables - Main
+        # class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)Examples of
+        # parameterizable fields:Labels:labels'key' placement.managedCluster.labels'key'
+        # placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key'File
+        # uris:jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri
+        # jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.
+        # jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.
+        # fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0Other:jobs'step-id'.
+        # hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.
+        # scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.
+        # clusterSelector.zone
+        # Corresponds to the JSON property `fields`
+        # @return [Array<String>]
+        attr_accessor :fields
+      
+        # Required. User-friendly parameter name. This name is used as a key when
+        # providing a value for this parameter when the template is instantiated. Must
+        # contain only capital letters (A-Z), numbers (0-9), and underscores (_), and
+        # must not start with a number. The maximum length is 40 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for parameter validation.
+        # Corresponds to the JSON property `validation`
+        # @return [Google::Apis::DataprocV1beta2::ParameterValidation]
+        attr_accessor :validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+          @validation = args[:validation] if args.key?(:validation)
+        end
+      end
+      
       # Request message for TestIamPermissions method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -2201,6 +2321,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Validation based on a list of allowed values.
+      class ValueValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of allowed values for this parameter.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -2365,6 +2504,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Template parameters whose values are substituted into the template.
+        # Values for these parameters must be provided when the template is instantiated.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::DataprocV1beta2::TemplateParameter>]
+        attr_accessor :parameters
+      
         # Specifies workflow execution target.Either managed_cluster or cluster_selector
         # is required.
         # Corresponds to the JSON property `placement`
@@ -2399,6 +2544,7 @@ module Google
           @jobs = args[:jobs] if args.key?(:jobs)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @placement = args[:placement] if args.key?(:placement)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)

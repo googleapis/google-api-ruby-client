@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParameterValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PigJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,12 @@ module Google
       end
       
       class QueryList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegexValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TemplateParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +329,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -572,6 +596,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_id, as: 'instanceId'
+          hash :parameters, as: 'parameters'
           property :version, as: 'version'
         end
       end
@@ -755,6 +780,16 @@ module Google
         end
       end
       
+      class ParameterValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :regex, as: 'regex', class: Google::Apis::DataprocV1beta2::RegexValidation, decorator: Google::Apis::DataprocV1beta2::RegexValidation::Representation
+      
+          property :values, as: 'values', class: Google::Apis::DataprocV1beta2::ValueValidation, decorator: Google::Apis::DataprocV1beta2::ValueValidation::Representation
+      
+        end
+      end
+      
       class PigJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -799,6 +834,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :queries, as: 'queries'
+        end
+      end
+      
+      class RegexValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regexes, as: 'regexes'
         end
       end
       
@@ -865,6 +907,17 @@ module Google
         end
       end
       
+      class TemplateParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :fields, as: 'fields'
+          property :name, as: 'name'
+          property :validation, as: 'validation', class: Google::Apis::DataprocV1beta2::ParameterValidation, decorator: Google::Apis::DataprocV1beta2::ParameterValidation::Representation
+      
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -876,6 +929,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ValueValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
@@ -924,6 +984,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :parameters, as: 'parameters', class: Google::Apis::DataprocV1beta2::TemplateParameter, decorator: Google::Apis::DataprocV1beta2::TemplateParameter::Representation
+      
           property :placement, as: 'placement', class: Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement, decorator: Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement::Representation
       
           property :update_time, as: 'updateTime'

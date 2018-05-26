@@ -2122,6 +2122,11 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TableReference>]
         attr_accessor :referenced_tables
       
+        # [Output-only] Job resource usage breakdown by reservation.
+        # Corresponds to the JSON property `reservationUsage`
+        # @return [Array<Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage>]
+        attr_accessor :reservation_usage
+      
         # [Output-only] The schema of the results. Present only for successful dry run
         # of non-legacy SQL queries.
         # Corresponds to the JSON property `schema`
@@ -2188,6 +2193,7 @@ module Google
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
+          @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @schema = args[:schema] if args.key?(:schema)
           @statement_type = args[:statement_type] if args.key?(:statement_type)
           @timeline = args[:timeline] if args.key?(:timeline)
@@ -2196,6 +2202,31 @@ module Google
           @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
+        end
+        
+        # 
+        class ReservationUsage
+          include Google::Apis::Core::Hashable
+        
+          # [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # [Output-only] Slot-milliseconds the job spent in the given reservation.
+          # Corresponds to the JSON property `slotMs`
+          # @return [Fixnum]
+          attr_accessor :slot_ms
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @name = args[:name] if args.key?(:name)
+            @slot_ms = args[:slot_ms] if args.key?(:slot_ms)
+          end
         end
       end
       

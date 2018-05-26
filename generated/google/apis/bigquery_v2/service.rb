@@ -305,7 +305,8 @@ module Google
         #   [Required] Job ID of the job to cancel
         # @param [String] location
         #   [Experimental] The geographic location of the job. Required except for US and
-        #   EU.
+        #   EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#
+        #   specifying_your_location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -347,7 +348,8 @@ module Google
         #   [Required] Job ID of the requested job
         # @param [String] location
         #   [Experimental] The geographic location of the job. Required except for US and
-        #   EU.
+        #   EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#
+        #   specifying_your_location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -387,7 +389,8 @@ module Google
         #   [Required] Job ID of the query job
         # @param [String] location
         #   [Experimental] The geographic location where the job should run. Required
-        #   except for US and EU.
+        #   except for US and EU. See details at https://cloud.google.com/bigquery/docs/
+        #   dataset-locations#specifying_your_location.
         # @param [Fixnum] max_results
         #   Maximum number of results to read
         # @param [String] page_token

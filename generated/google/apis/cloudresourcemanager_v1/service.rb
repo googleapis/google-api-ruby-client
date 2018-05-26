@@ -823,6 +823,10 @@ module Google
         # `resourcemanager.projects.create` on the specified parent for the new
         # project. The parent is identified by a specified ResourceId,
         # which must include both an ID and a type, such as organization.
+        # This method does not associate the new project with a billing account.
+        # You can set or update the billing account associated with a project using
+        # the [`projects.updateBillingInfo`]
+        # (/billing/reference/rest/v1/projects/updateBillingInfo) method.
         # @param [Google::Apis::CloudresourcemanagerV1::Project] project_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

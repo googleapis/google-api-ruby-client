@@ -1907,6 +1907,9 @@ module Google
         #   names, aside from the prefix, contain delimiter will have their name,
         #   truncated after the delimiter, returned in prefixes. Duplicate prefixes are
         #   omitted.
+        # @param [Boolean] include_trailing_delimiter
+        #   If true, objects that end in exactly one instance of delimiter will have their
+        #   metadata included in items in addition to prefixes.
         # @param [Fixnum] max_results
         #   Maximum number of items plus prefixes to return in a single page of responses.
         #   As duplicate prefixes are omitted, fewer total results may be returned than
@@ -1943,12 +1946,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_objects(bucket, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_objects(bucket, delimiter: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'b/{bucket}/o', options)
           command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
+          command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['prefix'] = prefix unless prefix.nil?
@@ -2330,6 +2334,9 @@ module Google
         #   names, aside from the prefix, contain delimiter will have their name,
         #   truncated after the delimiter, returned in prefixes. Duplicate prefixes are
         #   omitted.
+        # @param [Boolean] include_trailing_delimiter
+        #   If true, objects that end in exactly one instance of delimiter will have their
+        #   metadata included in items in addition to prefixes.
         # @param [Fixnum] max_results
         #   Maximum number of items plus prefixes to return in a single page of responses.
         #   As duplicate prefixes are omitted, fewer total results may be returned than
@@ -2366,7 +2373,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all_objects(bucket, channel_object = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_all_objects(bucket, channel_object = nil, delimiter: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'b/{bucket}/o/watch', options)
           command.request_representation = Google::Apis::StorageV1::Channel::Representation
           command.request_object = channel_object
@@ -2374,6 +2381,7 @@ module Google
           command.response_class = Google::Apis::StorageV1::Channel
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
+          command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['prefix'] = prefix unless prefix.nil?

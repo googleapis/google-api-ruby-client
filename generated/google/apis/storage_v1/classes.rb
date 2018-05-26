@@ -41,16 +41,18 @@ module Google
         # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
         attr_accessor :cors_configurations
       
-        # Defines the default value for Event-Based hold on newly created objects in
-        # this bucket. Event-Based hold is a way to retain objects indefinitely until an
-        # event occurs, signified by the hold's release. After being released, such
-        # objects will be subject to bucket-level retention (if any). One sample use
-        # case of this flag is for banks to hold loan documents for at least 3 years
-        # after loan is paid in full. Here bucket-level retention is 3 years and the
-        # event is loan being paid in full. In this example these objects will be held
-        # intact for any number of years until the event has occurred (hold is released)
-        # and then 3 more years after that. Objects under Event-Based hold cannot be
-        # deleted, overwritten or archived until the hold is removed.
+        # The default value for event-based hold on newly created objects in this bucket.
+        # Event-based hold is a way to retain objects indefinitely until an event
+        # occurs, signified by the hold's release. After being released, such objects
+        # will be subject to bucket-level retention (if any). One sample use case of
+        # this flag is for banks to hold loan documents for at least 3 years after loan
+        # is paid in full. Here, bucket-level retention is 3 years and the event is loan
+        # being paid in full. In this example, these objects will be held intact for any
+        # number of years until the event has occurred (event-based hold on the object
+        # is released) and then 3 more years after that. That means retention duration
+        # of the objects begins from the moment event-based hold transitioned from true
+        # to false. Objects under event-based hold cannot be deleted, overwritten or
+        # archived until the hold is removed.
         # Corresponds to the JSON property `defaultEventBasedHold`
         # @return [Boolean]
         attr_accessor :default_event_based_hold
@@ -125,12 +127,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :project_number
       
-        # Defines the retention policy for a bucket. The Retention policy enforces a
-        # minimum retention time for all objects contained in the bucket, based on their
+        # The bucket's retention policy. The retention policy enforces a minimum
+        # retention time for all objects contained in the bucket, based on their
         # creation time. Any attempt to overwrite or delete objects younger than the
         # retention period will result in a PERMISSION_DENIED error. An unlocked
-        # retention policy can be modified or removed from the bucket via the
-        # UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
+        # retention policy can be modified or removed from the bucket via a storage.
+        # buckets.update operation. A locked retention policy cannot be removed or
         # shortened in duration for the lifetime of the bucket. Attempting to remove or
         # decrease period of a locked retention policy will result in a
         # PERMISSION_DENIED error.
@@ -463,19 +465,20 @@ module Google
           end
         end
         
-        # Defines the retention policy for a bucket. The Retention policy enforces a
-        # minimum retention time for all objects contained in the bucket, based on their
+        # The bucket's retention policy. The retention policy enforces a minimum
+        # retention time for all objects contained in the bucket, based on their
         # creation time. Any attempt to overwrite or delete objects younger than the
         # retention period will result in a PERMISSION_DENIED error. An unlocked
-        # retention policy can be modified or removed from the bucket via the
-        # UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
+        # retention policy can be modified or removed from the bucket via a storage.
+        # buckets.update operation. A locked retention policy cannot be removed or
         # shortened in duration for the lifetime of the bucket. Attempting to remove or
         # decrease period of a locked retention policy will result in a
         # PERMISSION_DENIED error.
         class RetentionPolicy
           include Google::Apis::Core::Hashable
         
-          # The time from which policy was enforced and effective. RFC 3339 format.
+          # Server-determined value that indicates the time from which policy was enforced
+          # and effective. This value is in RFC 3339 format.
           # Corresponds to the JSON property `effectiveTime`
           # @return [DateTime]
           attr_accessor :effective_time
@@ -486,7 +489,7 @@ module Google
           attr_accessor :is_locked
           alias_method :is_locked?, :is_locked
         
-          # Specifies the duration that objects need to be retained. Retention duration
+          # The duration in seconds that objects need to be retained. Retention duration
           # must be greater than zero and less than 100 years. Note that enforcement of
           # retention periods less than a day is not guaranteed. Such periods should only
           # be used for testing purposes.
@@ -1059,14 +1062,17 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Defines the Event-Based hold for an object. Event-Based hold is a way to
-        # retain objects indefinitely until an event occurs, signified by the hold's
-        # release. After being released, such objects will be subject to bucket-level
-        # retention (if any). One sample use case of this flag is for banks to hold loan
-        # documents for at least 3 years after loan is paid in full. Here bucket-level
-        # retention is 3 years and the event is loan being paid in full. In this example
-        # these objects will be held intact for any number of years until the event has
-        # occurred (hold is released) and then 3 more years after that.
+        # Whether an object is under event-based hold. Event-based hold is a way to
+        # retain objects until an event occurs, which is signified by the hold's release
+        # (i.e. this value is set to false). After being released (set to false), such
+        # objects will be subject to bucket-level retention (if any). One sample use
+        # case of this flag is for banks to hold loan documents for at least 3 years
+        # after loan is paid in full. Here, bucket-level retention is 3 years and the
+        # event is the loan being paid in full. In this example, these objects will be
+        # held intact for any number of years until the event has occurred (event-based
+        # hold on the object is released) and then 3 more years after that. That means
+        # retention duration of the objects begins from the moment event-based hold
+        # transitioned from true to false.
         # Corresponds to the JSON property `eventBasedHold`
         # @return [Boolean]
         attr_accessor :event_based_hold
@@ -1128,12 +1134,12 @@ module Google
         # @return [Google::Apis::StorageV1::Object::Owner]
         attr_accessor :owner
       
-        # Specifies the earliest time that the object's retention period expires. This
-        # value is server-determined and is in RFC 3339 format. Note 1: This field is
-        # not provided for objects with an active Event-Based hold, since retention
+        # A server-determined value that specifies the earliest time that the object's
+        # retention period expires. This value is in RFC 3339 format. Note 1: This field
+        # is not provided for objects with an active event-based hold, since retention
         # expiration is unknown until the hold is removed. Note 2: This value can be
-        # provided even when TemporaryHold is set (so that the user can reason about
-        # policy without having to first unset the TemporaryHold).
+        # provided even when temporary hold is set (so that the user can reason about
+        # policy without having to first unset the temporary hold).
         # Corresponds to the JSON property `retentionExpirationTime`
         # @return [DateTime]
         attr_accessor :retention_expiration_time
@@ -1153,11 +1159,11 @@ module Google
         # @return [String]
         attr_accessor :storage_class
       
-        # Defines the temporary hold for an object. This flag is used to enforce a
-        # temporary hold on an object. While it is set to true, the object is protected
-        # against deletion and overwrites. A common use case of this flag is regulatory
-        # investigations where objects need to be retained while the investigation is
-        # ongoing.
+        # Whether an object is under temporary hold. While this flag is set to true, the
+        # object is protected against deletion and overwrites. A common use case of this
+        # flag is regulatory investigations where objects need to be retained while the
+        # investigation is ongoing. Note that unlike event-based hold, temporary hold
+        # does not impact retention expiration time of an object.
         # Corresponds to the JSON property `temporaryHold`
         # @return [Boolean]
         attr_accessor :temporary_hold

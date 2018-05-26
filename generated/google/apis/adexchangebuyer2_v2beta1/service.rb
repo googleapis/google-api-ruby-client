@@ -542,7 +542,7 @@ module Google
         # @param [String] query
         #   An optional query string to filter creatives. If no filter is specified,
         #   all active creatives will be returned.
-        #   Supported queries are:
+        #   <p>Supported queries are:
         #   <ul>
         #   <li>accountId=<i>account_id_string</i>
         #   <li>creativeId=<i>creative_id_string</i>

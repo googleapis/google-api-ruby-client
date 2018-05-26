@@ -204,6 +204,12 @@ module Google
       
       class JobStatistics2
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class ReservationUsage
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -857,6 +863,8 @@ module Google
       
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :statement_type, as: 'statementType'
@@ -868,6 +876,14 @@ module Google
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
+        end
+        
+        class ReservationUsage
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :name, as: 'name'
+            property :slot_ms, :numeric_string => true, as: 'slotMs'
+          end
         end
       end
       
