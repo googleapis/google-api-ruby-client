@@ -1,3 +1,38 @@
+# 0.22.0
+* Breaking changes:
+  * Deleted `resourceviews_v1beta1`
+  * Deleted `resourceviews_v1beta2`
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidmanagement_v1`
+  * Updated `androidpublisher_v3`
+  * Updated `bigquery_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudiot_v1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dataproc_v1beta2`
+  * Updated `dlp_v2`
+  * Updated `firebasedynamiclinks_v1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `people_v1`
+  * Updated `proximitybeacon_v1beta1`
+  * Updated `pubsub_v1`
+  * Updated `servicebroker_v1alpha1`
+  * Updated `servicebroker_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `sheets_v4`
+  * Updated `slides_v1`
+  * Updated `storage_v1`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.21.2
 * Backwards compatible changes:
   * Added `dfareporting_v3_1`
