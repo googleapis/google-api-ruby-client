@@ -65,6 +65,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :commands
       
+        # Secret holds encrypted information that is only decrypted and stored in RAM
+        # by the worker VM when running the pipeline.
+        # Corresponds to the JSON property `credentials`
+        # @return [Google::Apis::GenomicsV2alpha1::Secret]
+        attr_accessor :credentials
+      
         # If specified, overrides the ENTRYPOINT specified in the container.
         # Corresponds to the JSON property `entrypoint`
         # @return [String]
@@ -158,6 +164,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commands = args[:commands] if args.key?(:commands)
+          @credentials = args[:credentials] if args.key?(:credentials)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @environment = args[:environment] if args.key?(:environment)
           @flags = args[:flags] if args.key?(:flags)
@@ -1084,6 +1091,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compute_engine = args[:compute_engine] if args.key?(:compute_engine)
+        end
+      end
+      
+      # Secret holds encrypted information that is only decrypted and stored in RAM
+      # by the worker VM when running the pipeline.
+      class Secret
+        include Google::Apis::Core::Hashable
+      
+        # The value of the cipherText response from the `encrypt` method.
+        # Corresponds to the JSON property `cipherText`
+        # @return [String]
+        attr_accessor :cipher_text
+      
+        # The name of the Cloud KMS key that will be used to decrypt the secret
+        # value.  The VM service account must have the required permissions and
+        # authentication scopes to invoke the `decrypt` method on the specified key.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cipher_text = args[:cipher_text] if args.key?(:cipher_text)
+          @key_name = args[:key_name] if args.key?(:key_name)
         end
       end
       

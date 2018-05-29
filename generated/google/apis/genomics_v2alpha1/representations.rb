@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +244,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :commands, as: 'commands'
+          property :credentials, as: 'credentials', class: Google::Apis::GenomicsV2alpha1::Secret, decorator: Google::Apis::GenomicsV2alpha1::Secret::Representation
+      
           property :entrypoint, as: 'entrypoint'
           hash :environment, as: 'environment'
           collection :flags, as: 'flags'
@@ -486,6 +494,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compute_engine, as: 'computeEngine', class: Google::Apis::GenomicsV2alpha1::ComputeEngine, decorator: Google::Apis::GenomicsV2alpha1::ComputeEngine::Representation
       
+        end
+      end
+      
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_text, as: 'cipherText'
+          property :key_name, as: 'keyName'
         end
       end
       
