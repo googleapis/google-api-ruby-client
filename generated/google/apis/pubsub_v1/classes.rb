@@ -133,7 +133,6 @@ module Google
       end
       
       # Response for the `ListSnapshots` method.<br><br>
-      # Lists the names of the snapshots on this topic.<br><br>
       # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
@@ -190,7 +189,6 @@ module Google
       end
       
       # Response for the `ListTopicSnapshots` method.<br><br>
-      # Lists the names of the snapshots on this topic.<br><br>
       # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
@@ -606,7 +604,6 @@ module Google
       end
       
       # Request for the `Seek` method.<br><br>
-      # Lists the names of the snapshots on this topic.<br><br>
       # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
@@ -715,7 +712,6 @@ module Google
       end
       
       # A snapshot resource.<br><br>
-      # Lists the names of the snapshots on this topic.<br><br>
       # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
@@ -789,7 +785,6 @@ module Google
         # of acknowledged messages, and thus configures how far back in time a `Seek`
         # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
         # minutes.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -816,7 +811,6 @@ module Google
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
         # window.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -915,7 +909,6 @@ module Google
       end
       
       # Request for the UpdateSnapshot method.<br><br>
-      # Lists the names of the snapshots on this topic.<br><br>
       # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
@@ -923,7 +916,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A snapshot resource.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.

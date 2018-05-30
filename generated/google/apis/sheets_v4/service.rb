@@ -748,7 +748,8 @@ module Google
         #   Determines how dates, times, and durations in the response should be
         #   rendered. This is ignored if response_value_render_option is
         #   FORMATTED_VALUE.
-        #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        #   The default dateTime render option is
+        #   DateTimeRenderOption.SERIAL_NUMBER.
         # @param [String] response_value_render_option
         #   Determines how values in the response should be rendered.
         #   The default render option is ValueRenderOption.FORMATTED_VALUE.

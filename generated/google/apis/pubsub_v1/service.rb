@@ -48,7 +48,6 @@ module Google
         end
         
         # Creates a snapshot from the requested subscription.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -101,7 +100,6 @@ module Google
         end
         
         # Removes an existing snapshot. <br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -140,7 +138,6 @@ module Google
         end
         
         # Gets the configuration details of a snapshot.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -208,7 +205,6 @@ module Google
         end
         
         # Lists the existing snapshots.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -251,7 +247,6 @@ module Google
         end
         
         # Updates an existing snapshot.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -401,7 +396,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a subscription to a given topic.
+        # Creates a subscription to a given topic. See the
+        # <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
         # If the subscription already exists, returns `ALREADY_EXISTS`.
         # If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         # If the name is not provided in the request, the server will assign a random
@@ -739,7 +735,6 @@ module Google
         
         # Seeks an existing subscription to a point in time or to a given snapshot,
         # whichever is provided in the request.<br><br>
-        # Lists the names of the snapshots on this topic.<br><br>
         # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -849,7 +844,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates the given topic with the given name.
+        # Creates the given topic with the given name. See the
+        # <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
         # @param [String] name
         #   The name of the topic. It must have the format
         #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,

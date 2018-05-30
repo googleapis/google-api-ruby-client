@@ -1659,8 +1659,7 @@ module Google
       class Track
         include Google::Apis::Core::Hashable
       
-        # Identifier for this track. One of "alpha", "beta", "production", "rollout" or "
-        # internal".
+        # Identifier for this track.
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
