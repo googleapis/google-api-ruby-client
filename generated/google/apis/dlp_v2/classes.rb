@@ -75,6 +75,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CategoricalStatsResult]
         attr_accessor :categorical_stats_result
       
+        # Result of the δ-presence computation. Note that these results are an
+        # estimation, not exact values.
+        # Corresponds to the JSON property `deltaPresenceEstimationResult`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationResult]
+        attr_accessor :delta_presence_estimation_result
+      
         # Result of the k-anonymity computation.
         # Corresponds to the JSON property `kAnonymityResult`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KAnonymityResult]
@@ -117,6 +123,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @categorical_stats_result = args[:categorical_stats_result] if args.key?(:categorical_stats_result)
+          @delta_presence_estimation_result = args[:delta_presence_estimation_result] if args.key?(:delta_presence_estimation_result)
           @k_anonymity_result = args[:k_anonymity_result] if args.key?(:k_anonymity_result)
           @k_map_estimation_result = args[:k_map_estimation_result] if args.key?(:k_map_estimation_result)
           @l_diversity_result = args[:l_diversity_result] if args.key?(:l_diversity_result)
@@ -1482,13 +1489,163 @@ module Google
         end
       end
       
+      # δ-presence metric, used to estimate how likely it is for an attacker to
+      # figure out that one given individual appears in a de-identified dataset.
+      # Similarly to the k-map metric, we cannot compute δ-presence exactly without
+      # knowing the attack dataset, so we use a statistical model instead.
+      class GooglePrivacyDlpV2DeltaPresenceEstimationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Several auxiliary tables can be used in the analysis. Each custom_tag
+        # used to tag a quasi-identifiers field must appear in exactly one
+        # field of one auxiliary table.
+        # Corresponds to the JSON property `auxiliaryTables`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StatisticalTable>]
+        attr_accessor :auxiliary_tables
+      
+        # Fields considered to be quasi-identifiers. No two fields can have the
+        # same tag. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiId>]
+        attr_accessor :quasi_ids
+      
+        # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
+        # Required if no column is tagged with a region-specific InfoType (like
+        # US_ZIP_5) or a region code.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_tables = args[:auxiliary_tables] if args.key?(:auxiliary_tables)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A DeltaPresenceEstimationHistogramBucket message with the following
+      # values:
+      # min_probability: 0.1
+      # max_probability: 0.2
+      # frequency: 42
+      # means that there are 42 records for which δ is in [0.1, 0.2). An
+      # important particular case is when min_probability = max_probability = 1:
+      # then, every individual who shares this quasi-identifier combination is in
+      # the dataset.
+      class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Number of records within these probability bounds.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Total number of distinct quasi-identifier tuple values in this bucket.
+        # Corresponds to the JSON property `bucketValueCount`
+        # @return [Fixnum]
+        attr_accessor :bucket_value_count
+      
+        # Sample of quasi-identifier tuple values in this bucket. The total
+        # number of classes returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>]
+        attr_accessor :bucket_values
+      
+        # Always greater than or equal to min_probability.
+        # Corresponds to the JSON property `maxProbability`
+        # @return [Float]
+        attr_accessor :max_probability
+      
+        # Between 0 and 1.
+        # Corresponds to the JSON property `minProbability`
+        # @return [Float]
+        attr_accessor :min_probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_value_count = args[:bucket_value_count] if args.key?(:bucket_value_count)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @max_probability = args[:max_probability] if args.key?(:max_probability)
+          @min_probability = args[:min_probability] if args.key?(:min_probability)
+        end
+      end
+      
+      # A tuple of values for the quasi-identifier columns.
+      class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
+        include Google::Apis::Core::Hashable
+      
+        # The estimated probability that a given individual sharing these
+        # quasi-identifier values is in the dataset. This value, typically called
+        # δ, is the ratio between the number of records in the dataset with these
+        # quasi-identifier values, and the total number of individuals (inside
+        # *and* outside the dataset) with these quasi-identifier values.
+        # For example, if there are 15 individuals in the dataset who share the
+        # same quasi-identifier values, and an estimated 100 people in the entire
+        # population with these values, then δ is 0.15.
+        # Corresponds to the JSON property `estimatedProbability`
+        # @return [Float]
+        attr_accessor :estimated_probability
+      
+        # The quasi-identifier values.
+        # Corresponds to the JSON property `quasiIdsValues`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
+        attr_accessor :quasi_ids_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_probability = args[:estimated_probability] if args.key?(:estimated_probability)
+          @quasi_ids_values = args[:quasi_ids_values] if args.key?(:quasi_ids_values)
+        end
+      end
+      
+      # Result of the δ-presence computation. Note that these results are an
+      # estimation, not exact values.
+      class GooglePrivacyDlpV2DeltaPresenceEstimationResult
+        include Google::Apis::Core::Hashable
+      
+        # The intervals [min_probability, max_probability) do not overlap. If a
+        # value doesn't correspond to any such interval, the associated frequency
+        # is zero. For example, the following records:
+        # `min_probability: 0, max_probability: 0.1, frequency: 17`
+        # `min_probability: 0.2, max_probability: 0.3, frequency: 42`
+        # `min_probability: 0.3, max_probability: 0.4, frequency: 99`
+        # mean that there are no record with an estimated probability in [0.1, 0.2)
+        # nor larger or equal to 0.4.
+        # Corresponds to the JSON property `deltaPresenceEstimationHistogram`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>]
+        attr_accessor :delta_presence_estimation_histogram
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delta_presence_estimation_histogram = args[:delta_presence_estimation_histogram] if args.key?(:delta_presence_estimation_histogram)
+        end
+      end
+      
       # Rule for modifying a CustomInfoType to alter behavior under certain
       # circumstances, depending on the specific details of the rule. Not supported
       # for the `surrogate_type` custom info type.
       class GooglePrivacyDlpV2DetectionRule
         include Google::Apis::Core::Hashable
       
-        # Detection rule that adjusts the likelihood of findings within a certain
+        # The rule that adjusts the likelihood of findings within a certain
         # proximity of hotwords.
         # Corresponds to the JSON property `hotwordRule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule]
@@ -1977,7 +2134,7 @@ module Google
         end
       end
       
-      # Detection rule that adjusts the likelihood of findings within a certain
+      # The rule that adjusts the likelihood of findings within a certain
       # proximity of hotwords.
       class GooglePrivacyDlpV2HotwordRule
         include Google::Apis::Core::Hashable
@@ -3534,6 +3691,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CategoricalStatsConfig]
         attr_accessor :categorical_stats_config
       
+        # δ-presence metric, used to estimate how likely it is for an attacker to
+        # figure out that one given individual appears in a de-identified dataset.
+        # Similarly to the k-map metric, we cannot compute δ-presence exactly without
+        # knowing the attack dataset, so we use a statistical model instead.
+        # Corresponds to the JSON property `deltaPresenceEstimationConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationConfig]
+        attr_accessor :delta_presence_estimation_config
+      
         # k-anonymity metric, used for analysis of reidentification risk.
         # Corresponds to the JSON property `kAnonymityConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KAnonymityConfig]
@@ -3568,6 +3733,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @categorical_stats_config = args[:categorical_stats_config] if args.key?(:categorical_stats_config)
+          @delta_presence_estimation_config = args[:delta_presence_estimation_config] if args.key?(:delta_presence_estimation_config)
           @k_anonymity_config = args[:k_anonymity_config] if args.key?(:k_anonymity_config)
           @k_map_estimation_config = args[:k_map_estimation_config] if args.key?(:k_map_estimation_config)
           @l_diversity_config = args[:l_diversity_config] if args.key?(:l_diversity_config)
@@ -3646,9 +3812,80 @@ module Google
         end
       end
       
+      # A column with a semantic tag attached.
+      class GooglePrivacyDlpV2QuasiId
+        include Google::Apis::Core::Hashable
+      
+        # A column can be tagged with a custom tag. In this case, the user must
+        # indicate an auxiliary table that contains statistical information on
+        # the possible values of this column (below).
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :field
+      
+        # A generic empty message that you can re-use to avoid defining duplicated
+        # empty messages in your APIs. A typical example is to use it as the request
+        # or the response type of an API method. For instance:
+        # service Foo `
+        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        # `
+        # The JSON representation for `Empty` is empty JSON object ````.
+        # Corresponds to the JSON property `inferred`
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        attr_accessor :inferred
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
+          @inferred = args[:inferred] if args.key?(:inferred)
+          @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
       # A quasi-identifier column has a custom_tag, used to know which column
       # in the data corresponds to which column in the statistical model.
       class GooglePrivacyDlpV2QuasiIdField
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # A quasi-identifier column has a custom_tag, used to know which column
+      # in the data corresponds to which column in the statistical model.
+      class GooglePrivacyDlpV2QuasiIdentifierField
         include Google::Apis::Core::Hashable
       
         # 
@@ -4209,6 +4446,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @recurrence_period_duration = args[:recurrence_period_duration] if args.key?(:recurrence_period_duration)
+        end
+      end
+      
+      # An auxiliary table containing statistical information on the relative
+      # frequency of different quasi-identifiers values. It has one or several
+      # quasi-identifiers columns, and one column that indicates the relative
+      # frequency of each quasi-identifier tuple.
+      # If a tuple is present in the data but not in the auxiliary table, the
+      # corresponding relative frequency is assumed to be zero (and thus, the
+      # tuple is highly reidentifiable).
+      class GooglePrivacyDlpV2StatisticalTable
+        include Google::Apis::Core::Hashable
+      
+        # Quasi-identifier columns. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiIdentifierField>]
+        attr_accessor :quasi_ids
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `relativeFrequency`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :relative_frequency
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @relative_frequency = args[:relative_frequency] if args.key?(:relative_frequency)
+          @table = args[:table] if args.key?(:table)
         end
       end
       

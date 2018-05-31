@@ -1639,8 +1639,7 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::TrackRelease>]
         attr_accessor :releases
       
-        # Identifier for this track. One of "alpha", "beta", "production", "rollout" or "
-        # internal".
+        # Identifier for this track.
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
@@ -1677,7 +1676,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Fraction of users who are eligible to receive the release. 0 <= fraction < 1.
+        # Fraction of users who are eligible to receive the release. 0 < fraction < 1.
         # To be set, release status must be "inProgress" or "halted".
         # Corresponds to the JSON property `userFraction`
         # @return [Float]
