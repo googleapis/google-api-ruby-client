@@ -22,6 +22,12 @@ module Google
   module Apis
     module ContentV2sandbox
       
+      class Amount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,18 @@ module Google
       end
       
       class Errors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InvoiceSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InvoiceSummaryAdditionalChargeSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +167,90 @@ module Google
       end
       
       class OrderShipmentLineItemShipment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCreateChargeInvoiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCreateChargeInvoiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCreateRefundInvoiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCreateRefundInvoiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyAuthApprovedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyAuthApprovedResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyAuthDeclinedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyAuthDeclinedResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyChargeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyChargeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyRefundRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderpaymentsNotifyRefundResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +550,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Promotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShipmentInvoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShipmentInvoiceLineItemInvoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestOrder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +604,34 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnitInvoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnitInvoiceAdditionalCharge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnitInvoiceTaxLine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Amount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pretax, as: 'pretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :tax, as: 'tax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+        end
+      end
+      
       class Error
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -500,6 +648,33 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::ContentV2sandbox::Error, decorator: Google::Apis::ContentV2sandbox::Error::Representation
       
           property :message, as: 'message'
+        end
+      end
+      
+      class InvoiceSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_charge_summaries, as: 'additionalChargeSummaries', class: Google::Apis::ContentV2sandbox::InvoiceSummaryAdditionalChargeSummary, decorator: Google::Apis::ContentV2sandbox::InvoiceSummaryAdditionalChargeSummary::Representation
+      
+          property :customer_balance, as: 'customerBalance', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          property :google_balance, as: 'googleBalance', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          property :merchant_balance, as: 'merchantBalance', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          property :product_total, as: 'productTotal', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          collection :promotion_summaries, as: 'promotionSummaries', class: Google::Apis::ContentV2sandbox::Promotion, decorator: Google::Apis::ContentV2sandbox::Promotion::Representation
+      
+        end
+      end
+      
+      class InvoiceSummaryAdditionalChargeSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_amount, as: 'totalAmount', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -776,6 +951,130 @@ module Google
         end
       end
       
+      class OrderinvoicesCreateChargeInvoiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_id, as: 'invoiceId'
+          property :invoice_summary, as: 'invoiceSummary', class: Google::Apis::ContentV2sandbox::InvoiceSummary, decorator: Google::Apis::ContentV2sandbox::InvoiceSummary::Representation
+      
+          collection :line_item_invoices, as: 'lineItemInvoices', class: Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice, decorator: Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice::Representation
+      
+          property :operation_id, as: 'operationId'
+          property :shipment_group_id, as: 'shipmentGroupId'
+        end
+      end
+      
+      class OrderinvoicesCreateChargeInvoiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderinvoicesCreateRefundInvoiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_id, as: 'invoiceId'
+          property :operation_id, as: 'operationId'
+          property :refund_only_option, as: 'refundOnlyOption', class: Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption, decorator: Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption::Representation
+      
+          property :return_option, as: 'returnOption', class: Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption, decorator: Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption::Representation
+      
+          collection :shipment_invoices, as: 'shipmentInvoices', class: Google::Apis::ContentV2sandbox::ShipmentInvoice, decorator: Google::Apis::ContentV2sandbox::ShipmentInvoice::Representation
+      
+        end
+      end
+      
+      class OrderinvoicesCreateRefundInvoiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class OrderpaymentsNotifyAuthApprovedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_amount_pretax, as: 'authAmountPretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :auth_amount_tax, as: 'authAmountTax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+        end
+      end
+      
+      class OrderpaymentsNotifyAuthApprovedResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderpaymentsNotifyAuthDeclinedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :decline_reason, as: 'declineReason'
+        end
+      end
+      
+      class OrderpaymentsNotifyAuthDeclinedResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderpaymentsNotifyChargeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charge_state, as: 'chargeState'
+          property :invoice_id, as: 'invoiceId'
+        end
+      end
+      
+      class OrderpaymentsNotifyChargeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderpaymentsNotifyRefundRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_id, as: 'invoiceId'
+          property :refund_state, as: 'refundState'
+        end
+      end
+      
+      class OrderpaymentsNotifyRefundResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OrdersAcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,6 +1306,7 @@ module Google
           property :carrier, as: 'carrier'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment, decorator: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment::Representation
       
+          property :shipment_group_id, as: 'shipmentGroupId'
           property :shipment_id, as: 'shipmentId'
           collection :shipment_infos, as: 'shipmentInfos', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo::Representation
       
@@ -1230,6 +1530,7 @@ module Google
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment, decorator: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment::Representation
       
           property :operation_id, as: 'operationId'
+          property :shipment_group_id, as: 'shipmentGroupId'
           property :shipment_id, as: 'shipmentId'
           collection :shipment_infos, as: 'shipmentInfos', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo::Representation
       
@@ -1304,6 +1605,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency, as: 'currency'
           property :value, as: 'value'
+        end
+      end
+      
+      class Promotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :promotion_amount, as: 'promotionAmount', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          property :promotion_id, as: 'promotionId'
+        end
+      end
+      
+      class ShipmentInvoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_summary, as: 'invoiceSummary', class: Google::Apis::ContentV2sandbox::InvoiceSummary, decorator: Google::Apis::ContentV2sandbox::InvoiceSummary::Representation
+      
+          collection :line_item_invoices, as: 'lineItemInvoices', class: Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice, decorator: Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice::Representation
+      
+          property :shipment_group_id, as: 'shipmentGroupId'
+        end
+      end
+      
+      class ShipmentInvoiceLineItemInvoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          collection :shipment_unit_ids, as: 'shipmentUnitIds'
+          property :unit_invoice, as: 'unitInvoice', class: Google::Apis::ContentV2sandbox::UnitInvoice, decorator: Google::Apis::ContentV2sandbox::UnitInvoice::Representation
+      
         end
       end
       
@@ -1392,6 +1724,41 @@ module Google
           property :last_four_digits, as: 'lastFourDigits'
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :type, as: 'type'
+        end
+      end
+      
+      class UnitInvoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_charges, as: 'additionalCharges', class: Google::Apis::ContentV2sandbox::UnitInvoiceAdditionalCharge, decorator: Google::Apis::ContentV2sandbox::UnitInvoiceAdditionalCharge::Representation
+      
+          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2sandbox::Promotion, decorator: Google::Apis::ContentV2sandbox::Promotion::Representation
+      
+          property :unit_price_pretax, as: 'unitPricePretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          collection :unit_price_taxes, as: 'unitPriceTaxes', class: Google::Apis::ContentV2sandbox::UnitInvoiceTaxLine, decorator: Google::Apis::ContentV2sandbox::UnitInvoiceTaxLine::Representation
+      
+        end
+      end
+      
+      class UnitInvoiceAdditionalCharge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_charge_amount, as: 'additionalChargeAmount', class: Google::Apis::ContentV2sandbox::Amount, decorator: Google::Apis::ContentV2sandbox::Amount::Representation
+      
+          collection :additional_charge_promotions, as: 'additionalChargePromotions', class: Google::Apis::ContentV2sandbox::Promotion, decorator: Google::Apis::ContentV2sandbox::Promotion::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class UnitInvoiceTaxLine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :tax_name, as: 'taxName'
+          property :tax_type, as: 'taxType'
         end
       end
     end

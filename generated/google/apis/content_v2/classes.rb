@@ -1093,6 +1093,31 @@ module Google
       end
       
       # 
+      class Amount
+        include Google::Apis::Core::Hashable
+      
+        # Value before taxes.
+        # Corresponds to the JSON property `pretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :pretax
+      
+        # Tax value.
+        # Corresponds to the JSON property `tax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :tax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pretax = args[:pretax] if args.key?(:pretax)
+          @tax = args[:tax] if args.key?(:tax)
+        end
+      end
+      
+      # 
       class CarrierRate
         include Google::Apis::Core::Hashable
       
@@ -2576,6 +2601,88 @@ module Google
       end
       
       # 
+      class InvoiceSummary
+        include Google::Apis::Core::Hashable
+      
+        # Summary of the total amounts of the additional charges.
+        # Corresponds to the JSON property `additionalChargeSummaries`
+        # @return [Array<Google::Apis::ContentV2::InvoiceSummaryAdditionalChargeSummary>]
+        attr_accessor :additional_charge_summaries
+      
+        # Customer balance on this invoice. A positive amount means the customer is
+        # paying, a negative one means the customer is receiving money. Note that it
+        # must always be true that merchant_balance + customer_balance + google_balance =
+        # 0.
+        # Corresponds to the JSON property `customerBalance`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :customer_balance
+      
+        # Google balance on this invoice. A positive amount means Google is paying, a
+        # negative one means Google is receiving money. Note that it must always be true
+        # that merchant_balance + customer_balance + google_balance = 0.
+        # Corresponds to the JSON property `googleBalance`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :google_balance
+      
+        # Merchant balance on this invoice. A positive amount means the merchant is
+        # paying, a negative one means the merchant is receiving money. Note that it
+        # must always be true that merchant_balance + customer_balance + google_balance =
+        # 0.
+        # Corresponds to the JSON property `merchantBalance`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :merchant_balance
+      
+        # Total price for the product.
+        # Corresponds to the JSON property `productTotal`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :product_total
+      
+        # Summary for each promotion.
+        # Corresponds to the JSON property `promotionSummaries`
+        # @return [Array<Google::Apis::ContentV2::Promotion>]
+        attr_accessor :promotion_summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_charge_summaries = args[:additional_charge_summaries] if args.key?(:additional_charge_summaries)
+          @customer_balance = args[:customer_balance] if args.key?(:customer_balance)
+          @google_balance = args[:google_balance] if args.key?(:google_balance)
+          @merchant_balance = args[:merchant_balance] if args.key?(:merchant_balance)
+          @product_total = args[:product_total] if args.key?(:product_total)
+          @promotion_summaries = args[:promotion_summaries] if args.key?(:promotion_summaries)
+        end
+      end
+      
+      # 
+      class InvoiceSummaryAdditionalChargeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Total additional charge for this type.
+        # Corresponds to the JSON property `totalAmount`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :total_amount
+      
+        # Type of the additional charge.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_amount = args[:total_amount] if args.key?(:total_amount)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
       class LiaAboutPageSettings
         include Google::Apis::Core::Hashable
       
@@ -2816,15 +2923,15 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
+        # The ID of POS data provider. Required only for SetPosProvider.
+        # Corresponds to the JSON property `posDataProviderId`
+        # @return [Fixnum]
+        attr_accessor :pos_data_provider_id
+      
         # The account ID by which this merchant is known to the POS provider.
         # Corresponds to the JSON property `posExternalAccountId`
         # @return [String]
         attr_accessor :pos_external_account_id
-      
-        # The ID of POS provider. Required only for SetPosProvider.
-        # Corresponds to the JSON property `posProviderId`
-        # @return [Fixnum]
-        attr_accessor :pos_provider_id
       
         def initialize(**args)
            update!(**args)
@@ -2841,8 +2948,8 @@ module Google
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @pos_data_provider_id = args[:pos_data_provider_id] if args.key?(:pos_data_provider_id)
           @pos_external_account_id = args[:pos_external_account_id] if args.key?(:pos_external_account_id)
-          @pos_provider_id = args[:pos_provider_id] if args.key?(:pos_provider_id)
         end
       end
       
@@ -2902,10 +3009,10 @@ module Google
         # @return [Google::Apis::ContentV2::LiaSettings]
         attr_accessor :lia_settings
       
-        # The list of POS providers.
-        # Corresponds to the JSON property `posProviders`
-        # @return [Array<Google::Apis::ContentV2::PosProviders>]
-        attr_accessor :pos_providers
+        # The list of POS data providers.
+        # Corresponds to the JSON property `posDataProviders`
+        # @return [Array<Google::Apis::ContentV2::PosDataProviders>]
+        attr_accessor :pos_data_providers
       
         def initialize(**args)
            update!(**args)
@@ -2918,7 +3025,7 @@ module Google
           @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
           @kind = args[:kind] if args.key?(:kind)
           @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
-          @pos_providers = args[:pos_providers] if args.key?(:pos_providers)
+          @pos_data_providers = args[:pos_data_providers] if args.key?(:pos_data_providers)
         end
       end
       
@@ -4169,6 +4276,394 @@ module Google
       end
       
       # 
+      class OrderinvoicesCreateChargeInvoiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the invoice.
+        # Corresponds to the JSON property `invoiceId`
+        # @return [String]
+        attr_accessor :invoice_id
+      
+        # Invoice summary.
+        # Corresponds to the JSON property `invoiceSummary`
+        # @return [Google::Apis::ContentV2::InvoiceSummary]
+        attr_accessor :invoice_summary
+      
+        # Invoice details per line item.
+        # Corresponds to the JSON property `lineItemInvoices`
+        # @return [Array<Google::Apis::ContentV2::ShipmentInvoiceLineItemInvoice>]
+        attr_accessor :line_item_invoices
+      
+        # The ID of the operation, unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # ID of the shipment group.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @invoice_summary = args[:invoice_summary] if args.key?(:invoice_summary)
+          @line_item_invoices = args[:line_item_invoices] if args.key?(:line_item_invoices)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
+        end
+      end
+      
+      # 
+      class OrderinvoicesCreateChargeInvoiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderinvoicesCreateChargeInvoiceResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderinvoicesCreateRefundInvoiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the invoice.
+        # Corresponds to the JSON property `invoiceId`
+        # @return [String]
+        attr_accessor :invoice_id
+      
+        # The ID of the operation, unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Option to create a refund-only invoice. Exactly one of refund_option and
+        # return_option must be provided.
+        # Corresponds to the JSON property `refundOnlyOption`
+        # @return [Google::Apis::ContentV2::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption]
+        attr_accessor :refund_only_option
+      
+        # Option to create an invoice for a refund and mark all items within the invoice
+        # as returned. Exactly one of refund_option and return_option must be provided.
+        # Corresponds to the JSON property `returnOption`
+        # @return [Google::Apis::ContentV2::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption]
+        attr_accessor :return_option
+      
+        # Invoice details for different shipment groups.
+        # Corresponds to the JSON property `shipmentInvoices`
+        # @return [Array<Google::Apis::ContentV2::ShipmentInvoice>]
+        attr_accessor :shipment_invoices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @refund_only_option = args[:refund_only_option] if args.key?(:refund_only_option)
+          @return_option = args[:return_option] if args.key?(:return_option)
+          @shipment_invoices = args[:shipment_invoices] if args.key?(:shipment_invoices)
+        end
+      end
+      
+      # 
+      class OrderinvoicesCreateRefundInvoiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderinvoicesCreateRefundInvoiceResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional description of the refund reason.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Reason for the refund.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # 
+      class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional description of the return reason.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyAuthApprovedRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `authAmountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :auth_amount_pretax
+      
+        # 
+        # Corresponds to the JSON property `authAmountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :auth_amount_tax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_amount_pretax = args[:auth_amount_pretax] if args.key?(:auth_amount_pretax)
+          @auth_amount_tax = args[:auth_amount_tax] if args.key?(:auth_amount_tax)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyAuthApprovedResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderpaymentsNotifyAuthApprovedResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyAuthDeclinedRequest
+        include Google::Apis::Core::Hashable
+      
+        # Reason why payment authorization was declined.
+        # Corresponds to the JSON property `declineReason`
+        # @return [String]
+        attr_accessor :decline_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decline_reason = args[:decline_reason] if args.key?(:decline_reason)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyAuthDeclinedResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderpaymentsNotifyAuthDeclinedResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyChargeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether charge was successful.
+        # Corresponds to the JSON property `chargeState`
+        # @return [String]
+        attr_accessor :charge_state
+      
+        # Invoice ID from orderInvoice service that corresponds to the charge.
+        # Corresponds to the JSON property `invoiceId`
+        # @return [String]
+        attr_accessor :invoice_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charge_state = args[:charge_state] if args.key?(:charge_state)
+          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyChargeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderpaymentsNotifyChargeResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyRefundRequest
+        include Google::Apis::Core::Hashable
+      
+        # Invoice ID from orderInvoice service that corresponds to the charge.
+        # Corresponds to the JSON property `invoiceId`
+        # @return [String]
+        attr_accessor :invoice_id
+      
+        # Whether refund was successful.
+        # Corresponds to the JSON property `refundState`
+        # @return [String]
+        attr_accessor :refund_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @refund_state = args[:refund_state] if args.key?(:refund_state)
+        end
+      end
+      
+      # 
+      class OrderpaymentsNotifyRefundResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderpaymentsNotifyRefundResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrdersAcknowledgeRequest
         include Google::Apis::Core::Hashable
       
@@ -4962,6 +5457,12 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrderShipmentLineItemShipment>]
         attr_accessor :line_items
       
+        # ID of the shipment group. Required for orders that use the orderinvoices
+        # service.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
         # Deprecated. Please use shipmentInfo instead. The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
@@ -4986,6 +5487,7 @@ module Google
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @shipment_infos = args[:shipment_infos] if args.key?(:shipment_infos)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -5750,6 +6252,12 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
+        # ID of the shipment group. Required for orders that use the orderinvoices
+        # service.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
         # Deprecated. Please use shipmentInfo instead. The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
@@ -5775,6 +6283,7 @@ module Google
           @carrier = args[:carrier] if args.key?(:carrier)
           @line_items = args[:line_items] if args.key?(:line_items)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @shipment_infos = args[:shipment_infos] if args.key?(:shipment_infos)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -6034,7 +6543,7 @@ module Google
         # @return [Google::Apis::ContentV2::PosInventory]
         attr_accessor :inventory
       
-        # The ID of the POS provider.
+        # The ID of the POS data provider.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
         attr_accessor :merchant_id
@@ -6154,6 +6663,62 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @sale = args[:sale] if args.key?(:sale)
           @store = args[:store] if args.key?(:store)
+        end
+      end
+      
+      # 
+      class PosDataProviders
+        include Google::Apis::Core::Hashable
+      
+        # Country code.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # A list of POS data providers.
+        # Corresponds to the JSON property `posDataProviders`
+        # @return [Array<Google::Apis::ContentV2::PosDataProvidersPosDataProvider>]
+        attr_accessor :pos_data_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @pos_data_providers = args[:pos_data_providers] if args.key?(:pos_data_providers)
+        end
+      end
+      
+      # 
+      class PosDataProvidersPosDataProvider
+        include Google::Apis::Core::Hashable
+      
+        # The display name of Pos data Provider.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The full name of this POS data Provider.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        # The ID of the account.
+        # Corresponds to the JSON property `providerId`
+        # @return [Fixnum]
+        attr_accessor :provider_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
+          @provider_id = args[:provider_id] if args.key?(:provider_id)
         end
       end
       
@@ -6380,62 +6945,6 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @resources = args[:resources] if args.key?(:resources)
-        end
-      end
-      
-      # 
-      class PosProviders
-        include Google::Apis::Core::Hashable
-      
-        # Country code.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # A list of POS providers.
-        # Corresponds to the JSON property `posProviders`
-        # @return [Array<Google::Apis::ContentV2::PosProvidersPosProvider>]
-        attr_accessor :pos_providers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country = args[:country] if args.key?(:country)
-          @pos_providers = args[:pos_providers] if args.key?(:pos_providers)
-        end
-      end
-      
-      # 
-      class PosProvidersPosProvider
-        include Google::Apis::Core::Hashable
-      
-        # The display name of Pos Provider.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The full name of this POS Provider.
-        # Corresponds to the JSON property `fullName`
-        # @return [String]
-        attr_accessor :full_name
-      
-        # The ID of the account.
-        # Corresponds to the JSON property `providerId`
-        # @return [Fixnum]
-        attr_accessor :provider_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @full_name = args[:full_name] if args.key?(:full_name)
-          @provider_id = args[:provider_id] if args.key?(:provider_id)
         end
       end
       
@@ -8171,6 +8680,32 @@ module Google
       end
       
       # 
+      class Promotion
+        include Google::Apis::Core::Hashable
+      
+        # Amount of the promotion. The values here are the promotion applied to the unit
+        # price pretax and to the total of the tax amounts.
+        # Corresponds to the JSON property `promotionAmount`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :promotion_amount
+      
+        # ID of the promotion.
+        # Corresponds to the JSON property `promotionId`
+        # @return [String]
+        attr_accessor :promotion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @promotion_amount = args[:promotion_amount] if args.key?(:promotion_amount)
+          @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
+        end
+      end
+      
+      # 
       class RateGroup
         include Google::Apis::Core::Hashable
       
@@ -8306,6 +8841,75 @@ module Google
           @minimum_order_value = args[:minimum_order_value] if args.key?(:minimum_order_value)
           @name = args[:name] if args.key?(:name)
           @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
+        end
+      end
+      
+      # 
+      class ShipmentInvoice
+        include Google::Apis::Core::Hashable
+      
+        # Invoice summary.
+        # Corresponds to the JSON property `invoiceSummary`
+        # @return [Google::Apis::ContentV2::InvoiceSummary]
+        attr_accessor :invoice_summary
+      
+        # Invoice details per line item.
+        # Corresponds to the JSON property `lineItemInvoices`
+        # @return [Array<Google::Apis::ContentV2::ShipmentInvoiceLineItemInvoice>]
+        attr_accessor :line_item_invoices
+      
+        # ID of the shipment group.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_summary = args[:invoice_summary] if args.key?(:invoice_summary)
+          @line_item_invoices = args[:line_item_invoices] if args.key?(:line_item_invoices)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
+        end
+      end
+      
+      # 
+      class ShipmentInvoiceLineItemInvoice
+        include Google::Apis::Core::Hashable
+      
+        # ID of the line item. Either lineItemId or productId must be set.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # ID of the product. This is the REST ID used in the products service. Either
+        # lineItemId or productId must be set.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Unit IDs to define specific units within the line item.
+        # Corresponds to the JSON property `shipmentUnitIds`
+        # @return [Array<String>]
+        attr_accessor :shipment_unit_ids
+      
+        # Invoice details for a single unit.
+        # Corresponds to the JSON property `unitInvoice`
+        # @return [Google::Apis::ContentV2::UnitInvoice]
+        attr_accessor :unit_invoice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @shipment_unit_ids = args[:shipment_unit_ids] if args.key?(:shipment_unit_ids)
+          @unit_invoice = args[:unit_invoice] if args.key?(:unit_invoice)
         end
       end
       
@@ -8907,6 +9511,105 @@ module Google
           @last_four_digits = args[:last_four_digits] if args.key?(:last_four_digits)
           @predefined_billing_address = args[:predefined_billing_address] if args.key?(:predefined_billing_address)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class UnitInvoice
+        include Google::Apis::Core::Hashable
+      
+        # Additional charges for a unit, e.g. shipping costs.
+        # Corresponds to the JSON property `additionalCharges`
+        # @return [Array<Google::Apis::ContentV2::UnitInvoiceAdditionalCharge>]
+        attr_accessor :additional_charges
+      
+        # Promotions applied to a unit.
+        # Corresponds to the JSON property `promotions`
+        # @return [Array<Google::Apis::ContentV2::Promotion>]
+        attr_accessor :promotions
+      
+        # Price of the unit, before applying taxes.
+        # Corresponds to the JSON property `unitPricePretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :unit_price_pretax
+      
+        # Tax amounts to apply to the unit price.
+        # Corresponds to the JSON property `unitPriceTaxes`
+        # @return [Array<Google::Apis::ContentV2::UnitInvoiceTaxLine>]
+        attr_accessor :unit_price_taxes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_charges = args[:additional_charges] if args.key?(:additional_charges)
+          @promotions = args[:promotions] if args.key?(:promotions)
+          @unit_price_pretax = args[:unit_price_pretax] if args.key?(:unit_price_pretax)
+          @unit_price_taxes = args[:unit_price_taxes] if args.key?(:unit_price_taxes)
+        end
+      end
+      
+      # 
+      class UnitInvoiceAdditionalCharge
+        include Google::Apis::Core::Hashable
+      
+        # Amount of the additional charge.
+        # Corresponds to the JSON property `additionalChargeAmount`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :additional_charge_amount
+      
+        # Promotions applied to the additional charge.
+        # Corresponds to the JSON property `additionalChargePromotions`
+        # @return [Array<Google::Apis::ContentV2::Promotion>]
+        attr_accessor :additional_charge_promotions
+      
+        # Type of the additional charge.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_charge_amount = args[:additional_charge_amount] if args.key?(:additional_charge_amount)
+          @additional_charge_promotions = args[:additional_charge_promotions] if args.key?(:additional_charge_promotions)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class UnitInvoiceTaxLine
+        include Google::Apis::Core::Hashable
+      
+        # Tax amount for the tax type.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :tax_amount
+      
+        # Optional name of the tax type.
+        # Corresponds to the JSON property `taxName`
+        # @return [String]
+        attr_accessor :tax_name
+      
+        # Type of the tax.
+        # Corresponds to the JSON property `taxType`
+        # @return [String]
+        attr_accessor :tax_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+          @tax_name = args[:tax_name] if args.key?(:tax_name)
+          @tax_type = args[:tax_type] if args.key?(:tax_type)
         end
       end
       

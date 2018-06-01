@@ -1626,6 +1626,248 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a charge invoice for a shipment group, and triggers a charge capture
+        # for non-facilitated payment orders.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order.
+        # @param [Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceRequest] orderinvoices_create_charge_invoice_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def createchargeinvoice_orderinvoice(merchant_id, order_id, orderinvoices_create_charge_invoice_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderinvoices/{orderId}/createChargeInvoice', options)
+          command.request_representation = Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceRequest::Representation
+          command.request_object = orderinvoices_create_charge_invoice_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderinvoicesCreateChargeInvoiceResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a refund invoice for one or more shipment groups, and triggers a
+        # refund for non-facilitated payment orders.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order.
+        # @param [Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceRequest] orderinvoices_create_refund_invoice_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def createrefundinvoice_orderinvoice(merchant_id, order_id, orderinvoices_create_refund_invoice_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderinvoices/{orderId}/createRefundInvoice', options)
+          command.request_representation = Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceRequest::Representation
+          command.request_object = orderinvoices_create_refund_invoice_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderinvoicesCreateRefundInvoiceResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Notify about successfully authorizing user's payment method for a given amount.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order for for which payment authorization is happening.
+        # @param [Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedRequest] orderpayments_notify_auth_approved_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def notifyauthapproved_orderpayment(merchant_id, order_id, orderpayments_notify_auth_approved_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderpayments/{orderId}/notifyAuthApproved', options)
+          command.request_representation = Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedRequest::Representation
+          command.request_object = orderpayments_notify_auth_approved_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderpaymentsNotifyAuthApprovedResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Notify about failure to authorize user's payment method.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order for which payment authorization was declined.
+        # @param [Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedRequest] orderpayments_notify_auth_declined_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def notifyauthdeclined_orderpayment(merchant_id, order_id, orderpayments_notify_auth_declined_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderpayments/{orderId}/notifyAuthDeclined', options)
+          command.request_representation = Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedRequest::Representation
+          command.request_object = orderpayments_notify_auth_declined_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderpaymentsNotifyAuthDeclinedResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Notify about charge on user's selected payments method.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order for which charge is happening.
+        # @param [Google::Apis::ContentV2::OrderpaymentsNotifyChargeRequest] orderpayments_notify_charge_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderpaymentsNotifyChargeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderpaymentsNotifyChargeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def notifycharge_orderpayment(merchant_id, order_id, orderpayments_notify_charge_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderpayments/{orderId}/notifyCharge', options)
+          command.request_representation = Google::Apis::ContentV2::OrderpaymentsNotifyChargeRequest::Representation
+          command.request_object = orderpayments_notify_charge_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderpaymentsNotifyChargeResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderpaymentsNotifyChargeResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Notify about refund on user's selected payments method.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order for which charge is happening.
+        # @param [Google::Apis::ContentV2::OrderpaymentsNotifyRefundRequest] orderpayments_notify_refund_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderpaymentsNotifyRefundResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderpaymentsNotifyRefundResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def notifyrefund_orderpayment(merchant_id, order_id, orderpayments_notify_refund_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orderpayments/{orderId}/notifyRefund', options)
+          command.request_representation = Google::Apis::ContentV2::OrderpaymentsNotifyRefundRequest::Representation
+          command.request_object = orderpayments_notify_refund_request_object
+          command.response_representation = Google::Apis::ContentV2::OrderpaymentsNotifyRefundResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderpaymentsNotifyRefundResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks an order as acknowledged.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client

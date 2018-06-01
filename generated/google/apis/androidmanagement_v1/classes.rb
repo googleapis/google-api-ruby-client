@@ -2191,8 +2191,7 @@ module Google
         attr_accessor :usb_file_transfer_disabled
         alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
       
-        # Allows admins to toggle whether USB storge is enabled or disabled on user's
-        # devices.
+        # Whether USB storage is enabled.
         # Corresponds to the JSON property `usbMassStorageEnabled`
         # @return [Boolean]
         attr_accessor :usb_mass_storage_enabled
