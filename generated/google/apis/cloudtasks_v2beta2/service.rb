@@ -611,10 +611,6 @@ module Google
         # by a later LeaseTasks,
         # GetTask, or
         # ListTasks.
-        # To acknowledge multiple tasks at the same time, use
-        # [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
-        # or the batching documentation for your client library, for example
-        # https://developers.google.com/api-client-library/python/guide/batch.
         # @param [String] name
         #   Required.
         #   The task name. For example:
@@ -689,10 +685,6 @@ module Google
         end
         
         # Creates a task and adds it to a queue.
-        # To add multiple tasks at the same time, use
-        # [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
-        # or the batching documentation for your client library, for example
-        # https://developers.google.com/api-client-library/python/guide/batch.
         # Tasks cannot be updated after creation; there is no UpdateTask command.
         # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
         # the maximum task size is 100KB.

@@ -1260,9 +1260,11 @@ module Google
         #   Unsupported: must be left blank. The points in each time series are returned
         #   in reverse time order.
         # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return. When view
-        #   field sets to FULL, it limits the number of Points server will return; if view
-        #   field is HEADERS, it limits the number of TimeSeries server will return.
+        #   A positive number that is the maximum number of results to return. If
+        #   page_size is empty or more than 100,000 results, the effective page_size is
+        #   100,000 results. If view is set to FULL, this is the maximum number of Points
+        #   returned. If view is set to HEADERS, this is the maximum number of TimeSeries
+        #   returned.
         # @param [String] page_token
         #   If this field is not empty then it must contain the nextPageToken value
         #   returned by a previous call to this method. Using this field causes the method

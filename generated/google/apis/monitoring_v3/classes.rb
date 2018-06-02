@@ -1485,6 +1485,12 @@ module Google
       class ListTimeSeriesResponse
         include Google::Apis::Core::Hashable
       
+        # Query execution errors that may have caused the time series data returned to
+        # be incomplete.
+        # Corresponds to the JSON property `executionErrors`
+        # @return [Array<Google::Apis::MonitoringV3::Status>]
+        attr_accessor :execution_errors
+      
         # If there are more results than have been returned, then this field is set to a
         # non-empty value. To see the additional results, use that value as pageToken in
         # the next call to this method.
@@ -1503,6 +1509,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @execution_errors = args[:execution_errors] if args.key?(:execution_errors)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @time_series = args[:time_series] if args.key?(:time_series)
         end

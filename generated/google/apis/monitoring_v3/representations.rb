@@ -749,6 +749,8 @@ module Google
       class ListTimeSeriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :execution_errors, as: 'executionErrors', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
           property :next_page_token, as: 'nextPageToken'
           collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
       
