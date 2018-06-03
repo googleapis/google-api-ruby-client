@@ -7215,8 +7215,7 @@ module Google
       
         # Fingerprint of this resource. This field may be used in optimistic locking. It
         # will be ignored when inserting an InstanceGroupManager. An up-to-date
-        # fingerprint must be provided in order to update the InstanceGroupManager or
-        # the field need to be unset.
+        # fingerprint must be provided in order to update the InstanceGroupManager.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -9126,6 +9125,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The current state of whether or not this Interconnect is
+        # functional.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9153,6 +9158,7 @@ module Google
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -9161,6 +9167,31 @@ module Google
       # interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
+      
+        # Determines whether this Attachment will carry packets. Not present for
+        # PARTNER_PROVIDER.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # Provisioned bandwidth capacity for the interconnectAttachment. Can be set by
+        # the partner to update the customer's provisioned bandwidth. Output only for
+        # for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+        # Corresponds to the JSON property `bandwidth`
+        # @return [String]
+        attr_accessor :bandwidth
+      
+        # Up to 16 candidate prefixes that can be used to restrict the allocation of
+        # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
+        # prefixes must be within link-local address space (169.254.0.0/16) and must be /
+        # 29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
+        # from the supplied candidate prefix(es). The request will fail if all possible /
+        # 29s are in use on Google?s edge. If not supplied, Google will randomly select
+        # an unused /29 from all of link-local space.
+        # Corresponds to the JSON property `candidateSubnets`
+        # @return [Array<String>]
+        attr_accessor :candidate_subnets
       
         # [Output Only] IPv4 address + prefix length to be configured on Cloud Router
         # Interface for this interconnect attachment.
@@ -9183,6 +9214,16 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Desired availability domain for the attachment. Only available for type
+        # PARTNER, at creation time. For improved reliability, customers should
+        # configure a pair of attachments with one per availability domain. The selected
+        # availability domain will be provided to the Partner via the pairing key so
+        # that the provisioned circuit will lie in the specified domain. If not
+        # specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        # Corresponds to the JSON property `edgeAvailabilityDomain`
+        # @return [String]
+        attr_accessor :edge_availability_domain
       
         # [Output Only] Google reference ID, to be used when raising support tickets
         # with Google or otherwise to debug backend connectivity issues.
@@ -9224,6 +9265,28 @@ module Google
         # @return [String]
         attr_accessor :operational_status
       
+        # [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present
+        # for DEDICATED]. The opaque identifier of an PARTNER attachment used to
+        # initiate provisioning with a selected partner. Of the form "XXXXX/region/
+        # domain"
+        # Corresponds to the JSON property `pairingKey`
+        # @return [String]
+        attr_accessor :pairing_key
+      
+        # Optional BGP ASN for the router that should be supplied by a layer 3 Partner
+        # if they configured BGP on behalf of the customer. Output only for PARTNER type,
+        # input only for PARTNER_PROVIDER, not available for DEDICATED.
+        # Corresponds to the JSON property `partnerAsn`
+        # @return [Fixnum]
+        attr_accessor :partner_asn
+      
+        # Informational metadata about Partner attachments from Partners to display to
+        # customers. These fields are propagated from PARTNER_PROVIDER attachments to
+        # their corresponding PARTNER attachments.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::ComputeV1::InterconnectAttachmentPartnerMetadata]
+        attr_accessor :partner_metadata
+      
         # Information for an interconnect attachment when this belongs to an
         # interconnect of type DEDICATED.
         # Corresponds to the JSON property `privateInterconnectInfo`
@@ -9250,26 +9313,53 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The current state of this attachment's functionality.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this
+        # attachment, in the range 2-4094. This field refers to 802.1q VLAN tag, also
+        # known as IEEE 802.1Q Only specified at creation time.
+        # Corresponds to the JSON property `vlanTag8021q`
+        # @return [Fixnum]
+        attr_accessor :vlan_tag8021q
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @candidate_subnets = args[:candidate_subnets] if args.key?(:candidate_subnets)
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
           @description = args[:description] if args.key?(:description)
+          @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
+          @partner_asn = args[:partner_asn] if args.key?(:partner_asn)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
           @region = args[:region] if args.key?(:region)
           @router = args[:router] if args.key?(:router)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @vlan_tag8021q = args[:vlan_tag8021q] if args.key?(:vlan_tag8021q)
         end
       end
       
@@ -9507,6 +9597,44 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Informational metadata about Partner attachments from Partners to display to
+      # customers. These fields are propagated from PARTNER_PROVIDER attachments to
+      # their corresponding PARTNER attachments.
+      class InterconnectAttachmentPartnerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Plain text name of the Interconnect this attachment is connected to, as
+        # displayed in the Partner?s portal. For instance ?Chicago 1?. This value may be
+        # validated to match approved Partner values.
+        # Corresponds to the JSON property `interconnectName`
+        # @return [String]
+        attr_accessor :interconnect_name
+      
+        # Plain text name of the Partner providing this attachment. This value may be
+        # validated to match approved Partner values.
+        # Corresponds to the JSON property `partnerName`
+        # @return [String]
+        attr_accessor :partner_name
+      
+        # URL of the Partner?s portal for this Attachment. Partners may customise this
+        # to be a deep-link to the specific resource on the Partner portal. This value
+        # may be validated to match approved Partner values.
+        # Corresponds to the JSON property `portalUrl`
+        # @return [String]
+        attr_accessor :portal_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect_name = args[:interconnect_name] if args.key?(:interconnect_name)
+          @partner_name = args[:partner_name] if args.key?(:partner_name)
+          @portal_url = args[:portal_url] if args.key?(:portal_url)
         end
       end
       
@@ -14228,6 +14356,15 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # [Output Only] Type of how the resource/configuration of the BGP peer is
+        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+        # represents an BGP peer that is automatically created for PARTNER
+        # interconnectAttachment, Google will automatically create/delete this type of
+        # BGP peer when the PARTNER interconnectAttachment is created/deleted.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
         # Name of this BGP peer. The name must be 1-63 characters long and comply with
         # RFC1035.
         # Corresponds to the JSON property `name`
@@ -14257,6 +14394,7 @@ module Google
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
@@ -14289,6 +14427,16 @@ module Google
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
+        # [Output Only] Type of how the resource/configuration of the interface is
+        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+        # represents an interface that is automatically created for PARTNER type
+        # interconnectAttachment, Google will automatically create/update/delete this
+        # type of interface when the PARTNER interconnectAttachment is created/
+        # provisioned/deleted.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
         # Name of this interface entry. The name must be 1-63 characters long and comply
         # with RFC1035.
         # Corresponds to the JSON property `name`
@@ -14304,6 +14452,7 @@ module Google
           @ip_range = args[:ip_range] if args.key?(:ip_range)
           @linked_interconnect_attachment = args[:linked_interconnect_attachment] if args.key?(:linked_interconnect_attachment)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -14888,7 +15037,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Integer license codes indicating which licenses are attached to this snapshot.
+        # [Output Only] Integer license codes indicating which licenses are attached to
+        # this snapshot.
         # Corresponds to the JSON property `licenseCodes`
         # @return [Array<Fixnum>]
         attr_accessor :license_codes
@@ -16411,6 +16561,25 @@ module Google
       end
       
       # 
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # QUIC policy for the TargetHttpsProxy resource.
+        # Corresponds to the JSON property `quicOverride`
+        # @return [String]
+        attr_accessor :quic_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quic_override = args[:quic_override] if args.key?(:quic_override)
+        end
+      end
+      
+      # 
       class TargetHttpsProxiesSetSslCertificatesRequest
         include Google::Apis::Core::Hashable
       
@@ -16469,6 +16638,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies the QUIC override policy for this TargetHttpsProxy resource. This
+        # determines whether the load balancer will attempt to negotiate QUIC with
+        # clients or not. Can specify one of NONE, ENABLE, or DISABLE. Specify ENABLE to
+        # always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when
+        # set to DISABLE. If NONE is specified, uses the QUIC policy with no user
+        # overrides, which is equivalent to DISABLE. Not specifying this field is
+        # equivalent to specifying NONE.
+        # Corresponds to the JSON property `quicOverride`
+        # @return [String]
+        attr_accessor :quic_override
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -16509,6 +16689,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @quic_override = args[:quic_override] if args.key?(:quic_override)
           @self_link = args[:self_link] if args.key?(:self_link)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)

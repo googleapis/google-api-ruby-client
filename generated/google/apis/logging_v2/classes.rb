@@ -859,8 +859,8 @@ module Google
         # Required. An advanced logs filter that matches the log entries to be excluded.
         # By using the sample function, you can exclude less than 100% of the matching
         # log entries. For example, the following filter matches 99% of low-severity log
-        # entries from load balancers:
-        # "resource.type=http_load_balancer severity<ERROR sample(insertId, 0.99)"
+        # entries from load balancers:"resource.type=http_load_balancer severity<ERROR
+        # sample(insertId, 0.99)"
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

@@ -22,7 +22,19 @@ module Google
   module Apis
     module TpuV1
       
+      class AcceleratorType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAcceleratorTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -34,13 +46,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListNodesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTensorFlowVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Node
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,15 +94,68 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReimageNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StopNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TensorFlowVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListAcceleratorTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_types, as: 'acceleratorTypes', class: Google::Apis::TpuV1::AcceleratorType, decorator: Google::Apis::TpuV1::AcceleratorType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -79,11 +168,29 @@ module Google
         end
       end
       
+      class ListNodesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :nodes, as: 'nodes', class: Google::Apis::TpuV1::Node, decorator: Google::Apis::TpuV1::Node::Representation
+      
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TpuV1::Operation, decorator: Google::Apis::TpuV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListTensorFlowVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tensorflow_versions, as: 'tensorflowVersions', class: Google::Apis::TpuV1::TensorFlowVersion, decorator: Google::Apis::TpuV1::TensorFlowVersion::Representation
       
         end
       end
@@ -96,6 +203,38 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class NetworkEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :port, as: 'port'
+        end
+      end
+      
+      class Node
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
+          property :cidr_block, as: 'cidrBlock'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :health, as: 'health'
+          property :health_description, as: 'healthDescription'
+          property :ip_address, as: 'ipAddress'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV1::NetworkEndpoint, decorator: Google::Apis::TpuV1::NetworkEndpoint::Representation
+      
+          property :port, as: 'port'
+          property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::TpuV1::SchedulingConfig, decorator: Google::Apis::TpuV1::SchedulingConfig::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :state, as: 'state'
+          property :tensorflow_version, as: 'tensorflowVersion'
         end
       end
       
@@ -124,12 +263,52 @@ module Google
         end
       end
       
+      class ReimageNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tensorflow_version, as: 'tensorflowVersion'
+        end
+      end
+      
+      class ResetNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SchedulingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preemptible, as: 'preemptible'
+        end
+      end
+      
+      class StartNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TensorFlowVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
     end

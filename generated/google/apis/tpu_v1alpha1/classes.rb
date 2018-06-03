@@ -350,6 +350,11 @@ module Google
         # @return [String]
         attr_accessor :port
       
+        # 
+        # Corresponds to the JSON property `schedulingConfig`
+        # @return [Google::Apis::TpuV1alpha1::SchedulingConfig]
+        attr_accessor :scheduling_config
+      
         # Output only.
         # The service account used to run the tensor flow services within the node.
         # To share resources, including Google Cloud Storage data, with the
@@ -389,6 +394,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
           @port = args[:port] if args.key?(:port)
+          @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
           @tensorflow_version = args[:tensorflow_version] if args.key?(:tensorflow_version)
@@ -580,6 +586,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class SchedulingConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preemptible = args[:preemptible] if args.key?(:preemptible)
         end
       end
       

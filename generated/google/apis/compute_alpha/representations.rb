@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceIapoAuth2ClientInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4351,6 +4357,7 @@ module Google
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
@@ -4756,8 +4763,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_info, as: 'oauth2ClientInfo', class: Google::Apis::ComputeAlpha::BackendServiceIapoAuth2ClientInfo, decorator: Google::Apis::ComputeAlpha::BackendServiceIapoAuth2ClientInfo::Representation
+      
           property :oauth2_client_secret, as: 'oauth2ClientSecret'
           property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
+        end
+      end
+      
+      class BackendServiceIapoAuth2ClientInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_name, as: 'applicationName'
+          property :client_name, as: 'clientName'
+          property :developer_email_address, as: 'developerEmailAddress'
         end
       end
       
@@ -6217,6 +6235,7 @@ module Google
       
           property :shielded_vm_integrity_policy, as: 'shieldedVmIntegrityPolicy', class: Google::Apis::ComputeAlpha::ShieldedVmIntegrityPolicy, decorator: Google::Apis::ComputeAlpha::ShieldedVmIntegrityPolicy::Representation
       
+          property :source_machine_image, as: 'sourceMachineImage'
           property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -8071,6 +8090,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index, as: 'index'
           collection :instances, as: 'instances'
+          property :name, as: 'name'
           property :node_type, as: 'nodeType'
         end
       end
@@ -8086,6 +8106,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :node_indexes, as: 'nodeIndexes'
+          collection :nodes, as: 'nodes'
         end
       end
       
@@ -9629,6 +9650,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
       

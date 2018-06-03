@@ -1252,6 +1252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentPartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentPrivateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2238,6 +2244,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5001,27 +5013,39 @@ module Google
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :requested_link_count, as: 'requestedLinkCount'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
         end
       end
       
       class InterconnectAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :bandwidth, as: 'bandwidth'
+          collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :description, as: 'description'
+          property :edge_availability_domain, as: 'edgeAvailabilityDomain'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
+          property :pairing_key, as: 'pairingKey'
+          property :partner_asn, :numeric_string => true, as: 'partnerAsn'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeV1::InterconnectAttachmentPartnerMetadata, decorator: Google::Apis::ComputeV1::InterconnectAttachmentPartnerMetadata::Representation
+      
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeV1::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeV1::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :vlan_tag8021q, as: 'vlanTag8021q'
         end
       end
       
@@ -5086,6 +5110,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentPartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_name, as: 'interconnectName'
+          property :partner_name, as: 'partnerName'
+          property :portal_url, as: 'portalUrl'
         end
       end
       
@@ -6314,6 +6347,7 @@ module Google
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :management_type, as: 'managementType'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -6326,6 +6360,7 @@ module Google
           property :ip_range, as: 'ipRange'
           property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :management_type, as: 'managementType'
           property :name, as: 'name'
         end
       end
@@ -6862,6 +6897,13 @@ module Google
         end
       end
       
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quic_override, as: 'quicOverride'
+        end
+      end
+      
       class TargetHttpsProxiesSetSslCertificatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6877,6 +6919,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :quic_override, as: 'quicOverride'
           property :self_link, as: 'selfLink'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'

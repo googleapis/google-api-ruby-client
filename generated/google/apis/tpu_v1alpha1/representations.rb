@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartNodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -224,6 +230,8 @@ module Google
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV1alpha1::NetworkEndpoint, decorator: Google::Apis::TpuV1alpha1::NetworkEndpoint::Representation
       
           property :port, as: 'port'
+          property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::TpuV1alpha1::SchedulingConfig, decorator: Google::Apis::TpuV1alpha1::SchedulingConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
           property :tensorflow_version, as: 'tensorflowVersion'
@@ -265,6 +273,13 @@ module Google
       class ResetNodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SchedulingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preemptible, as: 'preemptible'
         end
       end
       
