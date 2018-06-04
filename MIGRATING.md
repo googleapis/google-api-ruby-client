@@ -4,11 +4,7 @@
 
 The client no longer normalizes unicode strings in path parameters. This may affect
 some applications using multibyte strings that were previously normalized.:
-To restore the previous behavior, set the following option prior to creating a service.
-
-```ruby
-ClientOptions.default.normalize_unicode = true
-```
+To restore the previous behavior, use the `normalize_unicode` request option.
 
 ## Type change for large numbers
 
