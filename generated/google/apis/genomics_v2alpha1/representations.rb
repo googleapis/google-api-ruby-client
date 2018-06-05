@@ -403,6 +403,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :subnetwork, as: 'subnetwork'
           property :use_private_address, as: 'usePrivateAddress'
         end
       end

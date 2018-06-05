@@ -2438,7 +2438,8 @@ module Google
       class GoogleCloudVisionV1p2beta1WebDetection
         include Google::Apis::Core::Hashable
       
-        # Best guess text labels for the request image.
+        # The service's best guess as to the topic of the request image.
+        # Inferred from similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1WebDetectionWebLabel>]
         attr_accessor :best_guess_labels
@@ -3747,7 +3748,8 @@ module Google
       class WebDetection
         include Google::Apis::Core::Hashable
       
-        # Best guess text labels for the request image.
+        # The service's best guess as to the topic of the request image.
+        # Inferred from similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1::WebLabel>]
         attr_accessor :best_guess_labels

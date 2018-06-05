@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeprecatedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +250,25 @@ module Google
           property :image_url, as: 'imageUrl'
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
+        end
+      end
+      
+      class DeprecatedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::ChatV1::FormAction, decorator: Google::Apis::ChatV1::FormAction::Representation
+      
+          property :config_complete_redirect_url, as: 'configCompleteRedirectUrl'
+          property :event_time, as: 'eventTime'
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+          property :thread_key, as: 'threadKey'
+          property :token, as: 'token'
+          property :type, as: 'type'
+          property :user, as: 'user', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
         end
       end
       

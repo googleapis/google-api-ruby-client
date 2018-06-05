@@ -737,6 +737,8 @@ module Google
       end
       
       # Creates a video.
+      # NOTE: Drive video creation requires that the requesting app have at least one
+      # of the drive, drive.readonly, or drive.file OAuth scopes.
       class CreateVideoRequest
         include Google::Apis::Core::Hashable
       
@@ -751,7 +753,9 @@ module Google
       
         # The video source's unique identifier for this video.
         # e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,
-        # the ID is 7U3axjORYZ0.
+        # the ID is 7U3axjORYZ0. For Drive video
+        # https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID
+        # is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2862,6 +2866,8 @@ module Google
         attr_accessor :create_table
       
         # Creates a video.
+        # NOTE: Drive video creation requires that the requesting app have at least one
+        # of the drive, drive.readonly, or drive.file OAuth scopes.
         # Corresponds to the JSON property `createVideo`
         # @return [Google::Apis::SlidesV1::CreateVideoRequest]
         attr_accessor :create_video
@@ -5053,8 +5059,8 @@ module Google
         # @return [String]
         attr_accessor :source
       
-        # An URL to a video. The URL is valid as long as the source video
-        # exists and sharing settings do not change.
+        # An URL to a video. The URL is valid as long as the source video exists and
+        # sharing settings do not change.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

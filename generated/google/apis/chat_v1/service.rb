@@ -22,7 +22,7 @@ module Google
     module ChatV1
       # Hangouts Chat API
       #
-      # Enables bots to fetch information and perform actions in the new Hangouts Chat.
+      # Enables bots to fetch information and perform actions in Hangouts Chat.
       #
       # @example
       #    require 'google/apis/chat_v1'

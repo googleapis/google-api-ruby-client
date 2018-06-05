@@ -31,7 +31,7 @@ module Google
     # @see https://developers.google.com/apps-script/api/
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20180530'
+      REVISION = '20180601'
 
       # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'
@@ -47,6 +47,9 @@ module Google
 
       # View and manage the provisioning of users on your domain
       AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
+
+      # View and manage your Google Docs documents
+      AUTH_DOCUMENTS = 'https://www.googleapis.com/auth/documents'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

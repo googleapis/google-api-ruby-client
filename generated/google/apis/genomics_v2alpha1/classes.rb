@@ -711,6 +711,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # If the specified network is configured for custom subnet creation, the
+        # name of the subnetwork to attach the instance to must be specified here.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         # If set to true, do not attach a public IP address to the VM.  Note that
         # without an public IP address, additional configuration is required to
         # allow the VM to access Google services.
@@ -728,6 +734,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @use_private_address = args[:use_private_address] if args.key?(:use_private_address)
         end
       end
