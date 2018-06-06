@@ -877,7 +877,7 @@ module Google
         # created as part of a regular schedule. For batch transfer runs that are
         # scheduled manually, this is empty.
         # NOTE: the system might choose to delay the schedule depending on the
-        # current load, so `schedule_time` doesn't always matches this.
+        # current load, so `schedule_time` doesn't always match this.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule

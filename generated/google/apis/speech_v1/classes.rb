@@ -322,6 +322,14 @@ module Google
       class SpeechContext
         include Google::Apis::Core::Hashable
       
+        # Strength of biasing to use (strong, medium or weak). If you use strong
+        # biasing option then more likely to see those phrases in the results. If
+        # biasing streangth is not specified then by default medium biasing would be
+        # used.
+        # Corresponds to the JSON property `biasingStrength`
+        # @return [String]
+        attr_accessor :biasing_strength
+      
         # *Optional* A list of strings containing words and phrases "hints" so that
         # the speech recognition is more likely to recognize them. This can be used
         # to improve the accuracy for specific words and phrases, for example, if
@@ -338,6 +346,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @biasing_strength = args[:biasing_strength] if args.key?(:biasing_strength)
           @phrases = args[:phrases] if args.key?(:phrases)
         end
       end

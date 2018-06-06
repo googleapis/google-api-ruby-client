@@ -174,6 +174,11 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::RequestMetadata]
         attr_accessor :request_metadata
       
+        # Location information about a resource.
+        # Corresponds to the JSON property `resourceLocation`
+        # @return [Google::Apis::ServicecontrolV1::ResourceLocation]
+        attr_accessor :resource_location
+      
         # The resource or collection that is the target of the operation.
         # The name is a scheme-less URI, not including the API service name.
         # For example:
@@ -262,6 +267,7 @@ module Google
           @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
           @request = args[:request] if args.key?(:request)
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @resource_location = args[:resource_location] if args.key?(:resource_location)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @response = args[:response] if args.key?(:response)
           @service_data = args[:service_data] if args.key?(:service_data)
@@ -1643,6 +1649,29 @@ module Google
         def update!(**args)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Location information about a resource.
+      class ResourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # The locations of a resource after the execution of the operation.
+        # For example:
+        # "europe-west1-a"
+        # "us-east1"
+        # "nam3"
+        # Corresponds to the JSON property `currentLocations`
+        # @return [Array<String>]
+        attr_accessor :current_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_locations = args[:current_locations] if args.key?(:current_locations)
         end
       end
       

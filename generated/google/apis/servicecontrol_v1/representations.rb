@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartReconciliationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,8 @@ module Google
           property :num_response_items, :numeric_string => true, as: 'numResponseItems'
           hash :request, as: 'request'
           property :request_metadata, as: 'requestMetadata', class: Google::Apis::ServicecontrolV1::RequestMetadata, decorator: Google::Apis::ServicecontrolV1::RequestMetadata::Representation
+      
+          property :resource_location, as: 'resourceLocation', class: Google::Apis::ServicecontrolV1::ResourceLocation, decorator: Google::Apis::ServicecontrolV1::ResourceLocation::Representation
       
           property :resource_name, as: 'resourceName'
           hash :response, as: 'response'
@@ -612,6 +620,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class ResourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :current_locations, as: 'currentLocations'
         end
       end
       

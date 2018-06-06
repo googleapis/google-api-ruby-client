@@ -1624,7 +1624,7 @@ module Google
       end
       
       # An instruction to Classroom to send notifications from the `feed` to the
-      # provided `destination`.
+      # provided destination.
       class Registration
         include Google::Apis::Core::Hashable
       

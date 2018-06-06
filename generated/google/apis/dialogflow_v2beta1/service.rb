@@ -702,7 +702,7 @@ module Google
         #   construction and will be available soon. If <Environment ID> is not
         #   specified, we assume default 'draft' environment. If <User ID> is not
         #   specified, we are using "-". It’s up to the API caller to choose an
-        #   appropriate <Session ID>. and <User Id>. They can be a random numbers or
+        #   appropriate <Session ID> and <User Id>. They can be a random numbers or
         #   some type of user and session identifiers (preferably hashed). The length
         #   of the <Session ID> and <User ID> must not exceed 36 characters.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
@@ -1465,7 +1465,7 @@ module Google
         #   construction and will be available soon. If <Environment ID> is not
         #   specified, we assume default 'draft' environment. If <User ID> is not
         #   specified, we are using "-". It’s up to the API caller to choose an
-        #   appropriate <Session ID>. and <User Id>. They can be a random numbers or
+        #   appropriate <Session ID> and <User Id>. They can be a random numbers or
         #   some type of user and session identifiers (preferably hashed). The length
         #   of the <Session ID> and <User ID> must not exceed 36 characters.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
