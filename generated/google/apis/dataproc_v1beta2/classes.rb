@@ -191,6 +191,11 @@ module Google
         # @return [String]
         attr_accessor :config_bucket
       
+        # Encryption settings for the cluster.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::DataprocV1beta2::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Common config settings for resources of Compute Engine cluster instances,
         # applicable to all instances in the cluster.
         # Corresponds to the JSON property `gceClusterConfig`
@@ -247,6 +252,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
@@ -565,6 +571,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption settings for the cluster.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud KMS key name to use for PD disk encryption for all
+        # instances in the cluster.
+        # Corresponds to the JSON property `gcePdKmsKeyName`
+        # @return [String]
+        attr_accessor :gce_pd_kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
         end
       end
       

@@ -813,6 +813,7 @@ module Google
       # Represents an intent.
       # Intents convert a number of user expressions or patterns into an action. An
       # action is an extraction of a user command or sentence semantics.
+      # Next available field number: 22.
       class GoogleCloudDialogflowV2Intent
         include Google::Apis::Core::Hashable
       
@@ -2024,6 +2025,7 @@ module Google
         # Represents an intent.
         # Intents convert a number of user expressions or patterns into an action. An
         # action is an extraction of a user command or sentence semantics.
+        # Next available field number: 22.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent]
         attr_accessor :intent
@@ -2618,6 +2620,7 @@ module Google
       # Represents an intent.
       # Intents convert a number of user expressions or patterns into an action. An
       # action is an extraction of a user command or sentence semantics.
+      # Next available field number: 22.
       class GoogleCloudDialogflowV2beta1Intent
         include Google::Apis::Core::Hashable
       
@@ -3637,6 +3640,7 @@ module Google
         # Represents an intent.
         # Intents convert a number of user expressions or patterns into an action. An
         # action is an extraction of a user command or sentence semantics.
+        # Next available field number: 22.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Intent]
         attr_accessor :intent

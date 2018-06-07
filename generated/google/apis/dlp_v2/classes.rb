@@ -49,7 +49,7 @@ module Google
         # If set, the detailed findings will be persisted to the specified
         # OutputStorageConfig. Only a single instance of this action can be
         # specified.
-        # Compatible with: Inspect
+        # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `saveFindings`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings]
         attr_accessor :save_findings
@@ -2197,7 +2197,7 @@ module Google
         attr_accessor :info_type
       
         # If true, all text found in the image, regardless whether it matches an
-        # info_type, is redacted.
+        # info_type, is redacted. Only one should be provided.
         # Corresponds to the JSON property `redactAllText`
         # @return [Boolean]
         attr_accessor :redact_all_text
@@ -2329,8 +2329,9 @@ module Google
       class GooglePrivacyDlpV2InfoTypeTransformation
         include Google::Apis::Core::Hashable
       
-        # InfoTypes to apply the transformation to. Empty list will match all
-        # available infoTypes for this transformation.
+        # InfoTypes to apply the transformation to. An empty list will cause
+        # this transformation to apply to all findings that correspond to
+        # infoTypes that were requested in `InspectConfig`.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -3468,10 +3469,11 @@ module Google
       class GooglePrivacyDlpV2OutputStorageConfig
         include Google::Apis::Core::Hashable
       
-        # Schema used for writing the findings. Columns are derived from the
-        # `Finding` object. If appending to an existing table, any columns from the
-        # predefined schema that are missing will be added. No columns in the
-        # existing table will be deleted.
+        # Schema used for writing the findings for Inspect jobs. This field is only
+        # used for Inspect and must be unspecified for Risk jobs. Columns are derived
+        # from the `Finding` object. If appending to an existing table, any columns
+        # from the predefined schema that are missing will be added. No columns in
+        # the existing table will be deleted.
         # If unspecified, then all available columns will be used for a new table,
         # and no changes will be made to an existing table.
         # Corresponds to the JSON property `outputSchema`
@@ -4092,8 +4094,8 @@ module Google
         end
       end
       
-      # Request to search for potentially sensitive info in a list of items
-      # and replace it with a default or provided content.
+      # Request to search for potentially sensitive info in an image and redact it
+      # by covering it with a colored rectangle.
       class GooglePrivacyDlpV2RedactImageRequest
         include Google::Apis::Core::Hashable
       
@@ -4406,7 +4408,7 @@ module Google
       # If set, the detailed findings will be persisted to the specified
       # OutputStorageConfig. Only a single instance of this action can be
       # specified.
-      # Compatible with: Inspect
+      # Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2SaveFindings
         include Google::Apis::Core::Hashable
       

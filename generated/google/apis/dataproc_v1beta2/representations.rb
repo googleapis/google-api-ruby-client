@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -420,6 +426,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_bucket, as: 'configBucket'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1beta2::EncryptionConfig, decorator: Google::Apis::DataprocV1beta2::EncryptionConfig::Representation
+      
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1beta2::GceClusterConfig, decorator: Google::Apis::DataprocV1beta2::GceClusterConfig::Representation
       
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1beta2::NodeInitializationAction, decorator: Google::Apis::DataprocV1beta2::NodeInitializationAction::Representation
@@ -523,6 +531,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
         end
       end
       

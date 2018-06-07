@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnableFailure
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +656,12 @@ module Google
           property :deprecation_description, as: 'deprecationDescription'
           property :description, as: 'description'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
