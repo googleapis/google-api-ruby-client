@@ -769,6 +769,14 @@ module Google
         # @return [Google::Apis::AndroidpublisherV2::Price]
         attr_accessor :default_price
       
+        # Grace period of the subscription, specified in ISO 8601 format. It will allow
+        # developers to give their subscribers a grace period when the payment for the
+        # new recurrence period is declined. Acceptable values = "P3D" (three days) and "
+        # P7D" (seven days)
+        # Corresponds to the JSON property `gracePeriod`
+        # @return [String]
+        attr_accessor :grace_period
+      
         # List of localized title and description data.
         # Corresponds to the JSON property `listings`
         # @return [Hash<String,Google::Apis::AndroidpublisherV2::InAppProductListing>]
@@ -828,6 +836,7 @@ module Google
         def update!(**args)
           @default_language = args[:default_language] if args.key?(:default_language)
           @default_price = args[:default_price] if args.key?(:default_price)
+          @grace_period = args[:grace_period] if args.key?(:grace_period)
           @listings = args[:listings] if args.key?(:listings)
           @package_name = args[:package_name] if args.key?(:package_name)
           @prices = args[:prices] if args.key?(:prices)

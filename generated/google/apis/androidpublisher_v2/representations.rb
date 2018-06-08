@@ -571,6 +571,7 @@ module Google
           property :default_language, as: 'defaultLanguage'
           property :default_price, as: 'defaultPrice', class: Google::Apis::AndroidpublisherV2::Price, decorator: Google::Apis::AndroidpublisherV2::Price::Representation
       
+          property :grace_period, as: 'gracePeriod'
           hash :listings, as: 'listings', class: Google::Apis::AndroidpublisherV2::InAppProductListing, decorator: Google::Apis::AndroidpublisherV2::InAppProductListing::Representation
       
           property :package_name, as: 'packageName'

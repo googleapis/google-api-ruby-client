@@ -223,6 +223,7 @@ module Google
       class PresentationParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
           property :color_space, as: 'colorSpace'
           property :orienting_rotation, as: 'orientingRotation', class: Google::Apis::PolyV1::Quaternion, decorator: Google::Apis::PolyV1::Quaternion::Representation
       

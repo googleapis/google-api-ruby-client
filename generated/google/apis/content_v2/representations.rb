@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CutoffTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Datafeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -460,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiaPosDataProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiaSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiasettingsListPosDataProvidersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiasettingsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +533,12 @@ module Google
       end
       
       class LiasettingsSetInventoryVerificationContactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsSetPosDataProviderResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1769,6 +1793,15 @@ module Google
         end
       end
       
+      class CutoffTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hour, as: 'hour'
+          property :minute, as: 'minute'
+          property :timezone, as: 'timezone'
+        end
+      end
+      
       class Datafeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1972,9 +2005,13 @@ module Google
       class DeliveryTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cutoff_time, as: 'cutoffTime', class: Google::Apis::ContentV2::CutoffTime, decorator: Google::Apis::ContentV2::CutoffTime::Representation
+      
           collection :holiday_cutoffs, as: 'holidayCutoffs', class: Google::Apis::ContentV2::HolidayCutoff, decorator: Google::Apis::ContentV2::HolidayCutoff::Representation
       
+          property :max_handling_time_in_days, as: 'maxHandlingTimeInDays'
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
+          property :min_handling_time_in_days, as: 'minHandlingTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
         end
       end
@@ -2204,6 +2241,8 @@ module Google
       
           property :on_display_to_order, as: 'onDisplayToOrder', class: Google::Apis::ContentV2::LiaOnDisplayToOrderSettings, decorator: Google::Apis::ContentV2::LiaOnDisplayToOrderSettings::Representation
       
+          property :pos_data_provider, as: 'posDataProvider', class: Google::Apis::ContentV2::LiaPosDataProvider, decorator: Google::Apis::ContentV2::LiaPosDataProvider::Representation
+      
           property :store_pickup_active, as: 'storePickupActive'
         end
       end
@@ -2223,6 +2262,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :shipping_cost_policy_url, as: 'shippingCostPolicyUrl'
           property :status, as: 'status'
+        end
+      end
+      
+      class LiaPosDataProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pos_data_provider_id, :numeric_string => true, as: 'posDataProviderId'
+          property :pos_external_account_id, as: 'posExternalAccountId'
         end
       end
       
@@ -2297,6 +2344,15 @@ module Google
         end
       end
       
+      class LiasettingsListPosDataProvidersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :pos_data_providers, as: 'posDataProviders', class: Google::Apis::ContentV2::PosDataProviders, decorator: Google::Apis::ContentV2::PosDataProviders::Representation
+      
+        end
+      end
+      
       class LiasettingsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2322,6 +2378,13 @@ module Google
       end
       
       class LiasettingsSetInventoryVerificationContactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsSetPosDataProviderResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
@@ -3845,6 +3908,7 @@ module Google
       
           property :main_table, as: 'mainTable', class: Google::Apis::ContentV2::Table, decorator: Google::Apis::ContentV2::Table::Representation
       
+          property :name, as: 'name'
           property :single_value, as: 'singleValue', class: Google::Apis::ContentV2::Value, decorator: Google::Apis::ContentV2::Value::Representation
       
           collection :subtables, as: 'subtables', class: Google::Apis::ContentV2::Table, decorator: Google::Apis::ContentV2::Table::Representation

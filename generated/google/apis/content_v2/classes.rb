@@ -1204,6 +1204,40 @@ module Google
         end
       end
       
+      # 
+      class CutoffTime
+        include Google::Apis::Core::Hashable
+      
+        # Hour of the cutoff time until which an order has to be placed to be processed
+        # in the same day. Required.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
+      
+        # Minute of the cutoff time until which an order has to be placed to be
+        # processed in the same day. Required.
+        # Corresponds to the JSON property `minute`
+        # @return [Fixnum]
+        attr_accessor :minute
+      
+        # Timezone identifier for the cutoff time. A list of identifiers can be found in
+        # the AdWords API documentation. E.g. "Europe/Zurich". Required.
+        # Corresponds to the JSON property `timezone`
+        # @return [String]
+        attr_accessor :timezone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hour = args[:hour] if args.key?(:hour)
+          @minute = args[:minute] if args.key?(:minute)
+          @timezone = args[:timezone] if args.key?(:timezone)
+        end
+      end
+      
       # Datafeed configuration data.
       class Datafeed
         include Google::Apis::Core::Hashable
@@ -1931,11 +1965,24 @@ module Google
       class DeliveryTime
         include Google::Apis::Core::Hashable
       
+        # Business days cutoff time definition. If not configured the cutoff time will
+        # be defaulted to 8AM PST.
+        # Corresponds to the JSON property `cutoffTime`
+        # @return [Google::Apis::ContentV2::CutoffTime]
+        attr_accessor :cutoff_time
+      
         # Holiday cutoff definitions. If configured, they specify order cutoff times for
         # holiday-specific shipping.
         # Corresponds to the JSON property `holidayCutoffs`
         # @return [Array<Google::Apis::ContentV2::HolidayCutoff>]
         attr_accessor :holiday_cutoffs
+      
+        # Maximum number of business days spent before an order is shipped. 0 means same
+        # day shipped, 1 means next day shipped. Must be greater than or equal to
+        # minHandlingTimeInDays.
+        # Corresponds to the JSON property `maxHandlingTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :max_handling_time_in_days
       
         # Maximum number of business days that is spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Must be greater than or equal to
@@ -1943,6 +1990,12 @@ module Google
         # Corresponds to the JSON property `maxTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_transit_time_in_days
+      
+        # Minimum number of business days spent before an order is shipped. 0 means same
+        # day shipped, 1 means next day shipped.
+        # Corresponds to the JSON property `minHandlingTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :min_handling_time_in_days
       
         # Minimum number of business days that is spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Required.
@@ -1956,8 +2009,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cutoff_time = args[:cutoff_time] if args.key?(:cutoff_time)
           @holiday_cutoffs = args[:holiday_cutoffs] if args.key?(:holiday_cutoffs)
+          @max_handling_time_in_days = args[:max_handling_time_in_days] if args.key?(:max_handling_time_in_days)
           @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
+          @min_handling_time_in_days = args[:min_handling_time_in_days] if args.key?(:min_handling_time_in_days)
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
         end
       end
@@ -2737,6 +2793,11 @@ module Google
         # @return [Google::Apis::ContentV2::LiaOnDisplayToOrderSettings]
         attr_accessor :on_display_to_order
       
+        # The POS data provider linked with this country.
+        # Corresponds to the JSON property `posDataProvider`
+        # @return [Google::Apis::ContentV2::LiaPosDataProvider]
+        attr_accessor :pos_data_provider
+      
         # The status of the "Store pickup" feature.
         # Corresponds to the JSON property `storePickupActive`
         # @return [Boolean]
@@ -2754,6 +2815,7 @@ module Google
           @hosted_local_storefront_active = args[:hosted_local_storefront_active] if args.key?(:hosted_local_storefront_active)
           @inventory = args[:inventory] if args.key?(:inventory)
           @on_display_to_order = args[:on_display_to_order] if args.key?(:on_display_to_order)
+          @pos_data_provider = args[:pos_data_provider] if args.key?(:pos_data_provider)
           @store_pickup_active = args[:store_pickup_active] if args.key?(:store_pickup_active)
         end
       end
@@ -2817,6 +2879,31 @@ module Google
         def update!(**args)
           @shipping_cost_policy_url = args[:shipping_cost_policy_url] if args.key?(:shipping_cost_policy_url)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LiaPosDataProvider
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the POS data provider.
+        # Corresponds to the JSON property `posDataProviderId`
+        # @return [Fixnum]
+        attr_accessor :pos_data_provider_id
+      
+        # The account ID by which this merchant is known to the POS data provider.
+        # Corresponds to the JSON property `posExternalAccountId`
+        # @return [String]
+        attr_accessor :pos_external_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pos_data_provider_id = args[:pos_data_provider_id] if args.key?(:pos_data_provider_id)
+          @pos_external_account_id = args[:pos_external_account_id] if args.key?(:pos_external_account_id)
         end
       end
       
@@ -3062,6 +3149,32 @@ module Google
       end
       
       # 
+      class LiasettingsListPosDataProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsListPosDataProvidersResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The list of POS data providers for each eligible country
+        # Corresponds to the JSON property `posDataProviders`
+        # @return [Array<Google::Apis::ContentV2::PosDataProviders>]
+        attr_accessor :pos_data_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @pos_data_providers = args[:pos_data_providers] if args.key?(:pos_data_providers)
+        end
+      end
+      
+      # 
       class LiasettingsListResponse
         include Google::Apis::Core::Hashable
       
@@ -3139,6 +3252,26 @@ module Google
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # liasettingsSetInventoryVerificationContactResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsSetPosDataProviderResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsSetPosDataProviderResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8728,6 +8861,12 @@ module Google
         # @return [Google::Apis::ContentV2::Table]
         attr_accessor :main_table
       
+        # Name of the rate group. Optional. If set has to be unique within shipping
+        # service.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The single value of a rate group or the value of a rate group table's cell.
         # Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
         # subtableName must be set.
@@ -8750,6 +8889,7 @@ module Google
           @applicable_shipping_labels = args[:applicable_shipping_labels] if args.key?(:applicable_shipping_labels)
           @carrier_rates = args[:carrier_rates] if args.key?(:carrier_rates)
           @main_table = args[:main_table] if args.key?(:main_table)
+          @name = args[:name] if args.key?(:name)
           @single_value = args[:single_value] if args.key?(:single_value)
           @subtables = args[:subtables] if args.key?(:subtables)
         end

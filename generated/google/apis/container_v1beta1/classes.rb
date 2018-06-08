@@ -1400,6 +1400,44 @@ module Google
         end
       end
       
+      # Progress metric is (string, int|float|string) pair.
+      class Metric
+        include Google::Apis::Core::Hashable
+      
+        # For metrics with floating point value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # For metrics with integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Metric name, required.
+        # e.g., "nodes total", "percent done"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # For metrics with custom values (ratios, visual progress, etc.).
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @name = args[:name] if args.key?(:name)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # NetworkConfig reports the relative names of network & subnetwork.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -1871,6 +1909,11 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
+        # Information about operation (or operation stage) progress.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::ContainerV1beta1::OperationProgress]
+        attr_accessor :progress
+      
         # Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1916,12 +1959,57 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @progress = args[:progress] if args.key?(:progress)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Information about operation (or operation stage) progress.
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # Progress metric bundle, for example:
+        # metrics: [`name: "nodes done",     int_value: 15`,
+        # `name: "nodes total",    int_value: 32`]
+        # or
+        # metrics: [`name: "progress",       double_value: 0.56`,
+        # `name: "progress scale", double_value: 1.0`]
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ContainerV1beta1::Metric>]
+        attr_accessor :metrics
+      
+        # A non-parameterized string describing an operation stage.
+        # Unset for single-stage operations.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Substages of an operation or a stage.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::ContainerV1beta1::OperationProgress>]
+        attr_accessor :stages
+      
+        # Status of an operation stage.
+        # Unset for single-stage operations.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @stages = args[:stages] if args.key?(:stages)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

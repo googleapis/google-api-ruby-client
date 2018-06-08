@@ -711,8 +711,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # Must be in increasing order of |value| field. The current requirement enforced
-        # by the backend is that at most one Exemplar will fall into any bucket.
+        # Must be in increasing order of value field.
         # Corresponds to the JSON property `exemplars`
         # @return [Array<Google::Apis::MonitoringV3::Exemplar>]
         attr_accessor :exemplars

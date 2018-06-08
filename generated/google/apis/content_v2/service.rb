@@ -1404,6 +1404,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the list of POS data providers that have active settings for the all
+        # eiligible countries.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def listposdataproviders_liasetting(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'liasettings/posdataproviders', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the LIA settings of the account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
@@ -1576,6 +1607,54 @@ module Google
           command.query['contactName'] = contact_name unless contact_name.nil?
           command.query['country'] = country unless country.nil?
           command.query['language'] = language unless language.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the POS data provider for the specified country.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to retrieve accessible Google My Business
+        #   accounts.
+        # @param [String] country
+        #   The country for which the POS data provider is selected.
+        # @param [Fixnum] pos_data_provider_id
+        #   The ID of POS data provider.
+        # @param [String] pos_external_account_id
+        #   The account ID by which this merchant is known to the POS data provider.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def setposdataprovider_liasetting(merchant_id, account_id, country: nil, pos_data_provider_id: nil, pos_external_account_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setposdataprovider', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['country'] = country unless country.nil?
+          command.query['posDataProviderId'] = pos_data_provider_id unless pos_data_provider_id.nil?
+          command.query['posExternalAccountId'] = pos_external_account_id unless pos_external_account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
