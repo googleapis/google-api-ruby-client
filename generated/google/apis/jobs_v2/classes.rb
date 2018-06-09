@@ -251,6 +251,7 @@ module Google
         # and "Google", which the client wishes to use as the company displayed on
         # the job. Best practice is to create a distinct company identifier for each
         # distinct brand displayed.
+        # The maximum number of allowed characters is 255.
         # Corresponds to the JSON property `distributorCompanyId`
         # @return [String]
         attr_accessor :distributor_company_id
@@ -512,7 +513,7 @@ module Google
         attr_accessor :type
       
         # Required.
-        # Specify desired ** base compensation entry's **
+        # Specify desired `base compensation entry's`
         # CompensationInfo.CompensationUnit.
         # Corresponds to the JSON property `units`
         # @return [Array<String>]
@@ -1065,7 +1066,7 @@ module Google
         attr_accessor :compensation_range
       
         # Required.
-        # Specify desired ** base compensation entry's **
+        # Specify desired `base compensation entry's`
         # ExtendedCompensationInfo.CompensationUnit.
         # Corresponds to the JSON property `compensationUnits`
         # @return [Array<String>]
@@ -1873,7 +1874,7 @@ module Google
         # for client identification and tracking of listings. A job is not allowed
         # to be created if there is another job with the same requisition_id,
         # company_name and language_code.
-        # The maximum number of allowed characters is 225.
+        # The maximum number of allowed characters is 255.
         # Corresponds to the JSON property `requisitionId`
         # @return [String]
         attr_accessor :requisition_id
@@ -2122,7 +2123,7 @@ module Google
         # Optional.
         # The query filter contains the keywords that match against the job
         # title, description, and location fields.
-        # The maximum query size is 255 bytes.
+        # The maximum query size is 255 bytes/characters.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

@@ -2139,10 +2139,12 @@ module Google
         # standard-sql/data-manipulation-language "UPDATE": UPDATE query; see https://
         # cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
         # language "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/
-        # reference/standard-sql/data-manipulation-language "CREATE_TABLE": CREATE [OR
-        # REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE]
-        # TABLE ... AS SELECT ... "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE
-        # [OR REPLACE] VIEW ... AS SELECT ... "DROP_VIEW": DROP VIEW query.
+        # reference/standard-sql/data-manipulation-language "MERGE": MERGE query; see
+        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # manipulation-language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS
+        # SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... "
+        # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
+        # SELECT ... "DROP_VIEW": DROP VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type

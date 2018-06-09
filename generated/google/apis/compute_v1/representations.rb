@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskInstantiationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2058,6 +2064,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceInstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3657,6 +3669,16 @@ module Google
         end
       end
       
+      class DiskInstantiationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :custom_image, as: 'customImage'
+          property :device_name, as: 'deviceName'
+          property :instantiate_from, as: 'instantiateFrom'
+        end
+      end
+      
       class DiskList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4868,6 +4890,9 @@ module Google
           property :properties, as: 'properties', class: Google::Apis::ComputeV1::InstanceProperties, decorator: Google::Apis::ComputeV1::InstanceProperties::Representation
       
           property :self_link, as: 'selfLink'
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_params, as: 'sourceInstanceParams', class: Google::Apis::ComputeV1::SourceInstanceParams, decorator: Google::Apis::ComputeV1::SourceInstanceParams::Representation
+      
         end
       end
       
@@ -6566,6 +6591,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SourceInstanceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_configs, as: 'diskConfigs', class: Google::Apis::ComputeV1::DiskInstantiationConfig, decorator: Google::Apis::ComputeV1::DiskInstantiationConfig::Representation
+      
         end
       end
       

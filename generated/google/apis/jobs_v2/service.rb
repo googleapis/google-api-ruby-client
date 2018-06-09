@@ -265,7 +265,7 @@ module Google
         #   Optional.
         #   The requisition ID, also known as posting ID, assigned by the company
         #   to the job.
-        #   The number of allowable characters is 225.
+        #   The maximum number of allowable characters is 225.
         # @param [Fixnum] page_size
         #   Optional.
         #   The maximum number of jobs to be returned per page of results.

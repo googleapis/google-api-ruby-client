@@ -3664,6 +3664,59 @@ module Google
         end
       end
       
+      # A specification of the desired way to instantiate a disk in the instance
+      # template when its created from a source instance.
+      class DiskInstantiationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the disk will be auto-deleted when the instance is deleted (
+        # but not when the disk is detached from the instance).
+        # Corresponds to the JSON property `autoDelete`
+        # @return [Boolean]
+        attr_accessor :auto_delete
+        alias_method :auto_delete?, :auto_delete
+      
+        # The custom source image to be used to restore this disk when instantiating
+        # this instance template.
+        # Corresponds to the JSON property `customImage`
+        # @return [String]
+        attr_accessor :custom_image
+      
+        # Specifies the device name of the disk to which the configurations apply to.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Specifies whether to include the disk and what image to use. Possible values
+        # are:
+        # - source-image: to use the same image that was used to create the source
+        # instance's corresponding disk. Applicable to the boot disk and additional read-
+        # write disks.
+        # - source-image-family: to use the same image family that was used to create
+        # the source instance's corresponding disk. Applicable to the boot disk and
+        # additional read-write disks.
+        # - custom-image: to use a user-provided image url for disk creation. Applicable
+        # to the boot disk and additional read-write disks.
+        # - attach-read-only: to attach a read-only disk. Applicable to read-only disks.
+        # - do-not-include: to exclude a disk from the template. Applicable to
+        # additional read-write disks, local SSDs, and read-only disks.
+        # Corresponds to the JSON property `instantiateFrom`
+        # @return [String]
+        attr_accessor :instantiate_from
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @custom_image = args[:custom_image] if args.key?(:custom_image)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @instantiate_from = args[:instantiate_from] if args.key?(:instantiate_from)
+        end
+      end
+      
       # A list of Disk resources.
       class DiskList
         include Google::Apis::Core::Hashable
@@ -8593,6 +8646,22 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The source instance used to create the template. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        # instance
+        # - projects/project/zones/zone/instances/instance
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # A specification of the parameters to use when creating the instance template
+        # from a source instance.
+        # Corresponds to the JSON property `sourceInstanceParams`
+        # @return [Google::Apis::ComputeV1::SourceInstanceParams]
+        attr_accessor :source_instance_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8606,6 +8675,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @source_instance_params = args[:source_instance_params] if args.key?(:source_instance_params)
         end
       end
       
@@ -11000,7 +11071,7 @@ module Google
         end
       end
       
-      # Next available tag: 12
+      # A Managed Instance resource.
       class ManagedInstance
         include Google::Apis::Core::Hashable
       
@@ -15248,6 +15319,29 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # A specification of the parameters to use when creating the instance template
+      # from a source instance.
+      class SourceInstanceParams
+        include Google::Apis::Core::Hashable
+      
+        # Attached disks configuration. If not provided, defaults are applied: For boot
+        # disk and any other R/W disks, new custom images will be created from each disk.
+        # For read-only disks, they will be attached in read-only mode. Local SSD disks
+        # will be created as blank volumes.
+        # Corresponds to the JSON property `diskConfigs`
+        # @return [Array<Google::Apis::ComputeV1::DiskInstantiationConfig>]
+        attr_accessor :disk_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_configs = args[:disk_configs] if args.key?(:disk_configs)
         end
       end
       
