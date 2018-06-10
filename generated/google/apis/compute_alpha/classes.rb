@@ -5731,6 +5731,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
+        # This field is used along with the backend_service field for internal load
+        # balancing or with the target field for internal TargetInstance. This field
+        # cannot be used with port or portRange fields.
+        # When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify
+        # this field to allow packets addressed to any ports will be forwarded to the
+        # backends configured with this forwarding rule.
+        # Corresponds to the JSON property `allPorts`
+        # @return [Boolean]
+        attr_accessor :all_ports
+        alias_method :all_ports?, :all_ports
+      
         # This field is not used for external load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
@@ -5922,6 +5933,7 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @all_ports = args[:all_ports] if args.key?(:all_ports)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -14424,7 +14436,7 @@ module Google
         end
       end
       
-      # Next available tag: 12
+      # A Managed Instance resource.
       class ManagedInstance
         include Google::Apis::Core::Hashable
       
@@ -21447,6 +21459,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_allocated_nat_ips
       
+        # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        # Corresponds to the JSON property `icmpIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :icmp_idle_timeout_sec
+      
+        # Minimum number of ports allocated to a VM from this NAT config. If not set, a
+        # default number of ports is allocated to a VM. This gets rounded up to the
+        # nearest power of 2. Eg. if the value of this field is 50, at least 64 ports
+        # will be allocated to a VM.
+        # Corresponds to the JSON property `minPortsPerVm`
+        # @return [Fixnum]
+        attr_accessor :min_ports_per_vm
+      
         # Unique name of this Nat service. The name must be 1-63 characters long and
         # comply with RFC1035.
         # Corresponds to the JSON property `name`
@@ -21480,6 +21505,23 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::RouterNatSubnetworkToNat>]
         attr_accessor :subnetworks
       
+        # Timeout (in seconds) for TCP established connections. Defaults to 1200s if not
+        # set.
+        # Corresponds to the JSON property `tcpEstablishedIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_established_idle_timeout_sec
+      
+        # Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not
+        # set.
+        # Corresponds to the JSON property `tcpTransitoryIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_transitory_idle_timeout_sec
+      
+        # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        # Corresponds to the JSON property `udpIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :udp_idle_timeout_sec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21487,11 +21529,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_allocated_nat_ips = args[:auto_allocated_nat_ips] if args.key?(:auto_allocated_nat_ips)
+          @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
+          @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
           @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
           @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+          @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
+          @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
+          @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
         end
       end
       
@@ -27588,18 +27635,6 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The redundancy mode configured for this VPN gateway. Possible values are
-        # ACTIVE_ACTIVE and NONE. If set to ACTIVE_ACTIVE, two VPN interfaces are
-        # created thereby providing higher availability. If set to NONE, only one
-        # interface is created with a lower availability SLA.
-        # If this field is specified, either 2 or 1 external IP addresses (depending on
-        # the value of specified redundancy) are automatically allocated for use with
-        # this VPN gateway, and incoming traffic on the external addresses to ports ESP,
-        # UDP:500 and UDP:4500 are automatically forwarded to this gateway.
-        # Corresponds to the JSON property `redundancy`
-        # @return [String]
-        attr_accessor :redundancy
-      
         # [Output Only] URL of the region where the VPN gateway resides.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -27629,7 +27664,6 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
-          @redundancy = args[:redundancy] if args.key?(:redundancy)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @vpn_interfaces = args[:vpn_interfaces] if args.key?(:vpn_interfaces)
@@ -28112,15 +28146,12 @@ module Google
       
         # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
         # the client when the VPN tunnel is created. This must be used (instead of
-        # target_vpn_gateway) if a VPN gateway resource is created with redundancy.
-        # VPN gateway resource provides a way to create a highly available VPN setup.
+        # target_vpn_gateway) if a High Availability VPN gateway resource is created.
         # Corresponds to the JSON property `vpnGateway`
         # @return [String]
         attr_accessor :vpn_gateway
       
         # The interface ID of the VPN gateway with which this VPN tunnel is associated.
-        # If the VPN gateway has redundancy other than NONE, this field is required to
-        # identify which interface of the VPN gateway to use.
         # Corresponds to the JSON property `vpnGatewayInterface`
         # @return [Fixnum]
         attr_accessor :vpn_gateway_interface

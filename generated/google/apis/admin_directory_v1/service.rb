@@ -280,7 +280,7 @@ module Google
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
         #   Search string in the format given at http://support.google.com/chromeos/a/bin/
-        #   answer.py?hl=en&answer=1698333
+        #   answer.py?answer=1698333
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
@@ -940,7 +940,7 @@ module Google
         #   Token to specify next page in the list
         # @param [String] query
         #   Query string search. Should be of the form "". Complete documentation is at
-        #   https://developers.google.com/admin-sdk/directory/v1/guides/search-users
+        #   https://developers.google.com/admin-sdk/directory/v1/guides/search-groups
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
@@ -1557,7 +1557,7 @@ module Google
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
         #   Search string in the format given at http://support.google.com/a/bin/answer.py?
-        #   hl=en&answer=1408863#search
+        #   answer=1408863#search
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used

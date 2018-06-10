@@ -5433,6 +5433,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
+          property :all_ports, as: 'allPorts'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -9472,12 +9473,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
           collection :nat_ips, as: 'natIps'
           property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
           collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeAlpha::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeAlpha::RouterNatSubnetworkToNat::Representation
       
+          property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
+          property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
+          property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
         end
       end
       
@@ -11052,7 +11058,6 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
-          property :redundancy, as: 'redundancy'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface::Representation
