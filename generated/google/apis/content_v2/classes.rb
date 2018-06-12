@@ -9344,6 +9344,12 @@ module Google
         # @return [Google::Apis::ContentV2::TestOrderCustomer]
         attr_accessor :customer
       
+        # Whether the orderinvoices service should support this order.
+        # Corresponds to the JSON property `enableOrderinvoices`
+        # @return [Boolean]
+        attr_accessor :enable_orderinvoices
+        alias_method :enable_orderinvoices?, :enable_orderinvoices
+      
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # testOrder".
         # Corresponds to the JSON property `kind`
@@ -9399,6 +9405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
+          @enable_orderinvoices = args[:enable_orderinvoices] if args.key?(:enable_orderinvoices)
           @kind = args[:kind] if args.key?(:kind)
           @line_items = args[:line_items] if args.key?(:line_items)
           @notification_mode = args[:notification_mode] if args.key?(:notification_mode)

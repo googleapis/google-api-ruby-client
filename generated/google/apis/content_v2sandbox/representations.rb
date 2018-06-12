@@ -1644,6 +1644,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer', class: Google::Apis::ContentV2sandbox::TestOrderCustomer, decorator: Google::Apis::ContentV2sandbox::TestOrderCustomer::Representation
       
+          property :enable_orderinvoices, as: 'enableOrderinvoices'
           property :kind, as: 'kind'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2sandbox::TestOrderLineItem, decorator: Google::Apis::ContentV2sandbox::TestOrderLineItem::Representation
       

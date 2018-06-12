@@ -440,7 +440,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the status of a Merchant Center account.
+        # Retrieves the status of a Merchant Center account. Multi-client accounts can
+        # only call this method for sub-accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID

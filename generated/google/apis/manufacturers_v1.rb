@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/manufacturers/
     module ManufacturersV1
       VERSION = 'V1'
-      REVISION = '20180404'
+      REVISION = '20180605'
 
       # Manage your product listings for Google Manufacturer Center
       AUTH_MANUFACTURERCENTER = 'https://www.googleapis.com/auth/manufacturercenter'
