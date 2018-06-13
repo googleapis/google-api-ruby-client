@@ -670,6 +670,15 @@ module Google
         # @return [String]
         attr_accessor :suggested_value
       
+        # Indicates whether subtrees of Cloud Resource Manager resource hierarchy
+        # can be used in `Policy.allowed_values` and `Policy.denied_values`. For
+        # example, `"under:folders/123"` would match any resource under the
+        # 'folders/123' folder.
+        # Corresponds to the JSON property `supportsUnder`
+        # @return [Boolean]
+        attr_accessor :supports_under
+        alias_method :supports_under?, :supports_under
+      
         def initialize(**args)
            update!(**args)
         end
@@ -677,6 +686,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
+          @supports_under = args[:supports_under] if args.key?(:supports_under)
         end
       end
       
@@ -764,13 +774,24 @@ module Google
       
       # Used in `policy_type` to specify how `list_policy` behaves at this
       # resource.
-      # A `ListPolicy` can define specific values that are allowed or denied by
-      # setting either the `allowed_values` or `denied_values` fields. It can also
-      # be used to allow or deny all values, by setting the `all_values` field. If
-      # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-      # or `denied_values` must be set (attempting to set both or neither will
-      # result in a failed request). If `all_values` is set to either `ALLOW` or
-      # `DENY`, `allowed_values` and `denied_values` must be unset.
+      # `ListPolicy` can define specific values and subtrees of Cloud Resource
+      # Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that
+      # are allowed or denied by setting the `allowed_values` and `denied_values`
+      # fields. This is achieved by using the `under:` and optional `is:` prefixes.
+      # The `under:` prefix is used to denote resource subtree values.
+      # The `is:` prefix is used to denote specific values, and is required only
+      # if the value contains a ":". Values prefixed with "is:" are treated the
+      # same as values with no prefix.
+      # Ancestry subtrees must be in one of the following formats:
+      # - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
+      # - “folders/<folder-id>”, e.g. “folders/1234”
+      # - “organizations/<organization-id>”, e.g. “organizations/1234”
+      # The `supports_under` field of the associated `Constraint`  defines whether
+      # ancestry prefixes can be used. You can set `allowed_values` and
+      # `denied_values` in the same `Policy` if `all_values` is
+      # `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all
+      # values. If `all_values` is set to either `ALLOW` or `DENY`,
+      # `allowed_values` and `denied_values` must be unset.
       class ListPolicy
         include Google::Apis::Core::Hashable
       
@@ -779,16 +800,14 @@ module Google
         # @return [String]
         attr_accessor :all_values
       
-        # List of values allowed  at this resource. Can only be set if no values
-        # are set for `denied_values` and `all_values` is set to
-        # `ALL_VALUES_UNSPECIFIED`.
+        # List of values allowed  at this resource. Can only be set if `all_values`
+        # is set to `ALL_VALUES_UNSPECIFIED`.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<String>]
         attr_accessor :allowed_values
       
-        # List of values denied at this resource. Can only be set if no values are
-        # set for `allowed_values` and `all_values` is set to
-        # `ALL_VALUES_UNSPECIFIED`.
+        # List of values denied at this resource. Can only be set if `all_values`
+        # is set to `ALL_VALUES_UNSPECIFIED`.
         # Corresponds to the JSON property `deniedValues`
         # @return [Array<String>]
         attr_accessor :denied_values
@@ -813,11 +832,12 @@ module Google
         # `Policy` is applied to a project below the Organization that has
         # `inherit_from_parent` set to `false` and field all_values set to DENY,
         # then an attempt to activate any API will be denied.
-        # The following examples demonstrate different possible layerings:
+        # The following examples demonstrate different possible layerings for
+        # `projects/bar` parented by `organizations/foo`:
         # Example 1 (no inherited values):
         # `organizations/foo` has a `Policy` with values:
         # `allowed_values: “E1” allowed_values:”E2”`
-        # ``projects/bar`` has `inherit_from_parent` `false` and values:
+        # `projects/bar` has `inherit_from_parent` `false` and values:
         # `allowed_values: "E3" allowed_values: "E4"`
         # The accepted values at `organizations/foo` are `E1`, `E2`.
         # The accepted values at `projects/bar` are `E3`, and `E4`.
@@ -864,6 +884,19 @@ module Google
         # `all: DENY`
         # The accepted values at `organizations/foo` are `E1`, E2`.
         # No value is accepted at `projects/bar`.
+        # Example 10 (allowed and denied subtrees of Resource Manager hierarchy):
+        # Given the following resource hierarchy
+        # O1->`F1, F2`; F1->`P1`; F2->`P2, P3`,
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: "under:organizations/O1"`
+        # `projects/bar` has a `Policy` with:
+        # `allowed_values: "under:projects/P3"`
+        # `denied_values: "under:folders/F2"`
+        # The accepted values at `organizations/foo` are `organizations/O1`,
+        # `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,
+        # `projects/P3`.
+        # The accepted values at `projects/bar` are `organizations/O1`,
+        # `folders/F1`, `projects/P1`.
         # Corresponds to the JSON property `inheritFromParent`
         # @return [Boolean]
         attr_accessor :inherit_from_parent
@@ -1063,13 +1096,24 @@ module Google
       
         # Used in `policy_type` to specify how `list_policy` behaves at this
         # resource.
-        # A `ListPolicy` can define specific values that are allowed or denied by
-        # setting either the `allowed_values` or `denied_values` fields. It can also
-        # be used to allow or deny all values, by setting the `all_values` field. If
-        # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-        # or `denied_values` must be set (attempting to set both or neither will
-        # result in a failed request). If `all_values` is set to either `ALLOW` or
-        # `DENY`, `allowed_values` and `denied_values` must be unset.
+        # `ListPolicy` can define specific values and subtrees of Cloud Resource
+        # Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that
+        # are allowed or denied by setting the `allowed_values` and `denied_values`
+        # fields. This is achieved by using the `under:` and optional `is:` prefixes.
+        # The `under:` prefix is used to denote resource subtree values.
+        # The `is:` prefix is used to denote specific values, and is required only
+        # if the value contains a ":". Values prefixed with "is:" are treated the
+        # same as values with no prefix.
+        # Ancestry subtrees must be in one of the following formats:
+        # - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
+        # - “folders/<folder-id>”, e.g. “folders/1234”
+        # - “organizations/<organization-id>”, e.g. “organizations/1234”
+        # The `supports_under` field of the associated `Constraint`  defines whether
+        # ancestry prefixes can be used. You can set `allowed_values` and
+        # `denied_values` in the same `Policy` if `all_values` is
+        # `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all
+        # values. If `all_values` is set to either `ALLOW` or `DENY`,
+        # `allowed_values` and `denied_values` must be unset.
         # Corresponds to the JSON property `listPolicy`
         # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
         attr_accessor :list_policy

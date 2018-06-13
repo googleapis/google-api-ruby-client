@@ -594,14 +594,18 @@ module Google
         # Query expressions can be used to restrict results based upon displayName,
         # lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR`
         # can be used along with the suffix wildcard symbol `*`.
+        # The displayName field in a query expression should use escaped quotes
+        # for values that include whitespace to prevent unexpected behavior.
         # Some example queries are:
         # |Query | Description|
         # |----- | -----------|
-        # |displayName=Test* | Folders whose display name starts with "Test".
-        # |lifecycleState=ACTIVE | Folders whose lifecycleState is ACTIVE.
-        # |parent=folders/123 | Folders whose parent is "folders/123".
+        # |displayName=Test* | Folders whose display name starts with "Test".|
+        # |lifecycleState=ACTIVE | Folders whose lifecycleState is ACTIVE.|
+        # |parent=folders/123 | Folders whose parent is "folders/123".|
         # |parent=folders/123 AND lifecycleState=ACTIVE | Active folders whose parent is
         # "folders/123".|
+        # |displayName=\\"Test String\\"|Folders whose display name includes both "Test"
+        # and "String".|
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

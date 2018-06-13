@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/digital-asset-links/
     module DigitalassetlinksV1
       VERSION = 'V1'
-      REVISION = '20171207'
+      REVISION = '20180606'
     end
   end
 end

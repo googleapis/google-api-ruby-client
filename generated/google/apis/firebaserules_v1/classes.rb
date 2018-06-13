@@ -571,6 +571,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The set of visited expressions for a given test. This returns positions
+        # and evaluation results of all visited expressions.
+        # Corresponds to the JSON property `visitedExpressions`
+        # @return [Array<Google::Apis::FirebaserulesV1::VisitedExpression>]
+        attr_accessor :visited_expressions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -581,6 +587,7 @@ module Google
           @error_position = args[:error_position] if args.key?(:error_position)
           @function_calls = args[:function_calls] if args.key?(:function_calls)
           @state = args[:state] if args.key?(:state)
+          @visited_expressions = args[:visited_expressions] if args.key?(:visited_expressions)
         end
       end
       
@@ -685,6 +692,32 @@ module Google
         def update!(**args)
           @release = args[:release] if args.key?(:release)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Store the position and access outcome for an expression visited in rules.
+      class VisitedExpression
+        include Google::Apis::Core::Hashable
+      
+        # Position in the `Source` content including its line, column number, and an
+        # index of the `File` in the `Source` message. Used for debug purposes.
+        # Corresponds to the JSON property `sourcePosition`
+        # @return [Google::Apis::FirebaserulesV1::SourcePosition]
+        attr_accessor :source_position
+      
+        # The evaluated value for the visited expression, e.g. true/false
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_position = args[:source_position] if args.key?(:source_position)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end

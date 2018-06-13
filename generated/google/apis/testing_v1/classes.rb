@@ -179,7 +179,7 @@ module Google
         # <https://developer.android.com/training/testing/junit-runner.html#using-
         # android-test-orchestrator>
         # for more information about Android Test Orchestrator.
-        # Optional, if empty, test will be run without orchestrator.
+        # Optional. If not set, the test will be run without the orchestrator.
         # Corresponds to the JSON property `orchestratorOption`
         # @return [String]
         attr_accessor :orchestrator_option

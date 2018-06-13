@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VisitedExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Arg
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -290,6 +296,8 @@ module Google
           collection :function_calls, as: 'functionCalls', class: Google::Apis::FirebaserulesV1::FunctionCall, decorator: Google::Apis::FirebaserulesV1::FunctionCall::Representation
       
           property :state, as: 'state'
+          collection :visited_expressions, as: 'visitedExpressions', class: Google::Apis::FirebaserulesV1::VisitedExpression, decorator: Google::Apis::FirebaserulesV1::VisitedExpression::Representation
+      
         end
       end
       
@@ -327,6 +335,15 @@ module Google
           property :release, as: 'release', class: Google::Apis::FirebaserulesV1::Release, decorator: Google::Apis::FirebaserulesV1::Release::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class VisitedExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
+      
+          property :value, as: 'value'
         end
       end
     end

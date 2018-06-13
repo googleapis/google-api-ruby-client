@@ -433,6 +433,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :suggested_value, as: 'suggestedValue'
+          property :supports_under, as: 'supportsUnder'
         end
       end
       
