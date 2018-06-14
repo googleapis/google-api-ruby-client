@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/amp/cache/
     module AcceleratedmobilepageurlV1
       VERSION = 'V1'
-      REVISION = '20170921'
+      REVISION = '20180612'
     end
   end
 end

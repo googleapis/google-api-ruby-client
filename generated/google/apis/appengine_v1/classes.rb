@@ -836,6 +836,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED,
+        # config_id must be omitted.
+        # Corresponds to the JSON property `rolloutStrategy`
+        # @return [String]
+        attr_accessor :rollout_strategy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -844,6 +850,7 @@ module Google
         def update!(**args)
           @config_id = args[:config_id] if args.key?(:config_id)
           @name = args[:name] if args.key?(:name)
+          @rollout_strategy = args[:rollout_strategy] if args.key?(:rollout_strategy)
         end
       end
       

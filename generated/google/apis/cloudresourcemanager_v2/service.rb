@@ -63,12 +63,12 @@ module Google
         # moving folders that contain deleted folders.
         # + The addition of the Folder must not cause the total number of Folders
         # under its parent to exceed 100.
-        # If the operation fails due to a folder constraint violation,
-        # a PreconditionFailure explaining the violation will be returned.
-        # If the failure occurs synchronously then the PreconditionFailure
-        # will be returned via the Status.details field and if it occurs
-        # asynchronously then the PreconditionFailure will be returned
-        # via the the Operation.error field.
+        # If the operation fails due to a folder constraint violation, some errors
+        # may be returned by the CreateFolder request, with status code
+        # FAILED_PRECONDITION and an error description. Other folder constraint
+        # violations will be communicated in the Operation, with the specific
+        # PreconditionFailure returned via the details list in the Operation.error
+        # field.
         # The caller must have `resourcemanager.folders.create` permission on the
         # identified parent.
         # @param [Google::Apis::CloudresourcemanagerV2::Folder] folder_object

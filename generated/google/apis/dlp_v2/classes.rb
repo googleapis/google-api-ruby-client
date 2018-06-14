@@ -23,6 +23,7 @@ module Google
     module DlpV2
       
       # A task to execute on the completion of a job.
+      # See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
@@ -375,6 +376,7 @@ module Google
       # If the bound `Value` type differs from the type of data being transformed, we
       # will first attempt converting the type of the data to be transformed to match
       # the type of the bound before comparing.
+      # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
       class GooglePrivacyDlpV2BucketingConfig
         include Google::Apis::Core::Hashable
       
@@ -773,6 +775,8 @@ module Google
         attr_accessor :byte_item
       
         # Structured content to inspect. Up to 50,000 `Value`s per request allowed.
+        # See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
+        # learn more.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Table]
         attr_accessor :table
@@ -855,6 +859,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The DeidentifyTemplates contains instructions on how to deidentify content.
+        # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -897,7 +902,8 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Configuration for a risk analysis job.
+        # Configuration for a risk analysis job. See
+        # https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
         # Corresponds to the JSON property `riskJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig]
         attr_accessor :risk_job
@@ -920,7 +926,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
+        # to learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -949,6 +956,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains a configuration to make dlp api calls on a repeating basis.
+        # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
@@ -1049,7 +1057,7 @@ module Google
       # replaced with the same surrogate.
       # Identifiers must be at least two characters long.
       # In the case that the identifier is the empty string, it will be skipped.
-      # See [Pseudonymization](/dlp/docs/pseudonymization) for example usage.
+      # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
       class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -1239,7 +1247,8 @@ module Google
       end
       
       # Shifts dates by random number of days, with option to be consistent for the
-      # same context.
+      # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting
+      # to learn more.
       class GooglePrivacyDlpV2DateShiftConfig
         include Google::Apis::Core::Hashable
       
@@ -1438,6 +1447,7 @@ module Google
       end
       
       # The DeidentifyTemplates contains instructions on how to deidentify content.
+      # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
       class GooglePrivacyDlpV2DeidentifyTemplate
         include Google::Apis::Core::Hashable
       
@@ -2091,6 +2101,7 @@ module Google
       # If the bound Value type differs from the type of data
       # being transformed, we will first attempt converting the type of the data to
       # be transformed to match the type of the bound before comparing.
+      # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         include Google::Apis::Core::Hashable
       
@@ -2387,7 +2398,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :content_options
       
-        # Custom infoTypes provided by the user.
+        # CustomInfoTypes provided by the user. See
+        # https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         # Corresponds to the JSON property `customInfoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CustomInfoType>]
         attr_accessor :custom_info_types
@@ -2419,6 +2431,7 @@ module Google
       
         # Only returns findings equal or above this threshold. The default is
         # POSSIBLE.
+        # See https://cloud.google.com/dlp/docs/likelihood to learn more.
         # Corresponds to the JSON property `minLikelihood`
         # @return [String]
         attr_accessor :min_likelihood
@@ -2595,7 +2608,8 @@ module Google
       
       # The inspectTemplate contains a configuration (set of types of sensitive data
       # to be detected) to be used anywhere you otherwise would normally specify
-      # InspectConfig.
+      # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
+      # to learn more.
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
@@ -2650,6 +2664,7 @@ module Google
       end
       
       # Contains a configuration to make dlp api calls on a repeating basis.
+      # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
       class GooglePrivacyDlpV2JobTrigger
         include Google::Apis::Core::Hashable
       
@@ -3582,6 +3597,7 @@ module Google
         # If the bound `Value` type differs from the type of data being transformed, we
         # will first attempt converting the type of the data to be transformed to match
         # the type of the bound before comparing.
+        # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
         # Corresponds to the JSON property `bucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BucketingConfig]
         attr_accessor :bucketing_config
@@ -3615,13 +3631,14 @@ module Google
         # replaced with the same surrogate.
         # Identifiers must be at least two characters long.
         # In the case that the identifier is the empty string, it will be skipped.
-        # See [Pseudonymization](/dlp/docs/pseudonymization) for example usage.
+        # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
       
         # Shifts dates by random number of days, with option to be consistent for the
-        # same context.
+        # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting
+        # to learn more.
         # Corresponds to the JSON property `dateShiftConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DateShiftConfig]
         attr_accessor :date_shift_config
@@ -3637,6 +3654,7 @@ module Google
         # If the bound Value type differs from the type of data
         # being transformed, we will first attempt converting the type of the data to
         # be transformed to match the type of the bound before comparing.
+        # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
         # Corresponds to the JSON property `fixedSizeBucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FixedSizeBucketingConfig]
         attr_accessor :fixed_size_bucketing_config
@@ -4302,7 +4320,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
+        # to learn more.
         # Corresponds to the JSON property `snapshotInspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :snapshot_inspect_template
@@ -4350,7 +4369,8 @@ module Google
         end
       end
       
-      # Configuration for a risk analysis job.
+      # Configuration for a risk analysis job. See
+      # https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
       class GooglePrivacyDlpV2RiskAnalysisJobConfig
         include Google::Apis::Core::Hashable
       
@@ -4432,11 +4452,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # With this option a job is started a regular periodic basis. For
-        # example: every 10 minutes.
+        # example: every day (86400 seconds).
         # A scheduled start time will be skipped if the previous
         # execution has not ended when its scheduled time occurs.
         # This value must be set to a time duration greater than or equal
-        # to 60 minutes and can be no longer than 60 days.
+        # to 1 day and can be no longer than 60 days.
         # Corresponds to the JSON property `recurrencePeriodDuration`
         # @return [String]
         attr_accessor :recurrence_period_duration
@@ -4586,6 +4606,8 @@ module Google
       end
       
       # Structured content to inspect. Up to 50,000 `Value`s per request allowed.
+      # See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
+      # learn more.
       class GooglePrivacyDlpV2Table
         include Google::Apis::Core::Hashable
       
@@ -4912,6 +4934,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The DeidentifyTemplates contains instructions on how to deidentify content.
+        # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -4938,7 +4961,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
+        # to learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -4964,6 +4988,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains a configuration to make dlp api calls on a repeating basis.
+        # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger

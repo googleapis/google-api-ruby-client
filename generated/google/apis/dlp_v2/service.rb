@@ -50,8 +50,8 @@ module Google
         end
         
         # Returns a list of the sensitive information types that the DLP API
-        # supports. For more information, see [Listing supported predefined
-        # infoTypes](/dlp/docs/listing-infotypes).
+        # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
+        # learn more.
         # @param [String] filter
         #   Optional filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.
@@ -89,6 +89,8 @@ module Google
         
         # Creates a DeidentifyTemplate for re-using frequently used configuration
         # for de-identifying content, images, and storage.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -123,6 +125,8 @@ module Google
         end
         
         # Deletes a DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -155,6 +159,8 @@ module Google
         end
         
         # Gets a DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -187,6 +193,8 @@ module Google
         end
         
         # Lists DeidentifyTemplates.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -226,6 +234,8 @@ module Google
         end
         
         # Updates the DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -262,6 +272,7 @@ module Google
         
         # Creates an InspectTemplate for re-using frequently used configuration
         # for inspecting content, images, and storage.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -296,6 +307,7 @@ module Google
         end
         
         # Deletes an InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -328,6 +340,7 @@ module Google
         end
         
         # Gets an InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -360,6 +373,7 @@ module Google
         end
         
         # Lists InspectTemplates.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -399,6 +413,7 @@ module Google
         end
         
         # Updates the InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -435,7 +450,8 @@ module Google
         
         # De-identifies potentially sensitive info from a ContentItem.
         # This method has limits on input size and output size.
-        # [How-to guide](/dlp/docs/deidentify-sensitive-data)
+        # See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to
+        # learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
@@ -470,8 +486,8 @@ module Google
         
         # Finds potentially sensitive info in content.
         # This method has limits on input size, processing time, and output size.
-        # [How-to guide for text](/dlp/docs/inspecting-text), [How-to guide for
-        # images](/dlp/docs/inspecting-images)
+        # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
+        # and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
@@ -505,6 +521,10 @@ module Google
         end
         
         # Re-identifies content that has been de-identified.
+        # See
+        # https://cloud.google.com/dlp/docs/pseudonymization#re-
+        # identification_in_free_text_code_example
+        # to learn more.
         # @param [String] parent
         #   The parent resource name.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
@@ -539,6 +559,8 @@ module Google
         
         # Creates a DeidentifyTemplate for re-using frequently used configuration
         # for de-identifying content, images, and storage.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -573,6 +595,8 @@ module Google
         end
         
         # Deletes a DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -605,6 +629,8 @@ module Google
         end
         
         # Gets a DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -637,6 +663,8 @@ module Google
         end
         
         # Lists DeidentifyTemplates.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -676,6 +704,8 @@ module Google
         end
         
         # Updates the DeidentifyTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+        # more.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -713,6 +743,8 @@ module Google
         # Starts asynchronous cancellation on a long-running DlpJob. The server
         # makes a best effort to cancel the DlpJob, but success is not
         # guaranteed.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and
+        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
@@ -746,7 +778,8 @@ module Google
         end
         
         # Creates a new job to inspect storage or calculate risk metrics.
-        # [How-to guide](/dlp/docs/compute-risk-analysis).
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and
+        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
@@ -782,6 +815,8 @@ module Google
         # Deletes a long-running DlpJob. This method indicates that the client is
         # no longer interested in the DlpJob result. The job will be cancelled if
         # possible.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and
+        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   The name of the DlpJob resource to be deleted.
         # @param [String] fields
@@ -812,6 +847,8 @@ module Google
         end
         
         # Gets the latest state of a long-running DlpJob.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and
+        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   The name of the DlpJob resource.
         # @param [String] fields
@@ -842,6 +879,8 @@ module Google
         end
         
         # Lists DlpJobs that match the specified filter in the request.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and
+        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [String] filter
@@ -902,7 +941,8 @@ module Google
         
         # Redacts potentially sensitive info from an image.
         # This method has limits on input size, processing time, and output size.
-        # [How-to guide](/dlp/docs/redacting-sensitive-data-images)
+        # See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
+        # learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
@@ -937,6 +977,7 @@ module Google
         
         # Creates an InspectTemplate for re-using frequently used configuration
         # for inspecting content, images, and storage.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -971,6 +1012,7 @@ module Google
         end
         
         # Deletes an InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -1003,6 +1045,7 @@ module Google
         end
         
         # Gets an InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -1035,6 +1078,7 @@ module Google
         end
         
         # Lists InspectTemplates.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -1074,6 +1118,7 @@ module Google
         end
         
         # Updates the InspectTemplate.
+        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -1110,6 +1155,7 @@ module Google
         
         # Creates a job trigger to run DLP actions such as scanning storage for
         # sensitive information on a set schedule.
+        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
@@ -1143,6 +1189,7 @@ module Google
         end
         
         # Deletes a job trigger.
+        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
@@ -1174,6 +1221,7 @@ module Google
         end
         
         # Gets a job trigger.
+        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
@@ -1205,25 +1253,25 @@ module Google
         end
         
         # Lists job triggers.
+        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   The parent resource name, for example `projects/my-project-id`.
         # @param [String] order_by
         #   Optional comma separated list of triggeredJob fields to order by,
-        #   followed by 'asc/desc' postfix, i.e.
-        #   `"create_time asc,name desc,schedule_mode asc"`. This list is
-        #   case-insensitive.
-        #   Example: `"name asc,schedule_mode desc, status desc"`
-        #   Supported filters keys and values are:
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc,update_time, create_time desc`
+        #   Supported fields are:
         #   - `create_time`: corresponds to time the triggeredJob was created.
         #   - `update_time`: corresponds to time the triggeredJob was last updated.
-        #   - `name`: corresponds to JobTrigger's display name.
-        #   - `status`: corresponds to the triggeredJob status.
+        #   - `name`: corresponds to JobTrigger's name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by a server.
         # @param [String] page_token
         #   Optional page token to continue retrieval. Comes from previous call
-        #   to ListJobTriggers. `order_by` and `filter` should not change for
-        #   subsequent calls, but can be omitted if token is specified.
+        #   to ListJobTriggers. `order_by` field must not
+        #   change for subsequent calls.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1255,6 +1303,7 @@ module Google
         end
         
         # Updates a job trigger.
+        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
