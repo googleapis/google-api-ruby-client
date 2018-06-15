@@ -689,8 +689,9 @@ module Google
       
         # The exported agent.
         # Example for how to export an agent to a zip file via a command line:
-        # curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/<project_name>/agent:export'\
+        # <pre>curl \
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
+        # export'\
         # -X POST \
         # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
         # -H 'Accept: application/json' \
@@ -698,7 +699,7 @@ module Google
         # --compressed \
         # --data-binary '``' \
         # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
-        # | base64 --decode > <agent zip file>
+        # | base64 --decode > &lt;agent zip file&gt;</pre>
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -727,16 +728,17 @@ module Google
       
         # The agent to import.
         # Example for how to import an agent via the command line:
-        # curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/<project_name>/agent:import\
+        # <pre>curl \
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
+        # import\
         # -X POST \
         # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
         # --data-binary "`
-        # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
-        # `"
+        # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
+        # `"</pre>
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -813,7 +815,6 @@ module Google
       # Represents an intent.
       # Intents convert a number of user expressions or patterns into an action. An
       # action is an extraction of a user command or sentence semantics.
-      # Next available field number: 22.
       class GoogleCloudDialogflowV2Intent
         include Google::Apis::Core::Hashable
       
@@ -2025,7 +2026,6 @@ module Google
         # Represents an intent.
         # Intents convert a number of user expressions or patterns into an action. An
         # action is an extraction of a user command or sentence semantics.
-        # Next available field number: 22.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent]
         attr_accessor :intent
@@ -2120,16 +2120,17 @@ module Google
       
         # The agent to restore.
         # Example for how to restore an agent via the command line:
-        # curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/<project_name>/agent:restore\
+        # <pre>curl \
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
+        # restore\
         # -X POST \
         # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
         # --data-binary "`
-        # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
-        # `" \
+        # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
+        # `"</pre>
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2433,9 +2434,9 @@ module Google
         # or
         # `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         # ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        # users are under construction and will be available soon. The Context ID is
-        # always converted to lowercase. If <Environment ID> is not specified, we
-        # assume default 'draft' environment. If <User ID> is not specified, we
+        # users are under construction and will be available soon. The `Context ID`
+        # is always converted to lowercase. If `Environment ID` is not specified, we
+        # assume default 'draft' environment. If `User ID` is not specified, we
         # assume default '-' user.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2584,9 +2585,9 @@ module Google
       
         # The exported agent.
         # Example for how to export an agent to a zip file via a command line:
-        # curl \
-        # 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
-        # export'\
+        # <pre>curl \
+        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
+        # agent:export'\
         # -X POST \
         # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
         # -H 'Accept: application/json' \
@@ -2594,7 +2595,7 @@ module Google
         # --compressed \
         # --data-binary '``' \
         # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
-        # | base64 --decode > <agent zip file>
+        # | base64 --decode > &lt;agent zip file&gt;</pre>
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2620,7 +2621,6 @@ module Google
       # Represents an intent.
       # Intents convert a number of user expressions or patterns into an action. An
       # action is an extraction of a user command or sentence semantics.
-      # Next available field number: 22.
       class GoogleCloudDialogflowV2beta1Intent
         include Google::Apis::Core::Hashable
       
@@ -3640,7 +3640,6 @@ module Google
         # Represents an intent.
         # Intents convert a number of user expressions or patterns into an action. An
         # action is an extraction of a user command or sentence semantics.
-        # Next available field number: 22.
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Intent]
         attr_accessor :intent

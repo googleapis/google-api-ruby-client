@@ -22,8 +22,7 @@ module Google
     module CloudtasksV2beta2
       # Cloud Tasks API
       #
-      # Manages the execution of large numbers of distributed requests. Cloud Tasks is
-      #  in Alpha.
+      # Manages the execution of large numbers of distributed requests.
       #
       # @example
       #    require 'google/apis/cloudtasks_v2beta2'

@@ -239,6 +239,38 @@ module Google
         end
       end
       
+      # The cluster operation triggered by a workflow.
+      class ClusterOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates the operation is done.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # Output only. Error, if operation failed.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. The id of the cluster operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
       # Metadata describing the operation.
       class ClusterOperationMetadata
         include Google::Apis::Core::Hashable
@@ -417,6 +449,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
+        # Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-
+        # ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk
+        # Hard Disk Drive).
+        # Corresponds to the JSON property `bootDiskType`
+        # @return [String]
+        attr_accessor :boot_disk_type
+      
         # Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
         # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
         # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
@@ -433,6 +472,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
           @num_local_ssds = args[:num_local_ssds] if args.key?(:num_local_ssds)
         end
       end
@@ -1680,6 +1720,129 @@ module Google
         def update!(**args)
           @job = args[:job] if args.key?(:job)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # The workflow graph.
+      class WorkflowGraph
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The workflow nodes.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DataprocV1::WorkflowNode>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # A Cloud Dataproc workflow template resource.
+      class WorkflowMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the managed cluster.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The cluster operation triggered by a workflow.
+        # Corresponds to the JSON property `createCluster`
+        # @return [Google::Apis::DataprocV1::ClusterOperation]
+        attr_accessor :create_cluster
+      
+        # The cluster operation triggered by a workflow.
+        # Corresponds to the JSON property `deleteCluster`
+        # @return [Google::Apis::DataprocV1::ClusterOperation]
+        attr_accessor :delete_cluster
+      
+        # The workflow graph.
+        # Corresponds to the JSON property `graph`
+        # @return [Google::Apis::DataprocV1::WorkflowGraph]
+        attr_accessor :graph
+      
+        # Map from parameter names to values that were used for those parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        # Output only. The workflow state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The "resource name" of the template.
+        # Corresponds to the JSON property `template`
+        # @return [String]
+        attr_accessor :template
+      
+        # Output only. The version of template at the time of workflow instantiation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
+          @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
+          @graph = args[:graph] if args.key?(:graph)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @state = args[:state] if args.key?(:state)
+          @template = args[:template] if args.key?(:template)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The workflow node.
+      class WorkflowNode
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error detail.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. The job id; populated after the node enters RUNNING state.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Output only. Node's prerequisite nodes.
+        # Corresponds to the JSON property `prerequisiteStepIds`
+        # @return [Array<String>]
+        attr_accessor :prerequisite_step_ids
+      
+        # Output only. The node state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The name of the node.
+        # Corresponds to the JSON property `stepId`
+        # @return [String]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
+          @state = args[:state] if args.key?(:state)
+          @step_id = args[:step_id] if args.key?(:step_id)
         end
       end
       

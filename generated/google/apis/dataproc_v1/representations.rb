@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +244,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkflowGraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YarnApplication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -303,6 +327,15 @@ module Google
         end
       end
       
+      class ClusterOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error'
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
       class ClusterOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -356,6 +389,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :boot_disk_type, as: 'bootDiskType'
           property :num_local_ssds, as: 'numLocalSsds'
         end
       end
@@ -642,6 +676,42 @@ module Google
           property :job, as: 'job', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
       
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class WorkflowGraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes', class: Google::Apis::DataprocV1::WorkflowNode, decorator: Google::Apis::DataprocV1::WorkflowNode::Representation
+      
+        end
+      end
+      
+      class WorkflowMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :create_cluster, as: 'createCluster', class: Google::Apis::DataprocV1::ClusterOperation, decorator: Google::Apis::DataprocV1::ClusterOperation::Representation
+      
+          property :delete_cluster, as: 'deleteCluster', class: Google::Apis::DataprocV1::ClusterOperation, decorator: Google::Apis::DataprocV1::ClusterOperation::Representation
+      
+          property :graph, as: 'graph', class: Google::Apis::DataprocV1::WorkflowGraph, decorator: Google::Apis::DataprocV1::WorkflowGraph::Representation
+      
+          hash :parameters, as: 'parameters'
+          property :state, as: 'state'
+          property :template, as: 'template'
+          property :version, as: 'version'
+        end
+      end
+      
+      class WorkflowNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :job_id, as: 'jobId'
+          collection :prerequisite_step_ids, as: 'prerequisiteStepIds'
+          property :state, as: 'state'
+          property :step_id, as: 'stepId'
         end
       end
       

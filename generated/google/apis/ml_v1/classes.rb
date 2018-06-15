@@ -1311,6 +1311,22 @@ module Google
         # @return [String]
         attr_accessor :last_use_time
       
+        # Optional. The type of machine on which to serve the model. Currently only
+        # applies to online prediction service.
+        # Naming design doc for CMLE online prediction Machine Types:
+        # https://docs.google.com/document/d/
+        # 1V3tko3VJ64PcpsmNxCXiPoPGccL9_K8gX1YjC8UofzQ/edit#heading=h.7lvy6owfx4eh.
+        # The following are currently supported and will be deprecated in
+        # Beta release.
+        # mls1-highmem-1    1 core    2 Gb RAM
+        # mls1-highcpu-4    4 core    2 Gb RAM
+        # The following are available in Beta:
+        # mls1-c1-m2        1 core    2 Gb RAM   Default
+        # mls1-c4-m2        1 core    4 Gb RAM
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         # Options for manually scaling a model.
         # Corresponds to the JSON property `manualScaling`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ManualScaling]
@@ -1354,6 +1370,7 @@ module Google
           @framework = args[:framework] if args.key?(:framework)
           @is_default = args[:is_default] if args.key?(:is_default)
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)
           @python_version = args[:python_version] if args.key?(:python_version)

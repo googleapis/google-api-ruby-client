@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/identity/protocols/OAuth2ServiceAccount
     module IamcredentialsV1
       VERSION = 'V1'
-      REVISION = '20180604'
+      REVISION = '20180608'
     end
   end
 end

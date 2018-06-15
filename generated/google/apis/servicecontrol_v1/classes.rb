@@ -276,6 +276,87 @@ module Google
         end
       end
       
+      # This message defines request authentication attributes. Terminology is
+      # based on the JSON Web Token (JWT) standard, but the terms also
+      # correlate to concepts in other standards.
+      class Auth
+        include Google::Apis::Core::Hashable
+      
+        # A list of access level resource names that allow resources to be
+        # accessed by authenticated requester. It is part of Secure GCP processing
+        # for the incoming request. An access level string has the format:
+        # "//`api_service_name`/accessPolicies/`policy_id`/accessLevels/`short_name`"
+        # Example:
+        # "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/
+        # accessLevels/MY_LEVEL"
+        # Corresponds to the JSON property `accessLevels`
+        # @return [Array<String>]
+        attr_accessor :access_levels
+      
+        # The intended audience(s) for this authentication information. Reflects
+        # the audience (`aud`) claim within a JWT. The audience
+        # value(s) depends on the `issuer`, but typically include one or more of
+        # the following pieces of information:
+        # *  The services intended to receive the credential such as
+        # ["pubsub.googleapis.com", "storage.googleapis.com"]
+        # *  A set of service-based scopes. For example,
+        # ["https://www.googleapis.com/auth/cloud-platform"]
+        # *  The client id of an app, such as the Firebase project id for JWTs
+        # from Firebase Auth.
+        # Consult the documentation for the credential issuer to determine the
+        # information provided.
+        # Corresponds to the JSON property `audiences`
+        # @return [Array<String>]
+        attr_accessor :audiences
+      
+        # Structured claims presented with the credential. JWTs include
+        # ``key: value`` pairs for standard and private claims. The following
+        # is a subset of the standard required and optional claims that would
+        # typically be presented for a Google-based JWT:
+        # `'iss': 'accounts.google.com',
+        # 'sub': '113289723416554971153',
+        # 'aud': ['123456789012', 'pubsub.googleapis.com'],
+        # 'azp': '123456789012.apps.googleusercontent.com',
+        # 'email': 'jsmith@example.com',
+        # 'iat': 1353601026,
+        # 'exp': 1353604926`
+        # SAML assertions are similarly specified, but with an identity provider
+        # dependent structure.
+        # Corresponds to the JSON property `claims`
+        # @return [Hash<String,Object>]
+        attr_accessor :claims
+      
+        # The authorized presenter of the credential. Reflects the optional
+        # Authorized Presenter (`azp`) claim within a JWT or the
+        # OAuth client id. For example, a Google Cloud Platform client id looks
+        # as follows: "123456789012.apps.googleusercontent.com".
+        # Corresponds to the JSON property `presenter`
+        # @return [String]
+        attr_accessor :presenter
+      
+        # The authenticated principal. Reflects the issuer (`iss`) and subject
+        # (`sub`) claims within a JWT. The issuer and subject should be `/`
+        # delimited, with `/` percent-encoded within the subject fragment. For
+        # Google accounts, the principal format is:
+        # "https://accounts.google.com/`id`"
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_levels = args[:access_levels] if args.key?(:access_levels)
+          @audiences = args[:audiences] if args.key?(:audiences)
+          @claims = args[:claims] if args.key?(:claims)
+          @presenter = args[:presenter] if args.key?(:presenter)
+          @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
       # Authentication information for the operation.
       class AuthenticationInfo
         include Google::Apis::Core::Hashable
@@ -336,6 +417,13 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # This message defines core attributes for a resource. A resource is an
+        # addressable (named) entity provided by the destination service. For
+        # example, a file stored on a network storage service.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Google::Apis::ServicecontrolV1::Resource]
+        attr_accessor :resource_attributes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -345,6 +433,7 @@ module Google
           @granted = args[:granted] if args.key?(:granted)
           @permission = args[:permission] if args.key?(:permission)
           @resource = args[:resource] if args.key?(:resource)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
         end
       end
       
@@ -1569,6 +1658,112 @@ module Google
         end
       end
       
+      # This message defines attributes for an HTTP request. If the actual
+      # request is not an HTTP request, the runtime system should try to map
+      # the actual request to an equivalent HTTP request.
+      class Request
+        include Google::Apis::Core::Hashable
+      
+        # This message defines request authentication attributes. Terminology is
+        # based on the JSON Web Token (JWT) standard, but the terms also
+        # correlate to concepts in other standards.
+        # Corresponds to the JSON property `auth`
+        # @return [Google::Apis::ServicecontrolV1::Auth]
+        attr_accessor :auth
+      
+        # The HTTP URL fragment. No URL decoding is performed.
+        # Corresponds to the JSON property `fragment`
+        # @return [String]
+        attr_accessor :fragment
+      
+        # The HTTP request headers. If multiple headers share the same key, they
+        # must be merged according to the HTTP spec. All header keys must be
+        # lowercased, because HTTP header keys are case-insensitive.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,String>]
+        attr_accessor :headers
+      
+        # The HTTP request `Host` header value.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The unique ID for a request, which can be propagated to downstream
+        # systems. The ID should have low probability of collision
+        # within a single day for a specific service.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The HTTP request method, such as `GET`, `POST`.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The HTTP URL path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # The network protocol used with the request, such as "http/1.1",
+        # "spdy/3", "h2", "h2c", "webrtc", "tcp", "udp", "quic". See
+        # https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-
+        # values.xhtml#alpn-protocol-ids
+        # for details.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # The HTTP URL query in the format of `name1=value`&name2=value2`, as it
+        # appears in the first line of the HTTP request. No decoding is performed.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # A special parameter for request reason. It is used by security systems
+        # to associate auditing information with a request.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The HTTP URL scheme, such as `http` and `https`.
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        # The HTTP request size in bytes. If unknown, it must be -1.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # The timestamp when the `destination` service receives the first byte of
+        # the request.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth = args[:auth] if args.key?(:auth)
+          @fragment = args[:fragment] if args.key?(:fragment)
+          @headers = args[:headers] if args.key?(:headers)
+          @host = args[:host] if args.key?(:host)
+          @id = args[:id] if args.key?(:id)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @path = args[:path] if args.key?(:path)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @query = args[:query] if args.key?(:query)
+          @reason = args[:reason] if args.key?(:reason)
+          @scheme = args[:scheme] if args.key?(:scheme)
+          @size = args[:size] if args.key?(:size)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # Metadata about the request.
       class RequestMetadata
         include Google::Apis::Core::Hashable
@@ -1611,6 +1806,13 @@ module Google
         # @return [String]
         attr_accessor :caller_supplied_user_agent
       
+        # This message defines attributes for an HTTP request. If the actual
+        # request is not an HTTP request, the runtime system should try to map
+        # the actual request to an equivalent HTTP request.
+        # Corresponds to the JSON property `requestAttributes`
+        # @return [Google::Apis::ServicecontrolV1::Request]
+        attr_accessor :request_attributes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1620,6 +1822,59 @@ module Google
           @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
           @caller_network = args[:caller_network] if args.key?(:caller_network)
           @caller_supplied_user_agent = args[:caller_supplied_user_agent] if args.key?(:caller_supplied_user_agent)
+          @request_attributes = args[:request_attributes] if args.key?(:request_attributes)
+        end
+      end
+      
+      # This message defines core attributes for a resource. A resource is an
+      # addressable (named) entity provided by the destination service. For
+      # example, a file stored on a network storage service.
+      class Resource
+        include Google::Apis::Core::Hashable
+      
+        # The labels or tags on the resource, such as AWS resource tags and
+        # Kubernetes resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The stable identifier (name) of a resource on the `service`. A resource
+        # can be logically identified as "//`resource.service`/`resource.name`".
+        # The differences between a resource name and a URI are:
+        # *   Resource name is a logical identifier, independent of network
+        # protocol and API version. For example,
+        # `//pubsub.googleapis.com/projects/123/topics/news-feed`.
+        # *   URI often includes protocol and version information, so it can
+        # be used directly by applications. For example,
+        # `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
+        # See https://cloud.google.com/apis/design/resource_names for details.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the service that this resource belongs to, such as
+        # `pubsub.googleapis.com`. The service may be different from the DNS
+        # hostname that actually serves the request.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The type of the resource. The scheme is platform-specific because
+        # different platforms define their resources differently.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service = args[:service] if args.key?(:service)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

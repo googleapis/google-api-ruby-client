@@ -612,8 +612,10 @@ module Google
         # @return [String]
         attr_accessor :lease_duration
       
-        # The maximum number of tasks to lease. The maximum that can be
-        # requested is 1000.
+        # The maximum number of tasks to lease.
+        # The system will make a best effort to return as close to as
+        # `max_tasks` as possible.
+        # The largest that `max_tasks` can be is 1000.
         # Corresponds to the JSON property `maxTasks`
         # @return [Fixnum]
         attr_accessor :max_tasks

@@ -660,8 +660,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>` or `projects/<Project
         #   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
         #   ID>`. Note: Environments and users are under construction and will be
-        #   available soon. If <Environment ID> is not specified we assume default
-        #   'draft' environment. If <User ID> is not specified, we assume default
+        #   available soon. If `Environment ID` is not specified we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default
         #   '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -699,12 +699,12 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>`, or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we are using "-". It’s up to the API caller to choose an
-        #   appropriate <Session ID> and <User Id>. They can be a random numbers or
+        #   appropriate `Session ID` and `User Id`. They can be a random numbers or
         #   some type of user and session identifiers (preferably hashed). The length
-        #   of the <Session ID> and <User ID> must not exceed 36 characters.
+        #   of the `Session ID` and `User ID` must not exceed 36 characters.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -741,8 +741,8 @@ module Google
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
@@ -780,8 +780,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
         #   or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. If <Environment
-        #   ID> is not specified, we assume default 'draft' environment. If <User ID>
+        #   users are under construction and will be available soon. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID`
         #   is not specified, we assume default
         #   '-' user.
         # @param [String] fields
@@ -817,8 +817,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
         #   or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. If <Environment
-        #   ID> is not specified, we assume default 'draft' environment. If <User ID>
+        #   users are under construction and will be available soon. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID`
         #   is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -853,8 +853,8 @@ module Google
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
@@ -897,9 +897,9 @@ module Google
         #   or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. The Context ID is
-        #   always converted to lowercase. If <Environment ID> is not specified, we
-        #   assume default 'draft' environment. If <User ID> is not specified, we
+        #   users are under construction and will be available soon. The `Context ID`
+        #   is always converted to lowercase. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we
         #   assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
@@ -941,8 +941,8 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
         #   sessions/<Session ID>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -981,8 +981,8 @@ module Google
         #   ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
         #   Name>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1018,8 +1018,8 @@ module Google
         #   ID>/users/<User ID>/sessions/<Session ID>/
         #   entityTypes/<Entity Type Display Name>`.
         #   Note: Environments and users re under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1054,8 +1054,8 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
         #   sessions/<Session ID>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1099,8 +1099,8 @@ module Google
         #   ID>/sessions
         #   /<Session ID>/entityTypes/<Entity Type Display Name>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -1423,8 +1423,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>` or `projects/<Project
         #   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
         #   ID>`. Note: Environments and users are under construction and will be
-        #   available soon. If <Environment ID> is not specified we assume default
-        #   'draft' environment. If <User ID> is not specified, we assume default
+        #   available soon. If `Environment ID` is not specified we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default
         #   '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1462,12 +1462,12 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>`, or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we are using "-". It’s up to the API caller to choose an
-        #   appropriate <Session ID> and <User Id>. They can be a random numbers or
+        #   appropriate `Session ID` and `User Id`. They can be a random numbers or
         #   some type of user and session identifiers (preferably hashed). The length
-        #   of the <Session ID> and <User ID> must not exceed 36 characters.
+        #   of the `Session ID` and `User ID` must not exceed 36 characters.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1504,8 +1504,8 @@ module Google
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
@@ -1543,8 +1543,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
         #   or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. If <Environment
-        #   ID> is not specified, we assume default 'draft' environment. If <User ID>
+        #   users are under construction and will be available soon. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID`
         #   is not specified, we assume default
         #   '-' user.
         # @param [String] fields
@@ -1580,8 +1580,8 @@ module Google
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
         #   or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. If <Environment
-        #   ID> is not specified, we assume default 'draft' environment. If <User ID>
+        #   users are under construction and will be available soon. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID`
         #   is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1616,8 +1616,8 @@ module Google
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. Note: Environments and users are under
-        #   construction and will be available soon. If <Environment ID> is not
-        #   specified, we assume default 'draft' environment. If <User ID> is not
+        #   construction and will be available soon. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
         #   specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
@@ -1660,9 +1660,9 @@ module Google
         #   or
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
-        #   users are under construction and will be available soon. The Context ID is
-        #   always converted to lowercase. If <Environment ID> is not specified, we
-        #   assume default 'draft' environment. If <User ID> is not specified, we
+        #   users are under construction and will be available soon. The `Context ID`
+        #   is always converted to lowercase. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we
         #   assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
@@ -1704,8 +1704,8 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
         #   sessions/<Session ID>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1744,8 +1744,8 @@ module Google
         #   ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
         #   Name>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1781,8 +1781,8 @@ module Google
         #   ID>/users/<User ID>/sessions/<Session ID>/
         #   entityTypes/<Entity Type Display Name>`.
         #   Note: Environments and users re under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1817,8 +1817,8 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
         #   sessions/<Session ID>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1862,8 +1862,8 @@ module Google
         #   ID>/sessions
         #   /<Session ID>/entityTypes/<Entity Type Display Name>`.
         #   Note: Environments and users are under construction and will be available
-        #   soon. If <Environment ID> is not specified, we assume default 'draft'
-        #   environment. If <User ID> is not specified, we assume default '-' user.
+        #   soon. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Auth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthenticationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,7 +220,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Request
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +322,17 @@ module Google
         end
       end
       
+      class Auth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels'
+          collection :audiences, as: 'audiences'
+          hash :claims, as: 'claims'
+          property :presenter, as: 'presenter'
+          property :principal, as: 'principal'
+        end
+      end
+      
       class AuthenticationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -319,6 +348,8 @@ module Google
           property :granted, as: 'granted'
           property :permission, as: 'permission'
           property :resource, as: 'resource'
+          property :resource_attributes, as: 'resourceAttributes', class: Google::Apis::ServicecontrolV1::Resource, decorator: Google::Apis::ServicecontrolV1::Resource::Representation
+      
         end
       end
       
@@ -606,12 +637,44 @@ module Google
         end
       end
       
+      class Request
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth, as: 'auth', class: Google::Apis::ServicecontrolV1::Auth, decorator: Google::Apis::ServicecontrolV1::Auth::Representation
+      
+          property :fragment, as: 'fragment'
+          hash :headers, as: 'headers'
+          property :host, as: 'host'
+          property :id, as: 'id'
+          property :method_prop, as: 'method'
+          property :path, as: 'path'
+          property :protocol, as: 'protocol'
+          property :query, as: 'query'
+          property :reason, as: 'reason'
+          property :scheme, as: 'scheme'
+          property :size, :numeric_string => true, as: 'size'
+          property :time, as: 'time'
+        end
+      end
+      
       class RequestMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :caller_ip, as: 'callerIp'
           property :caller_network, as: 'callerNetwork'
           property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
+          property :request_attributes, as: 'requestAttributes', class: Google::Apis::ServicecontrolV1::Request, decorator: Google::Apis::ServicecontrolV1::Request::Representation
+      
+        end
+      end
+      
+      class Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service, as: 'service'
+          property :type, as: 'type'
         end
       end
       

@@ -26,13 +26,10 @@ module Google
     # @see https://cloud.google.com/service-consumer-management/docs/overview
     module ServiceconsumermanagementV1
       VERSION = 'V1'
-      REVISION = '20180605'
+      REVISION = '20180613'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end
