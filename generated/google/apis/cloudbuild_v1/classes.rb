@@ -142,29 +142,25 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Artifacts]
         attr_accessor :artifacts
       
-        # The ID of the `BuildTrigger` that triggered this build, if it was
+        # Output only. The ID of the `BuildTrigger` that triggered this build, if it was
         # triggered automatically.
-        # @OutputOnly
         # Corresponds to the JSON property `buildTriggerId`
         # @return [String]
         attr_accessor :build_trigger_id
       
-        # Time at which the request to create the build was received.
-        # @OutputOnly
+        # Output only. Time at which the request to create the build was received.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Time at which execution of the build was finished.
+        # Output only. Time at which execution of the build was finished.
         # The difference between finish_time and start_time is the duration of the
         # build's execution.
-        # @OutputOnly
         # Corresponds to the JSON property `finishTime`
         # @return [String]
         attr_accessor :finish_time
       
-        # Unique identifier of the build.
-        # @OutputOnly
+        # Output only. Unique identifier of the build.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -180,8 +176,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :images
       
-        # URL to logs for this build in Google Cloud Console.
-        # @OutputOnly
+        # Output only. URL to logs for this build in Google Cloud Console.
         # Corresponds to the JSON property `logUrl`
         # @return [String]
         attr_accessor :log_url
@@ -200,8 +195,7 @@ module Google
         # @return [Google::Apis::CloudbuildV1::BuildOptions]
         attr_accessor :options
       
-        # ID of the project.
-        # @OutputOnly.
+        # Output only. ID of the project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -227,20 +221,17 @@ module Google
         # @return [Google::Apis::CloudbuildV1::SourceProvenance]
         attr_accessor :source_provenance
       
-        # Time at which execution of the build was started.
-        # @OutputOnly
+        # Output only. Time at which execution of the build was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Status of the build.
-        # @OutputOnly
+        # Output only. Status of the build.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # Customer-readable message about the current status.
-        # @OutputOnly
+        # Output only. Customer-readable message about the current status.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
@@ -268,13 +259,13 @@ module Google
         # @return [String]
         attr_accessor :timeout
       
-        # Stores timing information for phases of the build. Valid keys are:
+        # Output only. Stores timing information for phases of the build. Valid keys
+        # are:
         # * BUILD: time to execute all build steps
         # * PUSH: time to push all specified images.
         # * FETCHSOURCE: time to fetch source.
         # If the build does not specify source or images,
         # these keys will not be included.
-        # @OutputOnly
         # Corresponds to the JSON property `timing`
         # @return [Hash<String,Google::Apis::CloudbuildV1::TimeSpan>]
         attr_accessor :timing
@@ -468,10 +459,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :secret_env
       
-        # Status of the build step. At this time, build step status is only updated
-        # on build completion; step status is not updated in real-time as the build
-        # progresses.
-        # @OutputOnly
+        # Output only. Status of the build step. At this time, build step status is
+        # only updated on build completion; step status is not updated in real-time
+        # as the build progresses.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -551,8 +541,7 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build
       
-        # Time when the trigger was created.
-        # @OutputOnly
+        # Output only. Time when the trigger was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -574,8 +563,7 @@ module Google
         # @return [String]
         attr_accessor :filename
       
-        # Unique identifier of the trigger.
-        # @OutputOnly
+        # Output only. Unique identifier of the trigger.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1060,14 +1048,14 @@ module Google
       class SourceProvenance
         include Google::Apis::Core::Hashable
       
-        # Hash(es) of the build source, which can be used to verify that the original
-        # source integrity was maintained in the build. Note that `FileHashes` will
-        # only be populated if `BuildOptions` has requested a `SourceProvenanceHash`.
+        # Output only. Hash(es) of the build source, which can be used to verify that
+        # the originalsource integrity was maintained in the build. Note that
+        # `FileHashes` willonly be populated if `BuildOptions` has requested a
+        # `SourceProvenanceHash`.
         # The keys to this map are file paths used as build source and the values
         # contain the hash values for those files.
         # If the build source came in a single package such as a gzipped tarfile
         # (`.tar.gz`), the `FileHash` will be for the single path to that file.
-        # @OutputOnly
         # Corresponds to the JSON property `fileHashes`
         # @return [Hash<String,Google::Apis::CloudbuildV1::FileHashes>]
         attr_accessor :file_hashes

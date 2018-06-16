@@ -220,7 +220,7 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The disk size in GB used for node VMs. Minimum size is 10GB.
+        # Optional. The disk size in GB used for node VMs. Minimum size is 20GB.
         # If unspecified, defaults to 100GB. Cannot be updated.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]

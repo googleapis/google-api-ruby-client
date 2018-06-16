@@ -856,7 +856,6 @@ module Google
       
           property :publish_date_range, as: 'publishDateRange'
           property :query, as: 'query'
-          property :tenant_job_only, as: 'tenantJobOnly'
         end
       end
       

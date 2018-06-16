@@ -296,7 +296,9 @@ module Google
         # A list of keys of filterable Job.custom_attributes, whose
         # corresponding `string_values` are used in keyword search. Jobs with
         # `string_values` under these specified field keys are returned if any
-        # of the values matches the search keyword.
+        # of the values matches the search keyword. Custom field values with
+        # parenthesis, brackets and special symbols might not be properly searchable,
+        # and those keyword queries need to be surrounded by quotes.
         # Corresponds to the JSON property `keywordSearchableCustomAttributes`
         # @return [Array<String>]
         attr_accessor :keyword_searchable_custom_attributes
@@ -305,7 +307,9 @@ module Google
         # Optional.
         # A list of filterable custom fields that should be used in keyword
         # search. The jobs of this company are returned if any of these custom
-        # fields matches the search keyword.
+        # fields matches the search keyword. Custom field values with parenthesis,
+        # brackets and special symbols might not be properly searchable, and those
+        # keyword queries need to be surrounded by quotes.
         # Corresponds to the JSON property `keywordSearchableCustomFields`
         # @return [Array<Fixnum>]
         attr_accessor :keyword_searchable_custom_fields
@@ -1004,7 +1008,7 @@ module Google
       end
       
       # Input only.
-      # Device information collected from the job searcher, candidate, or
+      # Device information collected from the job seeker, candidate, or
       # other entity conducting the job search. Providing this information improves
       # the quality of the search results across devices.
       class DeviceInfo
@@ -1017,7 +1021,7 @@ module Google
         attr_accessor :device_type
       
         # Optional.
-        # A device-specific ID. It must be a unique identifier, which distinguishes
+        # A device-specific ID. The ID must be a unique identifier that distinguishes
         # the device from other devices.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1430,19 +1434,19 @@ module Google
       
         # Optional.
         # Specifies compensation field-based histogram requests.
-        # Duplicate CompensationHistogramRequest.types are not allowed.
+        # Duplicate values of CompensationHistogramRequest.type are not allowed.
         # Corresponds to the JSON property `compensationHistogramFacets`
         # @return [Array<Google::Apis::JobsV2::CompensationHistogramRequest>]
         attr_accessor :compensation_histogram_facets
       
         # Optional.
         # Specifies the custom attributes histogram requests.
-        # Duplicate CustomAttributeHistogramRequest.keys are not allowed.
+        # Duplicate values of CustomAttributeHistogramRequest.key are not allowed.
         # Corresponds to the JSON property `customAttributeHistogramFacets`
         # @return [Array<Google::Apis::JobsV2::CustomAttributeHistogramRequest>]
         attr_accessor :custom_attribute_histogram_facets
       
-        # Optional. Specifies the simple type of histogram facets, e.g,
+        # Optional. Specifies the simple type of histogram facets, for example,
         # `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to
         # GetHistogramRequest.
         # Corresponds to the JSON property `simpleHistogramFacets`
@@ -1646,7 +1650,7 @@ module Google
       
         # Optional but one of company_name or distributor_company_id must be
         # provided.
-        # A unique company identifier that used by job distributors to identify an
+        # A unique company identifier used by job distributors to identify an
         # employer's company entity. company_name takes precedence over
         # this field, and is the recommended field to use to identify companies.
         # The maximum number of allowed characters is 255.
@@ -1680,15 +1684,15 @@ module Google
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :end_date
       
-        # Optional but strongly recommended to be provided for the best service
+        # Optional but strongly recommended for the best service
         # experience.
         # The expiration timestamp of the job. After this timestamp, the
         # job is marked as expired, and it no longer appears in search results. The
         # expired job can't be deleted or listed by the DeleteJob and
         # ListJobs APIs, but it can be retrieved with the GetJob API or
         # updated with the UpdateJob API. An expired job can be updated and
-        # opened again by using a future expiration timestamp. It can also remain
-        # expired. Updating an expired job to be open fails if there is another
+        # opened again by using a future expiration timestamp. Updating an expired job
+        # fails if there is another
         # existing open job with same requisition_id, company_name and
         # language_code.
         # The expired jobs are retained in our system for 90 days. However, the
@@ -1703,7 +1707,8 @@ module Google
         # A valid date range is between 1970-01-01T00:00:00.0Z and
         # 2100-12-31T23:59:59.999Z. Invalid dates are ignored and treated as expire
         # time not provided.
-        # If this value is not provided on job creation or invalid, the job posting
+        # If this value is not provided at the time of job creation or is invalid, the
+        # job posting
         # expires after 30 days from the job's creation time. For example, if the
         # job was created on 2017/01/01 13:00AM UTC with an unspecified expiration
         # date, the job expires after 2017/01/31 13:00AM UTC.
@@ -1779,7 +1784,8 @@ module Google
         # any requirements for fluency that are associated with the job.
         # Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn".
         # For more information, see
-        # [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+        # [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47)`: class="
+        # external" target="_blank" `.
         # The default value is `en-US`.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -1791,12 +1797,10 @@ module Google
         # @return [String]
         attr_accessor :level
       
-        # Optional but strongly recommended to be provided for the best service
-        # experience.
-        # Location(s) where the job is hiring.
-        # Providing the full street address(es) of the hiring
-        # location is recommended to enable better API results, including
-        # job searches by commute time.
+        # Optional but strongly recommended for the best service experience.
+        # Location(s) where the emploeyer is looking to hire for this job posting.
+        # Specifying the full street address(es) of the hiring location enables
+        # better API results, especially job searches by commute time.
         # At most 50 locations are allowed for best search performance. If a job has
         # more locations, it is suggested to split it into multiple jobs with unique
         # requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as
@@ -2087,9 +2091,9 @@ module Google
         # Optional.
         # This filter specifies the locale of jobs to search against,
         # for example, "en-US".
-        # If a value is not specified, the search results can contain jobs in any
+        # If a value is not specified, the search results may contain jobs in any
         # locale.
-        # Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn".
+        # Language codes should be in BCP-47 format, for example, "en-US" or "sr-Latn".
         # For more information, see
         # [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
         # At most 10 language code filters are allowed.
@@ -2115,7 +2119,7 @@ module Google
         # Jobs published within a range specified by this filter are searched
         # against, for example, DateRange.PAST_MONTH. If a value is not
         # specified, all open jobs are searched against regardless of the
-        # date on which they were published.
+        # date they were published.
         # Corresponds to the JSON property `publishDateRange`
         # @return [String]
         attr_accessor :publish_date_range
@@ -2128,10 +2132,10 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # Optional.
+        # Deprecated. Do not use this field.
         # This flag controls whether the job search should be restricted to jobs
         # owned by the current user.
-        # Defaults to false that all jobs accessible to the
+        # Defaults to false where all jobs accessible to the
         # user are searched against.
         # Corresponds to the JSON property `tenantJobOnly`
         # @return [Boolean]
@@ -2248,8 +2252,8 @@ module Google
       
         # Optional.
         # This filter specifies the exact company display
-        # name of jobs to search against.
-        # If a value is not specified, jobs within the search results can be
+        # name of the jobs to search against.
+        # If a value isn't specified, jobs within the search results are
         # associated with any company.
         # If multiple values are specified, jobs within the search results may be
         # associated with any of the specified companies.
@@ -2259,12 +2263,11 @@ module Google
         attr_accessor :company_display_names
       
         # Optional.
-        # The company names filter specifies the company entities to search
-        # against.
-        # If a value is not specified, jobs are searched for against all
+        # This filter specifies the company entities to search against.
+        # If a value isn't specified, jobs are searched for against all
         # companies.
         # If multiple values are specified, jobs are searched against the
-        # specified companies.
+        # companies specified.
         # At most 20 company filters are allowed.
         # Corresponds to the JSON property `companyNames`
         # @return [Array<String>]
@@ -2278,7 +2281,7 @@ module Google
       
         # Optional.
         # This filter specifies a structured syntax to match against the
-        # Job.custom_attributes that are marked as `filterable`.
+        # Job.custom_attributes marked as `filterable`.
         # The syntax for this expression is a subset of Google SQL syntax.
         # Supported operators are: =, !=, <, <=, >, >= where the left of the operator
         # is a custom field key and the right of the operator is a number or string
@@ -2287,8 +2290,8 @@ module Google
         # perform case insensitive match and EMPTY(<field_name>) to filter on the
         # existence of a key.
         # Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
-        # nesting (for example, "((A AND B AND C) OR NOT D) AND E"), and there can
-        # be a maximum of 50 comparisons/functions in the expression. The expression
+        # nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 50
+        # comparisons/functions are allowed in the expression. The expression
         # must be < 2000 characters in length.
         # Sample Query:
         # (key1 = "TEST" OR LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100
@@ -2309,7 +2312,7 @@ module Google
         # Optional.
         # The employment type filter specifies the employment type of jobs to
         # search against, such as EmploymentType.FULL_TIME.
-        # If a value is not specified, jobs in the search results will include any
+        # If a value is not specified, jobs in the search results includes any
         # employment type.
         # If multiple values are specified, jobs in the search results include
         # any of the specified employment types.
@@ -2320,7 +2323,7 @@ module Google
         # Optional.
         # This filter specifies the locale of jobs to search against,
         # for example, "en-US".
-        # If a value is not specified, the search results can contain jobs in any
+        # If a value isn't specified, the search results can contain jobs in any
         # locale.
         # Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn".
         # For more information, see
@@ -2333,7 +2336,7 @@ module Google
         # Optional.
         # The location filter specifies geo-regions containing the jobs to
         # search against. See LocationFilter for more information.
-        # If a location value is not specified, jobs that fit the other search
+        # If a location value isn'tt specified, jobs fitting the other search
         # criteria are retrieved regardless of where they're located.
         # If multiple values are specified, jobs are retrieved from any of the
         # specified locations, and, if different values are specified
@@ -2346,9 +2349,9 @@ module Google
       
         # Optional.
         # Jobs published within a range specified by this filter are searched
-        # against, for example, DateRange.PAST_MONTH. If a value is not
-        # specified, all open jobs are searched against regardless of the
-        # date on which they were published.
+        # against, for example, DateRange.PAST_MONTH. If a value isn't
+        # specified, all open jobs are searched against regardless of their
+        # published date.
         # Corresponds to the JSON property `publishDateRange`
         # @return [String]
         attr_accessor :publish_date_range
@@ -2360,16 +2363,6 @@ module Google
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
-      
-        # Optional.
-        # This flag controls whether the job search should be restricted to jobs
-        # owned by the current user.
-        # Defaults to false: all jobs accessible to the
-        # user are searched against.
-        # Corresponds to the JSON property `tenantJobOnly`
-        # @return [Boolean]
-        attr_accessor :tenant_job_only
-        alias_method :tenant_job_only?, :tenant_job_only
       
         def initialize(**args)
            update!(**args)
@@ -2389,7 +2382,6 @@ module Google
           @location_filters = args[:location_filters] if args.key?(:location_filters)
           @publish_date_range = args[:publish_date_range] if args.key?(:publish_date_range)
           @query = args[:query] if args.key?(:query)
-          @tenant_job_only = args[:tenant_job_only] if args.key?(:tenant_job_only)
         end
       end
       
@@ -2634,8 +2626,8 @@ module Google
         # @return [String]
         attr_accessor :job_summary
       
-        # Contains snippets of text from the Job.job_title field that most
-        # closely match a search query's keywords, if available. The matching query
+        # Contains snippets of text from the Job.job_title field most
+        # closely matching a search query's keywords, if available. The matching query
         # keywords are enclosed in HTML bold tags.
         # Corresponds to the JSON property `jobTitleSnippet`
         # @return [String]
@@ -2920,7 +2912,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Input only.
-        # Device information collected from the job searcher, candidate, or
+        # Device information collected from the job seeker, candidate, or
         # other entity conducting the job search. Providing this information improves
         # the quality of the search results across devices.
         # Corresponds to the JSON property `deviceInfo`
@@ -2935,7 +2927,9 @@ module Google
         # job board www.foo.com and career site www.bar.com, then this field is
         # set to "foo.com" for use on the job board, and "bar.com" for use on the
         # career site.
-        # If this field is not available for some reason, please send "UNKNOWN".
+        # If this field is not available for some reason, send "UNKNOWN". Note that any
+        # improvements to the `` api_name `` model for a particular tenant site, rely on
+        # this field being set correctly to some domain.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -2945,7 +2939,9 @@ module Google
         # duration of an end user's interaction with the service over a period.
         # Obfuscate this field for privacy concerns before
         # providing it to the API.
-        # If this field is not available for some reason, please send "UNKNOWN".
+        # If this field is not available for some reason, please send "UNKNOWN". Note
+        # that any improvements to the `` api_name `` model for a particular tenant site,
+        # rely on this field being set correctly to some unique session_id.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
         attr_accessor :session_id
@@ -2956,7 +2952,9 @@ module Google
         # in order to have the strongest positive impact on search quality.
         # Obfuscate this field for privacy concerns before
         # providing it to the service.
-        # If this field is not available for some reason, please send "UNKNOWN".
+        # If this field is not available for some reason, please send "UNKNOWN". Note
+        # that any improvements to the `` api_name `` model for a particular tenant site,
+        # rely on this field being set correctly to some unique user_id.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -3016,7 +3014,7 @@ module Google
       class SearchJobsRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. Any value provided in this field will be ignored.
+        # Deprecated. Any value provided in this field is ignored.
         # Optional.
         # Controls whether to disable relevance thresholding. Relevance
         # thresholding removes jobs that have low relevance in search results,
@@ -3067,7 +3065,7 @@ module Google
         attr_accessor :histogram_facets
       
         # Optional.
-        # The number of job attributes that is returned for jobs in the
+        # The number of job attributes returned for jobs in the
         # search response. Defaults to JobView.SMALL if no value is specified.
         # Corresponds to the JSON property `jobView`
         # @return [String]
@@ -3080,7 +3078,8 @@ module Google
         attr_accessor :mode
       
         # Optional.
-        # An integer that specifies the current offset (i.e. starting result) in
+        # An integer that specifies the current offset (that is, starting result
+        # location, amongst the jobs deemed by the API as relevant) in
         # search results. This field is only considered if page_token is unset.
         # For example, 0 means to  return results starting from the first matching
         # job, and 10 means to return from the 11th job. This can be used for
@@ -3092,7 +3091,7 @@ module Google
       
         # Deprecated. Use sort_by instead.
         # Optional.
-        # The criteria that determine how search results are sorted.
+        # The criteria determining how search results are sorted.
         # Defaults to SortBy.RELEVANCE_DESC if no value is specified.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
@@ -3107,7 +3106,7 @@ module Google
         attr_accessor :page_size
       
         # Optional.
-        # The token that specifies the current offset within
+        # The token specifying the current offset within
         # search results. See SearchJobsResponse.next_page_token for
         # an explanation of how to obtain the next set of query results.
         # Corresponds to the JSON property `pageToken`
@@ -3129,7 +3128,7 @@ module Google
         attr_accessor :request_metadata
       
         # Optional.
-        # The criteria that determine how search results are sorted.
+        # The criteria determining how search results are sorted.
         # Defaults to SortBy.RELEVANCE_DESC if no value is specified.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
