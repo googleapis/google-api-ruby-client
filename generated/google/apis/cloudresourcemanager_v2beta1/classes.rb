@@ -599,11 +599,11 @@ module Google
         # Some example queries are:
         # |Query | Description|
         # |----- | -----------|
-        # |displayName=Test*|Folders whose display name starts with "Test".|
-        # |lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.|
-        # |parent=folders/123|Folders whose parent is "folders/123".|
-        # |parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose parent is "
-        # folders/123".|
+        # |displayName=Test* | Folders whose display name starts with "Test".|
+        # |lifecycleState=ACTIVE | Folders whose lifecycleState is ACTIVE.|
+        # |parent=folders/123 | Folders whose parent is "folders/123".|
+        # |parent=folders/123 AND lifecycleState=ACTIVE | Active folders whose parent is
+        # "folders/123".|
         # |displayName=\\"Test String\\"|Folders whose display name includes both "Test"
         # and "String".|
         # Corresponds to the JSON property `query`

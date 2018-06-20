@@ -63,12 +63,12 @@ module Google
         # moving folders that contain deleted folders.
         # + The addition of the Folder must not cause the total number of Folders
         # under its parent to exceed 100.
-        # If the operation fails due to a folder constraint violation,
-        # a PreconditionFailure explaining the violation will be returned.
-        # If the failure occurs synchronously then the PreconditionFailure
-        # will be returned via the Status.details field and if it occurs
-        # asynchronously then the PreconditionFailure will be returned
-        # via the the Operation.error field.
+        # If the operation fails due to a folder constraint violation, some errors
+        # may be returned by the CreateFolder request, with status code
+        # FAILED_PRECONDITION and an error description. Other folder constraint
+        # violations will be communicated in the Operation, with the specific
+        # PreconditionFailure returned via the details list in the Operation.error
+        # field.
         # The caller must have `resourcemanager.folders.create` permission on the
         # identified parent.
         # @param [Google::Apis::CloudresourcemanagerV2beta1::Folder] folder_object
@@ -93,7 +93,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_folder(folder_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/folders', options)
+          command =  make_simple_command(:post, 'v2/folders', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
           command.request_object = folder_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Operation::Representation
@@ -134,7 +134,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command =  make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV2beta1::Folder
           command.params['name'] = name unless name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+name}', options)
+          command =  make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV2beta1::Folder
           command.params['name'] = name unless name.nil?
@@ -205,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/{+resource}:getIamPolicy', options)
+          command =  make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Policy::Representation
@@ -258,7 +258,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folders(page_size: nil, page_token: nil, parent: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/folders', options)
+          command =  make_simple_command(:get, 'v2/folders', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::ListFoldersResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV2beta1::ListFoldersResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -309,7 +309,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_folder(name, move_folder_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/{+name}:move', options)
+          command =  make_simple_command(:post, 'v2/{+name}:move', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::MoveFolderRequest::Representation
           command.request_object = move_folder_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Operation::Representation
@@ -322,8 +322,8 @@ module Google
         
         # Updates a Folder, changing its display_name.
         # Changes to the folder display_name will be rejected if they violate either
-        # the display_name formatting rules or naming constraints described in the
-        # CreateFolder documentation.
+        # the display_name formatting rules or naming constraints described in
+        # the CreateFolder documentation.
         # The Folder's display name must start and end with a letter or digit,
         # may contain letters, digits, spaces, hyphens and underscores and can be
         # no longer than 30 characters. This is captured by the regular expression:
@@ -358,7 +358,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_folder(name, folder_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command =  make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
           command.request_object = folder_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
@@ -394,7 +394,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_folders(search_folders_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/folders:search', options)
+          command =  make_simple_command(:post, 'v2/folders:search', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::SearchFoldersRequest::Representation
           command.request_object = search_folders_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::SearchFoldersResponse::Representation
@@ -431,7 +431,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_folder_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/{+resource}:setIamPolicy', options)
+          command =  make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Policy::Representation
@@ -468,7 +468,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_folder_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/{+resource}:testIamPermissions', options)
+          command =  make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::TestIamPermissionsResponse::Representation
@@ -511,11 +511,43 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_folder(name, undelete_folder_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/{+name}:undelete', options)
+          command =  make_simple_command(:post, 'v2/{+name}:undelete', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV2beta1::UndeleteFolderRequest::Representation
           command.request_object = undelete_folder_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Folder::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV2beta1::Folder
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.  Clients can use this
+        # method to poll the operation result at intervals as recommended by the API
+        # service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV2beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV2beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV2beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV2beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

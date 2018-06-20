@@ -153,7 +153,6 @@ module Google
       class SpeechContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :biasing_strength, as: 'biasingStrength'
           collection :phrases, as: 'phrases'
         end
       end

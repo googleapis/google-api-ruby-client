@@ -976,6 +976,8 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
       
+        # Caller-specified and required in CreateQueue,
+        # after which it becomes output only.
         # The queue name.
         # The queue name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
@@ -990,8 +992,6 @@ module Google
         # For more information, see https://cloud.google.com/about/locations/.
         # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         # hyphens (-). The maximum length is 100 characters.
-        # Caller-specified and required in CreateQueue,
-        # after which it becomes output only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1519,6 +1519,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optionally caller-specified in CreateTask.
         # The task name.
         # The task name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
@@ -1535,7 +1536,6 @@ module Google
         # hyphens (-). The maximum length is 100 characters.
         # * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), or underscores (_). The maximum length is 500 characters.
-        # Optionally caller-specified in CreateTask.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
