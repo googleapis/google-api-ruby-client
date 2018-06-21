@@ -2015,7 +2015,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
         attr_accessor :info_type
       
-        # Estimate of how likely it is that the `info_type` is correct.
+        # Confidence of how likely it is that the `info_type` is correct.
         # Corresponds to the JSON property `likelihood`
         # @return [String]
         attr_accessor :likelihood
@@ -2027,7 +2027,7 @@ module Google
       
         # The content that was found. Even if the content is not textual, it
         # may be converted to a textual representation here.
-        # Provided if requested by the `InspectConfig` and the finding is
+        # Provided if `include_quote` is true and the finding is
         # less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
         # in length, the quote may be omitted.
         # Corresponds to the JSON property `quote`
@@ -2420,6 +2420,9 @@ module Google
         # Restricts what info_types to look for. The values must correspond to
         # InfoType values returned by ListInfoTypes or listed at
         # https://cloud.google.com/dlp/docs/infotypes-reference.
+        # When no InfoTypes or CustomInfoTypes are specified in a request, the
+        # system may automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -4127,6 +4130,13 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig>]
         attr_accessor :image_redaction_configs
       
+        # Whether the response should include findings along with the redacted
+        # image.
+        # Corresponds to the JSON property `includeFindings`
+        # @return [Boolean]
+        attr_accessor :include_findings
+        alias_method :include_findings?, :include_findings
+      
         # Configuration description of the scanning process.
         # When used with redactContent only info_types and min_likelihood are currently
         # used.
@@ -4142,6 +4152,7 @@ module Google
         def update!(**args)
           @byte_item = args[:byte_item] if args.key?(:byte_item)
           @image_redaction_configs = args[:image_redaction_configs] if args.key?(:image_redaction_configs)
+          @include_findings = args[:include_findings] if args.key?(:include_findings)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
         end
       end
@@ -4157,6 +4168,11 @@ module Google
         # @return [String]
         attr_accessor :extracted_text
       
+        # All the findings for a single scanned item.
+        # Corresponds to the JSON property `inspectResult`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectResult]
+        attr_accessor :inspect_result
+      
         # The redacted image. The type will be the same as the original image.
         # Corresponds to the JSON property `redactedImage`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4170,6 +4186,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extracted_text = args[:extracted_text] if args.key?(:extracted_text)
+          @inspect_result = args[:inspect_result] if args.key?(:inspect_result)
           @redacted_image = args[:redacted_image] if args.key?(:redacted_image)
         end
       end

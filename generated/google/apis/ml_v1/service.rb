@@ -917,7 +917,8 @@ module Google
         end
         
         # Updates the specified Version resource.
-        # Currently the only supported field to update is `description`.
+        # Currently the only update-able fields are `description` and
+        # `autoScaling.minNodes`.
         # @param [String] name
         #   Required. The name of the model.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
@@ -930,7 +931,8 @@ module Google
         #   `
         #   "description": "foo"
         #   `
-        #   Currently the only supported update mask is`description`.
+        #   Currently the only supported update mask fields are `description` and
+        #   `autoScaling.minNodes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

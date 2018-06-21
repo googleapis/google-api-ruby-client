@@ -2151,6 +2151,7 @@ module Google
       
           collection :image_redaction_configs, as: 'imageRedactionConfigs', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig::Representation
       
+          property :include_findings, as: 'includeFindings'
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
         end
@@ -2160,6 +2161,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :extracted_text, as: 'extractedText'
+          property :inspect_result, as: 'inspectResult', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectResult, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectResult::Representation
+      
           property :redacted_image, :base64 => true, as: 'redactedImage'
         end
       end

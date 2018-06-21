@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuth2ClientInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -747,6 +753,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_info, as: 'oauth2ClientInfo', class: Google::Apis::AppengineV1beta::OAuth2ClientInfo, decorator: Google::Apis::AppengineV1beta::OAuth2ClientInfo::Representation
+      
           property :oauth2_client_secret, as: 'oauth2ClientSecret'
           property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
         end
@@ -928,6 +936,15 @@ module Google
           property :target_received_packets_per_second, as: 'targetReceivedPacketsPerSecond'
           property :target_sent_bytes_per_second, as: 'targetSentBytesPerSecond'
           property :target_sent_packets_per_second, as: 'targetSentPacketsPerSecond'
+        end
+      end
+      
+      class OAuth2ClientInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_name, as: 'applicationName'
+          property :client_name, as: 'clientName'
+          property :developer_email_address, as: 'developerEmailAddress'
         end
       end
       

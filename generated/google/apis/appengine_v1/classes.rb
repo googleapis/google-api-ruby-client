@@ -2649,7 +2649,8 @@ module Google
         # @return [String]
         attr_accessor :auth_fail_action
       
-        # Level of login required to access this resource.
+        # Level of login required to access this resource. Not supported for Node.js in
+        # the App Engine standard environment.
         # Corresponds to the JSON property `login`
         # @return [String]
         attr_accessor :login

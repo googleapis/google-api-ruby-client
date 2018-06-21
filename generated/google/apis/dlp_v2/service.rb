@@ -452,6 +452,9 @@ module Google
         # This method has limits on input size and output size.
         # See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to
         # learn more.
+        # When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
@@ -486,6 +489,9 @@ module Google
         
         # Finds potentially sensitive info in content.
         # This method has limits on input size, processing time, and output size.
+        # When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
         # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
         # and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
@@ -780,6 +786,9 @@ module Google
         # Creates a new job to inspect storage or calculate risk metrics.
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
@@ -943,6 +952,9 @@ module Google
         # This method has limits on input size, processing time, and output size.
         # See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
         # learn more.
+        # When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object

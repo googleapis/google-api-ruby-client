@@ -1322,7 +1322,7 @@ module Google
         # mls1-highcpu-4    4 core    2 Gb RAM
         # The following are available in Beta:
         # mls1-c1-m2        1 core    2 Gb RAM   Default
-        # mls1-c4-m2        1 core    4 Gb RAM
+        # mls1-c4-m2        4 core    2 Gb RAM
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type

@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/resource-manager
     module CloudresourcemanagerV2
       VERSION = 'V2'
-      REVISION = '20180611'
+      REVISION = '20180618'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
