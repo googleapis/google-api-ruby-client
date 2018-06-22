@@ -142,8 +142,8 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Artifacts]
         attr_accessor :artifacts
       
-        # Output only. The ID of the `BuildTrigger` that triggered this build, if it was
-        # triggered automatically.
+        # Output only. The ID of the `BuildTrigger` that triggered this build, if it
+        # was triggered automatically.
         # Corresponds to the JSON property `buildTriggerId`
         # @return [String]
         attr_accessor :build_trigger_id

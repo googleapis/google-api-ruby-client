@@ -387,24 +387,24 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # Approximate percentage processed thus far. Guaranteed to be
         # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Output only. Time when the request was received.
+        # Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. Time of the most recent update.
+        # Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -482,7 +482,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
@@ -535,9 +535,9 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelDetectionConfig]
         attr_accessor :label_detection_config
       
-        # Non-streaming request only. Video segments to annotate. The segments may
-        # overlap and are not required to be contiguous or span the whole video. If
-        # unspecified, each video is treated as a single segment.
+        # Video segments to annotate. The segments may overlap and are not required
+        # to be contiguous or span the whole video. If unspecified, each video is
+        # treated as a single segment.
         # Corresponds to the JSON property `segments`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1VideoSegment>]
         attr_accessor :segments
@@ -804,24 +804,24 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # Approximate percentage processed thus far. Guaranteed to be
         # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Output only. Time when the request was received.
+        # Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. Time of the most recent update.
+        # Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -899,7 +899,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
@@ -1182,7 +1182,7 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
-        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is typically provided only for the top hypothesis, and
         # only for `is_final=true` results. Clients should not rely on the
@@ -1192,12 +1192,12 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Output only. Transcript text representing the words that the user spoke.
+        # Transcript text representing the words that the user spoke.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
       
-        # Output only. A list of word-specific information for each recognized word.
+        # A list of word-specific information for each recognized word.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1WordInfo>]
         attr_accessor :words
@@ -1218,10 +1218,10 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription
         include Google::Apis::Core::Hashable
       
-        # Output only. May contain one or more recognition hypotheses (up to the
-        # maximum specified in `max_alternatives`).
-        # These alternatives are ordered in terms of accuracy, with the top (first)
-        # alternative being the most probable, as ranked by the recognizer.
+        # May contain one or more recognition hypotheses (up to the maximum specified
+        # in `max_alternatives`).  These alternatives are ordered in terms of
+        # accuracy, with the top (first) alternative being the most probable, as
+        # ranked by the recognizer.
         # Corresponds to the JSON property `alternatives`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
@@ -1240,24 +1240,24 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Output only. Approximate percentage processed thus far. Guaranteed to be
+        # Approximate percentage processed thus far. Guaranteed to be
         # 100 when fully processed.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
       
-        # Output only. Time when the request was received.
+        # Time when the request was received.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. Time of the most recent update.
+        # Time of the most recent update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1335,7 +1335,7 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
-        # Output only. Video file location in
+        # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
@@ -1413,7 +1413,7 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1WordInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. Time offset relative to the beginning of the audio, and
+        # Time offset relative to the beginning of the audio, and
         # corresponding to the end of the spoken word. This field is only set if
         # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
         # experimental feature and the accuracy of the time offset can vary.
@@ -1421,7 +1421,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. Time offset relative to the beginning of the audio, and
+        # Time offset relative to the beginning of the audio, and
         # corresponding to the start of the spoken word. This field is only set if
         # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
         # experimental feature and the accuracy of the time offset can vary.
@@ -1429,7 +1429,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. The word corresponding to this set of information.
+        # The word corresponding to this set of information.
         # Corresponds to the JSON property `word`
         # @return [String]
         attr_accessor :word
