@@ -204,6 +204,74 @@ module Google
         end
       end
       
+      # Metadata for a BigQuery connector used by the job.
+      class BigQueryIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # Dataset accessed in the connection.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Project accessed in the connection.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Query used to access data in the connection.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Table accessed in the connection.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @query = args[:query] if args.key?(:query)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Metadata for a BigTable connector used by the job.
+      class BigTableIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # InstanceId accessed in the connection.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # ProjectId accessed in the connection.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # TableId accessed in the connection.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Modeled after information exposed by /proc/stat.
       class CpuTime
         include Google::Apis::Core::Hashable
@@ -734,6 +802,31 @@ module Google
         end
       end
       
+      # Metadata for a Datastore connector used by the job.
+      class DatastoreIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # Namespace used in the connection.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # ProjectId accessed in the connection.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
       # Specification of one of the bundles produced as a result of splitting
       # a Source (e.g. when executing a SourceSplitRequest, or when
       # splitting an active task using WorkItemStatus.dynamic_source_split),
@@ -1197,6 +1290,25 @@ module Google
         end
       end
       
+      # Metadata for a File connector used by the job.
+      class FileIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # File Pattern used to access files by the connector.
+        # Corresponds to the JSON property `filePattern`
+        # @return [String]
+        attr_accessor :file_pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_pattern = args[:file_pattern] if args.key?(:file_pattern)
+        end
+      end
+      
       # An instruction that copies its inputs (zero or more) to its (single) output.
       class FlattenInstruction
         include Google::Apis::Core::Hashable
@@ -1622,6 +1734,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Metadata available primarily for filtering jobs. Will be included in the
+        # ListJob response and Job SUMMARY view+.
+        # Corresponds to the JSON property `jobMetadata`
+        # @return [Google::Apis::DataflowV1b3::JobMetadata]
+        attr_accessor :job_metadata
+      
         # User-defined labels for this job.
         # The labels map can contain no more than 64 entries.  Entries of the labels
         # map are UTF8 strings that comply with the following restrictions:
@@ -1734,6 +1852,7 @@ module Google
           @environment = args[:environment] if args.key?(:environment)
           @execution_info = args[:execution_info] if args.key?(:execution_info)
           @id = args[:id] if args.key?(:id)
+          @job_metadata = args[:job_metadata] if args.key?(:job_metadata)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
@@ -1826,6 +1945,62 @@ module Google
           @message_importance = args[:message_importance] if args.key?(:message_importance)
           @message_text = args[:message_text] if args.key?(:message_text)
           @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # Metadata available primarily for filtering jobs. Will be included in the
+      # ListJob response and Job SUMMARY view+.
+      class JobMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Identification of a BigTable source used in the Dataflow job.
+        # Corresponds to the JSON property `bigTableDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::BigTableIoDetails>]
+        attr_accessor :big_table_details
+      
+        # Identification of a BigQuery source used in the Dataflow job.
+        # Corresponds to the JSON property `bigqueryDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::BigQueryIoDetails>]
+        attr_accessor :bigquery_details
+      
+        # Identification of a Datastore source used in the Dataflow job.
+        # Corresponds to the JSON property `datastoreDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::DatastoreIoDetails>]
+        attr_accessor :datastore_details
+      
+        # Identification of a File source used in the Dataflow job.
+        # Corresponds to the JSON property `fileDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::FileIoDetails>]
+        attr_accessor :file_details
+      
+        # Identification of a PubSub source used in the Dataflow job.
+        # Corresponds to the JSON property `pubsubDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::PubSubIoDetails>]
+        attr_accessor :pubsub_details
+      
+        # The version of the SDK used to run the jobl
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [Google::Apis::DataflowV1b3::SdkVersion]
+        attr_accessor :sdk_version
+      
+        # Identification of a Spanner source used in the Dataflow job.
+        # Corresponds to the JSON property `spannerDetails`
+        # @return [Array<Google::Apis::DataflowV1b3::SpannerIoDetails>]
+        attr_accessor :spanner_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_table_details = args[:big_table_details] if args.key?(:big_table_details)
+          @bigquery_details = args[:bigquery_details] if args.key?(:bigquery_details)
+          @datastore_details = args[:datastore_details] if args.key?(:datastore_details)
+          @file_details = args[:file_details] if args.key?(:file_details)
+          @pubsub_details = args[:pubsub_details] if args.key?(:pubsub_details)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
+          @spanner_details = args[:spanner_details] if args.key?(:spanner_details)
         end
       end
       
@@ -2767,6 +2942,31 @@ module Google
         end
       end
       
+      # Metadata for a PubSub connector used by the job.
+      class PubSubIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # Subscription used in the connection.
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        # Topic accessed in the connection.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Identifies a pubsub location to use for transferring data into or
       # out of a streaming Dataflow job.
       class PubsubLocation
@@ -3053,6 +3253,37 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # The version of the SDK used to run the jobl
+      class SdkVersion
+        include Google::Apis::Core::Hashable
+      
+        # The support status for this SDK version.
+        # Corresponds to the JSON property `sdkSupportStatus`
+        # @return [String]
+        attr_accessor :sdk_support_status
+      
+        # The version of the SDK used to run the job.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # A readable string describing the version of the sdk.
+        # Corresponds to the JSON property `versionDisplayName`
+        # @return [String]
+        attr_accessor :version_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdk_support_status = args[:sdk_support_status] if args.key?(:sdk_support_status)
+          @version = args[:version] if args.key?(:version)
+          @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
         end
       end
       
@@ -3710,6 +3941,37 @@ module Google
         def update!(**args)
           @derivation_mode = args[:derivation_mode] if args.key?(:derivation_mode)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Metadata for a Spanner connector used by the job.
+      class SpannerIoDetails
+        include Google::Apis::Core::Hashable
+      
+        # DatabaseId accessed in the connection.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # InstanceId accessed in the connection.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # ProjectId accessed in the connection.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       

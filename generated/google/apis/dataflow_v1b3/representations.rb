@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryIoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigTableIoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CpuTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatastoreIoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DerivedSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +191,12 @@ module Google
       end
       
       class FailedLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileIoDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +293,12 @@ module Google
       end
       
       class JobMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubSubIoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PubsubLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +497,12 @@ module Google
       end
       
       class RuntimeEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdkVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +623,12 @@ module Google
       end
       
       class SourceSplitShard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerIoDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -837,6 +885,25 @@ module Google
         end
       end
       
+      class BigQueryIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :project_id, as: 'projectId'
+          property :query, as: 'query'
+          property :table, as: 'table'
+        end
+      end
+      
+      class BigTableIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class CpuTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -983,6 +1050,14 @@ module Google
         end
       end
       
+      class DatastoreIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespace, as: 'namespace'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
       class DerivedSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1093,6 +1168,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class FileIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_pattern, as: 'filePattern'
         end
       end
       
@@ -1213,6 +1295,8 @@ module Google
           property :execution_info, as: 'executionInfo', class: Google::Apis::DataflowV1b3::JobExecutionInfo, decorator: Google::Apis::DataflowV1b3::JobExecutionInfo::Representation
       
           property :id, as: 'id'
+          property :job_metadata, as: 'jobMetadata', class: Google::Apis::DataflowV1b3::JobMetadata, decorator: Google::Apis::DataflowV1b3::JobMetadata::Representation
+      
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
@@ -1254,6 +1338,26 @@ module Google
           property :message_importance, as: 'messageImportance'
           property :message_text, as: 'messageText'
           property :time, as: 'time'
+        end
+      end
+      
+      class JobMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :big_table_details, as: 'bigTableDetails', class: Google::Apis::DataflowV1b3::BigTableIoDetails, decorator: Google::Apis::DataflowV1b3::BigTableIoDetails::Representation
+      
+          collection :bigquery_details, as: 'bigqueryDetails', class: Google::Apis::DataflowV1b3::BigQueryIoDetails, decorator: Google::Apis::DataflowV1b3::BigQueryIoDetails::Representation
+      
+          collection :datastore_details, as: 'datastoreDetails', class: Google::Apis::DataflowV1b3::DatastoreIoDetails, decorator: Google::Apis::DataflowV1b3::DatastoreIoDetails::Representation
+      
+          collection :file_details, as: 'fileDetails', class: Google::Apis::DataflowV1b3::FileIoDetails, decorator: Google::Apis::DataflowV1b3::FileIoDetails::Representation
+      
+          collection :pubsub_details, as: 'pubsubDetails', class: Google::Apis::DataflowV1b3::PubSubIoDetails, decorator: Google::Apis::DataflowV1b3::PubSubIoDetails::Representation
+      
+          property :sdk_version, as: 'sdkVersion', class: Google::Apis::DataflowV1b3::SdkVersion, decorator: Google::Apis::DataflowV1b3::SdkVersion::Representation
+      
+          collection :spanner_details, as: 'spannerDetails', class: Google::Apis::DataflowV1b3::SpannerIoDetails, decorator: Google::Apis::DataflowV1b3::SpannerIoDetails::Representation
+      
         end
       end
       
@@ -1514,6 +1618,14 @@ module Google
         end
       end
       
+      class PubSubIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class PubsubLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1588,6 +1700,15 @@ module Google
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class SdkVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sdk_support_status, as: 'sdkSupportStatus'
+          property :version, as: 'version'
+          property :version_display_name, as: 'versionDisplayName'
         end
       end
       
@@ -1783,6 +1904,15 @@ module Google
           property :derivation_mode, as: 'derivationMode'
           property :source, as: 'source', class: Google::Apis::DataflowV1b3::Source, decorator: Google::Apis::DataflowV1b3::Source::Representation
       
+        end
+      end
+      
+      class SpannerIoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :instance_id, as: 'instanceId'
+          property :project_id, as: 'projectId'
         end
       end
       

@@ -2711,6 +2711,11 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::LabelDescriptor>]
         attr_accessor :labels
       
+        # Additional annotations that can be used to guide the usage of a metric.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ServiceusageV1beta1::MetricDescriptorMetadata]
+        attr_accessor :metadata
+      
         # Whether the metric records instantaneous values, changes to a value, etc.
         # Some combinations of `metric_kind` and `value_type` might not be supported.
         # Corresponds to the JSON property `metricKind`
@@ -2803,11 +2808,48 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @unit = args[:unit] if args.key?(:unit)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Additional annotations that can be used to guide the usage of a metric.
+      class MetricDescriptorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The delay of data points caused by ingestion. Data points older than this
+        # age are guaranteed to be ingested and available to be read, excluding
+        # data loss due to errors.
+        # Corresponds to the JSON property `ingestDelay`
+        # @return [String]
+        attr_accessor :ingest_delay
+      
+        # The launch stage of the metric definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # The sampling period of metric data points. For metrics which are written
+        # periodically, consecutive data points are stored at this time interval,
+        # excluding data loss due to errors. Metrics with a higher granularity have
+        # a smaller sampling period.
+        # Corresponds to the JSON property `samplePeriod`
+        # @return [String]
+        attr_accessor :sample_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @sample_period = args[:sample_period] if args.key?(:sample_period)
         end
       end
       

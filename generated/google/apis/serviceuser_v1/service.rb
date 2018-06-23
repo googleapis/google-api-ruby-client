@@ -58,7 +58,7 @@ module Google
         #   The Service User implementation accepts the following forms for consumer:
         #   - "project:<project_id>"
         #   A valid path would be:
-        #   - /v1/projects/my-project/services/servicemanagement.googleapis.com:disable
+        #   - projects/my-project/services/servicemanagement.googleapis.com
         # @param [Google::Apis::ServiceuserV1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -96,7 +96,7 @@ module Google
         # @param [String] name
         #   Name of the consumer and the service to enable for that consumer.
         #   A valid path would be:
-        #   - /v1/projects/my-project/services/servicemanagement.googleapis.com:enable
+        #   - projects/my-project/services/servicemanagement.googleapis.com
         # @param [Google::Apis::ServiceuserV1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

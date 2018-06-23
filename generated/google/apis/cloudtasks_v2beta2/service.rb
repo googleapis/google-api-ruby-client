@@ -865,11 +865,6 @@ module Google
         #   Required.
         #   The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        # @param [String] order_by
-        #   Sort order used for the query. The only fields supported for sorting
-        #   are `schedule_time` and `pull_message.tag`. All results will be
-        #   returned in approximately ascending order. The default ordering is by
-        #   `schedule_time`.
         # @param [Fixnum] page_size
         #   Requested page size. Fewer tasks than requested might be returned.
         #   The maximum page size is 1000. If unspecified, the page size will
@@ -913,12 +908,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_queue_tasks(parent, order_by: nil, page_size: nil, page_token: nil, response_view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_queue_tasks(parent, page_size: nil, page_token: nil, response_view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta2/{+parent}/tasks', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::ListTasksResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::ListTasksResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['responseView'] = response_view unless response_view.nil?
