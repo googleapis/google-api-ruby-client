@@ -458,7 +458,7 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # The Compute Engine disk type.  If unspecified, 'standard-pd' is used.
+        # The Compute Engine disk type.  If unspecified, 'pd-standard' is used.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
