@@ -658,7 +658,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the version of a CryptoKey that will be used in Encrypt
+        # Update the version of a CryptoKey that will be used in Encrypt.
         # @param [String] name
         #   The resource name of the CryptoKey to update.
         # @param [Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest] update_crypto_key_primary_version_request_object
