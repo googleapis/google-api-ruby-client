@@ -531,14 +531,14 @@ module Google
         end
       end
       
-      # A response message from a request to list.
+      # A response message from a request to startImport.
       # This is returned in the response field of the Operation.
       class StartAssetImportResponse
         include Google::Apis::Core::Hashable
       
         # The id of newly created asset. If this is empty when the operation is
         # complete it means the import failed. Please refer to the
-        # asset_import_message field to understand what went wrong.
+        # assetImportMessages field to understand what went wrong.
         # Corresponds to the JSON property `assetId`
         # @return [String]
         attr_accessor :asset_id

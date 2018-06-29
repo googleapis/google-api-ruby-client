@@ -1691,6 +1691,11 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
+        # Additional annotations that can be used to guide the usage of a metric.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::MonitoringV3::MetricDescriptorMetadata]
+        attr_accessor :metadata
+      
         # Whether the metric records instantaneous values, changes to a value, etc. Some
         # combinations of metric_kind and value_type might not be supported.
         # Corresponds to the JSON property `metricKind`
@@ -1711,11 +1716,54 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Optional. The unit in which the metric value is reported. For example, kBy/s
-        # means kilobytes/sec, and 1 is the dimensionless unit. The supported units are
-        # a subset of The Unified Code for Units of Measure standard (http://
-        # unitsofmeasure.org/ucum.html).<br><br> This field is part of the metric's
-        # documentation, but it is ignored by Stackdriver.
+        # The unit in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
+        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
+        # standard:Basic units (UNIT)
+        # bit bit
+        # By byte
+        # s second
+        # min minute
+        # h hour
+        # d dayPrefixes (PREFIX)
+        # k kilo (10**3)
+        # M mega (10**6)
+        # G giga (10**9)
+        # T tera (10**12)
+        # P peta (10**15)
+        # E exa (10**18)
+        # Z zetta (10**21)
+        # Y yotta (10**24)
+        # m milli (10**-3)
+        # u micro (10**-6)
+        # n nano (10**-9)
+        # p pico (10**-12)
+        # f femto (10**-15)
+        # a atto (10**-18)
+        # z zepto (10**-21)
+        # y yocto (10**-24)
+        # Ki kibi (2**10)
+        # Mi mebi (2**20)
+        # Gi gibi (2**30)
+        # Ti tebi (2**40)GrammarThe grammar also includes these connectors:
+        # / division (as an infix operator, e.g. 1/s).
+        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
+        # as follows:
+        # Expression = Component ` "." Component ` ` "/" Component ` ;
+        # Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
+        # | Annotation
+        # | "1"
+        # ;
+        # Annotation = "`" NAME "`" ;
+        # Notes:
+        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
+        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
+        # s.
+        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
+        # or '`'.
+        # 1 represents dimensionless value 1, such as in 1/s.
+        # % represents dimensionless value 1/100, and annotates values giving  a
+        # percentage.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -1735,11 +1783,48 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @unit = args[:unit] if args.key?(:unit)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Additional annotations that can be used to guide the usage of a metric.
+      class MetricDescriptorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The delay of data points caused by ingestion. Data points older than this age
+        # are guaranteed to be ingested and available to be read, excluding data loss
+        # due to errors.
+        # Corresponds to the JSON property `ingestDelay`
+        # @return [String]
+        attr_accessor :ingest_delay
+      
+        # The launch stage of the metric definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # The sampling period of metric data points. For metrics which are written
+        # periodically, consecutive data points are stored at this time interval,
+        # excluding data loss due to errors. Metrics with a higher granularity have a
+        # smaller sampling period.
+        # Corresponds to the JSON property `samplePeriod`
+        # @return [String]
+        attr_accessor :sample_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @sample_period = args[:sample_period] if args.key?(:sample_period)
         end
       end
       

@@ -106,6 +106,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamV1Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HorizontalPodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -464,6 +500,7 @@ module Google
           property :current_node_version, as: 'currentNodeVersion'
           property :description, as: 'description'
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
+          property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
           property :expire_time, as: 'expireTime'
           property :initial_cluster_version, as: 'initialClusterVersion'
@@ -505,6 +542,7 @@ module Google
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
+          property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :zone, as: 'zone'
         end
       end
@@ -578,6 +616,52 @@ module Google
         end
       end
       
+      class GoogleIamV1Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleIamV1GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleIamV1Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ContainerV1beta1::GoogleIamV1Binding, decorator: Google::Apis::ContainerV1beta1::GoogleIamV1Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleIamV1SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::ContainerV1beta1::GoogleIamV1Policy, decorator: Google::Apis::ContainerV1beta1::GoogleIamV1Policy::Representation
+      
+        end
+      end
+      
+      class GoogleIamV1TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class GoogleIamV1TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
       class HorizontalPodAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -606,6 +690,7 @@ module Google
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
           property :subnetwork_name, as: 'subnetworkName'
+          property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
         end
       end

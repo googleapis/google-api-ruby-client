@@ -163,13 +163,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_memory_mb, as: 'availableMemoryMb'
           property :entry_point, as: 'entryPoint'
+          hash :environment_variables, as: 'environmentVariables'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV1beta2::EventTrigger, decorator: Google::Apis::CloudfunctionsV1beta2::EventTrigger::Representation
       
           property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1beta2::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1beta2::HttpsTrigger::Representation
       
           hash :labels, as: 'labels'
           property :latest_operation, as: 'latestOperation'
+          property :max_instances, as: 'maxInstances'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :runtime, as: 'runtime'
           property :service_account, as: 'serviceAccount'
           property :source_archive_url, as: 'sourceArchiveUrl'

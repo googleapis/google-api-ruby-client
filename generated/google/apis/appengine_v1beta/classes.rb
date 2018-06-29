@@ -933,6 +933,25 @@ module Google
         end
       end
       
+      # The entrypoint for the application.
+      class Entrypoint
+        include Google::Apis::Core::Hashable
+      
+        # The format should be a shell command that can be fed to bash -c.
+        # Corresponds to the JSON property `shell`
+        # @return [String]
+        attr_accessor :shell
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shell = args[:shell] if args.key?(:shell)
+        end
+      end
+      
       # Custom static error page to be served when an error occurs.
       class ErrorHandler
         include Google::Apis::Core::Hashable
@@ -2906,6 +2925,11 @@ module Google
         # @return [Google::Apis::AppengineV1beta::EndpointsApiService]
         attr_accessor :endpoints_api_service
       
+        # The entrypoint for the application.
+        # Corresponds to the JSON property `entrypoint`
+        # @return [Google::Apis::AppengineV1beta::Entrypoint]
+        attr_accessor :entrypoint
+      
         # App Engine execution environment for this version.Defaults to standard.
         # Corresponds to the JSON property `env`
         # @return [String]
@@ -3069,6 +3093,7 @@ module Google
           @deployment = args[:deployment] if args.key?(:deployment)
           @disk_usage_bytes = args[:disk_usage_bytes] if args.key?(:disk_usage_bytes)
           @endpoints_api_service = args[:endpoints_api_service] if args.key?(:endpoints_api_service)
+          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @env = args[:env] if args.key?(:env)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @error_handlers = args[:error_handlers] if args.key?(:error_handlers)

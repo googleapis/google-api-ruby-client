@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entrypoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorHandler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -699,6 +705,13 @@ module Google
         end
       end
       
+      class Entrypoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shell, as: 'shell'
+        end
+      end
+      
       class ErrorHandler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1184,6 +1197,8 @@ module Google
       
           property :disk_usage_bytes, :numeric_string => true, as: 'diskUsageBytes'
           property :endpoints_api_service, as: 'endpointsApiService', class: Google::Apis::AppengineV1beta::EndpointsApiService, decorator: Google::Apis::AppengineV1beta::EndpointsApiService::Representation
+      
+          property :entrypoint, as: 'entrypoint', class: Google::Apis::AppengineV1beta::Entrypoint, decorator: Google::Apis::AppengineV1beta::Entrypoint::Representation
       
           property :env, as: 'env'
           hash :env_variables, as: 'envVariables'

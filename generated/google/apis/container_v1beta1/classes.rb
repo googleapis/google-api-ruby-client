@@ -291,6 +291,12 @@ module Google
         attr_accessor :enable_kubernetes_alpha
         alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
+        # Enable the ability to use Cloud TPUs in this cluster.
+        # Corresponds to the JSON property `enableTpu`
+        # @return [Boolean]
+        attr_accessor :enable_tpu
+        alias_method :enable_tpu?, :enable_tpu
+      
         # [Output only] The IP address of this cluster's master endpoint.
         # The endpoint can be accessed from the internet at
         # `https://username:password@endpoint/`.
@@ -514,6 +520,13 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # [Output only] The IP address range of the Cloud TPUs in this cluster, in
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `1.2.3.4/29`).
+        # Corresponds to the JSON property `tpuIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :tpu_ipv4_cidr_block
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -537,6 +550,7 @@ module Google
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
           @description = args[:description] if args.key?(:description)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
+          @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
@@ -568,6 +582,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -795,7 +810,7 @@ module Google
       
         # The parent (project, location, cluster id) where the node pool will be
         # created. Specified in the format
-        # 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -872,6 +887,233 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Associates `members` with a `role`.
+      class GoogleIamV1Binding
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities requesting access for a Cloud Platform resource.
+        # `members` can have the following values:
+        # * `allUsers`: A special identifier that represents anyone who is
+        # on the internet; with or without a Google account.
+        # * `allAuthenticatedUsers`: A special identifier that represents anyone
+        # who is authenticated with a Google account or a service account.
+        # * `user:`emailid``: An email address that represents a specific Google
+        # account. For example, `alice@gmail.com` .
+        # * `serviceAccount:`emailid``: An email address that represents a service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
+        # * `group:`emailid``: An email address that represents a Google group.
+        # For example, `admins@example.com`.
+        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`.
+        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Required
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Request message for `GetIamPolicy` method.
+      class GoogleIamV1GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Defines an Identity and Access Management (IAM) policy. It is used to
+      # specify access control policies for Cloud Platform resources.
+      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
+      # `members` to a `role`, where the members can be user accounts, Google groups,
+      # Google domains, and service accounts. A `role` is a named list of permissions
+      # defined by IAM.
+      # **JSON Example**
+      # `
+      # "bindings": [
+      # `
+      # "role": "roles/owner",
+      # "members": [
+      # "user:mike@example.com",
+      # "group:admins@example.com",
+      # "domain:google.com",
+      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+      # ]
+      # `,
+      # `
+      # "role": "roles/viewer",
+      # "members": ["user:sean@example.com"]
+      # `
+      # ]
+      # `
+      # **YAML Example**
+      # bindings:
+      # - members:
+      # - user:mike@example.com
+      # - group:admins@example.com
+      # - domain:google.com
+      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+      # role: roles/owner
+      # - members:
+      # - user:sean@example.com
+      # role: roles/viewer
+      # For a description of IAM and its features, see the
+      # [IAM developer's guide](https://cloud.google.com/iam/docs).
+      class GoogleIamV1Policy
+        include Google::Apis::Core::Hashable
+      
+        # Associates a list of `members` to a `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ContainerV1beta1::GoogleIamV1Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a policy from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform policy updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
+        # systems are expected to put that etag in the request to `setIamPolicy` to
+        # ensure that their change will be applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Deprecated.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class GoogleIamV1SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # **YAML Example**
+        # bindings:
+        # - members:
+        # - user:mike@example.com
+        # - group:admins@example.com
+        # - domain:google.com
+        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner
+        # - members:
+        # - user:sean@example.com
+        # role: roles/viewer
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ContainerV1beta1::GoogleIamV1Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Request message for `TestIamPermissions` method.
+      class GoogleIamV1TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the `resource`. Permissions with
+        # wildcards (such as '*' or 'storage.*') are not allowed. For more
+        # information see
+        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class GoogleIamV1TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is
+        # allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -1035,6 +1277,21 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_name
       
+        # The IP address range of the Cloud TPUs in this cluster. If unspecified, a
+        # range will be automatically chosen with the default size.
+        # This field is only applicable when `use_ip_aliases` is true.
+        # If unspecified, the range will use the default size.
+        # Set to /netmask (e.g. `/14`) to have a range chosen with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `tpuIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :tpu_ipv4_cidr_block
+      
         # Whether alias IPs will be used for pod IPs in the cluster.
         # Corresponds to the JSON property `useIpAliases`
         # @return [Boolean]
@@ -1058,6 +1315,7 @@ module Google
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
           @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
+          @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
         end
       end
@@ -1242,7 +1500,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the name of the resource requested.
-        # Specific in the format 'projects/*/locations/*'.
+        # Specified in the format 'projects/*/locations/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

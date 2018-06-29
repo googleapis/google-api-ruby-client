@@ -724,7 +724,7 @@ module Google
       
         # The parent (project, location, cluster id) where the node pool will be
         # created. Specified in the format
-        # 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent

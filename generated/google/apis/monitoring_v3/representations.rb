@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricDescriptorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricThreshold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,11 +809,22 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
+          property :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::MetricDescriptorMetadata, decorator: Google::Apis::MonitoringV3::MetricDescriptorMetadata::Representation
+      
           property :metric_kind, as: 'metricKind'
           property :name, as: 'name'
           property :type, as: 'type'
           property :unit, as: 'unit'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class MetricDescriptorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingest_delay, as: 'ingestDelay'
+          property :launch_stage, as: 'launchStage'
+          property :sample_period, as: 'samplePeriod'
         end
       end
       

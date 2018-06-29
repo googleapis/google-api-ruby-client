@@ -723,7 +723,7 @@ module Google
         # @param [String] parent
         #   The parent (project, location, cluster id) where the node pool will be
         #   created. Specified in the format
-        #   'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   'projects/*/locations/*/clusters/*'.
         # @param [Google::Apis::ContainerV1::CreateNodePoolRequest] create_node_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

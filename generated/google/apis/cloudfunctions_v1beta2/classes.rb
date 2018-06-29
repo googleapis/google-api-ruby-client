@@ -95,6 +95,12 @@ module Google
         # @return [String]
         attr_accessor :entry_point
       
+        # **Beta Feature**
+        # Environment variables that shall be available during function execution.
+        # Corresponds to the JSON property `environmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :environment_variables
+      
         # Describes EventTrigger, used to request events be sent from another
         # service.
         # Corresponds to the JSON property `eventTrigger`
@@ -118,11 +124,33 @@ module Google
         # @return [String]
         attr_accessor :latest_operation
       
+        # The limit on the maximum number of function instances that may coexist at a
+        # given time. This feature is currently in alpha, available only for
+        # whitelisted users.
+        # Corresponds to the JSON property `maxInstances`
+        # @return [Fixnum]
+        attr_accessor :max_instances
+      
         # A user-defined name of the function. Function names must be unique
         # globally and match pattern `projects/*/locations/*/functions/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The Google Compute Engine network that this function can connect to.
+        # Either the fully-qualified URI of the network resource, or
+        # the short name of the network must be specified. If the network belongs to
+        # another project, the URI of the resource must be specified
+        # e.g.,
+        # `https://www.googleapis.com/compute/v1/projects/`project`/global/networks/`
+        # network``
+        # or `my-network`.
+        # See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
+        # more information on connecting Cloud projects.
+        # This feature is currently in alpha, available only for whitelisted users.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
       
         # The runtime in which the function is going to run. If empty, defaults to
         # Node.js 6.
@@ -201,11 +229,14 @@ module Google
         def update!(**args)
           @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
           @https_trigger = args[:https_trigger] if args.key?(:https_trigger)
           @labels = args[:labels] if args.key?(:labels)
           @latest_operation = args[:latest_operation] if args.key?(:latest_operation)
+          @max_instances = args[:max_instances] if args.key?(:max_instances)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @runtime = args[:runtime] if args.key?(:runtime)
           @service_account = args[:service_account] if args.key?(:service_account)
           @source_archive_url = args[:source_archive_url] if args.key?(:source_archive_url)

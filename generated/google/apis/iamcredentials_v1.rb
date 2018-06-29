@@ -25,7 +25,10 @@ module Google
     # @see https://developers.google.com/identity/protocols/OAuth2ServiceAccount
     module IamcredentialsV1
       VERSION = 'V1'
-      REVISION = '20180608'
+      REVISION = '20180627'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end
