@@ -164,12 +164,15 @@ module Google
           property :available_memory_mb, as: 'availableMemoryMb'
           property :description, as: 'description'
           property :entry_point, as: 'entryPoint'
+          hash :environment_variables, as: 'environmentVariables'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV1::EventTrigger, decorator: Google::Apis::CloudfunctionsV1::EventTrigger::Representation
       
           property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1::HttpsTrigger::Representation
       
           hash :labels, as: 'labels'
+          property :max_instances, as: 'maxInstances'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :runtime, as: 'runtime'
           property :service_account_email, as: 'serviceAccountEmail'
           property :source_archive_url, as: 'sourceArchiveUrl'

@@ -160,13 +160,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Index
+      class GoogleFirestoreAdminV1beta1Index
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IndexField
+      class GoogleFirestoreAdminV1beta1IndexField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1ListIndexesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListIndexesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,12 +221,6 @@ module Google
       end
       
       class MapValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -534,7 +534,11 @@ module Google
       class FieldTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_missing_elements, as: 'appendMissingElements', class: Google::Apis::FirestoreV1beta1::ArrayValue, decorator: Google::Apis::FirestoreV1beta1::ArrayValue::Representation
+      
           property :field_path, as: 'fieldPath'
+          property :remove_all_from_array, as: 'removeAllFromArray', class: Google::Apis::FirestoreV1beta1::ArrayValue, decorator: Google::Apis::FirestoreV1beta1::ArrayValue::Representation
+      
           property :set_to_server_value, as: 'setToServerValue'
         end
       end
@@ -551,22 +555,43 @@ module Google
         end
       end
       
-      class Index
+      class GoogleFirestoreAdminV1beta1Index
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collection_id, as: 'collectionId'
-          collection :fields, as: 'fields', class: Google::Apis::FirestoreV1beta1::IndexField, decorator: Google::Apis::FirestoreV1beta1::IndexField::Representation
+          collection :fields, as: 'fields', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1IndexField, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1IndexField::Representation
       
           property :name, as: 'name'
           property :state, as: 'state'
         end
       end
       
-      class IndexField
+      class GoogleFirestoreAdminV1beta1IndexField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_path, as: 'fieldPath'
           property :mode, as: 'mode'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1ListIndexesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :indexes, as: 'indexes', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleLongrunningOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::FirestoreV1beta1::Status, decorator: Google::Apis::FirestoreV1beta1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -603,15 +628,6 @@ module Google
         end
       end
       
-      class ListIndexesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :indexes, as: 'indexes', class: Google::Apis::FirestoreV1beta1::Index, decorator: Google::Apis::FirestoreV1beta1::Index::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -643,18 +659,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :fields, as: 'fields', class: Google::Apis::FirestoreV1beta1::Value, decorator: Google::Apis::FirestoreV1beta1::Value::Representation
       
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::FirestoreV1beta1::Status, decorator: Google::Apis::FirestoreV1beta1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
         end
       end
       

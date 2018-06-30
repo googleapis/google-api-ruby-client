@@ -816,10 +816,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required.
-        # Specifies the custom field key to perform a histogram on. If
-        # specified without `long_value_buckets` or `long_value_min_max`, a
-        # histogram on string values of the given `key` is triggered,
-        # otherwise histogram is performed on long values.
+        # Specifies the custom field key to perform a histogram on. If specified
+        # without `long_value_histogram_bucketing_option`, histogram on string values
+        # of the given `key` is triggered, otherwise histogram is performed on long
+        # values.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2312,7 +2312,7 @@ module Google
         # Optional.
         # The employment type filter specifies the employment type of jobs to
         # search against, such as EmploymentType.FULL_TIME.
-        # If a value is not specified, jobs in the search results includes any
+        # If a value is not specified, jobs in the search results include any
         # employment type.
         # If multiple values are specified, jobs in the search results include
         # any of the specified employment types.
@@ -2336,7 +2336,7 @@ module Google
         # Optional.
         # The location filter specifies geo-regions containing the jobs to
         # search against. See LocationFilter for more information.
-        # If a location value isn'tt specified, jobs fitting the other search
+        # If a location value isn't specified, jobs fitting the other search
         # criteria are retrieved regardless of where they're located.
         # If multiple values are specified, jobs are retrieved from any of the
         # specified locations, and, if different values are specified
@@ -2535,8 +2535,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional.
-        # The distance from the address in miles to search.
-        # The default distance is 20 miles and maximum distance is 5,000 miles.
+        # The distance_in_miles is applied when the location being searched for is
+        # identified as a city or smaller. When the location being searched for is a
+        # state or larger, this field is ignored.
         # Corresponds to the JSON property `distanceInMiles`
         # @return [Float]
         attr_accessor :distance_in_miles
@@ -2927,8 +2928,8 @@ module Google
         # job board www.foo.com and career site www.bar.com, then this field is
         # set to "foo.com" for use on the job board, and "bar.com" for use on the
         # career site.
-        # If this field is not available for some reason, send "UNKNOWN". Note that any
-        # improvements to the `` api_name `` model for a particular tenant site, rely on
+        # If this field is not available for some reason, send "UNKNOWN". Note that
+        # any improvements to the service model for a particular tenant site rely on
         # this field being set correctly to some domain.
         # Corresponds to the JSON property `domain`
         # @return [String]
@@ -2940,7 +2941,7 @@ module Google
         # Obfuscate this field for privacy concerns before
         # providing it to the API.
         # If this field is not available for some reason, please send "UNKNOWN". Note
-        # that any improvements to the `` api_name `` model for a particular tenant site,
+        # that any improvements to the service model for a particular tenant site,
         # rely on this field being set correctly to some unique session_id.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
@@ -2953,7 +2954,7 @@ module Google
         # Obfuscate this field for privacy concerns before
         # providing it to the service.
         # If this field is not available for some reason, please send "UNKNOWN". Note
-        # that any improvements to the `` api_name `` model for a particular tenant site,
+        # that any improvements to the service model for a particular tenant site,
         # rely on this field being set correctly to some unique user_id.
         # Corresponds to the JSON property `userId`
         # @return [String]

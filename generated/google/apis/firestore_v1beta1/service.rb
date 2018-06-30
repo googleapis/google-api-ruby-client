@@ -587,7 +587,7 @@ module Google
         # @param [String] parent
         #   The name of the database this index will apply to. For example:
         #   `projects/`project_id`/databases/`database_id``
-        # @param [Google::Apis::FirestoreV1beta1::Index] index_object
+        # @param [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index] google_firestore_admin_v1beta1_index_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -597,20 +597,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirestoreV1beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::FirestoreV1beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirestoreV1beta1::Operation]
+        # @return [Google::Apis::FirestoreV1beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_database_index(parent, index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_database_index(parent, google_firestore_admin_v1beta1_index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/{+parent}/indexes', options)
-          command.request_representation = Google::Apis::FirestoreV1beta1::Index::Representation
-          command.request_object = index_object
-          command.response_representation = Google::Apis::FirestoreV1beta1::Operation::Representation
-          command.response_class = Google::Apis::FirestoreV1beta1::Operation
+          command.request_representation = Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index::Representation
+          command.request_object = google_firestore_admin_v1beta1_index_object
+          command.response_representation = Google::Apis::FirestoreV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -661,18 +661,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirestoreV1beta1::Index] parsed result object
+        # @yieldparam result [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirestoreV1beta1::Index]
+        # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_database_index(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+name}', options)
-          command.response_representation = Google::Apis::FirestoreV1beta1::Index::Representation
-          command.response_class = Google::Apis::FirestoreV1beta1::Index
+          command.response_representation = Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index::Representation
+          command.response_class = Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -697,18 +697,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirestoreV1beta1::ListIndexesResponse] parsed result object
+        # @yieldparam result [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1ListIndexesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirestoreV1beta1::ListIndexesResponse]
+        # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1ListIndexesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_database_indexes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+parent}/indexes', options)
-          command.response_representation = Google::Apis::FirestoreV1beta1::ListIndexesResponse::Representation
-          command.response_class = Google::Apis::FirestoreV1beta1::ListIndexesResponse
+          command.response_representation = Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1ListIndexesResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1ListIndexesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
