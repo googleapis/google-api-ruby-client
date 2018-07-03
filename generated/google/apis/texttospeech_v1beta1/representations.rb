@@ -68,6 +68,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          collection :effects_profile_id, as: 'effectsProfileId'
           property :pitch, as: 'pitch'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speaking_rate, as: 'speakingRate'

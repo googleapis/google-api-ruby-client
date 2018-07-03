@@ -965,7 +965,7 @@ module Google
         end
       end
       
-      # 
+      # Provides error messages for the failing services.
       class EnableFailure
         include Google::Apis::Core::Hashable
       
@@ -1718,6 +1718,26 @@ module Google
         end
       end
       
+      # The operation metadata returned for the batchend services operation.
+      class GoogleApiServiceusageV1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the resources that this operation is directly
+        # associated with.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # A service that is available for use by the consumer.
       class GoogleApiServiceusageV1Service
         include Google::Apis::Core::Hashable
@@ -1919,6 +1939,26 @@ module Google
           @quota = args[:quota] if args.key?(:quota)
           @title = args[:title] if args.key?(:title)
           @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # The operation metadata returned for the batchend services operation.
+      class GoogleApiServiceusageV1beta1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the resources that this operation is directly
+        # associated with.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
         end
       end
       

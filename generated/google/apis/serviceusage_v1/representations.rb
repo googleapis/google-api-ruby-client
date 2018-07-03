@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchEnableServicesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchEnableServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisableServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,12 @@ module Google
       end
       
       class EnableFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiServiceusageV1Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +239,12 @@ module Google
       end
       
       class GoogleApiServiceusageV1ServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV1beta1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +269,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,6 +551,13 @@ module Google
         end
       end
       
+      class BatchEnableServicesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_ids, as: 'serviceIds'
+        end
+      end
+      
       class BatchEnableServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -598,6 +641,13 @@ module Google
         end
       end
       
+      class DisableServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_dependent_services, as: 'disableDependentServices'
+        end
+      end
+      
       class DisableServiceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -639,6 +689,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
           property :service_id, as: 'serviceId'
+        end
+      end
+      
+      class EnableServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -767,6 +823,13 @@ module Google
         end
       end
       
+      class GoogleApiServiceusageV1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
       class GoogleApiServiceusageV1Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -795,6 +858,13 @@ module Google
           property :title, as: 'title'
           property :usage, as: 'usage', class: Google::Apis::ServiceusageV1::Usage, decorator: Google::Apis::ServiceusageV1::Usage::Representation
       
+        end
+      end
+      
+      class GoogleApiServiceusageV1beta1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
         end
       end
       
@@ -846,6 +916,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServiceusageV1::Operation, decorator: Google::Apis::ServiceusageV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :services, as: 'services', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service::Representation
       
         end
       end

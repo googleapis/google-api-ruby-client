@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiServiceusageV1Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class GoogleApiServiceusageV1ServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV1beta1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -810,6 +822,13 @@ module Google
         end
       end
       
+      class GoogleApiServiceusageV1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
       class GoogleApiServiceusageV1Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +857,13 @@ module Google
           property :title, as: 'title'
           property :usage, as: 'usage', class: Google::Apis::ServiceusageV1beta1::Usage, decorator: Google::Apis::ServiceusageV1beta1::Usage::Representation
       
+        end
+      end
+      
+      class GoogleApiServiceusageV1beta1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
         end
       end
       

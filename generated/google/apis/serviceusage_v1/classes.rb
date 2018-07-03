@@ -443,6 +443,34 @@ module Google
         end
       end
       
+      # Request message for the `BatchEnableServices` method.
+      class BatchEnableServicesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The identifiers of the services to enable on the project.
+        # A valid identifier would be:
+        # serviceusage.googleapis.com
+        # Enabling services requires that each service is public or is shared with
+        # the user enabling the service.
+        # Two or more services must be specified. To enable a single service,
+        # use the `EnableService` method instead.
+        # A single request can enable a maximum of 20 services at a time. If more
+        # than 20 services are specified, the request will fail, and no state changes
+        # will occur.
+        # Corresponds to the JSON property `serviceIds`
+        # @return [Array<String>]
+        attr_accessor :service_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_ids = args[:service_ids] if args.key?(:service_ids)
+        end
+      end
+      
       # Response message for the `BatchEnableServices` method.
       # This response message is assigned to the `response` field of the returned
       # Operation when that operation is done.
@@ -754,6 +782,30 @@ module Google
         end
       end
       
+      # Request message for the `DisableService` method.
+      class DisableServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if services that are enabled and which depend on this service
+        # should also be disabled. If not set, an error will be generated if any
+        # enabled services depend on the service to be disabled. When set, the
+        # service, and any enabled services that depend on it, will be disabled
+        # together.
+        # Corresponds to the JSON property `disableDependentServices`
+        # @return [Boolean]
+        attr_accessor :disable_dependent_services
+        alias_method :disable_dependent_services?, :disable_dependent_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_dependent_services = args[:disable_dependent_services] if args.key?(:disable_dependent_services)
+        end
+      end
+      
       # Response message for the `DisableService` method.
       # This response message is assigned to the `response` field of the returned
       # Operation when that operation is done.
@@ -937,7 +989,7 @@ module Google
         end
       end
       
-      # 
+      # Provides error messages for the failing services.
       class EnableFailure
         include Google::Apis::Core::Hashable
       
@@ -959,6 +1011,19 @@ module Google
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
           @service_id = args[:service_id] if args.key?(:service_id)
+        end
+      end
+      
+      # Request message for the `EnableService` method.
+      class EnableServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1677,6 +1742,26 @@ module Google
         end
       end
       
+      # The operation metadata returned for the batchend services operation.
+      class GoogleApiServiceusageV1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the resources that this operation is directly
+        # associated with.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # A service that is available for use by the consumer.
       class GoogleApiServiceusageV1Service
         include Google::Apis::Core::Hashable
@@ -1878,6 +1963,26 @@ module Google
           @quota = args[:quota] if args.key?(:quota)
           @title = args[:title] if args.key?(:title)
           @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # The operation metadata returned for the batchend services operation.
+      class GoogleApiServiceusageV1beta1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the resources that this operation is directly
+        # associated with.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
         end
       end
       
@@ -2286,6 +2391,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for the `ListServices` method.
+      class ListServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token that can be passed to `ListServices` to resume a paginated
+        # query.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The available services for the requested project.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @services = args[:services] if args.key?(:services)
         end
       end
       
