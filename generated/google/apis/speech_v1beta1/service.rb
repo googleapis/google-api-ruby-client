@@ -30,7 +30,7 @@ module Google
       #    Speech = Google::Apis::SpeechV1beta1 # Alias the module
       #    service = Speech::SpeechService.new
       #
-      # @see https://cloud.google.com/speech/
+      # @see https://cloud.google.com/speech-to-text/docs/quickstart-protocol
       class SpeechService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

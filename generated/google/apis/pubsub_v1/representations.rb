@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateTopicRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -214,6 +220,7 @@ module Google
       class CreateSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :subscription, as: 'subscription'
         end
       end
@@ -377,6 +384,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expire_time, as: 'expireTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :topic, as: 'topic'
         end
@@ -386,6 +394,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
           property :name, as: 'name'
           property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
@@ -412,6 +421,7 @@ module Google
       class Topic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :name, as: 'name'
         end
       end
@@ -429,6 +439,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription', class: Google::Apis::PubsubV1::Subscription, decorator: Google::Apis::PubsubV1::Subscription::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateTopicRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic, as: 'topic', class: Google::Apis::PubsubV1::Topic, decorator: Google::Apis::PubsubV1::Topic::Representation
       
           property :update_mask, as: 'updateMask'
         end

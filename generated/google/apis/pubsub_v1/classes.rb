@@ -90,6 +90,11 @@ module Google
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The subscription whose backlog the snapshot retains.
         # Specifically, the created snapshot is guaranteed to retain:
         # (a) The existing backlog on the subscription. More precisely, this is
@@ -109,6 +114,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @subscription = args[:subscription] if args.key?(:subscription)
         end
       end
@@ -518,10 +524,10 @@ module Google
       class PullResponse
         include Google::Apis::Core::Hashable
       
-        # Received Pub/Sub messages. The Pub/Sub system will return zero messages if
-        # there are no more available in the backlog. The Pub/Sub system may return
-        # fewer than the `maxMessages` requested even if there are more messages
-        # available in the backlog.
+        # Received Pub/Sub messages. The list will be empty if there are no more
+        # messages available in the backlog. For JSON, the response can be entirely
+        # empty. The Pub/Sub system may return fewer than the `maxMessages` requested
+        # even if there are more messages available in the backlog.
         # Corresponds to the JSON property `receivedMessages`
         # @return [Array<Google::Apis::PubsubV1::ReceivedMessage>]
         attr_accessor :received_messages
@@ -732,6 +738,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The name of the snapshot.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -749,6 +760,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @topic = args[:topic] if args.key?(:topic)
         end
@@ -778,6 +790,11 @@ module Google
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
+      
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # How long to retain unacknowledged messages in the subscription's backlog,
         # from the moment a message is published.
@@ -834,6 +851,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
           @name = args[:name] if args.key?(:name)
           @push_config = args[:push_config] if args.key?(:push_config)
@@ -888,6 +906,11 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The name of the topic. It must have the format
         # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
         # and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
@@ -904,6 +927,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -962,6 +986,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request for the UpdateTopic method.
+      class UpdateTopicRequest
+        include Google::Apis::Core::Hashable
+      
+        # A topic resource.
+        # Corresponds to the JSON property `topic`
+        # @return [Google::Apis::PubsubV1::Topic]
+        attr_accessor :topic
+      
+        # Indicates which fields in the provided topic to update. Must be specified
+        # and non-empty. Note that if `update_mask` contains
+        # "message_storage_policy" then the new value will be determined based on the
+        # policy configured at the project or organization level. The
+        # `message_storage_policy` must not be set in the `topic` provided above.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic = args[:topic] if args.key?(:topic)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end

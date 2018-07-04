@@ -696,8 +696,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls messages from the server. Returns an empty list if there are no
-        # messages available in the backlog. The server may return `UNAVAILABLE` if
+        # Pulls messages from the server. The server may return `UNAVAILABLE` if
         # there are too many concurrent pull requests pending for the given
         # subscription.
         # @param [String] subscription
@@ -1016,6 +1015,45 @@ module Google
           command.params['project'] = project unless project.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing topic. Note that certain properties of a
+        # topic are not modifiable.
+        # @param [String] name
+        #   The name of the topic. It must have the format
+        #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
+        #   and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+        #   signs (`%`). It must be between 3 and 255 characters in length, and it
+        #   must not start with `"goog"`.
+        # @param [Google::Apis::PubsubV1::UpdateTopicRequest] update_topic_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Topic] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Topic]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_topic(name, update_topic_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PubsubV1::UpdateTopicRequest::Representation
+          command.request_object = update_topic_request_object
+          command.response_representation = Google::Apis::PubsubV1::Topic::Representation
+          command.response_class = Google::Apis::PubsubV1::Topic
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

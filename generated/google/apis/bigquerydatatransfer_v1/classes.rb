@@ -71,7 +71,6 @@ module Google
         attr_accessor :authorization_type
       
         # Data source client id which should be used to receive refresh token.
-        # When not supplied, no offline credentials are populated for data transfer.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -141,10 +140,9 @@ module Google
         # @return [Array<Google::Apis::BigquerydatatransferV1::DataSourceParameter>]
         attr_accessor :parameters
       
-        # Api auth scopes for which refresh token needs to be obtained. Only valid
-        # when `client_id` is specified. Ignored otherwise. These are scopes needed
-        # by a data source to prepare data and ingest them into BigQuery,
-        # e.g., https://www.googleapis.com/auth/bigquery
+        # Api auth scopes for which refresh token needs to be obtained. These are
+        # scopes needed by a data source to prepare data and ingest them into
+        # BigQuery, e.g., https://www.googleapis.com/auth/bigquery
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
