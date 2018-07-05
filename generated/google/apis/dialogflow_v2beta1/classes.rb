@@ -1191,6 +1191,12 @@ module Google
         # @return [String]
         attr_accessor :source
       
+        # Optional. The version of the protocol used for this request.
+        # This field is AoG-specific.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1199,6 +1205,7 @@ module Google
         def update!(**args)
           @payload = args[:payload] if args.key?(:payload)
           @source = args[:source] if args.key?(:source)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1246,6 +1253,8 @@ module Google
       
         # The intent detection confidence. Values range from 0.0
         # (completely uncertain) to 1.0 (completely certain).
+        # If there are `multiple knowledge_answers` messages, this value is set to
+        # the greatest `knowledgeAnswers.match_confidence` value in the list.
         # Corresponds to the JSON property `intentDetectionConfidence`
         # @return [Float]
         attr_accessor :intent_detection_confidence
@@ -3341,6 +3350,12 @@ module Google
         # @return [String]
         attr_accessor :source
       
+        # Optional. The version of the protocol used for this request.
+        # This field is AoG-specific.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3349,6 +3364,7 @@ module Google
         def update!(**args)
           @payload = args[:payload] if args.key?(:payload)
           @source = args[:source] if args.key?(:source)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3497,6 +3513,8 @@ module Google
       
         # The intent detection confidence. Values range from 0.0
         # (completely uncertain) to 1.0 (completely certain).
+        # If there are `multiple knowledge_answers` messages, this value is set to
+        # the greatest `knowledgeAnswers.match_confidence` value in the list.
         # Corresponds to the JSON property `intentDetectionConfidence`
         # @return [Float]
         attr_accessor :intent_detection_confidence

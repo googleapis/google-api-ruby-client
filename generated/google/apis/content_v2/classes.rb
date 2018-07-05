@@ -634,7 +634,8 @@ module Google
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
       
-        # The ID of the targeted account. Only defined if the method is not insert.
+        # The ID of the targeted account. Only defined if the method is get, delete or
+        # claimwebsite.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -651,17 +652,12 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
-        # Details about the link request.
-        # Corresponds to the JSON property `linkRequest`
-        # @return [Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest]
-        attr_accessor :link_request
-      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
+        # 
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :request_method
@@ -683,41 +679,9 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @force = args[:force] if args.key?(:force)
-          @link_request = args[:link_request] if args.key?(:link_request)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
           @overwrite = args[:overwrite] if args.key?(:overwrite)
-        end
-      end
-      
-      # 
-      class AccountsCustomBatchRequestEntryLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Action to perform for this link.
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Type of the link between the two accounts.
-        # Corresponds to the JSON property `linkType`
-        # @return [String]
-        attr_accessor :link_type
-      
-        # The ID of the linked account.
-        # Corresponds to the JSON property `linkedAccountId`
-        # @return [String]
-        attr_accessor :linked_account_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @link_type = args[:link_type] if args.key?(:link_type)
-          @linked_account_id = args[:linked_account_id] if args.key?(:linked_account_id)
         end
       end
       
@@ -772,11 +736,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The status of the updated link. Only defined if the method is link.
-        # Corresponds to the JSON property `linkStatus`
-        # @return [String]
-        attr_accessor :link_status
-      
         def initialize(**args)
            update!(**args)
         end
@@ -787,64 +746,6 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @errors = args[:errors] if args.key?(:errors)
           @kind = args[:kind] if args.key?(:kind)
-          @link_status = args[:link_status] if args.key?(:link_status)
-        end
-      end
-      
-      # 
-      class AccountsLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Action to perform for this link.
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Type of the link between the two accounts.
-        # Corresponds to the JSON property `linkType`
-        # @return [String]
-        attr_accessor :link_type
-      
-        # The ID of the linked account.
-        # Corresponds to the JSON property `linkedAccountId`
-        # @return [String]
-        attr_accessor :linked_account_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @link_type = args[:link_type] if args.key?(:link_type)
-          @linked_account_id = args[:linked_account_id] if args.key?(:linked_account_id)
-        end
-      end
-      
-      # 
-      class AccountsLinkResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsLinkResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Current status of the requested link.
-        # Corresponds to the JSON property `linkStatus`
-        # @return [String]
-        attr_accessor :link_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @link_status = args[:link_status] if args.key?(:link_status)
         end
       end
       
@@ -4433,7 +4334,7 @@ module Google
         attr_accessor :creation_date
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Present
-        # only if status is delivered
+        # only if status is delievered
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
@@ -4590,14 +4491,14 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # Option to create a refund-only invoice. Exactly one of refundOnlyOption or
-        # returnOption must be provided.
+        # Option to create a refund-only invoice. Exactly one of refund_option and
+        # return_option must be provided.
         # Corresponds to the JSON property `refundOnlyOption`
         # @return [Google::Apis::ContentV2::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption]
         attr_accessor :refund_only_option
       
         # Option to create an invoice for a refund and mark all items within the invoice
-        # as returned. Exactly one of refundOnlyOption or returnOption must be provided.
+        # as returned. Exactly one of refund_option and return_option must be provided.
         # Corresponds to the JSON property `returnOption`
         # @return [Google::Apis::ContentV2::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption]
         attr_accessor :return_option
@@ -5809,12 +5710,6 @@ module Google
         # @return [String]
         attr_accessor :carrier
       
-        # Date on which the shipment has been delivered, in ISO 8601 format. Optional
-        # and can be provided only if
-        # Corresponds to the JSON property `deliveryDate`
-        # @return [String]
-        attr_accessor :delivery_date
-      
         # The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
@@ -5837,7 +5732,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
-          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -6689,12 +6583,6 @@ module Google
         # @return [String]
         attr_accessor :carrier
       
-        # Date on which the shipment has been delivered, in ISO 8601 format. Optional
-        # and can be provided only if
-        # Corresponds to the JSON property `deliveryDate`
-        # @return [String]
-        attr_accessor :delivery_date
-      
         # The ID of the operation. Unique across all operations for a given order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
@@ -6722,7 +6610,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
-          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
@@ -7617,11 +7504,6 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # Cost of goods sold. Used for gross profit reporting.
-        # Corresponds to the JSON property `costOfGoodsSold`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :cost_of_goods_sold
-      
         # A list of custom (merchant-provided) attributes. It can also be used for
         # submitting any attribute of the feed specification in its generic form (e.g., `
         # "name": "size type", "type": "text", "value": "regular" `). This is useful
@@ -7782,20 +7664,10 @@ module Google
         # @return [String]
         attr_accessor :material
       
-        # The energy efficiency class as defined in EU directive 2010/30/EU.
-        # Corresponds to the JSON property `maxEnergyEfficiencyClass`
-        # @return [String]
-        attr_accessor :max_energy_efficiency_class
-      
         # Maximal product handling time (in business days).
         # Corresponds to the JSON property `maxHandlingTime`
         # @return [Fixnum]
         attr_accessor :max_handling_time
-      
-        # The energy efficiency class as defined in EU directive 2010/30/EU.
-        # Corresponds to the JSON property `minEnergyEfficiencyClass`
-        # @return [String]
-        attr_accessor :min_energy_efficiency_class
       
         # Minimal product handling time (in business days).
         # Corresponds to the JSON property `minHandlingTime`
@@ -7970,7 +7842,6 @@ module Google
           @color = args[:color] if args.key?(:color)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
-          @cost_of_goods_sold = args[:cost_of_goods_sold] if args.key?(:cost_of_goods_sold)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @custom_groups = args[:custom_groups] if args.key?(:custom_groups)
           @custom_label0 = args[:custom_label0] if args.key?(:custom_label0)
@@ -8000,9 +7871,7 @@ module Google
           @link = args[:link] if args.key?(:link)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @material = args[:material] if args.key?(:material)
-          @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
-          @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
           @mpn = args[:mpn] if args.key?(:mpn)

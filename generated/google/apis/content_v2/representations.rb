@@ -118,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AccountsCustomBatchRequestEntryLinkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BatchAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,18 +125,6 @@ module Google
       end
       
       class AccountsBatchResponseEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AccountsLinkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AccountsLinkResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1642,20 +1624,9 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :batch_id, as: 'batchId'
           property :force, as: 'force'
-          property :link_request, as: 'linkRequest', class: Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest, decorator: Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest::Representation
-      
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
           property :overwrite, as: 'overwrite'
-        end
-      end
-      
-      class AccountsCustomBatchRequestEntryLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          property :link_type, as: 'linkType'
-          property :linked_account_id, as: 'linkedAccountId'
         end
       end
       
@@ -1677,24 +1648,6 @@ module Google
           property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::Errors::Representation
       
           property :kind, as: 'kind'
-          property :link_status, as: 'linkStatus'
-        end
-      end
-      
-      class AccountsLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          property :link_type, as: 'linkType'
-          property :linked_account_id, as: 'linkedAccountId'
-        end
-      end
-      
-      class AccountsLinkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :link_status, as: 'linkStatus'
         end
       end
       
@@ -3113,7 +3066,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
-          property :delivery_date, as: 'deliveryDate'
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
@@ -3362,7 +3314,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
-          property :delivery_date, as: 'deliveryDate'
           property :operation_id, as: 'operationId'
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'
@@ -3606,8 +3557,6 @@ module Google
           property :color, as: 'color'
           property :condition, as: 'condition'
           property :content_language, as: 'contentLanguage'
-          property :cost_of_goods_sold, as: 'costOfGoodsSold', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
-      
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::ContentV2::ProductCustomAttribute, decorator: Google::Apis::ContentV2::ProductCustomAttribute::Representation
       
           collection :custom_groups, as: 'customGroups', class: Google::Apis::ContentV2::ProductCustomGroup, decorator: Google::Apis::ContentV2::ProductCustomGroup::Representation
@@ -3642,9 +3591,7 @@ module Google
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
       
           property :material, as: 'material'
-          property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
-          property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
           property :mpn, as: 'mpn'

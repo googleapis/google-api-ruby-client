@@ -955,6 +955,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :payload, as: 'payload'
           property :source, as: 'source'
+          property :version, as: 'version'
         end
       end
       
@@ -1523,6 +1524,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :payload, as: 'payload'
           property :source, as: 'source'
+          property :version, as: 'version'
         end
       end
       
