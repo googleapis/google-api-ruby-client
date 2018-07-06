@@ -78,7 +78,7 @@ module Google
         attr_accessor :members
       
         # Role that is assigned to members. For example, roles/viewer, roles/editor, or
-        # roles/owner. Required
+        # roles/owner.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role

@@ -755,8 +755,8 @@ module Google
         # @return [Google::Apis::DataprocV1::DiskConfig]
         attr_accessor :disk_config
       
-        # Optional. The Compute Engine image resource used for cluster instances.
-        # Inferred from SoftwareConfig.image_version.
+        # Optional. The Compute Engine image resource used for cluster instances. It can
+        # be specified or may be inferred from SoftwareConfig.image_version.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
