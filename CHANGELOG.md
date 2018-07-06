@@ -1,3 +1,10 @@
+# 0.23.2
+* Backwards compatible changes:
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `content_v2`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+
 # 0.23.1
 * Backwards compatible changes:
   * Added `indexing_v3`
