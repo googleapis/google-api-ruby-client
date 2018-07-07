@@ -238,12 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleApiServiceusageV1beta1OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,12 +413,6 @@ module Google
       end
       
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Step
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -860,13 +848,6 @@ module Google
         end
       end
       
-      class GoogleApiServiceusageV1beta1OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :resource_names, as: 'resourceNames'
-        end
-      end
-      
       class Http
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1091,11 +1072,7 @@ module Google
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :progress_percentage, as: 'progressPercentage'
           collection :resource_names, as: 'resourceNames'
-          property :start_time, as: 'startTime'
-          collection :steps, as: 'steps', class: Google::Apis::ServiceusageV1beta1::Step, decorator: Google::Apis::ServiceusageV1beta1::Step::Representation
-      
         end
       end
       
@@ -1194,14 +1171,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class Step
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :status, as: 'status'
         end
       end
       

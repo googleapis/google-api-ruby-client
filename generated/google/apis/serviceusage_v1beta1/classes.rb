@@ -1942,26 +1942,6 @@ module Google
         end
       end
       
-      # The operation metadata returned for the batchend services operation.
-      class GoogleApiServiceusageV1beta1OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The full name of the resources that this operation is directly
-        # associated with.
-        # Corresponds to the JSON property `resourceNames`
-        # @return [Array<String>]
-        attr_accessor :resource_names
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_names = args[:resource_names] if args.key?(:resource_names)
-        end
-      end
-      
       # Defines the HTTP configuration for an API service. It contains a list of
       # HttpRule, each specifying the mapping of an RPC method
       # to one or more HTTP REST API methods.
@@ -3300,14 +3280,9 @@ module Google
         end
       end
       
-      # The metadata associated with a long running operation resource.
+      # The operation metadata returned for the batchend services operation.
       class OperationMetadata
         include Google::Apis::Core::Hashable
-      
-        # Percentage of completion of this operation, ranging from 0 to 100.
-        # Corresponds to the JSON property `progressPercentage`
-        # @return [Fixnum]
-        attr_accessor :progress_percentage
       
         # The full name of the resources that this operation is directly
         # associated with.
@@ -3315,26 +3290,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_names
       
-        # The start time of the operation.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Detailed status information for each step. The order is undetermined.
-        # Corresponds to the JSON property `steps`
-        # @return [Array<Google::Apis::ServiceusageV1beta1::Step>]
-        attr_accessor :steps
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @resource_names = args[:resource_names] if args.key?(:resource_names)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @steps = args[:steps] if args.key?(:steps)
         end
       end
       
@@ -3911,31 +3873,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Represents the status of one operation step.
-      class Step
-        include Google::Apis::Core::Hashable
-      
-        # The short description of the step.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The status code.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
