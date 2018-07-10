@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/tasks/firstapp
     module TasksV1
       VERSION = 'V1'
-      REVISION = '20141121'
+      REVISION = ''
 
       # Manage your tasks
       AUTH_TASKS = 'https://www.googleapis.com/auth/tasks'

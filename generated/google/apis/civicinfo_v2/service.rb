@@ -131,7 +131,10 @@ module Google
         # @param [Google::Apis::CivicinfoV2::VoterInfoRequest] voter_info_request_object
         # @param [Fixnum] election_id
         #   The unique ID of the election to look up. A list of election IDs can be
-        #   obtained at https://www.googleapis.com/civicinfo/`version`/elections
+        #   obtained at https://www.googleapis.com/civicinfo/`version`/electionsIf no
+        #   election ID is specified in the query and there is more than one election with
+        #   data for the given voter, the additional elections are provided in the
+        #   otherElections response field.
         # @param [Boolean] official_only
         #   If set to true, only data from official state sources will be returned.
         # @param [Boolean] return_all_available_data

@@ -718,6 +718,7 @@ module Google
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1beta4::AclEntry, decorator: Google::Apis::SqladminV1beta4::AclEntry::Representation
       
           property :ipv4_enabled, as: 'ipv4Enabled'
+          property :private_network, as: 'privateNetwork'
           property :require_ssl, as: 'requireSsl'
         end
       end

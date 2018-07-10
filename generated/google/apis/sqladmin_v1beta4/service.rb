@@ -336,7 +336,7 @@ module Google
         
         # Lists databases in the specified Cloud SQL instance.
         # @param [String] project
-        #   Project ID of the project for which to list Cloud SQL instances.
+        #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [String] fields
@@ -493,7 +493,7 @@ module Google
         # Add a new trusted Certificate Authority (CA) version for the specified
         # instance. Required to prepare for a certificate rotation. If a CA version was
         # previously added but never used in a certificate rotation, this operation
-        # replaces that version. There can not be more than one CA version waiting to be
+        # replaces that version. There cannot be more than one CA version waiting to be
         # rotated in.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -530,8 +530,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Cloud SQL instance as a clone of the source instance. The API is not
-        # ready for Second Generation instances yet.
+        # Creates a Cloud SQL instance as a clone of the source instance.
         # @param [String] project
         #   Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance
@@ -607,7 +606,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reserved for future use.
+        # Demotes the stand-alone instance to be a Cloud SQL read replica for an
+        # external database server.
         # @param [String] project
         #   ID of the project that contains the instance.
         # @param [String] instance
@@ -1001,9 +1001,7 @@ module Google
         end
         
         # Deletes all client certificates and generates a new server SSL certificate for
-        # the instance. The changes will not take effect until the instance is restarted.
-        # Existing instances without a server certificate will need to call this once
-        # to set a server certificate.
+        # the instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1427,10 +1425,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the SSL certificate. The change will not take effect until the
-        # instance is restarted.
+        # Deletes the SSL certificate. For First Generation instances, the certificate
+        # remains valid until the instance is restarted.
         # @param [String] project
-        #   Project ID of the project that contains the instance to be deleted.
+        #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [String] sha1_fingerprint
@@ -1512,8 +1510,7 @@ module Google
         # server certificate authority. The new certificate will not be usable until the
         # instance is restarted.
         # @param [String] project
-        #   Project ID of the project to which the newly created Cloud SQL instances
-        #   should belong.
+        #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1beta4::InsertSslCertsRequest] insert_ssl_certs_request_object
@@ -1552,7 +1549,7 @@ module Google
         
         # Lists all of the current SSL certificates for the instance.
         # @param [String] project
-        #   Project ID of the project for which to list Cloud SQL instances.
+        #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [String] fields
@@ -1586,8 +1583,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all available service tiers for Google Cloud SQL, for example D1, D2.
-        # For related information, see Pricing.
+        # Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-
+        # standard-1. For related information, see Pricing.
         # @param [String] project
         #   Project ID of the project for which to list tiers.
         # @param [String] fields

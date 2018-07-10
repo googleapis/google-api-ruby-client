@@ -194,6 +194,8 @@ module Google
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
         #   deviceId`.
+        # @param [Array<String>, String] wipe_data_flags
+        #   Optional flags that control the device wiping behavior.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -211,11 +213,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_enterprise_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_enterprise_device(name, wipe_data_flags: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroidmanagementV1::Empty::Representation
           command.response_class = Google::Apis::AndroidmanagementV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['wipeDataFlags'] = wipe_data_flags unless wipe_data_flags.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

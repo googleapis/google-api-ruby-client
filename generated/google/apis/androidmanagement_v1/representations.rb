@@ -399,6 +399,7 @@ module Google
           property :disable_apps, as: 'disableApps'
           property :non_compliance_detail_condition, as: 'nonComplianceDetailCondition', class: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition, decorator: Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition::Representation
       
+          collection :package_names_to_disable, as: 'packageNamesToDisable'
         end
       end
       
@@ -427,6 +428,7 @@ module Google
           property :last_policy_compliance_report_time, as: 'lastPolicyComplianceReportTime'
           property :last_policy_sync_time, as: 'lastPolicySyncTime'
           property :last_status_report_time, as: 'lastStatusReportTime'
+          property :management_mode, as: 'managementMode'
           collection :memory_events, as: 'memoryEvents', class: Google::Apis::AndroidmanagementV1::MemoryEvent, decorator: Google::Apis::AndroidmanagementV1::MemoryEvent::Representation
       
           property :memory_info, as: 'memoryInfo', class: Google::Apis::AndroidmanagementV1::MemoryInfo, decorator: Google::Apis::AndroidmanagementV1::MemoryInfo::Representation
@@ -487,6 +489,7 @@ module Google
           property :duration, as: 'duration'
           property :expiration_timestamp, as: 'expirationTimestamp'
           property :name, as: 'name'
+          property :one_time_only, as: 'oneTimeOnly'
           property :policy_name, as: 'policyName'
           property :qr_code, as: 'qrCode'
           property :value, as: 'value'
@@ -756,6 +759,8 @@ module Google
           property :outgoing_calls_disabled, as: 'outgoingCallsDisabled'
           property :password_requirements, as: 'passwordRequirements', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
       
+          collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
+      
           property :permitted_input_methods, as: 'permittedInputMethods', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
       
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
@@ -829,6 +834,7 @@ module Google
           property :bootloader_version, as: 'bootloaderVersion'
           property :device_build_signature, as: 'deviceBuildSignature'
           property :device_kernel_version, as: 'deviceKernelVersion'
+          property :primary_language_code, as: 'primaryLanguageCode'
           property :security_patch_level, as: 'securityPatchLevel'
         end
       end

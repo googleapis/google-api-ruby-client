@@ -1167,7 +1167,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the disk name. If not specified, the default is to use the name of
-        # the instance.
+        # the instance. If the disk with the instance name exists already in the given
+        # zone/region, a new name will be automatically generated.
         # Corresponds to the JSON property `diskName`
         # @return [String]
         attr_accessor :disk_name
@@ -2389,6 +2390,8 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a BackendService. An up-to-date fingerprint must be provided in
         # order to update the BackendService.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # BackendService.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4831,7 +4834,8 @@ module Google
       class DistributionPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Zones where the regional managed instance group will create and manage
+        # instances.
         # Corresponds to the JSON property `zones`
         # @return [Array<Google::Apis::ComputeBeta::DistributionPolicyZoneConfiguration>]
         attr_accessor :zones
@@ -4850,9 +4854,8 @@ module Google
       class DistributionPolicyZoneConfiguration
         include Google::Apis::Core::Hashable
       
-        # URL of the zone where managed instance group is spawning instances (for
-        # regional resources). Zone has to belong to the region where managed instance
-        # group is located.
+        # The URL of the zone. The zone must exist in the region where the managed
+        # instance group is located.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -5339,6 +5342,9 @@ module Google
         # an ephemeral IPv4 address from the same scope (global or regional) will be
         # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
         # rule supports either IPv4 or IPv6.
+        # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
+        # reference to an existing Address resource ( internal regional static IP
+        # address).
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnet configured for the forwarding rule. By
         # default, if this field is empty, an ephemeral internal IP address will be
@@ -5359,12 +5365,13 @@ module Google
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
         # AH, SCTP or ICMP.
-        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid.
+        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid. When
+        # the load balancing scheme is INTERNAL_SELF_MANAGED, only TCPis valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field is not used for external load balancing.
+        # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
         # Corresponds to the JSON property `backendService`
@@ -5389,7 +5396,8 @@ module Google
         attr_accessor :id
       
         # The IP Version that will be used by this forwarding rule. Valid options are
-        # IPV4 or IPV6. This can only be specified for a global forwarding rule.
+        # IPV4 or IPV6. This can only be specified for an external global forwarding
+        # rule.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
@@ -5420,10 +5428,11 @@ module Google
         attr_accessor :labels
       
         # This signifies what the ForwardingRule will be used for and can only take the
-        # following values: INTERNAL, EXTERNAL The value of INTERNAL means that this
-        # will be used for Internal Network Load Balancing (TCP, UDP). The value of
-        # EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
-        # External TCP/UDP LB, SSL Proxy)
+        # following values: INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value of
+        # INTERNAL means that this will be used for Internal Network Load Balancing (TCP,
+        # UDP). The value of INTERNAL_SELF_MANAGED means that this will be used for
+        # Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used
+        # for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -5439,9 +5448,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For internal load balancing, this field identifies the network that the load
-        # balanced IP should belong to for this Forwarding Rule. If this field is not
-        # specified, the default network will be used.
+        # For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies
+        # the network that the load balanced IP should belong to for this Forwarding
+        # Rule. If this field is not specified, the default network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -5516,7 +5525,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # This field is not used for external load balancing.
+        # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
         # If the network specified is in auto subnet mode, this field is optional.
@@ -5530,7 +5539,8 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object.
+        # object. For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets
+        # are valid.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -7158,9 +7168,9 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
       
-        # The ID value of the disk used to create this image. This value may be used to
-        # determine whether the image was taken from the current or a previous instance
-        # of a given disk name.
+        # [Output Only] The ID value of the disk used to create this image. This value
+        # may be used to determine whether the image was taken from the current or a
+        # previous instance of a given disk name.
         # Corresponds to the JSON property `sourceDiskId`
         # @return [String]
         attr_accessor :source_disk_id
@@ -8128,7 +8138,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Policy valid only for regional managed instance groups.
+        # Policy specifying intended distribution of instances in regional managed
+        # instance group.
         # Corresponds to the JSON property `distributionPolicy`
         # @return [Google::Apis::ComputeBeta::DistributionPolicy]
         attr_accessor :distribution_policy
@@ -8142,6 +8153,8 @@ module Google
         # Fingerprint of this resource. This field may be used in optimistic locking. It
         # will be ignored when inserting an InstanceGroupManager. An up-to-date
         # fingerprint must be provided in order to update the InstanceGroupManager.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # InstanceGroupManager.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -12538,6 +12551,7 @@ module Google
         # initially generated by Compute Engine and changes after every request to
         # modify or update metadata. You must always provide an up-to-date fingerprint
         # hash in order to update or change metadata.
+        # To see the latest fingerprint, make a get() request to retrieve the resource.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -12733,8 +12747,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name for a specific VM instance that the IP address belongs to. This is
-        # required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The
-        # instance must be in the same zone of network endpoint group.
+        # required for network endpoints of type GCE_VM_IP_PORT. The instance must be in
+        # the same zone of network endpoint group.
         # The name must be 1-63 characters long, and comply with RFC1035.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -12794,8 +12808,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Load balancing specific fields for network endpoint group of type
-        # LOAD_BALANCING.
+        # Load balancing specific fields for network endpoint group.
         # Corresponds to the JSON property `loadBalancer`
         # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupLbNetworkEndpointGroup]
         attr_accessor :load_balancer
@@ -12810,8 +12823,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Type of network endpoints in this network endpoint group. Only supported
-        # values for LOAD_BALANCING are GCE_VM_IP or GCE_VM_IP_PORT.
+        # Type of network endpoints in this network endpoint group. Currently the only
+        # supported value is GCE_VM_IP_PORT.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -12825,12 +12838,6 @@ module Google
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
-      
-        # Specify the type of this network endpoint group. Only LOAD_BALANCING is valid
-        # for now.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -12847,7 +12854,6 @@ module Google
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -12970,14 +12976,12 @@ module Google
         end
       end
       
-      # Load balancing specific fields for network endpoint group of type
-      # LOAD_BALANCING.
+      # Load balancing specific fields for network endpoint group.
       class NetworkEndpointGroupLbNetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
         # The default port used if the port number is not specified in the network
-        # endpoint. If the network endpoint type is GCE_VM_IP, this field must not be
-        # specified.
+        # endpoint.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
@@ -14100,6 +14104,11 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14109,6 +14118,7 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -19873,6 +19883,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
         # update the SslPolicy.
+        # To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -20072,6 +20083,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
         # update the Subnetwork.
+        # To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -22614,7 +22626,7 @@ module Google
         # fingerprint is initially generated by Compute Engine and changes after every
         # request to modify or update labels. You must always provide an up-to-date
         # fingerprint hash in order to update or change labels.
-        # To see the latest fingerprint, make a get() request to retrieve an
+        # To see the latest fingerprint, make a get() request to retrieve a
         # TargetVpnGateway.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -23159,6 +23171,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
         # update the UrlMap.
+        # To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -24594,56 +24607,6 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
-        end
-      end
-      
-      # 
-      class ZoneSetPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
-        # policy' to specify bindings.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::ComputeBeta::Binding>]
-        attr_accessor :bindings
-      
-        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
-        # policy' to specify the etag.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
-        # members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **JSON Example**
-        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
-        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
-        # sean@example.com"] ` ] `
-        # **YAML Example**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
-        # For a description of IAM and its features, see the [IAM developer's guide](
-        # https://cloud.google.com/iam/docs).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::ComputeBeta::Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @policy = args[:policy] if args.key?(:policy)
         end
       end
     end

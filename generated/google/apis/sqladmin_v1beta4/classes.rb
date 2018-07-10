@@ -1296,6 +1296,11 @@ module Google
         attr_accessor :ipv4_enabled
         alias_method :ipv4_enabled?, :ipv4_enabled
       
+        # Reserved for future use.
+        # Corresponds to the JSON property `privateNetwork`
+        # @return [String]
+        attr_accessor :private_network
+      
         # Whether SSL connections over IP should be enforced or not.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
@@ -1310,6 +1315,7 @@ module Google
         def update!(**args)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
+          @private_network = args[:private_network] if args.key?(:private_network)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
         end
       end
@@ -1535,9 +1541,9 @@ module Google
         end
       end
       
-      # An Operations resource contains information about database instance operations
-      # such as create, delete, and restart. Operations resources are created in
-      # response to operations that were initiated; you never create them directly.
+      # An Operation resource. For successful operations that return an Operation
+      # resource, only the fields relevant to the operation are populated in the
+      # resource.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -2119,8 +2125,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # User supplied name. Must be a distinct name from the other certificates for
-        # this instance. New certificates will not be usable until the instance is
-        # restarted.
+        # this instance.
         # Corresponds to the JSON property `commonName`
         # @return [String]
         attr_accessor :common_name
@@ -2149,9 +2154,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # An Operations resource contains information about database instance operations
-        # such as create, delete, and restart. Operations resources are created in
-        # response to operations that were initiated; you never create them directly.
+        # An Operation resource. For successful operations that return an Operation
+        # resource, only the fields relevant to the operation are populated in the
+        # resource.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::SqladminV1beta4::Operation]
         attr_accessor :operation
@@ -2223,7 +2228,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :region
       
-        # An identifier for the service tier, for example D1, D2 etc. For related
+        # An identifier for the machine type, for example, db-n1-standard-1. For related
         # information, see Pricing.
         # Corresponds to the JSON property `tier`
         # @return [String]

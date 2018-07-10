@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/ad-exchange/seller-rest/
     module AdexchangesellerV2_0
       VERSION = 'V2_0'
-      REVISION = '20171101'
+      REVISION = ''
 
       # View and manage your Ad Exchange data
       AUTH_ADEXCHANGE_SELLER = 'https://www.googleapis.com/auth/adexchange.seller'

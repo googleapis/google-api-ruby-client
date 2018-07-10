@@ -26,12 +26,12 @@ module Google
       class Amount
         include Google::Apis::Core::Hashable
       
-        # Value before taxes.
+        # [required] Value before taxes.
         # Corresponds to the JSON property `pretax`
         # @return [Google::Apis::ContentV2sandbox::Price]
         attr_accessor :pretax
       
-        # Tax value.
+        # [required] Tax value.
         # Corresponds to the JSON property `tax`
         # @return [Google::Apis::ContentV2sandbox::Price]
         attr_accessor :tax
@@ -118,30 +118,30 @@ module Google
         # @return [Array<Google::Apis::ContentV2sandbox::InvoiceSummaryAdditionalChargeSummary>]
         attr_accessor :additional_charge_summaries
       
-        # Customer balance on this invoice. A positive amount means the customer is
-        # paying, a negative one means the customer is receiving money. Note that it
-        # must always be true that merchant_balance + customer_balance + google_balance =
-        # 0.
+        # [required] Customer balance on this invoice. A positive amount means the
+        # customer is paying, a negative one means the customer is receiving money. Note
+        # that it must always be true that merchant_balance + customer_balance +
+        # google_balance = 0.
         # Corresponds to the JSON property `customerBalance`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :customer_balance
       
-        # Google balance on this invoice. A positive amount means Google is paying, a
-        # negative one means Google is receiving money. Note that it must always be true
-        # that merchant_balance + customer_balance + google_balance = 0.
+        # [required] Google balance on this invoice. A positive amount means Google is
+        # paying, a negative one means Google is receiving money. Note that it must
+        # always be true that merchant_balance + customer_balance + google_balance = 0.
         # Corresponds to the JSON property `googleBalance`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :google_balance
       
-        # Merchant balance on this invoice. A positive amount means the merchant is
-        # paying, a negative one means the merchant is receiving money. Note that it
-        # must always be true that merchant_balance + customer_balance + google_balance =
-        # 0.
+        # [required] Merchant balance on this invoice. A positive amount means the
+        # merchant is paying, a negative one means the merchant is receiving money. Note
+        # that it must always be true that merchant_balance + customer_balance +
+        # google_balance = 0.
         # Corresponds to the JSON property `merchantBalance`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :merchant_balance
       
-        # Total price for the product.
+        # [required] Total price for the product.
         # Corresponds to the JSON property `productTotal`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :product_total
@@ -170,12 +170,12 @@ module Google
       class InvoiceSummaryAdditionalChargeSummary
         include Google::Apis::Core::Hashable
       
-        # Total additional charge for this type.
+        # [required] Total additional charge for this type.
         # Corresponds to the JSON property `totalAmount`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :total_amount
       
-        # Type of the additional charge.
+        # [required] Type of the additional charge.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1186,7 +1186,7 @@ module Google
         attr_accessor :creation_date
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Present
-        # only if status is delievered
+        # only if status is delivered
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
@@ -1264,27 +1264,28 @@ module Google
       class OrderinvoicesCreateChargeInvoiceRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the invoice.
+        # [required] The ID of the invoice.
         # Corresponds to the JSON property `invoiceId`
         # @return [String]
         attr_accessor :invoice_id
       
-        # Invoice summary.
+        # [required] Invoice summary.
         # Corresponds to the JSON property `invoiceSummary`
         # @return [Google::Apis::ContentV2sandbox::InvoiceSummary]
         attr_accessor :invoice_summary
       
-        # Invoice details per line item.
+        # [required] Invoice details per line item.
         # Corresponds to the JSON property `lineItemInvoices`
         # @return [Array<Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice>]
         attr_accessor :line_item_invoices
       
-        # The ID of the operation, unique across all operations for a given order.
+        # [required] The ID of the operation, unique across all operations for a given
+        # order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
       
-        # ID of the shipment group.
+        # [required] ID of the shipment group.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
         attr_accessor :shipment_group_id
@@ -1333,24 +1334,25 @@ module Google
       class OrderinvoicesCreateRefundInvoiceRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the invoice.
+        # [required] The ID of the invoice.
         # Corresponds to the JSON property `invoiceId`
         # @return [String]
         attr_accessor :invoice_id
       
-        # The ID of the operation, unique across all operations for a given order.
+        # [required] The ID of the operation, unique across all operations for a given
+        # order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
       
-        # Option to create a refund-only invoice. Exactly one of refund_option and
-        # return_option must be provided.
+        # Option to create a refund-only invoice. Exactly one of refundOnlyOption or
+        # returnOption must be provided.
         # Corresponds to the JSON property `refundOnlyOption`
         # @return [Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption]
         attr_accessor :refund_only_option
       
         # Option to create an invoice for a refund and mark all items within the invoice
-        # as returned. Exactly one of refund_option and return_option must be provided.
+        # as returned. Exactly one of refundOnlyOption or returnOption must be provided.
         # Corresponds to the JSON property `returnOption`
         # @return [Google::Apis::ContentV2sandbox::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption]
         attr_accessor :return_option
@@ -1409,7 +1411,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Reason for the refund.
+        # [required] Reason for the refund.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -1434,7 +1436,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Reason for the return.
+        # [required] Reason for the return.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -2562,6 +2564,12 @@ module Google
         # @return [String]
         attr_accessor :carrier
       
+        # Date on which the shipment has been delivered, in ISO 8601 format. Optional
+        # and can be provided only if
+        # Corresponds to the JSON property `deliveryDate`
+        # @return [String]
+        attr_accessor :delivery_date
+      
         # The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
@@ -2584,6 +2592,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
+          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -3435,6 +3444,12 @@ module Google
         # @return [String]
         attr_accessor :carrier
       
+        # Date on which the shipment has been delivered, in ISO 8601 format. Optional
+        # and can be provided only if
+        # Corresponds to the JSON property `deliveryDate`
+        # @return [String]
+        attr_accessor :delivery_date
+      
         # The ID of the operation. Unique across all operations for a given order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
@@ -3462,6 +3477,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
+          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
@@ -3524,13 +3540,13 @@ module Google
       class Promotion
         include Google::Apis::Core::Hashable
       
-        # Amount of the promotion. The values here are the promotion applied to the unit
-        # price pretax and to the total of the tax amounts.
+        # [required] Amount of the promotion. The values here are the promotion applied
+        # to the unit price pretax and to the total of the tax amounts.
         # Corresponds to the JSON property `promotionAmount`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :promotion_amount
       
-        # ID of the promotion.
+        # [required] ID of the promotion.
         # Corresponds to the JSON property `promotionId`
         # @return [String]
         attr_accessor :promotion_id
@@ -3550,17 +3566,17 @@ module Google
       class ShipmentInvoice
         include Google::Apis::Core::Hashable
       
-        # Invoice summary.
+        # [required] Invoice summary.
         # Corresponds to the JSON property `invoiceSummary`
         # @return [Google::Apis::ContentV2sandbox::InvoiceSummary]
         attr_accessor :invoice_summary
       
-        # Invoice details per line item.
+        # [required] Invoice details per line item.
         # Corresponds to the JSON property `lineItemInvoices`
         # @return [Array<Google::Apis::ContentV2sandbox::ShipmentInvoiceLineItemInvoice>]
         attr_accessor :line_item_invoices
       
-        # ID of the shipment group.
+        # [required] ID of the shipment group.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
         attr_accessor :shipment_group_id
@@ -3592,12 +3608,12 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Unit IDs to define specific units within the line item.
+        # [required] Unit IDs to define specific units within the line item.
         # Corresponds to the JSON property `shipmentUnitIds`
         # @return [Array<String>]
         attr_accessor :shipment_unit_ids
       
-        # Invoice details for a single unit.
+        # [required] Invoice details for a single unit.
         # Corresponds to the JSON property `unitInvoice`
         # @return [Google::Apis::ContentV2sandbox::UnitInvoice]
         attr_accessor :unit_invoice
@@ -3955,7 +3971,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2sandbox::Promotion>]
         attr_accessor :promotions
       
-        # Price of the unit, before applying taxes.
+        # [required] Price of the unit, before applying taxes.
         # Corresponds to the JSON property `unitPricePretax`
         # @return [Google::Apis::ContentV2sandbox::Price]
         attr_accessor :unit_price_pretax
@@ -3982,7 +3998,7 @@ module Google
       class UnitInvoiceAdditionalCharge
         include Google::Apis::Core::Hashable
       
-        # Amount of the additional charge.
+        # [required] Amount of the additional charge.
         # Corresponds to the JSON property `additionalChargeAmount`
         # @return [Google::Apis::ContentV2sandbox::Amount]
         attr_accessor :additional_charge_amount
@@ -3992,7 +4008,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2sandbox::Promotion>]
         attr_accessor :additional_charge_promotions
       
-        # Type of the additional charge.
+        # [required] Type of the additional charge.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4013,17 +4029,18 @@ module Google
       class UnitInvoiceTaxLine
         include Google::Apis::Core::Hashable
       
-        # Tax amount for the tax type.
+        # [required] Tax amount for the tax type.
         # Corresponds to the JSON property `taxAmount`
         # @return [Google::Apis::ContentV2sandbox::Price]
         attr_accessor :tax_amount
       
-        # Optional name of the tax type.
+        # Optional name of the tax type. This should only be provided if taxType is
+        # otherFeeTax.
         # Corresponds to the JSON property `taxName`
         # @return [String]
         attr_accessor :tax_name
       
-        # Type of the tax.
+        # [required] Type of the tax.
         # Corresponds to the JSON property `taxType`
         # @return [String]
         attr_accessor :tax_type

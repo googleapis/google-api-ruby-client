@@ -465,6 +465,12 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::NonComplianceDetailCondition]
         attr_accessor :non_compliance_detail_condition
       
+        # If set, the rule includes a mitigating action to disable apps specified in the
+        # list, but app data is preserved.
+        # Corresponds to the JSON property `packageNamesToDisable`
+        # @return [Array<String>]
+        attr_accessor :package_names_to_disable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -474,6 +480,7 @@ module Google
           @api_level_condition = args[:api_level_condition] if args.key?(:api_level_condition)
           @disable_apps = args[:disable_apps] if args.key?(:disable_apps)
           @non_compliance_detail_condition = args[:non_compliance_detail_condition] if args.key?(:non_compliance_detail_condition)
+          @package_names_to_disable = args[:package_names_to_disable] if args.key?(:package_names_to_disable)
         end
       end
       
@@ -572,6 +579,12 @@ module Google
         # Corresponds to the JSON property `lastStatusReportTime`
         # @return [String]
         attr_accessor :last_status_report_time
+      
+        # The type of management mode Android Device Policy takes on the device. This
+        # influences which policy settings are supported.
+        # Corresponds to the JSON property `managementMode`
+        # @return [String]
+        attr_accessor :management_mode
       
         # Events related to memory and storage measurements in chronological order. This
         # information is only available if memoryInfoEnabled is true in the device's
@@ -673,6 +686,7 @@ module Google
           @last_policy_compliance_report_time = args[:last_policy_compliance_report_time] if args.key?(:last_policy_compliance_report_time)
           @last_policy_sync_time = args[:last_policy_sync_time] if args.key?(:last_policy_sync_time)
           @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @management_mode = args[:management_mode] if args.key?(:management_mode)
           @memory_events = args[:memory_events] if args.key?(:memory_events)
           @memory_info = args[:memory_info] if args.key?(:memory_info)
           @name = args[:name] if args.key?(:name)
@@ -857,6 +871,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Whether the enrollment token is for one time use only. If the flag is set to
+        # true, only one device can use it for registration.
+        # Corresponds to the JSON property `oneTimeOnly`
+        # @return [Boolean]
+        attr_accessor :one_time_only
+        alias_method :one_time_only?, :one_time_only
+      
         # The name of the policy initially applied to the enrolled device, in the form
         # enterprises/`enterpriseId`/policies/`policyId`. If not specified, the
         # policy_name for the device’s user is applied. If user_name is also not
@@ -892,6 +913,7 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @expiration_timestamp = args[:expiration_timestamp] if args.key?(:expiration_timestamp)
           @name = args[:name] if args.key?(:name)
+          @one_time_only = args[:one_time_only] if args.key?(:one_time_only)
           @policy_name = args[:policy_name] if args.key?(:policy_name)
           @qr_code = args[:qr_code] if args.key?(:qr_code)
           @value = args[:value] if args.key?(:value)
@@ -2067,6 +2089,12 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PasswordRequirements]
         attr_accessor :password_requirements
       
+        # Explicit permission or group grants or denials for all apps. These values
+        # override the default_permission_policy.
+        # Corresponds to the JSON property `permissionGrants`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PermissionGrant>]
+        attr_accessor :permission_grants
+      
         # A list of package names.
         # Corresponds to the JSON property `permittedInputMethods`
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
@@ -2277,6 +2305,7 @@ module Google
           @outgoing_beam_disabled = args[:outgoing_beam_disabled] if args.key?(:outgoing_beam_disabled)
           @outgoing_calls_disabled = args[:outgoing_calls_disabled] if args.key?(:outgoing_calls_disabled)
           @password_requirements = args[:password_requirements] if args.key?(:password_requirements)
+          @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
           @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
@@ -2451,6 +2480,11 @@ module Google
         # @return [String]
         attr_accessor :device_kernel_version
       
+        # An IETF BCP 47 language code for the primary locale on the device.
+        # Corresponds to the JSON property `primaryLanguageCode`
+        # @return [String]
+        attr_accessor :primary_language_code
+      
         # Security patch level, e.g. 2016-05-01.
         # Corresponds to the JSON property `securityPatchLevel`
         # @return [String]
@@ -2470,6 +2504,7 @@ module Google
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @device_build_signature = args[:device_build_signature] if args.key?(:device_build_signature)
           @device_kernel_version = args[:device_kernel_version] if args.key?(:device_kernel_version)
+          @primary_language_code = args[:primary_language_code] if args.key?(:primary_language_code)
           @security_patch_level = args[:security_patch_level] if args.key?(:security_patch_level)
         end
       end

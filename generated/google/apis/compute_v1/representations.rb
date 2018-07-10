@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -600,6 +606,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DistributionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DistributionPolicyZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2044,6 +2062,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignedUrlKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3241,6 +3265,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
+          property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeV1::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicy::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
@@ -3248,6 +3274,14 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class BackendBucketCdnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
+          collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
       end
       
@@ -3351,6 +3385,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeV1::CacheKeyPolicy, decorator: Google::Apis::ComputeV1::CacheKeyPolicy::Representation
       
+          property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
+          collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
       end
       
@@ -3861,6 +3897,21 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DistributionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :zones, as: 'zones', class: Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration::Representation
+      
+        end
+      end
+      
+      class DistributionPolicyZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
         end
       end
       
@@ -4517,6 +4568,8 @@ module Google
           property :current_actions, as: 'currentActions', class: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary, decorator: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary::Representation
       
           property :description, as: 'description'
+          property :distribution_policy, as: 'distributionPolicy', class: Google::Apis::ComputeV1::DistributionPolicy, decorator: Google::Apis::ComputeV1::DistributionPolicy::Representation
+      
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :instance_group, as: 'instanceGroup'
@@ -6533,6 +6586,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class SignedUrlKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_name, as: 'keyName'
+          property :key_value, as: 'keyValue'
         end
       end
       

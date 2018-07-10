@@ -1378,6 +1378,42 @@ module Google
         end
       end
       
+      # Contains the price change information for a subscription that can be used to
+      # control the user journey for the price change in the app. This can be in the
+      # form of seeking confirmation from the user or tailoring the experience for a
+      # successful conversion.
+      class SubscriptionPriceChange
+        include Google::Apis::Core::Hashable
+      
+        # The new price the subscription will renew with if the price change is accepted
+        # by the user.
+        # Corresponds to the JSON property `newPrice`
+        # @return [Google::Apis::AndroidpublisherV2::Price]
+        attr_accessor :new_price
+      
+        # The current state of the price change. Possible values are:
+        # - Outstanding: State for a pending price change waiting for the user to agree.
+        # In this state, you can optionally seek confirmation from the user using the In-
+        # App API.
+        # - Accepted: State for an accepted price change that the subscription will
+        # renew with unless it's canceled. The price change takes effect on a future
+        # date when the subscription renews. Note that the change might not occur when
+        # the subscription is renewed next.
+        # Corresponds to the JSON property `state`
+        # @return [Fixnum]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_price = args[:new_price] if args.key?(:new_price)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A SubscriptionPurchase resource indicates the status of a user's subscription
       # purchase.
       class SubscriptionPurchase
@@ -1484,6 +1520,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :price_amount_micros
       
+        # Contains the price change information for a subscription that can be used to
+        # control the user journey for the price change in the app. This can be in the
+        # form of seeking confirmation from the user or tailoring the experience for a
+        # successful conversion.
+        # Corresponds to the JSON property `priceChange`
+        # @return [Google::Apis::AndroidpublisherV2::SubscriptionPriceChange]
+        attr_accessor :price_change
+      
         # ISO 4217 currency code for the subscription price. For example, if the price
         # is specified in British pounds sterling, price_currency_code is "GBP".
         # Corresponds to the JSON property `priceCurrencyCode`
@@ -1541,6 +1585,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @payment_state = args[:payment_state] if args.key?(:payment_state)
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
+          @price_change = args[:price_change] if args.key?(:price_change)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @profile_name = args[:profile_name] if args.key?(:profile_name)

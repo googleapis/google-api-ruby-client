@@ -271,6 +271,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ballot_placement
       
+        # The official title on the ballot for this contest, only where available.
+        # Corresponds to the JSON property `ballotTitle`
+        # @return [String]
+        attr_accessor :ballot_title
+      
         # The candidate choices for this contest.
         # Corresponds to the JSON property `candidates`
         # @return [Array<Google::Apis::CivicinfoV2::Candidate>]
@@ -417,6 +422,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ballot_placement = args[:ballot_placement] if args.key?(:ballot_placement)
+          @ballot_title = args[:ballot_title] if args.key?(:ballot_title)
           @candidates = args[:candidates] if args.key?(:candidates)
           @district = args[:district] if args.key?(:district)
           @electorate_specifications = args[:electorate_specifications] if args.key?(:electorate_specifications)
@@ -995,44 +1001,9 @@ module Google
         attr_accessor :dependent_locality_name
       
         # 
-        # Corresponds to the JSON property `dependentThoroughfareLeadingType`
-        # @return [String]
-        attr_accessor :dependent_thoroughfare_leading_type
-      
-        # 
         # Corresponds to the JSON property `dependentThoroughfareName`
         # @return [String]
         attr_accessor :dependent_thoroughfare_name
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfarePostDirection`
-        # @return [String]
-        attr_accessor :dependent_thoroughfare_post_direction
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfarePreDirection`
-        # @return [String]
-        attr_accessor :dependent_thoroughfare_pre_direction
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfareTrailingType`
-        # @return [String]
-        attr_accessor :dependent_thoroughfare_trailing_type
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfaresConnector`
-        # @return [String]
-        attr_accessor :dependent_thoroughfares_connector
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfaresIndicator`
-        # @return [String]
-        attr_accessor :dependent_thoroughfares_indicator
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfaresType`
-        # @return [String]
-        attr_accessor :dependent_thoroughfares_type
       
         # 
         # Corresponds to the JSON property `firmName`
@@ -1096,11 +1067,6 @@ module Google
         attr_accessor :sub_premise_name
       
         # 
-        # Corresponds to the JSON property `thoroughfareLeadingType`
-        # @return [String]
-        attr_accessor :thoroughfare_leading_type
-      
-        # 
         # Corresponds to the JSON property `thoroughfareName`
         # @return [String]
         attr_accessor :thoroughfare_name
@@ -1109,21 +1075,6 @@ module Google
         # Corresponds to the JSON property `thoroughfareNumber`
         # @return [String]
         attr_accessor :thoroughfare_number
-      
-        # 
-        # Corresponds to the JSON property `thoroughfarePostDirection`
-        # @return [String]
-        attr_accessor :thoroughfare_post_direction
-      
-        # 
-        # Corresponds to the JSON property `thoroughfarePreDirection`
-        # @return [String]
-        attr_accessor :thoroughfare_pre_direction
-      
-        # 
-        # Corresponds to the JSON property `thoroughfareTrailingType`
-        # @return [String]
-        attr_accessor :thoroughfare_trailing_type
       
         def initialize(**args)
            update!(**args)
@@ -1136,14 +1087,7 @@ module Google
           @country_name = args[:country_name] if args.key?(:country_name)
           @country_name_code = args[:country_name_code] if args.key?(:country_name_code)
           @dependent_locality_name = args[:dependent_locality_name] if args.key?(:dependent_locality_name)
-          @dependent_thoroughfare_leading_type = args[:dependent_thoroughfare_leading_type] if args.key?(:dependent_thoroughfare_leading_type)
           @dependent_thoroughfare_name = args[:dependent_thoroughfare_name] if args.key?(:dependent_thoroughfare_name)
-          @dependent_thoroughfare_post_direction = args[:dependent_thoroughfare_post_direction] if args.key?(:dependent_thoroughfare_post_direction)
-          @dependent_thoroughfare_pre_direction = args[:dependent_thoroughfare_pre_direction] if args.key?(:dependent_thoroughfare_pre_direction)
-          @dependent_thoroughfare_trailing_type = args[:dependent_thoroughfare_trailing_type] if args.key?(:dependent_thoroughfare_trailing_type)
-          @dependent_thoroughfares_connector = args[:dependent_thoroughfares_connector] if args.key?(:dependent_thoroughfares_connector)
-          @dependent_thoroughfares_indicator = args[:dependent_thoroughfares_indicator] if args.key?(:dependent_thoroughfares_indicator)
-          @dependent_thoroughfares_type = args[:dependent_thoroughfares_type] if args.key?(:dependent_thoroughfares_type)
           @firm_name = args[:firm_name] if args.key?(:firm_name)
           @is_disputed = args[:is_disputed] if args.key?(:is_disputed)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -1156,12 +1100,8 @@ module Google
           @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
           @sub_administrative_area_name = args[:sub_administrative_area_name] if args.key?(:sub_administrative_area_name)
           @sub_premise_name = args[:sub_premise_name] if args.key?(:sub_premise_name)
-          @thoroughfare_leading_type = args[:thoroughfare_leading_type] if args.key?(:thoroughfare_leading_type)
           @thoroughfare_name = args[:thoroughfare_name] if args.key?(:thoroughfare_name)
           @thoroughfare_number = args[:thoroughfare_number] if args.key?(:thoroughfare_number)
-          @thoroughfare_post_direction = args[:thoroughfare_post_direction] if args.key?(:thoroughfare_post_direction)
-          @thoroughfare_pre_direction = args[:thoroughfare_pre_direction] if args.key?(:thoroughfare_pre_direction)
-          @thoroughfare_trailing_type = args[:thoroughfare_trailing_type] if args.key?(:thoroughfare_trailing_type)
         end
       end
       
@@ -1415,9 +1355,16 @@ module Google
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :normalized_input
       
-        # If no election ID was specified in the query, and there was more than one
-        # election with data for the given voter, this will contain information about
-        # the other elections that could apply.
+        # When there are multiple elections for a voter address, the otherElections
+        # field is populated in the API response and there are two possibilities: 1. If
+        # the earliest election is not the intended election, specify the election ID of
+        # the desired election in a second API request using the electionId field. 2. If
+        # these elections occur on the same day, the API doesn?t return any polling
+        # location, contest, or election official information to ensure that an
+        # additional query is made. For user-facing applications, we recommend
+        # displaying these elections to the user to disambiguate. A second API request
+        # using the electionId field should be made for the election that is relevant to
+        # the user.
         # Corresponds to the JSON property `otherElections`
         # @return [Array<Google::Apis::CivicinfoV2::Election>]
         attr_accessor :other_elections

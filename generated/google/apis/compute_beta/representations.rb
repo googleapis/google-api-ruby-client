@@ -3418,12 +3418,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneSetPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6530,7 +6524,6 @@ module Google
           property :network_endpoint_type, as: 'networkEndpointType'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
-          property :type, as: 'type'
         end
       end
       
@@ -6869,6 +6862,7 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :status, as: 'status'
         end
       end
       
@@ -9604,17 +9598,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
-        end
-      end
-      
-      class ZoneSetPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
-      
         end
       end
     end

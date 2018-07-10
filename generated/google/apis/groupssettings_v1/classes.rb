@@ -71,6 +71,11 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # If favorite replies should be displayed above other replies.
+        # Corresponds to the JSON property `favoriteRepliesOnTop`
+        # @return [String]
+        attr_accessor :favorite_replies_on_top
+      
         # Whether to include custom footer.
         # Corresponds to the JSON property `includeCustomFooter`
         # @return [String]
@@ -152,12 +157,30 @@ module Google
         # @return [String]
         attr_accessor :who_can_add
       
+        # Permission to add references to a topic. Possible values are: NONE OWNERS_ONLY
+        # MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanAddReferences`
+        # @return [String]
+        attr_accessor :who_can_add_references
+      
+        # Permission to assign topics in a forum to another user. Possible values are:
+        # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanAssignTopics`
+        # @return [String]
+        attr_accessor :who_can_assign_topics
+      
         # Permission to contact owner of the group via web UI. Possible values are:
         # ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
         # ALL_MANAGERS_CAN_CONTACT
         # Corresponds to the JSON property `whoCanContactOwner`
         # @return [String]
         attr_accessor :who_can_contact_owner
+      
+        # Permission to enter free form tags for topics in a forum. Possible values are:
+        # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanEnterFreeFormTags`
+        # @return [String]
+        attr_accessor :who_can_enter_free_form_tags
       
         # Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
         # ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
@@ -177,12 +200,61 @@ module Google
         # @return [String]
         attr_accessor :who_can_leave_group
       
+        # Permission to mark a topic as a duplicate of another topic. Possible values
+        # are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMarkDuplicate`
+        # @return [String]
+        attr_accessor :who_can_mark_duplicate
+      
+        # Permission to mark any other user's post as a favorite reply. Possible values
+        # are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMarkFavoriteReplyOnAnyTopic`
+        # @return [String]
+        attr_accessor :who_can_mark_favorite_reply_on_any_topic
+      
+        # Permission to mark a post for a topic they started as a favorite reply.
+        # Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS
+        # ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMarkFavoriteReplyOnOwnTopic`
+        # @return [String]
+        attr_accessor :who_can_mark_favorite_reply_on_own_topic
+      
+        # Permission to mark a topic as not needing a response. Possible values are:
+        # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMarkNoResponseNeeded`
+        # @return [String]
+        attr_accessor :who_can_mark_no_response_needed
+      
+        # Permission to change tags and categories. Possible values are: NONE
+        # OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanModifyTagsAndCategories`
+        # @return [String]
+        attr_accessor :who_can_modify_tags_and_categories
+      
         # Permissions to post messages to the group. Possible values are: NONE_CAN_POST
         # ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST ALL_OWNERS_CAN_POST
         # ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
         # Corresponds to the JSON property `whoCanPostMessage`
         # @return [String]
         attr_accessor :who_can_post_message
+      
+        # Permission to take topics in a forum. Possible values are: NONE OWNERS_ONLY
+        # MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanTakeTopics`
+        # @return [String]
+        attr_accessor :who_can_take_topics
+      
+        # Permission to unassign any topic in a forum. Possible values are: NONE
+        # OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanUnassignTopic`
+        # @return [String]
+        attr_accessor :who_can_unassign_topic
+      
+        # Permission to unmark any post from a favorite reply. Possible values are: NONE
+        # OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanUnmarkFavoriteReplyOnAnyTopic`
+        # @return [String]
+        attr_accessor :who_can_unmark_favorite_reply_on_any_topic
       
         # Permissions to view group. Possible values are: ANYONE_CAN_VIEW
         # ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
@@ -212,6 +284,7 @@ module Google
           @default_message_deny_notification_text = args[:default_message_deny_notification_text] if args.key?(:default_message_deny_notification_text)
           @description = args[:description] if args.key?(:description)
           @email = args[:email] if args.key?(:email)
+          @favorite_replies_on_top = args[:favorite_replies_on_top] if args.key?(:favorite_replies_on_top)
           @include_custom_footer = args[:include_custom_footer] if args.key?(:include_custom_footer)
           @include_in_global_address_list = args[:include_in_global_address_list] if args.key?(:include_in_global_address_list)
           @is_archived = args[:is_archived] if args.key?(:is_archived)
@@ -227,11 +300,22 @@ module Google
           @show_in_group_directory = args[:show_in_group_directory] if args.key?(:show_in_group_directory)
           @spam_moderation_level = args[:spam_moderation_level] if args.key?(:spam_moderation_level)
           @who_can_add = args[:who_can_add] if args.key?(:who_can_add)
+          @who_can_add_references = args[:who_can_add_references] if args.key?(:who_can_add_references)
+          @who_can_assign_topics = args[:who_can_assign_topics] if args.key?(:who_can_assign_topics)
           @who_can_contact_owner = args[:who_can_contact_owner] if args.key?(:who_can_contact_owner)
+          @who_can_enter_free_form_tags = args[:who_can_enter_free_form_tags] if args.key?(:who_can_enter_free_form_tags)
           @who_can_invite = args[:who_can_invite] if args.key?(:who_can_invite)
           @who_can_join = args[:who_can_join] if args.key?(:who_can_join)
           @who_can_leave_group = args[:who_can_leave_group] if args.key?(:who_can_leave_group)
+          @who_can_mark_duplicate = args[:who_can_mark_duplicate] if args.key?(:who_can_mark_duplicate)
+          @who_can_mark_favorite_reply_on_any_topic = args[:who_can_mark_favorite_reply_on_any_topic] if args.key?(:who_can_mark_favorite_reply_on_any_topic)
+          @who_can_mark_favorite_reply_on_own_topic = args[:who_can_mark_favorite_reply_on_own_topic] if args.key?(:who_can_mark_favorite_reply_on_own_topic)
+          @who_can_mark_no_response_needed = args[:who_can_mark_no_response_needed] if args.key?(:who_can_mark_no_response_needed)
+          @who_can_modify_tags_and_categories = args[:who_can_modify_tags_and_categories] if args.key?(:who_can_modify_tags_and_categories)
           @who_can_post_message = args[:who_can_post_message] if args.key?(:who_can_post_message)
+          @who_can_take_topics = args[:who_can_take_topics] if args.key?(:who_can_take_topics)
+          @who_can_unassign_topic = args[:who_can_unassign_topic] if args.key?(:who_can_unassign_topic)
+          @who_can_unmark_favorite_reply_on_any_topic = args[:who_can_unmark_favorite_reply_on_any_topic] if args.key?(:who_can_unmark_favorite_reply_on_any_topic)
           @who_can_view_group = args[:who_can_view_group] if args.key?(:who_can_view_group)
           @who_can_view_membership = args[:who_can_view_membership] if args.key?(:who_can_view_membership)
         end

@@ -2285,6 +2285,11 @@ module Google
       class TestIssue
         include Google::Apis::Core::Hashable
       
+        # Category of issue. Required.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # A brief human-readable message describing the issue. Required.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
@@ -2346,6 +2351,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @category = args[:category] if args.key?(:category)
           @error_message = args[:error_message] if args.key?(:error_message)
           @severity = args[:severity] if args.key?(:severity)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)

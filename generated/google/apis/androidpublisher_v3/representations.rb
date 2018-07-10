@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscriptionPriceChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscriptionPurchase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,15 @@ module Google
         end
       end
       
+      class SubscriptionPriceChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_price, as: 'newPrice', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class SubscriptionPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -759,6 +774,8 @@ module Google
           property :order_id, as: 'orderId'
           property :payment_state, as: 'paymentState'
           property :price_amount_micros, :numeric_string => true, as: 'priceAmountMicros'
+          property :price_change, as: 'priceChange', class: Google::Apis::AndroidpublisherV3::SubscriptionPriceChange, decorator: Google::Apis::AndroidpublisherV3::SubscriptionPriceChange::Representation
+      
           property :price_currency_code, as: 'priceCurrencyCode'
           property :profile_id, as: 'profileId'
           property :profile_name, as: 'profileName'

@@ -1337,6 +1337,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
+          property :delivery_date, as: 'deliveryDate'
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
@@ -1585,6 +1586,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
+          property :delivery_date, as: 'deliveryDate'
           property :operation_id, as: 'operationId'
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'

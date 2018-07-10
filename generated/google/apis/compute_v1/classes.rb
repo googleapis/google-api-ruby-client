@@ -1108,7 +1108,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the disk name. If not specified, the default is to use the name of
-        # the instance.
+        # the instance. If the disk with the instance name exists already in the given
+        # zone/region, a new name will be automatically generated.
         # Corresponds to the JSON property `diskName`
         # @return [String]
         attr_accessor :disk_name
@@ -1890,6 +1891,11 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Message containing Cloud CDN configuration for a backend bucket.
+        # Corresponds to the JSON property `cdnPolicy`
+        # @return [Google::Apis::ComputeV1::BackendBucketCdnPolicy]
+        attr_accessor :cdn_policy
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -1939,6 +1945,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
@@ -1946,6 +1953,37 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Message containing Cloud CDN configuration for a backend bucket.
+      class BackendBucketCdnPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Number of seconds up to which the response to a signed URL request will be
+        # cached in the CDN. After this time period, the Signed URL will be revalidated
+        # before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN
+        # will internally act as though all responses from this bucket had a ?Cache-
+        # Control: public, max-age=[TTL]? header, regardless of any existing Cache-
+        # Control header. The actual headers served in responses will not be altered.
+        # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
+        # @return [Fixnum]
+        attr_accessor :signed_url_cache_max_age_sec
+      
+        # [Output Only] Names of the keys currently configured for Cloud CDN Signed URL
+        # on this backend bucket.
+        # Corresponds to the JSON property `signedUrlKeyNames`
+        # @return [Array<String>]
+        attr_accessor :signed_url_key_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
+          @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
       end
       
@@ -2117,6 +2155,8 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a BackendService. An up-to-date fingerprint must be provided in
         # order to update the BackendService.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # BackendService.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2376,6 +2416,22 @@ module Google
         # @return [Google::Apis::ComputeV1::CacheKeyPolicy]
         attr_accessor :cache_key_policy
       
+        # Number of seconds up to which the response to a signed URL request will be
+        # cached in the CDN. After this time period, the Signed URL will be revalidated
+        # before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN
+        # will internally act as though all responses from this backend had a ?Cache-
+        # Control: public, max-age=[TTL]? header, regardless of any existing Cache-
+        # Control header. The actual headers served in responses will not be altered.
+        # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
+        # @return [Fixnum]
+        attr_accessor :signed_url_cache_max_age_sec
+      
+        # [Output Only] Names of the keys currently configured for Cloud CDN Signed URL
+        # on this backend service.
+        # Corresponds to the JSON property `signedUrlKeyNames`
+        # @return [Array<String>]
+        attr_accessor :signed_url_key_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2383,6 +2439,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
+          @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
       end
       
@@ -4388,6 +4446,46 @@ module Google
         end
       end
       
+      # 
+      class DistributionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Zones where the regional managed instance group will create and manage
+        # instances.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # 
+      class DistributionPolicyZoneConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the zone. The zone must exist in the region where the managed
+        # instance group is located.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # Represents a Firewall resource.
       class Firewall
         include Google::Apis::Core::Hashable
@@ -4759,6 +4857,9 @@ module Google
         # an ephemeral IPv4 address from the same scope (global or regional) will be
         # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
         # rule supports either IPv4 or IPv6.
+        # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
+        # reference to an existing Address resource ( internal regional static IP
+        # address).
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnet configured for the forwarding rule. By
         # default, if this field is empty, an ephemeral internal IP address will be
@@ -4779,12 +4880,13 @@ module Google
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
         # AH, SCTP or ICMP.
-        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid.
+        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid. When
+        # the load balancing scheme is INTERNAL_SELF_MANAGED, only TCPis valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field is not used for external load balancing.
+        # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
         # Corresponds to the JSON property `backendService`
@@ -4809,7 +4911,8 @@ module Google
         attr_accessor :id
       
         # The IP Version that will be used by this forwarding rule. Valid options are
-        # IPV4 or IPV6. This can only be specified for a global forwarding rule.
+        # IPV4 or IPV6. This can only be specified for an external global forwarding
+        # rule.
         # Corresponds to the JSON property `ipVersion`
         # @return [String]
         attr_accessor :ip_version
@@ -4821,10 +4924,11 @@ module Google
         attr_accessor :kind
       
         # This signifies what the ForwardingRule will be used for and can only take the
-        # following values: INTERNAL, EXTERNAL The value of INTERNAL means that this
-        # will be used for Internal Network Load Balancing (TCP, UDP). The value of
-        # EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
-        # External TCP/UDP LB, SSL Proxy)
+        # following values: INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value of
+        # INTERNAL means that this will be used for Internal Network Load Balancing (TCP,
+        # UDP). The value of INTERNAL_SELF_MANAGED means that this will be used for
+        # Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used
+        # for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -4840,9 +4944,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For internal load balancing, this field identifies the network that the load
-        # balanced IP should belong to for this Forwarding Rule. If this field is not
-        # specified, the default network will be used.
+        # For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies
+        # the network that the load balanced IP should belong to for this Forwarding
+        # Rule. If this field is not specified, the default network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -4888,7 +4992,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # This field is not used for external load balancing.
+        # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
         # If the network specified is in auto subnet mode, this field is optional.
@@ -4902,7 +5006,8 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object.
+        # object. For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets
+        # are valid.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -6314,9 +6419,9 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
       
-        # The ID value of the disk used to create this image. This value may be used to
-        # determine whether the image was taken from the current or a previous instance
-        # of a given disk name.
+        # [Output Only] The ID value of the disk used to create this image. This value
+        # may be used to determine whether the image was taken from the current or a
+        # previous instance of a given disk name.
         # Corresponds to the JSON property `sourceDiskId`
         # @return [String]
         attr_accessor :source_disk_id
@@ -7266,9 +7371,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Policy specifying intended distribution of instances in regional managed
+        # instance group.
+        # Corresponds to the JSON property `distributionPolicy`
+        # @return [Google::Apis::ComputeV1::DistributionPolicy]
+        attr_accessor :distribution_policy
+      
         # Fingerprint of this resource. This field may be used in optimistic locking. It
         # will be ignored when inserting an InstanceGroupManager. An up-to-date
         # fingerprint must be provided in order to update the InstanceGroupManager.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # InstanceGroupManager.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -7352,6 +7465,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @current_actions = args[:current_actions] if args.key?(:current_actions)
           @description = args[:description] if args.key?(:description)
+          @distribution_policy = args[:distribution_policy] if args.key?(:distribution_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
@@ -11218,6 +11332,7 @@ module Google
         # initially generated by Compute Engine and changes after every request to
         # modify or update metadata. You must always provide an up-to-date fingerprint
         # hash in order to update or change metadata.
+        # To see the latest fingerprint, make a get() request to retrieve the resource.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -15058,6 +15173,37 @@ module Google
         end
       end
       
+      # Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs
+      class SignedUrlKey
+        include Google::Apis::Core::Hashable
+      
+        # Name of the key. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # 128-bit key value used for signing the URL. The key value must be a valid RFC
+        # 4648 Section 5 base64url encoded string.
+        # Corresponds to the JSON property `keyValue`
+        # @return [String]
+        attr_accessor :key_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @key_value = args[:key_value] if args.key?(:key_value)
+        end
+      end
+      
       # A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
       # resource_for v1.snapshots ==)
       class Snapshot
@@ -15708,6 +15854,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
         # update the SslPolicy.
+        # To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -15891,6 +16038,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
         # update the Subnetwork.
+        # To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -18915,6 +19063,7 @@ module Google
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
         # update the UrlMap.
+        # To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

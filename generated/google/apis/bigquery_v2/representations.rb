@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IterationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -228,6 +234,18 @@ module Google
       
       class JobStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModelDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class ModelOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -388,6 +406,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrainingRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class TrainingOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDefinedFunctionResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +491,7 @@ module Google
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
+          property :default_partition_expiration_ms, :numeric_string => true, as: 'defaultPartitionExpirationMs'
           property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
           property :etag, as: 'etag'
@@ -643,6 +674,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
+        end
+      end
+      
+      class IterationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_ms, :numeric_string => true, as: 'durationMs'
+          property :eval_loss, as: 'evalLoss'
+          property :index, as: 'index'
+          property :learn_rate, as: 'learnRate'
+          property :training_loss, as: 'trainingLoss'
         end
       end
       
@@ -858,6 +900,8 @@ module Google
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
+          property :model_training_current_iteration, as: 'modelTrainingCurrentIteration'
+          property :model_training_expected_total_iteration, :numeric_string => true, as: 'modelTrainingExpectedTotalIteration'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
@@ -913,6 +957,25 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class ModelDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_options, as: 'modelOptions', class: Google::Apis::BigqueryV2::ModelDefinition::ModelOptions, decorator: Google::Apis::BigqueryV2::ModelDefinition::ModelOptions::Representation
+      
+          collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::TrainingRun, decorator: Google::Apis::BigqueryV2::TrainingRun::Representation
+      
+        end
+        
+        class ModelOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :labels, as: 'labels'
+            property :loss_type, as: 'lossType'
+            property :model_type, as: 'modelType'
+          end
         end
       end
       
@@ -1070,6 +1133,8 @@ module Google
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
+          property :model, as: 'model', class: Google::Apis::BigqueryV2::ModelDefinition, decorator: Google::Apis::BigqueryV2::ModelDefinition::Representation
+      
           property :num_bytes, :numeric_string => true, as: 'numBytes'
           property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
           property :num_rows, :numeric_string => true, as: 'numRows'
@@ -1229,6 +1294,34 @@ module Google
           property :field, as: 'field'
           property :require_partition_filter, as: 'requirePartitionFilter'
           property :type, as: 'type'
+        end
+      end
+      
+      class TrainingRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iteration_results, as: 'iterationResults', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation
+      
+          property :start_time, as: 'startTime', type: DateTime
+      
+          property :state, as: 'state'
+          property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingRun::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingRun::TrainingOptions::Representation
+      
+        end
+        
+        class TrainingOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :early_stop, as: 'earlyStop'
+            property :l1_reg, as: 'l1Reg'
+            property :l2_reg, as: 'l2Reg'
+            property :learn_rate, as: 'learnRate'
+            property :learn_rate_strategy, as: 'learnRateStrategy'
+            property :line_search_init_learn_rate, as: 'lineSearchInitLearnRate'
+            property :max_iteration, :numeric_string => true, as: 'maxIteration'
+            property :min_rel_progress, as: 'minRelProgress'
+            property :warm_start, as: 'warmStart'
+          end
         end
       end
       

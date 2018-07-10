@@ -254,6 +254,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ballot_placement, :numeric_string => true, as: 'ballotPlacement'
+          property :ballot_title, as: 'ballotTitle'
           collection :candidates, as: 'candidates', class: Google::Apis::CivicinfoV2::Candidate, decorator: Google::Apis::CivicinfoV2::Candidate::Representation
       
           property :district, as: 'district', class: Google::Apis::CivicinfoV2::ElectoralDistrict, decorator: Google::Apis::CivicinfoV2::ElectoralDistrict::Representation
@@ -435,14 +436,7 @@ module Google
           property :country_name, as: 'countryName'
           property :country_name_code, as: 'countryNameCode'
           property :dependent_locality_name, as: 'dependentLocalityName'
-          property :dependent_thoroughfare_leading_type, as: 'dependentThoroughfareLeadingType'
           property :dependent_thoroughfare_name, as: 'dependentThoroughfareName'
-          property :dependent_thoroughfare_post_direction, as: 'dependentThoroughfarePostDirection'
-          property :dependent_thoroughfare_pre_direction, as: 'dependentThoroughfarePreDirection'
-          property :dependent_thoroughfare_trailing_type, as: 'dependentThoroughfareTrailingType'
-          property :dependent_thoroughfares_connector, as: 'dependentThoroughfaresConnector'
-          property :dependent_thoroughfares_indicator, as: 'dependentThoroughfaresIndicator'
-          property :dependent_thoroughfares_type, as: 'dependentThoroughfaresType'
           property :firm_name, as: 'firmName'
           property :is_disputed, as: 'isDisputed'
           property :language_code, as: 'languageCode'
@@ -455,12 +449,8 @@ module Google
           property :sorting_code, as: 'sortingCode'
           property :sub_administrative_area_name, as: 'subAdministrativeAreaName'
           property :sub_premise_name, as: 'subPremiseName'
-          property :thoroughfare_leading_type, as: 'thoroughfareLeadingType'
           property :thoroughfare_name, as: 'thoroughfareName'
           property :thoroughfare_number, as: 'thoroughfareNumber'
-          property :thoroughfare_post_direction, as: 'thoroughfarePostDirection'
-          property :thoroughfare_pre_direction, as: 'thoroughfarePreDirection'
-          property :thoroughfare_trailing_type, as: 'thoroughfareTrailingType'
         end
       end
       

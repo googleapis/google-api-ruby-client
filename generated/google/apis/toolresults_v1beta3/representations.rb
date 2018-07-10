@@ -834,6 +834,7 @@ module Google
       class TestIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
           property :error_message, as: 'errorMessage'
           property :severity, as: 'severity'
           property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
