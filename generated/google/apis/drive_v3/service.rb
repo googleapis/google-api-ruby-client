@@ -997,9 +997,9 @@ module Google
         #   owner to a writer. This parameter is required as an acknowledgement of the
         #   side effect.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the item belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1045,9 +1045,9 @@ module Google
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the item belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1087,9 +1087,9 @@ module Google
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the item belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1136,9 +1136,9 @@ module Google
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the item belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1188,9 +1188,9 @@ module Google
         #   owner to a writer. This parameter is required as an acknowledgement of the
         #   side effect.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the item belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1673,9 +1673,9 @@ module Google
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then the requester will be granted access if
-        #   they are an administrator of the domain to which the Team Drive belongs.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the Team Drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1715,9 +1715,8 @@ module Google
         # @param [String] q
         #   Query string for searching Team Drives.
         # @param [Boolean] use_domain_admin_access
-        #   Whether the request should be treated as if it was issued by a domain
-        #   administrator; if set to true, then all Team Drives of the domain in which the
-        #   requester is an administrator are returned.
+        #   Issue the request as a domain administrator; if set to true, then all Team
+        #   Drives of the domain in which the requester is an administrator are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1755,6 +1754,10 @@ module Google
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Google::Apis::DriveV3::TeamDrive] team_drive_object
+        # @param [Boolean] use_domain_admin_access
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the Team Drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1774,13 +1777,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_teamdrive(team_drive_id, team_drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_teamdrive(team_drive_id, team_drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'teamdrives/{teamDriveId}', options)
           command.request_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.request_object = team_drive_object
           command.response_representation = Google::Apis::DriveV3::TeamDrive::Representation
           command.response_class = Google::Apis::DriveV3::TeamDrive
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

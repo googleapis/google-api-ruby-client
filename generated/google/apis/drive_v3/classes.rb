@@ -538,6 +538,13 @@ module Google
         # @return [Google::Apis::DriveV3::File::ContentHints]
         attr_accessor :content_hints
       
+        # Whether the options to copy, print, or download this file, should be disabled
+        # for readers and commenters.
+        # Corresponds to the JSON property `copyRequiresWriterPermission`
+        # @return [Boolean]
+        attr_accessor :copy_requires_writer_permission
+        alias_method :copy_requires_writer_permission?, :copy_requires_writer_permission
+      
         # The time at which the file was created (RFC 3339 date-time).
         # Corresponds to the JSON property `createdTime`
         # @return [DateTime]
@@ -817,8 +824,7 @@ module Google
         # @return [DateTime]
         attr_accessor :viewed_by_me_time
       
-        # Whether users with only reader or commenter permission can copy the file's
-        # content. This affects copy, download, and print operations.
+        # Deprecated - use copyRequiresWriterPermission instead.
         # Corresponds to the JSON property `viewersCanCopyContent`
         # @return [Boolean]
         attr_accessor :viewers_can_copy_content
@@ -851,6 +857,7 @@ module Google
           @app_properties = args[:app_properties] if args.key?(:app_properties)
           @capabilities = args[:capabilities] if args.key?(:capabilities)
           @content_hints = args[:content_hints] if args.key?(:content_hints)
+          @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
           @created_time = args[:created_time] if args.key?(:created_time)
           @description = args[:description] if args.key?(:description)
           @explicitly_trashed = args[:explicitly_trashed] if args.key?(:explicitly_trashed)
@@ -914,8 +921,14 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
-          # Whether the current user can change whether viewers can copy the contents of
-          # this file.
+          # Whether the current user can change the copyRequiresWriterPermission
+          # restriction of this file.
+          # Corresponds to the JSON property `canChangeCopyRequiresWriterPermission`
+          # @return [Boolean]
+          attr_accessor :can_change_copy_requires_writer_permission
+          alias_method :can_change_copy_requires_writer_permission?, :can_change_copy_requires_writer_permission
+        
+          # Deprecated
           # Corresponds to the JSON property `canChangeViewersCanCopyContent`
           # @return [Boolean]
           attr_accessor :can_change_viewers_can_copy_content
@@ -1029,6 +1042,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
             @can_change_viewers_can_copy_content = args[:can_change_viewers_can_copy_content] if args.key?(:can_change_viewers_can_copy_content)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
@@ -1883,8 +1897,8 @@ module Google
         # @return [DateTime]
         attr_accessor :created_time
       
-        # The ID of this Team Drive which is also the ID of the top level folder for
-        # this Team Drive.
+        # The ID of this Team Drive which is also the ID of the top level folder of this
+        # Team Drive.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1899,6 +1913,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # A set of restrictions that apply to this Team Drive or items inside this Team
+        # Drive.
+        # Corresponds to the JSON property `restrictions`
+        # @return [Google::Apis::DriveV3::TeamDrive::Restrictions]
+        attr_accessor :restrictions
       
         # The ID of the theme from which the background image and color will be set. The
         # set of possible teamDriveThemes can be retrieved from a drive.about.get
@@ -1924,6 +1944,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
           @theme_id = args[:theme_id] if args.key?(:theme_id)
         end
         
@@ -1987,11 +2008,32 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
+          # Whether the current user can change the copyRequiresWriterPermission
+          # restriction of this Team Drive.
+          # Corresponds to the JSON property `canChangeCopyRequiresWriterPermissionRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_copy_requires_writer_permission_restriction
+          alias_method :can_change_copy_requires_writer_permission_restriction?, :can_change_copy_requires_writer_permission_restriction
+        
+          # Whether the current user can change the domainUsersOnly restriction of this
+          # Team Drive.
+          # Corresponds to the JSON property `canChangeDomainUsersOnlyRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_domain_users_only_restriction
+          alias_method :can_change_domain_users_only_restriction?, :can_change_domain_users_only_restriction
+        
           # Whether the current user can change the background of this Team Drive.
           # Corresponds to the JSON property `canChangeTeamDriveBackground`
           # @return [Boolean]
           attr_accessor :can_change_team_drive_background
           alias_method :can_change_team_drive_background?, :can_change_team_drive_background
+        
+          # Whether the current user can change the teamMembersOnly restriction of this
+          # Team Drive.
+          # Corresponds to the JSON property `canChangeTeamMembersOnlyRestriction`
+          # @return [Boolean]
+          attr_accessor :can_change_team_members_only_restriction
+          alias_method :can_change_team_members_only_restriction?, :can_change_team_members_only_restriction
         
           # Whether the current user can comment on files in this Team Drive.
           # Corresponds to the JSON property `canComment`
@@ -2075,7 +2117,10 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_change_copy_requires_writer_permission_restriction = args[:can_change_copy_requires_writer_permission_restriction] if args.key?(:can_change_copy_requires_writer_permission_restriction)
+            @can_change_domain_users_only_restriction = args[:can_change_domain_users_only_restriction] if args.key?(:can_change_domain_users_only_restriction)
             @can_change_team_drive_background = args[:can_change_team_drive_background] if args.key?(:can_change_team_drive_background)
+            @can_change_team_members_only_restriction = args[:can_change_team_members_only_restriction] if args.key?(:can_change_team_members_only_restriction)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete_team_drive = args[:can_delete_team_drive] if args.key?(:can_delete_team_drive)
@@ -2088,6 +2133,56 @@ module Google
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_rename_team_drive = args[:can_rename_team_drive] if args.key?(:can_rename_team_drive)
             @can_share = args[:can_share] if args.key?(:can_share)
+          end
+        end
+        
+        # A set of restrictions that apply to this Team Drive or items inside this Team
+        # Drive.
+        class Restrictions
+          include Google::Apis::Core::Hashable
+        
+          # Whether administrative privileges on this Team Drive are required to modify
+          # restrictions.
+          # Corresponds to the JSON property `adminManagedRestrictions`
+          # @return [Boolean]
+          attr_accessor :admin_managed_restrictions
+          alias_method :admin_managed_restrictions?, :admin_managed_restrictions
+        
+          # Whether the options to copy, print, or download files inside this Team Drive,
+          # should be disabled for readers and commenters. When this restriction is set to
+          # true, it will override the similarly named field to true for any file inside
+          # this Team Drive.
+          # Corresponds to the JSON property `copyRequiresWriterPermission`
+          # @return [Boolean]
+          attr_accessor :copy_requires_writer_permission
+          alias_method :copy_requires_writer_permission?, :copy_requires_writer_permission
+        
+          # Whether access to this Team Drive and items inside this Team Drive is
+          # restricted to users of the domain to which this Team Drive belongs. This
+          # restriction may be overridden by other sharing policies controlled outside of
+          # this Team Drive.
+          # Corresponds to the JSON property `domainUsersOnly`
+          # @return [Boolean]
+          attr_accessor :domain_users_only
+          alias_method :domain_users_only?, :domain_users_only
+        
+          # Whether access to items inside this Team Drive is restricted to members of
+          # this Team Drive.
+          # Corresponds to the JSON property `teamMembersOnly`
+          # @return [Boolean]
+          attr_accessor :team_members_only
+          alias_method :team_members_only?, :team_members_only
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @admin_managed_restrictions = args[:admin_managed_restrictions] if args.key?(:admin_managed_restrictions)
+            @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
+            @domain_users_only = args[:domain_users_only] if args.key?(:domain_users_only)
+            @team_members_only = args[:team_members_only] if args.key?(:team_members_only)
           end
         end
       end

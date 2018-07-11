@@ -2077,11 +2077,19 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingContext>]
         attr_accessor :contexts
       
+        # @OutputOnly The reason and details for a disapproval.
+        # Corresponds to the JSON property `disapproval`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Disapproval]
+        attr_accessor :disapproval
+      
         # Any disapprovals bound to this restriction.
         # Only present if status=DISAPPROVED.
         # Can be used to filter the response of the
         # creatives.list
         # method.
+        # Deprecated; please use
+        # disapproval
+        # field instead.
         # Corresponds to the JSON property `disapprovalReasons`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Disapproval>]
         attr_accessor :disapproval_reasons
@@ -2099,6 +2107,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contexts = args[:contexts] if args.key?(:contexts)
+          @disapproval = args[:disapproval] if args.key?(:disapproval)
           @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
           @status = args[:status] if args.key?(:status)
         end

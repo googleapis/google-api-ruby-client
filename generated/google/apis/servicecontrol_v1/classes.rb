@@ -1891,6 +1891,13 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
+        # The location of the resource. If not empty, the resource will be checked
+        # against location policy. The value must be a valid zone, region or
+        # multiregion. For example: "europe-west4" or "northamerica-northeast1-a"
+        # Corresponds to the JSON property `resourceLocation`
+        # @return [String]
+        attr_accessor :resource_location
+      
         # Name of the resource. This is used for auditing purposes.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -1903,6 +1910,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_location = args[:resource_location] if args.key?(:resource_location)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end

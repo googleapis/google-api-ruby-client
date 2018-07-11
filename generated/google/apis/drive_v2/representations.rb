@@ -294,6 +294,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class Restrictions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -632,6 +638,7 @@ module Google
           property :can_read_revisions, as: 'canReadRevisions'
           property :capabilities, as: 'capabilities', class: Google::Apis::DriveV2::File::Capabilities, decorator: Google::Apis::DriveV2::File::Capabilities::Representation
       
+          property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
           property :copyable, as: 'copyable'
           property :created_date, as: 'createdDate', type: DateTime
       
@@ -719,6 +726,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
             property :can_change_restricted_download, as: 'canChangeRestrictedDownload'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
@@ -996,6 +1004,8 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :restrictions, as: 'restrictions', class: Google::Apis::DriveV2::TeamDrive::Restrictions, decorator: Google::Apis::DriveV2::TeamDrive::Restrictions::Representation
+      
           property :theme_id, as: 'themeId'
         end
         
@@ -1013,7 +1023,10 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
+            property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
             property :can_change_team_drive_background, as: 'canChangeTeamDriveBackground'
+            property :can_change_team_members_only_restriction, as: 'canChangeTeamMembersOnlyRestriction'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete_team_drive, as: 'canDeleteTeamDrive'
@@ -1026,6 +1039,16 @@ module Google
             property :can_rename, as: 'canRename'
             property :can_rename_team_drive, as: 'canRenameTeamDrive'
             property :can_share, as: 'canShare'
+          end
+        end
+        
+        class Restrictions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :admin_managed_restrictions, as: 'adminManagedRestrictions'
+            property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
+            property :domain_users_only, as: 'domainUsersOnly'
+            property :team_members_only, as: 'teamMembersOnly'
           end
         end
       end

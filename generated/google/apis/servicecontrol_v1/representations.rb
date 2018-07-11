@@ -682,6 +682,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_container, as: 'resourceContainer'
+          property :resource_location, as: 'resourceLocation'
           property :resource_name, as: 'resourceName'
         end
       end

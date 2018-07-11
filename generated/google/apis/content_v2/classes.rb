@@ -2759,24 +2759,24 @@ module Google
         attr_accessor :additional_charge_summaries
       
         # [required] Customer balance on this invoice. A positive amount means the
-        # customer is paying, a negative one means the customer is receiving money. Note
-        # that it must always be true that merchant_balance + customer_balance +
-        # google_balance = 0.
+        # customer is paying, a negative one means the customer is receiving money. Note:
+        # the sum of merchant_balance, customer_balance and google_balance must always
+        # be zero.
         # Corresponds to the JSON property `customerBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :customer_balance
       
         # [required] Google balance on this invoice. A positive amount means Google is
-        # paying, a negative one means Google is receiving money. Note that it must
-        # always be true that merchant_balance + customer_balance + google_balance = 0.
+        # paying, a negative one means Google is receiving money. Note: the sum of
+        # merchant_balance, customer_balance and google_balance must always be zero.
         # Corresponds to the JSON property `googleBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :google_balance
       
         # [required] Merchant balance on this invoice. A positive amount means the
-        # merchant is paying, a negative one means the merchant is receiving money. Note
-        # that it must always be true that merchant_balance + customer_balance +
-        # google_balance = 0.
+        # merchant is paying, a negative one means the merchant is receiving money. Note:
+        # the sum of merchant_balance, customer_balance and google_balance must always
+        # be zero.
         # Corresponds to the JSON property `merchantBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :merchant_balance
@@ -5806,7 +5806,7 @@ module Google
         attr_accessor :carrier
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Optional
-        # and can be provided only if
+        # and can be provided only if status is delivered.
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
@@ -6686,7 +6686,7 @@ module Google
         attr_accessor :carrier
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Optional
-        # and can be provided only if
+        # and can be provided only if status is delivered.
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
