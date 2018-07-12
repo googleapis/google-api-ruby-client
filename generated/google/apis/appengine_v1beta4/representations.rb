@@ -451,6 +451,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_id, as: 'configId'
+          property :disable_trace_sampling, as: 'disableTraceSampling'
           property :name, as: 'name'
           property :rollout_strategy, as: 'rolloutStrategy'
         end

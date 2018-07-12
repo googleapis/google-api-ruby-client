@@ -66,7 +66,6 @@ module Google
       
         # Role that is assigned to `members`.
         # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -90,7 +89,7 @@ module Google
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
-        # User labels.
+        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -738,7 +737,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # User labels.
+        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -791,7 +790,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # User labels.
+        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -906,7 +905,7 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
-        # User labels.
+        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
