@@ -1,3 +1,7 @@
+# 0.23.5
+* Backwards compatible changes:
+  * Warn on EOL ruby versions.
+
 # 0.23.4
 * Backwards compatible changes:
   * Added `cloudprofiler_v2`
