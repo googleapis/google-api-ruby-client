@@ -27,7 +27,7 @@ module Google
     # Minimum "supported" Ruby version (non-EOL)
     # @private
     #
-    SUPPORTED_VERSION_THRESHOLD = '1.9'.freeze
+    SUPPORTED_VERSION_THRESHOLD = '2.0'.freeze
     ##
     # Minimum "recommended" Ruby version (normal maintenance)
     # @private

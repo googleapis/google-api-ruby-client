@@ -314,7 +314,7 @@ A URL can also be specified:
 *  Model validations
 
 ## Supported Ruby Versions
- This library is currently supported on Ruby 1.9+.
+ This library is currently supported on Ruby 2.0+.
  However, Ruby 2.4 or later is strongly recommended, as earlier releases have
 reached or are nearing end-of-life. After March 31, 2019, Google will provide
 official support only for Ruby versions that are considered current and
