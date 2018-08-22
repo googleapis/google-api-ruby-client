@@ -636,7 +636,7 @@ module Google
       Retriable.retriable :tries => tries,
                           :on => [TransmissionError],
                           :on_retry => client_error_handler,
-                          :interval => lambda {|attempts| (2 ** attempts) + rand} do
+                          :multiplier => 2 do
         attempt += 1
 
         # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
