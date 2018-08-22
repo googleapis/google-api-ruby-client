@@ -515,6 +515,25 @@ module Google
           @course_id = args[:course_id] if args.key?(:course_id)
         end
       end
+
+      # Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
+      class CourseWorkChangesInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `course_id` of the course to subscribe to course work changes for.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+        end
+      end
       
       # Course work created by a teacher for students of the course.
       class CourseWork
@@ -828,6 +847,10 @@ module Google
         # Corresponds to the JSON property `courseRosterChangesInfo`
         # @return [Google::Apis::ClassroomV1::CourseRosterChangesInfo]
         attr_accessor :course_roster_changes_info
+        # Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
+        # Corresponds to the JSON property `courseWorkChangesInfo`
+        # @return [Google::Apis::ClassroomV1::CourseWorkChangesInfo]
+        attr_accessor :course_work_changes_info
       
         # The type of feed.
         # Corresponds to the JSON property `feedType`
@@ -841,6 +864,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @course_roster_changes_info = args[:course_roster_changes_info] if args.key?(:course_roster_changes_info)
+          @course_work_changes_info = args[:course_work_changes_info] if args.key?(:course_work_changes_info)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
         end
       end

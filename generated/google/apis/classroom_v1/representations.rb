@@ -81,6 +81,12 @@ module Google
       
         include Google::Apis::Core::JsonObjectSupport
       end
+
+      class CourseWorkChangesInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
       
       class CourseWork
         class Representation < Google::Apis::Core::JsonRepresentation; end
@@ -472,6 +478,13 @@ module Google
       end
       
       class CourseRosterChangesInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+        end
+      end
+
+      class CourseWorkChangesInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :course_id, as: 'courseId'
