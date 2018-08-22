@@ -27,10 +27,10 @@ RSpec.describe Google::Apis::Generator do
       generator = Google::Apis::Generator.new(api_names: File.join(FIXTURES_DIR, 'files', 'api_names.yaml'))
       discovery = File.read(File.join(FIXTURES_DIR, 'files', 'test_api.json'))
       generated_files = generator.render(discovery)
-      puts generator.dump_api_names
+      # puts generator.dump_api_names
       tempdir = Dir.mktmpdir
       generated_files.each do |key, content|
-        puts content
+        # puts content
         path = File.join(tempdir, key)
         FileUtils.mkdir_p(File.dirname(path))
         File.open(path, 'w') do |f|
