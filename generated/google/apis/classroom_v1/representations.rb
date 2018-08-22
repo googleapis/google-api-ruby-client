@@ -562,6 +562,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :course_roster_changes_info, as: 'courseRosterChangesInfo', class: Google::Apis::ClassroomV1::CourseRosterChangesInfo, decorator: Google::Apis::ClassroomV1::CourseRosterChangesInfo::Representation
+          property :course_work_changes_info, as: 'courseWorkChangesInfo', class: Google::Apis::ClassroomV1::CourseWorkChangesInfo, decorator: Google::Apis::ClassroomV1::CourseWorkChangesInfo::Representation
       
           property :feed_type, as: 'feedType'
         end
