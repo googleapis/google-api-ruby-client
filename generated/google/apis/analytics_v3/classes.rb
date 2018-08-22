@@ -3383,6 +3383,74 @@ module Google
         end
       end
       
+      # JSON template for a hash Client Id request resource.
+      class HashClientIdRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `webPropertyId`
+        # @return [String]
+        attr_accessor :web_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+        end
+      end
+      
+      # JSON template for a hash Client Id response resource.
+      class HashClientIdResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # 
+        # Corresponds to the JSON property `hashedClientId`
+        # @return [String]
+        attr_accessor :hashed_client_id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `webPropertyId`
+        # @return [String]
+        attr_accessor :web_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @hashed_client_id = args[:hashed_client_id] if args.key?(:hashed_client_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
+        end
+      end
+      
       # JSON template for an Analytics Remarketing Include Conditions.
       class IncludeConditions
         include Google::Apis::Core::Hashable

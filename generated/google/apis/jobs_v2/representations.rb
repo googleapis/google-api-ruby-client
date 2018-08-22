@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobProcessingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -542,6 +548,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_street_address_resolution, as: 'disableStreetAddressResolution'
           property :job, as: 'job', class: Google::Apis::JobsV2::Job, decorator: Google::Apis::JobsV2::Job::Representation
+      
+          property :processing_options, as: 'processingOptions', class: Google::Apis::JobsV2::JobProcessingOptions, decorator: Google::Apis::JobsV2::JobProcessingOptions::Representation
       
         end
       end
@@ -838,6 +846,14 @@ module Google
         end
       end
       
+      class JobProcessingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_street_address_resolution, as: 'disableStreetAddressResolution'
+          property :html_sanitization, as: 'htmlSanitization'
+        end
+      end
+      
       class JobQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1057,6 +1073,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_street_address_resolution, as: 'disableStreetAddressResolution'
           property :job, as: 'job', class: Google::Apis::JobsV2::Job, decorator: Google::Apis::JobsV2::Job::Representation
+      
+          property :processing_options, as: 'processingOptions', class: Google::Apis::JobsV2::JobProcessingOptions, decorator: Google::Apis::JobsV2::JobProcessingOptions::Representation
       
           property :update_job_fields, as: 'updateJobFields'
         end

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Stackdriver Profiler API
     #
-    # Allows Google services manage the continuous profiling information.
+    # Manages continuous profiling information.
     #
-    # @see https://cloud.google.com/
+    # @see https://cloud.google.com/profiler/
     module CloudprofilerV2
       VERSION = 'V2'
-      REVISION = '20180625'
+      REVISION = '20180730'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

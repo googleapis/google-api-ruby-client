@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/storage/docs/json_api/
     module StorageV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180620'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

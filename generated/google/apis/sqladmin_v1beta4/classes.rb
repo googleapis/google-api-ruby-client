@@ -765,15 +765,20 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Options for exporting data as CSV.
+        # Exporting in CSV format using the Cloud SQL Admin API is not supported for
+        # PostgreSQL instances.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Databases (for example, guestbook) from which the export is made. If fileType
-        # is SQL and no database is specified, all databases are exported. If fileType
-        # is CSV, you can optionally specify at most one database to export. If
-        # csvExportOptions.selectQuery also specifies the database, this field will be
-        # ignored.
+        # Databases to be exported.
+        # MySQL instances: If fileType is SQL and no database is specified, all
+        # databases are exported, except for the mysql system database. If fileType is
+        # CSV, you can specify one database, either by using this property or by using
+        # the csvExportOptions.selectQuery property, which takes precedence over this
+        # property.
+        # PostgreSQL instances: If fileType is SQL, you must specify one database to be
+        # exported. A fileType of CSV is not supported for PostgreSQL instances.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
@@ -781,6 +786,7 @@ module Google
         # The file type for the specified uri.
         # SQL: The file contains SQL statements.
         # CSV: The file contains CSV data.
+        # CSV is not supported for PostgreSQL instances.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -818,6 +824,8 @@ module Google
         end
         
         # Options for exporting data as CSV.
+        # Exporting in CSV format using the Cloud SQL Admin API is not supported for
+        # PostgreSQL instances.
         class CsvExportOptions
           include Google::Apis::Core::Hashable
         
@@ -847,7 +855,8 @@ module Google
           alias_method :schema_only?, :schema_only
         
           # Tables to export, or that were exported, from the specified database. If you
-          # specify tables, specify one and only one database.
+          # specify tables, specify one and only one database. For PostgreSQL instances,
+          # you can specify only one table.
           # Corresponds to the JSON property `tables`
           # @return [Array<String>]
           attr_accessor :tables
@@ -987,13 +996,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Options for importing data as CSV.
+        # Importing CSV data using the Cloud SQL Admin API is not supported for
+        # PostgreSQL instances.
         # Corresponds to the JSON property `csvImportOptions`
         # @return [Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions]
         attr_accessor :csv_import_options
       
-        # The database (for example, guestbook) to which the import is made. If fileType
-        # is SQL and no database is specified, it is assumed that the database is
-        # specified in the file to be imported. If fileType is CSV, it must be specified.
+        # The target database for the import. If fileType is SQL, this field is required
+        # only if the import file does not specify a database, and is overridden by any
+        # database specification in the import file. If fileType is CSV, one database
+        # must be specified.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -1001,12 +1013,14 @@ module Google
         # The file type for the specified uri.
         # SQL: The file contains SQL statements.
         # CSV: The file contains CSV data.
+        # Importing CSV data using the Cloud SQL Admin API is not supported for
+        # PostgreSQL instances.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
       
         # The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser.
-        # Used only for PostgreSQL instances.
+        # PostgreSQL instances only.
         # Corresponds to the JSON property `importUser`
         # @return [String]
         attr_accessor :import_user
@@ -1016,9 +1030,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A path to the file in Google Cloud Storage from which the import is made. The
-        # URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are
-        # supported when fileType is SQL.
+        # Path to the import file in Cloud Storage, in the form gs://bucketName/fileName.
+        # Compressed gzip files (.gz) are supported when fileType is SQL. The instance
+        # must have write permissions to the bucket and read access to the file.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1038,6 +1052,8 @@ module Google
         end
         
         # Options for importing data as CSV.
+        # Importing CSV data using the Cloud SQL Admin API is not supported for
+        # PostgreSQL instances.
         class CsvImportOptions
           include Google::Apis::Core::Hashable
         
@@ -1374,7 +1390,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The preferred Compute Engine zone (e.g. us-centra1-a, us-central1-b, etc.).
+        # The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b, etc.).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone

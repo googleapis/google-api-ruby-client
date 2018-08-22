@@ -740,9 +740,7 @@ module Google
       class StackTrace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_id, as: 'clusterId'
           property :exception, as: 'exception'
-          property :report_id, as: 'reportId'
         end
       end
       

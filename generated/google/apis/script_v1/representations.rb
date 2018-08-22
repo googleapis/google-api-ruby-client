@@ -118,18 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsScriptTypeScope
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAppsScriptTypeScopeSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAppsScriptTypeUser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,10 +232,6 @@ module Google
       
           property :deployment_id, as: 'deploymentId'
           collection :entry_points, as: 'entryPoints', class: Google::Apis::ScriptV1::EntryPoint, decorator: Google::Apis::ScriptV1::EntryPoint::Representation
-      
-          property :function_set, as: 'functionSet', class: Google::Apis::ScriptV1::GoogleAppsScriptTypeFunctionSet, decorator: Google::Apis::ScriptV1::GoogleAppsScriptTypeFunctionSet::Representation
-      
-          property :scope_set, as: 'scopeSet', class: Google::Apis::ScriptV1::GoogleAppsScriptTypeScopeSet, decorator: Google::Apis::ScriptV1::GoogleAppsScriptTypeScopeSet::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -377,22 +361,6 @@ module Google
           property :project_name, as: 'projectName'
           property :start_time, as: 'startTime'
           property :user_access_level, as: 'userAccessLevel'
-        end
-      end
-      
-      class GoogleAppsScriptTypeScope
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorizer, as: 'authorizer'
-          property :name, as: 'name'
-        end
-      end
-      
-      class GoogleAppsScriptTypeScopeSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :values, as: 'values', class: Google::Apis::ScriptV1::GoogleAppsScriptTypeScope, decorator: Google::Apis::ScriptV1::GoogleAppsScriptTypeScope::Representation
-      
         end
       end
       

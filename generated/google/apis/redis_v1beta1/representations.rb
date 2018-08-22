@@ -22,6 +22,12 @@ module Google
   module Apis
     module RedisV1beta1
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudCommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,19 +76,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,10 +88,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class GoogleCloudCommonOperationMetadata
@@ -188,14 +182,6 @@ module Google
         end
       end
       
-      class LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :available_zones, as: 'availableZones', class: Google::Apis::RedisV1beta1::ZoneMetadata, decorator: Google::Apis::RedisV1beta1::ZoneMetadata::Representation
-      
-        end
-      end
-      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -208,31 +194,12 @@ module Google
         end
       end
       
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :detail, as: 'detail'
-          property :end_time, as: 'endTime'
-          property :operation_type, as: 'operationType'
-          property :start_time, as: 'startTime'
-          property :state, as: 'state'
-          property :target, as: 'target'
-        end
-      end
-      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class ZoneMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

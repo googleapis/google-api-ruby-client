@@ -22,6 +22,86 @@ module Google
   module Apis
     module CloudkmsV1
       
+      # Request message for KeyManagementService.AsymmetricDecrypt.
+      class AsymmetricDecryptRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data encrypted with the named CryptoKeyVersion's public
+        # key using OAEP.
+        # Corresponds to the JSON property `ciphertext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ciphertext
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+        end
+      end
+      
+      # Response message for KeyManagementService.AsymmetricDecrypt.
+      class AsymmetricDecryptResponse
+        include Google::Apis::Core::Hashable
+      
+        # The decrypted data originally encrypted with the matching public key.
+        # Corresponds to the JSON property `plaintext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plaintext
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plaintext = args[:plaintext] if args.key?(:plaintext)
+        end
+      end
+      
+      # Request message for KeyManagementService.AsymmetricSign.
+      class AsymmetricSignRequest
+        include Google::Apis::Core::Hashable
+      
+        # A Digest holds a cryptographic message digest.
+        # Corresponds to the JSON property `digest`
+        # @return [Google::Apis::CloudkmsV1::Digest]
+        attr_accessor :digest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+        end
+      end
+      
+      # Response message for KeyManagementService.AsymmetricSign.
+      class AsymmetricSignResponse
+        include Google::Apis::Core::Hashable
+      
+        # The created signature.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -142,6 +222,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::CloudkmsV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -172,6 +260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -208,25 +297,26 @@ module Google
         # CreateCryptoKeyVersion and
         # UpdateCryptoKeyPrimaryVersion
         # do not affect next_rotation_time.
+        # Keys with purpose
+        # ENCRYPT_DECRYPT support
+        # automatic rotation. For other keys, this field must be omitted.
         # Corresponds to the JSON property `nextRotationTime`
         # @return [String]
         attr_accessor :next_rotation_time
       
         # A CryptoKeyVersion represents an individual cryptographic key, and the
         # associated key material.
-        # It can be used for cryptographic operations either directly, or via its
-        # parent CryptoKey, in which case the server will choose the appropriate
-        # version for the operation.
+        # An ENABLED version can be
+        # used for cryptographic operations.
         # For security reasons, the raw cryptographic key material represented by a
         # CryptoKeyVersion can never be viewed or exported. It can only be used to
-        # encrypt or decrypt data when an authorized user or application invokes Cloud
-        # KMS.
+        # encrypt, decrypt, or sign data when an authorized user or application invokes
+        # Cloud KMS.
         # Corresponds to the JSON property `primary`
         # @return [Google::Apis::CloudkmsV1::CryptoKeyVersion]
         attr_accessor :primary
       
-        # The immutable purpose of this CryptoKey. Currently, the only acceptable
-        # purpose is ENCRYPT_DECRYPT.
+        # The immutable purpose of this CryptoKey.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -234,9 +324,20 @@ module Google
         # next_rotation_time will be advanced by this period when the service
         # automatically rotates a key. Must be at least one day.
         # If rotation_period is set, next_rotation_time must also be set.
+        # Keys with purpose
+        # ENCRYPT_DECRYPT support
+        # automatic rotation. For other keys, this field must be omitted.
         # Corresponds to the JSON property `rotationPeriod`
         # @return [String]
         attr_accessor :rotation_period
+      
+        # A CryptoKeyVersionTemplate specifies the properties to use when creating
+        # a new CryptoKeyVersion, either manually with
+        # CreateCryptoKeyVersion or
+        # automatically as a result of auto-rotation.
+        # Corresponds to the JSON property `versionTemplate`
+        # @return [Google::Apis::CloudkmsV1::CryptoKeyVersionTemplate]
+        attr_accessor :version_template
       
         def initialize(**args)
            update!(**args)
@@ -251,20 +352,31 @@ module Google
           @primary = args[:primary] if args.key?(:primary)
           @purpose = args[:purpose] if args.key?(:purpose)
           @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
+          @version_template = args[:version_template] if args.key?(:version_template)
         end
       end
       
       # A CryptoKeyVersion represents an individual cryptographic key, and the
       # associated key material.
-      # It can be used for cryptographic operations either directly, or via its
-      # parent CryptoKey, in which case the server will choose the appropriate
-      # version for the operation.
+      # An ENABLED version can be
+      # used for cryptographic operations.
       # For security reasons, the raw cryptographic key material represented by a
       # CryptoKeyVersion can never be viewed or exported. It can only be used to
-      # encrypt or decrypt data when an authorized user or application invokes Cloud
-      # KMS.
+      # encrypt, decrypt, or sign data when an authorized user or application invokes
+      # Cloud KMS.
       class CryptoKeyVersion
         include Google::Apis::Core::Hashable
+      
+        # Output only. The CryptoKeyVersionAlgorithm that this
+        # CryptoKeyVersion supports.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # Contains an HSM-generated attestation about a key operation.
+        # Corresponds to the JSON property `attestation`
+        # @return [Google::Apis::CloudkmsV1::KeyOperationAttestation]
+        attr_accessor :attestation
       
         # Output only. The time at which this CryptoKeyVersion was created.
         # Corresponds to the JSON property `createTime`
@@ -285,11 +397,23 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
+        # Output only. The time this CryptoKeyVersion's key material was
+        # generated.
+        # Corresponds to the JSON property `generateTime`
+        # @return [String]
+        attr_accessor :generate_time
+      
         # Output only. The resource name for this CryptoKeyVersion in the format
         # `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The ProtectionLevel describing how crypto operations are
+        # performed with this CryptoKeyVersion.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
       
         # The current state of the CryptoKeyVersion.
         # Corresponds to the JSON property `state`
@@ -302,11 +426,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @attestation = args[:attestation] if args.key?(:attestation)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_event_time = args[:destroy_event_time] if args.key?(:destroy_event_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
+          @generate_time = args[:generate_time] if args.key?(:generate_time)
           @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A CryptoKeyVersionTemplate specifies the properties to use when creating
+      # a new CryptoKeyVersion, either manually with
+      # CreateCryptoKeyVersion or
+      # automatically as a result of auto-rotation.
+      class CryptoKeyVersionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Algorithm to use
+        # when creating a CryptoKeyVersion based on this template.
+        # For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both
+        # this field is omitted and CryptoKey.purpose is
+        # ENCRYPT_DECRYPT.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # ProtectionLevel to use when creating a CryptoKeyVersion based on
+        # this template. Immutable. Defaults to SOFTWARE.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
         end
       end
       
@@ -372,19 +533,64 @@ module Google
         end
       end
       
+      # A Digest holds a cryptographic message digest.
+      class Digest
+        include Google::Apis::Core::Hashable
+      
+        # A message digest produced with the SHA-256 algorithm.
+        # Corresponds to the JSON property `sha256`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha256
+      
+        # A message digest produced with the SHA-384 algorithm.
+        # Corresponds to the JSON property `sha384`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha384
+      
+        # A message digest produced with the SHA-512 algorithm.
+        # Corresponds to the JSON property `sha512`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+          @sha384 = args[:sha384] if args.key?(:sha384)
+          @sha512 = args[:sha512] if args.key?(:sha512)
+        end
+      end
+      
       # Request message for KeyManagementService.Encrypt.
       class EncryptRequest
         include Google::Apis::Core::Hashable
       
         # Optional data that, if specified, must also be provided during decryption
-        # through DecryptRequest.additional_authenticated_data.  Must be no
-        # larger than 64KiB.
+        # through DecryptRequest.additional_authenticated_data.
+        # The maximum size depends on the key version's
+        # protection_level. For
+        # SOFTWARE keys, the AAD must be no larger than
+        # 64KiB. For HSM keys, the combined length of the
+        # plaintext and additional_authenticated_data fields must be no larger than
+        # 8KiB.
         # Corresponds to the JSON property `additionalAuthenticatedData`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :additional_authenticated_data
       
         # Required. The data to encrypt. Must be no larger than 64KiB.
+        # The maximum size depends on the key version's
+        # protection_level. For
+        # SOFTWARE keys, the plaintext must be no larger
+        # than 64KiB. For HSM keys, the combined length of the
+        # plaintext and additional_authenticated_data fields must be no larger than
+        # 8KiB.
         # Corresponds to the JSON property `plaintext`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -424,6 +630,80 @@ module Google
         def update!(**args)
           @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Contains an HSM-generated attestation about a key operation.
+      class KeyOperationAttestation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The attestation data provided by the HSM when the key
+        # operation was performed.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The format of the attestation data.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @format = args[:format] if args.key?(:format)
         end
       end
       
@@ -623,6 +903,28 @@ module Google
         end
       end
       
+      # Cloud KMS metadata for the given google.cloud.location.Location.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether CryptoKeys with
+        # protection_level
+        # HSM can be created in this location.
+        # Corresponds to the JSON property `hsmAvailable`
+        # @return [Boolean]
+        attr_accessor :hsm_available
+        alias_method :hsm_available?, :hsm_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hsm_available = args[:hsm_available] if args.key?(:hsm_available)
+        end
+      end
+      
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
@@ -703,6 +1005,30 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The public key for a given CryptoKeyVersion. Obtained via
+      # GetPublicKey.
+      class PublicKey
+        include Google::Apis::Core::Hashable
+      
+        # The public key, encoded in PEM format. For more information, see the
+        # [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
+        # [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
+        # [Textual Encoding of Subject Public Key Info]
+        # (https://tools.ietf.org/html/rfc7468#section-13).
+        # Corresponds to the JSON property `pem`
+        # @return [String]
+        attr_accessor :pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem = args[:pem] if args.key?(:pem)
         end
       end
       

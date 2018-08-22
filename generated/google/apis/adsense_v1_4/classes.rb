@@ -204,10 +204,20 @@ module Google
       class AdCode
         include Google::Apis::Core::Hashable
       
-        # The ad code snippet.
+        # The Auto ad code snippet. The ad code snippet.
         # Corresponds to the JSON property `adCode`
         # @return [String]
         attr_accessor :ad_code
+      
+        # The AMP Auto ad code snippet that goes in the body of an AMP page.
+        # Corresponds to the JSON property `ampBody`
+        # @return [String]
+        attr_accessor :amp_body
+      
+        # The AMP Auto ad code snippet that goes in the head of an AMP page.
+        # Corresponds to the JSON property `ampHead`
+        # @return [String]
+        attr_accessor :amp_head
       
         # Kind this is, in this case adsense#adCode.
         # Corresponds to the JSON property `kind`
@@ -221,6 +231,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_code = args[:ad_code] if args.key?(:ad_code)
+          @amp_body = args[:amp_body] if args.key?(:amp_body)
+          @amp_head = args[:amp_head] if args.key?(:amp_head)
           @kind = args[:kind] if args.key?(:kind)
         end
       end

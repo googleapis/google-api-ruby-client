@@ -2091,6 +2091,12 @@ module Google
         # @return [String]
         attr_accessor :icon_url
       
+        # 
+        # Corresponds to the JSON property `is_document_mature`
+        # @return [Boolean]
+        attr_accessor :is_document_mature
+        alias_method :is_document_mature?, :is_document_mature
+      
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2144,6 +2150,7 @@ module Google
           @doc_type = args[:doc_type] if args.key?(:doc_type)
           @dont_show_notification = args[:dont_show_notification] if args.key?(:dont_show_notification)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @is_document_mature = args[:is_document_mature] if args.key?(:is_document_mature)
           @kind = args[:kind] if args.key?(:kind)
           @notification_group = args[:notification_group] if args.key?(:notification_group)
           @notification_type = args[:notification_type] if args.key?(:notification_type)

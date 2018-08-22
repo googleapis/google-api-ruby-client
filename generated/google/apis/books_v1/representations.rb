@@ -1261,6 +1261,7 @@ module Google
           property :doc_type, as: 'doc_type'
           property :dont_show_notification, as: 'dont_show_notification'
           property :icon_url, as: 'iconUrl'
+          property :is_document_mature, as: 'is_document_mature'
           property :kind, as: 'kind'
           property :notification_group, as: 'notificationGroup'
           property :notification_type, as: 'notification_type'

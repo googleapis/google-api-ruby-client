@@ -23,6 +23,34 @@ module Google
     module BigqueryV2
       
       # 
+      class BigQueryModelTraining
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only, Beta] Index of current ML training iteration. Updated during
+        # create model query job to show job progress.
+        # Corresponds to the JSON property `currentIteration`
+        # @return [Fixnum]
+        attr_accessor :current_iteration
+      
+        # [Output-only, Beta] Expected number of iterations for the create model query
+        # job specified as num_iterations in the input query. The actual total number of
+        # iterations may be less than this number due to early stop.
+        # Corresponds to the JSON property `expectedTotalIterations`
+        # @return [Fixnum]
+        attr_accessor :expected_total_iterations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_iteration = args[:current_iteration] if args.key?(:current_iteration)
+          @expected_total_iterations = args[:expected_total_iterations] if args.key?(:expected_total_iterations)
+        end
+      end
+      
+      # 
       class BigtableColumn
         include Google::Apis::Core::Hashable
       
@@ -200,8 +228,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Repeated] One or more fields on which data should be clustered. Only top-
-        # level, non-repeated, simple-type fields are supported. The order of the fields
-        # will determine how clusters will be generated, so it is important.
+        # level, non-repeated, simple-type fields are supported. When you cluster a
+        # table using multiple columns, the order of columns you specify is important.
+        # The order of the specified columns determines the sort order of the data.
         # Corresponds to the JSON property `fields`
         # @return [Array<String>]
         attr_accessor :fields
@@ -374,7 +403,7 @@ module Google
       
         # The labels associated with this dataset. You can use these to organize and
         # group your datasets. You can set this property when inserting or updating a
-        # dataset. See Labeling Datasets for more information.
+        # dataset. See Creating and Updating Dataset Labels for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -950,9 +979,10 @@ module Google
       
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # reading data. If the number of bad records exceeds this value, an invalid
-        # error is returned in the job result. The default value is 0, which requires
-        # that all records are valid. This setting is ignored for Google Cloud Bigtable,
-        # Google Cloud Datastore backups and Avro formats.
+        # error is returned in the job result. This is only valid for CSV, JSON, and
+        # Google Sheets. The default value is 0, which requires that all records are
+        # valid. This setting is ignored for Google Cloud Bigtable, Google Cloud
+        # Datastore backups and Avro formats.
         # Corresponds to the JSON property `maxBadRecords`
         # @return [Fixnum]
         attr_accessor :max_bad_records
@@ -1133,8 +1163,8 @@ module Google
       class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
       
-        # [Experimental] [Optional] Range of a sheet to query from. Only used when non-
-        # empty. Typical format: !:
+        # [Beta] [Optional] Range of a sheet to query from. Only used when non-empty.
+        # Typical format: !:
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
@@ -1463,9 +1493,9 @@ module Google
         attr_accessor :autodetect
         alias_method :autodetect?, :autodetect
       
-        # [Experimental] Clustering specification for the destination table. Must be
-        # specified with time-based partitioning, data in the table will be first
-        # partitioned and subsequently clustered.
+        # [Beta] Clustering specification for the destination table. Must be specified
+        # with time-based partitioning, data in the table will be first partitioned and
+        # subsequently clustered.
         # Corresponds to the JSON property `clustering`
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
@@ -1490,8 +1520,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table
       
-        # [Experimental] [Optional] Properties with which to create the destination
-        # table if it is new.
+        # [Beta] [Optional] Properties with which to create the destination table if it
+        # is new.
         # Corresponds to the JSON property `destinationTableProperties`
         # @return [Google::Apis::BigqueryV2::DestinationTableProperties]
         attr_accessor :destination_table_properties
@@ -1528,8 +1558,8 @@ module Google
       
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # running the job. If the number of bad records exceeds this value, an invalid
-        # error is returned in the job result. The default value is 0, which requires
-        # that all records are valid.
+        # error is returned in the job result. This is only valid for CSV and JSON. The
+        # default value is 0, which requires that all records are valid.
         # Corresponds to the JSON property `maxBadRecords`
         # @return [Fixnum]
         attr_accessor :max_bad_records
@@ -1685,9 +1715,9 @@ module Google
         attr_accessor :allow_large_results
         alias_method :allow_large_results?, :allow_large_results
       
-        # [Experimental] Clustering specification for the destination table. Must be
-        # specified with time-based partitioning, data in the table will be first
-        # partitioned and subsequently clustered.
+        # [Beta] Clustering specification for the destination table. Must be specified
+        # with time-based partitioning, data in the table will be first partitioned and
+        # subsequently clustered.
         # Corresponds to the JSON property `clustering`
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
@@ -2042,8 +2072,8 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # [Experimental] The geographic location of the job. Required except for US and
-        # EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#
+        # The geographic location of the job. Required except for US and EU. See details
+        # at https://cloud.google.com/bigquery/docs/dataset-locations#
         # specifying_your_location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -2070,7 +2100,7 @@ module Google
       class JobStatistics
         include Google::Apis::Core::Hashable
       
-        # [Experimental] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT
+        # [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT
         # jobs.
         # Corresponds to the JSON property `completionRatio`
         # @return [Float]
@@ -2103,6 +2133,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobStatistics2]
         attr_accessor :query
       
+        # [Output-only] Quotas which delayed this job's start time.
+        # Corresponds to the JSON property `quotaDeferments`
+        # @return [Array<String>]
+        attr_accessor :quota_deferments
+      
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
@@ -2128,6 +2163,7 @@ module Google
           @extract = args[:extract] if args.key?(:extract)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
+          @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
         end
@@ -2148,20 +2184,20 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only, Experimental] The DDL operation performed, possibly dependent on
-        # the pre-existence of the DDL target. Possible values (new values might be
-        # added in the future): "CREATE": The query created the DDL target. "SKIP": No-
-        # op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table
-        # already exists, or the query is DROP TABLE IF EXISTS while the table does not
-        # exist. "REPLACE": The query replaced the DDL target. Example case: the query
-        # is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query
-        # deleted the DDL target.
+        # [Output-only, Beta] The DDL operation performed, possibly dependent on the pre-
+        # existence of the DDL target. Possible values (new values might be added in the
+        # future): "CREATE": The query created the DDL target. "SKIP": No-op. Example
+        # cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists,
+        # or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE":
+        # The query replaced the DDL target. Example case: the query is CREATE OR
+        # REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL
+        # target.
         # Corresponds to the JSON property `ddlOperationPerformed`
         # @return [String]
         attr_accessor :ddl_operation_performed
       
-        # [Output-only, Experimental] The DDL target table. Present only for CREATE/DROP
-        # TABLE/VIEW queries.
+        # [Output-only, Beta] The DDL target table. Present only for CREATE/DROP TABLE/
+        # VIEW queries.
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
@@ -2171,15 +2207,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :estimated_bytes_processed
       
-        # [Output-only, Beta] Index of current ML training iteration. Updated during
-        # create model query job to show job progress.
+        # [Output-only, Beta] Information about create model query job progress.
+        # Corresponds to the JSON property `modelTraining`
+        # @return [Google::Apis::BigqueryV2::BigQueryModelTraining]
+        attr_accessor :model_training
+      
+        # [Output-only, Beta] Deprecated; do not use.
         # Corresponds to the JSON property `modelTrainingCurrentIteration`
         # @return [Fixnum]
         attr_accessor :model_training_current_iteration
       
-        # [Output-only, Beta] Expected number of iterations for the create model query
-        # job specified as num_iterations in the input query. The actual total number of
-        # iterations may be less than this number due to early stop.
+        # [Output-only, Beta] Deprecated; do not use.
         # Corresponds to the JSON property `modelTrainingExpectedTotalIteration`
         # @return [Fixnum]
         attr_accessor :model_training_expected_total_iteration
@@ -2212,23 +2250,23 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Output-only, Experimental] The type of query statement, if valid. Possible
-        # values (new values might be added in the future): "SELECT": SELECT query. "
-        # INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/
-        # standard-sql/data-manipulation-language "UPDATE": UPDATE query; see https://
+        # [Output-only, Beta] The type of query statement, if valid. Possible values (
+        # new values might be added in the future): "SELECT": SELECT query. "INSERT":
+        # INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-
+        # sql/data-manipulation-language "UPDATE": UPDATE query; see https://cloud.
+        # google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "
+        # DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/data-manipulation-language "MERGE": MERGE query; see https://
         # cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
-        # language "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/
-        # reference/standard-sql/data-manipulation-language "MERGE": MERGE query; see
-        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
-        # manipulation-language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS
-        # SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... "
+        # language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
+        # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... "
         # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
         # SELECT ... "DROP_VIEW": DROP VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type
       
-        # [Output-only] [Experimental] Describes a timeline of job execution.
+        # [Output-only] [Beta] Describes a timeline of job execution.
         # Corresponds to the JSON property `timeline`
         # @return [Array<Google::Apis::BigqueryV2::QueryTimelineSample>]
         attr_accessor :timeline
@@ -2254,8 +2292,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_slot_ms
       
-        # [Output-only, Experimental] Standard SQL only: list of undeclared query
-        # parameters detected during a dry run validation.
+        # [Output-only, Beta] Standard SQL only: list of undeclared query parameters
+        # detected during a dry run validation.
         # Corresponds to the JSON property `undeclaredQueryParameters`
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :undeclared_query_parameters
@@ -2271,6 +2309,7 @@ module Google
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
+          @model_training = args[:model_training] if args.key?(:model_training)
           @model_training_current_iteration = args[:model_training_current_iteration] if args.key?(:model_training_current_iteration)
           @model_training_expected_total_iteration = args[:model_training_expected_total_iteration] if args.key?(:model_training_expected_total_iteration)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
@@ -2737,8 +2776,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Experimental] The geographic location where the job should run. Required
-        # except for US and EU.
+        # The geographic location where the job should run. Required except for US and
+        # EU.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3002,8 +3041,8 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # [Experimental] Clustering specification for the table. Must be specified with
-        # time-based partitioning, data in the table will be first partitioned and
+        # [Beta] Clustering specification for the table. Must be specified with time-
+        # based partitioning, data in the table will be first partitioned and
         # subsequently clustered.
         # Corresponds to the JSON property `clustering`
         # @return [Google::Apis::BigqueryV2::Clustering]
@@ -3025,7 +3064,10 @@ module Google
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration
       
-        # [Output-only] A hash of this resource.
+        # [Output-only] A hash of the table metadata. Used to ensure there were no
+        # concurrent modifications to the resource when attempting an update. Not
+        # guaranteed to change when the table contents or the fields numRows, numBytes,
+        # numLongTermBytes or lastModifiedTime change.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3470,7 +3512,7 @@ module Google
         class Table
           include Google::Apis::Core::Hashable
         
-          # [Experimental] Clustering specification for this table, if configured.
+          # [Beta] Clustering specification for this table, if configured.
           # Corresponds to the JSON property `clustering`
           # @return [Google::Apis::BigqueryV2::Clustering]
           attr_accessor :clustering
@@ -3650,17 +3692,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiration_ms
       
-        # [Experimental] [Optional] If not set, the table is partitioned by pseudo
-        # column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '
-        # _PARTITIONDATE' as DATE type. If field is specified, the table is instead
-        # partitioned by this field. The field must be a top-level TIMESTAMP or DATE
-        # field. Its mode must be NULLABLE or REQUIRED.
+        # [Beta] [Optional] If not set, the table is partitioned by pseudo column,
+        # referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE'
+        # as DATE type. If field is specified, the table is instead partitioned by this
+        # field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be
+        # NULLABLE or REQUIRED.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
-        # [Experimental] [Optional] If set to true, queries over this table require a
-        # partition filter that can be used for partition elimination to be specified.
+        # [Beta] [Optional] If set to true, queries over this table require a partition
+        # filter that can be used for partition elimination to be specified.
         # Corresponds to the JSON property `requirePartitionFilter`
         # @return [Boolean]
         attr_accessor :require_partition_filter

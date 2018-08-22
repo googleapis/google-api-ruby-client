@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,42 +107,6 @@ module Google
       end
       
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1GetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaxPodsConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +275,18 @@ module Google
       end
       
       class PodSecurityPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -491,6 +479,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
       
+          property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
+      
           property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
@@ -498,6 +488,8 @@ module Google
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
+          property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
+      
           property :description, as: 'description'
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
@@ -536,6 +528,8 @@ module Google
           property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
           property :private_cluster, as: 'privateCluster'
+          property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
+      
           hash :resource_labels, as: 'resourceLabels'
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
@@ -547,6 +541,15 @@ module Google
         end
       end
       
+      class ClusterAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
+          collection :resource_limits, as: 'resourceLimits', class: Google::Apis::ContainerV1beta1::ResourceLimit, decorator: Google::Apis::ContainerV1beta1::ResourceLimit::Representation
+      
+        end
+      end
+      
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,8 +557,11 @@ module Google
       
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
+          property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
+      
           property :desired_image_type, as: 'desiredImageType'
           collection :desired_locations, as: 'desiredLocations'
+          property :desired_logging_service, as: 'desiredLoggingService'
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
       
           property :desired_master_version, as: 'desiredMasterVersion'
@@ -613,52 +619,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleIamV1Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :members, as: 'members'
-          property :role, as: 'role'
-        end
-      end
-      
-      class GoogleIamV1GetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleIamV1Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bindings, as: 'bindings', class: Google::Apis::ContainerV1beta1::GoogleIamV1Binding, decorator: Google::Apis::ContainerV1beta1::GoogleIamV1Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
-      class GoogleIamV1SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::ContainerV1beta1::GoogleIamV1Policy, decorator: Google::Apis::ContainerV1beta1::GoogleIamV1Policy::Representation
-      
-        end
-      end
-      
-      class GoogleIamV1TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class GoogleIamV1TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
         end
       end
       
@@ -800,6 +760,13 @@ module Google
         end
       end
       
+      class MaxPodsConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_pods_per_node, :numeric_string => true, as: 'maxPodsPerNode'
+        end
+      end
+      
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -878,6 +845,8 @@ module Google
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
+          property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
+      
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -889,6 +858,7 @@ module Google
       class NodePoolAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoprovisioned, as: 'autoprovisioned'
           property :enabled, as: 'enabled'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
@@ -939,6 +909,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PrivateClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_private_endpoint, as: 'enablePrivateEndpoint'
+          property :enable_private_nodes, as: 'enablePrivateNodes'
+          property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :private_endpoint, as: 'privateEndpoint'
+          property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class ResourceLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum, :numeric_string => true, as: 'maximum'
+          property :minimum, :numeric_string => true, as: 'minimum'
+          property :resource_type, as: 'resourceType'
         end
       end
       

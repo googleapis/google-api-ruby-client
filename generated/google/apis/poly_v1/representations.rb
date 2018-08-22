@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemixInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartAssetImportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -120,6 +126,8 @@ module Google
           property :metadata, as: 'metadata'
           property :name, as: 'name'
           property :presentation_params, as: 'presentationParams', class: Google::Apis::PolyV1::PresentationParams, decorator: Google::Apis::PolyV1::PresentationParams::Representation
+      
+          property :remix_info, as: 'remixInfo', class: Google::Apis::PolyV1::RemixInfo, decorator: Google::Apis::PolyV1::RemixInfo::Representation
       
           property :thumbnail, as: 'thumbnail', class: Google::Apis::PolyV1::File, decorator: Google::Apis::PolyV1::File::Representation
       
@@ -237,6 +245,13 @@ module Google
           property :x, as: 'x'
           property :y, as: 'y'
           property :z, as: 'z'
+        end
+      end
+      
+      class RemixInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :source_asset, as: 'sourceAsset'
         end
       end
       

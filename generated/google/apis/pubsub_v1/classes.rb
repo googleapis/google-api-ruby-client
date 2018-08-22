@@ -46,6 +46,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::PubsubV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -76,6 +84,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -134,6 +143,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -443,8 +499,8 @@ module Google
         end
       end
       
-      # A message data and its attributes. The message payload must not be empty;
-      # it must contain either a non-empty data field, or at least one attribute.
+      # A message that is published by publishers and consumed by subscribers. The
+      # message must contain either a non-empty data field or at least one attribute.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -453,7 +509,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # The message payload.
+        # The message data field. If this field is empty, the message must contain
+        # at least one attribute.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -500,9 +557,7 @@ module Google
         # If this field set to true, the system will respond immediately even if
         # it there are no messages available to return in the `Pull` response.
         # Otherwise, the system may wait (for a bounded amount of time) until at
-        # least one message is available, rather than returning no messages. The
-        # client may cancel the request if it does not wish to wait any longer for
-        # the response.
+        # least one message is available, rather than returning no messages.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately
@@ -591,8 +646,8 @@ module Google
         # @return [String]
         attr_accessor :ack_id
       
-        # A message data and its attributes. The message payload must not be empty;
-        # it must contain either a non-empty data field, or at least one attribute.
+        # A message that is published by publishers and consumed by subscribers. The
+        # message must contain either a non-empty data field or at least one attribute.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]
         attr_accessor :message

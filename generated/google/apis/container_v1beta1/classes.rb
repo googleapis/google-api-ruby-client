@@ -239,6 +239,14 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
       
+        # ClusterAutoscaling contains global, per-cluster information
+        # required by Cluster Autoscaler to automatically adjust
+        # the size of the cluster and create/delete
+        # node pools based on the current needs.
+        # Corresponds to the JSON property `autoscaling`
+        # @return [Google::Apis::ContainerV1beta1::ClusterAutoscaling]
+        attr_accessor :autoscaling
+      
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `binaryAuthorization`
         # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
@@ -274,6 +282,11 @@ module Google
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
+      
+        # Constraints applied to pods.
+        # Corresponds to the JSON property `defaultMaxPodsConstraint`
+        # @return [Google::Apis::ContainerV1beta1::MaxPodsConstraint]
+        attr_accessor :default_max_pods_constraint
       
         # An optional description of this cluster.
         # Corresponds to the JSON property `description`
@@ -407,6 +420,8 @@ module Google
         # The IP prefix in CIDR notation to use for the hosted master network.
         # This prefix will be used for assigning private IP addresses to the
         # master or set of masters, as well as the ILB VIP.
+        # This field is deprecated, use
+        # private_cluster_config.master_ipv4_cidr_block instead.
         # Corresponds to the JSON property `masterIpv4CidrBlock`
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
@@ -476,10 +491,16 @@ module Google
         # If this is a private cluster setup. Private clusters are clusters that, by
         # default have no external IP addresses on the nodes and where nodes and the
         # master communicate over private IP addresses.
+        # This field is deprecated, use private_cluster_config.enabled instead.
         # Corresponds to the JSON property `privateCluster`
         # @return [Boolean]
         attr_accessor :private_cluster
         alias_method :private_cluster?, :private_cluster
+      
+        # Configuration options for private clusters.
+        # Corresponds to the JSON property `privateClusterConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
+        attr_accessor :private_cluster_config
       
         # The resource labels for the cluster to use to annotate any related
         # Google Compute Engine resources.
@@ -542,12 +563,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
+          @default_max_pods_constraint = args[:default_max_pods_constraint] if args.key?(:default_max_pods_constraint)
           @description = args[:description] if args.key?(:description)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
@@ -576,6 +599,7 @@ module Google
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
           @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
+          @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
@@ -584,6 +608,36 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # ClusterAutoscaling contains global, per-cluster information
+      # required by Cluster Autoscaler to automatically adjust
+      # the size of the cluster and create/delete
+      # node pools based on the current needs.
+      class ClusterAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Enables automatic node pool creation and deletion.
+        # Corresponds to the JSON property `enableNodeAutoprovisioning`
+        # @return [Boolean]
+        attr_accessor :enable_node_autoprovisioning
+        alias_method :enable_node_autoprovisioning?, :enable_node_autoprovisioning
+      
+        # Contains global constraints regarding minimum and maximum
+        # amount of resources in the cluster.
+        # Corresponds to the JSON property `resourceLimits`
+        # @return [Array<Google::Apis::ContainerV1beta1::ResourceLimit>]
+        attr_accessor :resource_limits
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
+          @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
         end
       end
       
@@ -604,6 +658,14 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
         attr_accessor :desired_binary_authorization
       
+        # ClusterAutoscaling contains global, per-cluster information
+        # required by Cluster Autoscaler to automatically adjust
+        # the size of the cluster and create/delete
+        # node pools based on the current needs.
+        # Corresponds to the JSON property `desiredClusterAutoscaling`
+        # @return [Google::Apis::ContainerV1beta1::ClusterAutoscaling]
+        attr_accessor :desired_cluster_autoscaling
+      
         # The desired image type for the node pool.
         # NOTE: Set the "desired_node_pool" field as well.
         # Corresponds to the JSON property `desiredImageType`
@@ -619,6 +681,16 @@ module Google
         # Corresponds to the JSON property `desiredLocations`
         # @return [Array<String>]
         attr_accessor :desired_locations
+      
+        # The logging service the cluster should use to write metrics.
+        # Currently available options:
+        # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
+        # service with Kubernetes-native resource model in Stackdriver
+        # * "logging.googleapis.com" - the Google Cloud Logging service
+        # * "none" - no logs will be exported from the cluster
+        # Corresponds to the JSON property `desiredLoggingService`
+        # @return [String]
+        attr_accessor :desired_logging_service
       
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
@@ -643,6 +715,8 @@ module Google
       
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
+        # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
+        # service with Kubernetes-native resource model in Stackdriver
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `desiredMonitoringService`
@@ -689,8 +763,10 @@ module Google
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
+          @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
+          @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
@@ -887,233 +963,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Associates `members` with a `role`.
-      class GoogleIamV1Binding
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Request message for `GetIamPolicy` method.
-      class GoogleIamV1GetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-      # `members` to a `role`, where the members can be user accounts, Google groups,
-      # Google domains, and service accounts. A `role` is a named list of permissions
-      # defined by IAM.
-      # **JSON Example**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/owner",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
-      # `
-      # ]
-      # `
-      # **YAML Example**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-      # role: roles/owner
-      # - members:
-      # - user:sean@example.com
-      # role: roles/viewer
-      # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam/docs).
-      class GoogleIamV1Policy
-        include Google::Apis::Core::Hashable
-      
-        # Associates a list of `members` to a `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::ContainerV1beta1::GoogleIamV1Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Deprecated.
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class GoogleIamV1SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **JSON Example**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/owner",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
-        # `
-        # ]
-        # `
-        # **YAML Example**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner
-        # - members:
-        # - user:sean@example.com
-        # role: roles/viewer
-        # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam/docs).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::ContainerV1beta1::GoogleIamV1Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # Request message for `TestIamPermissions` method.
-      class GoogleIamV1TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class GoogleIamV1TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -1658,6 +1507,25 @@ module Google
         end
       end
       
+      # Constraints applied to pods.
+      class MaxPodsConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Constraint enforced on the max num of pods per node.
+        # Corresponds to the JSON property `maxPodsPerNode`
+        # @return [Fixnum]
+        attr_accessor :max_pods_per_node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
+        end
+      end
+      
       # Progress metric is (string, int|float|string) pair.
       class Metric
         include Google::Apis::Core::Hashable
@@ -1700,15 +1568,16 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The name of the Google Compute Engine
-        # network(/compute/docs/networks-and-firewalls#networks).
+        # Output only. The relative name of the Google Compute Engine
+        # network(/compute/docs/networks-and-firewalls#networks) to which
+        # the cluster is connected.
         # Example: projects/my-project/global/networks/my-network
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. The name of the Google Compute Engine
-        # [subnetwork](/compute/docs/vpc).
+        # Output only. The relative name of the Google Compute Engine
+        # [subnetwork](/compute/docs/vpc) to which the cluster is connected.
         # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
@@ -2019,6 +1888,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeManagement]
         attr_accessor :management
       
+        # Constraints applied to pods.
+        # Corresponds to the JSON property `maxPodsConstraint`
+        # @return [Google::Apis::ContainerV1beta1::MaxPodsConstraint]
+        attr_accessor :max_pods_constraint
+      
         # The name of the node pool.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2056,6 +1930,7 @@ module Google
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @management = args[:management] if args.key?(:management)
+          @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -2068,6 +1943,12 @@ module Google
       # adjust the size of the node pool to the current cluster usage.
       class NodePoolAutoscaling
         include Google::Apis::Core::Hashable
+      
+        # Can this node pool be deleted automatically.
+        # Corresponds to the JSON property `autoprovisioned`
+        # @return [Boolean]
+        attr_accessor :autoprovisioned
+        alias_method :autoprovisioned?, :autoprovisioned
       
         # Is autoscaling enabled for this node pool.
         # Corresponds to the JSON property `enabled`
@@ -2093,6 +1974,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoprovisioned = args[:autoprovisioned] if args.key?(:autoprovisioned)
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
@@ -2289,6 +2171,86 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration options for private clusters.
+      class PrivateClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the master's internal IP address is used as the cluster endpoint.
+        # Corresponds to the JSON property `enablePrivateEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_private_endpoint
+        alias_method :enable_private_endpoint?, :enable_private_endpoint
+      
+        # Whether nodes have only private IP addresses, and communicate with the
+        # master via private networking.
+        # Corresponds to the JSON property `enablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :enable_private_nodes
+        alias_method :enable_private_nodes?, :enable_private_nodes
+      
+        # The IP prefix in CIDR notation to use for the hosted master network. This
+        # prefix will be used for assigning private IP addresses to the master or
+        # set of masters, as well as the ILB VIP.
+        # Corresponds to the JSON property `masterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :master_ipv4_cidr_block
+      
+        # Output only. The internal IP address of this cluster's master endpoint.
+        # Corresponds to the JSON property `privateEndpoint`
+        # @return [String]
+        attr_accessor :private_endpoint
+      
+        # Output only. The external IP address of this cluster's master endpoint.
+        # Corresponds to the JSON property `publicEndpoint`
+        # @return [String]
+        attr_accessor :public_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
+          @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
+          @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
+          @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # Contains information about amount of some resource in the cluster.
+      # For memory, value should be in GB.
+      class ResourceLimit
+        include Google::Apis::Core::Hashable
+      
+        # Maximum amount of the resource in the cluster.
+        # Corresponds to the JSON property `maximum`
+        # @return [Fixnum]
+        attr_accessor :maximum
+      
+        # Minimum amount of the resource in the cluster.
+        # Corresponds to the JSON property `minimum`
+        # @return [Fixnum]
+        attr_accessor :minimum
+      
+        # Resource name "cpu", "memory" or gpu-specific string.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       

@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerKilledEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerStartedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class Disk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accelerator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -256,6 +274,7 @@ module Google
           property :name, as: 'name'
           property :pid_namespace, as: 'pidNamespace'
           hash :port_mappings, as: 'portMappings'
+          property :timeout, as: 'timeout'
         end
       end
       
@@ -272,6 +291,8 @@ module Google
       
           hash :event, as: 'event'
           property :result, as: 'result', class: Google::Apis::GenomicsV2alpha1::Status, decorator: Google::Apis::GenomicsV2alpha1::Status::Representation
+      
+          property :worker_status, as: 'workerStatus', class: Google::Apis::GenomicsV2alpha1::WorkerStatus, decorator: Google::Apis::GenomicsV2alpha1::WorkerStatus::Representation
       
         end
       end
@@ -291,6 +312,13 @@ module Google
           property :instance_name, as: 'instanceName'
           property :machine_type, as: 'machineType'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ContainerKilledEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
         end
       end
       
@@ -327,6 +355,14 @@ module Google
           property :size_gb, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
           property :type, as: 'type'
+        end
+      end
+      
+      class DiskStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :free_space_bytes, :numeric_string => true, as: 'freeSpaceBytes'
+          property :total_space_bytes, :numeric_string => true, as: 'totalSpaceBytes'
         end
       end
       
@@ -453,6 +489,7 @@ module Google
           hash :environment, as: 'environment'
           property :resources, as: 'resources', class: Google::Apis::GenomicsV2alpha1::Resources, decorator: Google::Apis::GenomicsV2alpha1::Resources::Representation
       
+          property :timeout, as: 'timeout'
         end
       end
       
@@ -565,6 +602,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class WorkerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attached_disks, as: 'attachedDisks', class: Google::Apis::GenomicsV2alpha1::DiskStatus, decorator: Google::Apis::GenomicsV2alpha1::DiskStatus::Representation
+      
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::GenomicsV2alpha1::DiskStatus, decorator: Google::Apis::GenomicsV2alpha1::DiskStatus::Representation
+      
+          property :free_ram_bytes, :numeric_string => true, as: 'freeRamBytes'
+          property :total_ram_bytes, :numeric_string => true, as: 'totalRamBytes'
+          property :uptime_seconds, :numeric_string => true, as: 'uptimeSeconds'
         end
       end
     end

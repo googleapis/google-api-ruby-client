@@ -102,7 +102,7 @@ module Google
         # @return [Array<Google::Apis::TestingV1::AndroidModel>]
         attr_accessor :models
       
-        # Configuration that can be selected at the time a test is run.
+        # Android configuration that can be selected at the time a test is run.
         # Corresponds to the JSON property `runtimeConfiguration`
         # @return [Google::Apis::TestingV1::AndroidRuntimeConfiguration]
         attr_accessor :runtime_configuration
@@ -468,7 +468,7 @@ module Google
         end
       end
       
-      # Configuration that can be selected at the time a test is run.
+      # Android configuration that can be selected at the time a test is run.
       class AndroidRuntimeConfiguration
         include Google::Apis::Core::Hashable
       

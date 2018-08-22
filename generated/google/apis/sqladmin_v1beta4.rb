@@ -18,15 +18,15 @@ require 'google/apis/sqladmin_v1beta4/representations.rb'
 
 module Google
   module Apis
-    # Cloud SQL Administration API
+    # Cloud SQL Admin API
     #
-    # Creates and configures Cloud SQL instances, which provide fully-managed MySQL
-    # databases.
+    # Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your
+    # instances programmatically.
     #
     # @see https://cloud.google.com/sql/docs/reference/latest
     module SqladminV1beta4
       VERSION = 'V1beta4'
-      REVISION = ''
+      REVISION = '20180727'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -175,6 +175,35 @@ module Google
         end
       end
       
+      # Message defining a field of a BigQuery table.
+      class GooglePrivacyDlpV2BigQueryField
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :field
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Row key for identifying a record in BigQuery table.
       class GooglePrivacyDlpV2BigQueryKey
         include Google::Apis::Core::Hashable
@@ -217,10 +246,20 @@ module Google
       
         # Max number of rows to scan. If the table has more rows than this value, the
         # rest of the rows are omitted. If not set, or if set to 0, all rows will be
-        # scanned. Cannot be used in conjunction with TimespanConfig.
+        # scanned. Only one of rows_limit and rows_limit_percent can be specified.
+        # Cannot be used in conjunction with TimespanConfig.
         # Corresponds to the JSON property `rowsLimit`
         # @return [Fixnum]
         attr_accessor :rows_limit
+      
+        # Max percentage of rows to scan. The rest are omitted. The number of rows
+        # scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and
+        # 100 means no limit. Defaults to 0. Only one of rows_limit and
+        # rows_limit_percent can be specified. Cannot be used in conjunction with
+        # TimespanConfig.
+        # Corresponds to the JSON property `rowsLimitPercent`
+        # @return [Fixnum]
+        attr_accessor :rows_limit_percent
       
         # 
         # Corresponds to the JSON property `sampleMethod`
@@ -244,6 +283,7 @@ module Google
         def update!(**args)
           @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
           @rows_limit = args[:rows_limit] if args.key?(:rows_limit)
+          @rows_limit_percent = args[:rows_limit_percent] if args.key?(:rows_limit_percent)
           @sample_method = args[:sample_method] if args.key?(:sample_method)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
         end
@@ -596,16 +636,45 @@ module Google
         end
       end
       
+      # Message representing a set of files in Cloud Storage.
+      class GooglePrivacyDlpV2CloudStorageFileSet
+        include Google::Apis::Core::Hashable
+      
+        # The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the
+        # path is allowed.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Options defining a file or a set of files (path ending with *) within
       # a Google Cloud Storage bucket.
       class GooglePrivacyDlpV2CloudStorageOptions
         include Google::Apis::Core::Hashable
       
         # Max number of bytes to scan from a file. If a scanned file's size is bigger
-        # than this value then the rest of the bytes are omitted.
+        # than this value then the rest of the bytes are omitted. Only one
+        # of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
         # Corresponds to the JSON property `bytesLimitPerFile`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file
+      
+        # Max percentage of bytes to scan from a file. The rest are omitted. The
+        # number of bytes scanned is rounded down. Must be between 0 and 100,
+        # inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one
+        # of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        # Corresponds to the JSON property `bytesLimitPerFilePercent`
+        # @return [Fixnum]
+        attr_accessor :bytes_limit_per_file_percent
       
         # Set of files to scan.
         # Corresponds to the JSON property `fileSet`
@@ -638,6 +707,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bytes_limit_per_file = args[:bytes_limit_per_file] if args.key?(:bytes_limit_per_file)
+          @bytes_limit_per_file_percent = args[:bytes_limit_per_file_percent] if args.key?(:bytes_limit_per_file_percent)
           @file_set = args[:file_set] if args.key?(:file_set)
           @file_types = args[:file_types] if args.key?(:file_types)
           @files_limit_percent = args[:files_limit_percent] if args.key?(:files_limit_percent)
@@ -980,6 +1050,34 @@ module Google
         end
       end
       
+      # Request message for CreateStoredInfoType.
+      class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a StoredInfoType.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
+        attr_accessor :config
+      
+        # The storedInfoType ID can contain uppercase and lowercase letters,
+        # numbers, and hyphens; that is, it must match the regular
+        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # characters. Can be empty to allow the system to generate one.
+        # Corresponds to the JSON property `storedInfoTypeId`
+        # @return [String]
+        attr_accessor :stored_info_type_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @stored_info_type_id = args[:stored_info_type_id] if args.key?(:stored_info_type_id)
+        end
+      end
+      
       # Pseudonymization method that generates surrogates via cryptographic hashing.
       # Uses SHA-256.
       # The key size must be either 32 or 64 bytes.
@@ -1145,7 +1243,11 @@ module Google
         # matches for "jennifer".
         # Dictionary words containing a large number of characters that are not
         # letters or digits may result in unexpected findings because such characters
-        # are treated as whitespace.
+        # are treated as whitespace. The
+        # [limits](https://cloud.google.com/dlp/limits) page contains details about
+        # the size limits of dictionaries. For dictionaries that do not fit within
+        # these constraints, consider using `LargeCustomDictionaryConfig` in the
+        # `StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -1166,6 +1268,11 @@ module Google
         # Corresponds to the JSON property `regex`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
         attr_accessor :regex
+      
+        # A reference to a StoredInfoType to use with scanning.
+        # Corresponds to the JSON property `storedType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType]
+        attr_accessor :stored_type
       
         # Message for detecting output from deidentification transformations
         # such as
@@ -1191,6 +1298,7 @@ module Google
           @info_type = args[:info_type] if args.key?(:info_type)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @regex = args[:regex] if args.key?(:regex)
+          @stored_type = args[:stored_type] if args.key?(:stored_type)
           @surrogate_type = args[:surrogate_type] if args.key?(:surrogate_type)
         end
       end
@@ -1688,7 +1796,11 @@ module Google
       # matches for "jennifer".
       # Dictionary words containing a large number of characters that are not
       # letters or digits may result in unexpected findings because such characters
-      # are treated as whitespace.
+      # are treated as whitespace. The
+      # [limits](https://cloud.google.com/dlp/limits) page contains details about
+      # the size limits of dictionaries. For dictionaries that do not fit within
+      # these constraints, consider using `LargeCustomDictionaryConfig` in the
+      # `StoredInfoType` API.
       class GooglePrivacyDlpV2Dictionary
         include Google::Apis::Core::Hashable
       
@@ -2423,6 +2535,10 @@ module Google
         # When no InfoTypes or CustomInfoTypes are specified in a request, the
         # system may automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
+        # The special InfoType name "ALL_BASIC" can be used to trigger all detectors,
+        # but may change over time as new InfoTypes are added. If you need precise
+        # control and predictability as to what detectors are run you should specify
+        # specific InfoTypes listed in the reference.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -3233,6 +3349,42 @@ module Google
         end
       end
       
+      # Configuration for a custom dictionary created from a data source of any size
+      # up to the maximum size defined in the
+      # [limits](https://cloud.google.com/dlp/limits) page. The artifacts of
+      # dictionary creation are stored in the specified Google Cloud Storage
+      # location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries
+      # that satisfy the size requirements.
+      class GooglePrivacyDlpV2LargeCustomDictionaryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a field of a BigQuery table.
+        # Corresponds to the JSON property `bigQueryField`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryField]
+        attr_accessor :big_query_field
+      
+        # Message representing a set of files in Cloud Storage.
+        # Corresponds to the JSON property `cloudStorageFileSet`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageFileSet]
+        attr_accessor :cloud_storage_file_set
+      
+        # Message representing a single file or path in Cloud Storage.
+        # Corresponds to the JSON property `outputPath`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath]
+        attr_accessor :output_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_field = args[:big_query_field] if args.key?(:big_query_field)
+          @cloud_storage_file_set = args[:cloud_storage_file_set] if args.key?(:cloud_storage_file_set)
+          @output_path = args[:output_path] if args.key?(:output_path)
+        end
+      end
+      
       # Message for specifying an adjustment to the likelihood of a finding as
       # part of a detection rule.
       class GooglePrivacyDlpV2LikelihoodAdjustment
@@ -3386,6 +3538,32 @@ module Google
         def update!(**args)
           @job_triggers = args[:job_triggers] if args.key?(:job_triggers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListStoredInfoTypes.
+      class GooglePrivacyDlpV2ListStoredInfoTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If the next page is available then the next page token to be used
+        # in following ListStoredInfoTypes request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest.
+        # Corresponds to the JSON property `storedInfoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType>]
+        attr_accessor :stored_info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @stored_info_types = args[:stored_info_types] if args.key?(:stored_info_types)
         end
       end
       
@@ -4568,6 +4746,154 @@ module Google
         end
       end
       
+      # StoredInfoType resource message that contains information about the current
+      # version and any pending updates.
+      class GooglePrivacyDlpV2StoredInfoType
+        include Google::Apis::Core::Hashable
+      
+        # Version of a StoredInfoType, including the configuration used to build it,
+        # create timestamp, and current state.
+        # Corresponds to the JSON property `currentVersion`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion]
+        attr_accessor :current_version
+      
+        # Resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Pending versions of the stored info type. Empty if no versions are
+        # pending.
+        # Corresponds to the JSON property `pendingVersions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion>]
+        attr_accessor :pending_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_version = args[:current_version] if args.key?(:current_version)
+          @name = args[:name] if args.key?(:name)
+          @pending_versions = args[:pending_versions] if args.key?(:pending_versions)
+        end
+      end
+      
+      # Configuration for a StoredInfoType.
+      class GooglePrivacyDlpV2StoredInfoTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Description of the StoredInfoType (max 256 characters).
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the StoredInfoType (max 256 characters).
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Configuration for a custom dictionary created from a data source of any size
+        # up to the maximum size defined in the
+        # [limits](https://cloud.google.com/dlp/limits) page. The artifacts of
+        # dictionary creation are stored in the specified Google Cloud Storage
+        # location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries
+        # that satisfy the size requirements.
+        # Corresponds to the JSON property `largeCustomDictionary`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig]
+        attr_accessor :large_custom_dictionary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @large_custom_dictionary = args[:large_custom_dictionary] if args.key?(:large_custom_dictionary)
+        end
+      end
+      
+      # Version of a StoredInfoType, including the configuration used to build it,
+      # create timestamp, and current state.
+      class GooglePrivacyDlpV2StoredInfoTypeVersion
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a StoredInfoType.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
+        attr_accessor :config
+      
+        # Create timestamp of the version. Read-only, determined by the system
+        # when the version is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Errors that occurred when creating this storedInfoType version, or
+        # anomalies detected in the storedInfoType data that render it unusable. Only
+        # the five most recent errors will be displayed, with the most recent error
+        # appearing first.
+        # <p>For example, some of the data for stored custom dictionaries is put in
+        # the user's Google Cloud Storage bucket, and if this data is modified or
+        # deleted by the user or another system, the dictionary becomes invalid.
+        # <p>If any errors occur, fix the problem indicated by the error message and
+        # use the UpdateStoredInfoType API method to create another version of the
+        # storedInfoType to continue using it, reusing the same `config` if it was
+        # not the source of the error.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
+        attr_accessor :errors
+      
+        # Stored info type version state. Read-only, updated by the system
+        # during dictionary creation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @errors = args[:errors] if args.key?(:errors)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A reference to a StoredInfoType to use with scanning.
+      class GooglePrivacyDlpV2StoredType
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp indicating when the version of the `StoredInfoType` used for
+        # inspection was created. Output-only field, populated by the system.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Resource name of the requested `StoredInfoType`, for example
+        # `organizations/433245324/storedInfoTypes/432452342` or
+        # `projects/project-id/storedInfoTypes/432452342`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A collection that informs the user the number of times a particular
       # `TransformationResultCode` and error details occurred.
       class GooglePrivacyDlpV2SummaryResult
@@ -4767,13 +5093,13 @@ module Google
         attr_accessor :enable_auto_population_of_timespan_config
         alias_method :enable_auto_population_of_timespan_config?, :enable_auto_population_of_timespan_config
       
-        # Exclude files newer than this value.
+        # Exclude files or rows newer than this value.
         # If set to zero, no upper time limit is applied.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Exclude files older than this value.
+        # Exclude files or rows older than this value.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -5022,6 +5348,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_trigger = args[:job_trigger] if args.key?(:job_trigger)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for UpdateStoredInfoType.
+      class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a StoredInfoType.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
+        attr_accessor :config
+      
+        # Mask to control which fields get updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end

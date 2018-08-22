@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/tpu/
     module TpuV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20180601'
+      REVISION = '20180807'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

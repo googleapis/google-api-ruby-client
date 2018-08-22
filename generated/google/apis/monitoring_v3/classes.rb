@@ -782,6 +782,35 @@ module Google
         end
       end
       
+      # A set of (label, value) pairs which were dropped during aggregation, attached
+      # to google.api.Distribution.Exemplars in google.api.Distribution values during
+      # aggregation.These values are used in combination with the label values that
+      # remain on the aggregated Distribution timeseries to construct the full label
+      # set for the exemplar values. The resulting full label set may be used to
+      # identify the specific task/job/instance (for example) which may be
+      # contributing to a long-tail, while allowing the storage savings of only
+      # storing aggregated distribution values for a large group.Note that there are
+      # no guarantees on ordering of the labels from exemplar-to-exemplar and from
+      # distribution-to-distribution in the same stream, and there may be duplicates.
+      # It is up to clients to resolve any ambiguities.
+      class DroppedLabels
+        include Google::Apis::Core::Hashable
+      
+        # Map from label to its value, for all labels dropped in any aggregation.
+        # Corresponds to the JSON property `label`
+        # @return [Hash<String,String>]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance:
@@ -1708,9 +1737,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All user-defined custom metric types have the DNS name custom.googleapis.com.
-        # Metric types should use a natural hierarchical grouping. For example:
+        # All user-defined metric types have the DNS name custom.googleapis.com or
+        # external.googleapis.com. Metric types should use a natural hierarchical
+        # grouping. For example:
         # "custom.googleapis.com/invoice/paid/amount"
+        # "external.googleapis.com/prometheus/up"
         # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2031,19 +2062,16 @@ module Google
       
       # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
       # contain the minimum set of information to uniquely identify a monitored
-      # resource instance. There is some other useful auxiliary metadata. Google
-      # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-      # metadata for cloud resources of all types , and stores the metadata in this
-      # message.
+      # resource instance. There is some other useful auxiliary metadata. Monitoring
+      # and Logging use an ingestion pipeline to extract metadata for cloud resources
+      # of all types, and store the metadata in this message.
       class MonitoredResourceMetadata
         include Google::Apis::Core::Hashable
       
         # Output only. Values for predefined system metadata labels. System labels are a
-        # kind of metadata extracted by Google Stackdriver. Stackdriver determines what
-        # system labels are useful and how to obtain their values. Some examples: "
-        # machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
-        # label values can be only strings, Boolean values, or a list of strings. For
-        # example:
+        # kind of metadata extracted by Google, including "machine_image", "vpc", "
+        # subnet_id", "security_group", "name", etc. System label values can be only
+        # strings, Boolean values, or a list of strings. For example:
         # ` "name": "my-test-instance",
         # "security_group": ["a", "b", "c"],
         # "spot_instance": false `
@@ -2394,6 +2422,32 @@ module Google
         end
       end
       
+      # The context of a span, attached to google.api.Distribution.Exemplars in google.
+      # api.Distribution values during aggregation.It contains the name of a span with
+      # format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID
+      class SpanContext
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the span in the following format:
+        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+        # TRACE_ID is a unique identifier for a trace within a project; it is a 32-
+        # character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique
+        # identifier for a span within a trace; it is a 16-character hexadecimal
+        # encoding of an 8-byte array.
+        # Corresponds to the JSON property `spanName`
+        # @return [String]
+        attr_accessor :span_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @span_name = args[:span_name] if args.key?(:span_name)
+        end
+      end
+      
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). The error model is designed to be:
@@ -2518,10 +2572,9 @@ module Google
       
         # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
         # contain the minimum set of information to uniquely identify a monitored
-        # resource instance. There is some other useful auxiliary metadata. Google
-        # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-        # metadata for cloud resources of all types , and stores the metadata in this
-        # message.
+        # resource instance. There is some other useful auxiliary metadata. Monitoring
+        # and Logging use an ingestion pipeline to extract metadata for cloud resources
+        # of all types, and store the metadata in this message.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::MonitoringV3::MonitoredResourceMetadata]
         attr_accessor :metadata

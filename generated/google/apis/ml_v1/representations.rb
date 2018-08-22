@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1AcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1AutoScaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeExpr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -258,6 +270,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :objective_value, as: 'objectiveValue'
           property :training_step, :numeric_string => true, as: 'trainingStep'
+        end
+      end
+      
+      class GoogleCloudMlV1AcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :type, as: 'type'
         end
       end
       
@@ -455,6 +475,8 @@ module Google
       class GoogleCloudMlV1PredictionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator, as: 'accelerator', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
+      
           property :batch_size, :numeric_string => true, as: 'batchSize'
           property :data_format, as: 'dataFormat'
           collection :input_paths, as: 'inputPaths'
@@ -561,6 +583,8 @@ module Google
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::MlV1::GoogleTypeExpr, decorator: Google::Apis::MlV1::GoogleTypeExpr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -634,6 +658,16 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleTypeExpr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
     end

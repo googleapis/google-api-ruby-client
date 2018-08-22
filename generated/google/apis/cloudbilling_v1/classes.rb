@@ -187,8 +187,6 @@ module Google
         # will be the resource name of the master billing account that it is being
         # resold through.
         # Otherwise this will be empty.
-        # > This field is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
         # Corresponds to the JSON property `masterBillingAccount`
         # @return [String]
         attr_accessor :master_billing_account
@@ -226,6 +224,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::CloudbillingV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -233,7 +239,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` or `joe@example.com`.
+        # account. For example, `alice@gmail.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -246,7 +252,6 @@ module Google
       
         # Role that is assigned to `members`.
         # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -257,6 +262,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -299,6 +305,53 @@ module Google
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @service_display_name = args[:service_display_name] if args.key?(:service_display_name)
           @usage_type = args[:usage_type] if args.key?(:usage_type)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -450,11 +503,11 @@ module Google
       
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
       # `members` to a `role`, where the members can be user accounts, Google groups,
       # Google domains, and service accounts. A `role` is a named list of permissions
       # defined by IAM.
-      # **Example**
+      # **JSON Example**
       # `
       # "bindings": [
       # `
@@ -463,7 +516,7 @@ module Google
       # "user:mike@example.com",
       # "group:admins@example.com",
       # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
       # ]
       # `,
       # `
@@ -472,6 +525,17 @@ module Google
       # `
       # ]
       # `
+      # **YAML Example**
+      # bindings:
+      # - members:
+      # - user:mike@example.com
+      # - group:admins@example.com
+      # - domain:google.com
+      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+      # role: roles/owner
+      # - members:
+      # - user:sean@example.com
+      # role: roles/viewer
       # For a description of IAM and its features, see the
       # [IAM developer's guide](https://cloud.google.com/iam/docs).
       class Policy
@@ -747,11 +811,11 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to
         # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
         # `members` to a `role`, where the members can be user accounts, Google groups,
         # Google domains, and service accounts. A `role` is a named list of permissions
         # defined by IAM.
-        # **Example**
+        # **JSON Example**
         # `
         # "bindings": [
         # `
@@ -760,7 +824,7 @@ module Google
         # "user:mike@example.com",
         # "group:admins@example.com",
         # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
         # ]
         # `,
         # `
@@ -769,6 +833,17 @@ module Google
         # `
         # ]
         # `
+        # **YAML Example**
+        # bindings:
+        # - members:
+        # - user:mike@example.com
+        # - group:admins@example.com
+        # - domain:google.com
+        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner
+        # - members:
+        # - user:sean@example.com
+        # role: roles/viewer
         # For a description of IAM and its features, see the
         # [IAM developer's guide](https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`

@@ -530,6 +530,7 @@ module Google
           property :task_name, as: 'taskName'
           property :task_queue_name, as: 'taskQueueName'
           property :trace_id, as: 'traceId'
+          property :trace_sampled, as: 'traceSampled'
           property :url_map_entry, as: 'urlMapEntry'
           property :user_agent, as: 'userAgent'
           property :version_id, as: 'versionId'

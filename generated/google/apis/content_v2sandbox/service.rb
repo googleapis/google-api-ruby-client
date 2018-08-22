@@ -94,7 +94,9 @@ module Google
         end
         
         # Creates a refund invoice for one or more shipment groups, and triggers a
-        # refund for non-facilitated payment orders.
+        # refund for non-facilitated payment orders. This can only be used for line
+        # items that have previously been charged using createChargeInvoice. All amounts
+        # (except for the summary) are incremental with respect to the previous invoice.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -603,6 +605,8 @@ module Google
         #   client account.
         # @param [String] template_name
         #   The name of the template to retrieve.
+        # @param [String] country
+        #   The country of the template to retrieve. Defaults to US.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -622,12 +626,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def gettestordertemplate_order(merchant_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def gettestordertemplate_order(merchant_id, template_name, country: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/testordertemplates/{templateName}', options)
           command.response_representation = Google::Apis::ContentV2sandbox::OrdersGetTestOrderTemplateResponse::Representation
           command.response_class = Google::Apis::ContentV2sandbox::OrdersGetTestOrderTemplateResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['templateName'] = template_name unless template_name.nil?
+          command.query['country'] = country unless country.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -746,7 +751,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refund a portion of the order, up to the full amount paid.
+        # Deprecated, please use returnRefundLineItem instead.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

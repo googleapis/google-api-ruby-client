@@ -562,10 +562,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::HardwareStatus>]
         attr_accessor :hardware_status_samples
       
-        # The last time the device sent a policy compliance report. Important: This
-        # field is deprecated. The timestamp will be on last_status_report_time field,
-        # and last_status_report_time will be used for both status report and compliance
-        # report.
+        # Deprecated.
         # Corresponds to the JSON property `lastPolicyComplianceReportTime`
         # @return [String]
         attr_accessor :last_policy_compliance_report_time
@@ -1734,7 +1731,7 @@ module Google
       class PermissionGrant
         include Google::Apis::Core::Hashable
       
-        # The android permission or group, e.g. android.permission.READ_CALENDAR or
+        # The Android permission or group, e.g. android.permission.READ_CALENDAR or
         # android.permission_group.CALENDAR.
         # Corresponds to the JSON property `permission`
         # @return [String]

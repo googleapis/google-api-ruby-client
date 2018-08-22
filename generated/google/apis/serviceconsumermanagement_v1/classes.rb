@@ -1494,6 +1494,13 @@ module Google
         # @return [String]
         attr_accessor :put
       
+        # Optional. The name of the response field whose value is mapped to the HTTP
+        # body of response. Other response fields are ignored. When
+        # not set, the response message will be used as HTTP body of response.
+        # Corresponds to the JSON property `responseBody`
+        # @return [String]
+        attr_accessor :response_body
+      
         # DO NOT USE. This is an experimental field.
         # Optional. The REST collection name is by default derived from the URL
         # pattern. If specified, this field overrides the default collection name.
@@ -1555,6 +1562,7 @@ module Google
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
+          @response_body = args[:response_body] if args.key?(:response_body)
           @rest_collection = args[:rest_collection] if args.key?(:rest_collection)
           @rest_method_name = args[:rest_method_name] if args.key?(:rest_method_name)
           @selector = args[:selector] if args.key?(:selector)
@@ -2014,10 +2022,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not
-        # URL-encoded.  All user-defined custom metric types have the DNS name
-        # `custom.googleapis.com`.  Metric types should use a natural hierarchical
-        # grouping. For example:
+        # URL-encoded.  All user-defined metric types have the DNS name
+        # `custom.googleapis.com` or `external.googleapis.com`.  Metric types should
+        # use a natural hierarchical grouping. For example:
         # "custom.googleapis.com/invoice/paid/amount"
+        # "external.googleapis.com/prometheus/up"
         # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3100,7 +3109,7 @@ module Google
       
         # A unique ID for a specific instance of this message, typically assigned
         # by the client for tracking purpose. If empty, the server may choose to
-        # generate one instead.
+        # generate one instead. Must be no longer than 60 characters.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id

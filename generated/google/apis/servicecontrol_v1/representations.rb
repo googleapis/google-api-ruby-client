@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinearBuckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogEntryOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +167,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Peer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -458,6 +476,27 @@ module Google
         end
       end
       
+      class HttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_fill_bytes, :numeric_string => true, as: 'cacheFillBytes'
+          property :cache_hit, as: 'cacheHit'
+          property :cache_lookup, as: 'cacheLookup'
+          property :cache_validated_with_origin_server, as: 'cacheValidatedWithOriginServer'
+          property :latency, as: 'latency'
+          property :protocol, as: 'protocol'
+          property :referer, as: 'referer'
+          property :remote_ip, as: 'remoteIp'
+          property :request_method, as: 'requestMethod'
+          property :request_size, :numeric_string => true, as: 'requestSize'
+          property :request_url, as: 'requestUrl'
+          property :response_size, :numeric_string => true, as: 'responseSize'
+          property :server_ip, as: 'serverIp'
+          property :status, as: 'status'
+          property :user_agent, as: 'userAgent'
+        end
+      end
+      
       class LinearBuckets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -470,14 +509,29 @@ module Google
       class LogEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_request, as: 'httpRequest', class: Google::Apis::ServicecontrolV1::HttpRequest, decorator: Google::Apis::ServicecontrolV1::HttpRequest::Representation
+      
           property :insert_id, as: 'insertId'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :operation, as: 'operation', class: Google::Apis::ServicecontrolV1::LogEntryOperation, decorator: Google::Apis::ServicecontrolV1::LogEntryOperation::Representation
+      
           hash :proto_payload, as: 'protoPayload'
           property :severity, as: 'severity'
           hash :struct_payload, as: 'structPayload'
           property :text_payload, as: 'textPayload'
           property :timestamp, as: 'timestamp'
+          property :trace, as: 'trace'
+        end
+      end
+      
+      class LogEntryOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first, as: 'first'
+          property :id, as: 'id'
+          property :last, as: 'last'
+          property :producer, as: 'producer'
         end
       end
       
@@ -536,6 +590,18 @@ module Google
       
           property :start_time, as: 'startTime'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class Peer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip, as: 'ip'
+          hash :labels, as: 'labels'
+          property :port, :numeric_string => true, as: 'port'
+          property :principal, as: 'principal'
+          property :region_code, as: 'regionCode'
+          property :service, as: 'service'
         end
       end
       
@@ -663,6 +729,8 @@ module Google
           property :caller_ip, as: 'callerIp'
           property :caller_network, as: 'callerNetwork'
           property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
+          property :destination_attributes, as: 'destinationAttributes', class: Google::Apis::ServicecontrolV1::Peer, decorator: Google::Apis::ServicecontrolV1::Peer::Representation
+      
           property :request_attributes, as: 'requestAttributes', class: Google::Apis::ServicecontrolV1::Request, decorator: Google::Apis::ServicecontrolV1::Request::Representation
       
         end

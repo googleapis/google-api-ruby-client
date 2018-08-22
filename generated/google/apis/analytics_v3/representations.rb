@@ -400,6 +400,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HashClientIdRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HashClientIdResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IncludeConditions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1492,6 +1504,25 @@ module Google
           property :start_index, as: 'startIndex'
           property :total_results, as: 'totalResults'
           property :username, as: 'username'
+        end
+      end
+      
+      class HashClientIdRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :kind, as: 'kind'
+          property :web_property_id, as: 'webPropertyId'
+        end
+      end
+      
+      class HashClientIdResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :hashed_client_id, as: 'hashedClientId'
+          property :kind, as: 'kind'
+          property :web_property_id, as: 'webPropertyId'
         end
       end
       

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/android/work/play/custom-app-api
     module PlaycustomappV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20170622'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'

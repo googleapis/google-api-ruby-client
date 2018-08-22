@@ -82,6 +82,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LintPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LintPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LintResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -255,6 +279,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::IamV1::Expr, decorator: Google::Apis::IamV1::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -264,6 +290,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :condition, as: 'condition', class: Google::Apis::IamV1::Expr, decorator: Google::Apis::IamV1::Expr::Representation
+      
           property :member, as: 'member'
           property :role, as: 'role'
         end
@@ -298,6 +326,51 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
+      class LintPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding, as: 'binding', class: Google::Apis::IamV1::Binding, decorator: Google::Apis::IamV1::Binding::Representation
+      
+          property :condition, as: 'condition', class: Google::Apis::IamV1::Expr, decorator: Google::Apis::IamV1::Expr::Representation
+      
+          hash :context, as: 'context'
+          property :full_resource_name, as: 'fullResourceName'
+          property :policy, as: 'policy', class: Google::Apis::IamV1::Policy, decorator: Google::Apis::IamV1::Policy::Representation
+      
+        end
+      end
+      
+      class LintPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lint_results, as: 'lintResults', class: Google::Apis::IamV1::LintResult, decorator: Google::Apis::IamV1::LintResult::Representation
+      
+        end
+      end
+      
+      class LintResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_ordinal, as: 'bindingOrdinal'
+          property :debug_message, as: 'debugMessage'
+          property :field_name, as: 'fieldName'
+          property :level, as: 'level'
+          property :location_offset, as: 'locationOffset'
+          property :severity, as: 'severity'
+          property :validation_unit_name, as: 'validationUnitName'
         end
       end
       

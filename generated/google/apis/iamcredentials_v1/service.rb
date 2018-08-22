@@ -30,7 +30,7 @@ module Google
       #    Iamcredentials = Google::Apis::IamcredentialsV1 # Alias the module
       #    service = Iamcredentials::IAMCredentialsService.new
       #
-      # @see https://developers.google.com/identity/protocols/OAuth2ServiceAccount
+      # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
       class IAMCredentialsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

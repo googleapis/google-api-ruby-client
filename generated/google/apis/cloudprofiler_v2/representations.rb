@@ -45,8 +45,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment', class: Google::Apis::CloudprofilerV2::Deployment, decorator: Google::Apis::CloudprofilerV2::Deployment::Representation
       
-          property :profile, as: 'profile', class: Google::Apis::CloudprofilerV2::Profile, decorator: Google::Apis::CloudprofilerV2::Profile::Representation
-      
           collection :profile_type, as: 'profileType'
         end
       end

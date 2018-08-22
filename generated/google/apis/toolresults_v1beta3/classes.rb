@@ -1701,21 +1701,11 @@ module Google
       class StackTrace
         include Google::Apis::Core::Hashable
       
-        # Exception cluster ID
-        # Corresponds to the JSON property `clusterId`
-        # @return [String]
-        attr_accessor :cluster_id
-      
         # The stack trace message.
         # Required
         # Corresponds to the JSON property `exception`
         # @return [String]
         attr_accessor :exception
-      
-        # Exception report ID
-        # Corresponds to the JSON property `reportId`
-        # @return [String]
-        attr_accessor :report_id
       
         def initialize(**args)
            update!(**args)
@@ -1723,9 +1713,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @exception = args[:exception] if args.key?(:exception)
-          @report_id = args[:report_id] if args.key?(:report_id)
         end
       end
       

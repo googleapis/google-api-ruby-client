@@ -87,8 +87,8 @@ module Google
         # @param [String] img_color_type
         #   Returns black and white, grayscale, or color images: mono, gray, and color.
         # @param [String] img_dominant_color
-        #   Returns images of a specific dominant color: yellow, green, teal, blue, purple,
-        #   pink, white, gray, black and brown.
+        #   Returns images of a specific dominant color: red, orange, yellow, green, teal,
+        #   blue, purple, pink, white, gray, black and brown.
         # @param [String] img_size
         #   Returns images of a specified size, where size can be one of: icon, small,
         #   medium, large, xlarge, xxlarge, and huge.
@@ -188,9 +188,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # (Closed Beta API) Returns metadata about the search performed, metadata about
-        # the custom search engine used for the search, and the search results only for
-        # site-restrict cses.
+        # Returns metadata about the search performed, metadata about the custom search
+        # engine used for the search, and the search results. Uses a small set of url
+        # patterns.
         # @param [String] q
         #   Query
         # @param [String] c2coff
@@ -225,8 +225,8 @@ module Google
         # @param [String] img_color_type
         #   Returns black and white, grayscale, or color images: mono, gray, and color.
         # @param [String] img_dominant_color
-        #   Returns images of a specific dominant color: yellow, green, teal, blue, purple,
-        #   pink, white, gray, black and brown.
+        #   Returns images of a specific dominant color: red, orange, yellow, green, teal,
+        #   blue, purple, pink, white, gray, black and brown.
         # @param [String] img_size
         #   Returns images of a specified size, where size can be one of: icon, small,
         #   medium, large, xlarge, xxlarge, and huge.

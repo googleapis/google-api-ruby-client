@@ -22,8 +22,11 @@ module Google
     module CloudkmsV1
       # Cloud Key Management Service (KMS) API
       #
-      # Manages encryption for your cloud services the same way you do on-premises.
-      #  You can generate, use, rotate, and destroy AES256 encryption keys.
+      # Cloud KMS allows you to keep cryptographic keys in one central cloud service,
+      #  for direct use by other cloud resources and applications. With Cloud KMS you
+      #  are the ultimate custodian of your data, you can manage encryption in the
+      #  cloud the same way you do on-premises, and you have a provable and monitorable
+      #  root of trust over your data.
       #
       # @example
       #    require 'google/apis/cloudkms_v1'
@@ -334,7 +337,9 @@ module Google
         end
         
         # Create a new CryptoKey within a KeyRing.
-        # CryptoKey.purpose is required.
+        # CryptoKey.purpose and
+        # CryptoKey.version_template.algorithm
+        # are required.
         # @param [String] parent
         #   Required. The name of the KeyRing associated with the
         #   CryptoKeys.
@@ -372,7 +377,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Decrypts data that was protected by Encrypt.
+        # Decrypts data that was protected by Encrypt. The CryptoKey.purpose
+        # must be ENCRYPT_DECRYPT.
         # @param [String] name
         #   Required. The resource name of the CryptoKey to use for decryption.
         #   The server will choose the appropriate version.
@@ -407,6 +413,8 @@ module Google
         end
         
         # Encrypts data, so that it can only be recovered by a call to Decrypt.
+        # The CryptoKey.purpose must be
+        # ENCRYPT_DECRYPT.
         # @param [String] name
         #   Required. The resource name of the CryptoKey or CryptoKeyVersion
         #   to use for encryption.
@@ -518,6 +526,8 @@ module Google
         # @param [String] page_token
         #   Optional pagination token, returned earlier via
         #   ListCryptoKeysResponse.next_page_token.
+        # @param [String] version_view
+        #   The fields of the primary version to include in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -535,13 +545,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_ring_crypto_keys(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_ring_crypto_keys(parent, page_size: nil, page_token: nil, version_view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/cryptoKeys', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeysResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeysResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['versionView'] = version_view unless version_view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -659,6 +670,7 @@ module Google
         end
         
         # Update the version of a CryptoKey that will be used in Encrypt.
+        # Returns an error if called on an asymmetric key.
         # @param [String] name
         #   The resource name of the CryptoKey to update.
         # @param [Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest] update_crypto_key_primary_version_request_object
@@ -685,6 +697,77 @@ module Google
           command.request_object = update_crypto_key_primary_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.response_class = Google::Apis::CloudkmsV1::CryptoKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Decrypts data that was encrypted with a public key retrieved from
+        # GetPublicKey corresponding to a CryptoKeyVersion with
+        # CryptoKey.purpose ASYMMETRIC_DECRYPT.
+        # @param [String] name
+        #   Required. The resource name of the CryptoKeyVersion to use for
+        #   decryption.
+        # @param [Google::Apis::CloudkmsV1::AsymmetricDecryptRequest] asymmetric_decrypt_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AsymmetricDecryptResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AsymmetricDecryptResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def asymmetric_crypto_key_version_decrypt(name, asymmetric_decrypt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:asymmetricDecrypt', options)
+          command.request_representation = Google::Apis::CloudkmsV1::AsymmetricDecryptRequest::Representation
+          command.request_object = asymmetric_decrypt_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::AsymmetricDecryptResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AsymmetricDecryptResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Signs data using a CryptoKeyVersion with CryptoKey.purpose
+        # ASYMMETRIC_SIGN, producing a signature that can be verified with the public
+        # key retrieved from GetPublicKey.
+        # @param [String] name
+        #   Required. The resource name of the CryptoKeyVersion to use for signing.
+        # @param [Google::Apis::CloudkmsV1::AsymmetricSignRequest] asymmetric_sign_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AsymmetricSignResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AsymmetricSignResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def asymmetric_crypto_key_version_sign(name, asymmetric_sign_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:asymmetricSign', options)
+          command.request_representation = Google::Apis::CloudkmsV1::AsymmetricSignRequest::Representation
+          command.request_object = asymmetric_sign_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::AsymmetricSignResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AsymmetricSignResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -800,6 +883,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the public key for the given CryptoKeyVersion. The
+        # CryptoKey.purpose must be
+        # ASYMMETRIC_SIGN or
+        # ASYMMETRIC_DECRYPT.
+        # @param [String] name
+        #   The name of the CryptoKeyVersion public key to
+        #   get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::PublicKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::PublicKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_key_ring_crypto_key_crypto_key_version_public_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}/publicKey', options)
+          command.response_representation = Google::Apis::CloudkmsV1::PublicKey::Representation
+          command.response_class = Google::Apis::CloudkmsV1::PublicKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists CryptoKeyVersions.
         # @param [String] parent
         #   Required. The resource name of the CryptoKey to list, in the format
@@ -813,6 +930,8 @@ module Google
         # @param [String] page_token
         #   Optional pagination token, returned earlier via
         #   ListCryptoKeyVersionsResponse.next_page_token.
+        # @param [String] view
+        #   The fields to include in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -830,13 +949,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/cryptoKeyVersions', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

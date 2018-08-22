@@ -22,6 +22,25 @@ module Google
   module Apis
     module CloudshellV1alpha1
       
+      # Request message for AuthorizeEnvironment.
+      class AuthorizeEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth access token that should be sent to the environment.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+        end
+      end
+      
       # Request message for CreatePublicKey.
       class CreatePublicKeyRequest
         include Google::Apis::Core::Hashable
@@ -294,12 +313,21 @@ module Google
       class StartEnvironmentRequest
         include Google::Apis::Core::Hashable
       
+        # The initial access token passed to the environment. If this is present and
+        # valid, the environment will be pre-authenticated with gcloud so that the
+        # user can run gcloud commands in Cloud Shell without having to log in. This
+        # code can be updated later by calling AuthorizeEnvironment.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
         end
       end
       

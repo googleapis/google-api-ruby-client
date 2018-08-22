@@ -2981,8 +2981,9 @@ module Google
         #   The ID of the Team Drive
         # @param [Google::Apis::DriveV2::TeamDrive] team_drive_object
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then all Team
-        #   Drives of the domain in which the requester is an administrator are returned.
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the Team Drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -59,6 +59,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DataprocV1beta2::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # members can have the following values:
         # allUsers: A special identifier that represents anyone who is  on the internet;
@@ -89,6 +97,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -594,6 +603,51 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # The application context of the containing message determines which well-known
+        # feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing its
+        # purpose. This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Common config settings for resources of Compute Engine cluster instances,
       # applicable to all instances in the cluster.
       class GceClusterConfig
@@ -935,12 +989,7 @@ module Google
       class InstantiateWorkflowTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. A tag that prevents multiple concurrent workflow instances with the
-        # same tag from running. This mitigates risk of concurrent instances started due
-        # to retries.It is recommended to always set this value to a UUID (https://en.
-        # wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
-        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-        # maximum length is 40 characters.
+        # Deprecated. Please use request_id field instead.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
@@ -950,6 +999,16 @@ module Google
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
+      
+        # Optional. A tag that prevents multiple concurrent workflow instances with the
+        # same tag from running. This mitigates risk of concurrent instances started due
+        # to retries.It is recommended to always set this value to a UUID (https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        # maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
       
         # Optional. The version of workflow template to instantiate. If specified, the
         # workflow will be instantiated only if the current version of the workflow
@@ -967,6 +1026,7 @@ module Google
         def update!(**args)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1912,8 +1972,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. RE2 regular expressions used to validate the parameter's value. The
-        # provided value must match the regexes in its entirety, e.g. substring matches
-        # are not enough.
+        # value must match the regex in its entirety (substring matches are not
+        # sufficient).
         # Corresponds to the JSON property `regexes`
         # @return [Array<String>]
         attr_accessor :regexes
@@ -2244,50 +2304,59 @@ module Google
       end
       
       # A configurable parameter that replaces one or more fields in the template.
+      # Parameterizable fields: - Labels - File uris - Job properties - Job arguments -
+      # Script variables - Main class (in HadoopJob and SparkJob) - Zone (in
+      # ClusterSelector)
       class TemplateParameter
         include Google::Apis::Core::Hashable
       
-        # Optional. User-friendly description of the parameter. Must not exceed 1024
-        # characters.
+        # Optional. Brief description of the parameter. Must not exceed 1024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. Paths to all fields that this parameter replaces. Each field may
-        # appear in at most one Parameter's fields list.Field path syntax:A field path
-        # is similar to a FieldMask. For example, a field path that references the zone
-        # field of the template's cluster selector would look like:placement.
-        # clusterSelector.zoneThe only differences between field paths and standard
-        # field masks are that:
-        # Values in maps can be referenced by key.Example: placement.clusterSelector.
-        # clusterLabels'key'
-        # Jobs in the jobs list can be referenced by step id.Example: jobs'step-id'.
-        # hadoopJob.mainJarFileUri
-        # Items in repeated fields can be referenced by zero-based index.Example: jobs'
-        # step-id'.sparkJob.args0NOTE: Maps and repeated fields may not be parameterized
-        # in their entirety. Only individual map values and items in repeated fields may
-        # be referenced. For example, the following field paths are invalid: - placement.
-        # clusterSelector.clusterLabels - jobs'step-id'.sparkJob.argsParameterizable
-        # fields:Only certain types of fields may be parameterized, specifically: -
-        # Labels - File uris - Job properties - Job arguments - Script variables - Main
-        # class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)Examples of
-        # parameterizable fields:Labels:labels'key' placement.managedCluster.labels'key'
-        # placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key'File
-        # uris:jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri
-        # jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.
-        # jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.
-        # fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0Other:jobs'step-id'.
-        # hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.
-        # scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.
-        # clusterSelector.zone
+        # Required. Paths to all fields that the parameter replaces. A field is allowed
+        # to appear in at most one parameter's list of field paths.A field path is
+        # similar in syntax to a google.protobuf.FieldMask. For example, a field path
+        # that references the zone field of a workflow template's cluster selector would
+        # be specified as <code>placement.clusterSelector.zone</code>.Also, field paths
+        # can reference fields using the following syntax:
+        # Values in maps can be referenced by key. Examples<br>
+        # labels'key'
+        # placement.clusterSelector.clusterLabels'key'
+        # placement.managedCluster.labels'key'
+        # placement.clusterSelector.clusterLabels'key'
+        # jobsstep-id.labels'key'
+        # Jobs in the jobs list can be referenced by step-id. Examples:<br>
+        # jobsstep-id.hadoopJob.mainJarFileUri
+        # jobsstep-id.hiveJob.queryFileUri
+        # jobsstep-id.pySparkJob.mainPythonFileUri
+        # jobsstep-id.hadoopJob.jarFileUris0
+        # jobsstep-id.hadoopJob.archiveUris0
+        # jobsstep-id.hadoopJob.fileUris0
+        # jobsstep-id.pySparkJob.pythonFileUris0
+        # Items in repeated fields can be referenced by a zero-based index. Example:<br>
+        # jobsstep-id.sparkJob.args0
+        # Other examples:
+        # jobsstep-id.hadoopJob.properties'key'
+        # jobsstep-id.hadoopJob.args0
+        # jobsstep-id.hiveJob.scriptVariables'key'
+        # jobsstep-id.hadoopJob.mainJarFileUri
+        # placement.clusterSelector.zoneIt may not be possible to parameterize maps and
+        # repeated fields in their entirety since only individual map values and
+        # individual items in repeated fields can be referenced. For example, the
+        # following field paths are invalid:
+        # placement.clusterSelector.clusterLabels
+        # jobsstep-id.sparkJob.args
         # Corresponds to the JSON property `fields`
         # @return [Array<String>]
         attr_accessor :fields
       
-        # Required. User-friendly parameter name. This name is used as a key when
-        # providing a value for this parameter when the template is instantiated. Must
-        # contain only capital letters (A-Z), numbers (0-9), and underscores (_), and
-        # must not start with a number. The maximum length is 40 characters.
+        # Required. Parameter name. The parameter name is used as the key, and paired
+        # with the parameter value, which are passed to the template when the template
+        # is instantiated. The name must contain only capital letters (A-Z), numbers (0-
+        # 9), and underscores (_), and must not start with a number. The maximum length
+        # is 40 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2354,7 +2423,7 @@ module Google
       class ValueValidation
         include Google::Apis::Core::Hashable
       
-        # Required. List of allowed values for this parameter.
+        # Required. List of allowed values for the parameter.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -2531,7 +2600,7 @@ module Google
         attr_accessor :name
       
         # Optional. Template parameters whose values are substituted into the template.
-        # Values for these parameters must be provided when the template is instantiated.
+        # Values for parameters must be provided when the template is instantiated.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::DataprocV1beta2::TemplateParameter>]
         attr_accessor :parameters

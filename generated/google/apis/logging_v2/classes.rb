@@ -599,11 +599,11 @@ module Google
         attr_accessor :http_request
       
         # Optional. A unique identifier for the log entry. If you provide a value, then
-        # Stackdriver Logging considers other log entries in the same project, with the
-        # same timestamp, and with the same insert_id to be duplicates which can be
-        # removed. If omitted in new log entries, then Stackdriver Logging assigns its
-        # own unique identifier. The insert_id is also used to order log entries that
-        # have the same timestamp value.
+        # Logging considers other log entries in the same project, with the same
+        # timestamp, and with the same insert_id to be duplicates which can be removed.
+        # If omitted in new log entries, then Logging assigns its own unique identifier.
+        # The insert_id is also used to order log entries that have the same timestamp
+        # value.
         # Corresponds to the JSON property `insertId`
         # @return [String]
         attr_accessor :insert_id
@@ -642,10 +642,9 @@ module Google
       
         # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
         # contain the minimum set of information to uniquely identify a monitored
-        # resource instance. There is some other useful auxiliary metadata. Google
-        # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-        # metadata for cloud resources of all types , and stores the metadata in this
-        # message.
+        # resource instance. There is some other useful auxiliary metadata. Monitoring
+        # and Logging use an ingestion pipeline to extract metadata for cloud resources
+        # of all types, and store the metadata in this message.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::LoggingV2::MonitoredResourceMetadata]
         attr_accessor :metadata
@@ -662,7 +661,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :proto_payload
       
-        # Output only. The time the log entry was received by Stackdriver Logging.
+        # Output only. The time the log entry was received by Logging.
         # Corresponds to the JSON property `receiveTimestamp`
         # @return [String]
         attr_accessor :receive_timestamp
@@ -696,9 +695,9 @@ module Google
         attr_accessor :source_location
       
         # Optional. The span ID within the trace associated with the log entry. For
-        # Stackdriver Trace spans, this is the same format that the Stackdriver Trace
-        # API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as <
-        # code>"000000000000004a"</code>.
+        # Trace spans, this is the same format that the Trace API v2 uses: a 16-
+        # character hexadecimal encoding of an 8-byte array, such as <code>"
+        # 000000000000004a"</code>.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
@@ -710,13 +709,13 @@ module Google
       
         # Optional. The time the event described by the log entry occurred. This time is
         # used to compute the log entry's age and to enforce the logs retention period.
-        # If this field is omitted in a new log entry, then Stackdriver Logging assigns
-        # it the current time. Timestamps have nanosecond accuracy, but trailing zeros
-        # in the fractional seconds might be omitted when the timestamp is displayed.
-        # Incoming log entries should have timestamps that are no more than the logs
-        # retention period in the past, and no more than 24 hours in the future. Log
-        # entries outside those time boundaries will not be available when calling
-        # entries.list, but those log entries can still be exported with LogSinks.
+        # If this field is omitted in a new log entry, then Logging assigns it the
+        # current time. Timestamps have nanosecond accuracy, but trailing zeros in the
+        # fractional seconds might be omitted when the timestamp is displayed.Incoming
+        # log entries should have timestamps that are no more than the logs retention
+        # period in the past, and no more than 24 hours in the future. Log entries
+        # outside those time boundaries will not be available when calling entries.list,
+        # but those log entries can still be exported with LogSinks.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -835,11 +834,11 @@ module Google
         end
       end
       
-      # Specifies a set of log entries that are not to be stored in Stackdriver
-      # Logging. If your project receives a large volume of logs, you might be able to
-      # use exclusions to reduce your chargeable logs. Exclusions are processed after
-      # log sinks, so you can export log entries before they are excluded. Audit log
-      # entries and log entries from Amazon Web Services are never excluded.
+      # Specifies a set of log entries that are not to be stored in Logging. If your
+      # project receives a large volume of logs, you might be able to use exclusions
+      # to reduce your chargeable logs. Exclusions are processed after log sinks, so
+      # you can export log entries before they are excluded. Audit log entries and log
+      # entries from Amazon Web Services are never excluded.
       class LogExclusion
         include Google::Apis::Core::Hashable
       
@@ -1103,13 +1102,13 @@ module Google
         attr_accessor :start_time
       
         # Output only. An IAM identity&mdash;a service account or group&mdash;under
-        # which Stackdriver Logging writes the exported log entries to the sink's
-        # destination. This field is set by sinks.create and sinks.update, based on the
-        # setting of unique_writer_identity in those methods.Until you grant this
-        # identity write-access to the destination, log entry exports from this sink
-        # will fail. For more information, see Granting access for a resource. Consult
-        # the destination service's documentation to determine the appropriate IAM roles
-        # to assign to the identity.
+        # which Logging writes the exported log entries to the sink's destination. This
+        # field is set by sinks.create and sinks.update, based on the setting of
+        # unique_writer_identity in those methods.Until you grant this identity write-
+        # access to the destination, log entry exports from this sink will fail. For
+        # more information, see Granting access for a resource. Consult the destination
+        # service's documentation to determine the appropriate IAM roles to assign to
+        # the identity.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
@@ -1176,9 +1175,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All user-defined custom metric types have the DNS name custom.googleapis.com.
-        # Metric types should use a natural hierarchical grouping. For example:
+        # All user-defined metric types have the DNS name custom.googleapis.com or
+        # external.googleapis.com. Metric types should use a natural hierarchical
+        # grouping. For example:
         # "custom.googleapis.com/invoice/paid/amount"
+        # "external.googleapis.com/prometheus/up"
         # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1399,19 +1400,16 @@ module Google
       
       # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
       # contain the minimum set of information to uniquely identify a monitored
-      # resource instance. There is some other useful auxiliary metadata. Google
-      # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
-      # metadata for cloud resources of all types , and stores the metadata in this
-      # message.
+      # resource instance. There is some other useful auxiliary metadata. Monitoring
+      # and Logging use an ingestion pipeline to extract metadata for cloud resources
+      # of all types, and store the metadata in this message.
       class MonitoredResourceMetadata
         include Google::Apis::Core::Hashable
       
         # Output only. Values for predefined system metadata labels. System labels are a
-        # kind of metadata extracted by Google Stackdriver. Stackdriver determines what
-        # system labels are useful and how to obtain their values. Some examples: "
-        # machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
-        # label values can be only strings, Boolean values, or a list of strings. For
-        # example:
+        # kind of metadata extracted by Google, including "machine_image", "vpc", "
+        # subnet_id", "security_group", "name", etc. System label values can be only
+        # strings, Boolean values, or a list of strings. For example:
         # ` "name": "my-test-instance",
         # "security_group": ["a", "b", "c"],
         # "spot_instance": false `
@@ -1596,6 +1594,13 @@ module Google
         # @return [String]
         attr_accessor :trace_id
       
+        # If true, the value in the 'trace_id' field was sampled for storage in a trace
+        # backend.
+        # Corresponds to the JSON property `traceSampled`
+        # @return [Boolean]
+        attr_accessor :trace_sampled
+        alias_method :trace_sampled?, :trace_sampled
+      
         # File or class that handled the request.
         # Corresponds to the JSON property `urlMapEntry`
         # @return [String]
@@ -1651,6 +1656,7 @@ module Google
           @task_name = args[:task_name] if args.key?(:task_name)
           @task_queue_name = args[:task_queue_name] if args.key?(:task_queue_name)
           @trace_id = args[:trace_id] if args.key?(:trace_id)
+          @trace_sampled = args[:trace_sampled] if args.key?(:trace_sampled)
           @url_map_entry = args[:url_map_entry] if args.key?(:url_map_entry)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version_id = args[:version_id] if args.key?(:version_id)
@@ -1734,21 +1740,21 @@ module Google
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
-        # Required. The log entries to send to Stackdriver Logging. The order of log
-        # entries in this list does not matter. Values supplied in this method's
-        # log_name, resource, and labels fields are copied into those log entries in
-        # this list that do not include values for their corresponding fields. For more
-        # information, see the LogEntry type.If the timestamp or insert_id fields are
-        # missing in log entries, then this method supplies the current time or a unique
-        # identifier, respectively. The supplied values are chosen so that, among the
-        # log entries that did not supply their own values, the entries earlier in the
-        # list will sort before the entries later in the list. See the entries.list
-        # method.Log entries with timestamps that are more than the logs retention
-        # period in the past or more than 24 hours in the future will not be available
-        # when calling entries.list. However, those log entries can still be exported
-        # with LogSinks.To improve throughput and to avoid exceeding the quota limit for
-        # calls to entries.write, you should try to include several log entries in this
-        # list, rather than calling this method for each individual log entry.
+        # Required. The log entries to send to Logging. The order of log entries in this
+        # list does not matter. Values supplied in this method's log_name, resource, and
+        # labels fields are copied into those log entries in this list that do not
+        # include values for their corresponding fields. For more information, see the
+        # LogEntry type.If the timestamp or insert_id fields are missing in log entries,
+        # then this method supplies the current time or a unique identifier,
+        # respectively. The supplied values are chosen so that, among the log entries
+        # that did not supply their own values, the entries earlier in the list will
+        # sort before the entries later in the list. See the entries.list method.Log
+        # entries with timestamps that are more than the logs retention period in the
+        # past or more than 24 hours in the future will not be available when calling
+        # entries.list. However, those log entries can still be exported with LogSinks.
+        # To improve throughput and to avoid exceeding the quota limit for calls to
+        # entries.write, you should try to include several log entries in this list,
+        # rather than calling this method for each individual log entry.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::LoggingV2::LogEntry>]
         attr_accessor :entries

@@ -160,6 +160,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1beta1ExportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1ExportDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1ExportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1ImportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1ImportDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta1Index
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,7 +202,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1beta1IndexOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta1ListIndexesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -555,6 +603,59 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1beta1ExportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          property :operation_state, as: 'operationState'
+          property :output_uri_prefix, as: 'outputUriPrefix'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1ExportDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1ExportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1ImportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          property :input_uri_prefix, as: 'inputUriPrefix'
+          property :operation_state, as: 'operationState'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1ImportDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :input_uri_prefix, as: 'inputUriPrefix'
+        end
+      end
+      
       class GoogleFirestoreAdminV1beta1Index
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -574,12 +675,39 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1beta1IndexOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancelled, as: 'cancelled'
+          property :document_progress, as: 'documentProgress', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress::Representation
+      
+          property :end_time, as: 'endTime'
+          property :index, as: 'index'
+          property :operation_type, as: 'operationType'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class GoogleFirestoreAdminV1beta1ListIndexesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :indexes, as: 'indexes', class: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index, decorator: Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Index::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta1Progress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :work_completed, :numeric_string => true, as: 'workCompleted'
+          property :work_estimated, :numeric_string => true, as: 'workEstimated'
         end
       end
       

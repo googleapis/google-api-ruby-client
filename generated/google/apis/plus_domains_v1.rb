@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/+/domains/
     module PlusDomainsV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180805'
 
       # View your circles and the people and pages in them
       AUTH_PLUS_CIRCLES_READ = 'https://www.googleapis.com/auth/plus.circles.read'

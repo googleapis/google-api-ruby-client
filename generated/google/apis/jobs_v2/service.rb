@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module JobsV2
-      # Cloud Job Discovery
+      # Cloud Talent Solution API
       #
-      # Cloud Job Discovery provides the capability to create, read, update, and
+      # Cloud Talent Solution provides the capability to create, read, update, and
       #  delete job postings, as well as search jobs based on keywords and filters.
       #
       # @example
@@ -142,7 +142,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all companies associated with a Cloud Job Discovery account.
+        # Lists all companies associated with a Cloud Talent Solution account.
         # @param [Boolean] must_have_open_jobs
         #   Optional.
         #   Set to true if the companies request must have open jobs.

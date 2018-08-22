@@ -18,14 +18,14 @@ require 'google/apis/appsactivity_v1/representations.rb'
 
 module Google
   module Apis
-    # G Suite Activity API
+    # Drive Activity API
     #
     # Provides a historical view of activity.
     #
     # @see https://developers.google.com/google-apps/activity/
     module AppsactivityV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180819'
 
       # View the activity history of your Google apps
       AUTH_ACTIVITY = 'https://www.googleapis.com/auth/activity'

@@ -78,8 +78,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of Voice
-        # supported for synthesis.
+        # Returns a list of Voice supported for synthesis.
         # @param [String] language_code
         #   Optional (but recommended)
         #   [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If

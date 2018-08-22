@@ -259,6 +259,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_code, as: 'adCode'
+          property :amp_body, as: 'ampBody'
+          property :amp_head, as: 'ampHead'
           property :kind, as: 'kind'
         end
       end

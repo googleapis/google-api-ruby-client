@@ -481,7 +481,7 @@ module Google
       end
       
       # A creative and its classification data.
-      # Next ID: 36
+      # Next ID: 38
       class Creative
         include Google::Apis::Core::Hashable
       
@@ -550,6 +550,11 @@ module Google
         # Corresponds to the JSON property `dealsStatus`
         # @return [String]
         attr_accessor :deals_status
+      
+        # The set of declared destination URLs for the creative.
+        # Corresponds to the JSON property `declaredClickThroughUrls`
+        # @return [Array<String>]
+        attr_accessor :declared_click_through_urls
       
         # @OutputOnly Detected advertiser IDs, if any.
         # Corresponds to the JSON property `detectedAdvertiserIds`
@@ -664,6 +669,7 @@ module Google
           @corrections = args[:corrections] if args.key?(:corrections)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deals_status = args[:deals_status] if args.key?(:deals_status)
+          @declared_click_through_urls = args[:declared_click_through_urls] if args.key?(:declared_click_through_urls)
           @detected_advertiser_ids = args[:detected_advertiser_ids] if args.key?(:detected_advertiser_ids)
           @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)

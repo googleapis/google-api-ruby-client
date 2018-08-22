@@ -20,13 +20,14 @@ module Google
   module Apis
     # Poly API
     #
-    # The Poly API provides read-only access to assets hosted on <a href="https://
-    # poly.google.com">poly.google.com</a>.
+    # The Poly API provides read access to assets hosted on <a href="https://poly.
+    # google.com">poly.google.com</a> to all, and upload access to <a href="https://
+    # poly.google.com">poly.google.com</a> for whitelisted accounts.
     #
     # @see https://developers.google.com/poly/
     module PolyV1
       VERSION = 'V1'
-      REVISION = '20180623'
+      REVISION = '20180808'
     end
   end
 end

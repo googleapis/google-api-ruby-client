@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/appengine/docs/admin-api/
     module AppengineV1
       VERSION = 'V1'
-      REVISION = '20180623'
+      REVISION = '20180726'
 
       # View and manage your applications deployed on Google App Engine
       AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'

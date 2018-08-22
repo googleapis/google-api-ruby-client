@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Header
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCrawledUrlsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VulnerableHeaders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VulnerableParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -199,6 +211,8 @@ module Google
           property :tracking_id, as: 'trackingId'
           property :violating_resource, as: 'violatingResource', class: Google::Apis::WebsecurityscannerV1alpha::ViolatingResource, decorator: Google::Apis::WebsecurityscannerV1alpha::ViolatingResource::Representation
       
+          property :vulnerable_headers, as: 'vulnerableHeaders', class: Google::Apis::WebsecurityscannerV1alpha::VulnerableHeaders, decorator: Google::Apis::WebsecurityscannerV1alpha::VulnerableHeaders::Representation
+      
           property :vulnerable_parameters, as: 'vulnerableParameters', class: Google::Apis::WebsecurityscannerV1alpha::VulnerableParameters, decorator: Google::Apis::WebsecurityscannerV1alpha::VulnerableParameters::Representation
       
           property :xss, as: 'xss', class: Google::Apis::WebsecurityscannerV1alpha::Xss, decorator: Google::Apis::WebsecurityscannerV1alpha::Xss::Representation
@@ -219,6 +233,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
           property :username, as: 'username'
+        end
+      end
+      
+      class Header
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -332,6 +354,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class VulnerableHeaders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::WebsecurityscannerV1alpha::Header, decorator: Google::Apis::WebsecurityscannerV1alpha::Header::Representation
+      
+          collection :missing_headers, as: 'missingHeaders', class: Google::Apis::WebsecurityscannerV1alpha::Header, decorator: Google::Apis::WebsecurityscannerV1alpha::Header::Representation
+      
         end
       end
       

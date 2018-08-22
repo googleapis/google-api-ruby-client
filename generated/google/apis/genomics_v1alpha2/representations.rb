@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerKilledEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerStartedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,13 @@ module Google
           property :instance_name, as: 'instanceName'
           property :machine_type, as: 'machineType'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ContainerKilledEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
         end
       end
       

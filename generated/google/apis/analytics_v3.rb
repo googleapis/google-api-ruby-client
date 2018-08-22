@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/analytics/
     module AnalyticsV3
       VERSION = 'V3'
-      REVISION = ''
+      REVISION = '20180622'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'

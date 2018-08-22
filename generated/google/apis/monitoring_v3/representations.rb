@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DroppedLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpanContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +581,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class DroppedLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :label, as: 'label'
         end
       end
       
@@ -952,6 +971,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_name, as: 'fileName'
+        end
+      end
+      
+      class SpanContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :span_name, as: 'spanName'
         end
       end
       

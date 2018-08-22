@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/url-shortener/v1/getting_started
     module UrlshortenerV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20150519'
 
       # Manage your goo.gl short URLs
       AUTH_URLSHORTENER = 'https://www.googleapis.com/auth/urlshortener'

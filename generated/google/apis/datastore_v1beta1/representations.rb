@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -169,6 +175,17 @@ module Google
           property :input_url, as: 'inputUrl'
           property :progress_bytes, as: 'progressBytes', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
       
+          property :progress_entities, as: 'progressEntities', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
+      
+        end
+      end
+      
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata::Representation
+      
+          property :index_id, as: 'indexId'
           property :progress_entities, as: 'progressEntities', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
       
         end

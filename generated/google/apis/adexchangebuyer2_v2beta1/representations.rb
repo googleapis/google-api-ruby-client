@@ -496,6 +496,7 @@ module Google
       
           property :creative_id, as: 'creativeId'
           property :deals_status, as: 'dealsStatus'
+          collection :declared_click_through_urls, as: 'declaredClickThroughUrls'
           collection :detected_advertiser_ids, as: 'detectedAdvertiserIds'
           collection :detected_domains, as: 'detectedDomains'
           collection :detected_languages, as: 'detectedLanguages'

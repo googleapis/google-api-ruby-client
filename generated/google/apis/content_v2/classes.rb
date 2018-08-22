@@ -42,7 +42,7 @@ module Google
         attr_accessor :adwords_links
       
         # The GMB account which is linked or in the process of being linked with the
-        # Merchant Center accounnt.
+        # Merchant Center account.
         # Corresponds to the JSON property `googleMyBusinessLink`
         # @return [Google::Apis::ContentV2::AccountGoogleMyBusinessLink]
         attr_accessor :google_my_business_link
@@ -225,6 +225,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # List of product-related data by channel, destination, and country. Data in
+        # this field may be delayed by up to 30 minutes.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::ContentV2::AccountStatusProducts>]
+        attr_accessor :products
+      
         # Whether the account's website is claimed or not.
         # Corresponds to the JSON property `websiteClaimed`
         # @return [Boolean]
@@ -241,6 +247,7 @@ module Google
           @account_level_issues = args[:account_level_issues] if args.key?(:account_level_issues)
           @data_quality_issues = args[:data_quality_issues] if args.key?(:data_quality_issues)
           @kind = args[:kind] if args.key?(:kind)
+          @products = args[:products] if args.key?(:products)
           @website_claimed = args[:website_claimed] if args.key?(:website_claimed)
         end
       end
@@ -414,6 +421,147 @@ module Google
           @submitted_value = args[:submitted_value] if args.key?(:submitted_value)
           @title = args[:title] if args.key?(:title)
           @value_on_landing_page = args[:value_on_landing_page] if args.key?(:value_on_landing_page)
+        end
+      end
+      
+      # 
+      class AccountStatusItemLevelIssue
+        include Google::Apis::Core::Hashable
+      
+        # The attribute's name, if the issue is caused by a single attribute.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # The error code of the issue.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short issue description in English.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A detailed issue description in English.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The URL of a web page to help with resolving this issue.
+        # Corresponds to the JSON property `documentation`
+        # @return [String]
+        attr_accessor :documentation
+      
+        # Number of items with this issue.
+        # Corresponds to the JSON property `numItems`
+        # @return [Fixnum]
+        attr_accessor :num_items
+      
+        # Whether the issue can be resolved by the merchant.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
+        # How this issue affects serving of the offer.
+        # Corresponds to the JSON property `servability`
+        # @return [String]
+        attr_accessor :servability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+          @detail = args[:detail] if args.key?(:detail)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @num_items = args[:num_items] if args.key?(:num_items)
+          @resolution = args[:resolution] if args.key?(:resolution)
+          @servability = args[:servability] if args.key?(:servability)
+        end
+      end
+      
+      # 
+      class AccountStatusProducts
+        include Google::Apis::Core::Hashable
+      
+        # The channel the data applies to.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # The country the data applies to.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The destination the data applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # List of item-level issues.
+        # Corresponds to the JSON property `itemLevelIssues`
+        # @return [Array<Google::Apis::ContentV2::AccountStatusItemLevelIssue>]
+        attr_accessor :item_level_issues
+      
+        # Aggregated product statistics.
+        # Corresponds to the JSON property `statistics`
+        # @return [Google::Apis::ContentV2::AccountStatusStatistics]
+        attr_accessor :statistics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @country = args[:country] if args.key?(:country)
+          @destination = args[:destination] if args.key?(:destination)
+          @item_level_issues = args[:item_level_issues] if args.key?(:item_level_issues)
+          @statistics = args[:statistics] if args.key?(:statistics)
+        end
+      end
+      
+      # 
+      class AccountStatusStatistics
+        include Google::Apis::Core::Hashable
+      
+        # Number of active offers.
+        # Corresponds to the JSON property `active`
+        # @return [Fixnum]
+        attr_accessor :active
+      
+        # Number of disapproved offers.
+        # Corresponds to the JSON property `disapproved`
+        # @return [Fixnum]
+        attr_accessor :disapproved
+      
+        # Number of expiring offers.
+        # Corresponds to the JSON property `expiring`
+        # @return [Fixnum]
+        attr_accessor :expiring
+      
+        # Number of pending offers.
+        # Corresponds to the JSON property `pending`
+        # @return [Fixnum]
+        attr_accessor :pending
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @disapproved = args[:disapproved] if args.key?(:disapproved)
+          @expiring = args[:expiring] if args.key?(:expiring)
+          @pending = args[:pending] if args.key?(:pending)
         end
       end
       
@@ -694,7 +842,8 @@ module Google
       class AccountsCustomBatchRequestEntryLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Action to perform for this link.
+        # Action to perform for this link. The "request" action is only available to
+        # select merchants.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -795,7 +944,8 @@ module Google
       class AccountsLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Action to perform for this link.
+        # Action to perform for this link. The "request" action is only available to
+        # select merchants.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -2479,7 +2629,7 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
-        # The quantity of the product that is reserved for sell-on-google ads. Supported
+        # The quantity of the product that is available for selling on Google. Supported
         # only for online products.
         # Corresponds to the JSON property `sellOnGoogleQuantity`
         # @return [Fixnum]
@@ -2705,7 +2855,7 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
-        # The quantity of the product that is reserved for sell-on-google ads. Supported
+        # The quantity of the product that is available for selling on Google. Supported
         # only for online products.
         # Corresponds to the JSON property `sellOnGoogleQuantity`
         # @return [Fixnum]
@@ -2758,23 +2908,25 @@ module Google
         # @return [Array<Google::Apis::ContentV2::InvoiceSummaryAdditionalChargeSummary>]
         attr_accessor :additional_charge_summaries
       
-        # [required] Customer balance on this invoice. A positive amount means the
-        # customer is paying, a negative one means the customer is receiving money. Note:
+        # [required] Customer balance on this invoice. A negative amount means the
+        # customer is paying, a positive one means the customer is receiving money. Note:
         # the sum of merchant_balance, customer_balance and google_balance must always
         # be zero.
+        # Furthermore the absolute value of this amount is expected to be equal to the
+        # sum of product amount and additional charges, minus promotions.
         # Corresponds to the JSON property `customerBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :customer_balance
       
-        # [required] Google balance on this invoice. A positive amount means Google is
-        # paying, a negative one means Google is receiving money. Note: the sum of
+        # [required] Google balance on this invoice. A negative amount means Google is
+        # paying, a positive one means Google is receiving money. Note: the sum of
         # merchant_balance, customer_balance and google_balance must always be zero.
         # Corresponds to the JSON property `googleBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :google_balance
       
-        # [required] Merchant balance on this invoice. A positive amount means the
-        # merchant is paying, a negative one means the merchant is receiving money. Note:
+        # [required] Merchant balance on this invoice. A negative amount means the
+        # merchant is paying, a positive one means the merchant is receiving money. Note:
         # the sum of merchant_balance, customer_balance and google_balance must always
         # be zero.
         # Corresponds to the JSON property `merchantBalance`
@@ -3611,7 +3763,8 @@ module Google
         # @return [String]
         attr_accessor :recipient_name
       
-        # Top-level administrative subdivision of the country (e.g. "CA").
+        # Top-level administrative subdivision of the country. For example, a state like
+        # California ("CA") or a province like Quebec ("QC").
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -4960,9 +5113,7 @@ module Google
       class OrdersCancelLineItemRequest
         include Google::Apis::Core::Hashable
       
-        # Amount to refund for the cancelation. Optional. If not set, Google will
-        # calculate the default based on the price and tax of the items involved. The
-        # amount must not be larger than the net amount left on the order.
+        # Deprecated. Please use amountPretax and amountTax instead.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
@@ -5115,6 +5266,16 @@ module Google
       class OrdersCreateTestOrderRequest
         include Google::Apis::Core::Hashable
       
+        # The  CLDR territory code of the country of the test order to create. Affects
+        # the currency and addresses of orders created via template_name, or the
+        # addresses of orders created via test_order.
+        # Acceptable values are:
+        # - "US"
+        # - "FR"  Defaults to US.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
         # The test order template to use. Specify as an alternative to testOrder as a
         # shortcut for retrieving a template and then creating an order using that
         # template.
@@ -5133,6 +5294,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @country = args[:country] if args.key?(:country)
           @template_name = args[:template_name] if args.key?(:template_name)
           @test_order = args[:test_order] if args.key?(:test_order)
         end
@@ -5329,9 +5491,7 @@ module Google
       class OrdersCustomBatchRequestEntryCancelLineItem
         include Google::Apis::Core::Hashable
       
-        # Amount to refund for the cancelation. Optional. If not set, Google will
-        # calculate the default based on the price and tax of the items involved. The
-        # amount must not be larger than the net amount left on the order.
+        # Deprecated. Please use amountPretax and amountTax instead.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
@@ -5451,7 +5611,7 @@ module Google
       class OrdersCustomBatchRequestEntryRefund
         include Google::Apis::Core::Hashable
       
-        # The amount that is refunded.
+        # Deprecated. Please use amountPretax and amountTax instead.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
@@ -5583,7 +5743,8 @@ module Google
       class OrdersCustomBatchRequestEntryReturnRefundLineItem
         include Google::Apis::Core::Hashable
       
-        # The amount that is refunded. Optional, but if filled then both amountPretax
+        # The amount that is refunded. If omitted, refundless return is assumed (same as
+        # calling returnLineItem method). Optional, but if filled then both amountPretax
         # and amountTax must be set.
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
@@ -5880,8 +6041,9 @@ module Google
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
       
-        # The status of the execution. Only defined if the method is not get or
-        # getByMerchantOrderId and if the request was successful.
+        # The status of the execution. Only defined if
+        # - the request was successful; and
+        # - the method is not get, getByMerchantOrderId, or one of the test methods.
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6088,7 +6250,7 @@ module Google
       class OrdersRefundRequest
         include Google::Apis::Core::Hashable
       
-        # The amount that is refunded.
+        # Deprecated. Please use amountPretax and amountTax instead.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
@@ -6316,7 +6478,8 @@ module Google
       class OrdersReturnRefundLineItemRequest
         include Google::Apis::Core::Hashable
       
-        # The amount that is refunded. Optional, but if filled then both amountPretax
+        # The amount that is refunded. If omitted, refundless return is assumed (same as
+        # calling returnLineItem method). Optional, but if filled then both amountPretax
         # and amountTax must be set.
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
@@ -7220,7 +7383,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # The relative change of the available quantity. Negative for items sold.
+        # The relative change of the available quantity. Negative for items returned.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -7289,7 +7452,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # The relative change of the available quantity. Negative for items sold.
+        # The relative change of the available quantity. Negative for items returned.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -7363,7 +7526,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # The relative change of the available quantity. Negative for items sold.
+        # The relative change of the available quantity. Negative for items returned.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -7572,7 +7735,7 @@ module Google
         # @return [String]
         attr_accessor :age_group
       
-        # Specifies the intended aspects for the product.
+        # Deprecated. Do not use.
         # Corresponds to the JSON property `aspects`
         # @return [Array<Google::Apis::ContentV2::ProductAspect>]
         attr_accessor :aspects
@@ -7859,7 +8022,8 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
-        # The quantity of the product that is reserved for sell-on-google ads.
+        # The quantity of the product that is available for selling on Google. Supported
+        # only for online products.
         # Corresponds to the JSON property `sellOnGoogleQuantity`
         # @return [Fixnum]
         attr_accessor :sell_on_google_quantity
@@ -7909,6 +8073,11 @@ module Google
         # Corresponds to the JSON property `sizes`
         # @return [Array<String>]
         attr_accessor :sizes
+      
+        # The source of the offer, i.e., how the offer was created.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
       
         # The CLDR territory code for the item.
         # Corresponds to the JSON property `targetCountry`
@@ -8021,6 +8190,7 @@ module Google
           @size_system = args[:size_system] if args.key?(:size_system)
           @size_type = args[:size_type] if args.key?(:size_type)
           @sizes = args[:sizes] if args.key?(:sizes)
+          @source = args[:source] if args.key?(:source)
           @target_country = args[:target_country] if args.key?(:target_country)
           @taxes = args[:taxes] if args.key?(:taxes)
           @title = args[:title] if args.key?(:title)

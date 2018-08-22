@@ -46,8 +46,7 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # Code to identify ApiScope (OAuth scope to be precise) to be included in the
-        # OAuth token.
+        # Code to identify the scopes to be included in the OAuth 2.0 access token.
         # See https://developers.google.com/identity/protocols/googlescopes for more
         # information.
         # At least one value required.
@@ -77,6 +76,7 @@ module Google
         attr_accessor :access_token
       
         # Token expiration time.
+        # The expiration time is always set.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time

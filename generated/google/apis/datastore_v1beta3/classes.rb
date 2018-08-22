@@ -552,6 +552,37 @@ module Google
         end
       end
       
+      # Metadata for Index operations.
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata common to all Datastore Admin operations.
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1CommonMetadata]
+        attr_accessor :common
+      
+        # The index resource ID that this operation is acting on.
+        # Corresponds to the JSON property `indexId`
+        # @return [String]
+        attr_accessor :index_id
+      
+        # Measures the progress of a particular metric.
+        # Corresponds to the JSON property `progressEntities`
+        # @return [Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1Progress]
+        attr_accessor :progress_entities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common = args[:common] if args.key?(:common)
+          @index_id = args[:index_id] if args.key?(:index_id)
+          @progress_entities = args[:progress_entities] if args.key?(:progress_entities)
+        end
+      end
+      
       # Measures the progress of a particular metric.
       class GoogleDatastoreAdminV1Progress
         include Google::Apis::Core::Hashable

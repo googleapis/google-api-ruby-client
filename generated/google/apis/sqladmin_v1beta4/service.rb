@@ -20,10 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SqladminV1beta4
-      # Cloud SQL Administration API
+      # Cloud SQL Admin API
       #
-      # Creates and configures Cloud SQL instances, which provide fully-managed MySQL
-      #  databases.
+      # Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your
+      #  instances programmatically.
       #
       # @example
       #    require 'google/apis/sqladmin_v1beta4'
@@ -456,7 +456,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all available database flags for Google Cloud SQL instances.
+        # List all available database flags for Cloud SQL instances.
         # @param [String] database_version
         #   Database version for flag retrieval. Flags are specific to the database
         #   version.
@@ -646,8 +646,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a
-        # MySQL dump file.
+        # Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump
+        # or CSV file.
         # @param [String] project
         #   Project ID of the project that contains the instance to be exported.
         # @param [String] instance
@@ -761,7 +761,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud
+        # Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud
         # Storage.
         # @param [String] project
         #   Project ID of the project that contains the instance.

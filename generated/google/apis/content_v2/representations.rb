@@ -70,6 +70,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountStatusItemLevelIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountStatusProducts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountStatusStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountTax
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1528,6 +1546,8 @@ module Google
           collection :data_quality_issues, as: 'dataQualityIssues', class: Google::Apis::ContentV2::AccountStatusDataQualityIssue, decorator: Google::Apis::ContentV2::AccountStatusDataQualityIssue::Representation
       
           property :kind, as: 'kind'
+          collection :products, as: 'products', class: Google::Apis::ContentV2::AccountStatusProducts, decorator: Google::Apis::ContentV2::AccountStatusProducts::Representation
+      
           property :website_claimed, as: 'websiteClaimed'
         end
       end
@@ -1570,6 +1590,43 @@ module Google
           property :submitted_value, as: 'submittedValue'
           property :title, as: 'title'
           property :value_on_landing_page, as: 'valueOnLandingPage'
+        end
+      end
+      
+      class AccountStatusItemLevelIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :code, as: 'code'
+          property :description, as: 'description'
+          property :detail, as: 'detail'
+          property :documentation, as: 'documentation'
+          property :num_items, :numeric_string => true, as: 'numItems'
+          property :resolution, as: 'resolution'
+          property :servability, as: 'servability'
+        end
+      end
+      
+      class AccountStatusProducts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          property :country, as: 'country'
+          property :destination, as: 'destination'
+          collection :item_level_issues, as: 'itemLevelIssues', class: Google::Apis::ContentV2::AccountStatusItemLevelIssue, decorator: Google::Apis::ContentV2::AccountStatusItemLevelIssue::Representation
+      
+          property :statistics, as: 'statistics', class: Google::Apis::ContentV2::AccountStatusStatistics, decorator: Google::Apis::ContentV2::AccountStatusStatistics::Representation
+      
+        end
+      end
+      
+      class AccountStatusStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, :numeric_string => true, as: 'active'
+          property :disapproved, :numeric_string => true, as: 'disapproved'
+          property :expiring, :numeric_string => true, as: 'expiring'
+          property :pending, :numeric_string => true, as: 'pending'
         end
       end
       
@@ -2918,6 +2975,7 @@ module Google
       class OrdersCreateTestOrderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
           property :template_name, as: 'templateName'
           property :test_order, as: 'testOrder', class: Google::Apis::ContentV2::TestOrder, decorator: Google::Apis::ContentV2::TestOrder::Representation
       
@@ -3673,6 +3731,7 @@ module Google
           property :size_system, as: 'sizeSystem'
           property :size_type, as: 'sizeType'
           collection :sizes, as: 'sizes'
+          property :source, as: 'source'
           property :target_country, as: 'targetCountry'
           collection :taxes, as: 'taxes', class: Google::Apis::ContentV2::ProductTax, decorator: Google::Apis::ContentV2::ProductTax::Representation
       

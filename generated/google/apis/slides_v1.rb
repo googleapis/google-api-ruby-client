@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/slides/
     module SlidesV1
       VERSION = 'V1'
-      REVISION = '20180703'
+      REVISION = '20180807'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

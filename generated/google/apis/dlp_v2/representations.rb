@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2BigQueryField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2BigQueryKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudStorageFileSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2CloudStorageOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2CreateJobTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2LargeCustomDictionaryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,6 +605,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ListJobTriggersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ListStoredInfoTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -808,6 +838,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2StoredInfoType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2StoredInfoTypeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2StoredInfoTypeVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2StoredType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2SummaryResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -904,6 +958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -992,6 +1052,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2BigQueryField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
+          property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2BigQueryKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,6 +1077,7 @@ module Google
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
           property :rows_limit, :numeric_string => true, as: 'rowsLimit'
+          property :rows_limit_percent, as: 'rowsLimitPercent'
           property :sample_method, as: 'sampleMethod'
           property :table_reference, as: 'tableReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
@@ -1113,10 +1184,18 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CloudStorageFileSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
       class GooglePrivacyDlpV2CloudStorageOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bytes_limit_per_file, :numeric_string => true, as: 'bytesLimitPerFile'
+          property :bytes_limit_per_file_percent, as: 'bytesLimitPerFilePercent'
           property :file_set, as: 'fileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet::Representation
       
           collection :file_types, as: 'fileTypes'
@@ -1224,6 +1303,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig::Representation
+      
+          property :stored_info_type_id, as: 'storedInfoTypeId'
+        end
+      end
+      
       class GooglePrivacyDlpV2CryptoHashConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1270,6 +1358,8 @@ module Google
       
           property :likelihood, as: 'likelihood'
           property :regex, as: 'regex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
+      
+          property :stored_type, as: 'storedType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType::Representation
       
           property :surrogate_type, as: 'surrogateType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType::Representation
       
@@ -1868,6 +1958,18 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2LargeCustomDictionaryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_field, as: 'bigQueryField', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryField, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryField::Representation
+      
+          property :cloud_storage_file_set, as: 'cloudStorageFileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageFileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageFileSet::Representation
+      
+          property :output_path, as: 'outputPath', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1917,6 +2019,15 @@ module Google
           collection :job_triggers, as: 'jobTriggers', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GooglePrivacyDlpV2ListStoredInfoTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :stored_info_types, as: 'storedInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+      
         end
       end
       
@@ -2293,6 +2404,47 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2StoredInfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion::Representation
+      
+          property :name, as: 'name'
+          collection :pending_versions, as: 'pendingVersions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2StoredInfoTypeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :large_custom_dictionary, as: 'largeCustomDictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2StoredInfoTypeVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GooglePrivacyDlpV2StoredType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+        end
+      end
+      
       class GooglePrivacyDlpV2SummaryResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2435,6 +2587,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_trigger, as: 'jobTrigger', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig::Representation
       
           property :update_mask, as: 'updateMask'
         end

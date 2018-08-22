@@ -1362,6 +1362,13 @@ module Google
         # @return [String]
         attr_accessor :put
       
+        # Optional. The name of the response field whose value is mapped to the HTTP
+        # body of response. Other response fields are ignored. When
+        # not set, the response message will be used as HTTP body of response.
+        # Corresponds to the JSON property `responseBody`
+        # @return [String]
+        attr_accessor :response_body
+      
         # Selects methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -1384,6 +1391,7 @@ module Google
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
+          @response_body = args[:response_body] if args.key?(:response_body)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -1817,10 +1825,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not
-        # URL-encoded.  All user-defined custom metric types have the DNS name
-        # `custom.googleapis.com`.  Metric types should use a natural hierarchical
-        # grouping. For example:
+        # URL-encoded.  All user-defined metric types have the DNS name
+        # `custom.googleapis.com` or `external.googleapis.com`.  Metric types should
+        # use a natural hierarchical grouping. For example:
         # "custom.googleapis.com/invoice/paid/amount"
+        # "external.googleapis.com/prometheus/up"
         # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]

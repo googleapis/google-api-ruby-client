@@ -112,7 +112,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldMetadataProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeographicDivision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InternalFieldMetadataProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InternalSourceSummaryProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LivegraphBacktraceRecordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LivegraphBacktraceRecordInfoExpInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PointProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PollingLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +179,12 @@ module Google
       end
       
       class PostalAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Provenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +215,18 @@ module Google
       end
       
       class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreetSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreetSegmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -373,12 +433,75 @@ module Google
         end
       end
       
+      class FieldMetadataProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :internal, as: 'internal', class: Google::Apis::CivicinfoV2::InternalFieldMetadataProto, decorator: Google::Apis::CivicinfoV2::InternalFieldMetadataProto::Representation
+      
+        end
+      end
+      
       class GeographicDivision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :also_known_as, as: 'alsoKnownAs'
           property :name, as: 'name'
           collection :office_indices, as: 'officeIndices'
+        end
+      end
+      
+      class InternalFieldMetadataProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_auto, as: 'isAuto'
+          property :source_summary, as: 'sourceSummary', class: Google::Apis::CivicinfoV2::InternalSourceSummaryProto, decorator: Google::Apis::CivicinfoV2::InternalSourceSummaryProto::Representation
+      
+        end
+      end
+      
+      class InternalSourceSummaryProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :provider, as: 'provider'
+        end
+      end
+      
+      class LivegraphBacktraceRecordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_publish_msec, :numeric_string => true, as: 'dataSourcePublishMsec'
+          property :exp_id, as: 'expId'
+          property :exp_info, as: 'expInfo', class: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo, decorator: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo::Representation
+      
+          property :is_recon, as: 'isRecon'
+          property :is_wlm_throttled, as: 'isWlmThrottled'
+          property :number_of_triples, :numeric_string => true, as: 'numberOfTriples'
+          property :priority, as: 'priority'
+          property :process, as: 'process'
+          property :proxy_receive_msec, :numeric_string => true, as: 'proxyReceiveMsec'
+          property :proxy_sent_msec, :numeric_string => true, as: 'proxySentMsec'
+          property :record_id, as: 'recordId'
+          property :should_monitor_latency, as: 'shouldMonitorLatency'
+          property :subscriber_receive_msec, :numeric_string => true, as: 'subscriberReceiveMsec'
+          property :topic_build_finish_msec, :numeric_string => true, as: 'topicBuildFinishMsec'
+          property :topic_build_start_msec, :numeric_string => true, as: 'topicBuildStartMsec'
+          property :version, as: 'version'
+        end
+      end
+      
+      class LivegraphBacktraceRecordInfoExpInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deleted_ins, as: 'deletedIns'
+        end
+      end
+      
+      class MessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_message_set_ext, as: 'recordMessageSetExt', class: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo, decorator: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo::Representation
+      
         end
       end
       
@@ -408,6 +531,18 @@ module Google
           collection :phones, as: 'phones'
           property :photo_url, as: 'photoUrl'
           collection :urls, as: 'urls'
+        end
+      end
+      
+      class PointProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lat_e7, as: 'latE7'
+          property :lng_e7, as: 'lngE7'
+          property :metadata, as: 'metadata', class: Google::Apis::CivicinfoV2::FieldMetadataProto, decorator: Google::Apis::CivicinfoV2::FieldMetadataProto::Representation
+      
+          property :temporary_data, as: 'temporaryData', class: Google::Apis::CivicinfoV2::MessageSet, decorator: Google::Apis::CivicinfoV2::MessageSet::Representation
+      
         end
       end
       
@@ -451,6 +586,23 @@ module Google
           property :sub_premise_name, as: 'subPremiseName'
           property :thoroughfare_name, as: 'thoroughfareName'
           property :thoroughfare_number, as: 'thoroughfareNumber'
+        end
+      end
+      
+      class Provenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collided_segment_source, as: 'collidedSegmentSource', class: Google::Apis::CivicinfoV2::StreetSegmentList, decorator: Google::Apis::CivicinfoV2::StreetSegmentList::Representation
+      
+          property :ctcl_contest_uuid, as: 'ctclContestUuid'
+          property :ctcl_office_uuid, as: 'ctclOfficeUuid'
+          property :dataset_id, :numeric_string => true, as: 'datasetId'
+          property :precinct_id, :numeric_string => true, as: 'precinctId'
+          property :precinct_split_id, :numeric_string => true, as: 'precinctSplitId'
+          property :ts_street_segment_id, as: 'tsStreetSegmentId'
+          property :vip5_precinct_id, as: 'vip5PrecinctId'
+          property :vip5_street_segment_id, as: 'vip5StreetSegmentId'
+          property :vip_street_segment_id, :numeric_string => true, as: 'vipStreetSegmentId'
         end
       end
       
@@ -510,6 +662,67 @@ module Google
         end
       end
       
+      class StreetSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :administration_region_ids, as: 'administrationRegionIds'
+          property :before_geocode_id, as: 'beforeGeocodeId'
+          property :catalist_unique_precinct_code, as: 'catalistUniquePrecinctCode'
+          property :city, as: 'city'
+          property :city_council_district, as: 'cityCouncilDistrict'
+          property :congressional_district, as: 'congressionalDistrict'
+          collection :contest_ids, as: 'contestIds'
+          property :county_council_district, as: 'countyCouncilDistrict'
+          property :county_fips, as: 'countyFips'
+          property :dataset_id, :numeric_string => true, as: 'datasetId'
+          collection :early_vote_site_by_ids, as: 'earlyVoteSiteByIds'
+          property :end_house_number, :numeric_string => true, as: 'endHouseNumber'
+          property :geocoded_point, as: 'geocodedPoint', class: Google::Apis::CivicinfoV2::PointProto, decorator: Google::Apis::CivicinfoV2::PointProto::Representation
+      
+          collection :geographic_division_ocd_ids, as: 'geographicDivisionOcdIds'
+          property :id, as: 'id'
+          property :judicial_district, as: 'judicialDistrict'
+          property :mail_only, as: 'mailOnly'
+          property :municipal_district, as: 'municipalDistrict'
+          property :ncoa_address, as: 'ncoaAddress'
+          collection :odd_or_evens, as: 'oddOrEvens'
+          property :original_id, as: 'originalId'
+          collection :pollinglocation_by_ids, as: 'pollinglocationByIds'
+          property :precinct_name, as: 'precinctName'
+          property :precinct_ocd_id, as: 'precinctOcdId'
+          collection :provenances, as: 'provenances', class: Google::Apis::CivicinfoV2::Provenance, decorator: Google::Apis::CivicinfoV2::Provenance::Representation
+      
+          property :published, as: 'published'
+          property :school_district, as: 'schoolDistrict'
+          property :start_house_number, :numeric_string => true, as: 'startHouseNumber'
+          property :start_lat_e7, :numeric_string => true, as: 'startLatE7'
+          property :start_lng_e7, :numeric_string => true, as: 'startLngE7'
+          property :state, as: 'state'
+          property :state_house_district, as: 'stateHouseDistrict'
+          property :state_senate_district, as: 'stateSenateDistrict'
+          property :street_name, as: 'streetName'
+          property :sub_administrative_area_name, as: 'subAdministrativeAreaName'
+          property :surrogate_id, :numeric_string => true, as: 'surrogateId'
+          property :targetsmart_unique_precinct_code, as: 'targetsmartUniquePrecinctCode'
+          property :township_district, as: 'townshipDistrict'
+          property :unit_number, as: 'unitNumber'
+          property :unit_type, as: 'unitType'
+          property :van_precinct_code, as: 'vanPrecinctCode'
+          collection :voter_geographic_division_ocd_ids, as: 'voterGeographicDivisionOcdIds'
+          property :ward_district, as: 'wardDistrict'
+          property :wildcard, as: 'wildcard'
+          property :zip, as: 'zip'
+        end
+      end
+      
+      class StreetSegmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :segments, as: 'segments', class: Google::Apis::CivicinfoV2::StreetSegment, decorator: Google::Apis::CivicinfoV2::StreetSegment::Representation
+      
+        end
+      end
+      
       class VoterInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -540,6 +753,8 @@ module Google
           collection :polling_locations, as: 'pollingLocations', class: Google::Apis::CivicinfoV2::PollingLocation, decorator: Google::Apis::CivicinfoV2::PollingLocation::Representation
       
           property :precinct_id, as: 'precinctId'
+          collection :segments, as: 'segments', class: Google::Apis::CivicinfoV2::StreetSegment, decorator: Google::Apis::CivicinfoV2::StreetSegment::Representation
+      
           collection :state, as: 'state', class: Google::Apis::CivicinfoV2::AdministrationRegion, decorator: Google::Apis::CivicinfoV2::AdministrationRegion::Representation
       
         end

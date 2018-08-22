@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbuildV1
-      # Cloud Container Builder
+      # Cloud Build API
       #
-      # Builds container images in the cloud.
+      # Creates and manages builds on Google Cloud Platform.
       #
       # @example
       #    require 'google/apis/cloudbuild_v1'
@@ -30,7 +30,7 @@ module Google
       #    Cloudbuild = Google::Apis::CloudbuildV1 # Alias the module
       #    service = Cloudbuild::CloudBuildService.new
       #
-      # @see https://cloud.google.com/container-builder/docs/
+      # @see https://cloud.google.com/cloud-build/docs/
       class CloudBuildService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

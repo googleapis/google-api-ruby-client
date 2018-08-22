@@ -136,6 +136,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDatastoreAdminV1Index
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1IndexedProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1ListIndexesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -540,6 +564,47 @@ module Google
       
           property :input_url, as: 'inputUrl'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1Index
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ancestor, as: 'ancestor'
+          property :index_id, as: 'indexId'
+          property :kind, as: 'kind'
+          property :project_id, as: 'projectId'
+          collection :properties, as: 'properties', class: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1IndexedProperty, decorator: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1IndexedProperty::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1CommonMetadata, decorator: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1CommonMetadata::Representation
+      
+          property :index_id, as: 'indexId'
+          property :progress_entities, as: 'progressEntities', class: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Progress::Representation
+      
+        end
+      end
+      
+      class GoogleDatastoreAdminV1IndexedProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direction, as: 'direction'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1ListIndexesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :indexes, as: 'indexes', class: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index, decorator: Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

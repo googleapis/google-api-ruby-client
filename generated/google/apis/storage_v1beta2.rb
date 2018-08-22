@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/storage/docs/json_api/
     module StorageV1beta2
       VERSION = 'V1beta2'
-      REVISION = ''
+      REVISION = '20180620'
 
       # Manage your data and permissions in Google Cloud Storage
       AUTH_DEVSTORAGE_FULL_CONTROL = 'https://www.googleapis.com/auth/devstorage.full_control'

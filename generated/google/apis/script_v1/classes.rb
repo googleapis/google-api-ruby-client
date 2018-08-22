@@ -96,16 +96,6 @@ module Google
         # @return [Array<Google::Apis::ScriptV1::EntryPoint>]
         attr_accessor :entry_points
       
-        # A set of functions. No duplicates are permitted.
-        # Corresponds to the JSON property `functionSet`
-        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeFunctionSet]
-        attr_accessor :function_set
-      
-        # A set of scopes. No duplicates are permitted.
-        # Corresponds to the JSON property `scopeSet`
-        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeScopeSet]
-        attr_accessor :scope_set
-      
         # Last modified date time stamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -120,8 +110,6 @@ module Google
           @deployment_config = args[:deployment_config] if args.key?(:deployment_config)
           @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @entry_points = args[:entry_points] if args.key?(:entry_points)
-          @function_set = args[:function_set] if args.key?(:function_set)
-          @scope_set = args[:scope_set] if args.key?(:scope_set)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -534,7 +522,7 @@ module Google
       # Representation of a single script process execution that was started from
       # the script editor, a trigger, an application, or using the Apps Script API.
       # This is distinct from the `Operation`
-      # resource, which only represents exeuctions started via the Apps Script API.
+      # resource, which only represents executions started via the Apps Script API.
       class GoogleAppsScriptTypeProcess
         include Google::Apis::Core::Hashable
       
@@ -592,50 +580,6 @@ module Google
           @project_name = args[:project_name] if args.key?(:project_name)
           @start_time = args[:start_time] if args.key?(:start_time)
           @user_access_level = args[:user_access_level] if args.key?(:user_access_level)
-        end
-      end
-      
-      # Represents an authorization scope.
-      class GoogleAppsScriptTypeScope
-        include Google::Apis::Core::Hashable
-      
-        # Who authorized the scope.
-        # Corresponds to the JSON property `authorizer`
-        # @return [String]
-        attr_accessor :authorizer
-      
-        # The scope's identifying string.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authorizer = args[:authorizer] if args.key?(:authorizer)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # A set of scopes. No duplicates are permitted.
-      class GoogleAppsScriptTypeScopeSet
-        include Google::Apis::Core::Hashable
-      
-        # List of scope values in the set.
-        # Corresponds to the JSON property `values`
-        # @return [Array<Google::Apis::ScriptV1::GoogleAppsScriptTypeScope>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @values = args[:values] if args.key?(:values)
         end
       end
       

@@ -693,7 +693,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
         # export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -732,7 +733,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
         # import\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -819,6 +821,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the action associated with the intent.
+        # Note: The action name must not contain whitespaces.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -931,7 +934,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentTrainingPhrase>]
         attr_accessor :training_phrases
       
-        # Required. Indicates whether webhooks are enabled for the intent.
+        # Optional. Indicates whether webhooks are enabled for the intent.
         # Corresponds to the JSON property `webhookState`
         # @return [String]
         attr_accessor :webhook_state
@@ -1670,7 +1673,7 @@ module Google
       class GoogleCloudDialogflowV2IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of this training phrase.
+        # Output only. The unique identifier of this training phrase.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1864,8 +1867,18 @@ module Google
       class GoogleCloudDialogflowV2OriginalDetectIntentRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. This field is set to the value of `QueryParameters.payload` field
-        # passed in the request.
+        # Optional. This field is set to the value of the `QueryParameters.payload`
+        # field passed in the request. Some integrations that query a Dialogflow
+        # agent may provide additional information in the payload.
+        # In particular for the Telephony Gateway this field has the form:
+        # <pre>`
+        # "telephony": `
+        # "caller_id": "+18558363987"
+        # `
+        # `</pre>
+        # Note: The caller ID field (`caller_id`) will be redacted for Standard
+        # Edition agents and populated with the caller ID in [E.164
+        # format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -2133,7 +2146,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
         # restore\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -2596,7 +2610,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
         # agent:export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -2632,6 +2647,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the action associated with the intent.
+        # Note: The action name must not contain whitespaces.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -2646,6 +2662,14 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. Indicates that this intent ends an interaction. Some integrations
+        # (e.g., Actions on Google or Dialogflow phone gateway) use this information
+        # to close interaction with an end user. Default is false.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Boolean]
+        attr_accessor :end_interaction
+        alias_method :end_interaction?, :end_interaction
       
         # Optional. The collection of event names that trigger the intent.
         # If the collection of input contexts is not empty, all of the contexts must
@@ -2760,7 +2784,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentTrainingPhrase>]
         attr_accessor :training_phrases
       
-        # Required. Indicates whether webhooks are enabled for the intent.
+        # Optional. Indicates whether webhooks are enabled for the intent.
         # Corresponds to the JSON property `webhookState`
         # @return [String]
         attr_accessor :webhook_state
@@ -2774,6 +2798,7 @@ module Google
           @action = args[:action] if args.key?(:action)
           @default_response_platforms = args[:default_response_platforms] if args.key?(:default_response_platforms)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @events = args[:events] if args.key?(:events)
           @followup_intent_info = args[:followup_intent_info] if args.key?(:followup_intent_info)
           @input_context_names = args[:input_context_names] if args.key?(:input_context_names)
@@ -2885,6 +2910,25 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSuggestions]
         attr_accessor :suggestions
       
+        # Plays audio from a file in Telephony Gateway.
+        # Corresponds to the JSON property `telephonyPlayAudio`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio]
+        attr_accessor :telephony_play_audio
+      
+        # Synthesizes speech and plays back the synthesized audio to the caller in
+        # Telephony Gateway.
+        # Telephony Gateway takes the synthesizer settings from
+        # `DetectIntentResponse.output_audio_config` which can either be set
+        # at request-level or can come from the agent-level synthesizer config.
+        # Corresponds to the JSON property `telephonySynthesizeSpeech`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech]
+        attr_accessor :telephony_synthesize_speech
+      
+        # Transfers the call in Telephony Gateway.
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
         # The text response message.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageText]
@@ -2907,6 +2951,9 @@ module Google
           @quick_replies = args[:quick_replies] if args.key?(:quick_replies)
           @simple_responses = args[:simple_responses] if args.key?(:simple_responses)
           @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @telephony_play_audio = args[:telephony_play_audio] if args.key?(:telephony_play_audio)
+          @telephony_synthesize_speech = args[:telephony_synthesize_speech] if args.key?(:telephony_synthesize_speech)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -3382,6 +3429,86 @@ module Google
         end
       end
       
+      # Plays audio from a file in Telephony Gateway.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI to a Google Cloud Storage object containing the audio to
+        # play, e.g., "gs://bucket/object". The object must contain a single
+        # channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz.
+        # This object must be readable by the `service-<Project
+        # Number>@gcp-sa-dialogflow.iam.gserviceaccount.com` service account
+        # where <Project Number> is the number of the Telephony Gateway project
+        # (usually the same as the Dialogflow agent project). If the Google Cloud
+        # Storage bucket is in the Telephony Gateway project, this permission is
+        # added by default when enabling the Dialogflow V2 API.
+        # For audio from other sources, consider using the
+        # `TelephonySynthesizeSpeech` message with SSML.
+        # Corresponds to the JSON property `audioUri`
+        # @return [String]
+        attr_accessor :audio_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+        end
+      end
+      
+      # Synthesizes speech and plays back the synthesized audio to the caller in
+      # Telephony Gateway.
+      # Telephony Gateway takes the synthesizer settings from
+      # `DetectIntentResponse.output_audio_config` which can either be set
+      # at request-level or can come from the agent-level synthesizer config.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
+        include Google::Apis::Core::Hashable
+      
+        # The SSML to be synthesized. For more information, see
+        # [SSML](https://developers.google.com/actions/reference/ssml).
+        # Corresponds to the JSON property `ssml`
+        # @return [String]
+        attr_accessor :ssml
+      
+        # The raw text to be synthesized.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssml = args[:ssml] if args.key?(:ssml)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Transfers the call in Telephony Gateway.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The phone number to transfer the call to
+        # in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        # We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
       # The text response message.
       class GoogleCloudDialogflowV2beta1IntentMessageText
         include Google::Apis::Core::Hashable
@@ -3481,7 +3608,7 @@ module Google
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of this training phrase.
+        # Output only. The unique identifier of this training phrase.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3562,6 +3689,84 @@ module Google
         end
       end
       
+      # Represents the result of querying a Knowledge base.
+      class GoogleCloudDialogflowV2beta1KnowledgeAnswers
+        include Google::Apis::Core::Hashable
+      
+        # A list of answers from Knowledge Connector.
+        # Corresponds to the JSON property `answers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>]
+        attr_accessor :answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answers = args[:answers] if args.key?(:answers)
+        end
+      end
+      
+      # An answer from Knowledge Connector.
+      class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` knowledge base document that answers
+        # this conversational query.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # The corresponding FAQ question if the answer was extracted from a FAQ
+        # Document, empty otherwise.
+        # Corresponds to the JSON property `faqQuestion`
+        # @return [String]
+        attr_accessor :faq_question
+      
+        # The system's confidence score that this Knowledge answer is a good match
+        # for this converstational query, range from 0.0 (completely uncertain)
+        # to 1.0 (completely certain).
+        # Note: The confidence score is likely to vary somewhat (possibly even for
+        # identical requests), as the underlying model is under constant
+        # improvement, we may deprecate it in the future. We recommend using
+        # `match_confidence_level` which should be generally more stable.
+        # Corresponds to the JSON property `matchConfidence`
+        # @return [Float]
+        attr_accessor :match_confidence
+      
+        # The system's confidence level that this knowledge answer is a good match
+        # for this conversational query.
+        # NOTE: The confidence level for a given `<query, answer>` pair may change
+        # without notice, as it depends on models that are constantly being
+        # improved. However, it will change less frequently than the confidence
+        # score below, and should be preferred for referencing the quality of an
+        # answer.
+        # Corresponds to the JSON property `matchConfidenceLevel`
+        # @return [String]
+        attr_accessor :match_confidence_level
+      
+        # Indicates which Knowledge Document this answer was extracted from.
+        # Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        # ID>/documents/<Document ID>`.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @faq_question = args[:faq_question] if args.key?(:faq_question)
+          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
+          @match_confidence_level = args[:match_confidence_level] if args.key?(:match_confidence_level)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Metadata in google::longrunning::Operation for Knowledge operations.
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3586,8 +3791,18 @@ module Google
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. This field is set to the value of `QueryParameters.payload` field
-        # passed in the request.
+        # Optional. This field is set to the value of the `QueryParameters.payload`
+        # field passed in the request. Some integrations that query a Dialogflow
+        # agent may provide additional information in the payload.
+        # In particular for the Telephony Gateway this field has the form:
+        # <pre>`
+        # "telephony": `
+        # "caller_id": "+18558363987"
+        # `
+        # `</pre>
+        # Note: The caller ID field (`caller_id`) will be redacted for Standard
+        # Edition agents and populated with the caller ID in [E.164
+        # format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3666,6 +3881,11 @@ module Google
         # @return [Float]
         attr_accessor :intent_detection_confidence
       
+        # Represents the result of querying a Knowledge base.
+        # Corresponds to the JSON property `knowledgeAnswers`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1KnowledgeAnswers]
+        attr_accessor :knowledge_answers
+      
         # The language that was triggered during intent detection.
         # See [Language Support](https://dialogflow.com/docs/reference/language)
         # for a list of the currently supported language codes.
@@ -3696,6 +3916,12 @@ module Google
         # Corresponds to the JSON property `queryText`
         # @return [String]
         attr_accessor :query_text
+      
+        # The result of sentiment analysis as configured by
+        # `sentiment_analysis_request_config`.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
       
         # The Speech recognition confidence between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
@@ -3734,19 +3960,75 @@ module Google
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
           @intent = args[:intent] if args.key?(:intent)
           @intent_detection_confidence = args[:intent_detection_confidence] if args.key?(:intent_detection_confidence)
+          @knowledge_answers = args[:knowledge_answers] if args.key?(:knowledge_answers)
           @language_code = args[:language_code] if args.key?(:language_code)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @parameters = args[:parameters] if args.key?(:parameters)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
         end
       end
       
+      # The sentiment, such as positive/negative feeling or association, for a unit
+      # of analysis, such as the query text.
+      class GoogleCloudDialogflowV2beta1Sentiment
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+        # sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # The result of sentiment analysis as configured by
+      # `sentiment_analysis_request_config`.
+      class GoogleCloudDialogflowV2beta1SentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # The sentiment, such as positive/negative feeling or association, for a unit
+        # of analysis, such as the query text.
+        # Corresponds to the JSON property `queryTextSentiment`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment]
+        attr_accessor :query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+        end
+      end
+      
       # The request message for a webhook call.
       class GoogleCloudDialogflowV2beta1WebhookRequest
         include Google::Apis::Core::Hashable
+      
+        # Alternative query results from KnowledgeService.
+        # Corresponds to the JSON property `alternativeQueryResults`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1QueryResult>]
+        attr_accessor :alternative_query_results
       
         # Represents the contents of the original request that was passed to
         # the `[Streaming]DetectIntent` call.
@@ -3778,6 +4060,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_query_results = args[:alternative_query_results] if args.key?(:alternative_query_results)
           @original_detect_intent_request = args[:original_detect_intent_request] if args.key?(:original_detect_intent_request)
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
@@ -3788,6 +4071,14 @@ module Google
       # The response message for a webhook call.
       class GoogleCloudDialogflowV2beta1WebhookResponse
         include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates that this intent ends an interaction. Some integrations
+        # (e.g., Actions on Google or Dialogflow phone gateway) use this information
+        # to close interaction with an end user. Default is false.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Boolean]
+        attr_accessor :end_interaction
+        alias_method :end_interaction?, :end_interaction
       
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `<event: ` name: “welcome_event”,
@@ -3853,6 +4144,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @followup_event_input = args[:followup_event_input] if args.key?(:followup_event_input)
           @fulfillment_messages = args[:fulfillment_messages] if args.key?(:fulfillment_messages)
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)

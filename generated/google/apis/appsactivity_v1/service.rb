@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppsactivityV1
-      # G Suite Activity API
+      # Drive Activity API
       #
       # Provides a historical view of activity.
       #

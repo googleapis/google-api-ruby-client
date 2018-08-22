@@ -22,7 +22,7 @@ module Google
     module CloudprofilerV2
       # Stackdriver Profiler API
       #
-      # Allows Google services manage the continuous profiling information.
+      # Manages continuous profiling information.
       #
       # @example
       #    require 'google/apis/cloudprofiler_v2'
@@ -30,7 +30,7 @@ module Google
       #    Cloudprofiler = Google::Apis::CloudprofilerV2 # Alias the module
       #    service = Cloudprofiler::CloudProfilerService.new
       #
-      # @see https://cloud.google.com/
+      # @see https://cloud.google.com/profiler/
       class CloudProfilerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

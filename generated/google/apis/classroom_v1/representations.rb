@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CourseWorkChangesInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -511,6 +517,13 @@ module Google
         end
       end
       
+      class CourseWorkChangesInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -549,6 +562,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :course_roster_changes_info, as: 'courseRosterChangesInfo', class: Google::Apis::ClassroomV1::CourseRosterChangesInfo, decorator: Google::Apis::ClassroomV1::CourseRosterChangesInfo::Representation
+      
+          property :course_work_changes_info, as: 'courseWorkChangesInfo', class: Google::Apis::ClassroomV1::CourseWorkChangesInfo, decorator: Google::Apis::ClassroomV1::CourseWorkChangesInfo::Representation
       
           property :feed_type, as: 'feedType'
         end

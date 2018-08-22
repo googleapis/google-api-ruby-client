@@ -609,6 +609,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ServicemanagementV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -629,7 +637,6 @@ module Google
       
         # Role that is assigned to `members`.
         # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -640,6 +647,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -1419,6 +1427,53 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # A single field of a message type.
       class Field
         include Google::Apis::Core::Hashable
@@ -1858,6 +1913,13 @@ module Google
         # @return [String]
         attr_accessor :put
       
+        # Optional. The name of the response field whose value is mapped to the HTTP
+        # body of response. Other response fields are ignored. When
+        # not set, the response message will be used as HTTP body of response.
+        # Corresponds to the JSON property `responseBody`
+        # @return [String]
+        attr_accessor :response_body
+      
         # Selects methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -1880,6 +1942,7 @@ module Google
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
+          @response_body = args[:response_body] if args.key?(:response_body)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -2414,10 +2477,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not
-        # URL-encoded.  All user-defined custom metric types have the DNS name
-        # `custom.googleapis.com`.  Metric types should use a natural hierarchical
-        # grouping. For example:
+        # URL-encoded.  All user-defined metric types have the DNS name
+        # `custom.googleapis.com` or `external.googleapis.com`.  Metric types should
+        # use a natural hierarchical grouping. For example:
         # "custom.googleapis.com/invoice/paid/amount"
+        # "external.googleapis.com/prometheus/up"
         # "appengine.googleapis.com/http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]

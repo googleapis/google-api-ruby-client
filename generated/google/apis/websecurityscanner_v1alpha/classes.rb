@@ -97,7 +97,7 @@ module Google
         # Input only.
         # Required.
         # The password of the custom account. The credential is stored encrypted
-        # and not returned in any response.
+        # and not returned in any response nor included in audit logs.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -223,6 +223,11 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1alpha::ViolatingResource]
         attr_accessor :violating_resource
       
+        # Information about vulnerable or missing HTTP Headers.
+        # Corresponds to the JSON property `vulnerableHeaders`
+        # @return [Google::Apis::WebsecurityscannerV1alpha::VulnerableHeaders]
+        attr_accessor :vulnerable_headers
+      
         # Information about vulnerable request parameters.
         # Corresponds to the JSON property `vulnerableParameters`
         # @return [Google::Apis::WebsecurityscannerV1alpha::VulnerableParameters]
@@ -251,6 +256,7 @@ module Google
           @reproduction_url = args[:reproduction_url] if args.key?(:reproduction_url)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
           @violating_resource = args[:violating_resource] if args.key?(:violating_resource)
+          @vulnerable_headers = args[:vulnerable_headers] if args.key?(:vulnerable_headers)
           @vulnerable_parameters = args[:vulnerable_parameters] if args.key?(:vulnerable_parameters)
           @xss = args[:xss] if args.key?(:xss)
         end
@@ -291,7 +297,7 @@ module Google
         # Input only.
         # Required.
         # The password of the Google account. The credential is stored encrypted
-        # and not returned in any response.
+        # and not returned in any response nor included in audit logs.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -310,6 +316,31 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Describes a HTTP Header.
+      class Header
+        include Google::Apis::Core::Hashable
+      
+        # Header name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -709,6 +740,31 @@ module Google
         def update!(**args)
           @content_type = args[:content_type] if args.key?(:content_type)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
+      # Information about vulnerable or missing HTTP Headers.
+      class VulnerableHeaders
+        include Google::Apis::Core::Hashable
+      
+        # List of vulnerable headers.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::WebsecurityscannerV1alpha::Header>]
+        attr_accessor :headers
+      
+        # List of missing headers.
+        # Corresponds to the JSON property `missingHeaders`
+        # @return [Array<Google::Apis::WebsecurityscannerV1alpha::Header>]
+        attr_accessor :missing_headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @missing_headers = args[:missing_headers] if args.key?(:missing_headers)
         end
       end
       

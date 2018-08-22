@@ -22,7 +22,7 @@ module Google
     module LoggingV2beta1
       # Stackdriver Logging API
       #
-      # Writes log entries and manages your Stackdriver Logging configuration.
+      # Writes log entries and manages your Logging configuration.
       #
       # @example
       #    require 'google/apis/logging_v2beta1'
@@ -132,8 +132,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists log entries. Use this method to retrieve log entries from Stackdriver
-        # Logging. For ways to export log entries, see Exporting Logs.
+        # Lists log entries. Use this method to retrieve log entries from Logging. For
+        # ways to export log entries, see Exporting Logs.
         # @param [Google::Apis::LoggingV2beta1::ListLogEntriesRequest] list_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -163,12 +163,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Writes log entries to Stackdriver Logging. This API method is the only way to
-        # send log entries to Stackdriver Logging. This method is used, directly or
-        # indirectly, by the Stackdriver Logging agent (fluentd) and all logging
-        # libraries configured to use Stackdriver Logging. A single request may contain
-        # log entries for a maximum of 1000 different resources (projects, organizations,
-        # billing accounts or folders)
+        # Writes log entries to Logging. This API method is the only way to send log
+        # entries to Logging. This method is used, directly or indirectly, by the
+        # Logging agent (fluentd) and all logging libraries configured to use Logging. A
+        # single request may contain log entries for a maximum of 1000 different
+        # resources (projects, organizations, billing accounts or folders)
         # @param [Google::Apis::LoggingV2beta1::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -198,7 +197,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the descriptors for monitored resource types used by Stackdriver Logging.
+        # Lists the descriptors for monitored resource types used by Logging.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -598,12 +597,12 @@ module Google
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Stackdriver Logging before the addition of
-        #   writer identities to this API. The sink's destination must be in the same
-        #   project as the sink itself.If this field is set to true, or if the sink is
-        #   owned by a non-project resource such as an organization, then the value of
-        #   writer_identity will be a unique service account used only for exports from
-        #   the new sink. For more information, see writer_identity in LogSink.
+        #   group or service account used by Logging before the addition of writer
+        #   identities to this API. The sink's destination must be in the same project as
+        #   the sink itself.If this field is set to true, or if the sink is owned by a non-
+        #   project resource such as an organization, then the value of writer_identity
+        #   will be a unique service account used only for exports from the new sink. For
+        #   more information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

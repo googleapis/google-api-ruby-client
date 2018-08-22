@@ -745,7 +745,10 @@ module Google
       class CreateJobRequest
         include Google::Apis::Core::Hashable
       
-        # If set to `true`, the service will not attempt to resolve a
+        # Deprecated. Please use processing_options. This flag is ignored if
+        # processing_options is set.
+        # Optional.
+        # If set to `true`, the service does not attempt to resolve a
         # more precise address for the job.
         # Corresponds to the JSON property `disableStreetAddressResolution`
         # @return [Boolean]
@@ -759,6 +762,12 @@ module Google
         # @return [Google::Apis::JobsV2::Job]
         attr_accessor :job
       
+        # Input only.
+        # Options for job processing.
+        # Corresponds to the JSON property `processingOptions`
+        # @return [Google::Apis::JobsV2::JobProcessingOptions]
+        attr_accessor :processing_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -767,6 +776,7 @@ module Google
         def update!(**args)
           @disable_street_address_resolution = args[:disable_street_address_resolution] if args.key?(:disable_street_address_resolution)
           @job = args[:job] if args.key?(:job)
+          @processing_options = args[:processing_options] if args.key?(:processing_options)
         end
       end
       
@@ -1378,7 +1388,7 @@ module Google
         # against and returned.
         # Histogram response times can be slow, and counts
         # can be approximations. This call may be temporarily or permanently removed
-        # prior to the production release of Cloud Job Discovery.
+        # prior to the production release of Cloud Talent Solution.
         # Corresponds to the JSON property `searchTypes`
         # @return [Array<String>]
         attr_accessor :search_types
@@ -1750,8 +1760,7 @@ module Google
         # structured rather than custom fields is recommended.
         # Data stored in these custom fields fields are indexed and
         # searched against by keyword searches (see
-        # SearchJobsRequest.custom_field_filters][]). To list jobs by
-        # custom fields, see ListCustomFieldsRequest.field_id.
+        # SearchJobsRequest.custom_field_filters][]).
         # The map key must be a number between 1-20. If an invalid key is
         # provided on job create or update, an error is returned.
         # Corresponds to the JSON property `filterableCustomFields`
@@ -2226,6 +2235,43 @@ module Google
           @location_type = args[:location_type] if args.key?(:location_type)
           @postal_address = args[:postal_address] if args.key?(:postal_address)
           @radius_meters = args[:radius_meters] if args.key?(:radius_meters)
+        end
+      end
+      
+      # Input only.
+      # Options for job processing.
+      class JobProcessingOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional.
+        # If set to `true`, the service does not attempt to resolve a
+        # more precise address for the job.
+        # Corresponds to the JSON property `disableStreetAddressResolution`
+        # @return [Boolean]
+        attr_accessor :disable_street_address_resolution
+        alias_method :disable_street_address_resolution?, :disable_street_address_resolution
+      
+        # Optional.
+        # Option for job HTML content sanitization. Applied fields are:
+        # * description
+        # * applicationInstruction
+        # * incentives
+        # * qualifications
+        # * responsibilities
+        # HTML tags in these fields may be stripped if sanitiazation is not disabled.
+        # Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+        # Corresponds to the JSON property `htmlSanitization`
+        # @return [String]
+        attr_accessor :html_sanitization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_street_address_resolution = args[:disable_street_address_resolution] if args.key?(:disable_street_address_resolution)
+          @html_sanitization = args[:html_sanitization] if args.key?(:html_sanitization)
         end
       end
       
@@ -3309,7 +3355,10 @@ module Google
       class UpdateJobRequest
         include Google::Apis::Core::Hashable
       
-        # If set to `true`, the service will not attempt resolve a more precise
+        # Deprecated. Please use processing_options. This flag is ignored if
+        # processing_options is set.
+        # Optional.
+        # If set to `true`, the service does not attempt resolve a more precise
         # address for the job.
         # Corresponds to the JSON property `disableStreetAddressResolution`
         # @return [Boolean]
@@ -3322,6 +3371,12 @@ module Google
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::JobsV2::Job]
         attr_accessor :job
+      
+        # Input only.
+        # Options for job processing.
+        # Corresponds to the JSON property `processingOptions`
+        # @return [Google::Apis::JobsV2::JobProcessingOptions]
+        attr_accessor :processing_options
       
         # Optional but strongly recommended to be provided for the best service
         # experience.
@@ -3367,6 +3422,7 @@ module Google
         def update!(**args)
           @disable_street_address_resolution = args[:disable_street_address_resolution] if args.key?(:disable_street_address_resolution)
           @job = args[:job] if args.key?(:job)
+          @processing_options = args[:processing_options] if args.key?(:processing_options)
           @update_job_fields = args[:update_job_fields] if args.key?(:update_job_fields)
         end
       end

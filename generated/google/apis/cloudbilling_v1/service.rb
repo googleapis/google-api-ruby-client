@@ -51,13 +51,13 @@ module Google
         # Creates a billing account.
         # This method can only be used to create
         # [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
-        # for GCP resellers.
+        # by GCP resellers.
         # When creating a subaccount, the current authenticated user must have the
         # `billing.accounts.update` IAM permission on the master account, which is
         # typically given to billing account
         # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
-        # > This method is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # This method will return an error if the master account has not been
+        # provisioned as a reseller account.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -124,8 +124,6 @@ module Google
         # The caller must have the `billing.accounts.getIamPolicy` permission on the
         # account, which is often given to billing account
         # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
-        # > This method is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -166,8 +164,6 @@ module Google
         #   single provided reseller billing account.
         #   (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF").
         #   Boolean algebra and other fields are not currently supported.
-        #   > This field is currently in
-        #   > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the
         #   default.
@@ -210,8 +206,6 @@ module Google
         # IAM permission, which is typically given to the
         # [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
         # of the billing account.
-        # > This method is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [String] name
         #   The name of the billing account resource to be updated.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
@@ -253,8 +247,6 @@ module Google
         # The caller must have the `billing.accounts.setIamPolicy` permission on the
         # account, which is often given to billing account
         # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
-        # > This method is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -291,8 +283,6 @@ module Google
         # Tests the access control policy for a billing account. This method takes
         # the resource and a set of permissions as input and returns the subset of
         # the input permissions that the caller is allowed for that resource.
-        # > This method is currently in
-        # > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested.
         #   See the operation documentation for the appropriate value for this field.

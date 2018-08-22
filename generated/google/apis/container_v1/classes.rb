@@ -398,6 +398,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # NetworkConfig reports the relative names of network & subnetwork.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::ContainerV1::NetworkConfig]
+        attr_accessor :network_config
+      
         # Configuration options for the NetworkPolicy feature.
         # https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
         # Corresponds to the JSON property `networkPolicy`
@@ -500,6 +505,7 @@ module Google
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
@@ -1220,6 +1226,36 @@ module Google
         end
       end
       
+      # NetworkConfig reports the relative names of network & subnetwork.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The relative name of the Google Compute Engine
+        # network(/compute/docs/networks-and-firewalls#networks) to which
+        # the cluster is connected.
+        # Example: projects/my-project/global/networks/my-network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The relative name of the Google Compute Engine
+        # [subnetwork](/compute/docs/vpc) to which the cluster is connected.
+        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
       # Configuration options for the NetworkPolicy feature.
       # https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
       class NetworkPolicy
@@ -1286,6 +1322,12 @@ module Google
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
+      
+        # Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')
+        # If unspecified, the default disk type is 'pd-standard'
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
       
         # The image type to use for this node. Note that for a given image type,
         # the latest version of it will be used.
@@ -1403,6 +1445,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
           @labels = args[:labels] if args.key?(:labels)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)

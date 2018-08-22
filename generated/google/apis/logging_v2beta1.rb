@@ -20,12 +20,12 @@ module Google
   module Apis
     # Stackdriver Logging API
     #
-    # Writes log entries and manages your Stackdriver Logging configuration.
+    # Writes log entries and manages your Logging configuration.
     #
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2beta1
       VERSION = 'V2beta1'
-      REVISION = '20180625'
+      REVISION = '20180806'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -22,6 +22,25 @@ module Google
   module Apis
     module RedisV1beta1
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudCommonOperationMetadata
         include Google::Apis::Core::Hashable
@@ -367,19 +386,21 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The canonical id for this location. For example: `"us-east1"`.
+        # Resource ID for the region. For example: "us-east1".
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Service-specific metadata. For example the available capacity at the given
-        # location.
+        # Output only. The set of available zones in the location. The map is keyed by
+        # the lowercase ID of each zone, as defined by Compute Engine. These keys can be
+        # specified in `location_id` or `alternative_location_id` fields when creating a
+        # Redis instance.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
+        # Full resource name for the region. For example: "projects/example-project/
+        # locations/us-east1".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -395,31 +416,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # This location metadata represents additional configuration options for a
-      # given location where a Redis instance may be created. All fields are output
-      # only. It is returned as content of the
-      # `google.cloud.location.Location.metadata` field.
-      class LocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The set of available zones in the location. The map is keyed
-        # by the lowercase ID of each zone, as defined by GCE. These keys can be
-        # specified in `location_id` or `alternative_location_id` fields when
-        # creating a Redis instance.
-        # Corresponds to the JSON property `availableZones`
-        # @return [Hash<String,Google::Apis::RedisV1beta1::ZoneMetadata>]
-        attr_accessor :available_zones
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @available_zones = args[:available_zones] if args.key?(:available_zones)
         end
       end
       
@@ -479,10 +475,18 @@ module Google
         # @return [Google::Apis::RedisV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # `
+        # `createTime`: The time the operation was created.
+        # `endTime`: The time the operation finished running.
+        # `target`: Server-defined resource path for the target of the operation.
+        # `verb`: Name of the verb executed by the operation.
+        # `statusDetail`: Human-readable status of the operation, if any.
+        # `cancelRequested`: Identifies whether the user has requested cancellation of
+        # the operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # `apiVersion`: API version used to start the operation.
+        # `
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -517,77 +521,6 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # This operation metadata represents the state of operations that may have
-      # happened or are happening on the instance. All fields are output only. It is
-      # returned as content of the `google.longrunning.Operation.metadata` field. The
-      # `google.longrunning.Operation.name` field will be of the form
-      # `projects/`project_id`/locations/`location_id`/operations/`operation_id`` and
-      # the name for a `ListOperations` request will be of the form
-      # `projects/`project_id`/locations/`location_id``
-      # On a ListOperations request where `location_id` is "-", all regions
-      # available to the `project_id` are queried and the results aggregated. If a
-      # location is not available, a dummy `google.longrunning.Operation` entry will
-      # be included in the `operations` field of the response, with the `name` field
-      # set to a value of the form
-      # `projects/`project_id`/locations/`location_id`/operations/-` and the `done`
-      # field will be set and the `result.error` field set with the `code` field set
-      # to `google.rpc.Code.DEADLINE_EXCEEDED` and the `message` field set to
-      # `location unavailable for ListOperations`. The Operation metadata` field
-      # will not be set for such a dummy operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. Detailed operation progress, if available.
-        # Corresponds to the JSON property `detail`
-        # @return [String]
-        attr_accessor :detail
-      
-        # Output only. The time the operation was completed.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. The operation type.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # Output only. The time the operation was started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Output only. The current state of the operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @detail = args[:detail] if args.key?(:detail)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @state = args[:state] if args.key?(:state)
-          @target = args[:target] if args.key?(:target)
         end
       end
       
@@ -660,20 +593,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Defines specific information for a particular zone. Currently empty and
-      # reserved for future use only.
-      class ZoneMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
     end

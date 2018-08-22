@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/licensing/
     module LicensingV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20170213'
 
       # View and manage G Suite licenses for your domain
       AUTH_APPS_LICENSING = 'https://www.googleapis.com/auth/apps.licensing'

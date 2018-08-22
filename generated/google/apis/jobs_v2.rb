@@ -18,15 +18,15 @@ require 'google/apis/jobs_v2/representations.rb'
 
 module Google
   module Apis
-    # Cloud Job Discovery
+    # Cloud Talent Solution API
     #
-    # Cloud Job Discovery provides the capability to create, read, update, and
+    # Cloud Talent Solution provides the capability to create, read, update, and
     # delete job postings, as well as search jobs based on keywords and filters.
     #
     # @see https://cloud.google.com/job-discovery/docs
     module JobsV2
       VERSION = 'V2'
-      REVISION = '20180627'
+      REVISION = '20180726'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -18,7 +18,7 @@ require 'google/apis/redis_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Memorystore for Redis API
+    # Google Cloud Memorystore for Redis API
     #
     # The Google Cloud Memorystore for Redis API is used for creating and managing
     # Redis instances on the Google Cloud Platform.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/memorystore/docs/redis/
     module RedisV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20180620'
+      REVISION = '20180816'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

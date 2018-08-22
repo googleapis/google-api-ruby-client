@@ -807,6 +807,13 @@ module Google
       class SourceLocation
         include Google::Apis::Core::Hashable
       
+        # Column within a line. The first column in a line as the value `1`.
+        # Agents that do not support setting breakpoints on specific columns ignore
+        # this field.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
         # Line inside the file. The first line in the file has the value `1`.
         # Corresponds to the JSON property `line`
         # @return [Fixnum]
@@ -823,6 +830,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @column = args[:column] if args.key?(:column)
           @line = args[:line] if args.key?(:line)
           @path = args[:path] if args.key?(:path)
         end

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/cloud-test-lab/
     module TestingV1
       VERSION = 'V1'
-      REVISION = '20180619'
+      REVISION = '20180802'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

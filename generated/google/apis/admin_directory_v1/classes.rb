@@ -2896,6 +2896,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :aliases
       
+        # Indicates if user is archived
+        # Corresponds to the JSON property `archived`
+        # @return [Boolean]
+        attr_accessor :archived
+        alias_method :archived?, :archived
+      
         # Boolean indicating if the user should change password in next login
         # Corresponds to the JSON property `changePasswordAtNextLogin`
         # @return [Boolean]
@@ -3114,6 +3120,7 @@ module Google
           @addresses = args[:addresses] if args.key?(:addresses)
           @agreed_to_terms = args[:agreed_to_terms] if args.key?(:agreed_to_terms)
           @aliases = args[:aliases] if args.key?(:aliases)
+          @archived = args[:archived] if args.key?(:archived)
           @change_password_at_next_login = args[:change_password_at_next_login] if args.key?(:change_password_at_next_login)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @custom_schemas = args[:custom_schemas] if args.key?(:custom_schemas)

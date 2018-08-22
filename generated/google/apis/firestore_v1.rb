@@ -12,20 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/spectrum_v1explorer/service.rb'
-require 'google/apis/spectrum_v1explorer/classes.rb'
-require 'google/apis/spectrum_v1explorer/representations.rb'
+require 'google/apis/firestore_v1/service.rb'
+require 'google/apis/firestore_v1/classes.rb'
+require 'google/apis/firestore_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Spectrum Database API
+    # Cloud Firestore API
     #
-    # API for spectrum-management functions.
+    # 
     #
-    # @see http://developers.google.com/spectrum
-    module SpectrumV1explorer
-      VERSION = 'V1explorer'
-      REVISION = ''
+    # @see https://cloud.google.com/firestore
+    module FirestoreV1
+      VERSION = 'V1'
+      REVISION = '20180725'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your Google Cloud Datastore data
+      AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
     end
   end
 end

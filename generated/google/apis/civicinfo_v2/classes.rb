@@ -736,6 +736,25 @@ module Google
         end
       end
       
+      # 
+      class FieldMetadataProto
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `internal`
+        # @return [Google::Apis::CivicinfoV2::InternalFieldMetadataProto]
+        attr_accessor :internal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @internal = args[:internal] if args.key?(:internal)
+        end
+      end
+      
       # Describes a political geography.
       class GeographicDivision
         include Google::Apis::Core::Hashable
@@ -774,6 +793,207 @@ module Google
           @also_known_as = args[:also_known_as] if args.key?(:also_known_as)
           @name = args[:name] if args.key?(:name)
           @office_indices = args[:office_indices] if args.key?(:office_indices)
+        end
+      end
+      
+      # 
+      class InternalFieldMetadataProto
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `isAuto`
+        # @return [Boolean]
+        attr_accessor :is_auto
+        alias_method :is_auto?, :is_auto
+      
+        # 
+        # Corresponds to the JSON property `sourceSummary`
+        # @return [Google::Apis::CivicinfoV2::InternalSourceSummaryProto]
+        attr_accessor :source_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_auto = args[:is_auto] if args.key?(:is_auto)
+          @source_summary = args[:source_summary] if args.key?(:source_summary)
+        end
+      end
+      
+      # 
+      class InternalSourceSummaryProto
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # 
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
+      # 
+      class LivegraphBacktraceRecordInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataSourcePublishMsec`
+        # @return [Fixnum]
+        attr_accessor :data_source_publish_msec
+      
+        # 
+        # Corresponds to the JSON property `expId`
+        # @return [String]
+        attr_accessor :exp_id
+      
+        # 
+        # Corresponds to the JSON property `expInfo`
+        # @return [Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo]
+        attr_accessor :exp_info
+      
+        # 
+        # Corresponds to the JSON property `isRecon`
+        # @return [Boolean]
+        attr_accessor :is_recon
+        alias_method :is_recon?, :is_recon
+      
+        # 
+        # Corresponds to the JSON property `isWlmThrottled`
+        # @return [Boolean]
+        attr_accessor :is_wlm_throttled
+        alias_method :is_wlm_throttled?, :is_wlm_throttled
+      
+        # 
+        # Corresponds to the JSON property `numberOfTriples`
+        # @return [Fixnum]
+        attr_accessor :number_of_triples
+      
+        # 
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # 
+        # Corresponds to the JSON property `process`
+        # @return [String]
+        attr_accessor :process
+      
+        # 
+        # Corresponds to the JSON property `proxyReceiveMsec`
+        # @return [Fixnum]
+        attr_accessor :proxy_receive_msec
+      
+        # 
+        # Corresponds to the JSON property `proxySentMsec`
+        # @return [Fixnum]
+        attr_accessor :proxy_sent_msec
+      
+        # 
+        # Corresponds to the JSON property `recordId`
+        # @return [String]
+        attr_accessor :record_id
+      
+        # 
+        # Corresponds to the JSON property `shouldMonitorLatency`
+        # @return [Boolean]
+        attr_accessor :should_monitor_latency
+        alias_method :should_monitor_latency?, :should_monitor_latency
+      
+        # 
+        # Corresponds to the JSON property `subscriberReceiveMsec`
+        # @return [Fixnum]
+        attr_accessor :subscriber_receive_msec
+      
+        # 
+        # Corresponds to the JSON property `topicBuildFinishMsec`
+        # @return [Fixnum]
+        attr_accessor :topic_build_finish_msec
+      
+        # 
+        # Corresponds to the JSON property `topicBuildStartMsec`
+        # @return [Fixnum]
+        attr_accessor :topic_build_start_msec
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_publish_msec = args[:data_source_publish_msec] if args.key?(:data_source_publish_msec)
+          @exp_id = args[:exp_id] if args.key?(:exp_id)
+          @exp_info = args[:exp_info] if args.key?(:exp_info)
+          @is_recon = args[:is_recon] if args.key?(:is_recon)
+          @is_wlm_throttled = args[:is_wlm_throttled] if args.key?(:is_wlm_throttled)
+          @number_of_triples = args[:number_of_triples] if args.key?(:number_of_triples)
+          @priority = args[:priority] if args.key?(:priority)
+          @process = args[:process] if args.key?(:process)
+          @proxy_receive_msec = args[:proxy_receive_msec] if args.key?(:proxy_receive_msec)
+          @proxy_sent_msec = args[:proxy_sent_msec] if args.key?(:proxy_sent_msec)
+          @record_id = args[:record_id] if args.key?(:record_id)
+          @should_monitor_latency = args[:should_monitor_latency] if args.key?(:should_monitor_latency)
+          @subscriber_receive_msec = args[:subscriber_receive_msec] if args.key?(:subscriber_receive_msec)
+          @topic_build_finish_msec = args[:topic_build_finish_msec] if args.key?(:topic_build_finish_msec)
+          @topic_build_start_msec = args[:topic_build_start_msec] if args.key?(:topic_build_start_msec)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class LivegraphBacktraceRecordInfoExpInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deletedIns`
+        # @return [Array<String>]
+        attr_accessor :deleted_ins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_ins = args[:deleted_ins] if args.key?(:deleted_ins)
+        end
+      end
+      
+      # 
+      class MessageSet
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `recordMessageSetExt`
+        # @return [Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo]
+        attr_accessor :record_message_set_ext
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @record_message_set_ext = args[:record_message_set_ext] if args.key?(:record_message_set_ext)
         end
       end
       
@@ -893,6 +1113,43 @@ module Google
           @phones = args[:phones] if args.key?(:phones)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @urls = args[:urls] if args.key?(:urls)
+        end
+      end
+      
+      # 
+      class PointProto
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `latE7`
+        # @return [Fixnum]
+        attr_accessor :lat_e7
+      
+        # 
+        # Corresponds to the JSON property `lngE7`
+        # @return [Fixnum]
+        attr_accessor :lng_e7
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::CivicinfoV2::FieldMetadataProto]
+        attr_accessor :metadata
+      
+        # 
+        # Corresponds to the JSON property `temporaryData`
+        # @return [Google::Apis::CivicinfoV2::MessageSet]
+        attr_accessor :temporary_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lat_e7 = args[:lat_e7] if args.key?(:lat_e7)
+          @lng_e7 = args[:lng_e7] if args.key?(:lng_e7)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @temporary_data = args[:temporary_data] if args.key?(:temporary_data)
         end
       end
       
@@ -1106,6 +1363,79 @@ module Google
       end
       
       # 
+      class Provenance
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `collidedSegmentSource`
+        # @return [Google::Apis::CivicinfoV2::StreetSegmentList]
+        attr_accessor :collided_segment_source
+      
+        # 
+        # Corresponds to the JSON property `ctclContestUuid`
+        # @return [String]
+        attr_accessor :ctcl_contest_uuid
+      
+        # 
+        # Corresponds to the JSON property `ctclOfficeUuid`
+        # @return [String]
+        attr_accessor :ctcl_office_uuid
+      
+        # 
+        # Corresponds to the JSON property `datasetId`
+        # @return [Fixnum]
+        attr_accessor :dataset_id
+      
+        # 
+        # Corresponds to the JSON property `precinctId`
+        # @return [Fixnum]
+        attr_accessor :precinct_id
+      
+        # 
+        # Corresponds to the JSON property `precinctSplitId`
+        # @return [Fixnum]
+        attr_accessor :precinct_split_id
+      
+        # 
+        # Corresponds to the JSON property `tsStreetSegmentId`
+        # @return [String]
+        attr_accessor :ts_street_segment_id
+      
+        # 
+        # Corresponds to the JSON property `vip5PrecinctId`
+        # @return [String]
+        attr_accessor :vip5_precinct_id
+      
+        # 
+        # Corresponds to the JSON property `vip5StreetSegmentId`
+        # @return [String]
+        attr_accessor :vip5_street_segment_id
+      
+        # 
+        # Corresponds to the JSON property `vipStreetSegmentId`
+        # @return [Fixnum]
+        attr_accessor :vip_street_segment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collided_segment_source = args[:collided_segment_source] if args.key?(:collided_segment_source)
+          @ctcl_contest_uuid = args[:ctcl_contest_uuid] if args.key?(:ctcl_contest_uuid)
+          @ctcl_office_uuid = args[:ctcl_office_uuid] if args.key?(:ctcl_office_uuid)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
+          @precinct_split_id = args[:precinct_split_id] if args.key?(:precinct_split_id)
+          @ts_street_segment_id = args[:ts_street_segment_id] if args.key?(:ts_street_segment_id)
+          @vip5_precinct_id = args[:vip5_precinct_id] if args.key?(:vip5_precinct_id)
+          @vip5_street_segment_id = args[:vip5_street_segment_id] if args.key?(:vip5_street_segment_id)
+          @vip_street_segment_id = args[:vip_street_segment_id] if args.key?(:vip_street_segment_id)
+        end
+      end
+      
+      # 
       class RepresentativeInfoData
         include Google::Apis::Core::Hashable
       
@@ -1285,6 +1615,311 @@ module Google
         end
       end
       
+      # 
+      class StreetSegment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `administrationRegionIds`
+        # @return [Array<String>]
+        attr_accessor :administration_region_ids
+      
+        # 
+        # Corresponds to the JSON property `beforeGeocodeId`
+        # @return [String]
+        attr_accessor :before_geocode_id
+      
+        # 
+        # Corresponds to the JSON property `catalistUniquePrecinctCode`
+        # @return [String]
+        attr_accessor :catalist_unique_precinct_code
+      
+        # 
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # 
+        # Corresponds to the JSON property `cityCouncilDistrict`
+        # @return [String]
+        attr_accessor :city_council_district
+      
+        # 
+        # Corresponds to the JSON property `congressionalDistrict`
+        # @return [String]
+        attr_accessor :congressional_district
+      
+        # 
+        # Corresponds to the JSON property `contestIds`
+        # @return [Array<String>]
+        attr_accessor :contest_ids
+      
+        # 
+        # Corresponds to the JSON property `countyCouncilDistrict`
+        # @return [String]
+        attr_accessor :county_council_district
+      
+        # 
+        # Corresponds to the JSON property `countyFips`
+        # @return [String]
+        attr_accessor :county_fips
+      
+        # 
+        # Corresponds to the JSON property `datasetId`
+        # @return [Fixnum]
+        attr_accessor :dataset_id
+      
+        # 
+        # Corresponds to the JSON property `earlyVoteSiteByIds`
+        # @return [Array<String>]
+        attr_accessor :early_vote_site_by_ids
+      
+        # 
+        # Corresponds to the JSON property `endHouseNumber`
+        # @return [Fixnum]
+        attr_accessor :end_house_number
+      
+        # 
+        # Corresponds to the JSON property `geocodedPoint`
+        # @return [Google::Apis::CivicinfoV2::PointProto]
+        attr_accessor :geocoded_point
+      
+        # 
+        # Corresponds to the JSON property `geographicDivisionOcdIds`
+        # @return [Array<String>]
+        attr_accessor :geographic_division_ocd_ids
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `judicialDistrict`
+        # @return [String]
+        attr_accessor :judicial_district
+      
+        # 
+        # Corresponds to the JSON property `mailOnly`
+        # @return [Boolean]
+        attr_accessor :mail_only
+        alias_method :mail_only?, :mail_only
+      
+        # 
+        # Corresponds to the JSON property `municipalDistrict`
+        # @return [String]
+        attr_accessor :municipal_district
+      
+        # 
+        # Corresponds to the JSON property `ncoaAddress`
+        # @return [String]
+        attr_accessor :ncoa_address
+      
+        # 
+        # Corresponds to the JSON property `oddOrEvens`
+        # @return [Array<String>]
+        attr_accessor :odd_or_evens
+      
+        # 
+        # Corresponds to the JSON property `originalId`
+        # @return [String]
+        attr_accessor :original_id
+      
+        # 
+        # Corresponds to the JSON property `pollinglocationByIds`
+        # @return [Array<String>]
+        attr_accessor :pollinglocation_by_ids
+      
+        # 
+        # Corresponds to the JSON property `precinctName`
+        # @return [String]
+        attr_accessor :precinct_name
+      
+        # 
+        # Corresponds to the JSON property `precinctOcdId`
+        # @return [String]
+        attr_accessor :precinct_ocd_id
+      
+        # 
+        # Corresponds to the JSON property `provenances`
+        # @return [Array<Google::Apis::CivicinfoV2::Provenance>]
+        attr_accessor :provenances
+      
+        # 
+        # Corresponds to the JSON property `published`
+        # @return [Boolean]
+        attr_accessor :published
+        alias_method :published?, :published
+      
+        # 
+        # Corresponds to the JSON property `schoolDistrict`
+        # @return [String]
+        attr_accessor :school_district
+      
+        # 
+        # Corresponds to the JSON property `startHouseNumber`
+        # @return [Fixnum]
+        attr_accessor :start_house_number
+      
+        # 
+        # Corresponds to the JSON property `startLatE7`
+        # @return [Fixnum]
+        attr_accessor :start_lat_e7
+      
+        # 
+        # Corresponds to the JSON property `startLngE7`
+        # @return [Fixnum]
+        attr_accessor :start_lng_e7
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # 
+        # Corresponds to the JSON property `stateHouseDistrict`
+        # @return [String]
+        attr_accessor :state_house_district
+      
+        # 
+        # Corresponds to the JSON property `stateSenateDistrict`
+        # @return [String]
+        attr_accessor :state_senate_district
+      
+        # 
+        # Corresponds to the JSON property `streetName`
+        # @return [String]
+        attr_accessor :street_name
+      
+        # 
+        # Corresponds to the JSON property `subAdministrativeAreaName`
+        # @return [String]
+        attr_accessor :sub_administrative_area_name
+      
+        # 
+        # Corresponds to the JSON property `surrogateId`
+        # @return [Fixnum]
+        attr_accessor :surrogate_id
+      
+        # 
+        # Corresponds to the JSON property `targetsmartUniquePrecinctCode`
+        # @return [String]
+        attr_accessor :targetsmart_unique_precinct_code
+      
+        # 
+        # Corresponds to the JSON property `townshipDistrict`
+        # @return [String]
+        attr_accessor :township_district
+      
+        # 
+        # Corresponds to the JSON property `unitNumber`
+        # @return [String]
+        attr_accessor :unit_number
+      
+        # 
+        # Corresponds to the JSON property `unitType`
+        # @return [String]
+        attr_accessor :unit_type
+      
+        # 
+        # Corresponds to the JSON property `vanPrecinctCode`
+        # @return [String]
+        attr_accessor :van_precinct_code
+      
+        # 
+        # Corresponds to the JSON property `voterGeographicDivisionOcdIds`
+        # @return [Array<String>]
+        attr_accessor :voter_geographic_division_ocd_ids
+      
+        # 
+        # Corresponds to the JSON property `wardDistrict`
+        # @return [String]
+        attr_accessor :ward_district
+      
+        # 
+        # Corresponds to the JSON property `wildcard`
+        # @return [Boolean]
+        attr_accessor :wildcard
+        alias_method :wildcard?, :wildcard
+      
+        # 
+        # Corresponds to the JSON property `zip`
+        # @return [String]
+        attr_accessor :zip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administration_region_ids = args[:administration_region_ids] if args.key?(:administration_region_ids)
+          @before_geocode_id = args[:before_geocode_id] if args.key?(:before_geocode_id)
+          @catalist_unique_precinct_code = args[:catalist_unique_precinct_code] if args.key?(:catalist_unique_precinct_code)
+          @city = args[:city] if args.key?(:city)
+          @city_council_district = args[:city_council_district] if args.key?(:city_council_district)
+          @congressional_district = args[:congressional_district] if args.key?(:congressional_district)
+          @contest_ids = args[:contest_ids] if args.key?(:contest_ids)
+          @county_council_district = args[:county_council_district] if args.key?(:county_council_district)
+          @county_fips = args[:county_fips] if args.key?(:county_fips)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @early_vote_site_by_ids = args[:early_vote_site_by_ids] if args.key?(:early_vote_site_by_ids)
+          @end_house_number = args[:end_house_number] if args.key?(:end_house_number)
+          @geocoded_point = args[:geocoded_point] if args.key?(:geocoded_point)
+          @geographic_division_ocd_ids = args[:geographic_division_ocd_ids] if args.key?(:geographic_division_ocd_ids)
+          @id = args[:id] if args.key?(:id)
+          @judicial_district = args[:judicial_district] if args.key?(:judicial_district)
+          @mail_only = args[:mail_only] if args.key?(:mail_only)
+          @municipal_district = args[:municipal_district] if args.key?(:municipal_district)
+          @ncoa_address = args[:ncoa_address] if args.key?(:ncoa_address)
+          @odd_or_evens = args[:odd_or_evens] if args.key?(:odd_or_evens)
+          @original_id = args[:original_id] if args.key?(:original_id)
+          @pollinglocation_by_ids = args[:pollinglocation_by_ids] if args.key?(:pollinglocation_by_ids)
+          @precinct_name = args[:precinct_name] if args.key?(:precinct_name)
+          @precinct_ocd_id = args[:precinct_ocd_id] if args.key?(:precinct_ocd_id)
+          @provenances = args[:provenances] if args.key?(:provenances)
+          @published = args[:published] if args.key?(:published)
+          @school_district = args[:school_district] if args.key?(:school_district)
+          @start_house_number = args[:start_house_number] if args.key?(:start_house_number)
+          @start_lat_e7 = args[:start_lat_e7] if args.key?(:start_lat_e7)
+          @start_lng_e7 = args[:start_lng_e7] if args.key?(:start_lng_e7)
+          @state = args[:state] if args.key?(:state)
+          @state_house_district = args[:state_house_district] if args.key?(:state_house_district)
+          @state_senate_district = args[:state_senate_district] if args.key?(:state_senate_district)
+          @street_name = args[:street_name] if args.key?(:street_name)
+          @sub_administrative_area_name = args[:sub_administrative_area_name] if args.key?(:sub_administrative_area_name)
+          @surrogate_id = args[:surrogate_id] if args.key?(:surrogate_id)
+          @targetsmart_unique_precinct_code = args[:targetsmart_unique_precinct_code] if args.key?(:targetsmart_unique_precinct_code)
+          @township_district = args[:township_district] if args.key?(:township_district)
+          @unit_number = args[:unit_number] if args.key?(:unit_number)
+          @unit_type = args[:unit_type] if args.key?(:unit_type)
+          @van_precinct_code = args[:van_precinct_code] if args.key?(:van_precinct_code)
+          @voter_geographic_division_ocd_ids = args[:voter_geographic_division_ocd_ids] if args.key?(:voter_geographic_division_ocd_ids)
+          @ward_district = args[:ward_district] if args.key?(:ward_district)
+          @wildcard = args[:wildcard] if args.key?(:wildcard)
+          @zip = args[:zip] if args.key?(:zip)
+        end
+      end
+      
+      # 
+      class StreetSegmentList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::CivicinfoV2::StreetSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
       # A request for information about a voter.
       class VoterInfoRequest
         include Google::Apis::Core::Hashable
@@ -1379,6 +2014,11 @@ module Google
         # @return [String]
         attr_accessor :precinct_id
       
+        # 
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::CivicinfoV2::StreetSegment>]
+        attr_accessor :segments
+      
         # Local Election Information for the state that the voter votes in. For the US,
         # there will only be one element in this array.
         # Corresponds to the JSON property `state`
@@ -1401,6 +2041,7 @@ module Google
           @other_elections = args[:other_elections] if args.key?(:other_elections)
           @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
           @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
+          @segments = args[:segments] if args.key?(:segments)
           @state = args[:state] if args.key?(:state)
         end
       end

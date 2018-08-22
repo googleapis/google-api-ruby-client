@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/ad-experience-report/
     module AdexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20180420'
+      REVISION = '20180807'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

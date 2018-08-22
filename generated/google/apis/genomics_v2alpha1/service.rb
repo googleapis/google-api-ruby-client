@@ -48,11 +48,11 @@ module Google
         end
         
         # Runs a pipeline.
-        # **Note:** In order to use this method, the Genomics Service Agent
-        # must have access to your project.  This is done automatically when the
-        # Genomics API is first enabled, but if you delete this permission, or if
-        # you have already enabled the Genomics API prior to the launch of the
-        # v2alpha1 API, you must disable and re-enable the API to grant the Genomics
+        # **Note:** Before you can use this method, the Genomics Service Agent
+        # must have access to your project. This is done automatically when the
+        # Cloud Genomics API is first enabled, but if you delete this permission,
+        # or if you enabled the Cloud Genomics API before the v2alpha1 API
+        # launch, you must disable and re-enable the API to grant the Genomics
         # Service Agent the required permissions.
         # [1]: /genomics/gsa
         # @param [Google::Apis::GenomicsV2alpha1::RunPipelineRequest] run_pipeline_request_object
@@ -165,6 +165,8 @@ module Google
         #   * error&#58; If the pipeline is running, this value is NULL.  Once the
         #   pipeline finishes, the value is the standard Google error code.
         #   * labels.key or labels."key with space" where key is a label key.
+        #   * done&#58; If the pipeline is running, this value is false. Once the
+        #   pipeline finishes, the value is true.
         #   In v1 and v1alpha2, the following filter fields are supported&#58;
         #   * projectId&#58; Required. Corresponds to
         #   OperationMetadata.projectId.

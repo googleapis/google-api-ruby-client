@@ -871,6 +871,79 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Lists the vendors of the partner.
+        # @param [String] parent
+        #   Required. The resource name in the format `partners/[PARTNER_ID]`.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to be returned.
+        # @param [String] page_token
+        #   A token identifying a page of results returned by the server.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_partner_vendors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/vendors', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the customers of the vendor.
+        # @param [String] parent
+        #   Required. The resource name in the format
+        #   `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to be returned.
+        # @param [String] page_token
+        #   A token identifying a page of results returned by the server.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_partner_vendor_customers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/customers', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

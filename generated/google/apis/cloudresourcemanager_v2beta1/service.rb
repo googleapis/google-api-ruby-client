@@ -327,7 +327,7 @@ module Google
         # The Folder's display name must start and end with a letter or digit,
         # may contain letters, digits, spaces, hyphens and underscores and can be
         # no longer than 30 characters. This is captured by the regular expression:
-        # [\p`L`\p`N`](`\p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?.
+        # [\p`L`\p`N`]([\p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?.
         # The caller must have `resourcemanager.folders.update` permission on the
         # identified folder.
         # If the update fails due to the unique name constraint then a

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/+/api/
     module PlusV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180805'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'

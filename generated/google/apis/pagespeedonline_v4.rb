@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/speed/docs/insights/v4/getting-started
     module PagespeedonlineV4
       VERSION = 'V4'
-      REVISION = ''
+      REVISION = '20180606'
     end
   end
 end

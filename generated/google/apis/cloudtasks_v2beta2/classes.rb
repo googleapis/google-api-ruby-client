@@ -53,16 +53,18 @@ module Google
       # This proto can only be used for tasks in a queue which has
       # app_engine_http_target set.
       # Using AppEngineHttpRequest requires
-      # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+      # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+      # api/access-control)
       # Google IAM permission for the project
       # and the following scope:
       # `https://www.googleapis.com/auth/cloud-platform`
       # The task will be delivered to the App Engine app which belongs to the same
       # project as the queue. For more information, see
-      # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
-      # routed)
+      # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
+      # python/how-requests-are-routed)
       # and how routing is affected by
-      # [dispatch files](/appengine/docs/python/config/dispatchref).
+      # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
+      # dispatchref).
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
       # * If set,
@@ -85,13 +87,14 @@ module Google
       
         # App Engine Routing.
         # For more information about services, versions, and instances see
-        # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](/appengine/docs/python/
-        # microservices-on-app-engine),
-        # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-        # requests-are-routed),
-        # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-        # requests-are-routed).
+        # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
+        # overview-of-app-engine),
+        # [Microservices Architecture on Google App Engine](https://cloud.google.com/
+        # appengine/docs/python/microservices-on-app-engine),
+        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
+        # standard/python/how-requests-are-routed),
+        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
+        # flexible/python/how-requests-are-routed).
         # Corresponds to the JSON property `appEngineRouting`
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineRouting]
         attr_accessor :app_engine_routing
@@ -99,7 +102,7 @@ module Google
         # HTTP request headers.
         # This map contains the header field names and values.
         # Headers can be set when the
-        # [task is created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask).
+        # task is created.
         # Repeated headers are not supported but a header value can contain commas.
         # Cloud Tasks sets some headers to default values:
         # * `User-Agent`: By default, this header is
@@ -112,7 +115,7 @@ module Google
         # * `Content-Type`: By default, the `Content-Type` header is set to
         # `"application/octet-stream"`. The default can be overridden by explicitly
         # setting `Content-Type` to a particular media type when the
-        # [task is created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask).
+        # task is created.
         # For example, `Content-Type` can be set to `"application/json"`.
         # * `Content-Length`: This is computed by Cloud Tasks. This value is
         # output only.   It cannot be changed.
@@ -122,8 +125,8 @@ module Google
         # * `X-AppEngine-*`
         # In addition, Cloud Tasks sets some headers when the task is dispatched,
         # such as headers containing information about the task; see
-        # [request headers](/appengine/docs/python/taskqueue/push/creating-handlers#
-        # reading_request_headers).
+        # [request headers](https://cloud.google.com/appengine/docs/python/taskqueue/
+        # push/creating-handlers#reading_request_headers).
         # These headers are set only when the task is dispatched, so they are not
         # visible when the task is returned in a Cloud Tasks response.
         # Although there is no specific limit for the maximum number of headers or
@@ -137,12 +140,12 @@ module Google
         # The app's request handler for the task's target URL must be able to handle
         # HTTP requests with this http_method, otherwise the task attempt will fail
         # with error code 405 (Method Not Allowed). See
-        # [Writing a push task request handler](/appengine/docs/java/taskqueue/push/
-        # creating-handlers#writing_a_push_task_request_handler)
+        # [Writing a push task request handler](https://cloud.google.com/appengine/docs/
+        # java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
         # and the documentation for the request handlers in the language your app is
         # written in e.g.
-        # [Python Request Handler](/appengine/docs/python/tools/webapp/
-        # requesthandlerclass).
+        # [Python Request Handler](https://cloud.google.com/appengine/docs/python/tools/
+        # webapp/requesthandlerclass).
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
         attr_accessor :http_method
@@ -186,7 +189,8 @@ module Google
       # The documentation for AppEngineHttpRequest explains how the
       # task's host URL is constructed.
       # Using AppEngineHttpTarget requires
-      # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+      # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+      # api/access-control)
       # Google IAM permission for the project
       # and the following scope:
       # `https://www.googleapis.com/auth/cloud-platform`
@@ -195,13 +199,14 @@ module Google
       
         # App Engine Routing.
         # For more information about services, versions, and instances see
-        # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](/appengine/docs/python/
-        # microservices-on-app-engine),
-        # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-        # requests-are-routed),
-        # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-        # requests-are-routed).
+        # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
+        # overview-of-app-engine),
+        # [Microservices Architecture on Google App Engine](https://cloud.google.com/
+        # appengine/docs/python/microservices-on-app-engine),
+        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
+        # standard/python/how-requests-are-routed),
+        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
+        # flexible/python/how-requests-are-routed).
         # Corresponds to the JSON property `appEngineRoutingOverride`
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineRouting]
         attr_accessor :app_engine_routing_override
@@ -218,20 +223,21 @@ module Google
       
       # App Engine Routing.
       # For more information about services, versions, and instances see
-      # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
-      # [Microservices Architecture on Google App Engine](/appengine/docs/python/
-      # microservices-on-app-engine),
-      # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-      # requests-are-routed),
-      # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-      # requests-are-routed).
+      # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
+      # overview-of-app-engine),
+      # [Microservices Architecture on Google App Engine](https://cloud.google.com/
+      # appengine/docs/python/microservices-on-app-engine),
+      # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
+      # standard/python/how-requests-are-routed),
+      # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
+      # flexible/python/how-requests-are-routed).
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
         # Output only. The host that the task is sent to.
         # For more information, see
-        # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
-        # routed).
+        # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
+        # python/how-requests-are-routed).
         # The host is constructed as:
         # * `host = [application_domain_name]`</br>
         # `| [service] + '.' + [application_domain_name]`</br>
@@ -281,13 +287,14 @@ module Google
         # By default, the task is sent to an instance which is available when
         # the task is attempted.
         # Requests can only be sent to a specific instance if
-        # [manual scaling is used in App Engine Standard](/appengine/docs/python/an-
-        # overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
+        # [manual scaling is used in App Engine Standard](https://cloud.google.com/
+        # appengine/docs/python/an-overview-of-app-engine?hl=en_US#
+        # scaling_types_and_instance_classes).
         # App Engine Flex does not support instances. For more information, see
-        # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-        # requests-are-routed)
-        # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-        # requests-are-routed).
+        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
+        # standard/python/how-requests-are-routed)
+        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
+        # flexible/python/how-requests-are-routed).
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -423,6 +430,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::CloudtasksV2beta2::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -443,7 +458,6 @@ module Google
       
         # Role that is assigned to `members`.
         # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -454,6 +468,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -472,8 +487,8 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for FULL requires
-        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        # Task resource.
+        # `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+        # permission on the Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -511,8 +526,8 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for FULL requires
-        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        # Task resource.
+        # `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+        # permission on the Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -552,6 +567,53 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -585,8 +647,8 @@ module Google
         # oldest task (ordered by schedule time).
         # SDK compatibility: Although the SDK allows tags to be either
         # string or
-        # [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/
-        # taskqueue/TaskOptions.html#tag-byte:A-),
+        # [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/
+        # google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),
         # only UTF-8 encoded tags can be used in Cloud Tasks. Tag which
         # aren't UTF-8 encoded can't be used in the
         # filter and the task's
@@ -611,6 +673,9 @@ module Google
         # The system will make a best effort to return as close to as
         # `max_tasks` as possible.
         # The largest that `max_tasks` can be is 1000.
+        # The maximum total size of a lease tasks response is
+        # 32 MB. If the sum of all task sizes requested reaches this limit,
+        # fewer tasks than requested are returned.
         # Corresponds to the JSON property `maxTasks`
         # @return [Fixnum]
         attr_accessor :max_tasks
@@ -623,8 +688,8 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for FULL requires
-        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        # Task resource.
+        # `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+        # permission on the Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -906,8 +971,8 @@ module Google
         # task is created.
         # The tag must be less than 500 characters.
         # SDK compatibility: Although the SDK allows tags to be either
-        # string or [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/
-        # api/taskqueue/TaskOptions.html#tag-byte:A-),
+        # string or [bytes](https://cloud.google.com/appengine/docs/standard/java/
+        # javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),
         # only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8
         # encoded, the tag will be empty when the task is returned by Cloud Tasks.
         # Corresponds to the JSON property `tag`
@@ -963,7 +1028,8 @@ module Google
         # The documentation for AppEngineHttpRequest explains how the
         # task's host URL is constructed.
         # Using AppEngineHttpTarget requires
-        # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+        # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+        # api/access-control)
         # Google IAM permission for the project
         # and the following scope:
         # `https://www.googleapis.com/auth/cloud-platform`
@@ -979,8 +1045,8 @@ module Google
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
         # For more information, see
-        # [Identifying projects](/resource-manager/docs/creating-managing-projects#
-        # identifying_projects)
+        # [Identifying projects](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-projects#identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the queue's location.
         # The list of available locations can be obtained by calling
         # ListLocations.
@@ -1000,9 +1066,9 @@ module Google
         # All tasks that were created before this time
         # were purged.
         # A queue can be purged using PurgeQueue, the
-        # [App Engine Task Queue SDK, or the Cloud Console](/appengine/docs/standard/
-        # python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue)
-        # .
+        # [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/
+        # appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#
+        # purging_all_tasks_from_a_queue).
         # Purge time will be truncated to the nearest microsecond. Purge
         # time will be unset if the queue has never been purged.
         # Corresponds to the JSON property `purgeTime`
@@ -1028,7 +1094,8 @@ module Google
         # `state` can only be changed by called
         # PauseQueue,
         # ResumeQueue, or uploading
-        # [queue.yaml/xml](/appengine/docs/python/config/queueref).
+        # [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/
+        # queueref).
         # UpdateQueue cannot be used to change `state`.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1077,7 +1144,8 @@ module Google
         # max_tasks_dispatched_per_second.
         # For App Engine queues that were created or updated using
         # `queue.yaml/xml`, `max_burst_size` is equal to
-        # [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size).
+        # [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#bucket_size).
         # Since `max_burst_size` is output only, if
         # UpdateQueue is called on a queue
         # created by `queue.yaml/xml`, `max_burst_size` will be reset based
@@ -1098,12 +1166,11 @@ module Google
         # default.
         # The maximum allowed value is 5,000.
         # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget) and always -1, which
-        # indicates no limit. No other queue types can have `max_concurrent_tasks`
-        # set to -1.
+        # pull queues and always -1, which indicates no limit. No other
+        # queue types can have `max_concurrent_tasks` set to -1.
         # This field has the same meaning as
-        # [max_concurrent_requests in queue.yaml/xml](/appengine/docs/standard/python/
-        # config/queueref#max_concurrent_requests).
+        # [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/
+        # docs/standard/python/config/queueref#max_concurrent_requests).
         # Corresponds to the JSON property `maxConcurrentTasks`
         # @return [Fixnum]
         attr_accessor :max_concurrent_tasks
@@ -1111,14 +1178,14 @@ module Google
         # The maximum rate at which tasks are dispatched from this queue.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # * For App Engine queues, the maximum allowed value is 500.
-        # * This field is output only   for [pull queues](google.cloud.tasks.v2beta2.
-        # PullTarget). In
-        # addition to the `max_tasks_dispatched_per_second` limit, a
-        # maximum of 10 QPS of LeaseTasks
-        # requests are allowed per pull queue.
+        # * For App Engine queues, the maximum allowed value
+        # is 500.
+        # * This field is output only   for pull queues. In addition to the
+        # `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of
+        # LeaseTasks requests are allowed per pull queue.
         # This field has the same meaning as
-        # [rate in queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).
+        # [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/
+        # python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
         # @return [Float]
         attr_accessor :max_tasks_dispatched_per_second
@@ -1156,8 +1223,8 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for FULL requires
-        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        # Task resource.
+        # `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+        # permission on the Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -1210,19 +1277,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_attempts
       
-        # A task will be [scheduled](Task.schedule_time) for retry between
+        # A task will be scheduled for retry between
         # min_backoff and
         # max_backoff duration after it fails,
         # if the queue's RetryConfig specifies that the task should be
         # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # This field is output only for pull queues.
         # `max_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [max_backoff_seconds in queue.yaml/xml](/appengine/docs/standard/python/config/
-        # queueref#retry_parameters).
+        # [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/
+        # docs/standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `maxBackoff`
         # @return [String]
         attr_accessor :max_backoff
@@ -1245,11 +1311,10 @@ module Google
         # 240s, 300s, 300s, ....
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # This field is output only for pull queues.
         # This field has the same meaning as
-        # [max_doublings in queue.yaml/xml](/appengine/docs/standard/python/config/
-        # queueref#retry_parameters).
+        # [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/
+        # standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
@@ -1263,29 +1328,27 @@ module Google
         # If zero, then the task age is unlimited.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # This field is output only for pull queues.
         # `max_retry_duration` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [task_age_limit in queue.yaml/xml](/appengine/docs/standard/python/config/
-        # queueref#retry_parameters).
+        # [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/
+        # standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `maxRetryDuration`
         # @return [String]
         attr_accessor :max_retry_duration
       
-        # A task will be [scheduled](Task.schedule_time) for retry between
+        # A task will be scheduled for retry between
         # min_backoff and
         # max_backoff duration after it fails,
         # if the queue's RetryConfig specifies that the task should be
         # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # This field is output only for pull queues.
         # `min_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [min_backoff_seconds in queue.yaml/xml](/appengine/docs/standard/python/config/
-        # queueref#retry_parameters).
+        # [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/
+        # docs/standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `minBackoff`
         # @return [String]
         attr_accessor :min_backoff
@@ -1324,8 +1387,8 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for FULL requires
-        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        # Task resource.
+        # `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
+        # permission on the Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -1477,16 +1540,18 @@ module Google
         # This proto can only be used for tasks in a queue which has
         # app_engine_http_target set.
         # Using AppEngineHttpRequest requires
-        # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+        # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+        # api/access-control)
         # Google IAM permission for the project
         # and the following scope:
         # `https://www.googleapis.com/auth/cloud-platform`
         # The task will be delivered to the App Engine app which belongs to the same
         # project as the queue. For more information, see
-        # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
-        # routed)
+        # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
+        # python/how-requests-are-routed)
         # and how routing is affected by
-        # [dispatch files](/appengine/docs/python/config/dispatchref).
+        # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
+        # dispatchref).
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
         # * If set,
@@ -1521,8 +1586,8 @@ module Google
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
         # For more information, see
-        # [Identifying projects](/resource-manager/docs/creating-managing-projects#
-        # identifying_projects)
+        # [Identifying projects](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-projects#identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the task's location.
         # The list of available locations can be obtained by calling
         # ListLocations.
@@ -1593,8 +1658,7 @@ module Google
         attr_accessor :attempt_dispatch_count
       
         # Output only. The number of attempts which have received a response.
-        # This field is not calculated for
-        # [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
+        # This field is not calculated for pull tasks.
         # Corresponds to the JSON property `attemptResponseCount`
         # @return [Fixnum]
         attr_accessor :attempt_response_count

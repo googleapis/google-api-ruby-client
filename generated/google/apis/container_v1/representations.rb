@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -411,6 +417,8 @@ module Google
           property :monitoring_service, as: 'monitoringService'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1::NetworkConfig, decorator: Google::Apis::ContainerV1::NetworkConfig::Representation
+      
           property :network_policy, as: 'networkPolicy', class: Google::Apis::ContainerV1::NetworkPolicy, decorator: Google::Apis::ContainerV1::NetworkPolicy::Representation
       
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
@@ -602,6 +610,14 @@ module Google
         end
       end
       
+      class NetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
       class NetworkPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -623,6 +639,7 @@ module Google
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1::AcceleratorConfig, decorator: Google::Apis::ContainerV1::AcceleratorConfig::Representation
       
           property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
           hash :labels, as: 'labels'
           property :local_ssd_count, as: 'localSsdCount'

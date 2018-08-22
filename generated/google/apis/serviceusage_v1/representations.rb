@@ -877,6 +877,7 @@ module Google
           property :patch, as: 'patch'
           property :post, as: 'post'
           property :put, as: 'put'
+          property :response_body, as: 'responseBody'
           property :rest_collection, as: 'restCollection'
           property :rest_method_name, as: 'restMethodName'
           property :selector, as: 'selector'

@@ -225,7 +225,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
         # export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -261,6 +262,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the action associated with the intent.
+        # Note: The action name must not contain whitespaces.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -373,7 +375,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentTrainingPhrase>]
         attr_accessor :training_phrases
       
-        # Required. Indicates whether webhooks are enabled for the intent.
+        # Optional. Indicates whether webhooks are enabled for the intent.
         # Corresponds to the JSON property `webhookState`
         # @return [String]
         attr_accessor :webhook_state
@@ -1093,7 +1095,7 @@ module Google
       class GoogleCloudDialogflowV2IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of this training phrase.
+        # Output only. The unique identifier of this training phrase.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1179,19 +1181,18 @@ module Google
       class GoogleCloudDialogflowV2OriginalDetectIntentRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. This field is set to the value of `QueryParameters.payload` field
-        # passed in the request.
-        # This field is used for the telephony gateway. It should have a
-        # structure similar to this JSON message:
+        # Optional. This field is set to the value of the `QueryParameters.payload`
+        # field passed in the request. Some integrations that query a Dialogflow
+        # agent may provide additional information in the payload.
+        # In particular for the Telephony Gateway this field has the form:
         # <pre>`
         # "telephony": `
         # "caller_id": "+18558363987"
+        # `
         # `</pre>
-        # Note: The caller ID field (`caller_id`) will be in
-        # [E.164 format](https://en.wikipedia.org/wiki/E.164) and is not supported
-        # for standard tier agents. When the telephony gateway is used with a
-        # standard tier agent the `caller_id` field above will have a value of
-        # `REDACTED_IN_STANDARD_TIER_AGENT`.
+        # Note: The caller ID field (`caller_id`) will be redacted for Standard
+        # Edition agents and populated with the caller ID in [E.164
+        # format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -1876,6 +1877,11 @@ module Google
         # @return [String]
         attr_accessor :input_audio
       
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
         # Represents the query input. It can contain either:
         # 1.  An audio config which
         # instructs the speech recognizer how to process the speech audio.
@@ -1897,6 +1903,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @input_audio = args[:input_audio] if args.key?(:input_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_input = args[:query_input] if args.key?(:query_input)
           @query_params = args[:query_params] if args.key?(:query_params)
         end
@@ -1905,6 +1912,29 @@ module Google
       # The message returned from the DetectIntent method.
       class GoogleCloudDialogflowV2beta1DetectIntentResponse
         include Google::Apis::Core::Hashable
+      
+        # If Knowledge Connectors are enabled, there could be more than one result
+        # returned for a given query or event, and this field will contain all
+        # results except for the top one, which is captured in query_result. The
+        # alternative results are ordered by decreasing
+        # `QueryResult.intent_detection_confidence`. If Knowledge Connectors are
+        # disabled, this field will be empty until multiple responses for regular
+        # intents are supported, at which point those additional results will be
+        # surfaced here.
+        # Corresponds to the JSON property `alternativeQueryResults`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryResult>]
+        attr_accessor :alternative_query_results
+      
+        # The audio data bytes encoded as specified in the request.
+        # Corresponds to the JSON property `outputAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output_audio
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
       
         # Represents the result of conversational query or event processing.
         # Corresponds to the JSON property `queryResult`
@@ -1966,9 +1996,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_query_results = args[:alternative_query_results] if args.key?(:alternative_query_results)
+          @output_audio = args[:output_audio] if args.key?(:output_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
           @webhook_status = args[:webhook_status] if args.key?(:webhook_status)
+        end
+      end
+      
+      # A document resource.
+      class GoogleCloudDialogflowV2beta1Document
+        include Google::Apis::Core::Hashable
+      
+        # The raw content of the document. This field is only permitted for
+        # EXTRACTIVE_QA and FAQ knowledge types.
+        # Note: This field is in the process of being deprecated, please use
+        # raw_content instead.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The URI where the file content is located.
+        # For documents stored in Google Cloud Storage, these URIs must have
+        # the form `gs://<bucket-name>/<object-name>`.
+        # NOTE: External URLs must correspond to public webpages, i.e., they must
+        # be indexed by Google Search. In particular, URLs for showing documents in
+        # Google Cloud Storage (i.e. the URL in your browser) are not supported.
+        # Instead use the `gs://` format URI described above.
+        # Corresponds to the JSON property `contentUri`
+        # @return [String]
+        attr_accessor :content_uri
+      
+        # Required. The display name of the document. The name must be 1024 bytes or
+        # less; otherwise, the creation request fails.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The knowledge type of document content.
+        # Corresponds to the JSON property `knowledgeTypes`
+        # @return [Array<String>]
+        attr_accessor :knowledge_types
+      
+        # Required. The MIME type of this document.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # The document resource name.
+        # The name must be empty when creating a document.
+        # Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        # ID>/documents/<Document ID>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The raw content of the document. This field is only permitted for
+        # EXTRACTIVE_QA and FAQ knowledge types.
+        # Corresponds to the JSON property `rawContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @content_uri = args[:content_uri] if args.key?(:content_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @knowledge_types = args[:knowledge_types] if args.key?(:knowledge_types)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+          @raw_content = args[:raw_content] if args.key?(:raw_content)
         end
       end
       
@@ -2142,7 +2245,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
         # agent:export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -2181,7 +2285,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
         # agent:import\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -2228,6 +2333,22 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Optional. Which Speech model to select for the given request. Select the
+        # model best suited to your domain to get best results. If a model is not
+        # explicitly specified, then we auto-select a model based on the parameters
+        # in the InputAudioConfig.
+        # If enhanced speech model is enabled for the agent and an enhanced
+        # version of the specified model for the language does not exist, then the
+        # speech is recognized using the standard version of the specified model.
+        # Refer to
+        # [Cloud Speech API
+        # documentation](https://cloud.google.com/speech-to-text/docs/basics#select-
+        # model)
+        # for more details.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # Optional. The collection of phrase hints which are used to boost accuracy
         # of speech recognition.
         # Refer to
@@ -2256,6 +2377,7 @@ module Google
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model = args[:model] if args.key?(:model)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end
@@ -2268,6 +2390,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the action associated with the intent.
+        # Note: The action name must not contain whitespaces.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -2282,6 +2405,14 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. Indicates that this intent ends an interaction. Some integrations
+        # (e.g., Actions on Google or Dialogflow phone gateway) use this information
+        # to close interaction with an end user. Default is false.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Boolean]
+        attr_accessor :end_interaction
+        alias_method :end_interaction?, :end_interaction
       
         # Optional. The collection of event names that trigger the intent.
         # If the collection of input contexts is not empty, all of the contexts must
@@ -2396,7 +2527,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentTrainingPhrase>]
         attr_accessor :training_phrases
       
-        # Required. Indicates whether webhooks are enabled for the intent.
+        # Optional. Indicates whether webhooks are enabled for the intent.
         # Corresponds to the JSON property `webhookState`
         # @return [String]
         attr_accessor :webhook_state
@@ -2410,6 +2541,7 @@ module Google
           @action = args[:action] if args.key?(:action)
           @default_response_platforms = args[:default_response_platforms] if args.key?(:default_response_platforms)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @events = args[:events] if args.key?(:events)
           @followup_intent_info = args[:followup_intent_info] if args.key?(:followup_intent_info)
           @input_context_names = args[:input_context_names] if args.key?(:input_context_names)
@@ -2540,6 +2672,25 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageSuggestions]
         attr_accessor :suggestions
       
+        # Plays audio from a file in Telephony Gateway.
+        # Corresponds to the JSON property `telephonyPlayAudio`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio]
+        attr_accessor :telephony_play_audio
+      
+        # Synthesizes speech and plays back the synthesized audio to the caller in
+        # Telephony Gateway.
+        # Telephony Gateway takes the synthesizer settings from
+        # `DetectIntentResponse.output_audio_config` which can either be set
+        # at request-level or can come from the agent-level synthesizer config.
+        # Corresponds to the JSON property `telephonySynthesizeSpeech`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech]
+        attr_accessor :telephony_synthesize_speech
+      
+        # Transfers the call in Telephony Gateway.
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
         # The text response message.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageText]
@@ -2562,6 +2713,9 @@ module Google
           @quick_replies = args[:quick_replies] if args.key?(:quick_replies)
           @simple_responses = args[:simple_responses] if args.key?(:simple_responses)
           @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @telephony_play_audio = args[:telephony_play_audio] if args.key?(:telephony_play_audio)
+          @telephony_synthesize_speech = args[:telephony_synthesize_speech] if args.key?(:telephony_synthesize_speech)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -3037,6 +3191,86 @@ module Google
         end
       end
       
+      # Plays audio from a file in Telephony Gateway.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI to a Google Cloud Storage object containing the audio to
+        # play, e.g., "gs://bucket/object". The object must contain a single
+        # channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz.
+        # This object must be readable by the `service-<Project
+        # Number>@gcp-sa-dialogflow.iam.gserviceaccount.com` service account
+        # where <Project Number> is the number of the Telephony Gateway project
+        # (usually the same as the Dialogflow agent project). If the Google Cloud
+        # Storage bucket is in the Telephony Gateway project, this permission is
+        # added by default when enabling the Dialogflow V2 API.
+        # For audio from other sources, consider using the
+        # `TelephonySynthesizeSpeech` message with SSML.
+        # Corresponds to the JSON property `audioUri`
+        # @return [String]
+        attr_accessor :audio_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+        end
+      end
+      
+      # Synthesizes speech and plays back the synthesized audio to the caller in
+      # Telephony Gateway.
+      # Telephony Gateway takes the synthesizer settings from
+      # `DetectIntentResponse.output_audio_config` which can either be set
+      # at request-level or can come from the agent-level synthesizer config.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
+        include Google::Apis::Core::Hashable
+      
+        # The SSML to be synthesized. For more information, see
+        # [SSML](https://developers.google.com/actions/reference/ssml).
+        # Corresponds to the JSON property `ssml`
+        # @return [String]
+        attr_accessor :ssml
+      
+        # The raw text to be synthesized.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssml = args[:ssml] if args.key?(:ssml)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Transfers the call in Telephony Gateway.
+      class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # Required. The phone number to transfer the call to
+        # in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        # We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
       # The text response message.
       class GoogleCloudDialogflowV2beta1IntentMessageText
         include Google::Apis::Core::Hashable
@@ -3136,7 +3370,7 @@ module Google
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of this training phrase.
+        # Output only. The unique identifier of this training phrase.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3217,6 +3451,112 @@ module Google
         end
       end
       
+      # Represents the result of querying a Knowledge base.
+      class GoogleCloudDialogflowV2beta1KnowledgeAnswers
+        include Google::Apis::Core::Hashable
+      
+        # A list of answers from Knowledge Connector.
+        # Corresponds to the JSON property `answers`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>]
+        attr_accessor :answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answers = args[:answers] if args.key?(:answers)
+        end
+      end
+      
+      # An answer from Knowledge Connector.
+      class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` knowledge base document that answers
+        # this conversational query.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # The corresponding FAQ question if the answer was extracted from a FAQ
+        # Document, empty otherwise.
+        # Corresponds to the JSON property `faqQuestion`
+        # @return [String]
+        attr_accessor :faq_question
+      
+        # The system's confidence score that this Knowledge answer is a good match
+        # for this converstational query, range from 0.0 (completely uncertain)
+        # to 1.0 (completely certain).
+        # Note: The confidence score is likely to vary somewhat (possibly even for
+        # identical requests), as the underlying model is under constant
+        # improvement, we may deprecate it in the future. We recommend using
+        # `match_confidence_level` which should be generally more stable.
+        # Corresponds to the JSON property `matchConfidence`
+        # @return [Float]
+        attr_accessor :match_confidence
+      
+        # The system's confidence level that this knowledge answer is a good match
+        # for this conversational query.
+        # NOTE: The confidence level for a given `<query, answer>` pair may change
+        # without notice, as it depends on models that are constantly being
+        # improved. However, it will change less frequently than the confidence
+        # score below, and should be preferred for referencing the quality of an
+        # answer.
+        # Corresponds to the JSON property `matchConfidenceLevel`
+        # @return [String]
+        attr_accessor :match_confidence_level
+      
+        # Indicates which Knowledge Document this answer was extracted from.
+        # Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        # ID>/documents/<Document ID>`.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @faq_question = args[:faq_question] if args.key?(:faq_question)
+          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
+          @match_confidence_level = args[:match_confidence_level] if args.key?(:match_confidence_level)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Represents knowledge base resource.
+      class GoogleCloudDialogflowV2beta1KnowledgeBase
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of the knowledge base. The name must be 1024
+        # bytes or less; otherwise, the creation request fails.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The knowledge base resource name.
+        # The name must be empty when creating a knowledge base.
+        # Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata in google::longrunning::Operation for Knowledge operations.
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3259,6 +3599,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contexts = args[:contexts] if args.key?(:contexts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for Documents.ListDocuments.
+      class GoogleCloudDialogflowV2beta1ListDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of documents.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document>]
+        attr_accessor :documents
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3317,6 +3683,32 @@ module Google
         end
       end
       
+      # Response message for KnowledgeBases.ListKnowledgeBases.
+      class GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of knowledge bases.
+        # Corresponds to the JSON property `knowledgeBases`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase>]
+        attr_accessor :knowledge_bases
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_bases = args[:knowledge_bases] if args.key?(:knowledge_bases)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for SessionEntityTypes.ListSessionEntityTypes.
       class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -3349,19 +3741,18 @@ module Google
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. This field is set to the value of `QueryParameters.payload` field
-        # passed in the request.
-        # This field is used for the telephony gateway. It should have a
-        # structure similar to this JSON message:
+        # Optional. This field is set to the value of the `QueryParameters.payload`
+        # field passed in the request. Some integrations that query a Dialogflow
+        # agent may provide additional information in the payload.
+        # In particular for the Telephony Gateway this field has the form:
         # <pre>`
         # "telephony": `
         # "caller_id": "+18558363987"
+        # `
         # `</pre>
-        # Note: The caller ID field (`caller_id`) will be in
-        # [E.164 format](https://en.wikipedia.org/wiki/E.164) and is not supported
-        # for standard tier agents. When the telephony gateway is used with a
-        # standard tier agent the `caller_id` field above will have a value of
-        # `REDACTED_IN_STANDARD_TIER_AGENT`.
+        # Note: The caller ID field (`caller_id`) will be redacted for Standard
+        # Edition agents and populated with the caller ID in [E.164
+        # format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3387,6 +3778,41 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @source = args[:source] if args.key?(:source)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Instructs the speech synthesizer how to generate the output audio content.
+      class GoogleCloudDialogflowV2beta1OutputAudioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Audio encoding of the synthesized audio content.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # Optional. The synthesis sample rate (in hertz) for this audio. If not
+        # provided, then the synthesizer will use the default sample rate based on
+        # the audio encoding. If this is different from the voice's natural sample
+        # rate, then the synthesizer will honor this request by converting to the
+        # desired sample rate (which might result in worse audio quality).
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        # Configuration of how speech should be synthesized.
+        # Corresponds to the JSON property `synthesizeSpeechConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig]
+        attr_accessor :synthesize_speech_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @synthesize_speech_config = args[:synthesize_speech_config] if args.key?(:synthesize_speech_config)
         end
       end
       
@@ -3448,6 +3874,16 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleTypeLatLng]
         attr_accessor :geo_location
       
+        # Optional. KnowledgeBases to get alternative results from. If not set, the
+        # KnowledgeBases enabled in the agent (through UI) will be used.
+        # Format:  `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
+        # Note: This field is `repeated` for forward compatibility, currently only
+        # the first one is supported, we may return an error if multiple
+        # KnowledgeBases are specified.
+        # Corresponds to the JSON property `knowledgeBaseNames`
+        # @return [Array<String>]
+        attr_accessor :knowledge_base_names
+      
         # Optional. This field can be used to pass custom data into the webhook
         # associated with the agent. Arbitrary JSON objects are supported.
         # Corresponds to the JSON property `payload`
@@ -3460,6 +3896,11 @@ module Google
         # @return [Boolean]
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
+      
+        # Configures the types of sentiment analysis to perform.
+        # Corresponds to the JSON property `sentimentAnalysisRequestConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig]
+        attr_accessor :sentiment_analysis_request_config
       
         # Optional. The collection of session entity types to replace or extend
         # developer entities with for this query only. The entity synonyms apply
@@ -3484,8 +3925,10 @@ module Google
         def update!(**args)
           @contexts = args[:contexts] if args.key?(:contexts)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
+          @knowledge_base_names = args[:knowledge_base_names] if args.key?(:knowledge_base_names)
           @payload = args[:payload] if args.key?(:payload)
           @reset_contexts = args[:reset_contexts] if args.key?(:reset_contexts)
+          @sentiment_analysis_request_config = args[:sentiment_analysis_request_config] if args.key?(:sentiment_analysis_request_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
@@ -3541,6 +3984,11 @@ module Google
         # @return [Float]
         attr_accessor :intent_detection_confidence
       
+        # Represents the result of querying a Knowledge base.
+        # Corresponds to the JSON property `knowledgeAnswers`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeAnswers]
+        attr_accessor :knowledge_answers
+      
         # The language that was triggered during intent detection.
         # See [Language Support](https://dialogflow.com/docs/reference/language)
         # for a list of the currently supported language codes.
@@ -3571,6 +4019,12 @@ module Google
         # Corresponds to the JSON property `queryText`
         # @return [String]
         attr_accessor :query_text
+      
+        # The result of sentiment analysis as configured by
+        # `sentiment_analysis_request_config`.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
       
         # The Speech recognition confidence between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
@@ -3609,10 +4063,12 @@ module Google
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
           @intent = args[:intent] if args.key?(:intent)
           @intent_detection_confidence = args[:intent_detection_confidence] if args.key?(:intent_detection_confidence)
+          @knowledge_answers = args[:knowledge_answers] if args.key?(:knowledge_answers)
           @language_code = args[:language_code] if args.key?(:language_code)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @parameters = args[:parameters] if args.key?(:parameters)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
@@ -3629,7 +4085,8 @@ module Google
         # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
         # agent:restore\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Authorization: Bearer '$(gcloud auth application-default
+        # print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
         # --compressed \
@@ -3685,6 +4142,77 @@ module Google
         end
       end
       
+      # The sentiment, such as positive/negative feeling or association, for a unit
+      # of analysis, such as the query text.
+      class GoogleCloudDialogflowV2beta1Sentiment
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+        # sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Configures the types of sentiment analysis to perform.
+      class GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Instructs the service to perform sentiment analysis on
+        # `query_text`. If not provided, sentiment analysis is not performed on
+        # `query_text`.
+        # Corresponds to the JSON property `analyzeQueryTextSentiment`
+        # @return [Boolean]
+        attr_accessor :analyze_query_text_sentiment
+        alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
+        end
+      end
+      
+      # The result of sentiment analysis as configured by
+      # `sentiment_analysis_request_config`.
+      class GoogleCloudDialogflowV2beta1SentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # The sentiment, such as positive/negative feeling or association, for a unit
+        # of analysis, such as the query text.
+        # Corresponds to the JSON property `queryTextSentiment`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Sentiment]
+        attr_accessor :query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+        end
+      end
+      
       # Represents a session entity type.
       # Extends or replaces a developer entity type at the user session level (we
       # refer to the entity types defined at the agent level as "developer entity
@@ -3725,6 +4253,63 @@ module Google
           @entities = args[:entities] if args.key?(:entities)
           @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration of how speech should be synthesized.
+      class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An identifier which selects 'audio effects' profiles that are
+        # applied on (post synthesized) text to speech. Effects are applied on top of
+        # each other in the order they are given.
+        # Corresponds to the JSON property `effectsProfileId`
+        # @return [Array<String>]
+        attr_accessor :effects_profile_id
+      
+        # Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
+        # semitones from the original pitch. -20 means decrease 20 semitones from the
+        # original pitch.
+        # Corresponds to the JSON property `pitch`
+        # @return [Float]
+        attr_accessor :pitch
+      
+        # Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
+        # native speed supported by the specific voice. 2.0 is twice as fast, and
+        # 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
+        # other values < 0.25 or > 4.0 will return an error.
+        # Corresponds to the JSON property `speakingRate`
+        # @return [Float]
+        attr_accessor :speaking_rate
+      
+        # Description of which voice to use for speech synthesis.
+        # Corresponds to the JSON property `voice`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1VoiceSelectionParams]
+        attr_accessor :voice
+      
+        # Optional. Volume gain (in dB) of the normal native volume supported by the
+        # specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of
+        # 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
+        # will play at approximately half the amplitude of the normal native signal
+        # amplitude. A value of +6.0 (dB) will play at approximately twice the
+        # amplitude of the normal native signal amplitude. We strongly recommend not
+        # to exceed +10 (dB) as there's usually no effective increase in loudness for
+        # any value greater than that.
+        # Corresponds to the JSON property `volumeGainDb`
+        # @return [Float]
+        attr_accessor :volume_gain_db
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effects_profile_id = args[:effects_profile_id] if args.key?(:effects_profile_id)
+          @pitch = args[:pitch] if args.key?(:pitch)
+          @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
+          @voice = args[:voice] if args.key?(:voice)
+          @volume_gain_db = args[:volume_gain_db] if args.key?(:volume_gain_db)
         end
       end
       
@@ -3770,9 +4355,44 @@ module Google
         end
       end
       
+      # Description of which voice to use for speech synthesis.
+      class GoogleCloudDialogflowV2beta1VoiceSelectionParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the voice. If not set, the service will choose a
+        # voice based on the other parameters such as language_code and gender.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The preferred gender of the voice. If not set, the service will
+        # choose a voice based on the other parameters such as language_code and
+        # name. Note that this is only a preference, not requirement. If a
+        # voice of the appropriate gender is not available, the synthesizer should
+        # substitute a voice with a different gender rather than failing the request.
+        # Corresponds to the JSON property `ssmlGender`
+        # @return [String]
+        attr_accessor :ssml_gender
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
+        end
+      end
+      
       # The request message for a webhook call.
       class GoogleCloudDialogflowV2beta1WebhookRequest
         include Google::Apis::Core::Hashable
+      
+        # Alternative query results from KnowledgeService.
+        # Corresponds to the JSON property `alternativeQueryResults`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryResult>]
+        attr_accessor :alternative_query_results
       
         # Represents the contents of the original request that was passed to
         # the `[Streaming]DetectIntent` call.
@@ -3804,6 +4424,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_query_results = args[:alternative_query_results] if args.key?(:alternative_query_results)
           @original_detect_intent_request = args[:original_detect_intent_request] if args.key?(:original_detect_intent_request)
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
@@ -3814,6 +4435,14 @@ module Google
       # The response message for a webhook call.
       class GoogleCloudDialogflowV2beta1WebhookResponse
         include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates that this intent ends an interaction. Some integrations
+        # (e.g., Actions on Google or Dialogflow phone gateway) use this information
+        # to close interaction with an end user. Default is false.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Boolean]
+        attr_accessor :end_interaction
+        alias_method :end_interaction?, :end_interaction
       
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `<event: ` name: “welcome_event”,
@@ -3879,6 +4508,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @followup_event_input = args[:followup_event_input] if args.key?(:followup_event_input)
           @fulfillment_messages = args[:fulfillment_messages] if args.key?(:fulfillment_messages)
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)

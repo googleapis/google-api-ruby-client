@@ -576,19 +576,6 @@ module Google
         end
       end
       
-      # Request for ResetNode.
-      class ResetNodeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # 
       class SchedulingConfig
         include Google::Apis::Core::Hashable

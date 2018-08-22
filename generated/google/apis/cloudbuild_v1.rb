@@ -18,14 +18,14 @@ require 'google/apis/cloudbuild_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Container Builder
+    # Cloud Build API
     #
-    # Builds container images in the cloud.
+    # Creates and manages builds on Google Cloud Platform.
     #
-    # @see https://cloud.google.com/container-builder/docs/
+    # @see https://cloud.google.com/cloud-build/docs/
     module CloudbuildV1
       VERSION = 'V1'
-      REVISION = '20180621'
+      REVISION = '20180820'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

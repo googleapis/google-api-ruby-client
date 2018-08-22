@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/blogger/docs/2.0/json/getting_started
     module BloggerV2
       VERSION = 'V2'
-      REVISION = ''
+      REVISION = '20150422'
 
       # Manage your Blogger account
       AUTH_BLOGGER = 'https://www.googleapis.com/auth/blogger'

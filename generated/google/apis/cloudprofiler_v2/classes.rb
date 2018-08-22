@@ -34,11 +34,6 @@ module Google
         # @return [Google::Apis::CloudprofilerV2::Deployment]
         attr_accessor :deployment
       
-        # Profile resource.
-        # Corresponds to the JSON property `profile`
-        # @return [Google::Apis::CloudprofilerV2::Profile]
-        attr_accessor :profile
-      
         # One or more profile types that the agent is capable of providing.
         # Corresponds to the JSON property `profileType`
         # @return [Array<String>]
@@ -51,7 +46,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployment = args[:deployment] if args.key?(:deployment)
-          @profile = args[:profile] if args.key?(:profile)
           @profile_type = args[:profile_type] if args.key?(:profile_type)
         end
       end

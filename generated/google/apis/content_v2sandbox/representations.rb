@@ -1143,6 +1143,7 @@ module Google
       class OrdersCreateTestOrderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
           property :template_name, as: 'templateName'
           property :test_order, as: 'testOrder', class: Google::Apis::ContentV2sandbox::TestOrder, decorator: Google::Apis::ContentV2sandbox::TestOrder::Representation
       

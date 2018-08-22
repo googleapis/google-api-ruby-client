@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerKilledEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerStartedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class ExportVariantSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -587,6 +599,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::GenomicsV1::Expr, decorator: Google::Apis::GenomicsV1::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -649,6 +663,13 @@ module Google
           property :instance_name, as: 'instanceName'
           property :machine_type, as: 'machineType'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ContainerKilledEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
         end
       end
       
@@ -758,6 +779,16 @@ module Google
           collection :call_set_ids, as: 'callSetIds'
           property :format, as: 'format'
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       

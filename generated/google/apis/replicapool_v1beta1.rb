@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/compute/docs/replica-pool/
     module ReplicapoolV1beta1
       VERSION = 'V1beta1'
-      REVISION = ''
+      REVISION = '20160512'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

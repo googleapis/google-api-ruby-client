@@ -1229,6 +1229,7 @@ module Google
           property :addresses, as: 'addresses'
           property :agreed_to_terms, as: 'agreedToTerms'
           collection :aliases, as: 'aliases'
+          property :archived, as: 'archived'
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
       

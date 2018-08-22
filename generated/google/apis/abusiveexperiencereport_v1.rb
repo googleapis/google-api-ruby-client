@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/abusive-experience-report/
     module AbusiveexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20180419'
+      REVISION = '20180807'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudshellV1alpha1
       
+      class AuthorizeEnvironmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatePublicKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -74,6 +80,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthorizeEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+        end
       end
       
       class CreatePublicKeyRequest
@@ -136,6 +149,7 @@ module Google
       class StartEnvironmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
         end
       end
       

@@ -480,12 +480,11 @@ module Google
         end
       end
       
-      # Google Cloud Container Builder build information.
+      # Google Cloud Build information.
       class BuildInfo
         include Google::Apis::Core::Hashable
       
-        # The Google Cloud Container Builder build id. Example: "f966068f-08b2-42c8-bdfe-
-        # 74137dff2bf9"
+        # The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
         # Corresponds to the JSON property `cloudBuildId`
         # @return [String]
         attr_accessor :cloud_build_id
@@ -745,7 +744,7 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Container Builder build information.
+        # Google Cloud Build information.
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::AppengineV1beta::BuildInfo]
         attr_accessor :build

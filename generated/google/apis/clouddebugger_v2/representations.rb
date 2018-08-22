@@ -405,6 +405,7 @@ module Google
       class SourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
           property :line, as: 'line'
           property :path, as: 'path'
         end

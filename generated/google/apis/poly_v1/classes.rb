@@ -89,6 +89,12 @@ module Google
         # @return [Google::Apis::PolyV1::PresentationParams]
         attr_accessor :presentation_params
       
+        # Info about the sources of this asset (i.e. assets that were remixed to
+        # create this asset).
+        # Corresponds to the JSON property `remixInfo`
+        # @return [Google::Apis::PolyV1::RemixInfo]
+        attr_accessor :remix_info
+      
         # Represents a file in Poly, which can be a root,
         # resource, or thumbnail file.
         # Corresponds to the JSON property `thumbnail`
@@ -123,6 +129,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @presentation_params = args[:presentation_params] if args.key?(:presentation_params)
+          @remix_info = args[:remix_info] if args.key?(:remix_info)
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
           @update_time = args[:update_time] if args.key?(:update_time)
           @visibility = args[:visibility] if args.key?(:visibility)
@@ -528,6 +535,27 @@ module Google
           @x = args[:x] if args.key?(:x)
           @y = args[:y] if args.key?(:y)
           @z = args[:z] if args.key?(:z)
+        end
+      end
+      
+      # Info about the sources of this asset (i.e. assets that were remixed to
+      # create this asset).
+      class RemixInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource ids for the sources of this remix, of the form:
+        # `assets/`ASSET_ID``
+        # Corresponds to the JSON property `sourceAsset`
+        # @return [Array<String>]
+        attr_accessor :source_asset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_asset = args[:source_asset] if args.key?(:source_asset)
         end
       end
       

@@ -688,6 +688,146 @@ module Google
         end
       end
       
+      # A minimal index definition.
+      # Next tag: 8
+      class GoogleDatastoreAdminV1Index
+        include Google::Apis::Core::Hashable
+      
+        # The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
+        # Required.
+        # Corresponds to the JSON property `ancestor`
+        # @return [String]
+        attr_accessor :ancestor
+      
+        # The resource ID of the index.
+        # Output only.
+        # Corresponds to the JSON property `indexId`
+        # @return [String]
+        attr_accessor :index_id
+      
+        # The entity kind to which this index applies.
+        # Required.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Project ID.
+        # Output only.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # An ordered sequence of property names and their index attributes.
+        # Required.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatastoreV1::GoogleDatastoreAdminV1IndexedProperty>]
+        attr_accessor :properties
+      
+        # The state of the index.
+        # Output only.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestor = args[:ancestor] if args.key?(:ancestor)
+          @index_id = args[:index_id] if args.key?(:index_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @properties = args[:properties] if args.key?(:properties)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata for Index operations.
+      class GoogleDatastoreAdminV1IndexOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata common to all Datastore Admin operations.
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1CommonMetadata]
+        attr_accessor :common
+      
+        # The index resource ID that this operation is acting on.
+        # Corresponds to the JSON property `indexId`
+        # @return [String]
+        attr_accessor :index_id
+      
+        # Measures the progress of a particular metric.
+        # Corresponds to the JSON property `progressEntities`
+        # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Progress]
+        attr_accessor :progress_entities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common = args[:common] if args.key?(:common)
+          @index_id = args[:index_id] if args.key?(:index_id)
+          @progress_entities = args[:progress_entities] if args.key?(:progress_entities)
+        end
+      end
+      
+      # Next tag: 3
+      class GoogleDatastoreAdminV1IndexedProperty
+        include Google::Apis::Core::Hashable
+      
+        # The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
+        # Required.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # The property name to index.
+        # Required.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @direction = args[:direction] if args.key?(:direction)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The response for
+      # google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
+      class GoogleDatastoreAdminV1ListIndexesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The indexes.
+        # Corresponds to the JSON property `indexes`
+        # @return [Array<Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index>]
+        attr_accessor :indexes
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @indexes = args[:indexes] if args.key?(:indexes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Measures the progress of a particular metric.
       class GoogleDatastoreAdminV1Progress
         include Google::Apis::Core::Hashable

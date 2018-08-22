@@ -238,6 +238,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::GenomicsV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -268,6 +276,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -482,7 +491,28 @@ module Google
         end
       end
       
-      # This event is generated when a container starts.
+      # An event generated when a container is forcibly terminated by the
+      # worker. Currently, this only occurs when the container outlives the
+      # timeout specified by the user.
+      class ContainerKilledEvent
+        include Google::Apis::Core::Hashable
+      
+        # The numeric ID of the action that started the container.
+        # Corresponds to the JSON property `actionId`
+        # @return [Fixnum]
+        attr_accessor :action_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_id = args[:action_id] if args.key?(:action_id)
+        end
+      end
+      
+      # An event generated when a container starts.
       class ContainerStartedEvent
         include Google::Apis::Core::Hashable
       
@@ -491,17 +521,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :action_id
       
-        # The public IP address that can be used to connect to the container.  This
-        # field is only populated when at least one port mapping is present.  If the
-        # instance was created with a private address this field will be empty even
+        # The public IP address that can be used to connect to the container. This
+        # field is only populated when at least one port mapping is present. If the
+        # instance was created with a private address, this field will be empty even
         # if port mappings exist.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # The container to host port mappings installed for this container.  This
-        # set will contain any ports exposed using the PUBLISH_EXPOSED_PORTS flag as
-        # well as any specified in the Action definition.
+        # The container-to-host port mappings installed for this container. This
+        # set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS` flag
+        # as well as any specified in the `Action` definition.
         # Corresponds to the JSON property `portMappings`
         # @return [Hash<String,Fixnum>]
         attr_accessor :port_mappings
@@ -518,7 +548,7 @@ module Google
         end
       end
       
-      # This event is generated when a container exits.
+      # An event generated when a container exits.
       class ContainerStoppedEvent
         include Google::Apis::Core::Hashable
       
@@ -533,12 +563,12 @@ module Google
         attr_accessor :exit_status
       
         # The tail end of any content written to standard error by the container.
-        # To prevent this from being recorded if the action is known to emit
-        # large amounts of debugging noise or sensitive information, set the
-        # DISABLE_STANDARD_ERROR_CAPTURE flag.
+        # If the content emits large amounts of debugging noise or contains
+        # sensitive information, you can prevent the content from being printed by
+        # setting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.
         # Note that only a small amount of the end of the stream is captured here.
-        # The entire stream is stored in the /google/logs directory mounted into
-        # each action, and may be copied off the machine as described elsewhere.
+        # The entire stream is stored in the `/google/logs` directory mounted into
+        # each action, and can be copied off the machine as described elsewhere.
         # Corresponds to the JSON property `stderr`
         # @return [String]
         attr_accessor :stderr
@@ -619,13 +649,13 @@ module Google
         end
       end
       
-      # This event is generated whenever a resource limitation or transient error
+      # An event generated whenever a resource limitation or transient error
       # delays execution of a pipeline that was otherwise ready to run.
       class DelayedEvent
         include Google::Apis::Core::Hashable
       
-        # A textual description of the cause of the delay.  The string may change
-        # without notice since it is often generated by another service (such as
+        # A textual description of the cause of the delay. The string can change
+        # without notice because it is often generated by another service (such as
         # Compute Engine).
         # Corresponds to the JSON property `cause`
         # @return [String]
@@ -633,8 +663,8 @@ module Google
       
         # If the delay was caused by a resource shortage, this field lists the
         # Compute Engine metrics that are preventing this operation from running
-        # (for example, CPUS or INSTANCES).  If the particular metric is not known,
-        # a single UNKNOWN metric will be present.
+        # (for example, `CPUS` or `INSTANCES`). If the particular metric is not
+        # known, a single `UNKNOWN` metric will be present.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
@@ -737,23 +767,23 @@ module Google
         end
       end
       
-      # Event carries information about events that occur during pipeline execution.
+      # Carries information about events that occur during pipeline execution.
       class Event
         include Google::Apis::Core::Hashable
       
-        # A human readable description of the event.  Note that these strings may
-        # change at any time without notice.  Any application logic must use the
-        # information in the details field.
+        # A human-readable description of the event. Note that these strings can
+        # change at any time without notice. Any application logic must use the
+        # information in the `details` field.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Machine readable details about the event.
+        # Machine-readable details about the event.
         # Corresponds to the JSON property `details`
         # @return [Hash<String,Object>]
         attr_accessor :details
       
-        # The time that the event occurred.
+        # The time at which the event occurred.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -944,6 +974,53 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # 
       class ExternalId
         include Google::Apis::Core::Hashable
@@ -969,12 +1046,12 @@ module Google
         end
       end
       
-      # This event is generated when the execution of a pipeline has failed.  Note
-      # that other events may continue to occur after this event.
+      # An event generated when the execution of a pipeline has failed. Note
+      # that other events can continue to occur after this event.
       class FailedEvent
         include Google::Apis::Core::Hashable
       
-        # The human readable description of the cause of the failure.
+        # The human-readable description of the cause of the failure.
         # Corresponds to the JSON property `cause`
         # @return [String]
         attr_accessor :cause
@@ -1703,7 +1780,7 @@ module Google
         end
       end
       
-      # This event is generated when the worker starts pulling an image.
+      # An event generated when the worker starts pulling an image.
       class PullStartedEvent
         include Google::Apis::Core::Hashable
       
@@ -1722,7 +1799,7 @@ module Google
         end
       end
       
-      # This event is generated when the worker stops pulling an image.
+      # An event generated when the worker stops pulling an image.
       class PullStoppedEvent
         include Google::Apis::Core::Hashable
       
@@ -3308,10 +3385,10 @@ module Google
         end
       end
       
-      # This event is generated when the execution of a container results in a
-      # non-zero exit status that was not otherwise ignored.  Execution will
-      # continue, but only actions that are flagged as ALWAYS_RUN will be executed:
-      # other actions will be skipped.
+      # An event generated when the execution of a container results in a
+      # non-zero exit status that was not otherwise ignored. Execution will
+      # continue, but only actions that are flagged as `ALWAYS_RUN` will be
+      # executed. Other actions will be skipped.
       class UnexpectedExitStatusEvent
         include Google::Apis::Core::Hashable
       
@@ -3708,7 +3785,7 @@ module Google
         end
       end
       
-      # This event is generated once a worker VM has been assigned to run the
+      # An event generated after a worker VM has been assigned to run the
       # pipeline.
       class WorkerAssignedEvent
         include Google::Apis::Core::Hashable
@@ -3734,8 +3811,8 @@ module Google
         end
       end
       
-      # This event is generated when the worker VM that was assigned to the pipeline
-      # has been released (i.e., deleted).
+      # An event generated when the worker VM that was assigned to the pipeline
+      # has been released (deleted).
       class WorkerReleasedEvent
         include Google::Apis::Core::Hashable
       

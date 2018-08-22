@@ -174,7 +174,7 @@ module Google
         # @return [Array<Google::Apis::ComposerV1beta1::Environment>]
         attr_accessor :environments
       
-        # The page token used to query for the next page if one exists
+        # The page token used to query for the next page if one exists.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -266,18 +266,19 @@ module Google
         # communications, specified as a
         # [relative resource name](/apis/design/resource_names#relative_resource_name).
         # For example: "projects/`projectId`/global/networks/`networkId`".
-        # [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
-        # network must belong to the environment's project. If unspecified, the
-        # "default" network ID in the environment's project is used.  If a
-        # [Custom Subnet Network]((/vpc/docs/vpc#vpc_networks_and_subnets)
-        # is provided, `nodeConfig.subnetwork` must also be provided.
+        # If unspecified, the default network in the environment's project is used.
+        # If a [Custom Subnet Network]((/vpc/docs/vpc#vpc_networks_and_subnets)
+        # is provided, `nodeConfig.subnetwork` must also be provided. For
+        # [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see
+        # `nodeConfig.subnetwork`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Optional. The set of Google API scopes to be made available on all
-        # node VMs. If `oauth_scopes` is empty, defaults to
-        # ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+        # node VMs. Defaults to
+        # ["https://www.googleapis.com/auth/cloud-platform"] and must be included in
+        # the list of specified scopes. Cannot be updated.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -295,8 +296,10 @@ module Google
         # For example:
         # "projects/`projectId`/regions/`regionId`/subnetworks/`subnetworkId`"
         # If a subnetwork is provided, `nodeConfig.network` must also be provided,
-        # and the subnetwork must belong to the enclosing environment's project and
-        # location.
+        # and the subnetwork must belong to the same project as the network.
+        # For Shared VPC, you must configure the subnetwork with secondary ranges
+        # named <strong>composer-pods</strong> and
+        # <strong>composer-services</strong> to support Alias IPs.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork

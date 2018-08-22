@@ -22,6 +22,30 @@ module Google
   module Apis
     module CloudkmsV1
       
+      class AsymmetricDecryptRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsymmetricDecryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsymmetricSignRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsymmetricSignResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CryptoKeyVersionTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DecryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Digest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +113,18 @@ module Google
       end
       
       class EncryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyOperationAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +166,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +214,35 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AsymmetricDecryptRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+        end
+      end
+      
+      class AsymmetricDecryptResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plaintext, :base64 => true, as: 'plaintext'
+        end
+      end
+      
+      class AsymmetricSignRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digest, as: 'digest', class: Google::Apis::CloudkmsV1::Digest, decorator: Google::Apis::CloudkmsV1::Digest::Representation
+      
+        end
+      end
+      
+      class AsymmetricSignResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -174,6 +263,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::CloudkmsV1::Expr, decorator: Google::Apis::CloudkmsV1::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -190,17 +281,32 @@ module Google
       
           property :purpose, as: 'purpose'
           property :rotation_period, as: 'rotationPeriod'
+          property :version_template, as: 'versionTemplate', class: Google::Apis::CloudkmsV1::CryptoKeyVersionTemplate, decorator: Google::Apis::CloudkmsV1::CryptoKeyVersionTemplate::Representation
+      
         end
       end
       
       class CryptoKeyVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :attestation, as: 'attestation', class: Google::Apis::CloudkmsV1::KeyOperationAttestation, decorator: Google::Apis::CloudkmsV1::KeyOperationAttestation::Representation
+      
           property :create_time, as: 'createTime'
           property :destroy_event_time, as: 'destroyEventTime'
           property :destroy_time, as: 'destroyTime'
+          property :generate_time, as: 'generateTime'
           property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
           property :state, as: 'state'
+        end
+      end
+      
+      class CryptoKeyVersionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :protection_level, as: 'protectionLevel'
         end
       end
       
@@ -225,6 +331,15 @@ module Google
         end
       end
       
+      class Digest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sha256, :base64 => true, as: 'sha256'
+          property :sha384, :base64 => true, as: 'sha384'
+          property :sha512, :base64 => true, as: 'sha512'
+        end
+      end
+      
       class EncryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -238,6 +353,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ciphertext, :base64 => true, as: 'ciphertext'
           property :name, as: 'name'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
+      class KeyOperationAttestation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :format, as: 'format'
         end
       end
       
@@ -299,6 +432,13 @@ module Google
         end
       end
       
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hsm_available, as: 'hsmAvailable'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -308,6 +448,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem, as: 'pem'
         end
       end
       

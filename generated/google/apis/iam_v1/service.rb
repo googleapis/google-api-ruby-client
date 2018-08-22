@@ -49,6 +49,55 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Lints a Cloud IAM policy object or its sub fields. Currently supports
+        # google.iam.v1.Policy, google.iam.v1.Binding and
+        # google.iam.v1.Binding.condition.
+        # Each lint operation consists of multiple lint validation units.
+        # Validation units have the following properties:
+        # - Each unit inspects the input object in regard to a particular
+        # linting aspect and issues a google.iam.admin.v1.LintResult
+        # disclosing the result.
+        # - Domain of discourse of each unit can be either
+        # google.iam.v1.Policy, google.iam.v1.Binding, or
+        # google.iam.v1.Binding.condition depending on the purpose of the
+        # validation.
+        # - A unit may require additional data (like the list of all possible
+        # enumerable values of a particular attribute used in the policy instance)
+        # which shall be provided by the caller. Refer to the comments of
+        # google.iam.admin.v1.LintPolicyRequest.context for more details.
+        # The set of applicable validation units is determined by the Cloud IAM
+        # server and is not configurable.
+        # Regardless of any lint issues or their severities, successful calls to
+        # `lintPolicy` return an HTTP 200 OK status code.
+        # @param [Google::Apis::IamV1::LintPolicyRequest] lint_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::LintPolicyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::LintPolicyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lint_iam_policy_policy(lint_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/iamPolicies:lintPolicy', options)
+          command.request_representation = Google::Apis::IamV1::LintPolicyRequest::Representation
+          command.request_object = lint_policy_request_object
+          command.response_representation = Google::Apis::IamV1::LintPolicyResponse::Representation
+          command.response_class = Google::Apis::IamV1::LintPolicyResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a list of services that support service level audit logging
         # configuration for the given resource.
         # @param [Google::Apis::IamV1::QueryAuditableServicesRequest] query_auditable_services_request_object
@@ -892,8 +941,7 @@ module Google
         
         # Updates a ServiceAccount.
         # Currently, only the following fields are updatable:
-        # `display_name` .
-        # The `etag` is mandatory.
+        # `display_name`, `description`.
         # @param [String] name
         #   The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.

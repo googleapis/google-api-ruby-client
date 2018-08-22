@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/custom-search/v1/using_rest
     module CustomsearchV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180815'
     end
   end
 end

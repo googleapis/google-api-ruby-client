@@ -209,8 +209,8 @@ module Google
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
         # @param [String] project
-        #   The name of the cloud project that snapshots belong to.
-        #   Format is `projects/`project``.
+        #   The name of the project in which to list snapshots.
+        #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of snapshots to return.
         # @param [String] page_token
@@ -544,8 +544,8 @@ module Google
         
         # Lists matching subscriptions.
         # @param [String] project
-        #   The name of the cloud project that subscriptions belong to.
-        #   Format is `projects/`project``.
+        #   The name of the project in which to list subscriptions.
+        #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of subscriptions to return.
         # @param [String] page_token
@@ -983,8 +983,8 @@ module Google
         
         # Lists matching topics.
         # @param [String] project
-        #   The name of the cloud project that topics belong to.
-        #   Format is `projects/`project``.
+        #   The name of the project in which to list topics.
+        #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of topics to return.
         # @param [String] page_token
@@ -1060,8 +1060,7 @@ module Google
         end
         
         # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
-        # does not exist. The message payload must not be empty; it must contain
-        # either a non-empty data field, or at least one attribute.
+        # does not exist.
         # @param [String] topic
         #   The messages in the request will be published on this topic.
         #   Format is `projects/`project`/topics/`topic``.

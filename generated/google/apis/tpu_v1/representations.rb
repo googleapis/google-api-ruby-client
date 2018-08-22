@@ -100,12 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResetNodeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SchedulingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -267,12 +261,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tensorflow_version, as: 'tensorflowVersion'
-        end
-      end
-      
-      class ResetNodeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -183,6 +183,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::IamV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -213,6 +221,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -228,6 +237,14 @@ module Google
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
+      
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::IamV1::Expr]
+        attr_accessor :condition
       
         # A single identity requesting access for a Cloud Platform resource.
         # Follows the same format of Binding.members.
@@ -250,6 +267,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @condition = args[:condition] if args.key?(:condition)
           @member = args[:member] if args.key?(:member)
           @role = args[:role] if args.key?(:role)
         end
@@ -365,6 +383,243 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The request to lint a Cloud IAM policy object. LintPolicy is currently
+      # functional only for `lint_object` of type `condition`.
+      class LintPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Associates `members` with a `role`.
+        # Corresponds to the JSON property `binding`
+        # @return [Google::Apis::IamV1::Binding]
+        attr_accessor :binding
+      
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::IamV1::Expr]
+        attr_accessor :condition
+      
+        # `context` contains additional *permission-controlled* data that any
+        # lint unit may depend on, in form of ``key: value`` pairs. Currently, this
+        # field is non-operational and it will not be used during the lint operation.
+        # Corresponds to the JSON property `context`
+        # @return [Hash<String,Object>]
+        attr_accessor :context
+      
+        # The full resource name of the policy this lint request is about.
+        # The name follows the Google Cloud Platform (GCP) resource format.
+        # For example, a GCP project with ID `my-project` will be named
+        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # The resource name is not used to read the policy instance from the Cloud
+        # IAM database. The candidate policy for lint has to be provided in the same
+        # request object.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # **YAML Example**
+        # bindings:
+        # - members:
+        # - user:mike@example.com
+        # - group:admins@example.com
+        # - domain:google.com
+        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner
+        # - members:
+        # - user:sean@example.com
+        # role: roles/viewer
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::IamV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binding = args[:binding] if args.key?(:binding)
+          @condition = args[:condition] if args.key?(:condition)
+          @context = args[:context] if args.key?(:context)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # The response of a lint operation. An empty response indicates
+      # the operation was able to fully execute and no lint issue was found.
+      class LintPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of lint results sorted by a composite <severity, binding_ordinal> key,
+        # descending order of severity and ascending order of binding_ordinal.
+        # There is no certain order among the same keys.
+        # For cross-binding results (only if the input object to lint is
+        # instance of google.iam.v1.Policy), there will be a
+        # google.iam.admin.v1.LintResult for each of the involved bindings,
+        # and the associated debug_message may enumerate the other involved
+        # binding ordinal number(s).
+        # Corresponds to the JSON property `lintResults`
+        # @return [Array<Google::Apis::IamV1::LintResult>]
+        attr_accessor :lint_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lint_results = args[:lint_results] if args.key?(:lint_results)
+        end
+      end
+      
+      # Structured response of a single validation unit.
+      class LintResult
+        include Google::Apis::Core::Hashable
+      
+        # 0-based index ordinality of the binding in the input object associated
+        # with this result.
+        # This field is populated only if the input object to lint is of type
+        # google.iam.v1.Policy, which can comprise more than one binding.
+        # It is set to -1 if the result is not associated with any particular
+        # binding and only targets the policy as a whole, such as results about
+        # policy size violations.
+        # Corresponds to the JSON property `bindingOrdinal`
+        # @return [Fixnum]
+        attr_accessor :binding_ordinal
+      
+        # Human readable debug message associated with the issue.
+        # Corresponds to the JSON property `debugMessage`
+        # @return [String]
+        attr_accessor :debug_message
+      
+        # The name of the field for which this lint result is about, relative to the
+        # input object to lint in the request.
+        # For nested messages, `field_name` consists of names of the embedded fields
+        # separated by period character. For instance, if the lint request is on a
+        # google.iam.v1.Policy and this lint result is about a condition
+        # expression of one of the input policy bindings, the field would be
+        # populated as `bindings.condition.expression`.
+        # This field does not identify the ordinality of the repetitive fields (for
+        # instance bindings in a policy).
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # The validation unit level.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # 0-based character position of problematic construct within the object
+        # identified by `field_name`. Currently, this is populated only for condition
+        # expression.
+        # Corresponds to the JSON property `locationOffset`
+        # @return [Fixnum]
+        attr_accessor :location_offset
+      
+        # The validation unit severity.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The validation unit name, for instance
+        # “lintValidationUnits/ConditionComplexityCheck”.
+        # Corresponds to the JSON property `validationUnitName`
+        # @return [String]
+        attr_accessor :validation_unit_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binding_ordinal = args[:binding_ordinal] if args.key?(:binding_ordinal)
+          @debug_message = args[:debug_message] if args.key?(:debug_message)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @level = args[:level] if args.key?(:level)
+          @location_offset = args[:location_offset] if args.key?(:location_offset)
+          @severity = args[:severity] if args.key?(:severity)
+          @validation_unit_name = args[:validation_unit_name] if args.key?(:validation_unit_name)
         end
       end
       
@@ -849,8 +1104,8 @@ module Google
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # Optional. A user-specified description of the service account.  Must be
-        # fewer than 100 UTF-8 bytes.
+        # Optional. A user-specified name for the service account. Must be
+        # less than or equal to 100 UTF-8 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -860,7 +1115,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # Used to perform a consistent read-modify-write.
+        # Optional. Not currently used.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

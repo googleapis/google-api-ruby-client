@@ -622,6 +622,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisksAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksRemoveResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisksResizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +785,12 @@ module Google
       end
       
       class GlobalSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1870,6 +1888,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupsListNodes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2218,6 +2254,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionDisksAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksRemoveResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionDisksResizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2369,6 +2417,114 @@ module Google
       end
       
       class ResourceGroupReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePoliciesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyBackupSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyBackupSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyBackupSchedulePolicySnapshotProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyDailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyHourlyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyWeeklyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyWeeklyCycleDayOfWeek
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3418,6 +3574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4338,6 +4500,7 @@ module Google
           property :options, as: 'options'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
+          collection :resource_policies, as: 'resourcePolicies'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
@@ -4545,6 +4708,20 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DisksAddResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class DisksRemoveResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
         end
       end
       
@@ -4824,6 +5001,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class GlobalSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
+      
         end
       end
       
@@ -6787,6 +6975,7 @@ module Google
           collection :nodes, as: 'nodes', class: Google::Apis::ComputeBeta::NodeGroupNode, decorator: Google::Apis::ComputeBeta::NodeGroupNode::Representation
       
           property :self_link, as: 'selfLink'
+          property :size, as: 'size'
           property :status, as: 'status'
           property :zone, as: 'zone'
         end
@@ -6877,6 +7066,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :nodes, as: 'nodes'
+        end
+      end
+      
+      class NodeGroupsListNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::NodeGroupNode, decorator: Google::Apis::ComputeBeta::NodeGroupNode::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NodeGroupsListNodes::Warning, decorator: Google::Apis::ComputeBeta::NodeGroupsListNodes::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NodeGroupsListNodes::Warning::Datum, decorator: Google::Apis::ComputeBeta::NodeGroupsListNodes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -7509,6 +7730,20 @@ module Google
         end
       end
       
+      class RegionDisksAddResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class RegionDisksRemoveResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
       class RegionDisksResizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7745,6 +7980,190 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group, as: 'group'
+        end
+      end
+      
+      class ResourcePoliciesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ResourcePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning, decorator: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ResourcePoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies', class: Google::Apis::ComputeBeta::ResourcePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ResourcePoliciesScopedList::Warning, decorator: Google::Apis::ComputeBeta::ResourcePoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ResourcePoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ResourcePoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ResourcePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_schedule_policy, as: 'backupSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ResourcePolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::ResourcePoliciesScopedList, decorator: Google::Apis::ComputeBeta::ResourcePoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ResourcePolicyAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::ResourcePolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ResourcePolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ResourcePolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ResourcePolicyBackupSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy::Representation
+      
+          property :schedule, as: 'schedule', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule::Representation
+      
+          property :snapshot_properties, as: 'snapshotProperties', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_retention_days, as: 'maxRetentionDays'
+        end
+      end
+      
+      class ResourcePolicyBackupSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle::Representation
+      
+          property :hourly_schedule, as: 'hourlySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle::Representation
+      
+          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyBackupSchedulePolicySnapshotProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+          hash :labels, as: 'labels'
+          collection :storage_locations, as: 'storageLocations'
+        end
+      end
+      
+      class ResourcePolicyDailyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :days_in_cycle, as: 'daysInCycle'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyHourlyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :hours_in_cycle, as: 'hoursInCycle'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyWeeklyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :day_of_weeks, as: 'dayOfWeeks', class: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycleDayOfWeek, decorator: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycleDayOfWeek::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyWeeklyCycleDayOfWeek
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -8099,6 +8518,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
       
@@ -8222,6 +8643,7 @@ module Google
       class Snapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_created, as: 'autoCreated'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -8242,6 +8664,7 @@ module Google
           property :status, as: 'status'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -8555,6 +8978,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request, as: 'request'
           property :response, as: 'response'
@@ -9598,6 +10022,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class ZoneSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
+      
         end
       end
     end

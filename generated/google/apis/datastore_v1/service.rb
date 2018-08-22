@@ -359,6 +359,80 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets an index.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [String] index_id
+        #   The resource ID of the index to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_index(project_id, index_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/projects/{projectId}/indexes/{indexId}', options)
+          command.response_representation = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['indexId'] = index_id unless index_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the indexes that match the specified filters.  Datastore uses an
+        # eventually consistent query to fetch the list of indexes and may
+        # occasionally return stale results.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [String] filter
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.  If zero, then all results will be
+        #   returned.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ListIndexesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ListIndexesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_indexes(project_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/projects/{projectId}/indexes', options)
+          command.response_representation = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ListIndexesResponse::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ListIndexesResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns

@@ -184,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVendorCustomersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVendorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -390,6 +402,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :owner_company_id, :numeric_string => true, as: 'ownerCompanyId'
+          property :reseller_id, :numeric_string => true, as: 'resellerId'
           property :section_type, as: 'sectionType'
         end
       end
@@ -400,6 +413,7 @@ module Google
           property :imei, as: 'imei'
           property :manufacturer, as: 'manufacturer'
           property :meid, as: 'meid'
+          property :model, as: 'model'
           property :serial_number, as: 'serialNumber'
         end
       end
@@ -495,6 +509,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customers, as: 'customers', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+      
+        end
+      end
+      
+      class ListVendorCustomersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customers, as: 'customers', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListVendorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :vendors, as: 'vendors', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
       
         end
       end

@@ -378,7 +378,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an entry on the user's calendar list.
+        # Removes a calendar from the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
         #   method. If you want to access the primary calendar of the currently logged in
@@ -411,7 +411,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns an entry on the user's calendar list.
+        # Returns a calendar from the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
         #   method. If you want to access the primary calendar of the currently logged in
@@ -446,7 +446,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds an entry to the user's calendar list.
+        # Inserts an existing calendar into the user's calendar list.
         # @param [Google::Apis::CalendarV3::CalendarListEntry] calendar_list_entry_object
         # @param [Boolean] color_rgb_format
         #   Whether to use the foregroundColor and backgroundColor fields to write the
@@ -485,7 +485,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns entries on the user's calendar list.
+        # Returns the calendars on the user's calendar list.
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. By default the value is
         #   100 entries. The page size can never be larger than 250 entries. Optional.
@@ -549,8 +549,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an entry on the user's calendar list. This method supports patch
-        # semantics.
+        # Updates an existing calendar on the user's calendar list. This method supports
+        # patch semantics.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
         #   method. If you want to access the primary calendar of the currently logged in
@@ -594,7 +594,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an entry on the user's calendar list.
+        # Updates an existing calendar on the user's calendar list.
         # @param [String] calendar_id
         #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
         #   method. If you want to access the primary calendar of the currently logged in

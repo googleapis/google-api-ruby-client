@@ -1570,6 +1570,234 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsAddNodesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsDeleteNodesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsListNodes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsSetNodeTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTemplateAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTemplateNodeTypeFlexibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTemplatesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1691,6 +1919,12 @@ module Google
       end
       
       class ProjectsListXpnHostsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsSetDefaultNetworkTierRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2045,6 +2279,12 @@ module Google
       end
       
       class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingNodeAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2686,6 +2926,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsableSubnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsableSubnetworkSecondaryRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsableSubnetworksAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsageExportLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2928,6 +3198,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
+          property :network_tier, as: 'networkTier'
           property :public_ptr_domain_name, as: 'publicPtrDomainName'
           property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
@@ -2945,6 +3216,7 @@ module Google
           property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -4002,6 +4274,7 @@ module Google
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_tier, as: 'networkTier'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :region, as: 'region'
@@ -5719,6 +5992,408 @@ module Google
         end
       end
       
+      class NodeGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :node_template, as: 'nodeTemplate'
+          property :self_link, as: 'selfLink'
+          property :size, as: 'size'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NodeGroupAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::NodeGroupsScopedList, decorator: Google::Apis::ComputeV1::NodeGroupsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeGroupList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NodeGroup, decorator: Google::Apis::ComputeV1::NodeGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeGroupList::Warning, decorator: Google::Apis::ComputeV1::NodeGroupList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeGroupList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeGroupList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeGroupNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+          property :name, as: 'name'
+          property :node_type, as: 'nodeType'
+          property :status, as: 'status'
+        end
+      end
+      
+      class NodeGroupsAddNodesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_node_count, as: 'additionalNodeCount'
+        end
+      end
+      
+      class NodeGroupsDeleteNodesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
+        end
+      end
+      
+      class NodeGroupsListNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NodeGroupNode, decorator: Google::Apis::ComputeV1::NodeGroupNode::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeGroupsListNodes::Warning, decorator: Google::Apis::ComputeV1::NodeGroupsListNodes::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeGroupsListNodes::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeGroupsListNodes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeGroupsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_groups, as: 'nodeGroups', class: Google::Apis::ComputeV1::NodeGroup, decorator: Google::Apis::ComputeV1::NodeGroup::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeGroupsScopedList::Warning, decorator: Google::Apis::ComputeV1::NodeGroupsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeGroupsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeGroupsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeGroupsSetNodeTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_template, as: 'nodeTemplate'
+        end
+      end
+      
+      class NodeTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          hash :node_affinity_labels, as: 'nodeAffinityLabels'
+          property :node_type, as: 'nodeType'
+          property :node_type_flexibility, as: 'nodeTypeFlexibility', class: Google::Apis::ComputeV1::NodeTemplateNodeTypeFlexibility, decorator: Google::Apis::ComputeV1::NodeTemplateNodeTypeFlexibility::Representation
+      
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class NodeTemplateAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::NodeTemplatesScopedList, decorator: Google::Apis::ComputeV1::NodeTemplatesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeTemplateList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NodeTemplate, decorator: Google::Apis::ComputeV1::NodeTemplate::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTemplateList::Warning, decorator: Google::Apis::ComputeV1::NodeTemplateList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTemplateList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTemplateList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeTemplateNodeTypeFlexibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpus, as: 'cpus'
+          property :local_ssd, as: 'localSsd'
+          property :memory, as: 'memory'
+        end
+      end
+      
+      class NodeTemplatesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_templates, as: 'nodeTemplates', class: Google::Apis::ComputeV1::NodeTemplate, decorator: Google::Apis::ComputeV1::NodeTemplate::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTemplatesScopedList::Warning, decorator: Google::Apis::ComputeV1::NodeTemplatesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTemplatesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTemplatesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_platform, as: 'cpuPlatform'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :guest_cpus, as: 'guestCpus'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :local_ssd_gb, as: 'localSsdGb'
+          property :memory_mb, as: 'memoryMb'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NodeTypeAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::NodeTypesScopedList, decorator: Google::Apis::ComputeV1::NodeTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NodeType, decorator: Google::Apis::ComputeV1::NodeType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTypeList::Warning, decorator: Google::Apis::ComputeV1::NodeTypeList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTypeList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTypeList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NodeTypesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_types, as: 'nodeTypes', class: Google::Apis::ComputeV1::NodeType, decorator: Google::Apis::ComputeV1::NodeType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5902,6 +6577,7 @@ module Google
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_network_tier, as: 'defaultNetworkTier'
           property :default_service_account, as: 'defaultServiceAccount'
           property :description, as: 'description'
           collection :enabled_features, as: 'enabledFeatures'
@@ -5947,6 +6623,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+        end
+      end
+      
+      class ProjectsSetDefaultNetworkTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_tier, as: 'networkTier'
         end
       end
       
@@ -6565,8 +7248,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeV1::SchedulingNodeAffinity, decorator: Google::Apis::ComputeV1::SchedulingNodeAffinity::Representation
+      
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
+        end
+      end
+      
+      class SchedulingNodeAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :operator, as: 'operator'
+          collection :values, as: 'values'
         end
       end
       
@@ -7673,6 +8367,57 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResult::Representation
       
+        end
+      end
+      
+      class UsableSubnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::UsableSubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::UsableSubnetworkSecondaryRange::Representation
+      
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class UsableSubnetworkSecondaryRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
+        end
+      end
+      
+      class UsableSubnetworksAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::UsableSubnetwork, decorator: Google::Apis::ComputeV1::UsableSubnetwork::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Warning, decorator: Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

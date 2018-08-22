@@ -22,6 +22,12 @@ module Google
   module Apis
     module BigqueryV2
       
+      class BigQueryModelTraining
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigtableColumn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -428,6 +434,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryModelTraining
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_iteration, as: 'currentIteration'
+          property :expected_total_iterations, :numeric_string => true, as: 'expectedTotalIterations'
+        end
       end
       
       class BigtableColumn
@@ -886,6 +900,7 @@ module Google
       
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
+          collection :quota_deferments, as: 'quotaDeferments'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
         end
@@ -900,6 +915,8 @@ module Google
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
+          property :model_training, as: 'modelTraining', class: Google::Apis::BigqueryV2::BigQueryModelTraining, decorator: Google::Apis::BigqueryV2::BigQueryModelTraining::Representation
+      
           property :model_training_current_iteration, as: 'modelTrainingCurrentIteration'
           property :model_training_expected_total_iteration, :numeric_string => true, as: 'modelTrainingExpectedTotalIteration'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'

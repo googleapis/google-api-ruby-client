@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/discovery/
     module DiscoveryV1
       VERSION = 'V1'
-      REVISION = ''
+      REVISION = '20180813'
     end
   end
 end

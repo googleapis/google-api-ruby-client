@@ -304,6 +304,8 @@ module Google
           property :disabled, as: 'disabled'
           property :filename, as: 'filename'
           property :id, as: 'id'
+          collection :ignored_files, as: 'ignoredFiles'
+          collection :included_files, as: 'includedFiles'
           hash :substitutions, as: 'substitutions'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
@@ -409,6 +411,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_manifest, as: 'artifactManifest'
           collection :build_step_images, as: 'buildStepImages'
+          collection :build_step_outputs, as: 'buildStepOutputs'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'

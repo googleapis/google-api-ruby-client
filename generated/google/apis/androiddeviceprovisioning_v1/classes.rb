@@ -31,8 +31,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -101,7 +102,7 @@ module Google
         end
       end
       
-      # A customer resource in the zero-touch enrollment API.
+      # A reseller, vendor, or customer in the zero-touch reseller and customer APIs.
       class Company
         include Google::Apis::Core::Hashable
       
@@ -116,15 +117,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :company_id
       
-        # Required. The name of the company. For example _XYZ Corp_. Characters
-        # allowed are: Latin letters, numerals, hyphens, and spaces. Displayed to the
-        # customer's employees in the zero-touch enrollment portal.
+        # Required. The name of the company. For example _XYZ Corp_. Displayed to the
+        # company's employees in the zero-touch enrollment portal.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
       
-        # Output only. The API resource name of the company in the format
-        # `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`. Assigned by the server.
+        # Output only. The API resource name of the company. The resource name is one
+        # of the following formats:
+        # * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`
+        # * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`
+        # * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
+        # Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -263,7 +267,7 @@ module Google
       class CreateCustomerRequest
         include Google::Apis::Core::Hashable
       
-        # A customer resource in the zero-touch enrollment API.
+        # A reseller, vendor, or customer in the zero-touch reseller and customer APIs.
         # Corresponds to the JSON property `customer`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::Company]
         attr_accessor :customer
@@ -479,8 +483,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -524,6 +529,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :owner_company_id
       
+        # The ID of the reseller that claimed the device.
+        # Corresponds to the JSON property `resellerId`
+        # @return [Fixnum]
+        attr_accessor :reseller_id
+      
         # Output only. The type of claim made on the device.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
@@ -536,12 +546,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @owner_company_id = args[:owner_company_id] if args.key?(:owner_company_id)
+          @reseller_id = args[:reseller_id] if args.key?(:reseller_id)
           @section_type = args[:section_type] if args.key?(:section_type)
         end
       end
       
-      # Encapsulates hardware and product IDs to identify a manufactured device. To
-      # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+      # Encapsulates hardware and product IDs to identify a manufactured device.
+      # To understand requirements on identifier sets, read
+      # [Identifiers](/zero-touch/guides/identifiers).
       class DeviceIdentifier
         include Google::Apis::Core::Hashable
       
@@ -550,9 +562,10 @@ module Google
         # @return [String]
         attr_accessor :imei
       
-        # Required. The device manufacturer’s name. Matches the device's built-in
+        # The device manufacturer’s name. Matches the device's built-in
         # value returned from `android.os.Build.MANUFACTURER`. Allowed values are
-        # listed in [manufacturer names](/zero-touch/resources/manufacturer-names).
+        # listed in
+        # [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
         # Corresponds to the JSON property `manufacturer`
         # @return [String]
         attr_accessor :manufacturer
@@ -562,8 +575,15 @@ module Google
         # @return [String]
         attr_accessor :meid
       
+        # The device model's name. Matches the device's built-in value returned from
+        # `android.os.Build.MODEL`. Allowed values are listed in
+        # [models](/zero-touch/resources/manufacturer-names#model-names).
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # The manufacturer's serial number for the device. This value might not be
-        # unique.
+        # unique across different device models.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
@@ -577,6 +597,7 @@ module Google
           @imei = args[:imei] if args.key?(:imei)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @meid = args[:meid] if args.key?(:meid)
+          @model = args[:model] if args.key?(:model)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
@@ -617,8 +638,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -765,8 +787,9 @@ module Google
       class FindDevicesByDeviceIdentifierRequest
         include Google::Apis::Core::Hashable
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -900,6 +923,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customers = args[:customers] if args.key?(:customers)
+        end
+      end
+      
+      # Response message to list customers of the vendor.
+      class ListVendorCustomersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of customers of the vendor.
+        # Corresponds to the JSON property `customers`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
+        attr_accessor :customers
+      
+        # A token to retrieve the next page of results. Omitted if no further results
+        # are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customers = args[:customers] if args.key?(:customers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message to list vendors of the partner.
+      class ListVendorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Omitted if no further results
+        # are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of vendors of the reseller partner. Fields `name`, `companyId` and
+        # `companyName` are populated to the Company object.
+        # Corresponds to the JSON property `vendors`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
+        attr_accessor :vendors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @vendors = args[:vendors] if args.key?(:vendors)
         end
       end
       
@@ -1039,8 +1115,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1078,8 +1155,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1219,8 +1297,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1309,8 +1388,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device. To
-        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device.
+        # To understand requirements on identifier sets, read
+        # [Identifiers](/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier

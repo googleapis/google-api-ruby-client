@@ -119,7 +119,7 @@ module Google
         end
       end
       
-      # A build resource in the Container Builder API.
+      # A build resource in the Cloud Build API.
       # At a high level, a `Build` describes where to find source code, how to build
       # it (for example, the builder image to run on the source), and where to store
       # the built artifacts.
@@ -305,7 +305,7 @@ module Google
       class BuildOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # A build resource in the Container Builder API.
+        # A build resource in the Cloud Build API.
         # At a high level, a `Build` describes where to find source code, how to build
         # it (for example, the builder image to run on the source), and where to store
         # the built artifacts.
@@ -523,7 +523,7 @@ module Google
       class BuildTrigger
         include Google::Apis::Core::Hashable
       
-        # A build resource in the Container Builder API.
+        # A build resource in the Cloud Build API.
         # At a high level, a `Build` describes where to find source code, how to build
         # it (for example, the builder image to run on the source), and where to store
         # the built artifacts.
@@ -568,6 +568,28 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # ignored_files and included_files are file glob matches using
+        # http://godoc/pkg/path/filepath#Match extended with support for "**".
+        # If ignored_files and changed files are both empty, then they are
+        # not used to determine whether or not to trigger a build.
+        # If ignored_files is not empty, then we ignore any files that match
+        # any of the ignored_file globs. If the change has no files that are
+        # outside of the ignored_files globs, then we do not trigger a build.
+        # Corresponds to the JSON property `ignoredFiles`
+        # @return [Array<String>]
+        attr_accessor :ignored_files
+      
+        # If any of the files altered in the commit pass the ignored_files
+        # filter and included_files is empty, then as far as this filter is
+        # concerned, we should trigger the build.
+        # If any of the files altered in the commit pass the ignored_files
+        # filter and included_files is not empty, then we make sure that at
+        # least one of those files matches a included_files glob. If not,
+        # then we do not trigger a build.
+        # Corresponds to the JSON property `includedFiles`
+        # @return [Array<String>]
+        attr_accessor :included_files
+      
         # Substitutions data for Build resource.
         # Corresponds to the JSON property `substitutions`
         # @return [Hash<String,String>]
@@ -590,6 +612,8 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @filename = args[:filename] if args.key?(:filename)
           @id = args[:id] if args.key?(:id)
+          @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
+          @included_files = args[:included_files] if args.key?(:included_files)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
         end
@@ -952,6 +976,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_images
       
+        # List of build step outputs, produced by builder images, in the order
+        # corresponding to build step indices.
+        # [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
+        # can produce this output by writing to `$BUILDER_OUTPUT/output`.
+        # Only the first 4KB of data is stored.
+        # Corresponds to the JSON property `buildStepOutputs`
+        # @return [Array<String>]
+        attr_accessor :build_step_outputs
+      
         # Container images that were built as a part of the build.
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::CloudbuildV1::BuiltImage>]
@@ -970,6 +1003,7 @@ module Google
         def update!(**args)
           @artifact_manifest = args[:artifact_manifest] if args.key?(:artifact_manifest)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
+          @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
           @images = args[:images] if args.key?(:images)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
         end
