@@ -12,6 +12,7 @@ specdoc
 wiki
 .google-api.yaml
 *.log
+tmp/
 
 #IntelliJ
 .idea

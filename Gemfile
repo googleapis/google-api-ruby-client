@@ -20,6 +20,7 @@ group :development do
   gem 'os', '~> 0.9'
   gem 'rmail', '~> 1.1'
   gem 'redis', '~> 3.2'
+  gem 'logging', '~> 2.2'
 end
 
 platforms :jruby do
