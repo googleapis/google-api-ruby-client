@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsableSubnetworkSecondaryRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadMetadataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1149,7 +1155,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :network, as: 'network'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ContainerV1beta1::UsableSubnetworkSecondaryRange, decorator: Google::Apis::ContainerV1beta1::UsableSubnetworkSecondaryRange::Representation
+      
+          property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class UsableSubnetworkSecondaryRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
+          property :status, as: 'status'
         end
       end
       

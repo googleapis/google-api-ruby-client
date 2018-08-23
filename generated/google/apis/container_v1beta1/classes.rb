@@ -276,7 +276,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_node_count
       
-        # [Output only] The current version of the node software components.
+        # [Output only] Deprecated, use
+        # [NodePool.version](/kubernetes-engine/docs/reference/rest/v1beta1/projects.
+        # zones.clusters.nodePool)
+        # instead. The current version of the node software components.
         # If they are currently at multiple versions because they're in the process
         # of being upgraded, this reflects the minimum version of all nodes.
         # Corresponds to the JSON property `currentNodeVersion`
@@ -3262,6 +3265,19 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Secondary IP ranges.
+        # Corresponds to the JSON property `secondaryIpRanges`
+        # @return [Array<Google::Apis::ContainerV1beta1::UsableSubnetworkSecondaryRange>]
+        attr_accessor :secondary_ip_ranges
+      
+        # A human readable status message representing the reasons for cases where
+        # the caller cannot use the secondary ranges under the subnet. For example if
+        # the secondary_ip_ranges is empty due to a permission issue, an insufficient
+        # permission message will be given by status_message.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
         # Subnetwork Name.
         # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         # Corresponds to the JSON property `subnetwork`
@@ -3276,7 +3292,41 @@ module Google
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @network = args[:network] if args.key?(:network)
+          @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
+          @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # Secondary IP range of a usable subnetwork.
+      class UsableSubnetworkSecondaryRange
+        include Google::Apis::Core::Hashable
+      
+        # The range of IP addresses belonging to this subnetwork secondary range.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # The name associated with this subnetwork secondary range, used when adding
+        # an alias IP range to a VM instance.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # This field is to determine the status of the secondary range programmably.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

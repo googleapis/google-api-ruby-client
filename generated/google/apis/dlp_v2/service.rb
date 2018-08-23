@@ -1461,6 +1461,8 @@ module Google
         #   - `create_time`: corresponds to time the triggeredJob was created.
         #   - `update_time`: corresponds to time the triggeredJob was last updated.
         #   - `name`: corresponds to JobTrigger's name.
+        #   - `display_name`: corresponds to JobTrigger's display name.
+        #   - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by a server.
         # @param [String] page_token

@@ -656,8 +656,8 @@ module Google
         end
       end
       
-      # Options defining a file or a set of files (path ending with *) within
-      # a Google Cloud Storage bucket.
+      # Options defining a file or a set of files within a Google Cloud Storage
+      # bucket.
       class GooglePrivacyDlpV2CloudStorageOptions
         include Google::Apis::Core::Hashable
       
@@ -2097,8 +2097,8 @@ module Google
       class GooglePrivacyDlpV2FileSet
         include Google::Apis::Core::Hashable
       
-        # The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the
-        # path is allowed.
+        # The Cloud Storage url of the file(s) to scan, in the format
+        # `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -4373,7 +4373,9 @@ module Google
       class GooglePrivacyDlpV2Regex
         include Google::Apis::Core::Hashable
       
-        # Pattern defining the regular expression.
+        # Pattern defining the regular expression. Its syntax
+        # (https://github.com/google/re2/wiki/Syntax) can be found under the
+        # google/re2 repository on GitHub.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -4716,8 +4718,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryOptions]
         attr_accessor :big_query_options
       
-        # Options defining a file or a set of files (path ending with *) within
-        # a Google Cloud Storage bucket.
+        # Options defining a file or a set of files within a Google Cloud Storage
+        # bucket.
         # Corresponds to the JSON property `cloudStorageOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageOptions]
         attr_accessor :cloud_storage_options
