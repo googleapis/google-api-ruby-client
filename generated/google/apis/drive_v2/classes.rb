@@ -1801,6 +1801,13 @@ module Google
           attr_accessor :can_delete
           alias_method :can_delete?, :can_delete
         
+          # Whether the current user can delete children of this folder. This is false
+          # when the item is not a folder. Only populated for Team Drive items.
+          # Corresponds to the JSON property `canDeleteChildren`
+          # @return [Boolean]
+          attr_accessor :can_delete_children
+          alias_method :can_delete_children?, :can_delete_children
+        
           # Whether the current user can download this file.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
@@ -1820,6 +1827,22 @@ module Google
           attr_accessor :can_list_children
           alias_method :can_list_children?, :can_list_children
         
+          # Whether the current user can move children of this folder outside of the Team
+          # Drive. This is false when the item is not a folder. Only populated for Team
+          # Drive items.
+          # Corresponds to the JSON property `canMoveChildrenOutOfTeamDrive`
+          # @return [Boolean]
+          attr_accessor :can_move_children_out_of_team_drive
+          alias_method :can_move_children_out_of_team_drive?, :can_move_children_out_of_team_drive
+        
+          # Whether the current user can move children of this folder within the Team
+          # Drive. This is false when the item is not a folder. Only populated for Team
+          # Drive items.
+          # Corresponds to the JSON property `canMoveChildrenWithinTeamDrive`
+          # @return [Boolean]
+          attr_accessor :can_move_children_within_team_drive
+          alias_method :can_move_children_within_team_drive?, :can_move_children_within_team_drive
+        
           # Whether the current user can move this item into a Team Drive. If the item is
           # in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
           # Corresponds to the JSON property `canMoveItemIntoTeamDrive`
@@ -1827,10 +1850,25 @@ module Google
           attr_accessor :can_move_item_into_team_drive
           alias_method :can_move_item_into_team_drive?, :can_move_item_into_team_drive
         
-          # Whether the current user can move this Team Drive item by changing its parent.
-          # Note that a request to change the parent for this item may still fail
-          # depending on the new parent that is being added. Only populated for Team Drive
-          # files.
+          # Whether the current user can move this Team Drive item outside of this Team
+          # Drive by changing its parent. Note that a request to change the parent of the
+          # item may still fail depending on the new parent that is being added. Only
+          # populated for Team Drive items.
+          # Corresponds to the JSON property `canMoveItemOutOfTeamDrive`
+          # @return [Boolean]
+          attr_accessor :can_move_item_out_of_team_drive
+          alias_method :can_move_item_out_of_team_drive?, :can_move_item_out_of_team_drive
+        
+          # Whether the current user can move this Team Drive item within this Team Drive.
+          # Note that a request to change the parent of the item may still fail depending
+          # on the new parent that is being added. Only populated for Team Drive items.
+          # Corresponds to the JSON property `canMoveItemWithinTeamDrive`
+          # @return [Boolean]
+          attr_accessor :can_move_item_within_team_drive
+          alias_method :can_move_item_within_team_drive?, :can_move_item_within_team_drive
+        
+          # Deprecated - use canMoveItemWithinTeamDrive or canMoveItemOutOfTeamDrive
+          # instead.
           # Corresponds to the JSON property `canMoveTeamDriveItem`
           # @return [Boolean]
           attr_accessor :can_move_team_drive_item
@@ -1852,7 +1890,8 @@ module Google
           alias_method :can_read_team_drive?, :can_read_team_drive
         
           # Whether the current user can remove children from this folder. This is always
-          # false when the item is not a folder.
+          # false when the item is not a folder. For Team Drive items, use
+          # canDeleteChildren or canTrashChildren instead.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
@@ -1876,6 +1915,13 @@ module Google
           attr_accessor :can_trash
           alias_method :can_trash?, :can_trash
         
+          # Whether the current user can trash children of this folder. This is false when
+          # the item is not a folder. Only populated for Team Drive items.
+          # Corresponds to the JSON property `canTrashChildren`
+          # @return [Boolean]
+          attr_accessor :can_trash_children
+          alias_method :can_trash_children?, :can_trash_children
+        
           # Whether the current user can restore this file from trash.
           # Corresponds to the JSON property `canUntrash`
           # @return [Boolean]
@@ -1894,10 +1940,15 @@ module Google
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete = args[:can_delete] if args.key?(:can_delete)
+            @can_delete_children = args[:can_delete_children] if args.key?(:can_delete_children)
             @can_download = args[:can_download] if args.key?(:can_download)
             @can_edit = args[:can_edit] if args.key?(:can_edit)
             @can_list_children = args[:can_list_children] if args.key?(:can_list_children)
+            @can_move_children_out_of_team_drive = args[:can_move_children_out_of_team_drive] if args.key?(:can_move_children_out_of_team_drive)
+            @can_move_children_within_team_drive = args[:can_move_children_within_team_drive] if args.key?(:can_move_children_within_team_drive)
             @can_move_item_into_team_drive = args[:can_move_item_into_team_drive] if args.key?(:can_move_item_into_team_drive)
+            @can_move_item_out_of_team_drive = args[:can_move_item_out_of_team_drive] if args.key?(:can_move_item_out_of_team_drive)
+            @can_move_item_within_team_drive = args[:can_move_item_within_team_drive] if args.key?(:can_move_item_within_team_drive)
             @can_move_team_drive_item = args[:can_move_team_drive_item] if args.key?(:can_move_team_drive_item)
             @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
             @can_read_team_drive = args[:can_read_team_drive] if args.key?(:can_read_team_drive)
@@ -1905,6 +1956,7 @@ module Google
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_share = args[:can_share] if args.key?(:can_share)
             @can_trash = args[:can_trash] if args.key?(:can_trash)
+            @can_trash_children = args[:can_trash_children] if args.key?(:can_trash_children)
             @can_untrash = args[:can_untrash] if args.key?(:can_untrash)
           end
         end
@@ -3148,6 +3200,12 @@ module Google
           attr_accessor :can_copy
           alias_method :can_copy?, :can_copy
         
+          # Whether the current user can delete children from folders in this Team Drive.
+          # Corresponds to the JSON property `canDeleteChildren`
+          # @return [Boolean]
+          attr_accessor :can_delete_children
+          alias_method :can_delete_children?, :can_delete_children
+        
           # Whether the current user can delete this Team Drive. Attempting to delete the
           # Team Drive may still fail if there are untrashed items inside the Team Drive.
           # Corresponds to the JSON property `canDeleteTeamDrive`
@@ -3187,7 +3245,7 @@ module Google
           attr_accessor :can_read_revisions
           alias_method :can_read_revisions?, :can_read_revisions
         
-          # Whether the current user can remove children from folders in this Team Drive.
+          # Deprecated - use canDeleteChildren or canTrashChildren instead.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
@@ -3211,6 +3269,12 @@ module Google
           attr_accessor :can_share
           alias_method :can_share?, :can_share
         
+          # Whether the current user can trash children from folders in this Team Drive.
+          # Corresponds to the JSON property `canTrashChildren`
+          # @return [Boolean]
+          attr_accessor :can_trash_children
+          alias_method :can_trash_children?, :can_trash_children
+        
           def initialize(**args)
              update!(**args)
           end
@@ -3224,6 +3288,7 @@ module Google
             @can_change_team_members_only_restriction = args[:can_change_team_members_only_restriction] if args.key?(:can_change_team_members_only_restriction)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
+            @can_delete_children = args[:can_delete_children] if args.key?(:can_delete_children)
             @can_delete_team_drive = args[:can_delete_team_drive] if args.key?(:can_delete_team_drive)
             @can_download = args[:can_download] if args.key?(:can_download)
             @can_edit = args[:can_edit] if args.key?(:can_edit)
@@ -3234,6 +3299,7 @@ module Google
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_rename_team_drive = args[:can_rename_team_drive] if args.key?(:can_rename_team_drive)
             @can_share = args[:can_share] if args.key?(:can_share)
+            @can_trash_children = args[:can_trash_children] if args.key?(:can_trash_children)
           end
         end
         

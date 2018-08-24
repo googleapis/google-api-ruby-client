@@ -694,6 +694,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderReportDisbursement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderReportTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderReturn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -791,6 +803,18 @@ module Google
       end
       
       class OrderpaymentsNotifyRefundResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreportsListDisbursementsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreportsListTransactionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2749,6 +2773,35 @@ module Google
         end
       end
       
+      class OrderReportDisbursement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disbursement_amount, as: 'disbursementAmount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :disbursement_creation_date, as: 'disbursementCreationDate'
+          property :disbursement_date, as: 'disbursementDate'
+          property :disbursement_id, as: 'disbursementId'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+        end
+      end
+      
+      class OrderReportTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disbursement_amount, as: 'disbursementAmount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :disbursement_creation_date, as: 'disbursementCreationDate'
+          property :disbursement_date, as: 'disbursementDate'
+          property :disbursement_id, as: 'disbursementId'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :merchant_order_id, as: 'merchantOrderId'
+          property :order_id, as: 'orderId'
+          property :product_amount, as: 'productAmount', class: Google::Apis::ContentV2::Amount, decorator: Google::Apis::ContentV2::Amount::Representation
+      
+          property :transaction_date, as: 'transactionDate'
+        end
+      end
+      
       class OrderReturn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2904,6 +2957,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderreportsListDisbursementsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disbursements, as: 'disbursements', class: Google::Apis::ContentV2::OrderReportDisbursement, decorator: Google::Apis::ContentV2::OrderReportDisbursement::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class OrderreportsListTransactionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :transactions, as: 'transactions', class: Google::Apis::ContentV2::OrderReportTransaction, decorator: Google::Apis::ContentV2::OrderReportTransaction::Representation
+      
         end
       end
       

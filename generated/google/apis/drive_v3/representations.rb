@@ -428,10 +428,15 @@ module Google
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
             property :can_delete, as: 'canDelete'
+            property :can_delete_children, as: 'canDeleteChildren'
             property :can_download, as: 'canDownload'
             property :can_edit, as: 'canEdit'
             property :can_list_children, as: 'canListChildren'
+            property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
+            property :can_move_children_within_team_drive, as: 'canMoveChildrenWithinTeamDrive'
             property :can_move_item_into_team_drive, as: 'canMoveItemIntoTeamDrive'
+            property :can_move_item_out_of_team_drive, as: 'canMoveItemOutOfTeamDrive'
+            property :can_move_item_within_team_drive, as: 'canMoveItemWithinTeamDrive'
             property :can_move_team_drive_item, as: 'canMoveTeamDriveItem'
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
@@ -439,6 +444,7 @@ module Google
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
             property :can_trash, as: 'canTrash'
+            property :can_trash_children, as: 'canTrashChildren'
             property :can_untrash, as: 'canUntrash'
           end
         end
@@ -672,6 +678,7 @@ module Google
             property :can_change_team_members_only_restriction, as: 'canChangeTeamMembersOnlyRestriction'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
+            property :can_delete_children, as: 'canDeleteChildren'
             property :can_delete_team_drive, as: 'canDeleteTeamDrive'
             property :can_download, as: 'canDownload'
             property :can_edit, as: 'canEdit'
@@ -682,6 +689,7 @@ module Google
             property :can_rename, as: 'canRename'
             property :can_rename_team_drive, as: 'canRenameTeamDrive'
             property :can_share, as: 'canShare'
+            property :can_trash_children, as: 'canTrashChildren'
           end
         end
         

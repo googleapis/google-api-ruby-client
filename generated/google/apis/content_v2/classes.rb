@@ -4506,6 +4506,116 @@ module Google
       end
       
       # 
+      class OrderReportDisbursement
+        include Google::Apis::Core::Hashable
+      
+        # The disbursement amount.
+        # Corresponds to the JSON property `disbursementAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :disbursement_amount
+      
+        # The disbursement date, in ISO 8601 format.
+        # Corresponds to the JSON property `disbursementCreationDate`
+        # @return [String]
+        attr_accessor :disbursement_creation_date
+      
+        # The date the disbursement was initiated, in ISO 8601 format.
+        # Corresponds to the JSON property `disbursementDate`
+        # @return [String]
+        attr_accessor :disbursement_date
+      
+        # The ID of the disbursement.
+        # Corresponds to the JSON property `disbursementId`
+        # @return [String]
+        attr_accessor :disbursement_id
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disbursement_amount = args[:disbursement_amount] if args.key?(:disbursement_amount)
+          @disbursement_creation_date = args[:disbursement_creation_date] if args.key?(:disbursement_creation_date)
+          @disbursement_date = args[:disbursement_date] if args.key?(:disbursement_date)
+          @disbursement_id = args[:disbursement_id] if args.key?(:disbursement_id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+        end
+      end
+      
+      # 
+      class OrderReportTransaction
+        include Google::Apis::Core::Hashable
+      
+        # The disbursement amount.
+        # Corresponds to the JSON property `disbursementAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :disbursement_amount
+      
+        # The date the disbursement was created, in ISO 8601 format.
+        # Corresponds to the JSON property `disbursementCreationDate`
+        # @return [String]
+        attr_accessor :disbursement_creation_date
+      
+        # The date the disbursement was initiated, in ISO 8601 format.
+        # Corresponds to the JSON property `disbursementDate`
+        # @return [String]
+        attr_accessor :disbursement_date
+      
+        # The ID of the disbursement.
+        # Corresponds to the JSON property `disbursementId`
+        # @return [String]
+        attr_accessor :disbursement_id
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Merchant-provided id of the order.
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # The id of the order.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Total amount for the items.
+        # Corresponds to the JSON property `productAmount`
+        # @return [Google::Apis::ContentV2::Amount]
+        attr_accessor :product_amount
+      
+        # The date of the transaction, in ISO 8601 format.
+        # Corresponds to the JSON property `transactionDate`
+        # @return [String]
+        attr_accessor :transaction_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disbursement_amount = args[:disbursement_amount] if args.key?(:disbursement_amount)
+          @disbursement_creation_date = args[:disbursement_creation_date] if args.key?(:disbursement_creation_date)
+          @disbursement_date = args[:disbursement_date] if args.key?(:disbursement_date)
+          @disbursement_id = args[:disbursement_id] if args.key?(:disbursement_id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @product_amount = args[:product_amount] if args.key?(:product_amount)
+          @transaction_date = args[:transaction_date] if args.key?(:transaction_date)
+        end
+      end
+      
+      # 
       class OrderReturn
         include Google::Apis::Core::Hashable
       
@@ -5041,6 +5151,70 @@ module Google
         def update!(**args)
           @execution_status = args[:execution_status] if args.key?(:execution_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderreportsListDisbursementsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of disbursements.
+        # Corresponds to the JSON property `disbursements`
+        # @return [Array<Google::Apis::ContentV2::OrderReportDisbursement>]
+        attr_accessor :disbursements
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreportsListDisbursementsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of disbursements.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disbursements = args[:disbursements] if args.key?(:disbursements)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class OrderreportsListTransactionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreportsListTransactionsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of transactions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of transactions.
+        # Corresponds to the JSON property `transactions`
+        # @return [Array<Google::Apis::ContentV2::OrderReportTransaction>]
+        attr_accessor :transactions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transactions = args[:transactions] if args.key?(:transactions)
         end
       end
       

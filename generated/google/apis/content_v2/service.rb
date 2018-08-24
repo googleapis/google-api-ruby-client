@@ -1992,6 +1992,104 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a report for disbursements from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] disbursement_end_date
+        #   The last date which disbursements occurred. In ISO 8601 format. Default:
+        #   current date.
+        # @param [String] disbursement_start_date
+        #   The first date which disbursements occurred. In ISO 8601 format.
+        # @param [Fixnum] max_results
+        #   The maximum number of disbursements to return in the response, used for paging.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderreportsListDisbursementsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderreportsListDisbursementsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def listdisbursements_orderreport(merchant_id, disbursement_end_date: nil, disbursement_start_date: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/orderreports/disbursements', options)
+          command.response_representation = Google::Apis::ContentV2::OrderreportsListDisbursementsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderreportsListDisbursementsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['disbursementEndDate'] = disbursement_end_date unless disbursement_end_date.nil?
+          command.query['disbursementStartDate'] = disbursement_start_date unless disbursement_start_date.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of transactions for an disbursement from your Merchant Center
+        # account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] disbursement_id
+        #   The Google-provided ID of the disbursement (found in Wallet).
+        # @param [String] disbursement_end_date
+        #   The last date in which disbursements occurred. In ISO 8601 format. Default:
+        #   current date.
+        # @param [String] disbursement_start_date
+        #   The first date in which disbursements occurred. In ISO 8601 format.
+        # @param [Fixnum] max_results
+        #   The maximum number of disbursements to return in the response, used for paging.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrderreportsListTransactionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrderreportsListTransactionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def listtransactions_orderreport(merchant_id, disbursement_id, disbursement_end_date: nil, disbursement_start_date: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/orderreports/disbursements/{disbursementId}/transactions', options)
+          command.response_representation = Google::Apis::ContentV2::OrderreportsListTransactionsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrderreportsListTransactionsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['disbursementId'] = disbursement_id unless disbursement_id.nil?
+          command.query['disbursementEndDate'] = disbursement_end_date unless disbursement_end_date.nil?
+          command.query['disbursementStartDate'] = disbursement_start_date unless disbursement_start_date.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks an order as acknowledged.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -2335,7 +2433,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Notifies that item return and refund was handled directly in store.
+        # Notifies that item return and refund was handled directly by merchant outside
+        # of Google payments processing (e.g. cash refund done in store).
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

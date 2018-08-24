@@ -639,7 +639,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Notifies that item return and refund was handled directly in store.
+        # Notifies that item return and refund was handled directly by merchant outside
+        # of Google payments processing (e.g. cash refund done in store).
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

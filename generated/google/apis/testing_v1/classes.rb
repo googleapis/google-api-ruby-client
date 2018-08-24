@@ -300,6 +300,12 @@ module Google
         # @return [String]
         attr_accessor :form
       
+        # Whther this device is a phone, tablet, wearable, etc.
+        # @OutputOnly
+        # Corresponds to the JSON property `formFactor`
+        # @return [String]
+        attr_accessor :form_factor
+      
         # The unique opaque id for this model.
         # Use this for invoking the TestExecutionService.
         # @OutputOnly
@@ -380,6 +386,7 @@ module Google
           @brand = args[:brand] if args.key?(:brand)
           @codename = args[:codename] if args.key?(:codename)
           @form = args[:form] if args.key?(:form)
+          @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @name = args[:name] if args.key?(:name)

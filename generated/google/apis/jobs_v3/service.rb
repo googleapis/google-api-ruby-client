@@ -31,7 +31,7 @@ module Google
       #    Jobs = Google::Apis::JobsV3 # Alias the module
       #    service = Jobs::CloudTalentSolutionService.new
       #
-      # @see https://cloud.google.com/job-discovery/docs
+      # @see https://cloud.google.com/talent-solution/job-search/docs/
       class CloudTalentSolutionService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

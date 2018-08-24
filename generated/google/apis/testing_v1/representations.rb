@@ -391,6 +391,7 @@ module Google
           property :brand, as: 'brand'
           property :codename, as: 'codename'
           property :form, as: 'form'
+          property :form_factor, as: 'formFactor'
           property :id, as: 'id'
           property :manufacturer, as: 'manufacturer'
           property :name, as: 'name'

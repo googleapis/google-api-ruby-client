@@ -224,7 +224,10 @@ module Google
         # @return [Google::Apis::JobsV3::Location]
         attr_accessor :job_location
       
-        # Travel time to reach the job.
+        # The number of seconds required to travel to the job location from the
+        # query location. A duration of 0 seconds indicates that the job is not
+        # reachable within the requested duration, but was returned as part of an
+        # expanded query.
         # Corresponds to the JSON property `travelDuration`
         # @return [String]
         attr_accessor :travel_duration
