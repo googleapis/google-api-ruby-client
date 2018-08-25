@@ -22,7 +22,8 @@ module Google
     module FirestoreV1beta2
       # Cloud Firestore API
       #
-      # 
+      # Accesses the NoSQL document database built for automatic scaling, high
+      #  performance, and ease of application development.
       #
       # @example
       #    require 'google/apis/firestore_v1beta2'

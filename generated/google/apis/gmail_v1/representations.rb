@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Delegate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Draft
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class LabelColor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDelegatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +299,14 @@ module Google
         end
       end
       
+      class Delegate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegate_email, as: 'delegateEmail'
+          property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
       class Draft
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -422,6 +442,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_color, as: 'backgroundColor'
           property :text_color, as: 'textColor'
+        end
+      end
+      
+      class ListDelegatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :delegates, as: 'delegates', class: Google::Apis::GmailV1::Delegate, decorator: Google::Apis::GmailV1::Delegate::Representation
+      
         end
       end
       

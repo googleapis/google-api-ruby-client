@@ -1515,6 +1515,171 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a delegate with its verification status set directly to accepted, without
+        # sending any verification email. The delegate user must be a member of the same
+        # G Suite organization as the delegator user.
+        # Gmail imposes limtations on the number of delegates and delegators each user
+        # in a G Suite organization can have. These limits depend on your organization,
+        # but in general each user can have up to 25 delegates and up to 10 delegators.
+        # Note that a delegate user must be referred to by their primary email address,
+        # and not an email alias.
+        # Also note that when a new delegate is created, there may be up to a one minute
+        # delay before the new delegate is available for use.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::Delegate] delegate_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::Delegate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::Delegate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_setting_delegate(user_id, delegate_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/settings/delegates', options)
+          command.request_representation = Google::Apis::GmailV1::Delegate::Representation
+          command.request_object = delegate_object
+          command.response_representation = Google::Apis::GmailV1::Delegate::Representation
+          command.response_class = Google::Apis::GmailV1::Delegate
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes the specified delegate (which can be of any verification status), and
+        # revokes any verification that may have been required for using it.
+        # Note that a delegate user must be referred to by their primary email address,
+        # and not an email alias.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] delegate_email
+        #   The email address of the user to be removed as a delegate.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_setting_delegate(user_id, delegate_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{userId}/settings/delegates/{delegateEmail}', options)
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['delegateEmail'] = delegate_email unless delegate_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified delegate.
+        # Note that a delegate user must be referred to by their primary email address,
+        # and not an email alias.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] delegate_email
+        #   The email address of the user whose delegate relationship is to be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::Delegate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::Delegate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_delegate(user_id, delegate_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/delegates/{delegateEmail}', options)
+          command.response_representation = Google::Apis::GmailV1::Delegate::Representation
+          command.response_class = Google::Apis::GmailV1::Delegate
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['delegateEmail'] = delegate_email unless delegate_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the delegates for the specified account.
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::ListDelegatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::ListDelegatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_setting_delegates(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/delegates', options)
+          command.response_representation = Google::Apis::GmailV1::ListDelegatesResponse::Representation
+          command.response_class = Google::Apis::GmailV1::ListDelegatesResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a filter.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the

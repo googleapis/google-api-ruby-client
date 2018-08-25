@@ -105,6 +105,34 @@ module Google
         end
       end
       
+      # Settings for a delegate. Delegates can read, send, and delete messages, as
+      # well as manage contacts, for the delegator's account. See "Set up mail
+      # delegation" for more information about delegates.
+      class Delegate
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the delegate.
+        # Corresponds to the JSON property `delegateEmail`
+        # @return [String]
+        attr_accessor :delegate_email
+      
+        # Indicates whether this address has been verified and can act as a delegate for
+        # the account. Read-only.
+        # Corresponds to the JSON property `verificationStatus`
+        # @return [String]
+        attr_accessor :verification_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delegate_email = args[:delegate_email] if args.key?(:delegate_email)
+          @verification_status = args[:verification_status] if args.key?(:verification_status)
+        end
+      end
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable
@@ -604,6 +632,25 @@ module Google
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
           @text_color = args[:text_color] if args.key?(:text_color)
+        end
+      end
+      
+      # Response for the ListDelegates method.
+      class ListDelegatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of the user's delegates (with any verification status).
+        # Corresponds to the JSON property `delegates`
+        # @return [Array<Google::Apis::GmailV1::Delegate>]
+        attr_accessor :delegates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delegates = args[:delegates] if args.key?(:delegates)
         end
       end
       

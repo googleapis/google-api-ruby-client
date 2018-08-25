@@ -242,9 +242,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_node_count
       
-        # [Output only] The current version of the node software components.
-        # If they are currently at multiple versions because they're in the process
-        # of being upgraded, this reflects the minimum version of all nodes.
+        # [Output only] Deprecated, use
+        # [NodePool.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.
+        # clusters.nodePool)
+        # instead. The current version of the node software components. If they are
+        # currently at multiple versions because they're in the process of being
+        # upgraded, this reflects the minimum version of all nodes.
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
