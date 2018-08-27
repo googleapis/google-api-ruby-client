@@ -1,3 +1,24 @@
+# 0.23.6
+* Backwards compatible changes:
+  * Added `jobs_v3`
+  * Updated `adexperiencereport_v1`
+  * Updated `cloudtrace_v1`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dlp_v2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `firestore_v1`
+  * Updated `firestore_v1beta1`
+  * Updated `firestore_v1beta2`
+  * Updated `gmail_v1`
+  * Updated `jobs_v2`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.23.5
 * Backwards compatible changes:
   * Added `binaryauthorization_v1beta1`
