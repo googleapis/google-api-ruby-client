@@ -1,3 +1,7 @@
+# 0.23.7
+* Backwards compatible changes:
+  * Make dependency on signet explicit and with correct version
+
 # 0.23.6
 * Backwards compatible changes:
   * Added `jobs_v3`
