@@ -2290,6 +2290,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SerialPortOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3350,6 +3398,7 @@ module Google
       class AttachedDiskInitializeParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
@@ -3614,6 +3663,7 @@ module Google
           property :port_name, as: 'portName'
           property :protocol, as: 'protocol'
           property :region, as: 'region'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
@@ -4198,6 +4248,7 @@ module Google
           property :description, as: 'description'
           collection :destination_ranges, as: 'destinationRanges'
           property :direction, as: 'direction'
+          property :disabled, as: 'disabled'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -7261,6 +7312,88 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SecurityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::SecurityPolicyRule, decorator: Google::Apis::ComputeV1::SecurityPolicyRule::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SecurityPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::SecurityPolicy, decorator: Google::Apis::ComputeV1::SecurityPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::SecurityPolicyList::Warning, decorator: Google::Apis::ComputeV1::SecurityPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SecurityPolicyList::Warning::Datum, decorator: Google::Apis::ComputeV1::SecurityPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SecurityPolicyReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_policy, as: 'securityPolicy'
+        end
+      end
+      
+      class SecurityPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :kind, as: 'kind'
+          property :match, as: 'match', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcher::Representation
+      
+          property :preview, as: 'preview'
+          property :priority, as: 'priority'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig::Representation
+      
+          property :versioned_expr, as: 'versionedExpr'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :src_ip_ranges, as: 'srcIpRanges'
         end
       end
       

@@ -1166,6 +1166,11 @@ module Google
       class AttachedDiskInitializeParams
         include Google::Apis::Core::Hashable
       
+        # An optional description. Provide this property when creating the disk.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Specifies the disk name. If not specified, the default is to use the name of
         # the instance. If the disk with the instance name exists already in the given
         # zone/region, a new name will be automatically generated.
@@ -1177,11 +1182,6 @@ module Google
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
-      
-        # [Deprecated] Storage type of the disk.
-        # Corresponds to the JSON property `diskStorageType`
-        # @return [String]
-        attr_accessor :disk_storage_type
       
         # Specifies the disk type to use to create the instance. If not specified, the
         # default is pd-standard, specified using the full URL. For example:
@@ -1236,9 +1236,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
-          @disk_storage_type = args[:disk_storage_type] if args.key?(:disk_storage_type)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -11284,9 +11284,9 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # [Output Only] Availability zone for this location. Within a metropolitan area (
-        # metro), maintenance will not be simultaneously scheduled in more than one
-        # availability zone. Example: "zone1" or "zone2".
+        # [Output Only] Availability zone for this InterconnectLocation. Within a
+        # metropolitan area (metro), maintenance will not be simultaneously scheduled in
+        # more than one availability zone. Example: "zone1" or "zone2".
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
@@ -19645,7 +19645,8 @@ module Google
       end
       
       # A security policy is comprised of one or more rules. It can also be associated
-      # with one or more 'targets'. (== resource_for beta.securityPolicies ==)
+      # with one or more 'targets'. (== resource_for v1.securityPolicies ==) (==
+      # resource_for beta.securityPolicies ==)
       class SecurityPolicy
         include Google::Apis::Core::Hashable
       
@@ -20482,6 +20483,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Expire time of the certificate. RFC3339
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -20493,6 +20499,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Configuration and status of a managed SSL certificate.
+        # Corresponds to the JSON property `managed`
+        # @return [Google::Apis::ComputeBeta::SslCertificateManagedSslCertificate]
+        attr_accessor :managed
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -20515,6 +20526,24 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Configuration and status of a self-managed SSL certificate.
+        # Corresponds to the JSON property `selfManaged`
+        # @return [Google::Apis::ComputeBeta::SslCertificateSelfManagedSslCertificate]
+        attr_accessor :self_managed
+      
+        # [Output Only] Domains associated with the certificate via Subject Alternative
+        # Name.
+        # Corresponds to the JSON property `subjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_names
+      
+        # (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "
+        # MANAGED". If not specified, the certificate is self-managed and the fields
+        # certificate and private_key are used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20524,11 +20553,16 @@ module Google
           @certificate = args[:certificate] if args.key?(:certificate)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @managed = args[:managed] if args.key?(:managed)
           @name = args[:name] if args.key?(:name)
           @private_key = args[:private_key] if args.key?(:private_key)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @subject_alternative_names = args[:subject_alternative_names] if args.key?(:subject_alternative_names)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -20646,6 +20680,67 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration and status of a managed SSL certificate.
+      class SslCertificateManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Detailed statuses of the domains specified for managed
+        # certificate resource.
+        # Corresponds to the JSON property `domainStatus`
+        # @return [Hash<String,String>]
+        attr_accessor :domain_status
+      
+        # The domains for which a managed SSL certificate will be generated. Currently
+        # only single-domain certs are supported.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # [Output only] Status of the managed certificate resource.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_status = args[:domain_status] if args.key?(:domain_status)
+          @domains = args[:domains] if args.key?(:domains)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Configuration and status of a self-managed SSL certificate.
+      class SslCertificateSelfManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # A local certificate file. The certificate must be in PEM format. The
+        # certificate chain must be no greater than 5 certs long. The chain must include
+        # at least one intermediate cert.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # A write-only private key in PEM format. Only insert requests will include this
+        # field.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @private_key = args[:private_key] if args.key?(:private_key)
         end
       end
       

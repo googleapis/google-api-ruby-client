@@ -1127,6 +1127,11 @@ module Google
       class AttachedDiskInitializeParams
         include Google::Apis::Core::Hashable
       
+        # An optional description. Provide this property when creating the disk.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Specifies the disk name. If not specified, the default is to use the name of
         # the instance. If the disk with the instance name exists already in the given
         # zone/region, a new name will be automatically generated.
@@ -1192,6 +1197,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
@@ -2258,6 +2264,12 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] The resource URL for the security policy associated with this
+        # backend service.
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -2303,6 +2315,7 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @protocol = args[:protocol] if args.key?(:protocol)
           @region = args[:region] if args.key?(:region)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -4547,6 +4560,15 @@ module Google
         # @return [String]
         attr_accessor :direction
       
+        # Denotes whether the firewall rule is disabled, i.e not applied to the network
+        # it is associated with. When set to true, the firewall rule is not enforced and
+        # the network behaves as if it did not exist. If this is unspecified, the
+        # firewall rule will be enabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -4664,6 +4686,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination_ranges = args[:destination_ranges] if args.key?(:destination_ranges)
           @direction = args[:direction] if args.key?(:direction)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -10130,9 +10153,9 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # [Output Only] Availability zone for this location. Within a metropolitan area (
-        # metro), maintenance will not be simultaneously scheduled in more than one
-        # availability zone. Example: "zone1" or "zone2".
+        # [Output Only] Availability zone for this InterconnectLocation. Within a
+        # metropolitan area (metro), maintenance will not be simultaneously scheduled in
+        # more than one availability zone. Example: "zone1" or "zone2".
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
@@ -16688,6 +16711,325 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A security policy is comprised of one or more rules. It can also be associated
+      # with one or more 'targets'. (== resource_for v1.securityPolicies ==) (==
+      # resource_for beta.securityPolicies ==)
+      class SecurityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Specifies a fingerprint for this resource, which is essentially a hash of the
+        # metadata's contents and used for optimistic locking. The fingerprint is
+        # initially generated by Compute Engine and changes after every request to
+        # modify or update metadata. You must always provide an up-to-date fingerprint
+        # hash in order to update or change metadata.
+        # To see the latest fingerprint, make get() request to the security policy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#securityPolicyfor security
+        # policies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of rules that belong to this policy. There must always be a default
+        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
+        # when creating a security policy, a default rule with action "allow" will be
+        # added.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRule>]
+        attr_accessor :rules
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class SecurityPolicyList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SecurityPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#securityPolicyList for listsof
+        # securityPolicies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::SecurityPolicyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::SecurityPolicyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SecurityPolicyReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `securityPolicy`
+        # @return [String]
+        attr_accessor :security_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_policy = args[:security_policy] if args.key?(:security_policy)
+        end
+      end
+      
+      # Represents a rule that describes one or more match conditions along with the
+      # action to be taken when traffic matches this condition (allow or deny).
+      class SecurityPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # The Action to preform when the client connection triggers the rule. Can
+        # currently be either "allow" or "deny()" where valid values for status are 403,
+        # 404, and 502.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output only] Type of the resource. Always compute#securityPolicyRule for
+        # security policy rules
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Represents a match condition that incoming traffic is evaluated against.
+        # Exactly one field must be specified.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::ComputeV1::SecurityPolicyRuleMatcher]
+        attr_accessor :match
+      
+        # If set to true, the specified action is not enforced.
+        # Corresponds to the JSON property `preview`
+        # @return [Boolean]
+        attr_accessor :preview
+        alias_method :preview?, :preview
+      
+        # An integer indicating the priority of a rule in the list. The priority must be
+        # a positive value between 0 and 2147483647. Rules are evaluated in the
+        # increasing order of priority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @kind = args[:kind] if args.key?(:kind)
+          @match = args[:match] if args.key?(:match)
+          @preview = args[:preview] if args.key?(:preview)
+          @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
+      # Represents a match condition that incoming traffic is evaluated against.
+      # Exactly one field must be specified.
+      class SecurityPolicyRuleMatcher
+        include Google::Apis::Core::Hashable
+      
+        # The configuration options available when specifying versioned_expr. This field
+        # must be specified if versioned_expr is specified and cannot be specified if
+        # versioned_expr is not specified.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig]
+        attr_accessor :config
+      
+        # Preconfigured versioned expression. If this field is specified, config must
+        # also be specified. Available preconfigured expressions along with their
+        # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
+        # field in config.
+        # Corresponds to the JSON property `versionedExpr`
+        # @return [String]
+        attr_accessor :versioned_expr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleMatcherConfig
+        include Google::Apis::Core::Hashable
+      
+        # CIDR IP address range.
+        # Corresponds to the JSON property `srcIpRanges`
+        # @return [Array<String>]
+        attr_accessor :src_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
         end
       end
       

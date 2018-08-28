@@ -1030,66 +1030,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HostType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HostTypeAggregatedList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HostTypeList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HostTypesScopedList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HttpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1920,6 +1860,30 @@ module Google
       
       class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3166,6 +3130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SavedAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Scheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3293,6 +3263,12 @@ module Google
       end
       
       class SourceInstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceInstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4762,9 +4738,9 @@ module Google
       class AttachedDiskInitializeParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
-          property :disk_storage_type, as: 'diskStorageType'
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
@@ -5293,6 +5269,8 @@ module Google
       class Commitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allocations, as: 'allocations', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
@@ -5849,6 +5827,7 @@ module Google
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
+          property :allow_global_access, as: 'allowGlobalAccess'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -6208,117 +6187,6 @@ module Google
         end
       end
       
-      class HostType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cpu_platform, as: 'cpuPlatform'
-          property :creation_timestamp, as: 'creationTimestamp'
-          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeAlpha::DeprecationStatus, decorator: Google::Apis::ComputeAlpha::DeprecationStatus::Representation
-      
-          property :description, as: 'description'
-          property :guest_cpus, as: 'guestCpus'
-          property :id, :numeric_string => true, as: 'id'
-          property :kind, as: 'kind'
-          property :local_ssd_gb, as: 'localSsdGb'
-          property :memory_mb, as: 'memoryMb'
-          property :name, as: 'name'
-          property :self_link, as: 'selfLink'
-          property :zone, as: 'zone'
-        end
-      end
-      
-      class HostTypeAggregatedList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::HostTypesScopedList, decorator: Google::Apis::ComputeAlpha::HostTypesScopedList::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HostTypeAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::HostTypeAggregatedList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HostTypeAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HostTypeAggregatedList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
-      class HostTypeList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::HostType, decorator: Google::Apis::ComputeAlpha::HostType::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HostTypeList::Warning, decorator: Google::Apis::ComputeAlpha::HostTypeList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HostTypeList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HostTypeList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
-      class HostTypesScopedList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :host_types, as: 'hostTypes', class: Google::Apis::ComputeAlpha::HostType, decorator: Google::Apis::ComputeAlpha::HostType::Representation
-      
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HostTypesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::HostTypesScopedList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HostTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HostTypesScopedList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6517,6 +6385,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
+          property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
           property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -7895,6 +7764,56 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :log_mode, as: 'logMode'
+        end
+      end
+      
+      class MachineImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_properties, as: 'sourceInstanceProperties', class: Google::Apis::ComputeAlpha::SourceInstanceProperties, decorator: Google::Apis::ComputeAlpha::SourceInstanceProperties::Representation
+      
+          property :status, as: 'status'
+          collection :storage_locations, as: 'storageLocations'
+        end
+      end
+      
+      class MachineImageList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::MachineImage, decorator: Google::Apis::ComputeAlpha::MachineImage::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::MachineImageList::Warning, decorator: Google::Apis::ComputeAlpha::MachineImageList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::MachineImageList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::MachineImageList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -9702,8 +9621,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :daily_maintenance_window, as: 'dailyMaintenanceWindow', class: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle::Representation
       
-          property :weekly_maintenance_window, as: 'weeklyMaintenanceWindow', class: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle::Representation
-      
         end
       end
       
@@ -10075,6 +9992,32 @@ module Google
         end
       end
       
+      class SavedAttachedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :boot, as: 'boot'
+          property :device_name, as: 'deviceName'
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
+      
+          property :index, as: 'index'
+          property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams::Representation
+      
+          property :interface, as: 'interface'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :mode, as: 'mode'
+          property :saved_state, as: 'savedState'
+          property :source, as: 'source'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
+          property :type, as: 'type'
+        end
+      end
+      
       class Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10307,6 +10250,32 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disk_configs, as: 'diskConfigs', class: Google::Apis::ComputeAlpha::DiskInstantiationConfig, decorator: Google::Apis::ComputeAlpha::DiskInstantiationConfig::Representation
+      
+        end
+      end
+      
+      class SourceInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_ip_forward, as: 'canIpForward'
+          property :deletion_protection, as: 'deletionProtection'
+          property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::SavedAttachedDisk, decorator: Google::Apis::ComputeAlpha::SavedAttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :machine_type, as: 'machineType'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
+      
+          property :min_cpu_platform, as: 'minCpuPlatform'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
+      
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
+      
+          collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
+      
+          property :tags, as: 'tags', class: Google::Apis::ComputeAlpha::Tags, decorator: Google::Apis::ComputeAlpha::Tags::Representation
       
         end
       end
@@ -11596,7 +11565,7 @@ module Google
       class UrlMapsScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :url_maps, as: 'UrlMaps', class: Google::Apis::ComputeAlpha::UrlMap, decorator: Google::Apis::ComputeAlpha::UrlMap::Representation
+          collection :url_maps, as: 'urlMaps', class: Google::Apis::ComputeAlpha::UrlMap, decorator: Google::Apis::ComputeAlpha::UrlMap::Representation
       
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::UrlMapsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::UrlMapsScopedList::Warning::Representation
       

@@ -2842,6 +2842,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslCertificateManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslPoliciesList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3859,9 +3871,9 @@ module Google
       class AttachedDiskInitializeParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
-          property :disk_storage_type, as: 'diskStorageType'
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
@@ -8714,11 +8726,18 @@ module Google
           property :certificate, as: 'certificate'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :expire_time, as: 'expireTime'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed, as: 'managed', class: Google::Apis::ComputeBeta::SslCertificateManagedSslCertificate, decorator: Google::Apis::ComputeBeta::SslCertificateManagedSslCertificate::Representation
+      
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
           property :self_link, as: 'selfLink'
+          property :self_managed, as: 'selfManaged', class: Google::Apis::ComputeBeta::SslCertificateSelfManagedSslCertificate, decorator: Google::Apis::ComputeBeta::SslCertificateSelfManagedSslCertificate::Representation
+      
+          collection :subject_alternative_names, as: 'subjectAlternativeNames'
+          property :type, as: 'type'
         end
       end
       
@@ -8751,6 +8770,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SslCertificateManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :domain_status, as: 'domainStatus'
+          collection :domains, as: 'domains'
+          property :status, as: 'status'
+        end
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate'
+          property :private_key, as: 'privateKey'
         end
       end
       

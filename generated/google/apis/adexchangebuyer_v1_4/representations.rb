@@ -645,6 +645,7 @@ module Google
           collection :click_through_url, as: 'clickThroughUrl'
           collection :corrections, as: 'corrections', class: Google::Apis::AdexchangebuyerV1_4::Creative::Correction, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::Correction::Representation
       
+          property :creative_status_identity_type, as: 'creativeStatusIdentityType'
           property :deals_status, as: 'dealsStatus'
           collection :detected_domains, as: 'detectedDomains'
           property :filtering_reasons, as: 'filteringReasons', class: Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::FilteringReasons::Representation
@@ -1320,7 +1321,6 @@ module Google
       class PublisherProfileApiProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
           property :audience, as: 'audience'
           property :buyer_pitch_statement, as: 'buyerPitchStatement'
           property :direct_contact, as: 'directContact'

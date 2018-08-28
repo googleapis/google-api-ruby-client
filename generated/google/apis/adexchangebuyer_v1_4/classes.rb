@@ -542,6 +542,18 @@ module Google
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::Correction>]
         attr_accessor :corrections
       
+        # Creative status identity type that the creative item applies to. Ad Exchange
+        # real-time bidding is migrating to the sizeless creative verification.
+        # Originally, Ad Exchange assigned creative verification status to a unique
+        # combination of a buyer creative ID and creative dimensions. Post-migration, a
+        # single verification status will be assigned at the buyer creative ID level.
+        # This field allows to distinguish whether a given creative status applies to a
+        # unique combination of a buyer creative ID and creative dimensions, or to a
+        # buyer creative ID as a whole.
+        # Corresponds to the JSON property `creativeStatusIdentityType`
+        # @return [String]
+        attr_accessor :creative_status_identity_type
+      
         # Top-level deals status. Read-only. This field should not be set in requests.
         # If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL) in
         # servingRestrictions will also exist. Note that this may be nuanced with other
@@ -677,6 +689,7 @@ module Google
           @buyer_creative_id = args[:buyer_creative_id] if args.key?(:buyer_creative_id)
           @click_through_url = args[:click_through_url] if args.key?(:click_through_url)
           @corrections = args[:corrections] if args.key?(:corrections)
+          @creative_status_identity_type = args[:creative_status_identity_type] if args.key?(:creative_status_identity_type)
           @deals_status = args[:deals_status] if args.key?(:deals_status)
           @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
           @filtering_reasons = args[:filtering_reasons] if args.key?(:filtering_reasons)
@@ -3172,11 +3185,6 @@ module Google
       class PublisherProfileApiProto
         include Google::Apis::Core::Hashable
       
-        # Deprecated: use the seller.account_id. The account id of the seller.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
-      
         # Publisher provided info on its audience.
         # Corresponds to the JSON property `audience`
         # @return [String]
@@ -3299,7 +3307,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
           @audience = args[:audience] if args.key?(:audience)
           @buyer_pitch_statement = args[:buyer_pitch_statement] if args.key?(:buyer_pitch_statement)
           @direct_contact = args[:direct_contact] if args.key?(:direct_contact)

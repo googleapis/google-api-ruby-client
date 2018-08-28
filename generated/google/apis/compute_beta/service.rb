@@ -8099,7 +8099,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves aggregated list of instances.
+        # Retrieves aggregated list of all of the instances in your project across all
+        # regions and zones.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -8474,7 +8475,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance's serial port output.
+        # Returns the last 1 MB of serial port output from the specified instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserFacingMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -446,6 +452,8 @@ module Google
           property :software_info, as: 'softwareInfo', class: Google::Apis::AndroidmanagementV1::SoftwareInfo, decorator: Google::Apis::AndroidmanagementV1::SoftwareInfo::Representation
       
           property :state, as: 'state'
+          property :user, as: 'user', class: Google::Apis::AndroidmanagementV1::User, decorator: Google::Apis::AndroidmanagementV1::User::Representation
+      
           property :user_name, as: 'userName'
         end
       end
@@ -492,6 +500,8 @@ module Google
           property :one_time_only, as: 'oneTimeOnly'
           property :policy_name, as: 'policyName'
           property :qr_code, as: 'qrCode'
+          property :user, as: 'user', class: Google::Apis::AndroidmanagementV1::User, decorator: Google::Apis::AndroidmanagementV1::User::Representation
+      
           property :value, as: 'value'
         end
       end
@@ -765,6 +775,7 @@ module Google
       
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
       
+          property :play_store_mode, as: 'playStoreMode'
           property :private_key_selection_enabled, as: 'privateKeySelectionEnabled'
           property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       
@@ -878,6 +889,13 @@ module Google
       
           property :header, as: 'header', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_identifier, as: 'accountIdentifier'
         end
       end
       

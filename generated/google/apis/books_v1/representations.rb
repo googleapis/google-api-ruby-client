@@ -1706,6 +1706,7 @@ module Google
             property :average_rating, as: 'averageRating'
             property :canonical_volume_link, as: 'canonicalVolumeLink'
             collection :categories, as: 'categories'
+            property :comics_content, as: 'comicsContent'
             property :content_version, as: 'contentVersion'
             property :description, as: 'description'
             property :dimensions, as: 'dimensions', class: Google::Apis::BooksV1::Volume::VolumeInfo::Dimensions, decorator: Google::Apis::BooksV1::Volume::VolumeInfo::Dimensions::Representation

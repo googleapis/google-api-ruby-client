@@ -3662,6 +3662,12 @@ module Google
           # @return [Array<String>]
           attr_accessor :categories
         
+          # Whether the volume has comics content.
+          # Corresponds to the JSON property `comicsContent`
+          # @return [Boolean]
+          attr_accessor :comics_content
+          alias_method :comics_content?, :comics_content
+        
           # An identifier for the version of the volume content (text & images). (In LITE
           # projection)
           # Corresponds to the JSON property `contentVersion`
@@ -3790,6 +3796,7 @@ module Google
             @average_rating = args[:average_rating] if args.key?(:average_rating)
             @canonical_volume_link = args[:canonical_volume_link] if args.key?(:canonical_volume_link)
             @categories = args[:categories] if args.key?(:categories)
+            @comics_content = args[:comics_content] if args.key?(:comics_content)
             @content_version = args[:content_version] if args.key?(:content_version)
             @description = args[:description] if args.key?(:description)
             @dimensions = args[:dimensions] if args.key?(:dimensions)
