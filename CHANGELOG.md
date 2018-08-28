@@ -1,5 +1,16 @@
 # 0.23.7
 * Backwards compatible changes:
+  * Updated `adexchangebuyer_v1_4`
+  * Updated `androidmanagement_v1`
+  * Updated `books_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudiot_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+
+# 0.23.7
+* Backwards compatible changes:
   * Make dependency on signet explicit and with correct version
 
 # 0.23.6
