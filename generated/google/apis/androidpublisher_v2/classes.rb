@@ -1509,6 +1509,7 @@ module Google
         # - Payment pending
         # - Payment received
         # - Free trial
+        # - Pending deferred upgrade/downgrade
         # Corresponds to the JSON property `paymentState`
         # @return [Fixnum]
         attr_accessor :payment_state

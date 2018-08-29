@@ -30,7 +30,7 @@ module Google
         # Contains audio data in the encoding specified in the `RecognitionConfig`.
         # Either `content` or `uri` must be supplied. Supplying both or neither
         # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [audio limits](https://cloud.google.com/speech/limits#content).
+        # [content limits](/speech-to-text/quotas#content).
         # Corresponds to the JSON property `audio`
         # @return [Google::Apis::SpeechV1::RecognitionAudio]
         attr_accessor :audio
@@ -152,7 +152,7 @@ module Google
       # Contains audio data in the encoding specified in the `RecognitionConfig`.
       # Either `content` or `uri` must be supplied. Supplying both or neither
       # returns google.rpc.Code.INVALID_ARGUMENT. See
-      # [audio limits](https://cloud.google.com/speech/limits#content).
+      # [content limits](/speech-to-text/quotas#content).
       class RecognitionAudio
         include Google::Apis::Core::Hashable
       
@@ -165,7 +165,8 @@ module Google
         attr_accessor :content
       
         # URI that points to a file that contains audio data bytes as specified in
-        # `RecognitionConfig`. Currently, only Google Cloud Storage URIs are
+        # `RecognitionConfig`. The file must not be compressed (for example, gzip).
+        # Currently, only Google Cloud Storage URIs are
         # supported, which must be specified in the following format:
         # `gs://bucket_name/object_name` (other URI formats return
         # google.rpc.Code.INVALID_ARGUMENT). For more information, see
@@ -209,7 +210,7 @@ module Google
         # *Required* The language of the supplied audio as a
         # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
         # Example: "en-US".
-        # See [Language Support](https://cloud.google.com/speech/docs/languages)
+        # See [Language Support](/speech-to-text/docs/languages)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -245,7 +246,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
-        # *Optional* A means to provide context to assist the speech recognition.
+        # *Optional* array of SpeechContext.
+        # A means to provide context to assist the speech recognition. For more
+        # information, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints).
         # Corresponds to the JSON property `speechContexts`
         # @return [Array<Google::Apis::SpeechV1::SpeechContext>]
         attr_accessor :speech_contexts
@@ -273,7 +276,7 @@ module Google
         # Contains audio data in the encoding specified in the `RecognitionConfig`.
         # Either `content` or `uri` must be supplied. Supplying both or neither
         # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [audio limits](https://cloud.google.com/speech/limits#content).
+        # [content limits](/speech-to-text/quotas#content).
         # Corresponds to the JSON property `audio`
         # @return [Google::Apis::SpeechV1::RecognitionAudio]
         attr_accessor :audio
@@ -327,7 +330,7 @@ module Google
         # to improve the accuracy for specific words and phrases, for example, if
         # specific commands are typically spoken by the user. This can also be used
         # to add additional words to the vocabulary of the recognizer. See
-        # [usage limits](https://cloud.google.com/speech/limits#content).
+        # [usage limits](/speech-to-text/quotas#content).
         # Corresponds to the JSON property `phrases`
         # @return [Array<String>]
         attr_accessor :phrases
@@ -363,7 +366,7 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When enable_speaker_diarization is true, you will see all the words
+        # Note: When `enable_speaker_diarization` is true, you will see all the words
         # from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::SpeechV1::WordInfo>]

@@ -593,8 +593,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
@@ -649,8 +649,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
@@ -1446,8 +1446,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `sampleTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :sample_time
@@ -1856,8 +1856,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
@@ -1912,8 +1912,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
@@ -2550,8 +2550,8 @@ module Google
       # https://docs.python.org/2/library/time.html#time.strftime) with the time
       # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
       # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-      # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-      # capable of generating timestamps in this format.
+      # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+      # formatter capable of generating timestamps in this format.
       class Timestamp
         include Google::Apis::Core::Hashable
       
@@ -2725,8 +2725,8 @@ module Google
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
         # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a formatter
-        # capable of generating timestamps in this format.
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
