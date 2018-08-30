@@ -2952,7 +2952,7 @@ module Google
       
         # A unique ID for a specific instance of this message, typically assigned
         # by the client for tracking purpose. If empty, the server may choose to
-        # generate one instead.
+        # generate one instead. Must be no longer than 60 characters.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id

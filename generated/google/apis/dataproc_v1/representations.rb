@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +106,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PySparkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +239,12 @@ module Google
       end
       
       class QueryList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +275,18 @@ module Google
       end
       
       class SubmitJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -276,6 +324,16 @@ module Google
         end
       end
       
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::DataprocV1::Expr, decorator: Google::Apis::DataprocV1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
       class CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -304,6 +362,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_bucket, as: 'configBucket'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::EncryptionConfig, decorator: Google::Apis::DataprocV1::EncryptionConfig::Representation
+      
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1::GceClusterConfig, decorator: Google::Apis::DataprocV1::GceClusterConfig::Representation
       
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1::NodeInitializationAction, decorator: Google::Apis::DataprocV1::NodeInitializationAction::Representation
@@ -400,6 +460,23 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -411,6 +488,12 @@ module Google
           property :subnetwork_uri, as: 'subnetworkUri'
           collection :tags, as: 'tags'
           property :zone_uri, as: 'zoneUri'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -602,6 +685,16 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::DataprocV1::Binding, decorator: Google::Apis::DataprocV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class PySparkJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -621,6 +714,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :queries, as: 'queries'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::DataprocV1::Policy, decorator: Google::Apis::DataprocV1::Policy::Representation
+      
         end
       end
       
@@ -676,6 +777,20 @@ module Google
           property :job, as: 'job', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
       
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       

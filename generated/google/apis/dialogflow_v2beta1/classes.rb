@@ -3877,9 +3877,6 @@ module Google
         # Optional. KnowledgeBases to get alternative results from. If not set, the
         # KnowledgeBases enabled in the agent (through UI) will be used.
         # Format:  `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
-        # Note: This field is `repeated` for forward compatibility, currently only
-        # the first one is supported, we may return an error if multiple
-        # KnowledgeBases are specified.
         # Corresponds to the JSON property `knowledgeBaseNames`
         # @return [Array<String>]
         attr_accessor :knowledge_base_names

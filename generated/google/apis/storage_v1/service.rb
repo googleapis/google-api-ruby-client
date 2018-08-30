@@ -1832,8 +1832,7 @@ module Google
         # @param [String] kms_key_name
         #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
         #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
-        #   object. Overrides the object metadata's kms_key_name value, if any. Limited
-        #   availability; usable only by enabled projects.
+        #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] name
         #   Name of the object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any. For information

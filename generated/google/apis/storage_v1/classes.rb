@@ -384,6 +384,15 @@ module Google
               attr_accessor :is_live
               alias_method :is_live?, :is_live
             
+              # A regular expression that satisfies the RE2 syntax language. This condition is
+              # satisfied when the name of the object matches the RE2 pattern. Note: This
+              # feature is currently in the "Early Access" launch stage and is only available
+              # to a whitelisted set of users; that means that this feature may changed in
+              # backward-incompatible ways and that it is not guaranteed to be released.
+              # Corresponds to the JSON property `matchesPattern`
+              # @return [String]
+              attr_accessor :matches_pattern
+            
               # Objects having any of the storage classes specified by this condition will be
               # matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD,
               # and DURABLE_REDUCED_AVAILABILITY.
@@ -407,6 +416,7 @@ module Google
                 @age = args[:age] if args.key?(:age)
                 @created_before = args[:created_before] if args.key?(:created_before)
                 @is_live = args[:is_live] if args.key?(:is_live)
+                @matches_pattern = args[:matches_pattern] if args.key?(:matches_pattern)
                 @matches_storage_class = args[:matches_storage_class] if args.key?(:matches_storage_class)
                 @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
               end
@@ -1095,7 +1105,7 @@ module Google
         attr_accessor :kind
       
         # Cloud KMS Key used to encrypt this object, if the object is encrypted by such
-        # a key. Limited availability; usable only by enabled projects.
+        # a key.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name

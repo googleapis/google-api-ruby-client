@@ -329,6 +329,7 @@ module Google
                 property :created_before, as: 'createdBefore', type: Date
             
                 property :is_live, as: 'isLive'
+                property :matches_pattern, as: 'matchesPattern'
                 collection :matches_storage_class, as: 'matchesStorageClass'
                 property :num_newer_versions, as: 'numNewerVersions'
               end

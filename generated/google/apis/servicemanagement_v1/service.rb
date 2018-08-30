@@ -356,6 +356,8 @@ module Google
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] config_id
         #   The id of the service configuration resource.
+        #   This field must be specified for the server to return all fields, including
+        #   `SourceInfo`.
         # @param [String] view
         #   Specifies which parts of the Service Config should be returned in the
         #   response.
@@ -628,6 +630,8 @@ module Google
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] config_id
         #   The id of the service configuration resource.
+        #   This field must be specified for the server to return all fields, including
+        #   `SourceInfo`.
         # @param [String] view
         #   Specifies which parts of the Service Config should be returned in the
         #   response.
