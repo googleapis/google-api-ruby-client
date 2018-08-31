@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCancelTestOrderByCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCancelTestOrderByCustomerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCreateTestOrderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1136,6 +1148,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrdersCancelTestOrderByCustomerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class OrdersCancelTestOrderByCustomerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end

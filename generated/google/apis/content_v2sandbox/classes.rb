@@ -1872,6 +1872,45 @@ module Google
       end
       
       # 
+      class OrdersCancelTestOrderByCustomerRequest
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # 
+      class OrdersCancelTestOrderByCustomerResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCancelTestOrderByCustomerResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrdersCreateTestOrderRequest
         include Google::Apis::Core::Hashable
       

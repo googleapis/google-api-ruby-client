@@ -41,6 +41,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2::AccountAdwordsLink>]
         attr_accessor :adwords_links
       
+        # The business information of the account.
+        # Corresponds to the JSON property `businessInformation`
+        # @return [Google::Apis::ContentV2::AccountBusinessInformation]
+        attr_accessor :business_information
+      
         # The GMB account which is linked or in the process of being linked with the
         # Merchant Center account.
         # Corresponds to the JSON property `googleMyBusinessLink`
@@ -101,6 +106,7 @@ module Google
         def update!(**args)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
           @adwords_links = args[:adwords_links] if args.key?(:adwords_links)
+          @business_information = args[:business_information] if args.key?(:business_information)
           @google_my_business_link = args[:google_my_business_link] if args.key?(:google_my_business_link)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -110,6 +116,51 @@ module Google
           @users = args[:users] if args.key?(:users)
           @website_url = args[:website_url] if args.key?(:website_url)
           @youtube_channel_links = args[:youtube_channel_links] if args.key?(:youtube_channel_links)
+        end
+      end
+      
+      # 
+      class AccountAddress
+        include Google::Apis::Core::Hashable
+      
+        # CLDR country code (e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # City, town or commune. May also include dependent localities or sublocalities (
+        # e.g. neighborhoods or suburbs).
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Postal code or ZIP (e.g. "94043").
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Top-level administrative subdivision of the country. For example, a state like
+        # California ("CA") or a province like Quebec ("QC").
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Street-level part of the address.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [String]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @locality = args[:locality] if args.key?(:locality)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @region = args[:region] if args.key?(:region)
+          @street_address = args[:street_address] if args.key?(:street_address)
         end
       end
       
@@ -143,6 +194,68 @@ module Google
         def update!(**args)
           @adwords_id = args[:adwords_id] if args.key?(:adwords_id)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class AccountBusinessInformation
+        include Google::Apis::Core::Hashable
+      
+        # The address of the business.
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::ContentV2::AccountAddress]
+        attr_accessor :address
+      
+        # The customer service information of the business.
+        # Corresponds to the JSON property `customerService`
+        # @return [Google::Apis::ContentV2::AccountCustomerService]
+        attr_accessor :customer_service
+      
+        # The phone number of the business.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @customer_service = args[:customer_service] if args.key?(:customer_service)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # 
+      class AccountCustomerService
+        include Google::Apis::Core::Hashable
+      
+        # Customer service email.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Customer service phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Customer service URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -5432,6 +5545,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrdersCancelTestOrderByCustomerRequest
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # 
+      class OrdersCancelTestOrderByCustomerResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCancelTestOrderByCustomerResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
         end
       end

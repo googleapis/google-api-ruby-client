@@ -83,12 +83,11 @@ module Google
       # `https://www.googleapis.com/auth/cloud-platform`
       # The task will be delivered to the App Engine app which belongs to the same
       # project as the queue. For more information, see
-      # [How Requests are
-      # Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
-      # are-routed)
+      # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
+      # python/how-requests-are-routed)
       # and how routing is affected by
-      # [dispatch
-      # files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
+      # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
+      # dispatchref).
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
       # * If set,
@@ -167,9 +166,8 @@ module Google
         # * `X-AppEngine-*`
         # In addition, Cloud Tasks sets some headers when the task is dispatched,
         # such as headers containing information about the task; see
-        # [request
-        # headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/
-        # creating-handlers#reading_request_headers).
+        # [request headers](https://cloud.google.com/appengine/docs/python/taskqueue/
+        # push/creating-handlers#reading_request_headers).
         # These headers are set only when the task is dispatched, so they are not
         # visible when the task is returned in a Cloud Tasks response.
         # Although there is no specific limit for the maximum number of headers or
@@ -906,10 +904,10 @@ module Google
         # token is removed from the bucket. Tasks will be dispatched until
         # the queue's bucket runs out of tokens. The bucket will be
         # continuously refilled with new tokens based on
-        # max_tasks_dispatched_per_second.
+        # max_dispatches_per_second.
         # Cloud Tasks will pick the value of `max_burst_size` based on the
         # value of
-        # max_tasks_dispatched_per_second.
+        # max_dispatches_per_second.
         # For App Engine queues that were created or updated using
         # `queue.yaml/xml`, `max_burst_size` is equal to
         # [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/
@@ -918,9 +916,9 @@ module Google
         # UpdateQueue is called on a queue
         # created by `queue.yaml/xml`, `max_burst_size` will be reset based
         # on the value of
-        # max_tasks_dispatched_per_second,
+        # max_dispatches_per_second,
         # regardless of whether
-        # max_tasks_dispatched_per_second
+        # max_dispatches_per_second
         # is updated.
         # Corresponds to the JSON property `maxBurstSize`
         # @return [Fixnum]
@@ -982,10 +980,16 @@ module Google
       class RetryConfig
         include Google::Apis::Core::Hashable
       
-        # The maximum number of attempts for a task.
-        # Cloud Tasks will attempt the task `max_attempts` times (that
-        # is, if the first attempt fails, then there will be
-        # `max_attempts - 1` retries).  Must be > 0.
+        # Number of attempts per task.
+        # Cloud Tasks will attempt the task `max_attempts` times (that is, if the
+        # first attempt fails, then there will be `max_attempts - 1` retries). Must
+        # be >= -1.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # -1 indicates unlimited attempts.
+        # This field has the same meaning as
+        # [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/
+        # standard/python/config/queueref#retry_parameters).
         # Corresponds to the JSON property `maxAttempts`
         # @return [Fixnum]
         attr_accessor :max_attempts
@@ -1062,12 +1066,6 @@ module Google
         # @return [String]
         attr_accessor :min_backoff
       
-        # If true, then the number of attempts is unlimited.
-        # Corresponds to the JSON property `unlimitedAttempts`
-        # @return [Boolean]
-        attr_accessor :unlimited_attempts
-        alias_method :unlimited_attempts?, :unlimited_attempts
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,7 +1077,6 @@ module Google
           @max_doublings = args[:max_doublings] if args.key?(:max_doublings)
           @max_retry_duration = args[:max_retry_duration] if args.key?(:max_retry_duration)
           @min_backoff = args[:min_backoff] if args.key?(:min_backoff)
-          @unlimited_attempts = args[:unlimited_attempts] if args.key?(:unlimited_attempts)
         end
       end
       
@@ -1256,12 +1253,11 @@ module Google
         # `https://www.googleapis.com/auth/cloud-platform`
         # The task will be delivered to the App Engine app which belongs to the same
         # project as the queue. For more information, see
-        # [How Requests are
-        # Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
-        # are-routed)
+        # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
+        # python/how-requests-are-routed)
         # and how routing is affected by
-        # [dispatch
-        # files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
+        # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
+        # dispatchref).
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
         # * If set,

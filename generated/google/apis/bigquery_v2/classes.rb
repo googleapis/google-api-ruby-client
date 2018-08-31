@@ -1367,6 +1367,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :job_timeout_ms
       
+        # [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or
+        # UNKNOWN.
+        # Corresponds to the JSON property `jobType`
+        # @return [String]
+        attr_accessor :job_type
+      
         # The labels associated with this job. You can use these to organize and group
         # your jobs. Label keys and values can be no longer than 63 characters, can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -1396,6 +1402,7 @@ module Google
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @extract = args[:extract] if args.key?(:extract)
           @job_timeout_ms = args[:job_timeout_ms] if args.key?(:job_timeout_ms)
+          @job_type = args[:job_type] if args.key?(:job_type)
           @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
@@ -1733,7 +1740,7 @@ module Google
         attr_accessor :create_disposition
       
         # [Optional] Specifies the default dataset to use for unqualified table names in
-        # the query.
+        # the query. Note that this does not alter behavior of unqualified dataset names.
         # Corresponds to the JSON property `defaultDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
@@ -2184,20 +2191,18 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only, Beta] The DDL operation performed, possibly dependent on the pre-
-        # existence of the DDL target. Possible values (new values might be added in the
-        # future): "CREATE": The query created the DDL target. "SKIP": No-op. Example
-        # cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists,
-        # or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE":
-        # The query replaced the DDL target. Example case: the query is CREATE OR
-        # REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL
-        # target.
+        # The DDL operation performed, possibly dependent on the pre-existence of the
+        # DDL target. Possible values (new values might be added in the future): "CREATE"
+        # : The query created the DDL target. "SKIP": No-op. Example cases: the query is
+        # CREATE TABLE IF NOT EXISTS while the table already exists, or the query is
+        # DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query
+        # replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE,
+        # and the table already exists. "DROP": The query deleted the DDL target.
         # Corresponds to the JSON property `ddlOperationPerformed`
         # @return [String]
         attr_accessor :ddl_operation_performed
       
-        # [Output-only, Beta] The DDL target table. Present only for CREATE/DROP TABLE/
-        # VIEW queries.
+        # The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
@@ -2250,15 +2255,15 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Output-only, Beta] The type of query statement, if valid. Possible values (
-        # new values might be added in the future): "SELECT": SELECT query. "INSERT":
-        # INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-
-        # sql/data-manipulation-language "UPDATE": UPDATE query; see https://cloud.
-        # google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "
-        # DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/
-        # standard-sql/data-manipulation-language "MERGE": MERGE query; see https://
-        # cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
-        # language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
+        # The type of query statement, if valid. Possible values (new values might be
+        # added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
+        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # manipulation-language "UPDATE": UPDATE query; see https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-manipulation-language "DELETE":
+        # DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-
+        # sql/data-manipulation-language "MERGE": MERGE query; see https://cloud.google.
+        # com/bigquery/docs/reference/standard-sql/data-manipulation-language "
+        # CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
         # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... "
         # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
         # SELECT ... "DROP_VIEW": DROP VIEW query.
@@ -2292,8 +2297,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_slot_ms
       
-        # [Output-only, Beta] Standard SQL only: list of undeclared query parameters
-        # detected during a dry run validation.
+        # Standard SQL only: list of undeclared query parameters detected during a dry
+        # run validation.
         # Corresponds to the JSON property `undeclaredQueryParameters`
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :undeclared_query_parameters

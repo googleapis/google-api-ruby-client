@@ -358,7 +358,6 @@ module Google
           property :max_doublings, as: 'maxDoublings'
           property :max_retry_duration, as: 'maxRetryDuration'
           property :min_backoff, as: 'minBackoff'
-          property :unlimited_attempts, as: 'unlimitedAttempts'
         end
       end
       

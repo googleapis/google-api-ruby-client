@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcAccessConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ZipInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1233,6 +1239,8 @@ module Google
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
           property :vm, as: 'vm'
+          property :vpc_access_connector, as: 'vpcAccessConnector', class: Google::Apis::AppengineV1beta::VpcAccessConnector, decorator: Google::Apis::AppengineV1beta::VpcAccessConnector::Representation
+      
           collection :zones, as: 'zones'
         end
       end
@@ -1243,6 +1251,13 @@ module Google
           property :name, as: 'name'
           property :size_gb, as: 'sizeGb'
           property :volume_type, as: 'volumeType'
+        end
+      end
+      
+      class VpcAccessConnector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

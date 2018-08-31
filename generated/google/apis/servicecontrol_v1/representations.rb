@@ -332,6 +332,7 @@ module Google
           property :resource_location, as: 'resourceLocation', class: Google::Apis::ServicecontrolV1::ResourceLocation, decorator: Google::Apis::ServicecontrolV1::ResourceLocation::Representation
       
           property :resource_name, as: 'resourceName'
+          hash :resource_original_state, as: 'resourceOriginalState'
           hash :response, as: 'response'
           hash :service_data, as: 'serviceData'
           property :service_name, as: 'serviceName'

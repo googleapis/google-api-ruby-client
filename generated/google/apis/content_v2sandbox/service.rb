@@ -454,6 +454,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sandbox only. Cancels a test order for customer-initiated cancellation.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the test order to cancel.
+        # @param [Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerRequest] orders_cancel_test_order_by_customer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def canceltestorderbycustomer_order(merchant_id, order_id, orders_cancel_test_order_by_customer_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/testorders/{orderId}/cancelByCustomer', options)
+          command.request_representation = Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerRequest::Representation
+          command.request_object = orders_cancel_test_order_by_customer_request_object
+          command.response_representation = Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerResponse::Representation
+          command.response_class = Google::Apis::ContentV2sandbox::OrdersCancelTestOrderByCustomerResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sandbox only. Creates a test order.
         # @param [Fixnum] merchant_id
         #   The ID of the account that should manage the order. This cannot be a multi-

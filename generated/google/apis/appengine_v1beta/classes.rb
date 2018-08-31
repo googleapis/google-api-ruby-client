@@ -310,9 +310,11 @@ module Google
       class AutomaticScaling
         include Google::Apis::Core::Hashable
       
-        # Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/
-        # autoscaler/) should wait between changes to the number of virtual machines.
-        # Only applicable in the App Engine flexible environment.
+        # The time period that the Autoscaler (https://cloud.google.com/compute/docs/
+        # autoscaler/) should wait before it starts collecting information from a new
+        # instance. This prevents the autoscaler from collecting information when the
+        # instance is initializing, during which the collected usage would not be
+        # reliable. Only applicable in the App Engine flexible environment.
         # Corresponds to the JSON property `coolDownPeriod`
         # @return [String]
         attr_accessor :cool_down_period
@@ -3077,6 +3079,11 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
+        # VPC access connector specification.
+        # Corresponds to the JSON property `vpcAccessConnector`
+        # @return [Google::Apis::AppengineV1beta::VpcAccessConnector]
+        attr_accessor :vpc_access_connector
+      
         # The Google Compute Engine zones that are supported by this version in the App
         # Engine flexible environment.
         # Corresponds to the JSON property `zones`
@@ -3123,6 +3130,7 @@ module Google
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
+          @vpc_access_connector = args[:vpc_access_connector] if args.key?(:vpc_access_connector)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -3156,6 +3164,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @volume_type = args[:volume_type] if args.key?(:volume_type)
+        end
+      end
+      
+      # VPC access connector specification.
+      class VpcAccessConnector
+        include Google::Apis::Core::Hashable
+      
+        # Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/
+        # us-central1/connectors/c1.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/tasks/
     module CloudtasksV2beta3
       VERSION = 'V2beta3'
-      REVISION = '20180827'
+      REVISION = '20180830'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateIdentityBindingAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateIdentityBindingAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignBlobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +112,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :token, as: 'token'
+        end
+      end
+      
+      class GenerateIdentityBindingAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jwt, as: 'jwt'
+          collection :scope, as: 'scope'
+        end
+      end
+      
+      class GenerateIdentityBindingAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :expire_time, as: 'expireTime'
         end
       end
       

@@ -198,6 +198,17 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc,update_time, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the template was created.
+        #   - `update_time`: corresponds to time the template was last updated.
+        #   - `name`: corresponds to template's name.
+        #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -221,11 +232,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_deidentify_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_deidentify_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -377,6 +389,17 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc,update_time, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the template was created.
+        #   - `update_time`: corresponds to time the template was last updated.
+        #   - `name`: corresponds to template's name.
+        #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -400,11 +423,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_inspect_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_inspect_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -857,6 +881,17 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc,update_time, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the template was created.
+        #   - `update_time`: corresponds to time the template was last updated.
+        #   - `name`: corresponds to template's name.
+        #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -880,11 +915,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_deidentify_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_deidentify_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1277,6 +1313,17 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc,update_time, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the template was created.
+        #   - `update_time`: corresponds to time the template was last updated.
+        #   - `name`: corresponds to template's name.
+        #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -1300,11 +1347,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_inspect_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_inspect_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1458,8 +1506,8 @@ module Google
         #   insignificant.
         #   Example: `name asc,update_time, create_time desc`
         #   Supported fields are:
-        #   - `create_time`: corresponds to time the triggeredJob was created.
-        #   - `update_time`: corresponds to time the triggeredJob was last updated.
+        #   - `create_time`: corresponds to time the JobTrigger was created.
+        #   - `update_time`: corresponds to time the JobTrigger was last updated.
         #   - `name`: corresponds to JobTrigger's name.
         #   - `display_name`: corresponds to JobTrigger's display name.
         #   - `status`: corresponds to JobTrigger's status.

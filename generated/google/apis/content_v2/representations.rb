@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountAdwordsLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountBusinessInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountCustomerService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -862,6 +880,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCancelTestOrderByCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCancelTestOrderByCustomerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCreateTestOrderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1522,6 +1552,8 @@ module Google
           property :adult_content, as: 'adultContent'
           collection :adwords_links, as: 'adwordsLinks', class: Google::Apis::ContentV2::AccountAdwordsLink, decorator: Google::Apis::ContentV2::AccountAdwordsLink::Representation
       
+          property :business_information, as: 'businessInformation', class: Google::Apis::ContentV2::AccountBusinessInformation, decorator: Google::Apis::ContentV2::AccountBusinessInformation::Representation
+      
           property :google_my_business_link, as: 'googleMyBusinessLink', class: Google::Apis::ContentV2::AccountGoogleMyBusinessLink, decorator: Google::Apis::ContentV2::AccountGoogleMyBusinessLink::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -1537,11 +1569,42 @@ module Google
         end
       end
       
+      class AccountAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :locality, as: 'locality'
+          property :postal_code, as: 'postalCode'
+          property :region, as: 'region'
+          property :street_address, as: 'streetAddress'
+        end
+      end
+      
       class AccountAdwordsLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adwords_id, :numeric_string => true, as: 'adwordsId'
           property :status, as: 'status'
+        end
+      end
+      
+      class AccountBusinessInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::ContentV2::AccountAddress, decorator: Google::Apis::ContentV2::AccountAddress::Representation
+      
+          property :customer_service, as: 'customerService', class: Google::Apis::ContentV2::AccountCustomerService, decorator: Google::Apis::ContentV2::AccountCustomerService::Representation
+      
+          property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class AccountCustomerService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :phone_number, as: 'phoneNumber'
+          property :url, as: 'url'
         end
       end
       
@@ -3041,6 +3104,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrdersCancelTestOrderByCustomerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class OrdersCancelTestOrderByCustomerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end

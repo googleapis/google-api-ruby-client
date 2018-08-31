@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -393,6 +399,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::SpannerV1::Expr, decorator: Google::Apis::SpannerV1::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -503,6 +511,16 @@ module Google
           property :sql, as: 'sql'
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
       
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       

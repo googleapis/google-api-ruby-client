@@ -739,6 +739,7 @@ module Google
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobConfigurationExtract, decorator: Google::Apis::BigqueryV2::JobConfigurationExtract::Representation
       
           property :job_timeout_ms, :numeric_string => true, as: 'jobTimeoutMs'
+          property :job_type, as: 'jobType'
           hash :labels, as: 'labels'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobConfigurationLoad, decorator: Google::Apis::BigqueryV2::JobConfigurationLoad::Representation
       

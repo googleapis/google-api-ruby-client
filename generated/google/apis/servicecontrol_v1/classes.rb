@@ -188,6 +188,17 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # The resource's original state before mutation. Present only for
+        # operations which have successfully modified the targeted resource(s).
+        # In general, this field should contain all changed fields, except those
+        # that are already been included in `request`, `response`, `metadata` or
+        # `service_data` fields.
+        # When the JSON object represented here has a proto equivalent,
+        # the proto name will be indicated in the `@type` property.
+        # Corresponds to the JSON property `resourceOriginalState`
+        # @return [Hash<String,Object>]
+        attr_accessor :resource_original_state
+      
         # The operation response. This may not include all response elements,
         # such as those that are too large, privacy-sensitive, or duplicated
         # elsewhere in the log record.
@@ -269,6 +280,7 @@ module Google
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
           @resource_location = args[:resource_location] if args.key?(:resource_location)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @resource_original_state = args[:resource_original_state] if args.key?(:resource_original_state)
           @response = args[:response] if args.key?(:response)
           @service_data = args[:service_data] if args.key?(:service_data)
           @service_name = args[:service_name] if args.key?(:service_name)

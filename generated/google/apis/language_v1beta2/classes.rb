@@ -161,6 +161,7 @@ module Google
       
         # Represents the feeling associated with the entire text or entities in
         # the text.
+        # Next ID: 5
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :document_sentiment
@@ -266,6 +267,7 @@ module Google
       
         # All available features for sentiment, syntax, and semantic analysis.
         # Setting each one to true will enable that specific analysis for the input.
+        # Next ID: 10
         # Corresponds to the JSON property `features`
         # @return [Google::Apis::LanguageV1beta2::Features]
         attr_accessor :features
@@ -293,6 +295,7 @@ module Google
       
         # Represents the feeling associated with the entire text or entities in
         # the text.
+        # Next ID: 5
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :document_sentiment
@@ -519,6 +522,7 @@ module Google
       
         # Represents the feeling associated with the entire text or entities in
         # the text.
+        # Next ID: 5
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -550,6 +554,7 @@ module Google
       
         # Represents the feeling associated with the entire text or entities in
         # the text.
+        # Next ID: 5
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -578,6 +583,7 @@ module Google
       
       # All available features for sentiment, syntax, and semantic analysis.
       # Setting each one to true will enable that specific analysis for the input.
+      # Next ID: 10
       class Features
         include Google::Apis::Core::Hashable
       
@@ -718,6 +724,7 @@ module Google
       
         # Represents the feeling associated with the entire text or entities in
         # the text.
+        # Next ID: 5
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -740,6 +747,7 @@ module Google
       
       # Represents the feeling associated with the entire text or entities in
       # the text.
+      # Next ID: 5
       class Sentiment
         include Google::Apis::Core::Hashable
       
