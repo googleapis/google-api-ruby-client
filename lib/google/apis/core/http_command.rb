@@ -99,7 +99,7 @@ module Google
               # NotFound, etc
               auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
               Retriable.retriable tries: auth_tries,
-                                  on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError],
+                                  on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
                                   on_retry: proc { |*| refresh_authorization } do
                 execute_once(client).tap do |result|
                   if block_given?
