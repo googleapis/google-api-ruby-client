@@ -652,6 +652,91 @@ module Google
         end
       end
       
+      # Request for iSDK to get reopen attribution for app universal link open
+      # deeplinking. This endpoint is meant for only iOS requests.
+      class GetIosReopenAttributionRequest
+        include Google::Apis::Core::Hashable
+      
+        # APP bundle ID.
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # FDL link to be verified from an app universal link open.
+        # The FDL link can be one of:
+        # 1) short FDL.
+        # e.g. <app_code>.page.link/<ddl_id>, or
+        # 2) long FDL.
+        # e.g. <app_code>.page.link/?`query params`, or
+        # 3) Invite FDL.
+        # e.g. <app_code>.page.link/i/<invite_id_or_alias>
+        # Corresponds to the JSON property `requestedLink`
+        # @return [String]
+        attr_accessor :requested_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @requested_link = args[:requested_link] if args.key?(:requested_link)
+        end
+      end
+      
+      # Response for iSDK to get reopen attribution for app universal link open
+      # deeplinking. This endpoint is meant for only iOS requests.
+      class GetIosReopenAttributionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The deep-link attributed the app universal link open. For both regular
+        # FDL links and invite FDL links.
+        # Corresponds to the JSON property `deepLink`
+        # @return [String]
+        attr_accessor :deep_link
+      
+        # Optional invitation ID, for only invite typed requested FDL links.
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
+      
+        # The entire FDL, expanded from a short link. It is the same as the
+        # requested_link, if it is long.
+        # Corresponds to the JSON property `resolvedLink`
+        # @return [String]
+        attr_accessor :resolved_link
+      
+        # Scion campaign value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmCampaign`
+        # @return [String]
+        attr_accessor :utm_campaign
+      
+        # Scion medium value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmMedium`
+        # @return [String]
+        attr_accessor :utm_medium
+      
+        # Scion source value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmSource`
+        # @return [String]
+        attr_accessor :utm_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deep_link = args[:deep_link] if args.key?(:deep_link)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
+          @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)
+          @utm_medium = args[:utm_medium] if args.key?(:utm_medium)
+          @utm_source = args[:utm_source] if args.key?(:utm_source)
+        end
+      end
+      
       # Parameters for Google Play Campaign Measurements.
       # [Learn more](https://developers.google.com/analytics/devguides/collection/
       # android/v4/campaigns#campaign-params)

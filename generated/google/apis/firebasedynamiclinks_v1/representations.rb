@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetIosReopenAttributionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIosReopenAttributionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayAnalytics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -307,6 +319,26 @@ module Google
           property :match_message, as: 'matchMessage'
           property :request_ip_version, as: 'requestIpVersion'
           property :requested_link, as: 'requestedLink'
+          property :resolved_link, as: 'resolvedLink'
+          property :utm_campaign, as: 'utmCampaign'
+          property :utm_medium, as: 'utmMedium'
+          property :utm_source, as: 'utmSource'
+        end
+      end
+      
+      class GetIosReopenAttributionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+          property :requested_link, as: 'requestedLink'
+        end
+      end
+      
+      class GetIosReopenAttributionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deep_link, as: 'deepLink'
+          property :invitation_id, as: 'invitationId'
           property :resolved_link, as: 'resolvedLink'
           property :utm_campaign, as: 'utmCampaign'
           property :utm_medium, as: 'utmMedium'
