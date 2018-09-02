@@ -14367,6 +14367,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified network peering with the data included in the request
+        # Only the following fields can be modified: NetworkPeering.export_custom_routes,
+        # and NetworkPeering.import_custom_routes
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource which the updated peering is belonging to.
+        # @param [Google::Apis::ComputeAlpha::NetworksUpdatePeeringRequest] networks_update_peering_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_network_peering(project, network, networks_update_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/global/networks/{network}/updatePeering', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NetworksUpdatePeeringRequest::Representation
+          command.request_object = networks_update_peering_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds specified number of nodes to the node group.
         # @param [String] project
         #   Project ID for this request.
@@ -21768,18 +21821,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::ResourcePoliciesList] parsed result object
+        # @yieldparam result [Google::Apis::ComputeAlpha::ResourcePolicyList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ComputeAlpha::ResourcePoliciesList]
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_resource_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/regions/{region}/resourcePolicies', options)
-          command.response_representation = Google::Apis::ComputeAlpha::ResourcePoliciesList::Representation
-          command.response_class = Google::Apis::ComputeAlpha::ResourcePoliciesList
+          command.response_representation = Google::Apis::ComputeAlpha::ResourcePolicyList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::ResourcePolicyList
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.query['filter'] = filter unless filter.nil?

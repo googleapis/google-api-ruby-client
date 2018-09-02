@@ -17635,131 +17635,6 @@ module Google
       end
       
       # 
-      class ResourcePoliciesList
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # [Output Only] A list of ResourcePolicy resources.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::ComputeBeta::ResourcePolicy>]
-        attr_accessor :items
-      
-        # [Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
-        # resourcePolicies
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Server-defined URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeBeta::ResourcePoliciesList::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
-        end
-      end
-      
-      # 
       class ResourcePoliciesScopedList
         include Google::Apis::Core::Hashable
       
@@ -18223,6 +18098,131 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @hours_in_cycle = args[:hours_in_cycle] if args.key?(:hours_in_cycle)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # 
+      class ResourcePolicyList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of ResourcePolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::ResourcePolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
+        # resourcePolicies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::ResourcePolicyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       

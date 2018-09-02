@@ -2182,6 +2182,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksUpdatePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2836,24 +2842,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourcePoliciesList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourcePoliciesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2928,6 +2916,24 @@ module Google
       
       class ResourcePolicyHourlyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3209,6 +3215,12 @@ module Google
       end
       
       class SerialPortOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8334,6 +8346,14 @@ module Google
         end
       end
       
+      class NetworksUpdatePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_peering, as: 'networkPeering', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
+      
+        end
+      end
+      
       class NodeGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8422,6 +8442,8 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
+      
           property :status, as: 'status'
         end
       end
@@ -8521,6 +8543,8 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
+      
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
         end
@@ -9439,39 +9463,6 @@ module Google
         end
       end
       
-      class ResourcePoliciesList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ResourcePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicy::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ResourcePoliciesList::Warning, decorator: Google::Apis::ComputeAlpha::ResourcePoliciesList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ResourcePoliciesList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ResourcePoliciesList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
       class ResourcePoliciesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9605,6 +9596,39 @@ module Google
           property :duration, as: 'duration'
           property :hours_in_cycle, as: 'hoursInCycle'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ResourcePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ResourcePolicyList::Warning, decorator: Google::Apis::ComputeAlpha::ResourcePolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ResourcePolicyList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ResourcePolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -9852,7 +9876,6 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
@@ -10149,6 +10172,13 @@ module Google
           property :next, :numeric_string => true, as: 'next'
           property :self_link, as: 'selfLink'
           property :start, :numeric_string => true, as: 'start'
+        end
+      end
+      
+      class ServerBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       

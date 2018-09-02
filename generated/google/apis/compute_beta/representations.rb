@@ -2422,24 +2422,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourcePoliciesList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourcePoliciesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2514,6 +2496,24 @@ module Google
       
       class ResourcePolicyHourlyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7995,39 +7995,6 @@ module Google
         end
       end
       
-      class ResourcePoliciesList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ResourcePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicy::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning, decorator: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ResourcePoliciesList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
       class ResourcePoliciesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8159,6 +8126,39 @@ module Google
           property :duration, as: 'duration'
           property :hours_in_cycle, as: 'hoursInCycle'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ResourcePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ResourcePolicyList::Warning, decorator: Google::Apis::ComputeBeta::ResourcePolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ResourcePolicyList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ResourcePolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

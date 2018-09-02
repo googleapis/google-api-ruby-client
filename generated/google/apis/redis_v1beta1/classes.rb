@@ -214,6 +214,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. IAM identity used by import / export operations to transfer
+        # data to/from GCS.  Format is "serviceAccount:<service_account_email>".  The
+        # value may change over time for a given instance so should be checked before
+        # each import/export operation.
+        # Corresponds to the JSON property `persistenceIamIdentity`
+        # @return [String]
+        attr_accessor :persistence_iam_identity
+      
         # Output only. The port number of the exposed Redis endpoint.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
@@ -276,6 +284,7 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
+          @persistence_iam_identity = args[:persistence_iam_identity] if args.key?(:persistence_iam_identity)
           @port = args[:port] if args.key?(:port)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @redis_version = args[:redis_version] if args.key?(:redis_version)

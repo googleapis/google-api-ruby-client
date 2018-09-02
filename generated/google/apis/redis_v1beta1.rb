@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/memorystore/docs/redis/
     module RedisV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20180816'
+      REVISION = '20180830'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
