@@ -1,3 +1,35 @@
+# 0.23.8
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidpublisher_v2`
+  * Updated `androidpublisher_v3`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `appengine_v1beta4`
+  * Updated `appengine_v1beta5`
+  * Updated `bigquery_v2`
+  * Updated `cloudkms_v1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `firebasedynamiclinks_v1`
+  * Updated `iamcredentials_v1`
+  * Updated `language_v1beta2`
+  * Updated `redis_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `spanner_v1`
+  * Updated `speech_v1`
+  * Updated `storage_v1`
+  * Updated `testing_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_partner_v1`
+
 # 0.23.7
 * Backwards compatible changes:
   * Updated `adexchangebuyer_v1_4`
