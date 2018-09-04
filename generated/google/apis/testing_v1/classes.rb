@@ -1703,8 +1703,10 @@ module Google
         # @return [Array<Google::Apis::TestingV1::DeviceFile>]
         attr_accessor :files_to_push
       
-        # The network traffic profile used for running the test.
-        # Optional
+        # Optional. The network traffic profile used for running the test.
+        # Available network profiles can be queried by using the
+        # NETWORK_CONFIGURATION environment type when calling
+        # TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         # Corresponds to the JSON property `networkProfile`
         # @return [String]
         attr_accessor :network_profile
