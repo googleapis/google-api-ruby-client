@@ -109,9 +109,6 @@ module Google
         # @param [Array<String>, String] include
         #   The information to be included in the response. Only sections listed here
         #   will be returned.
-        #   If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
-        #   This behavior is temporary and will be removed once all clients are ready
-        #   or at the latest end of July 2018. After that no sections will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -148,9 +145,6 @@ module Google
         # @param [Array<String>, String] include
         #   The information to be included in the response. Only sections listed here
         #   will be returned.
-        #   If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
-        #   This behavior is temporary and will be removed once all clients are ready
-        #   or at the latest end of July 2018. After that no sections will be returned.
         # @param [Fixnum] page_size
         #   Maximum number of product statuses to return in the response, used for
         #   paging.

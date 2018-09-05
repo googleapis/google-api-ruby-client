@@ -2620,7 +2620,7 @@ module Google
         attr_accessor :hardware_status_enabled
         alias_method :hardware_status_enabled?, :hardware_status_enabled
       
-        # Whether memory info reporting is enabled.
+        # Whether memory reporting is enabled.
         # Corresponds to the JSON property `memoryInfoEnabled`
         # @return [Boolean]
         attr_accessor :memory_info_enabled

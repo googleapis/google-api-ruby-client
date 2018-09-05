@@ -454,6 +454,7 @@ module Google
       class PublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
           property :pem, as: 'pem'
         end
       end

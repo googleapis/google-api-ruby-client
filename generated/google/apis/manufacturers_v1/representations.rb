@@ -230,19 +230,12 @@ module Google
           property :content_language, as: 'contentLanguage'
           collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ManufacturersV1::DestinationStatus, decorator: Google::Apis::ManufacturersV1::DestinationStatus::Representation
       
-          property :final_attributes, as: 'finalAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
-      
           collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation
-      
-          collection :manually_deleted_attributes, as: 'manuallyDeletedAttributes'
-          property :manually_provided_attributes, as: 'manuallyProvidedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
       
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :product_id, as: 'productId'
           property :target_country, as: 'targetCountry'
-          property :uploaded_attributes, as: 'uploadedAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
-      
         end
       end
       

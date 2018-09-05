@@ -576,30 +576,10 @@ module Google
         # @return [Array<Google::Apis::ManufacturersV1::DestinationStatus>]
         attr_accessor :destination_statuses
       
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `finalAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :final_attributes
-      
         # A server-generated list of issues associated with the product.
         # Corresponds to the JSON property `issues`
         # @return [Array<Google::Apis::ManufacturersV1::Issue>]
         attr_accessor :issues
-      
-        # Names of the attributes of the product deleted manually via the
-        # Manufacturer Center UI.
-        # This field is deprecated and will be removed end of July 2018. Please use
-        # attributes.
-        # Corresponds to the JSON property `manuallyDeletedAttributes`
-        # @return [Array<String>]
-        attr_accessor :manually_deleted_attributes
-      
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `manuallyProvidedAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :manually_provided_attributes
       
         # Name in the format ``target_country`:`content_language`:`product_id``.
         # `target_country`   - The target country of the product as a CLDR territory
@@ -631,12 +611,6 @@ module Google
         # @return [String]
         attr_accessor :target_country
       
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
-        # Corresponds to the JSON property `uploadedAttributes`
-        # @return [Google::Apis::ManufacturersV1::Attributes]
-        attr_accessor :uploaded_attributes
-      
         def initialize(**args)
            update!(**args)
         end
@@ -646,15 +620,11 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @content_language = args[:content_language] if args.key?(:content_language)
           @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
-          @final_attributes = args[:final_attributes] if args.key?(:final_attributes)
           @issues = args[:issues] if args.key?(:issues)
-          @manually_deleted_attributes = args[:manually_deleted_attributes] if args.key?(:manually_deleted_attributes)
-          @manually_provided_attributes = args[:manually_provided_attributes] if args.key?(:manually_provided_attributes)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @product_id = args[:product_id] if args.key?(:product_id)
           @target_country = args[:target_country] if args.key?(:target_country)
-          @uploaded_attributes = args[:uploaded_attributes] if args.key?(:uploaded_attributes)
         end
       end
       

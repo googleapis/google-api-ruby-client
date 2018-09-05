@@ -91,8 +91,8 @@ module Google
       end
       
       # Request for the `CreateSnapshot` method.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
-      # changed in
+      # <b>BETA:</b> This feature is part of a beta release. This API might be changed
+      # in
       # backward-incompatible ways and is not recommended for production use.
       # It is not subject to any SLA or deprecation policy.
       class CreateSnapshotRequest
@@ -194,7 +194,7 @@ module Google
       end
       
       # Response for the `ListSnapshots` method.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # <b>BETA:</b> This feature is part of a beta release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
       class ListSnapshotsResponse
@@ -250,7 +250,7 @@ module Google
       end
       
       # Response for the `ListTopicSnapshots` method.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # <b>BETA:</b> This feature is part of a beta release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
       class ListTopicSnapshotsResponse
@@ -663,8 +663,8 @@ module Google
         end
       end
       
-      # Request for the `Seek` method.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # Request for the `Seek` method. <br><br>
+      # <b>BETA:</b> This feature is part of a beta release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
       class SeekRequest
@@ -703,7 +703,7 @@ module Google
         end
       end
       
-      # 
+      # Response for the `Seek` method (this response is empty).
       class SeekResponse
         include Google::Apis::Core::Hashable
       
@@ -771,8 +771,12 @@ module Google
         end
       end
       
-      # A snapshot resource.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # A snapshot resource. Snapshots are used in
+      # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+      # you to manage message acknowledgments in bulk. That is, you can set the
+      # acknowledgment state of messages in an existing subscription to the state
+      # captured by a snapshot.<br><br>
+      # <b>BETA:</b> This feature is part of a beta release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
       class Snapshot
@@ -856,7 +860,7 @@ module Google
         # of acknowledged messages, and thus configures how far back in time a `Seek`
         # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
         # minutes.<br><br>
-        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # <b>BETA:</b> This feature is part of a beta release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `messageRetentionDuration`
@@ -881,8 +885,10 @@ module Google
         # Indicates whether to retain acknowledged messages. If true, then
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
-        # window.<br><br>
-        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # window. This must be true if you would like to
+        # <a href="/pubsub/docs/replay-overview#seek_to_a_time">Seek to a timestamp</a>.
+        # <br><br>
+        # <b>BETA:</b> This feature is part of a beta release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `retainAckedMessages`
@@ -987,14 +993,18 @@ module Google
       end
       
       # Request for the UpdateSnapshot method.<br><br>
-      # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+      # <b>BETA:</b> This feature is part of a beta release. This API might be
       # changed in backward-incompatible ways and is not recommended for production
       # use. It is not subject to any SLA or deprecation policy.
       class UpdateSnapshotRequest
         include Google::Apis::Core::Hashable
       
-        # A snapshot resource.<br><br>
-        # <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+        # A snapshot resource. Snapshots are used in
+        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # you to manage message acknowledgments in bulk. That is, you can set the
+        # acknowledgment state of messages in an existing subscription to the state
+        # captured by a snapshot.<br><br>
+        # <b>BETA:</b> This feature is part of a beta release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `snapshot`

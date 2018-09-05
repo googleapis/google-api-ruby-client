@@ -1013,6 +1013,12 @@ module Google
       class PublicKey
         include Google::Apis::Core::Hashable
       
+        # The Algorithm associated
+        # with this key.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
         # The public key, encoded in PEM format. For more information, see the
         # [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
         # [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
@@ -1028,6 +1034,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
           @pem = args[:pem] if args.key?(:pem)
         end
       end
