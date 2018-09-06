@@ -760,6 +760,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :current_locations, as: 'currentLocations'
+          collection :original_locations, as: 'originalLocations'
         end
       end
       

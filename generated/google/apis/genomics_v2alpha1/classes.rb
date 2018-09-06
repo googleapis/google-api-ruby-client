@@ -1158,6 +1158,20 @@ module Google
         end
       end
       
+      # The response to the RunPipeline method, returned in the operation's result
+      # field on success.
+      class RunPipelineResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Runtime metadata that will be populated in the
       # runtimeMetadata
       # field of the Operation associated with a RunPipeline execution.
@@ -1185,7 +1199,8 @@ module Google
       class Secret
         include Google::Apis::Core::Hashable
       
-        # The value of the cipherText response from the `encrypt` method.
+        # The value of the cipherText response from the `encrypt` method. This field
+        # is intentionally unaudited.
         # Corresponds to the JSON property `cipherText`
         # @return [String]
         attr_accessor :cipher_text

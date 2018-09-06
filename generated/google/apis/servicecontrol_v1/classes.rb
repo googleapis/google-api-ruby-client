@@ -2060,8 +2060,8 @@ module Google
         # The request was made by the Google API client for Python.
         # +   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:
         # The request was made by the Google Cloud SDK CLI (gcloud).
-        # +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`
-        # :
+        # +   `AppEngine-Google; (+http://code.google.com/appengine; appid:
+        # s~my-project`:
         # The request was made from the `my-project` App Engine app.
         # NOLINT
         # Corresponds to the JSON property `callerSuppliedUserAgent`
@@ -2199,6 +2199,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :current_locations
       
+        # The locations of a resource prior to the execution of the operation.
+        # For example:
+        # "europe-west1-a"
+        # "us-east1"
+        # "nam3"
+        # Corresponds to the JSON property `originalLocations`
+        # @return [Array<String>]
+        attr_accessor :original_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2206,6 +2215,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_locations = args[:current_locations] if args.key?(:current_locations)
+          @original_locations = args[:original_locations] if args.key?(:original_locations)
         end
       end
       

@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunPipelineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1098,6 +1104,12 @@ module Google
           collection :reference_ids, as: 'referenceIds'
           collection :source_accessions, as: 'sourceAccessions'
           property :source_uri, as: 'sourceUri'
+        end
+      end
+      
+      class RunPipelineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

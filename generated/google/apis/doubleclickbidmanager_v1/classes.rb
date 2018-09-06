@@ -81,31 +81,35 @@ module Google
         end
       end
       
-      # Request to fetch stored insertion orders, line items, TrueView ad groups and
-      # ads.
+      # Request to fetch stored campaigns, insertion orders, line items, TrueView ad
+      # groups and ads.
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
         # File types that will be returned.
+        # Acceptable values are:
+        # - "AD"
+        # - "AD_GROUP"
+        # - "CAMPAIGN"
+        # - "INSERTION_ORDER"
+        # - "LINE_ITEM"
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
       
         # The IDs of the specified filter type. This is used to filter entities to fetch.
-        # At least one ID must be specified. Only one ID is allowed for the
-        # ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types,
-        # all IDs must be from the same Advertiser.
+        # At least one ID must be specified.
         # Corresponds to the JSON property `filterIds`
         # @return [Array<Fixnum>]
         attr_accessor :filter_ids
       
-        # Filter type used to filter line items to fetch.
+        # Filter type used to filter entities to fetch.
         # Corresponds to the JSON property `filterType`
         # @return [String]
         attr_accessor :filter_type
       
         # SDF Version (column names, types, order) in which the entities will be
-        # returned. Default to 3.
+        # returned. Default to 3.1.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

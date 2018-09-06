@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunPipelineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -524,6 +530,12 @@ module Google
           hash :labels, as: 'labels'
           property :pipeline, as: 'pipeline', class: Google::Apis::GenomicsV2alpha1::Pipeline, decorator: Google::Apis::GenomicsV2alpha1::Pipeline::Representation
       
+        end
+      end
+      
+      class RunPipelineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

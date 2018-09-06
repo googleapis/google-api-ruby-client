@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunPipelineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -529,6 +535,12 @@ module Google
           property :pipeline_args, as: 'pipelineArgs', class: Google::Apis::GenomicsV1alpha2::RunPipelineArgs, decorator: Google::Apis::GenomicsV1alpha2::RunPipelineArgs::Representation
       
           property :pipeline_id, as: 'pipelineId'
+        end
+      end
+      
+      class RunPipelineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

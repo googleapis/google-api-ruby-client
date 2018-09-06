@@ -941,7 +941,8 @@ module Google
         
         # Updates a ServiceAccount.
         # Currently, only the following fields are updatable:
-        # `display_name`, `description`.
+        # `display_name` .
+        # The `etag` is mandatory.
         # @param [String] name
         #   The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
