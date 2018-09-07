@@ -396,7 +396,9 @@ module Google
         # "organizations/[ORGANIZATION_ID]"
         # "billingAccounts/[BILLING_ACCOUNT_ID]"
         # "folders/[FOLDER_ID]"
-        # Projects listed in the project_ids field are added to this list.
+        # Projects listed in the project_ids field are added to this list. Only one of
+        # the permissions, <code>logging.logEntries.list</code> or <code>logging.
+        # privateLogEntries.list</code>, is needed for each parent resource.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
         attr_accessor :resource_names
@@ -1697,7 +1699,10 @@ module Google
         # "folders/[FOLDER_ID]/logs/[LOG_ID]"
         # [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog"
         # or "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%
-        # 2Factivity". For more information about log names, see LogEntry.
+        # 2Factivity". The permission <code>logging.logEntries.create</code> is needed
+        # on each project, organization, billing account, or folder that is receiving
+        # new log entries, whether the resource is specified in <code>logName</code> or
+        # in an individual log entry. For more information about log names, see LogEntry.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name

@@ -1377,6 +1377,7 @@ module Google
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"
+        # "enable-os-login"
         # "gci-update-strategy"
         # "gci-ensure-gke-docker"
         # "instance-template"
