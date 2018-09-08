@@ -2521,10 +2521,11 @@ module Google
       
         # The primary role for this user. While new values may be supported in the
         # future, the following are currently allowed:
-        # - organizer
         # - owner
-        # - reader
+        # - organizer
+        # - fileOrganizer
         # - writer
+        # - reader
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -2615,8 +2616,9 @@ module Google
           # The primary role for this user. While new values may be added in the future,
           # the following are currently possible:
           # - organizer
-          # - reader
+          # - fileOrganizer
           # - writer
+          # - reader
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role

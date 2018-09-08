@@ -1361,7 +1361,7 @@ module Google
         end
         
         # Moves a file to the trash. The currently authenticated user must own the file
-        # or be an organizer on the parent for Team Drive files.
+        # or be at least a fileOrganizer on the parent for Team Drive files.
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [Boolean] supports_team_drives

@@ -1190,6 +1190,8 @@ module Google
         # @param [Boolean] archived
         #   Select only archived landing pages. Don't set this field to select both
         #   archived and non-archived landing pages.
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
+        #   Select only landing pages that are associated with these campaigns.
         # @param [Array<Fixnum>, Fixnum] ids
         #   Select only landing pages with these IDs.
         # @param [Fixnum] max_results
@@ -1229,13 +1231,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_advertiser_landing_pages(profile_id, advertiser_ids: nil, archived: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_advertiser_landing_pages(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'userprofiles/{profileId}/advertiserLandingPages', options)
           command.response_representation = Google::Apis::DfareportingV3_2::AdvertiserLandingPagesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV3_2::AdvertiserLandingPagesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['archived'] = archived unless archived.nil?
+          command.query['campaignIds'] = campaign_ids unless campaign_ids.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3717,7 +3720,7 @@ module Google
         # @param [Fixnum] country_id
         #   Select only directory sites with this country ID.
         # @param [String] dfp_network_code
-        #   Select only directory sites with this DFP network code.
+        #   Select only directory sites with this Ad Manager network code.
         # @param [Array<Fixnum>, Fixnum] ids
         #   Select only directory sites with these IDs.
         # @param [Fixnum] max_results

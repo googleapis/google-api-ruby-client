@@ -885,6 +885,13 @@ module Google
         # @return [String]
         attr_accessor :access_code
       
+        # Features of the entry point, such as being toll or toll-free. One entry point
+        # can have multiple features. However, toll and toll-free cannot be both set on
+        # the same entry point.
+        # Corresponds to the JSON property `entryPointFeatures`
+        # @return [Array<String>]
+        attr_accessor :entry_point_features
+      
         # The type of the conference entry point.
         # Possible values are:
         # - "video" - joining a conference over HTTP. A conference can have zero or one
@@ -948,6 +955,13 @@ module Google
         # @return [String]
         attr_accessor :pin
       
+        # The CLDR/ISO 3166 region code for the country associated with this phone
+        # access. Example: "SE" for Sweden.
+        # Calendar backend will populate this field only for EntryPointType.PHONE.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         # The URI of the entry point. The maximum length is 1300 characters.
         # Format:
         # - for video, http: or https: schema is required.
@@ -966,12 +980,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_code = args[:access_code] if args.key?(:access_code)
+          @entry_point_features = args[:entry_point_features] if args.key?(:entry_point_features)
           @entry_point_type = args[:entry_point_type] if args.key?(:entry_point_type)
           @label = args[:label] if args.key?(:label)
           @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
           @passcode = args[:passcode] if args.key?(:passcode)
           @password = args[:password] if args.key?(:password)
           @pin = args[:pin] if args.key?(:pin)
+          @region_code = args[:region_code] if args.key?(:region_code)
           @uri = args[:uri] if args.key?(:uri)
         end
       end

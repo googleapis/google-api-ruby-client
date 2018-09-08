@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,6 +496,8 @@ module Google
           property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
+      
           property :create_time, as: 'createTime'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
@@ -845,6 +853,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
       
+          collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
+      
           property :config, as: 'config', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
       
           property :initial_node_count, as: 'initialNodeCount'
@@ -883,10 +893,14 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_conditions, as: 'clusterConditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
+      
           property :detail, as: 'detail'
           property :end_time, as: 'endTime'
           property :location, as: 'location'
           property :name, as: 'name'
+          collection :nodepool_conditions, as: 'nodepoolConditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
+      
           property :operation_type, as: 'operationType'
           property :progress, as: 'progress', class: Google::Apis::ContainerV1beta1::OperationProgress, decorator: Google::Apis::ContainerV1beta1::OperationProgress::Representation
       
@@ -1111,6 +1125,14 @@ module Google
           property :project_id, as: 'projectId'
           property :rotate_credentials, as: 'rotateCredentials'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class StatusCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
         end
       end
       

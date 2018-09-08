@@ -260,6 +260,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
       
+        # Which conditions caused the current cluster state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
+        attr_accessor :conditions
+      
         # [Output only] The time the cluster was created, in
         # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
@@ -569,6 +574,7 @@ module Google
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
@@ -1715,8 +1721,9 @@ module Google
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"
-        # "gci-update-strategy"
+        # "enable-oslogin"
         # "gci-ensure-gke-docker"
+        # "gci-update-strategy"
         # "instance-template"
         # "kube-env"
         # "startup-script"
@@ -1865,6 +1872,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePoolAutoscaling]
         attr_accessor :autoscaling
       
+        # Which conditions caused the current node pool state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
+        attr_accessor :conditions
+      
         # Parameters that describe the nodes in a cluster.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
@@ -1929,6 +1941,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @config = args[:config] if args.key?(:config)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
@@ -2023,6 +2036,11 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
+        # Which conditions caused the current cluster state.
+        # Corresponds to the JSON property `clusterConditions`
+        # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
+        attr_accessor :cluster_conditions
+      
         # Detailed operation progress, if available.
         # Corresponds to the JSON property `detail`
         # @return [String]
@@ -2046,6 +2064,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Which conditions caused the current node pool state.
+        # Corresponds to the JSON property `nodepoolConditions`
+        # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
+        attr_accessor :nodepool_conditions
       
         # The operation type.
         # Corresponds to the JSON property `operationType`
@@ -2097,10 +2120,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_conditions = args[:cluster_conditions] if args.key?(:cluster_conditions)
           @detail = args[:detail] if args.key?(:detail)
           @end_time = args[:end_time] if args.key?(:end_time)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @nodepool_conditions = args[:nodepool_conditions] if args.key?(:nodepool_conditions)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @progress = args[:progress] if args.key?(:progress)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -3065,6 +3090,32 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # StatusCondition describes why a cluster or a node pool has a certain status
+      # (e.g., ERROR or DEGRADED).
+      class StatusCondition
+        include Google::Apis::Core::Hashable
+      
+        # Machine-friendly representation of the condition
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Human-friendly representation of the condition
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

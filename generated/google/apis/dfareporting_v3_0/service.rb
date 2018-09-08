@@ -3717,7 +3717,7 @@ module Google
         # @param [Fixnum] country_id
         #   Select only directory sites with this country ID.
         # @param [String] dfp_network_code
-        #   Select only directory sites with this DFP network code.
+        #   Select only directory sites with this Ad Manager network code.
         # @param [Array<Fixnum>, Fixnum] ids
         #   Select only directory sites with these IDs.
         # @param [Fixnum] max_results

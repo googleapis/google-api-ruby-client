@@ -486,12 +486,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_code, as: 'accessCode'
+          collection :entry_point_features, as: 'entryPointFeatures'
           property :entry_point_type, as: 'entryPointType'
           property :label, as: 'label'
           property :meeting_code, as: 'meetingCode'
           property :passcode, as: 'passcode'
           property :password, as: 'password'
           property :pin, as: 'pin'
+          property :region_code, as: 'regionCode'
           property :uri, as: 'uri'
         end
       end
