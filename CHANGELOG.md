@@ -1,3 +1,38 @@
+# 0.23.9
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidmanagement_v1`
+  * Updated `calendar_v3`
+  * Updated `cloudkms_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dfareporting_v2_8`
+  * Updated `dfareporting_v3_0`
+  * Updated `dfareporting_v3_1`
+  * Updated `dfareporting_v3_2`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `genomics_v1`
+  * Updated `genomics_v1alpha2`
+  * Updated `genomics_v2alpha1`
+  * Updated `iam_v1`
+  * Updated `jobs_v2`
+  * Updated `language_v1beta2`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `manufacturers_v1`
+  * Updated `ml_v1`
+  * Updated `partners_v2`
+  * Updated `pubsub_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `testing_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `tpu_v1`
+  * Updated `tpu_v1alpha1`
+  * Updated `websecurityscanner_v1alpha`
+  * Updated `youtube_partner_v1`
+
 # 0.23.8
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
