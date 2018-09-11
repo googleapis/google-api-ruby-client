@@ -137,6 +137,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p2beta1::EntityAnnotation>]
         attr_accessor :landmark_annotations
       
+        # If present, localized object detection has completed successfully.
+        # This will be sorted descending by confidence score.
+        # Corresponds to the JSON property `localizedObjectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::LocalizedObjectAnnotation>]
+        attr_accessor :localized_object_annotations
+      
         # If present, logo detection has completed successfully.
         # Corresponds to the JSON property `logoAnnotations`
         # @return [Array<Google::Apis::VisionV1p2beta1::EntityAnnotation>]
@@ -173,6 +179,7 @@ module Google
           @image_properties_annotation = args[:image_properties_annotation] if args.key?(:image_properties_annotation)
           @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
+          @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
@@ -1040,6 +1047,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
+        # If present, localized object detection has completed successfully.
+        # This will be sorted descending by confidence score.
+        # Corresponds to the JSON property `localizedObjectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>]
+        attr_accessor :localized_object_annotations
+      
         # If present, logo detection has completed successfully.
         # Corresponds to the JSON property `logoAnnotations`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation>]
@@ -1076,6 +1089,7 @@ module Google
           @image_properties_annotation = args[:image_properties_annotation] if args.key?(:image_properties_annotation)
           @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
+          @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
@@ -1722,6 +1736,51 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Set of detected objects with bounding boxes.
+      class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -2551,6 +2610,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
+        # If present, localized object detection has completed successfully.
+        # This will be sorted descending by confidence score.
+        # Corresponds to the JSON property `localizedObjectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>]
+        attr_accessor :localized_object_annotations
+      
         # If present, logo detection has completed successfully.
         # Corresponds to the JSON property `logoAnnotations`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation>]
@@ -2587,6 +2652,7 @@ module Google
           @image_properties_annotation = args[:image_properties_annotation] if args.key?(:image_properties_annotation)
           @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
+          @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
@@ -3541,6 +3607,51 @@ module Google
         def update!(**args)
           @max_lat_lng = args[:max_lat_lng] if args.key?(:max_lat_lng)
           @min_lat_lng = args[:min_lat_lng] if args.key?(:min_lat_lng)
+        end
+      end
+      
+      # Set of detected objects with bounding boxes.
+      class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -5555,8 +5666,6 @@ module Google
       
         # A confidence level on the match, ranging from 0 (no confidence) to
         # 1 (full confidence).
-        # This field is returned only if `view` is set to `FULL` in
-        # the request.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -6219,6 +6328,51 @@ module Google
         def update!(**args)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
+      # Set of detected objects with bounding boxes.
+      class LocalizedObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1p2beta1::BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       

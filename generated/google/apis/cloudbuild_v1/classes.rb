@@ -353,6 +353,11 @@ module Google
         # @return [String]
         attr_accessor :log_streaming_option
       
+        # Option to specify the logging mode, which determines where the logs are stored.
+        # Corresponds to the JSON property `logging`
+        # @return [String]
+        attr_accessor :logging
+      
         # Compute Engine machine type on which to run the build.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -382,6 +387,7 @@ module Google
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
+          @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)

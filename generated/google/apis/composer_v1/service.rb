@@ -289,14 +289,14 @@ module Google
         #   more individual config overrides.</td>
         #   </tr>
         #   <tr>
-        #   <td>config.softwareConfig.properties.<var>section</var>-<var>name
+        #   <td>config.softwareConfig.airflowConfigOverrides.<var>section</var>-<var>name
         #   </var></td>
-        #   <td>Override the Apache Airflow property <var>name</var> in the section
-        #   named <var>section</var>, preserving other properties. To delete the
-        #   property override, include it in `updateMask` and omit its mapping
-        #   in `environment.config.softwareConfig.properties`.
+        #   <td>Override the Apache Airflow config property <var>name</var> in the
+        #   section named <var>section</var>, preserving other properties. To delete
+        #   the property override, include it in `updateMask` and omit its mapping
+        #   in `environment.config.softwareConfig.airflowConfigOverrides`.
         #   It is an error to provide both a mask of this form and the
-        #   "config.softwareConfig.properties" mask.</td>
+        #   "config.softwareConfig.airflowConfigOverrides" mask.</td>
         #   </tr>
         #   <tr>
         #   <td>config.softwareConfig.envVariables</td>

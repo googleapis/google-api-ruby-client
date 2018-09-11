@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p1beta1LocationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,12 @@ module Google
       end
       
       class GoogleCloudVisionV1p2beta1LatLongRect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -970,6 +982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalizedObjectAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1124,6 +1142,8 @@ module Google
           collection :label_annotations, as: 'labelAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
       
           collection :landmark_annotations, as: 'landmarkAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
+      
+          collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1p2beta1::LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1p2beta1::LocalizedObjectAnnotation::Representation
       
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1p2beta1::EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::EntityAnnotation::Representation
       
@@ -1323,6 +1343,8 @@ module Google
       
           collection :landmark_annotations, as: 'landmarkAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation::Representation
       
+          collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation::Representation
+      
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1EntityAnnotation::Representation
       
           property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1SafeSearchAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1SafeSearchAnnotation::Representation
@@ -1495,6 +1517,18 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1GcsSource, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1GcsSource::Representation
       
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1BoundingPoly::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -1743,6 +1777,8 @@ module Google
           collection :label_annotations, as: 'labelAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation::Representation
       
           collection :landmark_annotations, as: 'landmarkAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation::Representation
+      
+          collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation::Representation
       
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1EntityAnnotation::Representation
       
@@ -2012,6 +2048,18 @@ module Google
       
           property :min_lat_lng, as: 'minLatLng', class: Google::Apis::VisionV1p2beta1::LatLng, decorator: Google::Apis::VisionV1p2beta1::LatLng::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BoundingPoly::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -2777,6 +2825,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
+        end
+      end
+      
+      class LocalizedObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p2beta1::BoundingPoly, decorator: Google::Apis::VisionV1p2beta1::BoundingPoly::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       

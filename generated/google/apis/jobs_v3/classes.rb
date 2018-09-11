@@ -916,9 +916,9 @@ module Google
         # @return [Array<Google::Apis::JobsV3::CustomAttributeHistogramRequest>]
         attr_accessor :custom_attribute_histogram_facets
       
-        # Optional. Specifies the simple type of histogram facets, for example,
-        # `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to
-        # GetHistogramRequest.
+        # Optional.
+        # Specifies the simple type of histogram facets, for example,
+        # `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc.
         # Corresponds to the JSON property `simpleHistogramFacets`
         # @return [Array<String>]
         attr_accessor :simple_histogram_facets
@@ -2249,27 +2249,26 @@ module Google
         # * "relevance desc": By relevance descending, as determined by the API
         # algorithms. Relevance thresholding of query results is only available
         # with this ordering.
-        # * "posting_publish_time desc": By Job.posting_publish_time
-        # descending.
+        # * "posting_publish_time desc": By Job.posting_publish_time descending.
         # * "posting_update_time desc": By Job.posting_update_time descending.
         # * "title": By Job.title ascending.
         # * "title desc": By Job.title descending.
         # * "annualized_base_compensation": By job's
-        # CompensationInfo.annualized_base_compensation ascending. If job's
-        # annualized base compensation is unspecified, they are put at the end of
-        # search result.
+        # CompensationInfo.annualized_base_compensation_range ascending. Jobs
+        # whose annualized base compensation is unspecified are put at the end of
+        # search results.
         # * "annualized_base_compensation desc": By job's
-        # CompensationInfo.annualized_base_compensation descending. If job's
-        # annualized base compensation is unspecified, they are put at the end of
-        # search result.
+        # CompensationInfo.annualized_base_compensation_range descending. Jobs
+        # whose annualized base compensation is unspecified are put at the end of
+        # search results.
         # * "annualized_total_compensation": By job's
-        # CompensationInfo.annualized_total_compensation ascending. If job's
-        # annualized total compensation is unspecified, they are put at the end
-        # of search result.
+        # CompensationInfo.annualized_total_compensation_range ascending. Jobs
+        # whose annualized base compensation is unspecified are put at the end of
+        # search results.
         # * "annualized_total_compensation desc": By job's
-        # CompensationInfo.annualized_total_compensation descending. If job's
-        # annualized total compensation is unspecified, they are put at the end
-        # of search result.
+        # CompensationInfo.annualized_total_compensation_range descending. Jobs
+        # whose annualized base compensation is unspecified are put at the end of
+        # search results.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by

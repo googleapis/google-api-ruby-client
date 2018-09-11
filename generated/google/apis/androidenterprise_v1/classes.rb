@@ -94,6 +94,26 @@ module Google
         # @return [Array<String>]
         attr_accessor :permission
       
+        # Options for displaying the Play Search page.
+        # Corresponds to the JSON property `playSearch`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch]
+        attr_accessor :play_search
+      
+        # Options for displaying the Private Apps page.
+        # Corresponds to the JSON property `privateApps`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPrivateApps]
+        attr_accessor :private_apps
+      
+        # Options for displaying the Store Builder page.
+        # Corresponds to the JSON property `storeBuilder`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecStoreBuilder]
+        attr_accessor :store_builder
+      
+        # Options for displaying the Web Apps page.
+        # Corresponds to the JSON property `webApps`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps]
+        attr_accessor :web_apps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -103,6 +123,90 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @parent = args[:parent] if args.key?(:parent)
           @permission = args[:permission] if args.key?(:permission)
+          @play_search = args[:play_search] if args.key?(:play_search)
+          @private_apps = args[:private_apps] if args.key?(:private_apps)
+          @store_builder = args[:store_builder] if args.key?(:store_builder)
+          @web_apps = args[:web_apps] if args.key?(:web_apps)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecPlaySearch
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Play Search page is displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecPrivateApps
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Private Apps page is displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecStoreBuilder
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Store Builder is be displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecWebApps
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Web Apps page is displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -2493,11 +2597,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Ordered list of pages a user should be able to reach from this page. The pages
-        # must exist, must not be this page, and once a link is created the page linked
-        # to cannot be deleted until all links to it are removed. It is recommended that
-        # the basic pages are created first, before adding the links between pages.
-        # No attempt is made to verify that all pages are reachable from the homepage.
+        # Ordered list of pages a user should be able to reach from this page. The list
+        # can't include this page. It is recommended that the basic pages are created
+        # first, before adding the links between pages.
+        # The API doesn't verify that the pages exist or the pages are reachable.
         # Corresponds to the JSON property `link`
         # @return [Array<String>]
         attr_accessor :link

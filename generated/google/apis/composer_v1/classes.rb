@@ -269,7 +269,7 @@ module Google
         # [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
         # network must belong to the environment's project. If unspecified, the
         # "default" network ID in the environment's project is used.  If a
-        # [Custom Subnet Network]((/vpc/docs/vpc#vpc_networks_and_subnets)
+        # [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets)
         # is provided, `nodeConfig.subnetwork` must also be provided.
         # Corresponds to the JSON property `network`
         # @return [String]

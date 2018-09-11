@@ -40,6 +40,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdministratorWebTokenSpecPlaySearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdministratorWebTokenSpecPrivateApps
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdministratorWebTokenSpecStoreBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdministratorWebTokenSpecWebApps
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidDevicePolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -463,6 +487,42 @@ module Google
           property :kind, as: 'kind'
           property :parent, as: 'parent'
           collection :permission, as: 'permission'
+          property :play_search, as: 'playSearch', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch::Representation
+      
+          property :private_apps, as: 'privateApps', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPrivateApps, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPrivateApps::Representation
+      
+          property :store_builder, as: 'storeBuilder', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecStoreBuilder, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecStoreBuilder::Representation
+      
+          property :web_apps, as: 'webApps', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps::Representation
+      
+        end
+      end
+      
+      class AdministratorWebTokenSpecPlaySearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AdministratorWebTokenSpecPrivateApps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AdministratorWebTokenSpecStoreBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AdministratorWebTokenSpecWebApps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
