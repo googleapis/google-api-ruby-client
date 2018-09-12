@@ -22,6 +22,31 @@ module Google
   module Apis
     module SpeechV1
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpeechV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # The top-level message sent by the client for the `LongRunningRecognize`
       # method.
       class LongRunningRecognizeRequest
@@ -191,6 +216,18 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
+        # *Optional* If 'true', adds punctuation to recognition result hypotheses.
+        # This feature is only available in select languages. Setting this for
+        # requests in other languages has no effect at all.
+        # The default 'false' value does not add punctuation to result hypotheses.
+        # Note: This is currently offered as an experimental service, complimentary
+        # to all users. In the future this may be exclusively available as a
+        # premium feature.
+        # Corresponds to the JSON property `enableAutomaticPunctuation`
+        # @return [Boolean]
+        attr_accessor :enable_automatic_punctuation
+        alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
+      
         # *Optional* If `true`, the top result includes a list of words and
         # the start and end time offsets (timestamps) for those words. If
         # `false`, no word-level time offset information is returned. The default is
@@ -226,6 +263,42 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_alternatives
       
+        # *Optional* Which model to select for the given request. Select the model
+        # best suited to your domain to get best results. If a model is not
+        # explicitly specified, then we auto-select a model based on the parameters
+        # in the RecognitionConfig.
+        # <table>
+        # <tr>
+        # <td><b>Model</b></td>
+        # <td><b>Description</b></td>
+        # </tr>
+        # <tr>
+        # <td><code>command_and_search</code></td>
+        # <td>Best for short queries such as voice commands or voice search.</td>
+        # </tr>
+        # <tr>
+        # <td><code>phone_call</code></td>
+        # <td>Best for audio that originated from a phone call (typically
+        # recorded at an 8khz sampling rate).</td>
+        # </tr>
+        # <tr>
+        # <td><code>video</code></td>
+        # <td>Best for audio that originated from from video or includes multiple
+        # speakers. Ideally the audio is recorded at a 16khz or greater
+        # sampling rate. This is a premium model that costs more than the
+        # standard rate.</td>
+        # </tr>
+        # <tr>
+        # <td><code>default</code></td>
+        # <td>Best for audio that is not one of the specific audio models.
+        # For example, long-form audio. Ideally the audio is high-fidelity,
+        # recorded at a 16khz or greater sampling rate.</td>
+        # </tr>
+        # </table>
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # *Optional* If set to `true`, the server will attempt to filter out
         # profanities, replacing all but the initial character in each filtered word
         # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
@@ -253,19 +326,37 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::SpeechContext>]
         attr_accessor :speech_contexts
       
+        # *Optional* Set to true to use an enhanced model for speech recognition.
+        # You must also set the `model` field to a valid, enhanced model. If
+        # `use_enhanced` is set to true and the `model` field is not set, then
+        # `use_enhanced` is ignored. If `use_enhanced` is true and an enhanced
+        # version of the specified model does not exist, then the speech is
+        # recognized using the standard version of the specified model.
+        # Enhanced speech models require that you opt-in to data logging using
+        # instructions in the [documentation](/speech-to-text/enable-data-logging).
+        # If you set `use_enhanced` to true and you have not enabled audio logging,
+        # then you will receive an error.
+        # Corresponds to the JSON property `useEnhanced`
+        # @return [Boolean]
+        attr_accessor :use_enhanced
+        alias_method :use_enhanced?, :use_enhanced
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
           @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
+          @model = args[:model] if args.key?(:model)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
+          @use_enhanced = args[:use_enhanced] if args.key?(:use_enhanced)
         end
       end
       

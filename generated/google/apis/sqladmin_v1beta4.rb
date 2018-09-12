@@ -20,13 +20,13 @@ module Google
   module Apis
     # Cloud SQL Admin API
     #
-    # Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your
-    # instances programmatically.
+    # Creates and manages Cloud SQL instances, which provide fully managed MySQL or
+    # PostgreSQL databases.
     #
     # @see https://cloud.google.com/sql/docs/reference/latest
     module SqladminV1beta4
       VERSION = 'V1beta4'
-      REVISION = '20180727'
+      REVISION = '20180907'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

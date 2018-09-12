@@ -890,6 +890,11 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidDevice]
         attr_accessor :android_device
       
+        # A single iOS device.
+        # Corresponds to the JSON property `iosDevice`
+        # @return [Google::Apis::TestingV1::IosDevice]
+        attr_accessor :ios_device
+      
         def initialize(**args)
            update!(**args)
         end
@@ -897,6 +902,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_device = args[:android_device] if args.key?(:android_device)
+          @ios_device = args[:ios_device] if args.key?(:ios_device)
         end
       end
       
@@ -918,6 +924,11 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidMatrix]
         attr_accessor :android_matrix
       
+        # A list of iOS device configurations in which the test is to be executed.
+        # Corresponds to the JSON property `iosDeviceList`
+        # @return [Google::Apis::TestingV1::IosDeviceList]
+        attr_accessor :ios_device_list
+      
         def initialize(**args)
            update!(**args)
         end
@@ -926,6 +937,7 @@ module Google
         def update!(**args)
           @android_device_list = args[:android_device_list] if args.key?(:android_device_list)
           @android_matrix = args[:android_matrix] if args.key?(:android_matrix)
+          @ios_device_list = args[:ios_device_list] if args.key?(:ios_device_list)
         end
       end
       
@@ -1065,6 +1077,265 @@ module Google
           @action_names = args[:action_names] if args.key?(:action_names)
           @category_names = args[:category_names] if args.key?(:category_names)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A single iOS device.
+      class IosDevice
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the iOS device to be used.
+        # Use the EnvironmentDiscoveryService to get supported options.
+        # Corresponds to the JSON property `iosModelId`
+        # @return [String]
+        attr_accessor :ios_model_id
+      
+        # Required. The id of the iOS major software version to be used.
+        # Use the EnvironmentDiscoveryService to get supported options.
+        # Corresponds to the JSON property `iosVersionId`
+        # @return [String]
+        attr_accessor :ios_version_id
+      
+        # Required. The locale the test device used for testing.
+        # Use the EnvironmentDiscoveryService to get supported options.
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # Required. How the device is oriented during the test.
+        # Use the EnvironmentDiscoveryService to get supported options.
+        # Corresponds to the JSON property `orientation`
+        # @return [String]
+        attr_accessor :orientation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_model_id = args[:ios_model_id] if args.key?(:ios_model_id)
+          @ios_version_id = args[:ios_version_id] if args.key?(:ios_version_id)
+          @locale = args[:locale] if args.key?(:locale)
+          @orientation = args[:orientation] if args.key?(:orientation)
+        end
+      end
+      
+      # The currently supported iOS devices.
+      class IosDeviceCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The set of supported iOS device models.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::TestingV1::IosModel>]
+        attr_accessor :models
+      
+        # iOS configuration that can be selected at the time a test is run.
+        # Corresponds to the JSON property `runtimeConfiguration`
+        # @return [Google::Apis::TestingV1::IosRuntimeConfiguration]
+        attr_accessor :runtime_configuration
+      
+        # Output only. The set of supported iOS software versions.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::TestingV1::IosVersion>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
+          @runtime_configuration = args[:runtime_configuration] if args.key?(:runtime_configuration)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # A list of iOS device configurations in which the test is to be executed.
+      class IosDeviceList
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of iOS devices
+        # Corresponds to the JSON property `iosDevices`
+        # @return [Array<Google::Apis::TestingV1::IosDevice>]
+        attr_accessor :ios_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_devices = args[:ios_devices] if args.key?(:ios_devices)
+        end
+      end
+      
+      # A description of an iOS device tests may be run on.
+      class IosModel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Device capabilities.
+        # Copied from
+        # https://developer.apple.com/library/archive/documentation/DeviceInformation/
+        # Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/
+        # DeviceCompatibilityMatrix.html
+        # Corresponds to the JSON property `deviceCapabilities`
+        # @return [Array<String>]
+        attr_accessor :device_capabilities
+      
+        # Output only. The unique opaque id for this model.
+        # Use this for invoking the TestExecutionService.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The human-readable name for this device model.
+        # Examples: "iPhone 4s", "iPad Mini 2"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The set of iOS major software versions this device supports.
+        # Corresponds to the JSON property `supportedVersionIds`
+        # @return [Array<String>]
+        attr_accessor :supported_version_ids
+      
+        # Output only. Tags for this dimension.
+        # Examples: "default", "preview", "deprecated"
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_capabilities = args[:device_capabilities] if args.key?(:device_capabilities)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @supported_version_ids = args[:supported_version_ids] if args.key?(:supported_version_ids)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # iOS configuration that can be selected at the time a test is run.
+      class IosRuntimeConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The set of available locales.
+        # Corresponds to the JSON property `locales`
+        # @return [Array<Google::Apis::TestingV1::Locale>]
+        attr_accessor :locales
+      
+        # Output only. The set of available orientations.
+        # Corresponds to the JSON property `orientations`
+        # @return [Array<Google::Apis::TestingV1::Orientation>]
+        attr_accessor :orientations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locales = args[:locales] if args.key?(:locales)
+          @orientations = args[:orientations] if args.key?(:orientations)
+        end
+      end
+      
+      # A description of how to set up an iOS device prior to a test.
+      class IosTestSetup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The network traffic profile used for running the test.
+        # Available network profiles can be queried by using the
+        # NETWORK_CONFIGURATION environment type when calling
+        # TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+        # Corresponds to the JSON property `networkProfile`
+        # @return [String]
+        attr_accessor :network_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_profile = args[:network_profile] if args.key?(:network_profile)
+        end
+      end
+      
+      # An iOS version
+      class IosVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. An opaque id for this iOS version.
+        # Use this id to invoke the TestExecutionService.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. An integer representing the major iOS version.
+        # Examples: "8", "9"
+        # Corresponds to the JSON property `majorVersion`
+        # @return [Fixnum]
+        attr_accessor :major_version
+      
+        # Output only. An integer representing the minor iOS version.
+        # Examples: "1", "2"
+        # Corresponds to the JSON property `minorVersion`
+        # @return [Fixnum]
+        attr_accessor :minor_version
+      
+        # Output only. Tags for this dimension.
+        # Examples: "default", "preview", "deprecated"
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @major_version = args[:major_version] if args.key?(:major_version)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # A test of an iOS application that uses the XCTest framework.
+      # Xcode supports the option to "build for testing", which generates an
+      # .xctestrun file that contains a test specification (arguments, test methods,
+      # etc). This test type accepts a zip file containing the .xctestrun file and
+      # the corresponding contents of the Build/Products directory that contains all
+      # the binaries needed to run the tests.
+      class IosXcTest
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `testsZip`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :tests_zip
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `xctestrun`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :xctestrun
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
+          @xctestrun = args[:xctestrun] if args.key?(:xctestrun)
         end
       end
       
@@ -1487,6 +1758,11 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidDeviceCatalog]
         attr_accessor :android_device_catalog
       
+        # The currently supported iOS devices.
+        # Corresponds to the JSON property `iosDeviceCatalog`
+        # @return [Google::Apis::TestingV1::IosDeviceCatalog]
+        attr_accessor :ios_device_catalog
+      
         # Supported network configurations
         # Corresponds to the JSON property `networkConfigurationCatalog`
         # @return [Google::Apis::TestingV1::NetworkConfigurationCatalog]
@@ -1504,6 +1780,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_device_catalog = args[:android_device_catalog] if args.key?(:android_device_catalog)
+          @ios_device_catalog = args[:ios_device_catalog] if args.key?(:ios_device_catalog)
           @network_configuration_catalog = args[:network_configuration_catalog] if args.key?(:network_configuration_catalog)
           @software_catalog = args[:software_catalog] if args.key?(:software_catalog)
         end
@@ -1781,6 +2058,21 @@ module Google
         attr_accessor :disable_video_recording
         alias_method :disable_video_recording?, :disable_video_recording
       
+        # A description of how to set up an iOS device prior to a test.
+        # Corresponds to the JSON property `iosTestSetup`
+        # @return [Google::Apis::TestingV1::IosTestSetup]
+        attr_accessor :ios_test_setup
+      
+        # A test of an iOS application that uses the XCTest framework.
+        # Xcode supports the option to "build for testing", which generates an
+        # .xctestrun file that contains a test specification (arguments, test methods,
+        # etc). This test type accepts a zip file containing the .xctestrun file and
+        # the corresponding contents of the Build/Products directory that contains all
+        # the binaries needed to run the tests.
+        # Corresponds to the JSON property `iosXcTest`
+        # @return [Google::Apis::TestingV1::IosXcTest]
+        attr_accessor :ios_xc_test
+      
         # A description of how to set up the Android device prior to running the test.
         # Corresponds to the JSON property `testSetup`
         # @return [Google::Apis::TestingV1::TestSetup]
@@ -1805,6 +2097,8 @@ module Google
           @auto_google_login = args[:auto_google_login] if args.key?(:auto_google_login)
           @disable_performance_metrics = args[:disable_performance_metrics] if args.key?(:disable_performance_metrics)
           @disable_video_recording = args[:disable_video_recording] if args.key?(:disable_video_recording)
+          @ios_test_setup = args[:ios_test_setup] if args.key?(:ios_test_setup)
+          @ios_xc_test = args[:ios_xc_test] if args.key?(:ios_xc_test)
           @test_setup = args[:test_setup] if args.key?(:test_setup)
           @test_timeout = args[:test_timeout] if args.key?(:test_timeout)
         end

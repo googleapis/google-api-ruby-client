@@ -108,7 +108,7 @@ module Google
         end
       end
       
-      # A database instance backup run resource.
+      # A BackupRun resource.
       class BackupRun
         include Google::Apis::Core::Hashable
       
@@ -134,8 +134,8 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::OperationError]
         attr_accessor :error
       
-        # A unique identifier for this backup run. Note that this is unique only within
-        # the scope of a particular Cloud SQL instance.
+        # The identifier for this backup run. Unique only for a specific Cloud SQL
+        # instance.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -298,7 +298,7 @@ module Google
         end
       end
       
-      # A database resource inside a Cloud SQL instance.
+      # Represents a SQL database on the Cloud SQL instance.
       class Database
         include Google::Apis::Core::Hashable
       
@@ -312,7 +312,7 @@ module Google
         # @return [String]
         attr_accessor :collation
       
-        # HTTP 1.1 Entity tag for the resource.
+        # This field is deprecated and will be removed from a future version of the API.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -361,15 +361,14 @@ module Google
         end
       end
       
-      # MySQL flags for Cloud SQL instances.
+      # Database flags for Cloud SQL instances.
       class DatabaseFlags
         include Google::Apis::Core::Hashable
       
         # The name of the flag. These flags are passed at instance startup, so include
-        # both MySQL server options and MySQL system variables. Flags should be
-        # specified with underscores, not hyphens. For more information, see Configuring
-        # MySQL Flags in the Google Cloud SQL documentation, as well as the official
-        # MySQL documentation for server options and system variables.
+        # both server options and system variables for MySQL. Flags should be specified
+        # with underscores, not hyphens. For more information, see Configuring Database
+        # Flags in the Cloud SQL documentation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -395,9 +394,11 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container.
-        # SECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.
-        # EXTERNAL: A MySQL server that is not managed by Google.
+        # FIRST_GEN: First Generation instance. MySQL only.
+        # SECOND_GEN: Second Generation instance or PostgreSQL instance.
+        # EXTERNAL: A database server that is not managed by Google.
+        # This property is read-only; use the tier property in the settings object to
+        # determine the database type and Second or First Generation.
         # Corresponds to the JSON property `backendType`
         # @return [String]
         attr_accessor :backend_type
@@ -409,9 +410,8 @@ module Google
       
         # The current disk usage of the instance in bytes. This property has been
         # deprecated. Users should use the "cloudsql.googleapis.com/database/disk/
-        # bytes_used" metric in Cloud Monitoring API instead. Please see https://groups.
-        # google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for
-        # details.
+        # bytes_used" metric in Cloud Monitoring API instead. Please see this
+        # announcement for details.
         # Corresponds to the JSON property `currentDiskSize`
         # @return [Fixnum]
         attr_accessor :current_disk_size
@@ -424,7 +424,8 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
-        # HTTP 1.1 Entity tag for the resource.
+        # This field is deprecated and will be removed from a future version of the API.
+        # Use the settings.settingsVersion field instead.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -899,7 +900,7 @@ module Google
         end
       end
       
-      # A Google Cloud SQL service flag resource.
+      # A flag resource.
       class Flag
         include Google::Apis::Core::Hashable
       
@@ -1869,8 +1870,8 @@ module Google
         # @return [String]
         attr_accessor :activation_policy
       
-        # The App Engine app IDs that can access this instance. This property is only
-        # applicable to First Generation instances.
+        # The App Engine app IDs that can access this instance. First Generation
+        # instances only.
         # Corresponds to the JSON property `authorizedGaeApplications`
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
@@ -1898,14 +1899,14 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
-        # The size of data disk, in GB. The data disk size minimum is 10GB. Applies only
-        # to Second Generation instances.
+        # The size of data disk, in GB. The data disk size minimum is 10GB. Not used for
+        # First Generation instances.
         # Corresponds to the JSON property `dataDiskSizeGb`
         # @return [Fixnum]
         attr_accessor :data_disk_size_gb
       
-        # The type of data disk. Only supported for Second Generation instances. The
-        # default type is PD_SSD. Applies only to Second Generation instances.
+        # The type of data disk: PD_SSD (default) or PD_HDD. Not used for First
+        # Generation instances.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
         attr_accessor :data_disk_type
@@ -1968,21 +1969,23 @@ module Google
         attr_accessor :settings_version
       
         # Configuration to increase storage size automatically. The default value is
-        # true. Applies only to Second Generation instances.
+        # true. Not used for First Generation instances.
         # Corresponds to the JSON property `storageAutoResize`
         # @return [Boolean]
         attr_accessor :storage_auto_resize
         alias_method :storage_auto_resize?, :storage_auto_resize
       
         # The maximum size to which storage capacity can be automatically increased. The
-        # default value is 0, which specifies that there is no limit. Applies only to
-        # Second Generation instances.
+        # default value is 0, which specifies that there is no limit. Not used for First
+        # Generation instances.
         # Corresponds to the JSON property `storageAutoResizeLimit`
         # @return [Fixnum]
         attr_accessor :storage_auto_resize_limit
       
-        # The tier of service for this instance, for example D1, D2. For more
-        # information, see pricing.
+        # The tier (or machine type) for this instance, for example db-n1-standard-1 (
+        # MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL
+        # instances, this property determines whether the instance is First or Second
+        # Generation. For more information, see Instance Settings.
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -2319,7 +2322,7 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
-        # HTTP 1.1 Entity tag for the resource.
+        # This field is deprecated and will be removed from a future version of the API.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -2343,7 +2346,7 @@ module Google
         attr_accessor :kind
       
         # The name of the user in the Cloud SQL instance. Can be omitted for update
-        # since it is already specified on the URL.
+        # since it is already specified in the URL.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

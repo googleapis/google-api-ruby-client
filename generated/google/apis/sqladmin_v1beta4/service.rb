@@ -22,8 +22,8 @@ module Google
     module SqladminV1beta4
       # Cloud SQL Admin API
       #
-      # Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your
-      #  instances programmatically.
+      # Creates and manages Cloud SQL instances, which provide fully managed MySQL or
+      #  PostgreSQL databases.
       #
       # @example
       #    require 'google/apis/sqladmin_v1beta4'
@@ -172,7 +172,7 @@ module Google
         end
         
         # Lists all backup runs associated with a given instance and configuration in
-        # the reverse chronological order of the enqueued time.
+        # the reverse chronological order of the backup initiation time.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -458,8 +458,8 @@ module Google
         
         # List all available database flags for Cloud SQL instances.
         # @param [String] database_version
-        #   Database version for flag retrieval. Flags are specific to the database
-        #   version.
+        #   Database type and version you want to retrieve flags for. By default, this
+        #   method returns flags for all database types and versions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -190,6 +190,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IosDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosDeviceCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosDeviceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosRuntimeConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosTestSetup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosXcTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LauncherActivityIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -544,6 +592,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_device, as: 'androidDevice', class: Google::Apis::TestingV1::AndroidDevice, decorator: Google::Apis::TestingV1::AndroidDevice::Representation
       
+          property :ios_device, as: 'iosDevice', class: Google::Apis::TestingV1::IosDevice, decorator: Google::Apis::TestingV1::IosDevice::Representation
+      
         end
       end
       
@@ -553,6 +603,8 @@ module Google
           property :android_device_list, as: 'androidDeviceList', class: Google::Apis::TestingV1::AndroidDeviceList, decorator: Google::Apis::TestingV1::AndroidDeviceList::Representation
       
           property :android_matrix, as: 'androidMatrix', class: Google::Apis::TestingV1::AndroidMatrix, decorator: Google::Apis::TestingV1::AndroidMatrix::Representation
+      
+          property :ios_device_list, as: 'iosDeviceList', class: Google::Apis::TestingV1::IosDeviceList, decorator: Google::Apis::TestingV1::IosDeviceList::Representation
       
         end
       end
@@ -599,6 +651,84 @@ module Google
           collection :action_names, as: 'actionNames'
           collection :category_names, as: 'categoryNames'
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class IosDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios_model_id, as: 'iosModelId'
+          property :ios_version_id, as: 'iosVersionId'
+          property :locale, as: 'locale'
+          property :orientation, as: 'orientation'
+        end
+      end
+      
+      class IosDeviceCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::TestingV1::IosModel, decorator: Google::Apis::TestingV1::IosModel::Representation
+      
+          property :runtime_configuration, as: 'runtimeConfiguration', class: Google::Apis::TestingV1::IosRuntimeConfiguration, decorator: Google::Apis::TestingV1::IosRuntimeConfiguration::Representation
+      
+          collection :versions, as: 'versions', class: Google::Apis::TestingV1::IosVersion, decorator: Google::Apis::TestingV1::IosVersion::Representation
+      
+        end
+      end
+      
+      class IosDeviceList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ios_devices, as: 'iosDevices', class: Google::Apis::TestingV1::IosDevice, decorator: Google::Apis::TestingV1::IosDevice::Representation
+      
+        end
+      end
+      
+      class IosModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_capabilities, as: 'deviceCapabilities'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          collection :supported_version_ids, as: 'supportedVersionIds'
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class IosRuntimeConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locales, as: 'locales', class: Google::Apis::TestingV1::Locale, decorator: Google::Apis::TestingV1::Locale::Representation
+      
+          collection :orientations, as: 'orientations', class: Google::Apis::TestingV1::Orientation, decorator: Google::Apis::TestingV1::Orientation::Representation
+      
+        end
+      end
+      
+      class IosTestSetup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_profile, as: 'networkProfile'
+        end
+      end
+      
+      class IosVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :major_version, as: 'majorVersion'
+          property :minor_version, as: 'minorVersion'
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class IosXcTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tests_zip, as: 'testsZip', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :xctestrun, as: 'xctestrun', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
         end
       end
       
@@ -725,6 +855,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_device_catalog, as: 'androidDeviceCatalog', class: Google::Apis::TestingV1::AndroidDeviceCatalog, decorator: Google::Apis::TestingV1::AndroidDeviceCatalog::Representation
       
+          property :ios_device_catalog, as: 'iosDeviceCatalog', class: Google::Apis::TestingV1::IosDeviceCatalog, decorator: Google::Apis::TestingV1::IosDeviceCatalog::Representation
+      
           property :network_configuration_catalog, as: 'networkConfigurationCatalog', class: Google::Apis::TestingV1::NetworkConfigurationCatalog, decorator: Google::Apis::TestingV1::NetworkConfigurationCatalog::Representation
       
           property :software_catalog, as: 'softwareCatalog', class: Google::Apis::TestingV1::ProvidedSoftwareCatalog, decorator: Google::Apis::TestingV1::ProvidedSoftwareCatalog::Representation
@@ -800,6 +932,10 @@ module Google
           property :auto_google_login, as: 'autoGoogleLogin'
           property :disable_performance_metrics, as: 'disablePerformanceMetrics'
           property :disable_video_recording, as: 'disableVideoRecording'
+          property :ios_test_setup, as: 'iosTestSetup', class: Google::Apis::TestingV1::IosTestSetup, decorator: Google::Apis::TestingV1::IosTestSetup::Representation
+      
+          property :ios_xc_test, as: 'iosXcTest', class: Google::Apis::TestingV1::IosXcTest, decorator: Google::Apis::TestingV1::IosXcTest::Representation
+      
           property :test_setup, as: 'testSetup', class: Google::Apis::TestingV1::TestSetup, decorator: Google::Apis::TestingV1::TestSetup::Representation
       
           property :test_timeout, as: 'testTimeout'

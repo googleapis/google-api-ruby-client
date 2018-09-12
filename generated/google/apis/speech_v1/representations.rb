@@ -22,6 +22,12 @@ module Google
   module Apis
     module SpeechV1
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LongRunningRecognizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +94,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpeechV1::Operation, decorator: Google::Apis::SpeechV1::Operation::Representation
+      
+        end
+      end
+      
       class LongRunningRecognizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -121,14 +136,17 @@ module Google
       class RecognitionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
           property :language_code, as: 'languageCode'
           property :max_alternatives, as: 'maxAlternatives'
+          property :model, as: 'model'
           property :profanity_filter, as: 'profanityFilter'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::SpeechV1::SpeechContext, decorator: Google::Apis::SpeechV1::SpeechContext::Representation
       
+          property :use_enhanced, as: 'useEnhanced'
         end
       end
       
