@@ -1089,11 +1089,11 @@ module Google
         #   specify. By default, traffic is shifted immediately. For gradual traffic
         #   migration, the target versions must be located within instances that are
         #   configured for both warmup requests (https://cloud.google.com/appengine/docs/
-        #   admin-api/reference/rest/v1/apps.services.versions#inboundservicetype) and
+        #   admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and
         #   automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/
-        #   rest/v1/apps.services.versions#automaticscaling). You must specify the shardBy
+        #   rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy
         #   (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.
-        #   services#shardby) field in the Service resource. Gradual traffic migration is
+        #   services#ShardBy) field in the Service resource. Gradual traffic migration is
         #   not supported in the App Engine flexible environment. For examples, see
         #   Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-
         #   api/migrating-splitting-traffic).

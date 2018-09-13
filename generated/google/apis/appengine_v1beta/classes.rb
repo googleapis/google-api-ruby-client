@@ -2906,7 +2906,7 @@ module Google
         # Duration that static files should be cached by web proxies and browsers. Only
         # applicable if the corresponding StaticFilesHandler (https://cloud.google.com/
         # appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#
-        # staticfileshandler) does not specify its own expiration time.Only returned in
+        # StaticFilesHandler) does not specify its own expiration time.Only returned in
         # GET requests if view=FULL is set.
         # Corresponds to the JSON property `defaultExpiration`
         # @return [String]

@@ -780,7 +780,7 @@ module Google
         #   destination,filter,includeChildren At some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#fieldmaskExample: updateMask=filter.
+        #   reference/google.protobuf#FieldMaskExample: updateMask=filter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

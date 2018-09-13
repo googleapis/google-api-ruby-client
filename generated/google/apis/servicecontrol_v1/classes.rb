@@ -861,7 +861,6 @@ module Google
       # A common proto for logging HTTP requests. Only contains semantics
       # defined by the HTTP specification. Product-specific logging
       # information MUST be defined in a separate message.
-      # This is an exact copy of HttpRequest message defined in Stackdriver.
       class HttpRequest
         include Google::Apis::Core::Hashable
       
@@ -1028,7 +1027,6 @@ module Google
         # A common proto for logging HTTP requests. Only contains semantics
         # defined by the HTTP specification. Product-specific logging
         # information MUST be defined in a separate message.
-        # This is an exact copy of HttpRequest message defined in Stackdriver.
         # Corresponds to the JSON property `httpRequest`
         # @return [Google::Apis::ServicecontrolV1::HttpRequest]
         attr_accessor :http_request

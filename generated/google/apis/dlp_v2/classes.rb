@@ -1406,13 +1406,13 @@ module Google
       class GooglePrivacyDlpV2DateTime
         include Google::Apis::Core::Hashable
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date
@@ -5394,13 +5394,13 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date_value
@@ -5596,13 +5596,13 @@ module Google
         end
       end
       
-      # Represents a whole calendar date, e.g. date of birth. The time of day and
-      # time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-      # represent a year and month where the day is not significant, e.g. credit card
-      # expiration date. The year may be 0 to represent a month and day independent
-      # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-      # and `google.protobuf.Timestamp`.
+      # Represents a whole calendar date, for example date of birth. The time of day
+      # and time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+      # represent a year and month where the day is not significant, for example
+      # credit card expiration date. The year can be 0 to represent a month and day
+      # independent of year, for example anniversary date. Related types are
+      # google.type.TimeOfDay and `google.protobuf.Timestamp`.
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
