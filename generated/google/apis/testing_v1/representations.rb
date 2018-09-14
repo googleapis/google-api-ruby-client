@@ -688,6 +688,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device_capabilities, as: 'deviceCapabilities'
+          property :form_factor, as: 'formFactor'
           property :id, as: 'id'
           property :name, as: 'name'
           collection :supported_version_ids, as: 'supportedVersionIds'
