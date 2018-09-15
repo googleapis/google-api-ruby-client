@@ -1527,6 +1527,11 @@ module Google
       class Member
         include Google::Apis::Core::Hashable
       
+        # Delivery settings of member
+        # Corresponds to the JSON property `delivery_settings`
+        # @return [String]
+        attr_accessor :delivery_settings
+      
         # Email of member (Read-only)
         # Corresponds to the JSON property `email`
         # @return [String]
@@ -1569,6 +1574,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delivery_settings = args[:delivery_settings] if args.key?(:delivery_settings)
           @email = args[:email] if args.key?(:email)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
@@ -2896,7 +2902,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :aliases
       
-        # Indicates if user is archived
+        # Indicates if user is archived.
         # Corresponds to the JSON property `archived`
         # @return [Boolean]
         attr_accessor :archived
@@ -3085,7 +3091,7 @@ module Google
         # @return [Object]
         attr_accessor :ssh_public_keys
       
-        # Indicates if user is suspended
+        # Indicates if user is suspended.
         # Corresponds to the JSON property `suspended`
         # @return [Boolean]
         attr_accessor :suspended

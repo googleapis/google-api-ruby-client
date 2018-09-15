@@ -1739,11 +1739,11 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [String] host
-        #   Host of the user in the instance.
         # @param [String] name
         #   Name of the user in the instance.
         # @param [Google::Apis::SqladminV1beta4::User] user_object
+        # @param [String] host
+        #   Host of the user in the instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1763,7 +1763,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(project, instance, host, name, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user(project, instance, name, user_object = nil, host: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1beta4::User::Representation
           command.request_object = user_object

@@ -423,6 +423,33 @@ module Google
         end
       end
       
+      # A selector that chooses target cluster for jobs based on metadata.
+      class ClusterSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cluster labels. Cluster must have all labels to match.
+        # Corresponds to the JSON property `clusterLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :cluster_labels
+      
+        # Optional. The zone where workflow process executes. This parameter does not
+        # affect the selection of the cluster.If unspecified, the zone of the first
+        # cluster matching the selector is used.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_labels = args[:cluster_labels] if args.key?(:cluster_labels)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # The status of a cluster and its instances.
       class ClusterStatus
         include Google::Apis::Core::Hashable
@@ -945,6 +972,46 @@ module Google
         end
       end
       
+      # A request to instantiate a workflow template.
+      class InstantiateWorkflowTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Map from parameter names to values that should be used for those
+        # parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        # Optional. A tag that prevents multiple concurrent workflow instances with the
+        # same tag from running. This mitigates risk of concurrent instances started due
+        # to retries.It is recommended to always set this value to a UUID (https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        # maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. The version of workflow template to instantiate. If specified, the
+        # workflow will be instantiated only if the current version of the workflow
+        # template has the supplied version.This option cannot be used to instantiate a
+        # previous version of workflow template.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A Cloud Dataproc job resource.
       class Job
         include Google::Apis::Core::Hashable
@@ -1260,6 +1327,33 @@ module Google
         end
       end
       
+      # A response to a request to list workflow templates in a project.
+      class ListWorkflowTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This token is included in the response if there are more results
+        # to fetch. To fetch additional results, provide this value as the page_token in
+        # a subsequent <code>ListWorkflowTemplatesRequest</code>.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. WorkflowTemplates list.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::DataprocV1::WorkflowTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @templates = args[:templates] if args.key?(:templates)
+        end
+      end
+      
       # The runtime logging config of the job.
       class LoggingConfig
         include Google::Apis::Core::Hashable
@@ -1278,6 +1372,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @driver_log_levels = args[:driver_log_levels] if args.key?(:driver_log_levels)
+        end
+      end
+      
+      # Cluster that is managed by the workflow.
+      class ManagedCluster
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cluster name prefix. A unique cluster name will be formed by
+        # appending a random suffix.The name must contain only lower-case letters (a-z),
+        # numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end
+        # with hyphen. Must consist of between 2 and 35 characters.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The cluster config.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DataprocV1::ClusterConfig]
+        attr_accessor :config
+      
+        # Optional. The labels to associate with this cluster.Label keys must be between
+        # 1 and 63 characters long, and must conform to the following PCRE regular
+        # expression: \p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters
+        # long, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo`\
+        # p`N`_-`0,63`No more than 32 labels can be associated with a given cluster.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @config = args[:config] if args.key?(:config)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -1423,6 +1555,122 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A job executed by the workflow.
+      class OrderedJob
+        include Google::Apis::Core::Hashable
+      
+        # A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.
+        # apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
+        # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
+        # docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+        # Corresponds to the JSON property `hadoopJob`
+        # @return [Google::Apis::DataprocV1::HadoopJob]
+        attr_accessor :hadoop_job
+      
+        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
+        # queries on YARN.
+        # Corresponds to the JSON property `hiveJob`
+        # @return [Google::Apis::DataprocV1::HiveJob]
+        attr_accessor :hive_job
+      
+        # Optional. The labels to associate with this job.Label keys must be between 1
+        # and 63 characters long, and must conform to the following regular expression: \
+        # p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters long, and
+        # must conform to the following regular expression: \p`Ll`\p`Lo`\p`N`_-`0,63`No
+        # more than 32 labels can be associated with a given job.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
+        # on YARN.
+        # Corresponds to the JSON property `pigJob`
+        # @return [Google::Apis::DataprocV1::PigJob]
+        attr_accessor :pig_job
+      
+        # Optional. The optional list of prerequisite job step_ids. If not specified,
+        # the job will start at the beginning of workflow.
+        # Corresponds to the JSON property `prerequisiteStepIds`
+        # @return [Array<String>]
+        attr_accessor :prerequisite_step_ids
+      
+        # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
+        # 0.9.0/python-programming-guide.html) applications on YARN.
+        # Corresponds to the JSON property `pysparkJob`
+        # @return [Google::Apis::DataprocV1::PySparkJob]
+        attr_accessor :pyspark_job
+      
+        # Job scheduling options.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::DataprocV1::JobScheduling]
+        attr_accessor :scheduling
+      
+        # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # applications on YARN.
+        # Corresponds to the JSON property `sparkJob`
+        # @return [Google::Apis::DataprocV1::SparkJob]
+        attr_accessor :spark_job
+      
+        # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
+        # ) queries.
+        # Corresponds to the JSON property `sparkSqlJob`
+        # @return [Google::Apis::DataprocV1::SparkSqlJob]
+        attr_accessor :spark_sql_job
+      
+        # Required. The step id. The id must be unique among all jobs within the
+        # template.The step id is used as prefix for job id, as job goog-dataproc-
+        # workflow-step-id label, and in prerequisiteStepIds field from other steps.The
+        # id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+        # hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of
+        # between 3 and 50 characters.
+        # Corresponds to the JSON property `stepId`
+        # @return [String]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
+          @hive_job = args[:hive_job] if args.key?(:hive_job)
+          @labels = args[:labels] if args.key?(:labels)
+          @pig_job = args[:pig_job] if args.key?(:pig_job)
+          @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
+          @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @spark_job = args[:spark_job] if args.key?(:spark_job)
+          @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
+          @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
+      # Configuration for parameter validation.
+      class ParameterValidation
+        include Google::Apis::Core::Hashable
+      
+        # Validation based on regular expressions.
+        # Corresponds to the JSON property `regex`
+        # @return [Google::Apis::DataprocV1::RegexValidation]
+        attr_accessor :regex
+      
+        # Validation based on a list of allowed values.
+        # Corresponds to the JSON property `values`
+        # @return [Google::Apis::DataprocV1::ValueValidation]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regex = args[:regex] if args.key?(:regex)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -1664,6 +1912,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @queries = args[:queries] if args.key?(:queries)
+        end
+      end
+      
+      # Validation based on regular expressions.
+      class RegexValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. RE2 regular expressions used to validate the parameter's value. The
+        # value must match the regex in its entirety (substring matches are not
+        # sufficient).
+        # Corresponds to the JSON property `regexes`
+        # @return [Array<String>]
+        attr_accessor :regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regexes = args[:regexes] if args.key?(:regexes)
         end
       end
       
@@ -1982,6 +2251,82 @@ module Google
         end
       end
       
+      # A configurable parameter that replaces one or more fields in the template.
+      # Parameterizable fields: - Labels - File uris - Job properties - Job arguments -
+      # Script variables - Main class (in HadoopJob and SparkJob) - Zone (in
+      # ClusterSelector)
+      class TemplateParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Brief description of the parameter. Must not exceed 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Paths to all fields that the parameter replaces. A field is allowed
+        # to appear in at most one parameter's list of field paths.A field path is
+        # similar in syntax to a google.protobuf.FieldMask. For example, a field path
+        # that references the zone field of a workflow template's cluster selector would
+        # be specified as <code>placement.clusterSelector.zone</code>.Also, field paths
+        # can reference fields using the following syntax:
+        # Values in maps can be referenced by key. Examples<br>
+        # labels'key'
+        # placement.clusterSelector.clusterLabels'key'
+        # placement.managedCluster.labels'key'
+        # placement.clusterSelector.clusterLabels'key'
+        # jobsstep-id.labels'key'
+        # Jobs in the jobs list can be referenced by step-id. Examples:<br>
+        # jobsstep-id.hadoopJob.mainJarFileUri
+        # jobsstep-id.hiveJob.queryFileUri
+        # jobsstep-id.pySparkJob.mainPythonFileUri
+        # jobsstep-id.hadoopJob.jarFileUris0
+        # jobsstep-id.hadoopJob.archiveUris0
+        # jobsstep-id.hadoopJob.fileUris0
+        # jobsstep-id.pySparkJob.pythonFileUris0
+        # Items in repeated fields can be referenced by a zero-based index. Example:<br>
+        # jobsstep-id.sparkJob.args0
+        # Other examples:
+        # jobsstep-id.hadoopJob.properties'key'
+        # jobsstep-id.hadoopJob.args0
+        # jobsstep-id.hiveJob.scriptVariables'key'
+        # jobsstep-id.hadoopJob.mainJarFileUri
+        # placement.clusterSelector.zoneIt may not be possible to parameterize maps and
+        # repeated fields in their entirety since only individual map values and
+        # individual items in repeated fields can be referenced. For example, the
+        # following field paths are invalid:
+        # placement.clusterSelector.clusterLabels
+        # jobsstep-id.sparkJob.args
+        # Corresponds to the JSON property `fields`
+        # @return [Array<String>]
+        attr_accessor :fields
+      
+        # Required. Parameter name. The parameter name is used as the key, and paired
+        # with the parameter value, which are passed to the template when the template
+        # is instantiated. The name must contain only capital letters (A-Z), numbers (0-
+        # 9), and underscores (_), and must not start with a number. The maximum length
+        # is 40 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for parameter validation.
+        # Corresponds to the JSON property `validation`
+        # @return [Google::Apis::DataprocV1::ParameterValidation]
+        attr_accessor :validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+          @validation = args[:validation] if args.key?(:validation)
+        end
+      end
+      
       # Request message for TestIamPermissions method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -2019,6 +2364,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Validation based on a list of allowed values.
+      class ValueValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of allowed values for the parameter.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -2142,6 +2506,117 @@ module Google
           @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
           @state = args[:state] if args.key?(:state)
           @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
+      # A Cloud Dataproc workflow template resource.
+      class WorkflowTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time template was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The template id.The id must contain only letters (a-z, A-Z), numbers
+        # (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore
+        # or hyphen. Must consist of between 3 and 50 characters.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The Directed Acyclic Graph of Jobs to submit.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::DataprocV1::OrderedJob>]
+        attr_accessor :jobs
+      
+        # Optional. The labels to associate with this template. These labels will be
+        # propagated to all jobs and clusters created by the workflow instance.Label
+        # keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://
+        # www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must
+        # contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/
+        # rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The "resource name" of the template, as described in https://
+        # cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        # regions/`region`/workflowTemplates/`template_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Template parameters whose values are substituted into the template.
+        # Values for parameters must be provided when the template is instantiated.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::DataprocV1::TemplateParameter>]
+        attr_accessor :parameters
+      
+        # Specifies workflow execution target.Either managed_cluster or cluster_selector
+        # is required.
+        # Corresponds to the JSON property `placement`
+        # @return [Google::Apis::DataprocV1::WorkflowTemplatePlacement]
+        attr_accessor :placement
+      
+        # Output only. The time template was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Used to perform a consistent read-modify-write.This field should be
+        # left blank for a CreateWorkflowTemplate request. It is required for an
+        # UpdateWorkflowTemplate request, and must match the current server version. A
+        # typical update template flow would fetch the current template with a
+        # GetWorkflowTemplate request, which will return the current template with the
+        # version field filled in with the current server version. The user updates
+        # other fields in the template, then returns it as part of the
+        # UpdateWorkflowTemplate request.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @placement = args[:placement] if args.key?(:placement)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Specifies workflow execution target.Either managed_cluster or cluster_selector
+      # is required.
+      class WorkflowTemplatePlacement
+        include Google::Apis::Core::Hashable
+      
+        # A selector that chooses target cluster for jobs based on metadata.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::DataprocV1::ClusterSelector]
+        attr_accessor :cluster_selector
+      
+        # Cluster that is managed by the workflow.
+        # Corresponds to the JSON property `managedCluster`
+        # @return [Google::Apis::DataprocV1::ManagedCluster]
+        attr_accessor :managed_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
+          @managed_cluster = args[:managed_cluster] if args.key?(:managed_cluster)
         end
       end
       

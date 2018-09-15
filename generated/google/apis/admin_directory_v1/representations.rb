@@ -889,6 +889,7 @@ module Google
       class Member
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_settings, as: 'delivery_settings'
           property :email, as: 'email'
           property :etag, as: 'etag'
           property :id, as: 'id'

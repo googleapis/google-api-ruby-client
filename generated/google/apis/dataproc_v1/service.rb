@@ -47,6 +47,115 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates new workflow template.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_workflow_template(parent, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/workflowTemplates', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a workflow template. It does not cancel in-progress workflows.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Fixnum] version
+        #   Optional. The version of workflow template to delete. If specified, will only
+        #   delete the template if the current server version matches specified version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['version'] = version unless version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the latest workflow template.Can retrieve previously instantiated
+        # template by specifying optional version parameter.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Fixnum] version
+        #   Optional. The version of workflow template to retrieve. Only previously
+        #   instatiated versions can be retrieved.If unspecified, retrieves the current
+        #   version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['version'] = version unless version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -77,6 +186,136 @@ module Google
           command.response_representation = Google::Apis::DataprocV1::Policy::Representation
           command.response_class = Google::Apis::DataprocV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Instantiates a template and begins execution.The returned Operation can be
+        # used to track execution of workflow by polling operations.get. The Operation
+        # will complete when entire workflow is finished.The running workflow can be
+        # aborted via operations.cancel. This will cause any inflight jobs to be
+        # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
+        # will be WorkflowMetadata.On successful completion, Operation.response will be
+        # Empty.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Google::Apis::DataprocV1::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_location_workflow_template(name, instantiate_workflow_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:instantiate', options)
+          command.request_representation = Google::Apis::DataprocV1::InstantiateWorkflowTemplateRequest::Representation
+          command.request_object = instantiate_workflow_template_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Instantiates a template and begins execution.This method is equivalent to
+        # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
+        # DeleteWorkflowTemplate.The returned Operation can be used to track execution
+        # of workflow by polling operations.get. The Operation will complete when entire
+        # workflow is finished.The running workflow can be aborted via operations.cancel.
+        # This will cause any inflight jobs to be cancelled and workflow-owned clusters
+        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
+        # @param [String] parent
+        #   Required. The "resource name" of the workflow template region, as described in
+        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
+        #   project_id`/regions/`region`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] request_id
+        #   Optional. A tag that prevents multiple concurrent workflow instances with the
+        #   same tag from running. This mitigates risk of concurrent instances started due
+        #   to retries.It is recommended to always set this value to a UUID (https://en.
+        #   wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_location_workflow_template_inline(parent, workflow_template_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/workflowTemplates:instantiateInline', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists workflows that match the specified filter in the request.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in each response.
+        # @param [String] page_token
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::ListWorkflowTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::ListWorkflowTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_workflow_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/workflowTemplates', options)
+          command.response_representation = Google::Apis::DataprocV1::ListWorkflowTemplatesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::ListWorkflowTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -150,6 +389,42 @@ module Google
           command.response_representation = Google::Apis::DataprocV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates (replaces) workflow template. The updated template must contain
+        # version that matches the current server version.
+        # @param [String] name
+        #   Output only. The "resource name" of the template, as described in https://
+        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_workflow_template(name, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1191,6 +1466,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates new workflow template.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_region_workflow_template(parent, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/workflowTemplates', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a workflow template. It does not cancel in-progress workflows.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Fixnum] version
+        #   Optional. The version of workflow template to delete. If specified, will only
+        #   delete the template if the current server version matches specified version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_region_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['version'] = version unless version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the latest workflow template.Can retrieve previously instantiated
+        # template by specifying optional version parameter.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Fixnum] version
+        #   Optional. The version of workflow template to retrieve. Only previously
+        #   instatiated versions can be retrieved.If unspecified, retrieves the current
+        #   version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_region_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['version'] = version unless version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1221,6 +1605,136 @@ module Google
           command.response_representation = Google::Apis::DataprocV1::Policy::Representation
           command.response_class = Google::Apis::DataprocV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Instantiates a template and begins execution.The returned Operation can be
+        # used to track execution of workflow by polling operations.get. The Operation
+        # will complete when entire workflow is finished.The running workflow can be
+        # aborted via operations.cancel. This will cause any inflight jobs to be
+        # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
+        # will be WorkflowMetadata.On successful completion, Operation.response will be
+        # Empty.
+        # @param [String] name
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Google::Apis::DataprocV1::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_region_workflow_template(name, instantiate_workflow_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:instantiate', options)
+          command.request_representation = Google::Apis::DataprocV1::InstantiateWorkflowTemplateRequest::Representation
+          command.request_object = instantiate_workflow_template_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Instantiates a template and begins execution.This method is equivalent to
+        # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
+        # DeleteWorkflowTemplate.The returned Operation can be used to track execution
+        # of workflow by polling operations.get. The Operation will complete when entire
+        # workflow is finished.The running workflow can be aborted via operations.cancel.
+        # This will cause any inflight jobs to be cancelled and workflow-owned clusters
+        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
+        # @param [String] parent
+        #   Required. The "resource name" of the workflow template region, as described in
+        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
+        #   project_id`/regions/`region`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] request_id
+        #   Optional. A tag that prevents multiple concurrent workflow instances with the
+        #   same tag from running. This mitigates risk of concurrent instances started due
+        #   to retries.It is recommended to always set this value to a UUID (https://en.
+        #   wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_region_workflow_template_inline(parent, workflow_template_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/workflowTemplates:instantiateInline', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists workflows that match the specified filter in the request.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in each response.
+        # @param [String] page_token
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::ListWorkflowTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::ListWorkflowTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_region_workflow_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/workflowTemplates', options)
+          command.response_representation = Google::Apis::DataprocV1::ListWorkflowTemplatesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::ListWorkflowTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1294,6 +1808,42 @@ module Google
           command.response_representation = Google::Apis::DataprocV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates (replaces) workflow template. The updated template must contain
+        # version that matches the current server version.
+        # @param [String] name
+        #   Output only. The "resource name" of the template, as described in https://
+        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/workflowTemplates/`template_id`
+        # @param [Google::Apis::DataprocV1::WorkflowTemplate] workflow_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WorkflowTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WorkflowTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_region_workflow_template(name, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1::WorkflowTemplate::Representation
+          command.response_class = Google::Apis::DataprocV1::WorkflowTemplate
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

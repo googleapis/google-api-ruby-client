@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceptProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdSize
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDealAssociationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddNoteRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +76,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Buyer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalloutStatusRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelNegotiationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompleteSetupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Correction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,13 +142,79 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreativeRestrictions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreativeSize
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreativeSpecification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreativeStatusRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CriteriaTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DayPart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DayPartTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Deal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DealPauseStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DealServingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DealTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeliveryControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +256,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirstPartyMobileApplicationTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FrequencyCap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuaranteedFixedPriceTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HtmlContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +287,12 @@ module Google
       end
       
       class ImpressionMetricsRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventorySizeTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,13 +394,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProposalsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPublisherProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MarketplaceTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MobileApplicationTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,7 +454,79 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NonGuaranteedAuctionTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonGuaranteedFixedPriceTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Note
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperatingSystemTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PauseProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlacementTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlatformContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Price
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PricePerBuyer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Proposal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublisherProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResumeProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RowDimensions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +569,12 @@ module Google
       end
       
       class SecurityContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Seller
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,7 +592,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Size
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StopWatchingCreativeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TechnologyTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,7 +628,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -374,10 +668,34 @@ module Google
         end
       end
       
+      class AcceptProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proposal_revision, :numeric_string => true, as: 'proposalRevision'
+        end
+      end
+      
+      class AdSize
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, :numeric_string => true, as: 'height'
+          property :size_type, as: 'sizeType'
+          property :width, :numeric_string => true, as: 'width'
+        end
+      end
+      
       class AddDealAssociationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :association, as: 'association', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation::Representation
+      
+        end
+      end
+      
+      class AddNoteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :note, as: 'note', class: Google::Apis::Adexchangebuyer2V2beta1::Note, decorator: Google::Apis::Adexchangebuyer2V2beta1::Note::Representation
       
         end
       end
@@ -427,6 +745,13 @@ module Google
         end
       end
       
+      class Buyer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+        end
+      end
+      
       class CalloutStatusRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -435,6 +760,12 @@ module Google
       
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
       
+        end
+      end
+      
+      class CancelNegotiationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -469,6 +800,20 @@ module Google
           property :client_account_id, :numeric_string => true, as: 'clientAccountId'
           property :email, as: 'email'
           property :invitation_id, :numeric_string => true, as: 'invitationId'
+        end
+      end
+      
+      class CompleteSetupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ContactInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :name, as: 'name'
         end
       end
       
@@ -529,6 +874,40 @@ module Google
         end
       end
       
+      class CreativeRestrictions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_format, as: 'creativeFormat'
+          collection :creative_specifications, as: 'creativeSpecifications', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeSpecification, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeSpecification::Representation
+      
+          property :skippable_ad_type, as: 'skippableAdType'
+        end
+      end
+      
+      class CreativeSize
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_formats, as: 'allowedFormats'
+          collection :companion_sizes, as: 'companionSizes', class: Google::Apis::Adexchangebuyer2V2beta1::Size, decorator: Google::Apis::Adexchangebuyer2V2beta1::Size::Representation
+      
+          property :creative_size_type, as: 'creativeSizeType'
+          property :native_template, as: 'nativeTemplate'
+          property :size, as: 'size', class: Google::Apis::Adexchangebuyer2V2beta1::Size, decorator: Google::Apis::Adexchangebuyer2V2beta1::Size::Representation
+      
+          property :skippable_ad_type, as: 'skippableAdType'
+        end
+      end
+      
+      class CreativeSpecification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :creative_companion_sizes, as: 'creativeCompanionSizes', class: Google::Apis::Adexchangebuyer2V2beta1::AdSize, decorator: Google::Apis::Adexchangebuyer2V2beta1::AdSize::Representation
+      
+          property :creative_size, as: 'creativeSize', class: Google::Apis::Adexchangebuyer2V2beta1::AdSize, decorator: Google::Apis::Adexchangebuyer2V2beta1::AdSize::Representation
+      
+        end
+      end
+      
       class CreativeStatusRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -540,12 +919,126 @@ module Google
         end
       end
       
+      class CriteriaTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_criteria_ids, as: 'excludedCriteriaIds'
+          collection :targeted_criteria_ids, as: 'targetedCriteriaIds'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DayPart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day_of_week, as: 'dayOfWeek'
+          property :end_time, as: 'endTime', class: Google::Apis::Adexchangebuyer2V2beta1::TimeOfDay, decorator: Google::Apis::Adexchangebuyer2V2beta1::TimeOfDay::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::Adexchangebuyer2V2beta1::TimeOfDay, decorator: Google::Apis::Adexchangebuyer2V2beta1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class DayPartTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :day_parts, as: 'dayParts', class: Google::Apis::Adexchangebuyer2V2beta1::DayPart, decorator: Google::Apis::Adexchangebuyer2V2beta1::DayPart::Representation
+      
+          property :time_zone_type, as: 'timeZoneType'
+        end
+      end
+      
+      class Deal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_end_time, as: 'availableEndTime'
+          property :available_start_time, as: 'availableStartTime'
+          property :buyer_private_data, as: 'buyerPrivateData', class: Google::Apis::Adexchangebuyer2V2beta1::PrivateData, decorator: Google::Apis::Adexchangebuyer2V2beta1::PrivateData::Representation
+      
+          property :create_product_id, as: 'createProductId'
+          property :create_product_revision, :numeric_string => true, as: 'createProductRevision'
+          property :create_time, as: 'createTime'
+          property :creative_pre_approval_policy, as: 'creativePreApprovalPolicy'
+          property :creative_restrictions, as: 'creativeRestrictions', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeRestrictions, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeRestrictions::Representation
+      
+          property :creative_safe_frame_compatibility, as: 'creativeSafeFrameCompatibility'
+          property :deal_id, as: 'dealId'
+          property :deal_serving_metadata, as: 'dealServingMetadata', class: Google::Apis::Adexchangebuyer2V2beta1::DealServingMetadata, decorator: Google::Apis::Adexchangebuyer2V2beta1::DealServingMetadata::Representation
+      
+          property :deal_terms, as: 'dealTerms', class: Google::Apis::Adexchangebuyer2V2beta1::DealTerms, decorator: Google::Apis::Adexchangebuyer2V2beta1::DealTerms::Representation
+      
+          property :delivery_control, as: 'deliveryControl', class: Google::Apis::Adexchangebuyer2V2beta1::DeliveryControl, decorator: Google::Apis::Adexchangebuyer2V2beta1::DeliveryControl::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :external_deal_id, as: 'externalDealId'
+          property :is_setup_complete, as: 'isSetupComplete'
+          property :programmatic_creative_source, as: 'programmaticCreativeSource'
+          property :proposal_id, as: 'proposalId'
+          collection :seller_contacts, as: 'sellerContacts', class: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation::Representation
+      
+          property :syndication_product, as: 'syndicationProduct'
+          property :targeting, as: 'targeting', class: Google::Apis::Adexchangebuyer2V2beta1::MarketplaceTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::MarketplaceTargeting::Representation
+      
+          collection :targeting_criterion, as: 'targetingCriterion', class: Google::Apis::Adexchangebuyer2V2beta1::TargetingCriteria, decorator: Google::Apis::Adexchangebuyer2V2beta1::TargetingCriteria::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :web_property_code, as: 'webPropertyCode'
+        end
+      end
+      
+      class DealPauseStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_pause_reason, as: 'buyerPauseReason'
+          property :first_paused_by, as: 'firstPausedBy'
+          property :has_buyer_paused, as: 'hasBuyerPaused'
+          property :has_seller_paused, as: 'hasSellerPaused'
+          property :seller_pause_reason, as: 'sellerPauseReason'
+        end
+      end
+      
+      class DealServingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deal_pause_status, as: 'dealPauseStatus', class: Google::Apis::Adexchangebuyer2V2beta1::DealPauseStatus, decorator: Google::Apis::Adexchangebuyer2V2beta1::DealPauseStatus::Representation
+      
+        end
+      end
+      
+      class DealTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branding_type, as: 'brandingType'
+          property :description, as: 'description'
+          property :estimated_gross_spend, as: 'estimatedGrossSpend', class: Google::Apis::Adexchangebuyer2V2beta1::Price, decorator: Google::Apis::Adexchangebuyer2V2beta1::Price::Representation
+      
+          property :estimated_impressions_per_day, :numeric_string => true, as: 'estimatedImpressionsPerDay'
+          property :guaranteed_fixed_price_terms, as: 'guaranteedFixedPriceTerms', class: Google::Apis::Adexchangebuyer2V2beta1::GuaranteedFixedPriceTerms, decorator: Google::Apis::Adexchangebuyer2V2beta1::GuaranteedFixedPriceTerms::Representation
+      
+          property :non_guaranteed_auction_terms, as: 'nonGuaranteedAuctionTerms', class: Google::Apis::Adexchangebuyer2V2beta1::NonGuaranteedAuctionTerms, decorator: Google::Apis::Adexchangebuyer2V2beta1::NonGuaranteedAuctionTerms::Representation
+      
+          property :non_guaranteed_fixed_price_terms, as: 'nonGuaranteedFixedPriceTerms', class: Google::Apis::Adexchangebuyer2V2beta1::NonGuaranteedFixedPriceTerms, decorator: Google::Apis::Adexchangebuyer2V2beta1::NonGuaranteedFixedPriceTerms::Representation
+      
+          property :seller_time_zone, as: 'sellerTimeZone'
+        end
+      end
+      
+      class DeliveryControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_blocking_level, as: 'creativeBlockingLevel'
+          property :delivery_rate_type, as: 'deliveryRateType'
+          collection :frequency_caps, as: 'frequencyCaps', class: Google::Apis::Adexchangebuyer2V2beta1::FrequencyCap, decorator: Google::Apis::Adexchangebuyer2V2beta1::FrequencyCap::Representation
+      
         end
       end
       
@@ -616,6 +1109,34 @@ module Google
         end
       end
       
+      class FirstPartyMobileApplicationTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_app_ids, as: 'excludedAppIds'
+          collection :targeted_app_ids, as: 'targetedAppIds'
+        end
+      end
+      
+      class FrequencyCap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_impressions, as: 'maxImpressions'
+          property :num_time_units, as: 'numTimeUnits'
+          property :time_unit_type, as: 'timeUnitType'
+        end
+      end
+      
+      class GuaranteedFixedPriceTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fixed_prices, as: 'fixedPrices', class: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer::Representation
+      
+          property :guaranteed_impressions, :numeric_string => true, as: 'guaranteedImpressions'
+          property :guaranteed_looks, :numeric_string => true, as: 'guaranteedLooks'
+          property :minimum_daily_looks, :numeric_string => true, as: 'minimumDailyLooks'
+        end
+      end
+      
       class HtmlContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -648,6 +1169,16 @@ module Google
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
       
           property :successful_responses, as: 'successfulResponses', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+        end
+      end
+      
+      class InventorySizeTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_inventory_sizes, as: 'excludedInventorySizes', class: Google::Apis::Adexchangebuyer2V2beta1::AdSize, decorator: Google::Apis::Adexchangebuyer2V2beta1::AdSize::Representation
+      
+          collection :targeted_inventory_sizes, as: 'targetedInventorySizes', class: Google::Apis::Adexchangebuyer2V2beta1::AdSize, decorator: Google::Apis::Adexchangebuyer2V2beta1::AdSize::Representation
       
         end
       end
@@ -797,10 +1328,53 @@ module Google
         end
       end
       
+      class ListProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :products, as: 'products', class: Google::Apis::Adexchangebuyer2V2beta1::Product, decorator: Google::Apis::Adexchangebuyer2V2beta1::Product::Representation
+      
+        end
+      end
+      
+      class ListProposalsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :proposals, as: 'proposals', class: Google::Apis::Adexchangebuyer2V2beta1::Proposal, decorator: Google::Apis::Adexchangebuyer2V2beta1::Proposal::Representation
+      
+        end
+      end
+      
+      class ListPublisherProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :publisher_profiles, as: 'publisherProfiles', class: Google::Apis::Adexchangebuyer2V2beta1::PublisherProfile, decorator: Google::Apis::Adexchangebuyer2V2beta1::PublisherProfile::Representation
+      
+        end
+      end
+      
       class LocationContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :geo_criteria_ids, as: 'geoCriteriaIds'
+        end
+      end
+      
+      class MarketplaceTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_targeting, as: 'geoTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting::Representation
+      
+          property :inventory_size_targeting, as: 'inventorySizeTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::InventorySizeTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::InventorySizeTargeting::Representation
+      
+          property :placement_targeting, as: 'placementTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::PlacementTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::PlacementTargeting::Representation
+      
+          property :technology_targeting, as: 'technologyTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::TechnologyTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::TechnologyTargeting::Representation
+      
+          property :video_targeting, as: 'videoTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::VideoTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::VideoTargeting::Representation
+      
         end
       end
       
@@ -809,6 +1383,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, :numeric_string => true, as: 'value'
           property :variance, :numeric_string => true, as: 'variance'
+        end
+      end
+      
+      class MobileApplicationTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_party_targeting, as: 'firstPartyTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::FirstPartyMobileApplicationTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::FirstPartyMobileApplicationTargeting::Representation
+      
+        end
+      end
+      
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
@@ -845,10 +1436,171 @@ module Google
         end
       end
       
+      class NonGuaranteedAuctionTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_optimize_private_auction, as: 'autoOptimizePrivateAuction'
+          collection :reserve_prices_per_buyer, as: 'reservePricesPerBuyer', class: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer::Representation
+      
+        end
+      end
+      
+      class NonGuaranteedFixedPriceTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fixed_prices, as: 'fixedPrices', class: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::PricePerBuyer::Representation
+      
+        end
+      end
+      
+      class Note
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator_role, as: 'creatorRole'
+          property :note, as: 'note'
+          property :note_id, as: 'noteId'
+          property :proposal_revision, :numeric_string => true, as: 'proposalRevision'
+        end
+      end
+      
+      class OperatingSystemTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operating_system_criteria, as: 'operatingSystemCriteria', class: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting::Representation
+      
+          property :operating_system_version_criteria, as: 'operatingSystemVersionCriteria', class: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting::Representation
+      
+        end
+      end
+      
+      class PauseProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class PlacementTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_application_targeting, as: 'mobileApplicationTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::MobileApplicationTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::MobileApplicationTargeting::Representation
+      
+          property :url_targeting, as: 'urlTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::UrlTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::UrlTargeting::Representation
+      
+        end
+      end
+      
       class PlatformContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :platforms, as: 'platforms'
+        end
+      end
+      
+      class Price
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::Adexchangebuyer2V2beta1::Money, decorator: Google::Apis::Adexchangebuyer2V2beta1::Money::Representation
+      
+          property :pricing_type, as: 'pricingType'
+        end
+      end
+      
+      class PricePerBuyer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advertiser_ids, as: 'advertiserIds'
+          property :buyer, as: 'buyer', class: Google::Apis::Adexchangebuyer2V2beta1::Buyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::Buyer::Representation
+      
+          property :price, as: 'price', class: Google::Apis::Adexchangebuyer2V2beta1::Price, decorator: Google::Apis::Adexchangebuyer2V2beta1::Price::Representation
+      
+        end
+      end
+      
+      class PrivateData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference_id, as: 'referenceId'
+        end
+      end
+      
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_end_time, as: 'availableEndTime'
+          property :available_start_time, as: 'availableStartTime'
+          property :create_time, as: 'createTime'
+          collection :creator_contacts, as: 'creatorContacts', class: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation::Representation
+      
+          property :display_name, as: 'displayName'
+          property :has_creator_signed_off, as: 'hasCreatorSignedOff'
+          property :product_id, as: 'productId'
+          property :product_revision, :numeric_string => true, as: 'productRevision'
+          property :publisher_profile_id, as: 'publisherProfileId'
+          property :seller, as: 'seller', class: Google::Apis::Adexchangebuyer2V2beta1::Seller, decorator: Google::Apis::Adexchangebuyer2V2beta1::Seller::Representation
+      
+          property :syndication_product, as: 'syndicationProduct'
+          collection :targeting_criterion, as: 'targetingCriterion', class: Google::Apis::Adexchangebuyer2V2beta1::TargetingCriteria, decorator: Google::Apis::Adexchangebuyer2V2beta1::TargetingCriteria::Representation
+      
+          property :terms, as: 'terms', class: Google::Apis::Adexchangebuyer2V2beta1::DealTerms, decorator: Google::Apis::Adexchangebuyer2V2beta1::DealTerms::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :web_property_code, as: 'webPropertyCode'
+        end
+      end
+      
+      class Proposal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billed_buyer, as: 'billedBuyer', class: Google::Apis::Adexchangebuyer2V2beta1::Buyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::Buyer::Representation
+      
+          property :buyer, as: 'buyer', class: Google::Apis::Adexchangebuyer2V2beta1::Buyer, decorator: Google::Apis::Adexchangebuyer2V2beta1::Buyer::Representation
+      
+          collection :buyer_contacts, as: 'buyerContacts', class: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation::Representation
+      
+          property :buyer_private_data, as: 'buyerPrivateData', class: Google::Apis::Adexchangebuyer2V2beta1::PrivateData, decorator: Google::Apis::Adexchangebuyer2V2beta1::PrivateData::Representation
+      
+          collection :deals, as: 'deals', class: Google::Apis::Adexchangebuyer2V2beta1::Deal, decorator: Google::Apis::Adexchangebuyer2V2beta1::Deal::Representation
+      
+          property :display_name, as: 'displayName'
+          property :is_renegotiating, as: 'isRenegotiating'
+          property :is_setup_complete, as: 'isSetupComplete'
+          property :last_updater_or_commentor_role, as: 'lastUpdaterOrCommentorRole'
+          collection :notes, as: 'notes', class: Google::Apis::Adexchangebuyer2V2beta1::Note, decorator: Google::Apis::Adexchangebuyer2V2beta1::Note::Representation
+      
+          property :originator_role, as: 'originatorRole'
+          property :private_auction_id, as: 'privateAuctionId'
+          property :proposal_id, as: 'proposalId'
+          property :proposal_revision, :numeric_string => true, as: 'proposalRevision'
+          property :proposal_state, as: 'proposalState'
+          property :seller, as: 'seller', class: Google::Apis::Adexchangebuyer2V2beta1::Seller, decorator: Google::Apis::Adexchangebuyer2V2beta1::Seller::Representation
+      
+          collection :seller_contacts, as: 'sellerContacts', class: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PublisherProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience_description, as: 'audienceDescription'
+          property :buyer_pitch_statement, as: 'buyerPitchStatement'
+          property :direct_deals_contact, as: 'directDealsContact'
+          property :display_name, as: 'displayName'
+          collection :domains, as: 'domains'
+          property :google_plus_url, as: 'googlePlusUrl'
+          property :logo_url, as: 'logoUrl'
+          property :media_kit_url, as: 'mediaKitUrl'
+          property :overview, as: 'overview'
+          property :programmatic_deals_contact, as: 'programmaticDealsContact'
+          property :publisher_profile_id, as: 'publisherProfileId'
+          property :rate_card_info_url, as: 'rateCardInfoUrl'
+          property :sample_page_url, as: 'samplePageUrl'
+          property :seller, as: 'seller', class: Google::Apis::Adexchangebuyer2V2beta1::Seller, decorator: Google::Apis::Adexchangebuyer2V2beta1::Seller::Representation
+      
+          collection :top_headlines, as: 'topHeadlines'
         end
       end
       
@@ -883,6 +1635,12 @@ module Google
         end
       end
       
+      class ResumeProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RowDimensions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -895,6 +1653,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :securities, as: 'securities'
+        end
+      end
+      
+      class Seller
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :sub_account_id, as: 'subAccountId'
         end
       end
       
@@ -928,9 +1694,52 @@ module Google
         end
       end
       
+      class Size
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :width, as: 'width'
+        end
+      end
+      
       class StopWatchingCreativeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TargetingCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::Adexchangebuyer2V2beta1::TargetingValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::TargetingValue::Representation
+      
+          collection :inclusions, as: 'inclusions', class: Google::Apis::Adexchangebuyer2V2beta1::TargetingValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::TargetingValue::Representation
+      
+          property :key, as: 'key'
+        end
+      end
+      
+      class TargetingValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_size_value, as: 'creativeSizeValue', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeSize, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeSize::Representation
+      
+          property :day_part_targeting_value, as: 'dayPartTargetingValue', class: Google::Apis::Adexchangebuyer2V2beta1::DayPartTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::DayPartTargeting::Representation
+      
+          property :long_value, :numeric_string => true, as: 'longValue'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class TechnologyTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_capability_targeting, as: 'deviceCapabilityTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting::Representation
+      
+          property :device_category_targeting, as: 'deviceCategoryTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::CriteriaTargeting::Representation
+      
+          property :operating_system_targeting, as: 'operatingSystemTargeting', class: Google::Apis::Adexchangebuyer2V2beta1::OperatingSystemTargeting, decorator: Google::Apis::Adexchangebuyer2V2beta1::OperatingSystemTargeting::Representation
+      
         end
       end
       
@@ -942,11 +1751,37 @@ module Google
         end
       end
       
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UrlTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_urls, as: 'excludedUrls'
+          collection :targeted_urls, as: 'targetedUrls'
+        end
+      end
+      
       class VideoContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :video_url, as: 'videoUrl'
           property :video_vast_xml, as: 'videoVastXml'
+        end
+      end
+      
+      class VideoTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_position_types, as: 'excludedPositionTypes'
+          collection :targeted_position_types, as: 'targetedPositionTypes'
         end
       end
       
