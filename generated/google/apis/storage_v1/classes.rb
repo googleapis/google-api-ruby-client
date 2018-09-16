@@ -384,10 +384,10 @@ module Google
               attr_accessor :is_live
               alias_method :is_live?, :is_live
             
-              # A regular expression that satisfies the RE2 syntax language. This condition is
+              # A regular expression that satisfies the RE2 syntax. This condition is
               # satisfied when the name of the object matches the RE2 pattern. Note: This
               # feature is currently in the "Early Access" launch stage and is only available
-              # to a whitelisted set of users; that means that this feature may changed in
+              # to a whitelisted set of users; that means that this feature may be changed in
               # backward-incompatible ways and that it is not guaranteed to be released.
               # Corresponds to the JSON property `matchesPattern`
               # @return [String]
@@ -864,8 +864,7 @@ module Google
           # @return [Fixnum]
           attr_accessor :generation
         
-          # The source object's name. The source object's bucket is implicitly the
-          # destination bucket.
+          # The source object's name. All source objects must reside in the same bucket.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name

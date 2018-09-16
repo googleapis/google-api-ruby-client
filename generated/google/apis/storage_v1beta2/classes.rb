@@ -652,8 +652,7 @@ module Google
           # @return [Fixnum]
           attr_accessor :generation
         
-          # The source object's name. The source object's bucket is implicitly the
-          # destination bucket.
+          # The source object's name. All source objects must reside in the same bucket.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name

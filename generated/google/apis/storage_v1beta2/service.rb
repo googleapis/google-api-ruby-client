@@ -1064,7 +1064,8 @@ module Google
         
         # Concatenates a list of existing objects into a new object in the same bucket.
         # @param [String] destination_bucket
-        #   Name of the bucket in which to store the new object.
+        #   Name of the bucket containing the source objects. The destination object is
+        #   stored in this bucket.
         # @param [String] destination_object
         #   Name of the new object.
         # @param [Google::Apis::StorageV1beta2::ComposeRequest] compose_request_object
