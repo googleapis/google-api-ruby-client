@@ -1,3 +1,45 @@
+# 0.24.0
+* Breaking changes:
+  * Deleted `adexchangeseller_v1`
+  * Deleted `adexchangeseller_v1_1`
+  * Deleted `adexchangeseller_v2_0`
+* Backwards compatible changes:
+  * Added `file_v1beta1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `adexperiencereport_v1`
+  * Updated `admin_directory_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `classroom_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudtrace_v1`
+  * Updated `composer_v1`
+  * Updated `composer_v1beta1`
+  * Updated `dataproc_v1`
+  * Updated `dlp_v2`
+  * Updated `jobs_v3`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `proximitybeacon_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `serviceuser_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1beta1`
+  * Updated `sqladmin_v1beta4`
+  * Updated `storage_v1`
+  * Updated `storage_v1beta2`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.23.9
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
