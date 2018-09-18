@@ -1034,7 +1034,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The status of the updated link. Only defined if the method is link.
+        # Deprecated. This field is never set.
         # Corresponds to the JSON property `linkStatus`
         # @return [String]
         attr_accessor :link_status
@@ -5653,6 +5653,51 @@ module Google
       end
       
       # 
+      class OrdersCreateTestReturnRequest
+        include Google::Apis::Core::Hashable
+      
+        # Returned items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContentV2::OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # 
+      class OrdersCreateTestReturnResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCreateTestReturnResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the newly created test order return.
+        # Corresponds to the JSON property `returnId`
+        # @return [String]
+        attr_accessor :return_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @return_id = args[:return_id] if args.key?(:return_id)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequest
         include Google::Apis::Core::Hashable
       
@@ -5874,6 +5919,31 @@ module Google
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # Quantity that is returned.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
         end
       end
       
@@ -8312,7 +8382,7 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # Whether an item is available for purchase only online.
+        # Deprecated. Whether an item is available for purchase only online.
         # Corresponds to the JSON property `onlineOnly`
         # @return [Boolean]
         attr_accessor :online_only
@@ -8430,7 +8500,8 @@ module Google
         # @return [Google::Apis::ContentV2::ProductUnitPricingMeasure]
         attr_accessor :unit_pricing_measure
       
-        # The read-only list of intended destinations which passed validation.
+        # Deprecated. The read-only list of intended destinations which passed
+        # validation.
         # Corresponds to the JSON property `validatedDestinations`
         # @return [Array<String>]
         attr_accessor :validated_destinations
@@ -8573,8 +8644,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Free-form unit of the attribute. Unit can only be used for values of type INT
-        # or FLOAT.
+        # Free-form unit of the attribute. Unit can only be used for values of type int,
+        # float, or price.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit

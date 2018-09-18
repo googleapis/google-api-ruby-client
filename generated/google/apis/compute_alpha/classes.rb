@@ -1134,6 +1134,38 @@ module Google
         end
       end
       
+      # AllocationAffinity is the configuration of desired allocation which this
+      # instance could take capacity from.
+      class AllocationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `consumeAllocationType`
+        # @return [String]
+        attr_accessor :consume_allocation_type
+      
+        # Corresponds to the label key of allocation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Corresponds to the label values of allocation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_allocation_type = args[:consume_allocation_type] if args.key?(:consume_allocation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Contains a list of allocations.
       class AllocationAggregatedList
         include Google::Apis::Core::Hashable
@@ -1200,6 +1232,125 @@ module Google
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class AllocationList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of Allocation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::Allocation>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource.Always compute#allocationsList for listsof
+        # allocations
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::AllocationList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::AllocationList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -1346,125 +1497,6 @@ module Google
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @interface = args[:interface] if args.key?(:interface)
-        end
-      end
-      
-      # 
-      class AllocationsList
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # [Output Only] A list of Allocation resources.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::ComputeAlpha::Allocation>]
-        attr_accessor :items
-      
-        # [Output Only] Type of resource.Always compute#allocationsList for listsof
-        # allocations
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Server-defined URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeAlpha::AllocationsList::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeAlpha::AllocationsList::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
         end
       end
       
@@ -8690,7 +8722,7 @@ module Google
         # AllocationAffinity is the configuration of desired allocation which this
         # instance could take capacity from.
         # Corresponds to the JSON property `allocationAffinity`
-        # @return [Google::Apis::ComputeAlpha::InstanceAllocationAffinity]
+        # @return [Google::Apis::ComputeAlpha::AllocationAffinity]
         attr_accessor :allocation_affinity
       
         # Allows this instance to send and receive packets with non-matching destination
@@ -9051,38 +9083,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # AllocationAffinity is the configuration of desired allocation which this
-      # instance could take capacity from.
-      class InstanceAllocationAffinity
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `consumeAllocationType`
-        # @return [String]
-        attr_accessor :consume_allocation_type
-      
-        # Corresponds to the label key of Allocation resource.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Corresponds to the label values of allocation resource.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consume_allocation_type = args[:consume_allocation_type] if args.key?(:consume_allocation_type)
-          @key = args[:key] if args.key?(:key)
-          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -10050,6 +10050,15 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
+        # [Output Only] A bit indicating whether version target has been reached in this
+        # managed instance group, i.e. all instances are in their target version.
+        # Instances' target version are specified by version field on Instance Group
+        # Manager.
+        # Corresponds to the JSON property `versionTargetReached`
+        # @return [Boolean]
+        attr_accessor :version_target_reached
+        alias_method :version_target_reached?, :version_target_reached
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10057,6 +10066,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
+          @version_target_reached = args[:version_target_reached] if args.key?(:version_target_reached)
         end
       end
       
@@ -13069,6 +13079,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of this InterconnectLocation. If the status is
+        # AVAILABLE, new Interconnects may be provisioned in this InterconnectLocation.
+        # Otherwise, no new Interconnects may be provisioned.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13089,6 +13106,7 @@ module Google
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -15465,24 +15483,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The default port used if the port number is not specified in the network
-        # endpoint.
+        # endpoint. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
       
         # The URL of the network to which all network endpoints in the NEG belong. Uses "
-        # default" project network if unspecified.
+        # default" project network if unspecified. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Optional URL of the subnetwork to which all network endpoints in the NEG
-        # belong.
+        # belong. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
         # [Output Only] The URL of the zone where the network endpoint group is located.
+        # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -16342,12 +16361,6 @@ module Google
         # @return [String]
         attr_accessor :node_template
       
-        # [Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes
-        # in this node group.
-        # Corresponds to the JSON property `nodes`
-        # @return [Array<Google::Apis::ComputeAlpha::NodeGroupNode>]
-        attr_accessor :nodes
-      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -16381,7 +16394,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @node_template = args[:node_template] if args.key?(:node_template)
-          @nodes = args[:nodes] if args.key?(:nodes)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @status = args[:status] if args.key?(:status)

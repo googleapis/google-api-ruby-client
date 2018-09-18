@@ -7130,10 +7130,10 @@ module Google
         #   Specifies instance template to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
         #   following are all valid URLs to an instance template:
-        #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
+        #   - https://www.googleapis.com/compute/v1/projects/project/global/
         #   instanceTemplates/instanceTemplate
-        #   - projects/project/global/global/instanceTemplates/instanceTemplate
-        #   - global/instancesTemplates/instanceTemplate
+        #   - projects/project/global/instanceTemplates/instanceTemplate
+        #   - global/instanceTemplates/instanceTemplate
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

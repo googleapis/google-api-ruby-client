@@ -300,7 +300,7 @@ module Google
         # @return [String]
         attr_accessor :form
       
-        # Whther this device is a phone, tablet, wearable, etc.
+        # Whether this device is a phone, tablet, wearable, etc.
         # @OutputOnly
         # Corresponds to the JSON property `formFactor`
         # @return [String]
@@ -1184,6 +1184,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :device_capabilities
       
+        # Whether this device is a phone, tablet, wearable, etc.
+        # @OutputOnly
+        # Corresponds to the JSON property `formFactor`
+        # @return [String]
+        attr_accessor :form_factor
+      
         # Output only. The unique opaque id for this model.
         # Use this for invoking the TestExecutionService.
         # Corresponds to the JSON property `id`
@@ -1214,6 +1220,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_capabilities = args[:device_capabilities] if args.key?(:device_capabilities)
+          @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @supported_version_ids = args[:supported_version_ids] if args.key?(:supported_version_ids)

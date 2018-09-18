@@ -166,7 +166,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -198,24 +222,6 @@ module Google
       
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesAllocatedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationsList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1128,12 +1134,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InstanceAllocationAffinity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4591,6 +4591,15 @@ module Google
         end
       end
       
+      class AllocationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_allocation_type, as: 'consumeAllocationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class AllocationAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4609,6 +4618,38 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class AllocationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::AllocationList::Warning, decorator: Google::Apis::ComputeAlpha::AllocationList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -4650,38 +4691,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :interface, as: 'interface'
-        end
-      end
-      
-      class AllocationsList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::AllocationsList::Warning, decorator: Google::Apis::ComputeAlpha::AllocationsList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationsList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationsList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
         end
       end
       
@@ -6386,7 +6395,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::ComputeAlpha::InstanceAllocationAffinity, decorator: Google::Apis::ComputeAlpha::InstanceAllocationAffinity::Representation
+          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::ComputeAlpha::AllocationAffinity, decorator: Google::Apis::ComputeAlpha::AllocationAffinity::Representation
       
           property :can_ip_forward, as: 'canIpForward'
           property :cpu_platform, as: 'cpuPlatform'
@@ -6461,15 +6470,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class InstanceAllocationAffinity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consume_allocation_type, as: 'consumeAllocationType'
-          property :key, as: 'key'
-          collection :values, as: 'values'
         end
       end
       
@@ -6700,6 +6700,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
+          property :version_target_reached, as: 'versionTargetReached'
         end
       end
       
@@ -7513,6 +7514,7 @@ module Google
           collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeAlpha::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeAlpha::InterconnectLocationRegionInfo::Representation
       
           property :self_link, as: 'selfLink'
+          property :status, as: 'status'
         end
       end
       
@@ -8363,8 +8365,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
-          collection :nodes, as: 'nodes', class: Google::Apis::ComputeAlpha::NodeGroupNode, decorator: Google::Apis::ComputeAlpha::NodeGroupNode::Representation
-      
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :status, as: 'status'

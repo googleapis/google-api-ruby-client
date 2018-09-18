@@ -928,10 +928,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. Clients
-        # may use Operations.GetOperation or Operations.ListOperations to check whether
-        # the cancellation succeeded or the operation completed despite cancellation.
+        # Starts asynchronous cancellation on a long-running operation.
+        # The server makes a best effort to cancel the operation, but success is not
+        # guaranteed. Clients may use Operations.GetOperation
+        # or Operations.ListOperations
+        # to check whether the cancellation succeeded or the operation completed
+        # despite cancellation.
+        # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
+        # permission&#58;
+        # * `genomics.operations.cancel`
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::GenomicsV1::CancelOperationRequest] cancel_operation_request_object
@@ -964,9 +969,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation.
+        # Clients can use this method to poll the operation result at intervals as
+        # recommended by the API service.
+        # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
+        # permission&#58;
+        # * `genomics.operations.get`
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -996,7 +1004,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request.
+        # Lists operations that match the specified filter in the request.&#13;
+        # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
+        # permission&#58;
+        # * `genomics.operations.list`
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

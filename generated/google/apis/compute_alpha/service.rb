@@ -871,18 +871,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::AllocationsList] parsed result object
+        # @yieldparam result [Google::Apis::ComputeAlpha::AllocationList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ComputeAlpha::AllocationsList]
+        # @return [Google::Apis::ComputeAlpha::AllocationList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_allocations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/zones/{zone}/allocations', options)
-          command.response_representation = Google::Apis::ComputeAlpha::AllocationsList::Representation
-          command.response_class = Google::Apis::ComputeAlpha::AllocationsList
+          command.response_representation = Google::Apis::ComputeAlpha::AllocationList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::AllocationList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['filter'] = filter unless filter.nil?
@@ -9620,10 +9620,10 @@ module Google
         #   Specifies instance template to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
         #   following are all valid URLs to an instance template:
-        #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
+        #   - https://www.googleapis.com/compute/v1/projects/project/global/
         #   instanceTemplates/instanceTemplate
-        #   - projects/project/global/global/instanceTemplates/instanceTemplate
-        #   - global/instancesTemplates/instanceTemplate
+        #   - projects/project/global/instanceTemplates/instanceTemplate
+        #   - global/instanceTemplates/instanceTemplate
         # @param [String] source_machine_image
         #   Specifies instance machine to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the

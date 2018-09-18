@@ -174,7 +174,7 @@ module Google
       class AdministratorWebTokenSpecStoreBuilder
         include Google::Apis::Core::Hashable
       
-        # Whether the Store Builder is be displayed. Default is true.
+        # Whether the Store Builder page is displayed. Default is true.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled

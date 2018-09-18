@@ -25,13 +25,22 @@ module Google
     # @see https://developers.google.com/google-apps/calendar/firstapp
     module CalendarV3
       VERSION = 'V3'
-      REVISION = '20180906'
+      REVISION = '20180909'
 
       # Manage your calendars
       AUTH_CALENDAR = 'https://www.googleapis.com/auth/calendar'
 
+      # View and edit events on all your calendars
+      AUTH_CALENDAR_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
+
+      # View events on all your calendars
+      AUTH_CALENDAR_EVENTS_READONLY = 'https://www.googleapis.com/auth/calendar.events.readonly'
+
       # View your calendars
       AUTH_CALENDAR_READONLY = 'https://www.googleapis.com/auth/calendar.readonly'
+
+      # View your Calendar settings
+      AUTH_CALENDAR_SETTINGS_READONLY = 'https://www.googleapis.com/auth/calendar.settings.readonly'
     end
   end
 end
