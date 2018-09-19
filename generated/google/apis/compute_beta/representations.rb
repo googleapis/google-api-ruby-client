@@ -1072,6 +1072,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1432,6 +1438,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsArpEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkLacpStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkOpticalPower
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1481,6 +1517,12 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectsGetDiagnosticsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5540,6 +5582,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatus, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatus::Representation
+      
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy::Representation
@@ -5644,6 +5688,13 @@ module Google
           property :deleting, as: 'deleting'
           property :recreating, as: 'recreating'
           property :restarting, as: 'restarting'
+        end
+      end
+      
+      class InstanceGroupManagerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_stable, as: 'isStable'
         end
       end
       
@@ -6273,6 +6324,58 @@ module Google
         end
       end
       
+      class InterconnectDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry::Representation
+      
+          collection :links, as: 'links', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkStatus::Representation
+      
+          property :mac_address, as: 'macAddress'
+        end
+      end
+      
+      class InterconnectDiagnosticsArpEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :mac_address, as: 'macAddress'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkLacpStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_system_id, as: 'googleSystemId'
+          property :neighbor_system_id, as: 'neighborSystemId'
+          property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkOpticalPower
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :value, as: 'value'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry::Representation
+      
+          property :circuit_id, as: 'circuitId'
+          property :google_demarc, as: 'googleDemarc'
+          property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus::Representation
+      
+          property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower::Representation
+      
+          property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower::Representation
+      
+        end
+      end
+      
       class InterconnectList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6378,6 +6481,14 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectsGetDiagnosticsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ComputeBeta::InterconnectDiagnostics, decorator: Google::Apis::ComputeBeta::InterconnectDiagnostics::Representation
+      
         end
       end
       
@@ -6984,8 +7095,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
-          collection :nodes, as: 'nodes', class: Google::Apis::ComputeBeta::NodeGroupNode, decorator: Google::Apis::ComputeBeta::NodeGroupNode::Representation
-      
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :status, as: 'status'

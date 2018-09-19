@@ -22,6 +22,25 @@ module Google
   module Apis
     module FirestoreV1beta2
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a single field in the database.
       # Fields are grouped by their "Collection Group", which represent all
       # collections in the database with the same id.
@@ -305,6 +324,63 @@ module Google
         end
       end
       
+      # Metadata for google.longrunning.Operation results from
+      # FirestoreAdmin.CreateIndex.
+      class GoogleFirestoreAdminV1beta2IndexOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The index resource that this operation is acting on. For example:
+        # `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
+        # /indexes/`index_id``
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressBytes`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_bytes
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressDocuments`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_documents
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @index = args[:index] if args.key?(:index)
+          @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
+          @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The response for FirestoreAdmin.ListFields.
       class GoogleFirestoreAdminV1beta2ListFieldsResponse
         include Google::Apis::Core::Hashable
@@ -327,6 +403,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for FirestoreAdmin.ListIndexes.
+      class GoogleFirestoreAdminV1beta2ListIndexesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested indexes.
+        # Corresponds to the JSON property `indexes`
+        # @return [Array<Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index>]
+        attr_accessor :indexes
+      
+        # A page token that may be used to request another page of results. If blank,
+        # this is the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @indexes = args[:indexes] if args.key?(:indexes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end

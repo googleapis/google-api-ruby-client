@@ -322,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCreateTestReturnRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCreateTestReturnResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +353,12 @@ module Google
       end
       
       class OrdersCustomBatchRequestEntryCancelLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1184,6 +1202,22 @@ module Google
         end
       end
       
+      class OrdersCreateTestReturnRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryCreateTestReturnReturnItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryCreateTestReturnReturnItem::Representation
+      
+        end
+      end
+      
+      class OrdersCreateTestReturnResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :return_id, as: 'returnId'
+        end
+      end
+      
       class OrdersCustomBatchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1248,6 +1282,14 @@ module Google
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :quantity, as: 'quantity'
         end
       end
       

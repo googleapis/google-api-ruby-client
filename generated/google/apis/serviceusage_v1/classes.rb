@@ -1628,6 +1628,7 @@ module Google
         # quota checks at runtime.
         # An example quota configuration in yaml format:
         # quota:
+        # limits:
         # - name: apiWriteQpsPerProject
         # metric: library.googleapis.com/write_calls
         # unit: "1/min/`project`"  # rate limit for consumer projects
@@ -1906,6 +1907,7 @@ module Google
         # quota checks at runtime.
         # An example quota configuration in yaml format:
         # quota:
+        # limits:
         # - name: apiWriteQpsPerProject
         # metric: library.googleapis.com/write_calls
         # unit: "1/min/`project`"  # rate limit for consumer projects
@@ -3467,6 +3469,7 @@ module Google
       # quota checks at runtime.
       # An example quota configuration in yaml format:
       # quota:
+      # limits:
       # - name: apiWriteQpsPerProject
       # metric: library.googleapis.com/write_calls
       # unit: "1/min/`project`"  # rate limit for consumer projects

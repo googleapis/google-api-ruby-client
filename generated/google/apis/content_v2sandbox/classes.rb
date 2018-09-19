@@ -1975,6 +1975,51 @@ module Google
       end
       
       # 
+      class OrdersCreateTestReturnRequest
+        include Google::Apis::Core::Hashable
+      
+        # Returned items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # 
+      class OrdersCreateTestReturnResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCreateTestReturnResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the newly created test order return.
+        # Corresponds to the JSON property `returnId`
+        # @return [String]
+        attr_accessor :return_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @return_id = args[:return_id] if args.key?(:return_id)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequest
         include Google::Apis::Core::Hashable
       
@@ -2196,6 +2241,31 @@ module Google
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # Quantity that is returned.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
         end
       end
       

@@ -8545,10 +8545,10 @@ module Google
         #   Specifies instance template to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
         #   following are all valid URLs to an instance template:
-        #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
+        #   - https://www.googleapis.com/compute/v1/projects/project/global/
         #   instanceTemplates/instanceTemplate
-        #   - projects/project/global/global/instanceTemplates/instanceTemplate
-        #   - global/instancesTemplates/instanceTemplate
+        #   - projects/project/global/instanceTemplates/instanceTemplate
+        #   - global/instanceTemplates/instanceTemplate
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10479,6 +10479,42 @@ module Google
           command =  make_simple_command(:get, '{project}/global/interconnects/{interconnect}', options)
           command.response_representation = Google::Apis::ComputeBeta::Interconnect::Representation
           command.response_class = Google::Apis::ComputeBeta::Interconnect
+          command.params['project'] = project unless project.nil?
+          command.params['interconnect'] = interconnect unless interconnect.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the interconnectDiagnostics for the specified interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect
+        #   Name of the interconnect resource to query.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::InterconnectsGetDiagnosticsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::InterconnectsGetDiagnosticsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_diagnostics(project, interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/interconnects/{interconnect}/getDiagnostics', options)
+          command.response_representation = Google::Apis::ComputeBeta::InterconnectsGetDiagnosticsResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::InterconnectsGetDiagnosticsResponse
           command.params['project'] = project unless project.nil?
           command.params['interconnect'] = interconnect unless interconnect.nil?
           command.query['fields'] = fields unless fields.nil?

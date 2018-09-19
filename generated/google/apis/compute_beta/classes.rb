@@ -8317,6 +8317,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # [Output Only] The status of this managed instance group.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatus]
+        attr_accessor :status
+      
         # The URLs for all TargetPool resources to which instances in the instanceGroup
         # field are added. The target pools automatically apply to all of the instances
         # in the managed instance group.
@@ -8378,6 +8383,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
@@ -8778,6 +8784,31 @@ module Google
           @deleting = args[:deleting] if args.key?(:deleting)
           @recreating = args[:recreating] if args.key?(:recreating)
           @restarting = args[:restarting] if args.key?(:restarting)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether the managed instance group is in a
+        # stable state. A stable state means that: none of the instances in the managed
+        # instance group is currently undergoing any type of change (for example,
+        # creation, restart, or deletion); no future changes are scheduled for instances
+        # in the managed instance group; and the managed instance group itself is not
+        # being modified.
+        # Corresponds to the JSON property `isStable`
+        # @return [Boolean]
+        attr_accessor :is_stable
+        alias_method :is_stable?, :is_stable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_stable = args[:is_stable] if args.key?(:is_stable)
         end
       end
       
@@ -11154,6 +11185,172 @@ module Google
         end
       end
       
+      # Diagnostics information about interconnect, contains detailed and current
+      # technical information about Google?s side of the connection.
+      class InterconnectDiagnostics
+        include Google::Apis::Core::Hashable
+      
+        # A list of InterconnectDiagnostics.ARPEntry objects, describing individual
+        # neighbors currently seen by the Google router in the ARP cache for the
+        # Interconnect. This will be empty when the Interconnect is not bundled.
+        # Corresponds to the JSON property `arpCaches`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry>]
+        attr_accessor :arp_caches
+      
+        # A list of InterconnectDiagnostics.LinkStatus objects, describing the status
+        # for each link on the Interconnect.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkStatus>]
+        attr_accessor :links
+      
+        # The MAC address of the Interconnect's bundle interface.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arp_caches = args[:arp_caches] if args.key?(:arp_caches)
+          @links = args[:links] if args.key?(:links)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
+        end
+      end
+      
+      # Describing the ARP neighbor entries seen on this link
+      class InterconnectDiagnosticsArpEntry
+        include Google::Apis::Core::Hashable
+      
+        # The IP address of this ARP neighbor.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The MAC address of this ARP neighbor.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
+        end
+      end
+      
+      # 
+      class InterconnectDiagnosticsLinkLacpStatus
+        include Google::Apis::Core::Hashable
+      
+        # System ID of the port on Google?s side of the LACP exchange.
+        # Corresponds to the JSON property `googleSystemId`
+        # @return [String]
+        attr_accessor :google_system_id
+      
+        # System ID of the port on the neighbor?s side of the LACP exchange.
+        # Corresponds to the JSON property `neighborSystemId`
+        # @return [String]
+        attr_accessor :neighbor_system_id
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_system_id = args[:google_system_id] if args.key?(:google_system_id)
+          @neighbor_system_id = args[:neighbor_system_id] if args.key?(:neighbor_system_id)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class InterconnectDiagnosticsLinkOpticalPower
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Value of the current optical power, read in dBm.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class InterconnectDiagnosticsLinkStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP
+        # neighbor entries seen on this link. This will be empty if the link is bundled
+        # Corresponds to the JSON property `arpCaches`
+        # @return [Array<Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry>]
+        attr_accessor :arp_caches
+      
+        # The unique ID for this link assigned during turn up by Google.
+        # Corresponds to the JSON property `circuitId`
+        # @return [String]
+        attr_accessor :circuit_id
+      
+        # The Demarc address assigned by Google and provided in the LoA.
+        # Corresponds to the JSON property `googleDemarc`
+        # @return [String]
+        attr_accessor :google_demarc
+      
+        # 
+        # Corresponds to the JSON property `lacpStatus`
+        # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus]
+        attr_accessor :lacp_status
+      
+        # 
+        # Corresponds to the JSON property `receivingOpticalPower`
+        # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower]
+        attr_accessor :receiving_optical_power
+      
+        # 
+        # Corresponds to the JSON property `transmittingOpticalPower`
+        # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower]
+        attr_accessor :transmitting_optical_power
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arp_caches = args[:arp_caches] if args.key?(:arp_caches)
+          @circuit_id = args[:circuit_id] if args.key?(:circuit_id)
+          @google_demarc = args[:google_demarc] if args.key?(:google_demarc)
+          @lacp_status = args[:lacp_status] if args.key?(:lacp_status)
+          @receiving_optical_power = args[:receiving_optical_power] if args.key?(:receiving_optical_power)
+          @transmitting_optical_power = args[:transmitting_optical_power] if args.key?(:transmitting_optical_power)
+        end
+      end
+      
       # Response to the list request, and contains a list of interconnects.
       class InterconnectList
         include Google::Apis::Core::Hashable
@@ -11594,6 +11791,26 @@ module Google
           @source = args[:source] if args.key?(:source)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Response for the InterconnectsGetDiagnosticsRequest.
+      class InterconnectsGetDiagnosticsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Diagnostics information about interconnect, contains detailed and current
+        # technical information about Google?s side of the connection.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeBeta::InterconnectDiagnostics]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
         end
       end
       
@@ -13076,24 +13293,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The default port used if the port number is not specified in the network
-        # endpoint.
+        # endpoint. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
       
         # The URL of the network to which all network endpoints in the NEG belong. Uses "
-        # default" project network if unspecified.
+        # default" project network if unspecified. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Optional URL of the subnetwork to which all network endpoints in the NEG
-        # belong.
+        # belong. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
         # [Output Only] The URL of the zone where the network endpoint group is located.
+        # [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -13904,12 +14122,6 @@ module Google
         # @return [String]
         attr_accessor :node_template
       
-        # [Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes
-        # in this node group.
-        # Corresponds to the JSON property `nodes`
-        # @return [Array<Google::Apis::ComputeBeta::NodeGroupNode>]
-        attr_accessor :nodes
-      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -13943,7 +14155,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @node_template = args[:node_template] if args.key?(:node_template)
-          @nodes = args[:nodes] if args.key?(:nodes)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @status = args[:status] if args.key?(:status)

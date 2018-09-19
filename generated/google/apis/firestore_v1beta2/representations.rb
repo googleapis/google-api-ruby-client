@@ -22,6 +22,12 @@ module Google
   module Apis
     module FirestoreV1beta2
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta2Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1beta2IndexOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta2ListFieldsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta2ListIndexesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -80,6 +98,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class GoogleFirestoreAdminV1beta2Field
@@ -147,10 +171,33 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1beta2IndexOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :index, as: 'index'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleFirestoreAdminV1beta2ListFieldsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Field, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Field::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta2ListIndexesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :indexes, as: 'indexes', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
