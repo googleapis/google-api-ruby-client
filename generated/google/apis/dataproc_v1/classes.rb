@@ -977,7 +977,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Map from parameter names to values that should be used for those
-        # parameters.
+        # parameters. Values may not exceed 100 characters.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters

@@ -482,6 +482,7 @@ module Google
           collection :input_paths, as: 'inputPaths'
           property :max_worker_count, :numeric_string => true, as: 'maxWorkerCount'
           property :model_name, as: 'modelName'
+          property :output_data_format, as: 'outputDataFormat'
           property :output_path, as: 'outputPath'
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'

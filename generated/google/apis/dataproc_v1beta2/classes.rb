@@ -995,7 +995,7 @@ module Google
         attr_accessor :instance_id
       
         # Optional. Map from parameter names to values that should be used for those
-        # parameters.
+        # parameters. Values may not exceed 100 characters.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -2053,6 +2053,11 @@ module Google
         # @return [String]
         attr_accessor :image_version
       
+        # The set of optional components to activate on the cluster.
+        # Corresponds to the JSON property `optionalComponents`
+        # @return [Array<String>]
+        attr_accessor :optional_components
+      
         # Optional. The properties to set on daemon config files.Property keys are
         # specified in prefix:property format, such as core:fs.defaultFS. The following
         # are supported prefixes and their mappings:
@@ -2076,6 +2081,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @image_version = args[:image_version] if args.key?(:image_version)
+          @optional_components = args[:optional_components] if args.key?(:optional_components)
           @properties = args[:properties] if args.key?(:properties)
         end
       end

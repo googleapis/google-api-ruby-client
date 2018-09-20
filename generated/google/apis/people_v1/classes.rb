@@ -510,13 +510,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year/month where the day is not significant.
+        # if specifying a year by itself or a year and month where the day is not
+        # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-        # month.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+        # month and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month

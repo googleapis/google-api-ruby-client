@@ -334,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ExcludeInfoTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ExclusionRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Expressions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +479,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2InspectTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2InspectionRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2InspectionRuleSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1354,6 +1378,7 @@ module Google
       
           property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
       
+          property :exclusion_type, as: 'exclusionType'
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
           property :likelihood, as: 'likelihood'
@@ -1557,6 +1582,27 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ExcludeInfoTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ExclusionRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
+      
+          property :exclude_info_types, as: 'excludeInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes::Representation
+      
+          property :matching_type, as: 'matchingType'
+          property :regex, as: 'regex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2Expressions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1726,6 +1772,8 @@ module Google
           property :limits, as: 'limits', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits::Representation
       
           property :min_likelihood, as: 'minLikelihood'
+          collection :rule_set, as: 'ruleSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet::Representation
+      
         end
       end
       
@@ -1790,6 +1838,26 @@ module Google
       
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GooglePrivacyDlpV2InspectionRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusion_rule, as: 'exclusionRule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule::Representation
+      
+          property :hotword_rule, as: 'hotwordRule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2InspectionRuleSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          collection :rules, as: 'rules', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRule::Representation
+      
         end
       end
       

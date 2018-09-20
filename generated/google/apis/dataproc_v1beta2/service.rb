@@ -243,6 +243,8 @@ module Google
         #   project_id`/regions/`region`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] instance_id
+        #   Deprecated. Please use request_id field instead.
+        # @param [String] request_id
         #   Optional. A tag that prevents multiple concurrent workflow instances with the
         #   same tag from running. This mitigates risk of concurrent instances started due
         #   to retries.It is recommended to always set this value to a UUID (https://en.
@@ -266,7 +268,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def instantiate_project_location_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def instantiate_project_location_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
@@ -274,6 +276,7 @@ module Google
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['instanceId'] = instance_id unless instance_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1670,6 +1673,8 @@ module Google
         #   project_id`/regions/`region`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] instance_id
+        #   Deprecated. Please use request_id field instead.
+        # @param [String] request_id
         #   Optional. A tag that prevents multiple concurrent workflow instances with the
         #   same tag from running. This mitigates risk of concurrent instances started due
         #   to retries.It is recommended to always set this value to a UUID (https://en.
@@ -1693,7 +1698,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def instantiate_project_region_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def instantiate_project_region_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
@@ -1701,6 +1706,7 @@ module Google
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['instanceId'] = instance_id unless instance_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

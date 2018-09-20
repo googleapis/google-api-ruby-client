@@ -116,7 +116,7 @@ module Google
       class GoogleCloudDialogflowV2BatchCreateEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The collection of entities to create.
+        # Required. The entities to create.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
         attr_accessor :entities
@@ -212,11 +212,11 @@ module Google
         end
       end
       
-      # The response message for EntityTypes.BatchCreateEntities.
+      # The request message for EntityTypes.BatchUpdateEntities.
       class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The collection of new entities to replace the existing entities.
+        # Required. The entities to update or create.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
         attr_accessor :entities

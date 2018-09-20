@@ -1252,6 +1252,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
       
+        # 
+        # Corresponds to the JSON property `exclusionType`
+        # @return [String]
+        attr_accessor :exclusion_type
+      
         # Type of information detected by the API.
         # Corresponds to the JSON property `infoType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
@@ -1295,6 +1300,7 @@ module Google
         def update!(**args)
           @detection_rules = args[:detection_rules] if args.key?(:detection_rules)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
+          @exclusion_type = args[:exclusion_type] if args.key?(:exclusion_type)
           @info_type = args[:info_type] if args.key?(:info_type)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @regex = args[:regex] if args.key?(:regex)
@@ -1406,13 +1412,14 @@ module Google
       class GooglePrivacyDlpV2DateTime
         include Google::Apis::Core::Hashable
       
-        # Represents a whole calendar date, for example date of birth. The time of day
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
-        # represent a year and month where the day is not significant, for example
-        # credit card expiration date. The year can be 0 to represent a month and day
-        # independent of year, for example anniversary date. Related types are
-        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date
@@ -2007,6 +2014,91 @@ module Google
         end
       end
       
+      # List of exclude infoTypes.
+      class GooglePrivacyDlpV2ExcludeInfoTypes
+        include Google::Apis::Core::Hashable
+      
+        # InfoType list in ExclusionRule rule drops a finding when it overlaps or
+        # contained within with a finding of an infoType from this list. For
+        # example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and
+        # `exclusion_rule` containing `exclude_info_types.info_types` with
+        # "EMAIL_ADDRESS" the phone number findings are dropped if they overlap
+        # with EMAIL_ADDRESS finding.
+        # That leads to "555-222-2222@example.org" to generate only a single
+        # finding, namely email address.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_types = args[:info_types] if args.key?(:info_types)
+        end
+      end
+      
+      # The rule that specifies conditions when findings of infoTypes specified in
+      # `InspectionRuleSet` are removed from results.
+      class GooglePrivacyDlpV2ExclusionRule
+        include Google::Apis::Core::Hashable
+      
+        # Custom information type based on a dictionary of words or phrases. This can
+        # be used to match sensitive information specific to the data, such as a list
+        # of employee IDs or job titles.
+        # Dictionary words are case-insensitive and all characters other than letters
+        # and digits in the unicode [Basic Multilingual
+        # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
+        # Basic_Multilingual_Plane)
+        # will be replaced with whitespace when scanning for matches, so the
+        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+        # surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and
+        # digits next to non-digits. For example, the dictionary word "jen" will
+        # match the first three letters of the text "jen123" but will return no
+        # matches for "jennifer".
+        # Dictionary words containing a large number of characters that are not
+        # letters or digits may result in unexpected findings because such characters
+        # are treated as whitespace. The
+        # [limits](https://cloud.google.com/dlp/limits) page contains details about
+        # the size limits of dictionaries. For dictionaries that do not fit within
+        # these constraints, consider using `LargeCustomDictionaryConfig` in the
+        # `StoredInfoType` API.
+        # Corresponds to the JSON property `dictionary`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
+        attr_accessor :dictionary
+      
+        # List of exclude infoTypes.
+        # Corresponds to the JSON property `excludeInfoTypes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes]
+        attr_accessor :exclude_info_types
+      
+        # How the rule is applied, see MatchingType documentation for details.
+        # Corresponds to the JSON property `matchingType`
+        # @return [String]
+        attr_accessor :matching_type
+      
+        # Message defining a custom regular expression.
+        # Corresponds to the JSON property `regex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
+        attr_accessor :regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dictionary = args[:dictionary] if args.key?(:dictionary)
+          @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
+          @matching_type = args[:matching_type] if args.key?(:matching_type)
+          @regex = args[:regex] if args.key?(:regex)
+        end
+      end
+      
       # An expression, consisting or an operator and conditions.
       class GooglePrivacyDlpV2Expressions
         include Google::Apis::Core::Hashable
@@ -2555,6 +2647,13 @@ module Google
         # @return [String]
         attr_accessor :min_likelihood
       
+        # Set of rules to apply to the findings for this InspectConfig.
+        # Exclusion rules, contained in the set are executed in the end, other
+        # rules are executed in the order they are specified for each info type.
+        # Corresponds to the JSON property `ruleSet`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet>]
+        attr_accessor :rule_set
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2568,6 +2667,7 @@ module Google
           @info_types = args[:info_types] if args.key?(:info_types)
           @limits = args[:limits] if args.key?(:limits)
           @min_likelihood = args[:min_likelihood] if args.key?(:min_likelihood)
+          @rule_set = args[:rule_set] if args.key?(:rule_set)
         end
       end
       
@@ -2779,6 +2879,60 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A single inspection rule to be applied to infoTypes, specified in
+      # `InspectionRuleSet`.
+      class GooglePrivacyDlpV2InspectionRule
+        include Google::Apis::Core::Hashable
+      
+        # The rule that specifies conditions when findings of infoTypes specified in
+        # `InspectionRuleSet` are removed from results.
+        # Corresponds to the JSON property `exclusionRule`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule]
+        attr_accessor :exclusion_rule
+      
+        # The rule that adjusts the likelihood of findings within a certain
+        # proximity of hotwords.
+        # Corresponds to the JSON property `hotwordRule`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule]
+        attr_accessor :hotword_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusion_rule = args[:exclusion_rule] if args.key?(:exclusion_rule)
+          @hotword_rule = args[:hotword_rule] if args.key?(:hotword_rule)
+        end
+      end
+      
+      # Rule set for modifying a set of infoTypes to alter behavior under certain
+      # circumstances, depending on the specific details of the rules within the set.
+      class GooglePrivacyDlpV2InspectionRuleSet
+        include Google::Apis::Core::Hashable
+      
+        # List of infoTypes this rule set is applied to.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        # Set of rules to be applied to infoTypes. The rules are applied in order.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_types = args[:info_types] if args.key?(:info_types)
+          @rules = args[:rules] if args.key?(:rules)
         end
       end
       
@@ -5394,13 +5548,14 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # Represents a whole calendar date, for example date of birth. The time of day
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
-        # represent a year and month where the day is not significant, for example
-        # credit card expiration date. The year can be 0 to represent a month and day
-        # independent of year, for example anniversary date. Related types are
-        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date_value
@@ -5596,24 +5751,26 @@ module Google
         end
       end
       
-      # Represents a whole calendar date, for example date of birth. The time of day
+      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
-      # represent a year and month where the day is not significant, for example
-      # credit card expiration date. The year can be 0 to represent a month and day
-      # independent of year, for example anniversary date. Related types are
-      # google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent:
+      # * A full date, with non-zero year, month and day values
+      # * A month and day value, with a zero year, e.g. an anniversary
+      # * A year on its own, with zero month and day values
+      # * A year and month value, with a zero day, e.g. a credit card expiration date
+      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
         # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year/month where the day is not significant.
+        # if specifying a year by itself or a year and month where the day is not
+        # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-        # month.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+        # month and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month

@@ -545,8 +545,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates multiple new entities in the specified entity type (extends the
-        # existing collection of entries).
+        # Creates multiple new entities in the specified entity type.
         # Operation <response: google.protobuf.Empty>
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Format:
@@ -617,13 +616,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates entities in the specified entity type (replaces the existing
-        # collection of entries).
+        # Updates or creates multiple entities in the specified entity type. This
+        # method does not affect entities in the entity type that aren't explicitly
+        # specified in the request.
         # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
-        #   Required. The name of the entity type to update the entities in. Format:
-        #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+        #   Required. The name of the entity type to update or create entities in.
+        #   Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_update_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

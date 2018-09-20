@@ -968,6 +968,11 @@ module Google
         # @return [String]
         attr_accessor :model_name
       
+        # Optional. Format of the output data files, defaults to JSON.
+        # Corresponds to the JSON property `outputDataFormat`
+        # @return [String]
+        attr_accessor :output_data_format
+      
         # Required. The output Google Cloud Storage location.
         # Corresponds to the JSON property `outputPath`
         # @return [String]
@@ -1027,6 +1032,7 @@ module Google
           @input_paths = args[:input_paths] if args.key?(:input_paths)
           @max_worker_count = args[:max_worker_count] if args.key?(:max_worker_count)
           @model_name = args[:model_name] if args.key?(:model_name)
+          @output_data_format = args[:output_data_format] if args.key?(:output_data_format)
           @output_path = args[:output_path] if args.key?(:output_path)
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
@@ -1406,9 +1412,10 @@ module Google
       
         # Optional. The machine learning framework Cloud ML Engine uses to train
         # this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
-        # and `XGBOOST`. If you do not specify a framework, Cloud ML Engine uses
-        # TensorFlow. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set
-        # the runtime version of the model to 1.4 or greater.
+        # `XGBOOST`. If you do not specify a framework, Cloud ML Engine
+        # will analyze files in the deployment_uri to determine a framework. If you
+        # choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version
+        # of the model to 1.4 or greater.
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
