@@ -847,7 +847,7 @@ module Google
         end
         
         # Creates a new notification channel, representing a single notification
-        # endpoint such as an email address, SMS number, or pagerduty service.
+        # endpoint such as an email address, SMS number, or PagerDuty service.
         # @param [String] name
         #   The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID]

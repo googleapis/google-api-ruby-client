@@ -431,6 +431,11 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::NodePool>]
         attr_accessor :node_pools
       
+        # Configuration options for private clusters.
+        # Corresponds to the JSON property `privateClusterConfig`
+        # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
+        attr_accessor :private_cluster_config
+      
         # The resource labels for the cluster to use to annotate any related
         # Google Compute Engine resources.
         # Corresponds to the JSON property `resourceLabels`
@@ -513,6 +518,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
+          @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
@@ -1709,6 +1715,56 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration options for private clusters.
+      class PrivateClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the master's internal IP address is used as the cluster endpoint.
+        # Corresponds to the JSON property `enablePrivateEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_private_endpoint
+        alias_method :enable_private_endpoint?, :enable_private_endpoint
+      
+        # Whether nodes have internal IP addresses only. If enabled, all nodes are
+        # given only RFC 1918 private addresses and communicate with the master via
+        # private networking.
+        # Corresponds to the JSON property `enablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :enable_private_nodes
+        alias_method :enable_private_nodes?, :enable_private_nodes
+      
+        # The IP range in CIDR notation to use for the hosted master network. This
+        # range will be used for assigning internal IP addresses to the master or
+        # set of masters, as well as the ILB VIP. This range must not overlap with
+        # any other ranges in use within the cluster's network.
+        # Corresponds to the JSON property `masterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :master_ipv4_cidr_block
+      
+        # Output only. The internal IP address of this cluster's master endpoint.
+        # Corresponds to the JSON property `privateEndpoint`
+        # @return [String]
+        attr_accessor :private_endpoint
+      
+        # Output only. The external IP address of this cluster's master endpoint.
+        # Corresponds to the JSON property `publicEndpoint`
+        # @return [String]
+        attr_accessor :public_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
+          @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
+          @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
+          @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
         end
       end
       

@@ -926,7 +926,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :request_size
       
-        # The scheme (http, https), the host name, the path and the query
+        # The scheme (http, https), the host name, the path, and the query
         # portion of the URL that was requested.
         # Example: `"http://example.com/some/info?color=red"`.
         # Corresponds to the JSON property `requestUrl`
@@ -945,7 +945,7 @@ module Google
         # @return [String]
         attr_accessor :server_ip
       
-        # The response code indicating the status of response.
+        # The response code indicating the status of the response.
         # Examples: 200, 404.
         # Corresponds to the JSON property `status`
         # @return [Fixnum]
@@ -1086,8 +1086,8 @@ module Google
         attr_accessor :timestamp
       
         # Optional. Resource name of the trace associated with the log entry, if any.
-        # If it contains a relative resource name, the name is assumed to be relative
-        # to `//tracing.googleapis.com`. Example:
+        # If this field contains a relative resource name, you can assume the name is
+        # relative to `//tracing.googleapis.com`. Example:
         # `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
         # Corresponds to the JSON property `trace`
         # @return [String]

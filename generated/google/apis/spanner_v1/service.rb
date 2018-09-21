@@ -625,8 +625,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a database resource. Returns an empty
-        # policy if a database exists but does not have a policy set.
+        # Gets the access control policy for a database resource.
+        # Returns an empty policy if a database exists but does
+        # not have a policy set.
         # Authorization requires `spanner.databases.getIamPolicy` permission on
         # resource.
         # @param [String] resource
@@ -704,10 +705,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a database resource. Replaces any
-        # existing policy.
-        # Authorization requires `spanner.databases.setIamPolicy` permission on
-        # resource.
+        # Sets the access control policy on a database resource.
+        # Replaces any existing policy.
+        # Authorization requires `spanner.databases.setIamPolicy`
+        # permission on resource.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which the policy is being set. The
         #   format is `projects/<project ID>/instances/<instance ID>` for instance
@@ -744,10 +745,10 @@ module Google
         end
         
         # Returns permissions that the caller has on the specified database resource.
-        # Attempting this RPC on a non-existent Cloud Spanner database will result in
-        # a NOT_FOUND error if the user has `spanner.databases.list` permission on
-        # the containing Cloud Spanner instance. Otherwise returns an empty set of
-        # permissions.
+        # Attempting this RPC on a non-existent Cloud Spanner database will
+        # result in a NOT_FOUND error if the user has
+        # `spanner.databases.list` permission on the containing Cloud
+        # Spanner instance. Otherwise returns an empty set of permissions.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which permissions are being tested.
         #   The format is `projects/<project ID>/instances/<instance ID>` for instance

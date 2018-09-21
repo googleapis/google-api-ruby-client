@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackNodePoolUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +431,8 @@ module Google
       
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+          property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           hash :resource_labels, as: 'resourceLabels'
           property :self_link, as: 'selfLink'
@@ -705,6 +713,17 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target_link, as: 'targetLink'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class PrivateClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_private_endpoint, as: 'enablePrivateEndpoint'
+          property :enable_private_nodes, as: 'enablePrivateNodes'
+          property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :private_endpoint, as: 'privateEndpoint'
+          property :public_endpoint, as: 'publicEndpoint'
         end
       end
       

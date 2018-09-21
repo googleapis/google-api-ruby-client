@@ -285,8 +285,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :events
       
-        # Optional. Collection of information about all followup intents that have
-        # name of this intent as a root_name.
+        # Read-only. Information about all followup intents that have this intent as
+        # a direct or indirect parent. We populate this field only in the output.
         # Corresponds to the JSON property `followupIntentInfo`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentFollowupIntentInfo>]
         attr_accessor :followup_intent_info
@@ -341,8 +341,10 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentParameter>]
         attr_accessor :parameters
       
-        # The unique identifier of the parent intent in the chain of followup
-        # intents.
+        # Read-only after creation. The unique identifier of the parent intent in the
+        # chain of followup intents. You can set this field when creating an intent,
+        # for example with CreateIntent or BatchUpdateIntents, in order to
+        # make this intent a followup intent.
         # It identifies the parent followup intent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
@@ -362,8 +364,9 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
-        # The unique identifier of the root intent in the chain of followup intents.
-        # It identifies the correct followup intents chain for this intent.
+        # Read-only. The unique identifier of the root intent in the chain of
+        # followup intents. It identifies the correct followup intents chain for
+        # this intent. We populate this field only in the output.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `rootFollowupIntentName`
         # @return [String]
@@ -417,7 +420,7 @@ module Google
         # @return [String]
         attr_accessor :followup_intent_name
       
-        # The unique identifier of the followup intent parent.
+        # The unique identifier of the followup intent's parent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
         # @return [String]
@@ -2421,8 +2424,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :events
       
-        # Optional. Collection of information about all followup intents that have
-        # name of this intent as a root_name.
+        # Read-only. Information about all followup intents that have this intent as
+        # a direct or indirect parent. We populate this field only in the output.
         # Corresponds to the JSON property `followupIntentInfo`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>]
         attr_accessor :followup_intent_info
@@ -2493,8 +2496,10 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentParameter>]
         attr_accessor :parameters
       
-        # The unique identifier of the parent intent in the chain of followup
-        # intents.
+        # Read-only after creation. The unique identifier of the parent intent in the
+        # chain of followup intents. You can set this field when creating an intent,
+        # for example with CreateIntent or BatchUpdateIntents, in order to
+        # make this intent a followup intent.
         # It identifies the parent followup intent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
@@ -2514,8 +2519,9 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
-        # The unique identifier of the root intent in the chain of followup intents.
-        # It identifies the correct followup intents chain for this intent.
+        # Read-only. The unique identifier of the root intent in the chain of
+        # followup intents. It identifies the correct followup intents chain for
+        # this intent. We populate this field only in the output.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `rootFollowupIntentName`
         # @return [String]
@@ -2590,7 +2596,7 @@ module Google
         # @return [String]
         attr_accessor :followup_intent_name
       
-        # The unique identifier of the followup intent parent.
+        # The unique identifier of the followup intent's parent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
         # @return [String]

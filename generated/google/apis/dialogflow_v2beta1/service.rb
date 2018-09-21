@@ -1230,9 +1230,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified intent.
+        # Deletes the specified intent and its direct or indirect followup intents.
         # @param [String] name
-        #   Required. The name of the intent to delete.
+        #   Required. The name of the intent to delete. If this intent has direct or
+        #   indirect followup intents, we also delete them.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

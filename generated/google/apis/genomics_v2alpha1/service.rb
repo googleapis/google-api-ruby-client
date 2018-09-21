@@ -163,7 +163,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request.&#13;
+        # Lists operations that match the specified filter in the request.
         # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
         # permission&#58;
         # * `genomics.operations.list`
