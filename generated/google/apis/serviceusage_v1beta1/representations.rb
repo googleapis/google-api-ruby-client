@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,18 +275,6 @@ module Google
       end
       
       class LoggingDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MediaDownload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MediaUpload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -516,14 +498,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :provider, as: 'provider'
-        end
-      end
-      
-      class AuthorizationRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permissions, as: 'permissions'
-          property :selector, as: 'selector'
         end
       end
       
@@ -862,23 +836,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_bindings, as: 'additionalBindings', class: Google::Apis::ServiceusageV1beta1::HttpRule, decorator: Google::Apis::ServiceusageV1beta1::HttpRule::Representation
       
-          collection :authorizations, as: 'authorizations', class: Google::Apis::ServiceusageV1beta1::AuthorizationRule, decorator: Google::Apis::ServiceusageV1beta1::AuthorizationRule::Representation
-      
           property :body, as: 'body'
           property :custom, as: 'custom', class: Google::Apis::ServiceusageV1beta1::CustomHttpPattern, decorator: Google::Apis::ServiceusageV1beta1::CustomHttpPattern::Representation
       
           property :delete, as: 'delete'
           property :get, as: 'get'
-          property :media_download, as: 'mediaDownload', class: Google::Apis::ServiceusageV1beta1::MediaDownload, decorator: Google::Apis::ServiceusageV1beta1::MediaDownload::Representation
-      
-          property :media_upload, as: 'mediaUpload', class: Google::Apis::ServiceusageV1beta1::MediaUpload, decorator: Google::Apis::ServiceusageV1beta1::MediaUpload::Representation
-      
           property :patch, as: 'patch'
           property :post, as: 'post'
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
-          property :rest_collection, as: 'restCollection'
-          property :rest_method_name, as: 'restMethodName'
           property :selector, as: 'selector'
         end
       end
@@ -936,32 +902,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :logs, as: 'logs'
           property :monitored_resource, as: 'monitoredResource'
-        end
-      end
-      
-      class MediaDownload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_notification, as: 'completeNotification'
-          property :download_service, as: 'downloadService'
-          property :dropzone, as: 'dropzone'
-          property :enabled, as: 'enabled'
-          property :max_direct_download_size, :numeric_string => true, as: 'maxDirectDownloadSize'
-          property :use_direct_download, as: 'useDirectDownload'
-        end
-      end
-      
-      class MediaUpload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_notification, as: 'completeNotification'
-          property :dropzone, as: 'dropzone'
-          property :enabled, as: 'enabled'
-          property :max_size, :numeric_string => true, as: 'maxSize'
-          collection :mime_types, as: 'mimeTypes'
-          property :progress_notification, as: 'progressNotification'
-          property :start_notification, as: 'startNotification'
-          property :upload_service, as: 'uploadService'
         end
       end
       

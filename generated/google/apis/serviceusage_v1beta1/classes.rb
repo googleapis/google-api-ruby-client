@@ -340,49 +340,6 @@ module Google
         end
       end
       
-      # Authorization rule for API services.
-      # It specifies the permission(s) required for an API element for the overall
-      # API request to succeed. It is typically used to mark request message fields
-      # that contain the name of the resource and indicates the permissions that
-      # will be checked on that resource.
-      # For example:
-      # package google.storage.v1;
-      # message CopyObjectRequest `
-      # string source = 1 [
-      # (google.api.authz).permissions = "storage.objects.get"];
-      # string destination = 2 [
-      # (google.api.authz).permissions =
-      # "storage.objects.create,storage.objects.update"];
-      # `
-      class AuthorizationRule
-        include Google::Apis::Core::Hashable
-      
-        # The required permissions. The acceptable values vary depend on the
-        # authorization system used. For Google APIs, it should be a comma-separated
-        # Google IAM permission values. When multiple permissions are listed, the
-        # semantics is not defined by the system. Additional documentation must
-        # be provided manually.
-        # Corresponds to the JSON property `permissions`
-        # @return [String]
-        attr_accessor :permissions
-      
-        # Selects the API elements to which this rule applies.
-        # Refer to selector for syntax details.
-        # Corresponds to the JSON property `selector`
-        # @return [String]
-        attr_accessor :selector
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-          @selector = args[:selector] if args.key?(:selector)
-        end
-      end
-      
       # `Backend` defines the backend configuration for a service.
       class Backend
         include Google::Apis::Core::Hashable
@@ -2207,14 +2164,6 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::HttpRule>]
         attr_accessor :additional_bindings
       
-        # Specifies the permission(s) required for an API element for the overall
-        # API request to succeed. It is typically used to mark request message fields
-        # that contain the name of the resource and indicates the permissions that
-        # will be checked on that resource.
-        # Corresponds to the JSON property `authorizations`
-        # @return [Array<Google::Apis::ServiceusageV1beta1::AuthorizationRule>]
-        attr_accessor :authorizations
-      
         # The name of the request field whose value is mapped to the HTTP request
         # body, or `*` for mapping all request fields not captured by the path
         # pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -2240,22 +2189,6 @@ module Google
         # @return [String]
         attr_accessor :get
       
-        # Defines the Media configuration for a service in case of a download.
-        # Use this only for Scotty Requests. Do not use this for media support using
-        # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-        # your configuration for Bytestream methods.
-        # Corresponds to the JSON property `mediaDownload`
-        # @return [Google::Apis::ServiceusageV1beta1::MediaDownload]
-        attr_accessor :media_download
-      
-        # Defines the Media configuration for a service in case of an upload.
-        # Use this only for Scotty Requests. Do not use this for media support using
-        # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-        # your configuration for Bytestream methods.
-        # Corresponds to the JSON property `mediaUpload`
-        # @return [Google::Apis::ServiceusageV1beta1::MediaUpload]
-        attr_accessor :media_upload
-      
         # Maps to HTTP PATCH. Used for updating a resource.
         # Corresponds to the JSON property `patch`
         # @return [String]
@@ -2280,44 +2213,6 @@ module Google
         # @return [String]
         attr_accessor :response_body
       
-        # DO NOT USE. This is an experimental field.
-        # Optional. The REST collection name is by default derived from the URL
-        # pattern. If specified, this field overrides the default collection name.
-        # Example:
-        # rpc AddressesAggregatedList(AddressesAggregatedListRequest)
-        # returns (AddressesAggregatedListResponse) `
-        # option (google.api.http) = `
-        # get: "/v1/projects/`project_id`/aggregated/addresses"
-        # rest_collection: "projects.addresses"
-        # `;
-        # `
-        # This method has the automatically derived collection name
-        # "projects.aggregated". Because, semantically, this rpc is actually an
-        # operation on the "projects.addresses" collection, the `rest_collection`
-        # field is configured to override the derived collection name.
-        # Corresponds to the JSON property `restCollection`
-        # @return [String]
-        attr_accessor :rest_collection
-      
-        # DO NOT USE. This is an experimental field.
-        # Optional. The rest method name is by default derived from the URL
-        # pattern. If specified, this field overrides the default method name.
-        # Example:
-        # rpc CreateResource(CreateResourceRequest)
-        # returns (CreateResourceResponse) `
-        # option (google.api.http) = `
-        # post: "/v1/resources",
-        # body: "resource",
-        # rest_method_name: "insert"
-        # `;
-        # `
-        # This method has the automatically derived rest method name
-        # "create", but for backwards compatibility with apiary, it is specified as
-        # insert.
-        # Corresponds to the JSON property `restMethodName`
-        # @return [String]
-        attr_accessor :rest_method_name
-      
         # Selects a method to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -2331,19 +2226,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_bindings = args[:additional_bindings] if args.key?(:additional_bindings)
-          @authorizations = args[:authorizations] if args.key?(:authorizations)
           @body = args[:body] if args.key?(:body)
           @custom = args[:custom] if args.key?(:custom)
           @delete = args[:delete] if args.key?(:delete)
           @get = args[:get] if args.key?(:get)
-          @media_download = args[:media_download] if args.key?(:media_download)
-          @media_upload = args[:media_upload] if args.key?(:media_upload)
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
           @response_body = args[:response_body] if args.key?(:response_body)
-          @rest_collection = args[:rest_collection] if args.key?(:rest_collection)
-          @rest_method_name = args[:rest_method_name] if args.key?(:rest_method_name)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -2564,138 +2454,6 @@ module Google
         def update!(**args)
           @logs = args[:logs] if args.key?(:logs)
           @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
-        end
-      end
-      
-      # Defines the Media configuration for a service in case of a download.
-      # Use this only for Scotty Requests. Do not use this for media support using
-      # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-      # your configuration for Bytestream methods.
-      class MediaDownload
-        include Google::Apis::Core::Hashable
-      
-        # A boolean that determines whether a notification for the completion of a
-        # download should be sent to the backend.
-        # Corresponds to the JSON property `completeNotification`
-        # @return [Boolean]
-        attr_accessor :complete_notification
-        alias_method :complete_notification?, :complete_notification
-      
-        # DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        # Specify name of the download service if one is used for download.
-        # Corresponds to the JSON property `downloadService`
-        # @return [String]
-        attr_accessor :download_service
-      
-        # Name of the Scotty dropzone to use for the current API.
-        # Corresponds to the JSON property `dropzone`
-        # @return [String]
-        attr_accessor :dropzone
-      
-        # Whether download is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Optional maximum acceptable size for direct download.
-        # The size is specified in bytes.
-        # Corresponds to the JSON property `maxDirectDownloadSize`
-        # @return [Fixnum]
-        attr_accessor :max_direct_download_size
-      
-        # A boolean that determines if direct download from ESF should be used for
-        # download of this media.
-        # Corresponds to the JSON property `useDirectDownload`
-        # @return [Boolean]
-        attr_accessor :use_direct_download
-        alias_method :use_direct_download?, :use_direct_download
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_notification = args[:complete_notification] if args.key?(:complete_notification)
-          @download_service = args[:download_service] if args.key?(:download_service)
-          @dropzone = args[:dropzone] if args.key?(:dropzone)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @max_direct_download_size = args[:max_direct_download_size] if args.key?(:max_direct_download_size)
-          @use_direct_download = args[:use_direct_download] if args.key?(:use_direct_download)
-        end
-      end
-      
-      # Defines the Media configuration for a service in case of an upload.
-      # Use this only for Scotty Requests. Do not use this for media support using
-      # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-      # your configuration for Bytestream methods.
-      class MediaUpload
-        include Google::Apis::Core::Hashable
-      
-        # A boolean that determines whether a notification for the completion of an
-        # upload should be sent to the backend. These notifications will not be seen
-        # by the client and will not consume quota.
-        # Corresponds to the JSON property `completeNotification`
-        # @return [Boolean]
-        attr_accessor :complete_notification
-        alias_method :complete_notification?, :complete_notification
-      
-        # Name of the Scotty dropzone to use for the current API.
-        # Corresponds to the JSON property `dropzone`
-        # @return [String]
-        attr_accessor :dropzone
-      
-        # Whether upload is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Optional maximum acceptable size for an upload.
-        # The size is specified in bytes.
-        # Corresponds to the JSON property `maxSize`
-        # @return [Fixnum]
-        attr_accessor :max_size
-      
-        # An array of mimetype patterns. Esf will only accept uploads that match one
-        # of the given patterns.
-        # Corresponds to the JSON property `mimeTypes`
-        # @return [Array<String>]
-        attr_accessor :mime_types
-      
-        # Whether to receive a notification for progress changes of media upload.
-        # Corresponds to the JSON property `progressNotification`
-        # @return [Boolean]
-        attr_accessor :progress_notification
-        alias_method :progress_notification?, :progress_notification
-      
-        # Whether to receive a notification on the start of media upload.
-        # Corresponds to the JSON property `startNotification`
-        # @return [Boolean]
-        attr_accessor :start_notification
-        alias_method :start_notification?, :start_notification
-      
-        # DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        # Specify name of the upload service if one is used for upload.
-        # Corresponds to the JSON property `uploadService`
-        # @return [String]
-        attr_accessor :upload_service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_notification = args[:complete_notification] if args.key?(:complete_notification)
-          @dropzone = args[:dropzone] if args.key?(:dropzone)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @max_size = args[:max_size] if args.key?(:max_size)
-          @mime_types = args[:mime_types] if args.key?(:mime_types)
-          @progress_notification = args[:progress_notification] if args.key?(:progress_notification)
-          @start_notification = args[:start_notification] if args.key?(:start_notification)
-          @upload_service = args[:upload_service] if args.key?(:upload_service)
         end
       end
       

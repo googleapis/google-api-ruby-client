@@ -499,7 +499,8 @@ module Google
         # If this is a private cluster setup. Private clusters are clusters that, by
         # default have no external IP addresses on the nodes and where nodes and the
         # master communicate over private IP addresses.
-        # This field is deprecated, use private_cluster_config.enabled instead.
+        # This field is deprecated, use private_cluster_config.enable_private_nodes
+        # instead.
         # Corresponds to the JSON property `privateCluster`
         # @return [Boolean]
         attr_accessor :private_cluster
@@ -2212,16 +2213,18 @@ module Google
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
-        # Whether nodes have only private IP addresses, and communicate with the
-        # master via private networking.
+        # Whether nodes have internal IP addresses only. If enabled, all nodes are
+        # given only RFC 1918 private addresses and communicate with the master via
+        # private networking.
         # Corresponds to the JSON property `enablePrivateNodes`
         # @return [Boolean]
         attr_accessor :enable_private_nodes
         alias_method :enable_private_nodes?, :enable_private_nodes
       
-        # The IP prefix in CIDR notation to use for the hosted master network. This
-        # prefix will be used for assigning private IP addresses to the master or
-        # set of masters, as well as the ILB VIP.
+        # The IP range in CIDR notation to use for the hosted master network. This
+        # range will be used for assigning internal IP addresses to the master or
+        # set of masters, as well as the ILB VIP. This range must not overlap with
+        # any other ranges in use within the cluster's network.
         # Corresponds to the JSON property `masterIpv4CidrBlock`
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
