@@ -945,13 +945,13 @@ module Google
         end
       end
       
-      # Represents a whole calendar date, e.g. date of birth. The time of day and
-      # time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-      # represent a year and month where the day is not significant, e.g. credit card
-      # expiration date. The year may be 0 to represent a month and day independent
-      # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-      # and `google.protobuf.Timestamp`.
+      # Represents a whole calendar date, for example date of birth. The time of day
+      # and time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+      # represent a year and month where the day is not significant, for example
+      # credit card expiration date. The year can be 0 to represent a month and day
+      # independent of year, for example anniversary date. Related types are
+      # google.type.TimeOfDay and `google.protobuf.Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
@@ -1686,13 +1686,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :employment_types
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :end_date
@@ -1736,13 +1736,13 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `expiryDate`
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :expiry_date
@@ -1845,13 +1845,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :promotion_value
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `publishDate`
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :publish_date
@@ -1906,13 +1906,13 @@ module Google
         # @return [String]
         attr_accessor :responsibilities
       
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
+        # Represents a whole calendar date, for example date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
+        # represent a year and month where the day is not significant, for example
+        # credit card expiration date. The year can be 0 to represent a month and day
+        # independent of year, for example anniversary date. Related types are
+        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :start_date
