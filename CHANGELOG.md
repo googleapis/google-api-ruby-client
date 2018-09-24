@@ -1,3 +1,50 @@
+# 0.24.1
+* Backwards compatible changes:
+  * Added `jobs_v3p1beta1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `calendar_v3`
+  * Updated `classroom_v1`
+  * Updated `cloudkms_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `firestore_v1beta2`
+  * Updated `games_v1`
+  * Updated `genomics_v1`
+  * Updated `genomics_v1alpha2`
+  * Updated `genomics_v2alpha1`
+  * Updated `iamcredentials_v1`
+  * Updated `indexing_v3`
+  * Updated `jobs_v2`
+  * Updated `jobs_v3`
+  * Updated `kgsearch_v1`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `people_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `spanner_v1`
+  * Updated `speech_v1`
+  * Updated `sqladmin_v1beta4`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `toolresults_v1beta3`
+
 # 0.24.0
 * Breaking changes:
   * Deleted `adexchangeseller_v1`
