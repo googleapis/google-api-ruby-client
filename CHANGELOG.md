@@ -1,3 +1,5 @@
+# 0.24.2
+
 # 0.24.1
 * Backwards compatible changes:
   * Added `jobs_v3p1beta1`
