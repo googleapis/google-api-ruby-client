@@ -541,6 +541,13 @@ module Google
       class Pose
         include Google::Apis::Core::Hashable
       
+        # The estimated horizontal accuracy of this pose in meters with 68% (one
+        # standard deviation) confidence. For more information, see:
+        # https://developer.android.com/reference/android/location/Location#getAccuracy()
+        # Corresponds to the JSON property `accuracyMeters`
+        # @return [Float]
+        attr_accessor :accuracy_meters
+      
         # Altitude of the pose in meters above WGS84 ellipsoid.
         # NaN indicates an unmeasured quantity.
         # Corresponds to the JSON property `altitude`
@@ -589,6 +596,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accuracy_meters = args[:accuracy_meters] if args.key?(:accuracy_meters)
           @altitude = args[:altitude] if args.key?(:altitude)
           @heading = args[:heading] if args.key?(:heading)
           @lat_lng_pair = args[:lat_lng_pair] if args.key?(:lat_lng_pair)

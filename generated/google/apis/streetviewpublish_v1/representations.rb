@@ -274,6 +274,7 @@ module Google
       class Pose
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy_meters, as: 'accuracyMeters'
           property :altitude, as: 'altitude'
           property :heading, as: 'heading'
           property :lat_lng_pair, as: 'latLngPair', class: Google::Apis::StreetviewpublishV1::LatLng, decorator: Google::Apis::StreetviewpublishV1::LatLng::Representation

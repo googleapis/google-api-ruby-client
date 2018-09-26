@@ -28,19 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClientList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Export
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NfsExport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,12 +83,6 @@ module Google
       end
       
       class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SmbExport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,36 +100,9 @@ module Google
         end
       end
       
-      class ClientList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :host_names, as: 'hostNames'
-          collection :ip_addresses, as: 'ipAddresses'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Export
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed_clients, as: 'allowedClients', class: Google::Apis::FileV1beta1::ClientList, decorator: Google::Apis::FileV1beta1::ClientList::Representation
-      
-          property :async, as: 'async'
-          property :denied_clients, as: 'deniedClients', class: Google::Apis::FileV1beta1::ClientList, decorator: Google::Apis::FileV1beta1::ClientList::Representation
-      
-          collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
-      
-          property :nfs_export, as: 'nfsExport', class: Google::Apis::FileV1beta1::NfsExport, decorator: Google::Apis::FileV1beta1::NfsExport::Representation
-      
-          property :path, as: 'path'
-          property :read_only, as: 'readOnly'
-          property :smb_export, as: 'smbExport', class: Google::Apis::FileV1beta1::SmbExport, decorator: Google::Apis::FileV1beta1::SmbExport::Representation
-      
         end
       end
       
@@ -161,12 +110,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
-          property :deleted, as: 'deleted'
-          property :enabled, as: 'enabled'
-          collection :exports, as: 'exports', class: Google::Apis::FileV1beta1::Export, decorator: Google::Apis::FileV1beta1::Export::Representation
-      
           property :name, as: 'name'
-          collection :protocols, as: 'protocols'
         end
       end
       
@@ -179,8 +123,6 @@ module Google
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1beta1::FileShareConfig, decorator: Google::Apis::FileV1beta1::FileShareConfig::Representation
       
           hash :labels, as: 'labels'
-          property :logging_service, as: 'loggingService'
-          property :monitoring_service, as: 'monitoringService'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
       
@@ -236,19 +178,6 @@ module Google
           collection :modes, as: 'modes'
           property :network, as: 'network'
           property :reserved_ip_range, as: 'reservedIpRange'
-          property :subnetwork, as: 'subnetwork'
-        end
-      end
-      
-      class NfsExport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :anonymous_gid, :numeric_string => true, as: 'anonymousGid'
-          property :anonymous_uid, :numeric_string => true, as: 'anonymousUid'
-          collection :protocols, as: 'protocols'
-          property :squash, as: 'squash'
-          property :unauthenticated_locks_allowed, as: 'unauthenticatedLocksAllowed'
-          property :user_ports_allowed, as: 'userPortsAllowed'
         end
       end
       
@@ -274,14 +203,6 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
-        end
-      end
-      
-      class SmbExport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :browsable, as: 'browsable'
-          property :file_share, as: 'fileShare'
         end
       end
       

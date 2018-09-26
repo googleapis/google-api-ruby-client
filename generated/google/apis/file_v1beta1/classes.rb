@@ -35,33 +35,6 @@ module Google
         end
       end
       
-      # The sets of network addresses and DNS names for hosts to which a given
-      # export or share should be allowed or denied.
-      class ClientList
-        include Google::Apis::Core::Hashable
-      
-        # DNS names of hosts, with optional wildcards.
-        # Corresponds to the JSON property `hostNames`
-        # @return [Array<String>]
-        attr_accessor :host_names
-      
-        # IPv4 addresses in the format
-        # `octet 1`.`octet 2`.`octet 3`.`octet 4`.
-        # Corresponds to the JSON property `ipAddresses`
-        # @return [Array<String>]
-        attr_accessor :ip_addresses
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @host_names = args[:host_names] if args.key?(:host_names)
-          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -81,73 +54,6 @@ module Google
         end
       end
       
-      # File share export specification.
-      class Export
-        include Google::Apis::Core::Hashable
-      
-        # The sets of network addresses and DNS names for hosts to which a given
-        # export or share should be allowed or denied.
-        # Corresponds to the JSON property `allowedClients`
-        # @return [Google::Apis::FileV1beta1::ClientList]
-        attr_accessor :allowed_clients
-      
-        # Writes may be completed when not yet on stable storage.
-        # Corresponds to the JSON property `async`
-        # @return [Boolean]
-        attr_accessor :async
-        alias_method :async?, :async
-      
-        # The sets of network addresses and DNS names for hosts to which a given
-        # export or share should be allowed or denied.
-        # Corresponds to the JSON property `deniedClients`
-        # @return [Google::Apis::FileV1beta1::ClientList]
-        attr_accessor :denied_clients
-      
-        # Networks on which the export should appear.
-        # If none are specified, the default is all networks to which the instance is
-        # connected to.
-        # Corresponds to the JSON property `networks`
-        # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
-        attr_accessor :networks
-      
-        # NfsExport specifies attributes of a given NFS export rule.
-        # Corresponds to the JSON property `nfsExport`
-        # @return [Google::Apis::FileV1beta1::NfsExport]
-        attr_accessor :nfs_export
-      
-        # Path to export (either "" or of the form /file_share_name[/subdir]).
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        # Whether the file share should be exported as read-only.
-        # Corresponds to the JSON property `readOnly`
-        # @return [Boolean]
-        attr_accessor :read_only
-        alias_method :read_only?, :read_only
-      
-        # SmbExport defines attributes of a given SMB sharing rule.
-        # Corresponds to the JSON property `smbExport`
-        # @return [Google::Apis::FileV1beta1::SmbExport]
-        attr_accessor :smb_export
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allowed_clients = args[:allowed_clients] if args.key?(:allowed_clients)
-          @async = args[:async] if args.key?(:async)
-          @denied_clients = args[:denied_clients] if args.key?(:denied_clients)
-          @networks = args[:networks] if args.key?(:networks)
-          @nfs_export = args[:nfs_export] if args.key?(:nfs_export)
-          @path = args[:path] if args.key?(:path)
-          @read_only = args[:read_only] if args.key?(:read_only)
-          @smb_export = args[:smb_export] if args.key?(:smb_export)
-        end
-      end
-      
       # File share configuration for the instance.
       class FileShareConfig
         include Google::Apis::Core::Hashable
@@ -158,36 +64,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gb
       
-        # Delete requested. The file share will be deleted.
-        # Corresponds to the JSON property `deleted`
-        # @return [Boolean]
-        attr_accessor :deleted
-        alias_method :deleted?, :deleted
-      
-        # Service enabled.
-        # When enabled, the instance exposes the exports to the user for mounting.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Exports.
-        # If protocols and exports are both zero-length, a default protocol of
-        # NFSV3 and a default export of "*" are provided, and enabled is set to
-        # true.
-        # Corresponds to the JSON property `exports`
-        # @return [Array<Google::Apis::FileV1beta1::Export>]
-        attr_accessor :exports
-      
         # The name of the file share (must be 16 characters or less).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Protocols supported.
-        # Corresponds to the JSON property `protocols`
-        # @return [Array<String>]
-        attr_accessor :protocols
       
         def initialize(**args)
            update!(**args)
@@ -196,11 +76,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
-          @deleted = args[:deleted] if args.key?(:deleted)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @exports = args[:exports] if args.key?(:exports)
           @name = args[:name] if args.key?(:name)
-          @protocols = args[:protocols] if args.key?(:protocols)
         end
       end
       
@@ -235,24 +111,6 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
-        # The logging service the instance should use to write logs.
-        # Currently available options:
-        # * `logging.googleapis.com` - the Google Cloud Logging service.
-        # * `none` - no logs will be exported from the instance.
-        # * if left as an empty string,`logging.googleapis.com` will be used.
-        # Corresponds to the JSON property `loggingService`
-        # @return [String]
-        attr_accessor :logging_service
-      
-        # The monitoring service the instance should use to write metrics.
-        # Currently available options:
-        # * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
-        # * `none` - no metrics will be exported from the instance.
-        # * if left as an empty string, `monitoring.googleapis.com` will be used.
-        # Corresponds to the JSON property `monitoringService`
-        # @return [String]
-        attr_accessor :monitoring_service
       
         # Output only.
         # The resource name of the instance, in the format
@@ -295,8 +153,6 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @labels = args[:labels] if args.key?(:labels)
-          @logging_service = args[:logging_service] if args.key?(:logging_service)
-          @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @state = args[:state] if args.key?(:state)
@@ -475,14 +331,6 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
-        # Output only.
-        # The name of the Google Compute Engine
-        # [subnetwork](/compute/docs/subnetworks) to which the
-        # instance is connected.
-        # Corresponds to the JSON property `subnetwork`
-        # @return [String]
-        attr_accessor :subnetwork
-      
         def initialize(**args)
            update!(**args)
         end
@@ -493,61 +341,6 @@ module Google
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
-          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
-        end
-      end
-      
-      # NfsExport specifies attributes of a given NFS export rule.
-      class NfsExport
-        include Google::Apis::Core::Hashable
-      
-        # GID for anonymous or squashed GIDs.
-        # Corresponds to the JSON property `anonymousGid`
-        # @return [Fixnum]
-        attr_accessor :anonymous_gid
-      
-        # UID for anonymous or squashed UIDs.
-        # Corresponds to the JSON property `anonymousUid`
-        # @return [Fixnum]
-        attr_accessor :anonymous_uid
-      
-        # Network transport protocols to be enabled.
-        # The default is TCP.
-        # Corresponds to the JSON property `protocols`
-        # @return [Array<String>]
-        attr_accessor :protocols
-      
-        # The mode of mapping of UIDs and GIDs (if any).
-        # Corresponds to the JSON property `squash`
-        # @return [String]
-        attr_accessor :squash
-      
-        # If unauthenticated_locks_allowed is true, locking requests do not require
-        # authentication.
-        # Corresponds to the JSON property `unauthenticatedLocksAllowed`
-        # @return [Boolean]
-        attr_accessor :unauthenticated_locks_allowed
-        alias_method :unauthenticated_locks_allowed?, :unauthenticated_locks_allowed
-      
-        # If user_ports_allowed is true, client ports greater than or equal to 1024
-        # are allowed.
-        # Corresponds to the JSON property `userPortsAllowed`
-        # @return [Boolean]
-        attr_accessor :user_ports_allowed
-        alias_method :user_ports_allowed?, :user_ports_allowed
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @anonymous_gid = args[:anonymous_gid] if args.key?(:anonymous_gid)
-          @anonymous_uid = args[:anonymous_uid] if args.key?(:anonymous_uid)
-          @protocols = args[:protocols] if args.key?(:protocols)
-          @squash = args[:squash] if args.key?(:squash)
-          @unauthenticated_locks_allowed = args[:unauthenticated_locks_allowed] if args.key?(:unauthenticated_locks_allowed)
-          @user_ports_allowed = args[:user_ports_allowed] if args.key?(:user_ports_allowed)
         end
       end
       
@@ -704,33 +497,6 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # SmbExport defines attributes of a given SMB sharing rule.
-      class SmbExport
-        include Google::Apis::Core::Hashable
-      
-        # If true, allow clients to see this share when browsing the instance for
-        # shares.
-        # Corresponds to the JSON property `browsable`
-        # @return [Boolean]
-        attr_accessor :browsable
-        alias_method :browsable?, :browsable
-      
-        # The published name of the share (if different from name).
-        # Corresponds to the JSON property `fileShare`
-        # @return [String]
-        attr_accessor :file_share
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @browsable = args[:browsable] if args.key?(:browsable)
-          @file_share = args[:file_share] if args.key?(:file_share)
         end
       end
       

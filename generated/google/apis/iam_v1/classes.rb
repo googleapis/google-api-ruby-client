@@ -1061,7 +1061,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The current launch stage of the role.
+        # The current launch stage of the role. If the `ALPHA` launch stage has been
+        # selected for a role, the `stage` field will not be included in the
+        # returned definition for the role.
         # Corresponds to the JSON property `stage`
         # @return [String]
         attr_accessor :stage
