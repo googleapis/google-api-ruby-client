@@ -3932,6 +3932,7 @@ module Google
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
           property :raw_key, as: 'rawKey'
           property :sha256, as: 'sha256'
         end
@@ -4450,6 +4451,7 @@ module Google
           property :port_name, as: 'portName'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
+          property :response, as: 'response'
         end
       end
       
@@ -4461,6 +4463,7 @@ module Google
           property :port_name, as: 'portName'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
+          property :response, as: 'response'
         end
       end
       

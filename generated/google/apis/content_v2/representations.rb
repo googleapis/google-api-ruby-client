@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerReturnReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CutoffTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -610,6 +616,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MerchantOrderReturn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MerchantOrderReturnItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Order
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -833,6 +851,12 @@ module Google
       end
       
       class OrderreportsListTransactionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1420,6 +1444,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefundReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnShipment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Row
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1439,6 +1475,12 @@ module Google
       end
       
       class ShipmentInvoiceLineItemInvoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShipmentTrackingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1998,6 +2040,14 @@ module Google
           property :country, as: 'country'
           property :name, as: 'name'
           collection :services, as: 'services'
+        end
+      end
+      
+      class CustomerReturnReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason_code, as: 'reasonCode'
         end
       end
       
@@ -2615,6 +2665,35 @@ module Google
         end
       end
       
+      class MerchantOrderReturn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_date, as: 'creationDate'
+          property :merchant_order_id, as: 'merchantOrderId'
+          property :order_id, as: 'orderId'
+          property :order_return_id, as: 'orderReturnId'
+          collection :return_items, as: 'returnItems', class: Google::Apis::ContentV2::MerchantOrderReturnItem, decorator: Google::Apis::ContentV2::MerchantOrderReturnItem::Representation
+      
+          collection :return_shipments, as: 'returnShipments', class: Google::Apis::ContentV2::ReturnShipment, decorator: Google::Apis::ContentV2::ReturnShipment::Representation
+      
+        end
+      end
+      
+      class MerchantOrderReturnItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_return_reason, as: 'customerReturnReason', class: Google::Apis::ContentV2::CustomerReturnReason, decorator: Google::Apis::ContentV2::CustomerReturnReason::Representation
+      
+          property :item_id, as: 'itemId'
+          property :merchant_return_reason, as: 'merchantReturnReason', class: Google::Apis::ContentV2::RefundReason, decorator: Google::Apis::ContentV2::RefundReason::Representation
+      
+          property :product, as: 'product', class: Google::Apis::ContentV2::OrderLineItemProduct, decorator: Google::Apis::ContentV2::OrderLineItemProduct::Representation
+      
+          collection :return_shipment_ids, as: 'returnShipmentIds'
+          property :state, as: 'state'
+        end
+      end
+      
       class Order
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3014,6 +3093,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :charge_state, as: 'chargeState'
           property :invoice_id, as: 'invoiceId'
+          collection :invoice_ids, as: 'invoiceIds'
         end
       end
       
@@ -3029,6 +3109,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :invoice_id, as: 'invoiceId'
+          collection :invoice_ids, as: 'invoiceIds'
           property :refund_state, as: 'refundState'
         end
       end
@@ -3057,6 +3138,16 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :transactions, as: 'transactions', class: Google::Apis::ContentV2::OrderReportTransaction, decorator: Google::Apis::ContentV2::OrderReportTransaction::Representation
+      
+        end
+      end
+      
+      class OrderreturnsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2::MerchantOrderReturn, decorator: Google::Apis::ContentV2::MerchantOrderReturn::Representation
       
         end
       end
@@ -4219,6 +4310,25 @@ module Google
         end
       end
       
+      class RefundReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason_code, as: 'reasonCode'
+        end
+      end
+      
+      class ReturnShipment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_date, as: 'creationDate'
+          property :return_method_type, as: 'returnMethodType'
+          property :shipment_id, as: 'shipmentId'
+          collection :shipment_tracking_infos, as: 'shipmentTrackingInfos', class: Google::Apis::ContentV2::ShipmentTrackingInfo, decorator: Google::Apis::ContentV2::ShipmentTrackingInfo::Representation
+      
+        end
+      end
+      
       class Row
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4263,6 +4373,14 @@ module Google
           collection :shipment_unit_ids, as: 'shipmentUnitIds'
           property :unit_invoice, as: 'unitInvoice', class: Google::Apis::ContentV2::UnitInvoice, decorator: Google::Apis::ContentV2::UnitInvoice::Representation
       
+        end
+      end
+      
+      class ShipmentTrackingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier, as: 'carrier'
+          property :tracking_number, as: 'trackingNumber'
         end
       end
       

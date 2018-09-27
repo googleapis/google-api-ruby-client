@@ -293,11 +293,11 @@ module Google
       end
       
       # Represents a buyer of inventory. Each buyer is identified by a unique
-      # Ad Exchange account ID.
+      # Authorized Buyers account ID.
       class Buyer
         include Google::Apis::Core::Hashable
       
-        # Ad Exchange account ID of the buyer.
+        # Authorized Buyers account ID of the buyer.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
@@ -319,7 +319,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the callout status.
-        # See [callout-status-codes](https://developers.google.com/ad-exchange/rtb/
+        # See [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/
         # downloads/callout-status-codes).
         # Corresponds to the JSON property `calloutStatusId`
         # @return [Fixnum]
@@ -362,13 +362,11 @@ module Google
         end
       end
       
-      # A client resource represents a client buyer&mdash;an agency,
-      # a brand, or an advertiser customer of the sponsor buyer.
-      # Users associated with the client buyer have restricted access to
-      # the Ad Exchange Marketplace and certain other sections
-      # of the Ad Exchange Buyer UI based on the role
-      # granted to the client buyer.
-      # All fields are required unless otherwise specified.
+      # A client resource represents a client buyer&mdash;an agency, a brand, or an
+      # advertiser customer of the sponsor buyer. Users associated with the client
+      # buyer have restricted access to the Marketplace and certain other sections of
+      # the Authorized Buyers UI based on the role granted to the client buyer. All
+      # fields are required unless otherwise specified.
       class Client
         include Google::Apis::Core::Hashable
       
@@ -466,9 +464,8 @@ module Google
       end
       
       # A client user is created under a client buyer and has restricted access to
-      # the Ad Exchange Marketplace and certain other sections
-      # of the Ad Exchange Buyer UI based on the role
-      # granted to the associated client buyer.
+      # the Marketplace and certain other sections of the Authorized Buyers UI based
+      # on the role granted to the associated client buyer.
       # The only way a new client user can be created is via accepting an
       # email invitation
       # (see the
@@ -517,9 +514,8 @@ module Google
         end
       end
       
-      # An invitation for a new client user to get access to the Ad Exchange
-      # Buyer UI.
-      # All fields are required unless otherwise specified.
+      # An invitation for a new client user to get access to the Authorized Buyers
+      # UI. All fields are required unless otherwise specified.
       class ClientUserInvitation
         include Google::Apis::Core::Hashable
       
@@ -864,7 +860,7 @@ module Google
       end
       
       # Represents creative restrictions associated to Programmatic Guaranteed/
-      # Preferred Deal in DFP.
+      # Preferred Deal in Ad Manager.
       # This doesn't apply to Private Auction and AdX Preferred Deals.
       class CreativeRestrictions
         include Google::Apis::Core::Hashable
@@ -902,8 +898,8 @@ module Google
       
         # What formats are allowed by the publisher.
         # If this repeated field is empty then all formats are allowed.
-        # E.g., if this field contains AllowedFormatType.AUDIO then the publisher
-        # only allows an audio ad (without any video).
+        # For example, if this field contains AllowedFormatType.AUDIO then the
+        # publisher only allows an audio ad (without any video).
         # Corresponds to the JSON property `allowedFormats`
         # @return [Array<String>]
         attr_accessor :allowed_formats
@@ -954,7 +950,7 @@ module Google
       end
       
       # Represents information for a creative that is associated with a Programmatic
-      # Guaranteed/Preferred Deal in DFP.
+      # Guaranteed/Preferred Deal in Ad Manager.
       class CreativeSpecification
         include Google::Apis::Core::Hashable
       
@@ -992,8 +988,8 @@ module Google
         attr_accessor :bid_count
       
         # The ID of the creative status.
-        # See [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
-        # downloads/creative-status-codes).
+        # See [creative-status-codes](https://developers.google.com/authorized-buyers/
+        # rtb/downloads/creative-status-codes).
         # Corresponds to the JSON property `creativeStatusId`
         # @return [Fixnum]
         attr_accessor :creative_status_id
@@ -1203,7 +1199,7 @@ module Google
         attr_accessor :creative_pre_approval_policy
       
         # Represents creative restrictions associated to Programmatic Guaranteed/
-        # Preferred Deal in DFP.
+        # Preferred Deal in Ad Manager.
         # This doesn't apply to Private Auction and AdX Preferred Deals.
         # Corresponds to the JSON property `creativeRestrictions`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeRestrictions]
@@ -1567,9 +1563,9 @@ module Google
       # A set of filters that is applied to a request for data.
       # Within a filter set, an AND operation is performed across the filters
       # represented by each field. An OR operation is performed across the filters
-      # represented by the multiple values of a repeated field. E.g.
+      # represented by the multiple values of a repeated field, e.g.,
       # "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
-      # seller_network_id=56)"
+      # seller_network_id=56)".
       class FilterSet
         include Google::Apis::Core::Hashable
       
@@ -1584,7 +1580,7 @@ module Google
       
         # The ID of the creative on which to filter; optional. This field may be set
         # only for a filter set that accesses account-level troubleshooting data,
-        # i.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`
+        # i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`
         # pattern.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
@@ -1592,7 +1588,7 @@ module Google
       
         # The ID of the deal on which to filter; optional. This field may be set
         # only for a filter set that accesses account-level troubleshooting data,
-        # i.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`
+        # i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`
         # pattern.
         # Corresponds to the JSON property `dealId`
         # @return [Fixnum]
@@ -1604,7 +1600,7 @@ module Google
         attr_accessor :environment
       
         # The list of formats on which to filter; may be empty. The filters
-        # represented by multiple formats are ORed together (i.e. if non-empty,
+        # represented by multiple formats are ORed together (i.e., if non-empty,
         # results must match any one of the formats).
         # Corresponds to the JSON property `formats`
         # @return [Array<String>]
@@ -1622,13 +1618,13 @@ module Google
         attr_accessor :name
       
         # The list of platforms on which to filter; may be empty. The filters
-        # represented by multiple platforms are ORed together (i.e. if non-empty,
+        # represented by multiple platforms are ORed together (i.e., if non-empty,
         # results must match any one of the platforms).
         # Corresponds to the JSON property `platforms`
         # @return [Array<String>]
         attr_accessor :platforms
       
-        # For Exchange Bidding buyers only.
+        # For Open Bidding partners only.
         # The list of publisher identifiers on which to filter; may be empty.
         # The filters represented by multiple publisher identifiers are ORed
         # together.
@@ -1644,8 +1640,8 @@ module Google
         attr_accessor :realtime_time_range
       
         # A relative date range, specified by an offset and a duration.
-        # The supported range of dates begins 30 days before today and ends today.
-        # I.e. the limits for these values are:
+        # The supported range of dates begins 30 days before today and ends today,
+        # i.e., the limits for these values are:
         # offset_days >= 0
         # duration_days >= 1
         # offset_days + duration_days <= 30
@@ -1653,12 +1649,12 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange]
         attr_accessor :relative_date_range
       
-        # For Ad Exchange buyers only.
+        # For Authorized Buyers only.
         # The list of IDs of the seller (publisher) networks on which to filter;
         # may be empty. The filters represented by multiple seller network IDs are
-        # ORed together (i.e. if non-empty, results must match any one of the
-        # publisher networks).
-        # See [seller-network-ids](https://developers.google.com/ad-exchange/rtb/
+        # ORed together (i.e., if non-empty, results must match any one of the
+        # publisher networks). See
+        # [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/
         # downloads/seller-network-ids)
         # file for the set of existing seller network IDs.
         # Corresponds to the JSON property `sellerNetworkIds`
@@ -2021,7 +2017,7 @@ module Google
       # Represents the size of an ad unit that can be targeted on an ad
       # request. It only applies to Private Auction, AdX Preferred Deals and
       # Auction Packages. This targeting does not apply to Programmatic Guaranteed
-      # and Preferred Deals in DFP.
+      # and Preferred Deals in Ad Manager.
       class InventorySizeTargeting
         include Google::Apis::Core::Hashable
       
@@ -2211,8 +2207,8 @@ module Google
         # Pass this value in the
         # ListClientsRequest.pageToken
         # field in the subsequent call to the
-        # accounts.clients.list method
-        # to retrieve the next page of results.
+        # accounts.clients.list
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2651,12 +2647,12 @@ module Google
         # Represents the size of an ad unit that can be targeted on an ad
         # request. It only applies to Private Auction, AdX Preferred Deals and
         # Auction Packages. This targeting does not apply to Programmatic Guaranteed
-        # and Preferred Deals in DFP.
+        # and Preferred Deals in Ad Manager.
         # Corresponds to the JSON property `inventorySizeTargeting`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::InventorySizeTargeting]
         attr_accessor :inventory_size_targeting
       
-        # Represents targeting about where the ads can appear, e.g. certain sites or
+        # Represents targeting about where the ads can appear, e.g., certain sites or
         # mobile applications.
         # Different placement targeting types will be logically OR'ed.
         # Corresponds to the JSON property `placementTargeting`
@@ -3055,7 +3051,7 @@ module Google
         end
       end
       
-      # Represents targeting about where the ads can appear, e.g. certain sites or
+      # Represents targeting about where the ads can appear, e.g., certain sites or
       # mobile applications.
       # Different placement targeting types will be logically OR'ed.
       class PlacementTargeting
@@ -3066,10 +3062,11 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MobileApplicationTargeting]
         attr_accessor :mobile_application_targeting
       
-        # Represents a list of targeted and excluded URLs (e.g google.com).
+        # Represents a list of targeted and excluded URLs (e.g., google.com).
         # For Private Auction and AdX Preferred Deals, URLs are either included or
         # excluded.
-        # For DFP Programmatic Guaranteed and Preferred Deals, this doesn't apply.
+        # For Programmatic Guaranteed and Preferred Deals, this doesn't
+        # apply.
         # Corresponds to the JSON property `urlTargeting`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::UrlTargeting]
         attr_accessor :url_targeting
@@ -3145,7 +3142,7 @@ module Google
         attr_accessor :advertiser_ids
       
         # Represents a buyer of inventory. Each buyer is identified by a unique
-        # Ad Exchange account ID.
+        # Authorized Buyers account ID.
         # Corresponds to the JSON property `buyer`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Buyer]
         attr_accessor :buyer
@@ -3240,7 +3237,7 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The revision number of the product. (auto-assigned by marketplace)
+        # The revision number of the product (auto-assigned by Marketplace).
         # Corresponds to the JSON property `productRevision`
         # @return [Fixnum]
         attr_accessor :product_revision
@@ -3252,7 +3249,7 @@ module Google
         attr_accessor :publisher_profile_id
       
         # Represents a seller of inventory. Each seller is identified by a unique
-        # Ad Exchange account ID.
+        # Ad Manager account ID.
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Seller]
         attr_accessor :seller
@@ -3313,7 +3310,7 @@ module Google
       
       # Note: this resource requires whitelisting for access. Please contact your
       # account manager for access to Marketplace resources.
-      # Represents a proposal in the marketplace. A proposal is the unit of
+      # Represents a proposal in the Marketplace. A proposal is the unit of
       # negotiation between a seller and a buyer and contains deals which
       # are served.
       # Note: you can not update, create, or otherwise modify Private
@@ -3323,13 +3320,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a buyer of inventory. Each buyer is identified by a unique
-        # Ad Exchange account ID.
+        # Authorized Buyers account ID.
         # Corresponds to the JSON property `billedBuyer`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Buyer]
         attr_accessor :billed_buyer
       
         # Represents a buyer of inventory. Each buyer is identified by a unique
-        # Ad Exchange account ID.
+        # Authorized Buyers account ID.
         # Corresponds to the JSON property `buyer`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Buyer]
         attr_accessor :buyer
@@ -3420,7 +3417,7 @@ module Google
         attr_accessor :proposal_state
       
         # Represents a seller of inventory. Each seller is identified by a unique
-        # Ad Exchange account ID.
+        # Ad Manager account ID.
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Seller]
         attr_accessor :seller
@@ -3551,7 +3548,7 @@ module Google
         attr_accessor :sample_page_url
       
         # Represents a seller of inventory. Each seller is identified by a unique
-        # Ad Exchange account ID.
+        # Ad Manager account ID.
         # Corresponds to the JSON property `seller`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Seller]
         attr_accessor :seller
@@ -3637,22 +3634,22 @@ module Google
       end
       
       # A relative date range, specified by an offset and a duration.
-      # The supported range of dates begins 30 days before today and ends today.
-      # I.e. the limits for these values are:
+      # The supported range of dates begins 30 days before today and ends today,
+      # i.e., the limits for these values are:
       # offset_days >= 0
       # duration_days >= 1
       # offset_days + duration_days <= 30
       class RelativeDateRange
         include Google::Apis::Core::Hashable
       
-        # The number of days in the requested date range. E.g. for a range spanning
-        # today, 1. For a range spanning the last 7 days, 7.
+        # The number of days in the requested date range, e.g., for a range spanning
+        # today: 1. For a range spanning the last 7 days: 7.
         # Corresponds to the JSON property `durationDays`
         # @return [Fixnum]
         attr_accessor :duration_days
       
         # The end date of the filter set, specified as the number of days before
-        # today. E.g. for a range where the last date is today, 0.
+        # today, e.g., for a range where the last date is today: 0.
         # Corresponds to the JSON property `offsetDays`
         # @return [Fixnum]
         attr_accessor :offset_days
@@ -3741,7 +3738,7 @@ module Google
       end
       
       # Represents a seller of inventory. Each seller is identified by a unique
-      # Ad Exchange account ID.
+      # Ad Manager account ID.
       class Seller
         include Google::Apis::Core::Hashable
       
@@ -4080,10 +4077,11 @@ module Google
         end
       end
       
-      # Represents a list of targeted and excluded URLs (e.g google.com).
+      # Represents a list of targeted and excluded URLs (e.g., google.com).
       # For Private Auction and AdX Preferred Deals, URLs are either included or
       # excluded.
-      # For DFP Programmatic Guaranteed and Preferred Deals, this doesn't apply.
+      # For Programmatic Guaranteed and Preferred Deals, this doesn't
+      # apply.
       class UrlTargeting
         include Google::Apis::Core::Hashable
       

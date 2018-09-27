@@ -1252,7 +1252,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
       
-        # 
+        # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding
+        # to be returned. It still can be used for rules matching.
         # Corresponds to the JSON property `exclusionType`
         # @return [String]
         attr_accessor :exclusion_type

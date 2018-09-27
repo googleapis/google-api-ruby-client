@@ -582,6 +582,18 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc, display_name, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the most recent version of the
+        #   resource was created.
+        #   - `state`: corresponds to the state of the resource.
+        #   - `name`: corresponds to resource name.
+        #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -605,11 +617,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_stored_info_types(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_stored_info_types(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1130,6 +1143,17 @@ module Google
         #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
         #   * inspected_storage = cloud_storage AND (state = done OR state = canceled)
         #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc, end_time asc, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the job was created.
+        #   - `end_time`: corresponds to time the job ended.
+        #   - `name`: corresponds to job's name.
+        #   - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -1153,12 +1177,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_dlp_jobs(parent, filter: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_dlp_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/dlpJobs', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['type'] = type unless type.nil?
@@ -1692,6 +1717,18 @@ module Google
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
+        # @param [String] order_by
+        #   Optional comma separated list of fields to order by,
+        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
+        #   default sorting order is ascending, redundant space characters are
+        #   insignificant.
+        #   Example: `name asc, display_name, create_time desc`
+        #   Supported fields are:
+        #   - `create_time`: corresponds to time the most recent version of the
+        #   resource was created.
+        #   - `state`: corresponds to the state of the resource.
+        #   - `name`: corresponds to resource name.
+        #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
         #   Optional size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
@@ -1715,11 +1752,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_stored_info_types(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_stored_info_types(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

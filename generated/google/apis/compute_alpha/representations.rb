@@ -928,6 +928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GuestAttributesEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestAttributesValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3233,6 +3245,18 @@ module Google
       end
       
       class ShieldedVmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedVmIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedVmIdentityEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5995,9 +6019,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :query_path, as: 'queryPath'
+          property :query_value, as: 'queryValue', class: Google::Apis::ComputeAlpha::GuestAttributesValue, decorator: Google::Apis::ComputeAlpha::GuestAttributesValue::Representation
+      
           property :self_link, as: 'selfLink'
           property :variable_key, as: 'variableKey'
           property :variable_value, as: 'variableValue'
+        end
+      end
+      
+      class GuestAttributesEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :namespace, as: 'namespace'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GuestAttributesValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::GuestAttributesEntry, decorator: Google::Apis::ComputeAlpha::GuestAttributesEntry::Representation
+      
         end
       end
       
@@ -8083,16 +8127,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_port, as: 'defaultPort'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupLbNetworkEndpointGroup, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupLbNetworkEndpointGroup::Representation
       
           property :name, as: 'name'
+          property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
+          property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
+          property :zone, as: 'zone'
         end
       end
       
@@ -10196,6 +10244,25 @@ module Google
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
           property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class ShieldedVmIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry, decorator: Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry::Representation
+      
+          property :kind, as: 'kind'
+          property :signing_key, as: 'signingKey', class: Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry, decorator: Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry::Representation
+      
+        end
+      end
+      
+      class ShieldedVmIdentityEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ek_cert, as: 'ekCert'
+          property :ek_pub, as: 'ekPub'
         end
       end
       

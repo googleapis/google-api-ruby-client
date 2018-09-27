@@ -9475,6 +9475,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance scoping this request.
+        # @param [String] query_path
+        #   Specifies the guest attributes path to be queried.
         # @param [String] variable_key
         #   Specifies the key for the guest attributes entry.
         # @param [String] fields
@@ -9496,13 +9498,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance_guest_attributes(project, zone, instance, variable_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance_guest_attributes(project, zone, instance, query_path: nil, variable_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getGuestAttributes', options)
           command.response_representation = Google::Apis::ComputeAlpha::GuestAttributes::Representation
           command.response_class = Google::Apis::ComputeAlpha::GuestAttributes
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['queryPath'] = query_path unless query_path.nil?
           command.query['variableKey'] = variable_key unless variable_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -9592,6 +9595,45 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['port'] = port unless port.nil?
           command.query['start'] = start unless start.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the Shielded VM Identity of an instance
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::ShieldedVmIdentity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::ShieldedVmIdentity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_shielded_vm_identity(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity', options)
+          command.response_representation = Google::Apis::ComputeAlpha::ShieldedVmIdentity::Representation
+          command.response_class = Google::Apis::ComputeAlpha::ShieldedVmIdentity
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12706,10 +12748,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified machine image. If you delete an instance template that
-        # is being referenced from another instance group, the instance group will not
-        # be able to create or recreate virtual machine instances. Deleting an machine
-        # image is permanent and cannot be undone.
+        # Deletes the specified machine image. Deleting an machine image is permanent
+        # and cannot be undone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] machine_image
@@ -12832,9 +12872,9 @@ module Google
         end
         
         # Creates an machine image in the specified project using the data that is
-        # included in the request. If you are creating a new template to update an
-        # existing instance group, your new machine image must use the same network or,
-        # if applicable, the same subnetwork as the original template.
+        # included in the request. If you are creating a new machine image to update an
+        # existing instance, your new machine image must use the same network or, if
+        # applicable, the same subnetwork as the original instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeAlpha::MachineImage] machine_image_object

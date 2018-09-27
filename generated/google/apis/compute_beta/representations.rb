@@ -796,6 +796,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GuestAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestAttributesEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestAttributesValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2674,6 +2692,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatSubnetworkToNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2681,6 +2711,12 @@ module Google
       end
       
       class RouterStatusBgpPeerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatusNatStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2813,6 +2849,18 @@ module Google
       end
       
       class ShieldedVmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedVmIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedVmIdentityEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3406,12 +3454,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UdpHealthCheck
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3498,6 +3540,36 @@ module Google
       
       class UsageExportLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappingsList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5069,6 +5141,36 @@ module Google
         end
       end
       
+      class GuestAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :query_path, as: 'queryPath'
+          property :query_value, as: 'queryValue', class: Google::Apis::ComputeBeta::GuestAttributesValue, decorator: Google::Apis::ComputeBeta::GuestAttributesValue::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :variable_key, as: 'variableKey'
+          property :variable_value, as: 'variableValue'
+        end
+      end
+      
+      class GuestAttributesEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :namespace, as: 'namespace'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GuestAttributesValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::GuestAttributesEntry, decorator: Google::Apis::ComputeBeta::GuestAttributesEntry::Representation
+      
+        end
+      end
+      
       class GuestOsFeature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5138,8 +5240,6 @@ module Google
       
           property :timeout_sec, as: 'timeoutSec'
           property :type, as: 'type'
-          property :udp_health_check, as: 'udpHealthCheck', class: Google::Apis::ComputeBeta::UdpHealthCheck, decorator: Google::Apis::ComputeBeta::UdpHealthCheck::Representation
-      
           property :unhealthy_threshold, as: 'unhealthyThreshold'
         end
       end
@@ -6826,15 +6926,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_port, as: 'defaultPort'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::ComputeBeta::NetworkEndpointGroupLbNetworkEndpointGroup, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupLbNetworkEndpointGroup::Representation
       
           property :name, as: 'name'
+          property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
+          property :subnetwork, as: 'subnetwork'
+          property :zone, as: 'zone'
         end
       end
       
@@ -8376,6 +8480,8 @@ module Google
       
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :nats, as: 'nats', class: Google::Apis::ComputeBeta::RouterNat, decorator: Google::Apis::ComputeBeta::RouterNat::Representation
+      
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -8493,6 +8599,32 @@ module Google
         end
       end
       
+      class RouterNat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :min_ports_per_vm, as: 'minPortsPerVm'
+          property :name, as: 'name'
+          property :nat_ip_allocate_option, as: 'natIpAllocateOption'
+          collection :nat_ips, as: 'natIps'
+          property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat::Representation
+      
+          property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
+          property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
+          property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
+        end
+      end
+      
+      class RouterNatSubnetworkToNat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :secondary_ip_range_names, as: 'secondaryIpRangeNames'
+          collection :source_ip_ranges_to_nat, as: 'sourceIpRangesToNat'
+        end
+      end
+      
       class RouterStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8501,6 +8633,8 @@ module Google
           collection :best_routes_for_router, as: 'bestRoutesForRouter', class: Google::Apis::ComputeBeta::Route, decorator: Google::Apis::ComputeBeta::Route::Representation
       
           collection :bgp_peer_status, as: 'bgpPeerStatus', class: Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus, decorator: Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus::Representation
+      
+          collection :nat_status, as: 'natStatus', class: Google::Apis::ComputeBeta::RouterStatusNatStatus, decorator: Google::Apis::ComputeBeta::RouterStatusNatStatus::Representation
       
           property :network, as: 'network'
         end
@@ -8520,6 +8654,18 @@ module Google
           property :status, as: 'status'
           property :uptime, as: 'uptime'
           property :uptime_seconds, as: 'uptimeSeconds'
+        end
+      end
+      
+      class RouterStatusNatStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
+          property :name, as: 'name'
+          property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          collection :user_allocated_nat_ip_resources, as: 'userAllocatedNatIpResources'
+          collection :user_allocated_nat_ips, as: 'userAllocatedNatIps'
         end
       end
       
@@ -8743,6 +8889,25 @@ module Google
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
           property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class ShieldedVmIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeBeta::ShieldedVmIdentityEntry, decorator: Google::Apis::ComputeBeta::ShieldedVmIdentityEntry::Representation
+      
+          property :kind, as: 'kind'
+          property :signing_key, as: 'signingKey', class: Google::Apis::ComputeBeta::ShieldedVmIdentityEntry, decorator: Google::Apis::ComputeBeta::ShieldedVmIdentityEntry::Representation
+      
+        end
+      end
+      
+      class ShieldedVmIdentityEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ek_cert, as: 'ekCert'
+          property :ek_pub, as: 'ekPub'
         end
       end
       
@@ -9774,16 +9939,6 @@ module Google
         end
       end
       
-      class UdpHealthCheck
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :port, as: 'port'
-          property :port_name, as: 'portName'
-          property :request, as: 'request'
-          property :response, as: 'response'
-        end
-      end
-      
       class UrlMap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9936,6 +10091,57 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
           property :report_name_prefix, as: 'reportNamePrefix'
+        end
+      end
+      
+      class VmEndpointNatMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_name, as: 'instanceName'
+          collection :interface_nat_mappings, as: 'interfaceNatMappings', class: Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappings, decorator: Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappings::Representation
+      
+        end
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_nat_ports, as: 'numTotalNatPorts'
+          property :source_alias_ip_range, as: 'sourceAliasIpRange'
+          property :source_virtual_ip, as: 'sourceVirtualIp'
+        end
+      end
+      
+      class VmEndpointNatMappingsList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeBeta::VmEndpointNatMappings, decorator: Google::Apis::ComputeBeta::VmEndpointNatMappings::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning, decorator: Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning::Datum, decorator: Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

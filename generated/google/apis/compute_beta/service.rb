@@ -8435,6 +8435,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the specified guest attributes entry.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] query_path
+        #   Specifies the guest attributes path to be queried.
+        # @param [String] variable_key
+        #   Specifies the key for the guest attributes entry.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::GuestAttributes] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::GuestAttributes]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_guest_attributes(project, zone, instance, query_path: nil, variable_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getGuestAttributes', options)
+          command.response_representation = Google::Apis::ComputeBeta::GuestAttributes::Representation
+          command.response_class = Google::Apis::ComputeBeta::GuestAttributes
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['queryPath'] = query_path unless query_path.nil?
+          command.query['variableKey'] = variable_key unless variable_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. May be empty if no such policy
         # or resource exists.
         # @param [String] project
@@ -8517,6 +8562,45 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['port'] = port unless port.nil?
           command.query['start'] = start unless start.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the Shielded VM Identity of an instance
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::ShieldedVmIdentity] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::ShieldedVmIdentity]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_shielded_vm_identity(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity', options)
+          command.response_representation = Google::Apis::ComputeBeta::ShieldedVmIdentity::Representation
+          command.response_class = Google::Apis::ComputeBeta::ShieldedVmIdentity
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -17679,6 +17763,84 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves runtime Nat mapping information of VM endpoints.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] router
+        #   Name of the Router resource to query for Nat Mapping information of VM
+        #   endpoints.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::VmEndpointNatMappingsList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::VmEndpointNatMappingsList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
+          command.response_representation = Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Representation
+          command.response_class = Google::Apis::ComputeBeta::VmEndpointNatMappingsList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['router'] = router unless router.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves runtime information of the specified router.
         # @param [String] project
         #   Project ID for this request.
@@ -18289,6 +18451,8 @@ module Google
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeBeta::SecurityPolicyRule] security_policy_rule_object
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18308,7 +18472,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_security_policy_rule(project, security_policy, security_policy_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_security_policy_rule(project, security_policy, security_policy_rule_object = nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/addRule', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
@@ -18316,6 +18480,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -18461,6 +18626,8 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18480,7 +18647,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_security_policy(project, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_security_policy(project, security_policy_object = nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/securityPolicies', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicy::Representation
           command.request_object = security_policy_object
@@ -18488,6 +18655,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -18696,6 +18864,8 @@ module Google
         # @param [Google::Apis::ComputeBeta::SecurityPolicyRule] security_policy_rule_object
         # @param [Fixnum] priority
         #   The priority of the rule to patch.
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18715,7 +18885,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_security_policy_rule(project, security_policy, security_policy_rule_object = nil, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_security_policy_rule(project, security_policy, security_policy_rule_object = nil, priority: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
@@ -18724,6 +18894,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

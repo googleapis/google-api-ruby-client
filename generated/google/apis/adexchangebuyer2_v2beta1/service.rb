@@ -22,8 +22,9 @@ module Google
     module Adexchangebuyer2V2beta1
       # Ad Exchange Buyer API II
       #
-      # Accesses the latest features for managing Ad Exchange accounts, Real-Time
-      #  Bidding configurations and auction metrics, and Marketplace programmatic deals.
+      # Accesses the latest features for managing Authorized Buyers accounts, Real-
+      #  Time Bidding configurations and auction metrics, and Marketplace programmatic
+      #  deals.
       #
       # @example
       #    require 'google/apis/adexchangebuyer2_v2beta1'
@@ -31,7 +32,7 @@ module Google
       #    Adexchangebuyer2 = Google::Apis::Adexchangebuyer2V2beta1 # Alias the module
       #    service = Adexchangebuyer2::AdExchangeBuyerIIService.new
       #
-      # @see https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
+      # @see https://developers.google.com/authorized-buyers/apis/reference/rest/
       class AdExchangeBuyerIIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -126,7 +127,8 @@ module Google
         #   Typically, this is the value of
         #   ListClientsResponse.nextPageToken
         #   returned from the previous call to the
-        #   accounts.clients.list method.
+        #   accounts.clients.list
+        #   method.
         # @param [String] partner_client_id
         #   Optional unique identifier (from the standpoint of an Ad Exchange sponsor
         #   buyer partner) of the client to return.
@@ -926,7 +928,7 @@ module Google
         #   Account ID of the buyer.
         # @param [String] filter
         #   An optional PQL query used to query for products. See
-        #   https://developers.google.com/doubleclick-publishers/docs/pqlreference
+        #   https://developers.google.com/ad-manager/docs/pqlreference
         #   for documentation about PQL and examples.
         #   Nested repeated fields, such as product.targetingCriterion.inclusions,
         #   cannot be filtered.
@@ -1911,7 +1913,7 @@ module Google
         #   The ID of the creative status for which to retrieve a breakdown by
         #   creative.
         #   See
-        #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
+        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
         #   downloads/creative-status-codes).
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
@@ -1966,7 +1968,7 @@ module Google
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by detail.
         #   See
-        #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
+        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
         #   downloads/creative-status-codes).
         #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
         # @param [Fixnum] page_size
@@ -2581,7 +2583,7 @@ module Google
         #   The ID of the creative status for which to retrieve a breakdown by
         #   creative.
         #   See
-        #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
+        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
         #   downloads/creative-status-codes).
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
@@ -2636,7 +2638,7 @@ module Google
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by detail.
         #   See
-        #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
+        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
         #   downloads/creative-status-codes).
         #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
         # @param [Fixnum] page_size

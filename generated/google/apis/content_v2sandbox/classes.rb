@@ -47,6 +47,31 @@ module Google
         end
       end
       
+      # 
+      class CustomerReturnReason
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `reasonCode`
+        # @return [String]
+        attr_accessor :reason_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason_code = args[:reason_code] if args.key?(:reason_code)
+        end
+      end
+      
       # An error returned by the API.
       class Error
         include Google::Apis::Core::Hashable
@@ -190,6 +215,104 @@ module Google
         def update!(**args)
           @total_amount = args[:total_amount] if args.key?(:total_amount)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class MerchantOrderReturn
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # 
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # 
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # 
+        # Corresponds to the JSON property `orderReturnId`
+        # @return [String]
+        attr_accessor :order_return_id
+      
+        # 
+        # Corresponds to the JSON property `returnItems`
+        # @return [Array<Google::Apis::ContentV2sandbox::MerchantOrderReturnItem>]
+        attr_accessor :return_items
+      
+        # 
+        # Corresponds to the JSON property `returnShipments`
+        # @return [Array<Google::Apis::ContentV2sandbox::ReturnShipment>]
+        attr_accessor :return_shipments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @order_return_id = args[:order_return_id] if args.key?(:order_return_id)
+          @return_items = args[:return_items] if args.key?(:return_items)
+          @return_shipments = args[:return_shipments] if args.key?(:return_shipments)
+        end
+      end
+      
+      # 
+      class MerchantOrderReturnItem
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customerReturnReason`
+        # @return [Google::Apis::ContentV2sandbox::CustomerReturnReason]
+        attr_accessor :customer_return_reason
+      
+        # 
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # 
+        # Corresponds to the JSON property `merchantReturnReason`
+        # @return [Google::Apis::ContentV2sandbox::RefundReason]
+        attr_accessor :merchant_return_reason
+      
+        # 
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::ContentV2sandbox::OrderLineItemProduct]
+        attr_accessor :product
+      
+        # 
+        # Corresponds to the JSON property `returnShipmentIds`
+        # @return [Array<String>]
+        attr_accessor :return_shipment_ids
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_return_reason = args[:customer_return_reason] if args.key?(:customer_return_reason)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @merchant_return_reason = args[:merchant_return_reason] if args.key?(:merchant_return_reason)
+          @product = args[:product] if args.key?(:product)
+          @return_shipment_ids = args[:return_shipment_ids] if args.key?(:return_shipment_ids)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -449,8 +572,7 @@ module Google
       class OrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Email address that should be used for order related communications. In certain
-        # cases this might not be a real users email, but a proxy email.
+        # Deprecated.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1560,10 +1682,15 @@ module Google
         # @return [String]
         attr_accessor :charge_state
       
-        # Invoice ID from orderInvoice service that corresponds to the charge.
+        # Deprecated. Please use invoiceIds instead.
         # Corresponds to the JSON property `invoiceId`
         # @return [String]
         attr_accessor :invoice_id
+      
+        # Invoice IDs from the orderinvoices service that correspond to the charge.
+        # Corresponds to the JSON property `invoiceIds`
+        # @return [Array<String>]
+        attr_accessor :invoice_ids
       
         def initialize(**args)
            update!(**args)
@@ -1573,6 +1700,7 @@ module Google
         def update!(**args)
           @charge_state = args[:charge_state] if args.key?(:charge_state)
           @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @invoice_ids = args[:invoice_ids] if args.key?(:invoice_ids)
         end
       end
       
@@ -1606,10 +1734,15 @@ module Google
       class OrderpaymentsNotifyRefundRequest
         include Google::Apis::Core::Hashable
       
-        # Invoice ID from orderInvoice service that corresponds to the charge.
+        # Deprecated. Please use invoiceIds instead.
         # Corresponds to the JSON property `invoiceId`
         # @return [String]
         attr_accessor :invoice_id
+      
+        # Invoice IDs from the orderinvoices service that correspond to the refund.
+        # Corresponds to the JSON property `invoiceIds`
+        # @return [Array<String>]
+        attr_accessor :invoice_ids
       
         # Whether refund was successful.
         # Corresponds to the JSON property `refundState`
@@ -1623,6 +1756,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @invoice_ids = args[:invoice_ids] if args.key?(:invoice_ids)
           @refund_state = args[:refund_state] if args.key?(:refund_state)
         end
       end
@@ -1650,6 +1784,38 @@ module Google
         def update!(**args)
           @execution_status = args[:execution_status] if args.key?(:execution_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderreturnsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreturnsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2sandbox::MerchantOrderReturn>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -3685,6 +3851,68 @@ module Google
       end
       
       # 
+      class RefundReason
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `reasonCode`
+        # @return [String]
+        attr_accessor :reason_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason_code = args[:reason_code] if args.key?(:reason_code)
+        end
+      end
+      
+      # 
+      class ReturnShipment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # 
+        # Corresponds to the JSON property `returnMethodType`
+        # @return [String]
+        attr_accessor :return_method_type
+      
+        # 
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # 
+        # Corresponds to the JSON property `shipmentTrackingInfos`
+        # @return [Array<Google::Apis::ContentV2sandbox::ShipmentTrackingInfo>]
+        attr_accessor :shipment_tracking_infos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @return_method_type = args[:return_method_type] if args.key?(:return_method_type)
+          @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
+          @shipment_tracking_infos = args[:shipment_tracking_infos] if args.key?(:shipment_tracking_infos)
+        end
+      end
+      
+      # 
       class ShipmentInvoice
         include Google::Apis::Core::Hashable
       
@@ -3750,6 +3978,31 @@ module Google
           @product_id = args[:product_id] if args.key?(:product_id)
           @shipment_unit_ids = args[:shipment_unit_ids] if args.key?(:shipment_unit_ids)
           @unit_invoice = args[:unit_invoice] if args.key?(:unit_invoice)
+        end
+      end
+      
+      # 
+      class ShipmentTrackingInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # 
+        # Corresponds to the JSON property `trackingNumber`
+        # @return [String]
+        attr_accessor :tracking_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @tracking_number = args[:tracking_number] if args.key?(:tracking_number)
         end
       end
       
@@ -3840,7 +4093,7 @@ module Google
       class TestOrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Email address of the customer.
+        # Deprecated.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email

@@ -3295,6 +3295,11 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
+        # The name of the encryption key that is stored in Google Cloud KMS.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
         # base64 to either encrypt or decrypt this resource.
         # Corresponds to the JSON property `rawKey`
@@ -3313,6 +3318,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @raw_key = args[:raw_key] if args.key?(:raw_key)
           @sha256 = args[:sha256] if args.key?(:sha256)
         end
@@ -4902,7 +4908,7 @@ module Google
         # rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
         # reference to an existing Address resource ( internal regional static IP
-        # address).
+        # address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnet configured for the forwarding rule. By
         # default, if this field is empty, an ephemeral internal IP address will be
@@ -5508,6 +5514,13 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
+        # The string to match anywhere in the first 1024 bytes of the response body. If
+        # left empty (the default value), the status code determines health. The
+        # response data can only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5519,6 +5532,7 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -5556,6 +5570,13 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
+        # The string to match anywhere in the first 1024 bytes of the response body. If
+        # left empty (the default value), the status code determines health. The
+        # response data can only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5567,6 +5588,7 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -10505,8 +10527,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :license_code
       
-        # [Output Only] Name of the resource. The name is 1-63 characters long and
-        # complies with RFC1035.
+        # Name of the resource. The name must be 1-63 characters long and comply with
+        # RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -17961,7 +17983,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Whether to enable flow logging for this subnetwork.
+        # Whether to enable flow logging for this subnetwork. If this field is not
+        # explicitly set, it will not appear in get listings. If not set the default
+        # behavior is to disable flow logging.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs

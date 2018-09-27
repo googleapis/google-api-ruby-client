@@ -6299,7 +6299,7 @@ module Google
         # rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
         # reference to an existing Address resource ( internal regional static IP
-        # address).
+        # address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnet configured for the forwarding rule. By
         # default, if this field is empty, an ephemeral internal IP address will be
@@ -7007,6 +7007,17 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The path to be queried. This can be the default namespace ('/') or a nested
+        # namespace ('//') or a specified key ('//')
+        # Corresponds to the JSON property `queryPath`
+        # @return [String]
+        attr_accessor :query_path
+      
+        # Array of guest attribute namespace/key/value tuples.
+        # Corresponds to the JSON property `queryValue`
+        # @return [Google::Apis::ComputeAlpha::GuestAttributesValue]
+        attr_accessor :query_value
+      
         # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -7029,9 +7040,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @query_path = args[:query_path] if args.key?(:query_path)
+          @query_value = args[:query_value] if args.key?(:query_value)
           @self_link = args[:self_link] if args.key?(:self_link)
           @variable_key = args[:variable_key] if args.key?(:variable_key)
           @variable_value = args[:variable_value] if args.key?(:variable_value)
+        end
+      end
+      
+      # A guest attributes namespace/key/value entry.
+      class GuestAttributesEntry
+        include Google::Apis::Core::Hashable
+      
+        # Key for the guest attribute entry.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Namespace for the guest attribute entry.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Value for the guest attribute entry.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Array of guest attribute namespace/key/value tuples.
+      class GuestAttributesValue
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::GuestAttributesEntry>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
         end
       end
       
@@ -13696,8 +13759,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :license_code
       
-        # [Output Only] Name of the resource. The name is 1-63 characters long and
-        # complies with RFC1035.
+        # Name of the resource. The name must be 1-63 characters long and comply with
+        # RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -14145,8 +14208,8 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The source instance used to create the template. You can provide this as a
-        # partial or full URL to the resource. For example, the following are valid
+        # The source instance used to create the machine image. You can provide this as
+        # a partial or full URL to the resource. For example, the following are valid
         # values:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         # instance
@@ -15285,6 +15348,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # The default port used if the port number is not specified in the network
+        # endpoint.
+        # Corresponds to the JSON property `defaultPort`
+        # @return [Fixnum]
+        attr_accessor :default_port
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -15318,6 +15387,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The URL of the network to which all network endpoints in the NEG belong. Uses "
+        # default" project network if unspecified.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Type of network endpoints in this network endpoint group. Currently the only
         # supported value is GCE_VM_IP_PORT.
         # Corresponds to the JSON property `networkEndpointType`
@@ -15334,11 +15409,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
+        # Optional URL of the subnetwork to which all network endpoints in the NEG
+        # belong.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         # Specify the type of this network endpoint group. Only LOAD_BALANCING is valid
         # for now.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # [Output Only] The URL of the zone where the network endpoint group is located.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
       
         def initialize(**args)
            update!(**args)
@@ -15347,15 +15433,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @type = args[:type] if args.key?(:type)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -22606,7 +22696,7 @@ module Google
         # source is required except for local SSD.
         # If desired, you can also attach existing non-root persistent disks using this
         # property. This field is only applicable for persistent disks.
-        # Note that for InstanceTemplate, specify the disk name, not the URL for the
+        # Note that for sourceMachineImage, specify the disk name, not the URL for the
         # disk.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -23255,6 +23345,63 @@ module Google
         end
       end
       
+      # A shielded VM identity entry.
+      class ShieldedVmIdentity
+        include Google::Apis::Core::Hashable
+      
+        # A Shielded VM Identity Entry.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry]
+        attr_accessor :encryption_key
+      
+        # [Output Only] Type of the resource. Always compute#shieldedVmIdentity for
+        # shielded VM identity entry.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A Shielded VM Identity Entry.
+        # Corresponds to the JSON property `signingKey`
+        # @return [Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry]
+        attr_accessor :signing_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @kind = args[:kind] if args.key?(:kind)
+          @signing_key = args[:signing_key] if args.key?(:signing_key)
+        end
+      end
+      
+      # A Shielded VM Identity Entry.
+      class ShieldedVmIdentityEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ekCert`
+        # @return [String]
+        attr_accessor :ek_cert
+      
+        # 
+        # Corresponds to the JSON property `ekPub`
+        # @return [String]
+        attr_accessor :ek_pub
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ek_cert = args[:ek_cert] if args.key?(:ek_cert)
+          @ek_pub = args[:ek_pub] if args.key?(:ek_pub)
+        end
+      end
+      
       # The policy describes the baseline against which VM instance boot integrity is
       # measured.
       class ShieldedVmIntegrityPolicy
@@ -23621,9 +23768,9 @@ module Google
       class SourceInstanceProperties
         include Google::Apis::Core::Hashable
       
-        # Enables instances created based on this template to send packets with source
-        # IP addresses other than their own and receive packets with destination IP
-        # addresses other than their own. If these instances will be used as an IP
+        # Enables instances created based on this machine image to send packets with
+        # source IP addresses other than their own and receive packets with destination
+        # IP addresses other than their own. If these instances will be used as an IP
         # gateway or it will be set as the next-hop in a Route resource, specify true.
         # If unsure, leave this set to false. See the Enable IP forwarding documentation
         # for more information.
@@ -23639,29 +23786,29 @@ module Google
         alias_method :deletion_protection?, :deletion_protection
       
         # An optional text description for the instances that are created from this
-        # instance template.
+        # machine image.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # An array of disks that are associated with the instances that are created from
-        # this template.
+        # this machine image.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeAlpha::SavedAttachedDisk>]
         attr_accessor :disks
       
         # A list of guest accelerator cards' type and count to use for instances created
-        # from the instance template.
+        # from the machine image.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
-        # Labels to apply to instances that are created from this template.
+        # Labels to apply to instances that are created from this machine image.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The machine type to use for instances that are created from this template.
+        # The machine type to use for instances that are created from this machine image.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -23692,7 +23839,8 @@ module Google
       
         # A list of service accounts with specified scopes. Access tokens for these
         # service accounts are available to the instances that are created from this
-        # template. Use metadata queries to obtain the access tokens for these instances.
+        # machine image. Use metadata queries to obtain the access tokens for these
+        # instances.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAccount>]
         attr_accessor :service_accounts
@@ -24653,7 +24801,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Whether to enable flow logging for this subnetwork.
+        # Whether to enable flow logging for this subnetwork. If this field is not
+        # explicitly set, it will not appear in get listings. If not set the default
+        # behavior is to disable flow logging.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs

@@ -5388,7 +5388,7 @@ module Google
         # rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
         # reference to an existing Address resource ( internal regional static IP
-        # address).
+        # address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnet configured for the forwarding rule. By
         # default, if this field is empty, an ephemeral internal IP address will be
@@ -6051,6 +6051,107 @@ module Google
         end
       end
       
+      # A guest attributes entry.
+      class GuestAttributes
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Type of the resource. Always compute#guestAttributes for guest
+        # attributes entry.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The path to be queried. This can be the default namespace ('/') or a nested
+        # namespace ('//') or a specified key ('//')
+        # Corresponds to the JSON property `queryPath`
+        # @return [String]
+        attr_accessor :query_path
+      
+        # Array of guest attribute namespace/key/value tuples.
+        # Corresponds to the JSON property `queryValue`
+        # @return [Google::Apis::ComputeBeta::GuestAttributesValue]
+        attr_accessor :query_value
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The key to search for.
+        # Corresponds to the JSON property `variableKey`
+        # @return [String]
+        attr_accessor :variable_key
+      
+        # [Output Only] The value found for the requested key.
+        # Corresponds to the JSON property `variableValue`
+        # @return [String]
+        attr_accessor :variable_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @query_path = args[:query_path] if args.key?(:query_path)
+          @query_value = args[:query_value] if args.key?(:query_value)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @variable_key = args[:variable_key] if args.key?(:variable_key)
+          @variable_value = args[:variable_value] if args.key?(:variable_value)
+        end
+      end
+      
+      # A guest attributes namespace/key/value entry.
+      class GuestAttributesEntry
+        include Google::Apis::Core::Hashable
+      
+        # Key for the guest attribute entry.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Namespace for the guest attribute entry.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Value for the guest attribute entry.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Array of guest attribute namespace/key/value tuples.
+      class GuestAttributesValue
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::GuestAttributesEntry>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
       # Guest OS features.
       class GuestOsFeature
         include Google::Apis::Core::Hashable
@@ -6395,11 +6496,6 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # 
-        # Corresponds to the JSON property `udpHealthCheck`
-        # @return [Google::Apis::ComputeBeta::UdpHealthCheck]
-        attr_accessor :udp_health_check
-      
         # A so-far healthy instance will be marked unhealthy after this many consecutive
         # failures. The default value is 2.
         # Corresponds to the JSON property `unhealthyThreshold`
@@ -6427,7 +6523,6 @@ module Google
           @tcp_health_check = args[:tcp_health_check] if args.key?(:tcp_health_check)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
           @type = args[:type] if args.key?(:type)
-          @udp_health_check = args[:udp_health_check] if args.key?(:udp_health_check)
           @unhealthy_threshold = args[:unhealthy_threshold] if args.key?(:unhealthy_threshold)
         end
       end
@@ -11853,8 +11948,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :license_code
       
-        # [Output Only] Name of the resource. The name is 1-63 characters long and
-        # complies with RFC1035.
+        # Name of the resource. The name must be 1-63 characters long and comply with
+        # RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -13102,6 +13197,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # The default port used if the port number is not specified in the network
+        # endpoint.
+        # Corresponds to the JSON property `defaultPort`
+        # @return [Fixnum]
+        attr_accessor :default_port
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -13135,6 +13236,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The URL of the network to which all network endpoints in the NEG belong. Uses "
+        # default" project network if unspecified.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Type of network endpoints in this network endpoint group. Currently the only
         # supported value is GCE_VM_IP_PORT.
         # Corresponds to the JSON property `networkEndpointType`
@@ -13151,6 +13258,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
+        # Optional URL of the subnetwork to which all network endpoints in the NEG
+        # belong.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # [Output Only] The URL of the zone where the network endpoint group is located.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13158,14 +13276,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -18870,6 +18992,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A list of Nat services created in this router.
+        # Corresponds to the JSON property `nats`
+        # @return [Array<Google::Apis::ComputeBeta::RouterNat>]
+        attr_accessor :nats
+      
         # URI of the network to which this router belongs.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -18901,6 +19028,7 @@ module Google
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @nats = args[:nats] if args.key?(:nats)
           @network = args[:network] if args.key?(:network)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -19357,6 +19485,132 @@ module Google
         end
       end
       
+      # Represents a Nat resource. It enables the VMs within the specified subnetworks
+      # to access Internet without external IP addresses. It specifies a list of
+      # subnetworks (and the ranges within) that want to use NAT. Customers can also
+      # provide the external IPs that would be used for NAT. GCP would auto-allocate
+      # ephemeral IPs if no external IPs are provided.
+      class RouterNat
+        include Google::Apis::Core::Hashable
+      
+        # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        # Corresponds to the JSON property `icmpIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :icmp_idle_timeout_sec
+      
+        # Minimum number of ports allocated to a VM from this NAT config. If not set, a
+        # default number of ports is allocated to a VM. This gets rounded up to the
+        # nearest power of 2. Eg. if the value of this field is 50, at least 64 ports
+        # will be allocated to a VM.
+        # Corresponds to the JSON property `minPortsPerVm`
+        # @return [Fixnum]
+        attr_accessor :min_ports_per_vm
+      
+        # Unique name of this Nat service. The name must be 1-63 characters long and
+        # comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be
+        # empty.
+        # Corresponds to the JSON property `natIpAllocateOption`
+        # @return [String]
+        attr_accessor :nat_ip_allocate_option
+      
+        # A list of URLs of the IP resources used for this Nat service. These IPs must
+        # be valid static external IP addresses assigned to the project. max_length is
+        # subject to change post alpha.
+        # Corresponds to the JSON property `natIps`
+        # @return [Array<String>]
+        attr_accessor :nat_ips
+      
+        # Specify the Nat option. If this field contains ALL_SUBNETWORKS_ALL_IP_RANGES
+        # or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        # Router.Nat section in any Router for this network in this region.
+        # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
+        # @return [String]
+        attr_accessor :source_subnetwork_ip_ranges_to_nat
+      
+        # A list of Subnetwork resources whose traffic should be translated by NAT
+        # Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the
+        # SubnetworkIpRangeToNatOption above.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<Google::Apis::ComputeBeta::RouterNatSubnetworkToNat>]
+        attr_accessor :subnetworks
+      
+        # Timeout (in seconds) for TCP established connections. Defaults to 1200s if not
+        # set.
+        # Corresponds to the JSON property `tcpEstablishedIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_established_idle_timeout_sec
+      
+        # Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not
+        # set.
+        # Corresponds to the JSON property `tcpTransitoryIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_transitory_idle_timeout_sec
+      
+        # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+        # Corresponds to the JSON property `udpIdleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :udp_idle_timeout_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
+          @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
+          @name = args[:name] if args.key?(:name)
+          @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
+          @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
+          @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+          @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
+          @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
+          @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
+        end
+      end
+      
+      # Defines the IP ranges that want to use NAT for a subnetwork.
+      class RouterNatSubnetworkToNat
+        include Google::Apis::Core::Hashable
+      
+        # URL for the subnetwork resource to use NAT.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of the secondary ranges of the Subnetwork that are allowed to use NAT.
+        # This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of the
+        # values in source_ip_ranges_to_nat.
+        # Corresponds to the JSON property `secondaryIpRangeNames`
+        # @return [Array<String>]
+        attr_accessor :secondary_ip_range_names
+      
+        # Specify the options for NAT ranges in the Subnetwork. All usages of single
+        # value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option
+        # with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"]
+        # Default: [ALL_IP_RANGES]
+        # Corresponds to the JSON property `sourceIpRangesToNat`
+        # @return [Array<String>]
+        attr_accessor :source_ip_ranges_to_nat
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @secondary_ip_range_names = args[:secondary_ip_range_names] if args.key?(:secondary_ip_range_names)
+          @source_ip_ranges_to_nat = args[:source_ip_ranges_to_nat] if args.key?(:source_ip_ranges_to_nat)
+        end
+      end
+      
       # 
       class RouterStatus
         include Google::Apis::Core::Hashable
@@ -19376,6 +19630,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::RouterStatusBgpPeerStatus>]
         attr_accessor :bgp_peer_status
       
+        # 
+        # Corresponds to the JSON property `natStatus`
+        # @return [Array<Google::Apis::ComputeBeta::RouterStatusNatStatus>]
+        attr_accessor :nat_status
+      
         # URI of the network to which this router belongs.
         # Corresponds to the JSON property `network`
         # @return [String]
@@ -19390,6 +19649,7 @@ module Google
           @best_routes = args[:best_routes] if args.key?(:best_routes)
           @best_routes_for_router = args[:best_routes_for_router] if args.key?(:best_routes_for_router)
           @bgp_peer_status = args[:bgp_peer_status] if args.key?(:bgp_peer_status)
+          @nat_status = args[:nat_status] if args.key?(:nat_status)
           @network = args[:network] if args.key?(:network)
         end
       end
@@ -19465,6 +19725,58 @@ module Google
           @status = args[:status] if args.key?(:status)
           @uptime = args[:uptime] if args.key?(:uptime)
           @uptime_seconds = args[:uptime_seconds] if args.key?(:uptime_seconds)
+        end
+      end
+      
+      # Status of a NAT contained in this router.
+      class RouterStatusNatStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]
+        # Corresponds to the JSON property `autoAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :auto_allocated_nat_ips
+      
+        # The number of extra IPs to allocate. This will be greater than 0 only if user-
+        # specified IPs are NOT enough to allow all configured VMs to use NAT. This
+        # value is meaningful only when auto-allocation of NAT IPs is *not* used.
+        # Corresponds to the JSON property `minExtraNatIpsNeeded`
+        # @return [Fixnum]
+        attr_accessor :min_extra_nat_ips_needed
+      
+        # Unique name of this NAT.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Number of VM endpoints (i.e., Nics) that can use NAT.
+        # Corresponds to the JSON property `numVmEndpointsWithNatMappings`
+        # @return [Fixnum]
+        attr_accessor :num_vm_endpoints_with_nat_mappings
+      
+        # A list of fully qualified URLs of reserved IP address resources.
+        # Corresponds to the JSON property `userAllocatedNatIpResources`
+        # @return [Array<String>]
+        attr_accessor :user_allocated_nat_ip_resources
+      
+        # A list of IPs user-allocated for NAT. They will be raw IP strings like "179.12.
+        # 26.133".
+        # Corresponds to the JSON property `userAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :user_allocated_nat_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_allocated_nat_ips = args[:auto_allocated_nat_ips] if args.key?(:auto_allocated_nat_ips)
+          @min_extra_nat_ips_needed = args[:min_extra_nat_ips_needed] if args.key?(:min_extra_nat_ips_needed)
+          @name = args[:name] if args.key?(:name)
+          @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
+          @user_allocated_nat_ip_resources = args[:user_allocated_nat_ip_resources] if args.key?(:user_allocated_nat_ip_resources)
+          @user_allocated_nat_ips = args[:user_allocated_nat_ips] if args.key?(:user_allocated_nat_ips)
         end
       end
       
@@ -20312,6 +20624,63 @@ module Google
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # A shielded VM identity entry.
+      class ShieldedVmIdentity
+        include Google::Apis::Core::Hashable
+      
+        # A Shielded VM Identity Entry.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::ComputeBeta::ShieldedVmIdentityEntry]
+        attr_accessor :encryption_key
+      
+        # [Output Only] Type of the resource. Always compute#shieldedVmIdentity for
+        # shielded VM identity entry.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A Shielded VM Identity Entry.
+        # Corresponds to the JSON property `signingKey`
+        # @return [Google::Apis::ComputeBeta::ShieldedVmIdentityEntry]
+        attr_accessor :signing_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @kind = args[:kind] if args.key?(:kind)
+          @signing_key = args[:signing_key] if args.key?(:signing_key)
+        end
+      end
+      
+      # A Shielded VM Identity Entry.
+      class ShieldedVmIdentityEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ekCert`
+        # @return [String]
+        attr_accessor :ek_cert
+      
+        # 
+        # Corresponds to the JSON property `ekPub`
+        # @return [String]
+        attr_accessor :ek_pub
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ek_cert = args[:ek_cert] if args.key?(:ek_cert)
+          @ek_pub = args[:ek_pub] if args.key?(:ek_pub)
         end
       end
       
@@ -21316,7 +21685,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Whether to enable flow logging for this subnetwork.
+        # Whether to enable flow logging for this subnetwork. If this field is not
+        # explicitly set, it will not appear in get listings. If not set the default
+        # behavior is to disable flow logging.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
@@ -24368,47 +24739,6 @@ module Google
         end
       end
       
-      # 
-      class UdpHealthCheck
-        include Google::Apis::Core::Hashable
-      
-        # The UDP port number for the health check request. Valid values are 1 through
-        # 65535.
-        # Corresponds to the JSON property `port`
-        # @return [Fixnum]
-        attr_accessor :port
-      
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
-        # Corresponds to the JSON property `portName`
-        # @return [String]
-        attr_accessor :port_name
-      
-        # Raw data of request to send in payload of UDP packet. It is an error if this
-        # is empty. The request data can only be ASCII.
-        # Corresponds to the JSON property `request`
-        # @return [String]
-        attr_accessor :request
-      
-        # The bytes to match against the beginning of the response data. It is an error
-        # if this is empty. The response data can only be ASCII.
-        # Corresponds to the JSON property `response`
-        # @return [String]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @port = args[:port] if args.key?(:port)
-          @port_name = args[:port_name] if args.key?(:port_name)
-          @request = args[:request] if args.key?(:request)
-          @response = args[:response] if args.key?(:response)
-        end
-      end
-      
       # A UrlMap resource. This resource defines the mapping from URL to the
       # BackendService resource, based on the "longest-match" of the URL's host and
       # path.
@@ -24972,6 +25302,191 @@ module Google
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @report_name_prefix = args[:report_name_prefix] if args.key?(:report_name_prefix)
+        end
+      end
+      
+      # Contain information of Nat mapping for a VM endpoint (i.e., NIC).
+      class VmEndpointNatMappings
+        include Google::Apis::Core::Hashable
+      
+        # Name of the VM instance which the endpoint belongs to
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        # 
+        # Corresponds to the JSON property `interfaceNatMappings`
+        # @return [Array<Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappings>]
+        attr_accessor :interface_nat_mappings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @interface_nat_mappings = args[:interface_nat_mappings] if args.key?(:interface_nat_mappings)
+        end
+      end
+      
+      # Contain information of Nat mapping for an interface of this endpoint.
+      class VmEndpointNatMappingsInterfaceNatMappings
+        include Google::Apis::Core::Hashable
+      
+        # A list of all IP:port-range mappings assigned to this interface. These ranges
+        # are inclusive, that is, both the first and the last ports can be used for NAT.
+        # Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `natIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :nat_ip_port_ranges
+      
+        # Total number of ports across all NAT IPs allocated to this interface. It
+        # equals to the aggregated port number in the field nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_nat_ports
+      
+        # Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP
+        # range. Examples: "10.33.4.55/32", or "192.168.5.0/24".
+        # Corresponds to the JSON property `sourceAliasIpRange`
+        # @return [String]
+        attr_accessor :source_alias_ip_range
+      
+        # Primary IP of the VM for this NIC.
+        # Corresponds to the JSON property `sourceVirtualIp`
+        # @return [String]
+        attr_accessor :source_virtual_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
+          @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)
+        end
+      end
+      
+      # Contains a list of VmEndpointNatMappings.
+      class VmEndpointNatMappingsList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#vmEndpointNatMappingsList for
+        # lists of Nat mappings of VM endpoints.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of Nat mapping information of VM endpoints.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeBeta::VmEndpointNatMappings>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
