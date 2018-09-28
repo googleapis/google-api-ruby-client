@@ -1924,22 +1924,6 @@ module Google
         # @return [String]
         attr_accessor :get
       
-        # Defines the Media configuration for a service in case of a download.
-        # Use this only for Scotty Requests. Do not use this for media support using
-        # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-        # your configuration for Bytestream methods.
-        # Corresponds to the JSON property `mediaDownload`
-        # @return [Google::Apis::ServicemanagementV1::MediaDownload]
-        attr_accessor :media_download
-      
-        # Defines the Media configuration for a service in case of an upload.
-        # Use this only for Scotty Requests. Do not use this for media support using
-        # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-        # your configuration for Bytestream methods.
-        # Corresponds to the JSON property `mediaUpload`
-        # @return [Google::Apis::ServicemanagementV1::MediaUpload]
-        attr_accessor :media_upload
-      
         # Maps to HTTP PATCH. Used for updating a resource.
         # Corresponds to the JSON property `patch`
         # @return [String]
@@ -1981,8 +1965,6 @@ module Google
           @custom = args[:custom] if args.key?(:custom)
           @delete = args[:delete] if args.key?(:delete)
           @get = args[:get] if args.key?(:get)
-          @media_download = args[:media_download] if args.key?(:media_download)
-          @media_upload = args[:media_upload] if args.key?(:media_upload)
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
@@ -2283,138 +2265,6 @@ module Google
         def update!(**args)
           @producer_project_id = args[:producer_project_id] if args.key?(:producer_project_id)
           @service_name = args[:service_name] if args.key?(:service_name)
-        end
-      end
-      
-      # Defines the Media configuration for a service in case of a download.
-      # Use this only for Scotty Requests. Do not use this for media support using
-      # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-      # your configuration for Bytestream methods.
-      class MediaDownload
-        include Google::Apis::Core::Hashable
-      
-        # A boolean that determines whether a notification for the completion of a
-        # download should be sent to the backend.
-        # Corresponds to the JSON property `completeNotification`
-        # @return [Boolean]
-        attr_accessor :complete_notification
-        alias_method :complete_notification?, :complete_notification
-      
-        # DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        # Specify name of the download service if one is used for download.
-        # Corresponds to the JSON property `downloadService`
-        # @return [String]
-        attr_accessor :download_service
-      
-        # Name of the Scotty dropzone to use for the current API.
-        # Corresponds to the JSON property `dropzone`
-        # @return [String]
-        attr_accessor :dropzone
-      
-        # Whether download is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Optional maximum acceptable size for direct download.
-        # The size is specified in bytes.
-        # Corresponds to the JSON property `maxDirectDownloadSize`
-        # @return [Fixnum]
-        attr_accessor :max_direct_download_size
-      
-        # A boolean that determines if direct download from ESF should be used for
-        # download of this media.
-        # Corresponds to the JSON property `useDirectDownload`
-        # @return [Boolean]
-        attr_accessor :use_direct_download
-        alias_method :use_direct_download?, :use_direct_download
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_notification = args[:complete_notification] if args.key?(:complete_notification)
-          @download_service = args[:download_service] if args.key?(:download_service)
-          @dropzone = args[:dropzone] if args.key?(:dropzone)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @max_direct_download_size = args[:max_direct_download_size] if args.key?(:max_direct_download_size)
-          @use_direct_download = args[:use_direct_download] if args.key?(:use_direct_download)
-        end
-      end
-      
-      # Defines the Media configuration for a service in case of an upload.
-      # Use this only for Scotty Requests. Do not use this for media support using
-      # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
-      # your configuration for Bytestream methods.
-      class MediaUpload
-        include Google::Apis::Core::Hashable
-      
-        # A boolean that determines whether a notification for the completion of an
-        # upload should be sent to the backend. These notifications will not be seen
-        # by the client and will not consume quota.
-        # Corresponds to the JSON property `completeNotification`
-        # @return [Boolean]
-        attr_accessor :complete_notification
-        alias_method :complete_notification?, :complete_notification
-      
-        # Name of the Scotty dropzone to use for the current API.
-        # Corresponds to the JSON property `dropzone`
-        # @return [String]
-        attr_accessor :dropzone
-      
-        # Whether upload is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Optional maximum acceptable size for an upload.
-        # The size is specified in bytes.
-        # Corresponds to the JSON property `maxSize`
-        # @return [Fixnum]
-        attr_accessor :max_size
-      
-        # An array of mimetype patterns. Esf will only accept uploads that match one
-        # of the given patterns.
-        # Corresponds to the JSON property `mimeTypes`
-        # @return [Array<String>]
-        attr_accessor :mime_types
-      
-        # Whether to receive a notification for progress changes of media upload.
-        # Corresponds to the JSON property `progressNotification`
-        # @return [Boolean]
-        attr_accessor :progress_notification
-        alias_method :progress_notification?, :progress_notification
-      
-        # Whether to receive a notification on the start of media upload.
-        # Corresponds to the JSON property `startNotification`
-        # @return [Boolean]
-        attr_accessor :start_notification
-        alias_method :start_notification?, :start_notification
-      
-        # DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        # Specify name of the upload service if one is used for upload.
-        # Corresponds to the JSON property `uploadService`
-        # @return [String]
-        attr_accessor :upload_service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_notification = args[:complete_notification] if args.key?(:complete_notification)
-          @dropzone = args[:dropzone] if args.key?(:dropzone)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @max_size = args[:max_size] if args.key?(:max_size)
-          @mime_types = args[:mime_types] if args.key?(:mime_types)
-          @progress_notification = args[:progress_notification] if args.key?(:progress_notification)
-          @start_notification = args[:start_notification] if args.key?(:start_notification)
-          @upload_service = args[:upload_service] if args.key?(:upload_service)
         end
       end
       
@@ -3265,6 +3115,7 @@ module Google
       # quota checks at runtime.
       # An example quota configuration in yaml format:
       # quota:
+      # limits:
       # - name: apiWriteQpsPerProject
       # metric: library.googleapis.com/write_calls
       # unit: "1/min/`project`"  # rate limit for consumer projects
@@ -3860,6 +3711,7 @@ module Google
         # quota checks at runtime.
         # An example quota configuration in yaml format:
         # quota:
+        # limits:
         # - name: apiWriteQpsPerProject
         # metric: library.googleapis.com/write_calls
         # unit: "1/min/`project`"  # rate limit for consumer projects

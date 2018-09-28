@@ -22,7 +22,7 @@ module Google
     module YoutubePartnerV1
       # Youtube Content ID API
       #
-      # API for YouTube partners. To use this API YouTube CMS account is required.
+      # API for YouTube partners. To use this API a YouTube CMS account is required.
       #
       # @example
       #    require 'google/apis/youtube_partner_v1'

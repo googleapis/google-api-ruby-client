@@ -1983,7 +1983,8 @@ module Google
       
         # Required. The monitored resource type. This field must match the type field of
         # a MonitoredResourceDescriptor object. For example, the type of a Compute
-        # Engine VM instance is gce_instance.
+        # Engine VM instance is gce_instance. For a list of types, see Monitoring
+        # resource types and Logging resource types.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

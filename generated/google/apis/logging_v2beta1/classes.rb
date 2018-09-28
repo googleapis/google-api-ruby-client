@@ -701,6 +701,17 @@ module Google
         # @return [String]
         attr_accessor :trace
       
+        # Optional. The sampling decision of the trace associated with the log entry.
+        # True means that the trace resource name in the trace field was sampled for
+        # storage in a trace backend. False means that the trace was not sampled for
+        # storage when this log entry was written, or the sampling decision was unknown
+        # at the time. A non-sampled trace value is still useful as a request
+        # correlation identifier. The default is False.
+        # Corresponds to the JSON property `traceSampled`
+        # @return [Boolean]
+        attr_accessor :trace_sampled
+        alias_method :trace_sampled?, :trace_sampled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -723,6 +734,7 @@ module Google
           @text_payload = args[:text_payload] if args.key?(:text_payload)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @trace = args[:trace] if args.key?(:trace)
+          @trace_sampled = args[:trace_sampled] if args.key?(:trace_sampled)
         end
       end
       

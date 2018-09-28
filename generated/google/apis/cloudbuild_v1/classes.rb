@@ -485,11 +485,11 @@ module Google
         attr_accessor :timing
       
         # List of volumes to mount into the build step.
-        # Each volume will be created as an empty volume prior to execution of the
-        # build step. Upon completion of the build, volumes and their contents will
-        # be discarded.
+        # Each volume is created as an empty volume prior to execution of the
+        # build step. Upon completion of the build, volumes and their contents are
+        # discarded.
         # Using a named volume in only one step is not valid as it is indicative
-        # of a mis-configured build request.
+        # of a build request with an incorrect configuration.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::CloudbuildV1::Volume>]
         attr_accessor :volumes
@@ -1041,7 +1041,7 @@ module Google
         # Map of environment variable name to its encrypted value.
         # Secret environment variables must be unique across all of a build's
         # secrets, and must be used by at least one build step. Values can be at most
-        # 1 KB in size. There can be at most ten secret values across all of a
+        # 2 KB in size. There can be at most ten secret values across all of a
         # build's secrets.
         # Corresponds to the JSON property `secretEnv`
         # @return [Hash<String,String>]

@@ -20,12 +20,12 @@ module Google
   module Apis
     # Youtube Content ID API
     #
-    # API for YouTube partners. To use this API YouTube CMS account is required.
+    # API for YouTube partners. To use this API a YouTube CMS account is required.
     #
     # @see https://developers.google.com/youtube/partner/
     module YoutubePartnerV1
       VERSION = 'V1'
-      REVISION = '20180910'
+      REVISION = '20180925'
 
       # View and manage your assets and associated content on YouTube
       AUTH_YOUTUBEPARTNER = 'https://www.googleapis.com/auth/youtubepartner'

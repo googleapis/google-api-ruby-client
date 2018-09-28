@@ -328,18 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MediaDownload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MediaUpload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MethodProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -945,10 +933,6 @@ module Google
       
           property :delete, as: 'delete'
           property :get, as: 'get'
-          property :media_download, as: 'mediaDownload', class: Google::Apis::ServicemanagementV1::MediaDownload, decorator: Google::Apis::ServicemanagementV1::MediaDownload::Representation
-      
-          property :media_upload, as: 'mediaUpload', class: Google::Apis::ServicemanagementV1::MediaUpload, decorator: Google::Apis::ServicemanagementV1::MediaUpload::Representation
-      
           property :patch, as: 'patch'
           property :post, as: 'post'
           property :put, as: 'put'
@@ -1036,32 +1020,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :producer_project_id, as: 'producerProjectId'
           property :service_name, as: 'serviceName'
-        end
-      end
-      
-      class MediaDownload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_notification, as: 'completeNotification'
-          property :download_service, as: 'downloadService'
-          property :dropzone, as: 'dropzone'
-          property :enabled, as: 'enabled'
-          property :max_direct_download_size, :numeric_string => true, as: 'maxDirectDownloadSize'
-          property :use_direct_download, as: 'useDirectDownload'
-        end
-      end
-      
-      class MediaUpload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_notification, as: 'completeNotification'
-          property :dropzone, as: 'dropzone'
-          property :enabled, as: 'enabled'
-          property :max_size, :numeric_string => true, as: 'maxSize'
-          collection :mime_types, as: 'mimeTypes'
-          property :progress_notification, as: 'progressNotification'
-          property :start_notification, as: 'startNotification'
-          property :upload_service, as: 'uploadService'
         end
       end
       

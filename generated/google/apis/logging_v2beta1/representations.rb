@@ -349,6 +349,7 @@ module Google
           property :text_payload, as: 'textPayload'
           property :timestamp, as: 'timestamp'
           property :trace, as: 'trace'
+          property :trace_sampled, as: 'traceSampled'
         end
       end
       

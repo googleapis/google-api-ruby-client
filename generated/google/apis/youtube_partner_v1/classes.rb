@@ -3055,7 +3055,8 @@ module Google
         attr_accessor :fp_direct
         alias_method :fp_direct?, :fp_direct
       
-        # The MD5 hashcode of the reference content.
+        # The MD5 hashcode of the reference content. Deprecated! This is no longer
+        # populated.
         # Corresponds to the JSON property `hashCode`
         # @return [String]
         attr_accessor :hash_code

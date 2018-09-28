@@ -52,8 +52,6 @@ module Google
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account.
         # @param [Google::Apis::IamcredentialsV1::GenerateAccessTokenRequest] generate_access_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -89,8 +87,6 @@ module Google
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account.
         # @param [Google::Apis::IamcredentialsV1::GenerateIdTokenRequest] generate_id_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -126,8 +122,6 @@ module Google
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
-        #   Use hyphen as placeholder for project id since there is no project context
-        #   for this API.
         # @param [Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenRequest] generate_identity_binding_access_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -163,8 +157,6 @@ module Google
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account.
         # @param [Google::Apis::IamcredentialsV1::SignBlobRequest] sign_blob_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -200,8 +192,6 @@ module Google
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account.
         # @param [Google::Apis::IamcredentialsV1::SignJwtRequest] sign_jwt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

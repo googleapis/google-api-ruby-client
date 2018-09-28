@@ -541,9 +541,13 @@ module Google
       class Pose
         include Google::Apis::Core::Hashable
       
-        # The estimated horizontal accuracy of this pose in meters with 68% (one
-        # standard deviation) confidence. For more information, see:
+        # The estimated horizontal accuracy of this pose in meters with 68%
+        # confidence (one standard deviation). For example, on Android, this value is
+        # available from this method:
         # https://developer.android.com/reference/android/location/Location#getAccuracy()
+        # .
+        # Other platforms have different methods of obtaining similar accuracy
+        # estimations.
         # Corresponds to the JSON property `accuracyMeters`
         # @return [Float]
         attr_accessor :accuracy_meters
