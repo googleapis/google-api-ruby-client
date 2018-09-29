@@ -198,6 +198,7 @@ module Google
           property :executable_version, as: 'executableVersion'
           property :language, as: 'language'
           property :ruleset_name, as: 'rulesetName'
+          property :sync_time, as: 'syncTime'
           property :update_time, as: 'updateTime'
         end
       end

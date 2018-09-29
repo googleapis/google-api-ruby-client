@@ -221,7 +221,7 @@ module Google
         #   Format: `projects/`project_id`/releases/`release_id``
         # @param [String] executable_version
         #   The requested runtime executable version.
-        #   Defaults to FIREBASE_RULES_EXECUTABLE_V1
+        #   Defaults to FIREBASE_RULES_EXECUTABLE_V1.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

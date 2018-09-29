@@ -196,6 +196,13 @@ module Google
         # @return [String]
         attr_accessor :ruleset_name
       
+        # Optional, indicates the freshness of the result. The response is
+        # guaranteed to be the latest within an interval up to the
+        # sync_time (inclusive).
+        # Corresponds to the JSON property `syncTime`
+        # @return [String]
+        attr_accessor :sync_time
+      
         # Timestamp for the most recent `Release.update_time`.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -211,6 +218,7 @@ module Google
           @executable_version = args[:executable_version] if args.key?(:executable_version)
           @language = args[:language] if args.key?(:language)
           @ruleset_name = args[:ruleset_name] if args.key?(:ruleset_name)
+          @sync_time = args[:sync_time] if args.key?(:sync_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

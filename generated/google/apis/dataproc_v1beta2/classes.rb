@@ -226,7 +226,7 @@ module Google
         # @return [Array<Google::Apis::DataprocV1beta2::NodeInitializationAction>]
         attr_accessor :initialization_actions
       
-        # Specifies the cluster auto delete related schedule configuration.
+        # Specifies the cluster auto-delete schedule configuration.
         # Corresponds to the JSON property `lifecycleConfig`
         # @return [Google::Apis::DataprocV1beta2::LifecycleConfig]
         attr_accessor :lifecycle_config
@@ -1267,7 +1267,7 @@ module Google
         end
       end
       
-      # Specifies the cluster auto delete related schedule configuration.
+      # Specifies the cluster auto-delete schedule configuration.
       class LifecycleConfig
         include Google::Apis::Core::Hashable
       
@@ -1276,14 +1276,17 @@ module Google
         # @return [String]
         attr_accessor :auto_delete_time
       
-        # Optional. The life duration of cluster, the cluster will be auto-deleted at
-        # the end of this duration.
+        # Optional. The lifetime duration of cluster. The cluster will be auto-deleted
+        # at the end of this period. Valid range: 10m, 14d.Example: "1d", to delete the
+        # cluster 1 day after its creation..
         # Corresponds to the JSON property `autoDeleteTtl`
         # @return [String]
         attr_accessor :auto_delete_ttl
       
-        # Optional. The longest duration that cluster would keep alive while staying
-        # idle; passing this threshold will cause cluster to be auto-deleted.
+        # Optional. The duration to keep the cluster alive while idling. Passing this
+        # threshold will cause the cluster to be deleted. Valid range: 10m, 14d.Example:
+        # "10m", the minimum value, to delete the cluster when it has had no jobs
+        # running for 10 minutes.
         # Corresponds to the JSON property `idleDeleteTtl`
         # @return [String]
         attr_accessor :idle_delete_ttl

@@ -371,6 +371,8 @@ module Google
         end
         
         # Indicate that the the currently authenticated user is playing your application.
+        # @param [String] builtin_game_id
+        #   Override used only by built-in games in Play Games application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -390,8 +392,9 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def played_application(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def played_application(builtin_game_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'applications/played', options)
+          command.query['builtinGameId'] = builtin_game_id unless builtin_game_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

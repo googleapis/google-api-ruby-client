@@ -75,7 +75,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Specifies if cancellation was requested for the operaiton.
+        # Specifies if cancellation was requested for the operation.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
