@@ -148,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendCommandToDeviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SendCommandToDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -211,6 +223,7 @@ module Google
           property :last_event_time, as: 'lastEventTime'
           property :last_heartbeat_time, as: 'lastHeartbeatTime'
           property :last_state_time, as: 'lastStateTime'
+          property :log_level, as: 'logLevel'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :num_id, :numeric_string => true, as: 'numId'
@@ -248,6 +261,7 @@ module Google
           property :http_config, as: 'httpConfig', class: Google::Apis::CloudiotV1::HttpConfig, decorator: Google::Apis::CloudiotV1::HttpConfig::Representation
       
           property :id, as: 'id'
+          property :log_level, as: 'logLevel'
           property :mqtt_config, as: 'mqttConfig', class: Google::Apis::CloudiotV1::MqttConfig, decorator: Google::Apis::CloudiotV1::MqttConfig::Representation
       
           property :name, as: 'name'
@@ -383,6 +397,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :public_key_certificate, as: 'publicKeyCertificate', class: Google::Apis::CloudiotV1::PublicKeyCertificate, decorator: Google::Apis::CloudiotV1::PublicKeyCertificate::Representation
       
+        end
+      end
+      
+      class SendCommandToDeviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_data, :base64 => true, as: 'binaryData'
+          property :subfolder, as: 'subfolder'
+        end
+      end
+      
+      class SendCommandToDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -189,6 +189,13 @@ module Google
         # @return [String]
         attr_accessor :last_state_time
       
+        # **Beta Feature**
+        # The logging verbosity for device activity. If unspecified,
+        # DeviceRegistry.log_level will be used.
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
         # The metadata key-value pairs assigned to the device. This metadata is not
         # interpreted or indexed by Cloud IoT Core. It can be used to add contextual
         # information for the device.
@@ -239,6 +246,7 @@ module Google
           @last_event_time = args[:last_event_time] if args.key?(:last_event_time)
           @last_heartbeat_time = args[:last_heartbeat_time] if args.key?(:last_heartbeat_time)
           @last_state_time = args[:last_state_time] if args.key?(:last_state_time)
+          @log_level = args[:log_level] if args.key?(:log_level)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @num_id = args[:num_id] if args.key?(:num_id)
@@ -364,6 +372,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # **Beta Feature**
+        # The default logging verbosity for activity from devices in this registry.
+        # The verbosity level can be overridden by Device.log_level.
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
         # The configuration of MQTT for a device registry.
         # Corresponds to the JSON property `mqttConfig`
         # @return [Google::Apis::CloudiotV1::MqttConfig]
@@ -390,6 +405,7 @@ module Google
           @event_notification_configs = args[:event_notification_configs] if args.key?(:event_notification_configs)
           @http_config = args[:http_config] if args.key?(:http_config)
           @id = args[:id] if args.key?(:id)
+          @log_level = args[:log_level] if args.key?(:log_level)
           @mqtt_config = args[:mqtt_config] if args.key?(:mqtt_config)
           @name = args[:name] if args.key?(:name)
           @state_notification_config = args[:state_notification_config] if args.key?(:state_notification_config)
@@ -843,6 +859,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @public_key_certificate = args[:public_key_certificate] if args.key?(:public_key_certificate)
+        end
+      end
+      
+      # Request for `SendCommandToDevice`.
+      class SendCommandToDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The command data to send to the device.
+        # Corresponds to the JSON property `binaryData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :binary_data
+      
+        # Optional subfolder for the command. If empty, the command will be delivered
+        # to the /devices/`device-id`/commands topic, otherwise it will be delivered
+        # to the /devices/`device-id`/commands/`subfolder` topic. Multi-level
+        # subfolders are allowed. This field must not have more than 256 characters,
+        # and must not contain any MQTT wildcards ("+" or "#") or null characters.
+        # Corresponds to the JSON property `subfolder`
+        # @return [String]
+        attr_accessor :subfolder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary_data = args[:binary_data] if args.key?(:binary_data)
+          @subfolder = args[:subfolder] if args.key?(:subfolder)
+        end
+      end
+      
+      # Response for `SendCommandToDevice`.
+      class SendCommandToDeviceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

@@ -5430,7 +5430,7 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods" or "apparel".
+        # be either "homegoods", "apparel", or "toys".
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]

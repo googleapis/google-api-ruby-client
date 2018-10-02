@@ -347,6 +347,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # A list of global environment variable definitions that will exist for all
+        # build steps in this build. If a variable is defined in both globally and in
+        # a build step, the variable will use the build step value.
+        # The elements are of the form "KEY=VALUE" for the environment variable "KEY"
+        # being given the value "VALUE".
+        # Corresponds to the JSON property `env`
+        # @return [Array<String>]
+        attr_accessor :env
+      
         # Option to define build log streaming behavior to Google Cloud
         # Storage.
         # Corresponds to the JSON property `logStreamingOption`
@@ -368,6 +377,14 @@ module Google
         # @return [String]
         attr_accessor :requested_verify_option
       
+        # A list of global environment variables, which are encrypted using a Cloud
+        # Key Management Service crypto key. These values must be specified in the
+        # build's `Secret`. These variables will be available to all build steps
+        # in this build.
+        # Corresponds to the JSON property `secretEnv`
+        # @return [Array<String>]
+        attr_accessor :secret_env
+      
         # Requested hash for SourceProvenance.
         # Corresponds to the JSON property `sourceProvenanceHash`
         # @return [Array<String>]
@@ -379,6 +396,17 @@ module Google
         # @return [String]
         attr_accessor :substitution_option
       
+        # Global list of volumes to mount for ALL build steps
+        # Each volume is created as an empty volume prior to starting the build
+        # process. Upon completion of the build, volumes and their contents are
+        # discarded. Global volume names and paths cannot conflict with the volumes
+        # defined a build step.
+        # Using a global volume in a build with only one step is not valid as
+        # it is indicative of a build request with an incorrect configuration.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::CloudbuildV1::Volume>]
+        attr_accessor :volumes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -386,12 +414,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @env = args[:env] if args.key?(:env)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
+          @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)
+          @volumes = args[:volumes] if args.key?(:volumes)
         end
       end
       
@@ -458,6 +489,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pullTiming`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :pull_timing
+      
         # A list of environment variables which are encrypted using a Cloud Key
         # Management Service crypto key. These values must be specified in the
         # build's `Secret`.
@@ -515,6 +551,7 @@ module Google
           @env = args[:env] if args.key?(:env)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -1041,7 +1078,7 @@ module Google
         # Map of environment variable name to its encrypted value.
         # Secret environment variables must be unique across all of a build's
         # secrets, and must be used by at least one build step. Values can be at most
-        # 2 KB in size. There can be at most ten secret values across all of a
+        # 64 KB in size. There can be at most 100 secret values across all of a
         # build's secrets.
         # Corresponds to the JSON property `secretEnv`
         # @return [Hash<String,String>]

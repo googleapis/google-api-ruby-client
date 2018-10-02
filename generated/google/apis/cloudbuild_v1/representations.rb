@@ -266,12 +266,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          collection :env, as: 'env'
           property :log_streaming_option, as: 'logStreamingOption'
           property :logging, as: 'logging'
           property :machine_type, as: 'machineType'
           property :requested_verify_option, as: 'requestedVerifyOption'
+          collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'
+          collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
+      
         end
       end
       
@@ -284,6 +288,8 @@ module Google
           collection :env, as: 'env'
           property :id, as: 'id'
           property :name, as: 'name'
+          property :pull_timing, as: 'pullTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
           property :timeout, as: 'timeout'

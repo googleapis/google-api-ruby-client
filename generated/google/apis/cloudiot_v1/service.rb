@@ -572,6 +572,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sends a command to the specified device. In order for a device to be able
+        # to receive commands, it must:
+        # 1) be connected to Cloud IoT Core using the MQTT protocol, and
+        # 2) be subscribed to the group of MQTT topics specified by
+        # /devices/`device-id`/commands/#. This subscription will receive commands
+        # at the top-level topic /devices/`device-id`/commands as well as commands
+        # for subfolders, like /devices/`device-id`/commands/subfolder.
+        # Note that subscribing to specific subfolders is not supported.
+        # If the command could not be delivered to the device, this method will
+        # return an error; in particular, if the device is not subscribed, this
+        # method will return FAILED_PRECONDITION. Otherwise, this method will
+        # return OK. If the subscription is QoS 1, at least once delivery will be
+        # guaranteed; for QoS 0, no acknowledgment will be expected from the device.
+        # @param [String] name
+        #   The name of the device. For example,
+        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
+        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        # @param [Google::Apis::CloudiotV1::SendCommandToDeviceRequest] send_command_to_device_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::SendCommandToDeviceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::SendCommandToDeviceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_registry_device_command_to_device(name, send_command_to_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
+          command.request_representation = Google::Apis::CloudiotV1::SendCommandToDeviceRequest::Representation
+          command.request_object = send_command_to_device_request_object
+          command.response_representation = Google::Apis::CloudiotV1::SendCommandToDeviceResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::SendCommandToDeviceResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the last few versions of the device configuration in descending
         # order (i.e.: newest first).
         # @param [String] name
@@ -921,6 +968,53 @@ module Google
           command.response_class = Google::Apis::CloudiotV1::Device
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a command to the specified device. In order for a device to be able
+        # to receive commands, it must:
+        # 1) be connected to Cloud IoT Core using the MQTT protocol, and
+        # 2) be subscribed to the group of MQTT topics specified by
+        # /devices/`device-id`/commands/#. This subscription will receive commands
+        # at the top-level topic /devices/`device-id`/commands as well as commands
+        # for subfolders, like /devices/`device-id`/commands/subfolder.
+        # Note that subscribing to specific subfolders is not supported.
+        # If the command could not be delivered to the device, this method will
+        # return an error; in particular, if the device is not subscribed, this
+        # method will return FAILED_PRECONDITION. Otherwise, this method will
+        # return OK. If the subscription is QoS 1, at least once delivery will be
+        # guaranteed; for QoS 0, no acknowledgment will be expected from the device.
+        # @param [String] name
+        #   The name of the device. For example,
+        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
+        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        # @param [Google::Apis::CloudiotV1::SendCommandToDeviceRequest] send_command_to_device_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::SendCommandToDeviceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::SendCommandToDeviceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_registry_group_device_command_to_device(name, send_command_to_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
+          command.request_representation = Google::Apis::CloudiotV1::SendCommandToDeviceRequest::Representation
+          command.request_object = send_command_to_device_request_object
+          command.response_representation = Google::Apis::CloudiotV1::SendCommandToDeviceResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::SendCommandToDeviceResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
