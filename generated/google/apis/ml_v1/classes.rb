@@ -445,7 +445,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Represents input parameters for a prediction job.
+        # Represents input parameters for a prediction job. Next field: 19
         # Corresponds to the JSON property `predictionInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionInput]
         attr_accessor :prediction_input
@@ -927,7 +927,7 @@ module Google
         end
       end
       
-      # Represents input parameters for a prediction job.
+      # Represents input parameters for a prediction job. Next field: 19
       class GoogleCloudMlV1PredictionInput
         include Google::Apis::Core::Hashable
       

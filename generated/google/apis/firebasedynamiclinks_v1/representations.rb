@@ -187,6 +187,7 @@ module Google
       
           property :long_dynamic_link, as: 'longDynamicLink'
           property :name, as: 'name'
+          property :sdk_version, as: 'sdkVersion'
           property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
       
         end
@@ -209,6 +210,7 @@ module Google
           property :dynamic_link_info, as: 'dynamicLinkInfo', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo::Representation
       
           property :long_dynamic_link, as: 'longDynamicLink'
+          property :sdk_version, as: 'sdkVersion'
           property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
       
         end
@@ -331,6 +333,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bundle_id, as: 'bundleId'
           property :requested_link, as: 'requestedLink'
+          property :sdk_version, as: 'sdkVersion'
         end
       end
       

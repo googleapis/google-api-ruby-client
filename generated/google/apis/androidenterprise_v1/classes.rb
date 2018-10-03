@@ -86,10 +86,7 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The list of permissions the admin is granted within the iframe. The admin will
-        # only be allowed to view an iframe if they have all of the permissions
-        # associated with it. The only valid value is "approveApps" that will allow the
-        # admin to access the iframe in "approve" mode.
+        # Deprecated. Use PlaySearch.approveApps.
         # Corresponds to the JSON property `permission`
         # @return [Array<String>]
         attr_accessor :permission
@@ -134,6 +131,12 @@ module Google
       class AdministratorWebTokenSpecPlaySearch
         include Google::Apis::Core::Hashable
       
+        # Allow access to the iframe in approve mode. Default is false.
+        # Corresponds to the JSON property `approveApps`
+        # @return [Boolean]
+        attr_accessor :approve_apps
+        alias_method :approve_apps?, :approve_apps
+      
         # Whether the Play Search page is displayed. Default is true.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -146,6 +149,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approve_apps = args[:approve_apps] if args.key?(:approve_apps)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
       end

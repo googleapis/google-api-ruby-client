@@ -130,6 +130,8 @@ module Google
         #   Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
         # @param [Fixnum] duration_days
         #   The span of time requested in days.
+        # @param [String] sdk_version
+        #   Google SDK version. Version takes the form "$major.$minor.$patch"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -147,12 +149,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_link_stats(dynamic_link, duration_days: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_link_stats(dynamic_link, duration_days: nil, sdk_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{dynamicLink}/linkStats', options)
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats::Representation
           command.response_class = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats
           command.params['dynamicLink'] = dynamic_link unless dynamic_link.nil?
           command.query['durationDays'] = duration_days unless duration_days.nil?
+          command.query['sdkVersion'] = sdk_version unless sdk_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

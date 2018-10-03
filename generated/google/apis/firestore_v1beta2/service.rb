@@ -48,86 +48,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a composite index. This returns a google.longrunning.Operation
-        # which may be used to track the status of the creation. The metadata for
-        # the operation will be the type IndexOperationMetadata.
-        # @param [String] parent
-        #   A parent name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   `
-        # @param [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index] google_firestore_admin_v1beta2_index_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_database_collection_group_index(parent, google_firestore_admin_v1beta2_index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/indexes', options)
-          command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
-          command.request_object = google_firestore_admin_v1beta2_index_object
-          command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists composite indexes.
-        # @param [String] parent
-        #   A parent name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   `
-        # @param [String] filter
-        #   The filter to apply to list results.
-        # @param [Fixnum] page_size
-        #   The number of results to return.
-        # @param [String] page_token
-        #   A page token, returned from a previous call to
-        #   FirestoreAdmin.ListIndexes, that may be used to get the next
-        #   page of results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_database_collection_group_indexes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/indexes', options)
-          command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse::Representation
-          command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the metadata and configuration for a Field.
         # @param [String] name
         #   A name of the form
@@ -282,6 +202,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a composite index. This returns a google.longrunning.Operation
+        # which may be used to track the status of the creation. The metadata for
+        # the operation will be the type IndexOperationMetadata.
+        # @param [String] parent
+        #   A parent name of the form
+        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
+        #   `
+        # @param [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index] google_firestore_admin_v1beta2_index_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_database_collection_group_index(parent, google_firestore_admin_v1beta2_index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/indexes', options)
+          command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
+          command.request_object = google_firestore_admin_v1beta2_index_object
+          command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a composite index.
         # @param [String] name
         #   A name of the form
@@ -341,6 +298,49 @@ module Google
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists composite indexes.
+        # @param [String] parent
+        #   A parent name of the form
+        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
+        #   `
+        # @param [String] filter
+        #   The filter to apply to list results.
+        # @param [Fixnum] page_size
+        #   The number of results to return.
+        # @param [String] page_token
+        #   A page token, returned from a previous call to
+        #   FirestoreAdmin.ListIndexes, that may be used to get the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_database_collection_group_indexes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+parent}/indexes', options)
+          command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

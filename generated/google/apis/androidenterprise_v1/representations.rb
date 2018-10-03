@@ -501,6 +501,7 @@ module Google
       class AdministratorWebTokenSpecPlaySearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approve_apps, as: 'approveApps'
           property :enabled, as: 'enabled'
         end
       end

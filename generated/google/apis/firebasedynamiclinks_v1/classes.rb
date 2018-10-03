@@ -113,6 +113,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Google SDK version. Version takes the form "$major.$minor.$patch"
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [String]
+        attr_accessor :sdk_version
+      
         # Short Dynamic Link suffix.
         # Corresponds to the JSON property `suffix`
         # @return [Google::Apis::FirebasedynamiclinksV1::Suffix]
@@ -127,6 +132,7 @@ module Google
           @dynamic_link_info = args[:dynamic_link_info] if args.key?(:dynamic_link_info)
           @long_dynamic_link = args[:long_dynamic_link] if args.key?(:long_dynamic_link)
           @name = args[:name] if args.key?(:name)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
           @suffix = args[:suffix] if args.key?(:suffix)
         end
       end
@@ -180,6 +186,11 @@ module Google
         # @return [String]
         attr_accessor :long_dynamic_link
       
+        # Google SDK version. Version takes the form "$major.$minor.$patch"
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [String]
+        attr_accessor :sdk_version
+      
         # Short Dynamic Link suffix.
         # Corresponds to the JSON property `suffix`
         # @return [Google::Apis::FirebasedynamiclinksV1::Suffix]
@@ -193,6 +204,7 @@ module Google
         def update!(**args)
           @dynamic_link_info = args[:dynamic_link_info] if args.key?(:dynamic_link_info)
           @long_dynamic_link = args[:long_dynamic_link] if args.key?(:long_dynamic_link)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
           @suffix = args[:suffix] if args.key?(:suffix)
         end
       end
@@ -500,7 +512,7 @@ module Google
         # @return [String]
         attr_accessor :retrieval_method
       
-        # Google SDK version.
+        # Google SDK version. Version takes the form "$major.$minor.$patch"
         # Corresponds to the JSON property `sdkVersion`
         # @return [String]
         attr_accessor :sdk_version
@@ -674,6 +686,11 @@ module Google
         # @return [String]
         attr_accessor :requested_link
       
+        # Google SDK version. Version takes the form "$major.$minor.$patch"
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [String]
+        attr_accessor :sdk_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -682,6 +699,7 @@ module Google
         def update!(**args)
           @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
           @requested_link = args[:requested_link] if args.key?(:requested_link)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
         end
       end
       
