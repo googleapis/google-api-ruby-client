@@ -97,13 +97,43 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class CpuStatusReport
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class CpuTemperatureInfo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class DeviceFile
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class DiskVolumeReport
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class VolumeInfo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class RecentUser
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class SystemRamFreeReport
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -649,9 +679,13 @@ module Google
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
           property :boot_mode, as: 'bootMode'
+          collection :cpu_status_reports, as: 'cpuStatusReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::Representation
+      
           collection :device_files, as: 'deviceFiles', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile::Representation
       
           property :device_id, as: 'deviceId'
+          collection :disk_volume_reports, as: 'diskVolumeReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::Representation
+      
           property :etag, as: 'etag'
           property :ethernet_mac_address, as: 'ethernetMacAddress'
           property :firmware_version, as: 'firmwareVersion'
@@ -674,6 +708,9 @@ module Google
           property :status, as: 'status'
           property :support_end_date, as: 'supportEndDate', type: DateTime
       
+          collection :system_ram_free_reports, as: 'systemRamFreeReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::SystemRamFreeReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::SystemRamFreeReport::Representation
+      
+          property :system_ram_total, :numeric_string => true, as: 'systemRamTotal'
           property :tpm_version_info, as: 'tpmVersionInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo::Representation
       
           property :will_auto_renew, as: 'willAutoRenew'
@@ -688,6 +725,25 @@ module Google
           end
         end
         
+        class CpuStatusReport
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :cpu_temperature_info, as: 'cpuTemperatureInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::CpuTemperatureInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::CpuTemperatureInfo::Representation
+        
+            collection :cpu_utilization_percentage_info, as: 'cpuUtilizationPercentageInfo'
+            property :report_time, as: 'reportTime', type: DateTime
+        
+          end
+          
+          class CpuTemperatureInfo
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :label, as: 'label'
+              property :temperature, as: 'temperature'
+            end
+          end
+        end
+        
         class DeviceFile
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
@@ -699,11 +755,37 @@ module Google
           end
         end
         
+        class DiskVolumeReport
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :volume_info, as: 'volumeInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::VolumeInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::VolumeInfo::Representation
+        
+          end
+          
+          class VolumeInfo
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :storage_free, :numeric_string => true, as: 'storageFree'
+              property :storage_total, :numeric_string => true, as: 'storageTotal'
+              property :volume_id, as: 'volumeId'
+            end
+          end
+        end
+        
         class RecentUser
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :email, as: 'email'
             property :type, as: 'type'
+          end
+        end
+        
+        class SystemRamFreeReport
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :report_time, as: 'reportTime', type: DateTime
+        
+            collection :system_ram_free_info, as: 'systemRamFreeInfo'
           end
         end
         

@@ -581,13 +581,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Represents a whole calendar date, for example date of birth. The time of day
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
-        # represent a year and month where the day is not significant, for example
-        # credit card expiration date. The year can be 0 to represent a month and day
-        # independent of year, for example anniversary date. Related types are
-        # google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `releaseDate`
         # @return [Google::Apis::TestingV1::Date]
         attr_accessor :release_date
@@ -788,24 +789,26 @@ module Google
         end
       end
       
-      # Represents a whole calendar date, for example date of birth. The time of day
+      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. The day can be 0 to
-      # represent a year and month where the day is not significant, for example
-      # credit card expiration date. The year can be 0 to represent a month and day
-      # independent of year, for example anniversary date. Related types are
-      # google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent:
+      # * A full date, with non-zero year, month and day values
+      # * A month and day value, with a zero year, e.g. an anniversary
+      # * A year on its own, with zero month and day values
+      # * A year and month value, with a zero day, e.g. a credit card expiration date
+      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
         # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year/month where the day is not significant.
+        # if specifying a year by itself or a year and month where the day is not
+        # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-        # month.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+        # month and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
@@ -1140,6 +1143,11 @@ module Google
         # @return [Array<Google::Apis::TestingV1::IosVersion>]
         attr_accessor :versions
       
+        # Output only. The set of supported Xcode versions.
+        # Corresponds to the JSON property `xcodeVersions`
+        # @return [Array<Google::Apis::TestingV1::XcodeVersion>]
+        attr_accessor :xcode_versions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1149,6 +1157,7 @@ module Google
           @models = args[:models] if args.key?(:models)
           @runtime_configuration = args[:runtime_configuration] if args.key?(:runtime_configuration)
           @versions = args[:versions] if args.key?(:versions)
+          @xcode_versions = args[:xcode_versions] if args.key?(:xcode_versions)
         end
       end
       
@@ -1297,6 +1306,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :minor_version
       
+        # Output only. The available Xcode versions for this version.
+        # Corresponds to the JSON property `supportedXcodeVersionIds`
+        # @return [Array<String>]
+        attr_accessor :supported_xcode_version_ids
+      
         # Output only. Tags for this dimension.
         # Examples: "default", "preview", "deprecated"
         # Corresponds to the JSON property `tags`
@@ -1312,6 +1326,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @major_version = args[:major_version] if args.key?(:major_version)
           @minor_version = args[:minor_version] if args.key?(:minor_version)
+          @supported_xcode_version_ids = args[:supported_xcode_version_ids] if args.key?(:supported_xcode_version_ids)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
@@ -1330,6 +1345,13 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :tests_zip
       
+        # Optional. The Xcode version that should be used for the test.
+        # Use the EnvironmentDiscoveryService to get supported options.
+        # Defaults to the latest Xcode version Firebase Test Lab supports.
+        # Corresponds to the JSON property `xcodeVersion`
+        # @return [String]
+        attr_accessor :xcode_version
+      
         # A reference to a file, used for user inputs.
         # Corresponds to the JSON property `xctestrun`
         # @return [Google::Apis::TestingV1::FileReference]
@@ -1342,6 +1364,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
+          @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
           @xctestrun = args[:xctestrun] if args.key?(:xctestrun)
         end
       end
@@ -2255,6 +2278,33 @@ module Google
           @delay = args[:delay] if args.key?(:delay)
           @packet_duplication_ratio = args[:packet_duplication_ratio] if args.key?(:packet_duplication_ratio)
           @packet_loss_ratio = args[:packet_loss_ratio] if args.key?(:packet_loss_ratio)
+        end
+      end
+      
+      # An Xcode version that an iOS version is compatible with.
+      class XcodeVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tags for this Xcode version.
+        # Examples: "default"
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Output only. The id for this version.
+        # Example: "9.2"
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

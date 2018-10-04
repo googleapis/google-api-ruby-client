@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class XcodeVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -673,6 +679,8 @@ module Google
       
           collection :versions, as: 'versions', class: Google::Apis::TestingV1::IosVersion, decorator: Google::Apis::TestingV1::IosVersion::Representation
       
+          collection :xcode_versions, as: 'xcodeVersions', class: Google::Apis::TestingV1::XcodeVersion, decorator: Google::Apis::TestingV1::XcodeVersion::Representation
+      
         end
       end
       
@@ -719,6 +727,7 @@ module Google
           property :id, as: 'id'
           property :major_version, as: 'majorVersion'
           property :minor_version, as: 'minorVersion'
+          collection :supported_xcode_version_ids, as: 'supportedXcodeVersionIds'
           collection :tags, as: 'tags'
         end
       end
@@ -728,6 +737,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tests_zip, as: 'testsZip', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
+          property :xcode_version, as: 'xcodeVersion'
           property :xctestrun, as: 'xctestrun', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
         end
@@ -978,6 +988,14 @@ module Google
           property :delay, as: 'delay'
           property :packet_duplication_ratio, as: 'packetDuplicationRatio'
           property :packet_loss_ratio, as: 'packetLossRatio'
+        end
+      end
+      
+      class XcodeVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tags, as: 'tags'
+          property :version, as: 'version'
         end
       end
     end

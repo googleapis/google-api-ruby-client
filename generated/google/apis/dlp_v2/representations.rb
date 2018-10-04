@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudStorageRegexFileSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1241,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CloudStorageRegexFileSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          collection :exclude_regex, as: 'excludeRegex'
+          collection :include_regex, as: 'includeRegex'
+        end
+      end
+      
       class GooglePrivacyDlpV2Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1636,6 +1651,8 @@ module Google
       class GooglePrivacyDlpV2FileSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :regex_file_set, as: 'regexFileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegexFileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegexFileSet::Representation
+      
           property :url, as: 'url'
         end
       end

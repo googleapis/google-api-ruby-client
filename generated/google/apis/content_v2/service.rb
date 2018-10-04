@@ -1996,11 +1996,11 @@ module Google
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
+        # @param [String] disbursement_start_date
+        #   The first date which disbursements occurred. In ISO 8601 format.
         # @param [String] disbursement_end_date
         #   The last date which disbursements occurred. In ISO 8601 format. Default:
         #   current date.
-        # @param [String] disbursement_start_date
-        #   The first date which disbursements occurred. In ISO 8601 format.
         # @param [Fixnum] max_results
         #   The maximum number of disbursements to return in the response, used for paging.
         # @param [String] page_token
@@ -2024,7 +2024,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listdisbursements_orderreport(merchant_id, disbursement_end_date: nil, disbursement_start_date: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def listdisbursements_orderreport(merchant_id, disbursement_start_date, disbursement_end_date: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/orderreports/disbursements', options)
           command.response_representation = Google::Apis::ContentV2::OrderreportsListDisbursementsResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrderreportsListDisbursementsResponse
@@ -2046,6 +2046,8 @@ module Google
         #   account.
         # @param [String] disbursement_id
         #   The Google-provided ID of the disbursement (found in Wallet).
+        # @param [String] transaction_start_date
+        #   The first date in which transaction occurred. In ISO 8601 format.
         # @param [Fixnum] max_results
         #   The maximum number of disbursements to return in the response, used for paging.
         # @param [String] page_token
@@ -2053,8 +2055,6 @@ module Google
         # @param [String] transaction_end_date
         #   The last date in which transaction occurred. In ISO 8601 format. Default:
         #   current date.
-        # @param [String] transaction_start_date
-        #   The first date in which transaction occurred. In ISO 8601 format.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2074,7 +2074,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listtransactions_orderreport(merchant_id, disbursement_id, max_results: nil, page_token: nil, transaction_end_date: nil, transaction_start_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def listtransactions_orderreport(merchant_id, disbursement_id, transaction_start_date, max_results: nil, page_token: nil, transaction_end_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/orderreports/disbursements/{disbursementId}/transactions', options)
           command.response_representation = Google::Apis::ContentV2::OrderreportsListTransactionsResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrderreportsListTransactionsResponse

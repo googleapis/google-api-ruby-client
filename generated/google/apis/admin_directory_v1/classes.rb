@@ -625,6 +625,11 @@ module Google
         # @return [String]
         attr_accessor :boot_mode
       
+        # Reports of CPU utilization and temperature (Read-only)
+        # Corresponds to the JSON property `cpuStatusReports`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport>]
+        attr_accessor :cpu_status_reports
+      
         # List of device files to download (Read-only)
         # Corresponds to the JSON property `deviceFiles`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile>]
@@ -634,6 +639,11 @@ module Google
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
+      
+        # Reports of disk space and other info about mounted/connected volumes.
+        # Corresponds to the JSON property `diskVolumeReports`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport>]
+        attr_accessor :disk_volume_reports
       
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
@@ -727,6 +737,16 @@ module Google
         # @return [DateTime]
         attr_accessor :support_end_date
       
+        # Reports of amounts of available RAM memory (Read-only)
+        # Corresponds to the JSON property `systemRamFreeReports`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::SystemRamFreeReport>]
+        attr_accessor :system_ram_free_reports
+      
+        # Total RAM on the device [in bytes] (Read-only)
+        # Corresponds to the JSON property `systemRamTotal`
+        # @return [Fixnum]
+        attr_accessor :system_ram_total
+      
         # Trusted Platform Module (TPM) (Read-only)
         # Corresponds to the JSON property `tpmVersionInfo`
         # @return [Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo]
@@ -749,8 +769,10 @@ module Google
           @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
+          @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @disk_volume_reports = args[:disk_volume_reports] if args.key?(:disk_volume_reports)
           @etag = args[:etag] if args.key?(:etag)
           @ethernet_mac_address = args[:ethernet_mac_address] if args.key?(:ethernet_mac_address)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
@@ -769,6 +791,8 @@ module Google
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @status = args[:status] if args.key?(:status)
           @support_end_date = args[:support_end_date] if args.key?(:support_end_date)
+          @system_ram_free_reports = args[:system_ram_free_reports] if args.key?(:system_ram_free_reports)
+          @system_ram_total = args[:system_ram_total] if args.key?(:system_ram_total)
           @tpm_version_info = args[:tpm_version_info] if args.key?(:tpm_version_info)
           @will_auto_renew = args[:will_auto_renew] if args.key?(:will_auto_renew)
         end
@@ -795,6 +819,62 @@ module Google
           def update!(**args)
             @active_time = args[:active_time] if args.key?(:active_time)
             @date = args[:date] if args.key?(:date)
+          end
+        end
+        
+        # 
+        class CpuStatusReport
+          include Google::Apis::Core::Hashable
+        
+          # List of CPU temperature samples.
+          # Corresponds to the JSON property `cpuTemperatureInfo`
+          # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::CpuTemperatureInfo>]
+          attr_accessor :cpu_temperature_info
+        
+          # 
+          # Corresponds to the JSON property `cpuUtilizationPercentageInfo`
+          # @return [Array<Fixnum>]
+          attr_accessor :cpu_utilization_percentage_info
+        
+          # Date and time the report was received.
+          # Corresponds to the JSON property `reportTime`
+          # @return [DateTime]
+          attr_accessor :report_time
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @cpu_temperature_info = args[:cpu_temperature_info] if args.key?(:cpu_temperature_info)
+            @cpu_utilization_percentage_info = args[:cpu_utilization_percentage_info] if args.key?(:cpu_utilization_percentage_info)
+            @report_time = args[:report_time] if args.key?(:report_time)
+          end
+          
+          # 
+          class CpuTemperatureInfo
+            include Google::Apis::Core::Hashable
+          
+            # CPU label
+            # Corresponds to the JSON property `label`
+            # @return [String]
+            attr_accessor :label
+          
+            # Temperature in Celsius degrees.
+            # Corresponds to the JSON property `temperature`
+            # @return [Fixnum]
+            attr_accessor :temperature
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @label = args[:label] if args.key?(:label)
+              @temperature = args[:temperature] if args.key?(:temperature)
+            end
           end
         end
         
@@ -836,6 +916,56 @@ module Google
         end
         
         # 
+        class DiskVolumeReport
+          include Google::Apis::Core::Hashable
+        
+          # Disk volumes
+          # Corresponds to the JSON property `volumeInfo`
+          # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::VolumeInfo>]
+          attr_accessor :volume_info
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @volume_info = args[:volume_info] if args.key?(:volume_info)
+          end
+          
+          # 
+          class VolumeInfo
+            include Google::Apis::Core::Hashable
+          
+            # Free disk space [in bytes]
+            # Corresponds to the JSON property `storageFree`
+            # @return [Fixnum]
+            attr_accessor :storage_free
+          
+            # Total disk space [in bytes]
+            # Corresponds to the JSON property `storageTotal`
+            # @return [Fixnum]
+            attr_accessor :storage_total
+          
+            # Volume id
+            # Corresponds to the JSON property `volumeId`
+            # @return [String]
+            attr_accessor :volume_id
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @storage_free = args[:storage_free] if args.key?(:storage_free)
+              @storage_total = args[:storage_total] if args.key?(:storage_total)
+              @volume_id = args[:volume_id] if args.key?(:volume_id)
+            end
+          end
+        end
+        
+        # 
         class RecentUser
           include Google::Apis::Core::Hashable
         
@@ -857,6 +987,31 @@ module Google
           def update!(**args)
             @email = args[:email] if args.key?(:email)
             @type = args[:type] if args.key?(:type)
+          end
+        end
+        
+        # 
+        class SystemRamFreeReport
+          include Google::Apis::Core::Hashable
+        
+          # Date and time the report was received.
+          # Corresponds to the JSON property `reportTime`
+          # @return [DateTime]
+          attr_accessor :report_time
+        
+          # 
+          # Corresponds to the JSON property `systemRamFreeInfo`
+          # @return [Array<Fixnum>]
+          attr_accessor :system_ram_free_info
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @report_time = args[:report_time] if args.key?(:report_time)
+            @system_ram_free_info = args[:system_ram_free_info] if args.key?(:system_ram_free_info)
           end
         end
         

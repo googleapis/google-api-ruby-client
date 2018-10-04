@@ -389,10 +389,10 @@ module Google
         # @return [String]
         attr_accessor :placed_date
       
-        # The details of the merchant provided promotions applied to the order. More
-        # details about the program are here.
+        # Deprecated. The details of the merchant provided promotions applied to the
+        # order. More details about the program are here.
         # Corresponds to the JSON property `promotions`
-        # @return [Array<Google::Apis::ContentV2sandbox::OrderPromotion>]
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderLegacyPromotion>]
         attr_accessor :promotions
       
         # Refunds for the order.
@@ -662,6 +662,114 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # 
+      class OrderLegacyPromotion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `benefits`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderLegacyPromotionBenefit>]
+        attr_accessor :benefits
+      
+        # The date and time frame when the promotion is active and ready for validation
+        # review. Note that the promotion live time may be delayed for a few hours due
+        # to the validation review.
+        # Start date and end date are separated by a forward slash (/). The start date
+        # is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time
+        # of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
+        # expression of the time zone for the sale. The end date is in the same format.
+        # Corresponds to the JSON property `effectiveDates`
+        # @return [String]
+        attr_accessor :effective_dates
+      
+        # Optional. The text code that corresponds to the promotion when applied on the
+        # retailer?s website.
+        # Corresponds to the JSON property `genericRedemptionCode`
+        # @return [String]
+        attr_accessor :generic_redemption_code
+      
+        # The unique ID of the promotion.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The full title of the promotion.
+        # Corresponds to the JSON property `longTitle`
+        # @return [String]
+        attr_accessor :long_title
+      
+        # Whether the promotion is applicable to all products or only specific products.
+        # Corresponds to the JSON property `productApplicability`
+        # @return [String]
+        attr_accessor :product_applicability
+      
+        # Indicates that the promotion is valid online.
+        # Corresponds to the JSON property `redemptionChannel`
+        # @return [String]
+        attr_accessor :redemption_channel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @benefits = args[:benefits] if args.key?(:benefits)
+          @effective_dates = args[:effective_dates] if args.key?(:effective_dates)
+          @generic_redemption_code = args[:generic_redemption_code] if args.key?(:generic_redemption_code)
+          @id = args[:id] if args.key?(:id)
+          @long_title = args[:long_title] if args.key?(:long_title)
+          @product_applicability = args[:product_applicability] if args.key?(:product_applicability)
+          @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
+        end
+      end
+      
+      # 
+      class OrderLegacyPromotionBenefit
+        include Google::Apis::Core::Hashable
+      
+        # The discount in the order price when the promotion is applied.
+        # Corresponds to the JSON property `discount`
+        # @return [Google::Apis::ContentV2sandbox::Price]
+        attr_accessor :discount
+      
+        # The OfferId(s) that were purchased in this order and map to this specific
+        # benefit of the promotion.
+        # Corresponds to the JSON property `offerIds`
+        # @return [Array<String>]
+        attr_accessor :offer_ids
+      
+        # Further describes the benefit of the promotion. Note that we will expand on
+        # this enumeration as we support new promotion sub-types.
+        # Corresponds to the JSON property `subType`
+        # @return [String]
+        attr_accessor :sub_type
+      
+        # The impact on tax when the promotion is applied.
+        # Corresponds to the JSON property `taxImpact`
+        # @return [Google::Apis::ContentV2sandbox::Price]
+        attr_accessor :tax_impact
+      
+        # Describes whether the promotion applies to products (e.g. 20% off) or to
+        # shipping (e.g. Free Shipping).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discount = args[:discount] if args.key?(:discount)
+          @offer_ids = args[:offer_ids] if args.key?(:offer_ids)
+          @sub_type = args[:sub_type] if args.key?(:sub_type)
+          @tax_impact = args[:tax_impact] if args.key?(:tax_impact)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1081,114 +1189,6 @@ module Google
           @expiration_year = args[:expiration_year] if args.key?(:expiration_year)
           @last_four_digits = args[:last_four_digits] if args.key?(:last_four_digits)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class OrderPromotion
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `benefits`
-        # @return [Array<Google::Apis::ContentV2sandbox::OrderPromotionBenefit>]
-        attr_accessor :benefits
-      
-        # The date and time frame when the promotion is active and ready for validation
-        # review. Note that the promotion live time may be delayed for a few hours due
-        # to the validation review.
-        # Start date and end date are separated by a forward slash (/). The start date
-        # is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time
-        # of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
-        # expression of the time zone for the sale. The end date is in the same format.
-        # Corresponds to the JSON property `effectiveDates`
-        # @return [String]
-        attr_accessor :effective_dates
-      
-        # Optional. The text code that corresponds to the promotion when applied on the
-        # retailer?s website.
-        # Corresponds to the JSON property `genericRedemptionCode`
-        # @return [String]
-        attr_accessor :generic_redemption_code
-      
-        # The unique ID of the promotion.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The full title of the promotion.
-        # Corresponds to the JSON property `longTitle`
-        # @return [String]
-        attr_accessor :long_title
-      
-        # Whether the promotion is applicable to all products or only specific products.
-        # Corresponds to the JSON property `productApplicability`
-        # @return [String]
-        attr_accessor :product_applicability
-      
-        # Indicates that the promotion is valid online.
-        # Corresponds to the JSON property `redemptionChannel`
-        # @return [String]
-        attr_accessor :redemption_channel
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @benefits = args[:benefits] if args.key?(:benefits)
-          @effective_dates = args[:effective_dates] if args.key?(:effective_dates)
-          @generic_redemption_code = args[:generic_redemption_code] if args.key?(:generic_redemption_code)
-          @id = args[:id] if args.key?(:id)
-          @long_title = args[:long_title] if args.key?(:long_title)
-          @product_applicability = args[:product_applicability] if args.key?(:product_applicability)
-          @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
-        end
-      end
-      
-      # 
-      class OrderPromotionBenefit
-        include Google::Apis::Core::Hashable
-      
-        # The discount in the order price when the promotion is applied.
-        # Corresponds to the JSON property `discount`
-        # @return [Google::Apis::ContentV2sandbox::Price]
-        attr_accessor :discount
-      
-        # The OfferId(s) that were purchased in this order and map to this specific
-        # benefit of the promotion.
-        # Corresponds to the JSON property `offerIds`
-        # @return [Array<String>]
-        attr_accessor :offer_ids
-      
-        # Further describes the benefit of the promotion. Note that we will expand on
-        # this enumeration as we support new promotion sub-types.
-        # Corresponds to the JSON property `subType`
-        # @return [String]
-        attr_accessor :sub_type
-      
-        # The impact on tax when the promotion is applied.
-        # Corresponds to the JSON property `taxImpact`
-        # @return [Google::Apis::ContentV2sandbox::Price]
-        attr_accessor :tax_impact
-      
-        # Describes whether the promotion applies to products (e.g. 20% off) or to
-        # shipping (e.g. Free Shipping).
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @discount = args[:discount] if args.key?(:discount)
-          @offer_ids = args[:offer_ids] if args.key?(:offer_ids)
-          @sub_type = args[:sub_type] if args.key?(:sub_type)
-          @tax_impact = args[:tax_impact] if args.key?(:tax_impact)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4048,10 +4048,10 @@ module Google
         # @return [String]
         attr_accessor :predefined_delivery_address
       
-        # The details of the merchant provided promotions applied to the order. More
-        # details about the program are here.
+        # Deprecated. The details of the merchant provided promotions applied to the
+        # order. More details about the program are here.
         # Corresponds to the JSON property `promotions`
-        # @return [Array<Google::Apis::ContentV2sandbox::OrderPromotion>]
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderLegacyPromotion>]
         attr_accessor :promotions
       
         # The total cost of shipping for all items.

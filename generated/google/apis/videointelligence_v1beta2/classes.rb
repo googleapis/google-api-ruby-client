@@ -1413,6 +1413,16 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1WordInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is set only for the top alternative.
+        # This field is not guaranteed to be accurate and users should not rely on it
+        # to be always provided.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Time offset relative to the beginning of the audio, and
         # corresponding to the end of the spoken word. This field is only set if
         # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
@@ -1420,6 +1430,14 @@ module Google
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # Output only. A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from 1 up to diarization_speaker_count,
+        # and is only set if speaker diarization is enabled.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
       
         # Time offset relative to the beginning of the audio, and
         # corresponding to the start of the spoken word. This field is only set if
@@ -1440,9 +1458,667 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
+        end
+      end
+      
+      # Video annotation progress. Included in the `metadata`
+      # field of the `Operation` returned by the `GetOperation`
+      # call of the `google::longrunning::Operations` service.
+      class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress
+        include Google::Apis::Core::Hashable
+      
+        # Progress metadata for all videos specified in `AnnotateVideoRequest`.
+        # Corresponds to the JSON property `annotationProgress`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>]
+        attr_accessor :annotation_progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_progress = args[:annotation_progress] if args.key?(:annotation_progress)
+        end
+      end
+      
+      # Video annotation response. Included in the `response`
+      # field of the `Operation` returned by the `GetOperation`
+      # call of the `google::longrunning::Operations` service.
+      class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Annotation results for all videos specified in `AnnotateVideoRequest`.
+        # Corresponds to the JSON property `annotationResults`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>]
+        attr_accessor :annotation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_results = args[:annotation_results] if args.key?(:annotation_results)
+        end
+      end
+      
+      # Detected entity from video analysis.
+      class GoogleCloudVideointelligenceV1p2beta1Entity
+        include Google::Apis::Core::Hashable
+      
+        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Opaque entity ID. Some IDs may be available in
+        # [Google Knowledge Graph Search
+        # API](https://developers.google.com/knowledge-graph/).
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Language code for `description` in BCP-47 format.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # Explicit content annotation (based on per-frame visual signals only).
+      # If no explicit content has been detected in a frame, no annotations are
+      # present for that frame.
+      class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where explicit content was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>]
+        attr_accessor :frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+        end
+      end
+      
+      # Video frame level annotation results for explicit content.
+      class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame
+        include Google::Apis::Core::Hashable
+      
+        # Likelihood of the pornography content..
+        # Corresponds to the JSON property `pornographyLikelihood`
+        # @return [String]
+        attr_accessor :pornography_likelihood
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Label annotation.
+      class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Common categories for the detected entity.
+        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
+        # cases there might be more than one categories e.g. `Terrier` could also be
+        # a `pet`.
+        # Corresponds to the JSON property `categoryEntities`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Entity>]
+        attr_accessor :category_entities
+      
+        # Detected entity from video analysis.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Entity]
+        attr_accessor :entity
+      
+        # All video frames where a label was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a label was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_entities = args[:category_entities] if args.key?(:category_entities)
+          @entity = args[:entity] if args.key?(:entity)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # Video frame level annotation results for label detection.
+      class GoogleCloudVideointelligenceV1p2beta1LabelFrame
+        include Google::Apis::Core::Hashable
+      
+        # Confidence that the label is accurate. Range: [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for label detection.
+      class GoogleCloudVideointelligenceV1p2beta1LabelSegment
+        include Google::Apis::Core::Hashable
+      
+        # Confidence that the label is accurate. Range: [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Normalized bounding box.
+      # The normalized vertex coordinates are relative to the original image.
+      # Range: [0, 1].
+      class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox
+        include Google::Apis::Core::Hashable
+      
+        # Bottom Y coordinate.
+        # Corresponds to the JSON property `bottom`
+        # @return [Float]
+        attr_accessor :bottom
+      
+        # Left X coordinate.
+        # Corresponds to the JSON property `left`
+        # @return [Float]
+        attr_accessor :left
+      
+        # Right X coordinate.
+        # Corresponds to the JSON property `right`
+        # @return [Float]
+        attr_accessor :right
+      
+        # Top Y coordinate.
+        # Corresponds to the JSON property `top`
+        # @return [Float]
+        attr_accessor :top
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom = args[:bottom] if args.key?(:bottom)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
+          @top = args[:top] if args.key?(:top)
+        end
+      end
+      
+      # Normalized bounding polygon for text (that might not be aligned with axis).
+      # Contains list of the corner points in clockwise order starting from
+      # top-left corner. For example, for a rectangular bounding box:
+      # When the text is horizontal it might look like:
+      # 0----1
+      # |    |
+      # 3----2
+      # When it's clockwise rotated 180 degrees around the top-left corner it
+      # becomes:
+      # 2----3
+      # |    |
+      # 1----0
+      # and the vertex order will still be (0, 1, 2, 3). Note that values can be less
+      # than 0, or greater than 1 due to trignometric calculations for location of
+      # the box.
+      class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
+        include Google::Apis::Core::Hashable
+      
+        # Normalized vertices of the bounding polygon.
+        # Corresponds to the JSON property `vertices`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedVertex>]
+        attr_accessor :vertices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vertices = args[:vertices] if args.key?(:vertices)
+        end
+      end
+      
+      # A vertex represents a 2D point in the image.
+      # NOTE: the normalized vertex coordinates are relative to the original image
+      # and range from 0 to 1.
+      class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # Annotations corresponding to one tracked object.
+      class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Object category's labeling confidence of this track.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Detected entity from video analysis.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Entity]
+        attr_accessor :entity
+      
+        # Information corresponding to all frames where this object track appears.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>]
+        attr_accessor :frames
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @entity = args[:entity] if args.key?(:entity)
+          @frames = args[:frames] if args.key?(:frames)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Video frame level annotations for object detection and tracking. This field
+      # stores per frame location, time offset, and confidence.
+      class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized bounding box.
+        # The normalized vertex coordinates are relative to the original image.
+        # Range: [0, 1].
+        # Corresponds to the JSON property `normalizedBoundingBox`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox]
+        attr_accessor :normalized_bounding_box
+      
+        # The timestamp of the frame in microseconds.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Annotations related to one detected OCR text snippet. This will contain the
+      # corresponding text, confidence value, and frame level information for each
+      # detection.
+      class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Confidence for the track of detected text. It is calculated as the highest
+        # over all frames where OCR detected text appears.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Information related to the frames where OCR detected text appears.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TextFrame>]
+        attr_accessor :frames
+      
+        # All video segments where OCR detected text appears.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TextSegment>]
+        attr_accessor :segments
+      
+        # The detected text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Video frame level annotation results for text annotation (OCR).
+      # Contains information regarding timestamp and bounding box locations for the
+      # frames containing detected OCR text snippets.
+      class GoogleCloudVideointelligenceV1p2beta1TextFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized bounding polygon for text (that might not be aligned with axis).
+        # Contains list of the corner points in clockwise order starting from
+        # top-left corner. For example, for a rectangular bounding box:
+        # When the text is horizontal it might look like:
+        # 0----1
+        # |    |
+        # 3----2
+        # When it's clockwise rotated 180 degrees around the top-left corner it
+        # becomes:
+        # 2----3
+        # |    |
+        # 1----0
+        # and the vertex order will still be (0, 1, 2, 3). Note that values can be less
+        # than 0, or greater than 1 due to trignometric calculations for location of
+        # the box.
+        # Corresponds to the JSON property `rotatedBoundingBox`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly]
+        attr_accessor :rotated_bounding_box
+      
+        # Timestamp of this frame.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotated_bounding_box = args[:rotated_bounding_box] if args.key?(:rotated_bounding_box)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for text detection.
+      class GoogleCloudVideointelligenceV1p2beta1TextSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Annotation progress for a single video.
+      class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
+        include Google::Apis::Core::Hashable
+      
+        # Video file location in
+        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # Corresponds to the JSON property `inputUri`
+        # @return [String]
+        attr_accessor :input_uri
+      
+        # Approximate percentage processed thus far. Guaranteed to be
+        # 100 when fully processed.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Time of the most recent update.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_uri = args[:input_uri] if args.key?(:input_uri)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Annotation results for a single video.
+      class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Explicit content annotation (based on per-frame visual signals only).
+        # If no explicit content has been detected in a frame, no annotations are
+        # present for that frame.
+        # Corresponds to the JSON property `explicitAnnotation`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation]
+        attr_accessor :explicit_annotation
+      
+        # Label annotations on frame level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `frameLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
+        attr_accessor :frame_label_annotations
+      
+        # Video file location in
+        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # Corresponds to the JSON property `inputUri`
+        # @return [String]
+        attr_accessor :input_uri
+      
+        # Annotations for list of objects detected and tracked in video.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>]
+        attr_accessor :object_annotations
+      
+        # Label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
+        attr_accessor :segment_label_annotations
+      
+        # Shot annotations. Each shot is represented as a video segment.
+        # Corresponds to the JSON property `shotAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment>]
+        attr_accessor :shot_annotations
+      
+        # Label annotations on shot level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `shotLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
+        attr_accessor :shot_label_annotations
+      
+        # OCR text detection and tracking.
+        # Annotations for list of detected text snippets. Each will have list of
+        # frame information associated with it.
+        # Corresponds to the JSON property `textAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TextAnnotation>]
+        attr_accessor :text_annotations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
+          @input_uri = args[:input_uri] if args.key?(:input_uri)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
+          @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
+        end
+      end
+      
+      # Video segment.
+      class GoogleCloudVideointelligenceV1p2beta1VideoSegment
+        include Google::Apis::Core::Hashable
+      
+        # Time-offset, relative to the beginning of the video,
+        # corresponding to the end of the segment (inclusive).
+        # Corresponds to the JSON property `endTimeOffset`
+        # @return [String]
+        attr_accessor :end_time_offset
+      
+        # Time-offset, relative to the beginning of the video,
+        # corresponding to the start of the segment (inclusive).
+        # Corresponds to the JSON property `startTimeOffset`
+        # @return [String]
+        attr_accessor :start_time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time_offset = args[:end_time_offset] if args.key?(:end_time_offset)
+          @start_time_offset = args[:start_time_offset] if args.key?(:start_time_offset)
         end
       end
       

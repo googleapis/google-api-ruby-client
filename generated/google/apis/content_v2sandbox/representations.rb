@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderLegacyPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderLegacyPromotionBenefit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderLineItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,18 +161,6 @@ module Google
       end
       
       class OrderPaymentMethod
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderPromotion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderPromotionBenefit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -808,7 +808,7 @@ module Google
       
           property :payment_status, as: 'paymentStatus'
           property :placed_date, as: 'placedDate'
-          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2sandbox::OrderPromotion, decorator: Google::Apis::ContentV2sandbox::OrderPromotion::Representation
+          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2sandbox::OrderLegacyPromotion, decorator: Google::Apis::ContentV2sandbox::OrderLegacyPromotion::Representation
       
           collection :refunds, as: 'refunds', class: Google::Apis::ContentV2sandbox::OrderRefund, decorator: Google::Apis::ContentV2sandbox::OrderRefund::Representation
       
@@ -874,6 +874,33 @@ module Google
           property :address, as: 'address', class: Google::Apis::ContentV2sandbox::OrderAddress, decorator: Google::Apis::ContentV2sandbox::OrderAddress::Representation
       
           property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class OrderLegacyPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :benefits, as: 'benefits', class: Google::Apis::ContentV2sandbox::OrderLegacyPromotionBenefit, decorator: Google::Apis::ContentV2sandbox::OrderLegacyPromotionBenefit::Representation
+      
+          property :effective_dates, as: 'effectiveDates'
+          property :generic_redemption_code, as: 'genericRedemptionCode'
+          property :id, as: 'id'
+          property :long_title, as: 'longTitle'
+          property :product_applicability, as: 'productApplicability'
+          property :redemption_channel, as: 'redemptionChannel'
+        end
+      end
+      
+      class OrderLegacyPromotionBenefit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discount, as: 'discount', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          collection :offer_ids, as: 'offerIds'
+          property :sub_type, as: 'subType'
+          property :tax_impact, as: 'taxImpact', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -983,33 +1010,6 @@ module Google
           property :expiration_year, as: 'expirationYear'
           property :last_four_digits, as: 'lastFourDigits'
           property :phone_number, as: 'phoneNumber'
-          property :type, as: 'type'
-        end
-      end
-      
-      class OrderPromotion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :benefits, as: 'benefits', class: Google::Apis::ContentV2sandbox::OrderPromotionBenefit, decorator: Google::Apis::ContentV2sandbox::OrderPromotionBenefit::Representation
-      
-          property :effective_dates, as: 'effectiveDates'
-          property :generic_redemption_code, as: 'genericRedemptionCode'
-          property :id, as: 'id'
-          property :long_title, as: 'longTitle'
-          property :product_applicability, as: 'productApplicability'
-          property :redemption_channel, as: 'redemptionChannel'
-        end
-      end
-      
-      class OrderPromotionBenefit
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :discount, as: 'discount', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
-      
-          collection :offer_ids, as: 'offerIds'
-          property :sub_type, as: 'subType'
-          property :tax_impact, as: 'taxImpact', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
-      
           property :type, as: 'type'
         end
       end
@@ -1841,7 +1841,7 @@ module Google
           property :payment_method, as: 'paymentMethod', class: Google::Apis::ContentV2sandbox::TestOrderPaymentMethod, decorator: Google::Apis::ContentV2sandbox::TestOrderPaymentMethod::Representation
       
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
-          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2sandbox::OrderPromotion, decorator: Google::Apis::ContentV2sandbox::OrderPromotion::Representation
+          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2sandbox::OrderLegacyPromotion, decorator: Google::Apis::ContentV2sandbox::OrderLegacyPromotion::Representation
       
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
       

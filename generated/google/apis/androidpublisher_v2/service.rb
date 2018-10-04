@@ -678,6 +678,9 @@ module Google
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
+        # @param [Boolean] ack_bundle_installation_warning
+        #   Must be set to true if the bundle installation may trigger a warning on user
+        #   devices (i.e. if installation size may be over a threshold, typically 100 MB).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -701,7 +704,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_edit_bundle(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_edit_bundle(package_name, edit_id, ack_bundle_installation_warning: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, '{packageName}/edits/{editId}/bundles', options)
           else
@@ -713,6 +716,7 @@ module Google
           command.response_class = Google::Apis::AndroidpublisherV2::Bundle
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
+          command.query['ackBundleInstallationWarning'] = ack_bundle_installation_warning unless ack_bundle_installation_warning.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
