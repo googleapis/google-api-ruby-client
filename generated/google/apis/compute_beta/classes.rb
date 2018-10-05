@@ -12240,15 +12240,16 @@ module Google
         # metric names will have "/iam/policy" prepended.
         # Field names correspond to IAM request parameters and field values are their
         # respective values.
-        # At present the only supported field names are - "iam_principal", corresponding
-        # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-        # counter with no field.
+        # Supported field names: - "authority", which is "[token]" if IAMContext.token
+        # is present, otherwise the value of IAMContext.authority_selector if present,
+        # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+        # a representation of IAMContext.principal even if a token or authority selector
+        # is present; or - "" (empty string), resulting in a counter with no fields.
         # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
         # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
         # of IAMContext.principal]`
-        # At this time we do not support: * multiple field names (though this may be
-        # supported in the future) * decrementing the counter * incrementing it by
-        # anything other than 1
+        # At this time we do not support multiple field names (though this may be
+        # supported in the future).
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::ComputeBeta::LogConfigCounterOptions]
         attr_accessor :counter
@@ -12301,15 +12302,16 @@ module Google
       # metric names will have "/iam/policy" prepended.
       # Field names correspond to IAM request parameters and field values are their
       # respective values.
-      # At present the only supported field names are - "iam_principal", corresponding
-      # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-      # counter with no field.
+      # Supported field names: - "authority", which is "[token]" if IAMContext.token
+      # is present, otherwise the value of IAMContext.authority_selector if present,
+      # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+      # a representation of IAMContext.principal even if a token or authority selector
+      # is present; or - "" (empty string), resulting in a counter with no fields.
       # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
       # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
       # of IAMContext.principal]`
-      # At this time we do not support: * multiple field names (though this may be
-      # supported in the future) * decrementing the counter * incrementing it by
-      # anything other than 1
+      # At this time we do not support multiple field names (though this may be
+      # supported in the future).
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
@@ -13044,9 +13046,9 @@ module Google
         end
       end
       
-      # Represents a Network resource. Read Networks and Firewalls for more
-      # information. (== resource_for v1.networks ==) (== resource_for beta.networks ==
-      # )
+      # Represents a Network resource. Read Virtual Private Cloud (VPC) Network
+      # Overview for more information. (== resource_for v1.networks ==) (==
+      # resource_for beta.networks ==)
       class Network
         include Google::Apis::Core::Hashable
       
@@ -13057,10 +13059,10 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
-        # When set to true, the network is created in "auto subnet mode". When set to
-        # false, the network is in "custom subnet mode".
-        # In "auto subnet mode", a newly created network is assigned the default CIDR of
-        # 10.128.0.0/9 and it automatically creates one subnetwork per region.
+        # When set to true, the VPC network is created in "auto" mode. When set to false,
+        # the VPC network is created in "custom" mode.
+        # An auto mode VPC network starts with one subnet per region. Each subnet has a
+        # predetermined range as described in Auto mode VPC network IP ranges.
         # Corresponds to the JSON property `autoCreateSubnetworks`
         # @return [Boolean]
         attr_accessor :auto_create_subnetworks
@@ -13077,9 +13079,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A gateway address for default routing to other networks. This value is read
-        # only and is selected by the Google Compute Engine, typically as the first
-        # usable address in the IPv4Range.
+        # [Output Only] The gateway address for default routing out of the network. This
+        # value is read only and is selected by GCP.
         # Corresponds to the JSON property `gatewayIPv4`
         # @return [String]
         attr_accessor :gateway_i_pv4
@@ -13123,7 +13124,7 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] Server-defined fully-qualified URLs for all subnetworks in this
-        # network.
+        # VPC network.
         # Corresponds to the JSON property `subnetworks`
         # @return [Array<String>]
         attr_accessor :subnetworks
@@ -14130,9 +14131,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The network-wide routing mode to use. If set to REGIONAL, this network's cloud
-        # routers will only advertise routes with subnetworks of this network in the
-        # same region as the router. If set to GLOBAL, this network's cloud routers will
-        # advertise routes with all subnetworks of this network, across regions.
+        # routers will only advertise routes with subnets of this network in the same
+        # region as the router. If set to GLOBAL, this network's cloud routers will
+        # advertise routes with all subnets of this network, across regions.
         # Corresponds to the JSON property `routingMode`
         # @return [String]
         attr_accessor :routing_mode

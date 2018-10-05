@@ -1258,6 +1258,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusVersionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6744,7 +6750,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
-          property :version_target_reached, as: 'versionTargetReached'
+          property :version_target, as: 'versionTarget', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusVersionTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_reached, as: 'isReached'
         end
       end
       
@@ -7082,6 +7096,8 @@ module Google
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::ComputeAlpha::AllocationAffinity, decorator: Google::Apis::ComputeAlpha::AllocationAffinity::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation

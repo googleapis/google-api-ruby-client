@@ -681,11 +681,10 @@ module Google
       class InternalChecker
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :checker_id, as: 'checkerId'
           property :display_name, as: 'displayName'
           property :gcp_zone, as: 'gcpZone'
+          property :name, as: 'name'
           property :network, as: 'network'
-          property :project_id, as: 'projectId'
         end
       end
       

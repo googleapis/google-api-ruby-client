@@ -1200,16 +1200,14 @@ module Google
         end
       end
       
-      # Nimbus InternalCheckers.
+      # Nimbus InternalCheckers. The API currently only allows reading of internal
+      # checkers, creation of internal checkers is a manual process.
       class InternalChecker
         include Google::Apis::Core::Hashable
       
-        # The checker ID.
-        # Corresponds to the JSON property `checkerId`
-        # @return [String]
-        attr_accessor :checker_id
-      
-        # The checker's human-readable name.
+        # The checker's human-readable name. The display name should be unique within a
+        # Stackdriver Workspace in order to make it easier to identify; however,
+        # uniqueness is not enforced.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1220,15 +1218,19 @@ module Google
         # @return [String]
         attr_accessor :gcp_zone
       
-        # The internal network to perform this uptime check on.
+        # A unique resource name for this InternalChecker. The format is:projects/[
+        # PROJECT_ID]/internalCheckers/[CHECKER_ID].PROJECT_ID is the GCP project ID
+        # where the internal resource lives. Not necessarily the same as the project_id
+        # for the config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal
+        # resource lives (ex: "default").
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
-      
-        # The GCP project ID. Not necessarily the same as the project_id for the config.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
       
         def initialize(**args)
            update!(**args)
@@ -1236,11 +1238,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @checker_id = args[:checker_id] if args.key?(:checker_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @gcp_zone = args[:gcp_zone] if args.key?(:gcp_zone)
+          @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
-          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -2796,7 +2797,7 @@ module Google
         attr_accessor :content_matchers
       
         # A human-friendly name for the uptime check configuration. The display name
-        # should be unique within a Stackdriver Account in order to make it easier to
+        # should be unique within a Stackdriver Workspace in order to make it easier to
         # identify; however, uniqueness is not enforced. Required.
         # Corresponds to the JSON property `displayName`
         # @return [String]

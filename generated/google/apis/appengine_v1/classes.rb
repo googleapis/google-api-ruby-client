@@ -122,7 +122,7 @@ module Google
       
         # HTTP path dispatch rules for requests to the application that do not
         # explicitly target a service or version. Rules are order-dependent. Up to 20
-        # dispatch rules can be supported.@OutputOnly
+        # dispatch rules can be supported.
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1::UrlDispatchRule>]
         attr_accessor :dispatch_rules
@@ -832,6 +832,12 @@ module Google
         # @return [String]
         attr_accessor :config_id
       
+        # Enable or disable trace sampling. By default, this is set to false for enabled.
+        # Corresponds to the JSON property `disableTraceSampling`
+        # @return [Boolean]
+        attr_accessor :disable_trace_sampling
+        alias_method :disable_trace_sampling?, :disable_trace_sampling
+      
         # Endpoints service name which is the name of the "service" resource in the
         # Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
         # Corresponds to the JSON property `name`
@@ -851,6 +857,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_id = args[:config_id] if args.key?(:config_id)
+          @disable_trace_sampling = args[:disable_trace_sampling] if args.key?(:disable_trace_sampling)
           @name = args[:name] if args.key?(:name)
           @rollout_strategy = args[:rollout_strategy] if args.key?(:rollout_strategy)
         end

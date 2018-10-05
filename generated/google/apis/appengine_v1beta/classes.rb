@@ -122,7 +122,7 @@ module Google
       
         # HTTP path dispatch rules for requests to the application that do not
         # explicitly target a service or version. Rules are order-dependent. Up to 20
-        # dispatch rules can be supported.@OutputOnly
+        # dispatch rules can be supported.
         # Corresponds to the JSON property `dispatchRules`
         # @return [Array<Google::Apis::AppengineV1beta::UrlDispatchRule>]
         attr_accessor :dispatch_rules

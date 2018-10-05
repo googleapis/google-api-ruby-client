@@ -10113,14 +10113,11 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
-        # [Output Only] A bit indicating whether version target has been reached in this
-        # managed instance group, i.e. all instances are in their target version.
-        # Instances' target version are specified by version field on Instance Group
-        # Manager.
-        # Corresponds to the JSON property `versionTargetReached`
-        # @return [Boolean]
-        attr_accessor :version_target_reached
-        alias_method :version_target_reached?, :version_target_reached
+        # [Output Only] A status of consistency of Instances' versions with their target
+        # version specified by version field on Instance Group Manager.
+        # Corresponds to the JSON property `versionTarget`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget]
+        attr_accessor :version_target
       
         def initialize(**args)
            update!(**args)
@@ -10129,7 +10126,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
-          @version_target_reached = args[:version_target_reached] if args.key?(:version_target_reached)
+          @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusVersionTarget
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether version target has been reached in this
+        # managed instance group, i.e. all instances are in their target version.
+        # Instances' target version are specified by version field on Instance Group
+        # Manager.
+        # Corresponds to the JSON property `isReached`
+        # @return [Boolean]
+        attr_accessor :is_reached
+        alias_method :is_reached?, :is_reached
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_reached = args[:is_reached] if args.key?(:is_reached)
         end
       end
       
@@ -11271,6 +11291,12 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
+        # AllocationAffinity is the configuration of desired allocation which this
+        # instance could take capacity from.
+        # Corresponds to the JSON property `allocationAffinity`
+        # @return [Google::Apis::ComputeAlpha::AllocationAffinity]
+        attr_accessor :allocation_affinity
+      
         # Enables instances created based on this template to send packets with source
         # IP addresses other than their own and receive packets with destination IP
         # addresses other than their own. If these instances will be used as an IP
@@ -11357,6 +11383,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocation_affinity = args[:allocation_affinity] if args.key?(:allocation_affinity)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
@@ -14051,15 +14078,16 @@ module Google
         # metric names will have "/iam/policy" prepended.
         # Field names correspond to IAM request parameters and field values are their
         # respective values.
-        # At present the only supported field names are - "iam_principal", corresponding
-        # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-        # counter with no field.
+        # Supported field names: - "authority", which is "[token]" if IAMContext.token
+        # is present, otherwise the value of IAMContext.authority_selector if present,
+        # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+        # a representation of IAMContext.principal even if a token or authority selector
+        # is present; or - "" (empty string), resulting in a counter with no fields.
         # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
         # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
         # of IAMContext.principal]`
-        # At this time we do not support: * multiple field names (though this may be
-        # supported in the future) * decrementing the counter * incrementing it by
-        # anything other than 1
+        # At this time we do not support multiple field names (though this may be
+        # supported in the future).
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::ComputeAlpha::LogConfigCounterOptions]
         attr_accessor :counter
@@ -14112,15 +14140,16 @@ module Google
       # metric names will have "/iam/policy" prepended.
       # Field names correspond to IAM request parameters and field values are their
       # respective values.
-      # At present the only supported field names are - "iam_principal", corresponding
-      # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-      # counter with no field.
+      # Supported field names: - "authority", which is "[token]" if IAMContext.token
+      # is present, otherwise the value of IAMContext.authority_selector if present,
+      # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+      # a representation of IAMContext.principal even if a token or authority selector
+      # is present; or - "" (empty string), resulting in a counter with no fields.
       # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
       # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
       # of IAMContext.principal]`
-      # At this time we do not support: * multiple field names (though this may be
-      # supported in the future) * decrementing the counter * incrementing it by
-      # anything other than 1
+      # At this time we do not support multiple field names (though this may be
+      # supported in the future).
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
@@ -15183,9 +15212,9 @@ module Google
         end
       end
       
-      # Represents a Network resource. Read Networks and Firewalls for more
-      # information. (== resource_for v1.networks ==) (== resource_for beta.networks ==
-      # )
+      # Represents a Network resource. Read Virtual Private Cloud (VPC) Network
+      # Overview for more information. (== resource_for v1.networks ==) (==
+      # resource_for beta.networks ==)
       class Network
         include Google::Apis::Core::Hashable
       
@@ -15196,10 +15225,10 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
-        # When set to true, the network is created in "auto subnet mode". When set to
-        # false, the network is in "custom subnet mode".
-        # In "auto subnet mode", a newly created network is assigned the default CIDR of
-        # 10.128.0.0/9 and it automatically creates one subnetwork per region.
+        # When set to true, the VPC network is created in "auto" mode. When set to false,
+        # the VPC network is created in "custom" mode.
+        # An auto mode VPC network starts with one subnet per region. Each subnet has a
+        # predetermined range as described in Auto mode VPC network IP ranges.
         # Corresponds to the JSON property `autoCreateSubnetworks`
         # @return [Boolean]
         attr_accessor :auto_create_subnetworks
@@ -15221,9 +15250,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A gateway address for default routing to other networks. This value is read
-        # only and is selected by the Google Compute Engine, typically as the first
-        # usable address in the IPv4Range.
+        # [Output Only] The gateway address for default routing out of the network. This
+        # value is read only and is selected by GCP.
         # Corresponds to the JSON property `gatewayIPv4`
         # @return [String]
         attr_accessor :gateway_i_pv4
@@ -15272,7 +15300,7 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] Server-defined fully-qualified URLs for all subnetworks in this
-        # network.
+        # VPC network.
         # Corresponds to the JSON property `subnetworks`
         # @return [Array<String>]
         attr_accessor :subnetworks
@@ -16302,9 +16330,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The network-wide routing mode to use. If set to REGIONAL, this network's cloud
-        # routers will only advertise routes with subnetworks of this network in the
-        # same region as the router. If set to GLOBAL, this network's cloud routers will
-        # advertise routes with all subnetworks of this network, across regions.
+        # routers will only advertise routes with subnets of this network in the same
+        # region as the router. If set to GLOBAL, this network's cloud routers will
+        # advertise routes with all subnets of this network, across regions.
         # Corresponds to the JSON property `routingMode`
         # @return [String]
         attr_accessor :routing_mode
@@ -23779,7 +23807,8 @@ module Google
         attr_accessor :can_ip_forward
         alias_method :can_ip_forward?, :can_ip_forward
       
-        # Whether the resource should be protected against deletion.
+        # Whether the instance created from the machine image should be protected
+        # against deletion.
         # Corresponds to the JSON property `deletionProtection`
         # @return [Boolean]
         attr_accessor :deletion_protection

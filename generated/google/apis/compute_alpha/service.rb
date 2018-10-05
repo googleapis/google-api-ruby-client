@@ -12748,8 +12748,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified machine image. Deleting an machine image is permanent
-        # and cannot be undone.
+        # Deletes the specified machine image. Deleting a machine image is permanent and
+        # cannot be undone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] machine_image
@@ -12871,9 +12871,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an machine image in the specified project using the data that is
+        # Creates a machine image in the specified project using the data that is
         # included in the request. If you are creating a new machine image to update an
-        # existing instance, your new machine image must use the same network or, if
+        # existing instance, your new machine image should use the same network or, if
         # applicable, the same subnetwork as the original instance.
         # @param [String] project
         #   Project ID for this request.
@@ -12890,7 +12890,7 @@ module Google
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] source_instance
-        #   Optional. Source image to restore onto a disk.
+        #   Required. Source instance that is used to create the machine image from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
