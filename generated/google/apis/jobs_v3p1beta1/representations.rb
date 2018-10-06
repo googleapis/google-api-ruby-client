@@ -724,6 +724,7 @@ module Google
           property :custom_attribute_filter, as: 'customAttributeFilter'
           property :disable_spell_check, as: 'disableSpellCheck'
           collection :employment_types, as: 'employmentTypes'
+          collection :excluded_jobs, as: 'excludedJobs'
           collection :job_categories, as: 'jobCategories'
           collection :language_codes, as: 'languageCodes'
           collection :location_filters, as: 'locationFilters', class: Google::Apis::JobsV3p1beta1::LocationFilter, decorator: Google::Apis::JobsV3p1beta1::LocationFilter::Representation
@@ -877,6 +878,7 @@ module Google
           property :custom_ranking_info, as: 'customRankingInfo', class: Google::Apis::JobsV3p1beta1::CustomRankingInfo, decorator: Google::Apis::JobsV3p1beta1::CustomRankingInfo::Representation
       
           property :disable_keyword_match, as: 'disableKeywordMatch'
+          property :diversification_level, as: 'diversificationLevel'
           property :enable_broadening, as: 'enableBroadening'
           property :histogram_facets, as: 'histogramFacets', class: Google::Apis::JobsV3p1beta1::HistogramFacets, decorator: Google::Apis::JobsV3p1beta1::HistogramFacets::Representation
       

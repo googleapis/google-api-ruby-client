@@ -22,8 +22,8 @@ module Google
     module ServicenetworkingV1beta
       # Service Networking API
       #
-      # The Service Networking API provides automatic management of network
-      #  configurations necessary for certain services.
+      # Provides automatic management of network configurations necessary for certain
+      #  services.
       #
       # @example
       #    require 'google/apis/servicenetworking_v1beta'
@@ -31,7 +31,7 @@ module Google
       #    Servicenetworking = Google::Apis::ServicenetworkingV1beta # Alias the module
       #    service = Servicenetworking::ServiceNetworkingService.new
       #
-      # @see https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/
+      # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
       class ServiceNetworkingService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

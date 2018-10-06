@@ -20,13 +20,13 @@ module Google
   module Apis
     # Service Networking API
     #
-    # The Service Networking API provides automatic management of network
-    # configurations necessary for certain services.
+    # Provides automatic management of network configurations necessary for certain
+    # services.
     #
-    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/
+    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
     module ServicenetworkingV1beta
       VERSION = 'V1beta'
-      REVISION = '20181001'
+      REVISION = '20181004'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -94,32 +94,6 @@ module Google
         end
       end
       
-      # Message returning the name of the created service subnetwork.
-      class AddSubnetworkResponse
-        include Google::Apis::Core::Hashable
-      
-        # Subnetwork CIDR range in "10.x.x.x/y" format.
-        # Corresponds to the JSON property `ipCidrRange`
-        # @return [String]
-        attr_accessor :ip_cidr_range
-      
-        # Subnetwork name.
-        # See https://cloud.google.com/compute/docs/vpc/
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # Api is a light-weight descriptor for an API Interface.
       # Interfaces are also described as "protocol buffer services" in some contexts,
       # such as by the "service" keyword in a .proto file, but they are different
@@ -1252,7 +1226,7 @@ module Google
       # service Messaging `
       # rpc GetMessage(GetMessageRequest) returns (Message) `
       # option (google.api.http) = `
-      # get: "/v1/`name=messages/*"`"
+      # get: "/v1/`name=messages/*`"
       # `;
       # `
       # `

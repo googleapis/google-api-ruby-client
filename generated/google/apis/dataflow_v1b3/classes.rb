@@ -2312,6 +2312,12 @@ module Google
       class MapTask
         include Google::Apis::Core::Hashable
       
+        # Counter prefix that can be used to prefix counters. Not currently used in
+        # Dataflow.
+        # Corresponds to the JSON property `counterPrefix`
+        # @return [String]
+        attr_accessor :counter_prefix
+      
         # The instructions in the MapTask.
         # Corresponds to the JSON property `instructions`
         # @return [Array<Google::Apis::DataflowV1b3::ParallelInstruction>]
@@ -2335,6 +2341,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @counter_prefix = args[:counter_prefix] if args.key?(:counter_prefix)
           @instructions = args[:instructions] if args.key?(:instructions)
           @stage_name = args[:stage_name] if args.key?(:stage_name)
           @system_name = args[:system_name] if args.key?(:system_name)

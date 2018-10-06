@@ -1453,6 +1453,7 @@ module Google
       class MapTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :counter_prefix, as: 'counterPrefix'
           collection :instructions, as: 'instructions', class: Google::Apis::DataflowV1b3::ParallelInstruction, decorator: Google::Apis::DataflowV1b3::ParallelInstruction::Representation
       
           property :stage_name, as: 'stageName'

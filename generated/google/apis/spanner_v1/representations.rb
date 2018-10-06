@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartitionedDml
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlanNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +514,7 @@ module Google
           property :partition_token, :base64 => true, as: 'partitionToken'
           property :query_mode, as: 'queryMode'
           property :resume_token, :base64 => true, as: 'resumeToken'
+          property :seqno, :numeric_string => true, as: 'seqno'
           property :sql, as: 'sql'
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
       
@@ -730,6 +737,12 @@ module Google
         end
       end
       
+      class PartitionedDml
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PlanNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -828,6 +841,8 @@ module Google
           property :query_plan, as: 'queryPlan', class: Google::Apis::SpannerV1::QueryPlan, decorator: Google::Apis::SpannerV1::QueryPlan::Representation
       
           hash :query_stats, as: 'queryStats'
+          property :row_count_exact, :numeric_string => true, as: 'rowCountExact'
+          property :row_count_lower_bound, :numeric_string => true, as: 'rowCountLowerBound'
         end
       end
       
@@ -906,6 +921,8 @@ module Google
       class TransactionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :partitioned_dml, as: 'partitionedDml', class: Google::Apis::SpannerV1::PartitionedDml, decorator: Google::Apis::SpannerV1::PartitionedDml::Representation
+      
           property :read_only, as: 'readOnly', class: Google::Apis::SpannerV1::ReadOnly, decorator: Google::Apis::SpannerV1::ReadOnly::Representation
       
           property :read_write, as: 'readWrite', class: Google::Apis::SpannerV1::ReadWrite, decorator: Google::Apis::SpannerV1::ReadWrite::Representation

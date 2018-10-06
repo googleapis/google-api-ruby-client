@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddSubnetworkResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Api
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -380,14 +374,6 @@ module Google
           property :region, as: 'region'
           property :subnetwork, as: 'subnetwork'
           collection :subnetwork_users, as: 'subnetworkUsers'
-        end
-      end
-      
-      class AddSubnetworkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip_cidr_range, as: 'ipCidrRange'
-          property :name, as: 'name'
         end
       end
       
