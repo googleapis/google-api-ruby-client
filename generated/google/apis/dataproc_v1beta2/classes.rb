@@ -2485,6 +2485,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
         attr_accessor :delete_cluster
       
+        # Output only. Workflow end time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The workflow graph.
         # Corresponds to the JSON property `graph`
         # @return [Google::Apis::DataprocV1beta2::WorkflowGraph]
@@ -2494,6 +2499,11 @@ module Google
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
+      
+        # Output only. Workflow start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         # Output only. The workflow state.
         # Corresponds to the JSON property `state`
@@ -2519,8 +2529,10 @@ module Google
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
           @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @graph = args[:graph] if args.key?(:graph)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @template = args[:template] if args.key?(:template)
           @version = args[:version] if args.key?(:version)

@@ -990,9 +990,11 @@ module Google
       
           property :delete_cluster, as: 'deleteCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
       
+          property :end_time, as: 'endTime'
           property :graph, as: 'graph', class: Google::Apis::DataprocV1beta2::WorkflowGraph, decorator: Google::Apis::DataprocV1beta2::WorkflowGraph::Representation
       
           hash :parameters, as: 'parameters'
+          property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :template, as: 'template'
           property :version, as: 'version'
