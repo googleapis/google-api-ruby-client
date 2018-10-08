@@ -179,6 +179,7 @@ module Google
           hash :env_variables, as: 'envVariables'
           property :image_version, as: 'imageVersion'
           hash :pypi_packages, as: 'pypiPackages'
+          property :python_version, as: 'pythonVersion'
         end
       end
       

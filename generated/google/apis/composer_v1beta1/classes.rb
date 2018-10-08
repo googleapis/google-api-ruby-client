@@ -111,6 +111,7 @@ module Google
       class EnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Output only.
         # The URI of the Apache Airflow Web UI hosted within this environment (see
         # [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface))
         # .
@@ -529,15 +530,34 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :env_variables
       
-        # Output only.
-        # The version of the software running in the environment.
+        # Immutable. The version of the software running in the environment.
         # This encapsulates both the version of Cloud Composer functionality and the
         # version of Apache Airflow. It must match the regular expression
-        # `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        # `composer-([0-9]+\.[0-9]+(\.[0-9]+)?|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)
+        # ?`.
+        # When used as input, the server will also check if the provided version is
+        # supported and deny the creation request for an unsupported version.
         # The Cloud Composer portion of the version is a
-        # [semantic version](https://semver.org). The portion of the image version
-        # following <em>airflow-</em> is an official Apache Airflow repository
+        # [semantic version](https://semver.org) or `latest`. The patch version
+        # can be omitted and the current Cloud Composer patch version
+        # will be selected.
+        # When `latest` is provided instead of an explicit version number,
+        # the server will replace `latest` with the current Cloud Composer version
+        # and store that version number in the same field.
+        # The portion of the image version that follows <em>airflow-</em> is an official
+        # Apache Airflow repository
         # [release name](https://github.com/apache/incubator-airflow/releases).
+        # Supported values for input are:
+        # * `composer-latest-airflow-latest`
+        # * `composer-latest-airflow-1.10.0`
+        # * `composer-latest-airflow-1.9.0`
+        # * `composer-latest-airflow-1.10`
+        # * `composer-latest-airflow-1.9`
+        # * `composer-1.1.1-airflow-latest`
+        # * `composer-1.1.1-airflow-1.10.0`
+        # * `composer-1.1.1-airflow-1.9.0`
+        # * `composer-1.1.1-airflow-1.10`
+        # * `composer-1.1.1-airflow-1.9`
         # See also [Release Notes](/composer/docs/release-notes).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
@@ -554,6 +574,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :pypi_packages
       
+        # Optional. The major version of Python used to run the Apache Airflow
+        # scheduler, worker, and webserver processes.
+        # Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+        # updated.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -564,6 +592,7 @@ module Google
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
+          @python_version = args[:python_version] if args.key?(:python_version)
         end
       end
       

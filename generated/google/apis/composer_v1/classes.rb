@@ -111,6 +111,7 @@ module Google
       class EnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Output only.
         # The URI of the Apache Airflow Web UI hosted within this environment (see
         # [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface))
         # .
