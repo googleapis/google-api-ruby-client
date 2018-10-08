@@ -32,7 +32,8 @@ module Google
       :normalize_unicode,
       :skip_serialization,
       :skip_deserialization,
-      :api_format_version)
+      :api_format_version,
+      :use_opencensus)
 
     # General client options
     class ClientOptions
@@ -101,5 +102,6 @@ module Google
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false
     RequestOptions.default.api_format_version = nil
+    RequestOptions.default.use_opencensus = true
   end
 end

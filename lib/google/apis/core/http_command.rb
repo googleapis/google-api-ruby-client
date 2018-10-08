@@ -29,6 +29,13 @@ module Google
 
         RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError]
 
+        begin
+          require 'opencensus'
+          OPENCENSUS_AVAILABLE = true
+        rescue LoadError
+          OPENCENSUS_AVAILABLE = false
+        end
+
         # Request options
         # @return [Google::Apis::RequestOptions]
         attr_accessor :options
@@ -76,6 +83,7 @@ module Google
           self.body = body
           self.query = {}
           self.params = {}
+          @opencensus_span = nil
         end
 
         # Execute the command, retrying as necessary
@@ -147,6 +155,8 @@ module Google
           self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
+          opencensus_begin_span url.to_s
+
           if allow_form_encoding?
             @form_encoded = true
             self.body = Addressable::URI.form_encode(url.query_values(Array))
@@ -164,6 +174,7 @@ module Google
         # @private
         # @return [void]
         def release!
+          opencensus_end_span
         end
 
         # Check the response and either decode body or raise error
@@ -322,6 +333,21 @@ module Google
         end
 
         private
+
+        def opencensus_begin_span name
+          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
+          return if @opencensus_span
+          return unless OpenCensus::Trace.span_context
+          @opencensus_span = OpenCensus::Trace.start_span name
+        end
+
+        def opencensus_end_span
+          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
+          return unless @opencensus_span
+          return unless OpenCensus::Trace.span_context
+          OpenCensus::Trace.end_span @opencensus_span
+          @opencensus_span = nil
+        end
 
         def form_encoded?
           @form_encoded

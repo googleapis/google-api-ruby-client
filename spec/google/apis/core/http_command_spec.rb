@@ -294,6 +294,30 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
   end
 
+  it 'should create an opencensus span' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    OpenCensus::Trace.start_request_trace do |span_context|
+      command.execute(client)
+      spans = span_context.build_contained_spans
+      expect(spans.size).to eql 1
+      expect(spans.first.name.value).to eql 'https://www.googleapis.com/zoo/animals?'
+    end
+  end
+
+  it 'should not create an opencensus span if disabled' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.use_opencensus = false
+    OpenCensus::Trace.start_request_trace do |span_context|
+      command.execute(client)
+      spans = span_context.build_contained_spans
+      expect(spans.size).to eql 0
+    end
+  end
+
   it 'should send repeated query parameters' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
       .to_return(status: [200, ''])
