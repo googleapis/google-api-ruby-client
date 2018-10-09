@@ -483,6 +483,7 @@ module Google
           collection :devices, as: 'devices', class: Google::Apis::AndroiddeviceprovisioningV1::Device, decorator: Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -502,6 +503,7 @@ module Google
           collection :devices, as: 'devices', class: Google::Apis::AndroiddeviceprovisioningV1::Device, decorator: Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -510,6 +512,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customers, as: 'customers', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
       
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -519,6 +523,7 @@ module Google
           collection :customers, as: 'customers', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -526,6 +531,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
           collection :vendors, as: 'vendors', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
       
         end

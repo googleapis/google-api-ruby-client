@@ -989,7 +989,7 @@ module Google
         #   Deprecated. Please use sendUpdates instead.
         #   Whether to send notifications about the deletion of the event. Note that some
         #   emails might still be sent even if you set the value to false. The default is
-        #   False.
+        #   false.
         # @param [String] send_updates
         #   Guests who should receive notifications about the deletion of the event.
         # @param [String] fields
@@ -1147,10 +1147,10 @@ module Google
         #   Deprecated. Please use sendUpdates instead.
         #   Whether to send notifications about the creation of the new event. Note that
         #   some emails might still be sent even if you set the value to false. The
-        #   default is False.
+        #   default is false.
         # @param [String] send_updates
         #   Whether to send notifications about the creation of the new event. Note that
-        #   some emails might still be sent. The default is False.
+        #   some emails might still be sent. The default is false.
         # @param [Boolean] supports_attachments
         #   Whether API client performing operation supports event attachments. Optional.
         #   The default is False.
@@ -1423,7 +1423,7 @@ module Google
         #   Deprecated. Please use sendUpdates instead.
         #   Whether to send notifications about the change of the event's organizer. Note
         #   that some emails might still be sent even if you set the value to false. The
-        #   default is False.
+        #   default is false.
         # @param [String] send_updates
         #   Guests who should receive notifications about the change of the event's
         #   organizer.
@@ -1487,12 +1487,12 @@ module Google
         #   Optional.
         # @param [Boolean] send_notifications
         #   Deprecated. Please use sendUpdates instead.
-        #   Whether to send notifications about the event update (e.g. description changes,
-        #   etc.). Note that some emails might still be sent even if you set the value to
-        #   false. The default is False.
+        #   Whether to send notifications about the event update (for example, description
+        #   changes, etc.). Note that some emails might still be sent even if you set the
+        #   value to false. The default is false.
         # @param [String] send_updates
-        #   Guests who should receive notifications about the event update (e.g., attendee
-        #   responses, title changes, etc.).
+        #   Guests who should receive notifications about the event update (for example,
+        #   title changes, etc.).
         # @param [Boolean] supports_attachments
         #   Whether API client performing operation supports event attachments. Optional.
         #   The default is False.
@@ -1546,7 +1546,7 @@ module Google
         #   Deprecated. Please use sendUpdates instead.
         #   Whether to send notifications about the creation of the event. Note that some
         #   emails might still be sent even if you set the value to false. The default is
-        #   False.
+        #   false.
         # @param [String] send_updates
         #   Guests who should receive notifications about the creation of the new event.
         # @param [String] fields
@@ -1608,12 +1608,12 @@ module Google
         #   Optional.
         # @param [Boolean] send_notifications
         #   Deprecated. Please use sendUpdates instead.
-        #   Whether to send notifications about the event update (e.g. description changes,
-        #   etc.). Note that some emails might still be sent even if you set the value to
-        #   false. The default is False.
+        #   Whether to send notifications about the event update (for example, description
+        #   changes, etc.). Note that some emails might still be sent even if you set the
+        #   value to false. The default is false.
         # @param [String] send_updates
-        #   Guests who should receive notifications about the event update (e.g., attendee
-        #   responses, title changes, etc.).
+        #   Guests who should receive notifications about the event update (for example,
+        #   title changes, etc.).
         # @param [Boolean] supports_attachments
         #   Whether API client performing operation supports event attachments. Optional.
         #   The default is False.

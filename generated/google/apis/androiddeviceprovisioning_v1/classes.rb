@@ -832,6 +832,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total count of items in the list irrespective of pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -840,6 +845,7 @@ module Google
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -896,6 +902,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total count of items in the list irrespective of pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -904,6 +915,7 @@ module Google
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -916,6 +928,17 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
         attr_accessor :customers
       
+        # A token to retrieve the next page of results. Omitted if no further results
+        # are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The total count of items in the list irrespective of pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -923,6 +946,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customers = args[:customers] if args.key?(:customers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -941,6 +966,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total count of items in the list irrespective of pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -949,6 +979,7 @@ module Google
         def update!(**args)
           @customers = args[:customers] if args.key?(:customers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -961,6 +992,11 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # The total count of items in the list irrespective of pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
       
         # List of vendors of the reseller partner. Fields `name`, `companyId` and
         # `companyName` are populated to the Company object.
@@ -975,6 +1011,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
           @vendors = args[:vendors] if args.key?(:vendors)
         end
       end
