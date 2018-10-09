@@ -33,7 +33,7 @@ module Google
       :skip_serialization,
       :skip_deserialization,
       :api_format_version,
-      :use_opencensus)
+      :opencensus_span_name)
 
     # General client options
     class ClientOptions
@@ -74,6 +74,8 @@ module Google
       #   @return [Boolean] True if response should be returned in raw form instead of deserialized.
       # @!attribute [rw] api_format_version
       #   @return [Fixnum] Version of the error format to request/expect.
+      # @!attribute [rw] opencensus_span_name
+      #   @return [String,nil] Name of OpenCensus span to generate, or nil to disable OpenCensus.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -102,6 +104,6 @@ module Google
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false
     RequestOptions.default.api_format_version = nil
-    RequestOptions.default.use_opencensus = true
+    RequestOptions.default.opencensus_span_name = "google-api-client"
   end
 end

@@ -295,22 +295,38 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   end
 
   it 'should create an opencensus span' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-      .to_return(status: [200, ''])
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     OpenCensus::Trace.start_request_trace do |span_context|
       command.execute(client)
       spans = span_context.build_contained_spans
       expect(spans.size).to eql 1
-      expect(spans.first.name.value).to eql 'https://www.googleapis.com/zoo/animals?'
+      span = spans.first
+      attrs = span.attributes
+      expect(span.name.value).to eql 'google-api-client'
+      expect(span.status.code).to eql 200
+      expect(attrs['/http/method'].value).to eql 'get'
+      expect(attrs['/http/url'].value).to eql 'https://www.googleapis.com/zoo/animals?'
+      expect(attrs['/rpc/request/size']).to eql 0
+      expect(attrs['/rpc/status_code']).to eql 200
+      expect(attrs['/rpc/response/size']).to eql 11
+    end
+  end
+
+  it 'should propagate trace context header' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    OpenCensus::Trace.start_request_trace do |span_context|
+      result = command.execute(client)
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| !req.headers['Trace-Context'].empty? }).to have_been_made
     end
   end
 
   it 'should not create an opencensus span if disabled' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-      .to_return(status: [200, ''])
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.options.use_opencensus = false
+    command.options.opencensus_span_name = nil
     OpenCensus::Trace.start_request_trace do |span_context|
       command.execute(client)
       spans = span_context.build_contained_spans

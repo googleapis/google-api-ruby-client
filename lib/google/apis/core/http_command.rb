@@ -97,6 +97,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute(client)
           prepare!
+          opencensus_begin_span
           begin
             Retriable.retriable tries: options.retries + 1,
                                 base_interval: 1,
@@ -124,6 +125,7 @@ module Google
             end
           end
         ensure
+          opencensus_end_span
           release!
         end
 
@@ -155,8 +157,6 @@ module Google
           self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
           url.query_values = query.merge(url.query_values || {})
 
-          opencensus_begin_span url.to_s
-
           if allow_form_encoding?
             @form_encoded = true
             self.body = Addressable::URI.form_encode(url.query_values(Array))
@@ -167,14 +167,12 @@ module Google
           end
 
           self.body = '' unless self.body
-
         end
 
         # Release any resources used by this command
         # @private
         # @return [void]
         def release!
-          opencensus_end_span
         end
 
         # Check the response and either decode body or raise error
@@ -299,15 +297,15 @@ module Google
             request_header = header.dup
             apply_request_options(request_header)
 
-            http_res = client.request(method.to_s.upcase,
-                                      url.to_s,
-                                      query: nil,
-                                      body: body,
-                                      header: request_header,
-                                      follow_redirect: true)
-            logger.debug { http_res.status }
-            logger.debug { http_res.inspect }
-            response = process_response(http_res.status.to_i, http_res.header, http_res.body)
+            @http_res = client.request(method.to_s.upcase,
+                                       url.to_s,
+                                       query: nil,
+                                       body: body,
+                                       header: request_header,
+                                       follow_redirect: true)
+            logger.debug { @http_res.status }
+            logger.debug { @http_res.inspect }
+            response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
             success(response)
           rescue => e
             logger.debug { sprintf('Caught error %s', e) }
@@ -334,19 +332,40 @@ module Google
 
         private
 
-        def opencensus_begin_span name
-          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
+        def opencensus_begin_span
+          return unless OPENCENSUS_AVAILABLE && options.opencensus_span_name
           return if @opencensus_span
           return unless OpenCensus::Trace.span_context
-          @opencensus_span = OpenCensus::Trace.start_span name
+
+          @opencensus_span = OpenCensus::Trace.start_span options.opencensus_span_name
+          @opencensus_span.kind = OpenCensus::Trace::SpanBuilder::CLIENT
+          @opencensus_span.put_attribute "/http/method", method.to_s
+          @opencensus_span.put_attribute "/http/url", url.to_s
+          body_size = body.bytesize if body.respond_to? :bytesize
+          @opencensus_span.put_attribute "/rpc/request/size", body_size if body_size
+
+          formatter = OpenCensus::Trace.config.http_formatter
+          if formatter.respond_to? :header_name
+            header[formatter.header_name] = formatter.serialize @opencensus_span.context.trace_context
+          end
         end
 
         def opencensus_end_span
-          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
+          return unless OPENCENSUS_AVAILABLE
           return unless @opencensus_span
           return unless OpenCensus::Trace.span_context
+
+          status = @http_res.status.to_i
+          if status > 0
+            @opencensus_span.set_status status
+            @opencensus_span.put_attribute "/rpc/status_code", status
+          end
+          body_size = @http_res.body.bytesize if @http_res.body.respond_to? :bytesize
+          @opencensus_span.put_attribute "/rpc/response/size", body_size if body_size
           OpenCensus::Trace.end_span @opencensus_span
           @opencensus_span = nil
+        rescue StandardError
+          nil
         end
 
         def form_encoded?
