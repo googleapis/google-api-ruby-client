@@ -294,68 +294,70 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
   end
 
-  it 'should create an opencensus span for a successful call' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    OpenCensus::Trace.start_request_trace do |span_context|
-      command.execute(client)
-      spans = span_context.build_contained_spans
-      expect(spans.size).to eql 1
-      span = spans.first
-      expect(span.name.value).to eql '/zoo/animals'
-      expect(span.status.code).to eql 0
-      attrs = span.attributes
-      expect(attrs['http.host'].value).to eql 'www.googleapis.com'
-      expect(attrs['http.method'].value).to eql 'GET'
-      expect(attrs['http.path'].value).to eql '/zoo/animals'
-      expect(attrs['http.status_code']).to eql 200
-      events = span.time_events
-      expect(events.size).to eql 2
-      expect(events[0].type).to eql :SENT
-      expect(events[0].uncompressed_size).to eql 0
-      expect(events[1].type).to eql :RECEIVED
-      expect(events[1].uncompressed_size).to eql 11
+  context('with opencensus integration') do
+    it 'should create an opencensus span for a successful call' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      OpenCensus::Trace.start_request_trace do |span_context|
+        command.execute(client)
+        spans = span_context.build_contained_spans
+        expect(spans.size).to eql 1
+        span = spans.first
+        expect(span.name.value).to eql '/zoo/animals'
+        expect(span.status.code).to eql 0
+        attrs = span.attributes
+        expect(attrs['http.host'].value).to eql 'www.googleapis.com'
+        expect(attrs['http.method'].value).to eql 'GET'
+        expect(attrs['http.path'].value).to eql '/zoo/animals'
+        expect(attrs['http.status_code']).to eql 200
+        events = span.time_events
+        expect(events.size).to eql 2
+        expect(events[0].type).to eql :SENT
+        expect(events[0].uncompressed_size).to eql 0
+        expect(events[1].type).to eql :RECEIVED
+        expect(events[1].uncompressed_size).to eql 11
+      end
     end
-  end
 
-  it 'should create an opencensus span for a call failure' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [403, ''])
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    OpenCensus::Trace.start_request_trace do |span_context|
-      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
-      spans = span_context.build_contained_spans
-      expect(spans.size).to eql 1
-      span = spans.first
-      expect(span.name.value).to eql '/zoo/animals'
-      expect(span.status.code).to eql 7
-      attrs = span.attributes
-      expect(attrs['http.host'].value).to eql 'www.googleapis.com'
-      expect(attrs['http.method'].value).to eql 'GET'
-      expect(attrs['http.path'].value).to eql '/zoo/animals'
-      expect(attrs['http.status_code']).to eql 403
+    it 'should create an opencensus span for a call failure' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [403, ''])
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      OpenCensus::Trace.start_request_trace do |span_context|
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+        spans = span_context.build_contained_spans
+        expect(spans.size).to eql 1
+        span = spans.first
+        expect(span.name.value).to eql '/zoo/animals'
+        expect(span.status.code).to eql 7
+        attrs = span.attributes
+        expect(attrs['http.host'].value).to eql 'www.googleapis.com'
+        expect(attrs['http.method'].value).to eql 'GET'
+        expect(attrs['http.path'].value).to eql '/zoo/animals'
+        expect(attrs['http.status_code']).to eql 403
+      end
     end
-  end
 
-  it 'should propagate trace context header' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    OpenCensus::Trace.start_request_trace do |span_context|
-      result = command.execute(client)
-      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .with { |req| !req.headers['Trace-Context'].empty? }).to have_been_made
+    it 'should propagate trace context header' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      OpenCensus::Trace.start_request_trace do |span_context|
+        result = command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| !req.headers['Trace-Context'].empty? }).to have_been_made
+      end
     end
-  end
 
-  it 'should not create an opencensus span if disabled' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.options.use_opencensus = false
-    OpenCensus::Trace.start_request_trace do |span_context|
-      command.execute(client)
-      spans = span_context.build_contained_spans
-      expect(spans.size).to eql 0
+    it 'should not create an opencensus span if disabled' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      command.options.use_opencensus = false
+      OpenCensus::Trace.start_request_trace do |span_context|
+        command.execute(client)
+        spans = span_context.build_contained_spans
+        expect(spans.size).to eql 0
+      end
     end
-  end
+  end if Google::Apis::Core::HttpCommand::OPENCENSUS_AVAILABLE
 
   it 'should send repeated query parameters' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
