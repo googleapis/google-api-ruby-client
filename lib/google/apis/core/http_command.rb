@@ -126,6 +126,7 @@ module Google
           end
         ensure
           opencensus_end_span
+          @http_res = nil
           release!
         end
 
@@ -333,16 +334,19 @@ module Google
         private
 
         def opencensus_begin_span
-          return unless OPENCENSUS_AVAILABLE && options.opencensus_span_name
+          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
           return if @opencensus_span
           return unless OpenCensus::Trace.span_context
 
-          @opencensus_span = OpenCensus::Trace.start_span options.opencensus_span_name
+          @opencensus_span = OpenCensus::Trace.start_span url.path.to_s
           @opencensus_span.kind = OpenCensus::Trace::SpanBuilder::CLIENT
-          @opencensus_span.put_attribute "/http/method", method.to_s
-          @opencensus_span.put_attribute "/http/url", url.to_s
-          body_size = body.bytesize if body.respond_to? :bytesize
-          @opencensus_span.put_attribute "/rpc/request/size", body_size if body_size
+          @opencensus_span.put_attribute "http.host", url.host.to_s
+          @opencensus_span.put_attribute "http.method", method.to_s.upcase
+          @opencensus_span.put_attribute "http.path", url.path.to_s
+          if body.respond_to? :bytesize
+            @opencensus_span.put_message_event \
+              OpenCensus::Trace::SpanBuilder::SENT, 1, body.bytesize
+          end
 
           formatter = OpenCensus::Trace.config.http_formatter
           if formatter.respond_to? :header_name
@@ -355,21 +359,38 @@ module Google
           return unless @opencensus_span
           return unless OpenCensus::Trace.span_context
 
+          if @http_res.body.respond_to? :bytesize
+            @opencensus_span.put_message_event \
+              OpenCensus::Trace::SpanBuilder::RECEIVED, 1, @http_res.body.bytesize
+          end
           status = @http_res.status.to_i
           if status > 0
-            @opencensus_span.set_status status
-            @opencensus_span.put_attribute "/rpc/status_code", status
+            @opencensus_span.set_status map_http_status status
+            @opencensus_span.put_attribute "http.status_code", status
           end
-          body_size = @http_res.body.bytesize if @http_res.body.respond_to? :bytesize
-          @opencensus_span.put_attribute "/rpc/response/size", body_size if body_size
+
           OpenCensus::Trace.end_span @opencensus_span
           @opencensus_span = nil
-        rescue StandardError
+        rescue StandardError => e
           nil
         end
 
         def form_encoded?
           @form_encoded
+        end
+
+        def map_http_status http_status
+          case http_status
+          when 200..399 then 0 # OK
+          when 401 then 16 # UNAUTHENTICATED
+          when 403 then 7 # PERMISSION_DENIED
+          when 404 then 5 # NOT_FOUND
+          when 429 then 8 # RESOURCE_EXHAUSTED
+          when 400..499 then 3 # INVALID_ARGUMENT
+          when 501 then 12 # UNIMPLEMENTED
+          when 503 then 14 # UNAVAILABLE
+          else 2 # UNKNOWN
+          end
         end
 
         def normalize_query_value(v)
