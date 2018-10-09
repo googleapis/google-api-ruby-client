@@ -75,7 +75,7 @@ module Google
       # @!attribute [rw] api_format_version
       #   @return [Fixnum] Version of the error format to request/expect.
       # @!attribute [rw] use_opencensus
-      #   @return [Boolean] Whether OpenCensus spans should be generated for requests
+      #   @return [Boolean] Whether OpenCensus spans should be generated for requests. Default is true.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
