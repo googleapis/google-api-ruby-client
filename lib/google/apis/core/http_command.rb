@@ -382,13 +382,14 @@ module Google
         def map_http_status http_status
           case http_status
           when 200..399 then 0 # OK
+          when 400 then 3 # INVALID_ARGUMENT
           when 401 then 16 # UNAUTHENTICATED
           when 403 then 7 # PERMISSION_DENIED
           when 404 then 5 # NOT_FOUND
           when 429 then 8 # RESOURCE_EXHAUSTED
-          when 400..499 then 3 # INVALID_ARGUMENT
           when 501 then 12 # UNIMPLEMENTED
           when 503 then 14 # UNAVAILABLE
+          when 504 then 4 # DEADLINE_EXCEEDED
           else 2 # UNKNOWN
           end
         end
