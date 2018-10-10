@@ -29,6 +29,13 @@ module Google
 
         RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError]
 
+        begin
+          require 'opencensus'
+          OPENCENSUS_AVAILABLE = true
+        rescue LoadError
+          OPENCENSUS_AVAILABLE = false
+        end
+
         # Request options
         # @return [Google::Apis::RequestOptions]
         attr_accessor :options
@@ -76,6 +83,7 @@ module Google
           self.body = body
           self.query = {}
           self.params = {}
+          @opencensus_span = nil
         end
 
         # Execute the command, retrying as necessary
@@ -89,6 +97,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute(client)
           prepare!
+          opencensus_begin_span
           begin
             Retriable.retriable tries: options.retries + 1,
                                 base_interval: 1,
@@ -116,6 +125,8 @@ module Google
             end
           end
         ensure
+          opencensus_end_span
+          @http_res = nil
           release!
         end
 
@@ -157,7 +168,6 @@ module Google
           end
 
           self.body = '' unless self.body
-
         end
 
         # Release any resources used by this command
@@ -288,15 +298,15 @@ module Google
             request_header = header.dup
             apply_request_options(request_header)
 
-            http_res = client.request(method.to_s.upcase,
-                                      url.to_s,
-                                      query: nil,
-                                      body: body,
-                                      header: request_header,
-                                      follow_redirect: true)
-            logger.debug { http_res.status }
-            logger.debug { http_res.inspect }
-            response = process_response(http_res.status.to_i, http_res.header, http_res.body)
+            @http_res = client.request(method.to_s.upcase,
+                                       url.to_s,
+                                       query: nil,
+                                       body: body,
+                                       header: request_header,
+                                       follow_redirect: true)
+            logger.debug { @http_res.status }
+            logger.debug { @http_res.inspect }
+            response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
             success(response)
           rescue => e
             logger.debug { sprintf('Caught error %s', e) }
@@ -323,8 +333,71 @@ module Google
 
         private
 
+        def opencensus_begin_span
+          return unless OPENCENSUS_AVAILABLE && options.use_opencensus
+          return if @opencensus_span
+          return unless OpenCensus::Trace.span_context
+
+          @opencensus_span = OpenCensus::Trace.start_span url.path.to_s
+          @opencensus_span.kind = OpenCensus::Trace::SpanBuilder::CLIENT
+          @opencensus_span.put_attribute "http.host", url.host.to_s
+          @opencensus_span.put_attribute "http.method", method.to_s.upcase
+          @opencensus_span.put_attribute "http.path", url.path.to_s
+          if body.respond_to? :bytesize
+            @opencensus_span.put_message_event \
+              OpenCensus::Trace::SpanBuilder::SENT, 1, body.bytesize
+          end
+
+          formatter = OpenCensus::Trace.config.http_formatter
+          if formatter.respond_to? :header_name
+            header[formatter.header_name] = formatter.serialize @opencensus_span.context.trace_context
+          end
+        rescue StandardError => e
+          # Log exceptions and continue, so opencensus failures don't cause
+          # the entire request to fail.
+          logger.debug { sprintf('Error opening OpenCensus span: %s', e) }
+        end
+
+        def opencensus_end_span
+          return unless OPENCENSUS_AVAILABLE
+          return unless @opencensus_span
+          return unless OpenCensus::Trace.span_context
+
+          if @http_res.body.respond_to? :bytesize
+            @opencensus_span.put_message_event \
+              OpenCensus::Trace::SpanBuilder::RECEIVED, 1, @http_res.body.bytesize
+          end
+          status = @http_res.status.to_i
+          if status > 0
+            @opencensus_span.set_status map_http_status status
+            @opencensus_span.put_attribute "http.status_code", status
+          end
+
+          OpenCensus::Trace.end_span @opencensus_span
+          @opencensus_span = nil
+        rescue StandardError => e
+          # Log exceptions and continue, so failures don't cause leaks by
+          # aborting cleanup.
+          logger.debug { sprintf('Error finishing OpenCensus span: %s', e) }
+        end
+
         def form_encoded?
           @form_encoded
+        end
+
+        def map_http_status http_status
+          case http_status
+          when 200..399 then 0 # OK
+          when 400 then 3 # INVALID_ARGUMENT
+          when 401 then 16 # UNAUTHENTICATED
+          when 403 then 7 # PERMISSION_DENIED
+          when 404 then 5 # NOT_FOUND
+          when 429 then 8 # RESOURCE_EXHAUSTED
+          when 501 then 12 # UNIMPLEMENTED
+          when 503 then 14 # UNAVAILABLE
+          when 504 then 4 # DEADLINE_EXCEEDED
+          else 2 # UNKNOWN
+          end
         end
 
         def normalize_query_value(v)
