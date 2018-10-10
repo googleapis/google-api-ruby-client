@@ -1106,8 +1106,8 @@ module Google
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # Optional. A user-specified description of the service account.  Must be
-        # fewer than 100 UTF-8 bytes.
+        # Optional. A user-specified name for the service account.
+        # Must be less than or equal to 100 UTF-8 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1117,7 +1117,8 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # Used to perform a consistent read-modify-write.
+        # Optional. Note: `etag` is an inoperable legacy field that is only returned
+        # for backwards compatibility.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

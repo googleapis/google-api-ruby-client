@@ -304,11 +304,11 @@ module Google
         # @return [Google::Apis::CloudassetV1beta1::OutputConfig]
         attr_accessor :output_config
       
-        # Timestamp to take an asset snapshot. This can only be set to a timestamp in
-        # the past or of the current time. If not specified, the current time will be
-        # used. Due to delays in resource data collection and indexing, there is a
-        # volatile window during which running the same query may get different
-        # results.
+        # Timestamp to take an asset snapshot. This can only be set to a timestamp
+        # between 2018-10-02 UTC (inclusive) and the current time. If not specified,
+        # the current time will be used. Due to delays in resource data collection
+        # and indexing, there is a volatile window during which running the same
+        # query may get different results.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
