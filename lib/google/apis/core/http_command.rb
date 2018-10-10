@@ -352,6 +352,10 @@ module Google
           if formatter.respond_to? :header_name
             header[formatter.header_name] = formatter.serialize @opencensus_span.context.trace_context
           end
+        rescue StandardError => e
+          # Log exceptions and continue, so opencensus failures don't cause
+          # the entire request to fail.
+          logger.debug { sprintf('Error opening OpenCensus span: %s', e) }
         end
 
         def opencensus_end_span
@@ -372,7 +376,9 @@ module Google
           OpenCensus::Trace.end_span @opencensus_span
           @opencensus_span = nil
         rescue StandardError => e
-          nil
+          # Log exceptions and continue, so failures don't cause leaks by
+          # aborting cleanup.
+          logger.debug { sprintf('Error finishing OpenCensus span: %s', e) }
         end
 
         def form_encoded?
