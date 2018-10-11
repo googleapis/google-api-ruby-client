@@ -41,6 +41,120 @@ module Google
         end
       end
       
+      # Metadata for google.longrunning.Operation results from
+      # FirestoreAdmin.ExportDocuments.
+      class GoogleFirestoreAdminV1beta2ExportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Which collection ids are being exported.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The state of the export operation.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # Where the entities are being exported to.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressBytes`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_bytes
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressDocuments`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_documents
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+          @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
+          @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for FirestoreAdmin.ExportDocuments.
+      class GoogleFirestoreAdminV1beta2ExportDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Which collection ids to export. Unspecified means all collections.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # The output URI. Currently only supports Google Cloud Storage URIs of the
+        # form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
+        # of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional
+        # Google Cloud Storage namespace path. When
+        # choosing a name, be sure to consider Google Cloud Storage naming
+        # guidelines: https://cloud.google.com/storage/docs/naming.
+        # If the URI is a bucket (without a namespace path), a prefix will be
+        # generated based on the start time.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+        end
+      end
+      
+      # Returned in the google.longrunning.Operation response field.
+      class GoogleFirestoreAdminV1beta2ExportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Location of the output files. This can be used to begin an import
+        # into Cloud Firestore (this project or another project) after the operation
+        # completes successfully.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+        end
+      end
+      
       # Represents a single field in the database.
       # Fields are grouped by their "Collection Group", which represent all
       # collections in the database with the same id.
@@ -152,6 +266,97 @@ module Google
           @index_config_deltas = args[:index_config_deltas] if args.key?(:index_config_deltas)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata for google.longrunning.Operation results from
+      # FirestoreAdmin.ImportDocuments.
+      class GoogleFirestoreAdminV1beta2ImportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Which collection ids are being imported.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The location of the documents being imported.
+        # Corresponds to the JSON property `inputUriPrefix`
+        # @return [String]
+        attr_accessor :input_uri_prefix
+      
+        # The state of the import operation.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressBytes`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_bytes
+      
+        # Describes the progress of the operation.
+        # Unit of work is generic and must be interpreted based on where Progress
+        # is used.
+        # Corresponds to the JSON property `progressDocuments`
+        # @return [Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress]
+        attr_accessor :progress_documents
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @input_uri_prefix = args[:input_uri_prefix] if args.key?(:input_uri_prefix)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @progress_bytes = args[:progress_bytes] if args.key?(:progress_bytes)
+          @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for FirestoreAdmin.ImportDocuments.
+      class GoogleFirestoreAdminV1beta2ImportDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Which collection ids to import. Unspecified means all collections included
+        # in the import.
+        # Corresponds to the JSON property `collectionIds`
+        # @return [Array<String>]
+        attr_accessor :collection_ids
+      
+        # Location of the exported files.
+        # This must match the output_uri_prefix of an ExportDocumentsResponse from
+        # an export that has completed successfully.
+        # See:
+        # google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix.
+        # Corresponds to the JSON property `inputUriPrefix`
+        # @return [String]
+        attr_accessor :input_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @input_uri_prefix = args[:input_uri_prefix] if args.key?(:input_uri_prefix)
         end
       end
       

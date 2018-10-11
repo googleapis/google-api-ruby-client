@@ -28,6 +28,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1beta2ExportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta2ExportDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta2ExportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta2Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +53,18 @@ module Google
       end
       
       class GoogleFirestoreAdminV1beta2FieldOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta2ImportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1beta2ImportDocumentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +136,36 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1beta2ExportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          property :operation_state, as: 'operationState'
+          property :output_uri_prefix, as: 'outputUriPrefix'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta2ExportDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta2ExportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
       class GoogleFirestoreAdminV1beta2Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -128,6 +188,29 @@ module Google
       
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta2ImportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :end_time, as: 'endTime'
+          property :input_uri_prefix, as: 'inputUriPrefix'
+          property :operation_state, as: 'operationState'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :progress_documents, as: 'progressDocuments', class: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress, decorator: Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1beta2ImportDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_ids, as: 'collectionIds'
+          property :input_uri_prefix, as: 'inputUriPrefix'
         end
       end
       

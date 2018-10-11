@@ -22,8 +22,7 @@ module Google
     module ServiceconsumermanagementV1
       # Service Consumer Management API
       #
-      # Provides management methods for configuring service producer resources on
-      #  Google Cloud.
+      # Manages the service consumers of a Service Infrastructure service.
       #
       # @example
       #    require 'google/apis/serviceconsumermanagement_v1'

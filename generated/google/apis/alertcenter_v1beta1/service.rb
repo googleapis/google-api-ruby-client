@@ -22,7 +22,8 @@ module Google
     module AlertcenterV1beta1
       # G Suite Alert Center API
       #
-      # G Suite API for alerts managment.
+      # G Suite Alert Center API to view and manage alerts on issues affecting your
+      #  domain.
       #
       # @example
       #    require 'google/apis/alertcenter_v1beta1'
@@ -30,7 +31,7 @@ module Google
       #    Alertcenter = Google::Apis::AlertcenterV1beta1 # Alias the module
       #    service = Alertcenter::AlertCenterService.new
       #
-      # @see https://gsuite.google.com/products/alerts/
+      # @see https://developers.google.com/admin-sdk/alertcenter/
       class AlertCenterService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

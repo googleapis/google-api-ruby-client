@@ -22,7 +22,7 @@ module Google
     module AndroidpublisherV2
       # Google Play Developer API
       #
-      # Lets Android application developers access their Google Play accounts.
+      # Accesses Android application developers' Google Play accounts.
       #
       # @example
       #    require 'google/apis/androidpublisher_v2'
@@ -680,7 +680,8 @@ module Google
         #   Unique identifier for this edit.
         # @param [Boolean] ack_bundle_installation_warning
         #   Must be set to true if the bundle installation may trigger a warning on user
-        #   devices (i.e. if installation size may be over a threshold, typically 100 MB).
+        #   devices (for example, if installation size may be over a threshold, typically
+        #   100 MB).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

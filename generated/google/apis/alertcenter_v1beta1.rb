@@ -20,12 +20,13 @@ module Google
   module Apis
     # G Suite Alert Center API
     #
-    # G Suite API for alerts managment.
+    # G Suite Alert Center API to view and manage alerts on issues affecting your
+    # domain.
     #
-    # @see https://gsuite.google.com/products/alerts/
+    # @see https://developers.google.com/admin-sdk/alertcenter/
     module AlertcenterV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20181005'
+      REVISION = '20181010'
     end
   end
 end

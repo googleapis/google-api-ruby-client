@@ -20,13 +20,12 @@ module Google
   module Apis
     # Service Consumer Management API
     #
-    # Provides management methods for configuring service producer resources on
-    # Google Cloud.
+    # Manages the service consumers of a Service Infrastructure service.
     #
     # @see https://cloud.google.com/service-consumer-management/docs/overview
     module ServiceconsumermanagementV1
       VERSION = 'V1'
-      REVISION = '20181004'
+      REVISION = '20181009'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

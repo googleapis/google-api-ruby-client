@@ -22,7 +22,7 @@ module Google
     module AndroidpublisherV1
       # Google Play Developer API
       #
-      # Lets Android application developers access their Google Play accounts.
+      # Accesses Android application developers' Google Play accounts.
       #
       # @example
       #    require 'google/apis/androidpublisher_v1'

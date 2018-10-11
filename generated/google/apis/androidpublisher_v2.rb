@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Play Developer API
     #
-    # Lets Android application developers access their Google Play accounts.
+    # Accesses Android application developers' Google Play accounts.
     #
     # @see https://developers.google.com/android-publisher
     module AndroidpublisherV2
       VERSION = 'V2'
-      REVISION = '20181002'
+      REVISION = '20181009'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
