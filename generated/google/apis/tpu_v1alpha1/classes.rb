@@ -130,6 +130,11 @@ module Google
         # @return [Array<Google::Apis::TpuV1alpha1::Node>]
         attr_accessor :nodes
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -138,6 +143,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

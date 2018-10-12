@@ -384,6 +384,11 @@ module Google
         # @return [String]
         attr_accessor :detail
       
+        # The URL of a web page to help resolving this issue.
+        # Corresponds to the JSON property `documentation`
+        # @return [String]
+        attr_accessor :documentation
+      
         # Issue identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -408,6 +413,7 @@ module Google
           @country = args[:country] if args.key?(:country)
           @destination = args[:destination] if args.key?(:destination)
           @detail = args[:detail] if args.key?(:detail)
+          @documentation = args[:documentation] if args.key?(:documentation)
           @id = args[:id] if args.key?(:id)
           @severity = args[:severity] if args.key?(:severity)
           @title = args[:title] if args.key?(:title)

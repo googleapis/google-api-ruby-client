@@ -552,13 +552,12 @@ module Google
         end
       end
       
-      # Used to perform string matching. Currently, this matches on the exact content.
-      # In the future, it can be expanded to allow for regular expressions and more
-      # complex matching.
+      # Used to perform string matching. It allows substring and regular expressions,
+      # together with their negations.
       class ContentMatcher
         include Google::Apis::Core::Hashable
       
-        # String content to match (max 1024 bytes)
+        # String or regex content to match (max 1024 bytes)
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

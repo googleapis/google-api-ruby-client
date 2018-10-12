@@ -168,6 +168,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :nodes, as: 'nodes', class: Google::Apis::TpuV1::Node, decorator: Google::Apis::TpuV1::Node::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

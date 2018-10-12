@@ -384,7 +384,7 @@ module Google
       
         # Optional. The number of conversational query requests after which the
         # context expires. If set to `0` (the default) the context expires
-        # immediately. Contexts expire automatically after 10 minutes even if there
+        # immediately. Contexts expire automatically after 20 minutes even if there
         # are no matching queries.
         # Corresponds to the JSON property `lifespanCount`
         # @return [Fixnum]
@@ -535,7 +535,7 @@ module Google
         # @return [String]
         attr_accessor :auto_expansion_mode
       
-        # Required. The name of the entity.
+        # Required. The name of the entity type.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1981,9 +1981,9 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
-        # Optional. The collection of session entity types to replace or extend
-        # developer entities with for this query only. The entity synonyms apply
-        # to all languages.
+        # Optional. Additional session entity types to replace or extend developer
+        # entity types with. The entity synonyms apply to all languages and persist
+        # for the session of this query.
         # Corresponds to the JSON property `sessionEntityTypes`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType>]
         attr_accessor :session_entity_types
@@ -2229,6 +2229,8 @@ module Google
         # Required. The unique identifier of this session entity type. Format:
         # `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
         # Display Name>`.
+        # `<Entity Type Display Name>` must be the display name of an existing entity
+        # type in the same agent that will be overridden or supplemented.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2497,7 +2499,7 @@ module Google
         # @return [String]
         attr_accessor :auto_expansion_mode
       
-        # Required. The name of the entity.
+        # Required. The name of the entity type.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

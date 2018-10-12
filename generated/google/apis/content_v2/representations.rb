@@ -1705,6 +1705,7 @@ module Google
           property :country, as: 'country'
           property :destination, as: 'destination'
           property :detail, as: 'detail'
+          property :documentation, as: 'documentation'
           property :id, as: 'id'
           property :severity, as: 'severity'
           property :title, as: 'title'
