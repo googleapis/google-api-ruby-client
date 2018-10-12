@@ -122,13 +122,15 @@ module Google
         BYTES_RECEIVED_HEADER = 'X-Goog-Upload-Size-Received'
         UPLOAD_URL_HEADER = 'X-Goog-Upload-URL'
         UPLOAD_STATUS_HEADER = 'X-Goog-Upload-Status'
+        UPLOAD_GRANULARITY_HEADER = 'X-Goog-Upload-Chunk-Granularity'
         STATUS_ACTIVE = 'active'
         STATUS_FINAL = 'final'
         STATUS_CANCELLED = 'cancelled'
         RESUMABLE = 'resumable'
         START_COMMAND = 'start'
         QUERY_COMMAND = 'query'
-        UPLOAD_COMMAND = 'upload, finalize'
+        UPLOAD_COMMAND = 'upload'
+        UPLOAD_FINALIZE_COMMAND = 'upload, finalize'
 
         # Reset upload to initial state.
         #
@@ -138,6 +140,8 @@ module Google
           @state = :start
           @upload_url = nil
           @offset = 0
+          @granularity = nil
+          @chunk_size = nil
           super
         end
 
@@ -155,8 +159,12 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          @offset = Integer(header[BYTES_RECEIVED_HEADER].first) unless header[BYTES_RECEIVED_HEADER].empty?
-          @upload_url = header[UPLOAD_URL_HEADER].first unless header[UPLOAD_URL_HEADER].empty?
+          @offset = Integer(header[BYTES_RECEIVED_HEADER].first) if header[BYTES_RECEIVED_HEADER].any?
+          if header[UPLOAD_GRANULARITY_HEADER].any?
+            @granularity = Integer(header[UPLOAD_GRANULARITY_HEADER].first)
+            @chunk_size = calc_chunk_size(@granularity)
+          end
+          @upload_url = header[UPLOAD_URL_HEADER].first if header[UPLOAD_URL_HEADER].any?
           upload_status = header[UPLOAD_STATUS_HEADER].first
           logger.debug { sprintf('Upload status %s', upload_status) }
           if upload_status == STATUS_ACTIVE
@@ -215,17 +223,32 @@ module Google
         def send_upload_command(client)
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
-          content = upload_io
-          content.pos = @offset
+          total_size = upload_io.size
+          upload_io.pos = @offset
+          # TODO: raise if @offset is not a multiple of @granularity?
+          offset_start = @offset
+          result = nil
 
-          request_header = header.dup
-          apply_request_options(request_header)
-          request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
-          request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
-          request_header[UPLOAD_OFFSET_HEADER] = @offset.to_s
-          request_header[CONTENT_TYPE_HEADER] = upload_content_type
+          until upload_io.eof?
+            content = upload_io.read @chunk_size # returns all content when nil
 
-          client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
+            offset_end = offset_start + content.size
+            final = offset_end >= total_size
+
+            request_header = header.dup
+            apply_request_options(request_header)
+            request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
+            request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_FINALIZE_COMMAND if final
+            request_header[UPLOAD_OFFSET_HEADER] = offset_start.to_s
+            request_header[CONTENT_TYPE_HEADER] = upload_content_type
+
+            logger.debug { "Sending chunked upload #{offset_start}-#{offset_end}/#{total_size}" }
+            result = client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
+
+            offset_start = offset_end
+          end
+
+          result
         end
 
         # Execute the upload request once. This will typically perform two HTTP requests -- one to initiate or query
@@ -262,6 +285,23 @@ module Google
           # retried.
           @last_error = e
           error(e, rethrow: true, &block)
+        end
+
+        # @private
+        # Calculate a chunk_size as close to max_chunk_size as possible.
+        def calc_chunk_size granularity
+          chunk_multi = max_chunk_size / granularity
+          chunk_multi = 1 if chunk_multi.zero?
+          granularity * chunk_multi
+        rescue
+          nil
+        end
+
+        # @private
+        # The maximum chunk_size to use for resumable chunked uploads.
+        def max_chunk_size
+          # 1GB, magic value
+          1000000000
         end
       end
     end
