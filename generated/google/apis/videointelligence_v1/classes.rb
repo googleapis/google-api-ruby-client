@@ -1226,6 +1226,14 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
+        # Output only. The
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        # language in this result. This language code was detected to have the most
+        # likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1233,6 +1241,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @language_code = args[:language_code] if args.key?(:language_code)
         end
       end
       
@@ -1849,17 +1858,6 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
-        # Confidence for the track of detected text. It is calculated as the highest
-        # over all frames where OCR detected text appears.
-        # Corresponds to the JSON property `confidence`
-        # @return [Float]
-        attr_accessor :confidence
-      
-        # Information related to the frames where OCR detected text appears.
-        # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame>]
-        attr_accessor :frames
-      
         # All video segments where OCR detected text appears.
         # Corresponds to the JSON property `segments`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextSegment>]
@@ -1876,8 +1874,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @confidence = args[:confidence] if args.key?(:confidence)
-          @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
         end
@@ -1928,6 +1924,17 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextSegment
         include Google::Apis::Core::Hashable
       
+        # Confidence for the track of detected text. It is calculated as the highest
+        # over all frames where OCR detected text appears.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Information related to the frames where OCR detected text appears.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame>]
+        attr_accessor :frames
+      
         # Video segment.
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
@@ -1939,6 +1946,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
         end
       end

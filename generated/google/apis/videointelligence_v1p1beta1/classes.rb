@@ -1212,6 +1212,14 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
+        # Output only. The
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        # language in this result. This language code was detected to have the most
+        # likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1219,12 +1227,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @language_code = args[:language_code] if args.key?(:language_code)
         end
       end
       
       # Config for SPEECH_TRANSCRIPTION.
       class GoogleCloudVideointelligenceV1p1beta1SpeechTranscriptionConfig
         include Google::Apis::Core::Hashable
+      
+        # *Optional* A list of up to 3 additional
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
+        # listing possible alternative languages of the supplied video.
+        # See [Language Support](/speech-to-text/docs/languages)
+        # for a list of the currently supported language codes.
+        # If alternative languages are listed, transcription result will contain
+        # transcription in the most likely language detected, including the main
+        # language_code. The transcription result will include the language tag
+        # of the language detected in the video.
+        # Note: This feature is only supported for Voice Command and Voice Search
+        # use cases and performance may vary for other use cases (e.g., phone call
+        # transcription).
+        # Corresponds to the JSON property `alternativeLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :alternative_language_codes
       
         # *Optional* For file formats, such as MXF or MKV, supporting multiple audio
         # tracks, specify up to two tracks. Default: track 0.
@@ -1291,7 +1316,7 @@ module Google
       
         # *Optional* Maximum number of recognition hypotheses to be returned.
         # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
-        # within each `SpeechRecognitionResult`. The server may return fewer than
+        # within each `SpeechTranscription`. The server may return fewer than
         # `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will
         # return a maximum of one. If omitted, will return a maximum of one.
         # Corresponds to the JSON property `maxAlternatives`
@@ -1309,6 +1334,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_tracks = args[:audio_tracks] if args.key?(:audio_tracks)
           @diarization_speaker_count = args[:diarization_speaker_count] if args.key?(:diarization_speaker_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
@@ -1979,17 +2005,6 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
-        # Confidence for the track of detected text. It is calculated as the highest
-        # over all frames where OCR detected text appears.
-        # Corresponds to the JSON property `confidence`
-        # @return [Float]
-        attr_accessor :confidence
-      
-        # Information related to the frames where OCR detected text appears.
-        # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1TextFrame>]
-        attr_accessor :frames
-      
         # All video segments where OCR detected text appears.
         # Corresponds to the JSON property `segments`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1TextSegment>]
@@ -2006,8 +2021,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @confidence = args[:confidence] if args.key?(:confidence)
-          @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
         end
@@ -2058,6 +2071,17 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextSegment
         include Google::Apis::Core::Hashable
       
+        # Confidence for the track of detected text. It is calculated as the highest
+        # over all frames where OCR detected text appears.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Information related to the frames where OCR detected text appears.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1TextFrame>]
+        attr_accessor :frames
+      
         # Video segment.
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
@@ -2069,6 +2093,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
         end
       end

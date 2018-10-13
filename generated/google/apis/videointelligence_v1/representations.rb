@@ -767,6 +767,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alternatives, as: 'alternatives', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative::Representation
       
+          property :language_code, as: 'languageCode'
         end
       end
       
@@ -943,9 +944,6 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence, as: 'confidence'
-          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame::Representation
-      
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextSegment::Representation
       
           property :text, as: 'text'
@@ -964,6 +962,9 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1TextSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1TextFrame::Representation
+      
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
       
         end

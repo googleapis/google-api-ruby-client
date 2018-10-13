@@ -794,6 +794,7 @@ module Google
           collection :source_uris, as: 'sourceUris'
           property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
       
+          property :use_avro_logical_types, as: 'useAvroLogicalTypes'
           property :write_disposition, as: 'writeDisposition'
         end
       end

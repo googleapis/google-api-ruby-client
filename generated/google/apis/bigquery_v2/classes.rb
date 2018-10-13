@@ -1663,6 +1663,15 @@ module Google
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
       
+        # If sourceFormat is set to "AVRO", indicates whether to enable interpreting
+        # logical types into their corresponding types (ie. TIMESTAMP), instead of only
+        # using their raw types (ie. INTEGER). The default value will be true once this
+        # feature launches, but can be set now in preparation.
+        # Corresponds to the JSON property `useAvroLogicalTypes`
+        # @return [Boolean]
+        attr_accessor :use_avro_logical_types
+        alias_method :use_avro_logical_types?, :use_avro_logical_types
+      
         # [Optional] Specifies the action that occurs if the destination table already
         # exists. The following values are supported: WRITE_TRUNCATE: If the table
         # already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
@@ -1704,6 +1713,7 @@ module Google
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
+          @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
