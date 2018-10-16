@@ -20,12 +20,12 @@ module Google
   module Apis
     # Apps Script API
     #
-    # An API for managing and executing Google Apps Script projects.
+    # Manages and executes Google Apps Script projects.
     #
     # @see https://developers.google.com/apps-script/api/
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20180807'
+      REVISION = '20181013'
 
       # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'

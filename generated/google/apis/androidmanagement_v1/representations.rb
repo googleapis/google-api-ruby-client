@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedConfigurationTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,12 @@ module Google
       end
       
       class ProxyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigninDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -351,6 +363,8 @@ module Google
           property :install_type, as: 'installType'
           property :lock_task_allowed, as: 'lockTaskAllowed'
           hash :managed_configuration, as: 'managedConfiguration'
+          property :managed_configuration_template, as: 'managedConfigurationTemplate', class: Google::Apis::AndroidmanagementV1::ManagedConfigurationTemplate, decorator: Google::Apis::AndroidmanagementV1::ManagedConfigurationTemplate::Representation
+      
           property :minimum_version_code, as: 'minimumVersionCode'
           property :package_name, as: 'packageName'
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
@@ -517,6 +531,8 @@ module Google
           property :name, as: 'name'
           property :primary_color, as: 'primaryColor'
           property :pubsub_topic, as: 'pubsubTopic'
+          collection :signin_details, as: 'signinDetails', class: Google::Apis::AndroidmanagementV1::SigninDetail, decorator: Google::Apis::AndroidmanagementV1::SigninDetail::Representation
+      
           collection :terms_and_conditions, as: 'termsAndConditions', class: Google::Apis::AndroidmanagementV1::TermsAndConditions, decorator: Google::Apis::AndroidmanagementV1::TermsAndConditions::Representation
       
         end
@@ -587,6 +603,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :policies, as: 'policies', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
       
+        end
+      end
+      
+      class ManagedConfigurationTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :configuration_variables, as: 'configurationVariables'
+          property :template_id, as: 'templateId'
         end
       end
       
@@ -767,6 +791,8 @@ module Google
           hash :open_network_configuration, as: 'openNetworkConfiguration'
           property :outgoing_beam_disabled, as: 'outgoingBeamDisabled'
           property :outgoing_calls_disabled, as: 'outgoingCallsDisabled'
+          collection :password_policies, as: 'passwordPolicies', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
+      
           property :password_requirements, as: 'passwordRequirements', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
       
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
@@ -823,6 +849,15 @@ module Google
           property :host, as: 'host'
           property :pac_uri, as: 'pacUri'
           property :port, as: 'port'
+        end
+      end
+      
+      class SigninDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qr_code, as: 'qrCode'
+          property :signin_enrollment_token, as: 'signinEnrollmentToken'
+          property :signin_url, as: 'signinUrl'
         end
       end
       

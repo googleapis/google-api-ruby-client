@@ -213,6 +213,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
       
+        # The formulated managed configuration with the managed configuration template
+        # applied to the app. To generate a web token that identifies the enterprise use
+        # https://developers.google.com/android/management/reference/rest/v1/enterprises.
+        # webTokens
+        # Corresponds to the JSON property `managedConfigurationTemplate`
+        # @return [Google::Apis::AndroidmanagementV1::ManagedConfigurationTemplate]
+        attr_accessor :managed_configuration_template
+      
         # The minimum version of the app that runs on the device. If set, the device
         # attempts to update the app to at least this version code. If the app is not up-
         # to-date, the device will contain a NonComplianceDetail with
@@ -247,6 +255,7 @@ module Google
           @install_type = args[:install_type] if args.key?(:install_type)
           @lock_task_allowed = args[:lock_task_allowed] if args.key?(:lock_task_allowed)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
+          @managed_configuration_template = args[:managed_configuration_template] if args.key?(:managed_configuration_template)
           @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
@@ -976,6 +985,11 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.
+        # Corresponds to the JSON property `signinDetails`
+        # @return [Array<Google::Apis::AndroidmanagementV1::SigninDetail>]
+        attr_accessor :signin_details
+      
         # Terms and conditions that must be accepted when provisioning a device for this
         # enterprise. A page of terms is generated for each value in this list.
         # Corresponds to the JSON property `termsAndConditions`
@@ -995,6 +1009,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @primary_color = args[:primary_color] if args.key?(:primary_color)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @signin_details = args[:signin_details] if args.key?(:signin_details)
           @terms_and_conditions = args[:terms_and_conditions] if args.key?(:terms_and_conditions)
         end
       end
@@ -1261,6 +1276,35 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # The formulated managed configuration with the managed configuration template
+      # applied to the app. To generate a web token that identifies the enterprise use
+      # https://developers.google.com/android/management/reference/rest/v1/enterprises.
+      # webTokens
+      class ManagedConfigurationTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional, a map containing <key, value> configuration variables defined for
+        # the configuration.
+        # Corresponds to the JSON property `configurationVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :configuration_variables
+      
+        # The ID of the managed configurations template.
+        # Corresponds to the JSON property `templateId`
+        # @return [String]
+        attr_accessor :template_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configuration_variables = args[:configuration_variables] if args.key?(:configuration_variables)
+          @template_id = args[:template_id] if args.key?(:template_id)
         end
       end
       
@@ -2093,6 +2137,18 @@ module Google
         attr_accessor :outgoing_calls_disabled
         alias_method :outgoing_calls_disabled?, :outgoing_calls_disabled
       
+        # Password policy that can apply to different scope e.g. at either a device or
+        # profile level. 'password_requirements' is overridden if this policy is set
+        # with default scope or with scope explicitly applying to the scope that '
+        # password_requirements' applies to. If scope is not specified then restriction
+        # applies to the default scope i.e. profile in a managed profile. If an entry
+        # exists with unspecified scope and also an entry for the default scope with
+        # scope explicitly specified then the explicit restriction overrides the default
+        # scope restriction.
+        # Corresponds to the JSON property `passwordPolicies`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
+        attr_accessor :password_policies
+      
         # Requirements for the password used to unlock a device.
         # Corresponds to the JSON property `passwordRequirements`
         # @return [Google::Apis::AndroidmanagementV1::PasswordRequirements]
@@ -2319,6 +2375,7 @@ module Google
           @open_network_configuration = args[:open_network_configuration] if args.key?(:open_network_configuration)
           @outgoing_beam_disabled = args[:outgoing_beam_disabled] if args.key?(:outgoing_beam_disabled)
           @outgoing_calls_disabled = args[:outgoing_calls_disabled] if args.key?(:outgoing_calls_disabled)
+          @password_policies = args[:password_policies] if args.key?(:password_policies)
           @password_requirements = args[:password_requirements] if args.key?(:password_requirements)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
@@ -2418,6 +2475,45 @@ module Google
           @host = args[:host] if args.key?(:host)
           @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # A resource containing sign in details for an enterprise.
+      class SigninDetail
+        include Google::Apis::Core::Hashable
+      
+        # A JSON string whose UTF-8 representation can be used to generate a QR code to
+        # enroll a device with this enrollment token. To enroll a device using NFC, the
+        # NFC record must contain a serialized java.util.Properties representation of
+        # the properties in the JSON. This is a read-only field generated by the server.
+        # Corresponds to the JSON property `qrCode`
+        # @return [String]
+        attr_accessor :qr_code
+      
+        # An enterprise wide enrollment token used to trigger custom sign-in flow. This
+        # is a read-only field generated by the server.
+        # Corresponds to the JSON property `signinEnrollmentToken`
+        # @return [String]
+        attr_accessor :signin_enrollment_token
+      
+        # Sign-in URL for authentication when device is provisioned with a sign-in
+        # enrollment token. The sign-in endpoint should finish authentication flow with
+        # a URL in the form of https://enterprise.google.com/android/enroll?et=<token>
+        # for a successful login, or https://enterprise.google.com/android/enroll/
+        # invalid for a failed login.
+        # Corresponds to the JSON property `signinUrl`
+        # @return [String]
+        attr_accessor :signin_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qr_code = args[:qr_code] if args.key?(:qr_code)
+          @signin_enrollment_token = args[:signin_enrollment_token] if args.key?(:signin_enrollment_token)
+          @signin_url = args[:signin_url] if args.key?(:signin_url)
         end
       end
       

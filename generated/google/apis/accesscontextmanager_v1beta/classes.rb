@@ -102,7 +102,7 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Human readable title. Does not affect behavior.
+        # Required. Human readable title. Does not affect behavior.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

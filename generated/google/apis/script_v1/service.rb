@@ -22,7 +22,7 @@ module Google
     module ScriptV1
       # Apps Script API
       #
-      # An API for managing and executing Google Apps Script projects.
+      # Manages and executes Google Apps Script projects.
       #
       # @example
       #    require 'google/apis/script_v1'

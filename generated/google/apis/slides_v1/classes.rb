@@ -3232,7 +3232,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The alignment point of the shadow, that sets the origin for translate,
-        # scale and skew of the shadow.
+        # scale and skew of the shadow. This property is read-only.
         # Corresponds to the JSON property `alignment`
         # @return [String]
         attr_accessor :alignment
@@ -3261,7 +3261,8 @@ module Google
         # @return [String]
         attr_accessor :property_state
       
-        # Whether the shadow should rotate with the shape.
+        # Whether the shadow should rotate with the shape. This property is
+        # read-only.
         # Corresponds to the JSON property `rotateWithShape`
         # @return [Boolean]
         attr_accessor :rotate_with_shape
@@ -3280,7 +3281,7 @@ module Google
         # @return [Google::Apis::SlidesV1::AffineTransform]
         attr_accessor :transform
       
-        # The type of the shadow.
+        # The type of the shadow. This property is read-only.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

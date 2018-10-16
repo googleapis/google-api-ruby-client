@@ -22,8 +22,7 @@ module Google
     module IndexingV3
       # Indexing API
       #
-      # The Indexing API allows developers to share the life cycle of a Web Document
-      #  with Google.
+      # Notifies Google when your web pages change.
       #
       # @example
       #    require 'google/apis/indexing_v3'
