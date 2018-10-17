@@ -397,6 +397,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :name_servers
       
+        # For privately visible zones, the set of GCP resources that the zone is visible
+        # from.
+        # Corresponds to the JSON property `privateVisibilityConfig`
+        # @return [Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig]
+        attr_accessor :private_visibility_config
+      
+        # The zone's visibility: public zones are exposed to the Internet, while private
+        # zones are visible only to GCP resources.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -413,6 +425,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @name_server_set = args[:name_server_set] if args.key?(:name_server_set)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
+          @private_visibility_config = args[:private_visibility_config] if args.key?(:private_visibility_config)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -498,6 +512,60 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # 
+      class ManagedZonePrivateVisibilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePrivateVisibilityConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The list of GCE private network IDs that can see this zone.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigNetwork>]
+        attr_accessor :networks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @networks = args[:networks] if args.key?(:networks)
+        end
+      end
+      
+      # 
+      class ManagedZonePrivateVisibilityConfigNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePrivateVisibilityConfigNetwork".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fully qualified URL of the GCE private network to bind to. This should be
+        # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
+        # networks/`network`
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_url = args[:network_url] if args.key?(:network_url)
         end
       end
       
@@ -732,6 +800,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :managed_zones
       
+        # Maximum allowed number of managed zones which can be attached to a network.
+        # Corresponds to the JSON property `managedZonesPerNetwork`
+        # @return [Fixnum]
+        attr_accessor :managed_zones_per_network
+      
+        # Maximum allowed number of networks to which a privately scoped zone can be
+        # attached.
+        # Corresponds to the JSON property `networksPerManagedZone`
+        # @return [Fixnum]
+        attr_accessor :networks_per_managed_zone
+      
         # Maximum allowed number of ResourceRecords per ResourceRecordSet.
         # Corresponds to the JSON property `resourceRecordsPerRrset`
         # @return [Fixnum]
@@ -772,6 +851,8 @@ module Google
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
+          @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
+          @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
           @rrset_additions_per_change = args[:rrset_additions_per_change] if args.key?(:rrset_additions_per_change)
           @rrset_deletions_per_change = args[:rrset_deletions_per_change] if args.key?(:rrset_deletions_per_change)

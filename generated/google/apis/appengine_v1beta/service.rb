@@ -22,8 +22,7 @@ module Google
     module AppengineV1beta
       # App Engine Admin API
       #
-      # The App Engine Admin API enables developers to provision and manage their App
-      #  Engine applications.
+      # Provisions and manages developers' App Engine applications.
       #
       # @example
       #    require 'google/apis/appengine_v1beta'

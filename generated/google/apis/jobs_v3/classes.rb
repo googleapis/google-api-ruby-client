@@ -1409,9 +1409,9 @@ module Google
         # perform a case insensitive match and `EMPTY([field_name])` to filter on the
         # existence of a key.
         # Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
-        # nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 50
+        # nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 100
         # comparisons or functions are allowed in the expression. The expression
-        # must be < 3000 characters in length.
+        # must be < 3000 bytes in length.
         # Sample Query:
         # `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND
         # driving_years > 10`

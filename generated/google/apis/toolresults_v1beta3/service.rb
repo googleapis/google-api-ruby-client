@@ -380,7 +380,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Histories for a given Project.
+        # Lists Executions for a given History.
         # The executions are sorted by creation_time in descending order. The
         # execution_id key will be used to order the executions with the same
         # creation_time.

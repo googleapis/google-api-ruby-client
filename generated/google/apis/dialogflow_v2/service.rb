@@ -22,8 +22,8 @@ module Google
     module DialogflowV2
       # Dialogflow API
       #
-      # An end-to-end development suite for conversational interfaces (e.g., chatbots,
-      #  voice-powered apps and devices).
+      # Builds conversational interfaces (for example, chatbots, and voice-powered
+      #  apps and devices).
       #
       # @example
       #    require 'google/apis/dialogflow_v2'

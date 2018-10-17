@@ -20,16 +20,19 @@ module Google
   module Apis
     # Dialogflow API
     #
-    # An end-to-end development suite for conversational interfaces (e.g., chatbots,
-    # voice-powered apps and devices).
+    # Builds conversational interfaces (for example, chatbots, and voice-powered
+    # apps and devices).
     #
     # @see https://cloud.google.com/dialogflow-enterprise/
     module DialogflowV2
       VERSION = 'V2'
-      REVISION = '20181009'
+      REVISION = '20181015'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View, manage and query your Dialogflow agents
+      AUTH_DIALOGFLOW = 'https://www.googleapis.com/auth/dialogflow'
     end
   end
 end

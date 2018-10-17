@@ -61,7 +61,8 @@ module Google
         #   The format is "projects/`project_id`/companies/`company_id`", for example,
         #   "projects/api-test-project/companies/foo".
         # @param [String] language_code
-        #   Required.
+        #   Deprecated. Use language_codes instead.
+        #   Optional.
         #   The language of the query. This is
         #   the BCP-47 language code, such as "en-US" or "sr-Latn".
         #   For more information, see
@@ -74,6 +75,21 @@ module Google
         #   For CompletionType.COMBINED type, only open jobs with same
         #   language_code or companies having open jobs with same
         #   language_code are returned.
+        #   The maximum number of allowed characters is 255.
+        # @param [Array<String>, String] language_codes
+        #   Optional.
+        #   The list of languages of the query. This is
+        #   the BCP-47 language code, such as "en-US" or "sr-Latn".
+        #   For more information, see
+        #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+        #   For CompletionType.JOB_TITLE type, only open jobs with same
+        #   language_codes are returned.
+        #   For CompletionType.COMPANY_NAME type,
+        #   only companies having open jobs with same language_codes are
+        #   returned.
+        #   For CompletionType.COMBINED type, only open jobs with same
+        #   language_codes or companies having open jobs with same
+        #   language_codes are returned.
         #   The maximum number of allowed characters is 255.
         # @param [Fixnum] page_size
         #   Required.
@@ -106,13 +122,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def complete_project(name, company_name: nil, language_code: nil, page_size: nil, query: nil, scope: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def complete_project(name, company_name: nil, language_code: nil, language_codes: nil, page_size: nil, query: nil, scope: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}:complete', options)
           command.response_representation = Google::Apis::JobsV3::CompleteQueryResponse::Representation
           command.response_class = Google::Apis::JobsV3::CompleteQueryResponse
           command.params['name'] = name unless name.nil?
           command.query['companyName'] = company_name unless company_name.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['languageCodes'] = language_codes unless language_codes.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['query'] = query unless query.nil?
           command.query['scope'] = scope unless scope.nil?
@@ -159,6 +176,7 @@ module Google
         end
         
         # Deletes specified company.
+        # Prerequisite: The company has no jobs associated with it.
         # @param [String] name
         #   Required.
         #   The resource name of the company to be deleted.
