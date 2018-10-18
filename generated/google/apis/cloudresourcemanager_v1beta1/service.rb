@@ -22,8 +22,8 @@ module Google
     module CloudresourcemanagerV1beta1
       # Cloud Resource Manager API
       #
-      # The Google Cloud Resource Manager API provides methods for creating, reading,
-      #  and updating project metadata.
+      # Creates, reads, and updates metadata for Google Cloud Platform resource
+      #  containers.
       #
       # @example
       #    require 'google/apis/cloudresourcemanager_v1beta1'

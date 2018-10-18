@@ -82,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListLogsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListMonitoredResourceDescriptorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -295,14 +289,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :metrics, as: 'metrics', class: Google::Apis::LoggingV2beta1::LogMetric, decorator: Google::Apis::LoggingV2beta1::LogMetric::Representation
       
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListLogsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :log_names, as: 'logNames'
           property :next_page_token, as: 'nextPageToken'
         end
       end

@@ -22,7 +22,7 @@ module Google
     module GenomicsV1
       # Genomics API
       #
-      # Upload, process, query, and search Genomics data in the cloud.
+      # Uploads, processes, queries, and searches Genomics data in the cloud.
       #
       # @example
       #    require 'google/apis/genomics_v1'

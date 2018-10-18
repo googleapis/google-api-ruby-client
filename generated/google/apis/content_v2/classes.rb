@@ -22,7 +22,8 @@ module Google
   module Apis
     module ContentV2
       
-      # Account data.
+      # Account data. After the creation of a new account it may take a few minutes
+      # before it is fully operational.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -896,7 +897,8 @@ module Google
       class AccountsBatchRequestEntry
         include Google::Apis::Core::Hashable
       
-        # Account data.
+        # Account data. After the creation of a new account it may take a few minutes
+        # before it is fully operational.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -1019,7 +1021,8 @@ module Google
       class AccountsBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # Account data.
+        # Account data. After the creation of a new account it may take a few minutes
+        # before it is fully operational.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -2726,6 +2729,36 @@ module Google
         # @return [String]
         attr_accessor :availability
       
+        # Custom label 0 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel0`
+        # @return [String]
+        attr_accessor :custom_label0
+      
+        # Custom label 1 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel1`
+        # @return [String]
+        attr_accessor :custom_label1
+      
+        # Custom label 2 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel2`
+        # @return [String]
+        attr_accessor :custom_label2
+      
+        # Custom label 3 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel3`
+        # @return [String]
+        attr_accessor :custom_label3
+      
+        # Custom label 3 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel4`
+        # @return [String]
+        attr_accessor :custom_label4
+      
         # Number and amount of installments to pay for an item. Brazil only.
         # Corresponds to the JSON property `installment`
         # @return [Google::Apis::ContentV2::Installment]
@@ -2786,6 +2819,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] if args.key?(:availability)
+          @custom_label0 = args[:custom_label0] if args.key?(:custom_label0)
+          @custom_label1 = args[:custom_label1] if args.key?(:custom_label1)
+          @custom_label2 = args[:custom_label2] if args.key?(:custom_label2)
+          @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
+          @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @installment = args[:installment] if args.key?(:installment)
           @kind = args[:kind] if args.key?(:kind)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
@@ -2958,6 +2996,36 @@ module Google
         # @return [String]
         attr_accessor :availability
       
+        # Custom label 0 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel0`
+        # @return [String]
+        attr_accessor :custom_label0
+      
+        # Custom label 1 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel1`
+        # @return [String]
+        attr_accessor :custom_label1
+      
+        # Custom label 2 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel2`
+        # @return [String]
+        attr_accessor :custom_label2
+      
+        # Custom label 3 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel3`
+        # @return [String]
+        attr_accessor :custom_label3
+      
+        # Custom label 3 for custom grouping of items in a Shopping campaign. Only
+        # supported for online products.
+        # Corresponds to the JSON property `customLabel4`
+        # @return [String]
+        attr_accessor :custom_label4
+      
         # Number and amount of installments to pay for an item. Brazil only.
         # Corresponds to the JSON property `installment`
         # @return [Google::Apis::ContentV2::Installment]
@@ -3012,6 +3080,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] if args.key?(:availability)
+          @custom_label0 = args[:custom_label0] if args.key?(:custom_label0)
+          @custom_label1 = args[:custom_label1] if args.key?(:custom_label1)
+          @custom_label2 = args[:custom_label2] if args.key?(:custom_label2)
+          @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
+          @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @installment = args[:installment] if args.key?(:installment)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @pickup = args[:pickup] if args.key?(:pickup)

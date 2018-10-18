@@ -20,13 +20,13 @@ module Google
   module Apis
     # Abusive Experience Report API
     #
-    # View Abusive Experience Report data, and get a list of sites that have a
+    # Views Abusive Experience Report data, and gets a list of sites that have a
     # significant number of abusive experiences.
     #
     # @see https://developers.google.com/abusive-experience-report/
     module AbusiveexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20180807'
+      REVISION = '20181017'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

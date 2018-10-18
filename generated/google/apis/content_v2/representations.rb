@@ -2363,6 +2363,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability, as: 'availability'
+          property :custom_label0, as: 'customLabel0'
+          property :custom_label1, as: 'customLabel1'
+          property :custom_label2, as: 'customLabel2'
+          property :custom_label3, as: 'customLabel3'
+          property :custom_label4, as: 'customLabel4'
           property :installment, as: 'installment', class: Google::Apis::ContentV2::Installment, decorator: Google::Apis::ContentV2::Installment::Representation
       
           property :kind, as: 'kind'
@@ -2431,6 +2436,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability, as: 'availability'
+          property :custom_label0, as: 'customLabel0'
+          property :custom_label1, as: 'customLabel1'
+          property :custom_label2, as: 'customLabel2'
+          property :custom_label3, as: 'customLabel3'
+          property :custom_label4, as: 'customLabel4'
           property :installment, as: 'installment', class: Google::Apis::ContentV2::Installment, decorator: Google::Apis::ContentV2::Installment::Representation
       
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation

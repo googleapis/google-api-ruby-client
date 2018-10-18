@@ -23,7 +23,6 @@ module Google
     module AbusiveexperiencereportV1
       
       # Response message for GetSiteSummary.
-      # Do not confuse with same message in google.ads.experiencereport.v1
       class SiteSummaryResponse
         include Google::Apis::Core::Hashable
       

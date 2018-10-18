@@ -145,6 +145,8 @@ module Google
         # `projects/`project`/global/networks/`network`` or ``network``, where
         # `project` is a project id where the network is defined, and `network` is
         # the short name of the network.
+        # This field is mutually exclusive with `vpc_connector` and will be replaced
+        # by it.
         # See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
         # more information on connecting Cloud projects.
         # This feature is currently in alpha, available only for whitelisted users.
@@ -221,6 +223,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :version_id
       
+        # The VPC Network Connector that this cloud function can connect to. It can
+        # be either the fully-qualified URI, or the short name of the network
+        # connector resource. The format of this field is
+        # `projects/*/locations/*/connectors/*`
+        # This field is mutually exclusive with `network` field and will eventually
+        # replace it.
+        # See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
+        # more information on connecting Cloud projects.
+        # This feature is currently in alpha, available only for whitelisted users.
+        # Corresponds to the JSON property `vpcConnector`
+        # @return [String]
+        attr_accessor :vpc_connector
+      
         def initialize(**args)
            update!(**args)
         end
@@ -247,6 +262,7 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_id = args[:version_id] if args.key?(:version_id)
+          @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
         end
       end
       

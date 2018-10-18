@@ -22,7 +22,7 @@ module Google
     module AdexperiencereportV1
       # Ad Experience Report API
       #
-      # View Ad Experience Report data, and get a list of sites that have a
+      # Views Ad Experience Report data, and gets a list of sites that have a
       #  significant number of annoying ads.
       #
       # @example

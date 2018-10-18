@@ -20,12 +20,12 @@ module Google
   module Apis
     # Genomics API
     #
-    # Upload, process, query, and search Genomics data in the cloud.
+    # Uploads, processes, queries, and searches Genomics data in the cloud.
     #
     # @see https://cloud.google.com/genomics
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20180919'
+      REVISION = '20181017'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

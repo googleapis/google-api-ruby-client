@@ -408,6 +408,13 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::Volume>]
         attr_accessor :volumes
       
+        # Option to specify a `WorkerPool` for the build. User specifies the pool
+        # with the format "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]".
+        # This is an experimental field.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -424,6 +431,7 @@ module Google
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)
           @volumes = args[:volumes] if args.key?(:volumes)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       

@@ -2039,7 +2039,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of transactions for an disbursement from your Merchant Center
+        # Retrieves a list of transactions for a disbursement from your Merchant Center
         # account.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client

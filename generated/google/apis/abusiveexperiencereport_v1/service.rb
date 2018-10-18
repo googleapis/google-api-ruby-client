@@ -22,7 +22,7 @@ module Google
     module AbusiveexperiencereportV1
       # Abusive Experience Report API
       #
-      # View Abusive Experience Report data, and get a list of sites that have a
+      # Views Abusive Experience Report data, and gets a list of sites that have a
       #  significant number of abusive experiences.
       #
       # @example

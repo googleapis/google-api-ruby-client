@@ -20,13 +20,13 @@ module Google
   module Apis
     # Cloud Resource Manager API
     #
-    # The Google Cloud Resource Manager API provides methods for creating, reading,
-    # and updating project metadata.
+    # Creates, reads, and updates metadata for Google Cloud Platform resource
+    # containers.
     #
     # @see https://cloud.google.com/resource-manager
     module CloudresourcemanagerV2
       VERSION = 'V2'
-      REVISION = '20180815'
+      REVISION = '20181015'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

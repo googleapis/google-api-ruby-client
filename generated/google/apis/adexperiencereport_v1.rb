@@ -20,13 +20,13 @@ module Google
   module Apis
     # Ad Experience Report API
     #
-    # View Ad Experience Report data, and get a list of sites that have a
+    # Views Ad Experience Report data, and gets a list of sites that have a
     # significant number of annoying ads.
     #
     # @see https://developers.google.com/ad-experience-report/
     module AdexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20180911'
+      REVISION = '20181017'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

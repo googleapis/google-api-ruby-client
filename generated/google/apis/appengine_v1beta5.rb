@@ -20,12 +20,13 @@ module Google
   module Apis
     # App Engine Admin API
     #
-    # Provisions and manages developers' App Engine applications.
+    # The App Engine Admin API enables developers to provision and manage their App
+    # Engine applications.
     #
     # @see https://cloud.google.com/appengine/docs/admin-api/
     module AppengineV1beta5
       VERSION = 'V1beta5'
-      REVISION = '20181011'
+      REVISION = '20181017'
 
       # View and manage your applications deployed on Google App Engine
       AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'

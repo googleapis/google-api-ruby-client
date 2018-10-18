@@ -478,34 +478,6 @@ module Google
         end
       end
       
-      # Result returned from ListLogs.
-      class ListLogsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of log names. For example, "projects/my-project/syslog" or "
-        # organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
-        # Corresponds to the JSON property `logNames`
-        # @return [Array<String>]
-        attr_accessor :log_names
-      
-        # If there might be more results than those appearing in this response, then
-        # nextPageToken is included. To get the next set of results, call this method
-        # again using the value of nextPageToken as pageToken.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_names = args[:log_names] if args.key?(:log_names)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # Result returned from ListMonitoredResourceDescriptors.
       class ListMonitoredResourceDescriptorsResponse
         include Google::Apis::Core::Hashable
@@ -882,7 +854,8 @@ module Google
         # @return [Google::Apis::LoggingV2beta1::BucketOptions]
         attr_accessor :bucket_options
       
-        # Optional. A description of this metric, which is used in documentation.
+        # Optional. A description of this metric, which is used in documentation. The
+        # maximum length of the description is 8000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

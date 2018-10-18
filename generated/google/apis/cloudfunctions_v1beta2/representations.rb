@@ -184,6 +184,7 @@ module Google
           property :timeout, as: 'timeout'
           property :update_time, as: 'updateTime'
           property :version_id, :numeric_string => true, as: 'versionId'
+          property :vpc_connector, as: 'vpcConnector'
         end
       end
       

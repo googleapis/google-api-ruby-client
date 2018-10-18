@@ -959,7 +959,8 @@ module Google
         # @return [Google::Apis::LoggingV2::BucketOptions]
         attr_accessor :bucket_options
       
-        # Optional. A description of this metric, which is used in documentation.
+        # Optional. A description of this metric, which is used in documentation. The
+        # maximum length of the description is 8000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

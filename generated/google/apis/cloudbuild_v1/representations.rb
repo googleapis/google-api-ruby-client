@@ -276,6 +276,7 @@ module Google
           property :substitution_option, as: 'substitutionOption'
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
+          property :worker_pool, as: 'workerPool'
         end
       end
       
