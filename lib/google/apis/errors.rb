@@ -41,6 +41,15 @@ module Google
           super
         end
       end
+
+      def inspect
+        extra = ""
+        extra << " status_code: #{status_code.inspect}" unless status_code.nil?
+        extra << " header: #{header.inspect}"           unless header.nil?
+        extra << " body: #{body.inspect}"               unless body.nil?
+
+        "#<#{self.class.name}: #{message}#{extra}>"
+      end
     end
 
     # An error which is raised when there is an unexpected response or other
