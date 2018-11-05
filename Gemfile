@@ -21,7 +21,7 @@ group :development do
   gem 'rmail', '~> 1.1'
   gem 'redis', '~> 3.2'
   gem 'logging', '~> 2.2'
-  gem 'opencensus', '~> 0.3'
+  gem 'opencensus', '~> 0.4'
 end
 
 platforms :jruby do

@@ -343,7 +343,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       OpenCensus::Trace.start_request_trace do |span_context|
         result = command.execute(client)
         expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-          .with { |req| !req.headers['Trace-Context'].empty? }).to have_been_made
+          .with { |req| !req.headers['Traceparent'].empty? }).to have_been_made
       end
     end
 
