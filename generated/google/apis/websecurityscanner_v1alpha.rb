@@ -20,12 +20,12 @@ module Google
   module Apis
     # Web Security Scanner API
     #
-    # Web Security Scanner API (under development).
+    # Scans your Compute and App Engine apps for common web vulnerabilities.
     #
     # @see https://cloud.google.com/security-scanner/
     module WebsecurityscannerV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20180905'
+      REVISION = '20181024'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

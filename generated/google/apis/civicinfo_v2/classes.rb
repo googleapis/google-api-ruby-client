@@ -1176,6 +1176,22 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Latitude of the location, in degrees north of the equator. Only some locations
+        # -- generally, ballot drop boxes for vote-by-mail elections -- will have this
+        # set; for others, use a geocoding service like the Google Maps API to resolve
+        # the address to a geographic point.
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # Longitude of the location, in degrees east of the Prime Meridian. Only some
+        # locations -- generally, ballot drop boxes for vote-by-mail elections -- will
+        # have this set; for others, use a geocoding service like the Google Maps API to
+        # resolve the address to a geographic point.
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
         # The name of the early vote site or drop off location. This field is not
         # populated for polling locations.
         # Corresponds to the JSON property `name`
@@ -1219,6 +1235,8 @@ module Google
           @address = args[:address] if args.key?(:address)
           @end_date = args[:end_date] if args.key?(:end_date)
           @id = args[:id] if args.key?(:id)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
           @polling_hours = args[:polling_hours] if args.key?(:polling_hours)

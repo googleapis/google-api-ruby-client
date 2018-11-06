@@ -1578,6 +1578,13 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange]
         attr_accessor :absolute_date_range
       
+        # The set of dimensions along which to break down the response; may be empty.
+        # If multiple dimensions are requested, the breakdown is along the Cartesian
+        # product of the requested dimensions.
+        # Corresponds to the JSON property `breakdownDimensions`
+        # @return [Array<String>]
+        attr_accessor :breakdown_dimensions
+      
         # The ID of the creative on which to filter; optional. This field may be set
         # only for a filter set that accesses account-level troubleshooting data,
         # i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`
@@ -1674,6 +1681,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absolute_date_range = args[:absolute_date_range] if args.key?(:absolute_date_range)
+          @breakdown_dimensions = args[:breakdown_dimensions] if args.key?(:breakdown_dimensions)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
@@ -3703,6 +3711,13 @@ module Google
       class RowDimensions
         include Google::Apis::Core::Hashable
       
+        # The publisher identifier for this row, if a breakdown by
+        # BreakdownDimension.PUBLISHER_IDENTIFIER
+        # was requested.
+        # Corresponds to the JSON property `publisherIdentifier`
+        # @return [String]
+        attr_accessor :publisher_identifier
+      
         # An interval of time, with an absolute start and end.
         # Corresponds to the JSON property `timeInterval`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::TimeInterval]
@@ -3714,6 +3729,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @publisher_identifier = args[:publisher_identifier] if args.key?(:publisher_identifier)
           @time_interval = args[:time_interval] if args.key?(:time_interval)
         end
       end

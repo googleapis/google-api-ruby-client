@@ -2060,8 +2060,8 @@ module Google
         # existence of a key.
         # Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
         # nesting (For example, "((A AND B AND C) OR NOT D) AND E"), and there can
-        # be a maximum of 50 comparisons/functions in the expression. The expression
-        # must be < 3000 characters in length.
+        # be a maximum of 100 comparisons/functions in the expression. The expression
+        # must be < 3000 bytes in length.
         # Sample Query:
         # (key1 = "TEST" OR LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100
         # Corresponds to the JSON property `customAttributeFilter`

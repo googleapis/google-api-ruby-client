@@ -718,6 +718,7 @@ module Google
           property :password_minimum_symbols, as: 'passwordMinimumSymbols'
           property :password_minimum_upper_case, as: 'passwordMinimumUpperCase'
           property :password_quality, as: 'passwordQuality'
+          property :password_scope, as: 'passwordScope'
         end
       end
       

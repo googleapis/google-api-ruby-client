@@ -299,6 +299,750 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Adds a Product to the specified ProductSet. If the Product is already
+        # present, no change is made.
+        # One Product can be added to at most 100 ProductSets.
+        # Possible errors:
+        # * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
+        # @param [String] name
+        #   The resource name for the ProductSet to modify.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+        # @param [Google::Apis::VisionV1::AddProductToProductSetRequest] add_product_to_product_set_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_product_to_product_set(name, add_product_to_product_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:addProduct', options)
+          command.request_representation = Google::Apis::VisionV1::AddProductToProductSetRequest::Representation
+          command.request_object = add_product_to_product_set_request_object
+          command.response_representation = Google::Apis::VisionV1::Empty::Representation
+          command.response_class = Google::Apis::VisionV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and returns a new ProductSet resource.
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if display_name is missing, or is longer than
+        # 4096 characters.
+        # @param [String] parent
+        #   The project in which the ProductSet should be created.
+        #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
+        # @param [Google::Apis::VisionV1::ProductSet] product_set_object
+        # @param [String] product_set_id
+        #   A user-supplied resource id for this ProductSet. If set, the server will
+        #   attempt to use this value as the resource id. If it is already in use, an
+        #   error is returned with code ALREADY_EXISTS. Must be at most 128 characters
+        #   long. It cannot contain the character `/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ProductSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ProductSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_product_set(parent, product_set_object = nil, product_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/productSets', options)
+          command.request_representation = Google::Apis::VisionV1::ProductSet::Representation
+          command.request_object = product_set_object
+          command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
+          command.response_class = Google::Apis::VisionV1::ProductSet
+          command.params['parent'] = parent unless parent.nil?
+          command.query['productSetId'] = product_set_id unless product_set_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes a ProductSet. All Products and ReferenceImages in the
+        # ProductSet will be deleted.
+        # The actual image files are not deleted from Google Cloud Storage.
+        # Possible errors:
+        # * Returns NOT_FOUND if the ProductSet does not exist.
+        # @param [String] name
+        #   Resource name of the ProductSet to delete.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_product_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::Empty::Representation
+          command.response_class = Google::Apis::VisionV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information associated with a ProductSet.
+        # Possible errors:
+        # * Returns NOT_FOUND if the ProductSet does not exist.
+        # @param [String] name
+        #   Resource name of the ProductSet to get.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ProductSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ProductSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_product_set(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
+          command.response_class = Google::Apis::VisionV1::ProductSet
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Asynchronous API that imports a list of reference images to specified
+        # product sets based on a list of image information.
+        # The google.longrunning.Operation API can be used to keep track of the
+        # progress and results of the request.
+        # `Operation.metadata` contains `BatchOperationMetadata`. (progress)
+        # `Operation.response` contains `ImportProductSetsResponse`. (results)
+        # The input source of this method is a csv file on Google Cloud Storage.
+        # For the format of the csv file please see
+        # ImportProductSetsGcsSource.csv_file_uri.
+        # @param [String] parent
+        #   The project in which the ProductSets should be imported.
+        #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
+        # @param [Google::Apis::VisionV1::ImportProductSetsRequest] import_product_sets_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_product_sets(parent, import_product_sets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/productSets:import', options)
+          command.request_representation = Google::Apis::VisionV1::ImportProductSetsRequest::Representation
+          command.request_object = import_product_sets_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ProductSets in an unspecified order.
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if page_size is greater than 100, or less
+        # than 1.
+        # @param [String] parent
+        #   The project from which ProductSets should be listed.
+        #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Default 10, maximum 100.
+        # @param [String] page_token
+        #   The next_page_token returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ListProductSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ListProductSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_product_sets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/productSets', options)
+          command.response_representation = Google::Apis::VisionV1::ListProductSetsResponse::Representation
+          command.response_class = Google::Apis::VisionV1::ListProductSetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Makes changes to a ProductSet resource.
+        # Only display_name can be updated currently.
+        # Possible errors:
+        # * Returns NOT_FOUND if the ProductSet does not exist.
+        # * Returns INVALID_ARGUMENT if display_name is present in update_mask but
+        # missing from the request or longer than 4096 characters.
+        # @param [String] name
+        #   The resource name of the ProductSet.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+        #   This field is ignored when creating a ProductSet.
+        # @param [Google::Apis::VisionV1::ProductSet] product_set_object
+        # @param [String] update_mask
+        #   The FieldMask that specifies which fields to
+        #   update.
+        #   If update_mask isn't specified, all mutable fields are to be updated.
+        #   Valid mask path is `display_name`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ProductSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ProductSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_product_set(name, product_set_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VisionV1::ProductSet::Representation
+          command.request_object = product_set_object
+          command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
+          command.response_class = Google::Apis::VisionV1::ProductSet
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a Product from the specified ProductSet.
+        # Possible errors:
+        # * Returns NOT_FOUND If the Product is not found under the ProductSet.
+        # @param [String] name
+        #   The resource name for the ProductSet to modify.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+        # @param [Google::Apis::VisionV1::RemoveProductFromProductSetRequest] remove_product_from_product_set_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_product_from_product_set(name, remove_product_from_product_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:removeProduct', options)
+          command.request_representation = Google::Apis::VisionV1::RemoveProductFromProductSetRequest::Representation
+          command.request_object = remove_product_from_product_set_request_object
+          command.response_representation = Google::Apis::VisionV1::Empty::Representation
+          command.response_class = Google::Apis::VisionV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Products in a ProductSet, in an unspecified order. If the
+        # ProductSet does not exist, the products field of the response will be
+        # empty.
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
+        # @param [String] name
+        #   The ProductSet resource for which to retrieve Products.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Default 10, maximum 100.
+        # @param [String] page_token
+        #   The next_page_token returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ListProductsInProductSetResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ListProductsInProductSetResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_product_set_products(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}/products', options)
+          command.response_representation = Google::Apis::VisionV1::ListProductsInProductSetResponse::Representation
+          command.response_class = Google::Apis::VisionV1::ListProductsInProductSetResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and returns a new product resource.
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096
+        # characters.
+        # * Returns INVALID_ARGUMENT if description is longer than 4096 characters.
+        # * Returns INVALID_ARGUMENT if product_category is missing or invalid.
+        # @param [String] parent
+        #   The project in which the Product should be created.
+        #   Format is
+        #   `projects/PROJECT_ID/locations/LOC_ID`.
+        # @param [Google::Apis::VisionV1::Product] product_object
+        # @param [String] product_id
+        #   A user-supplied resource id for this Product. If set, the server will
+        #   attempt to use this value as the resource id. If it is already in use, an
+        #   error is returned with code ALREADY_EXISTS. Must be at most 128 characters
+        #   long. It cannot contain the character `/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Product] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Product]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_product(parent, product_object = nil, product_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/products', options)
+          command.request_representation = Google::Apis::VisionV1::Product::Representation
+          command.request_object = product_object
+          command.response_representation = Google::Apis::VisionV1::Product::Representation
+          command.response_class = Google::Apis::VisionV1::Product
+          command.params['parent'] = parent unless parent.nil?
+          command.query['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes a product and its reference images.
+        # Metadata of the product and all its images will be deleted right away, but
+        # search queries against ProductSets containing the product may still work
+        # until all related caches are refreshed.
+        # Possible errors:
+        # * Returns NOT_FOUND if the product does not exist.
+        # @param [String] name
+        #   Resource name of product to delete.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_product(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::Empty::Representation
+          command.response_class = Google::Apis::VisionV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information associated with a Product.
+        # Possible errors:
+        # * Returns NOT_FOUND if the Product does not exist.
+        # @param [String] name
+        #   Resource name of the Product to get.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Product] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Product]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_product(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::Product::Representation
+          command.response_class = Google::Apis::VisionV1::Product
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists products in an unspecified order.
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
+        # @param [String] parent
+        #   The project OR ProductSet from which Products should be listed.
+        #   Format:
+        #   `projects/PROJECT_ID/locations/LOC_ID`
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Default 10, maximum 100.
+        # @param [String] page_token
+        #   The next_page_token returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ListProductsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ListProductsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_products(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/products', options)
+          command.response_representation = Google::Apis::VisionV1::ListProductsResponse::Representation
+          command.response_class = Google::Apis::VisionV1::ListProductsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Makes changes to a Product resource.
+        # Only the `display_name`, `description`, and `labels` fields can be updated
+        # right now.
+        # If labels are updated, the change will not be reflected in queries until
+        # the next index time.
+        # Possible errors:
+        # * Returns NOT_FOUND if the Product does not exist.
+        # * Returns INVALID_ARGUMENT if display_name is present in update_mask but is
+        # missing from the request or longer than 4096 characters.
+        # * Returns INVALID_ARGUMENT if description is present in update_mask but is
+        # longer than 4096 characters.
+        # * Returns INVALID_ARGUMENT if product_category is present in update_mask.
+        # @param [String] name
+        #   The resource name of the product.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        #   This field is ignored when creating a product.
+        # @param [Google::Apis::VisionV1::Product] product_object
+        # @param [String] update_mask
+        #   The FieldMask that specifies which fields
+        #   to update.
+        #   If update_mask isn't specified, all mutable fields are to be updated.
+        #   Valid mask paths include `product_labels`, `display_name`, and
+        #   `description`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Product] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Product]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_product(name, product_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VisionV1::Product::Representation
+          command.request_object = product_object
+          command.response_representation = Google::Apis::VisionV1::Product::Representation
+          command.response_class = Google::Apis::VisionV1::Product
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and returns a new ReferenceImage resource.
+        # The `bounding_poly` field is optional. If `bounding_poly` is not specified,
+        # the system will try to detect regions of interest in the image that are
+        # compatible with the product_category on the parent product. If it is
+        # specified, detection is ALWAYS skipped. The system converts polygons into
+        # non-rotated rectangles.
+        # Note that the pipeline will resize the image if the image resolution is too
+        # large to process (above 50MP).
+        # Possible errors:
+        # * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096
+        # characters.
+        # * Returns INVALID_ARGUMENT if the product does not exist.
+        # * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing
+        # compatible with the parent product's product_category is detected.
+        # * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.
+        # @param [String] parent
+        #   Resource name of the product in which to create the reference image.
+        #   Format is
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        # @param [Google::Apis::VisionV1::ReferenceImage] reference_image_object
+        # @param [String] reference_image_id
+        #   A user-supplied resource id for the ReferenceImage to be added. If set,
+        #   the server will attempt to use this value as the resource id. If it is
+        #   already in use, an error is returned with code ALREADY_EXISTS. Must be at
+        #   most 128 characters long. It cannot contain the character `/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ReferenceImage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ReferenceImage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_product_reference_image(parent, reference_image_object = nil, reference_image_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/referenceImages', options)
+          command.request_representation = Google::Apis::VisionV1::ReferenceImage::Representation
+          command.request_object = reference_image_object
+          command.response_representation = Google::Apis::VisionV1::ReferenceImage::Representation
+          command.response_class = Google::Apis::VisionV1::ReferenceImage
+          command.params['parent'] = parent unless parent.nil?
+          command.query['referenceImageId'] = reference_image_id unless reference_image_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes a reference image.
+        # The image metadata will be deleted right away, but search queries
+        # against ProductSets containing the image may still work until all related
+        # caches are refreshed.
+        # The actual image files are not deleted from Google Cloud Storage.
+        # Possible errors:
+        # * Returns NOT_FOUND if the reference image does not exist.
+        # @param [String] name
+        #   The resource name of the reference image to delete.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
+        #   IMAGE_ID`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_product_reference_image(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::Empty::Representation
+          command.response_class = Google::Apis::VisionV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information associated with a ReferenceImage.
+        # Possible errors:
+        # * Returns NOT_FOUND if the specified image does not exist.
+        # @param [String] name
+        #   The resource name of the ReferenceImage to get.
+        #   Format is:
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
+        #   IMAGE_ID`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ReferenceImage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ReferenceImage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_product_reference_image(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VisionV1::ReferenceImage::Representation
+          command.response_class = Google::Apis::VisionV1::ReferenceImage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists reference images.
+        # Possible errors:
+        # * Returns NOT_FOUND if the parent product does not exist.
+        # * Returns INVALID_ARGUMENT if the page_size is greater than 100, or less
+        # than 1.
+        # @param [String] parent
+        #   Resource name of the product containing the reference images.
+        #   Format is
+        #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Default 10, maximum 100.
+        # @param [String] page_token
+        #   A token identifying a page of results to be returned. This is the value
+        #   of `nextPageToken` returned in a previous reference image list request.
+        #   Defaults to the first page if not specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::ListReferenceImagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::ListReferenceImagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_product_reference_images(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/referenceImages', options)
+          command.response_representation = Google::Apis::VisionV1::ListReferenceImagesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::ListReferenceImagesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

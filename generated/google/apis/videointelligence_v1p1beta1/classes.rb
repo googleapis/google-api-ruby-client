@@ -235,6 +235,73 @@ module Google
         end
       end
       
+      # Alternative hypotheses (a.k.a. n-best list).
+      class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
+        include Google::Apis::Core::Hashable
+      
+        # The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is typically provided only for the top hypothesis, and
+        # only for `is_final=true` results. Clients should not rely on the
+        # `confidence` field as it is not guaranteed to be accurate or consistent.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Transcript text representing the words that the user spoke.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # A list of word-specific information for each recognized word.
+        # Corresponds to the JSON property `words`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1WordInfo>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @words = args[:words] if args.key?(:words)
+        end
+      end
+      
+      # A speech recognition result corresponding to a portion of the audio.
+      class GoogleCloudVideointelligenceV1SpeechTranscription
+        include Google::Apis::Core::Hashable
+      
+        # May contain one or more recognition hypotheses (up to the maximum specified
+        # in `max_alternatives`).  These alternatives are ordered in terms of
+        # accuracy, with the top (first) alternative being the most probable, as
+        # ranked by the recognizer.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>]
+        attr_accessor :alternatives
+      
+        # Output only. The
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        # language in this result. This language code was detected to have the most
+        # likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Annotation progress for a single video.
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
@@ -357,6 +424,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :shot_label_annotations
       
+        # Speech transcription.
+        # Corresponds to the JSON property `speechTranscriptions`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1SpeechTranscription>]
+        attr_accessor :speech_transcriptions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -370,6 +442,7 @@ module Google
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
         end
       end
       
@@ -397,6 +470,65 @@ module Google
         def update!(**args)
           @end_time_offset = args[:end_time_offset] if args.key?(:end_time_offset)
           @start_time_offset = args[:start_time_offset] if args.key?(:start_time_offset)
+        end
+      end
+      
+      # Word-specific information for recognized words. Word information is only
+      # included in the response when certain request parameters are set, such
+      # as `enable_word_time_offsets`.
+      class GoogleCloudVideointelligenceV1WordInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is set only for the top alternative.
+        # This field is not guaranteed to be accurate and users should not rely on it
+        # to be always provided.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the end of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from 1 up to diarization_speaker_count,
+        # and is only set if speaker diarization is enabled.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the start of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The word corresponding to this set of information.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @word = args[:word] if args.key?(:word)
         end
       end
       
@@ -613,6 +745,73 @@ module Google
         end
       end
       
+      # Alternative hypotheses (a.k.a. n-best list).
+      class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative
+        include Google::Apis::Core::Hashable
+      
+        # The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is typically provided only for the top hypothesis, and
+        # only for `is_final=true` results. Clients should not rely on the
+        # `confidence` field as it is not guaranteed to be accurate or consistent.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Transcript text representing the words that the user spoke.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # A list of word-specific information for each recognized word.
+        # Corresponds to the JSON property `words`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2WordInfo>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @words = args[:words] if args.key?(:words)
+        end
+      end
+      
+      # A speech recognition result corresponding to a portion of the audio.
+      class GoogleCloudVideointelligenceV1beta2SpeechTranscription
+        include Google::Apis::Core::Hashable
+      
+        # May contain one or more recognition hypotheses (up to the maximum specified
+        # in `max_alternatives`).  These alternatives are ordered in terms of
+        # accuracy, with the top (first) alternative being the most probable, as
+        # ranked by the recognizer.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>]
+        attr_accessor :alternatives
+      
+        # Output only. The
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        # language in this result. This language code was detected to have the most
+        # likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Annotation progress for a single video.
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
@@ -735,6 +934,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :shot_label_annotations
       
+        # Speech transcription.
+        # Corresponds to the JSON property `speechTranscriptions`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2SpeechTranscription>]
+        attr_accessor :speech_transcriptions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -748,6 +952,7 @@ module Google
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
         end
       end
       
@@ -775,6 +980,65 @@ module Google
         def update!(**args)
           @end_time_offset = args[:end_time_offset] if args.key?(:end_time_offset)
           @start_time_offset = args[:start_time_offset] if args.key?(:start_time_offset)
+        end
+      end
+      
+      # Word-specific information for recognized words. Word information is only
+      # included in the response when certain request parameters are set, such
+      # as `enable_word_time_offsets`.
+      class GoogleCloudVideointelligenceV1beta2WordInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is set only for the top alternative.
+        # This field is not guaranteed to be accurate and users should not rely on it
+        # to be always provided.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the end of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from 1 up to diarization_speaker_count,
+        # and is only set if speaker diarization is enabled.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the start of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The word corresponding to this set of information.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @word = args[:word] if args.key?(:word)
         end
       end
       
@@ -1235,22 +1499,6 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1SpeechTranscriptionConfig
         include Google::Apis::Core::Hashable
       
-        # *Optional* A list of up to 3 additional
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
-        # listing possible alternative languages of the supplied video.
-        # See [Language Support](/speech-to-text/docs/languages)
-        # for a list of the currently supported language codes.
-        # If alternative languages are listed, transcription result will contain
-        # transcription in the most likely language detected, including the main
-        # language_code. The transcription result will include the language tag
-        # of the language detected in the video.
-        # Note: This feature is only supported for Voice Command and Voice Search
-        # use cases and performance may vary for other use cases (e.g., phone call
-        # transcription).
-        # Corresponds to the JSON property `alternativeLanguageCodes`
-        # @return [Array<String>]
-        attr_accessor :alternative_language_codes
-      
         # *Optional* For file formats, such as MXF or MKV, supporting multiple audio
         # tracks, specify up to two tracks. Default: track 0.
         # Corresponds to the JSON property `audioTracks`
@@ -1334,7 +1582,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_tracks = args[:audio_tracks] if args.key?(:audio_tracks)
           @diarization_speaker_count = args[:diarization_speaker_count] if args.key?(:diarization_speaker_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
@@ -1999,6 +2246,73 @@ module Google
         end
       end
       
+      # Alternative hypotheses (a.k.a. n-best list).
+      class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative
+        include Google::Apis::Core::Hashable
+      
+        # The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is typically provided only for the top hypothesis, and
+        # only for `is_final=true` results. Clients should not rely on the
+        # `confidence` field as it is not guaranteed to be accurate or consistent.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Transcript text representing the words that the user spoke.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # A list of word-specific information for each recognized word.
+        # Corresponds to the JSON property `words`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1WordInfo>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @words = args[:words] if args.key?(:words)
+        end
+      end
+      
+      # A speech recognition result corresponding to a portion of the audio.
+      class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription
+        include Google::Apis::Core::Hashable
+      
+        # May contain one or more recognition hypotheses (up to the maximum specified
+        # in `max_alternatives`).  These alternatives are ordered in terms of
+        # accuracy, with the top (first) alternative being the most probable, as
+        # ranked by the recognizer.
+        # Corresponds to the JSON property `alternatives`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>]
+        attr_accessor :alternatives
+      
+        # Output only. The
+        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        # language in this result. This language code was detected to have the most
+        # likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Annotations related to one detected OCR text snippet. This will contain the
       # corresponding text, confidence value, and frame level information for each
       # detection.
@@ -2226,6 +2540,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :shot_label_annotations
       
+        # Speech transcription.
+        # Corresponds to the JSON property `speechTranscriptions`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>]
+        attr_accessor :speech_transcriptions
+      
         # OCR text detection and tracking.
         # Annotations for list of detected text snippets. Each will have list of
         # frame information associated with it.
@@ -2247,6 +2566,7 @@ module Google
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end
       end
@@ -2275,6 +2595,65 @@ module Google
         def update!(**args)
           @end_time_offset = args[:end_time_offset] if args.key?(:end_time_offset)
           @start_time_offset = args[:start_time_offset] if args.key?(:start_time_offset)
+        end
+      end
+      
+      # Word-specific information for recognized words. Word information is only
+      # included in the response when certain request parameters are set, such
+      # as `enable_word_time_offsets`.
+      class GoogleCloudVideointelligenceV1p2beta1WordInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # indicates an estimated greater likelihood that the recognized words are
+        # correct. This field is set only for the top alternative.
+        # This field is not guaranteed to be accurate and users should not rely on it
+        # to be always provided.
+        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the end of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from 1 up to diarization_speaker_count,
+        # and is only set if speaker diarization is enabled.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
+        # Time offset relative to the beginning of the audio, and
+        # corresponding to the start of the spoken word. This field is only set if
+        # `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The word corresponding to this set of information.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @word = args[:word] if args.key?(:word)
         end
       end
       

@@ -22,6 +22,24 @@ module Google
   module Apis
     module CloudfunctionsV1
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CallFunctionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +59,12 @@ module Google
       end
       
       class EventTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Retry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -140,6 +176,45 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudfunctionsV1::AuditLogConfig, decorator: Google::Apis::CloudfunctionsV1::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::CloudfunctionsV1::Expr, decorator: Google::Apis::CloudfunctionsV1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
       end
       
       class CallFunctionRequest
@@ -183,6 +258,7 @@ module Google
           property :timeout, as: 'timeout'
           property :update_time, as: 'updateTime'
           property :version_id, :numeric_string => true, as: 'versionId'
+          property :vpc_connector, as: 'vpcConnector'
         end
       end
       
@@ -194,6 +270,16 @@ module Google
       
           property :resource, as: 'resource'
           property :service, as: 'service'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       
@@ -311,9 +397,30 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudfunctionsV1::AuditConfig, decorator: Google::Apis::CloudfunctionsV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::CloudfunctionsV1::Binding, decorator: Google::Apis::CloudfunctionsV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class Retry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::CloudfunctionsV1::Policy, decorator: Google::Apis::CloudfunctionsV1::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -331,6 +438,20 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
     end

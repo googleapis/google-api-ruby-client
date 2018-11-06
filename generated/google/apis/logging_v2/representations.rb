@@ -434,12 +434,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination'
-          property :end_time, as: 'endTime'
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'
           property :name, as: 'name'
           property :output_version_format, as: 'outputVersionFormat'
-          property :start_time, as: 'startTime'
           property :writer_identity, as: 'writerIdentity'
         end
       end

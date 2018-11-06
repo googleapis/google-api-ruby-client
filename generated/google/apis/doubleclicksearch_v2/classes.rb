@@ -652,7 +652,7 @@ module Google
         # @return [String]
         attr_accessor :report_type
       
-        # Synchronous report only. The maxinum number of rows to return; additional rows
+        # Synchronous report only. The maximum number of rows to return; additional rows
         # are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]

@@ -51,6 +51,12 @@ module Google
         # on Google Compute Engine.
         # @param [String] name
         #   The unique ID for the user in format `users/`user``.
+        # @param [String] operating_system_type
+        #   The type of operating system associated with the account.
+        # @param [String] project_id
+        #   The project ID of the Google Cloud Platform project.
+        # @param [String] system_id
+        #   A system ID for filtering the results of the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -68,11 +74,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_login_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_login_profile(name, operating_system_type: nil, project_id: nil, system_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1alpha/{+name}/loginProfile', options)
           command.response_representation = Google::Apis::OsloginV1alpha::LoginProfile::Representation
           command.response_class = Google::Apis::OsloginV1alpha::LoginProfile
           command.params['name'] = name unless name.nil?
+          command.query['operatingSystemType'] = operating_system_type unless operating_system_type.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['systemId'] = system_id unless system_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

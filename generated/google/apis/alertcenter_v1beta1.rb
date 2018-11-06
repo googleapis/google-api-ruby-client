@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/alertcenter/
     module AlertcenterV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20181010'
+      REVISION = '20181018'
     end
   end
 end

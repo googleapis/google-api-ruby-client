@@ -73,6 +73,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :data
       
+        # Output only. Whether this alert has been marked for deletion.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
         # Optional. The time this alert was no longer active. If provided, the
         # end time must not be earlier than the start time. If not provided, the end
         # time will default to the start time.
@@ -139,6 +145,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @data = args[:data] if args.key?(:data)
+          @deleted = args[:deleted] if args.key?(:deleted)
           @end_time = args[:end_time] if args.key?(:end_time)
           @security_investigation_tool_link = args[:security_investigation_tool_link] if args.key?(:security_investigation_tool_link)
           @source = args[:source] if args.key?(:source)
@@ -596,13 +603,13 @@ module Google
       class LoginDetails
         include Google::Apis::Core::Hashable
       
-        # Required. Human readable IP address (e.g., 11.22.33.44) that is
+        # Optional. Human readable IP address (e.g., 11.22.33.44) that is
         # associated with the warning event.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # Required. Login time that is associated with the warning event.
+        # Optional. Login time that is associated with the warning event.
         # Corresponds to the JSON property `loginTime`
         # @return [String]
         attr_accessor :login_time

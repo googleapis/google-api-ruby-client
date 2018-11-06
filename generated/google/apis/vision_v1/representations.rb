@@ -22,6 +22,12 @@ module Google
   module Apis
     module VisionV1
       
+      class AddProductToProductSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnnotateFileResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class BatchAnnotateImagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +340,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p1beta1Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductKeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p1beta1Property
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +605,36 @@ module Google
       end
       
       class GoogleCloudVisionV1p2beta1Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductKeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -838,6 +910,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p3beta1ProductSearchResultsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -934,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,7 +1048,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportProductSetsGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportProductSetsInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportProductSetsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportProductSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -989,6 +1103,30 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProductSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProductsInProductSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReferenceImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1048,7 +1186,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductSearchParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductSearchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Property
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReferenceImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveProductFromProductSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Result
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1132,6 +1312,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddProductToProductSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product, as: 'product'
+        end
+      end
+      
       class AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1176,6 +1363,8 @@ module Google
           collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1::LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1::LocalizedObjectAnnotation::Representation
       
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1::EntityAnnotation, decorator: Google::Apis::VisionV1::EntityAnnotation::Representation
+      
+          property :product_search_results, as: 'productSearchResults', class: Google::Apis::VisionV1::ProductSearchResults, decorator: Google::Apis::VisionV1::ProductSearchResults::Representation
       
           property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1::SafeSearchAnnotation, decorator: Google::Apis::VisionV1::SafeSearchAnnotation::Representation
       
@@ -1237,6 +1426,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :responses, as: 'responses', class: Google::Apis::VisionV1::AnnotateImageResponse, decorator: Google::Apis::VisionV1::AnnotateImageResponse::Representation
       
+        end
+      end
+      
+      class BatchOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :state, as: 'state'
+          property :submit_time, as: 'submitTime'
         end
       end
       
@@ -1442,6 +1640,8 @@ module Google
           collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation::Representation
       
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1EntityAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1EntityAnnotation::Representation
+      
+          property :product_search_results, as: 'productSearchResults', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResults, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResults::Representation
       
           property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1SafeSearchAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1SafeSearchAnnotation::Representation
       
@@ -1689,6 +1889,57 @@ module Google
         end
       end
       
+      class GoogleCloudVisionV1p1beta1Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :product_category, as: 'productCategory'
+          collection :product_labels, as: 'productLabels', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductKeyValue, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductKeyValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductKeyValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index_time, as: 'indexTime'
+          collection :product_grouped_results, as: 'productGroupedResults', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1BoundingPoly, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1BoundingPoly::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
+          property :product, as: 'product', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Product, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Product::Representation
+      
+          property :score, as: 'score'
+        end
+      end
+      
       class GoogleCloudVisionV1p1beta1Property
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1865,6 +2116,8 @@ module Google
           collection :localized_object_annotations, as: 'localizedObjectAnnotations', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation::Representation
       
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1EntityAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1EntityAnnotation::Representation
+      
+          property :product_search_results, as: 'productSearchResults', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResults, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResults::Representation
       
           property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1SafeSearchAnnotation, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1SafeSearchAnnotation::Representation
       
@@ -2119,6 +2372,57 @@ module Google
           property :x, as: 'x'
           property :y, as: 'y'
           property :z, as: 'z'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :product_category, as: 'productCategory'
+          collection :product_labels, as: 'productLabels', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductKeyValue, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductKeyValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductKeyValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index_time, as: 'indexTime'
+          collection :product_grouped_results, as: 'productGroupedResults', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1BoundingPoly, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1BoundingPoly::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
+          property :product, as: 'product', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1Product, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1Product::Representation
+      
+          property :score, as: 'score'
         end
       end
       
@@ -2600,6 +2904,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index_time, as: 'indexTime'
+          collection :product_grouped_results, as: 'productGroupedResults', class: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1BoundingPoly, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1BoundingPoly::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult::Representation
       
         end
@@ -2769,6 +3085,16 @@ module Google
         end
       end
       
+      class GroupedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::Result, decorator: Google::Apis::VisionV1::Result::Representation
+      
+        end
+      end
+      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2794,6 +3120,8 @@ module Google
           collection :language_hints, as: 'languageHints'
           property :lat_long_rect, as: 'latLongRect', class: Google::Apis::VisionV1::LatLongRect, decorator: Google::Apis::VisionV1::LatLongRect::Representation
       
+          property :product_search_params, as: 'productSearchParams', class: Google::Apis::VisionV1::ProductSearchParams, decorator: Google::Apis::VisionV1::ProductSearchParams::Representation
+      
           property :web_detection_params, as: 'webDetectionParams', class: Google::Apis::VisionV1::WebDetectionParams, decorator: Google::Apis::VisionV1::WebDetectionParams::Representation
       
         end
@@ -2815,12 +3143,53 @@ module Google
         end
       end
       
+      class ImportProductSetsGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_file_uri, as: 'csvFileUri'
+        end
+      end
+      
+      class ImportProductSetsInputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::VisionV1::ImportProductSetsGcsSource, decorator: Google::Apis::VisionV1::ImportProductSetsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportProductSetsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1::ImportProductSetsInputConfig, decorator: Google::Apis::VisionV1::ImportProductSetsInputConfig::Representation
+      
+        end
+      end
+      
+      class ImportProductSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_images, as: 'referenceImages', class: Google::Apis::VisionV1::ReferenceImage, decorator: Google::Apis::VisionV1::ReferenceImage::Representation
+      
+          collection :statuses, as: 'statuses', class: Google::Apis::VisionV1::Status, decorator: Google::Apis::VisionV1::Status::Representation
+      
+        end
+      end
+      
       class InputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::VisionV1::GcsSource, decorator: Google::Apis::VisionV1::GcsSource::Representation
       
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class KeyValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -2856,6 +3225,43 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VisionV1::Operation, decorator: Google::Apis::VisionV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListProductSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :product_sets, as: 'productSets', class: Google::Apis::VisionV1::ProductSet, decorator: Google::Apis::VisionV1::ProductSet::Representation
+      
+        end
+      end
+      
+      class ListProductsInProductSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :products, as: 'products', class: Google::Apis::VisionV1::Product, decorator: Google::Apis::VisionV1::Product::Representation
+      
+        end
+      end
+      
+      class ListProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :products, as: 'products', class: Google::Apis::VisionV1::Product, decorator: Google::Apis::VisionV1::Product::Representation
+      
+        end
+      end
+      
+      class ListReferenceImagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :page_size, as: 'pageSize'
+          collection :reference_images, as: 'referenceImages', class: Google::Apis::VisionV1::ReferenceImage, decorator: Google::Apis::VisionV1::ReferenceImage::Representation
       
         end
       end
@@ -2953,12 +3359,84 @@ module Google
         end
       end
       
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :product_category, as: 'productCategory'
+          collection :product_labels, as: 'productLabels', class: Google::Apis::VisionV1::KeyValue, decorator: Google::Apis::VisionV1::KeyValue::Representation
+      
+        end
+      end
+      
+      class ProductSearchParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
+      
+          property :filter, as: 'filter'
+          collection :product_categories, as: 'productCategories'
+          property :product_set, as: 'productSet'
+        end
+      end
+      
+      class ProductSearchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index_time, as: 'indexTime'
+          collection :product_grouped_results, as: 'productGroupedResults', class: Google::Apis::VisionV1::GroupedResult, decorator: Google::Apis::VisionV1::GroupedResult::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::VisionV1::Result, decorator: Google::Apis::VisionV1::Result::Representation
+      
+        end
+      end
+      
+      class ProductSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :index_error, as: 'indexError', class: Google::Apis::VisionV1::Status, decorator: Google::Apis::VisionV1::Status::Representation
+      
+          property :index_time, as: 'indexTime'
+          property :name, as: 'name'
+        end
+      end
+      
       class Property
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :uint64_value, :numeric_string => true, as: 'uint64Value'
           property :value, as: 'value'
+        end
+      end
+      
+      class ReferenceImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounding_polys, as: 'boundingPolys', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
+      
+          property :name, as: 'name'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RemoveProductFromProductSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product, as: 'product'
+        end
+      end
+      
+      class Result
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
+          property :product, as: 'product', class: Google::Apis::VisionV1::Product, decorator: Google::Apis::VisionV1::Product::Representation
+      
+          property :score, as: 'score'
         end
       end
       

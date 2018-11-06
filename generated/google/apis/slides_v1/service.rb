@@ -22,7 +22,7 @@ module Google
     module SlidesV1
       # Google Slides API
       #
-      # An API for creating and editing Google Slides presentations.
+      # Reads and writes Google Slides presentations.
       #
       # @example
       #    require 'google/apis/slides_v1'

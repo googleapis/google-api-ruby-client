@@ -1061,6 +1061,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absolute_date_range, as: 'absoluteDateRange', class: Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange::Representation
       
+          collection :breakdown_dimensions, as: 'breakdownDimensions'
           property :creative_id, as: 'creativeId'
           property :deal_id, :numeric_string => true, as: 'dealId'
           property :environment, as: 'environment'
@@ -1644,6 +1645,7 @@ module Google
       class RowDimensions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :publisher_identifier, as: 'publisherIdentifier'
           property :time_interval, as: 'timeInterval', class: Google::Apis::Adexchangebuyer2V2beta1::TimeInterval, decorator: Google::Apis::Adexchangebuyer2V2beta1::TimeInterval::Representation
       
         end

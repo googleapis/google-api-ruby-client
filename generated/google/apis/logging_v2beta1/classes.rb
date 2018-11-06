@@ -960,11 +960,6 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Deprecated. This field is ignored when creating or updating sinks.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
         # Optional. An advanced logs filter. The only exported log entries are those
         # that are in the resource owning the sink and that match the filter. For
         # example:
@@ -1004,11 +999,6 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
-        # Deprecated. This field is ignored when creating or updating sinks.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
         # Output only. An IAM identity&mdash;a service account or group&mdash;under
         # which Logging writes the exported log entries to the sink's destination. This
         # field is set by sinks.create and sinks.update, based on the setting of
@@ -1028,12 +1018,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination = args[:destination] if args.key?(:destination)
-          @end_time = args[:end_time] if args.key?(:end_time)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
           @name = args[:name] if args.key?(:name)
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
-          @start_time = args[:start_time] if args.key?(:start_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
       end

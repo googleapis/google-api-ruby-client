@@ -515,6 +515,7 @@ module Google
           property :address, as: 'address'
           property :deadline, as: 'deadline'
           property :min_deadline, as: 'minDeadline'
+          property :operation_deadline, as: 'operationDeadline'
           property :selector, as: 'selector'
         end
       end

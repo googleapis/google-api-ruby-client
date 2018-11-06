@@ -1199,8 +1199,8 @@ module Google
         end
       end
       
-      # Nimbus InternalCheckers. The API currently only allows reading of internal
-      # checkers, creation of internal checkers is a manual process.
+      # An internal checker allows uptime checks to run on private/internal GCP
+      # resources.
       class InternalChecker
         include Google::Apis::Core::Hashable
       
@@ -1218,9 +1218,9 @@ module Google
         attr_accessor :gcp_zone
       
         # A unique resource name for this InternalChecker. The format is:projects/[
-        # PROJECT_ID]/internalCheckers/[CHECKER_ID].PROJECT_ID is the GCP project ID
-        # where the internal resource lives. Not necessarily the same as the project_id
-        # for the config.
+        # PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID is the
+        # stackdriver workspace project for the uptime check config associated with the
+        # internal checker.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1230,6 +1230,12 @@ module Google
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # The GCP project_id where the internal checker lives. Not necessary the same as
+        # the workspace project.
+        # Corresponds to the JSON property `peerProjectId`
+        # @return [String]
+        attr_accessor :peer_project_id
       
         def initialize(**args)
            update!(**args)
@@ -1241,6 +1247,7 @@ module Google
           @gcp_zone = args[:gcp_zone] if args.key?(:gcp_zone)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @peer_project_id = args[:peer_project_id] if args.key?(:peer_project_id)
         end
       end
       
@@ -2808,13 +2815,16 @@ module Google
         attr_accessor :http_check
       
         # The internal checkers that this check will egress from. If is_internal is true
-        # and this list is empty, the check will egress from all InternalCheckers
+        # and this list is empty, the check will egress from all the InternalCheckers
         # configured for the project that owns this CheckConfig.
         # Corresponds to the JSON property `internalCheckers`
         # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
         attr_accessor :internal_checkers
       
-        # Denotes whether this is a check that egresses from InternalCheckers.
+        # If this is true, then checks are made only from the 'internal_checkers'. If it
+        # is false, then checks are made only from the 'selected_regions'. It is an
+        # error to provide 'selected_regions' when is_internal is true, or to provide '
+        # internal_checkers' when is_internal is false.
         # Corresponds to the JSON property `isInternal`
         # @return [Boolean]
         attr_accessor :is_internal
@@ -2857,10 +2867,11 @@ module Google
         # @return [Google::Apis::MonitoringV3::ResourceGroup]
         attr_accessor :resource_group
       
-        # The list of regions from which the check will be run. If this field is
-        # specified, enough regions to include a minimum of 3 locations must be provided,
-        # or an error message is returned. Not specifying this field will result in
-        # uptime checks running from all regions.
+        # The list of regions from which the check will be run. Some regions contain one
+        # location, and others contain more than one. If this field is specified, enough
+        # regions to include a minimum of 3 locations must be provided, or an error
+        # message is returned. Not specifying this field will result in uptime checks
+        # running from all regions.
         # Corresponds to the JSON property `selectedRegions`
         # @return [Array<String>]
         attr_accessor :selected_regions

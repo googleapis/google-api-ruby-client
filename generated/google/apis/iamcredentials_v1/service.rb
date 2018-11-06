@@ -22,7 +22,7 @@ module Google
     module IamcredentialsV1
       # IAM Service Account Credentials API
       #
-      # IAM Service Account Credentials API
+      # Creates short-lived, limited-privilege credentials for IAM service accounts.
       #
       # @example
       #    require 'google/apis/iamcredentials_v1'

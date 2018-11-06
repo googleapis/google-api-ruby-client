@@ -65,6 +65,15 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # Optional. The starting address of a range. The address must be a valid
+        # IPv4 address in the x.x.x.x format. This value combined with the IP prefix
+        # range is the CIDR range for the subnet. The range must be within the
+        # allocated range that is assigned to the private connection. If the CIDR
+        # range isn't available, the call fails.
+        # Corresponds to the JSON property `requestedAddress`
+        # @return [String]
+        attr_accessor :requested_address
+      
         # Required. Name for the new subnetwork.
         # Must be a legal [subnetwork](compute/docs/reference/rest/v1/subnetworks)
         # name.
@@ -89,6 +98,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @region = args[:region] if args.key?(:region)
+          @requested_address = args[:requested_address] if args.key?(:requested_address)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @subnetwork_users = args[:subnetwork_users] if args.key?(:subnetwork_users)
         end
@@ -453,6 +463,12 @@ module Google
         # @return [Float]
         attr_accessor :min_deadline
       
+        # The number of seconds to wait for the completion of a long running
+        # operation. The default is no deadline.
+        # Corresponds to the JSON property `operationDeadline`
+        # @return [Float]
+        attr_accessor :operation_deadline
+      
         # Selects the methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -468,6 +484,7 @@ module Google
           @address = args[:address] if args.key?(:address)
           @deadline = args[:deadline] if args.key?(:deadline)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
+          @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -3168,6 +3185,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Shared VPC host project network peered with consumer network.
+        # For example: projects/1234321/global/networks/host-network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3176,6 +3199,7 @@ module Google
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
         end
       end
       

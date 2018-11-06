@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamingApplianceSnapshotConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamingComputationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1308,6 +1314,7 @@ module Google
           property :requested_state, as: 'requestedState'
           collection :stage_states, as: 'stageStates', class: Google::Apis::DataflowV1b3::ExecutionStageState, decorator: Google::Apis::DataflowV1b3::ExecutionStageState::Representation
       
+          property :start_time, as: 'startTime'
           collection :steps, as: 'steps', class: Google::Apis::DataflowV1b3::Step, decorator: Google::Apis::DataflowV1b3::Step::Representation
       
           collection :temp_files, as: 'tempFiles'
@@ -1975,6 +1982,14 @@ module Google
         end
       end
       
+      class StreamingApplianceSnapshotConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :import_state_endpoint, as: 'importStateEndpoint'
+          property :snapshot_id, as: 'snapshotId'
+        end
+      end
+      
       class StreamingComputationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2022,6 +2037,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drain, as: 'drain'
           property :receive_work_port, as: 'receiveWorkPort'
+          property :snapshot_config, as: 'snapshotConfig', class: Google::Apis::DataflowV1b3::StreamingApplianceSnapshotConfig, decorator: Google::Apis::DataflowV1b3::StreamingApplianceSnapshotConfig::Representation
+      
           property :streaming_computation_topology, as: 'streamingComputationTopology', class: Google::Apis::DataflowV1b3::TopologyConfig, decorator: Google::Apis::DataflowV1b3::TopologyConfig::Representation
       
           property :worker_harness_port, as: 'workerHarnessPort'

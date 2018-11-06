@@ -447,6 +447,7 @@ module Google
           property :form, as: 'form'
           property :form_factor, as: 'formFactor'
           property :id, as: 'id'
+          property :low_fps_video_recording, as: 'lowFpsVideoRecording'
           property :manufacturer, as: 'manufacturer'
           property :name, as: 'name'
           property :screen_density, as: 'screenDensity'

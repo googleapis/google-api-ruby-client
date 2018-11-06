@@ -1104,6 +1104,8 @@ module Google
       class GooglePrivacyDlpV2BigQueryOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_fields, as: 'excludedFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
           property :rows_limit, :numeric_string => true, as: 'rowsLimit'

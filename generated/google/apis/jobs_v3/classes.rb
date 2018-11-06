@@ -1648,7 +1648,7 @@ module Google
         # @return [Google::Apis::JobsV3::PostalAddress]
         attr_accessor :postal_address
       
-        # Radius in meters of the job location. This value is derived from the
+        # Radius in miles of the job location. This value is derived from the
         # location bounding box in which a circle with the specified radius
         # centered from LatLng coves the area associated with the job location.
         # For example, currently, "Mountain View, CA, USA" has a radius of

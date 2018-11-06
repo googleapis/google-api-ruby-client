@@ -176,6 +176,7 @@ module Google
           property :create_time, as: 'createTime'
           property :customer_id, as: 'customerId'
           hash :data, as: 'data'
+          property :deleted, as: 'deleted'
           property :end_time, as: 'endTime'
           property :security_investigation_tool_link, as: 'securityInvestigationToolLink'
           property :source, as: 'source'

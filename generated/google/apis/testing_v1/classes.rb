@@ -313,6 +313,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # True if and only if tests with this model are recorded by stitching
+        # together screenshots. See use_low_spec_video_recording in device config.
+        # @OutputOnly
+        # Corresponds to the JSON property `lowFpsVideoRecording`
+        # @return [Boolean]
+        attr_accessor :low_fps_video_recording
+        alias_method :low_fps_video_recording?, :low_fps_video_recording
+      
         # The manufacturer of this device.
         # @OutputOnly
         # Corresponds to the JSON property `manufacturer`
@@ -388,6 +396,7 @@ module Google
           @form = args[:form] if args.key?(:form)
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
+          @low_fps_video_recording = args[:low_fps_video_recording] if args.key?(:low_fps_video_recording)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @name = args[:name] if args.key?(:name)
           @screen_density = args[:screen_density] if args.key?(:screen_density)

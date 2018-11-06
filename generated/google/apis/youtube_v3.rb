@@ -31,7 +31,7 @@ module Google
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'
 
-      # Manage your YouTube account
+      # See, edit, and permanently delete your YouTube videos, ratings, comments and captions
       AUTH_YOUTUBE_FORCE_SSL = 'https://www.googleapis.com/auth/youtube.force-ssl'
 
       # View your YouTube account

@@ -213,10 +213,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
       
-        # The formulated managed configuration with the managed configuration template
-        # applied to the app. To generate a web token that identifies the enterprise use
-        # https://developers.google.com/android/management/reference/rest/v1/enterprises.
-        # webTokens
+        # The managed configurations template for the app, saved from the managed
+        # configurations iframe.
         # Corresponds to the JSON property `managedConfigurationTemplate`
         # @return [Google::Apis::AndroidmanagementV1::ManagedConfigurationTemplate]
         attr_accessor :managed_configuration_template
@@ -1279,10 +1277,8 @@ module Google
         end
       end
       
-      # The formulated managed configuration with the managed configuration template
-      # applied to the app. To generate a web token that identifies the enterprise use
-      # https://developers.google.com/android/management/reference/rest/v1/enterprises.
-      # webTokens
+      # The managed configurations template for the app, saved from the managed
+      # configurations iframe.
       class ManagedConfigurationTemplate
         include Google::Apis::Core::Hashable
       
@@ -1763,6 +1759,11 @@ module Google
         # @return [String]
         attr_accessor :password_quality
       
+        # The scope that the password requirement applies to.
+        # Corresponds to the JSON property `passwordScope`
+        # @return [String]
+        attr_accessor :password_scope
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1780,6 +1781,7 @@ module Google
           @password_minimum_symbols = args[:password_minimum_symbols] if args.key?(:password_minimum_symbols)
           @password_minimum_upper_case = args[:password_minimum_upper_case] if args.key?(:password_minimum_upper_case)
           @password_quality = args[:password_quality] if args.key?(:password_quality)
+          @password_scope = args[:password_scope] if args.key?(:password_scope)
         end
       end
       
@@ -2137,14 +2139,8 @@ module Google
         attr_accessor :outgoing_calls_disabled
         alias_method :outgoing_calls_disabled?, :outgoing_calls_disabled
       
-        # Password policy that can apply to different scope e.g. at either a device or
-        # profile level. 'password_requirements' is overridden if this policy is set
-        # with default scope or with scope explicitly applying to the scope that '
-        # password_requirements' applies to. If scope is not specified then restriction
-        # applies to the default scope i.e. profile in a managed profile. If an entry
-        # exists with unspecified scope and also an entry for the default scope with
-        # scope explicitly specified then the explicit restriction overrides the default
-        # scope restriction.
+        # Password requirement policies. Different policies can be set for work profile
+        # or fully managed devices by setting the password_scope field in the policy.
         # Corresponds to the JSON property `passwordPolicies`
         # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
         attr_accessor :password_policies

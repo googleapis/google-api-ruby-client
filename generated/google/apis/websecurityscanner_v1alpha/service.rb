@@ -22,7 +22,7 @@ module Google
     module WebsecurityscannerV1alpha
       # Web Security Scanner API
       #
-      # Web Security Scanner API (under development).
+      # Scans your Compute and App Engine apps for common web vulnerabilities.
       #
       # @example
       #    require 'google/apis/websecurityscanner_v1alpha'

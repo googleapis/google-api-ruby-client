@@ -22,6 +22,27 @@ module Google
   module Apis
     module VisionV1
       
+      # Request message for the `AddProductToProductSet` method.
+      class AddProductToProductSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the Product to be added to this ProductSet.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product = args[:product] if args.key?(:product)
+        end
+      end
+      
       # Response to a single file annotation request. A file may contain one or more
       # images, which individually have their own responses.
       class AnnotateFileResponse
@@ -180,6 +201,11 @@ module Google
         # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
         attr_accessor :logo_annotations
       
+        # Results for a product search request.
+        # Corresponds to the JSON property `productSearchResults`
+        # @return [Google::Apis::VisionV1::ProductSearchResults]
+        attr_accessor :product_search_results
+      
         # Set of features pertaining to the image, computed by computer vision
         # methods over safe-search verticals (for example, adult, spoof, medical,
         # violence).
@@ -213,6 +239,7 @@ module Google
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
           @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
+          @product_search_results = args[:product_search_results] if args.key?(:product_search_results)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
           @web_detection = args[:web_detection] if args.key?(:web_detection)
@@ -350,6 +377,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # Metadata for the batch operations such as the current state.
+      # This is included in the `metadata` field of the `Operation` returned by the
+      # `GetOperation` call of the `google::longrunning::Operations` service.
+      class BatchOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request is finished and
+        # google.longrunning.Operation.done is set to true.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the batch request was submitted to the server.
+        # Corresponds to the JSON property `submitTime`
+        # @return [String]
+        attr_accessor :submit_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @state = args[:state] if args.key?(:state)
+          @submit_time = args[:submit_time] if args.key?(:submit_time)
         end
       end
       
@@ -1277,6 +1338,11 @@ module Google
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1EntityAnnotation>]
         attr_accessor :logo_annotations
       
+        # Results for a product search request.
+        # Corresponds to the JSON property `productSearchResults`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResults]
+        attr_accessor :product_search_results
+      
         # Set of features pertaining to the image, computed by computer vision
         # methods over safe-search verticals (for example, adult, spoof, medical,
         # violence).
@@ -1310,6 +1376,7 @@ module Google
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
           @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
+          @product_search_results = args[:product_search_results] if args.key?(:product_search_results)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
           @web_detection = args[:web_detection] if args.key?(:web_detection)
@@ -2205,6 +2272,183 @@ module Google
         end
       end
       
+      # A Product contains ReferenceImages.
+      class GoogleCloudVisionV1p1beta1Product
+        include Google::Apis::Core::Hashable
+      
+        # User-provided metadata to be stored with this product. Must be at most 4096
+        # characters long.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user-provided name for this Product. Must not be empty. Must be at most
+        # 4096 characters long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the product.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        # This field is ignored when creating a product.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The category for the product identified by the reference image. This should
+        # be either "homegoods", "apparel", or "toys".
+        # This field is immutable.
+        # Corresponds to the JSON property `productCategory`
+        # @return [String]
+        attr_accessor :product_category
+      
+        # Key-value pairs that can be attached to a product. At query time,
+        # constraints can be specified based on the product_labels.
+        # Note that integer values can be provided as strings, e.g. "1199". Only
+        # strings with integer values can match a range-based restriction which is
+        # to be supported soon.
+        # Multiple values can be assigned to the same key. One product may have up to
+        # 100 product_labels.
+        # Corresponds to the JSON property `productLabels`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductKeyValue>]
+        attr_accessor :product_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @product_category = args[:product_category] if args.key?(:product_category)
+          @product_labels = args[:product_labels] if args.key?(:product_labels)
+        end
+      end
+      
+      # A product label represented as a key-value pair.
+      class GoogleCloudVisionV1p1beta1ProductKeyValue
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label attached to the product. Cannot be empty and
+        # cannot exceed 128 bytes.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Results for a product search request.
+      class GoogleCloudVisionV1p1beta1ProductSearchResults
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of the index which provided these results. Changes made after
+        # this time are not reflected in the current results.
+        # Corresponds to the JSON property `indexTime`
+        # @return [String]
+        attr_accessor :index_time
+      
+        # List of results grouped by products detected in the query image. Each entry
+        # corresponds to one bounding polygon in the query image, and contains the
+        # matching products specific to that region. There may be duplicate product
+        # matches in the union of all the per-product results.
+        # Corresponds to the JSON property `productGroupedResults`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>]
+        attr_accessor :product_grouped_results
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_time = args[:index_time] if args.key?(:index_time)
+          @product_grouped_results = args[:product_grouped_results] if args.key?(:product_grouped_results)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Information about the products similar to a single product in a query
+      # image.
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Information about a product.
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsResult
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the image from the product that is the closest match
+        # to the query.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # A Product contains ReferenceImages.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Product]
+        attr_accessor :product
+      
+        # A confidence level on the match, ranging from 0 (no confidence) to
+        # 1 (full confidence).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @product = args[:product] if args.key?(:product)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # A `Property` consists of a user-supplied name/value pair.
       class GoogleCloudVisionV1p1beta1Property
         include Google::Apis::Core::Hashable
@@ -2808,6 +3052,11 @@ module Google
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1EntityAnnotation>]
         attr_accessor :logo_annotations
       
+        # Results for a product search request.
+        # Corresponds to the JSON property `productSearchResults`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResults]
+        attr_accessor :product_search_results
+      
         # Set of features pertaining to the image, computed by computer vision
         # methods over safe-search verticals (for example, adult, spoof, medical,
         # violence).
@@ -2841,6 +3090,7 @@ module Google
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
           @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
+          @product_search_results = args[:product_search_results] if args.key?(:product_search_results)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
           @web_detection = args[:web_detection] if args.key?(:web_detection)
@@ -3766,6 +4016,183 @@ module Google
           @x = args[:x] if args.key?(:x)
           @y = args[:y] if args.key?(:y)
           @z = args[:z] if args.key?(:z)
+        end
+      end
+      
+      # A Product contains ReferenceImages.
+      class GoogleCloudVisionV1p2beta1Product
+        include Google::Apis::Core::Hashable
+      
+        # User-provided metadata to be stored with this product. Must be at most 4096
+        # characters long.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user-provided name for this Product. Must not be empty. Must be at most
+        # 4096 characters long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the product.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        # This field is ignored when creating a product.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The category for the product identified by the reference image. This should
+        # be either "homegoods", "apparel", or "toys".
+        # This field is immutable.
+        # Corresponds to the JSON property `productCategory`
+        # @return [String]
+        attr_accessor :product_category
+      
+        # Key-value pairs that can be attached to a product. At query time,
+        # constraints can be specified based on the product_labels.
+        # Note that integer values can be provided as strings, e.g. "1199". Only
+        # strings with integer values can match a range-based restriction which is
+        # to be supported soon.
+        # Multiple values can be assigned to the same key. One product may have up to
+        # 100 product_labels.
+        # Corresponds to the JSON property `productLabels`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductKeyValue>]
+        attr_accessor :product_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @product_category = args[:product_category] if args.key?(:product_category)
+          @product_labels = args[:product_labels] if args.key?(:product_labels)
+        end
+      end
+      
+      # A product label represented as a key-value pair.
+      class GoogleCloudVisionV1p2beta1ProductKeyValue
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label attached to the product. Cannot be empty and
+        # cannot exceed 128 bytes.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Results for a product search request.
+      class GoogleCloudVisionV1p2beta1ProductSearchResults
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of the index which provided these results. Changes made after
+        # this time are not reflected in the current results.
+        # Corresponds to the JSON property `indexTime`
+        # @return [String]
+        attr_accessor :index_time
+      
+        # List of results grouped by products detected in the query image. Each entry
+        # corresponds to one bounding polygon in the query image, and contains the
+        # matching products specific to that region. There may be duplicate product
+        # matches in the union of all the per-product results.
+        # Corresponds to the JSON property `productGroupedResults`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>]
+        attr_accessor :product_grouped_results
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_time = args[:index_time] if args.key?(:index_time)
+          @product_grouped_results = args[:product_grouped_results] if args.key?(:product_grouped_results)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Information about the products similar to a single product in a query
+      # image.
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Information about a product.
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsResult
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the image from the product that is the closest match
+        # to the query.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # A Product contains ReferenceImages.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1Product]
+        attr_accessor :product
+      
+        # A confidence level on the match, ranging from 0 (no confidence) to
+        # 1 (full confidence).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @product = args[:product] if args.key?(:product)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -5498,6 +5925,14 @@ module Google
         # @return [String]
         attr_accessor :index_time
       
+        # List of results grouped by products detected in the query image. Each entry
+        # corresponds to one bounding polygon in the query image, and contains the
+        # matching products specific to that region. There may be duplicate product
+        # matches in the union of all the per-product results.
+        # Corresponds to the JSON property `productGroupedResults`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>]
+        attr_accessor :product_grouped_results
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult>]
@@ -5510,6 +5945,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @index_time = args[:index_time] if args.key?(:index_time)
+          @product_grouped_results = args[:product_grouped_results] if args.key?(:product_grouped_results)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Information about the products similar to a single product in a query
+      # image.
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
           @results = args[:results] if args.key?(:results)
         end
       end
@@ -6068,6 +6530,32 @@ module Google
         end
       end
       
+      # Information about the products similar to a single product in a query
+      # image.
+      class GroupedResult
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::Result>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
       # Client image to perform Google Cloud Vision API tasks over.
       class Image
         include Google::Apis::Core::Hashable
@@ -6149,6 +6637,11 @@ module Google
         # @return [Google::Apis::VisionV1::LatLongRect]
         attr_accessor :lat_long_rect
       
+        # Parameters for a product search request.
+        # Corresponds to the JSON property `productSearchParams`
+        # @return [Google::Apis::VisionV1::ProductSearchParams]
+        attr_accessor :product_search_params
+      
         # Parameters for web detection request.
         # Corresponds to the JSON property `webDetectionParams`
         # @return [Google::Apis::VisionV1::WebDetectionParams]
@@ -6163,6 +6656,7 @@ module Google
           @crop_hints_params = args[:crop_hints_params] if args.key?(:crop_hints_params)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
           @lat_long_rect = args[:lat_long_rect] if args.key?(:lat_long_rect)
+          @product_search_params = args[:product_search_params] if args.key?(:product_search_params)
           @web_detection_params = args[:web_detection_params] if args.key?(:web_detection_params)
         end
       end
@@ -6228,6 +6722,143 @@ module Google
         end
       end
       
+      # The Google Cloud Storage location for a csv file which preserves a list of
+      # ImportProductSetRequests in each line.
+      class ImportProductSetsGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage URI of the input csv file.
+        # The URI must start with `gs://`.
+        # The format of the input csv file should be one image per line.
+        # In each line, there are 8 columns.
+        # 1.  image-uri
+        # 2.  image-id
+        # 3.  product-set-id
+        # 4.  product-id
+        # 5.  product-category
+        # 6.  product-display-name
+        # 7.  labels
+        # 8.  bounding-poly
+        # The `image-uri`, `product-set-id`, `product-id`, and `product-category`
+        # columns are required. All other columns are optional.
+        # If the `ProductSet` or `Product` specified by the `product-set-id` and
+        # `product-id` values does not exist, then the system will create a new
+        # `ProductSet` or `Product` for the image. In this case, the
+        # `product-display-name` column refers to
+        # display_name, the
+        # `product-category` column refers to
+        # product_category, and the
+        # `labels` column refers to product_labels.
+        # The `image-id` column is optional but must be unique if provided. If it is
+        # empty, the system will automatically assign a unique id to the image.
+        # The `product-display-name` column is optional. If it is empty, the system
+        # sets the display_name field for the product to a
+        # space (" "). You can update the `display_name` later by using the API.
+        # If a `Product` with the specified `product-id` already exists, then the
+        # system ignores the `product-display-name`, `product-category`, and `labels`
+        # columns.
+        # The `labels` column (optional) is a line containing a list of
+        # comma-separated key-value pairs, in the following format:
+        # "key_1=value_1,key_2=value_2,...,key_n=value_n"
+        # The `bounding-poly` column (optional) identifies one region of
+        # interest from the image in the same manner as `CreateReferenceImage`. If
+        # you do not specify the `bounding-poly` column, then the system will try to
+        # detect regions of interest automatically.
+        # At most one `bounding-poly` column is allowed per line. If the image
+        # contains multiple regions of interest, add a line to the CSV file that
+        # includes the same product information, and the `bounding-poly` values for
+        # each region of interest.
+        # The `bounding-poly` column must contain an even number of comma-separated
+        # numbers, in the format "p1_x,p1_y,p2_x,p2_y,...,pn_x,pn_y". Use
+        # non-negative integers for absolute bounding polygons, and float values
+        # in [0, 1] for normalized bounding polygons.
+        # The system will resize the image if the image resolution is too
+        # large to process (larger than 20MP).
+        # Corresponds to the JSON property `csvFileUri`
+        # @return [String]
+        attr_accessor :csv_file_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_file_uri = args[:csv_file_uri] if args.key?(:csv_file_uri)
+        end
+      end
+      
+      # The input content for the `ImportProductSets` method.
+      class ImportProductSetsInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for a csv file which preserves a list of
+        # ImportProductSetRequests in each line.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::VisionV1::ImportProductSetsGcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Request message for the `ImportProductSets` method.
+      class ImportProductSetsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The input content for the `ImportProductSets` method.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::VisionV1::ImportProductSetsInputConfig]
+        attr_accessor :input_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+        end
+      end
+      
+      # Response message for the `ImportProductSets` method.
+      # This message is returned by the
+      # google.longrunning.Operations.GetOperation method in the returned
+      # google.longrunning.Operation.response field.
+      class ImportProductSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of reference_images that are imported successfully.
+        # Corresponds to the JSON property `referenceImages`
+        # @return [Array<Google::Apis::VisionV1::ReferenceImage>]
+        attr_accessor :reference_images
+      
+        # The rpc status for each ImportProductSet request, including both successes
+        # and errors.
+        # The number of statuses here matches the number of lines in the csv file,
+        # and statuses[i] stores the success or failure status of processing the i-th
+        # line of the csv, starting from line 0.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::VisionV1::Status>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_images = args[:reference_images] if args.key?(:reference_images)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
       # The desired input location and metadata.
       class InputConfig
         include Google::Apis::Core::Hashable
@@ -6251,6 +6882,33 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A product label represented as a key-value pair.
+      class KeyValue
+        include Google::Apis::Core::Hashable
+      
+        # The key of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the label attached to the product. Cannot be empty and
+        # cannot exceed 128 bytes.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -6365,6 +7023,115 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for the `ListProductSets` method.
+      class ListProductSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ProductSets.
+        # Corresponds to the JSON property `productSets`
+        # @return [Array<Google::Apis::VisionV1::ProductSet>]
+        attr_accessor :product_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @product_sets = args[:product_sets] if args.key?(:product_sets)
+        end
+      end
+      
+      # Response message for the `ListProductsInProductSet` method.
+      class ListProductsInProductSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::VisionV1::Product>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # Response message for the `ListProducts` method.
+      class ListProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::VisionV1::Product>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # Response message for the `ListReferenceImages` method.
+      class ListReferenceImagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next_page_token returned from a previous List request, if any.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The maximum number of items to return. Default 10, maximum 100.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # The list of reference images.
+        # Corresponds to the JSON property `referenceImages`
+        # @return [Array<Google::Apis::VisionV1::ReferenceImage>]
+        attr_accessor :reference_images
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @reference_images = args[:reference_images] if args.key?(:reference_images)
         end
       end
       
@@ -6739,6 +7506,226 @@ module Google
         end
       end
       
+      # A Product contains ReferenceImages.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # User-provided metadata to be stored with this product. Must be at most 4096
+        # characters long.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user-provided name for this Product. Must not be empty. Must be at most
+        # 4096 characters long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the product.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        # This field is ignored when creating a product.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The category for the product identified by the reference image. This should
+        # be either "homegoods", "apparel", or "toys".
+        # This field is immutable.
+        # Corresponds to the JSON property `productCategory`
+        # @return [String]
+        attr_accessor :product_category
+      
+        # Key-value pairs that can be attached to a product. At query time,
+        # constraints can be specified based on the product_labels.
+        # Note that integer values can be provided as strings, e.g. "1199". Only
+        # strings with integer values can match a range-based restriction which is
+        # to be supported soon.
+        # Multiple values can be assigned to the same key. One product may have up to
+        # 100 product_labels.
+        # Corresponds to the JSON property `productLabels`
+        # @return [Array<Google::Apis::VisionV1::KeyValue>]
+        attr_accessor :product_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @product_category = args[:product_category] if args.key?(:product_category)
+          @product_labels = args[:product_labels] if args.key?(:product_labels)
+        end
+      end
+      
+      # Parameters for a product search request.
+      class ProductSearchParams
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingPoly`
+        # @return [Google::Apis::VisionV1::BoundingPoly]
+        attr_accessor :bounding_poly
+      
+        # The filtering expression. This can be used to restrict search results based
+        # on Product labels. We currently support an AND of OR of key-value
+        # expressions, where each expression within an OR must have the same key.
+        # For example, "(color = red OR color = blue) AND brand = Google" is
+        # acceptable, but not "(color = red OR brand = Google)" or "color: red".
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The list of product categories to search in. Currently, we only consider
+        # the first category, and either "homegoods", "apparel", or "toys" should be
+        # specified.
+        # Corresponds to the JSON property `productCategories`
+        # @return [Array<String>]
+        attr_accessor :product_categories
+      
+        # The resource name of a ProductSet to be searched for similar images.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+        # Corresponds to the JSON property `productSet`
+        # @return [String]
+        attr_accessor :product_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @filter = args[:filter] if args.key?(:filter)
+          @product_categories = args[:product_categories] if args.key?(:product_categories)
+          @product_set = args[:product_set] if args.key?(:product_set)
+        end
+      end
+      
+      # Results for a product search request.
+      class ProductSearchResults
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of the index which provided these results. Changes made after
+        # this time are not reflected in the current results.
+        # Corresponds to the JSON property `indexTime`
+        # @return [String]
+        attr_accessor :index_time
+      
+        # List of results grouped by products detected in the query image. Each entry
+        # corresponds to one bounding polygon in the query image, and contains the
+        # matching products specific to that region. There may be duplicate product
+        # matches in the union of all the per-product results.
+        # Corresponds to the JSON property `productGroupedResults`
+        # @return [Array<Google::Apis::VisionV1::GroupedResult>]
+        attr_accessor :product_grouped_results
+      
+        # List of results, one for each product match.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::VisionV1::Result>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_time = args[:index_time] if args.key?(:index_time)
+          @product_grouped_results = args[:product_grouped_results] if args.key?(:product_grouped_results)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A ProductSet contains Products. A ProductSet can contain a maximum of 1
+      # million reference images. If the limit is exceeded, periodic indexing will
+      # fail.
+      class ProductSet
+        include Google::Apis::Core::Hashable
+      
+        # The user-provided name for this ProductSet. Must not be empty. Must be at
+        # most 4096 characters long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `indexError`
+        # @return [Google::Apis::VisionV1::Status]
+        attr_accessor :index_error
+      
+        # Output only. The time at which this ProductSet was last indexed. Query
+        # results will reflect all updates before this time. If this ProductSet has
+        # never been indexed, this field is 0.
+        # This field is ignored when creating a ProductSet.
+        # Corresponds to the JSON property `indexTime`
+        # @return [String]
+        attr_accessor :index_time
+      
+        # The resource name of the ProductSet.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+        # This field is ignored when creating a ProductSet.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @index_error = args[:index_error] if args.key?(:index_error)
+          @index_time = args[:index_time] if args.key?(:index_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A `Property` consists of a user-supplied name/value pair.
       class Property
         include Google::Apis::Core::Hashable
@@ -6767,6 +7754,104 @@ module Google
           @name = args[:name] if args.key?(:name)
           @uint64_value = args[:uint64_value] if args.key?(:uint64_value)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A `ReferenceImage` represents a product image and its associated metadata,
+      # such as bounding boxes.
+      class ReferenceImage
+        include Google::Apis::Core::Hashable
+      
+        # Bounding polygons around the areas of interest in the reference image.
+        # Optional. If this field is empty, the system will try to detect regions of
+        # interest. At most 10 bounding polygons will be used.
+        # The provided shape is converted into a non-rotated rectangle. Once
+        # converted, the small edge of the rectangle must be greater than or equal
+        # to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
+        # is not).
+        # Corresponds to the JSON property `boundingPolys`
+        # @return [Array<Google::Apis::VisionV1::BoundingPoly>]
+        attr_accessor :bounding_polys
+      
+        # The resource name of the reference image.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
+        # IMAGE_ID`.
+        # This field is ignored when creating a reference image.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Google Cloud Storage URI of the reference image.
+        # The URI must start with `gs://`.
+        # Required.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_polys = args[:bounding_polys] if args.key?(:bounding_polys)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Request message for the `RemoveProductFromProductSet` method.
+      class RemoveProductFromProductSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the Product to be removed from this ProductSet.
+        # Format is:
+        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product = args[:product] if args.key?(:product)
+        end
+      end
+      
+      # Information about a product.
+      class Result
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the image from the product that is the closest match
+        # to the query.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # A Product contains ReferenceImages.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::VisionV1::Product]
+        attr_accessor :product
+      
+        # A confidence level on the match, ranging from 0 (no confidence) to
+        # 1 (full confidence).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @product = args[:product] if args.key?(:product)
+          @score = args[:score] if args.key?(:score)
         end
       end
       

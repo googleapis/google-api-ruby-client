@@ -2089,9 +2089,8 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # The geographic location of the job. Required except for US and EU. See details
-        # at https://cloud.google.com/bigquery/docs/dataset-locations#
-        # specifying_your_location.
+        # The geographic location of the job. See details at https://cloud.google.com/
+        # bigquery/docs/locations#specifying_your_location.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3019,6 +3018,64 @@ module Google
       end
       
       # 
+      class RangePartitioning
+        include Google::Apis::Core::Hashable
+      
+        # [Experimental] [Required] The table is partitioned by this field. The field
+        # must be a top-level NULLABLE/REQUIRED field. The only supported type is
+        # INTEGER/INT64.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # [Experimental] [Required] Defines the ranges for range partitioning.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::BigqueryV2::RangePartitioning::Range]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @range = args[:range] if args.key?(:range)
+        end
+        
+        # [Experimental] [Required] Defines the ranges for range partitioning.
+        class Range
+          include Google::Apis::Core::Hashable
+        
+          # [Experimental] [Required] The end of range partitioning, exclusive.
+          # Corresponds to the JSON property `end`
+          # @return [Fixnum]
+          attr_accessor :end
+        
+          # [Experimental] [Required] The width of each interval.
+          # Corresponds to the JSON property `interval`
+          # @return [Fixnum]
+          attr_accessor :interval
+        
+          # [Experimental] [Required] The start of range partitioning, inclusive.
+          # Corresponds to the JSON property `start`
+          # @return [Fixnum]
+          attr_accessor :start
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @end = args[:end] if args.key?(:end)
+            @interval = args[:interval] if args.key?(:interval)
+            @start = args[:start] if args.key?(:start)
+          end
+        end
+      end
+      
+      # 
       class Streamingbuffer
         include Google::Apis::Core::Hashable
       
@@ -3056,9 +3113,9 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # [Beta] Clustering specification for the table. Must be specified with time-
-        # based partitioning, data in the table will be first partitioned and
-        # subsequently clustered.
+        # [Experimental] Clustering specification for the table. Must be specified with
+        # partitioning, data in the table will be first partitioned and subsequently
+        # clustered.
         # Corresponds to the JSON property `clustering`
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
@@ -3158,11 +3215,31 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_long_term_bytes
       
+        # [Output-only] [Experimental] The physical size of this table in bytes,
+        # excluding any data in the streaming buffer. This includes compression and
+        # storage used for time travel.
+        # Corresponds to the JSON property `numPhysicalBytes`
+        # @return [Fixnum]
+        attr_accessor :num_physical_bytes
+      
         # [Output-only] The number of rows of data in this table, excluding any data in
         # the streaming buffer.
         # Corresponds to the JSON property `numRows`
         # @return [Fixnum]
         attr_accessor :num_rows
+      
+        # [Experimental] Range partitioning specification for this table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
+        # Corresponds to the JSON property `rangePartitioning`
+        # @return [Google::Apis::BigqueryV2::RangePartitioning]
+        attr_accessor :range_partitioning
+      
+        # [Experimental] [Optional] If set to true, queries over this table require a
+        # partition filter that can be used for partition elimination to be specified.
+        # Corresponds to the JSON property `requirePartitionFilter`
+        # @return [Boolean]
+        attr_accessor :require_partition_filter
+        alias_method :require_partition_filter?, :require_partition_filter
       
         # [Optional] Describes the schema of this table.
         # Corresponds to the JSON property `schema`
@@ -3186,7 +3263,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :table_reference
       
-        # Time-based partitioning specification for this table.
+        # Time-based partitioning specification for this table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -3226,7 +3304,10 @@ module Google
           @model = args[:model] if args.key?(:model)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
           @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
+          @num_physical_bytes = args[:num_physical_bytes] if args.key?(:num_physical_bytes)
           @num_rows = args[:num_rows] if args.key?(:num_rows)
+          @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
+          @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @streaming_buffer = args[:streaming_buffer] if args.key?(:streaming_buffer)

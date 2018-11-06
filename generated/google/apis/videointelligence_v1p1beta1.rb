@@ -20,12 +20,13 @@ module Google
   module Apis
     # Cloud Video Intelligence API
     #
-    # Cloud Video Intelligence API.
+    # Detects objects, explicit content, and scene changes in videos. It also
+    # specifies the region for annotation and transcribes speech to text.
     #
     # @see https://cloud.google.com/video-intelligence/docs/
     module VideointelligenceV1p1beta1
       VERSION = 'V1p1beta1'
-      REVISION = '20181003'
+      REVISION = '20181027'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

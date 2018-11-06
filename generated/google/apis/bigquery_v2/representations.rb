@@ -316,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RangePartitioning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Range
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1124,6 +1136,24 @@ module Google
         end
       end
       
+      class RangePartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :range, as: 'range', class: Google::Apis::BigqueryV2::RangePartitioning::Range, decorator: Google::Apis::BigqueryV2::RangePartitioning::Range::Representation
+      
+        end
+        
+        class Range
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :end, :numeric_string => true, as: 'end'
+            property :interval, :numeric_string => true, as: 'interval'
+            property :start, :numeric_string => true, as: 'start'
+          end
+        end
+      end
+      
       class Streamingbuffer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1156,7 +1186,11 @@ module Google
       
           property :num_bytes, :numeric_string => true, as: 'numBytes'
           property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
+          property :num_physical_bytes, :numeric_string => true, as: 'numPhysicalBytes'
           property :num_rows, :numeric_string => true, as: 'numRows'
+          property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
+      
+          property :require_partition_filter, as: 'requirePartitionFilter'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'

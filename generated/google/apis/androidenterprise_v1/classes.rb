@@ -91,7 +91,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :permission
       
-        # Options for displaying the Play Search page.
+        # Options for displaying the managed Play Search apps page.
         # Corresponds to the JSON property `playSearch`
         # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch]
         attr_accessor :play_search
@@ -101,7 +101,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPrivateApps]
         attr_accessor :private_apps
       
-        # Options for displaying the Store Builder page.
+        # Options for displaying the Organize apps page.
         # Corresponds to the JSON property `storeBuilder`
         # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecStoreBuilder]
         attr_accessor :store_builder
@@ -137,7 +137,7 @@ module Google
         attr_accessor :approve_apps
         alias_method :approve_apps?, :approve_apps
       
-        # Whether the Play Search page is displayed. Default is true.
+        # Whether the managed Play Search apps page is displayed. Default is true.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -178,7 +178,7 @@ module Google
       class AdministratorWebTokenSpecStoreBuilder
         include Google::Apis::Core::Hashable
       
-        # Whether the Store Builder page is displayed. Default is true.
+        # Whether the Organize apps page is displayed. Default is true.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -429,11 +429,23 @@ module Google
       class AppVersion
         include Google::Apis::Core::Hashable
       
+        # True if this version is a production Apk.
+        # Corresponds to the JSON property `isProduction`
+        # @return [Boolean]
+        attr_accessor :is_production
+        alias_method :is_production?, :is_production
+      
         # The track that this app was published in. For example if track is "alpha",
-        # this is an alpha version of the app.
+        # this is an alpha version of the app. Deprecated, use track_id instead.
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
+      
+        # The track ids that this version was published in. This field supersedes track,
+        # but doesn't include the production track.
+        # Corresponds to the JSON property `trackId`
+        # @return [Array<String>]
+        attr_accessor :track_id
       
         # Unique increasing identifier for the app version.
         # Corresponds to the JSON property `versionCode`
@@ -453,7 +465,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @is_production = args[:is_production] if args.key?(:is_production)
           @track = args[:track] if args.key?(:track)
+          @track_id = args[:track_id] if args.key?(:track_id)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_string = args[:version_string] if args.key?(:version_string)
         end
@@ -1778,6 +1792,11 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # The tracks that are visible to the enterprise with their user-friendly name.
+        # Corresponds to the JSON property `appTracks`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::TrackInfo>]
+        attr_accessor :app_tracks
+      
         # App versions currently available for this product.
         # Corresponds to the JSON property `appVersion`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppVersion>]
@@ -1793,7 +1812,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_countries
       
-        # The tracks that are visible to the enterprise.
+        # The tracks that are visible to the enterprise. Deprecated, use app_tracks
+        # instead.
         # Corresponds to the JSON property `availableTracks`
         # @return [Array<String>]
         attr_accessor :available_tracks
@@ -1913,6 +1933,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_tracks = args[:app_tracks] if args.key?(:app_tracks)
           @app_version = args[:app_version] if args.key?(:app_version)
           @author_name = args[:author_name] if args.key?(:author_name)
           @available_countries = args[:available_countries] if args.key?(:available_countries)
@@ -2064,6 +2085,12 @@ module Google
         attr_accessor :product_id
       
         # Grants visibility to the specified track(s) of the product to the device. The
+        # existing track ids can be obtained by calling Products.Get.
+        # Corresponds to the JSON property `trackIds`
+        # @return [Array<String>]
+        attr_accessor :track_ids
+      
+        # Grants visibility to the specified track(s) of the product to the device. The
         # track available to the device is based on the following order of preference:
         # alpha, beta, production. For example, if an app has a prod version, a beta
         # version and an alpha version and the enterprise has been granted visibility to
@@ -2077,6 +2104,7 @@ module Google
         # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
         # of elements is not relevant. Any other set of tracks will be rejected with an
         # error.
+        # This is deprecated. Use track_ids instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2088,6 +2116,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @track_ids = args[:track_ids] if args.key?(:track_ids)
           @tracks = args[:tracks] if args.key?(:tracks)
         end
       end
@@ -2181,6 +2210,12 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Grants visibility to the specified track(s) of the product to the user. This
+        # replaces the tracks field, and specifies the track by their unique id.
+        # Corresponds to the JSON property `trackIds`
+        # @return [Array<String>]
+        attr_accessor :track_ids
+      
         # Grants visibility to the specified track(s) of the product to the user. The
         # track available to the user is based on the following order of preference:
         # alpha, beta, production. For example, if an app has a prod version, a beta
@@ -2195,6 +2230,7 @@ module Google
         # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
         # of elements is not relevant. Any other set of tracks will be rejected with an
         # error.
+        # This is deprecated. Use track_ids instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2206,6 +2242,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @track_ids = args[:track_ids] if args.key?(:track_ids)
           @tracks = args[:tracks] if args.key?(:tracks)
         end
       end
@@ -2651,6 +2688,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @previous_page_token = args[:previous_page_token] if args.key?(:previous_page_token)
+        end
+      end
+      
+      # Id to name association of a track.
+      class TrackInfo
+        include Google::Apis::Core::Hashable
+      
+        # A changeable, user-friendly name for a track.
+        # Corresponds to the JSON property `trackAlias`
+        # @return [String]
+        attr_accessor :track_alias
+      
+        # A unique an unchangeable identifier of a test track.
+        # Corresponds to the JSON property `trackId`
+        # @return [String]
+        attr_accessor :track_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @track_alias = args[:track_alias] if args.key?(:track_alias)
+          @track_id = args[:track_id] if args.key?(:track_id)
         end
       end
       

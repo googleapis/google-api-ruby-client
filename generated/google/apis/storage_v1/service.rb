@@ -554,9 +554,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. Changes to the bucket will be readable immediately after
-        # writing, but configuration changes may take time to propagate. This method
-        # supports patch semantics.
+        # Patches a bucket. Changes to the bucket will be readable immediately after
+        # writing, but configuration changes may take time to propagate.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object

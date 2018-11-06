@@ -100,18 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EndReconciliationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EndReconciliationResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExplicitBuckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,18 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReleaseQuotaRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReleaseQuotaResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReportError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,18 +239,6 @@ module Google
       end
       
       class ResourceLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StartReconciliationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StartReconciliationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,7 +382,9 @@ module Google
       class ConsumerInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_number, :numeric_string => true, as: 'consumerNumber'
           property :project_number, :numeric_string => true, as: 'projectNumber'
+          property :type, as: 'type'
         end
       end
       
@@ -437,27 +403,6 @@ module Google
           property :mean, as: 'mean'
           property :minimum, as: 'minimum'
           property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
-        end
-      end
-      
-      class EndReconciliationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :reconciliation_operation, as: 'reconciliationOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class EndReconciliationResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-          collection :reconciliation_errors, as: 'reconciliationErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
         end
       end
       
@@ -645,27 +590,6 @@ module Google
         end
       end
       
-      class ReleaseQuotaRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :release_operation, as: 'releaseOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class ReleaseQuotaResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-          collection :release_errors, as: 'releaseErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
       class ReportError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -761,27 +685,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :current_locations, as: 'currentLocations'
           collection :original_locations, as: 'originalLocations'
-        end
-      end
-      
-      class StartReconciliationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :reconciliation_operation, as: 'reconciliationOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
-        end
-      end
-      
-      class StartReconciliationResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
-      
-          collection :reconciliation_errors, as: 'reconciliationErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
-      
-          property :service_config_id, as: 'serviceConfigId'
         end
       end
       

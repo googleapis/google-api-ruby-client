@@ -489,7 +489,7 @@ module Google
       class CheckInfo
         include Google::Apis::Core::Hashable
       
-        # `ConsumerInfo` provides information about the consumer project.
+        # `ConsumerInfo` provides information about the consumer.
         # Corresponds to the JSON property `consumerInfo`
         # @return [Google::Apis::ServicecontrolV1::ConsumerInfo]
         attr_accessor :consumer_info
@@ -602,15 +602,29 @@ module Google
         end
       end
       
-      # `ConsumerInfo` provides information about the consumer project.
+      # `ConsumerInfo` provides information about the consumer.
       class ConsumerInfo
         include Google::Apis::Core::Hashable
       
+        # The consumer identity number, can be Google cloud project number, folder
+        # number or organization number e.g. 1234567890. A value of 0 indicates no
+        # consumer number is found.
+        # Corresponds to the JSON property `consumerNumber`
+        # @return [Fixnum]
+        attr_accessor :consumer_number
+      
         # The Google cloud project number, e.g. 1234567890. A value of 0 indicates
         # no project number is found.
+        # NOTE: This field is deprecated after Chemist support flexible consumer
+        # id. New code should not depend on this field anymore.
         # Corresponds to the JSON property `projectNumber`
         # @return [Fixnum]
         attr_accessor :project_number
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -618,7 +632,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_number = args[:consumer_number] if args.key?(:consumer_number)
           @project_number = args[:project_number] if args.key?(:project_number)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -704,87 +720,6 @@ module Google
           @mean = args[:mean] if args.key?(:mean)
           @minimum = args[:minimum] if args.key?(:minimum)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
-        end
-      end
-      
-      # Request message for QuotaController.EndReconciliation.
-      class EndReconciliationRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `reconciliationOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :reconciliation_operation
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @reconciliation_operation = args[:reconciliation_operation] if args.key?(:reconciliation_operation)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Response message for QuotaController.EndReconciliation.
-      class EndReconciliationResponse
-        include Google::Apis::Core::Hashable
-      
-        # The same operation_id value used in the EndReconciliationRequest. Used for
-        # logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # Metric values as tracked by One Platform before the adjustment was made.
-        # The following metrics will be included:
-        # 1. Per quota metric total usage will be specified using the following gauge
-        # metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 2. Value for each quota limit associated with the metrics will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
-        # 3. Delta value of the usage after the reconciliation for limits associated
-        # with the metrics will be specified using the following metric:
-        # "serviceruntime.googleapis.com/allocation/reconciliation_delta"
-        # The delta value is defined as:
-        # new_usage_from_client - existing_value_in_spanner.
-        # This metric is not defined in serviceruntime.yaml or in Cloud Monarch.
-        # This metric is meant for callers' use only. Since this metric is not
-        # defined in the monitoring backend, reporting on this metric will result in
-        # an error.
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        # Indicates the decision of the reconciliation end.
-        # Corresponds to the JSON property `reconciliationErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :reconciliation_errors
-      
-        # ID of the actual config used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
-          @reconciliation_errors = args[:reconciliation_errors] if args.key?(:reconciliation_errors)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
         end
       end
       
@@ -1672,81 +1607,6 @@ module Google
         end
       end
       
-      # Request message for the ReleaseQuota method.
-      class ReleaseQuotaRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `releaseOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :release_operation
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @release_operation = args[:release_operation] if args.key?(:release_operation)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Response message for the ReleaseQuota method.
-      class ReleaseQuotaResponse
-        include Google::Apis::Core::Hashable
-      
-        # The same operation_id value used in the ReleaseQuotaRequest. Used for
-        # logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # Quota metrics to indicate the result of release. Depending on the
-        # request, one or more of the following metrics will be included:
-        # 1. For rate quota, per quota group or per quota metric released amount
-        # will be specified using the following delta metric:
-        # "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
-        # 2. For allocation quota, per quota metric total usage will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 3. For allocation quota, value for each quota limit associated with
-        # the metrics will be specified using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        # Indicates the decision of the release.
-        # Corresponds to the JSON property `releaseErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :release_errors
-      
-        # ID of the actual config used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
-          @release_errors = args[:release_errors] if args.key?(:release_errors)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
       # Represents the processing error of one Operation in the request.
       class ReportError
         include Google::Apis::Core::Hashable
@@ -2214,78 +2074,6 @@ module Google
         def update!(**args)
           @current_locations = args[:current_locations] if args.key?(:current_locations)
           @original_locations = args[:original_locations] if args.key?(:original_locations)
-        end
-      end
-      
-      # Request message for QuotaController.StartReconciliation.
-      class StartReconciliationRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `reconciliationOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :reconciliation_operation
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @reconciliation_operation = args[:reconciliation_operation] if args.key?(:reconciliation_operation)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Response message for QuotaController.StartReconciliation.
-      class StartReconciliationResponse
-        include Google::Apis::Core::Hashable
-      
-        # The same operation_id value used in the StartReconciliationRequest. Used
-        # for logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # Metric values as tracked by One Platform before the start of
-        # reconciliation. The following metrics will be included:
-        # 1. Per quota metric total usage will be specified using the following gauge
-        # metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 2. Value for each quota limit associated with the metrics will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        # Indicates the decision of the reconciliation start.
-        # Corresponds to the JSON property `reconciliationErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :reconciliation_errors
-      
-        # ID of the actual config used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
-          @reconciliation_errors = args[:reconciliation_errors] if args.key?(:reconciliation_errors)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
         end
       end
       

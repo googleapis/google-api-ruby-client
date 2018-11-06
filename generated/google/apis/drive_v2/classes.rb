@@ -1339,7 +1339,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # 
+        # Short lived download URL for the file. This field is only populated for files
+        # with content stored in Drive; it is not populated for Google Docs or shortcut
+        # files.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url

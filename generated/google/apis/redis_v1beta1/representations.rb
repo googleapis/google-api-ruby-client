@@ -151,6 +151,7 @@ module Google
           collection :instances, as: 'instances', class: Google::Apis::RedisV1beta1::Instance, decorator: Google::Apis::RedisV1beta1::Instance::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

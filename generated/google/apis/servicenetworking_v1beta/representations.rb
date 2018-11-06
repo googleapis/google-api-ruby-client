@@ -372,6 +372,7 @@ module Google
           property :description, as: 'description'
           property :ip_prefix_length, as: 'ipPrefixLength'
           property :region, as: 'region'
+          property :requested_address, as: 'requestedAddress'
           property :subnetwork, as: 'subnetwork'
           collection :subnetwork_users, as: 'subnetworkUsers'
         end
@@ -456,6 +457,7 @@ module Google
           property :address, as: 'address'
           property :deadline, as: 'deadline'
           property :min_deadline, as: 'minDeadline'
+          property :operation_deadline, as: 'operationDeadline'
           property :selector, as: 'selector'
         end
       end
@@ -925,6 +927,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :name, as: 'name'
+          property :network, as: 'network'
         end
       end
       

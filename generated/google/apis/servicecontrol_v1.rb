@@ -20,13 +20,13 @@ module Google
   module Apis
     # Service Control API
     #
-    # Google Service Control provides control plane functionality to managed
-    # services, such as logging, monitoring, and status checks.
+    # Provides control plane functionality to managed services, such as logging,
+    # monitoring, and status checks.
     #
     # @see https://cloud.google.com/service-control/
     module ServicecontrolV1
       VERSION = 'V1'
-      REVISION = '20181008'
+      REVISION = '20181029'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

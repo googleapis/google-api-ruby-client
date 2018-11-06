@@ -1570,6 +1570,70 @@ module Google
       end
       
       # 
+      class CustomAttribute
+        include Google::Apis::Core::Hashable
+      
+        # The name of the attribute. Underscores will be replaced by spaces upon
+        # insertion.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the attribute.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Free-form unit of the attribute. Unit can only be used for values of type int,
+        # float, or price.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The value of the attribute.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class CustomGroup
+        include Google::Apis::Core::Hashable
+      
+        # The sub-attributes.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ContentV2::CustomAttribute>]
+        attr_accessor :attributes
+      
+        # The name of the group. Underscores will be replaced by spaces upon insertion.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class CustomerReturnReason
         include Google::Apis::Core::Hashable
       
@@ -2764,6 +2828,11 @@ module Google
         # @return [Google::Apis::ContentV2::Installment]
         attr_accessor :installment
       
+        # The instore product location. Supported only for local products.
+        # Corresponds to the JSON property `instoreProductLocation`
+        # @return [String]
+        attr_accessor :instore_product_location
+      
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # inventory".
         # Corresponds to the JSON property `kind`
@@ -2825,6 +2894,7 @@ module Google
           @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
           @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @installment = args[:installment] if args.key?(:installment)
+          @instore_product_location = args[:instore_product_location] if args.key?(:instore_product_location)
           @kind = args[:kind] if args.key?(:kind)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @pickup = args[:pickup] if args.key?(:pickup)
@@ -3031,6 +3101,11 @@ module Google
         # @return [Google::Apis::ContentV2::Installment]
         attr_accessor :installment
       
+        # The instore product location. Supported only for local products.
+        # Corresponds to the JSON property `instoreProductLocation`
+        # @return [String]
+        attr_accessor :instore_product_location
+      
         # Loyalty points that users receive after purchasing the item. Japan only.
         # Corresponds to the JSON property `loyaltyPoints`
         # @return [Google::Apis::ContentV2::LoyaltyPoints]
@@ -3086,6 +3161,7 @@ module Google
           @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
           @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @installment = args[:installment] if args.key?(:installment)
+          @instore_product_location = args[:instore_product_location] if args.key?(:instore_product_location)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @pickup = args[:pickup] if args.key?(:pickup)
           @price = args[:price] if args.key?(:price)
@@ -4485,6 +4561,11 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
+        # Associated fees at order creation time.
+        # Corresponds to the JSON property `fees`
+        # @return [Array<Google::Apis::ContentV2::OrderLineItemProductFee>]
+        attr_accessor :fees
+      
         # Global Trade Item Number (GTIN) of the item.
         # Corresponds to the JSON property `gtin`
         # @return [String]
@@ -4552,6 +4633,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
+          @fees = args[:fees] if args.key?(:fees)
           @gtin = args[:gtin] if args.key?(:gtin)
           @id = args[:id] if args.key?(:id)
           @image_link = args[:image_link] if args.key?(:image_link)
@@ -4563,6 +4645,37 @@ module Google
           @target_country = args[:target_country] if args.key?(:target_country)
           @title = args[:title] if args.key?(:title)
           @variant_attributes = args[:variant_attributes] if args.key?(:variant_attributes)
+        end
+      end
+      
+      # 
+      class OrderLineItemProductFee
+        include Google::Apis::Core::Hashable
+      
+        # Amount of the fee.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
+        # Case-insensitive fee ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the fee.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -8427,12 +8540,12 @@ module Google
         # "name": "size type", "type": "text", "value": "regular" `). This is useful
         # for submitting attributes not explicitly exposed by the API.
         # Corresponds to the JSON property `customAttributes`
-        # @return [Array<Google::Apis::ContentV2::ProductCustomAttribute>]
+        # @return [Array<Google::Apis::ContentV2::CustomAttribute>]
         attr_accessor :custom_attributes
       
         # A list of custom (merchant-provided) custom attribute groups.
         # Corresponds to the JSON property `customGroups`
-        # @return [Array<Google::Apis::ContentV2::ProductCustomGroup>]
+        # @return [Array<Google::Apis::ContentV2::CustomGroup>]
         attr_accessor :custom_groups
       
         # Custom label 0 for custom grouping of items in a Shopping campaign.
@@ -8871,70 +8984,6 @@ module Google
           @aspect_name = args[:aspect_name] if args.key?(:aspect_name)
           @destination_name = args[:destination_name] if args.key?(:destination_name)
           @intention = args[:intention] if args.key?(:intention)
-        end
-      end
-      
-      # 
-      class ProductCustomAttribute
-        include Google::Apis::Core::Hashable
-      
-        # The name of the attribute. Underscores will be replaced by spaces upon
-        # insertion.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The type of the attribute.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Free-form unit of the attribute. Unit can only be used for values of type int,
-        # float, or price.
-        # Corresponds to the JSON property `unit`
-        # @return [String]
-        attr_accessor :unit
-      
-        # The value of the attribute.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @type = args[:type] if args.key?(:type)
-          @unit = args[:unit] if args.key?(:unit)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # 
-      class ProductCustomGroup
-        include Google::Apis::Core::Hashable
-      
-        # The sub-attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<Google::Apis::ContentV2::ProductCustomAttribute>]
-        attr_accessor :attributes
-      
-        # The name of the group. Underscores will be replaced by spaces upon insertion.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

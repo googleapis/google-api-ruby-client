@@ -381,6 +381,12 @@ module Google
         # @return [Float]
         attr_accessor :min_deadline
       
+        # The number of seconds to wait for the completion of a long running
+        # operation. The default is no deadline.
+        # Corresponds to the JSON property `operationDeadline`
+        # @return [Float]
+        attr_accessor :operation_deadline
+      
         # Selects the methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -396,6 +402,7 @@ module Google
           @address = args[:address] if args.key?(:address)
           @deadline = args[:deadline] if args.key?(:deadline)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
+          @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @selector = args[:selector] if args.key?(:selector)
         end
       end

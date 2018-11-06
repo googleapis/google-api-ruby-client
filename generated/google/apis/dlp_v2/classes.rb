@@ -238,6 +238,12 @@ module Google
       class GooglePrivacyDlpV2BigQueryOptions
         include Google::Apis::Core::Hashable
       
+        # References to fields excluded from scanning. This allows you to skip
+        # inspection of entire columns which you know have no findings.
+        # Corresponds to the JSON property `excludedFields`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
+        attr_accessor :excluded_fields
+      
         # References to fields uniquely identifying rows within the table.
         # Nested fields in the format, like `person.birthdate.year`, are allowed.
         # Corresponds to the JSON property `identifyingFields`
@@ -281,6 +287,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @excluded_fields = args[:excluded_fields] if args.key?(:excluded_fields)
           @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
           @rows_limit = args[:rows_limit] if args.key?(:rows_limit)
           @rows_limit_percent = args[:rows_limit_percent] if args.key?(:rows_limit_percent)
@@ -683,7 +690,8 @@ module Google
       
         # List of file type groups to include in the scan.
         # If empty, all files are scanned and available data format processors
-        # are applied.
+        # are applied. In addition, the binary content of the selected files
+        # is always scanned as well.
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
@@ -1482,6 +1490,7 @@ module Google
       end
       
       # Message for a date time object.
+      # e.g. 2018-01-01, 5th August.
       class GooglePrivacyDlpV2DateTime
         include Google::Apis::Core::Hashable
       
@@ -2547,7 +2556,8 @@ module Google
         # Name of the information type. Either a name of your choosing when
         # creating a CustomInfoType, or one of the names listed
         # at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
-        # a built-in type.
+        # a built-in type. InfoType names should conform to the pattern
+        # [a-zA-Z0-9_]`1,64`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3062,7 +3072,7 @@ module Google
         attr_accessor :display_name
       
         # A stream of errors encountered when the trigger was activated. Repeated
-        # errors may result in the JobTrigger automaticaly being paused.
+        # errors may result in the JobTrigger automatically being paused.
         # Will return the last 100 errors. Whenever the JobTrigger is modified
         # this list will be cleared. Output only field.
         # Corresponds to the JSON property `errors`
@@ -3929,8 +3939,9 @@ module Google
         # from the `Finding` object. If appending to an existing table, any columns
         # from the predefined schema that are missing will be added. No columns in
         # the existing table will be deleted.
-        # If unspecified, then all available columns will be used for a new table,
-        # and no changes will be made to an existing table.
+        # If unspecified, then all available columns will be used for a new table or
+        # an (existing) table with no schema, and no changes will be made to an
+        # existing table that has a schema.
         # Corresponds to the JSON property `outputSchema`
         # @return [String]
         attr_accessor :output_schema
@@ -4374,6 +4385,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Message for a date time object.
+        # e.g. 2018-01-01, 5th August.
         # Corresponds to the JSON property `dateTime`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DateTime]
         attr_accessor :date_time

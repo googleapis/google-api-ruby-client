@@ -65,6 +65,11 @@ module Google
       # and how routing is affected by
       # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
       # dispatchref).
+      # Traffic is encrypted during transport and never leaves Google datacenters.
+      # Because this traffic is carried over a communication mechanism internal to
+      # Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
+      # The request to the handler, however, will appear to have used the HTTP
+      # protocol.
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
       # * If set,
@@ -75,6 +80,15 @@ module Google
       # The `url` that the task will be sent to is:
       # * `url =` host `+`
       # relative_url
+      # Tasks can be dispatched to secure app handlers, unsecure app handlers, and
+      # URIs restricted with
+      # [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/
+      # config/appref).
+      # Because tasks are not run as any user, they cannot be dispatched to URIs
+      # restricted with
+      # [`login: required`](https://cloud.google.com/appengine/docs/standard/python/
+      # config/appref)
+      # Task dispatches also do not follow redirects.
       # The task attempt has succeeded if the app's request handler returns
       # an HTTP response code in the range [`200` - `299`]. `503` is
       # considered an App Engine system error instead of an application
@@ -86,6 +100,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # App Engine Routing.
+        # Defines routing characteristics specific to App Engine - service, version,
+        # and instance.
         # For more information about services, versions, and instances see
         # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
         # overview-of-app-engine),
@@ -198,6 +214,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # App Engine Routing.
+        # Defines routing characteristics specific to App Engine - service, version,
+        # and instance.
         # For more information about services, versions, and instances see
         # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
         # overview-of-app-engine),
@@ -222,6 +240,8 @@ module Google
       end
       
       # App Engine Routing.
+      # Defines routing characteristics specific to App Engine - service, version,
+      # and instance.
       # For more information about services, versions, and instances see
       # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
       # overview-of-app-engine),
@@ -1552,6 +1572,11 @@ module Google
         # and how routing is affected by
         # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
         # dispatchref).
+        # Traffic is encrypted during transport and never leaves Google datacenters.
+        # Because this traffic is carried over a communication mechanism internal to
+        # Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
+        # The request to the handler, however, will appear to have used the HTTP
+        # protocol.
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
         # * If set,
@@ -1562,6 +1587,15 @@ module Google
         # The `url` that the task will be sent to is:
         # * `url =` host `+`
         # relative_url
+        # Tasks can be dispatched to secure app handlers, unsecure app handlers, and
+        # URIs restricted with
+        # [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/
+        # config/appref).
+        # Because tasks are not run as any user, they cannot be dispatched to URIs
+        # restricted with
+        # [`login: required`](https://cloud.google.com/appengine/docs/standard/python/
+        # config/appref)
+        # Task dispatches also do not follow redirects.
         # The task attempt has succeeded if the app's request handler returns
         # an HTTP response code in the range [`200` - `299`]. `503` is
         # considered an App Engine system error instead of an application

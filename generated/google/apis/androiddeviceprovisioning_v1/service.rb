@@ -495,8 +495,9 @@ module Google
         
         # Creates a customer for zero-touch enrollment. After the method returns
         # successfully, admin and owner roles can manage devices and EMM configs
-        # by calling API methods or using their zero-touch enrollment portal. The API
-        # doesn't notify the customer that they have access.
+        # by calling API methods or using their zero-touch enrollment portal.
+        # The customer receives an email that welcomes them to zero-touch enrollment
+        # and explains how to sign into the portal.
         # @param [String] parent
         #   Required. The parent resource ID in the format `partners/[PARTNER_ID]` that
         #   identifies the reseller.

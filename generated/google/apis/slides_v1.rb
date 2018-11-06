@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Slides API
     #
-    # An API for creating and editing Google Slides presentations.
+    # Reads and writes Google Slides presentations.
     #
     # @see https://developers.google.com/slides/
     module SlidesV1
       VERSION = 'V1'
-      REVISION = '20181010'
+      REVISION = '20181030'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

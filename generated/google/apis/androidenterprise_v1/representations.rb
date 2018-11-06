@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrackInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -588,7 +594,9 @@ module Google
       class AppVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_production, as: 'isProduction'
           property :track, as: 'track'
+          collection :track_id, as: 'trackId'
           property :version_code, as: 'versionCode'
           property :version_string, as: 'versionString'
         end
@@ -940,6 +948,8 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_tracks, as: 'appTracks', class: Google::Apis::AndroidenterpriseV1::TrackInfo, decorator: Google::Apis::AndroidenterpriseV1::TrackInfo::Representation
+      
           collection :app_version, as: 'appVersion', class: Google::Apis::AndroidenterpriseV1::AppVersion, decorator: Google::Apis::AndroidenterpriseV1::AppVersion::Representation
       
           property :author_name, as: 'authorName'
@@ -1007,6 +1017,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :product_id, as: 'productId'
+          collection :track_ids, as: 'trackIds'
           collection :tracks, as: 'tracks'
         end
       end
@@ -1034,6 +1045,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :product_id, as: 'productId'
+          collection :track_ids, as: 'trackIds'
           collection :tracks, as: 'tracks'
         end
       end
@@ -1160,6 +1172,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           property :previous_page_token, as: 'previousPageToken'
+        end
+      end
+      
+      class TrackInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :track_alias, as: 'trackAlias'
+          property :track_id, as: 'trackId'
         end
       end
       

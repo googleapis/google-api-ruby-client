@@ -553,6 +553,8 @@ module Google
       
           property :end_date, as: 'endDate'
           property :id, as: 'id'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
           property :name, as: 'name'
           property :notes, as: 'notes'
           property :polling_hours, as: 'pollingHours'

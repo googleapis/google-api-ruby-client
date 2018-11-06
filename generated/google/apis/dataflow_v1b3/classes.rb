@@ -1810,6 +1810,16 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::ExecutionStageState>]
         attr_accessor :stage_states
       
+        # The timestamp when the job was started (transitioned to JOB_STATE_PENDING).
+        # Flexible resource scheduling jobs are started with some delay after job
+        # creation, so start_time is unset before start and is updated when the
+        # job is started by the Cloud Dataflow service. For other jobs, start_time
+        # always equals to create_time and is immutable and set by the Cloud Dataflow
+        # service.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # The top-level steps that constitute the entire job.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
@@ -1862,6 +1872,7 @@ module Google
           @replaced_by_job_id = args[:replaced_by_job_id] if args.key?(:replaced_by_job_id)
           @requested_state = args[:requested_state] if args.key?(:requested_state)
           @stage_states = args[:stage_states] if args.key?(:stage_states)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @steps = args[:steps] if args.key?(:steps)
           @temp_files = args[:temp_files] if args.key?(:temp_files)
           @transform_name_mapping = args[:transform_name_mapping] if args.key?(:transform_name_mapping)
@@ -4234,6 +4245,31 @@ module Google
         end
       end
       
+      # Streaming appliance snapshot configuration.
+      class StreamingApplianceSnapshotConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates which endpoint is used to import appliance state.
+        # Corresponds to the JSON property `importStateEndpoint`
+        # @return [String]
+        attr_accessor :import_state_endpoint
+      
+        # If set, indicates the snapshot id for the snapshot being performed.
+        # Corresponds to the JSON property `snapshotId`
+        # @return [String]
+        attr_accessor :snapshot_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_state_endpoint = args[:import_state_endpoint] if args.key?(:import_state_endpoint)
+          @snapshot_id = args[:snapshot_id] if args.key?(:snapshot_id)
+        end
+      end
+      
       # Configuration information for a single streaming computation.
       class StreamingComputationConfig
         include Google::Apis::Core::Hashable
@@ -4386,6 +4422,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :receive_work_port
       
+        # Streaming appliance snapshot configuration.
+        # Corresponds to the JSON property `snapshotConfig`
+        # @return [Google::Apis::DataflowV1b3::StreamingApplianceSnapshotConfig]
+        attr_accessor :snapshot_config
+      
         # Global topology of the streaming Dataflow job, including all
         # computations and their sharded locations.
         # Corresponds to the JSON property `streamingComputationTopology`
@@ -4406,6 +4447,7 @@ module Google
         def update!(**args)
           @drain = args[:drain] if args.key?(:drain)
           @receive_work_port = args[:receive_work_port] if args.key?(:receive_work_port)
+          @snapshot_config = args[:snapshot_config] if args.key?(:snapshot_config)
           @streaming_computation_topology = args[:streaming_computation_topology] if args.key?(:streaming_computation_topology)
           @worker_harness_port = args[:worker_harness_port] if args.key?(:worker_harness_port)
         end

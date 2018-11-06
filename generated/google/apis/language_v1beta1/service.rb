@@ -22,9 +22,9 @@ module Google
     module LanguageV1beta1
       # Cloud Natural Language API
       #
-      # Provides natural language understanding technologies to developers. Examples
-      #  include sentiment analysis, entity recognition, entity sentiment analysis, and
-      #  text annotations.
+      # Provides natural language understanding technologies, such as sentiment
+      #  analysis, entity recognition, entity sentiment analysis, and other text
+      #  annotations, to developers.
       #
       # @example
       #    require 'google/apis/language_v1beta1'

@@ -268,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerReturnReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -683,6 +695,12 @@ module Google
       end
       
       class OrderLineItemProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderLineItemProductFee
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1289,18 +1307,6 @@ module Google
       end
       
       class ProductAspect
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ProductCustomAttribute
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ProductCustomGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2044,6 +2050,25 @@ module Google
         end
       end
       
+      class CustomAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :unit, as: 'unit'
+          property :value, as: 'value'
+        end
+      end
+      
+      class CustomGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::ContentV2::CustomAttribute, decorator: Google::Apis::ContentV2::CustomAttribute::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class CustomerReturnReason
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2370,6 +2395,7 @@ module Google
           property :custom_label4, as: 'customLabel4'
           property :installment, as: 'installment', class: Google::Apis::ContentV2::Installment, decorator: Google::Apis::ContentV2::Installment::Representation
       
+          property :instore_product_location, as: 'instoreProductLocation'
           property :kind, as: 'kind'
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
       
@@ -2443,6 +2469,7 @@ module Google
           property :custom_label4, as: 'customLabel4'
           property :installment, as: 'installment', class: Google::Apis::ContentV2::Installment, decorator: Google::Apis::ContentV2::Installment::Representation
       
+          property :instore_product_location, as: 'instoreProductLocation'
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
       
           property :pickup, as: 'pickup', class: Google::Apis::ContentV2::InventoryPickup, decorator: Google::Apis::ContentV2::InventoryPickup::Representation
@@ -2858,6 +2885,8 @@ module Google
           property :channel, as: 'channel'
           property :condition, as: 'condition'
           property :content_language, as: 'contentLanguage'
+          collection :fees, as: 'fees', class: Google::Apis::ContentV2::OrderLineItemProductFee, decorator: Google::Apis::ContentV2::OrderLineItemProductFee::Representation
+      
           property :gtin, as: 'gtin'
           property :id, as: 'id'
           property :image_link, as: 'imageLink'
@@ -2871,6 +2900,16 @@ module Google
           property :title, as: 'title'
           collection :variant_attributes, as: 'variantAttributes', class: Google::Apis::ContentV2::OrderLineItemProductVariantAttribute, decorator: Google::Apis::ContentV2::OrderLineItemProductVariantAttribute::Representation
       
+        end
+      end
+      
+      class OrderLineItemProductFee
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :id, as: 'id'
+          property :name, as: 'name'
         end
       end
       
@@ -3959,9 +3998,9 @@ module Google
           property :content_language, as: 'contentLanguage'
           property :cost_of_goods_sold, as: 'costOfGoodsSold', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
-          collection :custom_attributes, as: 'customAttributes', class: Google::Apis::ContentV2::ProductCustomAttribute, decorator: Google::Apis::ContentV2::ProductCustomAttribute::Representation
+          collection :custom_attributes, as: 'customAttributes', class: Google::Apis::ContentV2::CustomAttribute, decorator: Google::Apis::ContentV2::CustomAttribute::Representation
       
-          collection :custom_groups, as: 'customGroups', class: Google::Apis::ContentV2::ProductCustomGroup, decorator: Google::Apis::ContentV2::ProductCustomGroup::Representation
+          collection :custom_groups, as: 'customGroups', class: Google::Apis::ContentV2::CustomGroup, decorator: Google::Apis::ContentV2::CustomGroup::Representation
       
           property :custom_label0, as: 'customLabel0'
           property :custom_label1, as: 'customLabel1'
@@ -4046,25 +4085,6 @@ module Google
           property :aspect_name, as: 'aspectName'
           property :destination_name, as: 'destinationName'
           property :intention, as: 'intention'
-        end
-      end
-      
-      class ProductCustomAttribute
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :type, as: 'type'
-          property :unit, as: 'unit'
-          property :value, as: 'value'
-        end
-      end
-      
-      class ProductCustomGroup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :attributes, as: 'attributes', class: Google::Apis::ContentV2::ProductCustomAttribute, decorator: Google::Apis::ContentV2::ProductCustomAttribute::Representation
-      
-          property :name, as: 'name'
         end
       end
       

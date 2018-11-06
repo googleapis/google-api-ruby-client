@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1SpeechTranscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1VideoSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1WordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +178,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1beta2SpeechContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechTranscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechTranscriptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +221,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1beta2VideoSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2WordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,6 +394,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +437,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p2beta1VideoSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1WordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +532,25 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :transcript, as: 'transcript'
+          collection :words, as: 'words', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1WordInfo, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1WordInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1SpeechTranscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1SpeechRecognitionAlternative, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1SpeechRecognitionAlternative::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -492,6 +577,8 @@ module Google
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
+          collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1SpeechTranscription::Representation
+      
         end
       end
       
@@ -500,6 +587,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time_offset, as: 'endTimeOffset'
           property :start_time_offset, as: 'startTimeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1WordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_time, as: 'endTime'
+          property :speaker_tag, as: 'speakerTag'
+          property :start_time, as: 'startTime'
+          property :word, as: 'word'
         end
       end
       
@@ -611,6 +709,48 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1beta2SpeechContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :phrases, as: 'phrases'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :transcript, as: 'transcript'
+          collection :words, as: 'words', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2WordInfo, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2WordInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechTranscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2SpeechTranscriptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audio_tracks, as: 'audioTracks'
+          property :diarization_speaker_count, as: 'diarizationSpeakerCount'
+          property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
+          property :enable_speaker_diarization, as: 'enableSpeakerDiarization'
+          property :enable_word_confidence, as: 'enableWordConfidence'
+          property :filter_profanity, as: 'filterProfanity'
+          property :language_code, as: 'languageCode'
+          property :max_alternatives, as: 'maxAlternatives'
+          collection :speech_contexts, as: 'speechContexts', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechContext, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechContext::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -637,6 +777,8 @@ module Google
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
       
+          collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechTranscription, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechTranscription::Representation
+      
         end
       end
       
@@ -651,6 +793,8 @@ module Google
       
           property :shot_change_detection_config, as: 'shotChangeDetectionConfig', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ShotChangeDetectionConfig, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ShotChangeDetectionConfig::Representation
       
+          property :speech_transcription_config, as: 'speechTranscriptionConfig', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechTranscriptionConfig, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2SpeechTranscriptionConfig::Representation
+      
         end
       end
       
@@ -659,6 +803,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time_offset, as: 'endTimeOffset'
           property :start_time_offset, as: 'startTimeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2WordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_time, as: 'endTime'
+          property :speaker_tag, as: 'speakerTag'
+          property :start_time, as: 'startTime'
+          property :word, as: 'word'
         end
       end
       
@@ -923,6 +1078,25 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :transcript, as: 'transcript'
+          collection :words, as: 'words', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1WordInfo, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1WordInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternatives, as: 'alternatives', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p2beta1TextAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -980,6 +1154,8 @@ module Google
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
       
+          collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1SpeechTranscription::Representation
+      
           collection :text_annotations, as: 'textAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TextAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TextAnnotation::Representation
       
         end
@@ -990,6 +1166,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time_offset, as: 'endTimeOffset'
           property :start_time_offset, as: 'startTimeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1WordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_time, as: 'endTime'
+          property :speaker_tag, as: 'speakerTag'
+          property :start_time, as: 'startTime'
+          property :word, as: 'word'
         end
       end
       

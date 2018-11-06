@@ -20,13 +20,12 @@ module Google
   module Apis
     # Digital Asset Links API
     #
-    # API for discovering relationships between online assets such as web sites or
-    # mobile apps.
+    # Discovers relationships between online assets such as websites or mobile apps.
     #
     # @see https://developers.google.com/digital-asset-links/
     module DigitalassetlinksV1
       VERSION = 'V1'
-      REVISION = '20180606'
+      REVISION = '20181103'
     end
   end
 end
