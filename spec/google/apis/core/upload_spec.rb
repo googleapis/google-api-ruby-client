@@ -35,7 +35,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
     it 'should send content' do
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
-        .with(body: "Hello world\n")).to have_been_made
+        .with(body: "Hello world")).to have_been_made
     end
 
     it 'should send upload protocol' do
@@ -52,7 +52,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
   end
 
   context('with StringIO input') do
-    let(:file) { StringIO.new("Hello world\n") }
+    let(:file) { StringIO.new("Hello world") }
     include_examples 'should upload'
   end
 
@@ -68,7 +68,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
   context('with Tempfile input') do
     let(:file) do
       temp_file = Tempfile.new("tempfile")
-      temp_file.write("Hello world\n")
+      temp_file.write("Hello world")
       temp_file.rewind
       temp_file
     end

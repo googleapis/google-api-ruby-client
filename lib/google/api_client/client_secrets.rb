@@ -62,7 +62,7 @@ module Google
           search_path ||= File.expand_path('.')
           if File.exists?(File.join(search_path, 'client_secrets.json'))
             filename = File.join(search_path, 'client_secrets.json')
-          elsif search_path == '/' || search_path =~ /[a-zA-Z]:[\/\\]/
+          elsif search_path == File.expand_path('..', search_path)
             raise ArgumentError,
               'No client_secrets.json filename supplied ' +
               'and/or could not be found in search path.'
