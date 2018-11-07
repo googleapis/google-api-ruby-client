@@ -22,8 +22,7 @@ module Google
     module AlertcenterV1beta1
       # G Suite Alert Center API
       #
-      # G Suite Alert Center API to view and manage alerts on issues affecting your
-      #  domain.
+      # Manages alerts on issues affecting your domain.
       #
       # @example
       #    require 'google/apis/alertcenter_v1beta1'
@@ -49,17 +48,16 @@ module Google
         end
         
         # Marks the specified alert for deletion. An alert that has been marked for
-        # deletion will be excluded from the results of a List operation by default,
-        # and will be removed from the Alert Center after 30 days.
-        # Marking an alert for deletion will have no effect on an alert which has
+        # deletion is removed from Alert Center after 30 days.
+        # Marking an alert for deletion has no effect on an alert which has
         # already been marked for deletion. Attempting to mark a nonexistent alert
-        # for deletion will return NOT_FOUND.
+        # for deletion results in a `NOT_FOUND` error.
         # @param [String] alert_id
         #   Required. The identifier of the alert to delete.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the Google account of the customer the
-        #   alert is associated with. This is obfuscated and not the plain customer
-        #   ID as stored internally. Inferred from the caller identity if not provided.
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alert is associated with.
+        #   Inferred from the caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -91,10 +89,11 @@ module Google
         # Gets the specified alert.
         # @param [String] alert_id
         #   Required. The identifier of the alert to retrieve.
+        #   Returns a NOT_FOUND error if no such alert.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the Google account of the customer the
-        #   alert is associated with. This is obfuscated and not the plain customer
-        #   ID as stored internally. Inferred from the caller identity if not provided.
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alert is associated with.
+        #   Inferred from the caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,67 +122,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the alerts for the current user and application.
+        # Lists the alerts.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the Google account of the customer the
-        #   alerts are associated with. This is obfuscated and not the plain
-        #   customer ID as stored internally. Inferred from the caller identity if not
-        #   provided.
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alerts are associated with.
+        #   Inferred from the caller identity if not provided.
         # @param [String] filter
-        #   Optional. Query string for filtering alert results.
-        #   This string must be specified as an expression or list of expressions,
-        #   using the following grammar:
-        #   ### Expressions
-        #   An expression has the general form `<field> <operator> <value>`.
-        #   A field or value which contains a space or a colon must be enclosed by
-        #   double quotes.
-        #   #### Operators
-        #   Operators follow the BNF specification:
-        #   `<equalityOperator> ::= "=" | ":"`
-        #   `<relationalOperator> ::= "<" | ">" | "<=" | ">="`
-        #   Relational operators are defined only for timestamp fields. Equality
-        #   operators are defined only for string fields.
-        #   #### Timestamp fields
-        #   The value supplied for a timestamp field must be an
-        #   [RFC 3339](https://tools.ietf.org/html/rfc3339) date-time string.
-        #   Supported timestamp fields are `create_time`, `start_time`, and `end_time`.
-        #   #### String fields
-        #   The value supplied for a string field may be an arbitrary string.
-        #   #### Examples
-        #   To query for all alerts created on or after April 5, 2018:
-        #   `create_time >= "2018-04-05T00:00:00Z"`
-        #   To query for all alerts from the source "Gmail phishing":
-        #   `source:"Gmail phishing"`
-        #   ### Joining expressions
-        #   Expressions may be joined to form a more complex query. The BNF
-        #   specification is:
-        #   `<expressionList> ::= <expression> | <expressionList> <conjunction>
-        #   <expressionList> | <negation> <expressionList>`
-        #   `<conjunction> ::= "AND" | "OR" | ""`
-        #   `<negation> ::= "NOT"`
-        #   Using the empty string as a conjunction acts as an implicit AND.
-        #   The precedence of joining operations, from highest to lowest, is NOT, AND,
-        #   OR.
-        #   #### Examples
-        #   To query for all alerts which started in 2017:
-        #   `start_time >= "2017-01-01T00:00:00Z" AND start_time <
-        #   "2018-01-01T00:00:00Z"`
-        #   To query for all user reported phishing alerts from the source
-        #   "Gmail phishing":
-        #   `type:"User reported phishing" source:"Gmail phishing"`
+        #   Optional. A query string for filtering alert results.
+        #   For more details, see [Query
+        #   filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
+        #   query filter fields](/admin-sdk/alertcenter/reference/filter-fields).
         # @param [String] order_by
-        #   Optional. Sort the list results by a certain order.
+        #   Optional. The sort order of the list results.
         #   If not specified results may be returned in arbitrary order.
-        #   You can sort the results in a descending order based on the creation
-        #   timestamp using order_by="create_time desc".
-        #   Currently, only sorting by create_time desc is supported.
+        #   You can sort the results in descending order based on the creation
+        #   timestamp using `order_by="create_time desc"`.
+        #   Currently, only sorting by `create_time desc` is supported.
         # @param [Fixnum] page_size
-        #   Optional. Requested page size. Server may return fewer items than
-        #   requested. If unspecified, server will pick an appropriate default.
+        #   Optional. The requested page size. Server may return fewer items than
+        #   requested. If unspecified, server picks an appropriate default.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         #   If empty, a new iteration is started. To continue an iteration, pass in
-        #   the value from the previous ListAlertsResponse's next_page_token field.
+        #   the value from the previous ListAlertsResponse's
+        #   next_page_token field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -215,16 +177,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new alert feedback.
+        # Creates new feedback for an alert.
         # @param [String] alert_id
         #   Required. The identifier of the alert this feedback belongs to.
-        #   Returns a NOT_FOUND error if no such alert.
+        #   Returns a `NOT_FOUND` error if no such alert.
         # @param [Google::Apis::AlertcenterV1beta1::AlertFeedback] alert_feedback_object
         # @param [String] customer_id
-        #   Optional. The unique identifier of the Google account of the customer the
-        #   alert's feedback is associated with. This is obfuscated and not the
-        #   plain customer ID as stored internally. Inferred from the caller identity
-        #   if not provided.
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alert is associated with.
+        #   Inferred from the caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -258,11 +219,12 @@ module Google
         # Lists all the feedback for an alert.
         # @param [String] alert_id
         #   Required. The alert identifier.
-        #   If the alert does not exist returns a NOT_FOUND error.
+        #   The "-" wildcard could be used to represent all alerts.
+        #   If alert does not exist returns a `NOT_FOUND` error.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the Google account of the customer the
-        #   alert is associated with. This is obfuscated and not the plain customer
-        #   ID as stored internally. Inferred from the caller identity if not provided.
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alert feedback are associated with.
+        #   Inferred from the caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

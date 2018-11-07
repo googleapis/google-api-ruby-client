@@ -1318,6 +1318,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesResumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5000,6 +5006,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
+          property :all_ports, as: 'allPorts'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -5511,6 +5518,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
+          property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -6164,6 +6172,16 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class InstancesResumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk::Representation
+      
+          property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
         end
       end
       
@@ -8300,6 +8318,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_retention_days, as: 'maxRetentionDays'
+          property :on_source_disk_delete, as: 'onSourceDiskDelete'
         end
       end
       
@@ -8320,7 +8339,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
-          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -8403,6 +8421,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :next_hop_gateway, as: 'nextHopGateway'
+          property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
@@ -8852,7 +8871,6 @@ module Google
       
           property :expr, as: 'expr', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
       
-          collection :src_ip_ranges, as: 'srcIpRanges'
           property :versioned_expr, as: 'versionedExpr'
         end
       end

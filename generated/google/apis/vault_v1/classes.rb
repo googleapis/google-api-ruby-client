@@ -921,6 +921,32 @@ module Google
         end
       end
       
+      # Definition of the response for method ListSaveQuery.
+      class ListSavedQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token to retrieve the next page of results in the list.
+        # If this is empty, then there are no more saved queries to list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of output saved queries.
+        # Corresponds to the JSON property `savedQueries`
+        # @return [Array<Google::Apis::VaultV1::SavedQuery>]
+        attr_accessor :saved_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+        end
+      end
+      
       # The options for mail export.
       class MailExportOptions
         include Google::Apis::Core::Hashable
@@ -1253,6 +1279,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @matter = args[:matter] if args.key?(:matter)
+        end
+      end
+      
+      # Definition of the saved query.
+      class SavedQuery
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The server generated timestamp at which saved query was
+        # created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Name of the saved query.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The matter id of the associated matter.
+        # The server does not look at this field during create and always uses matter
+        # id in the URL.
+        # Corresponds to the JSON property `matterId`
+        # @return [String]
+        attr_accessor :matter_id
+      
+        # A query definition relevant for search & export.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::VaultV1::Query]
+        attr_accessor :query
+      
+        # A unique identifier for the saved query.
+        # Corresponds to the JSON property `savedQueryId`
+        # @return [String]
+        attr_accessor :saved_query_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @matter_id = args[:matter_id] if args.key?(:matter_id)
+          @query = args[:query] if args.key?(:query)
+          @saved_query_id = args[:saved_query_id] if args.key?(:saved_query_id)
         end
       end
       

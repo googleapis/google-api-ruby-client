@@ -429,20 +429,20 @@ module Google
       class AppVersion
         include Google::Apis::Core::Hashable
       
-        # True if this version is a production Apk.
+        # True if this version is a production APK.
         # Corresponds to the JSON property `isProduction`
         # @return [Boolean]
         attr_accessor :is_production
         alias_method :is_production?, :is_production
       
-        # The track that this app was published in. For example if track is "alpha",
-        # this is an alpha version of the app. Deprecated, use track_id instead.
+        # Deprecated, use trackId instead.
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
       
-        # The track ids that this version was published in. This field supersedes track,
-        # but doesn't include the production track.
+        # Track ids that the app version is published in. Replaces the track field (
+        # deprecated), but doesn't include the production track (see isProduction
+        # instead).
         # Corresponds to the JSON property `trackId`
         # @return [Array<String>]
         attr_accessor :track_id
@@ -1792,7 +1792,7 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
-        # The tracks that are visible to the enterprise with their user-friendly name.
+        # The tracks visible to the enterprise.
         # Corresponds to the JSON property `appTracks`
         # @return [Array<Google::Apis::AndroidenterpriseV1::TrackInfo>]
         attr_accessor :app_tracks
@@ -1812,8 +1812,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_countries
       
-        # The tracks that are visible to the enterprise. Deprecated, use app_tracks
-        # instead.
+        # Deprecated, use appTracks instead.
         # Corresponds to the JSON property `availableTracks`
         # @return [Array<String>]
         attr_accessor :available_tracks
@@ -2084,27 +2083,14 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Grants visibility to the specified track(s) of the product to the device. The
-        # existing track ids can be obtained by calling Products.Get.
+        # Grants the device visibility to the specified product release track(s),
+        # identified by trackIds. The list of release tracks of a product can be
+        # obtained by calling Products.Get.
         # Corresponds to the JSON property `trackIds`
         # @return [Array<String>]
         attr_accessor :track_ids
       
-        # Grants visibility to the specified track(s) of the product to the device. The
-        # track available to the device is based on the following order of preference:
-        # alpha, beta, production. For example, if an app has a prod version, a beta
-        # version and an alpha version and the enterprise has been granted visibility to
-        # both the alpha and beta tracks, if tracks is `"beta", "production"` then the
-        # beta version of the app is made available to the device. If there are no app
-        # versions in the specified track adding the "alpha" and "beta" values to the
-        # list of tracks will have no effect. Note that the enterprise requires access
-        # to alpha and/or beta tracks before users can be granted visibility to apps in
-        # those tracks.
-        # The allowed sets are: `` (considered equivalent to `"production"`) `"
-        # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
-        # of elements is not relevant. Any other set of tracks will be rejected with an
-        # error.
-        # This is deprecated. Use track_ids instead.
+        # Deprecated. Use trackIds instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2210,27 +2196,13 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Grants visibility to the specified track(s) of the product to the user. This
-        # replaces the tracks field, and specifies the track by their unique id.
+        # Grants the user visibility to the specified product track(s), identified by
+        # trackIds.
         # Corresponds to the JSON property `trackIds`
         # @return [Array<String>]
         attr_accessor :track_ids
       
-        # Grants visibility to the specified track(s) of the product to the user. The
-        # track available to the user is based on the following order of preference:
-        # alpha, beta, production. For example, if an app has a prod version, a beta
-        # version and an alpha version and the enterprise has been granted visibility to
-        # both the alpha and beta tracks, if tracks is `"beta", "production"` the user
-        # will be able to install the app and they will get the beta version of the app.
-        # If there are no app versions in the specified track adding the "alpha" and "
-        # beta" values to the list of tracks will have no effect. Note that the
-        # enterprise requires access to alpha and/or beta tracks before users can be
-        # granted visibility to apps in those tracks.
-        # The allowed sets are: `` (considered equivalent to `"production"`) `"
-        # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
-        # of elements is not relevant. Any other set of tracks will be rejected with an
-        # error.
-        # This is deprecated. Use track_ids instead.
+        # Deprecated. Use trackIds instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2695,12 +2667,15 @@ module Google
       class TrackInfo
         include Google::Apis::Core::Hashable
       
-        # A changeable, user-friendly name for a track.
+        # A modifiable name for a track. This is the visible name in the play developer
+        # console.
         # Corresponds to the JSON property `trackAlias`
         # @return [String]
         attr_accessor :track_alias
       
-        # A unique an unchangeable identifier of a test track.
+        # Unmodifiable, unique track identifier. This identifier is the releaseTrackId
+        # in the url of the play developer console page that displays the track
+        # information.
         # Corresponds to the JSON property `trackId`
         # @return [String]
         attr_accessor :track_id

@@ -5168,14 +5168,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to remove the specified instances from the managed
-        # instance group. Abandoning an instance does not delete the instance, but it
-        # does remove the instance from any target pools that are applied by the managed
-        # instance group. This method reduces the targetSize of the managed instance
-        # group by the number of instances that you abandon. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # removed from the group. You must separately verify the status of the
-        # abandoning action with the listmanagedinstances method.
+        # Flags the specified instances to be removed from the managed instance group.
+        # Abandoning an instance does not delete the instance, but it does remove the
+        # instance from any target pools that are applied by the managed instance group.
+        # This method reduces the targetSize of the managed instance group by the number
+        # of instances that you abandon. This operation is marked as DONE when the
+        # action is scheduled even if the instances have not yet been removed from the
+        # group. You must separately verify the status of the abandoning action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -5357,9 +5357,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to delete the specified instances in the managed
-        # instance group. The instances are also removed from any target pools of which
-        # they were a member. This method reduces the targetSize of the managed instance
+        # Flags the specified instances in the managed instance group for immediate
+        # deletion. The instances are also removed from any target pools of which they
+        # were a member. This method reduces the targetSize of the managed instance
         # group by the number of instances that you delete. This operation is marked as
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
@@ -5462,11 +5462,11 @@ module Google
         end
         
         # Creates a managed instance group using the information that you specify in the
-        # request. After the group is created, it schedules an action to create
-        # instances in the group using the specified instance template. This operation
-        # is marked as DONE when the group is created even if the instances in the group
-        # have not yet been created. You must separately verify the status of the
-        # individual instances with the listmanagedinstances method.
+        # request. After the group is created, instances in the group are created using
+        # the specified instance template. This operation is marked as DONE when the
+        # group is created even if the instances in the group have not yet been created.
+        # You must separately verify the status of the individual instances with the
+        # listmanagedinstances method.
         # A managed instance group can have up to 1000 VM instances per group. Please
         # contact Cloud Support if you need an increase in this limit.
         # @param [String] project
@@ -5675,12 +5675,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to recreate the specified instances in the managed
-        # instance group. The instances are deleted and recreated using the current
-        # instance template for the managed instance group. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # recreated. You must separately verify the status of the recreating action with
-        # the listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # recreated. The instances are deleted and recreated using the current instance
+        # template for the managed instance group. This operation is marked as DONE when
+        # the flag is set even if the instances have not yet been recreated. You must
+        # separately verify the status of the recreating action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -5744,6 +5744,13 @@ module Google
         # the resize actions are scheduled even if the group has not yet added or
         # deleted any instances. You must separately verify the status of the creating
         # or deleting actions with the listmanagedinstances method.
+        # When resizing down, the instance group arbitrarily chooses the order in which
+        # VMs are deleted. The group takes into account some VM attributes when making
+        # the selection including:
+        # + The status of the VM instance. + The health of the VM instance. + The
+        # instance template version the VM is based on. + For regional managed instance
+        # groups, the location of the VM instance.
+        # This list is subject to change.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -7244,7 +7251,7 @@ module Google
         end
         
         # Retrieves the list of referrers to instances contained within the specified
-        # zone.
+        # zone. For more information, read Viewing Referrers to VM Instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7869,7 +7876,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets tags for the specified instance to the data included in the request.
+        # Sets network tags for the specified instance to the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8778,6 +8786,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the interconnectDiagnostics for the specified interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect
+        #   Name of the interconnect resource to query.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interconnect_diagnostics(project, interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/interconnects/{interconnect}/getDiagnostics', options)
+          command.response_representation = Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::InterconnectsGetDiagnosticsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['interconnect'] = interconnect unless interconnect.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Interconnect in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -8992,7 +9036,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9238,7 +9282,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -12960,7 +13004,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -12996,7 +13040,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to remove the specified instances from the managed
+        # Flags the specified instances to be immediately removed from the managed
         # instance group. Abandoning an instance does not delete the instance, but it
         # does remove the instance from any target pools that are applied by the managed
         # instance group. This method reduces the targetSize of the managed instance
@@ -13113,13 +13157,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to delete the specified instances in the managed
-        # instance group. The instances are also removed from any target pools of which
-        # they were a member. This method reduces the targetSize of the managed instance
-        # group by the number of instances that you delete. This operation is marked as
-        # DONE when the action is scheduled even if the instances are still being
-        # deleted. You must separately verify the status of the deleting action with the
-        # listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # deleted. The instances are also removed from any target pools of which they
+        # were a member. This method reduces the targetSize of the managed instance
+        # group by the number of instances that you delete. The deleteInstances
+        # operation is marked DONE if the deleteInstances request is successful. The
+        # underlying actions take additional time. You must separately verify the status
+        # of the deleting action with the listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -13217,11 +13261,11 @@ module Google
         end
         
         # Creates a managed instance group using the information that you specify in the
-        # request. After the group is created, it schedules an action to create
-        # instances in the group using the specified instance template. This operation
-        # is marked as DONE when the group is created even if the instances in the group
-        # have not yet been created. You must separately verify the status of the
-        # individual instances with the listmanagedinstances method.
+        # request. After the group is created, instances in the group are created using
+        # the specified instance template. This operation is marked as DONE when the
+        # group is created even if the instances in the group have not yet been created.
+        # You must separately verify the status of the individual instances with the
+        # listmanagedinstances method.
         # A regional managed instance group can contain up to 2000 instances.
         # @param [String] project
         #   Project ID for this request.
@@ -13427,12 +13471,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to recreate the specified instances in the managed
-        # instance group. The instances are deleted and recreated using the current
-        # instance template for the managed instance group. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # recreated. You must separately verify the status of the recreating action with
-        # the listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # recreated. The instances are deleted and recreated using the current instance
+        # template for the managed instance group. This operation is marked as DONE when
+        # the flag is set even if the instances have not yet been recreated. You must
+        # separately verify the status of the recreating action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -13490,13 +13534,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the intended size for the managed instance group. If you increase the
-        # size, the group schedules actions to create new instances using the current
-        # instance template. If you decrease the size, the group schedules delete
-        # actions on one or more instances. The resize operation is marked DONE when the
-        # resize actions are scheduled even if the group has not yet added or deleted
-        # any instances. You must separately verify the status of the creating or
-        # deleting actions with the listmanagedinstances method.
+        # Changes the intended size of the managed instance group. If you increase the
+        # size, the group creates new instances using the current instance template. If
+        # you decrease the size, the group deletes one or more instances.
+        # The resize operation is marked DONE if the resize request is successful. The
+        # underlying actions take additional time. You must separately verify the status
+        # of the creating or deleting actions with the listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -14327,6 +14370,84 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves runtime Nat mapping information of VM endpoints.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] router
+        #   Name of the Router resource to query for Nat Mapping information of VM
+        #   endpoints.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::VmEndpointNatMappingsList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::VmEndpointNatMappingsList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
+          command.response_representation = Google::Apis::ComputeV1::VmEndpointNatMappingsList::Representation
+          command.response_class = Google::Apis::ComputeV1::VmEndpointNatMappingsList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['router'] = router unless router.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

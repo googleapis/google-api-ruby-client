@@ -583,7 +583,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -969,7 +969,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2009,7 +2009,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2565,7 +2565,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2845,7 +2845,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2942,7 +2942,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3239,7 +3239,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3731,7 +3731,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4016,7 +4016,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4353,7 +4353,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4863,7 +4863,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5213,7 +5213,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5563,7 +5563,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5828,7 +5828,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5993,7 +5993,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6072,7 +6072,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6107,14 +6107,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to remove the specified instances from the managed
-        # instance group. Abandoning an instance does not delete the instance, but it
-        # does remove the instance from any target pools that are applied by the managed
-        # instance group. This method reduces the targetSize of the managed instance
-        # group by the number of instances that you abandon. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # removed from the group. You must separately verify the status of the
-        # abandoning action with the listmanagedinstances method.
+        # Flags the specified instances to be removed from the managed instance group.
+        # Abandoning an instance does not delete the instance, but it does remove the
+        # instance from any target pools that are applied by the managed instance group.
+        # This method reduces the targetSize of the managed instance group by the number
+        # of instances that you abandon. This operation is marked as DONE when the
+        # action is scheduled even if the instances have not yet been removed from the
+        # group. You must separately verify the status of the abandoning action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -6296,9 +6296,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to delete the specified instances in the managed
-        # instance group. The instances are also removed from any target pools of which
-        # they were a member. This method reduces the targetSize of the managed instance
+        # Flags the specified instances in the managed instance group for immediate
+        # deletion. The instances are also removed from any target pools of which they
+        # were a member. This method reduces the targetSize of the managed instance
         # group by the number of instances that you delete. This operation is marked as
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
@@ -6401,11 +6401,11 @@ module Google
         end
         
         # Creates a managed instance group using the information that you specify in the
-        # request. After the group is created, it schedules an action to create
-        # instances in the group using the specified instance template. This operation
-        # is marked as DONE when the group is created even if the instances in the group
-        # have not yet been created. You must separately verify the status of the
-        # individual instances with the listmanagedinstances method.
+        # request. After the group is created, instances in the group are created using
+        # the specified instance template. This operation is marked as DONE when the
+        # group is created even if the instances in the group have not yet been created.
+        # You must separately verify the status of the individual instances with the
+        # listmanagedinstances method.
         # A managed instance group can have up to 1000 VM instances per group. Please
         # contact Cloud Support if you need an increase in this limit.
         # @param [String] project
@@ -6673,12 +6673,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to recreate the specified instances in the managed
-        # instance group. The instances are deleted and recreated using the current
-        # instance template for the managed instance group. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # recreated. You must separately verify the status of the recreating action with
-        # the listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # recreated. The instances are deleted and recreated using the current instance
+        # template for the managed instance group. This operation is marked as DONE when
+        # the flag is set even if the instances have not yet been recreated. You must
+        # separately verify the status of the recreating action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -6742,6 +6742,13 @@ module Google
         # the resize actions are scheduled even if the group has not yet added or
         # deleted any instances. You must separately verify the status of the creating
         # or deleting actions with the listmanagedinstances method.
+        # When resizing down, the instance group arbitrarily chooses the order in which
+        # VMs are deleted. The group takes into account some VM attributes when making
+        # the selection including:
+        # + The status of the VM instance. + The health of the VM instance. + The
+        # instance template version the VM is based on. + For regional managed instance
+        # groups, the location of the VM instance.
+        # This list is subject to change.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -7040,7 +7047,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7680,7 +7687,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7808,7 +7815,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7968,7 +7975,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8007,7 +8014,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8487,7 +8494,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8743,7 +8750,7 @@ module Google
         end
         
         # Retrieves the list of referrers to instances contained within the specified
-        # zone.
+        # zone. For more information, read Viewing Referrers to VM Instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8861,6 +8868,60 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/reset', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes an instance that was suspended using the instances().suspend method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance resource to resume.
+        # @param [Google::Apis::ComputeBeta::InstancesResumeRequest] instances_resume_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_instance(project, zone, instance, instances_resume_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/resume', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstancesResumeRequest::Representation
+          command.request_object = instances_resume_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
@@ -8991,7 +9052,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9467,7 +9528,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets tags for the specified instance to the data included in the request.
+        # Sets network tags for the specified instance to the data included in the
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9722,13 +9784,73 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # This method suspends a running instance, saving its state to persistent
+        # storage, and allows you to resume the instance at a later time. Suspended
+        # instances incur reduced per-minute, virtual machine usage charges while they
+        # are suspended. Any resources the virtual machine is using, such as persistent
+        # disks and static IP addresses, will continue to be charged until they are
+        # deleted.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance resource to suspend.
+        # @param [Boolean] discard_local_ssd
+        #   If true, discard the contents of any attached localSSD partitions. Default
+        #   value is false (== preserve localSSD data).
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suspend_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/suspend', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['discardLocalSsd'] = discard_local_ssd unless discard_local_ssd.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10341,7 +10463,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10824,7 +10946,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -11785,7 +11907,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -12232,7 +12354,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -12546,7 +12668,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12793,7 +12915,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::ZoneSetPolicyRequest] zone_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -12889,7 +13011,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -13094,7 +13216,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13260,7 +13382,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -13302,7 +13424,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -14447,7 +14569,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -14862,7 +14984,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -15805,7 +15927,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -15841,7 +15963,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to remove the specified instances from the managed
+        # Flags the specified instances to be immediately removed from the managed
         # instance group. Abandoning an instance does not delete the instance, but it
         # does remove the instance from any target pools that are applied by the managed
         # instance group. This method reduces the targetSize of the managed instance
@@ -15958,13 +16080,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to delete the specified instances in the managed
-        # instance group. The instances are also removed from any target pools of which
-        # they were a member. This method reduces the targetSize of the managed instance
-        # group by the number of instances that you delete. This operation is marked as
-        # DONE when the action is scheduled even if the instances are still being
-        # deleted. You must separately verify the status of the deleting action with the
-        # listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # deleted. The instances are also removed from any target pools of which they
+        # were a member. This method reduces the targetSize of the managed instance
+        # group by the number of instances that you delete. The deleteInstances
+        # operation is marked DONE if the deleteInstances request is successful. The
+        # underlying actions take additional time. You must separately verify the status
+        # of the deleting action with the listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -16062,11 +16184,11 @@ module Google
         end
         
         # Creates a managed instance group using the information that you specify in the
-        # request. After the group is created, it schedules an action to create
-        # instances in the group using the specified instance template. This operation
-        # is marked as DONE when the group is created even if the instances in the group
-        # have not yet been created. You must separately verify the status of the
-        # individual instances with the listmanagedinstances method.
+        # request. After the group is created, instances in the group are created using
+        # the specified instance template. This operation is marked as DONE when the
+        # group is created even if the instances in the group have not yet been created.
+        # You must separately verify the status of the individual instances with the
+        # listmanagedinstances method.
         # A regional managed instance group can contain up to 2000 instances.
         # @param [String] project
         #   Project ID for this request.
@@ -16331,12 +16453,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedules a group action to recreate the specified instances in the managed
-        # instance group. The instances are deleted and recreated using the current
-        # instance template for the managed instance group. This operation is marked as
-        # DONE when the action is scheduled even if the instances have not yet been
-        # recreated. You must separately verify the status of the recreating action with
-        # the listmanagedinstances method.
+        # Flags the specified instances in the managed instance group to be immediately
+        # recreated. The instances are deleted and recreated using the current instance
+        # template for the managed instance group. This operation is marked as DONE when
+        # the flag is set even if the instances have not yet been recreated. You must
+        # separately verify the status of the recreating action with the
+        # listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -16394,13 +16516,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the intended size for the managed instance group. If you increase the
-        # size, the group schedules actions to create new instances using the current
-        # instance template. If you decrease the size, the group schedules delete
-        # actions on one or more instances. The resize operation is marked DONE when the
-        # resize actions are scheduled even if the group has not yet added or deleted
-        # any instances. You must separately verify the status of the creating or
-        # deleting actions with the listmanagedinstances method.
+        # Changes the intended size of the managed instance group. If you increase the
+        # size, the group creates new instances using the current instance template. If
+        # you decrease the size, the group deletes one or more instances.
+        # The resize operation is marked DONE if the resize request is successful. The
+        # underlying actions take additional time. You must separately verify the status
+        # of the creating or deleting actions with the listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -16628,7 +16749,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -16978,7 +17099,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -17565,7 +17686,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -18111,7 +18232,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -18410,7 +18531,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -18984,7 +19105,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -19113,7 +19234,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19222,7 +19343,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -19301,7 +19422,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -19546,7 +19667,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -19916,7 +20037,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -20174,7 +20295,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20469,7 +20590,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::RegionSetPolicyRequest] region_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -20566,7 +20687,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -20863,7 +20984,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -21317,7 +21438,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -21647,7 +21768,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -22293,7 +22414,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -22747,7 +22868,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -23440,7 +23561,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -23790,7 +23911,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -24266,7 +24387,7 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeBeta::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

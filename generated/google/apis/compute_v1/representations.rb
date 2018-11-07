@@ -1312,6 +1312,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsArpEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkLacpStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkOpticalPower
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectDiagnosticsLinkStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1361,6 +1391,12 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectsGetDiagnosticsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2230,6 +2266,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatSubnetworkToNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2237,6 +2285,12 @@ module Google
       end
       
       class RouterStatusBgpPeerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatusNatStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3006,6 +3060,36 @@ module Google
       
       class UsageExportLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappingsList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4924,6 +5008,7 @@ module Google
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
+          property :verifying, as: 'verifying'
         end
       end
       
@@ -5571,6 +5656,58 @@ module Google
         end
       end
       
+      class InterconnectDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry::Representation
+      
+          collection :links, as: 'links', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkStatus::Representation
+      
+          property :mac_address, as: 'macAddress'
+        end
+      end
+      
+      class InterconnectDiagnosticsArpEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :mac_address, as: 'macAddress'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkLacpStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_system_id, as: 'googleSystemId'
+          property :neighbor_system_id, as: 'neighborSystemId'
+          property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkOpticalPower
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :value, as: 'value'
+        end
+      end
+      
+      class InterconnectDiagnosticsLinkStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry::Representation
+      
+          property :circuit_id, as: 'circuitId'
+          property :google_demarc, as: 'googleDemarc'
+          property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus::Representation
+      
+          property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
+      
+          property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
+      
+        end
+      end
+      
       class InterconnectList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5676,6 +5813,14 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectsGetDiagnosticsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ComputeV1::InterconnectDiagnostics, decorator: Google::Apis::ComputeV1::InterconnectDiagnostics::Representation
+      
         end
       end
       
@@ -7095,6 +7240,8 @@ module Google
       
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :nats, as: 'nats', class: Google::Apis::ComputeV1::RouterNat, decorator: Google::Apis::ComputeV1::RouterNat::Representation
+      
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -7212,6 +7359,32 @@ module Google
         end
       end
       
+      class RouterNat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :min_ports_per_vm, as: 'minPortsPerVm'
+          property :name, as: 'name'
+          property :nat_ip_allocate_option, as: 'natIpAllocateOption'
+          collection :nat_ips, as: 'natIps'
+          property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeV1::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeV1::RouterNatSubnetworkToNat::Representation
+      
+          property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
+          property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
+          property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
+        end
+      end
+      
+      class RouterNatSubnetworkToNat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :secondary_ip_range_names, as: 'secondaryIpRangeNames'
+          collection :source_ip_ranges_to_nat, as: 'sourceIpRangesToNat'
+        end
+      end
+      
       class RouterStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7220,6 +7393,8 @@ module Google
           collection :best_routes_for_router, as: 'bestRoutesForRouter', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
       
           collection :bgp_peer_status, as: 'bgpPeerStatus', class: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus, decorator: Google::Apis::ComputeV1::RouterStatusBgpPeerStatus::Representation
+      
+          collection :nat_status, as: 'natStatus', class: Google::Apis::ComputeV1::RouterStatusNatStatus, decorator: Google::Apis::ComputeV1::RouterStatusNatStatus::Representation
       
           property :network, as: 'network'
         end
@@ -7239,6 +7414,18 @@ module Google
           property :status, as: 'status'
           property :uptime, as: 'uptime'
           property :uptime_seconds, as: 'uptimeSeconds'
+        end
+      end
+      
+      class RouterStatusNatStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
+          property :name, as: 'name'
+          property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          collection :user_allocated_nat_ip_resources, as: 'userAllocatedNatIpResources'
+          collection :user_allocated_nat_ips, as: 'userAllocatedNatIps'
         end
       end
       
@@ -8562,6 +8749,57 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
           property :report_name_prefix, as: 'reportNamePrefix'
+        end
+      end
+      
+      class VmEndpointNatMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_name, as: 'instanceName'
+          collection :interface_nat_mappings, as: 'interfaceNatMappings', class: Google::Apis::ComputeV1::VmEndpointNatMappingsInterfaceNatMappings, decorator: Google::Apis::ComputeV1::VmEndpointNatMappingsInterfaceNatMappings::Representation
+      
+        end
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_nat_ports, as: 'numTotalNatPorts'
+          property :source_alias_ip_range, as: 'sourceAliasIpRange'
+          property :source_virtual_ip, as: 'sourceVirtualIp'
+        end
+      end
+      
+      class VmEndpointNatMappingsList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::VmEndpointNatMappings, decorator: Google::Apis::ComputeV1::VmEndpointNatMappings::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::VmEndpointNatMappingsList::Warning, decorator: Google::Apis::ComputeV1::VmEndpointNatMappingsList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::VmEndpointNatMappingsList::Warning::Datum, decorator: Google::Apis::ComputeV1::VmEndpointNatMappingsList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

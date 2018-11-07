@@ -60,6 +60,31 @@ module Google
         end
       end
       
+      # An Admin API warning message.
+      class ApiWarning
+        include Google::Apis::Core::Hashable
+      
+        # Code to uniquely identify the warning type.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The warning message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Database instance backup configuration.
       class BackupConfiguration
         include Google::Apis::Core::Hashable
@@ -849,6 +874,11 @@ module Google
         class SqlExportOptions
           include Google::Apis::Core::Hashable
         
+          # Options for exporting from MySQL.
+          # Corresponds to the JSON property `mysqlExportOptions`
+          # @return [Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions]
+          attr_accessor :mysql_export_options
+        
           # Export only schemas.
           # Corresponds to the JSON property `schemaOnly`
           # @return [Boolean]
@@ -868,8 +898,31 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @mysql_export_options = args[:mysql_export_options] if args.key?(:mysql_export_options)
             @schema_only = args[:schema_only] if args.key?(:schema_only)
             @tables = args[:tables] if args.key?(:tables)
+          end
+          
+          # Options for exporting from MySQL.
+          class MysqlExportOptions
+            include Google::Apis::Core::Hashable
+          
+            # Option to include SQL statement required to set up replication. If set to 1,
+            # the dump file includes a CHANGE MASTER TO statement with the binary log
+            # coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL
+            # comment, and has no effect. All other values are ignored.
+            # Corresponds to the JSON property `masterData`
+            # @return [Fixnum]
+            attr_accessor :master_data
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @master_data = args[:master_data] if args.key?(:master_data)
+            end
           end
         end
       end
@@ -1196,6 +1249,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # List of warnings that ocurred while handling the request.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::SqladminV1beta4::ApiWarning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1205,6 +1263,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -1313,7 +1372,9 @@ module Google
         attr_accessor :ipv4_enabled
         alias_method :ipv4_enabled?, :ipv4_enabled
       
-        # Reserved for future use.
+        # The resource link for the VPC network from which the Cloud SQL instance is
+        # accessible for private IP. For example, /projects/myProject/global/networks/
+        # default. This setting can be updated, but it cannot be removed after it is set.
         # Corresponds to the JSON property `privateNetwork`
         # @return [String]
         attr_accessor :private_network
@@ -1409,7 +1470,7 @@ module Google
       end
       
       # Maintenance window. This specifies when a v2 Cloud SQL instance should
-      # preferably be restarted for system maintenance puruposes.
+      # preferably be restarted for system maintenance purposes.
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
@@ -1943,7 +2004,7 @@ module Google
         attr_accessor :location_preference
       
         # Maintenance window. This specifies when a v2 Cloud SQL instance should
-        # preferably be restarted for system maintenance puruposes.
+        # preferably be restarted for system maintenance purposes.
         # Corresponds to the JSON property `maintenanceWindow`
         # @return [Google::Apis::SqladminV1beta4::MaintenanceWindow]
         attr_accessor :maintenance_window

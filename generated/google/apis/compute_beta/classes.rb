@@ -2020,15 +2020,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The fully-qualified URL of a Instance Group resource. This instance group
-        # defines the list of instances that serve traffic. Member virtual machine
-        # instances from each instance group must live in the same zone as the instance
-        # group itself. No two backends in a backend service are allowed to use same
-        # Instance Group resource.
-        # Note that you must specify an Instance Group resource using the fully-
-        # qualified URL, rather than a partial URL.
+        # The fully-qualified URL of an Instance Group or Network Endpoint Group
+        # resource. In case of instance group this defines the list of instances that
+        # serve traffic. Member virtual machine instances from each instance group must
+        # live in the same zone as the instance group itself. No two backends in a
+        # backend service are allowed to use same Instance Group resource.
+        # For Network Endpoint Groups this defines list of endpoints. All endpoints of
+        # Network Endpoint Group must be hosted on instances located in the same zone as
+        # the Network Endpoint Group.
+        # Backend service can not contain mix of Instance Group and Network Endpoint
+        # Group backends.
+        # Note that you must specify an Instance Group or Network Endpoint Group
+        # resource using the fully-qualified URL, rather than a partial URL.
         # When the BackendService has load balancing scheme INTERNAL, the instance group
-        # must be within the same region as the BackendService.
+        # must be within the same region as the BackendService. Network Endpoint Groups
+        # are not supported for INTERNAL load balancing scheme.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -2691,7 +2697,8 @@ module Google
       class BackendServiceGroupHealth
         include Google::Apis::Core::Hashable
       
-        # 
+        # Health state of the backend instances or endpoints in requested instance or
+        # network endpoint group, determined based on configured health checks.
         # Corresponds to the JSON property `healthStatus`
         # @return [Array<Google::Apis::ComputeBeta::HealthStatus>]
         attr_accessor :health_status
@@ -5415,6 +5422,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
+        # This field is used along with the backend_service field for internal load
+        # balancing or with the target field for internal TargetInstance. This field
+        # cannot be used with port or portRange fields.
+        # When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify
+        # this field to allow packets addressed to any ports will be forwarded to the
+        # backends configured with this forwarding rule.
+        # Corresponds to the JSON property `allPorts`
+        # @return [Boolean]
+        attr_accessor :all_ports
+        alias_method :all_ports?, :all_ports
+      
         # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
@@ -5597,6 +5615,7 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @all_ports = args[:all_ports] if args.key?(:all_ports)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -7656,6 +7675,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # 
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -7805,6 +7829,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -9085,7 +9110,7 @@ module Google
         # instances initiated by this resize request only once. If there is an error
         # during creation, the managed instance group does not retry create this
         # instance, and we will decrease the targetSize of the request instead. If the
-        # flag is false, the group attemps to recreate each instance continuously until
+        # flag is false, the group attempts to recreate each instance continuously until
         # it succeeds.
         # This flag matters only in the first attempt of creation of an instance. After
         # an instance is successfully created while this flag is enabled, the instance
@@ -10209,6 +10234,36 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class InstancesResumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Array of disks associated with this instance that are protected with a
+        # customer-supplied encryption key.
+        # In order to resume the instance, the disk url and its corresponding key must
+        # be provided.
+        # If the disk is not protected with a customer-supplied encryption key it should
+        # not be specified.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk>]
+        attr_accessor :disks
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `instanceEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :instance_encryption_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
         end
       end
       
@@ -12342,6 +12397,10 @@ module Google
       
         # Whether Gin logging should happen in a fail-closed manner at the caller. This
         # is relevant only in the LocalIAM implementation, for now.
+        # NOTE: Logging to Gin in a fail-closed manner is currently unsupported while
+        # work is being done to satisfy the requirements of go/345. Currently, setting
+        # LOG_FAIL_CLOSED mode will have no effect, but still exists because there is
+        # active work being done to support it (b/115874152).
         # Corresponds to the JSON property `logMode`
         # @return [String]
         attr_accessor :log_mode
@@ -14857,8 +14916,8 @@ module Google
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
         # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
         # character must be a lowercase letter, and all following characters must be a
-        # dash, lowercase letter, or digit, except the last charaicter, which cannot be
-        # a dash.
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -16330,13 +16389,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full or partial URL to the BackendService resource. This will be used if
-        # none of the pathRules defined by this PathMatcher is matched by the URL's path
-        # portion. For example, the following are all valid URLs to a BackendService
-        # resource:
+        # none of the pathRules or routeRules defined by this PathMatcher are matched.
+        # For example, the following are all valid URLs to a BackendService resource:
         # - https://www.googleapis.com/compute/v1/projects/project/global/
         # backendServices/backendService
         # - compute/v1/projects/project/global/backendServices/backendService
         # - global/backendServices/backendService
+        # Use defaultService instead of defaultRouteAction when simple routing to a
+        # backend service is desired and other advanced capabilities like traffic
+        # splitting and URL rewrites are not required.
+        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect must be
+        # set.
+        # Authorization requires one or more of the following Google IAM permissions on
+        # the specified resource default_service:
+        # - compute.backendBuckets.use
+        # - compute.backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -16352,7 +16419,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The list of path rules.
+        # The list of path rules. Use this list instead of routeRules when routing based
+        # on simple path matching is all that's required. The order by which path rules
+        # are specified does not matter. Matches are always done on the longest-path-
+        # first basis.
+        # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+        # irrespective of the order in which those paths appear in this list.
+        # Only one of pathRules or routeRules must be set.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeBeta::PathRule>]
         attr_accessor :path_rules
@@ -16383,7 +16456,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
-        # The URL of the BackendService resource if this rule is matched.
+        # The URL of the backend service resource if this rule is matched.
+        # Use service instead of routeAction when simple routing to a backend service is
+        # desired and other advanced capabilities like traffic splitting and rewrites
+        # are not required.
+        # Only one of service, routeAction or urlRedirect should must be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -17953,7 +18030,8 @@ module Google
       class ResourceGroupReference
         include Google::Apis::Core::Hashable
       
-        # A URI referencing one of the instance groups listed in the backend service.
+        # A URI referencing one of the instance groups or network endpoint groups listed
+        # in the backend service.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -18065,7 +18143,7 @@ module Google
       
         # A backup schedule policy specifies when and how frequently snapshots are to be
         # created for the target disk. Also specifies how many and how long these
-        # automatically created snapshot should be retained.
+        # scheduled snapshots should be retained.
         # Corresponds to the JSON property `backupSchedulePolicy`
         # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy]
         attr_accessor :backup_schedule_policy
@@ -18255,11 +18333,11 @@ module Google
       
       # A backup schedule policy specifies when and how frequently snapshots are to be
       # created for the target disk. Also specifies how many and how long these
-      # automatically created snapshot should be retained.
+      # scheduled snapshots should be retained.
       class ResourcePolicyBackupSchedulePolicy
         include Google::Apis::Core::Hashable
       
-        # Policy for retention of automatically created snapshots.
+        # Policy for retention of scheduled snapshots.
         # Corresponds to the JSON property `retentionPolicy`
         # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy]
         attr_accessor :retention_policy
@@ -18269,7 +18347,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule]
         attr_accessor :schedule
       
-        # Specified snapshot properties for automatic snapshots created by this policy.
+        # Specified snapshot properties for scheduled snapshots created by this policy.
         # Corresponds to the JSON property `snapshotProperties`
         # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties]
         attr_accessor :snapshot_properties
@@ -18286,7 +18364,7 @@ module Google
         end
       end
       
-      # Policy for retention of automatically created snapshots.
+      # Policy for retention of scheduled snapshots.
       class ResourcePolicyBackupSchedulePolicyRetentionPolicy
         include Google::Apis::Core::Hashable
       
@@ -18295,6 +18373,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_retention_days
       
+        # Specifies the behavior to apply to scheduled snapshots when the source disk is
+        # deleted.
+        # Corresponds to the JSON property `onSourceDiskDelete`
+        # @return [String]
+        attr_accessor :on_source_disk_delete
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18302,6 +18386,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
+          @on_source_disk_delete = args[:on_source_disk_delete] if args.key?(:on_source_disk_delete)
         end
       end
       
@@ -18336,7 +18421,7 @@ module Google
         end
       end
       
-      # Specified snapshot properties for automatic snapshots created by this policy.
+      # Specified snapshot properties for scheduled snapshots created by this policy.
       class ResourcePolicyBackupSchedulePolicySnapshotProperties
         include Google::Apis::Core::Hashable
       
@@ -18346,16 +18431,11 @@ module Google
         attr_accessor :guest_flush
         alias_method :guest_flush?, :guest_flush
       
-        # Labels to apply to automatic snapshots. These can be later modified by the
+        # Labels to apply to scheduled snapshots. These can be later modified by the
         # setLabels method. Label values may be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
-        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
-        # Corresponds to the JSON property `storageLocations`
-        # @return [Array<String>]
-        attr_accessor :storage_locations
       
         def initialize(**args)
            update!(**args)
@@ -18365,7 +18445,6 @@ module Google
         def update!(**args)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
-          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -18385,7 +18464,7 @@ module Google
         attr_accessor :duration
       
         # Time within the window to start the operations. It must be in format "HH:MM?,
-        # where HH : [00-23] and MM : [00-59] GMT.
+        # where HH : [00-23] and MM : [00-00] GMT.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -18418,7 +18497,7 @@ module Google
         attr_accessor :hours_in_cycle
       
         # Time within the window to start the operations. It must be in format "HH:MM?,
-        # where HH : [00-23] and MM : [00-59] GMT.
+        # where HH : [00-23] and MM : [00-00] GMT.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -18595,7 +18674,7 @@ module Google
         attr_accessor :duration
       
         # Time within the window to start the operations. It must be in format "HH:MM?,
-        # where HH : [00-23] and MM : [00-59] GMT.
+        # where HH : [00-23] and MM : [00-00] GMT.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -18679,6 +18758,17 @@ module Google
         # @return [String]
         attr_accessor :next_hop_gateway
       
+        # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
+        # handle matching packets. You can only specify the forwarding rule as a partial
+        # or full URL. For example, the following are all valid URLs:
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # forwardingRules/forwardingRule
+        # - regions/region/forwardingRules/forwardingRule  Note that this can only be
+        # used when the destination_range is a public (non-RFC 1918) IP CIDR range.
+        # Corresponds to the JSON property `nextHopIlb`
+        # @return [String]
+        attr_accessor :next_hop_ilb
+      
         # The URL to an instance that should handle matching packets. You can specify
         # this as a full or partial URL. For example:
         # https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
@@ -18746,6 +18836,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @next_hop_gateway = args[:next_hop_gateway] if args.key?(:next_hop_gateway)
+          @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
@@ -20476,11 +20567,6 @@ module Google
         # @return [Google::Apis::ComputeBeta::Expr]
         attr_accessor :expr
       
-        # CIDR IP address range.
-        # Corresponds to the JSON property `srcIpRanges`
-        # @return [Array<String>]
-        attr_accessor :src_ip_ranges
-      
         # Preconfigured versioned expression. If this field is specified, config must
         # also be specified. Available preconfigured expressions along with their
         # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
@@ -20497,7 +20583,6 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @expr = args[:expr] if args.key?(:expr)
-          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
         end
       end
@@ -20743,7 +20828,7 @@ module Google
       class Snapshot
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Set to true if snapshots are autoamtically by applying resource
+        # [Output Only] Set to true if snapshots are automatically by applying resource
         # policy on the target disk.
         # Corresponds to the JSON property `autoCreated`
         # @return [Boolean]
@@ -22579,8 +22664,8 @@ module Google
         attr_accessor :self_link
       
         # URLs to SslCertificate resources that are used to authenticate connections
-        # between users and the load balancer. Currently, exactly one SSL certificate
-        # must be specified.
+        # between users and the load balancer. At least one SSL certificate must be
+        # specified. Currently, you may specify up to 15 SSL certificates.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -23244,7 +23329,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Sesssion affinity option, must be one of the following values:
+        # Session affinity option, must be one of the following values:
         # NONE: Connections from the same client IP may go to any instance in the pool.
         # CLIENT_IP: Connections from the same client IP will go to the same instance in
         # the pool while that instance remains healthy.
@@ -23847,7 +23932,8 @@ module Google
         attr_accessor :service
       
         # URLs to SslCertificate resources that are used to authenticate connections to
-        # Backends. Currently exactly one SSL certificate must be specified.
+        # Backends. At least one SSL certificate must be specified. Currently, you may
+        # specify up to 15 SSL certificates.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -24751,7 +24837,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # The URL of the BackendService resource if none of the hostRules match.
+        # The URL of the backendService resource if none of the hostRules match.
+        # Use defaultService instead of defaultRouteAction when simple routing to a
+        # backendService is desired and other advanced capabilities like traffic
+        # splitting and rewrites are not required.
+        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect should
+        # must be set.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service

@@ -289,6 +289,10 @@ module Google
       
         # A list of asset types of which to take a snapshot for. For example:
         # "google.compute.disk". If specified, only matching assets will be returned.
+        # See [Introduction to Cloud Asset
+        # Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-
+        # inventory/overview)
+        # for all supported asset types.
         # Corresponds to the JSON property `assetTypes`
         # @return [Array<String>]
         attr_accessor :asset_types
@@ -377,10 +381,10 @@ module Google
       class GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The path of the Cloud Storage objects. It's the same path that is used by
-        # gsutil. For example: "gs://bucket_name/object_path". See [Viewing and Editing
-        # Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
-        # metadata)
+        # The uri of the Cloud Storage object. It's the same uri that is used by
+        # gsutil. For example: "gs://bucket_name/object_name". See [Viewing and
+        # Editing Object
+        # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
         # for more information.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -751,7 +755,7 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # A time window of [start_time, end_time).
+        # A time window of (start_time, end_time].
         # Corresponds to the JSON property `window`
         # @return [Google::Apis::CloudassetV1beta1::TimeWindow]
         attr_accessor :window
@@ -768,17 +772,17 @@ module Google
         end
       end
       
-      # A time window of [start_time, end_time).
+      # A time window of (start_time, end_time].
       class TimeWindow
         include Google::Apis::Core::Hashable
       
-        # End time of the time window (exclusive).
+        # End time of the time window (inclusive).
         # Current timestamp if not specified.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Start time of the time window (inclusive).
+        # Start time of the time window (exclusive).
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

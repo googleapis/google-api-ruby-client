@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSavedQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MailExportOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class ReopenMatterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SavedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -579,6 +591,15 @@ module Google
         end
       end
       
+      class ListSavedQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saved_queries, as: 'savedQueries', class: Google::Apis::VaultV1::SavedQuery, decorator: Google::Apis::VaultV1::SavedQuery::Representation
+      
+        end
+      end
+      
       class MailExportOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -681,6 +702,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :matter, as: 'matter', class: Google::Apis::VaultV1::Matter, decorator: Google::Apis::VaultV1::Matter::Representation
       
+        end
+      end
+      
+      class SavedQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :matter_id, as: 'matterId'
+          property :query, as: 'query', class: Google::Apis::VaultV1::Query, decorator: Google::Apis::VaultV1::Query::Representation
+      
+          property :saved_query_id, as: 'savedQueryId'
         end
       end
       

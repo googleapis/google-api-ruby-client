@@ -26,12 +26,12 @@ module Google
       class AccountWarning
         include Google::Apis::Core::Hashable
       
-        # Required. Email of the user that this event belongs to.
+        # Required. The email of the user that this event belongs to.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Details of the login action
+        # The details of the login action.
         # Corresponds to the JSON property `loginDetails`
         # @return [Google::Apis::AlertcenterV1beta1::LoginDetails]
         attr_accessor :login_details
@@ -57,7 +57,7 @@ module Google
         # @return [String]
         attr_accessor :alert_id
       
-        # Output only. The time this alert was created. Assigned by the server.
+        # Output only. The time this alert was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -67,70 +67,53 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # Optional. Specific data associated with this alert.
-        # e.g. google.apps.alertcenter.type.DeviceCompromised.
+        # Optional. The data associated with this alert, for example
+        # google.apps.alertcenter.type.DeviceCompromised.
         # Corresponds to the JSON property `data`
         # @return [Hash<String,Object>]
         attr_accessor :data
       
-        # Output only. Whether this alert has been marked for deletion.
+        # Output only. `True` if this alert is marked for deletion.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Optional. The time this alert was no longer active. If provided, the
-        # end time must not be earlier than the start time. If not provided, the end
-        # time will default to the start time.
+        # Optional. The time the event that caused this alert ceased being active.
+        # If provided, the end time must not be earlier than the start time.
+        # If not provided, the end time defaults to the start time.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. An optional Security Investigation Tool query for this
-        # alert.
+        # Output only. An optional
+        # [Security Investigation Tool](https://support.google.com/a/answer/7575955)
+        # query for this alert.
         # Corresponds to the JSON property `securityInvestigationToolLink`
         # @return [String]
         attr_accessor :security_investigation_tool_link
       
         # Required. A unique identifier for the system that is reported the alert.
         # Supported sources are any of the following:
-        # * "Google Operations"
-        # * "Mobile device management"
-        # * "Gmail phishing"
-        # * "Domain wide takeout"
-        # * "Government attack warning"
-        # * "Google identity"
+        # * Google Operations
+        # * Mobile device management
+        # * Gmail phishing
+        # * Domain wide takeout
+        # * Government attack warning
+        # * Google identity
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
       
-        # Required. The time this alert became active.
+        # Required. The time the event that caused this alert was started or
+        # detected.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
         # Required. The type of the alert.
-        # Supported types are any of the following:
-        # * "Google Operations"
-        # * "Device compromised"
-        # * "Suspicious activity"
-        # * "User reported phishing"
-        # * "Misconfigured whitelist"
-        # * "Customer takeout initiated"
-        # * "Government attack warning"
-        # * "User reported spam spike"
-        # * "Suspicious message reported"
-        # * "Phishing reclassification"
-        # * "Malware reclassification"
-        # LINT.IfChange
-        # * "Suspicious login"
-        # * "Suspicious login (less secure app)"
-        # * "User suspended"
-        # * "Leaked password"
-        # * "User suspended (suspicious activity)"
-        # * "User suspended (spam)"
-        # * "User suspended (spam through relay)"
-        # LINT.ThenChange(//depot/google3/apps/albert/data/albert_enums.proto)
+        # For a list of available alert types see
+        # [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -163,7 +146,7 @@ module Google
         # @return [String]
         attr_accessor :alert_id
       
-        # Output only. The time this feedback was created. Assigned by the server.
+        # Output only. The time this feedback was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -178,8 +161,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # Output only. A unique identifier for the feedback. When creating a new
-        # feedback the system will assign one.
+        # Output only. The unique identifier for the feedback.
         # Corresponds to the JSON property `feedbackId`
         # @return [String]
         attr_accessor :feedback_id
@@ -208,7 +190,7 @@ module Google
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # Representation of a CSV file attachment, as a list of column headers and
+        # A representation of a CSV file attachment, as a list of column headers and
         # a list of data rows.
         # Corresponds to the JSON property `csv`
         # @return [Google::Apis::AlertcenterV1beta1::Csv]
@@ -224,12 +206,12 @@ module Google
         end
       end
       
-      # Alert for setting the domain or ip that malicious email comes from as
-      # whitelisted domain or ip in Gmail advanced settings.
+      # Alert for setting the domain or IP that malicious email comes from as
+      # whitelisted domain or IP in Gmail advanced settings.
       class BadWhitelist
         include Google::Apis::Core::Hashable
       
-        # Domain id of Gmail phishing alerts.
+        # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
         # @return [Google::Apis::AlertcenterV1beta1::DomainId]
         attr_accessor :domain_id
@@ -239,12 +221,13 @@ module Google
         # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
         attr_accessor :malicious_entity
       
-        # Every alert could contain multiple messages.
+        # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
         attr_accessor :messages
       
-        # The source ip address of the malicious email. e.g. "127.0.0.1".
+        # The source IP address of the malicious email, for example,
+        # `127.0.0.1`.
         # Corresponds to the JSON property `sourceIp`
         # @return [String]
         attr_accessor :source_ip
@@ -262,18 +245,18 @@ module Google
         end
       end
       
-      # Representation of a CSV file attachment, as a list of column headers and
+      # A representation of a CSV file attachment, as a list of column headers and
       # a list of data rows.
       class Csv
         include Google::Apis::Core::Hashable
       
-        # List of data rows in a CSV file, as string arrays rather than as a
+        # The list of data rows in a CSV file, as string arrays rather than as a
         # single comma-separated string.
         # Corresponds to the JSON property `dataRows`
         # @return [Array<Google::Apis::AlertcenterV1beta1::CsvRow>]
         attr_accessor :data_rows
       
-        # List of headers for data columns in a CSV file.
+        # The list of headers for data columns in a CSV file.
         # Corresponds to the JSON property `headers`
         # @return [Array<String>]
         attr_accessor :headers
@@ -289,12 +272,12 @@ module Google
         end
       end
       
-      # Representation of a single data row in a CSV file.
+      # A representation of a single data row in a CSV file.
       class CsvRow
         include Google::Apis::Core::Hashable
       
-        # Data entries in a CSV file row, as a string array rather than a single
-        # comma-separated string.
+        # The data entries in a CSV file row, as a string array rather than a
+        # single comma-separated string.
         # Corresponds to the JSON property `entries`
         # @return [Array<String>]
         attr_accessor :entries
@@ -318,7 +301,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # Required. List of security events.
+        # Required. The list of security events.
         # Corresponds to the JSON property `events`
         # @return [Array<Google::Apis::AlertcenterV1beta1::DeviceCompromisedSecurityDetail>]
         attr_accessor :events
@@ -338,12 +321,13 @@ module Google
       class DeviceCompromisedSecurityDetail
         include Google::Apis::Core::Hashable
       
-        # Device compromised state includes: "Compromised" and "Not Compromised".
+        # The device compromised state. Possible values are "`Compromised`" or
+        # "`Not Compromised`".
         # Corresponds to the JSON property `deviceCompromisedState`
         # @return [String]
         attr_accessor :device_compromised_state
       
-        # Required. Device Info.
+        # Required. The device ID.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -358,12 +342,12 @@ module Google
         # @return [String]
         attr_accessor :device_type
       
-        # Required for IOS, empty for others.
+        # Required for iOS, empty for others.
         # Corresponds to the JSON property `iosVendorId`
         # @return [String]
         attr_accessor :ios_vendor_id
       
-        # The device resource id.
+        # The device resource ID.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -389,7 +373,7 @@ module Google
         end
       end
       
-      # Domain id of Gmail phishing alerts.
+      # Domain ID of Gmail phishing alerts.
       class DomainId
         include Google::Apis::Core::Hashable
       
@@ -413,12 +397,12 @@ module Google
       class DomainWideTakeoutInitiated
         include Google::Apis::Core::Hashable
       
-        # Email of the admin who initiated the takeout.
+        # The email of the admin who initiated the takeout.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # takeout request id.
+        # The takeout request ID.
         # Corresponds to the JSON property `takeoutRequestId`
         # @return [String]
         attr_accessor :takeout_request_id
@@ -457,7 +441,7 @@ module Google
       class GmailMessageInfo
         include Google::Apis::Core::Hashable
       
-        # SHA256 Hash of email's attachment and all MIME parts.
+        # The `SHA256` hash of email's attachment and all MIME parts.
         # Corresponds to the JSON property `attachmentsSha256Hash`
         # @return [Array<String>]
         attr_accessor :attachments_sha256_hash
@@ -467,32 +451,32 @@ module Google
         # @return [String]
         attr_accessor :date
       
-        # Hash of message body text.
+        # The hash of the message body text.
         # Corresponds to the JSON property `md5HashMessageBody`
         # @return [String]
         attr_accessor :md5_hash_message_body
       
-        # MD5 Hash of email's subject. (Only available for reported emails).
+        # The MD5 Hash of email's subject (only available for reported emails).
         # Corresponds to the JSON property `md5HashSubject`
         # @return [String]
         attr_accessor :md5_hash_subject
       
-        # Snippet of the message body text. (Only available for reported emails)
+        # The snippet of the message body text (only available for reported emails).
         # Corresponds to the JSON property `messageBodySnippet`
         # @return [String]
         attr_accessor :message_body_snippet
       
-        # Message id.
+        # The message ID.
         # Corresponds to the JSON property `messageId`
         # @return [String]
         attr_accessor :message_id
       
-        # Recipient of this email.
+        # The recipient of this email.
         # Corresponds to the JSON property `recipient`
         # @return [String]
         attr_accessor :recipient
       
-        # Email subject text. (Only available for reported emails).
+        # The email subject text (only available for reported emails).
         # Corresponds to the JSON property `subjectText`
         # @return [String]
         attr_accessor :subject_text
@@ -518,7 +502,7 @@ module Google
       class GoogleOperations
         include Google::Apis::Core::Hashable
       
-        # List of emails which correspond to the users directly affected by the
+        # The list of emails which correspond to the users directly affected by the
         # incident.
         # Corresponds to the JSON property `affectedUserEmails`
         # @return [Array<String>]
@@ -529,12 +513,12 @@ module Google
         # @return [Google::Apis::AlertcenterV1beta1::Attachment]
         attr_accessor :attachment_data
       
-        # Detailed, freeform incident description.
+        # A detailed, freeform incident description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # One-line incident description.
+        # A one-line incident description.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -557,7 +541,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of alert feedback.
-        # Result is ordered descending by creation time.
+        # Feedback entries for each alert are ordered by creation time descending.
         # Corresponds to the JSON property `feedback`
         # @return [Array<Google::Apis::AlertcenterV1beta1::AlertFeedback>]
         attr_accessor :feedback
@@ -581,9 +565,10 @@ module Google
         # @return [Array<Google::Apis::AlertcenterV1beta1::Alert>]
         attr_accessor :alerts
       
-        # If not empty, indicates that there may be more alerts that match the
-        # request; this value can be passed in a new ListAlertsRequest to get the
-        # next page of values.
+        # The token for the next page. If not empty, indicates that there may be more
+        # alerts that match the listing request; this value can be used in a
+        # subsequent ListAlertsRequest to get alerts continuing from last result
+        # of the current list call.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -599,17 +584,18 @@ module Google
         end
       end
       
-      # Details of the login action
+      # The details of the login action.
       class LoginDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. Human readable IP address (e.g., 11.22.33.44) that is
-        # associated with the warning event.
+        # Optional. The human-readable IP address (for example,
+        # `11.22.33.44`) that is associated with the warning event.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # Optional. Login time that is associated with the warning event.
+        # Optional. The successful login time that is associated with the warning
+        # event. This will not be present for blocked login attempts.
         # Corresponds to the JSON property `loginTime`
         # @return [String]
         attr_accessor :login_time
@@ -627,20 +613,20 @@ module Google
       
       # Proto for all phishing alerts with common payload.
       # Supported types are any of the following:
-      # User reported phishing
-      # User reported spam spike
-      # Suspicious message reported
-      # Phishing reclassification
-      # Malware reclassification
+      # * User reported phishing
+      # * User reported spam spike
+      # * Suspicious message reported
+      # * Phishing reclassification
+      # * Malware reclassification
       class MailPhishing
         include Google::Apis::Core::Hashable
       
-        # Domain id of Gmail phishing alerts.
+        # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
         # @return [Google::Apis::AlertcenterV1beta1::DomainId]
         attr_accessor :domain_id
       
-        # If true, the email is originated from within the organization.
+        # If `true`, the email originated from within the organization.
         # Corresponds to the JSON property `isInternal`
         # @return [Boolean]
         attr_accessor :is_internal
@@ -651,7 +637,7 @@ module Google
         # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
         attr_accessor :malicious_entity
       
-        # Every alert could contain multiple messages.
+        # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
         attr_accessor :messages
@@ -673,7 +659,7 @@ module Google
       class MaliciousEntity
         include Google::Apis::Core::Hashable
       
-        # Sender email address.
+        # The sender email address.
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
         attr_accessor :from_header
@@ -689,16 +675,18 @@ module Google
       end
       
       # Alert for a spike in user reported phishing.
-      # This will be deprecated in favor of MailPhishing.
+      # <aside class="warning"><b>Warning</b>: This type has been deprecated. Use
+      # [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
+      # instead.</aside>
       class PhishingSpike
         include Google::Apis::Core::Hashable
       
-        # Domain id of Gmail phishing alerts.
+        # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
         # @return [Google::Apis::AlertcenterV1beta1::DomainId]
         attr_accessor :domain_id
       
-        # If true, the email is originated from within the organization.
+        # If `true`, the email originated from within the organization.
         # Corresponds to the JSON property `isInternal`
         # @return [Boolean]
         attr_accessor :is_internal
@@ -709,7 +697,7 @@ module Google
         # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
         attr_accessor :malicious_entity
       
-        # Every alert could contain multiple messages.
+        # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
         attr_accessor :messages
@@ -727,7 +715,7 @@ module Google
         end
       end
       
-      # A state sponsored attack alert. Derived from audit logs.
+      # A state-sponsored attack alert. Derived from audit logs.
       class StateSponsoredAttack
         include Google::Apis::Core::Hashable
       
@@ -755,7 +743,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # Required. List of security events.
+        # Required. The list of security events.
         # Corresponds to the JSON property `events`
         # @return [Array<Google::Apis::AlertcenterV1beta1::SuspiciousActivitySecurityDetail>]
         attr_accessor :events
@@ -775,7 +763,7 @@ module Google
       class SuspiciousActivitySecurityDetail
         include Google::Apis::Core::Hashable
       
-        # Required. Device Info.
+        # Required. The device ID.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -785,7 +773,7 @@ module Google
         # @return [String]
         attr_accessor :device_model
       
-        # Device property which is changed.
+        # The device property which was changed.
         # Corresponds to the JSON property `deviceProperty`
         # @return [String]
         attr_accessor :device_property
@@ -795,22 +783,22 @@ module Google
         # @return [String]
         attr_accessor :device_type
       
-        # Required for IOS, empty for others.
+        # Required for iOS, empty for others.
         # Corresponds to the JSON property `iosVendorId`
         # @return [String]
         attr_accessor :ios_vendor_id
       
-        # New value of the device property after change.
+        # The new value of the device property after the change.
         # Corresponds to the JSON property `newValue`
         # @return [String]
         attr_accessor :new_value
       
-        # Old value of the device property before change.
+        # The old value of the device property before the change.
         # Corresponds to the JSON property `oldValue`
         # @return [String]
         attr_accessor :old_value
       
-        # The device resource id.
+        # The device resource ID.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id

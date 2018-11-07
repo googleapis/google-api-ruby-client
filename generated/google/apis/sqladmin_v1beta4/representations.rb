@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApiWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -117,6 +123,12 @@ module Google
         
         class SqlExportOptions
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class MysqlExportOptions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -375,6 +387,14 @@ module Google
         end
       end
       
+      class ApiWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
       class BackupConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -570,8 +590,17 @@ module Google
         class SqlExportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :mysql_export_options, as: 'mysqlExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions::Representation
+        
             property :schema_only, as: 'schemaOnly'
             collection :tables, as: 'tables'
+          end
+          
+          class MysqlExportOptions
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :master_data, as: 'masterData'
+            end
           end
         end
       end
@@ -675,6 +704,8 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1beta4::ApiWarning, decorator: Google::Apis::SqladminV1beta4::ApiWarning::Representation
+      
         end
       end
       

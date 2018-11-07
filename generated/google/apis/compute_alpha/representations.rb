@@ -796,6 +796,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExchangedPeeringRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangedPeeringRoutesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1972,6 +1996,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceInstanceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceLastAttempt
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3088,6 +3118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNatLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterNatSubnetworkToNat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3190,6 +3226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3227,6 +3269,12 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherConfigDestinationPort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5194,6 +5242,7 @@ module Google
       class BackendServiceGroupHealth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeAlpha::HealthStatus, decorator: Google::Apis::ComputeAlpha::HealthStatus::Representation
       
           property :kind, as: 'kind'
@@ -5778,6 +5827,49 @@ module Google
         end
       end
       
+      class ExchangedPeeringRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_range, as: 'destRange'
+          property :imported, as: 'imported'
+          property :next_hop_region, as: 'nextHopRegion'
+          property :priority, as: 'priority'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ExchangedPeeringRoutesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ExchangedPeeringRoute, decorator: Google::Apis::ComputeAlpha::ExchangedPeeringRoute::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Warning, decorator: Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6229,6 +6321,7 @@ module Google
       class HealthStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -7324,7 +7417,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
-          property :availability_zone, as: 'availabilityZone'
           property :bandwidth, as: 'bandwidth'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
@@ -8009,6 +8101,8 @@ module Google
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
+          collection :instance_health, as: 'instanceHealth', class: Google::Apis::ComputeAlpha::ManagedInstanceInstanceHealth, decorator: Google::Apis::ComputeAlpha::ManagedInstanceInstanceHealth::Representation
+      
           property :instance_status, as: 'instanceStatus'
           property :instance_template, as: 'instanceTemplate'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt::Representation
@@ -8018,6 +8112,14 @@ module Google
           property :tag, as: 'tag'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
       
+        end
+      end
+      
+      class ManagedInstanceInstanceHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check, as: 'healthCheck'
+          property :health_state, as: 'healthState'
         end
       end
       
@@ -8133,6 +8235,7 @@ module Google
       class NetworkEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
@@ -8142,6 +8245,7 @@ module Google
       class NetworkEndpointGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :creation_timestamp, as: 'creationTimestamp'
           property :default_port, as: 'defaultPort'
           property :description, as: 'description'
@@ -8378,6 +8482,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create_routes, as: 'autoCreateRoutes'
+          property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :export_custom_routes, as: 'exportCustomRoutes'
           property :import_custom_routes, as: 'importCustomRoutes'
           property :name, as: 'name'
@@ -8401,6 +8506,8 @@ module Google
           property :export_custom_routes, as: 'exportCustomRoutes'
           property :import_custom_routes, as: 'importCustomRoutes'
           property :name, as: 'name'
+          property :network_peering, as: 'networkPeering', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
+      
           property :peer_network, as: 'peerNetwork'
         end
       end
@@ -9515,6 +9622,7 @@ module Google
       class ResourceCommitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
           property :amount, :numeric_string => true, as: 'amount'
           property :type, as: 'type'
         end
@@ -9621,6 +9729,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_retention_days, as: 'maxRetentionDays'
+          property :on_policy_switch, as: 'onPolicySwitch'
+          property :on_source_disk_delete, as: 'onSourceDiskDelete'
         end
       end
       
@@ -9941,6 +10051,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::RouterNatLogConfig, decorator: Google::Apis::ComputeAlpha::RouterNatLogConfig::Representation
+      
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -9951,6 +10063,14 @@ module Google
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
+        end
+      end
+      
+      class RouterNatLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :filter, as: 'filter'
         end
       end
       
@@ -10109,6 +10229,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
@@ -10144,6 +10265,8 @@ module Google
       class SecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::SecurityPolicyAssociation, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -10155,6 +10278,15 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SecurityPolicyAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_id, as: 'attachmentId'
+          property :name, as: 'name'
         end
       end
       
@@ -10201,11 +10333,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :description, as: 'description'
+          property :direction, as: 'direction'
+          property :enable_logging, as: 'enableLogging'
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher::Representation
       
           property :preview, as: 'preview'
           property :priority, as: 'priority'
+          collection :target_resources, as: 'targetResources'
         end
       end
       
@@ -10216,7 +10351,6 @@ module Google
       
           property :expr, as: 'expr', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
       
-          collection :src_ip_ranges, as: 'srcIpRanges'
           property :versioned_expr, as: 'versionedExpr'
         end
       end
@@ -10224,7 +10358,18 @@ module Google
       class SecurityPolicyRuleMatcherConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_ports, as: 'destPorts', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigDestinationPort, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigDestinationPort::Representation
+      
           collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherConfigDestinationPort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
         end
       end
       

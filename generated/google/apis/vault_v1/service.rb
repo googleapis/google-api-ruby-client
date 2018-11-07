@@ -887,6 +887,147 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a saved query.
+        # @param [String] matter_id
+        #   The matter id of the parent matter for which the saved query is to be
+        #   created.
+        # @param [Google::Apis::VaultV1::SavedQuery] saved_query_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VaultV1::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VaultV1::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_matter_saved_query(matter_id, saved_query_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/matters/{matterId}/savedQueries', options)
+          command.request_representation = Google::Apis::VaultV1::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::VaultV1::SavedQuery::Representation
+          command.response_class = Google::Apis::VaultV1::SavedQuery
+          command.params['matterId'] = matter_id unless matter_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a saved query by Id.
+        # @param [String] matter_id
+        #   The matter id of the parent matter for which the saved query is to be
+        #   deleted.
+        # @param [String] saved_query_id
+        #   Id of the saved query to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VaultV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VaultV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_matter_saved_query(matter_id, saved_query_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
+          command.response_representation = Google::Apis::VaultV1::Empty::Representation
+          command.response_class = Google::Apis::VaultV1::Empty
+          command.params['matterId'] = matter_id unless matter_id.nil?
+          command.params['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a saved query by Id.
+        # @param [String] matter_id
+        #   The matter id of the parent matter for which the saved query is to be
+        #   retrieved.
+        # @param [String] saved_query_id
+        #   Id of the saved query to be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VaultV1::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VaultV1::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_matter_saved_query(matter_id, saved_query_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
+          command.response_representation = Google::Apis::VaultV1::SavedQuery::Representation
+          command.response_class = Google::Apis::VaultV1::SavedQuery
+          command.params['matterId'] = matter_id unless matter_id.nil?
+          command.params['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists saved queries within a matter. An empty page token in
+        # ListSavedQueriesResponse denotes no more saved queries to list.
+        # @param [String] matter_id
+        #   The matter id of the parent matter for which the saved queries are to be
+        #   retrieved.
+        # @param [Fixnum] page_size
+        #   The maximum number of saved queries to return.
+        # @param [String] page_token
+        #   The pagination token as returned in the previous response.
+        #   An empty token means start from the beginning.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VaultV1::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VaultV1::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_matter_saved_queries(matter_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/matters/{matterId}/savedQueries', options)
+          command.response_representation = Google::Apis::VaultV1::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::VaultV1::ListSavedQueriesResponse
+          command.params['matterId'] = matter_id unless matter_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
