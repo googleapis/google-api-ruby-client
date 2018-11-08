@@ -4457,7 +4457,9 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # Product data from the time of the order placement.
+        # Product data as seen by customer from the time of the order placement. Note
+        # that certain attributes values (e.g. title or gtin) might be reformatted and
+        # no longer match values submitted via product feed.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::OrderLineItemProduct]
         attr_accessor :product
@@ -4657,11 +4659,6 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
-        # Case-insensitive fee ID.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # Name of the fee.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4674,7 +4671,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
-          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end

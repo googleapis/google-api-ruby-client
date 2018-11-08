@@ -2908,7 +2908,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
-          property :id, as: 'id'
           property :name, as: 'name'
         end
       end

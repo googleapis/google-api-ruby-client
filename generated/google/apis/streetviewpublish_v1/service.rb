@@ -140,6 +140,12 @@ module Google
         # Photo is still being indexed.
         # @param [String] photo_id
         #   Required. ID of the Photo.
+        # @param [String] language_code
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see
+        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        #   If language_code is unspecified, the user's language preference for Google
+        #   services will be used.
         # @param [String] view
         #   Specifies if a download URL for the photo bytes should be returned in the
         #   Photo response.
@@ -160,11 +166,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_photo(photo_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_photo(photo_id, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/photo/{photoId}', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::Photo
           command.params['photoId'] = photo_id unless photo_id.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -349,6 +356,12 @@ module Google
         # See
         # GetPhoto
         # for specific failures that can occur per photo.
+        # @param [String] language_code
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see
+        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        #   If language_code is unspecified, the user's language preference for Google
+        #   services will be used.
         # @param [Array<String>, String] photo_ids
         #   Required. IDs of the Photos. For HTTP
         #   GET requests, the URL query parameter should be
@@ -373,10 +386,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_photo_get(photo_ids: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_photo_get(language_code: nil, photo_ids: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/photos:batchGet', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::BatchGetPhotosResponse::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::BatchGetPhotosResponse
+          command.query['languageCode'] = language_code unless language_code.nil?
           command.query['photoIds'] = photo_ids unless photo_ids.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -444,6 +458,12 @@ module Google
         # @param [String] filter
         #   The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
         #   The only filter supported at the moment is `placeId`.
+        # @param [String] language_code
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see
+        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        #   If language_code is unspecified, the user's language preference for Google
+        #   services will be used.
         # @param [Fixnum] page_size
         #   The maximum number of photos to return.
         #   `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
@@ -476,11 +496,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_photos(filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_photos(filter: nil, language_code: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/photos', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::ListPhotosResponse::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::ListPhotosResponse
           command.query['filter'] = filter unless filter.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?

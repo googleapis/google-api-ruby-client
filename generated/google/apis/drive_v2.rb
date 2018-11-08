@@ -26,9 +26,9 @@ module Google
     # @see https://developers.google.com/drive/
     module DriveV2
       VERSION = 'V2'
-      REVISION = '20181022'
+      REVISION = '20181025'
 
-      # View and manage the files in your Google Drive
+      # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
       # View and manage its own configuration data in your Google Drive
@@ -49,7 +49,7 @@ module Google
       # View the photos, videos and albums in your Google Photos
       AUTH_DRIVE_PHOTOS_READONLY = 'https://www.googleapis.com/auth/drive.photos.readonly'
 
-      # View the files in your Google Drive
+      # See and download all your Google Drive files
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
 
       # Modify your Google Apps Script scripts' behavior

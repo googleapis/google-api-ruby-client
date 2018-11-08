@@ -27,7 +27,7 @@ module Google
       VERSION = 'V1'
       REVISION = '20141121'
 
-      # Manage your tasks
+      # Create, edit, organize, and delete all your tasks
       AUTH_TASKS = 'https://www.googleapis.com/auth/tasks'
 
       # View your tasks

@@ -1550,7 +1550,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def requestgmbaccess_liasetting(merchant_id, account_id, gmb_email: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def requestgmbaccess_liasetting(merchant_id, account_id, gmb_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/requestgmbaccess', options)
           command.response_representation = Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse::Representation
           command.response_class = Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse
@@ -1640,7 +1640,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def setinventoryverificationcontact_liasetting(merchant_id, account_id, contact_email: nil, contact_name: nil, country: nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def setinventoryverificationcontact_liasetting(merchant_id, account_id, contact_email, contact_name, country, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setinventoryverificationcontact', options)
           command.response_representation = Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse::Representation
           command.response_class = Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse
@@ -1689,7 +1689,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def setposdataprovider_liasetting(merchant_id, account_id, country: nil, pos_data_provider_id: nil, pos_external_account_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def setposdataprovider_liasetting(merchant_id, account_id, country, pos_data_provider_id: nil, pos_external_account_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setposdataprovider', options)
           command.response_representation = Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse::Representation
           command.response_class = Google::Apis::ContentV2::LiasettingsSetPosDataProviderResponse

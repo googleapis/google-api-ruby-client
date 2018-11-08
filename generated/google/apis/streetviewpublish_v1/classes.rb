@@ -521,6 +521,17 @@ module Google
       class Place
         include Google::Apis::Core::Hashable
       
+        # Output-only. The language_code that the name is localized with. This should
+        # be the language_code specified in the request, but may be a fallback.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output-only. The name of the place, localized to the language_code.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Place identifier, as described in
         # https://developers.google.com/places/place-id.
         # Corresponds to the JSON property `placeId`
@@ -533,6 +544,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @name = args[:name] if args.key?(:name)
           @place_id = args[:place_id] if args.key?(:place_id)
         end
       end

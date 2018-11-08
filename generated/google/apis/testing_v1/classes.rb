@@ -377,14 +377,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # True if and only if tests with this model DO NOT have video output.
-        # See also TestSpecification.disable_video_recording
-        # @OutputOnly
-        # Corresponds to the JSON property `videoRecordingNotSupported`
-        # @return [Boolean]
-        attr_accessor :video_recording_not_supported
-        alias_method :video_recording_not_supported?, :video_recording_not_supported
-      
         def initialize(**args)
            update!(**args)
         end
@@ -405,7 +397,6 @@ module Google
           @supported_abis = args[:supported_abis] if args.key?(:supported_abis)
           @supported_version_ids = args[:supported_version_ids] if args.key?(:supported_version_ids)
           @tags = args[:tags] if args.key?(:tags)
-          @video_recording_not_supported = args[:video_recording_not_supported] if args.key?(:video_recording_not_supported)
         end
       end
       
@@ -1767,15 +1758,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :progress_messages
       
-        # Indicates that video will not be recorded for this execution either because
-        # the user chose to disable it or the device does not support it.
-        # See AndroidModel.video_recording_not_supported
-        # @OutputOnly
-        # Corresponds to the JSON property `videoRecordingDisabled`
-        # @return [Boolean]
-        attr_accessor :video_recording_disabled
-        alias_method :video_recording_disabled?, :video_recording_disabled
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1784,7 +1766,6 @@ module Google
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
           @progress_messages = args[:progress_messages] if args.key?(:progress_messages)
-          @video_recording_disabled = args[:video_recording_disabled] if args.key?(:video_recording_disabled)
         end
       end
       

@@ -267,6 +267,8 @@ module Google
       class Place
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :name, as: 'name'
           property :place_id, as: 'placeId'
         end
       end

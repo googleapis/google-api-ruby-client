@@ -25,9 +25,9 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20180821'
+      REVISION = '20180904'
 
-      # Read, send, delete, and manage your email
+      # Read, compose, send, and permanently delete all your email from Gmail
       AUTH_SCOPE = 'https://mail.google.com/'
 
       # Manage drafts and send emails
