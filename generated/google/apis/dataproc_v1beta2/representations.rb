@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkRJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkSqlJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -644,6 +650,7 @@ module Google
       
           property :hive_job, as: 'hiveJob', class: Google::Apis::DataprocV1beta2::HiveJob, decorator: Google::Apis::DataprocV1beta2::HiveJob::Representation
       
+          property :job_uuid, as: 'jobUuid'
           hash :labels, as: 'labels'
           property :pig_job, as: 'pigJob', class: Google::Apis::DataprocV1beta2::PigJob, decorator: Google::Apis::DataprocV1beta2::PigJob::Representation
       
@@ -656,6 +663,8 @@ module Google
           property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1beta2::JobScheduling, decorator: Google::Apis::DataprocV1beta2::JobScheduling::Representation
       
           property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1beta2::SparkJob, decorator: Google::Apis::DataprocV1beta2::SparkJob::Representation
+      
+          property :spark_r_job, as: 'sparkRJob', class: Google::Apis::DataprocV1beta2::SparkRJob, decorator: Google::Apis::DataprocV1beta2::SparkRJob::Representation
       
           property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1beta2::SparkSqlJob, decorator: Google::Apis::DataprocV1beta2::SparkSqlJob::Representation
       
@@ -906,6 +915,19 @@ module Google
       
           property :main_class, as: 'mainClass'
           property :main_jar_file_uri, as: 'mainJarFileUri'
+          hash :properties, as: 'properties'
+        end
+      end
+      
+      class SparkRJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_uris, as: 'archiveUris'
+          collection :args, as: 'args'
+          collection :file_uris, as: 'fileUris'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1beta2::LoggingConfig, decorator: Google::Apis::DataprocV1beta2::LoggingConfig::Representation
+      
+          property :main_r_file_uri, as: 'mainRFileUri'
           hash :properties, as: 'properties'
         end
       end

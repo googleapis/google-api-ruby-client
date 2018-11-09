@@ -683,7 +683,7 @@ module Google
         # The name of the variable resource, in the format:
         # projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]
         # The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a
-        # valid RuntimeConfig reource and `[VARIABLE_NAME]` follows Unix file system
+        # valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system
         # file path naming.
         # The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and
         # dashes. Slashes are used as path element separators and are not part of the
@@ -697,7 +697,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Ouput only] The current state of the variable. The variable state indicates
+        # Output only. The current state of the variable. The variable state indicates
         # the outcome of the `variables().watch` call and is visible through the
         # `get` and `list` calls.
         # Corresponds to the JSON property `state`

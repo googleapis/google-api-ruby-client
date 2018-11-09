@@ -1062,6 +1062,13 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::HiveJob]
         attr_accessor :hive_job
       
+        # Output only. A UUID that uniquely identifies a job within the project over
+        # time. This is in contrast to a user-settable reference.job_id that may be
+        # reused over time.
+        # Corresponds to the JSON property `jobUuid`
+        # @return [String]
+        attr_accessor :job_uuid
+      
         # Optional. The labels to associate with this job. Label keys must contain 1 to
         # 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.
         # txt). Label values may be empty, but, if present, must contain 1 to 63
@@ -1104,6 +1111,12 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::SparkJob]
         attr_accessor :spark_job
       
+        # A Cloud Dataproc job for running Apache SparkR (https://spark.apache.org/docs/
+        # latest/sparkr.html) applications on YARN.
+        # Corresponds to the JSON property `sparkRJob`
+        # @return [Google::Apis::DataprocV1beta2::SparkRJob]
+        attr_accessor :spark_r_job
+      
         # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
         # ) queries.
         # Corresponds to the JSON property `sparkSqlJob`
@@ -1137,6 +1150,7 @@ module Google
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
           @hive_job = args[:hive_job] if args.key?(:hive_job)
+          @job_uuid = args[:job_uuid] if args.key?(:job_uuid)
           @labels = args[:labels] if args.key?(:labels)
           @pig_job = args[:pig_job] if args.key?(:pig_job)
           @placement = args[:placement] if args.key?(:placement)
@@ -1144,6 +1158,7 @@ module Google
           @reference = args[:reference] if args.key?(:reference)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @spark_job = args[:spark_job] if args.key?(:spark_job)
+          @spark_r_job = args[:spark_r_job] if args.key?(:spark_r_job)
           @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
           @status = args[:status] if args.key?(:status)
           @status_history = args[:status_history] if args.key?(:status_history)
@@ -2157,6 +2172,65 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @main_class = args[:main_class] if args.key?(:main_class)
           @main_jar_file_uri = args[:main_jar_file_uri] if args.key?(:main_jar_file_uri)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A Cloud Dataproc job for running Apache SparkR (https://spark.apache.org/docs/
+      # latest/sparkr.html) applications on YARN.
+      class SparkRJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of archives to be extracted in the working directory of
+        # Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .
+        # zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. The arguments to pass to the driver. Do not include arguments, such
+        # as --conf, that can be set as job properties, since a collision may occur that
+        # causes an incorrect job submission.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. HCFS URIs of files to be copied to the working directory of R
+        # drivers and distributed tasks. Useful for naively parallel tasks.
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1beta2::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Required. The HCFS URI of the main R file to use as the driver. Must be a .R
+        # file.
+        # Corresponds to the JSON property `mainRFileUri`
+        # @return [String]
+        attr_accessor :main_r_file_uri
+      
+        # Optional. A mapping of property names to values, used to configure SparkR.
+        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
+        # and classes in user code.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @args = args[:args] if args.key?(:args)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @main_r_file_uri = args[:main_r_file_uri] if args.key?(:main_r_file_uri)
           @properties = args[:properties] if args.key?(:properties)
         end
       end

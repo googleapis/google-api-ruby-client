@@ -1043,6 +1043,13 @@ module Google
         # @return [Google::Apis::DataprocV1::HiveJob]
         attr_accessor :hive_job
       
+        # Output only. A UUID that uniquely identifies a job within the project over
+        # time. This is in contrast to a user-settable reference.job_id that may be
+        # reused over time.
+        # Corresponds to the JSON property `jobUuid`
+        # @return [String]
+        attr_accessor :job_uuid
+      
         # Optional. The labels to associate with this job. Label keys must contain 1 to
         # 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.
         # txt). Label values may be empty, but, if present, must contain 1 to 63
@@ -1118,6 +1125,7 @@ module Google
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
           @hive_job = args[:hive_job] if args.key?(:hive_job)
+          @job_uuid = args[:job_uuid] if args.key?(:job_uuid)
           @labels = args[:labels] if args.key?(:labels)
           @pig_job = args[:pig_job] if args.key?(:pig_job)
           @placement = args[:placement] if args.key?(:placement)

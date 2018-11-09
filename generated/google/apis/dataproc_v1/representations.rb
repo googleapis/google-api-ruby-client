@@ -634,6 +634,7 @@ module Google
       
           property :hive_job, as: 'hiveJob', class: Google::Apis::DataprocV1::HiveJob, decorator: Google::Apis::DataprocV1::HiveJob::Representation
       
+          property :job_uuid, as: 'jobUuid'
           hash :labels, as: 'labels'
           property :pig_job, as: 'pigJob', class: Google::Apis::DataprocV1::PigJob, decorator: Google::Apis::DataprocV1::PigJob::Representation
       
