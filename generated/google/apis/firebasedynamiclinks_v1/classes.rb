@@ -887,6 +887,11 @@ module Google
         # @return [String]
         attr_accessor :ios_ipad_fallback_link
       
+        # iOS minimum version.
+        # Corresponds to the JSON property `iosMinimumVersion`
+        # @return [String]
+        attr_accessor :ios_minimum_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -899,6 +904,7 @@ module Google
           @ios_fallback_link = args[:ios_fallback_link] if args.key?(:ios_fallback_link)
           @ios_ipad_bundle_id = args[:ios_ipad_bundle_id] if args.key?(:ios_ipad_bundle_id)
           @ios_ipad_fallback_link = args[:ios_ipad_fallback_link] if args.key?(:ios_ipad_fallback_link)
+          @ios_minimum_version = args[:ios_minimum_version] if args.key?(:ios_minimum_version)
         end
       end
       

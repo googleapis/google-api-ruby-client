@@ -233,6 +233,7 @@ module Google
           collection :connections, as: 'connections', class: Google::Apis::StreetviewpublishV1::Connection, decorator: Google::Apis::StreetviewpublishV1::Connection::Representation
       
           property :download_url, as: 'downloadUrl'
+          property :maps_publish_status, as: 'mapsPublishStatus'
           property :photo_id, as: 'photoId', class: Google::Apis::StreetviewpublishV1::PhotoId, decorator: Google::Apis::StreetviewpublishV1::PhotoId::Representation
       
           collection :places, as: 'places', class: Google::Apis::StreetviewpublishV1::Place, decorator: Google::Apis::StreetviewpublishV1::Place::Representation
@@ -241,6 +242,7 @@ module Google
       
           property :share_link, as: 'shareLink'
           property :thumbnail_url, as: 'thumbnailUrl'
+          property :transfer_status, as: 'transferStatus'
           property :upload_reference, as: 'uploadReference', class: Google::Apis::StreetviewpublishV1::UploadRef, decorator: Google::Apis::StreetviewpublishV1::UploadRef::Representation
       
           property :view_count, :numeric_string => true, as: 'viewCount'

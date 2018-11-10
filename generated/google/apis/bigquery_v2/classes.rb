@@ -1601,6 +1601,12 @@ module Google
         # @return [String]
         attr_accessor :quote
       
+        # [Experimental] Range partitioning specification for this table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
+        # Corresponds to the JSON property `rangePartitioning`
+        # @return [Google::Apis::BigqueryV2::RangePartitioning]
+        attr_accessor :range_partitioning
+      
         # [Optional] The schema for the destination table. The schema can be omitted if
         # the destination table already exists, or if you're loading data from Google
         # Cloud Datastore.
@@ -1658,15 +1664,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_uris
       
-        # Time-based partitioning specification for the destination table.
+        # Time-based partitioning specification for the destination table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
       
-        # If sourceFormat is set to "AVRO", indicates whether to enable interpreting
-        # logical types into their corresponding types (ie. TIMESTAMP), instead of only
-        # using their raw types (ie. INTEGER). The default value will be true once this
-        # feature launches, but can be set now in preparation.
+        # [Optional] If sourceFormat is set to "AVRO", indicates whether to enable
+        # interpreting logical types into their corresponding types (ie. TIMESTAMP),
+        # instead of only using their raw types (ie. INTEGER).
         # Corresponds to the JSON property `useAvroLogicalTypes`
         # @return [Boolean]
         attr_accessor :use_avro_logical_types
@@ -1705,6 +1711,7 @@ module Google
           @null_marker = args[:null_marker] if args.key?(:null_marker)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
+          @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
           @schema = args[:schema] if args.key?(:schema)
           @schema_inline = args[:schema_inline] if args.key?(:schema_inline)
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
@@ -1819,6 +1826,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
+        # [Experimental] Range partitioning specification for this table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
+        # Corresponds to the JSON property `rangePartitioning`
+        # @return [Google::Apis::BigqueryV2::RangePartitioning]
+        attr_accessor :range_partitioning
+      
         # Allows the schema of the destination table to be updated as a side effect of
         # the query job. Schema update options are supported in two cases: when
         # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
@@ -1839,7 +1852,8 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
-        # Time-based partitioning specification for the destination table.
+        # Time-based partitioning specification for the destination table. Only one of
+        # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -1901,6 +1915,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @query = args[:query] if args.key?(:query)
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
           @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)

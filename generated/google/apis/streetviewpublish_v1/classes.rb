@@ -376,6 +376,12 @@ module Google
         # @return [String]
         attr_accessor :download_url
       
+        # Output only. Status in Google Maps, whether this photo was published, or
+        # rejected for a possibly specified reason.
+        # Corresponds to the JSON property `mapsPublishStatus`
+        # @return [String]
+        attr_accessor :maps_publish_status
+      
         # Identifier for a Photo.
         # Corresponds to the JSON property `photoId`
         # @return [Google::Apis::StreetviewpublishV1::PhotoId]
@@ -401,6 +407,11 @@ module Google
         # @return [String]
         attr_accessor :thumbnail_url
       
+        # Output only. Status of rights transfer on this photo.
+        # Corresponds to the JSON property `transferStatus`
+        # @return [String]
+        attr_accessor :transfer_status
+      
         # Upload reference for media files.
         # Corresponds to the JSON property `uploadReference`
         # @return [Google::Apis::StreetviewpublishV1::UploadRef]
@@ -420,11 +431,13 @@ module Google
           @capture_time = args[:capture_time] if args.key?(:capture_time)
           @connections = args[:connections] if args.key?(:connections)
           @download_url = args[:download_url] if args.key?(:download_url)
+          @maps_publish_status = args[:maps_publish_status] if args.key?(:maps_publish_status)
           @photo_id = args[:photo_id] if args.key?(:photo_id)
           @places = args[:places] if args.key?(:places)
           @pose = args[:pose] if args.key?(:pose)
           @share_link = args[:share_link] if args.key?(:share_link)
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
+          @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @upload_reference = args[:upload_reference] if args.key?(:upload_reference)
           @view_count = args[:view_count] if args.key?(:view_count)
         end

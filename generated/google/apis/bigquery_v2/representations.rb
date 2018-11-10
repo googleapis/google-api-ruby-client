@@ -796,6 +796,8 @@ module Google
           property :null_marker, as: 'nullMarker'
           collection :projection_fields, as: 'projectionFields'
           property :quote, as: 'quote'
+          property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :schema_inline, as: 'schemaInline'
@@ -832,6 +834,8 @@ module Google
           property :priority, as: 'priority'
           property :query, as: 'query'
           collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
+      
+          property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
           collection :schema_update_options, as: 'schemaUpdateOptions'
           hash :table_definitions, as: 'tableDefinitions', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation

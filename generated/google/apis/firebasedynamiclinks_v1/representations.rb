@@ -380,6 +380,7 @@ module Google
           property :ios_fallback_link, as: 'iosFallbackLink'
           property :ios_ipad_bundle_id, as: 'iosIpadBundleId'
           property :ios_ipad_fallback_link, as: 'iosIpadFallbackLink'
+          property :ios_minimum_version, as: 'iosMinimumVersion'
         end
       end
       
