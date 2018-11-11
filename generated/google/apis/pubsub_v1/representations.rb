@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExpirationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,13 @@ module Google
         end
       end
       
+      class ExpirationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ttl, as: 'ttl'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -412,6 +425,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::PubsubV1::ExpirationPolicy, decorator: Google::Apis::PubsubV1::ExpirationPolicy::Representation
+      
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
           property :name, as: 'name'

@@ -48,7 +48,8 @@ module Google
         end
         
         # Creates a snapshot from the requested subscription. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.
@@ -63,17 +64,17 @@ module Google
         # See also the `Snapshot.expire_time` field. If the name is not provided in
         # the request, the server will assign a random
         # name for this snapshot on the same project as the subscription, conforming
-        # to the [resource name format](https://cloud.google.com/pubsub/docs/overview#
-        # names).
-        # The generated
-        # name is populated in the returned Snapshot object. Note that for REST API
-        # requests, you must specify a name in the request.
+        # to the
+        # [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
+        # The generated name is populated in the returned Snapshot object. Note that
+        # for REST API requests, you must specify a name in the request.
         # @param [String] name
         #   Optional user-provided name for this snapshot.
         #   If the name is not provided in the request, the server will assign a random
         #   name for this snapshot on the same project as the subscription.
         #   Note that for REST API requests, you must specify a name.  See the
-        #   <a href="/pubsub/docs/admin#resource_names">resource name rules</a>.
+        #   <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+        #   resource name rules</a>.
         #   Format is `projects/`project`/snapshots/`snap``.
         # @param [Google::Apis::PubsubV1::CreateSnapshotRequest] create_snapshot_request_object
         # @param [String] fields
@@ -106,7 +107,8 @@ module Google
         end
         
         # Removes an existing snapshot. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.<br><br>
@@ -148,10 +150,10 @@ module Google
         end
         
         # Gets the configuration details of a snapshot. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
-        # you to manage message acknowledgments in bulk. That is, you can set the
-        # acknowledgment state of messages in an existing subscription to the state
-        # captured by a snapshot.<br><br>
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow you to manage message acknowledgments in bulk. That
+        # is, you can set the acknowledgment state of messages in an existing
+        # subscription to the state captured by a snapshot.<br><br>
         # <b>BETA:</b> This feature is part of a beta release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
         # use. It is not subject to any SLA or deprecation policy.
@@ -219,7 +221,8 @@ module Google
         end
         
         # Lists the existing snapshots. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.<br><br>
@@ -265,7 +268,8 @@ module Google
         end
         
         # Updates an existing snapshot. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.<br><br>
@@ -419,7 +423,8 @@ module Google
         end
         
         # Creates a subscription to a given topic. See the
-        # <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
+        # <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+        # resource name rules</a>.
         # If the subscription already exists, returns `ALREADY_EXISTS`.
         # If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         # If the name is not provided in the request, the server will assign a random
@@ -756,7 +761,8 @@ module Google
         
         # Seeks an existing subscription to a point in time or to a given snapshot,
         # whichever is provided in the request. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot. Note that both the subscription and the snapshot
@@ -871,7 +877,8 @@ module Google
         end
         
         # Creates the given topic with the given name. See the
-        # <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
+        # <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+        # resource name rules</a>.
         # @param [String] name
         #   The name of the topic. It must have the format
         #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
@@ -1196,7 +1203,8 @@ module Google
         end
         
         # Lists the names of the snapshots on this topic. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.<br><br>

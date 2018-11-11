@@ -98,7 +98,8 @@ module Google
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
-        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+        # managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -143,6 +144,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A policy that specifies the conditions for resource expiration (i.e.,
+      # automatic resource deletion).
+      class ExpirationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the "time-to-live" duration for an associated resource. The
+        # resource expires if it is not active for a period of `ttl`. The definition
+        # of "activity" depends on the type of the associated resource. The minimum
+        # and maximum allowed values for `ttl` depend on the type of the associated
+        # resource, as well. If `ttl` is not set, the associated resource never
+        # expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -501,6 +527,8 @@ module Google
       
       # A message that is published by publishers and consumed by subscribers. The
       # message must contain either a non-empty data field or at least one attribute.
+      # See <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
+      # for more information about message limits.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -648,6 +676,8 @@ module Google
       
         # A message that is published by publishers and consumed by subscribers. The
         # message must contain either a non-empty data field or at least one attribute.
+        # See <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
+        # for more information about message limits.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]
         attr_accessor :message
@@ -772,7 +802,8 @@ module Google
       end
       
       # A snapshot resource. Snapshots are used in
-      # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+      # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+      # operations, which allow
       # you to manage message acknowledgments in bulk. That is, you can set the
       # acknowledgment state of messages in an existing subscription to the state
       # captured by a snapshot.<br><br>
@@ -796,7 +827,8 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+        # managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -849,7 +881,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+        # A policy that specifies the conditions for resource expiration (i.e.,
+        # automatic resource deletion).
+        # Corresponds to the JSON property `expirationPolicy`
+        # @return [Google::Apis::PubsubV1::ExpirationPolicy]
+        attr_accessor :expiration_policy
+      
+        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+        # managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -886,7 +925,8 @@ module Google
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
         # window. This must be true if you would like to
-        # <a href="/pubsub/docs/replay-overview#seek_to_a_time">Seek to a timestamp</a>.
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
+        # Seek to a timestamp</a>.
         # <br><br>
         # <b>BETA:</b> This feature is part of a beta release. This API might be
         # changed in backward-incompatible ways and is not recommended for production
@@ -911,6 +951,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
           @name = args[:name] if args.key?(:name)
@@ -966,7 +1007,8 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
-        # See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+        # managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1000,7 +1042,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A snapshot resource. Snapshots are used in
-        # <a href="/pubsub/docs/replay-overview">Seek</a> operations, which allow
+        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+        # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.<br><br>

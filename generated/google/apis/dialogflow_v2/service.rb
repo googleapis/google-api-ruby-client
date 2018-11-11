@@ -1148,6 +1148,8 @@ module Google
         # @param [String] name
         #   Required. The unique identifier of the context. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
+        #   The `Context ID` is always converted to lowercase, may only contain
+        #   characters in [a-zA-Z0-9_-%] and may be at most 250 bytes long.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context] google_cloud_dialogflow_v2_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
