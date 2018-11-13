@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdatePageElementsZOrderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdatePagePropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1605,6 +1611,8 @@ module Google
       
           property :update_page_element_transform, as: 'updatePageElementTransform', class: Google::Apis::SlidesV1::UpdatePageElementTransformRequest, decorator: Google::Apis::SlidesV1::UpdatePageElementTransformRequest::Representation
       
+          property :update_page_elements_z_order, as: 'updatePageElementsZOrder', class: Google::Apis::SlidesV1::UpdatePageElementsZOrderRequest, decorator: Google::Apis::SlidesV1::UpdatePageElementsZOrderRequest::Representation
+      
           property :update_page_properties, as: 'updatePageProperties', class: Google::Apis::SlidesV1::UpdatePagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdatePagePropertiesRequest::Representation
       
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::SlidesV1::UpdateParagraphStyleRequest, decorator: Google::Apis::SlidesV1::UpdateParagraphStyleRequest::Representation
@@ -2043,6 +2051,14 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :transform, as: 'transform', class: Google::Apis::SlidesV1::AffineTransform, decorator: Google::Apis::SlidesV1::AffineTransform::Representation
       
+        end
+      end
+      
+      class UpdatePageElementsZOrderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+          collection :page_element_object_ids, as: 'pageElementObjectIds'
         end
       end
       

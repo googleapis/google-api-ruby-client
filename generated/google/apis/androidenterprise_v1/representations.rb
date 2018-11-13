@@ -472,6 +472,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebAppIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebAppsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Administrator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1220,6 +1238,36 @@ module Google
           property :kind, as: 'kind'
           property :placeholder, as: 'placeholder'
           property :user_value, as: 'userValue'
+        end
+      end
+      
+      class WebApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_mode, as: 'displayMode'
+          collection :icons, as: 'icons', class: Google::Apis::AndroidenterpriseV1::WebAppIcon, decorator: Google::Apis::AndroidenterpriseV1::WebAppIcon::Representation
+      
+          property :is_published, as: 'isPublished'
+          property :start_url, as: 'startUrl'
+          property :title, as: 'title'
+          property :version_code, :numeric_string => true, as: 'versionCode'
+          property :web_app_id, as: 'webAppId'
+        end
+      end
+      
+      class WebAppIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_data, as: 'imageData'
+        end
+      end
+      
+      class WebAppsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :web_app, as: 'webApp', class: Google::Apis::AndroidenterpriseV1::WebApp, decorator: Google::Apis::AndroidenterpriseV1::WebApp::Representation
+      
         end
       end
     end

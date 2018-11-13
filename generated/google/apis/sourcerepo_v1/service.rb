@@ -22,7 +22,7 @@ module Google
     module SourcerepoV1
       # Cloud Source Repositories API
       #
-      # Access source code repositories hosted by Google.
+      # Accesses source code repositories hosted by Google.
       #
       # @example
       #    require 'google/apis/sourcerepo_v1'

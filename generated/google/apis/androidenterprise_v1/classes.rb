@@ -2863,6 +2863,116 @@ module Google
           @user_value = args[:user_value] if args.key?(:user_value)
         end
       end
+      
+      # WebApp resource info.
+      class WebApp
+        include Google::Apis::Core::Hashable
+      
+        # The display mode of the web app.
+        # Corresponds to the JSON property `displayMode`
+        # @return [String]
+        attr_accessor :display_mode
+      
+        # A list of icons representing this website. Must have at least one element.
+        # Corresponds to the JSON property `icons`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::WebAppIcon>]
+        attr_accessor :icons
+      
+        # A flag whether the app has been published to the Play store yet.
+        # Corresponds to the JSON property `isPublished`
+        # @return [Boolean]
+        attr_accessor :is_published
+        alias_method :is_published?, :is_published
+      
+        # The start URL, i.e. the URL that should load when the user opens the
+        # application.
+        # Corresponds to the JSON property `startUrl`
+        # @return [String]
+        attr_accessor :start_url
+      
+        # The title of the web application as displayed to the user (e.g., amongst a
+        # list of other applications, or as a label for an icon).
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The current version of the app.
+        # Note that the version can automatically increase during the lifetime of the
+        # web app, while Google does internal housekeeping to keep the web app up-to-
+        # date.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        # The ID of the application.
+        # Corresponds to the JSON property `webAppId`
+        # @return [String]
+        attr_accessor :web_app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_mode = args[:display_mode] if args.key?(:display_mode)
+          @icons = args[:icons] if args.key?(:icons)
+          @is_published = args[:is_published] if args.key?(:is_published)
+          @start_url = args[:start_url] if args.key?(:start_url)
+          @title = args[:title] if args.key?(:title)
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @web_app_id = args[:web_app_id] if args.key?(:web_app_id)
+        end
+      end
+      
+      # Icon for a web app.
+      class WebAppIcon
+        include Google::Apis::Core::Hashable
+      
+        # The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
+        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
+        # - The image type can be png or jpg.
+        # - The image should ideally be square.
+        # - The image should ideally have a size of 512x512.
+        # Corresponds to the JSON property `imageData`
+        # @return [String]
+        attr_accessor :image_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_data = args[:image_data] if args.key?(:image_data)
+        end
+      end
+      
+      # The web app details for an enterprise.
+      class WebAppsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#webAppsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The manifest describing a web app.
+        # Corresponds to the JSON property `webApp`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::WebApp>]
+        attr_accessor :web_app
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @web_app = args[:web_app] if args.key?(:web_app)
+        end
+      end
     end
   end
 end

@@ -3006,6 +3006,13 @@ module Google
         # @return [Google::Apis::SlidesV1::UpdatePageElementTransformRequest]
         attr_accessor :update_page_element_transform
       
+        # Updates the Z-order of page elements. Z-order is an ordering of the elements
+        # on the page from back to front. The page element in the front may cover the
+        # elements that are behind it.
+        # Corresponds to the JSON property `updatePageElementsZOrder`
+        # @return [Google::Apis::SlidesV1::UpdatePageElementsZOrderRequest]
+        attr_accessor :update_page_elements_z_order
+      
         # Updates the properties of a Page.
         # Corresponds to the JSON property `updatePageProperties`
         # @return [Google::Apis::SlidesV1::UpdatePagePropertiesRequest]
@@ -3094,6 +3101,7 @@ module Google
           @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
           @update_page_element_alt_text = args[:update_page_element_alt_text] if args.key?(:update_page_element_alt_text)
           @update_page_element_transform = args[:update_page_element_transform] if args.key?(:update_page_element_transform)
+          @update_page_elements_z_order = args[:update_page_elements_z_order] if args.key?(:update_page_elements_z_order)
           @update_page_properties = args[:update_page_properties] if args.key?(:update_page_properties)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_shape_properties = args[:update_shape_properties] if args.key?(:update_shape_properties)
@@ -4557,6 +4565,36 @@ module Google
           @apply_mode = args[:apply_mode] if args.key?(:apply_mode)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @transform = args[:transform] if args.key?(:transform)
+        end
+      end
+      
+      # Updates the Z-order of page elements. Z-order is an ordering of the elements
+      # on the page from back to front. The page element in the front may cover the
+      # elements that are behind it.
+      class UpdatePageElementsZOrderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Z-order operation to apply on the page elements.
+        # When applying the operation on multiple page elements, the relative
+        # Z-orders within these page elements before the operation is maintained.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The object IDs of the page elements to update.
+        # All the page elements must be on the same page and must not be grouped.
+        # Corresponds to the JSON property `pageElementObjectIds`
+        # @return [Array<String>]
+        attr_accessor :page_element_object_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+          @page_element_object_ids = args[:page_element_object_ids] if args.key?(:page_element_object_ids)
         end
       end
       
