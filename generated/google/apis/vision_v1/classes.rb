@@ -1469,6 +1469,11 @@ module Google
       class GoogleCloudVisionV1p1beta1BoundingPoly
         include Google::Apis::Core::Hashable
       
+        # The bounding polygon normalized vertices.
+        # Corresponds to the JSON property `normalizedVertices`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1NormalizedVertex>]
+        attr_accessor :normalized_vertices
+      
         # The bounding polygon vertices.
         # Corresponds to the JSON property `vertices`
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Vertex>]
@@ -1480,6 +1485,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @normalized_vertices = args[:normalized_vertices] if args.key?(:normalized_vertices)
           @vertices = args[:vertices] if args.key?(:vertices)
         end
       end
@@ -2090,6 +2096,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
+        end
+      end
+      
+      # A vertex represents a 2D point in the image.
+      # NOTE: the normalized vertex coordinates are relative to the original image
+      # and range from 0 to 1.
+      class GoogleCloudVisionV1p1beta1NormalizedVertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
         end
       end
       

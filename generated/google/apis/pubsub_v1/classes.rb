@@ -527,7 +527,11 @@ module Google
       
       # A message that is published by publishers and consumed by subscribers. The
       # message must contain either a non-empty data field or at least one attribute.
-      # See <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
+      # Note that client libraries represent this object differently
+      # depending on the language. See the corresponding
+      # <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
+      # library documentation</a> for more information. See
+      # <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
       # for more information about message limits.
       class Message
         include Google::Apis::Core::Hashable
@@ -676,7 +680,11 @@ module Google
       
         # A message that is published by publishers and consumed by subscribers. The
         # message must contain either a non-empty data field or at least one attribute.
-        # See <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
+        # Note that client libraries represent this object differently
+        # depending on the language. See the corresponding
+        # <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
+        # library documentation</a> for more information. See
+        # <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
         # for more information about message limits.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]

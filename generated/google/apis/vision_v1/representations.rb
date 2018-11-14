@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p1beta1NormalizedVertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p1beta1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1685,6 +1691,8 @@ module Google
       class GoogleCloudVisionV1p1beta1BoundingPoly
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :normalized_vertices, as: 'normalizedVertices', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1NormalizedVertex, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1NormalizedVertex::Representation
+      
           collection :vertices, as: 'vertices', class: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Vertex, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p1beta1Vertex::Representation
       
         end
@@ -1833,6 +1841,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lat_lng, as: 'latLng', class: Google::Apis::VisionV1::LatLng, decorator: Google::Apis::VisionV1::LatLng::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1NormalizedVertex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :x, as: 'x'
+          property :y, as: 'y'
         end
       end
       
