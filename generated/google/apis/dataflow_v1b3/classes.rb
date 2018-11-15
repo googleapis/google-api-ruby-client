@@ -1699,6 +1699,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # If this is specified, the job's initial state is populated from the given
+        # snapshot.
+        # Corresponds to the JSON property `createdFromSnapshotId`
+        # @return [String]
+        attr_accessor :created_from_snapshot_id
+      
         # The current state of the job.
         # Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
         # specified.
@@ -1820,10 +1826,16 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # Exactly one of step or steps_location should be specified.
         # The top-level steps that constitute the entire job.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
         attr_accessor :steps
+      
+        # The GCS location where the steps are stored.
+        # Corresponds to the JSON property `stepsLocation`
+        # @return [String]
+        attr_accessor :steps_location
       
         # A set of files the system should be aware of that are used
         # for temporary storage. These temporary files will be
@@ -1857,6 +1869,7 @@ module Google
         def update!(**args)
           @client_request_id = args[:client_request_id] if args.key?(:client_request_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @created_from_snapshot_id = args[:created_from_snapshot_id] if args.key?(:created_from_snapshot_id)
           @current_state = args[:current_state] if args.key?(:current_state)
           @current_state_time = args[:current_state_time] if args.key?(:current_state_time)
           @environment = args[:environment] if args.key?(:environment)
@@ -1874,6 +1887,7 @@ module Google
           @stage_states = args[:stage_states] if args.key?(:stage_states)
           @start_time = args[:start_time] if args.key?(:start_time)
           @steps = args[:steps] if args.key?(:steps)
+          @steps_location = args[:steps_location] if args.key?(:steps_location)
           @temp_files = args[:temp_files] if args.key?(:temp_files)
           @transform_name_mapping = args[:transform_name_mapping] if args.key?(:transform_name_mapping)
           @type = args[:type] if args.key?(:type)
@@ -3558,6 +3572,74 @@ module Google
         def update!(**args)
           @codec = args[:codec] if args.key?(:codec)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Represents a snapshot of a job.
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # The time this snapshot was created.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # The unique ID of this snapshot.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The project this snapshot belongs to.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The job this snapshot was created from.
+        # Corresponds to the JSON property `sourceJobId`
+        # @return [String]
+        attr_accessor :source_job_id
+      
+        # The time after which this snapshot will be automatically deleted.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @id = args[:id] if args.key?(:id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @source_job_id = args[:source_job_id] if args.key?(:source_job_id)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Request to create a snapshot of a job.
+      class SnapshotJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # The location that contains this job.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # TTL for the snapshot.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       

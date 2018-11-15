@@ -297,6 +297,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Snapshot the state of a streaming job.
+        # @param [String] project_id
+        #   The project which owns the job to be snapshotted.
+        # @param [String] job_id
+        #   The job to be snapshotted.
+        # @param [Google::Apis::DataflowV1b3::SnapshotJobRequest] snapshot_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def snapshot_project_job(project_id, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}:snapshot', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
+          command.request_object = snapshot_job_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the state of an existing Cloud Dataflow job.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
@@ -742,6 +778,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Snapshot the state of a streaming job.
+        # @param [String] project_id
+        #   The project which owns the job to be snapshotted.
+        # @param [String] location
+        #   The location that contains this job.
+        # @param [String] job_id
+        #   The job to be snapshotted.
+        # @param [Google::Apis::DataflowV1b3::SnapshotJobRequest] snapshot_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def snapshot_project_location_job(project_id, location, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
+          command.request_object = snapshot_job_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the state of an existing Cloud Dataflow job.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
@@ -1038,7 +1113,7 @@ module Google
         # @param [String] gcs_path
         #   Required. A Cloud Storage path to the template from which to
         #   create the job.
-        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
+        #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] view
         #   The view to retrieve. Defaults to METADATA_ONLY.
         # @param [String] fields
@@ -1077,8 +1152,14 @@ module Google
         # @param [String] location
         #   The location to which to direct the request.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
+        # @param [String] dynamic_template_gcs_path
+        #   Path to dynamic template spec file on GCS.
+        #   The file must be a Json serialized DynamicTemplateFieSpec object.
+        # @param [String] dynamic_template_staging_location
+        #   Cloud Storage path for staging dependencies.
+        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
         # @param [String] gcs_path
-        #   Required. A Cloud Storage path to the template from which to create
+        #   A Cloud Storage path to the template from which to create
         #   the job.
         #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [Boolean] validate_only
@@ -1101,7 +1182,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def launch_project_location_template(project_id, location, launch_template_parameters_object = nil, gcs_path: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def launch_project_location_template(project_id, location, launch_template_parameters_object = nil, dynamic_template_gcs_path: nil, dynamic_template_staging_location: nil, gcs_path: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates:launch', options)
           command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
           command.request_object = launch_template_parameters_object
@@ -1109,6 +1190,8 @@ module Google
           command.response_class = Google::Apis::DataflowV1b3::LaunchTemplateResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
+          command.query['dynamicTemplate.gcsPath'] = dynamic_template_gcs_path unless dynamic_template_gcs_path.nil?
+          command.query['dynamicTemplate.stagingLocation'] = dynamic_template_staging_location unless dynamic_template_staging_location.nil?
           command.query['gcsPath'] = gcs_path unless gcs_path.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1155,7 +1238,7 @@ module Google
         # @param [String] gcs_path
         #   Required. A Cloud Storage path to the template from which to
         #   create the job.
-        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
+        #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] location
         #   The location to which to direct the request.
         # @param [String] view
@@ -1194,8 +1277,14 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
+        # @param [String] dynamic_template_gcs_path
+        #   Path to dynamic template spec file on GCS.
+        #   The file must be a Json serialized DynamicTemplateFieSpec object.
+        # @param [String] dynamic_template_staging_location
+        #   Cloud Storage path for staging dependencies.
+        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
         # @param [String] gcs_path
-        #   Required. A Cloud Storage path to the template from which to create
+        #   A Cloud Storage path to the template from which to create
         #   the job.
         #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] location
@@ -1220,13 +1309,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def launch_project_template(project_id, launch_template_parameters_object = nil, gcs_path: nil, location: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def launch_project_template(project_id, launch_template_parameters_object = nil, dynamic_template_gcs_path: nil, dynamic_template_staging_location: nil, gcs_path: nil, location: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates:launch', options)
           command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
           command.request_object = launch_template_parameters_object
           command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::LaunchTemplateResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['dynamicTemplate.gcsPath'] = dynamic_template_gcs_path unless dynamic_template_gcs_path.nil?
+          command.query['dynamicTemplate.stagingLocation'] = dynamic_template_staging_location unless dynamic_template_staging_location.nil?
           command.query['gcsPath'] = gcs_path unless gcs_path.nil?
           command.query['location'] = location unless location.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?

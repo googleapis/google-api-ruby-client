@@ -562,6 +562,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1294,6 +1306,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_request_id, as: 'clientRequestId'
           property :create_time, as: 'createTime'
+          property :created_from_snapshot_id, as: 'createdFromSnapshotId'
           property :current_state, as: 'currentState'
           property :current_state_time, as: 'currentStateTime'
           property :environment, as: 'environment', class: Google::Apis::DataflowV1b3::Environment, decorator: Google::Apis::DataflowV1b3::Environment::Representation
@@ -1317,6 +1330,7 @@ module Google
           property :start_time, as: 'startTime'
           collection :steps, as: 'steps', class: Google::Apis::DataflowV1b3::Step, decorator: Google::Apis::DataflowV1b3::Step::Representation
       
+          property :steps_location, as: 'stepsLocation'
           collection :temp_files, as: 'tempFiles'
           hash :transform_name_mapping, as: 'transformNameMapping'
           property :type, as: 'type'
@@ -1799,6 +1813,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :codec, as: 'codec'
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :id, as: 'id'
+          property :project_id, as: 'projectId'
+          property :source_job_id, as: 'sourceJobId'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class SnapshotJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :ttl, as: 'ttl'
         end
       end
       

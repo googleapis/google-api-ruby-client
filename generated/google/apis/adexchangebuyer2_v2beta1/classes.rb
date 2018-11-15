@@ -3712,7 +3712,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The publisher identifier for this row, if a breakdown by
-        # BreakdownDimension.PUBLISHER_IDENTIFIER
+        # [BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/
+        # authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#
+        # FilterSet.BreakdownDimension)
         # was requested.
         # Corresponds to the JSON property `publisherIdentifier`
         # @return [String]

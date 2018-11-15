@@ -131,7 +131,8 @@ module Google
         #   Optional. A query string for filtering alert results.
         #   For more details, see [Query
         #   filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
-        #   query filter fields](/admin-sdk/alertcenter/reference/filter-fields).
+        #   query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.
+        #   list).
         # @param [String] order_by
         #   Optional. The sort order of the list results.
         #   If not specified results may be returned in arbitrary order.
@@ -226,6 +227,11 @@ module Google
         #   customer the alert feedback are associated with.
         #   Inferred from the caller identity if not provided.
         # @param [String] filter
+        #   Optional. A query string for filtering alert feedback results.
+        #   For more details, see [Query
+        #   filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
+        #   query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.
+        #   feedback.list).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
