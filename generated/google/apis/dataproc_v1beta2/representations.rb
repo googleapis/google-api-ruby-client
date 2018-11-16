@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -402,6 +408,15 @@ module Google
         end
       end
       
+      class AllocationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_allocation_type, as: 'consumeAllocationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -568,6 +583,8 @@ module Google
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::DataprocV1beta2::AllocationAffinity, decorator: Google::Apis::DataprocV1beta2::AllocationAffinity::Representation
+      
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
@@ -672,6 +689,7 @@ module Google
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1beta2::JobStatus, decorator: Google::Apis::DataprocV1beta2::JobStatus::Representation
       
+          property :submitted_by, as: 'submittedBy'
           collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1beta2::YarnApplication, decorator: Google::Apis::DataprocV1beta2::YarnApplication::Representation
       
         end

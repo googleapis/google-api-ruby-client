@@ -760,6 +760,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renewing, as: 'autoRenewing'
+          property :auto_resume_time_millis, :numeric_string => true, as: 'autoResumeTimeMillis'
           property :cancel_reason, as: 'cancelReason'
           property :cancel_survey_result, as: 'cancelSurveyResult', class: Google::Apis::AndroidpublisherV3::SubscriptionCancelSurveyResult, decorator: Google::Apis::AndroidpublisherV3::SubscriptionCancelSurveyResult::Representation
       

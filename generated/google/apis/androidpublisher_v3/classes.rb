@@ -1400,6 +1400,13 @@ module Google
         attr_accessor :auto_renewing
         alias_method :auto_renewing?, :auto_renewing
       
+        # Time at which the subscription will be automatically resumed, in milliseconds
+        # since the Epoch. Only present if the user has requested to pause the
+        # subscription.
+        # Corresponds to the JSON property `autoResumeTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :auto_resume_time_millis
+      
         # The reason why a subscription was canceled or is not auto-renewing. Possible
         # values are:
         # - User canceled the subscription
@@ -1547,6 +1554,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renewing = args[:auto_renewing] if args.key?(:auto_renewing)
+          @auto_resume_time_millis = args[:auto_resume_time_millis] if args.key?(:auto_resume_time_millis)
           @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
           @cancel_survey_result = args[:cancel_survey_result] if args.key?(:cancel_survey_result)
           @country_code = args[:country_code] if args.key?(:country_code)

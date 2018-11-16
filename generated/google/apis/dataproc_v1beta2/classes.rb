@@ -55,6 +55,37 @@ module Google
         end
       end
       
+      # Allocation Affinity for consuming Zonal allocation.
+      class AllocationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `consumeAllocationType`
+        # @return [String]
+        attr_accessor :consume_allocation_type
+      
+        # Corresponds to the label key of Allocation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Corresponds to the label values of allocation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_allocation_type = args[:consume_allocation_type] if args.key?(:consume_allocation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Associates members with a role.
       class Binding
         include Google::Apis::Core::Hashable
@@ -653,6 +684,11 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Allocation Affinity for consuming Zonal allocation.
+        # Corresponds to the JSON property `allocationAffinity`
+        # @return [Google::Apis::DataprocV1beta2::AllocationAffinity]
+        attr_accessor :allocation_affinity
+      
         # Optional. If true, all instances in the cluster will only have internal IP
         # addresses. By default, clusters are not restricted to internal IP addresses,
         # and will have ephemeral external IP addresses assigned to each instance. This
@@ -743,6 +779,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocation_affinity = args[:allocation_affinity] if args.key?(:allocation_affinity)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
@@ -1133,6 +1170,12 @@ module Google
         # @return [Array<Google::Apis::DataprocV1beta2::JobStatus>]
         attr_accessor :status_history
       
+        # Output only. The email address of the user submitting the job. For jobs
+        # submitted on the cluster, the address is <code>username@hostname</code>.
+        # Corresponds to the JSON property `submittedBy`
+        # @return [String]
+        attr_accessor :submitted_by
+      
         # Output only. The collection of YARN applications spun up by this job.Beta
         # Feature: This report is available for testing purposes only. It may be changed
         # before final release.
@@ -1162,6 +1205,7 @@ module Google
           @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
           @status = args[:status] if args.key?(:status)
           @status_history = args[:status_history] if args.key?(:status_history)
+          @submitted_by = args[:submitted_by] if args.key?(:submitted_by)
           @yarn_applications = args[:yarn_applications] if args.key?(:yarn_applications)
         end
       end
