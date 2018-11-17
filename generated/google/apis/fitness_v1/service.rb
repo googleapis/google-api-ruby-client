@@ -597,9 +597,13 @@ module Google
         #   returned in this response will only have an ID and will not have any other
         #   fields.
         # @param [String] page_token
-        #   The continuation token, which is used to page through large result sets. To
-        #   get the next page of results, set this parameter to the value of nextPageToken
-        #   from the previous response.
+        #   The continuation token, which is used for incremental syncing. To get the next
+        #   batch of changes, set this parameter to the value of nextPageToken from the
+        #   previous response. This token is treated as a timestamp (in millis since epoch)
+        #   . If specified, the API returns sessions modified since this time. The page
+        #   token is ignored if either start or end time is specified. If none of start
+        #   time, end time, and the page token is specified, sessions modified in the last
+        #   7 days are returned.
         # @param [String] start_time
         #   An RFC3339 timestamp. Only sessions ending between the start and end times
         #   will be included in the response.

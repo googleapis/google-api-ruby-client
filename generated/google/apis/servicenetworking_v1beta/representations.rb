@@ -484,6 +484,7 @@ module Google
           property :network, as: 'network'
           property :peering, as: 'peering'
           collection :reserved_peering_ranges, as: 'reservedPeeringRanges'
+          property :service, as: 'service'
         end
       end
       

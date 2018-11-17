@@ -361,6 +361,13 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ManagedZoneDnsSecConfig]
         attr_accessor :dnssec_config
       
+        # The presence for this field indicates that outbound forwarding is enabled for
+        # this zone. The value of this field contains the set of destinations to forward
+        # to.
+        # Corresponds to the JSON property `forwardingConfig`
+        # @return [Google::Apis::DnsV1beta2::ManagedZoneForwardingConfig]
+        attr_accessor :forwarding_config
+      
         # Unique identifier for the resource; defined by the server (output only)
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -419,6 +426,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
           @dnssec_config = args[:dnssec_config] if args.key?(:dnssec_config)
+          @forwarding_config = args[:forwarding_config] if args.key?(:forwarding_config)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
@@ -467,6 +475,59 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @non_existence = args[:non_existence] if args.key?(:non_existence)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class ManagedZoneForwardingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZoneForwardingConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of target name servers to forward to. Cloud DNS will select the best
+        # available name server if more than one target is given.
+        # Corresponds to the JSON property `targetNameServers`
+        # @return [Array<Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigNameServerTarget>]
+        attr_accessor :target_name_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @target_name_servers = args[:target_name_servers] if args.key?(:target_name_servers)
+        end
+      end
+      
+      # 
+      class ManagedZoneForwardingConfigNameServerTarget
+        include Google::Apis::Core::Hashable
+      
+        # IPv4 address of a target name server.
+        # Corresponds to the JSON property `ipv4Address`
+        # @return [String]
+        attr_accessor :ipv4_address
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZoneForwardingConfigNameServerTarget".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -740,6 +801,247 @@ module Google
         end
       end
       
+      # 
+      class PoliciesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The presence of this field indicates that there exist more results following
+        # your last page of results in pagination order. To fetch them, make another
+        # list request using this value as your page token.
+        # In this way you can retrieve the complete contents of even very large
+        # collections one page at a time. However, if the contents of the collection
+        # change between the first and last paginated list request, the set of all
+        # elements returned will be an inconsistent view of the collection. There is no
+        # way to retrieve a consistent snapshot of a collection larger than the maximum
+        # page size.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The policy resources.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::DnsV1beta2::Policy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # 
+      class PoliciesPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A policy is a collection of rules applied to one or more networks that specify
+        # forwarding behavior for that network.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::DnsV1beta2::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
+      class PoliciesUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A policy is a collection of rules applied to one or more networks that specify
+        # forwarding behavior for that network.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::DnsV1beta2::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A policy is a collection of rules applied to one or more networks that specify
+      # forwarding behavior for that network.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # Sets an alternative name server for the associated networks. When specified,
+        # all DNS queries are forwarded to a name server that you choose. Names such as .
+        # internal are not available when an alternative name server is specified.
+        # Corresponds to the JSON property `alternativeNameServerConfig`
+        # @return [Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfig]
+        attr_accessor :alternative_name_server_config
+      
+        # A mutable string of at most 1024 characters associated with this resource for
+        # the user's convenience. Has no effect on the policy's function.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Allows networks bound to this policy to receive DNS queries sent by VMs or
+        # applications over VPN connections. When enabled, a virtual IP address will be
+        # allocated from each of the sub-networks that are bound to this policy.
+        # Corresponds to the JSON property `enableInboundForwarding`
+        # @return [Boolean]
+        attr_accessor :enable_inbound_forwarding
+        alias_method :enable_inbound_forwarding?, :enable_inbound_forwarding
+      
+        # Unique identifier for the resource; defined by the server (output only).
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#policy".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # User assigned name for this policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of network names specifying networks to which this policy is applied.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::DnsV1beta2::PolicyNetwork>]
+        attr_accessor :networks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_name_server_config = args[:alternative_name_server_config] if args.key?(:alternative_name_server_config)
+          @description = args[:description] if args.key?(:description)
+          @enable_inbound_forwarding = args[:enable_inbound_forwarding] if args.key?(:enable_inbound_forwarding)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @networks = args[:networks] if args.key?(:networks)
+        end
+      end
+      
+      # 
+      class PolicyAlternativeNameServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # policyAlternativeNameServerConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Sets an alternative name server for the associated networks. When specified,
+        # all DNS queries are forwarded to a name server that you choose. Names such as .
+        # internal are not available when an alternative name server is specified.
+        # Corresponds to the JSON property `targetNameServers`
+        # @return [Array<Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigTargetNameServer>]
+        attr_accessor :target_name_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @target_name_servers = args[:target_name_servers] if args.key?(:target_name_servers)
+        end
+      end
+      
+      # 
+      class PolicyAlternativeNameServerConfigTargetNameServer
+        include Google::Apis::Core::Hashable
+      
+        # IPv4 address to forward to.
+        # Corresponds to the JSON property `ipv4Address`
+        # @return [String]
+        attr_accessor :ipv4_address
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # policyAlternativeNameServerConfigTargetNameServer".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class PolicyNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # policyNetwork".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fully qualified URL of the GCE private network to bind to. This should be
+        # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
+        # networks/`network`
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_url = args[:network_url] if args.key?(:network_url)
+        end
+      end
+      
       # A project resource. The project is a top level container for resources
       # including Cloud DNS ManagedZones. Projects can be created only in the APIs
       # console.
@@ -811,6 +1113,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :networks_per_managed_zone
       
+        # Maximum allowed number of networks per policy.
+        # Corresponds to the JSON property `networksPerPolicy`
+        # @return [Fixnum]
+        attr_accessor :networks_per_policy
+      
+        # Maximum allowed number of policies per project.
+        # Corresponds to the JSON property `policies`
+        # @return [Fixnum]
+        attr_accessor :policies
+      
         # Maximum allowed number of ResourceRecords per ResourceRecordSet.
         # Corresponds to the JSON property `resourceRecordsPerRrset`
         # @return [Fixnum]
@@ -831,6 +1143,16 @@ module Google
         # Corresponds to the JSON property `rrsetsPerManagedZone`
         # @return [Fixnum]
         attr_accessor :rrsets_per_managed_zone
+      
+        # Maximum allowed number of target name servers per managed forwarding zone.
+        # Corresponds to the JSON property `targetNameServersPerManagedZone`
+        # @return [Fixnum]
+        attr_accessor :target_name_servers_per_managed_zone
+      
+        # Maximum allowed number of alternative target name servers per policy.
+        # Corresponds to the JSON property `targetNameServersPerPolicy`
+        # @return [Fixnum]
+        attr_accessor :target_name_servers_per_policy
       
         # Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes.
         # Corresponds to the JSON property `totalRrdataSizePerChange`
@@ -853,10 +1175,14 @@ module Google
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
+          @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
+          @policies = args[:policies] if args.key?(:policies)
           @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
           @rrset_additions_per_change = args[:rrset_additions_per_change] if args.key?(:rrset_additions_per_change)
           @rrset_deletions_per_change = args[:rrset_deletions_per_change] if args.key?(:rrset_deletions_per_change)
           @rrsets_per_managed_zone = args[:rrsets_per_managed_zone] if args.key?(:rrsets_per_managed_zone)
+          @target_name_servers_per_managed_zone = args[:target_name_servers_per_managed_zone] if args.key?(:target_name_servers_per_managed_zone)
+          @target_name_servers_per_policy = args[:target_name_servers_per_policy] if args.key?(:target_name_servers_per_policy)
           @total_rrdata_size_per_change = args[:total_rrdata_size_per_change] if args.key?(:total_rrdata_size_per_change)
           @whitelisted_key_specs = args[:whitelisted_key_specs] if args.key?(:whitelisted_key_specs)
         end

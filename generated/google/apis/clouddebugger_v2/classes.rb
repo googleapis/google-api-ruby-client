@@ -361,10 +361,10 @@ module Google
         # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
         attr_accessor :status
       
-        # Uniquifier to further distiguish the application.
+        # Uniquifier to further distinguish the application.
         # It is possible that different applications might have identical values in
         # the debuggee message, thus, incorrectly identified as a single application
-        # by the Controller service. This field adds salt to further distiguish the
+        # by the Controller service. This field adds salt to further distinguish the
         # application. Agents should consider seeding this field with value that
         # identifies the code, binary, configuration and environment.
         # Corresponds to the JSON property `uniquifier`

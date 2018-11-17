@@ -584,6 +584,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :reserved_peering_ranges
       
+        # Output only.
+        # Name of the peering service associated with this connection.
+        # "services/`service name`
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         def initialize(**args)
            update!(**args)
         end
@@ -593,6 +600,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @peering = args[:peering] if args.key?(:peering)
           @reserved_peering_ranges = args[:reserved_peering_ranges] if args.key?(:reserved_peering_ranges)
+          @service = args[:service] if args.key?(:service)
         end
       end
       

@@ -73,6 +73,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The bucket's IAM configuration.
+        # Corresponds to the JSON property `iamConfiguration`
+        # @return [Google::Apis::StorageV1::Bucket::IamConfiguration]
+        attr_accessor :iam_configuration
+      
         # The ID of the bucket. For buckets, the id and name properties are the same.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -190,6 +195,7 @@ module Google
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
+          @iam_configuration = args[:iam_configuration] if args.key?(:iam_configuration)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
@@ -288,6 +294,54 @@ module Google
           # Update properties of this object
           def update!(**args)
             @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
+          end
+        end
+        
+        # The bucket's IAM configuration.
+        class IamConfiguration
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `bucketPolicyOnly`
+          # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly]
+          attr_accessor :bucket_policy_only
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @bucket_policy_only = args[:bucket_policy_only] if args.key?(:bucket_policy_only)
+          end
+          
+          # 
+          class BucketPolicyOnly
+            include Google::Apis::Core::Hashable
+          
+            # If set, access checks only use bucket-level IAM policies or above.
+            # Corresponds to the JSON property `enabled`
+            # @return [Boolean]
+            attr_accessor :enabled
+            alias_method :enabled?, :enabled
+          
+            # The deadline time for changing iamConfiguration.bucketPolicyOnly.enabled from
+            # true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled
+            # may be changed from true to false until the locked time, after which the field
+            # is immutable.
+            # Corresponds to the JSON property `lockedTime`
+            # @return [DateTime]
+            attr_accessor :locked_time
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @enabled = args[:enabled] if args.key?(:enabled)
+              @locked_time = args[:locked_time] if args.key?(:locked_time)
+            end
           end
         end
         

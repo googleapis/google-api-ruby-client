@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZoneForwardingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZoneForwardingConfigNameServerTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZoneOperationsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +119,48 @@ module Google
       end
       
       class OperationManagedZoneContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoliciesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoliciesPatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoliciesUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyAlternativeNameServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyAlternativeNameServerConfigTargetNameServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -225,6 +279,8 @@ module Google
           property :dns_name, as: 'dnsName'
           property :dnssec_config, as: 'dnssecConfig', class: Google::Apis::DnsV1beta2::ManagedZoneDnsSecConfig, decorator: Google::Apis::DnsV1beta2::ManagedZoneDnsSecConfig::Representation
       
+          property :forwarding_config, as: 'forwardingConfig', class: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfig, decorator: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfig::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
@@ -245,6 +301,23 @@ module Google
           property :kind, as: 'kind'
           property :non_existence, as: 'nonExistence'
           property :state, as: 'state'
+        end
+      end
+      
+      class ManagedZoneForwardingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :target_name_servers, as: 'targetNameServers', class: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigNameServerTarget, decorator: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigNameServerTarget::Representation
+      
+        end
+      end
+      
+      class ManagedZoneForwardingConfigNameServerTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ipv4_address, as: 'ipv4Address'
+          property :kind, as: 'kind'
         end
       end
       
@@ -325,6 +398,78 @@ module Google
         end
       end
       
+      class PoliciesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :policies, as: 'policies', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
+      
+        end
+      end
+      
+      class PoliciesPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :policy, as: 'policy', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
+      
+        end
+      end
+      
+      class PoliciesUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :policy, as: 'policy', class: Google::Apis::DnsV1beta2::Policy, decorator: Google::Apis::DnsV1beta2::Policy::Representation
+      
+        end
+      end
+      
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternative_name_server_config, as: 'alternativeNameServerConfig', class: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfig, decorator: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfig::Representation
+      
+          property :description, as: 'description'
+          property :enable_inbound_forwarding, as: 'enableInboundForwarding'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :networks, as: 'networks', class: Google::Apis::DnsV1beta2::PolicyNetwork, decorator: Google::Apis::DnsV1beta2::PolicyNetwork::Representation
+      
+        end
+      end
+      
+      class PolicyAlternativeNameServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :target_name_servers, as: 'targetNameServers', class: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigTargetNameServer, decorator: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigTargetNameServer::Representation
+      
+        end
+      end
+      
+      class PolicyAlternativeNameServerConfigTargetNameServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ipv4_address, as: 'ipv4Address'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class PolicyNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :network_url, as: 'networkUrl'
+        end
+      end
+      
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -344,10 +489,14 @@ module Google
           property :managed_zones, as: 'managedZones'
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
           property :networks_per_managed_zone, as: 'networksPerManagedZone'
+          property :networks_per_policy, as: 'networksPerPolicy'
+          property :policies, as: 'policies'
           property :resource_records_per_rrset, as: 'resourceRecordsPerRrset'
           property :rrset_additions_per_change, as: 'rrsetAdditionsPerChange'
           property :rrset_deletions_per_change, as: 'rrsetDeletionsPerChange'
           property :rrsets_per_managed_zone, as: 'rrsetsPerManagedZone'
+          property :target_name_servers_per_managed_zone, as: 'targetNameServersPerManagedZone'
+          property :target_name_servers_per_policy, as: 'targetNameServersPerPolicy'
           property :total_rrdata_size_per_change, as: 'totalRrdataSizePerChange'
           collection :whitelisted_key_specs, as: 'whitelistedKeySpecs', class: Google::Apis::DnsV1beta2::DnsKeySpec, decorator: Google::Apis::DnsV1beta2::DnsKeySpec::Representation
       

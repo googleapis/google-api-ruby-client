@@ -177,7 +177,7 @@ module Google
         attr_accessor :departure_time
       
         # Optional.
-        # Specifies the traffic density to use when caculating commute time.
+        # Specifies the traffic density to use when calculating commute time.
         # Corresponds to the JSON property `roadTraffic`
         # @return [String]
         attr_accessor :road_traffic
@@ -1469,9 +1469,9 @@ module Google
         # If a location value isn't specified, jobs fitting the other search
         # criteria are retrieved regardless of where they're located.
         # If multiple values are specified, jobs are retrieved from any of the
-        # specified locations, and, if different values are specified
-        # for the LocationFilter.distance_in_miles parameter, the maximum
-        # provided distance is used for all locations.
+        # specified locations. If different values are specified for the
+        # LocationFilter.distance_in_miles parameter, the maximum provided
+        # distance is used for all locations.
         # At most 5 location filters are allowed.
         # Corresponds to the JSON property `locationFilters`
         # @return [Array<Google::Apis::JobsV3::LocationFilter>]
@@ -1650,7 +1650,7 @@ module Google
       
         # Radius in miles of the job location. This value is derived from the
         # location bounding box in which a circle with the specified radius
-        # centered from LatLng coves the area associated with the job location.
+        # centered from LatLng covers the area associated with the job location.
         # For example, currently, "Mountain View, CA, USA" has a radius of
         # 6.17 miles.
         # Corresponds to the JSON property `radiusInMiles`
@@ -2402,7 +2402,7 @@ module Google
         attr_accessor :spell_correction
       
         # The precise result count, which is available only if the client set
-        # enable_precise_result_size to `true` or if the response
+        # enable_precise_result_size to `true`, or if the response
         # is the last page of results. Otherwise, the value is `-1`.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]

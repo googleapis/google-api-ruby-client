@@ -129,6 +129,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Allocated ranges specified for the connection may be updated.
+        # Operation<response: Connection>.
+        # @param [String] name
+        #   Provider peering service that is managing peering connectivity for a
+        #   service provider organization.
+        #   For Google services that support this functionality it is
+        #   'services/servicenetworking.googleapis.com'.
+        # @param [Google::Apis::ServicenetworkingV1beta::Connection] connection_object
+        # @param [Boolean] force
+        #   If a previously defined allocated range is removed, force flag must be
+        #   set to true.
+        # @param [String] update_mask
+        #   The update mask. If this is omitted, it defaults to "*".   Only reserved
+        #   peering ranges list may be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service(name, connection_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1beta::Connection::Representation
+          command.request_object = connection_object
+          command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # To connect service to a VPC network peering connection
         # must be established prior to service provisioning.
         # This method must be invoked by the consumer VPC network administrator
@@ -180,6 +225,7 @@ module Google
         #   service provider organization.
         #   For Google services that support this functionality it is
         #   'services/servicenetworking.googleapis.com'.
+        #   For "-" all configured public peering services will be queried.
         # @param [String] network
         #   Network name in the consumer project.   This network must have been
         #   already peered with a shared VPC network using CreateConnection

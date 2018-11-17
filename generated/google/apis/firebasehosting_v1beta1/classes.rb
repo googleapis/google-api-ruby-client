@@ -620,6 +620,30 @@ module Google
         end
       end
       
+      # A `SiteConfig` contains metadata associated with a specific site that
+      # controls Firebase Hosting serving behavior
+      class SiteConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of FINALIZED versions that will be held for a site before
+        # automatic deletion. When a new version is deployed, content for versions
+        # in storage in excess of this number will be deleted, and will no longer be
+        # billed for storage usage. Oldest versions will be deleted first; sites are
+        # created with an unlimited number of max_versions by default.
+        # Corresponds to the JSON property `maxVersions`
+        # @return [Fixnum]
+        attr_accessor :max_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_versions = args[:max_versions] if args.key?(:max_versions)
+        end
+      end
+      
       # A `Version` is the collection of configuration and
       # [static files](sites.versions.files) that determine how a site is displayed.
       class Version

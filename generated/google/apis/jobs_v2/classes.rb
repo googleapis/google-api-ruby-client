@@ -160,7 +160,7 @@ module Google
         attr_accessor :method_prop
       
         # Optional.
-        # Specifies the traffic density to use when caculating commute time.
+        # Specifies the traffic density to use when calculating commute time.
         # Must not be present if departure_hour_local is specified.
         # Corresponds to the JSON property `roadTraffic`
         # @return [String]
@@ -2124,12 +2124,12 @@ module Google
         # Optional.
         # The location filter specifies geo-regions containing the jobs to
         # search against. See LocationFilter for more information.
-        # If a location value is not specified, jobs are be retrieved
+        # If a location value is not specified, jobs are retrieved
         # from all locations.
         # If multiple values are specified, jobs are retrieved from any of the
-        # specified locations, and, if different values are specified
-        # for the LocationFilter.distance_in_miles parameter, the maximum
-        # provided distance is used for all locations.
+        # specified locations. If different values are specified for the
+        # LocationFilter.distance_in_miles parameter, the maximum provided
+        # distance is used for all locations.
         # At most 5 location filters are allowed.
         # Corresponds to the JSON property `locationFilters`
         # @return [Array<Google::Apis::JobsV2::LocationFilter>]
@@ -2396,9 +2396,9 @@ module Google
         # If a location value isn't specified, jobs fitting the other search
         # criteria are retrieved regardless of where they're located.
         # If multiple values are specified, jobs are retrieved from any of the
-        # specified locations, and, if different values are specified
-        # for the LocationFilter.distance_in_miles parameter, the maximum
-        # provided distance is used for all locations.
+        # specified locations. If different values are specified for the
+        # LocationFilter.distance_in_miles parameter, the maximum provided
+        # distance is used for all locations.
         # At most 5 location filters are allowed.
         # Corresponds to the JSON property `locationFilters`
         # @return [Array<Google::Apis::JobsV2::LocationFilter>]
@@ -3072,7 +3072,6 @@ module Google
       class SearchJobsRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. Any value provided in this field is ignored.
         # Optional.
         # Controls whether to disable relevance thresholding. Relevance
         # thresholding removes jobs that have low relevance in search results,

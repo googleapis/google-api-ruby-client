@@ -361,8 +361,7 @@ module Google
       class DataPoint
         include Google::Apis::Core::Hashable
       
-        # Used for version checking during transformation; that is, a datapoint can only
-        # replace another datapoint that has an older computation time stamp.
+        # DO NOT USE THIS FIELD. It is ignored, and not stored.
         # Corresponds to the JSON property `computationTimeMillis`
         # @return [Fixnum]
         attr_accessor :computation_time_millis

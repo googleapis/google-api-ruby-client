@@ -25,13 +25,10 @@ module Google
     # @see https://developers.google.com/games/services
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20180802'
+      REVISION = '20181113'
 
       # Share your Google+ profile information and view and manage your game activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'
-
-      # Know the list of people in your circles, your age range, and language
-      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
     end
   end
 end

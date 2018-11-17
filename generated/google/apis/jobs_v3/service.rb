@@ -67,13 +67,13 @@ module Google
         #   the BCP-47 language code, such as "en-US" or "sr-Latn".
         #   For more information, see
         #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-        #   For CompletionType.JOB_TITLE type, only open jobs with same
+        #   For CompletionType.JOB_TITLE type, only open jobs with the same
         #   language_code are returned.
         #   For CompletionType.COMPANY_NAME type,
-        #   only companies having open jobs with same language_code are
+        #   only companies having open jobs with the same language_code are
         #   returned.
-        #   For CompletionType.COMBINED type, only open jobs with same
-        #   language_code or companies having open jobs with same
+        #   For CompletionType.COMBINED type, only open jobs with the same
+        #   language_code or companies having open jobs with the same
         #   language_code are returned.
         #   The maximum number of allowed characters is 255.
         # @param [Array<String>, String] language_codes
@@ -82,13 +82,13 @@ module Google
         #   the BCP-47 language code, such as "en-US" or "sr-Latn".
         #   For more information, see
         #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-        #   For CompletionType.JOB_TITLE type, only open jobs with same
+        #   For CompletionType.JOB_TITLE type, only open jobs with the same
         #   language_codes are returned.
         #   For CompletionType.COMPANY_NAME type,
-        #   only companies having open jobs with same language_codes are
+        #   only companies having open jobs with the same language_codes are
         #   returned.
-        #   For CompletionType.COMBINED type, only open jobs with same
-        #   language_codes or companies having open jobs with same
+        #   For CompletionType.COMBINED type, only open jobs with the same
+        #   language_codes or companies having open jobs with the same
         #   language_codes are returned.
         #   The maximum number of allowed characters is 255.
         # @param [Fixnum] page_size

@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SiteConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,13 @@ module Google
           collection :rewrites, as: 'rewrites', class: Google::Apis::FirebasehostingV1beta1::Rewrite, decorator: Google::Apis::FirebasehostingV1beta1::Rewrite::Representation
       
           property :trailing_slash_behavior, as: 'trailingSlashBehavior'
+        end
+      end
+      
+      class SiteConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_versions, :numeric_string => true, as: 'maxVersions'
         end
       end
       

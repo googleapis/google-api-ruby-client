@@ -47,6 +47,78 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets the Hosting metadata for a specific site.
+        # @param [String] name
+        #   Required. The site for which to get the SiteConfig, in the format:
+        #   <code>sites/<var>site-name</var>/config</code>
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::SiteConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::SiteConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_site_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::SiteConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the Hosting metadata for a specific site.
+        # @param [String] name
+        #   Required. The site for which to update the SiteConfig, in the format:
+        #   <code>sites/<var>site-name</var>/config</code>
+        # @param [Google::Apis::FirebasehostingV1beta1::SiteConfig] site_config_object
+        # @param [String] update_mask
+        #   A set of field names from your [site configuration](../sites.SiteConfig)
+        #   that you want to update.
+        #   <br>A field will be overwritten if, and only if, it's in the mask.
+        #   <br>If a mask is not provided then a default mask of only
+        #   [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::SiteConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::SiteConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_site_config(name, site_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
+          command.request_object = site_config_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::SiteConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a domain mapping on the specified site.
         # @param [String] parent
         #   Required. The parent to create the domain association for, in the format:

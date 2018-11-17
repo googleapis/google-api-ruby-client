@@ -43,6 +43,18 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class IamConfiguration
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class BucketPolicyOnly
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Lifecycle
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -247,6 +259,8 @@ module Google
           property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
       
           property :etag, as: 'etag'
+          property :iam_configuration, as: 'iamConfiguration', class: Google::Apis::StorageV1::Bucket::IamConfiguration, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
@@ -295,6 +309,23 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :default_kms_key_name, as: 'defaultKmsKeyName'
+          end
+        end
+        
+        class IamConfiguration
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :bucket_policy_only, as: 'bucketPolicyOnly', class: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly::Representation
+        
+          end
+          
+          class BucketPolicyOnly
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :enabled, as: 'enabled'
+              property :locked_time, as: 'lockedTime', type: DateTime
+          
+            end
           end
         end
         
