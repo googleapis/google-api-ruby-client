@@ -361,6 +361,19 @@ module Google
       class CreateLineRequest
         include Google::Apis::Core::Hashable
       
+        # The category of line to be created.
+        # The exact line type created is
+        # determined based on the category and how it's routed to connect to other
+        # page elements.
+        # If you specify both a `category` and a `line_category`, the `category`
+        # takes precedence.
+        # If you do not specify a value for `category`, but specify a value for
+        # `line_category`, then the specified `line_category` value is used.
+        # If you do not specify either, then STRAIGHT is used.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # Common properties for a page element.
         # Note: When you initially create a
         # PageElement, the API may modify
@@ -393,6 +406,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @category = args[:category] if args.key?(:category)
           @element_properties = args[:element_properties] if args.key?(:element_properties)
           @line_category = args[:line_category] if args.key?(:line_category)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
@@ -1546,6 +1560,14 @@ module Google
       class Line
         include Google::Apis::Core::Hashable
       
+        # The category of the line.
+        # It matches the `category` specified in CreateLineRequest, and can be updated
+        # with
+        # UpdateLineCategoryRequest.
+        # Corresponds to the JSON property `lineCategory`
+        # @return [String]
+        attr_accessor :line_category
+      
         # The properties of the Line.
         # When unset, these fields default to values that match the appearance of
         # new lines created in the Slides editor.
@@ -1564,8 +1586,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @line_category = args[:line_category] if args.key?(:line_category)
           @line_properties = args[:line_properties] if args.key?(:line_properties)
           @line_type = args[:line_type] if args.key?(:line_type)
+        end
+      end
+      
+      # The properties for one end of a Line
+      # connection.
+      class LineConnection
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the connected page element.
+        # Some page elements, such as groups, tables, and lines
+        # do not have connection sites and therefore cannot be connected to a
+        # connector line.
+        # Corresponds to the JSON property `connectedObjectId`
+        # @return [String]
+        attr_accessor :connected_object_id
+      
+        # The index of the connection site on the connected page element.
+        # In most cases, it corresponds to the predefined connection site index from
+        # the ECMA-376 standard. More information on those connection sites can be
+        # found in the description of the "cnx" attribute in section 20.1.9.9 and
+        # Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
+        # XML File Formats-Fundamentals and Markup Language Reference", part 1 of
+        # [ECMA-376 5th edition]
+        # (http://www.ecma-international.org/publications/standards/Ecma-376.htm).
+        # The position of each connection site can also be viewed from Slides editor.
+        # Corresponds to the JSON property `connectionSiteIndex`
+        # @return [Fixnum]
+        attr_accessor :connection_site_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_object_id = args[:connected_object_id] if args.key?(:connected_object_id)
+          @connection_site_index = args[:connection_site_index] if args.key?(:connection_site_index)
         end
       end
       
@@ -1607,6 +1667,12 @@ module Google
         # @return [String]
         attr_accessor :end_arrow
       
+        # The properties for one end of a Line
+        # connection.
+        # Corresponds to the JSON property `endConnection`
+        # @return [Google::Apis::SlidesV1::LineConnection]
+        attr_accessor :end_connection
+      
         # The fill of the line.
         # Corresponds to the JSON property `lineFill`
         # @return [Google::Apis::SlidesV1::LineFill]
@@ -1622,6 +1688,12 @@ module Google
         # @return [String]
         attr_accessor :start_arrow
       
+        # The properties for one end of a Line
+        # connection.
+        # Corresponds to the JSON property `startConnection`
+        # @return [Google::Apis::SlidesV1::LineConnection]
+        attr_accessor :start_connection
+      
         # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `weight`
         # @return [Google::Apis::SlidesV1::Dimension]
@@ -1635,9 +1707,11 @@ module Google
         def update!(**args)
           @dash_style = args[:dash_style] if args.key?(:dash_style)
           @end_arrow = args[:end_arrow] if args.key?(:end_arrow)
+          @end_connection = args[:end_connection] if args.key?(:end_connection)
           @line_fill = args[:line_fill] if args.key?(:line_fill)
           @link = args[:link] if args.key?(:link)
           @start_arrow = args[:start_arrow] if args.key?(:start_arrow)
+          @start_connection = args[:start_connection] if args.key?(:start_connection)
           @weight = args[:weight] if args.key?(:weight)
         end
       end
@@ -2972,6 +3046,12 @@ module Google
         # @return [Google::Apis::SlidesV1::ReplaceImageRequest]
         attr_accessor :replace_image
       
+        # Reroutes a line such that it's connected at the
+        # two closest connection sites on the connected page elements.
+        # Corresponds to the JSON property `rerouteLine`
+        # @return [Google::Apis::SlidesV1::RerouteLineRequest]
+        attr_accessor :reroute_line
+      
         # Ungroups objects, such as groups.
         # Corresponds to the JSON property `ungroupObjects`
         # @return [Google::Apis::SlidesV1::UngroupObjectsRequest]
@@ -2986,6 +3066,11 @@ module Google
         # Corresponds to the JSON property `updateImageProperties`
         # @return [Google::Apis::SlidesV1::UpdateImagePropertiesRequest]
         attr_accessor :update_image_properties
+      
+        # Updates the category of a line.
+        # Corresponds to the JSON property `updateLineCategory`
+        # @return [Google::Apis::SlidesV1::UpdateLineCategoryRequest]
+        attr_accessor :update_line_category
       
         # Updates the properties of a Line.
         # Corresponds to the JSON property `updateLineProperties`
@@ -3095,9 +3180,11 @@ module Google
           @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @replace_image = args[:replace_image] if args.key?(:replace_image)
+          @reroute_line = args[:reroute_line] if args.key?(:reroute_line)
           @ungroup_objects = args[:ungroup_objects] if args.key?(:ungroup_objects)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
+          @update_line_category = args[:update_line_category] if args.key?(:update_line_category)
           @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
           @update_page_element_alt_text = args[:update_page_element_alt_text] if args.key?(:update_page_element_alt_text)
           @update_page_element_transform = args[:update_page_element_transform] if args.key?(:update_page_element_transform)
@@ -3112,6 +3199,29 @@ module Google
           @update_table_row_properties = args[:update_table_row_properties] if args.key?(:update_table_row_properties)
           @update_text_style = args[:update_text_style] if args.key?(:update_text_style)
           @update_video_properties = args[:update_video_properties] if args.key?(:update_video_properties)
+        end
+      end
+      
+      # Reroutes a line such that it's connected at the
+      # two closest connection sites on the connected page elements.
+      class RerouteLineRequest
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the line to reroute.
+        # Only a line with a category
+        # indicating it is a "connector" can be rerouted. The start and end
+        # connections of the line must be on different page elements.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
         end
       end
       
@@ -4444,6 +4554,37 @@ module Google
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
           @image_properties = args[:image_properties] if args.key?(:image_properties)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Updates the category of a line.
+      class UpdateLineCategoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # The line category to update to.
+        # The exact line type is determined based
+        # on the category to update to and how it's routed to connect to other page
+        # elements.
+        # Corresponds to the JSON property `lineCategory`
+        # @return [String]
+        attr_accessor :line_category
+      
+        # The object ID of the line the update is applied to.
+        # Only a line with a category
+        # indicating it is a "connector" can be updated.
+        # The line may be rerouted after updating its category.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_category = args[:line_category] if args.key?(:line_category)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
         end
       end

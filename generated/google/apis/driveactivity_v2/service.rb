@@ -22,7 +22,7 @@ module Google
     module DriveactivityV2
       # Drive Activity API
       #
-      # 
+      # Provides a historical view of activity in Google Drive.
       #
       # @example
       #    require 'google/apis/driveactivity_v2'

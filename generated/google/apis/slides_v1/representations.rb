@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LineConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LineFill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,12 @@ module Google
       end
       
       class Request
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RerouteLineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -682,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateLineCategoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateLinePropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -889,6 +907,7 @@ module Google
       class CreateLineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
           property :element_properties, as: 'elementProperties', class: Google::Apis::SlidesV1::PageElementProperties, decorator: Google::Apis::SlidesV1::PageElementProperties::Representation
       
           property :line_category, as: 'lineCategory'
@@ -1202,9 +1221,18 @@ module Google
       class Line
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_category, as: 'lineCategory'
           property :line_properties, as: 'lineProperties', class: Google::Apis::SlidesV1::LineProperties, decorator: Google::Apis::SlidesV1::LineProperties::Representation
       
           property :line_type, as: 'lineType'
+        end
+      end
+      
+      class LineConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_object_id, as: 'connectedObjectId'
+          property :connection_site_index, as: 'connectionSiteIndex'
         end
       end
       
@@ -1221,11 +1249,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dash_style, as: 'dashStyle'
           property :end_arrow, as: 'endArrow'
+          property :end_connection, as: 'endConnection', class: Google::Apis::SlidesV1::LineConnection, decorator: Google::Apis::SlidesV1::LineConnection::Representation
+      
           property :line_fill, as: 'lineFill', class: Google::Apis::SlidesV1::LineFill, decorator: Google::Apis::SlidesV1::LineFill::Representation
       
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
       
           property :start_arrow, as: 'startArrow'
+          property :start_connection, as: 'startConnection', class: Google::Apis::SlidesV1::LineConnection, decorator: Google::Apis::SlidesV1::LineConnection::Representation
+      
           property :weight, as: 'weight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
         end
@@ -1599,11 +1631,15 @@ module Google
       
           property :replace_image, as: 'replaceImage', class: Google::Apis::SlidesV1::ReplaceImageRequest, decorator: Google::Apis::SlidesV1::ReplaceImageRequest::Representation
       
+          property :reroute_line, as: 'rerouteLine', class: Google::Apis::SlidesV1::RerouteLineRequest, decorator: Google::Apis::SlidesV1::RerouteLineRequest::Representation
+      
           property :ungroup_objects, as: 'ungroupObjects', class: Google::Apis::SlidesV1::UngroupObjectsRequest, decorator: Google::Apis::SlidesV1::UngroupObjectsRequest::Representation
       
           property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::SlidesV1::UnmergeTableCellsRequest, decorator: Google::Apis::SlidesV1::UnmergeTableCellsRequest::Representation
       
           property :update_image_properties, as: 'updateImageProperties', class: Google::Apis::SlidesV1::UpdateImagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateImagePropertiesRequest::Representation
+      
+          property :update_line_category, as: 'updateLineCategory', class: Google::Apis::SlidesV1::UpdateLineCategoryRequest, decorator: Google::Apis::SlidesV1::UpdateLineCategoryRequest::Representation
       
           property :update_line_properties, as: 'updateLineProperties', class: Google::Apis::SlidesV1::UpdateLinePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateLinePropertiesRequest::Representation
       
@@ -1633,6 +1669,13 @@ module Google
       
           property :update_video_properties, as: 'updateVideoProperties', class: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest::Representation
       
+        end
+      end
+      
+      class RerouteLineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
         end
       end
       
@@ -2021,6 +2064,14 @@ module Google
           property :fields, as: 'fields'
           property :image_properties, as: 'imageProperties', class: Google::Apis::SlidesV1::ImageProperties, decorator: Google::Apis::SlidesV1::ImageProperties::Representation
       
+          property :object_id_prop, as: 'objectId'
+        end
+      end
+      
+      class UpdateLineCategoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_category, as: 'lineCategory'
           property :object_id_prop, as: 'objectId'
         end
       end

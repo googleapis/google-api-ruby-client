@@ -20,12 +20,12 @@ module Google
   module Apis
     # Drive Activity API
     #
-    # 
+    # Provides a historical view of activity in Google Drive.
     #
     # @see https://developers.google.com/drive/activity/
     module DriveactivityV2
       VERSION = 'V2'
-      REVISION = '20181113'
+      REVISION = '20181116'
 
       # View and add to the activity record of files in your Google Drive
       AUTH_DRIVE_ACTIVITY = 'https://www.googleapis.com/auth/drive.activity'
