@@ -2290,7 +2290,7 @@ module Google
         attr_accessor :usb_file_transfer_disabled
         alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
       
-        # Whether USB storage is enabled.
+        # Whether USB storage is enabled. Deprecated.
         # Corresponds to the JSON property `usbMassStorageEnabled`
         # @return [Boolean]
         attr_accessor :usb_mass_storage_enabled
