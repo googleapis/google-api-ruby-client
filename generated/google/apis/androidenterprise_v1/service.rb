@@ -2854,6 +2854,7 @@ module Google
         # Generates an authentication token which the device policy client can use to
         # provision the given EMM-managed user account on a device. The generated token
         # is single-use and expires after a few minutes.
+        # You can provision a maximum of 10 devices per user.
         # This call only works with EMM-managed accounts.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
