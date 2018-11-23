@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckAccessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompositeFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -634,6 +640,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchItemsByViewUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchItemsByViewUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchQualityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +856,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operator_options, as: 'operatorOptions', class: Google::Apis::CloudsearchV1::BooleanOperatorOptions, decorator: Google::Apis::CloudsearchV1::BooleanOperatorOptions::Representation
       
+        end
+      end
+      
+      class CheckAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_access, as: 'hasAccess'
         end
       end
       
@@ -1821,6 +1846,25 @@ module Google
       
           collection :source_config, as: 'sourceConfig', class: Google::Apis::CloudsearchV1::SourceConfig, decorator: Google::Apis::CloudsearchV1::SourceConfig::Representation
       
+        end
+      end
+      
+      class SearchItemsByViewUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :debug_options, as: 'debugOptions', class: Google::Apis::CloudsearchV1::DebugOptions, decorator: Google::Apis::CloudsearchV1::DebugOptions::Representation
+      
+          property :page_token, as: 'pageToken'
+          property :view_url, as: 'viewUrl'
+        end
+      end
+      
+      class SearchItemsByViewUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CloudsearchV1::Item, decorator: Google::Apis::CloudsearchV1::Item::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

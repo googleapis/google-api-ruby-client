@@ -48,10 +48,86 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Checks whether an item is accessible by specified principal.
+        # @param [String] name
+        #   Item name, format:
+        #   datasources/`source_id`/items/`item_id`
+        # @param [Google::Apis::CloudsearchV1::Principal] principal_object
+        # @param [Boolean] debug_options_enable_debugging
+        #   If set, the request will enable debugging features of Cloud Search.
+        #   Only turn on this field, if asked by Google to help with debugging.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::CheckAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::CheckAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_debug_datasource_item_access(name, principal_object = nil, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/debug/{+name}:checkAccess', options)
+          command.request_representation = Google::Apis::CloudsearchV1::Principal::Representation
+          command.request_object = principal_object
+          command.response_representation = Google::Apis::CloudsearchV1::CheckAccessResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::CheckAccessResponse
+          command.params['name'] = name unless name.nil?
+          command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the item whose viewUrl exactly matches that of the URL provided
+        # in the request.
+        # @param [String] name
+        #   Source name, format:
+        #   datasources/`source_id`
+        # @param [Google::Apis::CloudsearchV1::SearchItemsByViewUrlRequest] search_items_by_view_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::SearchItemsByViewUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::SearchItemsByViewUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_debug_datasource_item_by_view_url(name, search_items_by_view_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/debug/{+name}/items:searchByViewUrl', options)
+          command.request_representation = Google::Apis::CloudsearchV1::SearchItemsByViewUrlRequest::Representation
+          command.request_object = search_items_by_view_url_request_object
+          command.response_representation = Google::Apis::CloudsearchV1::SearchItemsByViewUrlResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::SearchItemsByViewUrlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all unmapped identities for a specific item.
         # @param [String] parent
         #   The name of the item, in the following format:
         #   datasources/`source_id`/items/`ID`
+        # @param [Boolean] debug_options_enable_debugging
+        #   If set, the request will enable debugging features of Cloud Search.
+        #   Only turn on this field, if asked by Google to help with debugging.
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
         #   Defaults to 100.
@@ -74,11 +150,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_debug_datasource_item_unmappedids(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_debug_datasource_item_unmappedids(parent, debug_options_enable_debugging: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -90,6 +167,9 @@ module Google
         # @param [String] parent
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id``
+        # @param [Boolean] debug_options_enable_debugging
+        #   If set, the request will enable debugging features of Cloud Search.
+        #   Only turn on this field, if asked by Google to help with debugging.
         # @param [String] group_resource_name
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
@@ -114,11 +194,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_debug_identitysource_item_forunmappedidentity(parent, group_resource_name: nil, page_size: nil, page_token: nil, user_resource_name: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_debug_identitysource_item_forunmappedidentity(parent, debug_options_enable_debugging: nil, group_resource_name: nil, page_size: nil, page_token: nil, user_resource_name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/debug/{+parent}/items:forunmappedidentity', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListItemNamesForUnmappedIdentityResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListItemNamesForUnmappedIdentityResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
           command.query['groupResourceName'] = group_resource_name unless group_resource_name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -132,6 +213,9 @@ module Google
         # @param [String] parent
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id`
+        # @param [Boolean] debug_options_enable_debugging
+        #   If set, the request will enable debugging features of Cloud Search.
+        #   Only turn on this field, if asked by Google to help with debugging.
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
         #   Defaults to 100.
@@ -156,11 +240,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_debug_identitysource_unmappedids(parent, page_size: nil, page_token: nil, resolution_status_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_debug_identitysource_unmappedids(parent, debug_options_enable_debugging: nil, page_size: nil, page_token: nil, resolution_status_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['resolutionStatusCode'] = resolution_status_code unless resolution_status_code.nil?

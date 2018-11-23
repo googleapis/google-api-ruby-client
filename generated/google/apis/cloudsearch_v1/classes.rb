@@ -74,6 +74,26 @@ module Google
       end
       
       # 
+      class CheckAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returns true if principal has access.  Returns false otherwise.
+        # Corresponds to the JSON property `hasAccess`
+        # @return [Boolean]
+        attr_accessor :has_access
+        alias_method :has_access?, :has_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_access = args[:has_access] if args.key?(:has_access)
+        end
+      end
+      
+      # 
       class CompositeFilter
         include Google::Apis::Core::Hashable
       
@@ -3580,6 +3600,64 @@ module Google
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
           @scoring_config = args[:scoring_config] if args.key?(:scoring_config)
           @source_config = args[:source_config] if args.key?(:source_config)
+        end
+      end
+      
+      # 
+      class SearchItemsByViewUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Shared request debug options for all cloudsearch RPC methods.
+        # Corresponds to the JSON property `debugOptions`
+        # @return [Google::Apis::CloudsearchV1::DebugOptions]
+        attr_accessor :debug_options
+      
+        # The next_page_token value returned from a previous request, if any.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Specify the full view URL to find the corresponding item.
+        # The maximum length is 2048 characters.
+        # Corresponds to the JSON property `viewUrl`
+        # @return [String]
+        attr_accessor :view_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @debug_options = args[:debug_options] if args.key?(:debug_options)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @view_url = args[:view_url] if args.key?(:view_url)
+        end
+      end
+      
+      # 
+      class SearchItemsByViewUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::CloudsearchV1::Item>]
+        attr_accessor :items
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
