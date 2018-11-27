@@ -22,6 +22,18 @@ module Google
   module Apis
     module CloudiotV1
       
+      class BindDeviceToGatewayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindDeviceToGatewayResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GatewayConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,10 +208,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnbindDeviceFromGatewayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnbindDeviceFromGatewayResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class X509CertificateDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindDeviceToGatewayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :gateway_id, as: 'gatewayId'
+        end
+      end
+      
+      class BindDeviceToGatewayResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Binding
@@ -213,6 +257,8 @@ module Google
           property :config, as: 'config', class: Google::Apis::CloudiotV1::DeviceConfig, decorator: Google::Apis::CloudiotV1::DeviceConfig::Representation
       
           collection :credentials, as: 'credentials', class: Google::Apis::CloudiotV1::DeviceCredential, decorator: Google::Apis::CloudiotV1::DeviceCredential::Representation
+      
+          property :gateway_config, as: 'gatewayConfig', class: Google::Apis::CloudiotV1::GatewayConfig, decorator: Google::Apis::CloudiotV1::GatewayConfig::Representation
       
           property :id, as: 'id'
           property :last_config_ack_time, as: 'lastConfigAckTime'
@@ -299,6 +345,16 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gateway_auth_method, as: 'gatewayAuthMethod'
+          property :gateway_type, as: 'gatewayType'
+          property :last_accessed_gateway_id, as: 'lastAccessedGatewayId'
+          property :last_accessed_gateway_time, as: 'lastAccessedGatewayTime'
         end
       end
       
@@ -449,6 +505,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UnbindDeviceFromGatewayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :gateway_id, as: 'gatewayId'
+        end
+      end
+      
+      class UnbindDeviceFromGatewayResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -22,6 +22,47 @@ module Google
   module Apis
     module CloudiotV1
       
+      # Request for `BindDeviceToGateway`.
+      class BindDeviceToGatewayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The device to associate with the specified gateway. The value of
+        # `device_id` can be either the device numeric ID or the user-defined device
+        # identifier.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # The value of `gateway_id` can be either the device numeric ID or the
+        # user-defined device identifier.
+        # Corresponds to the JSON property `gatewayId`
+        # @return [String]
+        attr_accessor :gateway_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @gateway_id = args[:gateway_id] if args.key?(:gateway_id)
+        end
+      end
+      
+      # Response for `BindDeviceToGateway`.
+      class BindDeviceToGatewayResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -96,6 +137,11 @@ module Google
         # Corresponds to the JSON property `credentials`
         # @return [Array<Google::Apis::CloudiotV1::DeviceCredential>]
         attr_accessor :credentials
+      
+        # Gateway-related configuration and state.
+        # Corresponds to the JSON property `gatewayConfig`
+        # @return [Google::Apis::CloudiotV1::GatewayConfig]
+        attr_accessor :gateway_config
       
         # The user-defined device identifier. The device ID must be unique
         # within a device registry.
@@ -238,6 +284,7 @@ module Google
           @blocked = args[:blocked] if args.key?(:blocked)
           @config = args[:config] if args.key?(:config)
           @credentials = args[:credentials] if args.key?(:credentials)
+          @gateway_config = args[:gateway_config] if args.key?(:gateway_config)
           @id = args[:id] if args.key?(:id)
           @last_config_ack_time = args[:last_config_ack_time] if args.key?(:last_config_ack_time)
           @last_config_send_time = args[:last_config_send_time] if args.key?(:last_config_send_time)
@@ -531,6 +578,45 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Gateway-related configuration and state.
+      class GatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates how to authorize and/or authenticate devices to access the
+        # gateway.
+        # Corresponds to the JSON property `gatewayAuthMethod`
+        # @return [String]
+        attr_accessor :gateway_auth_method
+      
+        # Indicates whether the device is a gateway.
+        # Corresponds to the JSON property `gatewayType`
+        # @return [String]
+        attr_accessor :gateway_type
+      
+        # [Output only] The ID of the gateway the device accessed most recently.
+        # Corresponds to the JSON property `lastAccessedGatewayId`
+        # @return [String]
+        attr_accessor :last_accessed_gateway_id
+      
+        # [Output only] The most recent time at which the device accessed the gateway
+        # specified in `last_accessed_gateway`.
+        # Corresponds to the JSON property `lastAccessedGatewayTime`
+        # @return [String]
+        attr_accessor :last_accessed_gateway_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_auth_method = args[:gateway_auth_method] if args.key?(:gateway_auth_method)
+          @gateway_type = args[:gateway_type] if args.key?(:gateway_type)
+          @last_accessed_gateway_id = args[:last_accessed_gateway_id] if args.key?(:last_accessed_gateway_id)
+          @last_accessed_gateway_time = args[:last_accessed_gateway_time] if args.key?(:last_accessed_gateway_time)
         end
       end
       
@@ -1091,6 +1177,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request for `UnbindDeviceFromGateway`.
+      class UnbindDeviceFromGatewayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The device to disassociate from the specified gateway. The value of
+        # `device_id` can be either the device numeric ID or the user-defined device
+        # identifier.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # The value of `gateway_id` can be either the device numeric ID or the
+        # user-defined device identifier.
+        # Corresponds to the JSON property `gatewayId`
+        # @return [String]
+        attr_accessor :gateway_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @gateway_id = args[:gateway_id] if args.key?(:gateway_id)
+        end
+      end
+      
+      # Response for `UnbindDeviceFromGateway`.
+      class UnbindDeviceFromGatewayResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

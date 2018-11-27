@@ -48,6 +48,40 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Associates the device with the gateway.
+        # @param [String] parent
+        #   The name of the registry. For example,
+        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        # @param [Google::Apis::CloudiotV1::BindDeviceToGatewayRequest] bind_device_to_gateway_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::BindDeviceToGatewayResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::BindDeviceToGatewayResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bind_registry_device_to_gateway(parent, bind_device_to_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
+          command.request_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayRequest::Representation
+          command.request_object = bind_device_to_gateway_request_object
+          command.response_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a device registry that contains devices.
         # @param [String] parent
         #   The project and cloud region where this device registry must be created.
@@ -334,6 +368,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the association between the device and the gateway.
+        # @param [String] parent
+        #   The name of the registry. For example,
+        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        # @param [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest] unbind_device_from_gateway_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unbind_registry_device_from_gateway(parent, unbind_device_from_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
+          command.request_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest::Representation
+          command.request_object = unbind_device_from_gateway_request_object
+          command.response_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a device in a device registry.
         # @param [String] parent
         #   The name of the device registry where this device should be created.
@@ -451,6 +519,20 @@ module Google
         #   The fields of the `Device` resource to be returned in the response. The
         #   fields `id` and `num_id` are always returned, along with any
         #   other fields specified.
+        # @param [String] gateway_list_options_associations_device_id
+        #   If set, returns only the gateways with which the specified device is
+        #   associated. The device ID can be numeric (`num_id`) or the user-defined
+        #   string (`id`). For example, if `456` is specified, returns only the
+        #   gateways to which the device with `num_id` 456 is bound.
+        # @param [String] gateway_list_options_associations_gateway_id
+        #   If set, only devices associated with the specified gateway are returned.
+        #   The gateway ID can be numeric (`num_id`) or the user-defined string
+        #   (`id`). For example, if `123` is specified, only devices bound to the
+        #   gateway with `num_id` 123 are returned.
+        # @param [String] gateway_list_options_gateway_type
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
+        #   is specified, only non-gateway devices are returned. If
+        #   `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If this value
         #   is zero, the service will select a default size. A call may return fewer
@@ -477,7 +559,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_registry_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_registry_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_list_options_associations_device_id: nil, gateway_list_options_associations_gateway_id: nil, gateway_list_options_gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
@@ -485,6 +567,9 @@ module Google
           command.query['deviceIds'] = device_ids unless device_ids.nil?
           command.query['deviceNumIds'] = device_num_ids unless device_num_ids.nil?
           command.query['fieldMask'] = field_mask unless field_mask.nil?
+          command.query['gatewayListOptions.associationsDeviceId'] = gateway_list_options_associations_device_id unless gateway_list_options_associations_device_id.nil?
+          command.query['gatewayListOptions.associationsGatewayId'] = gateway_list_options_associations_gateway_id unless gateway_list_options_associations_gateway_id.nil?
+          command.query['gatewayListOptions.gatewayType'] = gateway_list_options_gateway_type unless gateway_list_options_gateway_type.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -695,6 +780,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Associates the device with the gateway.
+        # @param [String] parent
+        #   The name of the registry. For example,
+        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        # @param [Google::Apis::CloudiotV1::BindDeviceToGatewayRequest] bind_device_to_gateway_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::BindDeviceToGatewayResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::BindDeviceToGatewayResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bind_group_device_to_gateway(parent, bind_device_to_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
+          command.request_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayRequest::Representation
+          command.request_object = bind_device_to_gateway_request_object
+          command.response_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -802,6 +921,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the association between the device and the gateway.
+        # @param [String] parent
+        #   The name of the registry. For example,
+        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        # @param [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest] unbind_device_from_gateway_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unbind_group_device_from_gateway(parent, unbind_device_from_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
+          command.request_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest::Representation
+          command.request_object = unbind_device_from_gateway_request_object
+          command.response_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse::Representation
+          command.response_class = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details about a device.
         # @param [String] name
         #   The name of the device. For example,
@@ -852,6 +1005,20 @@ module Google
         #   The fields of the `Device` resource to be returned in the response. The
         #   fields `id` and `num_id` are always returned, along with any
         #   other fields specified.
+        # @param [String] gateway_list_options_associations_device_id
+        #   If set, returns only the gateways with which the specified device is
+        #   associated. The device ID can be numeric (`num_id`) or the user-defined
+        #   string (`id`). For example, if `456` is specified, returns only the
+        #   gateways to which the device with `num_id` 456 is bound.
+        # @param [String] gateway_list_options_associations_gateway_id
+        #   If set, only devices associated with the specified gateway are returned.
+        #   The gateway ID can be numeric (`num_id`) or the user-defined string
+        #   (`id`). For example, if `123` is specified, only devices bound to the
+        #   gateway with `num_id` 123 are returned.
+        # @param [String] gateway_list_options_gateway_type
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
+        #   is specified, only non-gateway devices are returned. If
+        #   `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If this value
         #   is zero, the service will select a default size. A call may return fewer
@@ -878,7 +1045,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_registry_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_registry_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_list_options_associations_device_id: nil, gateway_list_options_associations_gateway_id: nil, gateway_list_options_gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
@@ -886,6 +1053,9 @@ module Google
           command.query['deviceIds'] = device_ids unless device_ids.nil?
           command.query['deviceNumIds'] = device_num_ids unless device_num_ids.nil?
           command.query['fieldMask'] = field_mask unless field_mask.nil?
+          command.query['gatewayListOptions.associationsDeviceId'] = gateway_list_options_associations_device_id unless gateway_list_options_associations_device_id.nil?
+          command.query['gatewayListOptions.associationsGatewayId'] = gateway_list_options_associations_gateway_id unless gateway_list_options_associations_gateway_id.nil?
+          command.query['gatewayListOptions.gatewayType'] = gateway_list_options_gateway_type unless gateway_list_options_gateway_type.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
