@@ -132,6 +132,71 @@ module Google
         end
       end
       
+      # Request to apply configuration to an existing tenant project.
+      class ApplyTenantProjectConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # This structure defines a tenant project to be added to the specified tenancy
+        # unit and its initial configuration and properties. A project lien will be
+        # created for the tenant project to prevent the tenant project from being
+        # deleted accidentally. The lien will be deleted as part of tenant project
+        # removal.
+        # Corresponds to the JSON property `projectConfig`
+        # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig]
+        attr_accessor :project_config
+      
+        # Tag of the project. Must be less than 128 characters. Required.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_config = args[:project_config] if args.key?(:project_config)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Request to attach an existing project to the tenancy unit as a new tenant
+      # resource.
+      class AttachTenantProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        # When attaching an external project, this is in the format of
+        # `projects/`project_number`’.
+        # Corresponds to the JSON property `externalResource`
+        # @return [String]
+        attr_accessor :external_resource
+      
+        # When attaching a reserved project already in Tenancy Units, this is the
+        # tag of tenant resource under the tenancy unit for the service's producer
+        # project. The reserved tenant resource must be in active state.
+        # Corresponds to the JSON property `reservedResource`
+        # @return [String]
+        attr_accessor :reserved_resource
+      
+        # Tag of the tenant resource after attachment.
+        # Must be less than 128 characters. Required.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_resource = args[:external_resource] if args.key?(:external_resource)
+          @reserved_resource = args[:reserved_resource] if args.key?(:reserved_resource)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # Configuration for an anthentication provider, including support for
       # [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
       # token-32).

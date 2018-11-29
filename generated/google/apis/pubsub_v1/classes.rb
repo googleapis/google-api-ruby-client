@@ -868,11 +868,11 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
-        # This value is the maximum time after a subscriber receives a message
-        # before the subscriber should acknowledge the message. After message
-        # delivery but before the ack deadline expires and before the message is
-        # acknowledged, it is an outstanding message and will not be delivered
-        # again during that time (on a best-effort basis).
+        # The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        # the subscriber to acknowledge receipt before resending the message. In the
+        # interval after the message is delivered and before it is acknowledged, it
+        # is considered to be <i>outstanding</i>. During that time period, the
+        # message will not be redelivered (on a best-effort basis).
         # For pull subscriptions, this value is used as the initial value for the ack
         # deadline. To override this value for a given message, call
         # `ModifyAckDeadline` with the corresponding `ack_id` if using

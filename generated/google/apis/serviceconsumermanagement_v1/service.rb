@@ -299,6 +299,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Apply configuration to an existing tenant project.
+        # This project must exist in active state and have the original owner
+        # account. Caller must have the permission to add a project to the given
+        # tenancy unit. Configuration will be applied, but any existing settings on
+        # the project will not be modified.
+        # Specified policy bindings will be applied. Existing binding will not be
+        # modified.
+        # Specified services will be activated.   No service will be deactivated.
+        # New billing configuration will be applied if specified.
+        # Omit billing configuration to keep the existing one.
+        # Service account in the project will be created if previously non existing.
+        # Operation fails if any of the steps fail, but no rollback of already
+        # applied configuration changes is attempted.
+        # Operation<response: Empty>.
+        # @param [String] name
+        #   Name of the tenancy unit.
+        # @param [Google::Apis::ServiceconsumermanagementV1::ApplyTenantProjectConfigRequest] apply_tenant_project_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def apply_service_tenancy_unit_project_config(name, apply_tenant_project_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:applyProjectConfig', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1::ApplyTenantProjectConfigRequest::Representation
+          command.request_object = apply_tenant_project_config_request_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Attach an existing project to the tenancy unit as a new tenant
+        # resource. The project could be either the tenant project reserved by
+        # calling AddTenantProject under tenancy unit for the producer project of
+        # service, or from outside.
+        # Caller will be checked against the permission as if calling
+        # AddTenantProject on the same consumer.
+        # To trigger the attachement, the targeted tenant project must be in a
+        # folder. Please also make sure ServiceConsumerManagement service account is
+        # the owner of that project. Note that these two requirements are already met
+        # if the project is reserved through AddTenantProject.
+        # Operation<response: Empty>.
+        # @param [String] name
+        #   Name of the tenancy unit that project will be attached to.
+        # @param [Google::Apis::ServiceconsumermanagementV1::AttachTenantProjectRequest] attach_tenant_project_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def attach_service_tenancy_unit_project(name, attach_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:attachProject', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1::AttachTenantProjectRequest::Representation
+          command.request_object = attach_tenant_project_request_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a tenancy unit with no tenant resources.
         # @param [String] parent
         #   services/`service`/`collection id`/`resource id`

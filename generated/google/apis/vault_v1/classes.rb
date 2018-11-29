@@ -486,6 +486,11 @@ module Google
         # @return [Google::Apis::VaultV1::MailExportOptions]
         attr_accessor :mail_options
       
+        # The requested export location.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -496,6 +501,7 @@ module Google
           @groups_options = args[:groups_options] if args.key?(:groups_options)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
           @mail_options = args[:mail_options] if args.key?(:mail_options)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -956,12 +962,6 @@ module Google
         # @return [String]
         attr_accessor :export_format
       
-        # Set to true to export confidential mode content
-        # Corresponds to the JSON property `showConfidentialModeContent`
-        # @return [Boolean]
-        attr_accessor :show_confidential_mode_content
-        alias_method :show_confidential_mode_content?, :show_confidential_mode_content
-      
         def initialize(**args)
            update!(**args)
         end
@@ -969,7 +969,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @export_format = args[:export_format] if args.key?(:export_format)
-          @show_confidential_mode_content = args[:show_confidential_mode_content] if args.key?(:show_confidential_mode_content)
         end
       end
       

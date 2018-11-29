@@ -452,6 +452,7 @@ module Google
       
           property :mail_options, as: 'mailOptions', class: Google::Apis::VaultV1::MailExportOptions, decorator: Google::Apis::VaultV1::MailExportOptions::Representation
       
+          property :region, as: 'region'
         end
       end
       
@@ -604,7 +605,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_format, as: 'exportFormat'
-          property :show_confidential_mode_content, as: 'showConfidentialModeContent'
         end
       end
       

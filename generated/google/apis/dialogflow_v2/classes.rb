@@ -913,7 +913,9 @@ module Google
         attr_accessor :parent_followup_intent_name
       
         # Optional. The priority of this intent. Higher numbers represent higher
-        # priorities. Zero or negative numbers mean that the intent is disabled.
+        # priorities. If this is zero or unspecified, we use the default
+        # priority 500000.
+        # Negative numbers mean that the intent is disabled.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -2869,7 +2871,9 @@ module Google
         attr_accessor :parent_followup_intent_name
       
         # Optional. The priority of this intent. Higher numbers represent higher
-        # priorities. Zero or negative numbers mean that the intent is disabled.
+        # priorities. If this is zero or unspecified, we use the default
+        # priority 500000.
+        # Negative numbers mean that the intent is disabled.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority

@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplyTenantProjectConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttachTenantProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -453,6 +465,24 @@ module Google
       
           property :syntax, as: 'syntax'
           property :version, as: 'version'
+        end
+      end
+      
+      class ApplyTenantProjectConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_config, as: 'projectConfig', class: Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig, decorator: Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig::Representation
+      
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class AttachTenantProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_resource, as: 'externalResource'
+          property :reserved_resource, as: 'reservedResource'
+          property :tag, as: 'tag'
         end
       end
       

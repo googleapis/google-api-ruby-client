@@ -5086,7 +5086,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The carrier handling the shipment.
-        # Acceptable values are:
+        # Acceptable values for US are:
         # - "gsx"
         # - "ups"
         # - "usps"
@@ -5103,6 +5103,9 @@ module Google
         # - "lasership"
         # - "mpx"
         # - "uds"
+        # Acceptable values for FR are:
+        # - "colissimo"
+        # - "chronopost"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -9072,9 +9075,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The unit of value.
-        # Acceptable values are:
-        # - "cm"
-        # - "in"
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
