@@ -1544,6 +1544,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified knowledge base.
+        # @param [String] name
+        #   The knowledge base resource name.
+        #   The name must be empty when creating a knowledge base.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`.
+        #   Currently, only `display_name` can be updated, an InvalidArgument will be
+        #   returned for attempting to update other fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_knowledge_basis(name, google_cloud_dialogflow_v2beta1_knowledge_base_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_knowledge_base_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new document.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
@@ -1679,6 +1719,89 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified document.
+        # Operation <response: Document,
+        # metadata: KnowledgeOperationMetadata>
+        # @param [String] name
+        #   The document resource name.
+        #   The name must be empty when creating a document.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        #   ID>/documents/<Document ID>`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`.
+        #   Currently, only `display_name` can be updated, an InvalidArgument will be
+        #   returned for attempting to update other fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_document_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_document_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reloads the specified document from its specified source, content_uri or
+        # content. The previously loaded content of the document will be deleted.
+        # Note: Even when the content of the document has not changed, there still
+        # may be side effects because of internal implementation changes.
+        # Operation <response: Document,
+        # metadata: KnowledgeOperationMetadata>
+        # @param [String] name
+        #   The name of the document to reload.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        #   ID>/documents/<Document ID>`
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reload_project_agent_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_reload_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/{+name}:reload', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_reload_document_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2518,6 +2641,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified knowledge base.
+        # @param [String] name
+        #   The knowledge base resource name.
+        #   The name must be empty when creating a knowledge base.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`.
+        #   Currently, only `display_name` can be updated, an InvalidArgument will be
+        #   returned for attempting to update other fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_knowledge_basis(name, google_cloud_dialogflow_v2beta1_knowledge_base_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_knowledge_base_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new document.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
@@ -2653,6 +2816,89 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified document.
+        # Operation <response: Document,
+        # metadata: KnowledgeOperationMetadata>
+        # @param [String] name
+        #   The document resource name.
+        #   The name must be empty when creating a document.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        #   ID>/documents/<Document ID>`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`.
+        #   Currently, only `display_name` can be updated, an InvalidArgument will be
+        #   returned for attempting to update other fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_document_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_document_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reloads the specified document from its specified source, content_uri or
+        # content. The previously loaded content of the document will be deleted.
+        # Note: Even when the content of the document has not changed, there still
+        # may be side effects because of internal implementation changes.
+        # Operation <response: Document,
+        # metadata: KnowledgeOperationMetadata>
+        # @param [String] name
+        #   The name of the document to reload.
+        #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
+        #   ID>/documents/<Document ID>`
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reload_project_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_reload_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/{+name}:reload', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_reload_document_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

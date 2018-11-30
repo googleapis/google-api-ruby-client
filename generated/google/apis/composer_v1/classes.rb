@@ -552,6 +552,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :pypi_packages
       
+        # Optional. The major version of Python used to run the Apache Airflow
+        # scheduler, worker, and webserver processes.
+        # Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+        # updated.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -562,6 +570,7 @@ module Google
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
+          @python_version = args[:python_version] if args.key?(:python_version)
         end
       end
       

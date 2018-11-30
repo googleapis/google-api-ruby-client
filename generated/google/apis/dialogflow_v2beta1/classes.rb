@@ -354,7 +354,9 @@ module Google
         attr_accessor :parent_followup_intent_name
       
         # Optional. The priority of this intent. Higher numbers represent higher
-        # priorities. Zero or negative numbers mean that the intent is disabled.
+        # priorities. If this is zero or unspecified, we use the default
+        # priority 500000.
+        # Negative numbers mean that the intent is disabled.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -2612,7 +2614,9 @@ module Google
         attr_accessor :parent_followup_intent_name
       
         # Optional. The priority of this intent. Higher numbers represent higher
-        # priorities. Zero or negative numbers mean that the intent is disabled.
+        # priorities. If this is zero or unspecified, we use the default
+        # priority 500000.
+        # Negative numbers mean that the intent is disabled.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -4182,6 +4186,19 @@ module Google
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
+        end
+      end
+      
+      # Request message for Documents.ReloadDocument.
+      class GoogleCloudDialogflowV2beta1ReloadDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

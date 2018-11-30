@@ -226,6 +226,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
       
+        # Which conditions caused the current cluster state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
+        attr_accessor :conditions
+      
         # [Output only] The time the cluster was created, in
         # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
@@ -237,7 +242,8 @@ module Google
         # @return [String]
         attr_accessor :current_master_version
       
-        # [Output only] The number of nodes currently in the cluster.
+        # [Output only]  The number of nodes currently in the cluster. Deprecated.
+        # Call Kubernetes API directly to retrieve node information.
         # Corresponds to the JSON property `currentNodeCount`
         # @return [Fixnum]
         attr_accessor :current_node_count
@@ -340,7 +346,7 @@ module Google
         attr_accessor :location
       
         # The list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
@@ -490,6 +496,7 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
@@ -548,7 +555,7 @@ module Google
         attr_accessor :desired_image_type
       
         # The desired list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
         # in nodes being either created or removed from the cluster, depending on
         # whether locations are being added or removed.
@@ -1184,8 +1191,8 @@ module Google
         attr_accessor :password
       
         # The username to use for HTTP basic authentication to the master endpoint.
-        # For clusters v1.6.0 and later, you can disable basic authentication by
-        # providing an empty username.
+        # For clusters v1.6.0 and later, basic authentication can be disabled by
+        # leaving username unspecified (or setting it to the empty string).
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -1447,6 +1454,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # List of kubernetes taints to be applied to each node.
+        # For more information, including usage and the valid values, see:
+        # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+        # Corresponds to the JSON property `taints`
+        # @return [Array<Google::Apis::ContainerV1::NodeTaint>]
+        attr_accessor :taints
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1466,6 +1480,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
           @tags = args[:tags] if args.key?(:tags)
+          @taints = args[:taints] if args.key?(:taints)
         end
       end
       
@@ -1523,6 +1538,11 @@ module Google
         # Corresponds to the JSON property `autoscaling`
         # @return [Google::Apis::ContainerV1::NodePoolAutoscaling]
         attr_accessor :autoscaling
+      
+        # Which conditions caused the current node pool state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
+        attr_accessor :conditions
       
         # Parameters that describe the nodes in a cluster.
         # Corresponds to the JSON property `config`
@@ -1583,6 +1603,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @config = args[:config] if args.key?(:config)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
@@ -1630,10 +1651,49 @@ module Google
         end
       end
       
+      # Kubernetes taint is comprised of three fields: key, value, and effect. Effect
+      # can only be one of three types:  NoSchedule, PreferNoSchedule or NoExecute.
+      # For more information, including usage and the valid values, see:
+      # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+      class NodeTaint
+        include Google::Apis::Core::Hashable
+      
+        # Effect for taint.
+        # Corresponds to the JSON property `effect`
+        # @return [String]
+        attr_accessor :effect
+      
+        # Key for taint.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value for taint.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effect = args[:effect] if args.key?(:effect)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # This operation resource represents operations that may have happened or are
       # happening on the cluster. All fields are output only.
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # Which conditions caused the current cluster state.
+        # Corresponds to the JSON property `clusterConditions`
+        # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
+        attr_accessor :cluster_conditions
       
         # Detailed operation progress, if available.
         # Corresponds to the JSON property `detail`
@@ -1658,6 +1718,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Which conditions caused the current node pool state.
+        # Corresponds to the JSON property `nodepoolConditions`
+        # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
+        attr_accessor :nodepool_conditions
       
         # The operation type.
         # Corresponds to the JSON property `operationType`
@@ -1704,10 +1769,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_conditions = args[:cluster_conditions] if args.key?(:cluster_conditions)
           @detail = args[:detail] if args.key?(:detail)
           @end_time = args[:end_time] if args.key?(:end_time)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @nodepool_conditions = args[:nodepool_conditions] if args.key?(:nodepool_conditions)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -2042,7 +2109,7 @@ module Google
         attr_accessor :cluster_id
       
         # The desired list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
         # in nodes being either created or removed from the cluster, depending on
         # whether locations are being added or removed.
@@ -2576,6 +2643,32 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # StatusCondition describes why a cluster or a node pool has a certain status
+      # (e.g., ERROR or DEGRADED).
+      class StatusCondition
+        include Google::Apis::Core::Hashable
+      
+        # Machine-friendly representation of the condition
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Human-friendly representation of the condition
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

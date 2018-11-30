@@ -646,7 +646,8 @@ module Google
         # to each of several time series. The new data point must be more recent than
         # any other point in its time series. Each TimeSeries value must fully specify a
         # unique time series by supplying all label values for the metric and the
-        # monitored resource.
+        # monitored resource.The maximum number of TimeSeries objects per Create request
+        # is 200.
         # Corresponds to the JSON property `timeSeries`
         # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
         attr_accessor :time_series
@@ -2321,9 +2322,12 @@ module Google
       class Point
         include Google::Apis::Core::Hashable
       
-        # A time interval extending just after a start time through an end time. If the
-        # start time is the same as the end time, then the interval represents a single
-        # point in time.
+        # A time interval extending just after a start time through an end time. The
+        # start time must not be later than the end time. The default start time is the
+        # end time, making the startTime value technically optional. Whether this is
+        # useful depends on the MetricKind. If the start and end times are the same, the
+        # interval represents a point in time. This is appropriate for GAUGE metrics,
+        # but not for DELTA and CUMULATIVE metrics, which cover a span of time.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
@@ -2543,9 +2547,12 @@ module Google
         end
       end
       
-      # A time interval extending just after a start time through an end time. If the
-      # start time is the same as the end time, then the interval represents a single
-      # point in time.
+      # A time interval extending just after a start time through an end time. The
+      # start time must not be later than the end time. The default start time is the
+      # end time, making the startTime value technically optional. Whether this is
+      # useful depends on the MetricKind. If the start and end times are the same, the
+      # interval represents a point in time. This is appropriate for GAUGE metrics,
+      # but not for DELTA and CUMULATIVE metrics, which cover a span of time.
       class TimeInterval
         include Google::Apis::Core::Hashable
       

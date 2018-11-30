@@ -2417,10 +2417,15 @@ module Google
       class WorkflowMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. The name of the managed cluster.
+        # Output only. The name of the target cluster.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
+      
+        # Output only. The UUID of target cluster.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
       
         # The cluster operation triggered by a workflow.
         # Corresponds to the JSON property `createCluster`
@@ -2474,6 +2479,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
           @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
           @end_time = args[:end_time] if args.key?(:end_time)

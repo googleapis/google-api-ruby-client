@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeTaint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +407,8 @@ module Google
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
+      
           property :create_time, as: 'createTime'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
@@ -658,6 +672,8 @@ module Google
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount'
           collection :tags, as: 'tags'
+          collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
+      
         end
       end
       
@@ -675,6 +691,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
+      
+          collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
           property :config, as: 'config', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
       
@@ -699,13 +717,26 @@ module Google
         end
       end
       
+      class NodeTaint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effect, as: 'effect'
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_conditions, as: 'clusterConditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
+      
           property :detail, as: 'detail'
           property :end_time, as: 'endTime'
           property :location, as: 'location'
           property :name, as: 'name'
+          collection :nodepool_conditions, as: 'nodepoolConditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
+      
           property :operation_type, as: 'operationType'
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
@@ -900,6 +931,14 @@ module Google
           property :project_id, as: 'projectId'
           property :rotate_credentials, as: 'rotateCredentials'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class StatusCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
         end
       end
       

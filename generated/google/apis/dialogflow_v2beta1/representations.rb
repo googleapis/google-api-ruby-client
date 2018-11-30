@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ReloadDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1RestoreAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1807,6 +1813,12 @@ module Google
           property :speech_recognition_confidence, as: 'speechRecognitionConfidence'
           hash :webhook_payload, as: 'webhookPayload'
           property :webhook_source, as: 'webhookSource'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ReloadDocumentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

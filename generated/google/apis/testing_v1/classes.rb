@@ -161,6 +161,14 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :app_apk
       
+        # An Android App Bundle file format, containing a BundleConfig.pb file,
+        # a base module directory, zero or more dynamic feature module directories.
+        # <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+        # building App Bundles.
+        # Corresponds to the JSON property `appBundle`
+        # @return [Google::Apis::TestingV1::AppBundle]
+        attr_accessor :app_bundle
+      
         # The java package for the application under test.
         # Optional, default is determined by examining the application's manifest.
         # Corresponds to the JSON property `appPackageId`
@@ -218,6 +226,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_apk = args[:app_apk] if args.key?(:app_apk)
+          @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
           @app_package_id = args[:app_package_id] if args.key?(:app_package_id)
           @orchestrator_option = args[:orchestrator_option] if args.key?(:orchestrator_option)
           @test_apk = args[:test_apk] if args.key?(:test_apk)
@@ -410,6 +419,14 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :app_apk
       
+        # An Android App Bundle file format, containing a BundleConfig.pb file,
+        # a base module directory, zero or more dynamic feature module directories.
+        # <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+        # building App Bundles.
+        # Corresponds to the JSON property `appBundle`
+        # @return [Google::Apis::TestingV1::AppBundle]
+        attr_accessor :app_bundle
+      
         # The initial activity that should be used to start the app.
         # Optional
         # Corresponds to the JSON property `appInitialActivity`
@@ -465,6 +482,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_apk = args[:app_apk] if args.key?(:app_apk)
+          @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
           @app_initial_activity = args[:app_initial_activity] if args.key?(:app_initial_activity)
           @app_package_id = args[:app_package_id] if args.key?(:app_package_id)
           @max_depth = args[:max_depth] if args.key?(:max_depth)
@@ -513,6 +531,14 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :app_apk
       
+        # An Android App Bundle file format, containing a BundleConfig.pb file,
+        # a base module directory, zero or more dynamic feature module directories.
+        # <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+        # building App Bundles.
+        # Corresponds to the JSON property `appBundle`
+        # @return [Google::Apis::TestingV1::AppBundle]
+        attr_accessor :app_bundle
+      
         # The java package for the application under test.
         # Optional, default is determined by examining the application's manifest.
         # Corresponds to the JSON property `appPackageId`
@@ -544,6 +570,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_apk = args[:app_apk] if args.key?(:app_apk)
+          @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
           @app_package_id = args[:app_package_id] if args.key?(:app_package_id)
           @scenario_labels = args[:scenario_labels] if args.key?(:scenario_labels)
           @scenarios = args[:scenarios] if args.key?(:scenarios)
@@ -711,6 +738,28 @@ module Google
           @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
           @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
           @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # An Android App Bundle file format, containing a BundleConfig.pb file,
+      # a base module directory, zero or more dynamic feature module directories.
+      # <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+      # building App Bundles.
+      class AppBundle
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `bundleLocation`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :bundle_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_location = args[:bundle_location] if args.key?(:bundle_location)
         end
       end
       

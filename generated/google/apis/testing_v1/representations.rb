@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelTestMatrixResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_apk, as: 'appApk', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
+          property :app_bundle, as: 'appBundle', class: Google::Apis::TestingV1::AppBundle, decorator: Google::Apis::TestingV1::AppBundle::Representation
+      
           property :app_package_id, as: 'appPackageId'
           property :orchestrator_option, as: 'orchestratorOption'
           property :test_apk, as: 'testApk', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
@@ -464,6 +472,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_apk, as: 'appApk', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
+          property :app_bundle, as: 'appBundle', class: Google::Apis::TestingV1::AppBundle, decorator: Google::Apis::TestingV1::AppBundle::Representation
+      
           property :app_initial_activity, as: 'appInitialActivity'
           property :app_package_id, as: 'appPackageId'
           property :max_depth, as: 'maxDepth'
@@ -491,6 +501,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_apk, as: 'appApk', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :app_bundle, as: 'appBundle', class: Google::Apis::TestingV1::AppBundle, decorator: Google::Apis::TestingV1::AppBundle::Representation
       
           property :app_package_id, as: 'appPackageId'
           collection :scenario_labels, as: 'scenarioLabels'
@@ -539,6 +551,14 @@ module Google
           property :max_sdk_version, as: 'maxSdkVersion'
           property :min_sdk_version, as: 'minSdkVersion'
           property :package_name, as: 'packageName'
+        end
+      end
+      
+      class AppBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_location, as: 'bundleLocation', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
         end
       end
       

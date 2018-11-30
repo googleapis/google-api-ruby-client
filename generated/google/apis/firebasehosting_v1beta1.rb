@@ -20,12 +20,13 @@ module Google
   module Apis
     # Firebase Hosting API
     #
-    # 
+    # The Firebase Hosting REST API enables programmatic custom deployment for
+    # releasing versions of your Firebase hosted content and configuration files.
     #
     # @see https://firebase.google.com/docs/hosting/
     module FirebasehostingV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20181116'
+      REVISION = '20181129'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -262,14 +262,14 @@ module Google
         end
       end
       
-      # A `Header` defines custom headers to add to a response should the request
-      # URL path match the pattern.
+      # A [`header`](/docs/hosting/full-config#headers) defines custom headers to
+      # add to a response should the request URL path match the pattern.
       class Header
         include Google::Apis::Core::Hashable
       
         # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        # the request URL path.
+        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -420,21 +420,22 @@ module Google
         end
       end
       
-      # A `Redirect` represents the configuration for returning an HTTP redirect
-      # response given a matching request URL path.
+      # A [`redirect`](/docs/hosting/full-config#redirects) represents the
+      # configuration for returning an HTTP redirect response given a matching
+      # request URL path.
       class Redirect
         include Google::Apis::Core::Hashable
       
         # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        # the request URL path.
+        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
       
         # Required. The value to put in the HTTP location header of the response.
-        # <br>The location can contain capture group values from the pattern using a
-        # `":"` prefix to identify the segment and an optional `"*"` to capture the
+        # <br>The location can contain capture group values from the pattern using
+        # a `:` prefix to identify the segment and an optional `*` to capture the
         # rest of the URL.
         # For example:
         # <code>"glob": "/:capture*",
@@ -521,9 +522,10 @@ module Google
         end
       end
       
-      # A `Rewrite` represents an internal content rewrite on the version. If the
-      # pattern matches, the request will be handled as if it were to the
-      # destination path specified in the configuration.
+      # A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal
+      # content rewrite on the version. If the pattern matches, the request will be
+      # handled as if it were to the destination path specified in the
+      # configuration.
       class Rewrite
         include Google::Apis::Core::Hashable
       
@@ -540,8 +542,8 @@ module Google
         attr_accessor :function
       
         # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        # the request URL path.
+        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -567,7 +569,7 @@ module Google
       # The configuration for how incoming requests to a site should be routed and
       # processed before serving content. The patterns are matched and applied
       # according to a specific
-      # [priority order](/docs/hosting/url-redirects-rewrites#section-priorities).
+      # [priority order](/docs/hosting/full-config#hosting_priority_order).
       class ServingConfig
         include Google::Apis::Core::Hashable
       
@@ -652,7 +654,7 @@ module Google
         # The configuration for how incoming requests to a site should be routed and
         # processed before serving content. The patterns are matched and applied
         # according to a specific
-        # [priority order](/docs/hosting/url-redirects-rewrites#section-priorities).
+        # [priority order](/docs/hosting/full-config#hosting_priority_order).
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::FirebasehostingV1beta1::ServingConfig]
         attr_accessor :config

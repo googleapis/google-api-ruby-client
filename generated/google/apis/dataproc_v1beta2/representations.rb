@@ -1026,6 +1026,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_name, as: 'clusterName'
+          property :cluster_uuid, as: 'clusterUuid'
           property :create_cluster, as: 'createCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
       
           property :delete_cluster, as: 'deleteCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
