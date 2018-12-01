@@ -95,7 +95,6 @@ module Google
         # @return [String]
         attr_accessor :entry_point
       
-        # **Beta Feature**
         # Environment variables that shall be available during function execution.
         # Corresponds to the JSON property `environmentVariables`
         # @return [Hash<String,String>]
@@ -683,7 +682,7 @@ module Google
         attr_accessor :update_time
       
         # Version id of the function created or updated by an API call.
-        # This field is only pupulated for Create and Update operations.
+        # This field is only populated for Create and Update operations.
         # Corresponds to the JSON property `versionId`
         # @return [Fixnum]
         attr_accessor :version_id
@@ -728,7 +727,7 @@ module Google
         attr_accessor :update_time
       
         # Version id of the function created or updated by an API call.
-        # This field is only pupulated for Create and Update operations.
+        # This field is only populated for Create and Update operations.
         # Corresponds to the JSON property `versionId`
         # @return [Fixnum]
         attr_accessor :version_id

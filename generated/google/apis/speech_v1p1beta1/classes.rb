@@ -22,362 +22,52 @@ module Google
   module Apis
     module SpeechV1p1beta1
       
-      # Different types of dataset errors and the stats associated with each error.
-      class DataErrors
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # Number of records having errors associated with the enum.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # Type of the error.
-        # Corresponds to the JSON property `errorType`
-        # @return [String]
-        attr_accessor :error_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @error_type = args[:error_type] if args.key?(:error_type)
-        end
-      end
-      
-      # Contains stats about the data which was uploaded and preprocessed to be
-      # use by downstream pipelines like training, evals pipelines.
-      class DataStats
-        include Google::Apis::Core::Hashable
-      
-        # Different types of data errors and the counts associated with them.
-        # Corresponds to the JSON property `dataErrors`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::DataErrors>]
-        attr_accessor :data_errors
-      
-        # The number of examples used for testing.
-        # Corresponds to the JSON property `testExampleCount`
-        # @return [Fixnum]
-        attr_accessor :test_example_count
-      
-        # The number of examples used for training.
-        # Corresponds to the JSON property `trainingExampleCount`
-        # @return [Fixnum]
-        attr_accessor :training_example_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_errors = args[:data_errors] if args.key?(:data_errors)
-          @test_example_count = args[:test_example_count] if args.key?(:test_example_count)
-          @training_example_count = args[:training_example_count] if args.key?(:training_example_count)
-        end
-      end
-      
-      # Specifies the parameters needed for creating a dataset. In addition this
-      # is also the message returned to the client by the `CreateDataset` method.
-      # It is included in the `result.response` field of the `Operation`
-      # returned by the `GetOperation` call of the `google::longrunning::Operations`
-      # service.
-      class Dataset
-        include Google::Apis::Core::Hashable
-      
-        # Output only. All the blocking operations associated with this dataset.
-        # Like (pre-processing, training-model, testing-model)
-        # Corresponds to the JSON property `blockingOperationIds`
-        # @return [Array<String>]
-        attr_accessor :blocking_operation_ids
-      
-        # If set, the log data to be used in this dataset is restricted to the
-        # bucket specified. This field is only applicable if use_logged_data is true.
-        # If use_logged_data is true, but this field is not set, then all logs will
-        # be used for training the models. See: RecognitionMetadata for information
-        # on setting up data logs.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # Output only. The timestamp this dataset is created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Location where the data should be processed. If not specified then we will
-        # pick a location on behalf of the user for storing and processing the data.
-        # Currently only us-central is supported.
-        # Corresponds to the JSON property `dataProcessingRegion`
-        # @return [String]
-        attr_accessor :data_processing_region
-      
-        # Contains stats about the data which was uploaded and preprocessed to be
-        # use by downstream pipelines like training, evals pipelines.
-        # Corresponds to the JSON property `dataStats`
-        # @return [Google::Apis::SpeechV1p1beta1::DataStats]
-        attr_accessor :data_stats
-      
-        # Required. Name of the data set for display.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. True if the data is sufficient to create custom models.
-        # Corresponds to the JSON property `hasSufficientData`
-        # @return [Boolean]
-        attr_accessor :has_sufficient_data
-        alias_method :has_sufficient_data?, :has_sufficient_data
-      
-        # Required. The language of the supplied audio as a
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-        # Example: "en-US".
-        # See [Language Support](/speech-to-text/docs/languages)
-        # for a list of the currently supported language codes.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # All the models (including models pending training) built using the dataset.
-        # Corresponds to the JSON property `models`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::Model>]
-        attr_accessor :models
-      
-        # Output only. Resource name of the dataset. Form :-
-        # '/projects/`project_number`/locations/`location_id`/datasets/`dataset_id`'
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The timestamp this dataset is last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # URI that points to a file in csv file where each row has following format.
-        # <gs_path_to_audio>,<gs_path_to_transcript>,<label>
-        # label can be HUMAN_TRANSCRIBED or MACHINE_TRANSCRIBED. To be valid, rows
-        # must do the following:
-        # 1. Each row must have at least a label and <gs_path_to_transcript>
-        # 2. If a row is marked HUMAN_TRANSCRIBED, then you must specify both
-        # <gs_path_to_audio> and <gs_path_to_transcript>. Only WAV file formats
-        # which encode linear 16-bit pulse-code modulation (PCM) audio format are
-        # supported. The maximum audio file size is 50 MB. Also note that the audio
-        # has to be single channel audio.
-        # 3. There has to be at least 500 rows labelled HUMAN_TRANSCRIBED covering
-        # at least ~10K words in order to get reliable word error rate results.
-        # 4. To create a language model, you should provide at least 100,000 words
-        # in your transcriptions as training data if you have conversational and
-        # captions type of data. You should provide at least 10,000 words if you
-        # have short utterances like voice commands and search type of use cases.
-        # Currently, only Google Cloud Storage URIs are
-        # supported, which must be specified in the following format:
-        # `gs://bucket_name/object_name` (other URI formats will be ignored).
-        # For more information, see
-        # [Request URIs](/storage/docs/reference-uris).
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        # If this is true, then use the previously logged data (for the project)
-        # The logs data for this project will be preprocessed and prepared for
-        # downstream pipelines (like training)
-        # Corresponds to the JSON property `useLoggedData`
-        # @return [Boolean]
-        attr_accessor :use_logged_data
-        alias_method :use_logged_data?, :use_logged_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @blocking_operation_ids = args[:blocking_operation_ids] if args.key?(:blocking_operation_ids)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @data_processing_region = args[:data_processing_region] if args.key?(:data_processing_region)
-          @data_stats = args[:data_stats] if args.key?(:data_stats)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @has_sufficient_data = args[:has_sufficient_data] if args.key?(:has_sufficient_data)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @models = args[:models] if args.key?(:models)
-          @name = args[:name] if args.key?(:name)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @uri = args[:uri] if args.key?(:uri)
-          @use_logged_data = args[:use_logged_data] if args.key?(:use_logged_data)
-        end
-      end
-      
-      # Message sent by the client for the `DeployModel` method.
-      class DeployModelRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Message sent by the client for the `EvaluateModel` method.
-      class EvaluateModelRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The only message returned to the client by the `EvaluateModel` method. This
-      # is also returned as part of the Dataset message returned to the client by
-      # the CreateDataset method. It is included in the `result.response` field of
-      # the `Operation` returned by the `GetOperation` call of the
-      # `google::longrunning::Operations` service.
-      class EvaluateModelResponse
-        include Google::Apis::Core::Hashable
-      
-        # If true then it means we are referring to the results of an enhanced
-        # version of the model_type. Currently only PHONE_CALL model_type has an
-        # enhanced version.
-        # Corresponds to the JSON property `isEnhancedModel`
-        # @return [Boolean]
-        attr_accessor :is_enhanced_model
-        alias_method :is_enhanced_model?, :is_enhanced_model
-      
-        # Required. The type of model used in this evaluation.
-        # Corresponds to the JSON property `modelType`
-        # @return [String]
-        attr_accessor :model_type
-      
-        # Number of words used in the word_error_rate computation.
-        # Corresponds to the JSON property `wordCount`
-        # @return [Fixnum]
-        attr_accessor :word_count
-      
-        # Word error rate metric computed on the test set using the AutoML model.
-        # Corresponds to the JSON property `wordErrorRate`
-        # @return [Float]
-        attr_accessor :word_error_rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_enhanced_model = args[:is_enhanced_model] if args.key?(:is_enhanced_model)
-          @model_type = args[:model_type] if args.key?(:model_type)
-          @word_count = args[:word_count] if args.key?(:word_count)
-          @word_error_rate = args[:word_error_rate] if args.key?(:word_error_rate)
-        end
-      end
-      
-      # 
-      class ListDatasetsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Repeated list of data sets containing details about each data set.
-        # Corresponds to the JSON property `datasets`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::Dataset>]
-        attr_accessor :datasets
-      
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # The standard List next-page token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpeechV1p1beta1::Operation>]
+        attr_accessor :operations
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @datasets = args[:datasets] if args.key?(:datasets)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
-      # Message received by the client for the `ListLogDataStats` method.
-      class ListLogDataStatsResponse
+      # Describes the progress of a long-running `LongRunningRecognize` call. It is
+      # included in the `metadata` field of the `Operation` returned by the
+      # `GetOperation` call of the `google::longrunning::Operations` service.
+      class LongRunningRecognizeMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. True if user has opted in for log data collection.
-        # Corresponds to the JSON property `logDataEnabled`
-        # @return [Boolean]
-        attr_accessor :log_data_enabled
-        alias_method :log_data_enabled?, :log_data_enabled
-      
-        # The stats for each bucket.
-        # Corresponds to the JSON property `logDataStats`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::LogBucketStats>]
-        attr_accessor :log_data_stats
-      
-        # The overall count for log data (including all bucket data).
-        # Corresponds to the JSON property `totalCount`
-        # @return [Fixnum]
-        attr_accessor :total_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_data_enabled = args[:log_data_enabled] if args.key?(:log_data_enabled)
-          @log_data_stats = args[:log_data_stats] if args.key?(:log_data_stats)
-          @total_count = args[:total_count] if args.key?(:total_count)
-        end
-      end
-      
-      # 
-      class ListModelsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Repeated list of models containing details about each model.
-        # Corresponds to the JSON property `models`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::Model>]
-        attr_accessor :models
-      
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
-        # Corresponds to the JSON property `nextPageToken`
+        # Time of the most recent processing update.
+        # Corresponds to the JSON property `lastUpdateTime`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :last_update_time
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @models = args[:models] if args.key?(:models)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Stats for log data within a bucket.
-      class LogBucketStats
-        include Google::Apis::Core::Hashable
-      
-        # The display name for the bucket in which logs are collected.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        # Number of audio samples that have been collected in this bucket.
-        # Corresponds to the JSON property `count`
+        # Approximate percentage of audio processed thus far. Guaranteed to be 100
+        # when the audio is fully processed and the results are available.
+        # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
-        attr_accessor :count
+        attr_accessor :progress_percent
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         def initialize(**args)
            update!(**args)
@@ -385,8 +75,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-          @count = args[:count] if args.key?(:count)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -420,42 +111,19 @@ module Google
         end
       end
       
-      # Specifies the model parameters needed for training a model. In addition this
-      # is also the message returned to the client by the `CreateModel` method.
-      # It is included in the `result.response` field of the `Operation`
+      # The only message returned to the client by the `LongRunningRecognize` method.
+      # It contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages. It is included in the `result.response` field of the `Operation`
       # returned by the `GetOperation` call of the `google::longrunning::Operations`
       # service.
-      class Model
+      class LongRunningRecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Timestamp when this model was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Required. Display name of the model to be trained.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. Evaluation results associated with this model. A model can
-        # contain multiple sub-models in which case the evaluation results for
-        # all of those are available. If there are no sub models then there would
-        # be just a single EvaluateModelResponse.
-        # Corresponds to the JSON property `evaluateModelResponses`
-        # @return [Array<Google::Apis::SpeechV1p1beta1::EvaluateModelResponse>]
-        attr_accessor :evaluate_model_responses
-      
-        # Output only. Resource name of the model.
-        # Format: "projects/`project_id`/locations/`location_id`/models/`model_id`"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. Type of the training to perform.
-        # Corresponds to the JSON property `trainingType`
-        # @return [String]
-        attr_accessor :training_type
+        # Output only. Sequential list of transcription results corresponding to
+        # sequential portions of audio.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
+        attr_accessor :results
       
         def initialize(**args)
            update!(**args)
@@ -463,11 +131,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @evaluate_model_responses = args[:evaluate_model_responses] if args.key?(:evaluate_model_responses)
-          @name = args[:name] if args.key?(:name)
-          @training_type = args[:training_type] if args.key?(:training_type)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -639,10 +303,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :audio_channel_count
       
+        # *Optional* Config to enable speaker diarization and set additional
+        # parameters to make diarization better suited for your application.
+        # Note: When this is enabled, we send all the words from the beginning of the
+        # audio for the top alternative in every consecutive STREAMING responses.
+        # This is done in order to improve our speaker tags as our models learn to
+        # identify the speakers in the conversation over time.
+        # For non-streaming requests, the diarization results will be provided only
+        # in the top alternative of the FINAL SpeechRecognitionResult.
+        # Corresponds to the JSON property `diarizationConfig`
+        # @return [Google::Apis::SpeechV1p1beta1::SpeakerDiarizationConfig]
+        attr_accessor :diarization_config
+      
         # *Optional*
         # If set, specifies the estimated number of speakers in the conversation.
         # If not set, defaults to '2'.
         # Ignored unless enable_speaker_diarization is set to true."
+        # Note: Use diarization_config instead. This field will be DEPRECATED soon.
         # Corresponds to the JSON property `diarizationSpeakerCount`
         # @return [Fixnum]
         attr_accessor :diarization_speaker_count
@@ -673,12 +350,7 @@ module Google
         # *Optional* If 'true', enables speaker detection for each recognized word in
         # the top alternative of the recognition result using a speaker_tag provided
         # in the WordInfo.
-        # Note: When this is true, we send all the words from the beginning of the
-        # audio for the top alternative in every consecutive STREAMING responses.
-        # This is done in order to improve our speaker tags as our models learn to
-        # identify the speakers in the conversation over time.
-        # For non-streaming requests, the diarization results will be provided only
-        # in the top alternative of the FINAL SpeechRecognitionResult.
+        # Note: Use diarization_config instead. This field will be DEPRECATED soon.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
         attr_accessor :enable_speaker_diarization
@@ -821,6 +493,7 @@ module Google
         def update!(**args)
           @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_channel_count = args[:audio_channel_count] if args.key?(:audio_channel_count)
+          @diarization_config = args[:diarization_config] if args.key?(:diarization_config)
           @diarization_speaker_count = args[:diarization_speaker_count] if args.key?(:diarization_speaker_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
@@ -898,13 +571,6 @@ module Google
         # @return [String]
         attr_accessor :recording_device_type
       
-        # A freeform field to tag this input sample with. This can be used for
-        # grouping the logs into separate buckets. This enables selective purging of
-        # data based on the tags, and also for training models in AutoML.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
         def initialize(**args)
            update!(**args)
         end
@@ -920,7 +586,6 @@ module Google
           @original_mime_type = args[:original_mime_type] if args.key?(:original_mime_type)
           @recording_device_name = args[:recording_device_name] if args.key?(:recording_device_name)
           @recording_device_type = args[:recording_device_type] if args.key?(:recording_device_type)
-          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -975,31 +640,33 @@ module Google
         end
       end
       
-      # Message sent by the client to refresh data in a existing dataset.
-      class RefreshDataRequest
+      # 
+      class SpeakerDiarizationConfig
         include Google::Apis::Core::Hashable
       
-        # URI that points to a file in csv file where each row has following format.
-        # <gs_path_to_audio>,<gs_path_to_transcript>,<label>
-        # label can be HUMAN_TRANSCRIBED or MACHINE_TRANSCRIBED. Few rules for a row
-        # to be considered valid are :-
-        # 1. Each row must have at least a label and <gs_path_to_transcript>
-        # 2. If a row is marked HUMAN_TRANSCRIBED, then both <gs_path_to_audio>
-        # and <gs_path_to_transcript> needs to be specified.
-        # 3. There has to be minimum 500 number of rows labelled HUMAN_TRANSCRIBED if
-        # evaluation stats are required.
-        # 4. If use_logged_data_for_training is set to true, then we ignore the rows
-        # labelled as MACHINE_TRANSCRIBED.
-        # 5. There has to be minimum 100,000 words in the transcripts in order to
-        # provide sufficient textual training data for the language model.
-        # Currently, only Google Cloud Storage URIs are
-        # supported, which must be specified in the following format:
-        # `gs://bucket_name/object_name` (other URI formats will be ignored).
-        # For more information, see
-        # [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
+        # *Optional* If 'true', enables speaker detection for each recognized word in
+        # the top alternative of the recognition result using a speaker_tag provided
+        # in the WordInfo.
+        # Corresponds to the JSON property `enableSpeakerDiarization`
+        # @return [Boolean]
+        attr_accessor :enable_speaker_diarization
+        alias_method :enable_speaker_diarization?, :enable_speaker_diarization
+      
+        # *Optional* Only used if diarization_speaker_count is not set.
+        # Maximum number of speakers in the conversation. This range gives you more
+        # flexibility by allowing the system to automatically determine the correct
+        # number of speakers. If not set, the default value is 6.
+        # Corresponds to the JSON property `maxSpeakerCount`
+        # @return [Fixnum]
+        attr_accessor :max_speaker_count
+      
+        # *Optional* Only used if diarization_speaker_count is not set.
+        # Minimum number of speakers in the conversation. This range gives you more
+        # flexibility by allowing the system to automatically determine the correct
+        # number of speakers. If not set, the default value is 2.
+        # Corresponds to the JSON property `minSpeakerCount`
+        # @return [Fixnum]
+        attr_accessor :min_speaker_count
       
         def initialize(**args)
            update!(**args)
@@ -1007,7 +674,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
+          @enable_speaker_diarization = args[:enable_speaker_diarization] if args.key?(:enable_speaker_diarization)
+          @max_speaker_count = args[:max_speaker_count] if args.key?(:max_speaker_count)
+          @min_speaker_count = args[:min_speaker_count] if args.key?(:min_speaker_count)
         end
       end
       
@@ -1026,15 +695,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :phrases
       
-        # Hint strength to use (high, medium or low). If you use a high strength then
-        # you are more likely to see those phrases in the results. If strength is not
-        # specified then by default medium strength will be used. If you'd like
-        # different phrases to have different strengths, you can specify multiple
-        # speech_contexts.
-        # Corresponds to the JSON property `strength`
-        # @return [String]
-        attr_accessor :strength
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1042,7 +702,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @phrases = args[:phrases] if args.key?(:phrases)
-          @strength = args[:strength] if args.key?(:strength)
         end
       end
       

@@ -47,6 +47,40 @@ module Google
         end
       end
       
+      # Describes the progress of a long-running `LongRunningRecognize` call. It is
+      # included in the `metadata` field of the `Operation` returned by the
+      # `GetOperation` call of the `google::longrunning::Operations` service.
+      class LongRunningRecognizeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time of the most recent processing update.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Approximate percentage of audio processed thus far. Guaranteed to be 100
+        # when the audio is fully processed and the results are available.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # The top-level message sent by the client for the `LongRunningRecognize`
       # method.
       class LongRunningRecognizeRequest
@@ -74,6 +108,30 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @config = args[:config] if args.key?(:config)
+        end
+      end
+      
+      # The only message returned to the client by the `LongRunningRecognize` method.
+      # It contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages. It is included in the `result.response` field of the `Operation`
+      # returned by the `GetOperation` call of the `google::longrunning::Operations`
+      # service.
+      class LongRunningRecognizeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Sequential list of transcription results corresponding to
+        # sequential portions of audio.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -586,15 +644,6 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. A distinct integer value is assigned for every speaker within
-        # the audio. This field specifies which one of those speakers was detected to
-        # have spoken this word. Value ranges from '1' to diarization_speaker_count.
-        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the
-        # top alternative.
-        # Corresponds to the JSON property `speakerTag`
-        # @return [Fixnum]
-        attr_accessor :speaker_tag
-      
         # Output only. Time offset relative to the beginning of the audio,
         # and corresponding to the start of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
@@ -617,7 +666,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
-          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
         end

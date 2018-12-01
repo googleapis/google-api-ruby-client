@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LongRunningRecognizeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LongRunningRecognizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LongRunningRecognizeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -103,12 +115,29 @@ module Google
         end
       end
       
+      class LongRunningRecognizeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
+          property :progress_percent, as: 'progressPercent'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class LongRunningRecognizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio, as: 'audio', class: Google::Apis::SpeechV1::RecognitionAudio, decorator: Google::Apis::SpeechV1::RecognitionAudio::Representation
       
           property :config, as: 'config', class: Google::Apis::SpeechV1::RecognitionConfig, decorator: Google::Apis::SpeechV1::RecognitionConfig::Representation
+      
+        end
+      end
+      
+      class LongRunningRecognizeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::SpeechV1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1::SpeechRecognitionResult::Representation
       
         end
       end
@@ -206,7 +235,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
-          property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
         end

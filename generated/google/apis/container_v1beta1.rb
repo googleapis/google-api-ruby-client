@@ -20,13 +20,13 @@ module Google
   module Apis
     # Kubernetes Engine API
     #
-    # The Google Kubernetes Engine API is used for building and managing container
-    # based applications, powered by the open source Kubernetes technology.
+    # Builds and manages container-based applications, powered by the open source
+    # Kubernetes technology.
     #
     # @see https://cloud.google.com/container-engine/
     module ContainerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20180917'
+      REVISION = '20181109'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

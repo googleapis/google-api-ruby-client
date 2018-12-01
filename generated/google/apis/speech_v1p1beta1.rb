@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/speech-to-text/docs/quickstart-protocol
     module SpeechV1p1beta1
       VERSION = 'V1p1beta1'
-      REVISION = '20181107'
+      REVISION = '20181127'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

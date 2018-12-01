@@ -276,7 +276,8 @@ module Google
         # @return [String]
         attr_accessor :current_master_version
       
-        # [Output only] The number of nodes currently in the cluster.
+        # [Output only]  The number of nodes currently in the cluster. Deprecated.
+        # Call Kubernetes API directly to retrieve node information.
         # Corresponds to the JSON property `currentNodeCount`
         # @return [Fixnum]
         attr_accessor :current_node_count
@@ -390,7 +391,7 @@ module Google
         attr_accessor :location
       
         # The list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
@@ -557,6 +558,13 @@ module Google
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
       
+        # VerticalPodAutoscaling contains global, per-cluster information
+        # required by Vertical Pod Autoscaler to automatically adjust
+        # the resources of pods controlled by it.
+        # Corresponds to the JSON property `verticalPodAutoscaling`
+        # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
+        attr_accessor :vertical_pod_autoscaling
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -617,6 +625,7 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
+          @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -683,7 +692,7 @@ module Google
         attr_accessor :desired_image_type
       
         # The desired list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
         # in nodes being either created or removed from the cluster, depending on
         # whether locations are being added or removed.
@@ -765,6 +774,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
         attr_accessor :desired_pod_security_policy_config
       
+        # VerticalPodAutoscaling contains global, per-cluster information
+        # required by Vertical Pod Autoscaler to automatically adjust
+        # the resources of pods controlled by it.
+        # Corresponds to the JSON property `desiredVerticalPodAutoscaling`
+        # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
+        attr_accessor :desired_vertical_pod_autoscaling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -784,6 +800,7 @@ module Google
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
+          @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
         end
       end
       
@@ -1466,8 +1483,8 @@ module Google
         attr_accessor :password
       
         # The username to use for HTTP basic authentication to the master endpoint.
-        # For clusters v1.6.0 and later, you can disable basic authentication by
-        # providing an empty username.
+        # For clusters v1.6.0 and later, basic authentication can be disabled by
+        # leaving username unspecified (or setting it to the empty string).
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -2559,7 +2576,7 @@ module Google
         attr_accessor :cluster_id
       
         # The desired list of Google Compute Engine
-        # [locations](/compute/docs/zones#available) in which the cluster's nodes
+        # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
         # in nodes being either created or removed from the cluster, depending on
         # whether locations are being added or removed.
@@ -3381,6 +3398,28 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # VerticalPodAutoscaling contains global, per-cluster information
+      # required by Vertical Pod Autoscaler to automatically adjust
+      # the resources of pods controlled by it.
+      class VerticalPodAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Enables vertical pod autoscaling.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

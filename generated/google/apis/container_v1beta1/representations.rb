@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VerticalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadMetadataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +557,8 @@ module Google
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
+          property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -585,6 +593,8 @@ module Google
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
+      
+          property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
         end
       end
@@ -1190,6 +1200,13 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
           property :status, as: 'status'
+        end
+      end
+      
+      class VerticalPodAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

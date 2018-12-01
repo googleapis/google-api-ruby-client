@@ -79,92 +79,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs asynchronous data upload for AutoML: receive results via the
-        # google.longrunning.Operations interface. Returns either an
-        # `Operation.error` or an `Operation.response` which contains
-        # a `Dataset` message.
-        # @param [String] parent
-        #   Required. Resource name of the parent. Has the format :-
-        #   "projects/`project_id`/locations/`location_id`"
-        # @param [Google::Apis::SpeechV1p1beta1::Dataset] dataset_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_dataset(parent, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/{+parent}/datasets', options)
-          command.request_representation = Google::Apis::SpeechV1p1beta1::Dataset::Representation
-          command.request_object = dataset_object
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get the dataset associated with the dataset resource.
-        # @param [String] name
-        #   The resource name of the dataset to retrieve. Form :-
-        #   '/projects/`project_number`/locations/`location_id`/datasets/`dataset_id`'
-        # @param [Boolean] include_model_info
-        #   If true then also include information about the models built using this
-        #   dataset.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Dataset] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Dataset]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_dataset(name, include_model_info: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1p1beta1/{+name}', options)
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Dataset::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Dataset
-          command.params['name'] = name unless name.nil?
-          command.query['includeModelInfo'] = include_model_info unless include_model_info.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Fetch the list of dataset associated with this project.
-        # @param [String] parent
-        #   Required. Resource name of the parent. Has the format :-
-        #   "projects/`project_id`/locations/`location_id`"
+        # Lists operations that match the specified filter in the request. If the
+        # server doesn't support this method, it returns `UNIMPLEMENTED`.
+        # NOTE: the `name` binding allows API services to override the binding
+        # to use different resource name schemes, such as `users/*/operations`. To
+        # override the binding, API services can add a binding such as
+        # `"/v1/`name=users/*`/operations"` to their service configuration.
+        # For backwards compatibility, the default name includes the operations
+        # collection id, however overriding users must ensure the name binding
+        # is the parent resource, without the operations collection id.
         # @param [String] filter
-        #   Filter the response based on display_name of the dataset. For e.g
-        #   display_name=Foo The filter string is case sensitive
-        # @param [Boolean] include_model_info
-        #   If true then also include information about the models built using the
-        #   datasets.
+        #   The standard list filter.
+        # @param [String] name
+        #   The name of the operation's parent resource.
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.
+        #   The standard list page size.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
+        #   The standard list page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -174,241 +105,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::ListDatasetsResponse] parsed result object
+        # @yieldparam result [Google::Apis::SpeechV1p1beta1::ListOperationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SpeechV1p1beta1::ListDatasetsResponse]
+        # @return [Google::Apis::SpeechV1p1beta1::ListOperationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_datasets(parent, filter: nil, include_model_info: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1p1beta1/{+parent}/datasets', options)
-          command.response_representation = Google::Apis::SpeechV1p1beta1::ListDatasetsResponse::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::ListDatasetsResponse
-          command.params['parent'] = parent unless parent.nil?
+        def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1p1beta1/operations', options)
+          command.response_representation = Google::Apis::SpeechV1p1beta1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::SpeechV1p1beta1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
-          command.query['includeModelInfo'] = include_model_info unless include_model_info.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Refresh data for a dataset.
-        # @param [String] name
-        #   The resource name of the destination dataset.
-        # @param [Google::Apis::SpeechV1p1beta1::RefreshDataRequest] refresh_data_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def refresh_dataset_data(name, refresh_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/{+name}:refreshData', options)
-          command.request_representation = Google::Apis::SpeechV1p1beta1::RefreshDataRequest::Representation
-          command.request_object = refresh_data_request_object
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all log data stats associated with this project.
-        # @param [String] parent
-        #   Required. Resource name of the parent. Has the format :-
-        #   "projects/`project_id`/locations/`location_id`"
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::ListLogDataStatsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::ListLogDataStatsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_log_data_stats(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1p1beta1/{+parent}/log_data_stats', options)
-          command.response_representation = Google::Apis::SpeechV1p1beta1::ListLogDataStatsResponse::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::ListLogDataStatsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs asynchronous model training for AutoML: receive results via the
-        # google.longrunning.Operations interface. Returns either an
-        # `Operation.error` or an `Operation.response` which contains a `Model`
-        # message.
-        # @param [String] parent
-        #   Required. Resource name of the parent. Has the format :-
-        #   "projects/`project_id`/locations/`location_id`"
-        # @param [Google::Apis::SpeechV1p1beta1::Model] model_object
-        # @param [String] name
-        #   Required. Resource name of the dataset being used to create the model.
-        #   '/projects/`project_id`/locations/`location_id`/datasets/`dataset_id`'
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_model(parent, model_object = nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/{+parent}/models', options)
-          command.request_representation = Google::Apis::SpeechV1p1beta1::Model::Representation
-          command.request_object = model_object
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Operation
-          command.params['parent'] = parent unless parent.nil?
           command.query['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs asynchronous model deployment of the model: receive results
-        # via the google.longrunning.Operations interface. After the operation is
-        # completed this returns either an `Operation.error` in case of error or
-        # a `google.protobuf.Empty` if the deployment was successful.
-        # @param [String] name
-        #   Resource name of the model.
-        #   Format: "projects/`project_id`/locations/`location_id`/models/`model_id`"
-        # @param [Google::Apis::SpeechV1p1beta1::DeployModelRequest] deploy_model_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_model(name, deploy_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/{+name}:deploy', options)
-          command.request_representation = Google::Apis::SpeechV1p1beta1::DeployModelRequest::Representation
-          command.request_object = deploy_model_request_object
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs asynchronous evaluation of the model: receive results
-        # via the google.longrunning.Operations interface. After the operation is
-        # completed this returns either an `Operation.error` in case of error or
-        # a `EvaluateModelResponse` with the evaluation results.
-        # @param [String] name
-        #   Resource name of the model.
-        #   Format: "projects/`project_id`/locations/`location_id`/models/`model_id`"
-        # @param [Google::Apis::SpeechV1p1beta1::EvaluateModelRequest] evaluate_model_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def evaluate_model(name, evaluate_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/{+name}:evaluate', options)
-          command.request_representation = Google::Apis::SpeechV1p1beta1::EvaluateModelRequest::Representation
-          command.request_object = evaluate_model_request_object
-          command.response_representation = Google::Apis::SpeechV1p1beta1::Operation::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Fetch the list of models associated with this project.
-        # @param [String] parent
-        #   Required. Resource name of the parent. Has the format :-
-        #   "projects/`project_id`/locations/`location_id`"
-        # @param [String] filter
-        #   Filter the response based on display_name of the model. For e.g
-        #   display_name=Foo The filter string is case sensitive
-        # @param [Fixnum] page_size
-        #   The maximum number of items to return.
-        # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1p1beta1::ListModelsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1p1beta1::ListModelsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1p1beta1/{+parent}/models', options)
-          command.response_representation = Google::Apis::SpeechV1p1beta1::ListModelsResponse::Representation
-          command.response_class = Google::Apis::SpeechV1p1beta1::ListModelsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
