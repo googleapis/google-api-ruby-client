@@ -96,6 +96,16 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     end
   end
 
+  context 'with filename destination' do
+    let(:dest) { File.join(Dir.mktmpdir, 'test.txt') }
+    let(:received) do
+      command.execute(client)
+      File.read(dest)
+    end
+
+    include_examples 'should download'
+  end
+
   context 'with default destination' do
     let(:dest) { nil }
     let(:received) { command.execute(client).string }
@@ -113,13 +123,16 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     include_examples 'should download'
   end
 
-  context 'with filename destination' do
-    let(:dest) { File.join(Dir.mktmpdir, 'test.txt') }
-    let(:received) do
-      command.execute(client)
-      File.read(dest)
-    end
+  context 'with #write destination' do
+    let(:dest) { WritableIO.new(StringIO.new) }
+    let(:received) { command.execute(client).io.string }
 
     include_examples 'should download'
+
+    WritableIO = Struct.new(:io) do
+      def write(data)
+        io.write(data)
+      end
+    end
   end
 end
