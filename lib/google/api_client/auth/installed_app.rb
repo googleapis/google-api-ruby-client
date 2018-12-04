@@ -13,13 +13,28 @@
 # limitations under the License.
 
 require 'webrick'
-require 'launchy'
+
+launchy_available =
+  begin
+    require 'launchy'
+    true
+  rescue LoadError
+    warn "Attempted to require google/api_client/auth/installed_app.rb when" \
+         " launchy is not available. The InstalledAppFlow class is disabled."
+    false
+  end
 
 module Google
   class APIClient
 
     # Small helper for the sample apps for performing OAuth 2.0 flows from the command
     # line or in any other installed app environment.
+    #
+    # This class is used in some sample apps and tests but is not really part
+    # of the client libraries, and probably does not belong here. As such, it
+    # is deprecated. If you do choose to use it, note that you must include the
+    # `launchy` gem in your bundle, as it is required by this class but not
+    # listed in the google-api-client gem's requirements.
     #
     # @example
     #
@@ -125,4 +140,4 @@ module Google
     end
 
   end
-end
+end if launchy_available
