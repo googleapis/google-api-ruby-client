@@ -743,7 +743,7 @@ module Google
         # @param [Fixnum] metadata_owner_id
         #   Required. The owner of the newly set metadata. Set this to the partner ID.
         # @param [Fixnum] device_id
-        #   Required. The ID of the reseller partner.
+        #   Required. The ID of the device.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataRequest] update_device_metadata_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

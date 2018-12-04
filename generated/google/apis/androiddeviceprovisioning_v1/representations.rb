@@ -268,6 +268,8 @@ module Google
           property :customer_id, :numeric_string => true, as: 'customerId'
           property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
       
+          property :device_metadata, as: 'deviceMetadata', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata::Representation
+      
           property :section_type, as: 'sectionType'
         end
       end

@@ -96,9 +96,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new presentation using the title given in the request. If a
-        # presentationId is provided, uses it as the ID of the new presentation.
-        # Otherwise, a new presentationId is generated.
+        # Creates a blank presentation using the title given in the request. If a
+        # `presentationId` is provided, it is used as the ID of the new presentation.
+        # Otherwise, a new ID is generated. Other fields in the request, including
+        # any provided content, are ignored.
         # Returns the created presentation.
         # @param [Google::Apis::SlidesV1::Presentation] presentation_object
         # @param [String] fields

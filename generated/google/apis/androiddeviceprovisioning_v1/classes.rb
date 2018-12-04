@@ -38,6 +38,12 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
+        # Metadata entries that can be attached to a `Device`. To learn more, read
+        # [Device metadata](/zero-touch/guides/metadata).
+        # Corresponds to the JSON property `deviceMetadata`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
+        attr_accessor :device_metadata
+      
         # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
@@ -51,6 +57,7 @@ module Google
         def update!(**args)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
+          @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @section_type = args[:section_type] if args.key?(:section_type)
         end
       end

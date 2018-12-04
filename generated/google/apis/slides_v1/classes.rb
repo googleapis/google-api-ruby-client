@@ -361,7 +361,7 @@ module Google
       class CreateLineRequest
         include Google::Apis::Core::Hashable
       
-        # The category of line to be created.
+        # The category of the line to be created.
         # The exact line type created is
         # determined based on the category and how it's routed to connect to other
         # page elements.
@@ -383,7 +383,13 @@ module Google
         # @return [Google::Apis::SlidesV1::PageElementProperties]
         attr_accessor :element_properties
       
-        # The category of line to be created.
+        # The category of the line to be created.
+        # <b>Deprecated</b>: use `category` instead.
+        # The exact line type created is
+        # determined based on the category and how it's routed to connect to other
+        # page elements.
+        # If you specify both a `category` and a `line_category`, the `category`
+        # takes precedence.
         # Corresponds to the JSON property `lineCategory`
         # @return [String]
         attr_accessor :line_category
@@ -2688,7 +2694,7 @@ module Google
         attr_accessor :page_object_ids
       
         # The replace method.
-        # Deprecated: use `image_replace_method` instead.
+        # <b>Deprecated</b>: use `image_replace_method` instead.
         # If you specify both a `replace_method` and an `image_replace_method`, the
         # `image_replace_method` takes precedence.
         # Corresponds to the JSON property `replaceMethod`
