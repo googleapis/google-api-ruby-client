@@ -42,13 +42,13 @@ module Google
         include NameHelpers
 
         def initialize(names_out_file_path = nil, names_file_path = nil)
-          if names_out_file_path
+          if names_out_file_path && File.file?(names_out_file_path)
             logger.info { sprintf('Loading API names from %s', names_out_file_path) }
             @names = YAML.load(File.read(names_out_file_path)) || {}
           else
             @names = {}
           end
-          if names_file_path
+          if names_file_path && File.file?(names_file_path)
             logger.info { sprintf('Loading API names from %s', names_file_path) }
             @names = @names.merge(YAML.load(File.read(names_file_path)) || {})
           end
