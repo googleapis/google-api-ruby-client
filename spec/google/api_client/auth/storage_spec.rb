@@ -3,16 +3,23 @@ require 'spec_helper'
 require 'google/api_client/auth/storage'
 
 describe Google::APIClient::Storage do
-  let(:root_path) { File.expand_path(File.join(__FILE__, '..', '..', '..')) }
-  let(:json_file) { File.expand_path(File.join(root_path, 'fixtures', 'files', 'auth_stored_credentials.json')) }
+  let(:root_path) { ROOT_DIR }
+  let(:json_file) { File.expand_path(File.join(FIXTURES_DIR, 'files', 'auth_stored_credentials.json')) }
 
   let(:store) { double }
   let(:client_stub) { double }
   subject { Google::APIClient::Storage.new(store) }
 
+  describe 'constants' do
+    it "should have valid authorization and token_credential_uri" do
+      expect(Google::APIClient::Storage::AUTHORIZATION_URI).to eq "https://accounts.google.com/o/oauth2/auth"
+      expect(Google::APIClient::Storage::TOKEN_CREDENTIAL_URI).to eq "https://accounts.google.com/o/oauth2/token"
+    end
+  end
   describe 'authorize' do
     it 'should authorize' do
       expect(subject).to respond_to(:authorization)
+      expect(subject.authorization).to be_nil
       expect(subject.store).to be == store
     end
   end
@@ -69,6 +76,7 @@ describe Google::APIClient::Storage do
         subject.write_credentials()
       }.not_to raise_error
     end
+
     it 'should not call store to write credentials' do
       expect(subject).not_to receive(:credentials_hash)
       expect(subject.store).not_to receive(:write_credentials)
@@ -76,7 +84,7 @@ describe Google::APIClient::Storage do
         subject.write_credentials('something')
       }.not_to raise_error
     end
-
+    
   end
 
   describe 'refresh_authorization' do
