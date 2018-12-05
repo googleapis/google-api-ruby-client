@@ -1079,7 +1079,7 @@ module Google
       
         # This property indicates the freshness level of the object in the index.
         # If set, this property must be a top-level property within the
-        # PropertyDefinitions
+        # property definitions
         # and it must be a
         # timestamp type
         # or

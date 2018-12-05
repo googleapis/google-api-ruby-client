@@ -22,18 +22,6 @@ module Google
   module Apis
     module IapV1beta1
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,23 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::IapV1beta1::AuditLogConfig, decorator: Google::Apis::IapV1beta1::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -122,8 +93,6 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::IapV1beta1::AuditConfig, decorator: Google::Apis::IapV1beta1::AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::IapV1beta1::Binding, decorator: Google::Apis::IapV1beta1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
@@ -136,7 +105,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::IapV1beta1::Policy, decorator: Google::Apis::IapV1beta1::Policy::Representation
       
-          property :update_mask, as: 'updateMask'
         end
       end
       

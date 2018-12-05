@@ -26,41 +26,40 @@ module Google
       class AddSubnetworkRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Resource representing service consumer. It may be different from
-        # the project number in consumer network parameter in case of that network
-        # being a shared VPC network. In that case, Service Networking will validate
-        # that this resource belongs to that shared VPC.
-        # For example 'projects/123456'.
+        # Required. A resource that represents the service consumer, such as
+        # `projects/123456`. The project number can be different from the
+        # value in the consumer network parameter. For example, the network might be
+        # part of a Shared VPC network. In those cases, Service Networking validates
+        # that this resource belongs to that Shared VPC.
         # Corresponds to the JSON property `consumer`
         # @return [String]
         attr_accessor :consumer
       
-        # Required. Network name in the consumer project.   This network must have been
-        # already peered with a shared VPC network using CreateConnection
-        # method.
-        # Must be in a form 'projects/`project`/global/networks/`network`'.
-        # `project` is a project number, as in '12345'
-        # `network` is network name.
+        # Required. The name of the service consumer's VPC network. The network
+        # must have an existing private connection that was provisioned through the
+        # connections.create method. The name must be in the following format:
+        # `projects/`project`/global/networks/`network``, where `project`
+        # is a project number, such as `12345`. `network` is the name of a
+        # VPC network in the project.
         # Corresponds to the JSON property `consumerNetwork`
         # @return [String]
         attr_accessor :consumer_network
       
-        # Optional. Description of the subnetwork.
+        # An optional description of the subnet.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. The prefix length of the IP range.
-        # Use usual CIDR range notation.
-        # For example, '30' to provision subnet with x.x.x.x/30 CIDR range.
-        # Actual range will be determined using allocated range for the consumer
-        # peered network and returned in the result.
+        # Required. The prefix length of the subnet's IP address range.  Use CIDR
+        # range notation, such as `30` to provision a subnet with an
+        # `x.x.x.x/30` CIDR range. The IP address range is drawn from a
+        # pool of available ranges in the service consumer's allocated range.
         # Corresponds to the JSON property `ipPrefixLength`
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
-        # Required. Cloud [region](/compute/docs/reference/rest/v1/regions) for the new
-        # subnetwork.
+        # Required. The name of a [region](/compute/docs/regions-zones)
+        # for the subnet, such `europe-west1`.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -74,15 +73,15 @@ module Google
         # @return [String]
         attr_accessor :requested_address
       
-        # Required. Name for the new subnetwork.
-        # Must be a legal [subnetwork](compute/docs/reference/rest/v1/subnetworks)
-        # name.
+        # Required. A name for the new subnet. For information about the naming
+        # requirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks)
+        # in the Compute API documentation.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # Optional. List of members that will be granted 'compute.networkUser' role
-        # on the newly added subnetwork.
+        # A list of members that are granted the `compute.networkUser`
+        # role on the subnet.
         # Corresponds to the JSON property `subnetworkUsers`
         # @return [Array<String>]
         attr_accessor :subnetwork_users
@@ -557,26 +556,31 @@ module Google
         end
       end
       
-      # Message returning the created service connection.
+      # Represents a private connection resource. A private connection is implemented
+      # as a VPC Network Peering connection between a service producer's VPC network
+      # and a service consumer's VPC network.
       class Connection
         include Google::Apis::Core::Hashable
       
-        # Name of VPC network connected with service producer network.
-        # Must be in a form 'projects/`project`/global/networks/`network`'.
-        # `project` is a project number, as in '12345'
-        # `network` is a network name.
+        # The name of service consumer's VPC network that's connected with service
+        # producer network, in the following format:
+        # `projects/`project`/global/networks/`network``.
+        # ``project`` is a project number, such as in `12345` that includes
+        # the VPC service consumer's VPC network. ``network`` is the name of the
+        # service consumer's VPC network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Output only.
-        # Name of the peering connection that is created by the peering service.
+        # The name of the VPC Network Peering connection that was created by the
+        # service producer.
         # Corresponds to the JSON property `peering`
         # @return [String]
         attr_accessor :peering
       
-        # Named IP address range(s) of PEERING type allocated for this service
-        # provider.
+        # The name of one or more allocated IP address ranges for this service
+        # producer of type `PEERING`.
         # Note that invoking this method with a different range when connection is
         # already established will not modify already provisioned service
         # producer subnetworks.
@@ -585,8 +589,8 @@ module Google
         attr_accessor :reserved_peering_ranges
       
         # Output only.
-        # Name of the peering service associated with this connection.
-        # "services/`service name`
+        # The name of the peering service that's associated with this connection, in
+        # the following format: `services/`service name``.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -3178,11 +3182,11 @@ module Google
         end
       end
       
-      # Message returning the created service subnetwork.
+      # Represents a subnet that was created by a peered service.
       class Subnetwork
         include Google::Apis::Core::Hashable
       
-        # Subnetwork CIDR range in "10.x.x.x/y" format.
+        # Subnetwork CIDR range in `10.x.x.x/y` format.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -3193,8 +3197,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Shared VPC host project network peered with consumer network.
-        # For example: projects/1234321/global/networks/host-network
+        # In the Shared VPC host project, the VPC network that's peered with the
+        # consumer network. For example:
+        # `projects/1234321/global/networks/host-network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
