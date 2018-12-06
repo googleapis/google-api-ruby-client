@@ -382,8 +382,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a ProductSet. All Products and ReferenceImages in the
-        # ProductSet will be deleted.
+        # Permanently deletes a ProductSet. Products and ReferenceImages in the
+        # ProductSet are not deleted.
         # The actual image files are not deleted from Google Cloud Storage.
         # Possible errors:
         # * Returns NOT_FOUND if the ProductSet does not exist.

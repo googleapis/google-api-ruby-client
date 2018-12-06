@@ -23,7 +23,8 @@ module Google
     module ContentV2
       
       # Account data. After the creation of a new account it may take a few minutes
-      # before it is fully operational.
+      # before it is fully operational. The methods delete, insert, patch, and update
+      # require the admin role.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -685,7 +686,7 @@ module Google
         end
       end
       
-      # The tax settings of a merchant account.
+      # The tax settings of a merchant account. All methods require the admin role.
       class AccountTax
         include Google::Apis::Core::Hashable
       
@@ -898,7 +899,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational.
+        # before it is fully operational. The methods delete, insert, patch, and update
+        # require the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -1022,7 +1024,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational.
+        # before it is fully operational. The methods delete, insert, patch, and update
+        # require the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -1327,7 +1330,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # The tax settings of a merchant account.
+        # The tax settings of a merchant account. All methods require the admin role.
         # Corresponds to the JSON property `accountTax`
         # @return [Google::Apis::ContentV2::AccountTax]
         attr_accessor :account_tax
@@ -1391,7 +1394,7 @@ module Google
       class AccountTaxBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The tax settings of a merchant account.
+        # The tax settings of a merchant account. All methods require the admin role.
         # Corresponds to the JSON property `accountTax`
         # @return [Google::Apis::ContentV2::AccountTax]
         attr_accessor :account_tax
@@ -3445,7 +3448,8 @@ module Google
         end
       end
       
-      # 
+      # Local Inventory ads (LIA) settings. All methods except listposdataproviders
+      # require the admin role.
       class LiaSettings
         include Google::Apis::Core::Hashable
       
@@ -3533,7 +3537,8 @@ module Google
         # @return [String]
         attr_accessor :gmb_email
       
-        # The account Lia settings to update. Only defined if the method is update.
+        # Local Inventory ads (LIA) settings. All methods except listposdataproviders
+        # require the admin role.
         # Corresponds to the JSON property `liaSettings`
         # @return [Google::Apis::ContentV2::LiaSettings]
         attr_accessor :lia_settings
@@ -3629,7 +3634,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The retrieved or updated Lia settings.
+        # Local Inventory ads (LIA) settings. All methods except listposdataproviders
+        # require the admin role.
         # Corresponds to the JSON property `liaSettings`
         # @return [Google::Apis::ContentV2::LiaSettings]
         attr_accessor :lia_settings
@@ -3975,7 +3981,7 @@ module Google
         end
       end
       
-      # 
+      # Order. All methods require the order manager role.
       class Order
         include Google::Apis::Core::Hashable
       
@@ -4928,7 +4934,7 @@ module Google
         end
       end
       
-      # 
+      # Order disbursement. All methods require the payment analyst role.
       class OrderReportDisbursement
         include Google::Apis::Core::Hashable
       
@@ -6807,8 +6813,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The retrieved order. Only defined if the method is get and if the request was
-        # successful.
+        # Order. All methods require the order manager role.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2::Order]
         attr_accessor :order
@@ -6837,7 +6842,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The requested order.
+        # Order. All methods require the order manager role.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2::Order]
         attr_accessor :order
@@ -8446,7 +8451,8 @@ module Google
         end
       end
       
-      # Product data.
+      # Product data. After inserting, updating, or deleting a product, it may take
+      # several minutes before changes take effect.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -9166,7 +9172,8 @@ module Google
         # @return [String]
         attr_accessor :link
       
-        # Product data.
+        # Product data. After inserting, updating, or deleting a product, it may take
+        # several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -9508,7 +9515,8 @@ module Google
         # @return [String]
         attr_accessor :request_method
       
-        # Product data.
+        # Product data. After inserting, updating, or deleting a product, it may take
+        # several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -9579,7 +9587,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Product data.
+        # Product data. After inserting, updating, or deleting a product, it may take
+        # several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -10124,7 +10133,8 @@ module Google
         end
       end
       
-      # The merchant account's shipping settings.
+      # The merchant account's shipping settings. All methods except
+      # getsupportedcarriers and getsupportedholidays require the admin role.
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
@@ -10199,7 +10209,8 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # The merchant account's shipping settings.
+        # The merchant account's shipping settings. All methods except
+        # getsupportedcarriers and getsupportedholidays require the admin role.
         # Corresponds to the JSON property `shippingSettings`
         # @return [Google::Apis::ContentV2::ShippingSettings]
         attr_accessor :shipping_settings
@@ -10264,7 +10275,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The merchant account's shipping settings.
+        # The merchant account's shipping settings. All methods except
+        # getsupportedcarriers and getsupportedholidays require the admin role.
         # Corresponds to the JSON property `shippingSettings`
         # @return [Google::Apis::ContentV2::ShippingSettings]
         attr_accessor :shipping_settings

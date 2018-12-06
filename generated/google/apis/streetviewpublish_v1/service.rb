@@ -418,6 +418,11 @@ module Google
         # updateMask
         # field are used. If `updateMask` is not present, the update applies to all
         # fields.
+        # The number of
+        # UpdatePhotoRequest
+        # messages in a
+        # BatchUpdatePhotosRequest
+        # must not exceed 20.
         # <aside class="note"><b>Note:</b> To update
         # Pose.altitude,
         # Pose.latLngPair has to be

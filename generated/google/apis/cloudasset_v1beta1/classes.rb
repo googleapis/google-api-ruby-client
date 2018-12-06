@@ -27,7 +27,7 @@ module Google
       class Asset
         include Google::Apis::Core::Hashable
       
-        # Type of the asset. Example: "google.compute.disk".
+        # Type of the asset. Example: "google.compute.Disk".
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -288,7 +288,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of asset types of which to take a snapshot for. For example:
-        # "google.compute.disk". If specified, only matching assets will be returned.
+        # "google.compute.Disk". If specified, only matching assets will be returned.
         # See [Introduction to Cloud Asset
         # Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-
         # inventory/overview)
