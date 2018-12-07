@@ -206,7 +206,7 @@ module Google
         # @return [String]
         attr_accessor :audiences
       
-        # Redirect URL if JWT token is required but no present or is expired.
+        # Redirect URL if JWT token is required but not present or is expired.
         # Implement authorizationUrl of securityDefinitions in OpenAPI spec.
         # Corresponds to the JSON property `authorizationUrl`
         # @return [String]
@@ -2618,6 +2618,40 @@ module Google
           @name = args[:name] if args.key?(:name)
           @unit = args[:unit] if args.key?(:unit)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Request to search for an unused range within allocated ranges.
+      class SearchRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The prefix length of the IP range.
+        # Use usual CIDR range notation.
+        # For example, '30' to find unused x.x.x.x/30 CIDR range.
+        # Actual range will be determined using allocated range for the consumer
+        # peered network and returned in the result.
+        # Corresponds to the JSON property `ipPrefixLength`
+        # @return [Fixnum]
+        attr_accessor :ip_prefix_length
+      
+        # Network name in the consumer project.   This network must have been
+        # already peered with a shared VPC network using CreateConnection
+        # method.
+        # Must be in a form 'projects/`project`/global/networks/`network`'.
+        # `project` is a project number, as in '12345'
+        # `network` is network name.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @network = args[:network] if args.key?(:network)
         end
       end
       

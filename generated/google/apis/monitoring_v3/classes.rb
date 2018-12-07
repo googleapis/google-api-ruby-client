@@ -1238,6 +1238,11 @@ module Google
         # @return [String]
         attr_accessor :peer_project_id
       
+        # The current operational state of the internal checker.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1249,6 +1254,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @peer_project_id = args[:peer_project_id] if args.key?(:peer_project_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

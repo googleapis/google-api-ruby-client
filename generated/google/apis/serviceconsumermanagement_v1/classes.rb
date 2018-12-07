@@ -220,7 +220,7 @@ module Google
         # @return [String]
         attr_accessor :audiences
       
-        # Redirect URL if JWT token is required but no present or is expired.
+        # Redirect URL if JWT token is required but not present or is expired.
         # Implement authorizationUrl of securityDefinitions in OpenAPI spec.
         # Corresponds to the JSON property `authorizationUrl`
         # @return [String]

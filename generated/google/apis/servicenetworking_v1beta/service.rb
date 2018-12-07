@@ -86,6 +86,8 @@ module Google
         # ipV4 network mask). The method checks against the assigned allocated ranges
         # to find a non-conflicting IP address range. The method will reuse a subnet
         # if subsequent calls contain the same subnet name, region, prefix length.
+        # This method will make producer's tenant project to be a shared VPC service
+        # project as needed.
         # The response from the `get` operation will be of type `Subnetwork` if the
         # operation successfully completes.
         # @param [String] parent
@@ -168,6 +170,48 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to find a currently unused range
+        # within consumer allocated ranges.   This returned range is not reserved,
+        # and not guaranteed to remain unused.
+        # It will validate previously provided allocated ranges, find
+        # non-conflicting sub-range of requested size (expressed in
+        # number of leading bits of ipv4 network mask, as in CIDR range
+        # notation).
+        # Operation<response: Range>
+        # @param [String] parent
+        #   Required. This is in a form services/`service`.
+        #   `service` the name of the private access management service, for example
+        #   'service-peering.example.com'.
+        # @param [Google::Apis::ServicenetworkingV1beta::SearchRangeRequest] search_range_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_service_range(parent, search_range_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta/{+parent}:searchRange', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1beta::SearchRangeRequest::Representation
+          command.request_object = search_range_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

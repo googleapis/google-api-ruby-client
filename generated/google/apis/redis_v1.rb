@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Cloud Memorystore for Redis API
     #
-    # The Google Cloud Memorystore for Redis API is used for creating and managing
-    # Redis instances on the Google Cloud Platform.
+    # Creates and manages Redis instances on the Google Cloud Platform.
     #
     # @see https://cloud.google.com/memorystore/docs/redis/
     module RedisV1
       VERSION = 'V1'
-      REVISION = '20181031'
+      REVISION = '20181203'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

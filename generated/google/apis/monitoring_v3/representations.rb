@@ -686,6 +686,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :peer_project_id, as: 'peerProjectId'
+          property :state, as: 'state'
         end
       end
       

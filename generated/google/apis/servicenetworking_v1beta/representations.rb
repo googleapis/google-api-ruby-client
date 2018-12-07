@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -840,6 +846,14 @@ module Google
           property :name, as: 'name'
           property :unit, as: 'unit'
           hash :values, as: 'values'
+        end
+      end
+      
+      class SearchRangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_prefix_length, as: 'ipPrefixLength'
+          property :network, as: 'network'
         end
       end
       
