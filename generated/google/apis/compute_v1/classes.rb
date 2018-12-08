@@ -576,12 +576,32 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The URL of the network in which to reserve the address. This field can only be
+        # used with INTERNAL type with VPC_PEERING purpose.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # This signifies the networking tier used for configuring this Address and can
-        # only take the following values: PREMIUM , STANDARD.
+        # only take the following values: PREMIUM, STANDARD. Global forwarding rules can
+        # only be Premium Tier. Regional forwarding rules can be either Premium or
+        # Standard Tier. Standard Tier addresses applied to regional forwarding rules
+        # can be used with any external load balancer. Regional forwarding rules in
+        # Premium Tier can only be used with a Network load balancer.
         # If this field is not specified, it is assumed to be PREMIUM.
         # Corresponds to the JSON property `networkTier`
         # @return [String]
         attr_accessor :network_tier
+      
+        # The prefix length if the resource reprensents an IP range.
+        # Corresponds to the JSON property `prefixLength`
+        # @return [Fixnum]
+        attr_accessor :prefix_length
+      
+        # The purpose of resource, only used with INTERNAL type.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
       
         # [Output Only] URL of the region where the regional address resides. This field
         # is not applicable to global addresses. You must specify this field as part of
@@ -630,7 +650,10 @@ module Google
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
+          @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -1207,6 +1230,104 @@ module Google
         end
       end
       
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConfig must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service, the
+      # union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditLogConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
+      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
+      # fooservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
+      # ` "log_type": "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] ` ] `
+      # ] `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
+      # com from DATA_WRITE logging.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for logging of each type of permission.
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::ComputeV1::AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        # 
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # Specifies a service that will be enabled for audit logging. For example, `
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions. Example:
+      # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
+      # user:foo@gmail.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.
+      # com from DATA_READ logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of permission.
+        # Follows the same format of [Binding.members][].
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Authorization-related information used by Cloud Audit Logging.
+      class AuthorizationLoggingOptions
+        include Google::Apis::Core::Hashable
+      
+        # The type of the permission that was checked.
+        # Corresponds to the JSON property `permissionType`
+        # @return [String]
+        attr_accessor :permission_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permission_type = args[:permission_type] if args.key?(:permission_type)
+        end
+      end
+      
       # Represents an Autoscaler resource. Autoscalers allow you to automatically
       # scale virtual machine instances in managed instance groups according to an
       # autoscaling policy that you define. For more information, read Autoscaling
@@ -1769,8 +1890,7 @@ module Google
         attr_accessor :utilization_target
       
         # Defines how target utilization value is expressed for a Stackdriver Monitoring
-        # metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified,
-        # the default is GAUGE.
+        # metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
         # Corresponds to the JSON property `utilizationTargetType`
         # @return [String]
         attr_accessor :utilization_target_type
@@ -1996,7 +2116,7 @@ module Google
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
         # URL requests, Cloud CDN will internally behave as though all responses from
-        # this backend had a ?Cache-Control: public, max-age=[TTL]? header, regardless
+        # this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless
         # of any existing Cache-Control header. The actual headers served in responses
         # will not be altered.
         # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
@@ -2186,7 +2306,8 @@ module Google
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a BackendService. An up-to-date fingerprint must be provided in
-        # order to update the BackendService.
+        # order to update the BackendService, otherwise the request will fail with error
+        # 412 conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve a
         # BackendService.
         # Corresponds to the JSON property `fingerprint`
@@ -2459,7 +2580,7 @@ module Google
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
         # URL requests, Cloud CDN will internally behave as though all responses from
-        # this backend had a ?Cache-Control: public, max-age=[TTL]? header, regardless
+        # this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless
         # of any existing Cache-Control header. The actual headers served in responses
         # will not be altered.
         # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
@@ -2754,6 +2875,53 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Associates `members` with a `role`.
+      class Binding
+        include Google::Apis::Core::Hashable
+      
+        # Represents an expression text. Example:
+        # title: "User account presence" description: "Determines whether the request
+        # has a user account" expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ComputeV1::Expr]
+        attr_accessor :condition
+      
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values:
+        # * `allUsers`: A special identifier that represents anyone who is on the
+        # internet; with or without a Google account.
+        # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        # authenticated with a Google account or a service account.
+        # * `user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@gmail.com` .
+        # * `serviceAccount:`emailid``: An email address that represents a service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
+        # * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`.
+        # * `domain:`domain``: A Google Apps domain name that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
@@ -3278,6 +3446,56 @@ module Google
         end
       end
       
+      # A condition to be met.
+      class Condition
+        include Google::Apis::Core::Hashable
+      
+        # Trusted attributes supplied by the IAM system.
+        # Corresponds to the JSON property `iam`
+        # @return [String]
+        attr_accessor :iam
+      
+        # An operator to apply the subject with.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # Trusted attributes discharged by the service.
+        # Corresponds to the JSON property `svc`
+        # @return [String]
+        attr_accessor :svc
+      
+        # Trusted attributes supplied by any service that owns resources and uses the
+        # IAM system for access control.
+        # Corresponds to the JSON property `sys`
+        # @return [String]
+        attr_accessor :sys
+      
+        # DEPRECATED. Use 'values' instead.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # The objects of the condition. This is mutually exclusive with 'value'.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam = args[:iam] if args.key?(:iam)
+          @op = args[:op] if args.key?(:op)
+          @svc = args[:svc] if args.key?(:svc)
+          @sys = args[:sys] if args.key?(:sys)
+          @value = args[:value] if args.key?(:value)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Message containing connection draining configuration.
       class ConnectionDraining
         include Google::Apis::Core::Hashable
@@ -3454,7 +3672,8 @@ module Google
         # a hash of the labels set used for optimistic locking. The fingerprint is
         # initially generated by Compute Engine and changes after every request to
         # modify or update labels. You must always provide an up-to-date fingerprint
-        # hash in order to update or change labels.
+        # hash in order to update or change labels, otherwise the request will fail with
+        # error 412 conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve a disk.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -3501,6 +3720,14 @@ module Google
         # Corresponds to the JSON property `options`
         # @return [String]
         attr_accessor :options
+      
+        # Physical block size of the persistent disk, in bytes. If not present in a
+        # request, a default value is used. Currently supported sizes are 4096 and 16384,
+        # other sizes may be added in the future. If an unsupported value is requested,
+        # the error message will list the supported values for the caller's project.
+        # Corresponds to the JSON property `physicalBlockSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :physical_block_size_bytes
       
         # [Output Only] URL of the region where the disk resides. Only applicable for
         # regional resources. You must specify this field as part of the HTTP request
@@ -3633,6 +3860,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
+          @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -4532,6 +4760,50 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence" description: "Determines whether the request
+      # has a user account" expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # The application context of the containing message determines which well-known
+        # feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing its
+        # purpose. This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Represents a Firewall resource.
       class Firewall
         include Google::Apis::Core::Hashable
@@ -4592,6 +4864,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The available logging options for a firewall rule.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeV1::FirewallLogConfig]
+        attr_accessor :log_config
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -4702,6 +4979,7 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @priority = args[:priority] if args.key?(:priority)
@@ -4894,6 +5172,26 @@ module Google
         end
       end
       
+      # The available logging options for a firewall rule.
+      class FirewallLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # This field denotes whether to enable logging for a particular firewall rule.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+        end
+      end
+      
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
       # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
@@ -5037,9 +5335,9 @@ module Google
       
         # This field is used along with the backend_service field for internal load
         # balancing.
-        # When the load balancing scheme is INTERNAL, a single port or a comma separated
-        # list of ports can be configured. Only packets addressed to these ports will be
-        # forwarded to the backends configured with this forwarding rule.
+        # When the load balancing scheme is INTERNAL, a list of ports can be configured,
+        # for example, ['80'], ['8000','9000'] etc. Only packets addressed to these
+        # ports will be forwarded to the backends configured with this forwarding rule.
         # You may specify a maximum of up to 5 ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
@@ -5438,8 +5736,9 @@ module Google
         # The fingerprint of the previous set of labels for this resource, used to
         # detect conflicts. The fingerprint is initially generated by Compute Engine and
         # changes after every request to modify or update labels. You must always
-        # provide an up-to-date fingerprint hash when updating or changing labels. Make
-        # a get() request to the resource to get the latest fingerprint.
+        # provide an up-to-date fingerprint hash when updating or changing labels,
+        # otherwise the request will fail with error 412 conditionNotMet. Make a get()
+        # request to the resource to get the latest fingerprint.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5464,6 +5763,56 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # 
+      class GlobalSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeV1::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -6443,7 +6792,8 @@ module Google
         # a hash of the labels used for optimistic locking. The fingerprint is initially
         # generated by Compute Engine and changes after every request to modify or
         # update labels. You must always provide an up-to-date fingerprint hash in order
-        # to update or change labels.
+        # to update or change labels, otherwise the request will fail with error 412
+        # conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve an image.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -7462,7 +7812,8 @@ module Google
       
         # Fingerprint of this resource. This field may be used in optimistic locking. It
         # will be ignored when inserting an InstanceGroupManager. An up-to-date
-        # fingerprint must be provided in order to update the InstanceGroupManager.
+        # fingerprint must be provided in order to update the InstanceGroupManager,
+        # otherwise the request will fail with error 412 conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve an
         # InstanceGroupManager.
         # Corresponds to the JSON property `fingerprint`
@@ -8391,7 +8742,8 @@ module Google
         # named ports settings concurrently. Obtain the fingerprint with the
         # instanceGroups.get method. Then, include the fingerprint in your request to
         # ensure that you do not overwrite changes that were applied from another
-        # concurrent request.
+        # concurrent request. A request with an incorrect fingerprint will fail with
+        # error 412 conditionNotMet.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -9453,7 +9805,7 @@ module Google
       
         # Provisioned bandwidth capacity for the interconnectAttachment. Can be set by
         # the partner to update the customer's provisioned bandwidth. Output only for
-        # for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+        # PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED.
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -9576,7 +9928,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # URL of the cloud router to be used for dynamic routing. This router must be in
+        # URL of the Cloud Router to be used for dynamic routing. This router must be in
         # the same region as this InterconnectAttachment. The InterconnectAttachment
         # will automatically connect the Interconnect to the network & region within
         # which the Cloud Router is configured.
@@ -9599,9 +9951,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this
-        # attachment, in the range 2-4094. This field refers to 802.1q VLAN tag, also
-        # known as IEEE 802.1Q Only specified at creation time.
+        # The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only
+        # specified at creation time.
         # Corresponds to the JSON property `vlanTag8021q`
         # @return [Fixnum]
         attr_accessor :vlan_tag8021q
@@ -9883,7 +10234,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Plain text name of the Interconnect this attachment is connected to, as
-        # displayed in the Partner?s portal. For instance ?Chicago 1?. This value may be
+        # displayed in the Partner?s portal. For instance "Chicago 1". This value may be
         # validated to match approved Partner values.
         # Corresponds to the JSON property `interconnectName`
         # @return [String]
@@ -10160,7 +10511,10 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Value of the current optical power, read in dBm.
+        # Value of the current optical power, read in dBm. Take a known good optical
+        # value, give it a 10% margin and trigger warnings relative to that value. In
+        # general, a -7dBm warning and a -11dBm alarm are good optical value estimates
+        # for most links.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -11005,6 +11359,141 @@ module Google
         end
       end
       
+      # Specifies what kind of log the caller must write
+      class LogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::ComputeV1::LogConfigCloudAuditOptions]
+        attr_accessor :cloud_audit
+      
+        # Increment a streamz counter with the specified metric and field names.
+        # Metric names should start with a '/', generally be lowercase-only, and end in "
+        # _count". Field names should not contain an initial slash. The actual exported
+        # metric names will have "/iam/policy" prepended.
+        # Field names correspond to IAM request parameters and field values are their
+        # respective values.
+        # Supported field names: - "authority", which is "[token]" if IAMContext.token
+        # is present, otherwise the value of IAMContext.authority_selector if present,
+        # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+        # a representation of IAMContext.principal even if a token or authority selector
+        # is present; or - "" (empty string), resulting in a counter with no fields.
+        # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
+        # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
+        # of IAMContext.principal]`
+        # At this time we do not support multiple field names (though this may be
+        # supported in the future).
+        # Corresponds to the JSON property `counter`
+        # @return [Google::Apis::ComputeV1::LogConfigCounterOptions]
+        attr_accessor :counter
+      
+        # Write a Data Access (Gin) log
+        # Corresponds to the JSON property `dataAccess`
+        # @return [Google::Apis::ComputeV1::LogConfigDataAccessOptions]
+        attr_accessor :data_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
+          @counter = args[:counter] if args.key?(:counter)
+          @data_access = args[:data_access] if args.key?(:data_access)
+        end
+      end
+      
+      # Write a Cloud Audit log
+      class LogConfigCloudAuditOptions
+        include Google::Apis::Core::Hashable
+      
+        # Authorization-related information used by Cloud Audit Logging.
+        # Corresponds to the JSON property `authorizationLoggingOptions`
+        # @return [Google::Apis::ComputeV1::AuthorizationLoggingOptions]
+        attr_accessor :authorization_logging_options
+      
+        # The log_name to populate in the Cloud Audit Record.
+        # Corresponds to the JSON property `logName`
+        # @return [String]
+        attr_accessor :log_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
+          @log_name = args[:log_name] if args.key?(:log_name)
+        end
+      end
+      
+      # Increment a streamz counter with the specified metric and field names.
+      # Metric names should start with a '/', generally be lowercase-only, and end in "
+      # _count". Field names should not contain an initial slash. The actual exported
+      # metric names will have "/iam/policy" prepended.
+      # Field names correspond to IAM request parameters and field values are their
+      # respective values.
+      # Supported field names: - "authority", which is "[token]" if IAMContext.token
+      # is present, otherwise the value of IAMContext.authority_selector if present,
+      # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+      # a representation of IAMContext.principal even if a token or authority selector
+      # is present; or - "" (empty string), resulting in a counter with no fields.
+      # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
+      # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
+      # of IAMContext.principal]`
+      # At this time we do not support multiple field names (though this may be
+      # supported in the future).
+      class LogConfigCounterOptions
+        include Google::Apis::Core::Hashable
+      
+        # The field value to attribute.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # The metric to update.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # Write a Data Access (Gin) log
+      class LogConfigDataAccessOptions
+        include Google::Apis::Core::Hashable
+      
+        # Whether Gin logging should happen in a fail-closed manner at the caller. This
+        # is relevant only in the LocalIAM implementation, for now.
+        # NOTE: Logging to Gin in a fail-closed manner is currently unsupported while
+        # work is being done to satisfy the requirements of go/345. Currently, setting
+        # LOG_FAIL_CLOSED mode will have no effect, but still exists because there is
+        # active work being done to support it (b/115874152).
+        # Corresponds to the JSON property `logMode`
+        # @return [String]
+        attr_accessor :log_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_mode = args[:log_mode] if args.key?(:log_mode)
+        end
+      end
+      
       # A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for
       # beta.machineTypes ==)
       class MachineType
@@ -11608,7 +12097,8 @@ module Google
         # metadata's contents and used for optimistic locking. The fingerprint is
         # initially generated by Compute Engine and changes after every request to
         # modify or update metadata. You must always provide an up-to-date fingerprint
-        # hash in order to update or change metadata.
+        # hash in order to update or change metadata, otherwise the request will fail
+        # with error 412 conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve the resource.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -11818,7 +12308,8 @@ module Google
       
         # Fingerprint hash of contents stored in this network interface. This field will
         # be ignored when inserting an Instance or adding a NetworkInterface. An up-to-
-        # date fingerprint must be provided in order to update the NetworkInterface.
+        # date fingerprint must be provided in order to update the NetworkInterface,
+        # otherwise the request will fail with error 412 conditionNotMet.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -12013,10 +12504,10 @@ module Google
       class NetworkPeering
         include Google::Apis::Core::Hashable
       
-        # Whether full mesh connectivity is created and managed automatically. When it
-        # is set to true, Google Compute Engine will automatically create and manage the
-        # routes between two networks when the state is ACTIVE. Otherwise, user needs to
-        # create routes manually to route packets to peer network.
+        # Indicates whether full mesh connectivity is created and managed automatically.
+        # When it is set to true, Google Compute Engine will automatically create and
+        # manage the routes between two networks when the state is ACTIVE. Otherwise,
+        # user needs to create routes manually to route packets to peer network.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
@@ -14357,6 +14848,88 @@ module Google
         end
       end
       
+      # Defines an Identity and Access Management (IAM) policy. It is used to specify
+      # access control policies for Cloud Platform resources.
+      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+      # members` to a `role`, where the members can be user accounts, Google groups,
+      # Google domains, and service accounts. A `role` is a named list of permissions
+      # defined by IAM.
+      # **JSON Example**
+      # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+      # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+      # sean@example.com"] ` ] `
+      # **YAML Example**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+      # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+      # For a description of IAM and its features, see the [IAM developer's guide](
+      # https://cloud.google.com/iam/docs).
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::ComputeV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`. `bindings` with no members will
+        # result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeV1::Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `iamOwned`
+        # @return [Boolean]
+        attr_accessor :iam_owned
+        alias_method :iam_owned?, :iam_owned
+      
+        # If more than one rule is specified, the rules are applied in the following
+        # manner: - All matching LOG rules are always applied. - If any DENY/
+        # DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if
+        # one or more matching rule requires logging. - Otherwise, if any ALLOW/
+        # ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if
+        # one or more matching rule requires logging. - Otherwise, if no rule applies,
+        # permission is denied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeV1::Rule>]
+        attr_accessor :rules
+      
+        # Deprecated.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
+          @rules = args[:rules] if args.key?(:rules)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A Project resource. For an overview of projects, see  Cloud Platform Resource
       # Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
@@ -15659,6 +16232,56 @@ module Google
         end
       end
       
+      # 
+      class RegionSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeV1::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Commitment for a particular resource (a Commitment is composed of one or more
       # of these).
       class ResourceCommitment
@@ -16365,11 +16988,12 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # [Output Only] Type of how the resource/configuration of the BGP peer is
-        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
-        # represents an BGP peer that is automatically created for PARTNER
-        # interconnectAttachment, Google will automatically create/delete this type of
-        # BGP peer when the PARTNER interconnectAttachment is created/deleted.
+        # [Output Only] The resource that configures and manages this BGP peer.
+        # MANAGED_BY_USER is the default value and can be managed by you or other users;
+        # MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud
+        # Interconnect, specifically by an InterconnectAttachment of type PARTNER.
+        # Google will automatically create, update, and delete this type of BGP peer
+        # when the PARTNER InterconnectAttachment is created, updated, or deleted.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -16436,12 +17060,12 @@ module Google
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
-        # [Output Only] Type of how the resource/configuration of the interface is
-        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
-        # represents an interface that is automatically created for PARTNER type
-        # interconnectAttachment, Google will automatically create/update/delete this
-        # type of interface when the PARTNER interconnectAttachment is created/
-        # provisioned/deleted.
+        # [Output Only] The resource that configures and manages this interface.
+        # MANAGED_BY_USER is the default value and can be managed by you or other users;
+        # MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud
+        # Interconnect, specifically by an InterconnectAttachment of type PARTNER.
+        # Google will automatically create, update, and delete this type of interface
+        # when the PARTNER InterconnectAttachment is created, updated, or deleted.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -17013,6 +17637,67 @@ module Google
         end
       end
       
+      # A rule to be applied in a Policy.
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # Required
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Additional restrictions that must be met. All conditions must pass for the
+        # rule to match.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ComputeV1::Condition>]
+        attr_accessor :conditions
+      
+        # Human-readable description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/
+        # AUTHORITY_SELECTOR is in at least one of these entries.
+        # Corresponds to the JSON property `ins`
+        # @return [Array<String>]
+        attr_accessor :ins
+      
+        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+        # that match the LOG action.
+        # Corresponds to the JSON property `logConfigs`
+        # @return [Array<Google::Apis::ComputeV1::LogConfig>]
+        attr_accessor :log_configs
+      
+        # If one or more 'not_in' clauses are specified, the rule matches if the
+        # PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        # Corresponds to the JSON property `notIns`
+        # @return [Array<String>]
+        attr_accessor :not_ins
+      
+        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
+        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
+        # *') matches all verbs.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @description = args[:description] if args.key?(:description)
+          @ins = args[:ins] if args.key?(:ins)
+          @log_configs = args[:log_configs] if args.key?(:log_configs)
+          @not_ins = args[:not_ins] if args.key?(:not_ins)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
       # 
       class SslHealthCheck
         include Google::Apis::Core::Hashable
@@ -17166,7 +17851,8 @@ module Google
         # metadata's contents and used for optimistic locking. The fingerprint is
         # initially generated by Compute Engine and changes after every request to
         # modify or update metadata. You must always provide an up-to-date fingerprint
-        # hash in order to update or change metadata.
+        # hash in order to update or change metadata, otherwise the request will fail
+        # with error 412 conditionNotMet.
         # To see the latest fingerprint, make get() request to the security policy.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -17393,8 +18079,9 @@ module Google
         alias_method :preview?, :preview
       
         # An integer indicating the priority of a rule in the list. The priority must be
-        # a positive value between 0 and 2147483647. Rules are evaluated in the
-        # increasing order of priority.
+        # a positive value between 0 and 2147483647. Rules are evaluated from highest to
+        # lowest priority where 0 is the highest priority and 2147483647 is the lowest
+        # prority.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -17605,7 +18292,8 @@ module Google
         # essentially a hash of the labels set used for optimistic locking. The
         # fingerprint is initially generated by Compute Engine and changes after every
         # request to modify or update labels. You must always provide an up-to-date
-        # fingerprint hash in order to update or change labels.
+        # fingerprint hash in order to update or change labels, otherwise the request
+        # will fail with error 412 conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve a snapshot.
         # Corresponds to the JSON property `labelFingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -18217,7 +18905,8 @@ module Google
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
-        # update the SslPolicy.
+        # update the SslPolicy, otherwise the request will fail with error 412
+        # conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -18403,7 +19092,8 @@ module Google
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
-        # update the Subnetwork.
+        # update the Subnetwork, otherwise the request will fail with error 412
+        # conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -18471,7 +19161,7 @@ module Google
         # An array of configurations for secondary IP ranges for VM instances contained
         # in this subnetwork. The primary IP of such VM must belong to the primary
         # ipCidrRange of the subnetwork. The alias IPs may belong to either primary or
-        # secondary ranges.
+        # secondary ranges. This field can be updated with a patch request.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ComputeV1::SubnetworkSecondaryRange>]
         attr_accessor :secondary_ip_ranges
@@ -21434,7 +22124,8 @@ module Google
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
-        # update the UrlMap.
+        # update the UrlMap, otherwise the request will fail with error 412
+        # conditionNotMet.
         # To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -22979,6 +23670,56 @@ module Google
         def update!(**args)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # 
+      class ZoneSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeV1::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
+        # members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **JSON Example**
+        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
+        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] `
+        # **YAML Example**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # For a description of IAM and its features, see the [IAM developer's guide](
+        # https://cloud.google.com/iam/docs).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
     end

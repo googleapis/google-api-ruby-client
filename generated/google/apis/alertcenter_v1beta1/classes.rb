@@ -825,6 +825,27 @@ module Google
           @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
+      
+      # A request to undelete a specific alert that was marked for deletion.
+      class UndeleteAlertRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unique identifier of the G Suite organization account of the
+        # customer the alert is associated with.
+        # Inferred from the caller identity if not provided.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
     end
   end
 end

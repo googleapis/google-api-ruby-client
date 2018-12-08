@@ -53,6 +53,11 @@ module Google
       class AddonsConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration options for the Cloud Run feature.
+        # Corresponds to the JSON property `cloudRunConfig`
+        # @return [Google::Apis::ContainerV1beta1::CloudRunConfig]
+        attr_accessor :cloud_run_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller
         # has based on the resource usage of the existing pods.
@@ -65,6 +70,11 @@ module Google
         # Corresponds to the JSON property `httpLoadBalancing`
         # @return [Google::Apis::ContainerV1beta1::HttpLoadBalancing]
         attr_accessor :http_load_balancing
+      
+        # Configuration options for Istio addon.
+        # Corresponds to the JSON property `istioConfig`
+        # @return [Google::Apis::ContainerV1beta1::IstioConfig]
+        attr_accessor :istio_config
       
         # Configuration for the Kubernetes Dashboard.
         # Corresponds to the JSON property `kubernetesDashboard`
@@ -84,8 +94,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_run_config = args[:cloud_run_config] if args.key?(:cloud_run_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
+          @istio_config = args[:istio_config] if args.key?(:istio_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
         end
@@ -117,6 +129,25 @@ module Google
         def update!(**args)
           @auto_upgrade_start_time = args[:auto_upgrade_start_time] if args.key?(:auto_upgrade_start_time)
           @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Parameters for using BigQuery as the destination of resource usage export.
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
         end
       end
       
@@ -226,6 +257,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issue_client_certificate = args[:issue_client_certificate] if args.key?(:issue_client_certificate)
+        end
+      end
+      
+      # Configuration options for the Cloud Run feature.
+      class CloudRunConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Cloud Run addon is enabled for this cluster.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
         end
       end
       
@@ -518,6 +569,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
+        # Configuration for exporting cluster resource usages.
+        # Corresponds to the JSON property `resourceUsageExportConfig`
+        # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
+        attr_accessor :resource_usage_export_config
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -619,6 +675,7 @@ module Google
           @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @status = args[:status] if args.key?(:status)
@@ -774,6 +831,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
         attr_accessor :desired_pod_security_policy_config
       
+        # Configuration for exporting cluster resource usages.
+        # Corresponds to the JSON property `desiredResourceUsageExportConfig`
+        # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
+        attr_accessor :desired_resource_usage_export_config
+      
         # VerticalPodAutoscaling contains global, per-cluster information
         # required by Vertical Pod Autoscaler to automatically adjust
         # the resources of pods controlled by it.
@@ -800,6 +862,7 @@ module Google
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
+          @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
         end
       end
@@ -1196,6 +1259,32 @@ module Google
         end
       end
       
+      # Configuration options for Istio addon.
+      class IstioConfig
+        include Google::Apis::Core::Hashable
+      
+        # The specified Istio auth mode, either none, or mutual TLS.
+        # Corresponds to the JSON property `auth`
+        # @return [String]
+        attr_accessor :auth
+      
+        # Whether Istio is enabled for this cluster.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth = args[:auth] if args.key?(:auth)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # Configuration for the Kubernetes Dashboard.
       class KubernetesDashboard
         include Google::Apis::Core::Hashable
@@ -1381,9 +1470,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Recommended is a bool combining the drain state of the location (ie- has
-        # the region been drained manually?), and the stockout status of any zone
-        # according to Zone Advisor. This will be internal only for use by pantheon.
+        # Whether the location is recomended for GKE cluster scheduling.
         # Corresponds to the JSON property `recommended`
         # @return [Boolean]
         attr_accessor :recommended
@@ -2299,6 +2386,33 @@ module Google
           @maximum = args[:maximum] if args.key?(:maximum)
           @minimum = args[:minimum] if args.key?(:minimum)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Configuration for exporting cluster resource usages.
+      class ResourceUsageExportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for using BigQuery as the destination of resource usage export.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::ContainerV1beta1::BigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Whether to enable network egress metering for this cluster. If enabled, a
+        # daemonset will be created in the cluster to meter network egress traffic.
+        # Corresponds to the JSON property `enableNetworkEgressMetering`
+        # @return [Boolean]
+        attr_accessor :enable_network_egress_metering
+        alias_method :enable_network_egress_metering?, :enable_network_egress_metering
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @enable_network_egress_metering = args[:enable_network_egress_metering] if args.key?(:enable_network_egress_metering)
         end
       end
       

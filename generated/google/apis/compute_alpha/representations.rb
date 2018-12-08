@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisplayDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DistributionPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -858,6 +870,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1307,6 +1325,12 @@ module Google
       end
       
       class InstanceGroupManagersApplyUpdatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersCreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2260,6 +2284,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupAutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2573,6 +2603,18 @@ module Google
       end
       
       class PreconfiguredWafSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreservedState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreservedStatePreservedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3502,6 +3544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatefulPolicyPreservedState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedStateDiskDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Subnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3540,6 +3594,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5159,6 +5219,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::BackendServiceLogConfig, decorator: Google::Apis::ComputeAlpha::BackendServiceLogConfig::Representation
+      
           property :name, as: 'name'
           property :port, as: 'port'
           property :port_name, as: 'portName'
@@ -5299,6 +5361,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :sample_rate, as: 'sampleRate'
         end
       end
       
@@ -5812,6 +5882,13 @@ module Google
         end
       end
       
+      class DisplayDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_display, as: 'enableDisplay'
+        end
+      end
+      
       class DistributionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5895,6 +5972,8 @@ module Google
           property :enable_logging, as: 'enableLogging'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::FirewallLogConfig, decorator: Google::Apis::ComputeAlpha::FirewallLogConfig::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :priority, as: 'priority'
@@ -5952,6 +6031,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class FirewallLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
@@ -6547,6 +6633,8 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
       
+          property :display_device, as: 'displayDevice', class: Google::Apis::ComputeAlpha::DisplayDevice, decorator: Google::Apis::ComputeAlpha::DisplayDevice::Representation
+      
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
           property :hostname, as: 'hostname'
@@ -6896,6 +6984,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeAlpha::PerInstanceConfig, decorator: Google::Apis::ComputeAlpha::PerInstanceConfig::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagersDeleteInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6907,6 +7003,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          collection :names, as: 'names'
         end
       end
       
@@ -8109,6 +8206,10 @@ module Google
       
           property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
       
+          property :preserved_state_from_config, as: 'preservedStateFromConfig', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
+      
+          property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
+      
           property :tag, as: 'tag'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
       
@@ -8481,6 +8582,7 @@ module Google
       class NetworkPeering
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertise_peer_subnets_via_routers, as: 'advertisePeerSubnetsViaRouters'
           property :auto_create_routes, as: 'autoCreateRoutes'
           property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :export_custom_routes, as: 'exportCustomRoutes'
@@ -8530,6 +8632,8 @@ module Google
       class NodeGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy, decorator: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -8572,6 +8676,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupAutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_size, as: 'maxSize'
+          property :min_size, as: 'minSize'
         end
       end
       
@@ -9115,7 +9227,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :instance, as: 'instance'
+          property :name, as: 'name'
           property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
+      
+          property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
         end
       end
@@ -9140,6 +9255,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :expression_sets, as: 'expressionSets', class: Google::Apis::ComputeAlpha::WafExpressionSet, decorator: Google::Apis::ComputeAlpha::WafExpressionSet::Representation
       
+        end
+      end
+      
+      class PreservedState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :disks, as: 'disks', class: Google::Apis::ComputeAlpha::PreservedStatePreservedDisk, decorator: Google::Apis::ComputeAlpha::PreservedStatePreservedDisk::Representation
+      
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class PreservedStatePreservedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :mode, as: 'mode'
+          property :source, as: 'source'
         end
       end
       
@@ -9370,6 +9503,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          collection :names, as: 'names'
         end
       end
       
@@ -10757,6 +10891,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preserved_resources, as: 'preservedResources', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources::Representation
       
+          property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedState, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedState::Representation
+      
         end
       end
       
@@ -10772,6 +10908,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk::Representation
       
+        end
+      end
+      
+      class StatefulPolicyPreservedState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :disks, as: 'disks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateDiskDevice, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateDiskDevice::Representation
+      
+        end
+      end
+      
+      class StatefulPolicyPreservedStateDiskDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
         end
       end
       
@@ -10791,6 +10942,8 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::SubnetworkLogConfig, decorator: Google::Apis::ComputeAlpha::SubnetworkLogConfig::Representation
+      
           property :metadata, as: 'metadata'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -10866,6 +11019,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SubnetworkLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :enable, as: 'enable'
+          property :flow_sampling, as: 'flowSampling'
+          property :metadata, as: 'metadata'
         end
       end
       

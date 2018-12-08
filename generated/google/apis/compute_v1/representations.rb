@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthorizationLoggingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheInvalidationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -444,6 +468,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -622,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -654,6 +690,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -719,6 +761,12 @@ module Google
       end
       
       class GlobalSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1444,6 +1492,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCloudAuditOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCounterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigDataAccessOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1930,6 +2002,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2152,6 +2230,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2322,6 +2406,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3208,6 +3298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3348,7 +3444,10 @@ module Google
           property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :network_tier, as: 'networkTier'
+          property :prefix_length, as: 'prefixLength'
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -3490,6 +3589,31 @@ module Google
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
+        end
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ComputeV1::AuditLogConfig, decorator: Google::Apis::ComputeV1::AuditLogConfig::Representation
+      
+          collection :exempted_members, as: 'exemptedMembers'
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
+      class AuthorizationLoggingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_type, as: 'permissionType'
         end
       end
       
@@ -3875,6 +3999,16 @@ module Google
         end
       end
       
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4006,6 +4140,18 @@ module Google
         end
       end
       
+      class Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam, as: 'iam'
+          property :op, as: 'op'
+          property :svc, as: 'svc'
+          property :sys, as: 'sys'
+          property :value, as: 'value'
+          collection :values, as: 'values'
+        end
+      end
+      
       class ConnectionDraining
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4061,6 +4207,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
+          property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           property :self_link, as: 'selfLink'
@@ -4322,6 +4469,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4336,6 +4493,8 @@ module Google
           property :disabled, as: 'disabled'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::FirewallLogConfig, decorator: Google::Apis::ComputeV1::FirewallLogConfig::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :priority, as: 'priority'
@@ -4393,6 +4552,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class FirewallLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
@@ -4517,6 +4683,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class GlobalSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
+      
         end
       end
       
@@ -5904,6 +6081,42 @@ module Google
         end
       end
       
+      class LogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ComputeV1::LogConfigCloudAuditOptions, decorator: Google::Apis::ComputeV1::LogConfigCloudAuditOptions::Representation
+      
+          property :counter, as: 'counter', class: Google::Apis::ComputeV1::LogConfigCounterOptions, decorator: Google::Apis::ComputeV1::LogConfigCounterOptions::Representation
+      
+          property :data_access, as: 'dataAccess', class: Google::Apis::ComputeV1::LogConfigDataAccessOptions, decorator: Google::Apis::ComputeV1::LogConfigDataAccessOptions::Representation
+      
+        end
+      end
+      
+      class LogConfigCloudAuditOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::ComputeV1::AuthorizationLoggingOptions, decorator: Google::Apis::ComputeV1::AuthorizationLoggingOptions::Representation
+      
+          property :log_name, as: 'logName'
+        end
+      end
+      
+      class LogConfigCounterOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigDataAccessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_mode, as: 'logMode'
+        end
+      end
+      
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6770,6 +6983,21 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ComputeV1::AuditConfig, decorator: Google::Apis::ComputeV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :iam_owned, as: 'iamOwned'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::Rule, decorator: Google::Apis::ComputeV1::Rule::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7137,6 +7365,17 @@ module Google
         end
       end
       
+      class RegionSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
+      
+        end
+      end
+      
       class ResourceCommitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7471,6 +7710,21 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :conditions, as: 'conditions', class: Google::Apis::ComputeV1::Condition, decorator: Google::Apis::ComputeV1::Condition::Representation
+      
+          property :description, as: 'description'
+          collection :ins, as: 'ins'
+          collection :log_configs, as: 'logConfigs', class: Google::Apis::ComputeV1::LogConfig, decorator: Google::Apis::ComputeV1::LogConfig::Representation
+      
+          collection :not_ins, as: 'notIns'
+          collection :permissions, as: 'permissions'
         end
       end
       
@@ -9012,6 +9266,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class ZoneSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
+      
         end
       end
     end

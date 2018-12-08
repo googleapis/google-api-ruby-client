@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteAlertRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountWarning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -388,6 +394,13 @@ module Google
           property :old_value, as: 'oldValue'
           property :resource_id, as: 'resourceId'
           property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class UndeleteAlertRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
         end
       end
     end

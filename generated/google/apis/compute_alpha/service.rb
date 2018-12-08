@@ -529,7 +529,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -2283,7 +2283,7 @@ module Google
         end
         
         # Returns the specified BackendService resource. Gets a list of available
-        # backend services by making a list() request.
+        # backend services.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -3470,7 +3470,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::ZoneSetLabelsRequest] zone_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -4260,7 +4260,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -4615,7 +4615,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4953,7 +4953,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7025,7 +7025,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7273,6 +7273,65 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates instances with per-instance configs in this managed instance group.
+        # Instances are created using the current instance template. The create
+        # instances operation is marked DONE if the createInstances request is
+        # successful. The underlying actions take additional time. You must separately
+        # verify the status of the creating or actions with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeAlpha::InstanceGroupManagersCreateInstancesRequest] instance_group_managers_create_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersCreateInstancesRequest::Representation
+          command.request_object = instance_group_managers_create_instances_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8029,7 +8088,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the autohealing policies.
+        # Modifies the autohealing policies. [Deprecated] This method is deprecated.
+        # Please use Patch instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9624,9 +9684,10 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   Instance name.
+        #   Instance name for this request.
         # @param [String] device_name
-        #   Disk device name to detach.
+        #   The device name of the disk to detach. Make a get() request on the instance to
+        #   view currently attached disks and device names.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -10273,7 +10334,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Boolean] deletion_protection
         #   Whether the resource should be protected against deletion.
         # @param [String] request_id
@@ -10327,11 +10388,12 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   The instance name.
+        #   The instance name for this request.
         # @param [Boolean] auto_delete
         #   Whether to auto-delete the disk when the instance is deleted.
         # @param [String] device_name
-        #   The device name of the disk to modify.
+        #   The device name of the disk to modify. Make a get() request on the instance to
+        #   view currently attached disks and device names.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -10702,7 +10764,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   Instance name.
+        #   Instance name for this request.
         # @param [Google::Apis::ComputeAlpha::Scheduling] scheduling_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -11282,6 +11344,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the Display config for a VM instance. You can only use this method on
+        # a stopped VM instance. This method supports PATCH semantics and uses the JSON
+        # merge patch format and processing rules.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeAlpha::DisplayDevice] display_device_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_instance_display_device(project, zone, instance, display_device_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateDisplayDevice', options)
+          command.request_representation = Google::Apis::ComputeAlpha::DisplayDevice::Representation
+          command.request_object = display_device_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an instance's network interface. This method follows PATCH semantics.
         # @param [String] project
         #   Project ID for this request.
@@ -11829,7 +11947,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -12443,7 +12561,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -14795,7 +14913,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource.
         # @param [Google::Apis::ComputeAlpha::NodeGroupsAddNodesRequest] node_groups_add_nodes_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -16039,6 +16157,519 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts an association for the specified security policy.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicyAssociation] security_policy_association_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_organization_security_policy_association(security_policy, security_policy_association_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addAssociation', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
+          command.request_object = security_policy_association_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a rule into a security policy.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicyRule] security_policy_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addRule', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
+          command.request_object = security_policy_rule_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified policy.
+        # @param [String] security_policy
+        #   Name of the security policy to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_policy(security_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'locations/global/securityPolicies/{securityPolicy}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all of the ordered rules present in a single specified policy.
+        # @param [String] security_policy
+        #   Name of the security policy to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::SecurityPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_policy(security_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
+          command.response_class = Google::Apis::ComputeAlpha::SecurityPolicy
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an association with the specified name.
+        # @param [String] security_policy
+        #   Name of the security policy to which the queried rule belongs.
+        # @param [String] name
+        #   The name of the association to get from the security policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::SecurityPolicyAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_policy_association(security_policy, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getAssociation', options)
+          command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyAssociation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a rule at the specified priority.
+        # @param [String] security_policy
+        #   Name of the security policy to which the queried rule belongs.
+        # @param [Fixnum] priority
+        #   The priority of the rule to get from the security policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::SecurityPolicyRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_policy_rule(security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getRule', options)
+          command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
+          command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyRule
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new policy in the specified project using the data included in the
+        # request.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicy] security_policy_object
+        # @param [String] parent_id
+        #   Parent ID for this request.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_organization_security_policy(security_policy_object = nil, parent_id: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
+          command.request_object = security_policy_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.query['parentId'] = parent_id unless parent_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all the policies that have been configured for the specified project.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] parent_id
+        #   Parent ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::SecurityPolicyList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'locations/global/securityPolicies', options)
+          command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyList
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parentId'] = parent_id unless parent_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches a rule at the specified priority.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicyRule] security_policy_rule_object
+        # @param [Fixnum] priority
+        #   The priority of the rule to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/patchRule', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
+          command.request_object = security_policy_rule_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes an association for the specified security policy.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [String] name
+        #   Name for the attachment that will be removed.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_organization_security_policy_association(security_policy, name: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeAssociation', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a rule at the specified priority.
+        # @param [String] security_policy
+        #   Name of the security policy to update.
+        # @param [Fixnum] priority
+        #   The priority of the rule to remove from the security policy.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_organization_security_policy_rule(security_policy, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeRule', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -18367,7 +18998,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -19604,7 +20235,7 @@ module Google
         end
         
         # Modifies the autohealing policy for the instances in this managed instance
-        # group.
+        # group. [Deprecated] This method is deprecated. Please use Patch instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23642,7 +24273,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -23720,7 +24351,7 @@ module Google
         # snapshot might not necessarily delete all the data on that snapshot. If any
         # data on the snapshot that is marked for deletion is needed for subsequent
         # snapshots, the data will be moved to the next corresponding snapshot.
-        # For more information, see Deleting snaphots.
+        # For more information, see Deleting snapshots.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -23959,7 +24590,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -25174,10 +25805,9 @@ module Google
         end
         
         # Patches the specified subnetwork with the data included in the request. Only
-        # the following fields within the subnetwork resource can be specified in the
-        # request: secondary_ip_range, allow_subnet_cidr_routes_overlap and role. It is
-        # also mandatory to specify the current fingeprint of the subnetwork resource
-        # being patched.
+        # certain fields can up updated with a patch request as indicated in the field
+        # descriptions. You must specify the current fingeprint of the subnetwork
+        # resource being patched.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -28347,7 +28977,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -29244,7 +29874,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -29630,7 +30260,7 @@ module Google
         # @param [String] region
         #   The region for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so

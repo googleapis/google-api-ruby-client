@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinaryAuthorization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class ClientCertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRunConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +137,12 @@ module Google
       end
       
       class IpAllocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IstioConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceUsageExportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackNodePoolUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -441,9 +465,13 @@ module Google
       class AddonsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run_config, as: 'cloudRunConfig', class: Google::Apis::ContainerV1beta1::CloudRunConfig, decorator: Google::Apis::ContainerV1beta1::CloudRunConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1beta1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1beta1::HttpLoadBalancing::Representation
+      
+          property :istio_config, as: 'istioConfig', class: Google::Apis::ContainerV1beta1::IstioConfig, decorator: Google::Apis::ContainerV1beta1::IstioConfig::Representation
       
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1beta1::KubernetesDashboard, decorator: Google::Apis::ContainerV1beta1::KubernetesDashboard::Representation
       
@@ -457,6 +485,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_upgrade_start_time, as: 'autoUpgradeStartTime'
           property :description, as: 'description'
+        end
+      end
+      
+      class BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
         end
       end
       
@@ -489,6 +524,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :issue_client_certificate, as: 'issueClientCertificate'
+        end
+      end
+      
+      class CloudRunConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
         end
       end
       
@@ -551,6 +593,8 @@ module Google
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
           hash :resource_labels, as: 'resourceLabels'
+          property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
+      
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :status, as: 'status'
@@ -593,6 +637,8 @@ module Google
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
+      
+          property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
@@ -676,6 +722,14 @@ module Google
           property :subnetwork_name, as: 'subnetworkName'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
+        end
+      end
+      
+      class IstioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth, as: 'auth'
+          property :disabled, as: 'disabled'
         end
       end
       
@@ -959,6 +1013,15 @@ module Google
           property :maximum, :numeric_string => true, as: 'maximum'
           property :minimum, :numeric_string => true, as: 'minimum'
           property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class ResourceUsageExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::ContainerV1beta1::BigQueryDestination, decorator: Google::Apis::ContainerV1beta1::BigQueryDestination::Representation
+      
+          property :enable_network_egress_metering, as: 'enableNetworkEgressMetering'
         end
       end
       

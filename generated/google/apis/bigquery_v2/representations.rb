@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaterializedViewDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModelDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -951,6 +957,7 @@ module Google
       
           property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
+          property :total_bytes_processed_accuracy, as: 'totalBytesProcessedAccuracy'
           property :total_partitions_processed, :numeric_string => true, as: 'totalPartitionsProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
@@ -992,6 +999,14 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class MaterializedViewDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
+          property :query, as: 'query'
         end
       end
       
@@ -1186,6 +1201,8 @@ module Google
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
+          property :materialized_view, as: 'materializedView', class: Google::Apis::BigqueryV2::MaterializedViewDefinition, decorator: Google::Apis::BigqueryV2::MaterializedViewDefinition::Representation
+      
           property :model, as: 'model', class: Google::Apis::BigqueryV2::ModelDefinition, decorator: Google::Apis::BigqueryV2::ModelDefinition::Representation
       
           property :num_bytes, :numeric_string => true, as: 'numBytes'

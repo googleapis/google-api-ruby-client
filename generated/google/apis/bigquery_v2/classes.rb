@@ -415,7 +415,7 @@ module Google
         attr_accessor :last_modified_time
       
         # The geographic location where the dataset should reside. The default value is
-        # US. See details at https://cloud.google.com/bigquery/docs/dataset-locations.
+        # US. See details at https://cloud.google.com/bigquery/docs/locations.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -581,7 +581,7 @@ module Google
           # @return [Hash<String,String>]
           attr_accessor :labels
         
-          # [Experimental] The geographic location where the data resides.
+          # The geographic location where the data resides.
           # Corresponds to the JSON property `location`
           # @return [String]
           attr_accessor :location
@@ -1164,7 +1164,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Beta] [Optional] Range of a sheet to query from. Only used when non-empty.
-        # Typical format: !:
+        # Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example:
+        # sheet1!A1:B20
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
@@ -1601,7 +1602,7 @@ module Google
         # @return [String]
         attr_accessor :quote
       
-        # [Experimental] Range partitioning specification for this table. Only one of
+        # [TrustedTester] Range partitioning specification for this table. Only one of
         # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `rangePartitioning`
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
@@ -1826,7 +1827,7 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
-        # [Experimental] Range partitioning specification for this table. Only one of
+        # [TrustedTester] Range partitioning specification for this table. Only one of
         # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `rangePartitioning`
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
@@ -2310,6 +2311,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
+        # [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this
+        # field specifies the accuracy of the estimate. Possible values can be: UNKNOWN:
+        # accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND:
+        # estimate is lower bound of what the query would cost. UPPER_BOUND: estiamte
+        # is upper bound of what the query would cost.
+        # Corresponds to the JSON property `totalBytesProcessedAccuracy`
+        # @return [String]
+        attr_accessor :total_bytes_processed_accuracy
+      
         # [Output-only] Total number of partitions processed from all partitioned tables
         # referenced in the job.
         # Corresponds to the JSON property `totalPartitionsProcessed`
@@ -2350,6 +2360,7 @@ module Google
           @timeline = args[:timeline] if args.key?(:timeline)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @total_bytes_processed_accuracy = args[:total_bytes_processed_accuracy] if args.key?(:total_bytes_processed_accuracy)
           @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
@@ -2482,6 +2493,32 @@ module Google
           @error_result = args[:error_result] if args.key?(:error_result)
           @errors = args[:errors] if args.key?(:errors)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class MaterializedViewDefinition
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] [TrustedTester] The time when this materialized view was last
+        # modified, in milliseconds since the epoch.
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [Fixnum]
+        attr_accessor :last_refresh_time
+      
+        # [Required] A query whose result is persisted.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @query = args[:query] if args.key?(:query)
         end
       end
       
@@ -2805,8 +2842,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The geographic location where the job should run. Required except for US and
-        # EU.
+        # The geographic location where the job should run. See details at https://cloud.
+        # google.com/bigquery/docs/locations#specifying_your_location.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3036,14 +3073,14 @@ module Google
       class RangePartitioning
         include Google::Apis::Core::Hashable
       
-        # [Experimental] [Required] The table is partitioned by this field. The field
+        # [TrustedTester] [Required] The table is partitioned by this field. The field
         # must be a top-level NULLABLE/REQUIRED field. The only supported type is
         # INTEGER/INT64.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
-        # [Experimental] [Required] Defines the ranges for range partitioning.
+        # [TrustedTester] [Required] Defines the ranges for range partitioning.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::BigqueryV2::RangePartitioning::Range]
         attr_accessor :range
@@ -3058,21 +3095,21 @@ module Google
           @range = args[:range] if args.key?(:range)
         end
         
-        # [Experimental] [Required] Defines the ranges for range partitioning.
+        # [TrustedTester] [Required] Defines the ranges for range partitioning.
         class Range
           include Google::Apis::Core::Hashable
         
-          # [Experimental] [Required] The end of range partitioning, exclusive.
+          # [TrustedTester] [Required] The end of range partitioning, exclusive.
           # Corresponds to the JSON property `end`
           # @return [Fixnum]
           attr_accessor :end
         
-          # [Experimental] [Required] The width of each interval.
+          # [TrustedTester] [Required] The width of each interval.
           # Corresponds to the JSON property `interval`
           # @return [Fixnum]
           attr_accessor :interval
         
-          # [Experimental] [Required] The start of range partitioning, inclusive.
+          # [TrustedTester] [Required] The start of range partitioning, inclusive.
           # Corresponds to the JSON property `start`
           # @return [Fixnum]
           attr_accessor :start
@@ -3128,7 +3165,7 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # [Experimental] Clustering specification for the table. Must be specified with
+        # [Beta] Clustering specification for the table. Must be specified with
         # partitioning, data in the table will be first partitioned and subsequently
         # clustered.
         # Corresponds to the JSON property `clustering`
@@ -3211,6 +3248,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # [Optional] Materialized view definition.
+        # Corresponds to the JSON property `materializedView`
+        # @return [Google::Apis::BigqueryV2::MaterializedViewDefinition]
+        attr_accessor :materialized_view
+      
         # [Output-only, Beta] Present iff this table represents a ML model. Describes
         # the training information for the model, and it is required to run 'PREDICT'
         # queries.
@@ -3230,7 +3272,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_long_term_bytes
       
-        # [Output-only] [Experimental] The physical size of this table in bytes,
+        # [Output-only] [TrustedTester] The physical size of this table in bytes,
         # excluding any data in the streaming buffer. This includes compression and
         # storage used for time travel.
         # Corresponds to the JSON property `numPhysicalBytes`
@@ -3243,14 +3285,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_rows
       
-        # [Experimental] Range partitioning specification for this table. Only one of
+        # [TrustedTester] Range partitioning specification for this table. Only one of
         # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `rangePartitioning`
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
         attr_accessor :range_partitioning
       
-        # [Experimental] [Optional] If set to true, queries over this table require a
-        # partition filter that can be used for partition elimination to be specified.
+        # [Beta] [Optional] If set to true, queries over this table require a partition
+        # filter that can be used for partition elimination to be specified.
         # Corresponds to the JSON property `requirePartitionFilter`
         # @return [Boolean]
         attr_accessor :require_partition_filter
@@ -3285,7 +3327,8 @@ module Google
         attr_accessor :time_partitioning
       
         # [Output-only] Describes the table type. The following values are supported:
-        # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
+        # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. [
+        # TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
         # EXTERNAL: A table that references data stored in an external storage system,
         # such as Google Cloud Storage. The default value is TABLE.
         # Corresponds to the JSON property `type`
@@ -3316,6 +3359,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
+          @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @model = args[:model] if args.key?(:model)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
           @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
@@ -3382,12 +3426,11 @@ module Google
         attr_accessor :skip_invalid_rows
         alias_method :skip_invalid_rows?, :skip_invalid_rows
       
-        # [Experimental] If specified, treats the destination table as a base template,
-        # and inserts the rows into an instance table named "`destination``
-        # templateSuffix`". BigQuery will manage creation of the instance table, using
-        # the schema of the base template table. See https://cloud.google.com/bigquery/
-        # streaming-data-into-bigquery#template-tables for considerations when working
-        # with templates tables.
+        # If specified, treats the destination table as a base template, and inserts the
+        # rows into an instance table named "`destination``templateSuffix`". BigQuery
+        # will manage creation of the instance table, using the schema of the base
+        # template table. See https://cloud.google.com/bigquery/streaming-data-into-
+        # bigquery#template-tables for considerations when working with templates tables.
         # Corresponds to the JSON property `templateSuffix`
         # @return [String]
         attr_accessor :template_suffix

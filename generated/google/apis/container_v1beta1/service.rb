@@ -136,7 +136,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Used to fetch locations that offer GKE.
         # @param [String] parent
         #   Contains the name of the resource requested.
         #   Specified in the format 'projects/*'.
