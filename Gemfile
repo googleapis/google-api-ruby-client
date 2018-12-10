@@ -32,7 +32,7 @@ end
 
 platforms :ruby do
   group :development do
-    gem 'yard', '~> 0.8'
+    gem 'yard', '~> 0.9', '>= 0.9.11'
     gem 'redcarpet', '~> 3.2'
     gem 'github-markup', '~> 1.3'
     gem 'pry-doc', '~> 0.8'
