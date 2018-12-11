@@ -106,7 +106,7 @@ module Google
       end
       
       # Settings for a delegate. Delegates can read, send, and delete messages, as
-      # well as manage contacts, for the delegator's account. See "Set up mail
+      # well as view and add contacts, for the delegator's account. See "Set up mail
       # delegation" for more information about delegates.
       class Delegate
         include Google::Apis::Core::Hashable
