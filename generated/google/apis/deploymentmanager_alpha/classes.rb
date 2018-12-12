@@ -260,13 +260,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. Timestamp when the composite type was created, in RFC3339 text
-        # format.
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -295,7 +294,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
       
-        # Output only. Self link for the type provider.
+        # Output only. Server defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -547,13 +546,12 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. Timestamp when the deployment was created, in RFC3339 text format
-        # .
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -597,7 +595,7 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry>]
         attr_accessor :outputs
       
-        # Output only. Self link for the deployment.
+        # Output only. Server defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -611,6 +609,11 @@ module Google
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DeploymentmanagerAlpha::DeploymentUpdate]
         attr_accessor :update
+      
+        # Output only. Update timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -631,6 +634,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @target = args[:target] if args.key?(:target)
           @update = args[:update] if args.key?(:update)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -909,7 +913,7 @@ module Google
       class GlobalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use '
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
         # policy' to specify bindings.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::Binding>]
@@ -1033,15 +1037,16 @@ module Google
         # metric names will have "/iam/policy" prepended.
         # Field names correspond to IAM request parameters and field values are their
         # respective values.
-        # At present the only supported field names are - "iam_principal", corresponding
-        # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-        # counter with no field.
+        # Supported field names: - "authority", which is "[token]" if IAMContext.token
+        # is present, otherwise the value of IAMContext.authority_selector if present,
+        # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+        # a representation of IAMContext.principal even if a token or authority selector
+        # is present; or - "" (empty string), resulting in a counter with no fields.
         # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
         # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
         # of IAMContext.principal]`
-        # At this time we do not support: * multiple field names (though this may be
-        # supported in the future) * decrementing the counter * incrementing it by
-        # anything other than 1
+        # At this time we do not support multiple field names (though this may be
+        # supported in the future).
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::DeploymentmanagerAlpha::LogConfigCounterOptions]
         attr_accessor :counter
@@ -1094,15 +1099,16 @@ module Google
       # metric names will have "/iam/policy" prepended.
       # Field names correspond to IAM request parameters and field values are their
       # respective values.
-      # At present the only supported field names are - "iam_principal", corresponding
-      # to IAMContext.principal; - "" (empty string), resulting in one aggretated
-      # counter with no field.
+      # Supported field names: - "authority", which is "[token]" if IAMContext.token
+      # is present, otherwise the value of IAMContext.authority_selector if present,
+      # and otherwise a representation of IAMContext.principal; or - "iam_principal",
+      # a representation of IAMContext.principal even if a token or authority selector
+      # is present; or - "" (empty string), resulting in a counter with no fields.
       # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
       # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
       # of IAMContext.principal]`
-      # At this time we do not support: * multiple field names (though this may be
-      # supported in the future) * decrementing the counter * incrementing it by
-      # anything other than 1
+      # At this time we do not support multiple field names (though this may be
+      # supported in the future).
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
@@ -1133,6 +1139,10 @@ module Google
       
         # Whether Gin logging should happen in a fail-closed manner at the caller. This
         # is relevant only in the LocalIAM implementation, for now.
+        # NOTE: Logging to Gin in a fail-closed manner is currently unsupported while
+        # work is being done to satisfy the requirements of go/345. Currently, setting
+        # LOG_FAIL_CLOSED mode will have no effect, but still exists because there is
+        # active work being done to support it (b/115874152).
         # Corresponds to the JSON property `logMode`
         # @return [String]
         attr_accessor :log_mode
@@ -1162,7 +1172,7 @@ module Google
         # @return [String]
         attr_accessor :expanded_config
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -1172,7 +1182,7 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::ImportFile>]
         attr_accessor :imports
       
-        # Output only. Timestamp when the manifest was created, in RFC3339 text format.
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -1785,13 +1795,12 @@ module Google
         # @return [String]
         attr_accessor :final_properties
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. Timestamp when the resource was created or acquired, in RFC3339
-        # text format .
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -1836,7 +1845,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::ResourceUpdate]
         attr_accessor :update
       
-        # Output only. Timestamp when the resource was updated, in RFC3339 text format .
+        # Output only. Update timestamp in RFC3339 text format.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2385,12 +2394,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. Timestamp when the type was created, in RFC3339 text format.
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -2418,7 +2427,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
       
-        # Output only. Self link for the type.
+        # Output only. Server defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -2440,8 +2449,8 @@ module Google
         end
       end
       
-      # Contains detailed information about a composite type, base type, or base type
-      # with specific collection.
+      # Type Information. Contains detailed information about a composite type, base
+      # type, or base type with specific collection.
       class TypeInfo
         include Google::Apis::Core::Hashable
       
@@ -2472,7 +2481,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::TypeInfoSchemaInfo]
         attr_accessor :schema
       
-        # Output only. Server-defined URL for the resource.
+        # Output only. Self link for the type provider.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -2577,13 +2586,12 @@ module Google
         # @return [String]
         attr_accessor :descriptor_url
       
-        # Output only. Unique identifier for the resource; defined by the server.
+        # Output only. Unique identifier for the resource defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Output only. Timestamp when the type provider was created, in RFC3339 text
-        # format.
+        # Output only. Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time

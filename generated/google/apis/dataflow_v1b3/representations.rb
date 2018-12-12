@@ -877,6 +877,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fraction_consumed, as: 'fractionConsumed'
+          property :fraction_of_remainder, as: 'fractionOfRemainder'
           property :position, as: 'position', class: Google::Apis::DataflowV1b3::Position, decorator: Google::Apis::DataflowV1b3::Position::Representation
       
         end
@@ -1714,10 +1715,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_experiments, as: 'additionalExperiments'
+          hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'
           property :network, as: 'network'
+          property :num_workers, as: 'numWorkers'
           property :service_account_email, as: 'serviceAccountEmail'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'

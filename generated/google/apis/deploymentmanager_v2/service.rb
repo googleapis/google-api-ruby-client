@@ -170,7 +170,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -384,7 +384,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::DeploymentmanagerV2::GlobalSetPolicyRequest] global_set_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -463,7 +463,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
-        #   Name of the resource for this request.
+        #   Name or id of the resource for this request.
         # @param [Google::Apis::DeploymentmanagerV2::TestPermissionsRequest] test_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

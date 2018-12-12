@@ -107,6 +107,12 @@ module Google
         # @return [Float]
         attr_accessor :fraction_consumed
       
+        # The fraction of the remainder of work to split the work item at, from 0.0
+        # (split at the current position) to 1.0 (end of the input).
+        # Corresponds to the JSON property `fractionOfRemainder`
+        # @return [Float]
+        attr_accessor :fraction_of_remainder
+      
         # Position defines a position within a collection of data.  The value
         # can be either the end position, a key (used with ordered
         # collections), a byte offset, or a record index.
@@ -121,6 +127,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fraction_consumed = args[:fraction_consumed] if args.key?(:fraction_consumed)
+          @fraction_of_remainder = args[:fraction_of_remainder] if args.key?(:fraction_of_remainder)
           @position = args[:position] if args.key?(:position)
         end
       end
@@ -3221,6 +3228,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
+        # Additional user labels attached to the job.
+        # Corresponds to the JSON property `additionalUserLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_user_labels
+      
         # Whether to bypass the safety checks for the job's temporary directory.
         # Use with caution.
         # Corresponds to the JSON property `bypassTempDirValidation`
@@ -3245,6 +3257,11 @@ module Google
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # The initial number of Google Compute Engine instnaces for the job.
+        # Corresponds to the JSON property `numWorkers`
+        # @return [Fixnum]
+        attr_accessor :num_workers
       
         # The email address of the service account to run the job as.
         # Corresponds to the JSON property `serviceAccountEmail`
@@ -3277,10 +3294,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
+          @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
+          @num_workers = args[:num_workers] if args.key?(:num_workers)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)

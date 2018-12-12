@@ -599,6 +599,7 @@ module Google
       
           property :update, as: 'update', class: Google::Apis::DeploymentmanagerAlpha::DeploymentUpdate, decorator: Google::Apis::DeploymentmanagerAlpha::DeploymentUpdate::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
       
