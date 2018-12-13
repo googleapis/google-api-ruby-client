@@ -22,7 +22,7 @@ module Google
   module Apis
     module TestingV1
       
-      # Identifies an account and how to log into it
+      # Identifies an account and how to log into it.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -51,30 +51,26 @@ module Google
       class AndroidDevice
         include Google::Apis::Core::Hashable
       
-        # The id of the Android device to be used.
+        # Required. The id of the Android device to be used.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `androidModelId`
         # @return [String]
         attr_accessor :android_model_id
       
-        # The id of the Android OS version to be used.
+        # Required. The id of the Android OS version to be used.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `androidVersionId`
         # @return [String]
         attr_accessor :android_version_id
       
-        # The locale the test device used for testing.
+        # Required. The locale the test device used for testing.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # How the device is oriented during the test.
+        # Required. How the device is oriented during the test.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `orientation`
         # @return [String]
         attr_accessor :orientation
@@ -97,7 +93,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of supported Android device models.
-        # @OutputOnly
         # Corresponds to the JSON property `models`
         # @return [Array<Google::Apis::TestingV1::AndroidModel>]
         attr_accessor :models
@@ -108,7 +103,6 @@ module Google
         attr_accessor :runtime_configuration
       
         # The set of supported Android OS versions.
-        # @OutputOnly
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::TestingV1::AndroidVersion>]
         attr_accessor :versions
@@ -129,8 +123,7 @@ module Google
       class AndroidDeviceList
         include Google::Apis::Core::Hashable
       
-        # A list of Android devices
-        # Required
+        # Required. A list of Android devices.
         # Corresponds to the JSON property `androidDevices`
         # @return [Array<Google::Apis::TestingV1::AndroidDevice>]
         attr_accessor :android_devices
@@ -170,7 +163,7 @@ module Google
         attr_accessor :app_bundle
       
         # The java package for the application under test.
-        # Optional, default is determined by examining the application's manifest.
+        # The default value is determined by examining the application's manifest.
         # Corresponds to the JSON property `appPackageId`
         # @return [String]
         attr_accessor :app_package_id
@@ -187,7 +180,7 @@ module Google
         # <https://developer.android.com/training/testing/junit-runner.html#using-
         # android-test-orchestrator>
         # for more information about Android Test Orchestrator.
-        # Optional. If not set, the test will be run without the orchestrator.
+        # If not set, the test will be run without the orchestrator.
         # Corresponds to the JSON property `orchestratorOption`
         # @return [String]
         attr_accessor :orchestrator_option
@@ -198,13 +191,13 @@ module Google
         attr_accessor :test_apk
       
         # The java package for the test to be executed.
-        # Optional, default is determined by examining the application's manifest.
+        # The default value is determined by examining the application's manifest.
         # Corresponds to the JSON property `testPackageId`
         # @return [String]
         attr_accessor :test_package_id
       
         # The InstrumentationTestRunner class.
-        # Optional, default is determined by examining the application's manifest.
+        # The default value is determined by examining the application's manifest.
         # Corresponds to the JSON property `testRunnerClass`
         # @return [String]
         attr_accessor :test_runner_class
@@ -214,7 +207,7 @@ module Google
         # - "package package_name"
         # - "class package_name.class_name"
         # - "class package_name.class_name#method_name"
-        # Optional, if empty, all targets in the module will be run.
+        # If empty, all targets in the module will be run.
         # Corresponds to the JSON property `testTargets`
         # @return [Array<String>]
         attr_accessor :test_targets
@@ -237,37 +230,33 @@ module Google
       end
       
       # A set of Android device configuration permutations is defined by the
-      # the cross-product of the given axes.  Internally, the given AndroidMatrix
+      # the cross-product of the given axes. Internally, the given AndroidMatrix
       # will be expanded into a set of AndroidDevices.
       # Only supported permutations will be instantiated.  Invalid permutations
       # (e.g., incompatible models/versions) are ignored.
       class AndroidMatrix
         include Google::Apis::Core::Hashable
       
-        # The ids of the set of Android device to be used.
+        # Required. The ids of the set of Android device to be used.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `androidModelIds`
         # @return [Array<String>]
         attr_accessor :android_model_ids
       
-        # The ids of the set of Android OS version to be used.
+        # Required. The ids of the set of Android OS version to be used.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `androidVersionIds`
         # @return [Array<String>]
         attr_accessor :android_version_ids
       
-        # The set of locales the test device will enable for testing.
+        # Required. The set of locales the test device will enable for testing.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `locales`
         # @return [Array<String>]
         attr_accessor :locales
       
-        # The set of orientations to test with.
+        # Required. The set of orientations to test with.
         # Use the EnvironmentDiscoveryService to get supported options.
-        # Required
         # Corresponds to the JSON property `orientations`
         # @return [Array<String>]
         attr_accessor :orientations
@@ -290,74 +279,63 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The company that this device is branded with.
-        # Example: "Google", "Samsung"
-        # @OutputOnly
+        # Example: "Google", "Samsung".
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
       
         # The name of the industrial design.
-        # This corresponds to android.os.Build.DEVICE
-        # @OutputOnly
+        # This corresponds to android.os.Build.DEVICE.
         # Corresponds to the JSON property `codename`
         # @return [String]
         attr_accessor :codename
       
         # Whether this device is virtual or physical.
-        # @OutputOnly
         # Corresponds to the JSON property `form`
         # @return [String]
         attr_accessor :form
       
         # Whether this device is a phone, tablet, wearable, etc.
-        # @OutputOnly
         # Corresponds to the JSON property `formFactor`
         # @return [String]
         attr_accessor :form_factor
       
         # The unique opaque id for this model.
         # Use this for invoking the TestExecutionService.
-        # @OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # True if and only if tests with this model are recorded by stitching
         # together screenshots. See use_low_spec_video_recording in device config.
-        # @OutputOnly
         # Corresponds to the JSON property `lowFpsVideoRecording`
         # @return [Boolean]
         attr_accessor :low_fps_video_recording
         alias_method :low_fps_video_recording?, :low_fps_video_recording
       
         # The manufacturer of this device.
-        # @OutputOnly
         # Corresponds to the JSON property `manufacturer`
         # @return [String]
         attr_accessor :manufacturer
       
         # The human-readable marketing name for this device model.
-        # Examples: "Nexus 5", "Galaxy S5"
-        # @OutputOnly
+        # Examples: "Nexus 5", "Galaxy S5".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Screen density in DPI.
         # This corresponds to ro.sf.lcd_density
-        # @OutputOnly
         # Corresponds to the JSON property `screenDensity`
         # @return [Fixnum]
         attr_accessor :screen_density
       
         # Screen size in the horizontal (X) dimension measured in pixels.
-        # @OutputOnly
         # Corresponds to the JSON property `screenX`
         # @return [Fixnum]
         attr_accessor :screen_x
       
         # Screen size in the vertical (Y) dimension measured in pixels.
-        # @OutputOnly
         # Corresponds to the JSON property `screenY`
         # @return [Fixnum]
         attr_accessor :screen_y
@@ -369,19 +347,17 @@ module Google
         # Elements are optionally prefixed by "version_id:" (where version_id is
         # the id of an AndroidVersion), denoting an ABI that is supported only on
         # a particular version.
-        # @OutputOnly
         # Corresponds to the JSON property `supportedAbis`
         # @return [Array<String>]
         attr_accessor :supported_abis
       
         # The set of Android versions this device supports.
-        # @OutputOnly
         # Corresponds to the JSON property `supportedVersionIds`
         # @return [Array<String>]
         attr_accessor :supported_version_ids
       
         # Tags for this dimension.
-        # Examples: "default", "preview", "deprecated"
+        # Examples: "default", "preview", "deprecated".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -428,13 +404,12 @@ module Google
         attr_accessor :app_bundle
       
         # The initial activity that should be used to start the app.
-        # Optional
         # Corresponds to the JSON property `appInitialActivity`
         # @return [String]
         attr_accessor :app_initial_activity
       
         # The java package for the application under test.
-        # Optional, default is determined by examining the application's manifest.
+        # The default value is determined by examining the application's manifest.
         # Corresponds to the JSON property `appPackageId`
         # @return [String]
         attr_accessor :app_package_id
@@ -442,14 +417,12 @@ module Google
         # The max depth of the traversal stack Robo can explore. Needs to be at least
         # 2 to make Robo explore the app beyond the first activity.
         # Default is 50.
-        # Optional
         # Corresponds to the JSON property `maxDepth`
         # @return [Fixnum]
         attr_accessor :max_depth
       
         # The max number of steps Robo can execute.
         # Default is no limit.
-        # Optional
         # Corresponds to the JSON property `maxSteps`
         # @return [Fixnum]
         attr_accessor :max_steps
@@ -457,7 +430,6 @@ module Google
         # A set of directives Robo should apply during the crawl.
         # This allows users to customize the crawl. For example, the username and
         # password for a test account can be provided.
-        # Optional
         # Corresponds to the JSON property `roboDirectives`
         # @return [Array<Google::Apis::TestingV1::RoboDirective>]
         attr_accessor :robo_directives
@@ -498,13 +470,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of available locales.
-        # @OutputOnly
         # Corresponds to the JSON property `locales`
         # @return [Array<Google::Apis::TestingV1::Locale>]
         attr_accessor :locales
       
         # The set of available orientations.
-        # @OutputOnly
         # Corresponds to the JSON property `orientations`
         # @return [Array<Google::Apis::TestingV1::Orientation>]
         attr_accessor :orientations
@@ -521,7 +491,7 @@ module Google
       end
       
       # A test of an Android Application with a Test Loop.
-      # The intent <intent-name> will be implicitly added, since Games is the only
+      # The intent \<intent-name\> will be implicitly added, since Games is the only
       # user of this api, for the time being.
       class AndroidTestLoop
         include Google::Apis::Core::Hashable
@@ -540,7 +510,7 @@ module Google
         attr_accessor :app_bundle
       
         # The java package for the application under test.
-        # Optional, default is determined by examining the application's manifest.
+        # The default is determined by examining the application's manifest.
         # Corresponds to the JSON property `appPackageId`
         # @return [String]
         attr_accessor :app_package_id
@@ -551,13 +521,13 @@ module Google
         # com.google.test.loops.player_experience add all of the loops labeled in the
         # manifest with the com.google.test.loops.player_experience name to the
         # execution.
-        # Optional. Scenarios can also be specified in the scenarios field.
+        # Scenarios can also be specified in the scenarios field.
         # Corresponds to the JSON property `scenarioLabels`
         # @return [Array<String>]
         attr_accessor :scenario_labels
       
         # The list of scenarios that should be run during the test.
-        # Optional, default is all test loops, derived from the application's
+        # The default is all test loops, derived from the application's
         # manifest.
         # Corresponds to the JSON property `scenarios`
         # @return [Array<Fixnum>]
@@ -577,20 +547,18 @@ module Google
         end
       end
       
-      # A version of the Android OS
+      # A version of the Android OS.
       class AndroidVersion
         include Google::Apis::Core::Hashable
       
         # The API level for this Android version.
-        # Examples: 18, 19
-        # @OutputOnly
+        # Examples: 18, 19.
         # Corresponds to the JSON property `apiLevel`
         # @return [Fixnum]
         attr_accessor :api_level
       
         # The code name for this Android version.
-        # Examples: "JellyBean", "KitKat"
-        # @OutputOnly
+        # Examples: "JellyBean", "KitKat".
         # Corresponds to the JSON property `codeName`
         # @return [String]
         attr_accessor :code_name
@@ -603,7 +571,6 @@ module Google
       
         # An opaque id for this Android version.
         # Use this id to invoke the TestExecutionService.
-        # @OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -621,14 +588,13 @@ module Google
         attr_accessor :release_date
       
         # Tags for this dimension.
-        # Examples: "default", "preview", "deprecated"
+        # Examples: "default", "preview", "deprecated".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
       
         # A string representing this version of the Android OS.
-        # Examples: "4.3", "4.4"
-        # @OutputOnly
+        # Examples: "4.3", "4.4".
         # Corresponds to the JSON property `versionString`
         # @return [String]
         attr_accessor :version_string
@@ -659,7 +625,7 @@ module Google
         attr_accessor :location
       
         # The java package for the APK to be installed.
-        # Optional, value is determined by examining the application's manifest.
+        # Value is determined by examining the application's manifest.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -676,7 +642,7 @@ module Google
       end
       
       # Android application details based on application manifest and apk archive
-      # contents
+      # contents.
       class ApkDetail
         include Google::Apis::Core::Hashable
       
@@ -793,8 +759,7 @@ module Google
         # @return [Array<Google::Apis::TestingV1::ClientInfoDetail>]
         attr_accessor :client_info_details
       
-        # Client name, such as gcloud.
-        # Required
+        # Required. Client name, such as gcloud.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -811,18 +776,16 @@ module Google
       end
       
       # Key-value pair of detailed information about the client which invoked the
-      # test. For example `'Version', '1.0'`, `'Release Track', 'BETA'`
+      # test. Examples: `'Version', '1.0'`, `'Release Track', 'BETA'`.
       class ClientInfoDetail
         include Google::Apis::Core::Hashable
       
-        # The key of detailed client information.
-        # Required
+        # Required. The key of detailed client information.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # The value of detailed client information.
-        # Required
+        # Required. The value of detailed client information.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -884,12 +847,12 @@ module Google
       class DeviceFile
         include Google::Apis::Core::Hashable
       
-        # An opaque binary blob file to install on the device before the test starts
+        # An opaque binary blob file to install on the device before the test starts.
         # Corresponds to the JSON property `obbFile`
         # @return [Google::Apis::TestingV1::ObbFile]
         attr_accessor :obb_file
       
-        # A file or directory to install on the device before the test starts
+        # A file or directory to install on the device before the test starts.
         # Corresponds to the JSON property `regularFile`
         # @return [Google::Apis::TestingV1::RegularFile]
         attr_accessor :regular_file
@@ -910,14 +873,13 @@ module Google
       class Distribution
         include Google::Apis::Core::Hashable
       
-        # The estimated fraction (0-1) of the total market with this configuration.
-        # @OutputOnly
+        # Output only. The estimated fraction (0-1) of the total market with this
+        # configuration.
         # Corresponds to the JSON property `marketShare`
         # @return [Float]
         attr_accessor :market_share
       
-        # The time this distribution was measured.
-        # @OutputOnly
+        # Output only. The time this distribution was measured.
         # Corresponds to the JSON property `measurementTime`
         # @return [String]
         attr_accessor :measurement_time
@@ -968,7 +930,7 @@ module Google
         attr_accessor :android_device_list
       
         # A set of Android device configuration permutations is defined by the
-        # the cross-product of the given axes.  Internally, the given AndroidMatrix
+        # the cross-product of the given axes. Internally, the given AndroidMatrix
         # will be expanded into a set of AndroidDevices.
         # Only supported permutations will be instantiated.  Invalid permutations
         # (e.g., incompatible models/versions) are ignored.
@@ -993,16 +955,16 @@ module Google
         end
       end
       
-      # A key-value pair passed as an environment variable to the test
+      # A key-value pair passed as an environment variable to the test.
       class EnvironmentVariable
         include Google::Apis::Core::Hashable
       
-        # Key for the environment variable
+        # Key for the environment variable.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Value for the environment variable
+        # Value for the environment variable.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1043,7 +1005,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Android application details based on application manifest and apk archive
-        # contents
+        # contents.
         # Corresponds to the JSON property `apkDetail`
         # @return [Google::Apis::TestingV1::ApkDetail]
         attr_accessor :apk_detail
@@ -1081,11 +1043,10 @@ module Google
       class GoogleCloudStorage
         include Google::Apis::Core::Hashable
       
-        # The path to a directory in GCS that will
+        # Required. The path to a directory in GCS that will
         # eventually contain the results for this test.
         # The requesting user must have write access on the bucket in the supplied
         # path.
-        # Required
         # Corresponds to the JSON property `gcsPath`
         # @return [String]
         attr_accessor :gcs_path
@@ -1105,17 +1066,17 @@ module Google
       class IntentFilter
         include Google::Apis::Core::Hashable
       
-        # The android:name value of the <action> tag
+        # The android:name value of the <action> tag.
         # Corresponds to the JSON property `actionNames`
         # @return [Array<String>]
         attr_accessor :action_names
       
-        # The android:name value of the <category> tag
+        # The android:name value of the <category> tag.
         # Corresponds to the JSON property `categoryNames`
         # @return [Array<String>]
         attr_accessor :category_names
       
-        # The android:mimeType value of the <data> tag
+        # The android:mimeType value of the <data> tag.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1177,7 +1138,7 @@ module Google
       class IosDeviceCatalog
         include Google::Apis::Core::Hashable
       
-        # Output only. The set of supported iOS device models.
+        # The set of supported iOS device models.
         # Corresponds to the JSON property `models`
         # @return [Array<Google::Apis::TestingV1::IosModel>]
         attr_accessor :models
@@ -1187,12 +1148,12 @@ module Google
         # @return [Google::Apis::TestingV1::IosRuntimeConfiguration]
         attr_accessor :runtime_configuration
       
-        # Output only. The set of supported iOS software versions.
+        # The set of supported iOS software versions.
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::TestingV1::IosVersion>]
         attr_accessor :versions
       
-        # Output only. The set of supported Xcode versions.
+        # The set of supported Xcode versions.
         # Corresponds to the JSON property `xcodeVersions`
         # @return [Array<Google::Apis::TestingV1::XcodeVersion>]
         attr_accessor :xcode_versions
@@ -1214,7 +1175,7 @@ module Google
       class IosDeviceList
         include Google::Apis::Core::Hashable
       
-        # Required. A list of iOS devices
+        # Required. A list of iOS devices.
         # Corresponds to the JSON property `iosDevices`
         # @return [Array<Google::Apis::TestingV1::IosDevice>]
         attr_accessor :ios_devices
@@ -1233,7 +1194,7 @@ module Google
       class IosModel
         include Google::Apis::Core::Hashable
       
-        # Output only. Device capabilities.
+        # Device capabilities.
         # Copied from
         # https://developer.apple.com/library/archive/documentation/DeviceInformation/
         # Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/
@@ -1243,30 +1204,29 @@ module Google
         attr_accessor :device_capabilities
       
         # Whether this device is a phone, tablet, wearable, etc.
-        # @OutputOnly
         # Corresponds to the JSON property `formFactor`
         # @return [String]
         attr_accessor :form_factor
       
-        # Output only. The unique opaque id for this model.
+        # The unique opaque id for this model.
         # Use this for invoking the TestExecutionService.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Output only. The human-readable name for this device model.
-        # Examples: "iPhone 4s", "iPad Mini 2"
+        # The human-readable name for this device model.
+        # Examples: "iPhone 4s", "iPad Mini 2".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The set of iOS major software versions this device supports.
+        # The set of iOS major software versions this device supports.
         # Corresponds to the JSON property `supportedVersionIds`
         # @return [Array<String>]
         attr_accessor :supported_version_ids
       
-        # Output only. Tags for this dimension.
-        # Examples: "default", "preview", "deprecated"
+        # Tags for this dimension.
+        # Examples: "default", "preview", "deprecated".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1290,12 +1250,12 @@ module Google
       class IosRuntimeConfiguration
         include Google::Apis::Core::Hashable
       
-        # Output only. The set of available locales.
+        # The set of available locales.
         # Corresponds to the JSON property `locales`
         # @return [Array<Google::Apis::TestingV1::Locale>]
         attr_accessor :locales
       
-        # Output only. The set of available orientations.
+        # The set of available orientations.
         # Corresponds to the JSON property `orientations`
         # @return [Array<Google::Apis::TestingV1::Orientation>]
         attr_accessor :orientations
@@ -1315,7 +1275,7 @@ module Google
       class IosTestSetup
         include Google::Apis::Core::Hashable
       
-        # Optional. The network traffic profile used for running the test.
+        # The network traffic profile used for running the test.
         # Available network profiles can be queried by using the
         # NETWORK_CONFIGURATION environment type when calling
         # TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -1333,35 +1293,35 @@ module Google
         end
       end
       
-      # An iOS version
+      # An iOS version.
       class IosVersion
         include Google::Apis::Core::Hashable
       
-        # Output only. An opaque id for this iOS version.
+        # An opaque id for this iOS version.
         # Use this id to invoke the TestExecutionService.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Output only. An integer representing the major iOS version.
-        # Examples: "8", "9"
+        # An integer representing the major iOS version.
+        # Examples: "8", "9".
         # Corresponds to the JSON property `majorVersion`
         # @return [Fixnum]
         attr_accessor :major_version
       
-        # Output only. An integer representing the minor iOS version.
-        # Examples: "1", "2"
+        # An integer representing the minor iOS version.
+        # Examples: "1", "2".
         # Corresponds to the JSON property `minorVersion`
         # @return [Fixnum]
         attr_accessor :minor_version
       
-        # Output only. The available Xcode versions for this version.
+        # The available Xcode versions for this version.
         # Corresponds to the JSON property `supportedXcodeVersionIds`
         # @return [Array<String>]
         attr_accessor :supported_xcode_version_ids
       
-        # Output only. Tags for this dimension.
-        # Examples: "default", "preview", "deprecated"
+        # Tags for this dimension.
+        # Examples: "default", "preview", "deprecated".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1394,7 +1354,7 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :tests_zip
       
-        # Optional. The Xcode version that should be used for the test.
+        # The Xcode version that should be used for the test.
         # Use the EnvironmentDiscoveryService to get supported options.
         # Defaults to the latest Xcode version Firebase Test Lab supports.
         # Corresponds to the JSON property `xcodeVersion`
@@ -1436,29 +1396,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The id for this locale.
-        # Example: "en_US"
-        # @OutputOnly
+        # Example: "en_US".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # A human-friendly name for this language/locale.
-        # Example: "English"
-        # @OutputOnly
+        # Example: "English".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A human-friendly string representing the region for this locale.
-        # Example: "United States"
-        # Not present for every locale.
-        # @OutputOnly
+        # A human-friendly string representing the region for this
+        # locale. Example: "United States". Not present for every locale.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
         # Tags for this dimension.
-        # Examples: "default"
+        # Example: "default".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1480,18 +1436,17 @@ module Google
       class NetworkConfiguration
         include Google::Apis::Core::Hashable
       
-        # Network emulation parameters
+        # Network emulation parameters.
         # Corresponds to the JSON property `downRule`
         # @return [Google::Apis::TestingV1::TrafficRule]
         attr_accessor :down_rule
       
-        # The unique opaque id for this network traffic configuration
-        # @OutputOnly
+        # The unique opaque id for this network traffic configuration.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Network emulation parameters
+        # Network emulation parameters.
         # Corresponds to the JSON property `upRule`
         # @return [Google::Apis::TestingV1::TrafficRule]
         attr_accessor :up_rule
@@ -1527,7 +1482,7 @@ module Google
         end
       end
       
-      # An opaque binary blob file to install on the device before the test starts
+      # An opaque binary blob file to install on the device before the test starts.
       class ObbFile
         include Google::Apis::Core::Hashable
       
@@ -1536,13 +1491,12 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :obb
       
-        # OBB file name which must conform to the format as specified by
+        # Required. OBB file name which must conform to the format as specified by
         # Android
         # e.g. [main|patch].0300110.com.example.android.obb
         # which will be installed into
-        # <shared-storage>/Android/obb/<package-name>/
-        # on the device
-        # Required
+        # \<shared-storage\>/Android/obb/\<package-name\>/
+        # on the device.
         # Corresponds to the JSON property `obbFileName`
         # @return [String]
         attr_accessor :obb_file_name
@@ -1563,21 +1517,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The id for this orientation.
-        # Example: "portrait"
-        # @OutputOnly
+        # Example: "portrait".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # A human-friendly name for this orientation.
-        # Example: "portrait"
-        # @OutputOnly
+        # Example: "portrait".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Tags for this dimension.
-        # Examples: "default"
+        # Example: "default".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1598,8 +1550,9 @@ module Google
       class ProvidedSoftwareCatalog
         include Google::Apis::Core::Hashable
       
-        # A string representing the current version of Android Test Orchestrator that
-        # is provided by TestExecutionService. Example: "1.0.2 beta"
+        # A string representing the current version of Android Test
+        # Orchestrator that is provided by TestExecutionService.
+        # Example: "1.0.2 beta".
         # Corresponds to the JSON property `orchestratorVersion`
         # @return [String]
         attr_accessor :orchestrator_version
@@ -1614,7 +1567,7 @@ module Google
         end
       end
       
-      # A file or directory to install on the device before the test starts
+      # A file or directory to install on the device before the test starts.
       class RegularFile
         include Google::Apis::Core::Hashable
       
@@ -1623,8 +1576,8 @@ module Google
         # @return [Google::Apis::TestingV1::FileReference]
         attr_accessor :content
       
-        # Where to put the content on the device. Must be an absolute, whitelisted
-        # path. If the file exists, it will be replaced.
+        # Required. Where to put the content on the device. Must be an absolute,
+        # whitelisted path. If the file exists, it will be replaced.
         # The following device-side directories and any of their subdirectories are
         # whitelisted:
         # <p>$`EXTERNAL_STORAGE`, or /sdcard</p>
@@ -1638,7 +1591,6 @@ module Google
         # "http://developer.android.com/reference/android/os/Environment.html">
         # Environment API</a> in app and test code to access files on the device in a
         # portable way.
-        # Required
         # Corresponds to the JSON property `devicePath`
         # @return [String]
         attr_accessor :device_path
@@ -1691,27 +1643,25 @@ module Google
       class RoboDirective
         include Google::Apis::Core::Hashable
       
-        # The type of action that Robo should perform on the specified element.
-        # Required.
+        # Required. The type of action that Robo should perform on the specified
+        # element.
         # Corresponds to the JSON property `actionType`
         # @return [String]
         attr_accessor :action_type
       
         # The text that Robo is directed to set. If left empty, the directive will be
         # treated as a CLICK on the element matching the resource_name.
-        # Optional
         # Corresponds to the JSON property `inputText`
         # @return [String]
         attr_accessor :input_text
       
-        # The android resource name of the target UI element
+        # Required. The android resource name of the target UI element.
         # For example,
         # in Java: R.string.foo
         # in xml: @string/foo
-        # Only the “foo” part is needed.
+        # Only the "foo" part is needed.
         # Reference doc:
         # https://developer.android.com/guide/topics/resources/accessing-resources.html
-        # Required
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -1728,7 +1678,7 @@ module Google
         end
       end
       
-      # Message for specifying the start activities to crawl
+      # Message for specifying the start activities to crawl.
       class RoboStartingIntent
         include Google::Apis::Core::Hashable
       
@@ -1764,13 +1714,11 @@ module Google
         attr_accessor :action
       
         # Intent categories to set on the intent.
-        # Optional.
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories
       
         # URI for the action.
-        # Optional.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1791,18 +1739,16 @@ module Google
       class TestDetails
         include Google::Apis::Core::Hashable
       
-        # If the TestState is ERROR, then this string will contain human-readable
-        # details about the error.
-        # @OutputOnly
+        # Output only. If the TestState is ERROR, then this string will contain
+        # human-readable details about the error.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # Human-readable, detailed descriptions of the test's progress.
+        # Output only. Human-readable, detailed descriptions of the test's progress.
         # For example: "Provisioning a device", "Starting Test".
         # During the course of execution new data may be appended
         # to the end of progress_messages.
-        # @OutputOnly
         # Corresponds to the JSON property `progressMessages`
         # @return [Array<String>]
         attr_accessor :progress_messages
@@ -1832,7 +1778,7 @@ module Google
         # @return [Google::Apis::TestingV1::IosDeviceCatalog]
         attr_accessor :ios_device_catalog
       
-        # Supported network configurations
+        # Supported network configurations.
         # Corresponds to the JSON property `networkConfigurationCatalog`
         # @return [Google::Apis::TestingV1::NetworkConfigurationCatalog]
         attr_accessor :network_configuration_catalog
@@ -1864,26 +1810,23 @@ module Google
         # @return [Google::Apis::TestingV1::Environment]
         attr_accessor :environment
       
-        # Unique id set by the backend.
-        # @OutputOnly
+        # Output only. Unique id set by the backend.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Id of the containing TestMatrix.
-        # @OutputOnly
+        # Output only. Id of the containing TestMatrix.
         # Corresponds to the JSON property `matrixId`
         # @return [String]
         attr_accessor :matrix_id
       
-        # The cloud project that owns the test execution.
-        # @OutputOnly
+        # Output only. The cloud project that owns the test execution.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Indicates the current progress of the test execution (e.g., FINISHED).
-        # @OutputOnly
+        # Output only. Indicates the current progress of the test execution
+        # (e.g., FINISHED).
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1898,8 +1841,7 @@ module Google
         # @return [Google::Apis::TestingV1::TestSpecification]
         attr_accessor :test_specification
       
-        # The time this test execution was initially created.
-        # @OutputOnly
+        # Output only. The time this test execution was initially created.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -1943,15 +1885,13 @@ module Google
         # @return [Google::Apis::TestingV1::EnvironmentMatrix]
         attr_accessor :environment_matrix
       
-        # Describes why the matrix is considered invalid.
+        # Output only. Describes why the matrix is considered invalid.
         # Only useful for matrices in the INVALID state.
-        # @OutputOnly
         # Corresponds to the JSON property `invalidMatrixDetails`
         # @return [String]
         attr_accessor :invalid_matrix_details
       
         # The cloud project that owns the test matrix.
-        # @OutputOnly
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1961,20 +1901,19 @@ module Google
         # @return [Google::Apis::TestingV1::ResultStorage]
         attr_accessor :result_storage
       
-        # Indicates the current progress of the test matrix (e.g., FINISHED)
-        # @OutputOnly
+        # Output only. Indicates the current progress of the test matrix
+        # (e.g., FINISHED).
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The list of test executions that the service creates for this matrix.
-        # @OutputOnly
+        # Output only. The list of test executions that the service creates for
+        # this matrix.
         # Corresponds to the JSON property `testExecutions`
         # @return [Array<Google::Apis::TestingV1::TestExecution>]
         attr_accessor :test_executions
       
-        # Unique id set by the service.
-        # @OutputOnly
+        # Output only. Unique id set by the service.
         # Corresponds to the JSON property `testMatrixId`
         # @return [String]
         attr_accessor :test_matrix_id
@@ -1984,8 +1923,7 @@ module Google
         # @return [Google::Apis::TestingV1::TestSpecification]
         attr_accessor :test_specification
       
-        # The time this test matrix was initially created.
-        # @OutputOnly
+        # Output only. The time this test matrix was initially created.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -2013,14 +1951,13 @@ module Google
       class TestSetup
         include Google::Apis::Core::Hashable
       
-        # Identifies an account and how to log into it
+        # Identifies an account and how to log into it.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::TestingV1::Account]
         attr_accessor :account
       
         # APKs to install in addition to those being directly tested.
         # Currently capped at 100.
-        # Optional
         # Corresponds to the JSON property `additionalApks`
         # @return [Array<Google::Apis::TestingV1::Apk>]
         attr_accessor :additional_apks
@@ -2032,7 +1969,6 @@ module Google
         # implicit path substitutions. E.g. if /sdcard on a particular device does
         # not map to external storage, the system will replace it with the external
         # storage path prefix for that device.
-        # Optional
         # Corresponds to the JSON property `directoriesToPull`
         # @return [Array<String>]
         attr_accessor :directories_to_pull
@@ -2044,12 +1980,11 @@ module Google
         attr_accessor :environment_variables
       
         # List of files to push to the device before starting the test.
-        # Optional
         # Corresponds to the JSON property `filesToPush`
         # @return [Array<Google::Apis::TestingV1::DeviceFile>]
         attr_accessor :files_to_push
       
-        # Optional. The network traffic profile used for running the test.
+        # The network traffic profile used for running the test.
         # Available network profiles can be queried by using the
         # NETWORK_CONFIGURATION environment type when calling
         # TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -2095,7 +2030,7 @@ module Google
         attr_accessor :android_robo_test
       
         # A test of an Android Application with a Test Loop.
-        # The intent <intent-name> will be implicitly added, since Games is the only
+        # The intent \<intent-name\> will be implicitly added, since Games is the only
         # user of this api, for the time being.
         # Corresponds to the JSON property `androidTestLoop`
         # @return [Google::Apis::TestingV1::AndroidTestLoop]
@@ -2109,7 +2044,6 @@ module Google
         # present on the device. Logging into the device with these generated
         # accounts allows testing more functionalities.
         # Default is false.
-        # Optional
         # Corresponds to the JSON property `autoGoogleLogin`
         # @return [Boolean]
         attr_accessor :auto_google_login
@@ -2149,7 +2083,7 @@ module Google
       
         # Max time a test execution is allowed to run before it is
         # automatically cancelled.
-        # Optional, default is 5 min.
+        # The default value is 5 min.
         # Corresponds to the JSON property `testTimeout`
         # @return [String]
         attr_accessor :test_timeout
@@ -2178,20 +2112,17 @@ module Google
       class ToolResultsExecution
         include Google::Apis::Core::Hashable
       
-        # A tool results execution ID.
-        # @OutputOnly
+        # Output only. A tool results execution ID.
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
       
-        # A tool results history ID.
-        # @OutputOnly
+        # Output only. A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
       
-        # The cloud project that owns the tool results execution.
-        # @OutputOnly
+        # Output only. The cloud project that owns the tool results execution.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -2212,14 +2143,12 @@ module Google
       class ToolResultsHistory
         include Google::Apis::Core::Hashable
       
-        # A tool results history ID.
-        # Required
+        # Required. A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
       
-        # The cloud project that owns the tool results history.
-        # Required
+        # Required. The cloud project that owns the tool results history.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -2240,26 +2169,22 @@ module Google
       class ToolResultsStep
         include Google::Apis::Core::Hashable
       
-        # A tool results execution ID.
-        # @OutputOnly
+        # Output only. A tool results execution ID.
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
       
-        # A tool results history ID.
-        # @OutputOnly
+        # Output only. A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
       
-        # The cloud project that owns the tool results step.
-        # @OutputOnly
+        # Output only. The cloud project that owns the tool results step.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # A tool results step ID.
-        # @OutputOnly
+        # Output only. A tool results step ID.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -2277,31 +2202,31 @@ module Google
         end
       end
       
-      # Network emulation parameters
+      # Network emulation parameters.
       class TrafficRule
         include Google::Apis::Core::Hashable
       
-        # Bandwidth in kbits/second
+        # Bandwidth in kbits/second.
         # Corresponds to the JSON property `bandwidth`
         # @return [Float]
         attr_accessor :bandwidth
       
-        # Burst size in kbits
+        # Burst size in kbits.
         # Corresponds to the JSON property `burst`
         # @return [Float]
         attr_accessor :burst
       
-        # Packet delay, must be >= 0
+        # Packet delay, must be >= 0.
         # Corresponds to the JSON property `delay`
         # @return [String]
         attr_accessor :delay
       
-        # Packet duplication ratio (0.0 - 1.0)
+        # Packet duplication ratio (0.0 - 1.0).
         # Corresponds to the JSON property `packetDuplicationRatio`
         # @return [Float]
         attr_accessor :packet_duplication_ratio
       
-        # Packet loss ratio (0.0 - 1.0)
+        # Packet loss ratio (0.0 - 1.0).
         # Corresponds to the JSON property `packetLossRatio`
         # @return [Float]
         attr_accessor :packet_loss_ratio
@@ -2324,14 +2249,14 @@ module Google
       class XcodeVersion
         include Google::Apis::Core::Hashable
       
-        # Output only. Tags for this Xcode version.
-        # Examples: "default"
+        # Tags for this Xcode version.
+        # Example: "default".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
       
-        # Output only. The id for this version.
-        # Example: "9.2"
+        # The id for this version.
+        # Example: "9.2".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

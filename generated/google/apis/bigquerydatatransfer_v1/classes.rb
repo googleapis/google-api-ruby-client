@@ -681,7 +681,7 @@ module Google
       
         # The resource name of the transfer config.
         # Transfer config names have the form of
-        # `projects/`project_id`/location/`region`/transferConfigs/`config_id``.
+        # `projects/`project_id`/locations/`region`/transferConfigs/`config_id``.
         # The name is automatically generated based on the config_id specified in
         # CreateTransferConfigRequest along with project_id and region. If config_id
         # is not provided, usually a uuid, even though it is not guaranteed or
@@ -727,11 +727,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Unique ID of the user on whose behalf transfer is done.
-        # Applicable only to data sources that do not support service accounts.
-        # When set to 0, the data source service account credentials are used.
-        # May be negative. Note, that this identifier is not stable.
-        # It may change over time even for the same user.
+        # Deprecated. Unique ID of the user on whose behalf transfer is done.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id
@@ -902,11 +898,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Unique ID of the user on whose behalf transfer is done.
-        # Applicable only to data sources that do not support service accounts.
-        # When set to 0, the data source service account credentials are used.
-        # May be negative. Note, that this identifier is not stable.
-        # It may change over time even for the same user.
+        # Deprecated. Unique ID of the user on whose behalf transfer is done.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id

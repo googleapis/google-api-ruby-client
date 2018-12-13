@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoInstallConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoInstallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigurationVariables
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -636,6 +648,26 @@ module Google
         end
       end
       
+      class AutoInstallConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charging_state_constraint, as: 'chargingStateConstraint'
+          property :device_idle_state_constraint, as: 'deviceIdleStateConstraint'
+          property :network_type_constraint, as: 'networkTypeConstraint'
+        end
+      end
+      
+      class AutoInstallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_install_constraint, as: 'autoInstallConstraint', class: Google::Apis::AndroidenterpriseV1::AutoInstallConstraint, decorator: Google::Apis::AndroidenterpriseV1::AutoInstallConstraint::Representation
+      
+          property :auto_install_mode, as: 'autoInstallMode'
+          property :auto_install_priority, as: 'autoInstallPriority'
+          property :minimum_version_code, as: 'minimumVersionCode'
+        end
+      end
+      
       class ConfigurationVariables
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1034,6 +1066,8 @@ module Google
       class ProductPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_install_policy, as: 'autoInstallPolicy', class: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy, decorator: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy::Representation
+      
           property :product_id, as: 'productId'
           collection :track_ids, as: 'trackIds'
           collection :tracks, as: 'tracks'

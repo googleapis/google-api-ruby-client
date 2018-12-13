@@ -529,6 +529,78 @@ module Google
         end
       end
       
+      # The Auto install constraint. Defines a set of restrictions for installation.
+      # At least one of the fields must be set.
+      class AutoInstallConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Charging state to constrain on.
+        # Corresponds to the JSON property `chargingStateConstraint`
+        # @return [String]
+        attr_accessor :charging_state_constraint
+      
+        # The idle state of the device to constrain on.
+        # Corresponds to the JSON property `deviceIdleStateConstraint`
+        # @return [String]
+        attr_accessor :device_idle_state_constraint
+      
+        # Network type to constrain on.
+        # Corresponds to the JSON property `networkTypeConstraint`
+        # @return [String]
+        attr_accessor :network_type_constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charging_state_constraint = args[:charging_state_constraint] if args.key?(:charging_state_constraint)
+          @device_idle_state_constraint = args[:device_idle_state_constraint] if args.key?(:device_idle_state_constraint)
+          @network_type_constraint = args[:network_type_constraint] if args.key?(:network_type_constraint)
+        end
+      end
+      
+      # 
+      class AutoInstallPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The constraints for the install. Currently there can be at most one constraint.
+        # Corresponds to the JSON property `autoInstallConstraint`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
+        attr_accessor :auto_install_constraint
+      
+        # The auto install mode. If unset defaults to AVAILABLE.
+        # Corresponds to the JSON property `autoInstallMode`
+        # @return [String]
+        attr_accessor :auto_install_mode
+      
+        # The priority of the install, as an unsigned integer. Lower number means higher
+        # priority.
+        # Corresponds to the JSON property `autoInstallPriority`
+        # @return [Fixnum]
+        attr_accessor :auto_install_priority
+      
+        # The minimum version of the app. If a lower version of the app is installed
+        # then the app will be auto-updated according to the auto-install constraints,
+        # instead of waiting for the regular auto-update.
+        # Corresponds to the JSON property `minimumVersionCode`
+        # @return [Fixnum]
+        attr_accessor :minimum_version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_install_constraint = args[:auto_install_constraint] if args.key?(:auto_install_constraint)
+          @auto_install_mode = args[:auto_install_mode] if args.key?(:auto_install_mode)
+          @auto_install_priority = args[:auto_install_priority] if args.key?(:auto_install_priority)
+          @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
+        end
+      end
+      
       # A configuration variables resource contains the managed configuration settings
       # ID to be applied to a single user, as well as the variable set that is
       # attributed to the user. The variable set will be used to replace placeholders
@@ -2078,6 +2150,11 @@ module Google
       class ProductPolicy
         include Google::Apis::Core::Hashable
       
+        # The auto install policy for the product.
+        # Corresponds to the JSON property `autoInstallPolicy`
+        # @return [Google::Apis::AndroidenterpriseV1::AutoInstallPolicy]
+        attr_accessor :auto_install_policy
+      
         # The ID of the product. For example, "app:com.google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
@@ -2101,6 +2178,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_install_policy = args[:auto_install_policy] if args.key?(:auto_install_policy)
           @product_id = args[:product_id] if args.key?(:product_id)
           @track_ids = args[:track_ids] if args.key?(:track_ids)
           @tracks = args[:tracks] if args.key?(:tracks)
