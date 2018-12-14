@@ -445,7 +445,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Represents input parameters for a prediction job. Next field: 19
+        # Represents input parameters for a prediction job. Next field: 20
         # Corresponds to the JSON property `predictionInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionInput]
         attr_accessor :prediction_input
@@ -927,7 +927,7 @@ module Google
         end
       end
       
-      # Represents input parameters for a prediction job. Next field: 19
+      # Represents input parameters for a prediction job. Next field: 20
       class GoogleCloudMlV1PredictionInput
         include Google::Apis::Core::Hashable
       
@@ -985,8 +985,8 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Optional. The Google Cloud ML runtime version to use for this batch
-        # prediction. If not set, Google Cloud ML will pick the runtime version used
+        # Optional. The Cloud ML Engine runtime version to use for this batch
+        # prediction. If not set, Cloud ML Engine will pick the runtime version used
         # during the CreateVersion request for this model version, or choose the
         # latest stable version when model version information is not available
         # such as when the model is specified by uri.
@@ -1247,7 +1247,8 @@ module Google
       
         # Optional. The version of Python used in training. If not set, the default
         # version is '2.7'. Python '3.5' is available when `runtime_version` is set
-        # to '1.4' and above. Python '2.7' works with all supported runtime versions.
+        # to '1.4' and above. Python '2.7' works with all supported
+        # <a href="/ml-engine/docs/runtime-version-list">runtime versions</a>.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
@@ -1259,9 +1260,12 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Optional. The Google Cloud ML runtime version to use for training.  If not
-        # set, Google Cloud ML will choose a stable version, which is defined in the
-        # documentation of runtime version list.
+        # Optional. The Cloud ML Engine runtime version to use for training. If not
+        # set, Cloud ML Engine uses the default stable version, 1.0. For more
+        # information, see the
+        # <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
+        # and
+        # <a href="/ml-engine/docs/versioning">how to manage runtime versions</a>.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
@@ -1475,8 +1479,11 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
-        # Optional. The Google Cloud ML runtime version to use for this deployment.
-        # If not set, Google Cloud ML will choose a version.
+        # Optional. The Cloud ML Engine runtime version to use for this deployment.
+        # If not set, Cloud ML Engine uses the default stable version, 1.0. For more
+        # information, see the
+        # [runtime version list](/ml-engine/docs/runtime-version-list) and
+        # [how to manage runtime versions](/ml-engine/docs/versioning).
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version

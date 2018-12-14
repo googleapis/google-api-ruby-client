@@ -186,7 +186,7 @@ module Google
       
         # Map of categories in the LHR.
         # Corresponds to the JSON property `categories`
-        # @return [Hash<String,Google::Apis::PagespeedonlineV5::LighthouseCategoryV5>]
+        # @return [Google::Apis::PagespeedonlineV5::LighthouseResultV5::Categories]
         attr_accessor :categories
       
         # Map of category groups in the LHR.
@@ -270,6 +270,50 @@ module Google
           @runtime_error = args[:runtime_error] if args.key?(:runtime_error)
           @timing = args[:timing] if args.key?(:timing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
+        end
+        
+        # Map of categories in the LHR.
+        class Categories
+          include Google::Apis::Core::Hashable
+        
+          # The accessibility category, containing all accessibility related audits.
+          # Corresponds to the JSON property `accessibility`
+          # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+          attr_accessor :accessibility
+        
+          # The best practices category, containing all web best practice related audits.
+          # Corresponds to the JSON property `best-practices`
+          # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+          attr_accessor :best_practices
+        
+          # The performance category, containing all performance related audits.
+          # Corresponds to the JSON property `performance`
+          # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+          attr_accessor :performance
+        
+          # The Progressive-Web-App (PWA) category, containing all pwa related audits.
+          # Corresponds to the JSON property `pwa`
+          # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+          attr_accessor :pwa
+        
+          # The Search-Engine-Optimization (SEO) category, containing all seo related
+          # audits.
+          # Corresponds to the JSON property `seo`
+          # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+          attr_accessor :seo
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @accessibility = args[:accessibility] if args.key?(:accessibility)
+            @best_practices = args[:best_practices] if args.key?(:best_practices)
+            @performance = args[:performance] if args.key?(:performance)
+            @pwa = args[:pwa] if args.key?(:pwa)
+            @seo = args[:seo] if args.key?(:seo)
+          end
         end
         
         # A grouping contained in a category that groups similar audits together.

@@ -43,6 +43,12 @@ module Google
       class LighthouseResultV5
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Categories
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CategoryGroup
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -161,7 +167,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :audits, as: 'audits', class: Google::Apis::PagespeedonlineV5::LighthouseAuditResultV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseAuditResultV5::Representation
       
-          hash :categories, as: 'categories', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+          property :categories, as: 'categories', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Categories, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Categories::Representation
       
           hash :category_groups, as: 'categoryGroups', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::CategoryGroup, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::CategoryGroup::Representation
       
@@ -181,6 +187,22 @@ module Google
           property :timing, as: 'timing', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Timing, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Timing::Representation
       
           property :user_agent, as: 'userAgent'
+        end
+        
+        class Categories
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :accessibility, as: 'accessibility', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+        
+            property :best_practices, as: 'best-practices', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+        
+            property :performance, as: 'performance', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+        
+            property :pwa, as: 'pwa', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+        
+            property :seo, as: 'seo', class: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5, decorator: Google::Apis::PagespeedonlineV5::LighthouseCategoryV5::Representation
+        
+          end
         end
         
         class CategoryGroup

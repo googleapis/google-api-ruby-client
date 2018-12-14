@@ -165,8 +165,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Invokes synchronously deployed function. To be used for testing, very
-        # limited traffic allowed.
+        # Synchronously invokes a deployed Cloud Function. To be used for testing
+        # purposes as very limited traffic is allowed. For more information on
+        # the actual limits refer to [API Calls](
+        # https://cloud.google.com/functions/quotas#rate_limits).
         # @param [String] name
         #   The name of the function to be called.
         # @param [Google::Apis::CloudfunctionsV1beta2::CallFunctionRequest] call_function_request_object

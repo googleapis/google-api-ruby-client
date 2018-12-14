@@ -2717,7 +2717,7 @@ module Google
       
         # Required. The template id.The id must contain only letters (a-z, A-Z), numbers
         # (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore
-        # or hyphen. Must consist of between 3 and 50 characters.
+        # or hyphen. Must consist of between 3 and 50 characters..
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
