@@ -787,6 +787,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_keyword_match, as: 'disableKeywordMatch'
+          property :diversification_level, as: 'diversificationLevel'
           property :enable_broadening, as: 'enableBroadening'
           property :histogram_facets, as: 'histogramFacets', class: Google::Apis::JobsV3::HistogramFacets, decorator: Google::Apis::JobsV3::HistogramFacets::Representation
       

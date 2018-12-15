@@ -2205,6 +2205,19 @@ module Google
         alias_method :disable_keyword_match?, :disable_keyword_match
       
         # Optional.
+        # Controls whether highly similar jobs are returned next to each other in
+        # the search results. Jobs are identified as highly similar based on
+        # their titles, job categories, and locations. Highly similar results are
+        # clustered so that only one representative job of the cluster is
+        # displayed to the job seeker higher up in the results, with the other jobs
+        # being displayed lower down in the results.
+        # Defaults to DiversificationLevel.SIMPLE if no value
+        # is specified.
+        # Corresponds to the JSON property `diversificationLevel`
+        # @return [String]
+        attr_accessor :diversification_level
+      
+        # Optional.
         # Controls whether to broaden the search when it produces sparse results.
         # Broadened queries append results to the end of the matching results
         # list.
@@ -2327,6 +2340,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_keyword_match = args[:disable_keyword_match] if args.key?(:disable_keyword_match)
+          @diversification_level = args[:diversification_level] if args.key?(:diversification_level)
           @enable_broadening = args[:enable_broadening] if args.key?(:enable_broadening)
           @histogram_facets = args[:histogram_facets] if args.key?(:histogram_facets)
           @job_query = args[:job_query] if args.key?(:job_query)
