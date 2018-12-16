@@ -27103,8 +27103,8 @@ module Google
       class XpnResourceId
         include Google::Apis::Core::Hashable
       
-        # The ID of the service resource. In the case of projects, this field matches
-        # the project ID (e.g., my-project), not the project number (e.g., 12345678).
+        # The ID of the service resource. In the case of projects, this field supports
+        # project id (e.g., my-project-123) and project number (e.g. 12345678).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
