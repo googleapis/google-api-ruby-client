@@ -1,3 +1,37 @@
+# 0.27.0
+* Breaking changes:
+  * Deleted `replicapoolupdater_v1beta1`
+* Backwards compatible changes:
+  * Added `bigtableadmin_v2`
+  * Added `cloudbuild_v1alpha1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `alertcenter_v1beta1`
+  * Updated `androidenterprise_v1`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `gmail_v1`
+  * Updated `jobs_v3`
+  * Updated `ml_v1`
+  * Updated `pagespeedonline_v5`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `testing_v1`
+  * Updated `texttospeech_v1beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.26.0
 * Breaking changes:
   * Deleted `dfareporting_v3_0`
