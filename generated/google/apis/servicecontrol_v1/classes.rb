@@ -387,6 +387,15 @@ module Google
         # @return [String]
         attr_accessor :principal_email
       
+        # The name of the service account key used to create or exchange
+        # credentials for authenticating the service account making the request.
+        # This is a scheme-less URI full resource name. For example:
+        # "//iam.googleapis.com/projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`
+        # key`"
+        # Corresponds to the JSON property `serviceAccountKeyName`
+        # @return [String]
+        attr_accessor :service_account_key_name
+      
         # The third party identification (if any) of the authenticated user making
         # the request.
         # When the JSON object represented here has a proto equivalent, the proto
@@ -403,6 +412,7 @@ module Google
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
         end
       end
