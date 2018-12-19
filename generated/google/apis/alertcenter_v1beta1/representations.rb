@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudPubsubTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Csv
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Notification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PhishingSpike
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Settings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +239,14 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
           property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class CloudPubsubTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload_format, as: 'payloadFormat'
+          property :topic_name, as: 'topicName'
         end
       end
       
@@ -353,6 +379,14 @@ module Google
         end
       end
       
+      class Notification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic, decorator: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic::Representation
+      
+        end
+      end
+      
       class PhishingSpike
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -362,6 +396,14 @@ module Google
           property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::MaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::MaliciousEntity::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
+      
+        end
+      end
+      
+      class Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notifications, as: 'notifications', class: Google::Apis::AlertcenterV1beta1::Notification, decorator: Google::Apis::AlertcenterV1beta1::Notification::Representation
       
         end
       end

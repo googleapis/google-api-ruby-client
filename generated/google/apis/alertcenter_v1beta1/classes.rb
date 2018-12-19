@@ -93,7 +93,7 @@ module Google
         # @return [String]
         attr_accessor :security_investigation_tool_link
       
-        # Required. A unique identifier for the system that is reported the alert.
+        # Required. A unique identifier for the system that reported the alert.
         # Supported sources are any of the following:
         # * Google Operations
         # * Mobile device management
@@ -242,6 +242,36 @@ module Google
           @malicious_entity = args[:malicious_entity] if args.key?(:malicious_entity)
           @messages = args[:messages] if args.key?(:messages)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
+        end
+      end
+      
+      # A reference to a Cloud Pubsub topic.
+      # To register for notifications, the owner of the topic must grant
+      # `alerts-api-push-notifications@system.gserviceaccount.com` the
+      # `projects.topics.publish` permission.
+      class CloudPubsubTopic
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The format of the payload that would be sent.
+        # If not specified the format will be JSON.
+        # Corresponds to the JSON property `payloadFormat`
+        # @return [String]
+        attr_accessor :payload_format
+      
+        # The `name` field of a Cloud Pubsub [Topic]
+        # (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload_format = args[:payload_format] if args.key?(:payload_format)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
       end
       
@@ -674,6 +704,30 @@ module Google
         end
       end
       
+      # Settings for callback notifications.
+      # For more details see [G Suite Alert
+      # Notification](/admin-sdk/alertcenter/guides/notifications).
+      class Notification
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a Cloud Pubsub topic.
+        # To register for notifications, the owner of the topic must grant
+        # `alerts-api-push-notifications@system.gserviceaccount.com` the
+        # `projects.topics.publish` permission.
+        # Corresponds to the JSON property `cloudPubsubTopic`
+        # @return [Google::Apis::AlertcenterV1beta1::CloudPubsubTopic]
+        attr_accessor :cloud_pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_pubsub_topic = args[:cloud_pubsub_topic] if args.key?(:cloud_pubsub_topic)
+        end
+      end
+      
       # Alert for a spike in user reported phishing.
       # <aside class="warning"><b>Warning</b>: This type has been deprecated. Use
       # [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
@@ -712,6 +766,25 @@ module Google
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @malicious_entity = args[:malicious_entity] if args.key?(:malicious_entity)
           @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Customer-level settings.
+      class Settings
+        include Google::Apis::Core::Hashable
+      
+        # The list of notifications.
+        # Corresponds to the JSON property `notifications`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::Notification>]
+        attr_accessor :notifications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notifications = args[:notifications] if args.key?(:notifications)
         end
       end
       
