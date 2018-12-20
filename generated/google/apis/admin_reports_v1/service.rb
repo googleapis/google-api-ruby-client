@@ -73,6 +73,9 @@ module Google
         #   parameter2 name][operator][parameter2 value],...
         # @param [Fixnum] max_results
         #   Number of activity records to be shown in each page.
+        # @param [String] org_unit_id
+        #   the organizational unit's(OU) ID to filter activities from users belonging to
+        #   a specific OU or one of its sub-OU(s)
         # @param [String] page_token
         #   Token to specify next page.
         # @param [String] start_time
@@ -96,7 +99,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
@@ -108,6 +111,7 @@ module Google
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -138,6 +142,9 @@ module Google
         #   parameter2 name][operator][parameter2 value],...
         # @param [Fixnum] max_results
         #   Number of activity records to be shown in each page.
+        # @param [String] org_unit_id
+        #   the organizational unit's(OU) ID to filter activities from users belonging to
+        #   a specific OU or one of its sub-OU(s)
         # @param [String] page_token
         #   Token to specify next page.
         # @param [String] start_time
@@ -161,7 +168,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
@@ -175,6 +182,7 @@ module Google
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -327,6 +335,9 @@ module Google
         #   Represents the set of filters including parameter operator value.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Maximum allowed is 1000
+        # @param [String] org_unit_id
+        #   the organizational unit's ID to filter usage parameters from users belonging
+        #   to a specific OU or one of its sub-OU(s).
         # @param [String] page_token
         #   Token to specify next page.
         # @param [String] parameters
@@ -351,7 +362,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
@@ -360,6 +371,7 @@ module Google
           command.query['customerId'] = customer_id unless customer_id.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parameters'] = parameters unless parameters.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -2303,6 +2303,7 @@ module Google
       
           property :datastore_key, as: 'datastoreKey', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreKey, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreKey::Representation
       
+          collection :id_values, as: 'idValues'
         end
       end
       

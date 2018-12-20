@@ -4464,6 +4464,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreKey]
         attr_accessor :datastore_key
       
+        # Values of identifying columns in the given row. Order of values matches
+        # the order of field identifiers specified in the scanning request.
+        # Corresponds to the JSON property `idValues`
+        # @return [Array<String>]
+        attr_accessor :id_values
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4472,6 +4478,7 @@ module Google
         def update!(**args)
           @big_query_key = args[:big_query_key] if args.key?(:big_query_key)
           @datastore_key = args[:datastore_key] if args.key?(:datastore_key)
+          @id_values = args[:id_values] if args.key?(:id_values)
         end
       end
       

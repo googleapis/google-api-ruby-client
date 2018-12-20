@@ -306,6 +306,16 @@ module Google
         #   It is an error to provide both this mask and a mask specifying one or
         #   more individual environment variables.</td>
         #   </tr>
+        #   <tr>
+        #   <td>config.softwareConfig.imageVersion</td>
+        #   <td>Upgrade the version of the environment in-place. Refer to
+        #   `SoftwareConfig.image_version` for information on how to format the new
+        #   image version. Additionally, the new image version cannot effect a version
+        #   downgrade and must match the current image version's Composer major
+        #   version and Airflow major and minor versions. Consult the
+        #   <a href="/composer/docs/concepts/versioning/composer-versions">Cloud
+        #   Composer Version List</a> for valid values.</td>
+        #   </tr>
         #   </tbody>
         #   </table>
         # @param [String] fields
