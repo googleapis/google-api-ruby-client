@@ -562,6 +562,11 @@ module Google
         attr_accessor :explicitly_trashed
         alias_method :explicitly_trashed?, :explicitly_trashed
       
+        # Links for exporting Google Docs to specific formats.
+        # Corresponds to the JSON property `exportLinks`
+        # @return [Hash<String,String>]
+        attr_accessor :export_links
+      
         # The final component of fullFileExtension. This is only available for files
         # with binary content in Drive.
         # Corresponds to the JSON property `fileExtension`
@@ -861,6 +866,7 @@ module Google
           @created_time = args[:created_time] if args.key?(:created_time)
           @description = args[:description] if args.key?(:description)
           @explicitly_trashed = args[:explicitly_trashed] if args.key?(:explicitly_trashed)
+          @export_links = args[:export_links] if args.key?(:export_links)
           @file_extension = args[:file_extension] if args.key?(:file_extension)
           @folder_color_rgb = args[:folder_color_rgb] if args.key?(:folder_color_rgb)
           @full_file_extension = args[:full_file_extension] if args.key?(:full_file_extension)
@@ -1761,6 +1767,11 @@ module Google
       class Revision
         include Google::Apis::Core::Hashable
       
+        # Links for exporting Google Docs to specific formats.
+        # Corresponds to the JSON property `exportLinks`
+        # @return [Hash<String,String>]
+        attr_accessor :export_links
+      
         # The ID of the revision.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1841,6 +1852,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_links = args[:export_links] if args.key?(:export_links)
           @id = args[:id] if args.key?(:id)
           @keep_forever = args[:keep_forever] if args.key?(:keep_forever)
           @kind = args[:kind] if args.key?(:kind)

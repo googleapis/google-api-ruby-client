@@ -47,8 +47,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists log entries. Use this method to retrieve log entries from Logging. For
-        # ways to export log entries, see Exporting Logs.
+        # Lists log entries. Use this method to retrieve log entries that originated
+        # from a project/folder/organization/billing account. For ways to export log
+        # entries, see Exporting Logs.
         # @param [Google::Apis::LoggingV2beta1::ListLogEntriesRequest] list_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

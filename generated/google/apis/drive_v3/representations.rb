@@ -359,6 +359,7 @@ module Google
       
           property :description, as: 'description'
           property :explicitly_trashed, as: 'explicitlyTrashed'
+          hash :export_links, as: 'exportLinks'
           property :file_extension, as: 'fileExtension'
           property :folder_color_rgb, as: 'folderColorRgb'
           property :full_file_extension, as: 'fullFileExtension'
@@ -604,6 +605,7 @@ module Google
       class Revision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :export_links, as: 'exportLinks'
           property :id, as: 'id'
           property :keep_forever, as: 'keepForever'
           property :kind, as: 'kind'
