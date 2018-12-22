@@ -943,6 +943,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :outside_allocation, as: 'outsideAllocation'
         end
       end
       

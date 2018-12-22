@@ -2170,6 +2170,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :quota_deferments
       
+        # [Output-only] Job resource usage breakdown by reservation.
+        # Corresponds to the JSON property `reservationUsage`
+        # @return [Array<Google::Apis::BigqueryV2::JobStatistics::ReservationUsage>]
+        attr_accessor :reservation_usage
+      
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
@@ -2182,6 +2187,11 @@ module Google
         # Corresponds to the JSON property `totalBytesProcessed`
         # @return [Fixnum]
         attr_accessor :total_bytes_processed
+      
+        # [Output-only] Slot-milliseconds for the job.
+        # Corresponds to the JSON property `totalSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_slot_ms
       
         def initialize(**args)
            update!(**args)
@@ -2196,8 +2206,35 @@ module Google
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
+          @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
+        end
+        
+        # 
+        class ReservationUsage
+          include Google::Apis::Core::Hashable
+        
+          # [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # [Output-only] Slot-milliseconds the job spent in the given reservation.
+          # Corresponds to the JSON property `slotMs`
+          # @return [Fixnum]
+          attr_accessor :slot_ms
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @name = args[:name] if args.key?(:name)
+            @slot_ms = args[:slot_ms] if args.key?(:slot_ms)
+          end
         end
       end
       
@@ -2283,15 +2320,16 @@ module Google
         # The type of query statement, if valid. Possible values (new values might be
         # added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
         # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
-        # manipulation-language "UPDATE": UPDATE query; see https://cloud.google.com/
-        # bigquery/docs/reference/standard-sql/data-manipulation-language "DELETE":
+        # manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE":
         # DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-
-        # sql/data-manipulation-language "MERGE": MERGE query; see https://cloud.google.
-        # com/bigquery/docs/reference/standard-sql/data-manipulation-language "
+        # sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.
+        # com/bigquery/docs/reference/standard-sql/data-manipulation-language. "
         # CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
-        # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... "
+        # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "
         # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
-        # SELECT ... "DROP_VIEW": DROP VIEW query.
+        # SELECT ... . "DROP_VIEW": DROP VIEW query. "ALTER_TABLE": ALTER TABLE query. "
+        # ALTER_VIEW": ALTER VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type

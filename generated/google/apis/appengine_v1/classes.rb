@@ -2923,6 +2923,11 @@ module Google
         # @return [String]
         attr_accessor :runtime_channel
       
+        # The path or name of the app's main executable.
+        # Corresponds to the JSON property `runtimeMainExecutablePath`
+        # @return [String]
+        attr_accessor :runtime_main_executable_path
+      
         # Current serving status of this version. Only the versions with a SERVING
         # status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
         # invalid value. Defaults to SERVING.
@@ -2990,6 +2995,7 @@ module Google
           @runtime = args[:runtime] if args.key?(:runtime)
           @runtime_api_version = args[:runtime_api_version] if args.key?(:runtime_api_version)
           @runtime_channel = args[:runtime_channel] if args.key?(:runtime_channel)
+          @runtime_main_executable_path = args[:runtime_main_executable_path] if args.key?(:runtime_main_executable_path)
           @serving_status = args[:serving_status] if args.key?(:serving_status)
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)

@@ -210,6 +210,12 @@ module Google
       
       class JobStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class ReservationUsage
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -925,8 +931,19 @@ module Google
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
           collection :quota_deferments, as: 'quotaDeferments'
+          collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage::Representation
+      
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
+          property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
+        end
+        
+        class ReservationUsage
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :name, as: 'name'
+            property :slot_ms, :numeric_string => true, as: 'slotMs'
+          end
         end
       end
       

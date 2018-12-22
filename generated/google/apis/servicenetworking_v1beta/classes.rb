@@ -3220,7 +3220,8 @@ module Google
         end
       end
       
-      # Represents a subnet that was created by a peered service.
+      # Represents a subnet that was created or discovered by a private access
+      # management service.
       class Subnetwork
         include Google::Apis::Core::Hashable
       
@@ -3242,6 +3243,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # This is a discovered subnet that is not within the current consumer
+        # allocated ranges.
+        # Corresponds to the JSON property `outsideAllocation`
+        # @return [Boolean]
+        attr_accessor :outside_allocation
+        alias_method :outside_allocation?, :outside_allocation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3251,6 +3259,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
         end
       end
       

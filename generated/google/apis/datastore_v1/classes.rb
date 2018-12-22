@@ -689,7 +689,6 @@ module Google
       end
       
       # A minimal index definition.
-      # Next tag: 8
       class GoogleDatastoreAdminV1Index
         include Google::Apis::Core::Hashable
       
@@ -775,7 +774,7 @@ module Google
         end
       end
       
-      # Next tag: 3
+      # A property of an index.
       class GoogleDatastoreAdminV1IndexedProperty
         include Google::Apis::Core::Hashable
       
