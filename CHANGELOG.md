@@ -1,3 +1,35 @@
+# 0.27.1
+* Backwards compatible changes:
+  * Added `cloudidentity_v1`
+  * Added `cloudidentity_v1beta1`
+  * Added `monitoring_v1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `admin_reports_v1`
+  * Updated `alertcenter_v1beta1`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `appengine_v1beta4`
+  * Updated `appengine_v1beta5`
+  * Updated `bigquery_v2`
+  * Updated `cloudbuild_v1alpha1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `composer_v1beta1`
+  * Updated `datastore_v1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `drive_v3`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `pubsub_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.27.0
 * Breaking changes:
   * Deleted `replicapoolupdater_v1beta1`
