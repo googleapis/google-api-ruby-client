@@ -253,7 +253,7 @@ module Google
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
         def success(result, &block)
-          logger.debug { sprintf('Success - %s', safe_object_representation(result) }
+          logger.debug { sprintf('Success - %s', safe_object_representation(result)) }
           block.call(result, nil) if block_given?
           result
         end
