@@ -85,11 +85,10 @@ module Google
         # requested size that's expressed as a CIDR range (number of leading bits of
         # ipV4 network mask). The method checks against the assigned allocated ranges
         # to find a non-conflicting IP address range. The method will reuse a subnet
-        # if subsequent calls contain the same subnet name, region, and prefix length.
-        # This method will make producer's tenant project to be a shared VPC service
-        # project as needed.
-        # The response from the `get` operation will be of type `Subnetwork` if the
-        # operation successfully completes.
+        # if subsequent calls contain the same subnet name, region, and prefix
+        # length. This method will make producer's tenant project to be a shared VPC
+        # service project as needed. The response from the `get` operation will be of
+        # type `Subnetwork` if the operation successfully completes.
         # @param [String] parent
         #   Required. A tenant project in the service producer organization, in the
         #   following format: services/`service`/`collection-id`/`resource-id`.

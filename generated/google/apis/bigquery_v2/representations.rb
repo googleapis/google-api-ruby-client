@@ -547,6 +547,7 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :domain, as: 'domain'
             property :group_by_email, as: 'groupByEmail'
+            property :iam_member, as: 'iamMember'
             property :role, as: 'role'
             property :special_group, as: 'specialGroup'
             property :user_by_email, as: 'userByEmail'

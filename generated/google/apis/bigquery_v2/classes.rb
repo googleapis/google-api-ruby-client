@@ -453,15 +453,23 @@ module Google
           include Google::Apis::Core::Hashable
         
           # [Pick one] A domain to grant access to. Any users signed in with the domain
-          # specified will be granted the specified access. Example: "example.com".
+          # specified will be granted the specified access. Example: "example.com". Maps
+          # to IAM policy member "domain:DOMAIN".
           # Corresponds to the JSON property `domain`
           # @return [String]
           attr_accessor :domain
         
-          # [Pick one] An email address of a Google Group to grant access to.
+          # [Pick one] An email address of a Google Group to grant access to. Maps to IAM
+          # policy member "group:GROUP".
           # Corresponds to the JSON property `groupByEmail`
           # @return [String]
           attr_accessor :group_by_email
+        
+          # [Pick one] Some other type of member that appears in the IAM Policy but isn't
+          # a user, group, domain, or special group.
+          # Corresponds to the JSON property `iamMember`
+          # @return [String]
+          attr_accessor :iam_member
         
           # [Required] Describes the rights granted to the user specified by the other
           # member of the access object. The following string values are supported: READER,
@@ -473,13 +481,14 @@ module Google
           # [Pick one] A special group to grant access to. Possible values include:
           # projectOwners: Owners of the enclosing project. projectReaders: Readers of the
           # enclosing project. projectWriters: Writers of the enclosing project.
-          # allAuthenticatedUsers: All authenticated BigQuery users.
+          # allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-
+          # named IAM members.
           # Corresponds to the JSON property `specialGroup`
           # @return [String]
           attr_accessor :special_group
         
           # [Pick one] An email address of a user to grant access to. For example: fred@
-          # example.com.
+          # example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
           # Corresponds to the JSON property `userByEmail`
           # @return [String]
           attr_accessor :user_by_email
@@ -501,6 +510,7 @@ module Google
           def update!(**args)
             @domain = args[:domain] if args.key?(:domain)
             @group_by_email = args[:group_by_email] if args.key?(:group_by_email)
+            @iam_member = args[:iam_member] if args.key?(:iam_member)
             @role = args[:role] if args.key?(:role)
             @special_group = args[:special_group] if args.key?(:special_group)
             @user_by_email = args[:user_by_email] if args.key?(:user_by_email)
@@ -3893,8 +3903,7 @@ module Google
         # @return [String]
         attr_accessor :field
       
-        # [Beta] [Optional] If set to true, queries over this table require a partition
-        # filter that can be used for partition elimination to be specified.
+        # 
         # Corresponds to the JSON property `requirePartitionFilter`
         # @return [Boolean]
         attr_accessor :require_partition_filter

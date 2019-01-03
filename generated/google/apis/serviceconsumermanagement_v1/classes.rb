@@ -3079,8 +3079,10 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::Monitoring]
         attr_accessor :monitoring
       
-        # The DNS address at which this service is available,
-        # e.g. `calendar.googleapis.com`.
+        # The service name, which is a DNS-like logical identifier for the
+        # service, such as `calendar.googleapis.com`. The service name
+        # typically goes through DNS verification to make sure the owner
+        # of the service also owns the DNS name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
