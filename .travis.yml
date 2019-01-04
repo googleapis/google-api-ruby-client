@@ -12,10 +12,10 @@ env:
   - RAILS_VERSION="~>5.0.0"
 matrix:
   exclude:
-    - env: RAILS_VERSION="~>5.0.0"
-      rvm: 2.0
-    - env: RAILS_VERSION="~>5.0.0"
-      rvm: 2.1
+    - env: RAILS_VERSION="~>4.2.0"
+      rvm: 2.3
+    - env: RAILS_VERSION="~>4.2.0"
+      rvm: jruby
 before_install:
   - gem install bundler --version 1.17.3
 notifications:
