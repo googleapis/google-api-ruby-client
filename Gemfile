@@ -5,7 +5,7 @@ gemspec
 
 
 group :development do
-  gem 'bundler', '~> 1.7'
+  gem 'bundler', '>= 1.7'
   gem 'rake', '~> 11.2'
   gem 'rspec', '~> 3.1'
   gem 'json_spec', '~> 1.1'
