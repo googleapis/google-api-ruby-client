@@ -66,6 +66,7 @@ module Google
         # This header can be modified, but Cloud Scheduler will append
         # `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
         # modified `User-Agent`.
+        # * `X-CloudScheduler`: This header will be set to true.
         # If the job has an body, Cloud Scheduler sets the
         # following headers:
         # * `Content-Type`: By default, the `Content-Type` header is set to
@@ -77,13 +78,9 @@ module Google
         # output only. It cannot be changed.
         # The headers below are output only. They cannot be set or overridden:
         # * `X-Google-*`: For Google internal use only.
-        # * `X-AppEngine-*`: For Google internal use only. See
-        # [Reading request headers](https://cloud.google.com/appengine/docs/python/
-        # taskqueue/push/creating-handlers#reading_request_headers).
+        # * `X-AppEngine-*`: For Google internal use only.
         # In addition, some App Engine headers, which contain
-        # job-specific information, are also be sent to the job handler; see
-        # [request headers](https://cloud.google.comappengine/docs/standard/python/
-        # config/cron#securing_urls_for_cron).
+        # job-specific information, are also be sent to the job handler.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers

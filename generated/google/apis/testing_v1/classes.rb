@@ -1349,6 +1349,11 @@ module Google
       class IosXcTest
         include Google::Apis::Core::Hashable
       
+        # Output only. The bundle id for the application under test.
+        # Corresponds to the JSON property `appBundleId`
+        # @return [String]
+        attr_accessor :app_bundle_id
+      
         # A reference to a file, used for user inputs.
         # Corresponds to the JSON property `testsZip`
         # @return [Google::Apis::TestingV1::FileReference]
@@ -1372,6 +1377,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_bundle_id = args[:app_bundle_id] if args.key?(:app_bundle_id)
           @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
           @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
           @xctestrun = args[:xctestrun] if args.key?(:xctestrun)

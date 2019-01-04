@@ -1164,6 +1164,7 @@ module Google
       # Outputs a base64 encoded representation of the hashed output
       # (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
       # Currently, only string and integer values can be hashed.
+      # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
       class GooglePrivacyDlpV2CryptoHashConfig
         include Google::Apis::Core::Hashable
       
@@ -4074,6 +4075,7 @@ module Google
         # Outputs a base64 encoded representation of the hashed output
         # (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         # Currently, only string and integer values can be hashed.
+        # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
         # Corresponds to the JSON property `cryptoHashConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig]
         attr_accessor :crypto_hash_config
