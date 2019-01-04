@@ -253,7 +253,7 @@ module Google
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
         def success(result, &block)
-          logger.debug { sprintf('Success - %s', PP.pp(result, '')) }
+          logger.debug { sprintf('Success - %s', safe_object_representation(result)) }
           block.call(result, nil) if block_given?
           result
         end
@@ -332,6 +332,19 @@ module Google
         end
 
         private
+
+        UNSAFE_CLASS_NAMES = [
+          "Google::Apis::CloudkmsV1::DecryptResponse"
+        ]
+
+        def safe_object_representation obj
+          name = obj.class.name
+          if UNSAFE_CLASS_NAMES.include? name
+            "#<#{name} (fields redacted)>"
+          else
+            PP.pp(obj, "")
+          end
+        end
 
         def opencensus_begin_span
           return unless OPENCENSUS_AVAILABLE && options.use_opencensus

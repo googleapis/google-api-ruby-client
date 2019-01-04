@@ -15,6 +15,15 @@
 require 'spec_helper'
 require 'google/apis/core/http_command'
 
+module Google
+  module Apis
+    module CloudkmsV1
+      class DecryptResponse
+      end
+    end
+  end
+end
+
 RSpec.describe Google::Apis::Core::HttpCommand do
   include TestHelpers
   include_context 'HTTP client'
@@ -429,4 +438,23 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.execute(client)
   end
 
+  describe "#safe_object_representation" do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    it "should show fields in a normal object" do
+      obj = Object.new
+      obj.instance_variable_set(:@foobar, "hi")
+      str = command.send(:safe_object_representation, obj)
+      expect(str).to match /@foobar/
+    end
+
+    it "should not show fields in a restricted object" do
+      obj = Google::Apis::CloudkmsV1::DecryptResponse.new
+      obj.instance_variable_set(:@foobar, "hi")
+      str = command.send(:safe_object_representation, obj)
+      expect(str).not_to match /@foobar/
+    end
+  end
 end
