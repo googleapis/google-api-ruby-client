@@ -16,7 +16,9 @@ matrix:
       rvm: 2.0
     - env: RAILS_VERSION="~>5.0.0"
       rvm: 2.1
-before_install: gem install bundler --version 1.17.3
+before_install:
+  - gem uninstall -a -x bundler
+  - gem install bundler --version 1.17.3
 notifications:
   email:
     recipients:
