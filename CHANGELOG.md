@@ -1,3 +1,16 @@
+# 0.27.2
+* Backwards compatible changes:
+  * Updated `bigquery_v2`
+  * Updated `cloudscheduler_v1beta1`
+  * Updated `dlp_v2`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `testing_v1`
+
 # 0.27.1
 * Backwards compatible changes:
   * Added `cloudidentity_v1`
