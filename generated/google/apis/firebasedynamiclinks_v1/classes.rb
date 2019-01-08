@@ -720,6 +720,12 @@ module Google
         # @return [String]
         attr_accessor :invitation_id
       
+        # FDL input value of the "&imv=" parameter, minimum app version to be
+        # returned to Google Firebase SDK running on iOS-9.
+        # Corresponds to the JSON property `iosMinAppVersion`
+        # @return [String]
+        attr_accessor :ios_min_app_version
+      
         # The entire FDL, expanded from a short link. It is the same as the
         # requested_link, if it is long.
         # Corresponds to the JSON property `resolvedLink`
@@ -749,6 +755,7 @@ module Google
         def update!(**args)
           @deep_link = args[:deep_link] if args.key?(:deep_link)
           @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @ios_min_app_version = args[:ios_min_app_version] if args.key?(:ios_min_app_version)
           @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
           @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)
           @utm_medium = args[:utm_medium] if args.key?(:utm_medium)

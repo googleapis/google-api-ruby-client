@@ -342,6 +342,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deep_link, as: 'deepLink'
           property :invitation_id, as: 'invitationId'
+          property :ios_min_app_version, as: 'iosMinAppVersion'
           property :resolved_link, as: 'resolvedLink'
           property :utm_campaign, as: 'utmCampaign'
           property :utm_medium, as: 'utmMedium'

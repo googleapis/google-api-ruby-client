@@ -1891,6 +1891,14 @@ module Google
         # @return [Google::Apis::TestingV1::EnvironmentMatrix]
         attr_accessor :environment_matrix
       
+        # The number of times a TestExecution should be re-attempted if one or more
+        # of its test cases fail for any reason.
+        # The maximum number of reruns allowed is 10.
+        # Default is 0, which implies no reruns.
+        # Corresponds to the JSON property `flakyTestAttempts`
+        # @return [Fixnum]
+        attr_accessor :flaky_test_attempts
+      
         # Output only. Describes why the matrix is considered invalid.
         # Only useful for matrices in the INVALID state.
         # Corresponds to the JSON property `invalidMatrixDetails`
@@ -1942,6 +1950,7 @@ module Google
         def update!(**args)
           @client_info = args[:client_info] if args.key?(:client_info)
           @environment_matrix = args[:environment_matrix] if args.key?(:environment_matrix)
+          @flaky_test_attempts = args[:flaky_test_attempts] if args.key?(:flaky_test_attempts)
           @invalid_matrix_details = args[:invalid_matrix_details] if args.key?(:invalid_matrix_details)
           @project_id = args[:project_id] if args.key?(:project_id)
           @result_storage = args[:result_storage] if args.key?(:result_storage)

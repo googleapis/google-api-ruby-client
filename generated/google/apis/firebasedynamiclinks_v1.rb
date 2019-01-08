@@ -25,7 +25,7 @@ module Google
     # @see https://firebase.google.com/docs/dynamic-links/
     module FirebasedynamiclinksV1
       VERSION = 'V1'
-      REVISION = '20181121'
+      REVISION = '20190105'
 
       # View and administer all your Firebase data and settings
       AUTH_FIREBASE = 'https://www.googleapis.com/auth/firebase'
