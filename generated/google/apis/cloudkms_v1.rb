@@ -26,10 +26,13 @@ module Google
     # @see https://cloud.google.com/kms/
     module CloudkmsV1
       VERSION = 'V1'
-      REVISION = '20181130'
+      REVISION = '20190104'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your keys and secrets stored in Cloud Key Management Service
+      AUTH_CLOUDKMS = 'https://www.googleapis.com/auth/cloudkms'
     end
   end
 end

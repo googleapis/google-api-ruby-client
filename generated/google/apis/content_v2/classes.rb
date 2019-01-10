@@ -781,6 +781,24 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
+        # Whether user is an order manager.
+        # Corresponds to the JSON property `orderManager`
+        # @return [Boolean]
+        attr_accessor :order_manager
+        alias_method :order_manager?, :order_manager
+      
+        # Whether user can access payment statements.
+        # Corresponds to the JSON property `paymentsAnalyst`
+        # @return [Boolean]
+        attr_accessor :payments_analyst
+        alias_method :payments_analyst?, :payments_analyst
+      
+        # Whether user can manage payment settings.
+        # Corresponds to the JSON property `paymentsManager`
+        # @return [Boolean]
+        attr_accessor :payments_manager
+        alias_method :payments_manager?, :payments_manager
+      
         def initialize(**args)
            update!(**args)
         end
@@ -789,6 +807,9 @@ module Google
         def update!(**args)
           @admin = args[:admin] if args.key?(:admin)
           @email_address = args[:email_address] if args.key?(:email_address)
+          @order_manager = args[:order_manager] if args.key?(:order_manager)
+          @payments_analyst = args[:payments_analyst] if args.key?(:payments_analyst)
+          @payments_manager = args[:payments_manager] if args.key?(:payments_manager)
         end
       end
       
@@ -4090,6 +4111,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The party responsible for collecting and remitting taxes.
+        # Corresponds to the JSON property `taxCollector`
+        # @return [String]
+        attr_accessor :tax_collector
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4116,6 +4142,7 @@ module Google
           @shipping_cost_tax = args[:shipping_cost_tax] if args.key?(:shipping_cost_tax)
           @shipping_option = args[:shipping_option] if args.key?(:shipping_option)
           @status = args[:status] if args.key?(:status)
+          @tax_collector = args[:tax_collector] if args.key?(:tax_collector)
         end
       end
       
@@ -5021,6 +5048,11 @@ module Google
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :product_amount
       
+        # Total amount with remitted tax for the items.
+        # Corresponds to the JSON property `productAmountWithRemittedTax`
+        # @return [Google::Apis::ContentV2::ProductAmount]
+        attr_accessor :product_amount_with_remitted_tax
+      
         # The date of the transaction, in ISO 8601 format.
         # Corresponds to the JSON property `transactionDate`
         # @return [String]
@@ -5040,6 +5072,7 @@ module Google
           @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
           @order_id = args[:order_id] if args.key?(:order_id)
           @product_amount = args[:product_amount] if args.key?(:product_amount)
+          @product_amount_with_remitted_tax = args[:product_amount_with_remitted_tax] if args.key?(:product_amount_with_remitted_tax)
           @transaction_date = args[:transaction_date] if args.key?(:transaction_date)
         end
       end
@@ -5775,7 +5808,9 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to cancellation amount in amountPretax.
+        # Tax amount that corresponds to cancellation amount in amountPretax. Optional,
+        # but if filled, then amountPretax must be set. Calculated automatically if not
+        # provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -6237,7 +6272,9 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to cancellation amount in amountPretax.
+        # Tax amount that corresponds to cancellation amount in amountPretax. Optional,
+        # but if filled, then amountPretax must be set. Calculated automatically if not
+        # provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -6375,13 +6412,13 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
-        # The amount that is refunded. Either amount or amountPretax and amountTax
-        # should be filled.
+        # The amount that is refunded. Either amount or amountPretax should be filled.
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to refund amount in amountPretax.
+        # Tax amount that corresponds to refund amount in amountPretax. Optional, but if
+        # filled, amountPretax must be set. Calculated automatically if not provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -6503,13 +6540,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The amount that is refunded. If omitted, refundless return is assumed (same as
-        # calling returnLineItem method). Optional, but if filled then both amountPretax
-        # and amountTax must be set.
+        # calling returnLineItem method).
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to refund amount in amountPretax.
+        # Tax amount that corresponds to refund amount in amountPretax. Optional, but if
+        # filled, then amountPretax must be set. Calculated automatically if not
+        # provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -7013,13 +7051,13 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
-        # The amount that is refunded. Either amount or amountPretax and amountTax
-        # should be filled.
+        # The amount that is refunded. Either amount or amountPretax should be filled.
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to refund amount in amountPretax.
+        # Tax amount that corresponds to refund amount in amountPretax. Optional, but if
+        # filled, amountPretax must be set. Calculated automatically if not provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -7237,13 +7275,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The amount that is refunded. If omitted, refundless return is assumed (same as
-        # calling returnLineItem method). Optional, but if filled then both amountPretax
-        # and amountTax must be set.
+        # calling returnLineItem method).
         # Corresponds to the JSON property `amountPretax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_pretax
       
-        # Tax amount that correspond to refund amount in amountPretax.
+        # Tax amount that corresponds to refund amount in amountPretax. Optional, but if
+        # filled, then amountPretax must be set. Calculated automatically if not
+        # provided.
         # Corresponds to the JSON property `amountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount_tax
@@ -8958,6 +8997,37 @@ module Google
           @unit_pricing_measure = args[:unit_pricing_measure] if args.key?(:unit_pricing_measure)
           @validated_destinations = args[:validated_destinations] if args.key?(:validated_destinations)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # 
+      class ProductAmount
+        include Google::Apis::Core::Hashable
+      
+        # The pre-tax or post-tax price depending on the location of the order.
+        # Corresponds to the JSON property `priceAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price_amount
+      
+        # Remitted tax value.
+        # Corresponds to the JSON property `remittedTaxAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :remitted_tax_amount
+      
+        # Tax value.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price_amount = args[:price_amount] if args.key?(:price_amount)
+          @remitted_tax_amount = args[:remitted_tax_amount] if args.key?(:remitted_tax_amount)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
         end
       end
       

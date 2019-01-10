@@ -646,6 +646,24 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
+        # Whether user is an order manager.
+        # Corresponds to the JSON property `orderManager`
+        # @return [Boolean]
+        attr_accessor :order_manager
+        alias_method :order_manager?, :order_manager
+      
+        # Whether user can access payment statements.
+        # Corresponds to the JSON property `paymentsAnalyst`
+        # @return [Boolean]
+        attr_accessor :payments_analyst
+        alias_method :payments_analyst?, :payments_analyst
+      
+        # Whether user can manage payment settings.
+        # Corresponds to the JSON property `paymentsManager`
+        # @return [Boolean]
+        attr_accessor :payments_manager
+        alias_method :payments_manager?, :payments_manager
+      
         def initialize(**args)
            update!(**args)
         end
@@ -654,6 +672,9 @@ module Google
         def update!(**args)
           @admin = args[:admin] if args.key?(:admin)
           @email_address = args[:email_address] if args.key?(:email_address)
+          @order_manager = args[:order_manager] if args.key?(:order_manager)
+          @payments_analyst = args[:payments_analyst] if args.key?(:payments_analyst)
+          @payments_manager = args[:payments_manager] if args.key?(:payments_manager)
         end
       end
       
@@ -1323,15 +1344,16 @@ module Google
       class Amount
         include Google::Apis::Core::Hashable
       
-        # [required] Value before taxes.
-        # Corresponds to the JSON property `pretax`
+        # [required] The pre-tax or post-tax price depending on the location of the
+        # order.
+        # Corresponds to the JSON property `priceAmount`
         # @return [Google::Apis::ContentV2_1::Price]
-        attr_accessor :pretax
+        attr_accessor :price_amount
       
         # [required] Tax value.
-        # Corresponds to the JSON property `tax`
+        # Corresponds to the JSON property `taxAmount`
         # @return [Google::Apis::ContentV2_1::Price]
-        attr_accessor :tax
+        attr_accessor :tax_amount
       
         def initialize(**args)
            update!(**args)
@@ -1339,8 +1361,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @pretax = args[:pretax] if args.key?(:pretax)
-          @tax = args[:tax] if args.key?(:tax)
+          @price_amount = args[:price_amount] if args.key?(:price_amount)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
         end
       end
       
@@ -3487,6 +3509,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The party responsible for collecting and remitting taxes.
+        # Corresponds to the JSON property `taxCollector`
+        # @return [String]
+        attr_accessor :tax_collector
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3513,6 +3540,7 @@ module Google
           @shipping_cost_tax = args[:shipping_cost_tax] if args.key?(:shipping_cost_tax)
           @shipping_option = args[:shipping_option] if args.key?(:shipping_option)
           @status = args[:status] if args.key?(:status)
+          @tax_collector = args[:tax_collector] if args.key?(:tax_collector)
         end
       end
       
@@ -4348,7 +4376,7 @@ module Google
       
         # Total amount for the items.
         # Corresponds to the JSON property `productAmount`
-        # @return [Google::Apis::ContentV2_1::Amount]
+        # @return [Google::Apis::ContentV2_1::ProductAmount]
         attr_accessor :product_amount
       
         # The date of the transaction, in ISO 8601 format.
@@ -5679,8 +5707,7 @@ module Google
         attr_accessor :operation_id
       
         # The amount to be refunded. This may be pre-tax or post-tax depending on the
-        # location of the order. If omitted, refundless return is assumed. Optional, but
-        # if filled then both priceAmount and taxAmount must be set.
+        # location of the order. If omitted, refundless return is assumed.
         # Corresponds to the JSON property `priceAmount`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price_amount
@@ -5706,7 +5733,8 @@ module Google
         # @return [String]
         attr_accessor :reason_text
       
-        # The amount of tax to be refunded.
+        # The amount of tax to be refunded. Optional, but if filled, then priceAmount
+        # must be set. Calculated automatically if not provided.
         # Corresponds to the JSON property `taxAmount`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_amount
@@ -7340,6 +7368,37 @@ module Google
           @title = args[:title] if args.key?(:title)
           @unit_pricing_base_measure = args[:unit_pricing_base_measure] if args.key?(:unit_pricing_base_measure)
           @unit_pricing_measure = args[:unit_pricing_measure] if args.key?(:unit_pricing_measure)
+        end
+      end
+      
+      # 
+      class ProductAmount
+        include Google::Apis::Core::Hashable
+      
+        # The pre-tax or post-tax price depending on the location of the order.
+        # Corresponds to the JSON property `priceAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :price_amount
+      
+        # Remitted tax value.
+        # Corresponds to the JSON property `remittedTaxAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :remitted_tax_amount
+      
+        # Tax value.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price_amount = args[:price_amount] if args.key?(:price_amount)
+          @remitted_tax_amount = args[:remitted_tax_amount] if args.key?(:remitted_tax_amount)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
         end
       end
       

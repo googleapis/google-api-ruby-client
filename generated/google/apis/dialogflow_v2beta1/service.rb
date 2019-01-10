@@ -501,10 +501,10 @@ module Google
         
         # Updates the specified entity type.
         # @param [String] name
-        #   Required for all methods except `create` (`create` populates the name
-        #   automatically.
-        #   The unique identifier of the entity type. Format:
-        #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+        #   The unique identifier of the entity type.
+        #   Required for EntityTypes.UpdateEntityType and
+        #   EntityTypes.BatchUpdateEntityTypes methods.
+        #   Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
@@ -1359,9 +1359,9 @@ module Google
         
         # Updates the specified intent.
         # @param [String] name
-        #   Required for all methods except `create` (`create` populates the name
-        #   automatically.
         #   The unique identifier of this intent.
+        #   Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
+        #   methods.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view

@@ -1306,6 +1306,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductAmount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductAspect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1810,6 +1816,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin, as: 'admin'
           property :email_address, as: 'emailAddress'
+          property :order_manager, as: 'orderManager'
+          property :payments_analyst, as: 'paymentsAnalyst'
+          property :payments_manager, as: 'paymentsManager'
         end
       end
       
@@ -2765,6 +2774,7 @@ module Google
       
           property :shipping_option, as: 'shippingOption'
           property :status, as: 'status'
+          property :tax_collector, as: 'taxCollector'
         end
       end
       
@@ -3006,6 +3016,8 @@ module Google
           property :merchant_order_id, as: 'merchantOrderId'
           property :order_id, as: 'orderId'
           property :product_amount, as: 'productAmount', class: Google::Apis::ContentV2::Amount, decorator: Google::Apis::ContentV2::Amount::Representation
+      
+          property :product_amount_with_remitted_tax, as: 'productAmountWithRemittedTax', class: Google::Apis::ContentV2::ProductAmount, decorator: Google::Apis::ContentV2::ProductAmount::Representation
       
           property :transaction_date, as: 'transactionDate'
         end
@@ -4074,6 +4086,18 @@ module Google
       
           collection :validated_destinations, as: 'validatedDestinations'
           collection :warnings, as: 'warnings', class: Google::Apis::ContentV2::Error, decorator: Google::Apis::ContentV2::Error::Representation
+      
+        end
+      end
+      
+      class ProductAmount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price_amount, as: 'priceAmount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :remitted_tax_amount, as: 'remittedTaxAmount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
         end
       end

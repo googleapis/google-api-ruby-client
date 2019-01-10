@@ -1120,6 +1120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductAmount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductShipping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1568,6 +1574,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin, as: 'admin'
           property :email_address, as: 'emailAddress'
+          property :order_manager, as: 'orderManager'
+          property :payments_analyst, as: 'paymentsAnalyst'
+          property :payments_manager, as: 'paymentsManager'
         end
       end
       
@@ -1778,9 +1787,9 @@ module Google
       class Amount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :pretax, as: 'pretax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+          property :price_amount, as: 'priceAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
-          property :tax, as: 'tax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
         end
       end
@@ -2403,6 +2412,7 @@ module Google
       
           property :shipping_option, as: 'shippingOption'
           property :status, as: 'status'
+          property :tax_collector, as: 'taxCollector'
         end
       end
       
@@ -2631,7 +2641,7 @@ module Google
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :merchant_order_id, as: 'merchantOrderId'
           property :order_id, as: 'orderId'
-          property :product_amount, as: 'productAmount', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
+          property :product_amount, as: 'productAmount', class: Google::Apis::ContentV2_1::ProductAmount, decorator: Google::Apis::ContentV2_1::ProductAmount::Representation
       
           property :transaction_date, as: 'transactionDate'
         end
@@ -3437,6 +3447,18 @@ module Google
           property :unit_pricing_base_measure, as: 'unitPricingBaseMeasure', class: Google::Apis::ContentV2_1::ProductUnitPricingBaseMeasure, decorator: Google::Apis::ContentV2_1::ProductUnitPricingBaseMeasure::Representation
       
           property :unit_pricing_measure, as: 'unitPricingMeasure', class: Google::Apis::ContentV2_1::ProductUnitPricingMeasure, decorator: Google::Apis::ContentV2_1::ProductUnitPricingMeasure::Representation
+      
+        end
+      end
+      
+      class ProductAmount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price_amount, as: 'priceAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :remitted_tax_amount, as: 'remittedTaxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
         end
       end

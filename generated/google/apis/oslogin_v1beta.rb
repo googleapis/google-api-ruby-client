@@ -22,10 +22,10 @@ module Google
     #
     # Manages OS login configuration for Google account users.
     #
-    # @see https://cloud.google.com/compute/docs/oslogin/rest/
+    # @see https://cloud.google.com/compute/docs/oslogin/
     module OsloginV1beta
       VERSION = 'V1beta'
-      REVISION = '20181023'
+      REVISION = '20190107'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

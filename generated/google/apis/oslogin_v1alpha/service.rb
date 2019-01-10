@@ -30,7 +30,7 @@ module Google
       #    Oslogin = Google::Apis::OsloginV1alpha # Alias the module
       #    service = Oslogin::CloudOSLoginService.new
       #
-      # @see https://cloud.google.com/compute/docs/oslogin/rest/
+      # @see https://cloud.google.com/compute/docs/oslogin/
       class CloudOSLoginService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
