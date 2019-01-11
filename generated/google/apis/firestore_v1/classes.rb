@@ -671,6 +671,21 @@ module Google
         # @return [String]
         attr_accessor :field_path
       
+        # A message that can hold any of the supported value types.
+        # Corresponds to the JSON property `increment`
+        # @return [Google::Apis::FirestoreV1::Value]
+        attr_accessor :increment
+      
+        # A message that can hold any of the supported value types.
+        # Corresponds to the JSON property `maximum`
+        # @return [Google::Apis::FirestoreV1::Value]
+        attr_accessor :maximum
+      
+        # A message that can hold any of the supported value types.
+        # Corresponds to the JSON property `minimum`
+        # @return [Google::Apis::FirestoreV1::Value]
+        attr_accessor :minimum
+      
         # An array value.
         # Corresponds to the JSON property `removeAllFromArray`
         # @return [Google::Apis::FirestoreV1::ArrayValue]
@@ -689,6 +704,9 @@ module Google
         def update!(**args)
           @append_missing_elements = args[:append_missing_elements] if args.key?(:append_missing_elements)
           @field_path = args[:field_path] if args.key?(:field_path)
+          @increment = args[:increment] if args.key?(:increment)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
           @remove_all_from_array = args[:remove_all_from_array] if args.key?(:remove_all_from_array)
           @set_to_server_value = args[:set_to_server_value] if args.key?(:set_to_server_value)
         end

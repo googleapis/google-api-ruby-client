@@ -8232,6 +8232,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :limit, as: 'limit'
           property :metric, as: 'metric'
+          property :owner, as: 'owner'
           property :usage, as: 'usage'
         end
       end
@@ -8694,6 +8695,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       

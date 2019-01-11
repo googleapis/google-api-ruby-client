@@ -449,7 +449,8 @@ module Google
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application
       
-        # 
+        # DO NOT USE THIS FIELD. It is never populated in responses from the platform,
+        # and is ignored in queries.
         # Corresponds to the JSON property `dataQualityStandard`
         # @return [Array<String>]
         attr_accessor :data_quality_standard

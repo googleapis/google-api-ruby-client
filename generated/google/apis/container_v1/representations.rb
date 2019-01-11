@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetJsonWebKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetOpenIdConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HorizontalPodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +125,12 @@ module Google
       end
       
       class IpAllocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Jwk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -523,6 +541,27 @@ module Google
         end
       end
       
+      class GetJsonWebKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys, as: 'keys', class: Google::Apis::ContainerV1::Jwk, decorator: Google::Apis::ContainerV1::Jwk::Representation
+      
+        end
+      end
+      
+      class GetOpenIdConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :claims_supported, as: 'claims_supported'
+          collection :grant_types, as: 'grant_types'
+          collection :id_token_signing_alg_values_supported, as: 'id_token_signing_alg_values_supported'
+          property :issuer, as: 'issuer'
+          property :jwks_uri, as: 'jwks_uri'
+          collection :response_types_supported, as: 'response_types_supported'
+          collection :subject_types_supported, as: 'subject_types_supported'
+        end
+      end
+      
       class HorizontalPodAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -551,6 +590,21 @@ module Google
           property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
           property :subnetwork_name, as: 'subnetworkName'
           property :use_ip_aliases, as: 'useIpAliases'
+        end
+      end
+      
+      class Jwk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alg, as: 'alg'
+          property :crv, as: 'crv'
+          property :e, as: 'e'
+          property :kid, as: 'kid'
+          property :kty, as: 'kty'
+          property :n, as: 'n'
+          property :use, as: 'use'
+          property :x, as: 'x'
+          property :y, as: 'y'
         end
       end
       

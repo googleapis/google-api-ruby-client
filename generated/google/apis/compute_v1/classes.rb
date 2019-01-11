@@ -33,8 +33,10 @@ module Google
         attr_accessor :accelerator_count
       
         # Full or partial URL of the accelerator type resource to attach to this
-        # instance. If you are creating an instance template, specify only the
-        # accelerator name.
+        # instance. For example: projects/my-project/zones/us-central1-c/
+        # acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template,
+        # specify only the accelerator name. See GPUs on Compute Engine for a full list
+        # of accelerator types.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1043,7 +1045,7 @@ module Google
         # instance. This name can be used to reference the device for mounting, resizing,
         # and so on, from within the instance.
         # If not specified, the server chooses a default device name to apply to this
-        # disk, in the form persistent-disks-x, where x is a number assigned by Google
+        # disk, in the form persistent-disk-x, where x is a number assigned by Google
         # Compute Engine. This field is only applicable for persistent disks.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
@@ -1911,7 +1913,7 @@ module Google
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
       
-        # Fraction of backend capacity utilization (set in HTTP(s) load balancing
+        # Fraction of backend capacity utilization (set in HTTP(S) load balancing
         # configuration) that autoscaler should maintain. Must be a positive float value.
         # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
@@ -7151,6 +7153,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # 
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -7289,6 +7296,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -7778,6 +7786,12 @@ module Google
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
+        # The autohealing policy for this managed instance group. You can specify only
+        # one value.
+        # Corresponds to the JSON property `autoHealingPolicies`
+        # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy>]
+        attr_accessor :auto_healing_policies
+      
         # The base instance name to use for instances in this group. The value must be 1-
         # 58 characters long. Instances are named by appending a hyphen and a random
         # four-character string to the base instance name. The base instance name must
@@ -7895,6 +7909,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_healing_policies = args[:auto_healing_policies] if args.key?(:auto_healing_policies)
           @base_instance_name = args[:base_instance_name] if args.key?(:base_instance_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @current_actions = args[:current_actions] if args.key?(:current_actions)
@@ -8118,6 +8133,36 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerAutoHealingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The URL for the health check that signals autohealing.
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
+        # The number of seconds that the managed instance group waits before it applies
+        # autohealing policies to new instances or recently recreated instances. This
+        # initial delay allows instances to initialize and run their startup scripts
+        # before the instance group determines that they are UNHEALTHY. This prevents
+        # the managed instance group from recreating its instances prematurely. This
+        # value must be from range [0, 3600].
+        # Corresponds to the JSON property `initialDelaySec`
+        # @return [Fixnum]
+        attr_accessor :initial_delay_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_check = args[:health_check] if args.key?(:health_check)
+          @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
         end
       end
       
@@ -9694,8 +9739,7 @@ module Google
         attr_accessor :kind
       
         # Type of link requested. This field indicates speed of each of the links in the
-        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
-        # interconnect. Options: Ethernet_10G_LR
+        # bundle, not the entire bundle.
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -10784,6 +10828,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of this InterconnectLocation. If the status is
+        # AVAILABLE, new Interconnects may be provisioned in this InterconnectLocation.
+        # Otherwise, no new Interconnects may be provisioned.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10804,6 +10855,7 @@ module Google
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -15158,6 +15210,12 @@ module Google
         # @return [String]
         attr_accessor :metric
       
+        # [Output Only] Owning resource. This is the resource on which this quota is
+        # applied.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
         # [Output Only] Current usage of this metric.
         # Corresponds to the JSON property `usage`
         # @return [Float]
@@ -15171,6 +15229,7 @@ module Google
         def update!(**args)
           @limit = args[:limit] if args.key?(:limit)
           @metric = args[:metric] if args.key?(:metric)
+          @owner = args[:owner] if args.key?(:owner)
           @usage = args[:usage] if args.key?(:usage)
         end
       end

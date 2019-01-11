@@ -552,10 +552,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Required for all methods except `create` (`create` populates the name
-        # automatically.
-        # The unique identifier of the entity type. Format:
-        # `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+        # The unique identifier of the entity type.
+        # Required for EntityTypes.UpdateEntityType and
+        # EntityTypes.BatchUpdateEntityTypes methods.
+        # Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -880,9 +880,9 @@ module Google
         attr_accessor :ml_disabled
         alias_method :ml_disabled?, :ml_disabled
       
-        # Required for all methods except `create` (`create` populates the name
-        # automatically.
         # The unique identifier of this intent.
+        # Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
+        # methods.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -935,7 +935,7 @@ module Google
         # @return [String]
         attr_accessor :root_followup_intent_name
       
-        # Optional. The collection of examples/templates that the agent is
+        # Optional. The collection of examples that the agent is
         # trained on.
         # Corresponds to the JSON property `trainingPhrases`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentTrainingPhrase>]
@@ -1676,7 +1676,7 @@ module Google
         end
       end
       
-      # Represents an example or template that the agent is trained on.
+      # Represents an example that the agent is trained on.
       class GoogleCloudDialogflowV2IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
@@ -1692,7 +1692,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentTrainingPhrasePart>]
         attr_accessor :parts
       
-        # Optional. Indicates how many times this example or template was added to
+        # Optional. Indicates how many times this example was added to
         # the intent. Each time a developer adds an existing sample by editing an
         # intent or training, this counter is increased.
         # Corresponds to the JSON property `timesAddedCount`
@@ -1734,7 +1734,7 @@ module Google
         # @return [String]
         attr_accessor :entity_type
       
-        # Required. The text corresponding to the example or template,
+        # Required. The text corresponding to the example,
         # if there are no annotations. For
         # annotated examples, it is the text for one of the example's parts.
         # Corresponds to the JSON property `text`
@@ -2522,10 +2522,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Required for all methods except `create` (`create` populates the name
-        # automatically.
-        # The unique identifier of the entity type. Format:
-        # `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+        # The unique identifier of the entity type.
+        # Required for EntityTypes.UpdateEntityType and
+        # EntityTypes.BatchUpdateEntityTypes methods.
+        # Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2741,9 +2741,9 @@ module Google
         attr_accessor :ml_enabled
         alias_method :ml_enabled?, :ml_enabled
       
-        # Required for all methods except `create` (`create` populates the name
-        # automatically.
         # The unique identifier of this intent.
+        # Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
+        # methods.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2796,7 +2796,7 @@ module Google
         # @return [String]
         attr_accessor :root_followup_intent_name
       
-        # Optional. The collection of examples/templates that the agent is
+        # Optional. The collection of examples that the agent is
         # trained on.
         # Corresponds to the JSON property `trainingPhrases`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentTrainingPhrase>]
@@ -3622,7 +3622,7 @@ module Google
         end
       end
       
-      # Represents an example or template that the agent is trained on.
+      # Represents an example that the agent is trained on.
       class GoogleCloudDialogflowV2beta1IntentTrainingPhrase
         include Google::Apis::Core::Hashable
       
@@ -3638,7 +3638,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>]
         attr_accessor :parts
       
-        # Optional. Indicates how many times this example or template was added to
+        # Optional. Indicates how many times this example was added to
         # the intent. Each time a developer adds an existing sample by editing an
         # intent or training, this counter is increased.
         # Corresponds to the JSON property `timesAddedCount`
@@ -3680,7 +3680,7 @@ module Google
         # @return [String]
         attr_accessor :entity_type
       
-        # Required. The text corresponding to the example or template,
+        # Required. The text corresponding to the example,
         # if there are no annotations. For
         # annotated examples, it is the text for one of the example's parts.
         # Corresponds to the JSON property `text`

@@ -2297,8 +2297,8 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick chart<
-      # /a>.
+      # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick
+      # chart</a>.
       class CandlestickChartSpec
         include Google::Apis::Core::Hashable
       
@@ -2847,8 +2847,8 @@ module Google
         # @return [Google::Apis::SheetsV4::BubbleChartSpec]
         attr_accessor :bubble_chart
       
-        # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick chart<
-        # /a>.
+        # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick
+        # chart</a>.
         # Corresponds to the JSON property `candlestickChart`
         # @return [Google::Apis::SheetsV4::CandlestickChartSpec]
         attr_accessor :candlestick_chart

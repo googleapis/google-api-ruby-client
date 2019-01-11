@@ -8137,8 +8137,8 @@ module Google
         end
         
         # Deletes the specified instance template. Deleting an instance template is
-        # permanent and cannot be undone. It's not possible to delete templates which
-        # are in use by an instance group.
+        # permanent and cannot be undone. It is not possible to delete templates that
+        # are already in use by a managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -8312,7 +8312,7 @@ module Google
         end
         
         # Retrieves a list of instance templates that are contained within the specified
-        # project and zone.
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -11573,6 +11573,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the access control policy for a resource. May be empty if no such policy
+        # or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_license_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/licenses/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
+          command.response_class = Google::Apis::ComputeBeta::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a License resource in the specified project.
         # @param [String] project
         #   Project ID for this request.
@@ -13605,7 +13642,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource to update.
         # @param [Google::Apis::ComputeBeta::NodeGroupsSetNodeTemplateRequest] node_groups_set_node_template_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so

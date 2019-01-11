@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerAutoHealingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5007,6 +5013,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
+          property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -5151,6 +5158,8 @@ module Google
       class InstanceGroupManager
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy::Representation
+      
           property :base_instance_name, as: 'baseInstanceName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :current_actions, as: 'currentActions', class: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary, decorator: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary::Representation
@@ -5218,6 +5227,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerAutoHealingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check, as: 'healthCheck'
+          property :initial_delay_sec, as: 'initialDelaySec'
         end
       end
       
@@ -5935,6 +5952,7 @@ module Google
           collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeV1::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeV1::InterconnectLocationRegionInfo::Representation
       
           property :self_link, as: 'selfLink'
+          property :status, as: 'status'
         end
       end
       
@@ -7065,6 +7083,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :limit, as: 'limit'
           property :metric, as: 'metric'
+          property :owner, as: 'owner'
           property :usage, as: 'usage'
         end
       end

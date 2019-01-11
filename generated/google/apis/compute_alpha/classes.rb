@@ -33,8 +33,10 @@ module Google
         attr_accessor :accelerator_count
       
         # Full or partial URL of the accelerator type resource to attach to this
-        # instance. If you are creating an instance template, specify only the
-        # accelerator name.
+        # instance. For example: projects/my-project/zones/us-central1-c/
+        # acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template,
+        # specify only the accelerator name. See GPUs on Compute Engine for a full list
+        # of accelerator types.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -97,6 +99,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] The name of the zone where the accelerator type resides, such as
         # us-central1-a. You must specify this field as part of the HTTP request URL. It
         # is not settable as a field in the request body.
@@ -118,6 +125,7 @@ module Google
           @maximum_cards_per_instance = args[:maximum_cards_per_instance] if args.key?(:maximum_cards_per_instance)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -648,6 +656,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] The status of the address, which can be one of RESERVING,
         # RESERVED, or IN_USE. An address that is RESERVING is currently in the process
         # of being reserved. A RESERVED address is currently reserved and available to
@@ -691,6 +704,7 @@ module Google
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @users = args[:users] if args.key?(:users)
@@ -1102,6 +1116,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # This allocation type allows to pre allocate specific instance configuration.
         # Corresponds to the JSON property `specificAllocation`
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocation]
@@ -1133,6 +1152,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @specific_allocation = args[:specific_allocation] if args.key?(:specific_allocation)
           @specific_allocation_required = args[:specific_allocation_required] if args.key?(:specific_allocation_required)
           @zone = args[:zone] if args.key?(:zone)
@@ -1654,7 +1674,7 @@ module Google
         # instance. This name can be used to reference the device for mounting, resizing,
         # and so on, from within the instance.
         # If not specified, the server chooses a default device name to apply to this
-        # disk, in the form persistent-disks-x, where x is a number assigned by Google
+        # disk, in the form persistent-disk-x, where x is a number assigned by Google
         # Compute Engine. This field is only applicable for persistent disks.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
@@ -2039,6 +2059,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] The status of the autoscaler configuration.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -2077,6 +2102,7 @@ module Google
           @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @status_details = args[:status_details] if args.key?(:status_details)
           @target = args[:target] if args.key?(:target)
@@ -2625,7 +2651,7 @@ module Google
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
       
-        # Fraction of backend capacity utilization (set in HTTP(s) load balancing
+        # Fraction of backend capacity utilization (set in HTTP(S) load balancing
         # configuration) that autoscaler should maintain. Must be a positive float value.
         # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
@@ -2900,6 +2926,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2915,6 +2946,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
         end
       end
       
@@ -3238,6 +3270,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # Type of session affinity to use. The default is NONE.
         # When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or
         # GENERATED_COOKIE.
@@ -3285,6 +3322,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @security_policy = args[:security_policy] if args.key?(:security_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
@@ -4130,6 +4168,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] Commitment start time in RFC3339 text format.
         # Corresponds to the JSON property `startTimestamp`
         # @return [String]
@@ -4171,6 +4214,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @resources = args[:resources] if args.key?(:resources)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -4575,6 +4619,79 @@ module Google
         end
       end
       
+      # The specification for allowing client side cross-origin requests. Please see
+      # W3C Recommendation for Cross Origin Resource Sharing
+      class CorsPolicy
+        include Google::Apis::Core::Hashable
+      
+        # In response to a preflight request, setting this to true indicates that the
+        # actual request can include user credentials. This translates to the Access-
+        # Control-Allow-Credentials header.
+        # Default is false.
+        # Corresponds to the JSON property `allowCredentials`
+        # @return [Boolean]
+        attr_accessor :allow_credentials
+        alias_method :allow_credentials?, :allow_credentials
+      
+        # Specifies the content for the Access-Control-Allow-Headers header.
+        # Corresponds to the JSON property `allowHeaders`
+        # @return [Array<String>]
+        attr_accessor :allow_headers
+      
+        # Specifies the content for the Access-Control-Allow-Methods header.
+        # Corresponds to the JSON property `allowMethods`
+        # @return [Array<String>]
+        attr_accessor :allow_methods
+      
+        # Specifies the regualar expression patterns that match allowed origins. For
+        # regular expression grammar please see en.cppreference.com/w/cpp/regex/
+        # ecmascript
+        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # Corresponds to the JSON property `allowOriginRegexes`
+        # @return [Array<String>]
+        attr_accessor :allow_origin_regexes
+      
+        # Specifies the list of origins that will be allowed to do CORS requests.
+        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # Corresponds to the JSON property `allowOrigins`
+        # @return [Array<String>]
+        attr_accessor :allow_origins
+      
+        # If true, specifies the CORS policy is disabled. The default value of false,
+        # which indicates that the CORS policy is in effect.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Specifies the content for the Access-Control-Expose-Headers header.
+        # Corresponds to the JSON property `exposeHeaders`
+        # @return [Array<String>]
+        attr_accessor :expose_headers
+      
+        # Specifies how long the results of a preflight request can be cached. This
+        # translates to the content for the Access-Control-Max-Age header.
+        # Corresponds to the JSON property `maxAge`
+        # @return [Fixnum]
+        attr_accessor :max_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_credentials = args[:allow_credentials] if args.key?(:allow_credentials)
+          @allow_headers = args[:allow_headers] if args.key?(:allow_headers)
+          @allow_methods = args[:allow_methods] if args.key?(:allow_methods)
+          @allow_origin_regexes = args[:allow_origin_regexes] if args.key?(:allow_origin_regexes)
+          @allow_origins = args[:allow_origins] if args.key?(:allow_origins)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @expose_headers = args[:expose_headers] if args.key?(:expose_headers)
+          @max_age = args[:max_age] if args.key?(:max_age)
+        end
+      end
+      
       # Represents a customer-supplied encryption key
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
@@ -4583,6 +4700,11 @@ module Google
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
+      
+        # 
+        # Corresponds to the JSON property `kmsKeyServiceAccount`
+        # @return [String]
+        attr_accessor :kms_key_service_account
       
         # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
         # base64 to either encrypt or decrypt this resource.
@@ -4615,6 +4737,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_service_account = args[:kms_key_service_account] if args.key?(:kms_key_service_account)
           @raw_key = args[:raw_key] if args.key?(:raw_key)
           @rsa_encrypted_key = args[:rsa_encrypted_key] if args.key?(:rsa_encrypted_key)
           @sha256 = args[:sha256] if args.key?(:sha256)
@@ -5336,6 +5459,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] An optional textual description of the valid disk size, such as "
         # 10GB-10TB".
         # Corresponds to the JSON property `validDiskSize`
@@ -5364,6 +5492,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @valid_disk_size = args[:valid_disk_size] if args.key?(:valid_disk_size)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -5902,6 +6031,38 @@ module Google
         end
       end
       
+      # A Duration represents a fixed-length span of time represented as a count of
+      # seconds and fractions of seconds at nanosecond resolution. It is independent
+      # of any calendar and concepts like "day" or "month". Range is approximately 10,
+      # 000 years.
+      class Duration
+        include Google::Apis::Core::Hashable
+      
+        # Span of time that's a fraction of a second at nanosecond resolution. Durations
+        # less than one second are represented with a 0 `seconds` field and a positive `
+        # nanos` field. Must be from 0 to 999,999,999 inclusive.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        # inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24
+        # hr/day * 365.25 days/year * 10000 years
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
       # 
       class ExchangedPeeringRoute
         include Google::Apis::Core::Hashable
@@ -6219,6 +6380,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # If source ranges are specified, the firewall will apply only to traffic that
         # has source IP address in these ranges. These ranges must be expressed in CIDR
         # format. One or both of sourceRanges and sourceTags may be set. If both
@@ -6297,6 +6463,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
           @source_service_accounts = args[:source_service_accounts] if args.key?(:source_service_accounts)
           @source_tags = args[:source_tags] if args.key?(:source_tags)
@@ -6760,6 +6927,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # An optional prefix to the service name for this Forwarding Rule. If specified,
         # will be the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
@@ -6826,6 +6998,7 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_label = args[:service_label] if args.key?(:service_label)
           @service_name = args[:service_name] if args.key?(:service_name)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -8227,6 +8400,258 @@ module Google
         end
       end
       
+      # Specification for how requests are aborted as part of fault injection.
+      class HttpFaultAbort
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code used to abort the request.
+        # The value must be between 200 and 599 inclusive.
+        # Corresponds to the JSON property `httpStatus`
+        # @return [Fixnum]
+        attr_accessor :http_status
+      
+        # The percentage of traffic (connections/operations/requests) which will be
+        # aborted as part of fault injection.
+        # The value must be between 0.0 and 100.0 inclusive.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_status = args[:http_status] if args.key?(:http_status)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Specifies the delay introduced by Loadbalancer before forwarding the request
+      # to the backend service as part of fault injection.
+      class HttpFaultDelay
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `fixedDelay`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :fixed_delay
+      
+        # The percentage of traffic (connections/operations/requests) on which delay
+        # will be introduced as part of fault injection.
+        # The value must be between 0.0 and 100.0 inclusive.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_delay = args[:fixed_delay] if args.key?(:fixed_delay)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # The specification for fault injection introduced into traffic to test the
+      # resiliency of clients to backend service failure. As part of fault injection,
+      # when clients send requests to a backend service, delays can be introduced by
+      # Loadbalancer on a percentage of requests before sending those request to the
+      # backend service. Similarly requests from clients can be aborted by the
+      # Loadbalancer for a percentage of requests.
+      class HttpFaultInjection
+        include Google::Apis::Core::Hashable
+      
+        # Specification for how requests are aborted as part of fault injection.
+        # Corresponds to the JSON property `abort`
+        # @return [Google::Apis::ComputeAlpha::HttpFaultAbort]
+        attr_accessor :abort
+      
+        # Specifies the delay introduced by Loadbalancer before forwarding the request
+        # to the backend service as part of fault injection.
+        # Corresponds to the JSON property `delay`
+        # @return [Google::Apis::ComputeAlpha::HttpFaultDelay]
+        attr_accessor :delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort = args[:abort] if args.key?(:abort)
+          @delay = args[:delay] if args.key?(:delay)
+        end
+      end
+      
+      # The request and response header transformations that take effect before the
+      # request is passed along to the selected backendService.
+      class HttpHeaderAction
+        include Google::Apis::Core::Hashable
+      
+        # Headers to add to a matching request prior to forwarding the request to the
+        # backendService.
+        # Corresponds to the JSON property `requestHeadersToAdd`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpHeaderOption>]
+        attr_accessor :request_headers_to_add
+      
+        # A list of header names for headers that need to be removed from the request
+        # prior to forwarding the request to the backendService.
+        # Corresponds to the JSON property `requestHeadersToRemove`
+        # @return [Array<String>]
+        attr_accessor :request_headers_to_remove
+      
+        # Headers to add the response prior to sending the response back to the client.
+        # Corresponds to the JSON property `responseHeadersToAdd`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpHeaderOption>]
+        attr_accessor :response_headers_to_add
+      
+        # A list of header names for headers that need to be removed from the response
+        # prior to sending the response back to the client.
+        # Corresponds to the JSON property `responseHeadersToRemove`
+        # @return [Array<String>]
+        attr_accessor :response_headers_to_remove
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_headers_to_add = args[:request_headers_to_add] if args.key?(:request_headers_to_add)
+          @request_headers_to_remove = args[:request_headers_to_remove] if args.key?(:request_headers_to_remove)
+          @response_headers_to_add = args[:response_headers_to_add] if args.key?(:response_headers_to_add)
+          @response_headers_to_remove = args[:response_headers_to_remove] if args.key?(:response_headers_to_remove)
+        end
+      end
+      
+      # matchRule criteria for request header matches.
+      class HttpHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # The value should exactly match contents of exactMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # The name of the HTTP header to match.
+        # For matching against the HTTP request's authority, use a headerMatch with the
+        # header name ":authority".
+        # For matching a request's method, use the headerName ":method".
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        # If set to false, the headerMatch is considered a match if the match criteria
+        # above are met. If set to true, the headerMatch is considered a match if the
+        # match criteria above are NOT met.
+        # The default setting is false.
+        # Corresponds to the JSON property `invertMatch`
+        # @return [Boolean]
+        attr_accessor :invert_match
+        alias_method :invert_match?, :invert_match
+      
+        # The value of the header must start with the contents of prefixMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # A header with the contents of headerName must exist. The match takes place
+        # whether or not the request's header has a value or not.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # HttpRouteRuleMatch criteria for field values that must stay within the
+        # specified integer range.
+        # Corresponds to the JSON property `rangeMatch`
+        # @return [Google::Apis::ComputeAlpha::Int64RangeMatch]
+        attr_accessor :range_match
+      
+        # The value of the header must match the regualar expression specified in
+        # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
+        # cpp/regex/ecmascript
+        # For matching against a port specified in the HTTP request, use a headerMatch
+        # with headerName set to PORT and a regular expression that satisfies the
+        # RFC2616 Host header's port specifier.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        # The value of the header must end with the contents of suffixMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `suffixMatch`
+        # @return [String]
+        attr_accessor :suffix_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @header_name = args[:header_name] if args.key?(:header_name)
+          @invert_match = args[:invert_match] if args.key?(:invert_match)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @range_match = args[:range_match] if args.key?(:range_match)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+          @suffix_match = args[:suffix_match] if args.key?(:suffix_match)
+        end
+      end
+      
+      # Specification determining how headers are added to requests or responses.
+      class HttpHeaderOption
+        include Google::Apis::Core::Hashable
+      
+        # The name of the header.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        # The value of the header to add.
+        # Corresponds to the JSON property `headerValue`
+        # @return [String]
+        attr_accessor :header_value
+      
+        # If false, headerValue is appended to any values that already exist for the
+        # header. If true, headerValue is set for the header, discarding any values that
+        # were set for that header.
+        # The default value is false.
+        # Corresponds to the JSON property `replace`
+        # @return [Boolean]
+        attr_accessor :replace
+        alias_method :replace?, :replace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
+          @header_value = args[:header_value] if args.key?(:header_value)
+          @replace = args[:replace] if args.key?(:replace)
+        end
+      end
+      
       # An HttpHealthCheck resource. This resource defines a template for how
       # individual instances should be checked for health, via HTTP.
       class HttpHealthCheck
@@ -8447,6 +8872,384 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # HttpRouteRuleMatch criteria for a request's query parameter.
+      class HttpQueryParameterMatch
+        include Google::Apis::Core::Hashable
+      
+        # The queryParameterMatch matches if the value of the parameter exactly matches
+        # the contents of exactMatch.
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # The name of the query parameter to match. The query parameter must exist in
+        # the request, in the absence of which the request match fails.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies that the queryParameterMatch matches if the request contains the
+        # query parameter, irrespective of whether the parameter has a value or not.
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # The queryParameterMatch matches if the value of the parameter matches the
+        # regular expression specified by regexMatch. For the regular expression grammar,
+        # please see en.cppreference.com/w/cpp/regex/ecmascript
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @name = args[:name] if args.key?(:name)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+        end
+      end
+      
+      # Specifies settings for an HTTP redirect.
+      class HttpRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # The host that will be used in the redirect response instead of the one that
+        # was supplied in the request.
+        # The value must be between 1 and 255 characters.
+        # Corresponds to the JSON property `hostRedirect`
+        # @return [String]
+        attr_accessor :host_redirect
+      
+        # If set to true, the URL scheme in the redirected request is set to https. If
+        # set to false, the URL scheme of the redirected request will remain the same as
+        # that of the request.
+        # This must only be set for UrlMaps used in TargetHttpProxys. Setting this true
+        # for TargetHttpsProxy is not permitted.
+        # The default is set to false.
+        # Corresponds to the JSON property `httpsRedirect`
+        # @return [Boolean]
+        attr_accessor :https_redirect
+        alias_method :https_redirect?, :https_redirect
+      
+        # The path that will be used in the redirect response instead of the one that
+        # was supplied in the request.
+        # Only one of pathRedirect or prefixRedirect must be specified.
+        # The value must be between 1 and 1024 characters.
+        # Corresponds to the JSON property `pathRedirect`
+        # @return [String]
+        attr_accessor :path_redirect
+      
+        # The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        # retaining the remaining portion of the URL before redirecting the request.
+        # Corresponds to the JSON property `prefixRedirect`
+        # @return [String]
+        attr_accessor :prefix_redirect
+      
+        # The HTTP Status code to use for this RedirectAction.
+        # Supported values are:
+        # - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        # 
+        # - FOUND, which corresponds to 302.
+        # - SEE_OTHER which corresponds to 303.
+        # - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request
+        # method will be retained.
+        # - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request
+        # method will be retained.
+        # Corresponds to the JSON property `redirectResponseCode`
+        # @return [String]
+        attr_accessor :redirect_response_code
+      
+        # If set to true, any accompanying query portion of the original URL is removed
+        # prior to redirecting the request. If set to false, the query portion of the
+        # original URL is retained.
+        # The default is set to false.
+        # Corresponds to the JSON property `stripQuery`
+        # @return [Boolean]
+        attr_accessor :strip_query
+        alias_method :strip_query?, :strip_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_redirect = args[:host_redirect] if args.key?(:host_redirect)
+          @https_redirect = args[:https_redirect] if args.key?(:https_redirect)
+          @path_redirect = args[:path_redirect] if args.key?(:path_redirect)
+          @prefix_redirect = args[:prefix_redirect] if args.key?(:prefix_redirect)
+          @redirect_response_code = args[:redirect_response_code] if args.key?(:redirect_response_code)
+          @strip_query = args[:strip_query] if args.key?(:strip_query)
+        end
+      end
+      
+      # The retry policy associates with HttpRouteRule
+      class HttpRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the allowed number retries. This number must be > 0.
+        # Corresponds to the JSON property `numRetries`
+        # @return [Fixnum]
+        attr_accessor :num_retries
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `perTryTimeout`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :per_try_timeout
+      
+        # Specfies one or more conditions when this retry rule applies. Valid values are:
+        # 
+        # - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+        # any 5xx response code, or if the backend service does not respond at all,
+        # example: disconnects, reset, read timeout, connection failure, and refused
+        # streams.
+        # - gateway-error: Similar to 5xx, but only applies to response codes 502, 503
+        # or 504.
+        # -
+        # - connect-failure: Loadbalancer will retry on failures connecting to backend
+        # services, for example due to connection timeouts.
+        # - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        # Currently the only retriable error supported is 409.
+        # - refused-stream:Loadbalancer will retry if the backend service resets the
+        # stream with a REFUSED_STREAM error code. This reset type indicates that it is
+        # safe to retry.
+        # - cancelledLoadbalancer will retry if the gRPC status code in the response
+        # header is set to cancelled
+        # - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the
+        # response header is set to deadline-exceeded
+        # - resource-exhausted: Loadbalancer will retry if the gRPC status code in the
+        # response header is set to resource-exhausted
+        # - unavailable: Loadbalancer will retry if the gRPC status code in the response
+        # header is set to unavailable
+        # Corresponds to the JSON property `retryConditions`
+        # @return [Array<String>]
+        attr_accessor :retry_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_retries = args[:num_retries] if args.key?(:num_retries)
+          @per_try_timeout = args[:per_try_timeout] if args.key?(:per_try_timeout)
+          @retry_conditions = args[:retry_conditions] if args.key?(:retry_conditions)
+        end
+      end
+      
+      # 
+      class HttpRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # The specification for allowing client side cross-origin requests. Please see
+        # W3C Recommendation for Cross Origin Resource Sharing
+        # Corresponds to the JSON property `corsPolicy`
+        # @return [Google::Apis::ComputeAlpha::CorsPolicy]
+        attr_accessor :cors_policy
+      
+        # The specification for fault injection introduced into traffic to test the
+        # resiliency of clients to backend service failure. As part of fault injection,
+        # when clients send requests to a backend service, delays can be introduced by
+        # Loadbalancer on a percentage of requests before sending those request to the
+        # backend service. Similarly requests from clients can be aborted by the
+        # Loadbalancer for a percentage of requests.
+        # Corresponds to the JSON property `faultInjectionPolicy`
+        # @return [Google::Apis::ComputeAlpha::HttpFaultInjection]
+        attr_accessor :fault_injection_policy
+      
+        # A policy that specifies how requests intended for the route's backends are
+        # shadowed to a separate mirrored backend service. Loadbalancer does not wait
+        # for responses from the shadow service. Prior to sending traffic to the shadow
+        # service, the host / authority header is suffixed with -shadow.
+        # Corresponds to the JSON property `requestMirrorPolicy`
+        # @return [Google::Apis::ComputeAlpha::RequestMirrorPolicy]
+        attr_accessor :request_mirror_policy
+      
+        # The retry policy associates with HttpRouteRule
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::ComputeAlpha::HttpRetryPolicy]
+        attr_accessor :retry_policy
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `timeout`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :timeout
+      
+        # The spec for modifying the path before sending the request to the matched
+        # backend service.
+        # Corresponds to the JSON property `urlRewrite`
+        # @return [Google::Apis::ComputeAlpha::UrlRewrite]
+        attr_accessor :url_rewrite
+      
+        # A list of weighted backend services to send traffic to when a route match
+        # occurs. The weights determine the percentage of traffic that flows to their
+        # corresponding backend service. The weights must add up to 100. If all traffic
+        # needs to go to a single backend service, there must be one
+        # weightedBackendService with weight set to 100.
+        # Once a backendService is identified and before forwarding the request to the
+        # backend service, advanced routing actions like Url rewrites and header
+        # transformations are applied depending on additional settings specified in this
+        # HttpRouteAction.
+        # Corresponds to the JSON property `weightedBackendServices`
+        # @return [Array<Google::Apis::ComputeAlpha::WeightedBackendService>]
+        attr_accessor :weighted_backend_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
+          @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @url_rewrite = args[:url_rewrite] if args.key?(:url_rewrite)
+          @weighted_backend_services = args[:weighted_backend_services] if args.key?(:weighted_backend_services)
+        end
+      end
+      
+      # An HttpRouteRule specifies how to match an HTTP request and the corresponding
+      # routing action that load balancing proxies will perform.
+      class HttpRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
+        attr_accessor :header_action
+      
+        # 
+        # Corresponds to the JSON property `matchRules`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRuleMatch>]
+        attr_accessor :match_rules
+      
+        # In response to a matching matchRule, the load balancer routes the request to
+        # the backend service specified by this  routeAction.
+        # Only one of routeAction or urlRedirect must be set.
+        # Corresponds to the JSON property `routeAction`
+        # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
+        attr_accessor :route_action
+      
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `urlRedirect`
+        # @return [Google::Apis::ComputeAlpha::HttpRedirectAction]
+        attr_accessor :url_redirect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_action = args[:header_action] if args.key?(:header_action)
+          @match_rules = args[:match_rules] if args.key?(:match_rules)
+          @route_action = args[:route_action] if args.key?(:route_action)
+          @url_redirect = args[:url_redirect] if args.key?(:url_redirect)
+        end
+      end
+      
+      # HttpRouteRuleMatch specifies a set of criteria for matching requests to an
+      # HttpRouteRule. All specified criteria must be satisfied for a match to occur.
+      class HttpRouteRuleMatch
+        include Google::Apis::Core::Hashable
+      
+        # For satifying the matchRule condition, the path of the request must exactly
+        # match the value specified in fullPathMatch after removing any query parameters
+        # and anchor that may be part of the original URL.
+        # FullPathMatch must be between 1 and 1024 characters.
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `fullPathMatch`
+        # @return [String]
+        attr_accessor :full_path_match
+      
+        # Specifies a list of header match criteria, all of which must match
+        # corresponding headers in the request.
+        # Corresponds to the JSON property `headerMatches`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpHeaderMatch>]
+        attr_accessor :header_matches
+      
+        # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+        # The default value is false.
+        # caseSensitive must not be used with regexMatch.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # Opaque filter criteria used by Loadbalancer to restrict routing configuration
+        # to a limited set xDS compliant clients. In their xDS requests to Loadbalancer,
+        # xDS clients present node metadata. If a match takes place, the relevant
+        # routing configuration is made available to those proxies.
+        # For each metadataFilter in this list, if its filterMatchCriteria is set to
+        # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+        # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+        # all of its filterLabels must match with corresponding labels in the provided
+        # metadata.
+        # metadataFilters specified here can be overrides those specified in
+        # ForwardingRule that refers to this UrlMap.
+        # metadataFilters only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `metadataFilters`
+        # @return [Array<Google::Apis::ComputeAlpha::MetadataFilter>]
+        attr_accessor :metadata_filters
+      
+        # For satifying the matchRule condition, the request's path must begin with the
+        # specified prefixMatch. prefixMatch must begin with a /.
+        # The value must be between 1 and 1024 characters.
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # Specifies a list of query parameter match criteria, all of which must match
+        # corresponding query parameters in the request.
+        # Corresponds to the JSON property `queryParameterMatches`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpQueryParameterMatch>]
+        attr_accessor :query_parameter_matches
+      
+        # For satifying the matchRule condition, the path of the request must satisfy
+        # the regular expression specified in regexMatch after removing any query
+        # parameters and anchor supplied with the original URL. For regular expression
+        # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_path_match = args[:full_path_match] if args.key?(:full_path_match)
+          @header_matches = args[:header_matches] if args.key?(:header_matches)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @query_parameter_matches = args[:query_parameter_matches] if args.key?(:query_parameter_matches)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
         end
       end
       
@@ -8783,6 +9586,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # URL of the source disk used to create this image. This can be a full or valid
         # partial URL. You must provide either this property or the rawDisk.source
         # property but not both to create an image. For example, the following are valid
@@ -8863,6 +9671,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # GCS bucket storage location of the image (regional or multi-regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8886,6 +9699,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
@@ -8897,6 +9711,7 @@ module Google
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
         
         # The parameters of the raw disk image.
@@ -9214,6 +10029,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # A list of service accounts, with their specified scopes, authorized for this
         # instance. Only one service account per VM instance is supported.
         # Service accounts generate access tokens that can be accessed through the
@@ -9300,6 +10120,7 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @shielded_vm_integrity_policy = args[:shielded_vm_integrity_policy] if args.key?(:shielded_vm_integrity_policy)
@@ -9499,6 +10320,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] The total number of instances in the instance group.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
@@ -9532,6 +10358,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @zone = args[:zone] if args.key?(:zone)
@@ -9890,6 +10717,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # The service account to be used as credentials for all operations performed by
         # the managed instance group on instances. The service accounts needs all
         # permissions required to create and delete instances. By default, the service
@@ -9968,6 +10800,7 @@ module Google
           @pending_actions = args[:pending_actions] if args.key?(:pending_actions)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_account = args[:service_account] if args.key?(:service_account)
           @stateful_policy = args[:stateful_policy] if args.key?(:stateful_policy)
           @status = args[:status] if args.key?(:status)
@@ -10560,8 +11393,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :instances
       
-        # The maximal action that should be perfomed on the instances. By default
-        # REPLACE.
+        # The maximal action that should be performed on the instances. By default
+        # REPLACE. This field is deprecated, please use most_disruptive_allowed_action.
         # Corresponds to the JSON property `maximalAction`
         # @return [String]
         attr_accessor :maximal_action
@@ -12261,6 +13094,32 @@ module Google
         end
       end
       
+      # HttpRouteRuleMatch criteria for field values that must stay within the
+      # specified integer range.
+      class Int64RangeMatch
+        include Google::Apis::Core::Hashable
+      
+        # The end of the range (exclusive) in signed long integer format.
+        # Corresponds to the JSON property `rangeEnd`
+        # @return [Fixnum]
+        attr_accessor :range_end
+      
+        # The start of the range (inclusive) in signed long integer format.
+        # Corresponds to the JSON property `rangeStart`
+        # @return [Fixnum]
+        attr_accessor :range_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_end = args[:range_end] if args.key?(:range_end)
+          @range_start = args[:range_start] if args.key?(:range_start)
+        end
+      end
+      
       # Represents an Interconnects resource. The Interconnects resource is a
       # dedicated connection between Google's network and your on-premises network.
       # For more information, see the  Dedicated overview page. (== resource_for v1.
@@ -12362,8 +13221,7 @@ module Google
         attr_accessor :labels
       
         # Type of link requested. This field indicates speed of each of the links in the
-        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
-        # interconnect. Options: Ethernet_10G_LR
+        # bundle, not the entire bundle.
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -15254,6 +16112,11 @@ module Google
       class ManagedInstanceInstanceHealth
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The current detailed instance health state.
+        # Corresponds to the JSON property `detailedHealthState`
+        # @return [String]
+        attr_accessor :detailed_health_state
+      
         # [Output Only] The URL for the health check that verifies whether the instance
         # is healthy.
         # Corresponds to the JSON property `healthCheck`
@@ -15271,6 +16134,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @detailed_health_state = args[:detailed_health_state] if args.key?(:detailed_health_state)
           @health_check = args[:health_check] if args.key?(:health_check)
           @health_state = args[:health_state] if args.key?(:health_state)
         end
@@ -15542,6 +16406,82 @@ module Google
         end
       end
       
+      # Opaque filter criteria used by loadbalancers to restrict routing configuration
+      # to a limited set of loadbalancing proxies. Proxies and sidecars involved in
+      # loadbalancing would typically present metadata to the loadbalancers which need
+      # to match criteria specified here. If a match takes place, the relevant routing
+      # configuration is made available to those proxies.
+      # For each metadataFilter in this list, if its filterMatchCriteria is set to
+      # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+      # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+      # all of its filterLabels must match with corresponding labels in the provided
+      # metadata.
+      # An example for using metadataFilters would be: if loadbalancing involves
+      # Envoys, they will only receive routing configuration when values in
+      # metadataFilters match values supplied in <a href="https://www.envoyproxy.io/
+      # docs/envoy/latest/api-v2/api/v2/core/base.proto#envoy-api-msg-core-node" Node
+      # metadata of their XDS requests to loadbalancers.
+      class MetadataFilter
+        include Google::Apis::Core::Hashable
+      
+        # The list of label value pairs that must match labels in the provided metadata
+        # based on filterMatchCriteria
+        # This list must not be empty and can have at the most 64 entries.
+        # Corresponds to the JSON property `filterLabels`
+        # @return [Array<Google::Apis::ComputeAlpha::MetadataFilterLabelMatch>]
+        attr_accessor :filter_labels
+      
+        # Specifies how individual filterLabel matches within the list of filterLabels
+        # contribute towards the overall metadataFilter match.
+        # Supported values are:
+        # - MATCH_ANY: At least one of the filterLabels must have a matching label in
+        # the provided metadata.
+        # - MATCH_ALL: All filterLabels must have matching labels in the provided
+        # metadata.
+        # Corresponds to the JSON property `filterMatchCriteria`
+        # @return [String]
+        attr_accessor :filter_match_criteria
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_labels = args[:filter_labels] if args.key?(:filter_labels)
+          @filter_match_criteria = args[:filter_match_criteria] if args.key?(:filter_match_criteria)
+        end
+      end
+      
+      # MetadataFilter label name value pairs that are expected to match corresponding
+      # labels presented as metadata to the loadbalancer.
+      class MetadataFilterLabelMatch
+        include Google::Apis::Core::Hashable
+      
+        # Name of metadata label.
+        # The name can have a maximum length of 1024 characters and must be at least 1
+        # character long.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The value of the label must match the specified value.
+        # value can have a maximum length of 1024 characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The named port. For example: .
       class NamedPort
         include Google::Apis::Core::Hashable
@@ -15655,6 +16595,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # [Output Only] Server-defined fully-qualified URLs for all subnetworks in this
         # VPC network.
         # Corresponds to the JSON property `subnetworks`
@@ -15680,6 +16625,7 @@ module Google
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
         end
       end
@@ -17474,6 +18420,25 @@ module Google
       end
       
       # 
+      class NodeGroupsSetAutoscalingPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `autoscalingPolicy`
+        # @return [Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy]
+        attr_accessor :autoscaling_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling_policy = args[:autoscaling_policy] if args.key?(:autoscaling_policy)
+        end
+      end
+      
+      # 
       class NodeGroupsSetNodeTemplateRequest
         include Google::Apis::Core::Hashable
       
@@ -19003,6 +19968,16 @@ module Google
       class PathMatcher
         include Google::Apis::Core::Hashable
       
+        # The default HttpRouteAction to follow if none of the pathRules or routeRules
+        # defined by this pathMatcher are matched. Use defaultRouteAction instead of
+        # defaultService when more advanced default routing actions like traffic
+        # splitting and URL rewrites are desired.
+        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect must be
+        # set.
+        # Corresponds to the JSON property `defaultRouteAction`
+        # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
+        attr_accessor :default_route_action
+      
         # The full or partial URL to the BackendService resource. This will be used if
         # none of the pathRules or routeRules defined by this PathMatcher are matched.
         # For example, the following are all valid URLs to a BackendService resource:
@@ -19023,11 +19998,22 @@ module Google
         # @return [String]
         attr_accessor :default_service
       
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `defaultUrlRedirect`
+        # @return [Google::Apis::ComputeAlpha::HttpRedirectAction]
+        attr_accessor :default_url_redirect
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
+        attr_accessor :header_action
       
         # The name to which this PathMatcher is referred by the HostRule.
         # Corresponds to the JSON property `name`
@@ -19045,16 +20031,29 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::PathRule>]
         attr_accessor :path_rules
       
+        # The list of ordered HTTP route rules. Use this list instead of pathRules when
+        # advanced route matching and routing actions are desired. The order of
+        # specifying routeRules matters: the first rule that matches will cause its
+        # specified routing action to take effect.
+        # Only one of pathRules or routeRules must be set.
+        # Corresponds to the JSON property `routeRules`
+        # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRule>]
+        attr_accessor :route_rules
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
+          @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
           @description = args[:description] if args.key?(:description)
+          @header_action = args[:header_action] if args.key?(:header_action)
           @name = args[:name] if args.key?(:name)
           @path_rules = args[:path_rules] if args.key?(:path_rules)
+          @route_rules = args[:route_rules] if args.key?(:route_rules)
         end
       end
       
@@ -19071,6 +20070,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
+        # The HttpRouteAction to follow if this rule is matched. Use routeAction instead
+        # of service when more advanced default routing actions like traffic splitting
+        # and Url rewrites are desired.
+        # Only one of service, routeAction or urlRedirect should must be set.
+        # Corresponds to the JSON property `routeAction`
+        # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
+        attr_accessor :route_action
+      
         # The URL of the backend service resource if this rule is matched.
         # Use service instead of routeAction when simple routing to a backend service is
         # desired and other advanced capabilities like traffic splitting and rewrites
@@ -19080,6 +20087,11 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `urlRedirect`
+        # @return [Google::Apis::ComputeAlpha::HttpRedirectAction]
+        attr_accessor :url_redirect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19087,7 +20099,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @paths = args[:paths] if args.key?(:paths)
+          @route_action = args[:route_action] if args.key?(:route_action)
           @service = args[:service] if args.key?(:service)
+          @url_redirect = args[:url_redirect] if args.key?(:url_redirect)
         end
       end
       
@@ -19556,6 +20570,12 @@ module Google
         # @return [String]
         attr_accessor :metric
       
+        # [Output Only] Owning resource. This is the resource on which this quota is
+        # applied.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
         # [Output Only] Current usage of this metric.
         # Corresponds to the JSON property `usage`
         # @return [Float]
@@ -19569,6 +20589,7 @@ module Google
         def update!(**args)
           @limit = args[:limit] if args.key?(:limit)
           @metric = args[:metric] if args.key?(:metric)
+          @owner = args[:owner] if args.key?(:owner)
           @usage = args[:usage] if args.key?(:usage)
         end
       end
@@ -20293,8 +21314,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :instances
       
-        # The maximal action that should be perfomed on the instances. By default
-        # REPLACE.
+        # The maximal action that should be performed on the instances. By default
+        # REPLACE. This field is deprecated, please use most_disruptive_allowed_action.
         # Corresponds to the JSON property `maximalAction`
         # @return [String]
         attr_accessor :maximal_action
@@ -20313,6 +21334,25 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+        end
+      end
+      
+      # RegionInstanceGroupManagers.createInstances
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of specifications of per-instance configs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeAlpha::PerInstanceConfig>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -20964,6 +22004,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # A policy that specifies how requests intended for the route's backends are
+      # shadowed to a separate mirrored backend service. Loadbalancer does not wait
+      # for responses from the shadow service. Prior to sending traffic to the shadow
+      # service, the host / authority header is suffixed with -shadow.
+      class RequestMirrorPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The full or partial URL to the BackendService resource being mirrored to.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
         end
       end
       
@@ -21848,6 +22910,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # A list of instance tags to which this route applies.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
@@ -21881,6 +22948,7 @@ module Google
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @tags = args[:tags] if args.key?(:tags)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
@@ -24080,7 +25148,7 @@ module Google
       class ShieldedVmIdentity
         include Google::Apis::Core::Hashable
       
-        # A Shielded VM Identity Entry.
+        # A Shielded Instance Identity Entry.
         # Corresponds to the JSON property `encryptionKey`
         # @return [Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry]
         attr_accessor :encryption_key
@@ -24091,7 +25159,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A Shielded VM Identity Entry.
+        # A Shielded Instance Identity Entry.
         # Corresponds to the JSON property `signingKey`
         # @return [Google::Apis::ComputeAlpha::ShieldedVmIdentityEntry]
         attr_accessor :signing_key
@@ -24108,7 +25176,7 @@ module Google
         end
       end
       
-      # A Shielded VM Identity Entry.
+      # A Shielded Instance Identity Entry.
       class ShieldedVmIdentityEntry
         include Google::Apis::Core::Hashable
       
@@ -24279,6 +25347,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # Represents a customer-supplied encryption key
         # Corresponds to the JSON property `snapshotEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
@@ -24345,6 +25418,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
@@ -29247,6 +30321,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # The default HttpRouteAction to follow if none of the hostRules match. Use
+        # defaultRouteAction instead of defaultService when more advanced default
+        # routing actions like traffic splitting and Url rewrites are desired.
+        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect should
+        # must be set.
+        # Corresponds to the JSON property `defaultRouteAction`
+        # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
+        attr_accessor :default_route_action
+      
         # The URL of the backendService resource if none of the hostRules match.
         # Use defaultService instead of defaultRouteAction when simple routing to a
         # backendService is desired and other advanced capabilities like traffic
@@ -29256,6 +30339,11 @@ module Google
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
+      
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `defaultUrlRedirect`
+        # @return [Google::Apis::ComputeAlpha::HttpRedirectAction]
+        attr_accessor :default_url_redirect
       
         # An optional description of this resource. Provide this property when you
         # create the resource.
@@ -29273,6 +30361,12 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
+        attr_accessor :header_action
       
         # The list of HostRules to use against the URL.
         # Corresponds to the JSON property `hostRules`
@@ -29331,9 +30425,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
+          @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @header_action = args[:header_action] if args.key?(:header_action)
           @host_rules = args[:host_rules] if args.key?(:host_rules)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -29485,10 +30582,22 @@ module Google
       class UrlMapTest
         include Google::Apis::Core::Hashable
       
+        # The weight to use for the supplied host and path when using advanced routing
+        # rules that involve traffic splitting.
+        # Corresponds to the JSON property `backendServiceWeight`
+        # @return [Fixnum]
+        attr_accessor :backend_service_weight
+      
         # Description of this test case.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # The expected URL that should be redirected to for the host and path being
+        # tested.
+        # Corresponds to the JSON property `expectedUrlRedirect`
+        # @return [String]
+        attr_accessor :expected_url_redirect
       
         # Host portion of the URL.
         # Corresponds to the JSON property `host`
@@ -29511,7 +30620,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_service_weight = args[:backend_service_weight] if args.key?(:backend_service_weight)
           @description = args[:description] if args.key?(:description)
+          @expected_url_redirect = args[:expected_url_redirect] if args.key?(:expected_url_redirect)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
           @service = args[:service] if args.key?(:service)
@@ -29804,6 +30915,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # The spec for modifying the path before sending the request to the matched
+      # backend service.
+      class UrlRewrite
+        include Google::Apis::Core::Hashable
+      
+        # Prior to forwarding the request to the selected service, the request's host
+        # header is replaced with contents of hostRewrite.
+        # The value must be between 1 and 255 characters.
+        # Corresponds to the JSON property `hostRewrite`
+        # @return [String]
+        attr_accessor :host_rewrite
+      
+        # Prior to forwarding the request to the selected backend service, the matching
+        # portion of the request's path is replaced by pathPrefixRewrite.
+        # The value must be between 1 and 1024 characters.
+        # Corresponds to the JSON property `pathPrefixRewrite`
+        # @return [String]
+        attr_accessor :path_prefix_rewrite
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
+          @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
         end
       end
       
@@ -31201,6 +32342,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # In contrast to a single BackendService in  HttpRouteAction to which all
+      # matching traffic is directed to, WeightedBackendService allows traffic to be
+      # split across multiple BackendServices. The volume of traffic for each
+      # BackendService is proportional to the weight specified in each
+      # WeightedBackendService
+      class WeightedBackendService
+        include Google::Apis::Core::Hashable
+      
+        # The full or partial URL to the default BackendService resource. Before
+        # forwarding the request to backendService, the loadbalancer applies any
+        # relevant headerActions specified as part of this backendServiceWeight.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
+        attr_accessor :header_action
+      
+        # Specifies the fraction of traffic sent to backendService. The sum of all
+        # weights specified in weightedBackendServices within HttpRouteAction must equal
+        # 100.
+        # The selection of a backend service is determined only for new traffic. Once a
+        # user's request has been directed to a backendService, subsequent requests will
+        # be sent to the same backendService as determined by the BackendService's
+        # session affinity policy.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @header_action = args[:header_action] if args.key?(:header_action)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       

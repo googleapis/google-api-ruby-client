@@ -33,8 +33,10 @@ module Google
         attr_accessor :accelerator_count
       
         # Full or partial URL of the accelerator type resource to attach to this
-        # instance. If you are creating an instance template, specify only the
-        # accelerator name.
+        # instance. For example: projects/my-project/zones/us-central1-c/
+        # acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template,
+        # specify only the accelerator name. See GPUs on Compute Engine for a full list
+        # of accelerator types.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1598,7 +1600,7 @@ module Google
         # instance. This name can be used to reference the device for mounting, resizing,
         # and so on, from within the instance.
         # If not specified, the server chooses a default device name to apply to this
-        # disk, in the form persistent-disks-x, where x is a number assigned by Google
+        # disk, in the form persistent-disk-x, where x is a number assigned by Google
         # Compute Engine. This field is only applicable for persistent disks.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
@@ -2513,7 +2515,7 @@ module Google
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
       
-        # Fraction of backend capacity utilization (set in HTTP(s) load balancing
+        # Fraction of backend capacity utilization (set in HTTP(S) load balancing
         # configuration) that autoscaler should maintain. Must be a positive float value.
         # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
@@ -11384,8 +11386,7 @@ module Google
         attr_accessor :labels
       
         # Type of link requested. This field indicates speed of each of the links in the
-        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
-        # interconnect. Options: Ethernet_10G_LR
+        # bundle, not the entire bundle.
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -17661,6 +17662,12 @@ module Google
         # @return [String]
         attr_accessor :metric
       
+        # [Output Only] Owning resource. This is the resource on which this quota is
+        # applied.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
         # [Output Only] Current usage of this metric.
         # Corresponds to the JSON property `usage`
         # @return [Float]
@@ -17674,6 +17681,7 @@ module Google
         def update!(**args)
           @limit = args[:limit] if args.key?(:limit)
           @metric = args[:metric] if args.key?(:metric)
+          @owner = args[:owner] if args.key?(:owner)
           @usage = args[:usage] if args.key?(:usage)
         end
       end
@@ -19293,6 +19301,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19301,6 +19314,7 @@ module Google
         def update!(**args)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -21576,7 +21590,7 @@ module Google
       class ShieldedVmIdentity
         include Google::Apis::Core::Hashable
       
-        # A Shielded VM Identity Entry.
+        # A Shielded Instance Identity Entry.
         # Corresponds to the JSON property `encryptionKey`
         # @return [Google::Apis::ComputeBeta::ShieldedVmIdentityEntry]
         attr_accessor :encryption_key
@@ -21587,7 +21601,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A Shielded VM Identity Entry.
+        # A Shielded Instance Identity Entry.
         # Corresponds to the JSON property `signingKey`
         # @return [Google::Apis::ComputeBeta::ShieldedVmIdentityEntry]
         attr_accessor :signing_key
@@ -21604,7 +21618,7 @@ module Google
         end
       end
       
-      # A Shielded VM Identity Entry.
+      # A Shielded Instance Identity Entry.
       class ShieldedVmIdentityEntry
         include Google::Apis::Core::Hashable
       

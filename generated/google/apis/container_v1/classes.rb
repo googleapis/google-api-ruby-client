@@ -829,6 +829,82 @@ module Google
         end
       end
       
+      # GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
+      class GetJsonWebKeysResponse
+        include Google::Apis::Core::Hashable
+      
+        # The public component of the keys used by the cluster to sign token
+        # requests.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::ContainerV1::Jwk>]
+        attr_accessor :keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys = args[:keys] if args.key?(:keys)
+        end
+      end
+      
+      # GetOpenIDConfigResponse is an OIDC discovery document for the cluster.
+      # See the OpenID Connect Discovery 1.0 specification for details.
+      class GetOpenIdConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # NOLINT
+        # Corresponds to the JSON property `claims_supported`
+        # @return [Array<String>]
+        attr_accessor :claims_supported
+      
+        # NOLINT
+        # Corresponds to the JSON property `grant_types`
+        # @return [Array<String>]
+        attr_accessor :grant_types
+      
+        # NOLINT
+        # Corresponds to the JSON property `id_token_signing_alg_values_supported`
+        # @return [Array<String>]
+        attr_accessor :id_token_signing_alg_values_supported
+      
+        # NOLINT
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # NOLINT
+        # Corresponds to the JSON property `jwks_uri`
+        # @return [String]
+        attr_accessor :jwks_uri
+      
+        # NOLINT
+        # Corresponds to the JSON property `response_types_supported`
+        # @return [Array<String>]
+        attr_accessor :response_types_supported
+      
+        # NOLINT
+        # Corresponds to the JSON property `subject_types_supported`
+        # @return [Array<String>]
+        attr_accessor :subject_types_supported
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @claims_supported = args[:claims_supported] if args.key?(:claims_supported)
+          @grant_types = args[:grant_types] if args.key?(:grant_types)
+          @id_token_signing_alg_values_supported = args[:id_token_signing_alg_values_supported] if args.key?(:id_token_signing_alg_values_supported)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @jwks_uri = args[:jwks_uri] if args.key?(:jwks_uri)
+          @response_types_supported = args[:response_types_supported] if args.key?(:response_types_supported)
+          @subject_types_supported = args[:subject_types_supported] if args.key?(:subject_types_supported)
+        end
+      end
+      
       # Configuration options for the horizontal pod autoscaling feature, which
       # increases or decreases the number of replica pods a replication controller
       # has based on the resource usage of the existing pods.
@@ -996,6 +1072,75 @@ module Google
           @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
+        end
+      end
+      
+      # Jwk is a JSON Web Key as specified in RFC 7517
+      class Jwk
+        include Google::Apis::Core::Hashable
+      
+        # NOLINT
+        # Corresponds to the JSON property `alg`
+        # @return [String]
+        attr_accessor :alg
+      
+        # NOLINT
+        # Corresponds to the JSON property `crv`
+        # @return [String]
+        attr_accessor :crv
+      
+        # NOLINT
+        # Corresponds to the JSON property `e`
+        # @return [String]
+        attr_accessor :e
+      
+        # NOLINT
+        # Corresponds to the JSON property `kid`
+        # @return [String]
+        attr_accessor :kid
+      
+        # NOLINT
+        # Corresponds to the JSON property `kty`
+        # @return [String]
+        attr_accessor :kty
+      
+        # Fields for RSA keys.
+        # NOLINT
+        # Corresponds to the JSON property `n`
+        # @return [String]
+        attr_accessor :n
+      
+        # NOLINT
+        # Corresponds to the JSON property `use`
+        # @return [String]
+        attr_accessor :use
+      
+        # Fields for ECDSA keys.
+        # NOLINT
+        # Corresponds to the JSON property `x`
+        # @return [String]
+        attr_accessor :x
+      
+        # NOLINT
+        # Corresponds to the JSON property `y`
+        # @return [String]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alg = args[:alg] if args.key?(:alg)
+          @crv = args[:crv] if args.key?(:crv)
+          @e = args[:e] if args.key?(:e)
+          @kid = args[:kid] if args.key?(:kid)
+          @kty = args[:kty] if args.key?(:kty)
+          @n = args[:n] if args.key?(:n)
+          @use = args[:use] if args.key?(:use)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
         end
       end
       

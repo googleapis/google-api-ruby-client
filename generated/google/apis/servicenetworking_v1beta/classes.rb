@@ -456,6 +456,11 @@ module Google
         # @return [Float]
         attr_accessor :deadline
       
+        # The JWT audience is used when generating a JWT id token for the backend.
+        # Corresponds to the JSON property `jwtAudience`
+        # @return [String]
+        attr_accessor :jwt_audience
+      
         # Minimum deadline in seconds needed for this method. Calls having deadline
         # value lower than this will be rejected.
         # Corresponds to the JSON property `minDeadline`
@@ -467,6 +472,11 @@ module Google
         # Corresponds to the JSON property `operationDeadline`
         # @return [Float]
         attr_accessor :operation_deadline
+      
+        # 
+        # Corresponds to the JSON property `pathTranslation`
+        # @return [String]
+        attr_accessor :path_translation
       
         # Selects the methods to which this rule applies.
         # Refer to selector for syntax details.
@@ -482,8 +492,10 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @deadline = args[:deadline] if args.key?(:deadline)
+          @jwt_audience = args[:jwt_audience] if args.key?(:jwt_audience)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
+          @path_translation = args[:path_translation] if args.key?(:path_translation)
           @selector = args[:selector] if args.key?(:selector)
         end
       end

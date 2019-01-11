@@ -585,6 +585,12 @@ module Google
           property :append_missing_elements, as: 'appendMissingElements', class: Google::Apis::FirestoreV1beta1::ArrayValue, decorator: Google::Apis::FirestoreV1beta1::ArrayValue::Representation
       
           property :field_path, as: 'fieldPath'
+          property :increment, as: 'increment', class: Google::Apis::FirestoreV1beta1::Value, decorator: Google::Apis::FirestoreV1beta1::Value::Representation
+      
+          property :maximum, as: 'maximum', class: Google::Apis::FirestoreV1beta1::Value, decorator: Google::Apis::FirestoreV1beta1::Value::Representation
+      
+          property :minimum, as: 'minimum', class: Google::Apis::FirestoreV1beta1::Value, decorator: Google::Apis::FirestoreV1beta1::Value::Representation
+      
           property :remove_all_from_array, as: 'removeAllFromArray', class: Google::Apis::FirestoreV1beta1::ArrayValue, decorator: Google::Apis::FirestoreV1beta1::ArrayValue::Representation
       
           property :set_to_server_value, as: 'setToServerValue'

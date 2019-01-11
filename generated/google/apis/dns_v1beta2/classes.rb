@@ -22,7 +22,13 @@ module Google
   module Apis
     module DnsV1beta2
       
-      # An atomic update to a collection of ResourceRecordSets.
+      # A Change represents a set of ResourceRecordSet additions and deletions applied
+      # atomically to a ManagedZone. ResourceRecordSets within a ManagedZone are
+      # modified by creating a new Change element in the Changes collection. In turn
+      # the Changes collection also records the past modifications to the
+      # ResourceRecordSets in a ManagedZone. The current state of the ManagedZone is
+      # the sum effect of applying all Change elements in the Changes collection in
+      # sequence.
       class Change
         include Google::Apis::Core::Hashable
       
@@ -58,7 +64,9 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Status of the operation (output only).
+        # Status of the operation (output only). A status of "done" means that the
+        # request to update the authoritative servers has been sent, but the servers
+        # might not be updated yet.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -261,11 +269,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :key_length
       
-        # One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-        # Secure Entry Point flag set and, when active, will be used to sign only
-        # resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag
-        # will be cleared and this key will be used to sign only resource record sets of
-        # other types.
+        # Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK).
+        # Key signing keys have the Secure Entry Point flag set and, when active, will
+        # only be used to sign resource record sets of type DNSKEY. Zone signing keys do
+        # not have the Secure Entry Point flag set and will be used to sign all other
+        # types of resource record sets.
         # Corresponds to the JSON property `keyType`
         # @return [String]
         attr_accessor :key_type
@@ -404,14 +412,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :name_servers
       
-        # For privately visible zones, the set of GCP resources that the zone is visible
-        # from.
+        # For privately visible zones, the set of Virtual Private Cloud resources that
+        # the zone is visible from.
         # Corresponds to the JSON property `privateVisibilityConfig`
         # @return [Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig]
         attr_accessor :private_visibility_config
       
         # The zone's visibility: public zones are exposed to the Internet, while private
-        # zones are visible only to GCP resources.
+        # zones are visible only to Virtual Private Cloud resources.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -586,7 +594,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The list of GCE private network IDs that can see this zone.
+        # The list of VPC networks that can see this zone.
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigNetwork>]
         attr_accessor :networks
@@ -612,7 +620,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The fully qualified URL of the GCE private network to bind to. This should be
+        # The fully qualified URL of the VPC network to bind to. This should be
         # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
         # networks/`network`
         # Corresponds to the JSON property `networkUrl`
@@ -708,7 +716,8 @@ module Google
         attr_accessor :start_time
       
         # Status of the operation. Can be one of the following: "PENDING" or "DONE" (
-        # output only).
+        # output only). A status of "DONE" means that the request to update the
+        # authoritative servers has been sent, but the servers might not be updated yet.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -855,8 +864,8 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ResponseHeader]
         attr_accessor :header
       
-        # A policy is a collection of rules applied to one or more networks that specify
-        # forwarding behavior for that network.
+        # A policy is a collection of DNS rules applied to one or more Virtual Private
+        # Cloud resources.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DnsV1beta2::Policy]
         attr_accessor :policy
@@ -881,8 +890,8 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ResponseHeader]
         attr_accessor :header
       
-        # A policy is a collection of rules applied to one or more networks that specify
-        # forwarding behavior for that network.
+        # A policy is a collection of DNS rules applied to one or more Virtual Private
+        # Cloud resources.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DnsV1beta2::Policy]
         attr_accessor :policy
@@ -898,8 +907,8 @@ module Google
         end
       end
       
-      # A policy is a collection of rules applied to one or more networks that specify
-      # forwarding behavior for that network.
+      # A policy is a collection of DNS rules applied to one or more Virtual Private
+      # Cloud resources.
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1024,7 +1033,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The fully qualified URL of the GCE private network to bind to. This should be
+        # The fully qualified URL of the VPC network to bind to. This should be
         # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
         # networks/`network`
         # Corresponds to the JSON property `networkUrl`
@@ -1218,8 +1227,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :ttl
       
-        # The identifier of a supported record type, for example, A, AAAA, MX, TXT, and
-        # so on.
+        # The identifier of a supported record type. See the list of Supported DNS
+        # record types.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

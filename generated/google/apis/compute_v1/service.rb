@@ -6765,8 +6765,8 @@ module Google
         end
         
         # Deletes the specified instance template. Deleting an instance template is
-        # permanent and cannot be undone. It's not possible to delete templates which
-        # are in use by an instance group.
+        # permanent and cannot be undone. It is not possible to delete templates that
+        # are already in use by a managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -6940,7 +6940,7 @@ module Google
         end
         
         # Retrieves a list of instance templates that are contained within the specified
-        # project and zone.
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -11097,7 +11097,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource to update.
         # @param [Google::Apis::ComputeV1::NodeGroupsSetNodeTemplateRequest] node_groups_set_node_template_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so

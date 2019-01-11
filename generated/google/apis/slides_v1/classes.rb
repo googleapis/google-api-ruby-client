@@ -1830,7 +1830,7 @@ module Google
         # A table range with location = (0, 0), row span = 3 and column span = 2
         # specifies the following cells:
         # x     x
-        # [      x      ]
+        # [ x    x    x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::SlidesV1::TableRange]
         attr_accessor :table_range
@@ -4095,7 +4095,7 @@ module Google
       # A table range with location = (0, 0), row span = 3 and column span = 2
       # specifies the following cells:
       # x     x
-      # [      x      ]
+      # [ x    x    x ]
       class TableRange
         include Google::Apis::Core::Hashable
       
@@ -4510,7 +4510,7 @@ module Google
         # A table range with location = (0, 0), row span = 3 and column span = 2
         # specifies the following cells:
         # x     x
-        # [      x      ]
+        # [ x    x    x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::SlidesV1::TableRange]
         attr_accessor :table_range
@@ -4965,7 +4965,7 @@ module Google
         # A table range with location = (0, 0), row span = 3 and column span = 2
         # specifies the following cells:
         # x     x
-        # [      x      ]
+        # [ x    x    x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::SlidesV1::TableRange]
         attr_accessor :table_range
@@ -5020,7 +5020,7 @@ module Google
         # A table range with location = (0, 0), row span = 3 and column span = 2
         # specifies the following cells:
         # x     x
-        # [      x      ]
+        # [ x    x    x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::SlidesV1::TableRange]
         attr_accessor :table_range

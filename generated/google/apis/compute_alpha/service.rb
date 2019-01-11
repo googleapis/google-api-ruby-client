@@ -8998,8 +8998,8 @@ module Google
         end
         
         # Deletes the specified instance template. Deleting an instance template is
-        # permanent and cannot be undone. It's not possible to delete templates which
-        # are in use by an instance group.
+        # permanent and cannot be undone. It is not possible to delete templates that
+        # are already in use by a managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -9173,7 +9173,7 @@ module Google
         end
         
         # Retrieves a list of instance templates that are contained within the specified
-        # project and zone.
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -15426,6 +15426,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the autoscaling policy of the node group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to update.
+        # @param [Google::Apis::ComputeAlpha::NodeGroupsSetAutoscalingPolicyRequest] node_groups_set_autoscaling_policy_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_node_group_autoscaling_policy(project, zone, node_group, node_groups_set_autoscaling_policy_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setAutoscalingPolicy', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsSetAutoscalingPolicyRequest::Representation
+          command.request_object = node_groups_set_autoscaling_policy_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] project
@@ -15475,7 +15529,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource to update.
         # @param [Google::Apis::ComputeAlpha::NodeGroupsSetNodeTemplateRequest] node_groups_set_node_template_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -18755,6 +18809,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the access control policy for a resource. May be empty if no such policy
+        # or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_disk_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/disks/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a persistent regional disk in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -18986,6 +19080,49 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['disk'] = disk unless disk.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeAlpha::RegionSetPolicyRequest] region_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_disk_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -19559,6 +19696,65 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates instances with per-instance configs in this regional managed instance
+        # group. Instances are created using the current instance template. The create
+        # instances operation is marked DONE if the createInstances request is
+        # successful. The underlying actions take additional time. You must separately
+        # verify the status of the creating or actions with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeAlpha::RegionInstanceGroupManagersCreateInstancesRequest] region_instance_group_managers_create_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersCreateInstancesRequest::Representation
+          command.request_object = region_instance_group_managers_create_instances_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

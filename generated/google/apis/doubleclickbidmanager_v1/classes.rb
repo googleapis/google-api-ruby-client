@@ -81,8 +81,8 @@ module Google
         end
       end
       
-      # Request to fetch stored campaigns, insertion orders, line items, TrueView ad
-      # groups and ads.
+      # Request to fetch stored inventory sources, campaigns, insertion orders, line
+      # items, TrueView ad groups and ads.
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
@@ -93,6 +93,7 @@ module Google
         # - "CAMPAIGN"
         # - "INSERTION_ORDER"
         # - "LINE_ITEM"
+        # - "INVENTORY_SOURCE"
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
@@ -151,6 +152,11 @@ module Google
         # @return [String]
         attr_accessor :insertion_orders
       
+        # 
+        # Corresponds to the JSON property `inventorySources`
+        # @return [String]
+        attr_accessor :inventory_sources
+      
         # Retrieved line items in SDF format.
         # Corresponds to the JSON property `lineItems`
         # @return [String]
@@ -166,6 +172,7 @@ module Google
           @ads = args[:ads] if args.key?(:ads)
           @campaigns = args[:campaigns] if args.key?(:campaigns)
           @insertion_orders = args[:insertion_orders] if args.key?(:insertion_orders)
+          @inventory_sources = args[:inventory_sources] if args.key?(:inventory_sources)
           @line_items = args[:line_items] if args.key?(:line_items)
         end
       end

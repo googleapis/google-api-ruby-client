@@ -508,8 +508,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :deadline, as: 'deadline'
+          property :jwt_audience, as: 'jwtAudience'
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
+          property :path_translation, as: 'pathTranslation'
           property :selector, as: 'selector'
         end
       end

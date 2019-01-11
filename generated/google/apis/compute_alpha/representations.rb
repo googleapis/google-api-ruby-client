@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CorsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +809,12 @@ module Google
       end
       
       class DistributionPolicyZoneConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Duration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1090,6 +1102,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpFaultAbort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpFaultDelay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpFaultInjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpHeaderAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpHeaderOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1110,6 +1158,42 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpQueryParameterMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRedirectAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRuleMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1642,6 +1726,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Int64RangeMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Interconnect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2080,6 +2170,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetadataFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataFilterLabelMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NamedPort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2358,6 +2460,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsSetAutoscalingPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2794,6 +2902,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersDeleteInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2915,6 +3029,12 @@ module Google
       end
       
       class RegionUrlMapsValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestMirrorPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4192,6 +4312,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsableSubnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4396,6 +4522,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WeightedBackendService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class XpnHostList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4476,6 +4608,7 @@ module Google
           property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
         end
       end
@@ -4606,6 +4739,7 @@ module Google
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
@@ -4722,6 +4856,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :specific_allocation, as: 'specificAllocation', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocation, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocation::Representation
       
           property :specific_allocation_required, as: 'specificAllocationRequired'
@@ -4949,6 +5084,7 @@ module Google
           property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
           collection :status_details, as: 'statusDetails', class: Google::Apis::ComputeAlpha::AutoscalerStatusDetails, decorator: Google::Apis::ComputeAlpha::AutoscalerStatusDetails::Representation
       
@@ -5149,6 +5285,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
         end
       end
       
@@ -5228,6 +5365,7 @@ module Google
           property :region, as: 'region'
           property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
         end
@@ -5452,6 +5590,7 @@ module Google
           collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::ResourceCommitment, decorator: Google::Apis::ComputeAlpha::ResourceCommitment::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :start_timestamp, as: 'startTimestamp'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -5570,10 +5709,25 @@ module Google
         end
       end
       
+      class CorsPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_credentials, as: 'allowCredentials'
+          collection :allow_headers, as: 'allowHeaders'
+          collection :allow_methods, as: 'allowMethods'
+          collection :allow_origin_regexes, as: 'allowOriginRegexes'
+          collection :allow_origins, as: 'allowOrigins'
+          property :disabled, as: 'disabled'
+          collection :expose_headers, as: 'exposeHeaders'
+          property :max_age, as: 'maxAge'
+        end
+      end
+      
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_service_account, as: 'kmsKeyServiceAccount'
           property :raw_key, as: 'rawKey'
           property :rsa_encrypted_key, as: 'rsaEncryptedKey'
           property :sha256, as: 'sha256'
@@ -5736,6 +5890,7 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :valid_disk_size, as: 'validDiskSize'
           property :zone, as: 'zone'
         end
@@ -5904,6 +6059,14 @@ module Google
         end
       end
       
+      class Duration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nanos, as: 'nanos'
+          property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
       class ExchangedPeeringRoute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5978,6 +6141,7 @@ module Google
           property :network, as: 'network'
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :source_ranges, as: 'sourceRanges'
           collection :source_service_accounts, as: 'sourceServiceAccounts'
           collection :source_tags, as: 'sourceTags'
@@ -6074,6 +6238,7 @@ module Google
           collection :ports, as: 'ports'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
@@ -6437,6 +6602,69 @@ module Google
         end
       end
       
+      class HttpFaultAbort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_status, as: 'httpStatus'
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class HttpFaultDelay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_delay, as: 'fixedDelay', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class HttpFaultInjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort, as: 'abort', class: Google::Apis::ComputeAlpha::HttpFaultAbort, decorator: Google::Apis::ComputeAlpha::HttpFaultAbort::Representation
+      
+          property :delay, as: 'delay', class: Google::Apis::ComputeAlpha::HttpFaultDelay, decorator: Google::Apis::ComputeAlpha::HttpFaultDelay::Representation
+      
+        end
+      end
+      
+      class HttpHeaderAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_headers_to_add, as: 'requestHeadersToAdd', class: Google::Apis::ComputeAlpha::HttpHeaderOption, decorator: Google::Apis::ComputeAlpha::HttpHeaderOption::Representation
+      
+          collection :request_headers_to_remove, as: 'requestHeadersToRemove'
+          collection :response_headers_to_add, as: 'responseHeadersToAdd', class: Google::Apis::ComputeAlpha::HttpHeaderOption, decorator: Google::Apis::ComputeAlpha::HttpHeaderOption::Representation
+      
+          collection :response_headers_to_remove, as: 'responseHeadersToRemove'
+        end
+      end
+      
+      class HttpHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exact_match, as: 'exactMatch'
+          property :header_name, as: 'headerName'
+          property :invert_match, as: 'invertMatch'
+          property :prefix_match, as: 'prefixMatch'
+          property :present_match, as: 'presentMatch'
+          property :range_match, as: 'rangeMatch', class: Google::Apis::ComputeAlpha::Int64RangeMatch, decorator: Google::Apis::ComputeAlpha::Int64RangeMatch::Representation
+      
+          property :regex_match, as: 'regexMatch'
+          property :suffix_match, as: 'suffixMatch'
+        end
+      end
+      
+      class HttpHeaderOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
+          property :header_value, as: 'headerValue'
+          property :replace, as: 'replace'
+        end
+      end
+      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6485,6 +6713,88 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class HttpQueryParameterMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exact_match, as: 'exactMatch'
+          property :name, as: 'name'
+          property :present_match, as: 'presentMatch'
+          property :regex_match, as: 'regexMatch'
+        end
+      end
+      
+      class HttpRedirectAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_redirect, as: 'hostRedirect'
+          property :https_redirect, as: 'httpsRedirect'
+          property :path_redirect, as: 'pathRedirect'
+          property :prefix_redirect, as: 'prefixRedirect'
+          property :redirect_response_code, as: 'redirectResponseCode'
+          property :strip_query, as: 'stripQuery'
+        end
+      end
+      
+      class HttpRetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_retries, as: 'numRetries'
+          property :per_try_timeout, as: 'perTryTimeout', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          collection :retry_conditions, as: 'retryConditions'
+        end
+      end
+      
+      class HttpRouteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeAlpha::CorsPolicy, decorator: Google::Apis::ComputeAlpha::CorsPolicy::Representation
+      
+          property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
+      
+          property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::ComputeAlpha::RequestMirrorPolicy, decorator: Google::Apis::ComputeAlpha::RequestMirrorPolicy::Representation
+      
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::ComputeAlpha::HttpRetryPolicy, decorator: Google::Apis::ComputeAlpha::HttpRetryPolicy::Representation
+      
+          property :timeout, as: 'timeout', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :url_rewrite, as: 'urlRewrite', class: Google::Apis::ComputeAlpha::UrlRewrite, decorator: Google::Apis::ComputeAlpha::UrlRewrite::Representation
+      
+          collection :weighted_backend_services, as: 'weightedBackendServices', class: Google::Apis::ComputeAlpha::WeightedBackendService, decorator: Google::Apis::ComputeAlpha::WeightedBackendService::Representation
+      
+        end
+      end
+      
+      class HttpRouteRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
+      
+          collection :match_rules, as: 'matchRules', class: Google::Apis::ComputeAlpha::HttpRouteRuleMatch, decorator: Google::Apis::ComputeAlpha::HttpRouteRuleMatch::Representation
+      
+          property :route_action, as: 'routeAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
+      
+          property :url_redirect, as: 'urlRedirect', class: Google::Apis::ComputeAlpha::HttpRedirectAction, decorator: Google::Apis::ComputeAlpha::HttpRedirectAction::Representation
+      
+        end
+      end
+      
+      class HttpRouteRuleMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_path_match, as: 'fullPathMatch'
+          collection :header_matches, as: 'headerMatches', class: Google::Apis::ComputeAlpha::HttpHeaderMatch, decorator: Google::Apis::ComputeAlpha::HttpHeaderMatch::Representation
+      
+          property :ignore_case, as: 'ignoreCase'
+          collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeAlpha::MetadataFilter, decorator: Google::Apis::ComputeAlpha::MetadataFilter::Representation
+      
+          property :prefix_match, as: 'prefixMatch'
+          collection :query_parameter_matches, as: 'queryParameterMatches', class: Google::Apis::ComputeAlpha::HttpQueryParameterMatch, decorator: Google::Apis::ComputeAlpha::HttpQueryParameterMatch::Representation
+      
+          property :regex_match, as: 'regexMatch'
         end
       end
       
@@ -6563,6 +6873,7 @@ module Google
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeAlpha::Image::RawDisk, decorator: Google::Apis::ComputeAlpha::Image::RawDisk::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -6577,6 +6888,7 @@ module Google
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
+          collection :storage_locations, as: 'storageLocations'
         end
         
         class RawDisk
@@ -6656,6 +6968,7 @@ module Google
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
       
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeAlpha::ShieldedVmConfig, decorator: Google::Apis::ComputeAlpha::ShieldedVmConfig::Representation
@@ -6718,6 +7031,7 @@ module Google
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
           property :zone, as: 'zone'
@@ -6813,6 +7127,7 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :service_account, as: 'serviceAccount'
           property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeAlpha::StatefulPolicy, decorator: Google::Apis::ComputeAlpha::StatefulPolicy::Representation
       
@@ -7475,6 +7790,14 @@ module Google
       
           property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+        end
+      end
+      
+      class Int64RangeMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range_end, :numeric_string => true, as: 'rangeEnd'
+          property :range_start, :numeric_string => true, as: 'rangeStart'
         end
       end
       
@@ -8219,6 +8542,7 @@ module Google
       class ManagedInstanceInstanceHealth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_health_state, as: 'detailedHealthState'
           property :health_check, as: 'healthCheck'
           property :health_state, as: 'healthState'
         end
@@ -8303,6 +8627,23 @@ module Google
         end
       end
       
+      class MetadataFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter_labels, as: 'filterLabels', class: Google::Apis::ComputeAlpha::MetadataFilterLabelMatch, decorator: Google::Apis::ComputeAlpha::MetadataFilterLabelMatch::Representation
+      
+          property :filter_match_criteria, as: 'filterMatchCriteria'
+        end
+      end
+      
+      class MetadataFilterLabelMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class NamedPort
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8329,6 +8670,7 @@ module Google
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeAlpha::NetworkRoutingConfig, decorator: Google::Apis::ComputeAlpha::NetworkRoutingConfig::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :subnetworks, as: 'subnetworks'
         end
       end
@@ -8805,6 +9147,14 @@ module Google
         end
       end
       
+      class NodeGroupsSetAutoscalingPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy, decorator: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy::Representation
+      
+        end
+      end
+      
       class NodeGroupsSetNodeTemplateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9206,10 +9556,18 @@ module Google
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
+      
           property :default_service, as: 'defaultService'
+          property :default_url_redirect, as: 'defaultUrlRedirect', class: Google::Apis::ComputeAlpha::HttpRedirectAction, decorator: Google::Apis::ComputeAlpha::HttpRedirectAction::Representation
+      
           property :description, as: 'description'
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
+      
           property :name, as: 'name'
           collection :path_rules, as: 'pathRules', class: Google::Apis::ComputeAlpha::PathRule, decorator: Google::Apis::ComputeAlpha::PathRule::Representation
+      
+          collection :route_rules, as: 'routeRules', class: Google::Apis::ComputeAlpha::HttpRouteRule, decorator: Google::Apis::ComputeAlpha::HttpRouteRule::Representation
       
         end
       end
@@ -9218,7 +9576,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :paths, as: 'paths'
+          property :route_action, as: 'routeAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
+      
           property :service, as: 'service'
+          property :url_redirect, as: 'urlRedirect', class: Google::Apis::ComputeAlpha::HttpRedirectAction, decorator: Google::Apis::ComputeAlpha::HttpRedirectAction::Representation
+      
         end
       end
       
@@ -9350,6 +9712,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :limit, as: 'limit'
           property :metric, as: 'metric'
+          property :owner, as: 'owner'
           property :usage, as: 'usage'
         end
       end
@@ -9563,6 +9926,14 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeAlpha::PerInstanceConfig, decorator: Google::Apis::ComputeAlpha::PerInstanceConfig::Representation
+      
+        end
+      end
+      
       class RegionInstanceGroupManagersDeleteInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9750,6 +10121,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource', class: Google::Apis::ComputeAlpha::UrlMap, decorator: Google::Apis::ComputeAlpha::UrlMap::Representation
       
+        end
+      end
+      
+      class RequestMirrorPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
         end
       end
       
@@ -9992,6 +10370,7 @@ module Google
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :tags, as: 'tags'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeAlpha::Route::Warning, decorator: Google::Apis::ComputeAlpha::Route::Warning::Representation
       
@@ -10593,6 +10972,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :source_disk, as: 'sourceDisk'
@@ -11874,9 +12254,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
+      
           property :default_service, as: 'defaultService'
+          property :default_url_redirect, as: 'defaultUrlRedirect', class: Google::Apis::ComputeAlpha::HttpRedirectAction, decorator: Google::Apis::ComputeAlpha::HttpRedirectAction::Representation
+      
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
+      
           collection :host_rules, as: 'hostRules', class: Google::Apis::ComputeAlpha::HostRule, decorator: Google::Apis::ComputeAlpha::HostRule::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -11933,7 +12319,9 @@ module Google
       class UrlMapTest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service_weight, as: 'backendServiceWeight'
           property :description, as: 'description'
+          property :expected_url_redirect, as: 'expectedUrlRedirect'
           property :host, as: 'host'
           property :path, as: 'path'
           property :service, as: 'service'
@@ -12024,6 +12412,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeAlpha::UrlMapValidationResult, decorator: Google::Apis::ComputeAlpha::UrlMapValidationResult::Representation
       
+        end
+      end
+      
+      class UrlRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_rewrite, as: 'hostRewrite'
+          property :path_prefix_rewrite, as: 'pathPrefixRewrite'
         end
       end
       
@@ -12388,6 +12784,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class WeightedBackendService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
+      
+          property :weight, as: 'weight'
         end
       end
       

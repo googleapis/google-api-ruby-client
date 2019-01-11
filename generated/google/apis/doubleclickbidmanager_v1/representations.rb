@@ -182,6 +182,7 @@ module Google
           property :ads, as: 'ads'
           property :campaigns, as: 'campaigns'
           property :insertion_orders, as: 'insertionOrders'
+          property :inventory_sources, as: 'inventorySources'
           property :line_items, as: 'lineItems'
         end
       end
