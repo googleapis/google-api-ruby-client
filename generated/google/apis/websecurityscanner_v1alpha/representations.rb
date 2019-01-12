@@ -304,6 +304,8 @@ module Google
       
           collection :blacklist_patterns, as: 'blacklistPatterns'
           property :display_name, as: 'displayName'
+          property :latest_run, as: 'latestRun', class: Google::Apis::WebsecurityscannerV1alpha::ScanRun, decorator: Google::Apis::WebsecurityscannerV1alpha::ScanRun::Representation
+      
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'
           property :schedule, as: 'schedule', class: Google::Apis::WebsecurityscannerV1alpha::Schedule, decorator: Google::Apis::WebsecurityscannerV1alpha::Schedule::Representation

@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -379,6 +385,8 @@ module Google
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateClusterRequest, decorator: Google::Apis::BigtableadminV2::CreateClusterRequest::Representation
       
           property :request_time, as: 'requestTime'
+          hash :tables, as: 'tables', class: Google::Apis::BigtableadminV2::TableProgress, decorator: Google::Apis::BigtableadminV2::TableProgress::Representation
+      
         end
       end
       
@@ -648,6 +656,15 @@ module Google
       
           property :granularity, as: 'granularity'
           property :name, as: 'name'
+        end
+      end
+      
+      class TableProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_copied_bytes, :numeric_string => true, as: 'estimatedCopiedBytes'
+          property :estimated_size_bytes, :numeric_string => true, as: 'estimatedSizeBytes'
+          property :state, as: 'state'
         end
       end
       

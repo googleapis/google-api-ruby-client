@@ -118,7 +118,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetJsonWebKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetOpenIdConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +161,12 @@ module Google
       end
       
       class IstioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Jwk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +574,8 @@ module Google
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
+          property :database_encryption, as: 'databaseEncryption', class: Google::Apis::ContainerV1beta1::DatabaseEncryption, decorator: Google::Apis::ContainerV1beta1::DatabaseEncryption::Representation
+      
           property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
       
           property :description, as: 'description'
@@ -686,9 +712,38 @@ module Google
         end
       end
       
+      class DatabaseEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_name, as: 'keyName'
+          property :state, as: 'state'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GetJsonWebKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys, as: 'keys', class: Google::Apis::ContainerV1beta1::Jwk, decorator: Google::Apis::ContainerV1beta1::Jwk::Representation
+      
+        end
+      end
+      
+      class GetOpenIdConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :claims_supported, as: 'claims_supported'
+          collection :grant_types, as: 'grant_types'
+          collection :id_token_signing_alg_values_supported, as: 'id_token_signing_alg_values_supported'
+          property :issuer, as: 'issuer'
+          property :jwks_uri, as: 'jwks_uri'
+          collection :response_types_supported, as: 'response_types_supported'
+          collection :subject_types_supported, as: 'subject_types_supported'
         end
       end
       
@@ -730,6 +785,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth, as: 'auth'
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class Jwk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alg, as: 'alg'
+          property :crv, as: 'crv'
+          property :e, as: 'e'
+          property :kid, as: 'kid'
+          property :kty, as: 'kty'
+          property :n, as: 'n'
+          property :use, as: 'use'
+          property :x, as: 'x'
+          property :y, as: 'y'
         end
       end
       

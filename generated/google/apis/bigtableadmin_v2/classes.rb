@@ -399,6 +399,17 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
+        # Keys: the full `name` of each table that existed in the instance when
+        # CreateCluster was first called, i.e.
+        # `projects/<project>/instances/<instance>/tables/<table>`. Any table added
+        # to the instance by a later API call will be created in the new cluster by
+        # that API call, not this one.
+        # Values: information on how much of a table's data has been copied to the
+        # newly-created cluster so far.
+        # Corresponds to the JSON property `tables`
+        # @return [Hash<String,Google::Apis::BigtableadminV2::TableProgress>]
+        attr_accessor :tables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -408,6 +419,7 @@ module Google
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @tables = args[:tables] if args.key?(:tables)
         end
       end
       
@@ -1516,6 +1528,39 @@ module Google
           @column_families = args[:column_families] if args.key?(:column_families)
           @granularity = args[:granularity] if args.key?(:granularity)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Progress info for copying a table's data to the new cluster.
+      class TableProgress
+        include Google::Apis::Core::Hashable
+      
+        # Estimate of the number of bytes copied so far for this table.
+        # This will eventually reach 'estimated_size_bytes' unless the table copy
+        # is CANCELLED.
+        # Corresponds to the JSON property `estimatedCopiedBytes`
+        # @return [Fixnum]
+        attr_accessor :estimated_copied_bytes
+      
+        # Estimate of the size of the table to be copied.
+        # Corresponds to the JSON property `estimatedSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :estimated_size_bytes
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_copied_bytes = args[:estimated_copied_bytes] if args.key?(:estimated_copied_bytes)
+          @estimated_size_bytes = args[:estimated_size_bytes] if args.key?(:estimated_size_bytes)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

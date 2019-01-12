@@ -499,6 +499,7 @@ module Google
       end
       
       # A ScanConfig resource contains the configurations to launch a scan.
+      # next id: 12
       class ScanConfig
         include Google::Apis::Core::Hashable
       
@@ -518,6 +519,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # A ScanRun is a output-only resource representing an actual run of the scan.
+        # Corresponds to the JSON property `latestRun`
+        # @return [Google::Apis::WebsecurityscannerV1alpha::ScanRun]
+        attr_accessor :latest_run
       
         # The maximum QPS during scanning. A valid value ranges from 5 to 20
         # inclusively. If the field is unspecified or its value is set 0, server will
@@ -565,6 +571,7 @@ module Google
           @authentication = args[:authentication] if args.key?(:authentication)
           @blacklist_patterns = args[:blacklist_patterns] if args.key?(:blacklist_patterns)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_run = args[:latest_run] if args.key?(:latest_run)
           @max_qps = args[:max_qps] if args.key?(:max_qps)
           @name = args[:name] if args.key?(:name)
           @schedule = args[:schedule] if args.key?(:schedule)

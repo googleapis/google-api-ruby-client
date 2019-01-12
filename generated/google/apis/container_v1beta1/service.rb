@@ -342,6 +342,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # GetJSONWebKeys gets the public component of the cluster signing keys in
+        # JSON Web Key format.
+        # This API is not yet intended for general use, and is not available for all
+        # clusters.
+        # @param [String] parent
+        #   The cluster (project, location, cluster id) to get keys for. Specified in
+        #   the format 'projects/*/locations/*/clusters/*'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::GetJsonWebKeysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::GetJsonWebKeysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_jwks(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+parent}/jwks', options)
+          command.response_representation = Google::Apis::ContainerV1beta1::GetJsonWebKeysResponse::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::GetJsonWebKeysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all clusters owned by a project in either the specified zone or all
         # zones.
         # @param [String] parent
@@ -1152,6 +1186,41 @@ module Google
           command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetOpenIDConfig gets the OIDC discovery document for the cluster.
+        # See the OpenID Connect Discovery 1.0 specification for details.
+        # https://openid.net/specs/openid-connect-discovery-1_0.html
+        # This API is not yet intended for general use, and is not available for all
+        # clusters.
+        # @param [String] parent
+        #   The cluster (project, location, cluster id) to get the discovery document
+        #   for. Specified in the format 'projects/*/locations/*/clusters/*'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::GetOpenIdConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::GetOpenIdConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cluster_well_known_openid_configuration(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+parent}/.well-known/openid-configuration', options)
+          command.response_representation = Google::Apis::ContainerV1beta1::GetOpenIdConfigResponse::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::GetOpenIdConfigResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
