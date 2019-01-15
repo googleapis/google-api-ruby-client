@@ -40,7 +40,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListImageVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -116,10 +128,28 @@ module Google
         end
       end
       
+      class ImageVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_version_id, as: 'imageVersionId'
+          property :is_default, as: 'isDefault'
+          collection :supported_python_versions, as: 'supportedPythonVersions'
+        end
+      end
+      
       class ListEnvironmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :environments, as: 'environments', class: Google::Apis::ComposerV1::Environment, decorator: Google::Apis::ComposerV1::Environment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListImageVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :image_versions, as: 'imageVersions', class: Google::Apis::ComposerV1::ImageVersion, decorator: Google::Apis::ComposerV1::ImageVersion::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

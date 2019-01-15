@@ -166,6 +166,40 @@ module Google
         end
       end
       
+      # ImageVersion information
+      class ImageVersion
+        include Google::Apis::Core::Hashable
+      
+        # The string identifier of the ImageVersion, in the form:
+        # "composer-x.y.z-airflow-a.b(.c)"
+        # Corresponds to the JSON property `imageVersionId`
+        # @return [String]
+        attr_accessor :image_version_id
+      
+        # Whether this is the default ImageVersion used by Composer during
+        # environment creation if no input ImageVersion is specified.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # supported python versions
+        # Corresponds to the JSON property `supportedPythonVersions`
+        # @return [Array<String>]
+        attr_accessor :supported_python_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_version_id = args[:image_version_id] if args.key?(:image_version_id)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
+        end
+      end
+      
       # The environments in a project and location.
       class ListEnvironmentsResponse
         include Google::Apis::Core::Hashable
@@ -187,6 +221,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environments = args[:environments] if args.key?(:environments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The ImageVersions in a project and location.
+      class ListImageVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of supported ImageVersions in a location.
+        # Corresponds to the JSON property `imageVersions`
+        # @return [Array<Google::Apis::ComposerV1::ImageVersion>]
+        attr_accessor :image_versions
+      
+        # The page token used to query for the next page if one exists.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_versions = args[:image_versions] if args.key?(:image_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
