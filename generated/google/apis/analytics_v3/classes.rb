@@ -349,11 +349,6 @@ module Google
         # @return [String]
         attr_accessor :account_name
       
-        # 
-        # Corresponds to the JSON property `accountSettings`
-        # @return [Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings]
-        attr_accessor :account_settings
-      
         # Resource type for account ticket.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -386,53 +381,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_name = args[:account_name] if args.key?(:account_name)
-          @account_settings = args[:account_settings] if args.key?(:account_settings)
           @kind = args[:kind] if args.key?(:kind)
           @profile_name = args[:profile_name] if args.key?(:profile_name)
           @timezone = args[:timezone] if args.key?(:timezone)
           @webproperty_name = args[:webproperty_name] if args.key?(:webproperty_name)
           @website_url = args[:website_url] if args.key?(:website_url)
-        end
-        
-        # 
-        class AccountSettings
-          include Google::Apis::Core::Hashable
-        
-          # 
-          # Corresponds to the JSON property `shareAnonymouslyWithOthers`
-          # @return [Boolean]
-          attr_accessor :share_anonymously_with_others
-          alias_method :share_anonymously_with_others?, :share_anonymously_with_others
-        
-          # 
-          # Corresponds to the JSON property `shareWithGoogleProducts`
-          # @return [Boolean]
-          attr_accessor :share_with_google_products
-          alias_method :share_with_google_products?, :share_with_google_products
-        
-          # 
-          # Corresponds to the JSON property `shareWithSpecialists`
-          # @return [Boolean]
-          attr_accessor :share_with_specialists
-          alias_method :share_with_specialists?, :share_with_specialists
-        
-          # 
-          # Corresponds to the JSON property `shareWithSupport`
-          # @return [Boolean]
-          attr_accessor :share_with_support
-          alias_method :share_with_support?, :share_with_support
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @share_anonymously_with_others = args[:share_anonymously_with_others] if args.key?(:share_anonymously_with_others)
-            @share_with_google_products = args[:share_with_google_products] if args.key?(:share_with_google_products)
-            @share_with_specialists = args[:share_with_specialists] if args.key?(:share_with_specialists)
-            @share_with_support = args[:share_with_support] if args.key?(:share_with_support)
-          end
         end
       end
       
@@ -446,11 +399,6 @@ module Google
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::AnalyticsV3::Account]
         attr_accessor :account
-      
-        # 
-        # Corresponds to the JSON property `accountSettings`
-        # @return [Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings]
-        attr_accessor :account_settings
       
         # Resource type for account ticket.
         # Corresponds to the JSON property `kind`
@@ -474,51 +422,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
-          @account_settings = args[:account_settings] if args.key?(:account_settings)
           @kind = args[:kind] if args.key?(:kind)
           @profile = args[:profile] if args.key?(:profile)
           @webproperty = args[:webproperty] if args.key?(:webproperty)
-        end
-        
-        # 
-        class AccountSettings
-          include Google::Apis::Core::Hashable
-        
-          # 
-          # Corresponds to the JSON property `shareAnonymouslyWithOthers`
-          # @return [Boolean]
-          attr_accessor :share_anonymously_with_others
-          alias_method :share_anonymously_with_others?, :share_anonymously_with_others
-        
-          # 
-          # Corresponds to the JSON property `shareWithGoogleProducts`
-          # @return [Boolean]
-          attr_accessor :share_with_google_products
-          alias_method :share_with_google_products?, :share_with_google_products
-        
-          # 
-          # Corresponds to the JSON property `shareWithSpecialists`
-          # @return [Boolean]
-          attr_accessor :share_with_specialists
-          alias_method :share_with_specialists?, :share_with_specialists
-        
-          # 
-          # Corresponds to the JSON property `shareWithSupport`
-          # @return [Boolean]
-          attr_accessor :share_with_support
-          alias_method :share_with_support?, :share_with_support
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @share_anonymously_with_others = args[:share_anonymously_with_others] if args.key?(:share_anonymously_with_others)
-            @share_with_google_products = args[:share_with_google_products] if args.key?(:share_with_google_products)
-            @share_with_specialists = args[:share_with_specialists] if args.key?(:share_with_specialists)
-            @share_with_support = args[:share_with_support] if args.key?(:share_with_support)
-          end
         end
       end
       
@@ -591,23 +497,23 @@ module Google
         end
       end
       
-      # JSON template for an AdWords account.
+      # JSON template for an Google Ads account.
       class AdWordsAccount
         include Google::Apis::Core::Hashable
       
-        # True if auto-tagging is enabled on the AdWords account. Read-only after the
+        # True if auto-tagging is enabled on the Google Ads account. Read-only after the
         # insert operation.
         # Corresponds to the JSON property `autoTaggingEnabled`
         # @return [Boolean]
         attr_accessor :auto_tagging_enabled
         alias_method :auto_tagging_enabled?, :auto_tagging_enabled
       
-        # Customer ID. This field is required when creating an AdWords link.
+        # Customer ID. This field is required when creating a Google Ads link.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
       
-        # Resource type for AdWords account.
+        # Resource type for Google Ads account.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1331,12 +1237,12 @@ module Google
         end
       end
       
-      # JSON template for Analytics Entity AdWords Link.
+      # JSON template for Analytics Entity Google Ads Link.
       class EntityAdWordsLink
         include Google::Apis::Core::Hashable
       
-        # A list of AdWords client accounts. These cannot be MCC accounts. This field is
-        # required when creating an AdWords link. It cannot be empty.
+        # A list of Google Ads client accounts. These cannot be MCC accounts. This field
+        # is required when creating a Google Ads link. It cannot be empty.
         # Corresponds to the JSON property `adWordsAccounts`
         # @return [Array<Google::Apis::AnalyticsV3::AdWordsAccount>]
         attr_accessor :ad_words_accounts
@@ -1346,17 +1252,17 @@ module Google
         # @return [Google::Apis::AnalyticsV3::EntityAdWordsLink::Entity]
         attr_accessor :entity
       
-        # Entity AdWords link ID
+        # Entity Google Ads link ID
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Resource type for entity AdWords link.
+        # Resource type for entity Google Ads link.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name of the link. This field is required when creating an AdWords link.
+        # Name of the link. This field is required when creating a Google Ads link.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1366,7 +1272,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :profile_ids
       
-        # URL link for this Google Analytics - Google AdWords link.
+        # URL link for this Google Analytics - Google Ads link.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1406,12 +1312,12 @@ module Google
         end
       end
       
-      # An entity AdWords link collection provides a list of GA-AdWords links Each
-      # resource in this collection corresponds to a single link.
+      # An entity Google Ads link collection provides a list of GA-Google Ads links
+      # Each resource in this collection corresponds to a single link.
       class EntityAdWordsLinks
         include Google::Apis::Core::Hashable
       
-        # A list of entity AdWords links.
+        # A list of entity Google Ads links.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::AnalyticsV3::EntityAdWordsLink>]
         attr_accessor :items
@@ -1429,12 +1335,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Next link for this AdWords link collection.
+        # Next link for this Google Ads link collection.
         # Corresponds to the JSON property `nextLink`
         # @return [String]
         attr_accessor :next_link
       
-        # Previous link for this AdWords link collection.
+        # Previous link for this Google Ads link collection.
         # Corresponds to the JSON property `previousLink`
         # @return [String]
         attr_accessor :previous_link
@@ -3530,8 +3436,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The foreign account ID. For example the an AdWords `linkedAccountId` has the
-        # following format XXX-XXX-XXXX.
+        # The foreign account ID. For example the an Google Ads `linkedAccountId` has
+        # the following format XXX-XXX-XXXX.
         # Corresponds to the JSON property `linkedAccountId`
         # @return [String]
         attr_accessor :linked_account_id

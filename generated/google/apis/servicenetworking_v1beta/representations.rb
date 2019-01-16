@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudServicenetworkingV1betaSubnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class QuotaLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Range
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -629,6 +641,16 @@ module Google
         end
       end
       
+      class GoogleCloudServicenetworkingV1betaSubnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :outside_allocation, as: 'outsideAllocation'
+        end
+      end
+      
       class Http
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -848,6 +870,14 @@ module Google
           property :name, as: 'name'
           property :unit, as: 'unit'
           hash :values, as: 'values'
+        end
+      end
+      
+      class Range
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
         end
       end
       

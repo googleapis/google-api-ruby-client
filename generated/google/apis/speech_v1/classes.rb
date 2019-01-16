@@ -286,6 +286,17 @@ module Google
         attr_accessor :enable_automatic_punctuation
         alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
       
+        # This needs to be set to `true` explicitly and `audio_channel_count` > 1
+        # to get each channel recognized separately. The recognition result will
+        # contain a `channel_tag` field to state which channel that result belongs
+        # to. If this is not true, we will only recognize the first channel. The
+        # request is billed cumulatively for all channels recognized:
+        # `audio_channel_count` multiplied by the length of the audio.
+        # Corresponds to the JSON property `enableSeparateRecognitionPerChannel`
+        # @return [Boolean]
+        attr_accessor :enable_separate_recognition_per_channel
+        alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
+      
         # *Optional* If `true`, the top result includes a list of words and
         # the start and end time offsets (timestamps) for those words. If
         # `false`, no word-level time offset information is returned. The default is
@@ -409,6 +420,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
+          @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -548,6 +560,13 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
+        # For multi-channel audio, this is the channel number corresponding to the
+        # recognized result for the audio from that channel.
+        # For audio_channel_count = N, its output values can range from '1' to 'N'.
+        # Corresponds to the JSON property `channelTag`
+        # @return [Fixnum]
+        attr_accessor :channel_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -555,6 +574,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
         end
       end
       

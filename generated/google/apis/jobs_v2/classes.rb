@@ -800,7 +800,7 @@ module Google
         # be specified.
         # This field is used to perform number range search.
         # (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. For
-        # `long_value`, a value between Long.MIN and Long.MIN is allowed.
+        # `long_value`, a value between Long.MIN and Long.MAX is allowed.
         # Corresponds to the JSON property `longValue`
         # @return [Fixnum]
         attr_accessor :long_value

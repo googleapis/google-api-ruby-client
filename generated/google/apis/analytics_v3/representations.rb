@@ -66,24 +66,12 @@ module Google
       
       class AccountTreeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class AccountSettings
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class AccountTreeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class AccountSettings
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -766,23 +754,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_name, as: 'accountName'
-          property :account_settings, as: 'accountSettings', class: Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings, decorator: Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings::Representation
-      
           property :kind, as: 'kind'
           property :profile_name, as: 'profileName'
           property :timezone, as: 'timezone'
           property :webproperty_name, as: 'webpropertyName'
           property :website_url, as: 'websiteUrl'
-        end
-        
-        class AccountSettings
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :share_anonymously_with_others, as: 'shareAnonymouslyWithOthers'
-            property :share_with_google_products, as: 'shareWithGoogleProducts'
-            property :share_with_specialists, as: 'shareWithSpecialists'
-            property :share_with_support, as: 'shareWithSupport'
-          end
         end
       end
       
@@ -791,23 +767,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account', class: Google::Apis::AnalyticsV3::Account, decorator: Google::Apis::AnalyticsV3::Account::Representation
       
-          property :account_settings, as: 'accountSettings', class: Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings, decorator: Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings::Representation
-      
           property :kind, as: 'kind'
           property :profile, as: 'profile', class: Google::Apis::AnalyticsV3::Profile, decorator: Google::Apis::AnalyticsV3::Profile::Representation
       
           property :webproperty, as: 'webproperty', class: Google::Apis::AnalyticsV3::Webproperty, decorator: Google::Apis::AnalyticsV3::Webproperty::Representation
       
-        end
-        
-        class AccountSettings
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :share_anonymously_with_others, as: 'shareAnonymouslyWithOthers'
-            property :share_with_google_products, as: 'shareWithGoogleProducts'
-            property :share_with_specialists, as: 'shareWithSpecialists'
-            property :share_with_support, as: 'shareWithSupport'
-          end
         end
       end
       

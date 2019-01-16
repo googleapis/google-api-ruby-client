@@ -405,7 +405,7 @@ module Google
       class DateValues
         include Google::Apis::Core::Hashable
       
-        # The maximum number of elements is 100.
+        # 
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::CloudsearchV1::Date>]
         attr_accessor :values
@@ -548,7 +548,7 @@ module Google
       class DoubleValues
         include Google::Apis::Core::Hashable
       
-        # The maximum number of elements is 100.
+        # 
         # Corresponds to the JSON property `values`
         # @return [Array<Float>]
         attr_accessor :values
@@ -800,7 +800,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The maximum allowable length for string values is 32 characters.
-        # The maximum number of elements is 100.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -1237,7 +1236,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The maximum allowable length for html values is 2048 characters.
-        # The maximum number of string elements is 100.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -1400,7 +1398,7 @@ module Google
       class IntegerValues
         include Google::Apis::Core::Hashable
       
-        # The maximum number of elements is 100.
+        # 
         # Corresponds to the JSON property `values`
         # @return [Array<Fixnum>]
         attr_accessor :values
@@ -2362,7 +2360,7 @@ module Google
       class ObjectValues
         include Google::Apis::Core::Hashable
       
-        # The maximum number of elements is 100.
+        # 
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::CloudsearchV1::StructuredDataObject>]
         attr_accessor :values
@@ -4432,7 +4430,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The maximum allowable length for text values is 2048 characters.
-        # The maximum number of string elements is 100.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -4528,7 +4525,7 @@ module Google
       class TimestampValues
         include Google::Apis::Core::Hashable
       
-        # The maximum number of elements is 100.
+        # 
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values

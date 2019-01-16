@@ -29,10 +29,10 @@ module Google
       #    require 'google/apis/jobs_v2'
       #
       #    Jobs = Google::Apis::JobsV2 # Alias the module
-      #    service = Jobs::JobServiceService.new
+      #    service = Jobs::CloudTalentSolutionService.new
       #
       # @see https://cloud.google.com/talent-solution/job-search/docs/
-      class JobServiceService < Google::Apis::Core::BaseService
+      class CloudTalentSolutionService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

@@ -2047,6 +2047,7 @@ module Google
         attr_accessor :fulfillment_messages
       
         # The text to be pronounced to the user or shown on the screen.
+        # Note: This is a legacy field, `fulfillment_messages` should be preferred.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text
@@ -3881,6 +3882,7 @@ module Google
         attr_accessor :fulfillment_messages
       
         # The text to be pronounced to the user or shown on the screen.
+        # Note: This is a legacy field, `fulfillment_messages` should be preferred.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text

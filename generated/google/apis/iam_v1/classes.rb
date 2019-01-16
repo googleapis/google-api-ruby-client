@@ -695,6 +695,43 @@ module Google
         end
       end
       
+      # The patch service account request.
+      class PatchServiceAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        # A service account in the Identity and Access Management API.
+        # To create a service account, specify the `project_id` and the `account_id`
+        # for the account.  The `account_id` is unique within the project, and is used
+        # to generate the service account email address and a stable
+        # `unique_id`.
+        # If the account already exists, the account's resource name is returned
+        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
+        # can use the name in other methods to access the account.
+        # All other methods can identify the service account using the format
+        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        # the account. The `ACCOUNT` value can be the `email` address or the
+        # `unique_id` of the service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::IamV1::ServiceAccount]
+        attr_accessor :service_account
+      
+        # 
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # A permission which can be included by a role.
       class Permission
         include Google::Apis::Core::Hashable

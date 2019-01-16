@@ -22,8 +22,9 @@ module Google
     module FirebasehostingV1beta1
       # Firebase Hosting API
       #
-      # The Firebase Hosting REST API enables programmatic custom deployment for
-      #  releasing versions of your Firebase hosted content and configuration files.
+      # The Firebase Hosting REST API enables programmatic and customizable
+      #  deployments to your Firebase-hosted sites. Use this REST API to deploy new or
+      #  updated hosting configurations and content files.
       #
       # @example
       #    require 'google/apis/firebasehosting_v1beta1'

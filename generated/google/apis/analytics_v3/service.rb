@@ -3007,13 +3007,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a web property-AdWords link.
+        # Deletes a web property-Google Ads link.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
         # @param [String] web_property_id
-        #   Web property ID to delete the AdWords link for.
+        #   Web property ID to delete the Google Ads link for.
         # @param [String] web_property_ad_words_link_id
-        #   Web property AdWords link ID.
+        #   Web property Google Ads link ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3044,13 +3044,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a web property-AdWords link to which the user has access.
+        # Returns a web property-Google Ads link to which the user has access.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
         # @param [String] web_property_id
-        #   Web property ID to retrieve the AdWords link for.
+        #   Web property ID to retrieve the Google Ads link for.
         # @param [String] web_property_ad_words_link_id
-        #   Web property-AdWords link ID.
+        #   Web property-Google Ads link ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3083,7 +3083,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a webProperty-AdWords link.
+        # Creates a webProperty-Google Ads link.
         # @param [String] account_id
         #   ID of the Google Analytics account to create the link for.
         # @param [String] web_property_id
@@ -3122,16 +3122,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists webProperty-AdWords links for a given web property.
+        # Lists webProperty-Google Ads links for a given web property.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
         # @param [String] web_property_id
-        #   Web property ID to retrieve the AdWords links for.
+        #   Web property ID to retrieve the Google Ads links for.
         # @param [Fixnum] max_results
-        #   The maximum number of webProperty-AdWords links to include in this response.
+        #   The maximum number of webProperty-Google Ads links to include in this response.
         # @param [Fixnum] start_index
-        #   An index of the first webProperty-AdWords link to retrieve. Use this parameter
-        #   as a pagination mechanism along with the max-results parameter.
+        #   An index of the first webProperty-Google Ads link to retrieve. Use this
+        #   parameter as a pagination mechanism along with the max-results parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3165,14 +3165,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing webProperty-AdWords link. This method supports patch
+        # Updates an existing webProperty-Google Ads link. This method supports patch
         # semantics.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
         # @param [String] web_property_id
-        #   Web property ID to retrieve the AdWords link for.
+        #   Web property ID to retrieve the Google Ads link for.
         # @param [String] web_property_ad_words_link_id
-        #   Web property-AdWords link ID.
+        #   Web property-Google Ads link ID.
         # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3208,13 +3208,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing webProperty-AdWords link.
+        # Updates an existing webProperty-Google Ads link.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
         # @param [String] web_property_id
-        #   Web property ID to retrieve the AdWords link for.
+        #   Web property ID to retrieve the Google Ads link for.
         # @param [String] web_property_ad_words_link_id
-        #   Web property-AdWords link ID.
+        #   Web property-Google Ads link ID.
         # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

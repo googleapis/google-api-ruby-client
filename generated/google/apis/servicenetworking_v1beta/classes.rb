@@ -1211,6 +1211,49 @@ module Google
         end
       end
       
+      # Represents a subnet that was created or discovered by a private access
+      # management service.
+      class GoogleCloudServicenetworkingV1betaSubnetwork
+        include Google::Apis::Core::Hashable
+      
+        # Subnetwork CIDR range in `10.x.x.x/y` format.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Subnetwork name.
+        # See https://cloud.google.com/compute/docs/vpc/
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # In the Shared VPC host project, the VPC network that's peered with the
+        # consumer network. For example:
+        # `projects/1234321/global/networks/host-network`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # This is a discovered subnet that is not within the current consumer
+        # allocated ranges.
+        # Corresponds to the JSON property `outsideAllocation`
+        # @return [Boolean]
+        attr_accessor :outside_allocation
+        alias_method :outside_allocation?, :outside_allocation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
+        end
+      end
+      
       # Defines the HTTP configuration for an API service. It contains a list of
       # HttpRule, each specifying the mapping of an RPC method
       # to one or more HTTP REST API methods.
@@ -2634,6 +2677,34 @@ module Google
           @name = args[:name] if args.key?(:name)
           @unit = args[:unit] if args.key?(:unit)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents a found unused range.
+      class Range
+        include Google::Apis::Core::Hashable
+      
+        # CIDR range in "10.x.x.x/y" format that is within the
+        # allocated ranges and currently unused.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # In the Shared VPC host project, the VPC network that's peered with the
+        # consumer network. For example:
+        # `projects/1234321/global/networks/host-network`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @network = args[:network] if args.key?(:network)
         end
       end
       

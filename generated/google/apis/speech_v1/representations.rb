@@ -166,6 +166,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
+          property :enable_separate_recognition_per_channel, as: 'enableSeparateRecognitionPerChannel'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
           property :language_code, as: 'languageCode'
@@ -219,6 +220,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1::SpeechRecognitionAlternative::Representation
       
+          property :channel_tag, as: 'channelTag'
         end
       end
       

@@ -1260,6 +1260,7 @@ module Google
         attr_accessor :fulfillment_messages
       
         # The text to be pronounced to the user or shown on the screen.
+        # Note: This is a legacy field, `fulfillment_messages` should be preferred.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text
@@ -1937,6 +1938,11 @@ module Google
         attr_accessor :alternative_query_results
       
         # The audio data bytes encoded as specified in the request.
+        # Note: The output audio is generated based on the values of default platform
+        # text responses found in the `query_result.fulfillment_messages` field. If
+        # multiple default text responses exist, they will be concatenated when
+        # generating audio. If no default platform text responses exist, the
+        # generated audio content will be empty.
         # Corresponds to the JSON property `outputAudio`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3983,6 +3989,7 @@ module Google
         attr_accessor :fulfillment_messages
       
         # The text to be pronounced to the user or shown on the screen.
+        # Note: This is a legacy field, `fulfillment_messages` should be preferred.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text

@@ -263,7 +263,8 @@ module Google
         alias_method :dev_mode?, :dev_mode
       
         # The name of the function to execute in the given script. The name does not
-        # include parentheses or parameters.
+        # include parentheses or parameters. It can reference a function in an
+        # included library such as `Library.libFunction1`.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
