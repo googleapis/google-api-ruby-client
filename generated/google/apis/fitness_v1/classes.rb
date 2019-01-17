@@ -151,9 +151,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :end_time_millis
       
-        # A list of acceptable data quality standards. Only data points which conform to
-        # at least one of the specified data quality standards will be returned. If the
-        # list is empty, all data points are returned.
+        # DO NOT POPULATE THIS FIELD. As data quality standards are deprecated, filling
+        # it in will result in no data sources being returned. It will be removed in a
+        # future version entirely.
         # Corresponds to the JSON property `filteredDataQualityStandard`
         # @return [Array<String>]
         attr_accessor :filtered_data_quality_standard
@@ -449,8 +449,9 @@ module Google
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application
       
-        # DO NOT USE THIS FIELD. It is never populated in responses from the platform,
-        # and is ignored in queries.
+        # DO NOT POPULATE THIS FIELD. It is never populated in responses from the
+        # platform, and is ignored in queries. It will be removed in a future version
+        # entirely.
         # Corresponds to the JSON property `dataQualityStandard`
         # @return [Array<String>]
         attr_accessor :data_quality_standard
@@ -618,7 +619,7 @@ module Google
       
         # The largest end time of all data points in this possibly partial
         # representation of the dataset. Time is in nanoseconds from epoch. This should
-        # also match the first part of the dataset identifier.
+        # also match the second part of the dataset identifier.
         # Corresponds to the JSON property `maxEndTimeNs`
         # @return [Fixnum]
         attr_accessor :max_end_time_ns

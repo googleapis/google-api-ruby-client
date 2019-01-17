@@ -205,7 +205,6 @@ module Google
         
         # Enable multiple services on a project. The operation is atomic: if enabling
         # any service fails, then the entire batch fails, and no state changes occur.
-        # Operation<response: BatchEnableServicesResponse>
         # @param [String] parent
         #   Parent to enable services on.
         #   An example name would be:
@@ -248,7 +247,6 @@ module Google
         # It is not valid to call the disable method on a service that is not
         # currently enabled. Callers will receive a `FAILED_PRECONDITION` status if
         # the target service is not currently enabled.
-        # Operation<response: DisableServiceResponse>
         # @param [String] name
         #   Name of the consumer and service to disable the service on.
         #   The enable and disable methods currently only support projects.
@@ -286,7 +284,6 @@ module Google
         end
         
         # Enable a service so that it can be used with a project.
-        # Operation<response: EnableServiceResponse>
         # @param [String] name
         #   Name of the consumer and service to enable the service on.
         #   The `EnableService` and `DisableService` methods currently only support

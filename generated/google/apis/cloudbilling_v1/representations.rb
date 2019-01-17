@@ -317,6 +317,7 @@ module Google
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_entity_name, as: 'businessEntityName'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :service_id, as: 'serviceId'

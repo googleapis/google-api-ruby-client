@@ -776,6 +776,12 @@ module Google
       class Service
         include Google::Apis::Core::Hashable
       
+        # The business under which the service is offered.
+        # Ex. "businessEntities/GCP", "businessEntities/Maps"
+        # Corresponds to the JSON property `businessEntityName`
+        # @return [String]
+        attr_accessor :business_entity_name
+      
         # A human readable display name for this service.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -799,6 +805,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @business_entity_name = args[:business_entity_name] if args.key?(:business_entity_name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @service_id = args[:service_id] if args.key?(:service_id)
