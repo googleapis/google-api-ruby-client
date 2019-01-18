@@ -53,12 +53,12 @@ module Google
       class GoogleApiHttpBody
         include Google::Apis::Core::Hashable
       
-        # The HTTP Content-Type string representing the content type of the body.
+        # The HTTP Content-Type header value specifying the content type of the body.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
       
-        # HTTP body binary data.
+        # The HTTP request/response body as raw binary.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -445,7 +445,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Represents input parameters for a prediction job. Next field: 20
+        # Represents input parameters for a prediction job.
         # Corresponds to the JSON property `predictionInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionInput]
         attr_accessor :prediction_input
@@ -927,7 +927,7 @@ module Google
         end
       end
       
-      # Represents input parameters for a prediction job. Next field: 20
+      # Represents input parameters for a prediction job.
       class GoogleCloudMlV1PredictionInput
         include Google::Apis::Core::Hashable
       
@@ -1181,26 +1181,22 @@ module Google
         # <dt>standard_v100</dt>
         # <dd>
         # A machine equivalent to <i>standard</i> that
-        # also includes a single NVIDIA Tesla V100 GPU. The availability of these
-        # GPUs is in the <i>Beta</i> launch stage.
+        # also includes a single NVIDIA Tesla V100 GPU.
         # </dd>
         # <dt>large_model_v100</dt>
         # <dd>
         # A machine equivalent to <i>large_model</i> that
-        # also includes a single NVIDIA Tesla V100 GPU. The availability of these
-        # GPUs is in the <i>Beta</i> launch stage.
+        # also includes a single NVIDIA Tesla V100 GPU.
         # </dd>
         # <dt>complex_model_m_v100</dt>
         # <dd>
         # A machine equivalent to <i>complex_model_m</i> that
-        # also includes four NVIDIA Tesla V100 GPUs. The availability of these
-        # GPUs is in the <i>Beta</i> launch stage.
+        # also includes four NVIDIA Tesla V100 GPUs.
         # </dd>
         # <dt>complex_model_l_v100</dt>
         # <dd>
         # A machine equivalent to <i>complex_model_l</i> that
-        # also includes eight NVIDIA Tesla V100 GPUs. The availability of these
-        # GPUs is in the <i>Beta</i> launch stage.
+        # also includes eight NVIDIA Tesla V100 GPUs.
         # </dd>
         # <dt>cloud_tpu</dt>
         # <dd>
@@ -1226,6 +1222,7 @@ module Google
         # `parameter_server_type`.
         # This value can only be used when `scale_tier` is set to `CUSTOM`.If you
         # set this value, you must also set `parameter_server_type`.
+        # The default value is zero.
         # Corresponds to the JSON property `parameterServerCount`
         # @return [Fixnum]
         attr_accessor :parameter_server_count
@@ -1280,6 +1277,7 @@ module Google
         # replica in the cluster will be of the type specified in `worker_type`.
         # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
         # set this value, you must also set `worker_type`.
+        # The default value is zero.
         # Corresponds to the JSON property `workerCount`
         # @return [Fixnum]
         attr_accessor :worker_count

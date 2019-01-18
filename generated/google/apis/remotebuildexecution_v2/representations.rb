@@ -752,6 +752,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cached_result, as: 'cachedResult'
+          property :message, as: 'message'
           property :result, as: 'result', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult::Representation
       
           hash :server_logs, as: 'serverLogs', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2LogFile, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2LogFile::Representation
@@ -1047,6 +1048,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
+          property :logging_enabled, as: 'loggingEnabled'
           property :name, as: 'name'
           property :state, as: 'state'
         end
@@ -1307,10 +1309,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :exit_code, as: 'exitCode'
+          collection :metadata, as: 'metadata'
           property :outputs, as: 'outputs', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemoteworkersV1test2Digest, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemoteworkersV1test2Digest::Representation
       
           property :overhead, as: 'overhead'
-          collection :statistics, as: 'statistics'
           property :status, as: 'status', class: Google::Apis::RemotebuildexecutionV2::GoogleRpcStatus, decorator: Google::Apis::RemotebuildexecutionV2::GoogleRpcStatus::Representation
       
         end

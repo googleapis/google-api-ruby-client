@@ -63,11 +63,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -100,11 +100,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -285,11 +285,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -327,11 +327,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -388,7 +388,8 @@ module Google
         # The environment variables to set when running the program. The worker may
         # provide its own default environment variables; these defaults can be
         # overridden using this field. Additional variables can also be specified.
-        # In order to ensure that equivalent `Command`s always hash to the same
+        # In order to ensure that equivalent
+        # Commands always hash to the same
         # value, the environment variables MUST be lexicographically sorted by name.
         # Sorting of strings is done by code point, equivalently, by the UTF-8 bytes.
         # Corresponds to the JSON property `environmentVariables`
@@ -396,10 +397,12 @@ module Google
         attr_accessor :environment_variables
       
         # A list of the output directories that the client expects to retrieve from
-        # the action. Only the contents of the indicated directories (recursively
-        # including the contents of their subdirectories) will be
-        # returned, as well as files listed in `output_files`. Other files that may
-        # be created during command execution are discarded.
+        # the action. Only the listed directories will be returned (an entire
+        # directory structure will be returned as a
+        # Tree message digest, see
+        # OutputDirectory), as
+        # well as files listed in `output_files`. Other files or directories that
+        # may be created during command execution are discarded.
         # The paths are relative to the working directory of the action execution.
         # The paths are specified using a single forward slash (`/`) as a path
         # separator, even if the execution platform natively uses a different
@@ -410,9 +413,11 @@ module Google
         # In order to ensure consistent hashing of the same Action, the output paths
         # MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
         # bytes).
-        # An output directory cannot be duplicated, be a parent of another output
-        # directory, be a parent of a listed output file, or have the same path as
-        # any of the listed output files.
+        # An output directory cannot be duplicated or have the same path as any of
+        # the listed output files.
+        # Directories leading up to the output directories (but not the output
+        # directories themselves) are created by the worker prior to execution, even
+        # if they are not explicitly part of the input root.
         # Corresponds to the JSON property `outputDirectories`
         # @return [Array<String>]
         attr_accessor :output_directories
@@ -420,7 +425,8 @@ module Google
         # A list of the output files that the client expects to retrieve from the
         # action. Only the listed files, as well as directories listed in
         # `output_directories`, will be returned to the client as output.
-        # Other files that may be created during command execution are discarded.
+        # Other files or directories that may be created during command execution
+        # are discarded.
         # The paths are relative to the working directory of the action execution.
         # The paths are specified using a single forward slash (`/`) as a path
         # separator, even if the execution platform natively uses a different
@@ -429,9 +435,10 @@ module Google
         # In order to ensure consistent hashing of the same Action, the output paths
         # MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
         # bytes).
-        # An output file cannot be duplicated, be a parent of another output file, be
-        # a child of a listed output directory, or have the same path as any of the
-        # listed output directories.
+        # An output file cannot be duplicated, be a parent of another output file, or
+        # have the same path as any of the listed output directories.
+        # Directories leading up to the output files are created by the worker prior
+        # to execution, even if they are not explicitly part of the input root.
         # Corresponds to the JSON property `outputFiles`
         # @return [Array<String>]
         attr_accessor :output_files
@@ -512,11 +519,11 @@ module Google
       # When a `Digest` is used to refer to a proto message, it always refers to the
       # message in binary encoded form. To ensure consistent hashing, clients and
       # servers MUST ensure that they serialize messages according to the following
-      # rules, even if there are alternate valid encodings for the same message.
-      # - Fields are serialized in tag order.
-      # - There are no unknown fields.
-      # - There are no duplicate fields.
-      # - Fields are serialized according to the default semantics for their type.
+      # rules, even if there are alternate valid encodings for the same message:
+      # * Fields are serialized in tag order.
+      # * There are no unknown fields.
+      # * There are no duplicate fields.
+      # * Fields are serialized according to the default semantics for their type.
       # Most protocol buffer implementations will always follow these rules when
       # serializing, but care should be taken to avoid shortcuts. For instance,
       # concatenating two messages to merge them may produce duplicate fields.
@@ -555,10 +562,10 @@ module Google
       # In order to ensure that two equivalent directory trees hash to the same
       # value, the following restrictions MUST be obeyed when constructing a
       # a `Directory`:
-      # - Every child in the directory must have a path of exactly one segment.
+      # * Every child in the directory must have a path of exactly one segment.
       # Multiple levels of directory hierarchy may not be collapsed.
-      # - Each child in the directory must have a unique path segment (file name).
-      # - The files, directories and symlinks in the directory must each be sorted
+      # * Each child in the directory must have a unique path segment (file name).
+      # * The files, directories and symlinks in the directory must each be sorted
       # in lexicographical order by path. The path strings must be sorted by code
       # point, equivalently, by UTF-8 bytes.
       # A `Directory` that obeys the restrictions is said to be in canonical form.
@@ -656,11 +663,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -711,11 +718,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -768,6 +775,12 @@ module Google
         # @return [Boolean]
         attr_accessor :cached_result
         alias_method :cached_result?, :cached_result
+      
+        # Freeform informational message with details on the execution of the action
+        # that may be displayed to the user upon failure or when requested explicitly.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
       
         # An ActionResult represents the result of an
         # Action being run.
@@ -836,6 +849,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cached_result = args[:cached_result] if args.key?(:cached_result)
+          @message = args[:message] if args.key?(:message)
           @result = args[:result] if args.key?(:result)
           @server_logs = args[:server_logs] if args.key?(:server_logs)
           @status = args[:status] if args.key?(:status)
@@ -938,11 +952,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -996,11 +1010,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -1061,11 +1075,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -1111,11 +1125,11 @@ module Google
         # When a `Digest` is used to refer to a proto message, it always refers to the
         # message in binary encoded form. To ensure consistent hashing, clients and
         # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message.
-        # - Fields are serialized in tag order.
-        # - There are no unknown fields.
-        # - There are no duplicate fields.
-        # - Fields are serialized according to the default semantics for their type.
+        # rules, even if there are alternate valid encodings for the same message:
+        # * Fields are serialized in tag order.
+        # * There are no unknown fields.
+        # * There are no duplicate fields.
+        # * Fields are serialized according to the default semantics for their type.
         # Most protocol buffer implementations will always follow these rules when
         # serializing, but care should be taken to avoid shortcuts. For instance,
         # concatenating two messages to merge them may produce duplicate fields.
@@ -1252,8 +1266,8 @@ module Google
       # external context of the request. The server may use this for logging or other
       # purposes. To use it, the client attaches the header to the call using the
       # canonical proto serialization:
-      # name: build.bazel.remote.execution.v2.requestmetadata-bin
-      # contents: the base64 encoded binary RequestMetadata message.
+      # * name: `build.bazel.remote.execution.v2.requestmetadata-bin`
+      # * contents: the base64 encoded binary `RequestMetadata` message.
       class BuildBazelRemoteExecutionV2RequestMetadata
         include Google::Apis::Core::Hashable
       
@@ -1373,10 +1387,10 @@ module Google
         # In order to ensure that two equivalent directory trees hash to the same
         # value, the following restrictions MUST be obeyed when constructing a
         # a `Directory`:
-        # - Every child in the directory must have a path of exactly one segment.
+        # * Every child in the directory must have a path of exactly one segment.
         # Multiple levels of directory hierarchy may not be collapsed.
-        # - Each child in the directory must have a unique path segment (file name).
-        # - The files, directories and symlinks in the directory must each be sorted
+        # * Each child in the directory must have a unique path segment (file name).
+        # * The files, directories and symlinks in the directory must each be sorted
         # in lexicographical order by path. The path strings must be sorted by code
         # point, equivalently, by UTF-8 bytes.
         # A `Directory` that obeys the restrictions is said to be in canonical form.
@@ -1701,6 +1715,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Output only. Whether stack driver logging is enabled for the instance.
+        # Corresponds to the JSON property `loggingEnabled`
+        # @return [Boolean]
+        attr_accessor :logging_enabled
+        alias_method :logging_enabled?, :logging_enabled
+      
         # Output only. Instance resource name formatted as:
         # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # Name should not be populated when creating an instance since it is provided
@@ -1721,6 +1741,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @location = args[:location] if args.key?(:location)
+          @logging_enabled = args[:logging_enabled] if args.key?(:logging_enabled)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end
@@ -1867,8 +1888,10 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Output only. `reserved=true` means the worker is reserved and won't be
-        # preempted.
+        # Determines whether the worker is reserved (and therefore won't be
+        # preempted).
+        # See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
+        # details.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
         attr_accessor :reserved
@@ -3102,6 +3125,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :exit_code
       
+        # Implementation-dependent metadata about the task. Both servers and bots
+        # may define messages which can be encoded here; bots are free to provide
+        # metadata in multiple formats, and servers are free to choose one or more
+        # of the values to process and ignore others. In particular, it is *not*
+        # considered an error for the bot to provide the server with a field that it
+        # doesn't know about.
+        # Corresponds to the JSON property `metadata`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # The CommandTask and CommandResult messages assume the existence of a service
         # that can serve blobs of content, identified by a hash and size known as a
         # "digest." The method by which these blobs may be retrieved is not specified
@@ -3119,16 +3152,6 @@ module Google
         # Corresponds to the JSON property `overhead`
         # @return [String]
         attr_accessor :overhead
-      
-        # Implementation-dependent statistics about the task. Both servers and bots
-        # may define messages which can be encoded here; bots are free to provide
-        # statistics in multiple formats, and servers are free to choose one or more
-        # of the values to process and ignore others. In particular, it is *not*
-        # considered an error for the bot to provide the server with a field that it
-        # doesn't know about.
-        # Corresponds to the JSON property `statistics`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :statistics
       
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by
@@ -3181,9 +3204,9 @@ module Google
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @outputs = args[:outputs] if args.key?(:outputs)
           @overhead = args[:overhead] if args.key?(:overhead)
-          @statistics = args[:statistics] if args.key?(:statistics)
           @status = args[:status] if args.key?(:status)
         end
       end
