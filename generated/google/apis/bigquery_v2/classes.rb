@@ -973,6 +973,15 @@ module Google
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
         attr_accessor :google_sheets_options
       
+        # [Optional, Experimental] If hive partitioning is enabled, which mode to use.
+        # Two modes are supported: - AUTO: automatically infer partition key name(s) and
+        # type(s). - STRINGS: automatic infer partition key name(s). All types are
+        # strings. Not all storage formats support hive partitioning -- requesting hive
+        # partitioning on an unsupported format will lead to an error.
+        # Corresponds to the JSON property `hivePartitioningMode`
+        # @return [String]
+        attr_accessor :hive_partitioning_mode
+      
         # [Optional] Indicates if BigQuery should allow extra values that are not
         # represented in the table schema. If true, the extra values are ignored. If
         # false, records with extra columns are treated as bad records, and if there are
@@ -1035,6 +1044,7 @@ module Google
           @compression = args[:compression] if args.key?(:compression)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
+          @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @schema = args[:schema] if args.key?(:schema)
@@ -1562,6 +1572,15 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
+        # [Optional, Experimental] If hive partitioning is enabled, which mode to use.
+        # Two modes are supported: - AUTO: automatically infer partition key name(s) and
+        # type(s). - STRINGS: automatic infer partition key name(s). All types are
+        # strings. Not all storage formats support hive partitioning -- requesting hive
+        # partitioning on an unsupported format will lead to an error.
+        # Corresponds to the JSON property `hivePartitioningMode`
+        # @return [String]
+        attr_accessor :hive_partitioning_mode
+      
         # [Optional] Indicates if BigQuery should allow extra values that are not
         # represented in the table schema. If true, the extra values are ignored. If
         # false, records with extra columns are treated as bad records, and if there are
@@ -1717,6 +1736,7 @@ module Google
           @destination_table_properties = args[:destination_table_properties] if args.key?(:destination_table_properties)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)

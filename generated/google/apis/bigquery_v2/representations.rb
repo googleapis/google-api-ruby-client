@@ -669,6 +669,7 @@ module Google
       
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
       
+          property :hive_partitioning_mode, as: 'hivePartitioningMode'
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
@@ -804,6 +805,7 @@ module Google
       
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
+          property :hive_partitioning_mode, as: 'hivePartitioningMode'
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
           property :null_marker, as: 'nullMarker'
