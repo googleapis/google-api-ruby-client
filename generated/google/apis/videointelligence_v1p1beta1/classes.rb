@@ -2196,6 +2196,9 @@ module Google
         attr_accessor :entity
       
         # Information corresponding to all frames where this object track appears.
+        # Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
+        # messages in frames.
+        # Streaming mode: it can only be one ObjectTrackingFrame message in frames.
         # Corresponds to the JSON property `frames`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame>]
         attr_accessor :frames
@@ -2204,6 +2207,16 @@ module Google
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
         attr_accessor :segment
+      
+        # Streaming mode ONLY.
+        # In streaming mode, we do not know the end time of a tracked object
+        # before it is completed. Hence, there is no VideoSegment info returned.
+        # Instead, we provide a unique identifiable integer track_id so that
+        # the customers can correlate the results of the ongoing
+        # ObjectTrackAnnotation of the same track_id over time.
+        # Corresponds to the JSON property `trackId`
+        # @return [Fixnum]
+        attr_accessor :track_id
       
         def initialize(**args)
            update!(**args)
@@ -2215,6 +2228,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
+          @track_id = args[:track_id] if args.key?(:track_id)
         end
       end
       

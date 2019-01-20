@@ -1066,6 +1066,7 @@ module Google
       
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
       
+          property :track_id, :numeric_string => true, as: 'trackId'
         end
       end
       
