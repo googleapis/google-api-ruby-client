@@ -396,10 +396,12 @@ module Google
       class LogExclusion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :filter, as: 'filter'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -419,12 +421,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_options, as: 'bucketOptions', class: Google::Apis::LoggingV2::BucketOptions, decorator: Google::Apis::LoggingV2::BucketOptions::Representation
       
+          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :filter, as: 'filter'
           hash :label_extractors, as: 'labelExtractors'
           property :metric_descriptor, as: 'metricDescriptor', class: Google::Apis::LoggingV2::MetricDescriptor, decorator: Google::Apis::LoggingV2::MetricDescriptor::Representation
       
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
           property :value_extractor, as: 'valueExtractor'
           property :version, as: 'version'
         end
@@ -433,11 +437,13 @@ module Google
       class LogSink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :destination, as: 'destination'
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'
           property :name, as: 'name'
           property :output_version_format, as: 'outputVersionFormat'
+          property :update_time, as: 'updateTime'
           property :writer_identity, as: 'writerIdentity'
         end
       end

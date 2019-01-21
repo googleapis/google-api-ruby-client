@@ -570,8 +570,8 @@ module Google
         # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
         # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
         # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # A project number may optionally be used in place of PROJECT_ID. The  project
-        # number is translated to its corresponding PROJECT_ID internally  and the
+        # A project number may optionally be used in place of PROJECT_ID. The project
+        # number is translated to its corresponding PROJECT_ID internally and the
         # log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
         # URL-encoded within log_name. Example: "organizations/1234567890/logs/
         # cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
@@ -639,10 +639,10 @@ module Google
         # @return [Google::Apis::LoggingV2beta1::LogEntrySourceLocation]
         attr_accessor :source_location
       
-        # Optional. The span ID within the trace associated with the log entry. For
-        # Trace spans, this is the same format that the Trace API v2 uses: a 16-
-        # character hexadecimal encoding of an 8-byte array, such as <code>"
-        # 000000000000004a"</code>.
+        # Optional. The span ID within the trace associated with the log entry.For Trace
+        # spans, this is the same format that the Trace API v2 uses: a 16-character
+        # hexadecimal encoding of an 8-byte array, such as <code>"000000000000004a"</
+        # code>.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
@@ -854,6 +854,12 @@ module Google
         # @return [Google::Apis::LoggingV2beta1::BucketOptions]
         attr_accessor :bucket_options
       
+        # Output only. The creation timestamp of the metric.This field may not be
+        # present for older metrics.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. A description of this metric, which is used in documentation. The
         # maximum length of the description is 8000 characters.
         # Corresponds to the JSON property `description`
@@ -901,6 +907,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The last update timestamp of the metric.This field may not be
+        # present for older metrics.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Optional. A value_extractor is required when using a distribution logs-based
         # metric to extract the values to record from a log entry. Two functions are
         # supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex).
@@ -931,11 +943,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @filter = args[:filter] if args.key?(:filter)
           @label_extractors = args[:label_extractors] if args.key?(:label_extractors)
           @metric_descriptor = args[:metric_descriptor] if args.key?(:metric_descriptor)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @value_extractor = args[:value_extractor] if args.key?(:value_extractor)
           @version = args[:version] if args.key?(:version)
         end
@@ -949,13 +963,19 @@ module Google
       class LogSink
         include Google::Apis::Core::Hashable
       
+        # Output only. The creation timestamp of the sink.This field may not be present
+        # for older sinks.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. The export destination:
         # "storage.googleapis.com/[GCS_BUCKET]"
         # "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         # "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
         # The sink's writer_identity, set when the sink is created, must have permission
         # to write to the destination or else the log entries are not exported. For more
-        # information, see Exporting Logs With Sinks.
+        # information, see Exporting Logs with Sinks.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -999,12 +1019,18 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
+        # Output only. The last update timestamp of the sink.This field may not be
+        # present for older sinks.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Output only. An IAM identity&mdash;a service account or group&mdash;under
         # which Logging writes the exported log entries to the sink's destination. This
-        # field is set by sinks.create and sinks.update, based on the setting of
+        # field is set by sinks.create and sinks.update based on the value of
         # unique_writer_identity in those methods.Until you grant this identity write-
         # access to the destination, log entry exports from this sink will fail. For
-        # more information, see Granting access for a resource. Consult the destination
+        # more information, see Granting Access for a Resource. Consult the destination
         # service's documentation to determine the appropriate IAM roles to assign to
         # the identity.
         # Corresponds to the JSON property `writerIdentity`
@@ -1017,11 +1043,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
           @name = args[:name] if args.key?(:name)
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
       end

@@ -503,7 +503,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -565,7 +565,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -1349,7 +1349,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -1411,7 +1411,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -2051,7 +2051,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -2113,7 +2113,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -2806,7 +2806,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -2868,7 +2868,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
@@ -3099,7 +3099,7 @@ module Google
         end
         
         # Updates a sink. This method replaces the following fields in the existing sink
-        # with values from the new sink: destination, and filter. The updated sink might
+        # with values from the new sink: destination, and filter.The updated sink might
         # also have a new writer_identity; see the unique_writer_identity field.
         # @param [String] sink_name
         #   Required. The full resource name of the sink to update, including the parent
