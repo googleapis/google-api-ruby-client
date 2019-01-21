@@ -1,3 +1,47 @@
+# 0.28.0
+* Breaking changes:
+  * Deleted `monitoring_v1`
+* Backwards compatible changes:
+  * Updated `alertcenter_v1beta1`
+  * Updated `analytics_v3`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquery_v2`
+  * Updated `cloudbilling_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudbuild_v1alpha1`
+  * Updated `cloudsearch_v1`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `composer_v1`
+  * Updated `composer_v1beta1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `fitness_v1`
+  * Updated `iam_v1`
+  * Updated `iap_v1`
+  * Updated `iap_v1beta1`
+  * Updated `jobs_v2`
+  * Updated `jobs_v3p1beta1`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `script_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1p1beta1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+
 # 0.27.3
 * Backwards compatible changes:
   * Added `containeranalysis_v1alpha1`
