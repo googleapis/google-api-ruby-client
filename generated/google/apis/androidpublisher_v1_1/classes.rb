@@ -68,6 +68,7 @@ module Google
         # are:
         # - Test (i.e. purchased from a license testing account)
         # - Promo (i.e. purchased using a promo code)
+        # - Rewarded (i.e. from watching a video ad instead of paying)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type

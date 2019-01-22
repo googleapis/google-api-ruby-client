@@ -570,7 +570,7 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
         attr_accessor :auto_install_constraint
       
-        # The auto install mode. If unset defaults to AVAILABLE.
+        # The auto install mode. If unset defaults to "doNotAutoInstall".
         # Corresponds to the JSON property `autoInstallMode`
         # @return [String]
         attr_accessor :auto_install_mode
@@ -2951,7 +2951,8 @@ module Google
         # @return [String]
         attr_accessor :display_mode
       
-        # A list of icons representing this website. Must have at least one element.
+        # A list of icons representing this website. If absent, a default icon (for
+        # create) or the current icon (for update) will be used.
         # Corresponds to the JSON property `icons`
         # @return [Array<Google::Apis::AndroidenterpriseV1::WebAppIcon>]
         attr_accessor :icons
