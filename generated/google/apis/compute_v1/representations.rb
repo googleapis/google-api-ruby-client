@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FixedOrPercent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1026,6 +1032,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4568,6 +4592,15 @@ module Google
         end
       end
       
+      class FixedOrPercent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculated, as: 'calculated'
+          property :fixed, as: 'fixed'
+          property :percent, as: 'percent'
+        end
+      end
+      
       class ForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4587,6 +4620,8 @@ module Google
           collection :ports, as: 'ports'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_label, as: 'serviceLabel'
+          property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
         end
@@ -5177,8 +5212,14 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::InstanceGroupManagerStatus, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatus::Representation
+      
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerUpdatePolicy::Representation
+      
+          collection :versions, as: 'versions', class: Google::Apis::ComputeV1::InstanceGroupManagerVersion, decorator: Google::Apis::ComputeV1::InstanceGroupManagerVersion::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -5267,6 +5308,35 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_stable, as: 'isStable'
+        end
+      end
+      
+      class InstanceGroupManagerUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
+      
+          property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
+      
+          property :minimal_action, as: 'minimalAction'
+          property :type, as: 'type'
+        end
+      end
+      
+      class InstanceGroupManagerVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+          property :name, as: 'name'
+          property :target_size, as: 'targetSize', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
+      
         end
       end
       

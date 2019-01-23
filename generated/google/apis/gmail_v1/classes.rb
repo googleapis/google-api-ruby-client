@@ -778,7 +778,9 @@ module Google
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
       
-        # List of messages.
+        # List of messages. Note that each message resource contains only an id and a
+        # threadId. Additional message details can be fetched using the messages.get
+        # method.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::GmailV1::Message>]
         attr_accessor :messages
@@ -857,7 +859,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :result_size_estimate
       
-        # List of threads.
+        # List of threads. Note that each thread resource does not contain a list of
+        # messages. The list of messages for a given thread can be fetched using the
+        # threads.get method.
         # Corresponds to the JSON property `threads`
         # @return [Array<Google::Apis::GmailV1::Thread>]
         attr_accessor :threads

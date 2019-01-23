@@ -31,6 +31,17 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # An identifier which selects 'audio effects' profiles that are applied on
+        # (post synthesized) text to speech.
+        # Effects are applied on top of each other in the order they are given.
+        # See
+        # [audio-profiles](https:
+        # //cloud.google.com/text-to-speech/docs/audio-profiles)
+        # for current supported profile ids.
+        # Corresponds to the JSON property `effectsProfileId`
+        # @return [Array<String>]
+        attr_accessor :effects_profile_id
+      
         # Optional speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
         # semitones from the original pitch. -20 means decrease 20 semitones from the
         # original pitch.
@@ -75,6 +86,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @effects_profile_id = args[:effects_profile_id] if args.key?(:effects_profile_id)
           @pitch = args[:pitch] if args.key?(:pitch)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)

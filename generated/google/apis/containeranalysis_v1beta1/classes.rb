@@ -1555,6 +1555,32 @@ module Google
         end
       end
       
+      # 
+      class KnowledgeBase
+        include Google::Apis::Core::Hashable
+      
+        # The KB name (generally of the form KB[0-9]+ i.e. KB123456).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A link to the KB in the Windows update catalog -
+        # https://www.catalog.update.microsoft.com/
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Layer holds metadata specific to a layer of a Docker image.
       class Layer
         include Google::Apis::Core::Hashable
@@ -2634,6 +2660,14 @@ module Google
         # @return [String]
         attr_accessor :severity
       
+        # Windows details get their own format because the information format and
+        # model don't match a normal detail. Specifically Windows updates are done as
+        # patches, thus Windows vulnerabilities really are a missing package, rather
+        # than a package being at an incorrect version.
+        # Corresponds to the JSON property `windowsDetails`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::WindowsDetail>]
+        attr_accessor :windows_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2643,6 +2677,7 @@ module Google
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @details = args[:details] if args.key?(:details)
           @severity = args[:severity] if args.key?(:severity)
+          @windows_details = args[:windows_details] if args.key?(:windows_details)
         end
       end
       
@@ -2695,6 +2730,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @counts = args[:counts] if args.key?(:counts)
+        end
+      end
+      
+      # 
+      class WindowsDetail
+        include Google::Apis::Core::Hashable
+      
+        # Required. The CPE URI in
+        # [cpe format](https://cpe.mitre.org/specification/) in which the
+        # vulnerability manifests. Examples include distro or storage location for
+        # vulnerable jar.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # The description of the vulnerability.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The names of the KBs which have hotfixes to mitigate this
+        # vulnerability. Note that there may be multiple hotfixes (and thus
+        # multiple KBs) that mitigate a given vulnerability. Currently any listed
+        # kb's presence is considered a fix.
+        # Corresponds to the JSON property `fixingKbs`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::KnowledgeBase>]
+        attr_accessor :fixing_kbs
+      
+        # Required. The name of the vulnerability.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @description = args[:description] if args.key?(:description)
+          @fixing_kbs = args[:fixing_kbs] if args.key?(:fixing_kbs)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end

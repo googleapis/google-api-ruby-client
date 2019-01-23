@@ -2656,30 +2656,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourcePolicyBackupSchedulePolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySchedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySnapshotProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourcePolicyDailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2706,6 +2682,30 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySnapshotProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2825,6 +2825,12 @@ module Google
       end
       
       class RouterNat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatLogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6430,6 +6436,8 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
+          property :display_device, as: 'displayDevice', class: Google::Apis::ComputeBeta::DisplayDevice, decorator: Google::Apis::ComputeBeta::DisplayDevice::Representation
+      
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
           hash :labels, as: 'labels'
@@ -8613,8 +8621,6 @@ module Google
       class ResourcePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_schedule_policy, as: 'backupSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy::Representation
-      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -8622,6 +8628,8 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy::Representation
+      
         end
       end
       
@@ -8655,47 +8663,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy::Representation
-      
-          property :schedule, as: 'schedule', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule::Representation
-      
-          property :snapshot_properties, as: 'snapshotProperties', class: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties, decorator: Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties::Representation
-      
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_retention_days, as: 'maxRetentionDays'
-          property :on_source_disk_delete, as: 'onSourceDiskDelete'
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySchedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle::Representation
-      
-          property :hourly_schedule, as: 'hourlySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle::Representation
-      
-          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle::Representation
-      
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySnapshotProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :guest_flush, as: 'guestFlush'
-          hash :labels, as: 'labels'
-          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -8747,6 +8714,47 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicyRetentionPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicyRetentionPolicy::Representation
+      
+          property :schedule, as: 'schedule', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySchedule, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySchedule::Representation
+      
+          property :snapshot_properties, as: 'snapshotProperties', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySnapshotProperties, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySnapshotProperties::Representation
+      
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_retention_days, as: 'maxRetentionDays'
+          property :on_source_disk_delete, as: 'onSourceDiskDelete'
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyDailyCycle::Representation
+      
+          property :hourly_schedule, as: 'hourlySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle::Representation
+      
+          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle::Representation
+      
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySnapshotProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+          hash :labels, as: 'labels'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -8979,6 +8987,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
+      
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -8989,6 +8999,14 @@ module Google
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
+        end
+      end
+      
+      class RouterNatLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :filter, as: 'filter'
         end
       end
       

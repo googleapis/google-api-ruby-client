@@ -850,6 +850,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3094,30 +3124,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourcePolicyBackupSchedulePolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySchedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySnapshotProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourcePolicyDailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3144,6 +3150,30 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySnapshotProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6120,6 +6150,64 @@ module Google
         end
       end
       
+      class ExternalVpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeAlpha::ExternalVpnGatewayInterface, decorator: Google::Apis::ComputeAlpha::ExternalVpnGatewayInterface::Representation
+      
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :redundancy_type, as: 'redundancyType'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ExternalVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class ExternalVpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ExternalVpnGateway, decorator: Google::Apis::ComputeAlpha::ExternalVpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Warning, decorator: Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6458,6 +6546,7 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :ssl_health_check, as: 'sslHealthCheck', class: Google::Apis::ComputeAlpha::SslHealthCheck, decorator: Google::Apis::ComputeAlpha::SslHealthCheck::Representation
       
           property :tcp_health_check, as: 'tcpHealthCheck', class: Google::Apis::ComputeAlpha::TcpHealthCheck, decorator: Google::Apis::ComputeAlpha::TcpHealthCheck::Representation
@@ -6679,6 +6768,7 @@ module Google
           property :port, as: 'port'
           property :request_path, as: 'requestPath'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :timeout_sec, as: 'timeoutSec'
           property :unhealthy_threshold, as: 'unhealthyThreshold'
         end
@@ -6812,6 +6902,7 @@ module Google
           property :port, as: 'port'
           property :request_path, as: 'requestPath'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :timeout_sec, as: 'timeoutSec'
           property :unhealthy_threshold, as: 'unhealthyThreshold'
         end
@@ -6976,6 +7067,8 @@ module Google
           property :shielded_vm_integrity_policy, as: 'shieldedVmIntegrityPolicy', class: Google::Apis::ComputeAlpha::ShieldedVmIntegrityPolicy, decorator: Google::Apis::ComputeAlpha::ShieldedVmIntegrityPolicy::Representation
       
           property :source_machine_image, as: 'sourceMachineImage'
+          property :source_machine_image_encryption_key, as: 'sourceMachineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
           property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -7607,6 +7700,8 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
       
+          property :display_device, as: 'displayDevice', class: Google::Apis::ComputeAlpha::DisplayDevice, decorator: Google::Apis::ComputeAlpha::DisplayDevice::Representation
+      
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
           hash :labels, as: 'labels'
@@ -7645,6 +7740,7 @@ module Google
           property :properties, as: 'properties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_params, as: 'sourceInstanceParams', class: Google::Apis::ComputeAlpha::SourceInstanceParams, decorator: Google::Apis::ComputeAlpha::SourceInstanceParams::Representation
       
@@ -7829,6 +7925,7 @@ module Google
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :requested_link_count, as: 'requestedLinkCount'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
         end
       end
@@ -7861,6 +7958,7 @@ module Google
           property :region, as: 'region'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
@@ -8086,6 +8184,7 @@ module Google
           collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeAlpha::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeAlpha::InterconnectLocationRegionInfo::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
         end
       end
@@ -8250,6 +8349,7 @@ module Google
           property :resource_requirements, as: 'resourceRequirements', class: Google::Apis::ComputeAlpha::LicenseResourceRequirements, decorator: Google::Apis::ComputeAlpha::LicenseResourceRequirements::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :transferable, as: 'transferable'
         end
       end
@@ -8360,8 +8460,11 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_properties, as: 'sourceInstanceProperties', class: Google::Apis::ComputeAlpha::SourceInstanceProperties, decorator: Google::Apis::ComputeAlpha::SourceInstanceProperties::Representation
       
@@ -8419,6 +8522,7 @@ module Google
           property :memory_mb, as: 'memoryMb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
         end
       end
@@ -8700,6 +8804,7 @@ module Google
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
@@ -8983,6 +9088,7 @@ module Google
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :size, as: 'size'
           property :status, as: 'status'
           property :zone, as: 'zone'
@@ -9176,6 +9282,7 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
       
           property :status, as: 'status'
@@ -9299,6 +9406,7 @@ module Google
           property :memory_mb, as: 'memoryMb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
         end
       end
@@ -9414,6 +9522,7 @@ module Google
           property :progress, as: 'progress'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -9740,6 +9849,7 @@ module Google
           collection :quotas, as: 'quotas', class: Google::Apis::ComputeAlpha::Quota, decorator: Google::Apis::ComputeAlpha::Quota::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
           collection :zones, as: 'zones'
         end
@@ -10178,8 +10288,6 @@ module Google
       class ResourcePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_schedule_policy, as: 'backupSchedulePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicy::Representation
-      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -10187,6 +10295,9 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicy::Representation
+      
           property :vm_maintenance_policy, as: 'vmMaintenancePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy::Representation
       
         end
@@ -10222,48 +10333,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicyRetentionPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicyRetentionPolicy::Representation
-      
-          property :schedule, as: 'schedule', class: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicySchedule::Representation
-      
-          property :snapshot_properties, as: 'snapshotProperties', class: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicySnapshotProperties, decorator: Google::Apis::ComputeAlpha::ResourcePolicyBackupSchedulePolicySnapshotProperties::Representation
-      
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_retention_days, as: 'maxRetentionDays'
-          property :on_policy_switch, as: 'onPolicySwitch'
-          property :on_source_disk_delete, as: 'onSourceDiskDelete'
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySchedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle::Representation
-      
-          property :hourly_schedule, as: 'hourlySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyHourlyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyHourlyCycle::Representation
-      
-          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle::Representation
-      
-        end
-      end
-      
-      class ResourcePolicyBackupSchedulePolicySnapshotProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :guest_flush, as: 'guestFlush'
-          hash :labels, as: 'labels'
-          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -10315,6 +10384,48 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicyRetentionPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicyRetentionPolicy::Representation
+      
+          property :schedule, as: 'schedule', class: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicySchedule::Representation
+      
+          property :snapshot_properties, as: 'snapshotProperties', class: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicySnapshotProperties, decorator: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicySnapshotProperties::Representation
+      
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_retention_days, as: 'maxRetentionDays'
+          property :on_policy_switch, as: 'onPolicySwitch'
+          property :on_source_disk_delete, as: 'onSourceDiskDelete'
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyDailyCycle::Representation
+      
+          property :hourly_schedule, as: 'hourlySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyHourlyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyHourlyCycle::Representation
+      
+          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle, decorator: Google::Apis::ComputeAlpha::ResourcePolicyWeeklyCycle::Representation
+      
+        end
+      end
+      
+      class ResourcePolicySnapshotSchedulePolicySnapshotProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+          hash :labels, as: 'labels'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -10446,6 +10557,7 @@ module Google
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
         end
       end
       
@@ -10582,6 +10694,7 @@ module Google
       class RouterNatLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
           property :enabled, as: 'enabled'
           property :filter, as: 'filter'
         end
@@ -10791,6 +10904,7 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :type, as: 'type'
         end
       end
@@ -11067,6 +11181,7 @@ module Google
           property :private_key, as: 'privateKey'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :self_managed, as: 'selfManaged', class: Google::Apis::ComputeAlpha::SslCertificateSelfManagedSslCertificate, decorator: Google::Apis::ComputeAlpha::SslCertificateSelfManagedSslCertificate::Representation
       
           collection :subject_alternative_names, as: 'subjectAlternativeNames'
@@ -11236,6 +11351,7 @@ module Google
           property :name, as: 'name'
           property :profile, as: 'profile'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeAlpha::SslPolicy::Warning, decorator: Google::Apis::ComputeAlpha::SslPolicy::Warning::Representation
       
         end
@@ -11328,12 +11444,14 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeAlpha::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeAlpha::SubnetworkSecondaryRange::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
         end
       end
@@ -11520,6 +11638,7 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :url_map, as: 'urlMap'
         end
       end
@@ -11641,6 +11760,7 @@ module Google
           property :quic_override, as: 'quicOverride'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'
@@ -11722,6 +11842,7 @@ module Google
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
         end
       end
@@ -11832,6 +11953,7 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :session_affinity, as: 'sessionAffinity'
         end
       end

@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KnowledgeBase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Layer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,12 @@ module Google
       end
       
       class VulnerabilityOccurrencesSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -853,6 +865,14 @@ module Google
         end
       end
       
+      class KnowledgeBase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :url, as: 'url'
+        end
+      end
+      
       class Layer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1127,6 +1147,8 @@ module Google
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
           property :severity, as: 'severity'
+          collection :windows_details, as: 'windowsDetails', class: Google::Apis::ContaineranalysisV1beta1::WindowsDetail, decorator: Google::Apis::ContaineranalysisV1beta1::WindowsDetail::Representation
+      
         end
       end
       
@@ -1145,6 +1167,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :counts, as: 'counts', class: Google::Apis::ContaineranalysisV1beta1::FixableTotalByDigest, decorator: Google::Apis::ContaineranalysisV1beta1::FixableTotalByDigest::Representation
       
+        end
+      end
+      
+      class WindowsDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpe_uri, as: 'cpeUri'
+          property :description, as: 'description'
+          collection :fixing_kbs, as: 'fixingKbs', class: Google::Apis::ContaineranalysisV1beta1::KnowledgeBase, decorator: Google::Apis::ContaineranalysisV1beta1::KnowledgeBase::Representation
+      
+          property :name, as: 'name'
         end
       end
     end

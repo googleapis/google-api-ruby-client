@@ -10697,6 +10697,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
         attr_accessor :disks
       
+        # A set of Display Device options
+        # Corresponds to the JSON property `displayDevice`
+        # @return [Google::Apis::ComputeBeta::DisplayDevice]
+        attr_accessor :display_device
+      
         # A list of guest accelerator cards' type and count to use for instances created
         # from the instance template.
         # Corresponds to the JSON property `guestAccelerators`
@@ -10764,6 +10769,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
+          @display_device = args[:display_device] if args.key?(:display_device)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -17251,12 +17257,14 @@ module Google
         # - https://www.googleapis.com/compute/v1/projects/project/global/
         # backendServices/backendService
         # - compute/v1/projects/project/global/backendServices/backendService
-        # - global/backendServices/backendService
-        # Use defaultService instead of defaultRouteAction when simple routing to a
-        # backend service is desired and other advanced capabilities like traffic
-        # splitting and URL rewrites are not required.
-        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect must be
-        # set.
+        # - global/backendServices/backendService  If defaultRouteAction is additionally
+        # specified, advanced routing actions like URL Rewrites, etc. take effect prior
+        # to sending the request to the backend. However, if defaultService is specified,
+        # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
+        # defaultRouteAction specifies any weightedBackendServices, defaultService must
+        # not be specified.
+        # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
+        # weightedBackendService must be set.
         # Authorization requires one or more of the following Google IAM permissions on
         # the specified resource default_service:
         # - compute.backendBuckets.use
@@ -17313,11 +17321,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
-        # The URL of the backend service resource if this rule is matched.
-        # Use service instead of routeAction when simple routing to a backend service is
-        # desired and other advanced capabilities like traffic splitting and rewrites
-        # are not required.
-        # Only one of service, routeAction or urlRedirect should must be set.
+        # The full or partial URL of the backend service resource to which traffic is
+        # directed if this rule is matched. If routeAction is additionally specified,
+        # advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        # the request to the backend. However, if service is specified, routeAction
+        # cannot contain any weightedBackendService s. Conversely, if routeAction
+        # specifies any  weightedBackendServices, service must not be specified.
+        # Only one of urlRedirect, service or routeAction.weightedBackendService must be
+        # set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -19005,13 +19016,6 @@ module Google
       class ResourcePolicy
         include Google::Apis::Core::Hashable
       
-        # A backup schedule policy specifies when and how frequently snapshots are to be
-        # created for the target disk. Also specifies how many and how long these
-        # scheduled snapshots should be retained.
-        # Corresponds to the JSON property `backupSchedulePolicy`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicy]
-        attr_accessor :backup_schedule_policy
-      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -19055,13 +19059,19 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # A snapshot schedule policy specifies when and how frequently snapshots are to
+        # be created for the target disk. Also specifies how many and how long these
+        # scheduled snapshots should be retained.
+        # Corresponds to the JSON property `snapshotSchedulePolicy`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy]
+        attr_accessor :snapshot_schedule_policy
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @backup_schedule_policy = args[:backup_schedule_policy] if args.key?(:backup_schedule_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -19069,6 +19079,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
         end
       end
       
@@ -19192,129 +19203,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # A backup schedule policy specifies when and how frequently snapshots are to be
-      # created for the target disk. Also specifies how many and how long these
-      # scheduled snapshots should be retained.
-      class ResourcePolicyBackupSchedulePolicy
-        include Google::Apis::Core::Hashable
-      
-        # Policy for retention of scheduled snapshots.
-        # Corresponds to the JSON property `retentionPolicy`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicyRetentionPolicy]
-        attr_accessor :retention_policy
-      
-        # A schedule for disks where the schedueled operations are performed.
-        # Corresponds to the JSON property `schedule`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySchedule]
-        attr_accessor :schedule
-      
-        # Specified snapshot properties for scheduled snapshots created by this policy.
-        # Corresponds to the JSON property `snapshotProperties`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyBackupSchedulePolicySnapshotProperties]
-        attr_accessor :snapshot_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
-          @schedule = args[:schedule] if args.key?(:schedule)
-          @snapshot_properties = args[:snapshot_properties] if args.key?(:snapshot_properties)
-        end
-      end
-      
-      # Policy for retention of scheduled snapshots.
-      class ResourcePolicyBackupSchedulePolicyRetentionPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Maximum age of the snapshot that is allowed to be kept.
-        # Corresponds to the JSON property `maxRetentionDays`
-        # @return [Fixnum]
-        attr_accessor :max_retention_days
-      
-        # Specifies the behavior to apply to scheduled snapshots when the source disk is
-        # deleted.
-        # Corresponds to the JSON property `onSourceDiskDelete`
-        # @return [String]
-        attr_accessor :on_source_disk_delete
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
-          @on_source_disk_delete = args[:on_source_disk_delete] if args.key?(:on_source_disk_delete)
-        end
-      end
-      
-      # A schedule for disks where the schedueled operations are performed.
-      class ResourcePolicyBackupSchedulePolicySchedule
-        include Google::Apis::Core::Hashable
-      
-        # Time window specified for daily operations.
-        # Corresponds to the JSON property `dailySchedule`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyDailyCycle]
-        attr_accessor :daily_schedule
-      
-        # Time window specified for hourly operations.
-        # Corresponds to the JSON property `hourlySchedule`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle]
-        attr_accessor :hourly_schedule
-      
-        # Time window specified for weekly operations.
-        # Corresponds to the JSON property `weeklySchedule`
-        # @return [Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle]
-        attr_accessor :weekly_schedule
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @daily_schedule = args[:daily_schedule] if args.key?(:daily_schedule)
-          @hourly_schedule = args[:hourly_schedule] if args.key?(:hourly_schedule)
-          @weekly_schedule = args[:weekly_schedule] if args.key?(:weekly_schedule)
-        end
-      end
-      
-      # Specified snapshot properties for scheduled snapshots created by this policy.
-      class ResourcePolicyBackupSchedulePolicySnapshotProperties
-        include Google::Apis::Core::Hashable
-      
-        # Indication to perform a ?guest aware? snapshot.
-        # Corresponds to the JSON property `guestFlush`
-        # @return [Boolean]
-        attr_accessor :guest_flush
-        alias_method :guest_flush?, :guest_flush
-      
-        # Labels to apply to scheduled snapshots. These can be later modified by the
-        # setLabels method. Label values may be empty.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
-        # Corresponds to the JSON property `storageLocations`
-        # @return [Array<String>]
-        attr_accessor :storage_locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
-          @labels = args[:labels] if args.key?(:labels)
-          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -19506,6 +19394,129 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # A snapshot schedule policy specifies when and how frequently snapshots are to
+      # be created for the target disk. Also specifies how many and how long these
+      # scheduled snapshots should be retained.
+      class ResourcePolicySnapshotSchedulePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Policy for retention of scheduled snapshots.
+        # Corresponds to the JSON property `retentionPolicy`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicyRetentionPolicy]
+        attr_accessor :retention_policy
+      
+        # A schedule for disks where the schedueled operations are performed.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySchedule]
+        attr_accessor :schedule
+      
+        # Specified snapshot properties for scheduled snapshots created by this policy.
+        # Corresponds to the JSON property `snapshotProperties`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicySnapshotProperties]
+        attr_accessor :snapshot_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @snapshot_properties = args[:snapshot_properties] if args.key?(:snapshot_properties)
+        end
+      end
+      
+      # Policy for retention of scheduled snapshots.
+      class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Maximum age of the snapshot that is allowed to be kept.
+        # Corresponds to the JSON property `maxRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :max_retention_days
+      
+        # Specifies the behavior to apply to scheduled snapshots when the source disk is
+        # deleted.
+        # Corresponds to the JSON property `onSourceDiskDelete`
+        # @return [String]
+        attr_accessor :on_source_disk_delete
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_retention_days = args[:max_retention_days] if args.key?(:max_retention_days)
+          @on_source_disk_delete = args[:on_source_disk_delete] if args.key?(:on_source_disk_delete)
+        end
+      end
+      
+      # A schedule for disks where the schedueled operations are performed.
+      class ResourcePolicySnapshotSchedulePolicySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Time window specified for daily operations.
+        # Corresponds to the JSON property `dailySchedule`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicyDailyCycle]
+        attr_accessor :daily_schedule
+      
+        # Time window specified for hourly operations.
+        # Corresponds to the JSON property `hourlySchedule`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicyHourlyCycle]
+        attr_accessor :hourly_schedule
+      
+        # Time window specified for weekly operations.
+        # Corresponds to the JSON property `weeklySchedule`
+        # @return [Google::Apis::ComputeBeta::ResourcePolicyWeeklyCycle]
+        attr_accessor :weekly_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_schedule = args[:daily_schedule] if args.key?(:daily_schedule)
+          @hourly_schedule = args[:hourly_schedule] if args.key?(:hourly_schedule)
+          @weekly_schedule = args[:weekly_schedule] if args.key?(:weekly_schedule)
+        end
+      end
+      
+      # Specified snapshot properties for scheduled snapshots created by this policy.
+      class ResourcePolicySnapshotSchedulePolicySnapshotProperties
+        include Google::Apis::Core::Hashable
+      
+        # Indication to perform a ?guest aware? snapshot.
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
+      
+        # Labels to apply to scheduled snapshots. These can be later modified by the
+        # setLabels method. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+          @labels = args[:labels] if args.key?(:labels)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -20461,6 +20472,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :icmp_idle_timeout_sec
       
+        # Configuration of logging on a NAT.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeBeta::RouterNatLogConfig]
+        attr_accessor :log_config
+      
         # Minimum number of ports allocated to a VM from this NAT config. If not set, a
         # default number of ports is allocated to a VM. This gets rounded up to the
         # nearest power of 2. Eg. if the value of this field is 50, at least 64 ports
@@ -20526,6 +20542,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
@@ -20535,6 +20552,33 @@ module Google
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
           @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
           @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
+        end
+      end
+      
+      # Configuration of logging on a NAT.
+      class RouterNatLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not to export logs. This is false by default.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Specifies the desired filtering of logs on this NAT. If unspecified, logs are
+        # exported for all connections handled by this NAT.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -25714,12 +25758,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # The URL of the backendService resource if none of the hostRules match.
-        # Use defaultService instead of defaultRouteAction when simple routing to a
-        # backendService is desired and other advanced capabilities like traffic
-        # splitting and rewrites are not required.
-        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect should
-        # must be set.
+        # The full or partial URL of the defaultService resource to which traffic is
+        # directed if none of the hostRules match. If defaultRouteAction is additionally
+        # specified, advanced routing actions like URL Rewrites, etc. take effect prior
+        # to sending the request to the backend. However, if defaultService is specified,
+        # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
+        # routeAction specifies any weightedBackendServices, service must not be
+        # specified.
+        # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
+        # weightedBackendService must be set.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service

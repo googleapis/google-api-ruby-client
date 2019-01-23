@@ -5194,6 +5194,45 @@ module Google
         end
       end
       
+      # Encapsulates numeric value that can be either absolute or relative.
+      class FixedOrPercent
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Absolute value of VM instances calculated based on the specific
+        # mode.
+        # 
+        # - If the value is fixed, then the caculated value is equal to the fixed value.
+        # - If the value is a percent, then the calculated value is percent/100 *
+        # targetSize. For example, the calculated value of a 80% of a managed instance
+        # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
+        # is a remainder, the number is rounded up.
+        # Corresponds to the JSON property `calculated`
+        # @return [Fixnum]
+        attr_accessor :calculated
+      
+        # Specifies a fixed number of VM instances. This must be a positive integer.
+        # Corresponds to the JSON property `fixed`
+        # @return [Fixnum]
+        attr_accessor :fixed
+      
+        # Specifies a percentage of instances between 0 to 100%, inclusive. For example,
+        # specify 80 for 80%.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculated = args[:calculated] if args.key?(:calculated)
+          @fixed = args[:fixed] if args.key?(:fixed)
+          @percent = args[:percent] if args.key?(:percent)
+        end
+      end
+      
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
       # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
@@ -5358,6 +5397,25 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # An optional prefix to the service name for this Forwarding Rule. If specified,
+        # will be the first label of the fully qualified service name.
+        # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
+        # the label must be 1-63 characters long and match the regular expression `[a-z](
+        # [-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        # letter, and all following characters must be a dash, lowercase letter, or
+        # digit, except the last character, which cannot be a dash.
+        # This field is only used for internal load balancing.
+        # Corresponds to the JSON property `serviceLabel`
+        # @return [String]
+        attr_accessor :service_label
+      
+        # [Output Only] The internal fully qualified service name for this Forwarding
+        # Rule.
+        # This field is only used for internal load balancing.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
         # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
@@ -5400,6 +5458,8 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_label = args[:service_label] if args.key?(:service_label)
+          @service_name = args[:service_name] if args.key?(:service_name)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @target = args[:target] if args.key?(:target)
         end
@@ -7883,6 +7943,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of this managed instance group.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatus]
+        attr_accessor :status
+      
         # The URLs for all TargetPool resources to which instances in the instanceGroup
         # field are added. The target pools automatically apply to all of the instances
         # in the managed instance group.
@@ -7896,6 +7961,23 @@ module Google
         # Corresponds to the JSON property `targetSize`
         # @return [Fixnum]
         attr_accessor :target_size
+      
+        # The update policy for this managed instance group.
+        # Corresponds to the JSON property `updatePolicy`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerUpdatePolicy]
+        attr_accessor :update_policy
+      
+        # Specifies the instance templates used by this managed instance group to create
+        # instances.
+        # Each version is defined by an instanceTemplate. Every template can appear at
+        # most once per instance group. This field overrides the top-level
+        # instanceTemplate field. Read more about the relationships between these fields.
+        # Exactly one version must leave the targetSize field unset. That version will
+        # be applied to all remaining instances. For more information, read about canary
+        # updates.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerVersion>]
+        attr_accessor :versions
       
         # [Output Only] The URL of the zone where the managed instance group is located (
         # for zonal resources).
@@ -7924,8 +8006,11 @@ module Google
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
+          @update_policy = args[:update_policy] if args.key?(:update_policy)
+          @versions = args[:versions] if args.key?(:versions)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -8281,6 +8366,105 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether the managed instance group is in a
+        # stable state. A stable state means that: none of the instances in the managed
+        # instance group is currently undergoing any type of change (for example,
+        # creation, restart, or deletion); no future changes are scheduled for instances
+        # in the managed instance group; and the managed instance group itself is not
+        # being modified.
+        # Corresponds to the JSON property `isStable`
+        # @return [Boolean]
+        attr_accessor :is_stable
+        alias_method :is_stable?, :is_stable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_stable = args[:is_stable] if args.key?(:is_stable)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `maxSurge`
+        # @return [Google::Apis::ComputeV1::FixedOrPercent]
+        attr_accessor :max_surge
+      
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `maxUnavailable`
+        # @return [Google::Apis::ComputeV1::FixedOrPercent]
+        attr_accessor :max_unavailable
+      
+        # Minimal action to be taken on an instance. You can specify either RESTART to
+        # restart existing instances or REPLACE to delete and create new instances from
+        # the target template. If you specify a RESTART, the Updater will attempt to
+        # perform that action only. However, if the Updater determines that the minimal
+        # action you specify is not enough to perform the update, it might perform a
+        # more disruptive action.
+        # Corresponds to the JSON property `minimalAction`
+        # @return [String]
+        attr_accessor :minimal_action
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_surge = args[:max_surge] if args.key?(:max_surge)
+          @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+          @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerVersion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `instanceTemplate`
+        # @return [String]
+        attr_accessor :instance_template
+      
+        # Name of the version. Unique among all versions in the scope of this managed
+        # instance group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `targetSize`
+        # @return [Google::Apis::ComputeV1::FixedOrPercent]
+        attr_accessor :target_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_template = args[:instance_template] if args.key?(:instance_template)
+          @name = args[:name] if args.key?(:name)
+          @target_size = args[:target_size] if args.key?(:target_size)
         end
       end
       
@@ -14818,12 +15002,14 @@ module Google
         # - https://www.googleapis.com/compute/v1/projects/project/global/
         # backendServices/backendService
         # - compute/v1/projects/project/global/backendServices/backendService
-        # - global/backendServices/backendService
-        # Use defaultService instead of defaultRouteAction when simple routing to a
-        # backend service is desired and other advanced capabilities like traffic
-        # splitting and URL rewrites are not required.
-        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect must be
-        # set.
+        # - global/backendServices/backendService  If defaultRouteAction is additionally
+        # specified, advanced routing actions like URL Rewrites, etc. take effect prior
+        # to sending the request to the backend. However, if defaultService is specified,
+        # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
+        # defaultRouteAction specifies any weightedBackendServices, defaultService must
+        # not be specified.
+        # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
+        # weightedBackendService must be set.
         # Authorization requires one or more of the following Google IAM permissions on
         # the specified resource default_service:
         # - compute.backendBuckets.use
@@ -14880,11 +15066,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
-        # The URL of the backend service resource if this rule is matched.
-        # Use service instead of routeAction when simple routing to a backend service is
-        # desired and other advanced capabilities like traffic splitting and rewrites
-        # are not required.
-        # Only one of service, routeAction or urlRedirect should must be set.
+        # The full or partial URL of the backend service resource to which traffic is
+        # directed if this rule is matched. If routeAction is additionally specified,
+        # advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        # the request to the backend. However, if service is specified, routeAction
+        # cannot contain any weightedBackendService s. Conversely, if routeAction
+        # specifies any  weightedBackendServices, service must not be specified.
+        # Only one of urlRedirect, service or routeAction.weightedBackendService must be
+        # set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -22164,12 +22353,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # The URL of the backendService resource if none of the hostRules match.
-        # Use defaultService instead of defaultRouteAction when simple routing to a
-        # backendService is desired and other advanced capabilities like traffic
-        # splitting and rewrites are not required.
-        # Only one of defaultService, defaultRouteAction or defaultUrlRedirect should
-        # must be set.
+        # The full or partial URL of the defaultService resource to which traffic is
+        # directed if none of the hostRules match. If defaultRouteAction is additionally
+        # specified, advanced routing actions like URL Rewrites, etc. take effect prior
+        # to sending the request to the backend. However, if defaultService is specified,
+        # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
+        # routeAction specifies any weightedBackendServices, service must not be
+        # specified.
+        # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
+        # weightedBackendService must be set.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
