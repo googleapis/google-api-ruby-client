@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/identity/
     module CloudidentityV1
       VERSION = 'V1'
-      REVISION = '20181218'
+      REVISION = '20190122'
     end
   end
 end

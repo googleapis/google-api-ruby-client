@@ -542,7 +542,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. The collection of entities associated with the entity type.
+        # Optional. The collection of entity entries associated with the entity type.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
         attr_accessor :entities
@@ -593,21 +593,26 @@ module Google
         end
       end
       
-      # Optional. Represents an entity.
+      # An **entity entry** for an associated entity type.
       class GoogleCloudDialogflowV2EntityTypeEntity
         include Google::Apis::Core::Hashable
       
-        # Required. A collection of synonyms. For `KIND_LIST` entity types this
-        # must contain exactly one synonym equal to `value`.
+        # Required. A collection of value synonyms. For example, if the entity type
+        # is *vegetable*, and `value` is *scallions*, a synonym could be *green
+        # onions*.
+        # For `KIND_LIST` entity types:
+        # *   This collection must contain exactly one synonym equal to `value`.
         # Corresponds to the JSON property `synonyms`
         # @return [Array<String>]
         attr_accessor :synonyms
       
-        # Required.
+        # Required. The primary value associated with this entity entry.
+        # For example, if the entity type is *vegetable*, the value could be
+        # *scallions*.
         # For `KIND_MAP` entity types:
-        # A canonical name to be used in place of synonyms.
+        # *   A canonical value to be used in place of synonyms.
         # For `KIND_LIST` entity types:
-        # A string that can contain references to other entity types (with or
+        # *   A string that can contain references to other entity types (with or
         # without aliases).
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -625,10 +630,10 @@ module Google
       end
       
       # Events allow for matching intents by event name instead of the natural
-      # language input. For instance, input `<event: ` name: “welcome_event”,
-      # parameters: ` name: “Sam” ` `>` can trigger a personalized welcome response.
+      # language input. For instance, input `<event: ` name: "welcome_event",
+      # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
       # The parameter `name` may be used by the agent in the response:
-      # `“Hello #welcome_event.name! What can I do for you today?”`.
+      # `"Hello #welcome_event.name! What can I do for you today?"`.
       class GoogleCloudDialogflowV2EventInput
         include Google::Apis::Core::Hashable
       
@@ -1928,10 +1933,10 @@ module Google
         attr_accessor :audio_config
       
         # Events allow for matching intents by event name instead of the natural
-        # language input. For instance, input `<event: ` name: “welcome_event”,
-        # parameters: ` name: “Sam” ` `>` can trigger a personalized welcome response.
+        # language input. For instance, input `<event: ` name: "welcome_event",
+        # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
         # The parameter `name` may be used by the agent in the response:
-        # `“Hello #welcome_event.name! What can I do for you today?”`.
+        # `"Hello #welcome_event.name! What can I do for you today?"`.
         # Corresponds to the JSON property `event`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput]
         attr_accessor :event
@@ -2343,10 +2348,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Events allow for matching intents by event name instead of the natural
-        # language input. For instance, input `<event: ` name: “welcome_event”,
-        # parameters: ` name: “Sam” ` `>` can trigger a personalized welcome response.
+        # language input. For instance, input `<event: ` name: "welcome_event",
+        # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
         # The parameter `name` may be used by the agent in the response:
-        # `“Hello #welcome_event.name! What can I do for you today?”`.
+        # `"Hello #welcome_event.name! What can I do for you today?"`.
         # Corresponds to the JSON property `followupEventInput`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput]
         attr_accessor :followup_event_input
@@ -2513,7 +2518,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. The collection of entities associated with the entity type.
+        # Optional. The collection of entity entries associated with the entity type.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1EntityTypeEntity>]
         attr_accessor :entities
@@ -2545,21 +2550,26 @@ module Google
         end
       end
       
-      # Optional. Represents an entity.
+      # An **entity entry** for an associated entity type.
       class GoogleCloudDialogflowV2beta1EntityTypeEntity
         include Google::Apis::Core::Hashable
       
-        # Required. A collection of synonyms. For `KIND_LIST` entity types this
-        # must contain exactly one synonym equal to `value`.
+        # Required. A collection of value synonyms. For example, if the entity type
+        # is *vegetable*, and `value` is *scallions*, a synonym could be *green
+        # onions*.
+        # For `KIND_LIST` entity types:
+        # *   This collection must contain exactly one synonym equal to `value`.
         # Corresponds to the JSON property `synonyms`
         # @return [Array<String>]
         attr_accessor :synonyms
       
-        # Required.
+        # Required. The primary value associated with this entity entry.
+        # For example, if the entity type is *vegetable*, the value could be
+        # *scallions*.
         # For `KIND_MAP` entity types:
-        # A canonical name to be used in place of synonyms.
+        # *   A canonical value to be used in place of synonyms.
         # For `KIND_LIST` entity types:
-        # A string that can contain references to other entity types (with or
+        # *   A string that can contain references to other entity types (with or
         # without aliases).
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -2577,10 +2587,10 @@ module Google
       end
       
       # Events allow for matching intents by event name instead of the natural
-      # language input. For instance, input `<event: ` name: “welcome_event”,
-      # parameters: ` name: “Sam” ` `>` can trigger a personalized welcome response.
+      # language input. For instance, input `<event: ` name: "welcome_event",
+      # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
       # The parameter `name` may be used by the agent in the response:
-      # `“Hello #welcome_event.name! What can I do for you today?”`.
+      # `"Hello #welcome_event.name! What can I do for you today?"`.
       class GoogleCloudDialogflowV2beta1EventInput
         include Google::Apis::Core::Hashable
       
@@ -4104,10 +4114,10 @@ module Google
         alias_method :end_interaction?, :end_interaction
       
         # Events allow for matching intents by event name instead of the natural
-        # language input. For instance, input `<event: ` name: “welcome_event”,
-        # parameters: ` name: “Sam” ` `>` can trigger a personalized welcome response.
+        # language input. For instance, input `<event: ` name: "welcome_event",
+        # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
         # The parameter `name` may be used by the agent in the response:
-        # `“Hello #welcome_event.name! What can I do for you today?”`.
+        # `"Hello #welcome_event.name! What can I do for you today?"`.
         # Corresponds to the JSON property `followupEventInput`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1EventInput]
         attr_accessor :followup_event_input

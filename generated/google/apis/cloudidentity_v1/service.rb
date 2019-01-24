@@ -143,11 +143,11 @@ module Google
         
         # List groups within a customer or a domain.
         # @param [Fixnum] page_size
-        #   Maximum number of Groups to return.
-        #   View | Default | Maximum
-        #   -----|---------|--------
-        #   BASIC | 200 | 1000
-        #   FULL | 50 | 500
+        #   Maximum number of groups to return.
+        #   View  | Default | Maximum
+        #   ----- | ------- | -------
+        #   BASIC | 200     | 1000
+        #   FULL  | 50      | 500
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] parent
@@ -266,11 +266,11 @@ module Google
         
         # Searches for Groups.
         # @param [Fixnum] page_size
-        #   Maximum number of Groups to return.
-        #   View | Default | Maximum
-        #   -----|---------|--------
-        #   BASIC | 200 | 1000
-        #   FULL | 50 | 500
+        #   Maximum number of groups to return.
+        #   View  | Default | Maximum
+        #   ----- | ------- | -------
+        #   BASIC | 200     | 1000
+        #   FULL  | 50      | 500
         # @param [String] page_token
         #   The next_page_token value returned from a previous search request, if any.
         # @param [String] query
@@ -423,8 +423,8 @@ module Google
         #   Maximum number of Memberships to return.
         #   View | Default | Maximum
         #   -----|---------|--------
-        #   BASIC | 200 | 1000
-        #   FULL | 50 | 500
+        #   BASIC| 200     | 1000
+        #   FULL | 50      | 500
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] view
