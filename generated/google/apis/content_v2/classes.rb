@@ -4075,8 +4075,9 @@ module Google
         # @return [String]
         attr_accessor :placed_date
       
-        # Deprecated. The details of the merchant provided promotions applied to the
-        # order. More details about the program are here.
+        # Deprecated. Ignored if provided for createTestOrder. The details of the
+        # merchant provided promotions applied to the order. More details about the
+        # program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
         attr_accessor :promotions
@@ -5425,12 +5426,12 @@ module Google
       class OrderpaymentsNotifyAuthApprovedRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # Authorized amount for pre-tax charge on user's credit card.
         # Corresponds to the JSON property `authAmountPretax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :auth_amount_pretax
       
-        # 
+        # Authorized amount for tax charge on user's credit card.
         # Corresponds to the JSON property `authAmountTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :auth_amount_tax
@@ -10660,7 +10661,8 @@ module Google
         # @return [Google::Apis::ContentV2::OrderLineItemShippingDetails]
         attr_accessor :shipping_details
       
-        # Unit tax for the line item.
+        # Deprecated. Ignored if provided. Tax is automatically calculated for MFL
+        # orders. For non-MFL orders, tax settings from Merchant Center are applied.
         # Corresponds to the JSON property `unitTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :unit_tax
@@ -10728,7 +10730,8 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The price for the product.
+        # The price for the product. Tax is automatically calculated for MFL orders. For
+        # non-MFL orders, tax settings from Merchant Center are applied.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price

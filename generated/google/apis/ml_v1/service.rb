@@ -47,6 +47,39 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Deletes a long-running operation. This method indicates that the client is
+        # no longer interested in the operation result. It does not cancel the
+        # operation. If the server doesn't support this method, it returns
+        # `google.rpc.Code.UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get the service account information associated with your project. You need
         # this information in order to grant the service account permissions for
         # the Google Cloud Storage location where you put your model training code
@@ -1088,39 +1121,6 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?

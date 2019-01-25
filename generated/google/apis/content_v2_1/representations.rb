@@ -742,54 +742,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrderpaymentsNotifyAuthApprovedRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyChargeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyChargeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyRefundRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyRefundResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OrderreportsListDisbursementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2586,7 +2538,7 @@ module Google
       
           property :funder, as: 'funder'
           property :merchant_promotion_id, as: 'merchantPromotionId'
-          property :pretax_value, as: 'pretaxValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+          property :price_value, as: 'priceValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :short_title, as: 'shortTitle'
           property :subtype, as: 'subtype'
@@ -2737,71 +2689,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :reason, as: 'reason'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auth_amount_pretax, as: 'authAmountPretax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
-      
-          property :auth_amount_tax, as: 'authAmountTax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
-      
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :decline_reason, as: 'declineReason'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyChargeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :charge_state, as: 'chargeState'
-          collection :invoice_ids, as: 'invoiceIds'
-        end
-      end
-      
-      class OrderpaymentsNotifyChargeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyRefundRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :invoice_ids, as: 'invoiceIds'
-          property :refund_state, as: 'refundState'
-        end
-      end
-      
-      class OrderpaymentsNotifyRefundResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
         end
       end
       
@@ -3904,8 +3791,6 @@ module Google
       
           property :shipping_details, as: 'shippingDetails', class: Google::Apis::ContentV2_1::OrderLineItemShippingDetails, decorator: Google::Apis::ContentV2_1::OrderLineItemShippingDetails::Representation
       
-          property :unit_tax, as: 'unitTax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
-      
         end
       end
       
@@ -3937,7 +3822,7 @@ module Google
       
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2_1::Promotion, decorator: Google::Apis::ContentV2_1::Promotion::Representation
       
-          property :unit_price_pretax, as: 'unitPricePretax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+          property :unit_price, as: 'unitPrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           collection :unit_price_taxes, as: 'unitPriceTaxes', class: Google::Apis::ContentV2_1::UnitInvoiceTaxLine, decorator: Google::Apis::ContentV2_1::UnitInvoiceTaxLine::Representation
       

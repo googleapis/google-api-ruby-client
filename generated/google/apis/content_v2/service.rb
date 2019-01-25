@@ -449,7 +449,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Retrieves multiple Merchant Center account statuses in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountStatusesRequest] batch_account_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

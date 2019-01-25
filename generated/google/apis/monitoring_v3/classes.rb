@@ -2869,7 +2869,7 @@ module Google
       
         # How often, in seconds, the uptime check is performed. Currently, the only
         # supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and
-        # 900s (15 minutes). Optional, defaults to 300s.
+        # 900s (15 minutes). Optional, defaults to 60s.
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period
