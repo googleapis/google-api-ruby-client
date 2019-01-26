@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScheduleOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScheduleTransferRunsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -246,6 +252,15 @@ module Google
         end
       end
       
+      class ScheduleOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_auto_scheduling, as: 'disableAutoScheduling'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ScheduleTransferRunsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -284,6 +299,8 @@ module Google
           property :next_run_time, as: 'nextRunTime'
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
+          property :schedule_options, as: 'scheduleOptions', class: Google::Apis::BigquerydatatransferV1::ScheduleOptions, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptions::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'

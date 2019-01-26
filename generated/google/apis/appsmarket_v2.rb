@@ -18,15 +18,15 @@ require 'google/apis/appsmarket_v2/representations.rb'
 
 module Google
   module Apis
-    # Google Apps Marketplace API
+    # G Suite Marketplace API
     #
-    # Lets your Apps Marketplace applications integrate with Google's licensing
+    # Lets your G Suite Marketplace applications integrate with Google's licensing
     # service
     #
     # @see https://developers.google.com/google-apps/marketplace/v2/developers_guide
     module AppsmarketV2
       VERSION = 'V2'
-      REVISION = '20160920'
+      REVISION = '20190124'
 
       # View your installed application's licensing information
       AUTH_APPSMARKETPLACE_LICENSE = 'https://www.googleapis.com/auth/appsmarketplace.license'

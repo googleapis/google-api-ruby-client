@@ -2134,6 +2134,11 @@ module Google
         attr_accessor :target_url
       
         # 
+        # Corresponds to the JSON property `timeToExpireMs`
+        # @return [Fixnum]
+        attr_accessor :time_to_expire_ms
+      
+        # 
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -2158,6 +2163,7 @@ module Google
           @reason = args[:reason] if args.key?(:reason)
           @show_notification_settings_action = args[:show_notification_settings_action] if args.key?(:show_notification_settings_action)
           @target_url = args[:target_url] if args.key?(:target_url)
+          @time_to_expire_ms = args[:time_to_expire_ms] if args.key?(:time_to_expire_ms)
           @title = args[:title] if args.key?(:title)
         end
       end

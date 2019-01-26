@@ -128,52 +128,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the allocated ranges that are assigned to a connection.
-        # The response from the `get` operation will be of type `Connection` if the
-        # operation successfully completes.
-        # @param [String] name
-        #   The service producer peering service that is managing peering connectivity
-        #   for a service producer organization.
-        #   For Google services that support this functionality, this is
-        #   `services/servicenetworking.googleapis.com`.
-        # @param [Google::Apis::ServicenetworkingV1beta::Connection] connection_object
-        # @param [Boolean] force
-        #   If a previously defined allocated range is removed, force flag must be
-        #   set to true.
-        # @param [String] update_mask
-        #   The update mask. If this is omitted, it defaults to "*". You can only
-        #   update the listed peering ranges.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicenetworkingV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicenetworkingV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_service(name, connection_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta/{+name}', options)
-          command.request_representation = Google::Apis::ServicenetworkingV1beta::Connection::Representation
-          command.request_object = connection_object
-          command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
-          command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['force'] = force unless force.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Service producers can use this method to find a currently unused range
         # within consumer allocated ranges.   This returned range is not reserved,
         # and not guaranteed to remain unused.
@@ -211,6 +165,52 @@ module Google
           command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
           command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the allocated ranges that are assigned to a connection.
+        # The response from the `get` operation will be of type `Connection` if the
+        # operation successfully completes.
+        # @param [String] name
+        #   The service producer peering service that is managing peering connectivity
+        #   for a service producer organization.
+        #   For Google services that support this functionality, this is
+        #   `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1beta::Connection] connection_object
+        # @param [Boolean] force
+        #   If a previously defined allocated range is removed, force flag must be
+        #   set to true.
+        # @param [String] update_mask
+        #   The update mask. If this is omitted, it defaults to "*". You can only
+        #   update the listed peering ranges.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_service_connections(name, connection_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1beta/{+name}/connections', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1beta::Connection::Representation
+          command.request_object = connection_object
+          command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

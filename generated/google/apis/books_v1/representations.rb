@@ -1269,6 +1269,7 @@ module Google
           property :reason, as: 'reason'
           property :show_notification_settings_action, as: 'show_notification_settings_action'
           property :target_url, as: 'targetUrl'
+          property :time_to_expire_ms, :numeric_string => true, as: 'timeToExpireMs'
           property :title, as: 'title'
         end
       end

@@ -515,6 +515,48 @@ module Google
         end
       end
       
+      # Options customizing the data transfer schedule.
+      class ScheduleOptions
+        include Google::Apis::Core::Hashable
+      
+        # If true, automatic scheduling of data transfer runs for this configuration
+        # will be disabled. The runs can be started on ad-hoc basis using
+        # StartManualTransferRuns API. When automatic scheduling is disabled, the
+        # TransferConfig.schedule field will be ignored.
+        # Corresponds to the JSON property `disableAutoScheduling`
+        # @return [Boolean]
+        attr_accessor :disable_auto_scheduling
+        alias_method :disable_auto_scheduling?, :disable_auto_scheduling
+      
+        # Defines time to stop scheduling transfer runs. A transfer run cannot be
+        # scheduled at or after the end time. The end time can be changed at any
+        # moment. The time when a data transfer can be trigerred manually is not
+        # limited by this option.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Specifies time to start scheduling transfer runs. The first run will be
+        # scheduled at or after the start time according to a recurrence pattern
+        # defined in the schedule string. The start time can be changed at any
+        # moment. The time when a data transfer can be trigerred manually is not
+        # limited by this option.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_auto_scheduling = args[:disable_auto_scheduling] if args.key?(:disable_auto_scheduling)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # A request to schedule transfer runs for a time range.
       class ScheduleTransferRunsRequest
         include Google::Apis::Core::Hashable
@@ -717,6 +759,11 @@ module Google
         # @return [String]
         attr_accessor :schedule
       
+        # Options customizing the data transfer schedule.
+        # Corresponds to the JSON property `scheduleOptions`
+        # @return [Google::Apis::BigquerydatatransferV1::ScheduleOptions]
+        attr_accessor :schedule_options
+      
         # Output only. State of the most recently updated transfer run.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -748,6 +795,7 @@ module Google
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
+          @schedule_options = args[:schedule_options] if args.key?(:schedule_options)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)

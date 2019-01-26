@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppsmarketV2
-      # Google Apps Marketplace API
+      # G Suite Marketplace API
       #
-      # Lets your Apps Marketplace applications integrate with Google's licensing
+      # Lets your G Suite Marketplace applications integrate with Google's licensing
       #  service
       #
       # @example
