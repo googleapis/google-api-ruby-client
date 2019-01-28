@@ -1,3 +1,41 @@
+# 0.28.1
+* Backwards compatible changes:
+  * Added `file_v1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `admin_directory_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidpublisher_v1_1`
+  * Updated `androidpublisher_v2`
+  * Updated `androidpublisher_v3`
+  * Updated `appsmarket_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `books_v1`
+  * Updated `cloudidentity_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `containeranalysis_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2_1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `gmail_v1`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `pubsub_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `testing_v1`
+  * Updated `texttospeech_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.28.0
 * Breaking changes:
   * Deleted `monitoring_v1`
