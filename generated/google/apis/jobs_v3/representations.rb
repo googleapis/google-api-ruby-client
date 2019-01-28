@@ -46,12 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClientEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CommuteFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateClientEventRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreateCompanyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,12 +185,6 @@ module Google
       end
       
       class JobDerivedInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class JobEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -367,19 +349,6 @@ module Google
         end
       end
       
-      class ClientEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :event_id, as: 'eventId'
-          hash :extra_info, as: 'extraInfo'
-          property :job_event, as: 'jobEvent', class: Google::Apis::JobsV3::JobEvent, decorator: Google::Apis::JobsV3::JobEvent::Representation
-      
-          property :parent_event_id, as: 'parentEventId'
-          property :request_id, as: 'requestId'
-        end
-      end
-      
       class CommuteFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -512,14 +481,6 @@ module Google
           property :image_uri, as: 'imageUri'
           property :suggestion, as: 'suggestion'
           property :type, as: 'type'
-        end
-      end
-      
-      class CreateClientEventRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_event, as: 'clientEvent', class: Google::Apis::JobsV3::ClientEvent, decorator: Google::Apis::JobsV3::ClientEvent::Representation
-      
         end
       end
       
@@ -660,14 +621,6 @@ module Google
           collection :job_categories, as: 'jobCategories'
           collection :locations, as: 'locations', class: Google::Apis::JobsV3::Location, decorator: Google::Apis::JobsV3::Location::Representation
       
-        end
-      end
-      
-      class JobEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :jobs, as: 'jobs'
-          property :type, as: 'type'
         end
       end
       
