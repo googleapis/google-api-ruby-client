@@ -534,17 +534,17 @@ module Google
       class AutoInstallConstraint
         include Google::Apis::Core::Hashable
       
-        # Charging state to constrain on.
+        # Charging state constraint.
         # Corresponds to the JSON property `chargingStateConstraint`
         # @return [String]
         attr_accessor :charging_state_constraint
       
-        # The idle state of the device to constrain on.
+        # Device idle state constraint.
         # Corresponds to the JSON property `deviceIdleStateConstraint`
         # @return [String]
         attr_accessor :device_idle_state_constraint
       
-        # Network type to constrain on.
+        # Network type constraint.
         # Corresponds to the JSON property `networkTypeConstraint`
         # @return [String]
         attr_accessor :network_type_constraint
@@ -565,23 +565,24 @@ module Google
       class AutoInstallPolicy
         include Google::Apis::Core::Hashable
       
-        # The constraints for the install. Currently there can be at most one constraint.
+        # Constraints for auto-installing the app. You can specify a maximum of one
+        # constraint.
         # Corresponds to the JSON property `autoInstallConstraint`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
         attr_accessor :auto_install_constraint
       
-        # The auto install mode. If unset defaults to "doNotAutoInstall".
+        # The auto-install mode. If unset defaults to "doNotAutoInstall".
         # Corresponds to the JSON property `autoInstallMode`
         # @return [String]
         attr_accessor :auto_install_mode
       
-        # The priority of the install, as an unsigned integer. Lower number means higher
-        # priority.
+        # The priority of the install, as an unsigned integer. A lower number means
+        # higher priority.
         # Corresponds to the JSON property `autoInstallPriority`
         # @return [Fixnum]
         attr_accessor :auto_install_priority
       
-        # The minimum version of the app. If a lower version of the app is installed
+        # The minimum version of the app. If a lower version of the app is installed,
         # then the app will be auto-updated according to the auto-install constraints,
         # instead of waiting for the regular auto-update.
         # Corresponds to the JSON property `minimumVersionCode`

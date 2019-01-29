@@ -2146,7 +2146,7 @@ module Google
         #   approved apps will be returned (using the pagination parameters), including
         #   apps that are not available in the store (e.g. unpublished apps).
         # @param [String] token
-        #   A pagination token is contained in a request''s response when there are more
+        #   A pagination token is contained in a request's response when there are more
         #   products. The token can be used in a subsequent request to obtain more
         #   products, and so forth. This parameter cannot be used in the initial request.
         # @param [String] fields

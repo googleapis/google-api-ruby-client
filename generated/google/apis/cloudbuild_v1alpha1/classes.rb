@@ -691,7 +691,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Network on which the workers are created.
-        # “default” network is used if empty.
+        # "default" network is used if empty.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -706,7 +706,7 @@ module Google
         attr_accessor :project_id
       
         # Subnetwork on which the workers are created.
-        # “default” subnetwork is used if empty.
+        # "default" subnetwork is used if empty.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1097,7 +1097,7 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # List of regions to create the `WorkerPool`. Regions can’t be empty.
+        # List of regions to create the `WorkerPool`. Regions can't be empty.
         # If Cloud Build adds a new GCP region in the future, the existing
         # `WorkerPool` will not be enabled in the new region automatically;
         # you must add the new region to the `regions` field to enable the

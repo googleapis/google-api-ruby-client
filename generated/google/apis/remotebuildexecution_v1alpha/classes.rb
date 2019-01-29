@@ -1875,9 +1875,10 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Required. Machine type of the worker, such as n1-standard-2.
+        # Required. Machine type of the worker, such as `n1-standard-2`.
         # See https://cloud.google.com/compute/docs/machine-types for a list of
-        # supported machine types.
+        # supported machine types. Note that `f1-micro` and `g1-small` are not yet
+        # supported.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
