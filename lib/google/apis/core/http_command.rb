@@ -305,7 +305,7 @@ module Google
                                        header: request_header,
                                        follow_redirect: true)
             logger.debug { @http_res.status }
-            logger.debug { @http_res.inspect }
+            logger.debug { safe_response_representation @http_res }
             response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
             success(response)
           rescue => e
@@ -344,6 +344,14 @@ module Google
           else
             PP.pp(obj, "")
           end
+        end
+
+        def safe_response_representation http_res
+          if respond_to?(:response_class) && response_class.is_a?(Class) &&
+             UNSAFE_CLASS_NAMES.include?(response_class.name)
+            return "#<#{http_res.class.name} (fields redacted)>"
+          end
+          http_res.inspect
         end
 
         def opencensus_begin_span
