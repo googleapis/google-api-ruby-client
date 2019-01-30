@@ -1079,6 +1079,32 @@ module Google
         end
       end
       
+      # Represents the configration for a replica in a cluster.
+      class GoogleCloudMlV1ReplicaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a hardware accelerator request config.
+        # Corresponds to the JSON property `acceleratorConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
+        attr_accessor :accelerator_config
+      
+        # The docker image to run on worker.
+        # This image must be in Google Container Registry.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+        end
+      end
+      
       # Request message for the SetDefaultVersion request.
       class GoogleCloudMlV1SetDefaultVersionRequest
         include Google::Apis::Core::Hashable
@@ -1119,6 +1145,11 @@ module Google
         # Corresponds to the JSON property `jobDir`
         # @return [String]
         attr_accessor :job_dir
+      
+        # Represents the configration for a replica in a cluster.
+        # Corresponds to the JSON property `masterConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
+        attr_accessor :master_config
       
         # Optional. Specifies the type of virtual machine to use for your training
         # job's master worker.
@@ -1217,6 +1248,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :package_uris
       
+        # Represents the configration for a replica in a cluster.
+        # Corresponds to the JSON property `parameterServerConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
+        attr_accessor :parameter_server_config
+      
         # Optional. The number of parameter server replicas to use for the training
         # job. Each replica in the cluster will be of the type specified in
         # `parameter_server_type`.
@@ -1273,6 +1309,11 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
+        # Represents the configration for a replica in a cluster.
+        # Corresponds to the JSON property `workerConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
+        attr_accessor :worker_config
+      
         # Optional. The number of worker replicas to use for the training job. Each
         # replica in the cluster will be of the type specified in `worker_type`.
         # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
@@ -1301,8 +1342,10 @@ module Google
           @args = args[:args] if args.key?(:args)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
           @job_dir = args[:job_dir] if args.key?(:job_dir)
+          @master_config = args[:master_config] if args.key?(:master_config)
           @master_type = args[:master_type] if args.key?(:master_type)
           @package_uris = args[:package_uris] if args.key?(:package_uris)
+          @parameter_server_config = args[:parameter_server_config] if args.key?(:parameter_server_config)
           @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)
           @parameter_server_type = args[:parameter_server_type] if args.key?(:parameter_server_type)
           @python_module = args[:python_module] if args.key?(:python_module)
@@ -1310,6 +1353,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
+          @worker_config = args[:worker_config] if args.key?(:worker_config)
           @worker_count = args[:worker_count] if args.key?(:worker_count)
           @worker_type = args[:worker_type] if args.key?(:worker_type)
         end

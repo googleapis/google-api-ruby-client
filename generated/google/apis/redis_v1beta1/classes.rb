@@ -214,10 +214,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. IAM identity used by import / export operations to transfer
-        # data to/from GCS.  Format is "serviceAccount:<service_account_email>".  The
-        # value may change over time for a given instance so should be checked before
-        # each import/export operation.
+        # Output only. Cloud IAM identity used by import / export operations to
+        # transfer data to/from Cloud Storage. Format is
+        # "serviceAccount:<service_account_email>". The value may change over time
+        # for a given instance so should be checked before each import/export
+        # operation.
         # Corresponds to the JSON property `persistenceIamIdentity`
         # @return [String]
         attr_accessor :persistence_iam_identity

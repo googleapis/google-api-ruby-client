@@ -1296,6 +1296,35 @@ module Google
         # @return [Fixnum]
         attr_accessor :dispatch_count
       
+        # The deadline for requests sent to the worker. If the worker does not
+        # respond by this deadline then the request is cancelled and the attempt
+        # is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the
+        # task according to the RetryConfig.
+        # Note that when the request is cancelled, Cloud Tasks will stop listing for
+        # the response, but whether the worker stops processing depends on the
+        # worker. For example, if the worker is stuck, it may not react to cancelled
+        # requests.
+        # The default and maximum values depend on the type of request:
+        # * For App Engine tasks, 0 indicates that the
+        # request has the default deadline. The default deadline depends on the
+        # [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-
+        # instances-are-managed#instance_scaling)
+        # of the service: 10 minutes for standard apps with automatic scaling, 24
+        # hours for standard apps with manual and basic scaling, and 60 minutes for
+        # flex apps. If the request deadline is set, it must be in the interval [15
+        # seconds, 24 hours 15 seconds]. Regardless of the task's
+        # `dispatch_deadline`, the app handler will not run for longer than than
+        # the service's timeout. We recommend setting the `dispatch_deadline` to
+        # at most a few seconds more than the app handler's timeout. For more
+        # information see
+        # [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#
+        # timeouts).
+        # `dispatch_deadline` will be truncated to the nearest millisecond. The
+        # deadline is an approximate deadline.
+        # Corresponds to the JSON property `dispatchDeadline`
+        # @return [String]
+        attr_accessor :dispatch_deadline
+      
         # The status of a task attempt.
         # Corresponds to the JSON property `firstAttempt`
         # @return [Google::Apis::CloudtasksV2beta3::Attempt]
@@ -1354,6 +1383,7 @@ module Google
           @app_engine_http_request = args[:app_engine_http_request] if args.key?(:app_engine_http_request)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dispatch_count = args[:dispatch_count] if args.key?(:dispatch_count)
+          @dispatch_deadline = args[:dispatch_deadline] if args.key?(:dispatch_deadline)
           @first_attempt = args[:first_attempt] if args.key?(:first_attempt)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @name = args[:name] if args.key?(:name)

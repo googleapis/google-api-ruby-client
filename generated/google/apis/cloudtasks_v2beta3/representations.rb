@@ -392,6 +392,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :dispatch_count, as: 'dispatchCount'
+          property :dispatch_deadline, as: 'dispatchDeadline'
           property :first_attempt, as: 'firstAttempt', class: Google::Apis::CloudtasksV2beta3::Attempt, decorator: Google::Apis::CloudtasksV2beta3::Attempt::Representation
       
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::CloudtasksV2beta3::Attempt, decorator: Google::Apis::CloudtasksV2beta3::Attempt::Representation

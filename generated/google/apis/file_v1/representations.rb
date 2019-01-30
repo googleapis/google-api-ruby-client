@@ -34,24 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FileShareConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Instance
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInstancesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,12 +47,6 @@ module Google
       end
       
       class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,42 +82,6 @@ module Google
         end
       end
       
-      class FileShareConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :capacity_gb, :numeric_string => true, as: 'capacityGb'
-          property :name, as: 'name'
-        end
-      end
-      
-      class Instance
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :etag, as: 'etag'
-          collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1::FileShareConfig, decorator: Google::Apis::FileV1::FileShareConfig::Representation
-      
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
-      
-          property :state, as: 'state'
-          property :status_message, as: 'statusMessage'
-          property :tier, as: 'tier'
-        end
-      end
-      
-      class ListInstancesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instances, as: 'instances', class: Google::Apis::FileV1::Instance, decorator: Google::Apis::FileV1::Instance::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -168,16 +108,6 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
-        end
-      end
-      
-      class NetworkConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ip_addresses, as: 'ipAddresses'
-          collection :modes, as: 'modes'
-          property :network, as: 'network'
-          property :reserved_ip_range, as: 'reservedIpRange'
         end
       end
       

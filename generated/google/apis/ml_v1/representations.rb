@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ReplicaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +508,15 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1ReplicaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
+      
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -515,8 +530,12 @@ module Google
           property :hyperparameters, as: 'hyperparameters', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec::Representation
       
           property :job_dir, as: 'jobDir'
+          property :master_config, as: 'masterConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
+      
           property :master_type, as: 'masterType'
           collection :package_uris, as: 'packageUris'
+          property :parameter_server_config, as: 'parameterServerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
+      
           property :parameter_server_count, :numeric_string => true, as: 'parameterServerCount'
           property :parameter_server_type, as: 'parameterServerType'
           property :python_module, as: 'pythonModule'
@@ -524,6 +543,8 @@ module Google
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'
           property :scale_tier, as: 'scaleTier'
+          property :worker_config, as: 'workerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
+      
           property :worker_count, :numeric_string => true, as: 'workerCount'
           property :worker_type, as: 'workerType'
         end
