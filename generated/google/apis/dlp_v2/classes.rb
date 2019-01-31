@@ -27,6 +27,12 @@ module Google
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
+        # Enable email notification to project owners and editors on jobs's
+        # completion/failure.
+        # Corresponds to the JSON property `jobNotificationEmails`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
+        attr_accessor :job_notification_emails
+      
         # Publish the results of a DlpJob to a pub sub channel.
         # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `pubSub`
@@ -61,6 +67,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job_notification_emails = args[:job_notification_emails] if args.key?(:job_notification_emails)
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
           @publish_summary_to_cscc = args[:publish_summary_to_cscc] if args.key?(:publish_summary_to_cscc)
           @save_findings = args[:save_findings] if args.key?(:save_findings)
@@ -3057,6 +3064,20 @@ module Google
         end
       end
       
+      # Enable email notification to project owners and editors on jobs's
+      # completion/failure.
+      class GooglePrivacyDlpV2JobNotificationEmails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Contains a configuration to make dlp api calls on a repeating basis.
       # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
       class GooglePrivacyDlpV2JobTrigger
@@ -4658,6 +4679,12 @@ module Google
       class GooglePrivacyDlpV2Regex
         include Google::Apis::Core::Hashable
       
+        # The index of the submatch to extract as findings. When not
+        # specified, the entire match is returned. No more than 3 may be included.
+        # Corresponds to the JSON property `groupIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :group_indexes
+      
         # Pattern defining the regular expression. Its syntax
         # (https://github.com/google/re2/wiki/Syntax) can be found under the
         # google/re2 repository on GitHub.
@@ -4671,6 +4698,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @group_indexes = args[:group_indexes] if args.key?(:group_indexes)
           @pattern = args[:pattern] if args.key?(:pattern)
         end
       end

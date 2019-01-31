@@ -1524,6 +1524,26 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   The parent resource name, for example `projects/my-project-id`.
+        # @param [String] filter
+        #   Optional. Allows filtering.
+        #   Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions.
+        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
+        #   sequence of restrictions implicitly uses `AND`.
+        #   * A restriction has the form of `<field> <operator> <value>`.
+        #   * Supported fields/values for inspect jobs:
+        #   - `status` - HEALTHY|PAUSED|CANCELLED
+        #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+        #   - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
+        #   quotation marks. Nanoseconds are ignored.
+        #   - 'error_count' - Number of errors that have occurred while running.
+        #   * The operator must be `=` or `!=` for status and inspected_storage.
+        #   Examples:
+        #   * inspected_storage = cloud_storage AND status = HEALTHY
+        #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
+        #   * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
+        #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
+        #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Optional comma separated list of triggeredJob fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -1533,6 +1553,7 @@ module Google
         #   Supported fields are:
         #   - `create_time`: corresponds to time the JobTrigger was created.
         #   - `update_time`: corresponds to time the JobTrigger was last updated.
+        #   - `last_run_time`: corresponds to the last time the JobTrigger ran.
         #   - `name`: corresponds to JobTrigger's name.
         #   - `display_name`: corresponds to JobTrigger's display name.
         #   - `status`: corresponds to JobTrigger's status.
@@ -1559,11 +1580,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_job_triggers(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_job_triggers(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

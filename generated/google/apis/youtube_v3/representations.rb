@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatSuperStickerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatTextMessageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -839,6 +845,12 @@ module Google
       end
       
       class SuperChatEventSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuperStickerMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1345,7 +1357,6 @@ module Google
           property :community_guidelines_good_standing, as: 'communityGuidelinesGoodStanding'
           property :content_id_claims_good_standing, as: 'contentIdClaimsGoodStanding'
           property :copyright_strikes_good_standing, as: 'copyrightStrikesGoodStanding'
-          property :overall_good_standing, as: 'overallGoodStanding'
         end
       end
       
@@ -2180,6 +2191,8 @@ module Google
       
           property :super_chat_details, as: 'superChatDetails', class: Google::Apis::YoutubeV3::LiveChatSuperChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperChatDetails::Representation
       
+          property :super_sticker_details, as: 'superStickerDetails', class: Google::Apis::YoutubeV3::LiveChatSuperStickerDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperStickerDetails::Representation
+      
           property :text_message_details, as: 'textMessageDetails', class: Google::Apis::YoutubeV3::LiveChatTextMessageDetails, decorator: Google::Apis::YoutubeV3::LiveChatTextMessageDetails::Representation
       
           property :type, as: 'type'
@@ -2277,6 +2290,18 @@ module Google
           property :currency, as: 'currency'
           property :tier, as: 'tier'
           property :user_comment, as: 'userComment'
+        end
+      end
+      
+      class LiveChatSuperStickerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_display_string, as: 'amountDisplayString'
+          property :amount_micros, :numeric_string => true, as: 'amountMicros'
+          property :currency, as: 'currency'
+          property :super_sticker_metadata, as: 'superStickerMetadata', class: Google::Apis::YoutubeV3::SuperStickerMetadata, decorator: Google::Apis::YoutubeV3::SuperStickerMetadata::Representation
+      
+          property :tier, as: 'tier'
         end
       end
       
@@ -2820,11 +2845,23 @@ module Google
           property :currency, as: 'currency'
           property :display_string, as: 'displayString'
           property :is_super_chat_for_good, as: 'isSuperChatForGood'
+          property :is_super_sticker_event, as: 'isSuperStickerEvent'
           property :message_type, as: 'messageType'
           property :nonprofit, as: 'nonprofit', class: Google::Apis::YoutubeV3::Nonprofit, decorator: Google::Apis::YoutubeV3::Nonprofit::Representation
       
+          property :super_sticker_metadata, as: 'superStickerMetadata', class: Google::Apis::YoutubeV3::SuperStickerMetadata, decorator: Google::Apis::YoutubeV3::SuperStickerMetadata::Representation
+      
           property :supporter_details, as: 'supporterDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
+        end
+      end
+      
+      class SuperStickerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :alt_text_language, as: 'altTextLanguage'
+          property :sticker_id, as: 'stickerId'
         end
       end
       

@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2JobNotificationEmails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2JobTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1039,6 +1045,8 @@ module Google
       class GooglePrivacyDlpV2Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_notification_emails, as: 'jobNotificationEmails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails::Representation
+      
           property :pub_sub, as: 'pubSub', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub::Representation
       
           property :publish_summary_to_cscc, as: 'publishSummaryToCscc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc::Representation
@@ -1880,6 +1888,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2JobNotificationEmails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2JobTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2369,6 +2383,7 @@ module Google
       class GooglePrivacyDlpV2Regex
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_indexes, as: 'groupIndexes'
           property :pattern, as: 'pattern'
         end
       end

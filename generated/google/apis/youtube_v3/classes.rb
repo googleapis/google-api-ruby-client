@@ -1003,16 +1003,6 @@ module Google
         attr_accessor :copyright_strikes_good_standing
         alias_method :copyright_strikes_good_standing?, :copyright_strikes_good_standing
       
-        # Describes the general state of the channel. This field will always show if
-        # there are any issues whatsoever with the channel. Currently this field
-        # represents the result of the logical and operation over the community
-        # guidelines good standing, the copyright strikes good standing and the content
-        # ID claims good standing, but this may change in the future.
-        # Corresponds to the JSON property `overallGoodStanding`
-        # @return [Boolean]
-        attr_accessor :overall_good_standing
-        alias_method :overall_good_standing?, :overall_good_standing
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1022,7 +1012,6 @@ module Google
           @community_guidelines_good_standing = args[:community_guidelines_good_standing] if args.key?(:community_guidelines_good_standing)
           @content_id_claims_good_standing = args[:content_id_claims_good_standing] if args.key?(:content_id_claims_good_standing)
           @copyright_strikes_good_standing = args[:copyright_strikes_good_standing] if args.key?(:copyright_strikes_good_standing)
-          @overall_good_standing = args[:overall_good_standing] if args.key?(:overall_good_standing)
         end
       end
       
@@ -4367,6 +4356,12 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveChatSuperChatDetails]
         attr_accessor :super_chat_details
       
+        # Details about the Super Sticker event, this is only set if the type is '
+        # superStickerEvent'.
+        # Corresponds to the JSON property `superStickerDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatSuperStickerDetails]
+        attr_accessor :super_sticker_details
+      
         # Details about the text message, this is only set if the type is '
         # textMessageEvent'.
         # Corresponds to the JSON property `textMessageDetails`
@@ -4403,6 +4398,7 @@ module Google
           @poll_voted_details = args[:poll_voted_details] if args.key?(:poll_voted_details)
           @published_at = args[:published_at] if args.key?(:published_at)
           @super_chat_details = args[:super_chat_details] if args.key?(:super_chat_details)
+          @super_sticker_details = args[:super_sticker_details] if args.key?(:super_sticker_details)
           @text_message_details = args[:text_message_details] if args.key?(:text_message_details)
           @type = args[:type] if args.key?(:type)
           @user_banned_details = args[:user_banned_details] if args.key?(:user_banned_details)
@@ -4695,8 +4691,8 @@ module Google
         # @return [String]
         attr_accessor :currency
       
-        # The tier in which the amount belongs to. Lower amounts belong to lower tiers.
-        # Starts at 1.
+        # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
+        # lowest tier is 1.
         # Corresponds to the JSON property `tier`
         # @return [Fixnum]
         attr_accessor :tier
@@ -4717,6 +4713,50 @@ module Google
           @currency = args[:currency] if args.key?(:currency)
           @tier = args[:tier] if args.key?(:tier)
           @user_comment = args[:user_comment] if args.key?(:user_comment)
+        end
+      end
+      
+      # 
+      class LiveChatSuperStickerDetails
+        include Google::Apis::Core::Hashable
+      
+        # A rendered string that displays the fund amount and currency to the user.
+        # Corresponds to the JSON property `amountDisplayString`
+        # @return [String]
+        attr_accessor :amount_display_string
+      
+        # The amount purchased by the user, in micros (1,750,000 micros = 1.75).
+        # Corresponds to the JSON property `amountMicros`
+        # @return [Fixnum]
+        attr_accessor :amount_micros
+      
+        # The currency in which the purchase was made.
+        # Corresponds to the JSON property `currency`
+        # @return [String]
+        attr_accessor :currency
+      
+        # Information about the Super Sticker.
+        # Corresponds to the JSON property `superStickerMetadata`
+        # @return [Google::Apis::YoutubeV3::SuperStickerMetadata]
+        attr_accessor :super_sticker_metadata
+      
+        # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
+        # lowest tier is 1.
+        # Corresponds to the JSON property `tier`
+        # @return [Fixnum]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_display_string = args[:amount_display_string] if args.key?(:amount_display_string)
+          @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
+          @currency = args[:currency] if args.key?(:currency)
+          @super_sticker_metadata = args[:super_sticker_metadata] if args.key?(:super_sticker_metadata)
+          @tier = args[:tier] if args.key?(:tier)
         end
       end
       
@@ -6692,6 +6732,12 @@ module Google
         attr_accessor :is_super_chat_for_good
         alias_method :is_super_chat_for_good?, :is_super_chat_for_good
       
+        # True if this event is a Super Sticker event.
+        # Corresponds to the JSON property `isSuperStickerEvent`
+        # @return [Boolean]
+        attr_accessor :is_super_sticker_event
+        alias_method :is_super_sticker_event?, :is_super_sticker_event
+      
         # The tier for the paid message, which is based on the amount of money spent to
         # purchase the message.
         # Corresponds to the JSON property `messageType`
@@ -6702,6 +6748,12 @@ module Google
         # Corresponds to the JSON property `nonprofit`
         # @return [Google::Apis::YoutubeV3::Nonprofit]
         attr_accessor :nonprofit
+      
+        # If this event is a Super Sticker event, this field will contain metadata about
+        # the Super Sticker.
+        # Corresponds to the JSON property `superStickerMetadata`
+        # @return [Google::Apis::YoutubeV3::SuperStickerMetadata]
+        attr_accessor :super_sticker_metadata
       
         # Details about the supporter.
         # Corresponds to the JSON property `supporterDetails`
@@ -6721,9 +6773,44 @@ module Google
           @currency = args[:currency] if args.key?(:currency)
           @display_string = args[:display_string] if args.key?(:display_string)
           @is_super_chat_for_good = args[:is_super_chat_for_good] if args.key?(:is_super_chat_for_good)
+          @is_super_sticker_event = args[:is_super_sticker_event] if args.key?(:is_super_sticker_event)
           @message_type = args[:message_type] if args.key?(:message_type)
           @nonprofit = args[:nonprofit] if args.key?(:nonprofit)
+          @super_sticker_metadata = args[:super_sticker_metadata] if args.key?(:super_sticker_metadata)
           @supporter_details = args[:supporter_details] if args.key?(:supporter_details)
+        end
+      end
+      
+      # 
+      class SuperStickerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Internationalized alt text that describes the sticker image and any animation
+        # associated with it.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Specifies the localization language in which the alt text is returned.
+        # Corresponds to the JSON property `altTextLanguage`
+        # @return [String]
+        attr_accessor :alt_text_language
+      
+        # Unique identifier of the Super Sticker. This is a shorter form of the alt_text
+        # that includes pack name and a recognizable characteristic of the sticker.
+        # Corresponds to the JSON property `stickerId`
+        # @return [String]
+        attr_accessor :sticker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @alt_text_language = args[:alt_text_language] if args.key?(:alt_text_language)
+          @sticker_id = args[:sticker_id] if args.key?(:sticker_id)
         end
       end
       

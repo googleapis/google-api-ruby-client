@@ -465,7 +465,9 @@ module Google
         
         # Fetches an Organization resource identified by the specified resource name.
         # @param [String] name
-        #   The resource name of the Organization to fetch, e.g. "organizations/1234".
+        #   The resource name of the Organization to fetch. This is the organization's
+        #   relative path in the API, formatted as "organizations/[organizationId]".
+        #   For example, "organizations/1234".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
