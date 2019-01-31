@@ -1,3 +1,31 @@
+# 0.28.2
+* Backwards compatible changes:
+  * Added `docs_v1`
+  * Added `videointelligence_v1p2beta1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `admin_reports_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `cloudasset_v1beta1`
+  * Updated `cloudbuild_v1alpha1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `dlp_v2`
+  * Updated `file_v1`
+  * Updated `iam_v1`
+  * Updated `ml_v1`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+  * Updated `youtube_v3`
+
 # 0.28.1
 * Backwards compatible changes:
   * Added `file_v1`
