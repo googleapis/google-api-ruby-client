@@ -3642,6 +3642,12 @@ module Google
       class TableFieldSchema
         include Google::Apis::Core::Hashable
       
+        # [Optional] The categories attached to this field, used for field-level access
+        # control.
+        # Corresponds to the JSON property `categories`
+        # @return [Google::Apis::BigqueryV2::TableFieldSchema::Categories]
+        attr_accessor :categories
+      
         # [Optional] The field description. The maximum length is 1,024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -3680,11 +3686,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+        
+        # [Optional] The categories attached to this field, used for field-level access
+        # control.
+        class Categories
+          include Google::Apis::Core::Hashable
+        
+          # A list of category resource names. For example, "projects/1/taxonomies/2/
+          # categories/3". At most 5 categories are allowed.
+          # Corresponds to the JSON property `names`
+          # @return [Array<String>]
+          attr_accessor :names
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @names = args[:names] if args.key?(:names)
+          end
         end
       end
       

@@ -1436,6 +1436,7 @@ module Google
           property :current_worker_time, as: 'currentWorkerTime'
           property :location, as: 'location'
           property :requested_lease_duration, as: 'requestedLeaseDuration'
+          hash :unified_worker_request, as: 'unifiedWorkerRequest'
           collection :work_item_types, as: 'workItemTypes'
           collection :worker_capabilities, as: 'workerCapabilities'
           property :worker_id, as: 'workerId'
@@ -1445,6 +1446,7 @@ module Google
       class LeaseWorkItemResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :unified_worker_response, as: 'unifiedWorkerResponse'
           collection :work_items, as: 'workItems', class: Google::Apis::DataflowV1b3::WorkItem, decorator: Google::Apis::DataflowV1b3::WorkItem::Representation
       
         end
@@ -1675,6 +1677,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_worker_time, as: 'currentWorkerTime'
           property :location, as: 'location'
+          hash :unified_worker_request, as: 'unifiedWorkerRequest'
           collection :work_item_statuses, as: 'workItemStatuses', class: Google::Apis::DataflowV1b3::WorkItemStatus, decorator: Google::Apis::DataflowV1b3::WorkItemStatus::Representation
       
           property :worker_id, as: 'workerId'
@@ -1684,6 +1687,7 @@ module Google
       class ReportWorkItemStatusResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :unified_worker_response, as: 'unifiedWorkerResponse'
           collection :work_item_service_states, as: 'workItemServiceStates', class: Google::Apis::DataflowV1b3::WorkItemServiceState, decorator: Google::Apis::DataflowV1b3::WorkItemServiceState::Representation
       
         end
@@ -2034,6 +2038,7 @@ module Google
       
           property :stage_name, as: 'stageName'
           property :system_name, as: 'systemName'
+          hash :transform_user_name_to_state_family, as: 'transformUserNameToStateFamily'
         end
       end
       

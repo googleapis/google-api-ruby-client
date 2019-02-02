@@ -390,6 +390,12 @@ module Google
       
       class TableFieldSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Categories
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1307,12 +1313,21 @@ module Google
       class TableFieldSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :categories, as: 'categories', class: Google::Apis::BigqueryV2::TableFieldSchema::Categories, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Categories::Representation
+      
           property :description, as: 'description'
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
           property :mode, as: 'mode'
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+        
+        class Categories
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :names, as: 'names'
+          end
         end
       end
       

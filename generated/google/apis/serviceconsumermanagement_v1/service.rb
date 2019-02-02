@@ -513,6 +513,8 @@ module Google
         # It will remove project lien with 'TenantManager' origin if that was added.
         # It will then attempt to delete the project. If that operation fails, this
         # method fails.
+        # Calls to remove already removed or non-existent tenant project
+        # will succeed.
         # After the project has been deleted, or if was already in DELETED state,
         # resource metadata is permanently removed from the tenancy unit.
         # Operation<response: Empty>.

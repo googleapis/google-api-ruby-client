@@ -2222,6 +2222,11 @@ module Google
         # @return [String]
         attr_accessor :requested_lease_duration
       
+        # Untranslated bag-of-bytes WorkRequest from UnifiedWorker.
+        # Corresponds to the JSON property `unifiedWorkerRequest`
+        # @return [Hash<String,Object>]
+        attr_accessor :unified_worker_request
+      
         # Filter for WorkItem type.
         # Corresponds to the JSON property `workItemTypes`
         # @return [Array<String>]
@@ -2248,6 +2253,7 @@ module Google
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
           @location = args[:location] if args.key?(:location)
           @requested_lease_duration = args[:requested_lease_duration] if args.key?(:requested_lease_duration)
+          @unified_worker_request = args[:unified_worker_request] if args.key?(:unified_worker_request)
           @work_item_types = args[:work_item_types] if args.key?(:work_item_types)
           @worker_capabilities = args[:worker_capabilities] if args.key?(:worker_capabilities)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
@@ -2257,6 +2263,11 @@ module Google
       # Response to a request to lease WorkItems.
       class LeaseWorkItemResponse
         include Google::Apis::Core::Hashable
+      
+        # Untranslated bag-of-bytes WorkResponse for UnifiedWorker.
+        # Corresponds to the JSON property `unifiedWorkerResponse`
+        # @return [Hash<String,Object>]
+        attr_accessor :unified_worker_response
       
         # A list of the leased WorkItems.
         # Corresponds to the JSON property `workItems`
@@ -2269,6 +2280,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @unified_worker_response = args[:unified_worker_response] if args.key?(:unified_worker_response)
           @work_items = args[:work_items] if args.key?(:work_items)
         end
       end
@@ -3103,6 +3115,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.
+        # Corresponds to the JSON property `unifiedWorkerRequest`
+        # @return [Hash<String,Object>]
+        attr_accessor :unified_worker_request
+      
         # The order is unimportant, except that the order of the
         # WorkItemServiceState messages in the ReportWorkItemStatusResponse
         # corresponds to the order of WorkItemStatus messages here.
@@ -3126,6 +3143,7 @@ module Google
         def update!(**args)
           @current_worker_time = args[:current_worker_time] if args.key?(:current_worker_time)
           @location = args[:location] if args.key?(:location)
+          @unified_worker_request = args[:unified_worker_request] if args.key?(:unified_worker_request)
           @work_item_statuses = args[:work_item_statuses] if args.key?(:work_item_statuses)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
@@ -3134,6 +3152,11 @@ module Google
       # Response from a request to report the status of WorkItems.
       class ReportWorkItemStatusResponse
         include Google::Apis::Core::Hashable
+      
+        # Untranslated bag-of-bytes WorkProgressUpdateResponse for UnifiedWorker.
+        # Corresponds to the JSON property `unifiedWorkerResponse`
+        # @return [Hash<String,Object>]
+        attr_accessor :unified_worker_response
       
         # A set of messages indicating the service-side state for each
         # WorkItem whose status was reported, in the same order as the
@@ -3149,6 +3172,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @unified_worker_response = args[:unified_worker_response] if args.key?(:unified_worker_response)
           @work_item_service_states = args[:work_item_service_states] if args.key?(:work_item_service_states)
         end
       end
@@ -4395,6 +4419,12 @@ module Google
         # @return [String]
         attr_accessor :system_name
       
+        # Map from user name of stateful transforms in this stage to their state
+        # family.
+        # Corresponds to the JSON property `transformUserNameToStateFamily`
+        # @return [Hash<String,String>]
+        attr_accessor :transform_user_name_to_state_family
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4405,6 +4435,7 @@ module Google
           @instructions = args[:instructions] if args.key?(:instructions)
           @stage_name = args[:stage_name] if args.key?(:stage_name)
           @system_name = args[:system_name] if args.key?(:system_name)
+          @transform_user_name_to_state_family = args[:transform_user_name_to_state_family] if args.key?(:transform_user_name_to_state_family)
         end
       end
       

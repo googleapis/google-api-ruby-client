@@ -278,8 +278,9 @@ module Google
         # @return [Array<Object>]
         attr_accessor :parameters
       
-        # For Android add-ons only. An ID that represents the user's current session
-        # in the Android app for Google Docs or Sheets, included as extra data in the
+        # <b>Deprecated</b>. For use with Android add-ons only. An ID that represents
+        # the user's current session in the Android app for Google Docs or Sheets,
+        # included as extra data in the
         # [Intent](https://developer.android.com/guide/components/intents-filters.html)
         # that launches the add-on. When an Android add-on is run with a session
         # state, it gains the privileges of a
