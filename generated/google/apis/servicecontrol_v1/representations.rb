@@ -342,6 +342,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :detail, as: 'detail'
+          property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
+      
           property :subject, as: 'subject'
         end
       end
