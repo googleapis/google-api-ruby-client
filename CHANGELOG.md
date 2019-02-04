@@ -1,3 +1,18 @@
+# 0.28.3
+* Backwards compatible changes:
+  * Added `dfareporting_v3_3`
+  * Updated `bigquery_v2`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `dataflow_v1b3`
+  * Updated `games_v1`
+  * Updated `iam_v1`
+  * Updated `iamcredentials_v1`
+  * Updated `script_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.28.2
 * Backwards compatible changes:
   * Added `docs_v1`
