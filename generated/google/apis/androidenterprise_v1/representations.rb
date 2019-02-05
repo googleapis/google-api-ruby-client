@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdministratorWebTokenSpecManagedConfigurations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdministratorWebTokenSpecPlaySearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :managed_configurations, as: 'managedConfigurations', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations::Representation
+      
           property :parent, as: 'parent'
           collection :permission, as: 'permission'
           property :play_search, as: 'playSearch', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecPlaySearch::Representation
@@ -531,6 +539,13 @@ module Google
       
           property :web_apps, as: 'webApps', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps::Representation
       
+        end
+      end
+      
+      class AdministratorWebTokenSpecManagedConfigurations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

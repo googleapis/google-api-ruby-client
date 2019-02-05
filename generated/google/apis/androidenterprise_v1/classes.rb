@@ -80,6 +80,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Options for displaying the Managed Configuration page.
+        # Corresponds to the JSON property `managedConfigurations`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations]
+        attr_accessor :managed_configurations
+      
         # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may
         # not be hosted at other URIs. This URI must be https.
         # Corresponds to the JSON property `parent`
@@ -118,12 +123,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @managed_configurations = args[:managed_configurations] if args.key?(:managed_configurations)
           @parent = args[:parent] if args.key?(:parent)
           @permission = args[:permission] if args.key?(:permission)
           @play_search = args[:play_search] if args.key?(:play_search)
           @private_apps = args[:private_apps] if args.key?(:private_apps)
           @store_builder = args[:store_builder] if args.key?(:store_builder)
           @web_apps = args[:web_apps] if args.key?(:web_apps)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecManagedConfigurations
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Managed Configuration page is displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -529,7 +555,7 @@ module Google
         end
       end
       
-      # The Auto install constraint. Defines a set of restrictions for installation.
+      # The auto-install constraint. Defines a set of restrictions for installation.
       # At least one of the fields must be set.
       class AutoInstallConstraint
         include Google::Apis::Core::Hashable
@@ -565,7 +591,7 @@ module Google
       class AutoInstallPolicy
         include Google::Apis::Core::Hashable
       
-        # Constraints for auto-installing the app. You can specify a maximum of one
+        # The constraints for auto-installing the app. You can specify a maximum of one
         # constraint.
         # Corresponds to the JSON property `autoInstallConstraint`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
@@ -2151,7 +2177,7 @@ module Google
       class ProductPolicy
         include Google::Apis::Core::Hashable
       
-        # The auto install policy for the product.
+        # The auto-install policy for the product.
         # Corresponds to the JSON property `autoInstallPolicy`
         # @return [Google::Apis::AndroidenterpriseV1::AutoInstallPolicy]
         attr_accessor :auto_install_policy
