@@ -22,7 +22,7 @@ module Google
     module DocsV1
       # Google Docs API
       #
-      # An API for creating and editing Google Docs documents.
+      # Reads and writes Google Docs documents.
       #
       # @example
       #    require 'google/apis/docs_v1'

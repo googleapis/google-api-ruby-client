@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Docs API
     #
-    # An API for creating and editing Google Docs documents.
+    # Reads and writes Google Docs documents.
     #
     # @see https://developers.google.com/docs/
     module DocsV1
       VERSION = 'V1'
-      REVISION = '20190125'
+      REVISION = '20190129'
 
       # View and manage your Google Docs documents
       AUTH_DOCUMENTS = 'https://www.googleapis.com/auth/documents'

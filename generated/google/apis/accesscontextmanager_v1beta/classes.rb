@@ -186,14 +186,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_subnetworks
       
-        # The signed-in user originating the request must be a part of one of the
-        # provided members.
+        # The request must be made by one of the provided user or service
+        # accounts. Groups are not supported.
         # Syntax:
         # `user:`emailid``
-        # `group:`emailid``
         # `serviceAccount:`emailid``
-        # If not specified, a request may come from any user (logged in/not logged
-        # in, not present in any groups, etc.).
+        # If not specified, a request may come from any user.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members

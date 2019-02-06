@@ -26,7 +26,7 @@ module Google
     # @see https://gsuite.google.com/products/cloud-search/
     module CloudsearchV1
       VERSION = 'V1'
-      REVISION = '20190108'
+      REVISION = '20190205'
 
       # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH = 'https://www.googleapis.com/auth/cloud_search'

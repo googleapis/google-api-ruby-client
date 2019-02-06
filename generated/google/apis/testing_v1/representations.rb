@@ -861,6 +861,7 @@ module Google
       
           property :start_activity, as: 'startActivity', class: Google::Apis::TestingV1::StartActivityIntent, decorator: Google::Apis::TestingV1::StartActivityIntent::Representation
       
+          property :timeout, as: 'timeout'
         end
       end
       

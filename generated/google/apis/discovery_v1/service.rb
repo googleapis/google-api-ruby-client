@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DiscoveryV1
-      # APIs Discovery Service
+      # API Discovery Service
       #
       # Provides information about other Google APIs, such as what APIs are available,
       #  the resource, and method details for each API.

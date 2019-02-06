@@ -1698,6 +1698,11 @@ module Google
         # @return [Google::Apis::TestingV1::StartActivityIntent]
         attr_accessor :start_activity
       
+        # Timeout in seconds for each intent.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1706,6 +1711,7 @@ module Google
         def update!(**args)
           @launcher_activity = args[:launcher_activity] if args.key?(:launcher_activity)
           @start_activity = args[:start_activity] if args.key?(:start_activity)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       

@@ -207,7 +207,7 @@ module Google
         # source. The value must be unique across all data sources. The value must
         # only contain alphanumeric characters (a-zA-Z0-9). The value cannot start
         # with 'google' and cannot be one of the following: mail, gmail, docs, drive,
-        # groups, sites, calendar, hangouts, gplus, keep.
+        # groups, sites, calendar, hangouts, gplus, keep, people, teams.
         # Its maximum length is 32 characters.
         # Corresponds to the JSON property `shortName`
         # @return [String]

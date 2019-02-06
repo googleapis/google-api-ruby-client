@@ -18,7 +18,7 @@ require 'google/apis/discovery_v1/representations.rb'
 
 module Google
   module Apis
-    # APIs Discovery Service
+    # API Discovery Service
     #
     # Provides information about other Google APIs, such as what APIs are available,
     # the resource, and method details for each API.
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/discovery/
     module DiscoveryV1
       VERSION = 'V1'
-      REVISION = '20180813'
+      REVISION = '20190129'
     end
   end
 end
