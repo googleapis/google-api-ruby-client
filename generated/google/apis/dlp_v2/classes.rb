@@ -2589,6 +2589,12 @@ module Google
       class GooglePrivacyDlpV2InfoTypeDescription
         include Google::Apis::Core::Hashable
       
+        # Description of the infotype. Translated when language is provided in the
+        # request.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Human readable form of the infoType name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2610,6 +2616,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @supported_by = args[:supported_by] if args.key?(:supported_by)

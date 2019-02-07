@@ -18,14 +18,14 @@ require 'google/apis/speech_v1p1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Speech API
+    # Cloud Speech-to-Text API
     #
     # Converts audio to text by applying powerful neural network models.
     #
     # @see https://cloud.google.com/speech-to-text/docs/quickstart-protocol
     module SpeechV1p1beta1
       VERSION = 'V1p1beta1'
-      REVISION = '20190114'
+      REVISION = '20190201'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

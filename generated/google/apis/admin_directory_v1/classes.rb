@@ -254,6 +254,11 @@ module Google
       class Building
         include Google::Apis::Core::Hashable
       
+        # JSON template for the postal address of a building in Directory API.
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::AdminDirectoryV1::BuildingAddress]
+        attr_accessor :address
+      
         # Unique identifier for the building. The maximum length is 100 characters.
         # Corresponds to the JSON property `buildingId`
         # @return [String]
@@ -298,6 +303,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @address = args[:address] if args.key?(:address)
           @building_id = args[:building_id] if args.key?(:building_id)
           @building_name = args[:building_name] if args.key?(:building_name)
           @coordinates = args[:coordinates] if args.key?(:coordinates)
@@ -305,6 +311,98 @@ module Google
           @etags = args[:etags] if args.key?(:etags)
           @floor_names = args[:floor_names] if args.key?(:floor_names)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # JSON template for the postal address of a building in Directory API.
+      class BuildingAddress
+        include Google::Apis::Core::Hashable
+      
+        # Unstructured address lines describing the lower levels of an address. Because
+        # values in addressLines do not have type information and may sometimes contain
+        # multiple values in a single field (e.g. "Austin, TX"), it is important that
+        # the line order is clear. The order of address lines should be "envelope order"
+        # for the country/region of the address. In places where this can vary (e.g.
+        # Japan), address_language is used to make it explicit (e.g. "ja" for large-to-
+        # small ordering and "ja-Latn" or "en" for small-to-large). This way, the most
+        # specific line of an address can be selected based on the language. The minimum
+        # permitted structural representation of an address consists of a regionCode
+        # with all remaining information placed in the addressLines. It would be
+        # possible to format such an address very approximately without geocoding, but
+        # no semantic reasoning could be made about any of the address components until
+        # it was at least partially resolved. Creating an address only containing a
+        # regionCode and addressLines, and then geocoding is the recommended way to
+        # handle completely unstructured addresses (as opposed to guessing which parts
+        # of the address should be localities or administrative areas).
+        # Corresponds to the JSON property `addressLines`
+        # @return [Array<String>]
+        attr_accessor :address_lines
+      
+        # Optional. Highest administrative subdivision which is used for postal
+        # addresses of a country or region. For example, this can be a state, a province,
+        # an oblast, or a prefecture. Specifically, for Spain this is the province and
+        # not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many
+        # countries don't use an administrative area in postal addresses. E.g. in
+        # Switzerland this should be left unpopulated.
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Optional. BCP-47 language code of the contents of this address (if known).
+        # This is often the UI language of the input form or is expected to match one of
+        # the languages used in the address' country/region, or their transliterated
+        # equivalents. This can affect formatting in certain countries, but is not
+        # critical to the correctness of the data and will never affect any validation
+        # or other non-formatting related operations. If this value is not known, it
+        # should be omitted (rather than specifying a possibly incorrect default).
+        # Examples: "zh-Hant", "ja", "ja-Latn", "en".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. Generally refers to the city/town portion of the address. Examples:
+        # US city, IT comune, UK post town. In regions of the world where localities are
+        # not well defined or do not fit into this structure well, leave locality empty
+        # and use addressLines.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Optional. Postal code of the address. Not all countries use or require postal
+        # codes to be present, but where they are used, they may trigger additional
+        # validation with other parts of the address (e.g. state/zip validation in the U.
+        # S.A.).
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Required. CLDR region code of the country/region of the address. This is never
+        # inferred and it is up to the user to ensure the value is correct. See http://
+        # cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/
+        # territory_information.html
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Optional. Sublocality of the address. For example, this can be neighborhoods,
+        # boroughs, districts.
+        # Corresponds to the JSON property `sublocality`
+        # @return [String]
+        attr_accessor :sublocality
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_lines = args[:address_lines] if args.key?(:address_lines)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @locality = args[:locality] if args.key?(:locality)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @sublocality = args[:sublocality] if args.key?(:sublocality)
         end
       end
       

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRunRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Domain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -163,6 +169,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :token, as: 'token'
+        end
+      end
+      
+      class CloudRunRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
+          property :service_id, as: 'serviceId'
         end
       end
       
@@ -290,6 +304,8 @@ module Google
           property :function, as: 'function'
           property :glob, as: 'glob'
           property :path, as: 'path'
+          property :run, as: 'run', class: Google::Apis::FirebasehostingV1beta1::CloudRunRewrite, decorator: Google::Apis::FirebasehostingV1beta1::CloudRunRewrite::Representation
+      
         end
       end
       

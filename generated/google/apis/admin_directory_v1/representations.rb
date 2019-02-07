@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildingAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildingCoordinates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +598,8 @@ module Google
       class Building
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::AdminDirectoryV1::BuildingAddress, decorator: Google::Apis::AdminDirectoryV1::BuildingAddress::Representation
+      
           property :building_id, as: 'buildingId'
           property :building_name, as: 'buildingName'
           property :coordinates, as: 'coordinates', class: Google::Apis::AdminDirectoryV1::BuildingCoordinates, decorator: Google::Apis::AdminDirectoryV1::BuildingCoordinates::Representation
@@ -600,6 +608,19 @@ module Google
           property :etags, as: 'etags'
           collection :floor_names, as: 'floorNames'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BuildingAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_lines, as: 'addressLines'
+          property :administrative_area, as: 'administrativeArea'
+          property :language_code, as: 'languageCode'
+          property :locality, as: 'locality'
+          property :postal_code, as: 'postalCode'
+          property :region_code, as: 'regionCode'
+          property :sublocality, as: 'sublocality'
         end
       end
       

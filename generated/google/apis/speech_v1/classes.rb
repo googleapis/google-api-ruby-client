@@ -382,8 +382,8 @@ module Google
         # 16000 is optimal. For best results, set the sampling rate of the audio
         # source to 16000 Hz. If that's not possible, use the native sample rate of
         # the audio source (instead of re-sampling).
-        # This field is optional for `FLAC` and `WAV` audio files and required
-        # for all other audio formats. For details, see AudioEncoding.
+        # This field is optional for `FLAC`,  `WAV`. and 'MP3' audio files, and is
+        # required for all other audio formats. For details, see AudioEncoding.
         # Corresponds to the JSON property `sampleRateHertz`
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz

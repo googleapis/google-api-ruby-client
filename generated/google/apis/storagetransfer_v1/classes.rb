@@ -23,8 +23,9 @@ module Google
     module StoragetransferV1
       
       # AWS access key (see
-      # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
-      # security-credentials.html)).
+      # [AWS Security
+      # Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-
+      # credentials.html)).
       class AwsAccessKey
         include Google::Apis::Core::Hashable
       
@@ -57,15 +58,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # AWS access key (see
-        # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
-        # security-credentials.html)).
+        # [AWS Security
+        # Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-
+        # credentials.html)).
         # Corresponds to the JSON property `awsAccessKey`
         # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
         attr_accessor :aws_access_key
       
         # S3 Bucket name (see
-        # [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-
-        # bucket-get-location-example.html)).
+        # [Creating a
+        # bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-
+        # location-example.html)).
         # Required.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
@@ -363,9 +366,10 @@ module Google
       
         # If `includePrefixes` is specified, objects that satisfy the object
         # conditions must have names that start with one of the `includePrefixes`
-        # and that do not start with any of the `excludePrefixes`. If `includePrefixes`
-        # is not specified, all objects except those that have names starting with
-        # one of the `excludePrefixes` must satisfy the object conditions.
+        # and that do not start with any of the `excludePrefixes`. If
+        # `includePrefixes` is not specified, all objects except those that have
+        # names starting with one of the `excludePrefixes` must satisfy the object
+        # conditions.
         # Requirements:
         # * Each include-prefix and exclude-prefix can contain any sequence of
         # Unicode characters, of max length 1024 bytes when UTF8-encoded, and
@@ -851,7 +855,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The ID of the Google Cloud Platform Console project that owns the job.
+        # The ID of the Google Cloud Platform Project that owns the job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -918,7 +922,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The ID of the Google Cloud Platform Console project that owns the operation.
+        # The ID of the Google Cloud Platform Project that owns the operation.
         # Required.
         # Corresponds to the JSON property `projectId`
         # @return [String]

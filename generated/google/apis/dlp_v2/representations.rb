@@ -1744,6 +1744,7 @@ module Google
       class GooglePrivacyDlpV2InfoTypeDescription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :supported_by, as: 'supportedBy'

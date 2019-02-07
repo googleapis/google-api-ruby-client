@@ -2183,6 +2183,8 @@ module Google
         #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] coordinates_source
+        #   Source from which Building.coordinates are derived.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2202,13 +2204,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_resource_building(customer, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_resource_building(customer, building_object = nil, coordinates_source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'customer/{customer}/resources/buildings', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
           command.request_object = building_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Building::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Building
           command.params['customer'] = customer unless customer.nil?
+          command.query['coordinatesSource'] = coordinates_source unless coordinates_source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2262,6 +2265,8 @@ module Google
         # @param [String] building_id
         #   The ID of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] coordinates_source
+        #   Source from which Building.coordinates are derived.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2281,7 +2286,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_resource_building(customer, building_id, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_resource_building(customer, building_id, building_object = nil, coordinates_source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'customer/{customer}/resources/buildings/{buildingId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
           command.request_object = building_object
@@ -2289,6 +2294,7 @@ module Google
           command.response_class = Google::Apis::AdminDirectoryV1::Building
           command.params['customer'] = customer unless customer.nil?
           command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['coordinatesSource'] = coordinates_source unless coordinates_source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2302,6 +2308,8 @@ module Google
         # @param [String] building_id
         #   The ID of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] coordinates_source
+        #   Source from which Building.coordinates are derived.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2321,7 +2329,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_resource_building(customer, building_id, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_resource_building(customer, building_id, building_object = nil, coordinates_source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'customer/{customer}/resources/buildings/{buildingId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
           command.request_object = building_object
@@ -2329,6 +2337,7 @@ module Google
           command.response_class = Google::Apis::AdminDirectoryV1::Building
           command.params['customer'] = customer unless customer.nil?
           command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['coordinatesSource'] = coordinates_source unless coordinates_source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

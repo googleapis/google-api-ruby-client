@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SpeechV1
-      # Cloud Speech API
+      # Cloud Speech-to-Text API
       #
       # Converts audio to text by applying powerful neural network models.
       #
