@@ -1,3 +1,21 @@
+# 0.28.4
+* Backwards compatible changes:
+  * Added `bigtableadmin_v1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `admin_directory_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `bigtableadmin_v2`
+  * Updated `cloudsearch_v1`
+  * Updated `discovery_v1`
+  * Updated `dlp_v2`
+  * Updated `docs_v1`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `iam_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1p1beta1`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+
 # 0.28.3
 * Backwards compatible changes:
   * Added `dfareporting_v3_3`
