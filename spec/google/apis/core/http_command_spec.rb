@@ -197,6 +197,32 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
   end
 
+  context('with unknown errors') do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_raise(HTTPClient::BadResponseError) # empty error, no res value
+    end
+
+    it 'should raise transmission error' do
+      command.options.retries = 1
+
+      err = nil
+      begin
+        command.execute(client)
+      rescue Google::Apis::Error => e
+        err = e
+      end
+
+      expect(err).to be_a(Google::Apis::TransmissionError)
+      expect(err.cause).to be_a(HTTPClient::BadResponseError)
+      expect(err.cause.res).to be_nil # no res value
+    end
+  end
+
   context('with options') do
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

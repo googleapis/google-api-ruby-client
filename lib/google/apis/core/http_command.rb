@@ -271,6 +271,7 @@ module Google
           if err.is_a?(HTTPClient::BadResponseError)
             begin
               res = err.res
+              raise Google::Apis::TransmissionError.new(err) if res.nil?
               check_status(res.status.to_i, res.header, res.body)
             rescue Google::Apis::Error => e
               err = e
