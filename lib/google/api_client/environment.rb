@@ -36,7 +36,7 @@ module Google
         end
       rescue Exception
         RUBY_PLATFORM
-      end
+      end.strip
     end
   end
 end
