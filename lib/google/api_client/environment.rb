@@ -23,7 +23,7 @@ module Google
           # to the `ver` command.
           `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '').strip
         elsif RUBY_PLATFORM =~ /darwin/i
-          "Mac OS X/#{`sw_vers -productVersion`}"
+          "Mac OS X/#{`sw_vers -productVersion`}".strip
         elsif RUBY_PLATFORM == 'java'
           # Get the information from java system properties to avoid spawning a
           # sub-process, which is not friendly in some contexts (web servers).
