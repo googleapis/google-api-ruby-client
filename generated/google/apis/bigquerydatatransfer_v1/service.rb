@@ -367,6 +367,13 @@ module Google
         #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
         #   returned in the title bar of the browser, with the page text prompting
         #   the user to copy the code and paste it in the application.
+        # @param [String] version_info
+        #   Optional version info. If users want to find a very recent access token,
+        #   that is, immediately after approving access, users have to set the
+        #   version_info claim in the token request. To obtain the version_info, users
+        #   must use the “none+gsession” response type. which be return a
+        #   version_info back in the authorization response which be be put in a JWT
+        #   claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -384,7 +391,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
@@ -392,6 +399,7 @@ module Google
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferConfig
           command.params['parent'] = parent unless parent.nil?
           command.query['authorizationCode'] = authorization_code unless authorization_code.nil?
+          command.query['versionInfo'] = version_info unless version_info.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -534,6 +542,13 @@ module Google
         #   the user to copy the code and paste it in the application.
         # @param [String] update_mask
         #   Required list of fields to be updated in this request.
+        # @param [String] version_info
+        #   Optional version info. If users want to find a very recent access token,
+        #   that is, immediately after approving access, users have to set the
+        #   version_info claim in the token request. To obtain the version_info, users
+        #   must use the “none+gsession” response type. which be return a
+        #   version_info back in the authorization response which be be put in a JWT
+        #   claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -551,7 +566,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
@@ -560,6 +575,7 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['authorizationCode'] = authorization_code unless authorization_code.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['versionInfo'] = version_info unless version_info.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -781,6 +797,13 @@ module Google
         #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
         #   returned in the title bar of the browser, with the page text prompting
         #   the user to copy the code and paste it in the application.
+        # @param [String] version_info
+        #   Optional version info. If users want to find a very recent access token,
+        #   that is, immediately after approving access, users have to set the
+        #   version_info claim in the token request. To obtain the version_info, users
+        #   must use the “none+gsession” response type. which be return a
+        #   version_info back in the authorization response which be be put in a JWT
+        #   claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -798,7 +821,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
@@ -806,6 +829,7 @@ module Google
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferConfig
           command.params['parent'] = parent unless parent.nil?
           command.query['authorizationCode'] = authorization_code unless authorization_code.nil?
+          command.query['versionInfo'] = version_info unless version_info.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -948,6 +972,13 @@ module Google
         #   the user to copy the code and paste it in the application.
         # @param [String] update_mask
         #   Required list of fields to be updated in this request.
+        # @param [String] version_info
+        #   Optional version info. If users want to find a very recent access token,
+        #   that is, immediately after approving access, users have to set the
+        #   version_info claim in the token request. To obtain the version_info, users
+        #   must use the “none+gsession” response type. which be return a
+        #   version_info back in the authorization response which be be put in a JWT
+        #   claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -965,7 +996,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
@@ -974,6 +1005,7 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['authorizationCode'] = authorization_code unless authorization_code.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['versionInfo'] = version_info unless version_info.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

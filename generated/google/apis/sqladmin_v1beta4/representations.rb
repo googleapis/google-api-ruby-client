@@ -618,6 +618,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_string_values, as: 'allowedStringValues'
           collection :applies_to, as: 'appliesTo'
+          property :in_beta, as: 'inBeta'
           property :kind, as: 'kind'
           property :max_value, :numeric_string => true, as: 'maxValue'
           property :min_value, :numeric_string => true, as: 'minValue'

@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LaunchAppAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDevicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class ProxyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetupAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -579,6 +591,13 @@ module Google
         end
       end
       
+      class LaunchAppAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class ListDevicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -811,6 +830,8 @@ module Google
           property :screen_capture_disabled, as: 'screenCaptureDisabled'
           property :set_user_icon_disabled, as: 'setUserIconDisabled'
           property :set_wallpaper_disabled, as: 'setWallpaperDisabled'
+          collection :setup_actions, as: 'setupActions', class: Google::Apis::AndroidmanagementV1::SetupAction, decorator: Google::Apis::AndroidmanagementV1::SetupAction::Representation
+      
           property :share_location_disabled, as: 'shareLocationDisabled'
           property :short_support_message, as: 'shortSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
@@ -850,6 +871,18 @@ module Google
           property :host, as: 'host'
           property :pac_uri, as: 'pacUri'
           property :port, as: 'port'
+        end
+      end
+      
+      class SetupAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :launch_app, as: 'launchApp', class: Google::Apis::AndroidmanagementV1::LaunchAppAction, decorator: Google::Apis::AndroidmanagementV1::LaunchAppAction::Representation
+      
+          property :title, as: 'title', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
         end
       end
       

@@ -2464,7 +2464,7 @@ module Google
       
         # Maximum number of business days that is spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Must be greater than or equal to
-        # minTransitTimeInDays. Required.
+        # minTransitTimeInDays.
         # Corresponds to the JSON property `maxTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_transit_time_in_days
@@ -2476,10 +2476,18 @@ module Google
         attr_accessor :min_handling_time_in_days
       
         # Minimum number of business days that is spent in transit. 0 means same day
-        # delivery, 1 means next day delivery. Required.
+        # delivery, 1 means next day delivery. Either `min,max`transitTimeInDays or
+        # transitTimeTable must be set, but not both.
         # Corresponds to the JSON property `minTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :min_transit_time_in_days
+      
+        # Transit time table, number of business days spent in transit based on row and
+        # column dimensions. Either `min,max`transitTimeInDays or transitTimeTable can
+        # be set, but not both.
+        # Corresponds to the JSON property `transitTimeTable`
+        # @return [Google::Apis::ContentV2::TransitTable]
+        attr_accessor :transit_time_table
       
         def initialize(**args)
            update!(**args)
@@ -2493,6 +2501,7 @@ module Google
           @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
           @min_handling_time_in_days = args[:min_handling_time_in_days] if args.key?(:min_handling_time_in_days)
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+          @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
         end
       end
       
@@ -2621,7 +2630,7 @@ module Google
       end
       
       # A non-empty list of row or column headers for a table. Exactly one of prices,
-      # weights, numItems, postalCodeGroupNames, or locations must be set.
+      # weights, numItems, postalCodeGroupNames, or location must be set.
       class Headers
         include Google::Apis::Core::Hashable
       
@@ -3225,27 +3234,17 @@ module Google
         # @return [Array<Google::Apis::ContentV2::InvoiceSummaryAdditionalChargeSummary>]
         attr_accessor :additional_charge_summaries
       
-        # [required] Customer balance on this invoice. A negative amount means the
-        # customer is paying, a positive one means the customer is receiving money. Note:
-        # the sum of merchant_balance, customer_balance and google_balance must always
-        # be zero.
-        # Furthermore the absolute value of this amount is expected to be equal to the
-        # sum of product amount and additional charges, minus promotions.
+        # Deprecated.
         # Corresponds to the JSON property `customerBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :customer_balance
       
-        # [required] Google balance on this invoice. A negative amount means Google is
-        # paying, a positive one means Google is receiving money. Note: the sum of
-        # merchant_balance, customer_balance and google_balance must always be zero.
+        # Deprecated.
         # Corresponds to the JSON property `googleBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :google_balance
       
-        # [required] Merchant balance on this invoice. A negative amount means the
-        # merchant is paying, a positive one means the merchant is receiving money. Note:
-        # the sum of merchant_balance, customer_balance and google_balance must always
-        # be zero.
+        # Deprecated.
         # Corresponds to the JSON property `merchantBalance`
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :merchant_balance
@@ -3255,7 +3254,7 @@ module Google
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :product_total
       
-        # Summary for each promotion.
+        # Deprecated.
         # Corresponds to the JSON property `promotionSummaries`
         # @return [Array<Google::Apis::ContentV2::Promotion>]
         attr_accessor :promotion_summaries
@@ -9994,6 +9993,11 @@ module Google
         attr_accessor :creation_date
       
         # 
+        # Corresponds to the JSON property `deliveryDate`
+        # @return [String]
+        attr_accessor :delivery_date
+      
+        # 
         # Corresponds to the JSON property `returnMethodType`
         # @return [String]
         attr_accessor :return_method_type
@@ -10008,6 +10012,16 @@ module Google
         # @return [Array<Google::Apis::ContentV2::ShipmentTrackingInfo>]
         attr_accessor :shipment_tracking_infos
       
+        # 
+        # Corresponds to the JSON property `shippingDate`
+        # @return [String]
+        attr_accessor :shipping_date
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10015,9 +10029,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @return_method_type = args[:return_method_type] if args.key?(:return_method_type)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @shipment_tracking_infos = args[:shipment_tracking_infos] if args.key?(:shipment_tracking_infos)
+          @shipping_date = args[:shipping_date] if args.key?(:shipping_date)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -10454,7 +10471,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # weights, numItems, postalCodeGroupNames, or location must be set.
         # Corresponds to the JSON property `columnHeaders`
         # @return [Google::Apis::ContentV2::Headers]
         attr_accessor :column_headers
@@ -10465,7 +10482,7 @@ module Google
         attr_accessor :name
       
         # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # weights, numItems, postalCodeGroupNames, or location must be set.
         # Corresponds to the JSON property `rowHeaders`
         # @return [Google::Apis::ContentV2::Headers]
         attr_accessor :row_headers
@@ -10537,12 +10554,14 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
         attr_accessor :promotions
       
-        # The total cost of shipping for all items.
+        # The price of shipping for all items. Shipping tax is automatically calculated
+        # for MFL orders. For non-MFL orders, tax settings from Merchant Center are
+        # applied. Note that shipping is not taxed in certain states.
         # Corresponds to the JSON property `shippingCost`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :shipping_cost
       
-        # The tax for the total shipping cost.
+        # Deprecated. Ignored if provided.
         # Corresponds to the JSON property `shippingCostTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :shipping_cost_tax
@@ -10661,8 +10680,7 @@ module Google
         # @return [Google::Apis::ContentV2::OrderLineItemShippingDetails]
         attr_accessor :shipping_details
       
-        # Deprecated. Ignored if provided. Tax is automatically calculated for MFL
-        # orders. For non-MFL orders, tax settings from Merchant Center are applied.
+        # Deprecated. Ignored if provided.
         # Corresponds to the JSON property `unitTax`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :unit_tax
@@ -10818,6 +10836,85 @@ module Google
       end
       
       # 
+      class TransitTable
+        include Google::Apis::Core::Hashable
+      
+        # A list of postal group names. The last value can be "all other locations".
+        # Example: ["zone 1", "zone 2", "all other locations"]. The referred postal code
+        # groups must match the delivery country of the service.
+        # Corresponds to the JSON property `postalCodeGroupNames`
+        # @return [Array<String>]
+        attr_accessor :postal_code_group_names
+      
+        # 
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContentV2::TransitTableTransitTimeRow>]
+        attr_accessor :rows
+      
+        # A list of transit time labels. The last value can be "all other labels".
+        # Example: ["food", "electronics", "all other labels"].
+        # Corresponds to the JSON property `transitTimeLabels`
+        # @return [Array<String>]
+        attr_accessor :transit_time_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postal_code_group_names = args[:postal_code_group_names] if args.key?(:postal_code_group_names)
+          @rows = args[:rows] if args.key?(:rows)
+          @transit_time_labels = args[:transit_time_labels] if args.key?(:transit_time_labels)
+        end
+      end
+      
+      # 
+      class TransitTableTransitTimeRow
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ContentV2::TransitTableTransitTimeRowTransitTimeValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # 
+      class TransitTableTransitTimeRowTransitTimeValue
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than or equal to minTransitTimeInDays.
+        # Corresponds to the JSON property `maxTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :max_transit_time_in_days
+      
+        # Transit time range (min-max) in business days. 0 means same day delivery, 1
+        # means next day delivery.
+        # Corresponds to the JSON property `minTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :min_transit_time_in_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
+          @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+        end
+      end
+      
+      # 
       class UnitInvoice
         include Google::Apis::Core::Hashable
       
@@ -10826,7 +10923,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2::UnitInvoiceAdditionalCharge>]
         attr_accessor :additional_charges
       
-        # Promotions applied to a unit.
+        # Deprecated.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::Promotion>]
         attr_accessor :promotions
@@ -10863,7 +10960,7 @@ module Google
         # @return [Google::Apis::ContentV2::Amount]
         attr_accessor :additional_charge_amount
       
-        # Promotions applied to the additional charge.
+        # Deprecated.
         # Corresponds to the JSON property `additionalChargePromotions`
         # @return [Array<Google::Apis::ContentV2::Promotion>]
         attr_accessor :additional_charge_promotions

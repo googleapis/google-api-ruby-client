@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ActivateJobTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1053,6 +1059,12 @@ module Google
       
           property :save_findings, as: 'saveFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2ActivateJobTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

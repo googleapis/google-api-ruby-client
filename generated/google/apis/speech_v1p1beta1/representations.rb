@@ -223,6 +223,7 @@ module Google
       
           property :config, as: 'config', class: Google::Apis::SpeechV1p1beta1::RecognitionConfig, decorator: Google::Apis::SpeechV1p1beta1::RecognitionConfig::Representation
       
+          property :name, as: 'name'
         end
       end
       

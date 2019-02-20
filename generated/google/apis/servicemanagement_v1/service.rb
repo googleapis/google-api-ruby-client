@@ -439,7 +439,8 @@ module Google
         #   forms:
         #   - project:<project_id>
         # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
+        #   The max number of items to include in the response list. Page size is 50
+        #   if not specified. Maximum value is 100.
         # @param [String] page_token
         #   Token identifying which result to start with; returned by a previous list
         #   call.
@@ -670,7 +671,8 @@ module Google
         #   The name of the service.  See the [overview](/service-management/overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Fixnum] page_size
-        #   The max number of items to include in the response list.
+        #   The max number of items to include in the response list. Page size is 50
+        #   if not specified. Maximum value is 100.
         # @param [String] page_token
         #   The token of the page to retrieve.
         # @param [String] fields
@@ -949,7 +951,8 @@ module Google
         #   [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
         #   or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
         # @param [Fixnum] page_size
-        #   The max number of items to include in the response list.
+        #   The max number of items to include in the response list. Page size is 50
+        #   if not specified. Maximum value is 100.
         # @param [String] page_token
         #   The token of the page to retrieve.
         # @param [String] fields

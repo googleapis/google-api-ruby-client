@@ -1696,6 +1696,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Enable session affinity. Only applicable in the App Engine flexible
+        # environment.
+        # Corresponds to the JSON property `sessionAffinity`
+        # @return [Boolean]
+        attr_accessor :session_affinity
+        alias_method :session_affinity?, :session_affinity
+      
         # Google Cloud Platform sub-network where the virtual machines are created.
         # Specify the short name, not the resource path.If a subnetwork name is
         # specified, a network name will also be required unless it is for the default
@@ -1724,6 +1731,7 @@ module Google
           @forwarded_ports = args[:forwarded_ports] if args.key?(:forwarded_ports)
           @instance_tag = args[:instance_tag] if args.key?(:instance_tag)
           @name = args[:name] if args.key?(:name)
+          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
         end
       end

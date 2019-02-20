@@ -48,7 +48,6 @@ module Google
       end
       
       # An alert affecting a customer.
-      # All fields are read-only once created.
       class Alert
         include Google::Apis::Core::Hashable
       
@@ -94,6 +93,7 @@ module Google
         attr_accessor :security_investigation_tool_link
       
         # Required. A unique identifier for the system that reported the alert.
+        # This is output only after alert is created.
         # Supported sources are any of the following:
         # * Google Operations
         # * Mobile device management
@@ -112,6 +112,7 @@ module Google
         attr_accessor :start_time
       
         # Required. The type of the alert.
+        # This is output only after alert is created.
         # For a list of available alert types see
         # [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`

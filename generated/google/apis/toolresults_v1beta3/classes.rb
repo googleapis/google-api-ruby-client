@@ -1047,6 +1047,32 @@ module Google
         end
       end
       
+      # Step Id and outcome of each individual step that was run as a group with other
+      # steps with the same configuration.
+      class IndividualOutcome
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `outcomeSummary`
+        # @return [String]
+        attr_accessor :outcome_summary
+      
+        # 
+        # Corresponds to the JSON property `stepId`
+        # @return [String]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outcome_summary = args[:outcome_summary] if args.key?(:outcome_summary)
+          @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
       # 
       class ListExecutionsResponse
         include Google::Apis::Core::Hashable
@@ -1251,6 +1277,39 @@ module Google
         def update!(**args)
           @memory_cap_in_kibibyte = args[:memory_cap_in_kibibyte] if args.key?(:memory_cap_in_kibibyte)
           @memory_total_in_kibibyte = args[:memory_total_in_kibibyte] if args.key?(:memory_total_in_kibibyte)
+        end
+      end
+      
+      # Details when multiple steps are run with the same configuration as a group.
+      class MultiStep
+        include Google::Apis::Core::Hashable
+      
+        # Unique int given to each step. Ranges from 0(inclusive) to total number of
+        # steps(exclusive). The primary step is 0.
+        # Corresponds to the JSON property `multistepNumber`
+        # @return [Fixnum]
+        attr_accessor :multistep_number
+      
+        # Stores rollup test status of multiple steps that were run as a group and
+        # outcome of each individual step.
+        # Corresponds to the JSON property `primaryStep`
+        # @return [Google::Apis::ToolresultsV1beta3::PrimaryStep]
+        attr_accessor :primary_step
+      
+        # Step Id of the primary (original) step, which might be this step.
+        # Corresponds to the JSON property `primaryStepId`
+        # @return [String]
+        attr_accessor :primary_step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multistep_number = args[:multistep_number] if args.key?(:multistep_number)
+          @primary_step = args[:primary_step] if args.key?(:primary_step)
+          @primary_step_id = args[:primary_step_id] if args.key?(:primary_step_id)
         end
       end
       
@@ -1518,6 +1577,33 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @sample_series_id = args[:sample_series_id] if args.key?(:sample_series_id)
           @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
+      # Stores rollup test status of multiple steps that were run as a group and
+      # outcome of each individual step.
+      class PrimaryStep
+        include Google::Apis::Core::Hashable
+      
+        # Step Id and outcome of each individual step.
+        # Corresponds to the JSON property `individualOutcome`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::IndividualOutcome>]
+        attr_accessor :individual_outcome
+      
+        # Rollup test status of multiple steps that were run with the same configuration
+        # as a group.
+        # Corresponds to the JSON property `rollUp`
+        # @return [String]
+        attr_accessor :roll_up
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @individual_outcome = args[:individual_outcome] if args.key?(:individual_outcome)
+          @roll_up = args[:roll_up] if args.key?(:roll_up)
         end
       end
       
@@ -2011,6 +2097,11 @@ module Google
         # @return [Array<Google::Apis::ToolresultsV1beta3::StepLabelsEntry>]
         attr_accessor :labels
       
+        # Details when multiple steps are run with the same configuration as a group.
+        # Corresponds to the JSON property `multiStep`
+        # @return [Google::Apis::ToolresultsV1beta3::MultiStep]
+        attr_accessor :multi_step
+      
         # A short human-readable name to display in the UI. Maximum of 100 characters.
         # For example: Clean build
         # A PRECONDITION_FAILED will be returned upon creating a new step if it shares
@@ -2109,6 +2200,7 @@ module Google
           @dimension_value = args[:dimension_value] if args.key?(:dimension_value)
           @has_images = args[:has_images] if args.key?(:has_images)
           @labels = args[:labels] if args.key?(:labels)
+          @multi_step = args[:multi_step] if args.key?(:multi_step)
           @name = args[:name] if args.key?(:name)
           @outcome = args[:outcome] if args.key?(:outcome)
           @run_duration = args[:run_duration] if args.key?(:run_duration)

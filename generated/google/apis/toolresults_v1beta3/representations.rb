@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndividualOutcome
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListExecutionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Outcome
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,12 @@ module Google
       end
       
       class PerfSampleSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrimaryStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -549,6 +567,14 @@ module Google
         end
       end
       
+      class IndividualOutcome
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outcome_summary, as: 'outcomeSummary'
+          property :step_id, as: 'stepId'
+        end
+      end
+      
       class ListExecutionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -618,6 +644,16 @@ module Google
         end
       end
       
+      class MultiStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :multistep_number, as: 'multistepNumber'
+          property :primary_step, as: 'primaryStep', class: Google::Apis::ToolresultsV1beta3::PrimaryStep, decorator: Google::Apis::ToolresultsV1beta3::PrimaryStep::Representation
+      
+          property :primary_step_id, as: 'primaryStepId'
+        end
+      end
+      
       class Outcome
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -679,6 +715,15 @@ module Google
           property :project_id, as: 'projectId'
           property :sample_series_id, as: 'sampleSeriesId'
           property :step_id, as: 'stepId'
+        end
+      end
+      
+      class PrimaryStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :individual_outcome, as: 'individualOutcome', class: Google::Apis::ToolresultsV1beta3::IndividualOutcome, decorator: Google::Apis::ToolresultsV1beta3::IndividualOutcome::Representation
+      
+          property :roll_up, as: 'rollUp'
         end
       end
       
@@ -768,6 +813,8 @@ module Google
       
           property :has_images, as: 'hasImages'
           collection :labels, as: 'labels', class: Google::Apis::ToolresultsV1beta3::StepLabelsEntry, decorator: Google::Apis::ToolresultsV1beta3::StepLabelsEntry::Representation
+      
+          property :multi_step, as: 'multiStep', class: Google::Apis::ToolresultsV1beta3::MultiStep, decorator: Google::Apis::ToolresultsV1beta3::MultiStep::Representation
       
           property :name, as: 'name'
           property :outcome, as: 'outcome', class: Google::Apis::ToolresultsV1beta3::Outcome, decorator: Google::Apis::ToolresultsV1beta3::Outcome::Representation

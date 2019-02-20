@@ -1202,6 +1202,25 @@ module Google
         end
       end
       
+      # An action to launch an app.
+      class LaunchAppAction
+        include Google::Apis::Core::Hashable
+      
+        # Package name of app to be launched
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # Response to a request to list devices for a given enterprise.
       class ListDevicesResponse
         include Google::Apis::Core::Hashable
@@ -2216,6 +2235,11 @@ module Google
         attr_accessor :set_wallpaper_disabled
         alias_method :set_wallpaper_disabled?, :set_wallpaper_disabled
       
+        # Actions to take during the setup process.
+        # Corresponds to the JSON property `setupActions`
+        # @return [Array<Google::Apis::AndroidmanagementV1::SetupAction>]
+        attr_accessor :setup_actions
+      
         # Whether location sharing is disabled.
         # Corresponds to the JSON property `shareLocationDisabled`
         # @return [Boolean]
@@ -2314,8 +2338,7 @@ module Google
         attr_accessor :wifi_config_disabled
         alias_method :wifi_config_disabled?, :wifi_config_disabled
       
-        # Whether Wi-Fi networks defined in Open Network Configuration are locked so
-        # they can't be edited by the user.
+        # DEPRECATED - Use wifi_config_disabled.
         # Corresponds to the JSON property `wifiConfigsLockdownEnabled`
         # @return [Boolean]
         attr_accessor :wifi_configs_lockdown_enabled
@@ -2384,6 +2407,7 @@ module Google
           @screen_capture_disabled = args[:screen_capture_disabled] if args.key?(:screen_capture_disabled)
           @set_user_icon_disabled = args[:set_user_icon_disabled] if args.key?(:set_user_icon_disabled)
           @set_wallpaper_disabled = args[:set_wallpaper_disabled] if args.key?(:set_wallpaper_disabled)
+          @setup_actions = args[:setup_actions] if args.key?(:setup_actions)
           @share_location_disabled = args[:share_location_disabled] if args.key?(:share_location_disabled)
           @short_support_message = args[:short_support_message] if args.key?(:short_support_message)
           @skip_first_use_hints_enabled = args[:skip_first_use_hints_enabled] if args.key?(:skip_first_use_hints_enabled)
@@ -2471,6 +2495,39 @@ module Google
           @host = args[:host] if args.key?(:host)
           @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # An action executed during setup.
+      class SetupAction
+        include Google::Apis::Core::Hashable
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `description`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :description
+      
+        # An action to launch an app.
+        # Corresponds to the JSON property `launchApp`
+        # @return [Google::Apis::AndroidmanagementV1::LaunchAppAction]
+        attr_accessor :launch_app
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `title`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @launch_app = args[:launch_app] if args.key?(:launch_app)
+          @title = args[:title] if args.key?(:title)
         end
       end
       

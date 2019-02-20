@@ -949,7 +949,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates data source.
+        # Creates a datasource.
         # @param [Google::Apis::CloudsearchV1::DataSource] data_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -979,9 +979,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a data source.
+        # Deletes a datasource.
         # @param [String] name
-        #   Name of the data source.
+        #   Name of the datasource.
         #   Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
         #   If set, the request will enable debugging features of Cloud Search.
@@ -1014,9 +1014,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a data source.
+        # Gets a datasource.
         # @param [String] name
-        #   Name of the data source resource.
+        #   Name of the datasource resource.
         #   Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
         #   If set, the request will enable debugging features of Cloud Search.
@@ -1049,12 +1049,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists data sources.
+        # Lists datasources.
         # @param [Boolean] debug_options_enable_debugging
         #   If set, the request will enable debugging features of Cloud Search.
         #   Only turn on this field, if asked by Google to help with debugging.
         # @param [Fixnum] page_size
-        #   Maximum number of data sources to fetch in a request.
+        #   Maximum number of datasources to fetch in a request.
         #   The max value is 100.
         #   <br />The default value is 10
         # @param [String] page_token
@@ -1088,11 +1088,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a data source.
+        # Updates a datasource.
         # @param [String] name
-        #   Name of the data source resource.
+        #   Name of the datasource resource.
         #   Format: datasources/`source_id`.
-        #   <br />The name is ignored when creating a data source.
+        #   <br />The name is ignored when creating a datasource.
         # @param [Google::Apis::CloudsearchV1::UpdateDataSourceRequest] update_data_source_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

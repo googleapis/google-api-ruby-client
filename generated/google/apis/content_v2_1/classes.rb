@@ -2271,7 +2271,7 @@ module Google
       
         # Maximum number of business days that is spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Must be greater than or equal to
-        # minTransitTimeInDays. Required.
+        # minTransitTimeInDays.
         # Corresponds to the JSON property `maxTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_transit_time_in_days
@@ -2283,10 +2283,18 @@ module Google
         attr_accessor :min_handling_time_in_days
       
         # Minimum number of business days that is spent in transit. 0 means same day
-        # delivery, 1 means next day delivery. Required.
+        # delivery, 1 means next day delivery. Either `min,max`transitTimeInDays or
+        # transitTimeTable must be set, but not both.
         # Corresponds to the JSON property `minTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :min_transit_time_in_days
+      
+        # Transit time table, number of business days spent in transit based on row and
+        # column dimensions. Either `min,max`transitTimeInDays or transitTimeTable can
+        # be set, but not both.
+        # Corresponds to the JSON property `transitTimeTable`
+        # @return [Google::Apis::ContentV2_1::TransitTable]
+        attr_accessor :transit_time_table
       
         def initialize(**args)
            update!(**args)
@@ -2300,6 +2308,7 @@ module Google
           @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
           @min_handling_time_in_days = args[:min_handling_time_in_days] if args.key?(:min_handling_time_in_days)
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+          @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
         end
       end
       
@@ -2428,7 +2437,7 @@ module Google
       end
       
       # A non-empty list of row or column headers for a table. Exactly one of prices,
-      # weights, numItems, postalCodeGroupNames, or locations must be set.
+      # weights, numItems, postalCodeGroupNames, or location must be set.
       class Headers
         include Google::Apis::Core::Hashable
       
@@ -2624,40 +2633,10 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::InvoiceSummaryAdditionalChargeSummary>]
         attr_accessor :additional_charge_summaries
       
-        # [required] Customer balance on this invoice. A negative amount means the
-        # customer is paying, a positive one means the customer is receiving money. Note:
-        # the sum of merchant_balance, customer_balance and google_balance must always
-        # be zero.
-        # Furthermore the absolute value of this amount is expected to be equal to the
-        # sum of product amount and additional charges, minus promotions.
-        # Corresponds to the JSON property `customerBalance`
-        # @return [Google::Apis::ContentV2_1::Amount]
-        attr_accessor :customer_balance
-      
-        # [required] Google balance on this invoice. A negative amount means Google is
-        # paying, a positive one means Google is receiving money. Note: the sum of
-        # merchant_balance, customer_balance and google_balance must always be zero.
-        # Corresponds to the JSON property `googleBalance`
-        # @return [Google::Apis::ContentV2_1::Amount]
-        attr_accessor :google_balance
-      
-        # [required] Merchant balance on this invoice. A negative amount means the
-        # merchant is paying, a positive one means the merchant is receiving money. Note:
-        # the sum of merchant_balance, customer_balance and google_balance must always
-        # be zero.
-        # Corresponds to the JSON property `merchantBalance`
-        # @return [Google::Apis::ContentV2_1::Amount]
-        attr_accessor :merchant_balance
-      
         # [required] Total price for the product.
         # Corresponds to the JSON property `productTotal`
         # @return [Google::Apis::ContentV2_1::Amount]
         attr_accessor :product_total
-      
-        # Summary for each promotion.
-        # Corresponds to the JSON property `promotionSummaries`
-        # @return [Array<Google::Apis::ContentV2_1::Promotion>]
-        attr_accessor :promotion_summaries
       
         def initialize(**args)
            update!(**args)
@@ -2666,11 +2645,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_charge_summaries = args[:additional_charge_summaries] if args.key?(:additional_charge_summaries)
-          @customer_balance = args[:customer_balance] if args.key?(:customer_balance)
-          @google_balance = args[:google_balance] if args.key?(:google_balance)
-          @merchant_balance = args[:merchant_balance] if args.key?(:merchant_balance)
           @product_total = args[:product_total] if args.key?(:product_total)
-          @promotion_summaries = args[:promotion_summaries] if args.key?(:promotion_summaries)
         end
       end
       
@@ -3457,12 +3432,19 @@ module Google
         # @return [String]
         attr_accessor :merchant_order_id
       
-        # The net amount for the order. For example, if an order was originally for a
-        # grand total of $100 and a refund was issued for $20, the net amount will be $
+        # The net amount for the order (price part). For example, if an order was
+        # originally for $100 and a refund was issued for $20, the net amount will be $
         # 80.
-        # Corresponds to the JSON property `netAmount`
+        # Corresponds to the JSON property `netPriceAmount`
         # @return [Google::Apis::ContentV2_1::Price]
-        attr_accessor :net_amount
+        attr_accessor :net_price_amount
+      
+        # The net amount for the order (tax part). Note that in certain cases due to
+        # taxable base adjustment netTaxAmount might not match to a sum of tax field
+        # across all lineItems and refunds.
+        # Corresponds to the JSON property `netTaxAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :net_tax_amount
       
         # The status of the payment.
         # Corresponds to the JSON property `paymentStatus`
@@ -3530,7 +3512,8 @@ module Google
           @line_items = args[:line_items] if args.key?(:line_items)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
-          @net_amount = args[:net_amount] if args.key?(:net_amount)
+          @net_price_amount = args[:net_price_amount] if args.key?(:net_price_amount)
+          @net_tax_amount = args[:net_tax_amount] if args.key?(:net_tax_amount)
           @payment_status = args[:payment_status] if args.key?(:payment_status)
           @placed_date = args[:placed_date] if args.key?(:placed_date)
           @promotions = args[:promotions] if args.key?(:promotions)
@@ -7901,32 +7884,6 @@ module Google
       end
       
       # 
-      class Promotion
-        include Google::Apis::Core::Hashable
-      
-        # [required] Amount of the promotion. The values here are the promotion applied
-        # to the unit price pretax and to the total of the tax amounts.
-        # Corresponds to the JSON property `promotionAmount`
-        # @return [Google::Apis::ContentV2_1::Amount]
-        attr_accessor :promotion_amount
-      
-        # [required] ID of the promotion.
-        # Corresponds to the JSON property `promotionId`
-        # @return [String]
-        attr_accessor :promotion_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @promotion_amount = args[:promotion_amount] if args.key?(:promotion_amount)
-          @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
-        end
-      end
-      
-      # 
       class RateGroup
         include Google::Apis::Core::Hashable
       
@@ -8008,6 +7965,194 @@ module Google
         end
       end
       
+      # Regional inventory resource. contains the regional name and all attributes
+      # which are overridden for the specified region.
+      class RegionalInventory
+        include Google::Apis::Core::Hashable
+      
+        # The availability of the product.
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # A list of custom (merchant-provided) attributes. It can also be used for
+        # submitting any attribute of the feed specification in its generic form.
+        # Corresponds to the JSON property `customAttributes`
+        # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
+        attr_accessor :custom_attributes
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # regionalInventory".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The price of the product.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :price
+      
+        # The id (name) of the region.
+        # Corresponds to the JSON property `regionId`
+        # @return [String]
+        attr_accessor :region_id
+      
+        # The sale price of the product. Mandatory if sale_price_effective_date is
+        # defined.
+        # Corresponds to the JSON property `salePrice`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :sale_price
+      
+        # A date range represented by a pair of ISO 8601 dates separated by a space,
+        # comma, or slash. Both dates might be specified as 'null' if undecided.
+        # Corresponds to the JSON property `salePriceEffectiveDate`
+        # @return [String]
+        attr_accessor :sale_price_effective_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability = args[:availability] if args.key?(:availability)
+          @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
+          @kind = args[:kind] if args.key?(:kind)
+          @price = args[:price] if args.key?(:price)
+          @region_id = args[:region_id] if args.key?(:region_id)
+          @sale_price = args[:sale_price] if args.key?(:sale_price)
+          @sale_price_effective_date = args[:sale_price_effective_date] if args.key?(:sale_price_effective_date)
+        end
+      end
+      
+      # 
+      class RegionalinventoryCustomBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The request entries to be processed in the batch.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequestEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # A batch entry encoding a single non-batch regional inventory request.
+      class RegionalinventoryCustomBatchRequestEntry
+        include Google::Apis::Core::Hashable
+      
+        # An entry ID, unique within the batch request.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # 
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The ID of the product for which to update price and availability.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Regional inventory resource. contains the regional name and all attributes
+        # which are overridden for the specified region.
+        # Corresponds to the JSON property `regionalInventory`
+        # @return [Google::Apis::ContentV2_1::RegionalInventory]
+        attr_accessor :regional_inventory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @regional_inventory = args[:regional_inventory] if args.key?(:regional_inventory)
+        end
+      end
+      
+      # 
+      class RegionalinventoryCustomBatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the execution of the batch requests.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponseEntry>]
+        attr_accessor :entries
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # regionalinventoryCustomBatchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # A batch entry encoding a single non-batch regional inventory response.
+      class RegionalinventoryCustomBatchResponseEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the request entry this entry responds to.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # A list of errors returned by a failed batch entry.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::ContentV2_1::Errors]
+        attr_accessor :errors
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # regionalinventoryCustomBatchResponseEntry".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Regional inventory resource. contains the regional name and all attributes
+        # which are overridden for the specified region.
+        # Corresponds to the JSON property `regionalInventory`
+        # @return [Google::Apis::ContentV2_1::RegionalInventory]
+        attr_accessor :regional_inventory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
+          @regional_inventory = args[:regional_inventory] if args.key?(:regional_inventory)
+        end
+      end
+      
       # 
       class ReturnShipment
         include Google::Apis::Core::Hashable
@@ -8016,6 +8161,11 @@ module Google
         # Corresponds to the JSON property `creationDate`
         # @return [String]
         attr_accessor :creation_date
+      
+        # 
+        # Corresponds to the JSON property `deliveryDate`
+        # @return [String]
+        attr_accessor :delivery_date
       
         # 
         # Corresponds to the JSON property `returnMethodType`
@@ -8032,6 +8182,16 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ShipmentTrackingInfo>]
         attr_accessor :shipment_tracking_infos
       
+        # 
+        # Corresponds to the JSON property `shippingDate`
+        # @return [String]
+        attr_accessor :shipping_date
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8039,9 +8199,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @return_method_type = args[:return_method_type] if args.key?(:return_method_type)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @shipment_tracking_infos = args[:shipment_tracking_infos] if args.key?(:shipment_tracking_infos)
+          @shipping_date = args[:shipping_date] if args.key?(:shipping_date)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -8478,7 +8641,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # weights, numItems, postalCodeGroupNames, or location must be set.
         # Corresponds to the JSON property `columnHeaders`
         # @return [Google::Apis::ContentV2_1::Headers]
         attr_accessor :column_headers
@@ -8489,7 +8652,7 @@ module Google
         attr_accessor :name
       
         # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or locations must be set.
+        # weights, numItems, postalCodeGroupNames, or location must be set.
         # Corresponds to the JSON property `rowHeaders`
         # @return [Google::Apis::ContentV2_1::Headers]
         attr_accessor :row_headers
@@ -8560,15 +8723,12 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotion>]
         attr_accessor :promotions
       
-        # The total cost of shipping for all items.
+        # The price of shipping for all items. Shipping tax is automatically calculated
+        # for MFL orders. For non-MFL orders, tax settings from Merchant Center are
+        # applied. Note that shipping is not taxed in certain states.
         # Corresponds to the JSON property `shippingCost`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :shipping_cost
-      
-        # The tax for the total shipping cost.
-        # Corresponds to the JSON property `shippingCostTax`
-        # @return [Google::Apis::ContentV2_1::Price]
-        attr_accessor :shipping_cost_tax
       
         # The requested shipping option.
         # Corresponds to the JSON property `shippingOption`
@@ -8590,7 +8750,6 @@ module Google
           @predefined_delivery_address = args[:predefined_delivery_address] if args.key?(:predefined_delivery_address)
           @promotions = args[:promotions] if args.key?(:promotions)
           @shipping_cost = args[:shipping_cost] if args.key?(:shipping_cost)
-          @shipping_cost_tax = args[:shipping_cost_tax] if args.key?(:shipping_cost_tax)
           @shipping_option = args[:shipping_option] if args.key?(:shipping_option)
         end
       end
@@ -8783,6 +8942,85 @@ module Google
       end
       
       # 
+      class TransitTable
+        include Google::Apis::Core::Hashable
+      
+        # A list of postal group names. The last value can be "all other locations".
+        # Example: ["zone 1", "zone 2", "all other locations"]. The referred postal code
+        # groups must match the delivery country of the service.
+        # Corresponds to the JSON property `postalCodeGroupNames`
+        # @return [Array<String>]
+        attr_accessor :postal_code_group_names
+      
+        # 
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContentV2_1::TransitTableTransitTimeRow>]
+        attr_accessor :rows
+      
+        # A list of transit time labels. The last value can be "all other labels".
+        # Example: ["food", "electronics", "all other labels"].
+        # Corresponds to the JSON property `transitTimeLabels`
+        # @return [Array<String>]
+        attr_accessor :transit_time_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postal_code_group_names = args[:postal_code_group_names] if args.key?(:postal_code_group_names)
+          @rows = args[:rows] if args.key?(:rows)
+          @transit_time_labels = args[:transit_time_labels] if args.key?(:transit_time_labels)
+        end
+      end
+      
+      # 
+      class TransitTableTransitTimeRow
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ContentV2_1::TransitTableTransitTimeRowTransitTimeValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # 
+      class TransitTableTransitTimeRowTransitTimeValue
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than or equal to minTransitTimeInDays.
+        # Corresponds to the JSON property `maxTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :max_transit_time_in_days
+      
+        # Transit time range (min-max) in business days. 0 means same day delivery, 1
+        # means next day delivery.
+        # Corresponds to the JSON property `minTransitTimeInDays`
+        # @return [Fixnum]
+        attr_accessor :min_transit_time_in_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
+          @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+        end
+      end
+      
+      # 
       class UnitInvoice
         include Google::Apis::Core::Hashable
       
@@ -8790,11 +9028,6 @@ module Google
         # Corresponds to the JSON property `additionalCharges`
         # @return [Array<Google::Apis::ContentV2_1::UnitInvoiceAdditionalCharge>]
         attr_accessor :additional_charges
-      
-        # Promotions applied to a unit.
-        # Corresponds to the JSON property `promotions`
-        # @return [Array<Google::Apis::ContentV2_1::Promotion>]
-        attr_accessor :promotions
       
         # [required] Pre-tax or post-tax price of the unit depending on the locality of
         # the order.
@@ -8814,7 +9047,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_charges = args[:additional_charges] if args.key?(:additional_charges)
-          @promotions = args[:promotions] if args.key?(:promotions)
           @unit_price = args[:unit_price] if args.key?(:unit_price)
           @unit_price_taxes = args[:unit_price_taxes] if args.key?(:unit_price_taxes)
         end
@@ -8829,11 +9061,6 @@ module Google
         # @return [Google::Apis::ContentV2_1::Amount]
         attr_accessor :additional_charge_amount
       
-        # Promotions applied to the additional charge.
-        # Corresponds to the JSON property `additionalChargePromotions`
-        # @return [Array<Google::Apis::ContentV2_1::Promotion>]
-        attr_accessor :additional_charge_promotions
-      
         # [required] Type of the additional charge.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -8846,7 +9073,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_charge_amount = args[:additional_charge_amount] if args.key?(:additional_charge_amount)
-          @additional_charge_promotions = args[:additional_charge_promotions] if args.key?(:additional_charge_promotions)
           @type = args[:type] if args.key?(:type)
         end
       end

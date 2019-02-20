@@ -3044,7 +3044,7 @@ module Google
       
         # The reason why the proposal is being paused.
         # This human readable message will be displayed in the seller's UI.
-        # (Max length: 100 unicode code units.)
+        # (Max length: 1000 unicode code units.)
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason

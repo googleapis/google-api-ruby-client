@@ -657,6 +657,14 @@ module Google
         # @return [String]
         attr_accessor :friendly_name
       
+        # [Optional] The labels associated with this table. You can use these to
+        # organize and group your tables. This will only be used if the destination
+        # table is newly created. If the table already exists and labels are different
+        # than the current labels are provided, the job will fail.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -665,6 +673,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -2519,6 +2528,12 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :destination_uri_file_counts
       
+        # [Output-only] Number of user bytes extracted into the result. This is the byte
+        # count as computed by BigQuery for billing purposes.
+        # Corresponds to the JSON property `inputBytes`
+        # @return [Fixnum]
+        attr_accessor :input_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2526,6 +2541,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_uri_file_counts = args[:destination_uri_file_counts] if args.key?(:destination_uri_file_counts)
+          @input_bytes = args[:input_bytes] if args.key?(:input_bytes)
         end
       end
       

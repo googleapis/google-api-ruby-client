@@ -1576,7 +1576,7 @@ module Google
         # ID of the created instance.
         # A valid `instance_id` must:
         # be 6-50 characters long,
-        # contains only lowercase letters, digits, hyphens and underscores,
+        # contain only lowercase letters, digits, hyphens and underscores,
         # start with a lowercase letter, and
         # end with a lowercase letter or a digit.
         # Corresponds to the JSON property `instanceId`

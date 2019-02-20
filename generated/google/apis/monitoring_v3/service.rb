@@ -339,6 +339,10 @@ module Google
         # @param [String] name
         #   The group to delete. The format is "projects/`project_id_or_number`/groups/`
         #   group_id`".
+        # @param [Boolean] recursive
+        #   If this field is true, then the request means to delete a group with all its
+        #   descendants. Otherwise, the request means to delete a group only when it has
+        #   no descendants. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -356,11 +360,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_group(name, recursive: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
+          command.query['recursive'] = recursive unless recursive.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

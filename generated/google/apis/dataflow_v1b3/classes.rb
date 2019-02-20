@@ -736,7 +736,9 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
-        # The location to which to direct the request.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        # which to direct the request.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1121,6 +1123,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :experiments
       
+        # Which Flexible Resource Scheduling mode to run in.
+        # Corresponds to the JSON property `flexResourceSchedulingGoal`
+        # @return [String]
+        attr_accessor :flex_resource_scheduling_goal
+      
         # Experimental settings.
         # Corresponds to the JSON property `internalExperiments`
         # @return [Hash<String,Object>]
@@ -1180,6 +1187,7 @@ module Google
           @cluster_manager_api_service = args[:cluster_manager_api_service] if args.key?(:cluster_manager_api_service)
           @dataset = args[:dataset] if args.key?(:dataset)
           @experiments = args[:experiments] if args.key?(:experiments)
+          @flex_resource_scheduling_goal = args[:flex_resource_scheduling_goal] if args.key?(:flex_resource_scheduling_goal)
           @internal_experiments = args[:internal_experiments] if args.key?(:internal_experiments)
           @sdk_pipeline_options = args[:sdk_pipeline_options] if args.key?(:sdk_pipeline_options)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
@@ -1278,11 +1286,15 @@ module Google
         end
       end
       
-      # Indicates which location failed to respond to a request for data.
+      # Indicates which [regional endpoint]
+      # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) failed
+      # to respond to a request for data.
       class FailedLocation
         include Google::Apis::Core::Hashable
       
-        # The name of the failed location.
+        # The name of the [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # failed to respond.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1390,7 +1402,9 @@ module Google
         # @return [String]
         attr_accessor :component_id
       
-        # The location which contains the job specified by job_id.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains the job specified by job_id.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1748,7 +1762,7 @@ module Google
         attr_accessor :id
       
         # Metadata available primarily for filtering jobs. Will be included in the
-        # ListJob response and Job SUMMARY view+.
+        # ListJob response and Job SUMMARY view.
         # Corresponds to the JSON property `jobMetadata`
         # @return [Google::Apis::DataflowV1b3::JobMetadata]
         attr_accessor :job_metadata
@@ -1764,7 +1778,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The location that contains this job.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains this job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1782,7 +1798,7 @@ module Google
       
         # A descriptive representation of submitted pipeline as well as the executed
         # form.  This data is provided by the Dataflow service for ease of visualizing
-        # the pipeline and interpretting Dataflow provided metrics.
+        # the pipeline and interpreting Dataflow provided metrics.
         # Corresponds to the JSON property `pipelineDescription`
         # @return [Google::Apis::DataflowV1b3::PipelineDescription]
         attr_accessor :pipeline_description
@@ -1981,7 +1997,7 @@ module Google
       end
       
       # Metadata available primarily for filtering jobs. Will be included in the
-      # ListJob response and Job SUMMARY view+.
+      # ListJob response and Job SUMMARY view.
       class JobMetadata
         include Google::Apis::Core::Hashable
       
@@ -2010,7 +2026,7 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::PubSubIoDetails>]
         attr_accessor :pubsub_details
       
-        # The version of the SDK used to run the jobl
+        # The version of the SDK used to run the job.
         # Corresponds to the JSON property `sdkVersion`
         # @return [Google::Apis::DataflowV1b3::SdkVersion]
         attr_accessor :sdk_version
@@ -2036,7 +2052,7 @@ module Google
         end
       end
       
-      # JobMetrics contains a collection of metrics descibing the detailed progress
+      # JobMetrics contains a collection of metrics describing the detailed progress
       # of a Dataflow job. Metrics correspond to user-defined and system-defined
       # metrics in the job.
       # This resource captures only the most recent values of each metric;
@@ -2212,7 +2228,9 @@ module Google
         # @return [String]
         attr_accessor :current_worker_time
       
-        # The location which contains the WorkItem's job.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains the WorkItem's job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -2321,7 +2339,9 @@ module Google
       class ListJobsResponse
         include Google::Apis::Core::Hashable
       
-        # Zero or more messages describing locations that failed to respond.
+        # Zero or more messages describing the [regional endpoints]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # failed to respond.
         # Corresponds to the JSON property `failedLocation`
         # @return [Array<Google::Apis::DataflowV1b3::FailedLocation>]
         attr_accessor :failed_location
@@ -2906,7 +2926,7 @@ module Google
       
       # A descriptive representation of submitted pipeline as well as the executed
       # form.  This data is provided by the Dataflow service for ease of visualizing
-      # the pipeline and interpretting Dataflow provided metrics.
+      # the pipeline and interpreting Dataflow provided metrics.
       class PipelineDescription
         include Google::Apis::Core::Hashable
       
@@ -3110,7 +3130,9 @@ module Google
         # @return [String]
         attr_accessor :current_worker_time
       
-        # The location which contains the WorkItem's job.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains the WorkItem's job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3331,7 +3353,7 @@ module Google
         end
       end
       
-      # The version of the SDK used to run the jobl
+      # The version of the SDK used to run the job.
       class SdkVersion
         include Google::Apis::Core::Hashable
       
@@ -3345,7 +3367,7 @@ module Google
         # @return [String]
         attr_accessor :version
       
-        # A readable string describing the version of the sdk.
+        # A readable string describing the version of the SDK.
         # Corresponds to the JSON property `versionDisplayName`
         # @return [String]
         attr_accessor :version_display_name
@@ -3376,7 +3398,9 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # The location which contains the job specified by job_id.
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains the job specified by job_id.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3417,7 +3441,9 @@ module Google
       class SendWorkerMessagesRequest
         include Google::Apis::Core::Hashable
       
-        # The location which contains the job
+        # The [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        # contains the job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -4501,6 +4527,11 @@ module Google
       class StreamingConfigTask
         include Google::Apis::Core::Hashable
       
+        # Maximum size for work item commit supported windmill storage layer.
+        # Corresponds to the JSON property `maxWorkItemCommitBytes`
+        # @return [Fixnum]
+        attr_accessor :max_work_item_commit_bytes
+      
         # Set of computation configuration information.
         # Corresponds to the JSON property `streamingComputationConfigs`
         # @return [Array<Google::Apis::DataflowV1b3::StreamingComputationConfig>]
@@ -4531,6 +4562,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_work_item_commit_bytes = args[:max_work_item_commit_bytes] if args.key?(:max_work_item_commit_bytes)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)
           @windmill_service_endpoint = args[:windmill_service_endpoint] if args.key?(:windmill_service_endpoint)
@@ -4656,7 +4688,7 @@ module Google
       class StructuredMessage
         include Google::Apis::Core::Hashable
       
-        # Idenfier for this message type.  Used by external systems to
+        # Identifier for this message type.  Used by external systems to
         # internationalize or personalize message.
         # Corresponds to the JSON property `messageKey`
         # @return [String]

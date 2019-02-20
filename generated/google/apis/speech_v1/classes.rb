@@ -274,6 +274,19 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
+        # *Optional* The number of channels in the input audio data.
+        # ONLY set this for MULTI-CHANNEL recognition.
+        # Valid values for LINEAR16 and FLAC are `1`-`8`.
+        # Valid values for OGG_OPUS are '1'-'254'.
+        # Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.
+        # If `0` or omitted, defaults to one channel (mono).
+        # Note: We only recognize the first channel by default.
+        # To perform independent recognition on each channel set
+        # `enable_separate_recognition_per_channel` to 'true'.
+        # Corresponds to the JSON property `audioChannelCount`
+        # @return [Fixnum]
+        attr_accessor :audio_channel_count
+      
         # *Optional* If 'true', adds punctuation to recognition result hypotheses.
         # This feature is only available in select languages. Setting this for
         # requests in other languages has no effect at all.
@@ -331,6 +344,11 @@ module Google
         # Corresponds to the JSON property `maxAlternatives`
         # @return [Fixnum]
         attr_accessor :max_alternatives
+      
+        # Description of audio data to be recognized.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::SpeechV1::RecognitionMetadata]
+        attr_accessor :metadata
       
         # *Optional* Which model to select for the given request. Select the model
         # best suited to your domain to get best results. If a model is not
@@ -419,17 +437,96 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_channel_count = args[:audio_channel_count] if args.key?(:audio_channel_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
           @max_alternatives = args[:max_alternatives] if args.key?(:max_alternatives)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @model = args[:model] if args.key?(:model)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
           @use_enhanced = args[:use_enhanced] if args.key?(:use_enhanced)
+        end
+      end
+      
+      # Description of audio data to be recognized.
+      class RecognitionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Description of the content. Eg. "Recordings of federal supreme court
+        # hearings from 2012".
+        # Corresponds to the JSON property `audioTopic`
+        # @return [String]
+        attr_accessor :audio_topic
+      
+        # The industry vertical to which this speech recognition request most
+        # closely applies. This is most indicative of the topics contained
+        # in the audio.  Use the 6-digit NAICS code to identify the industry
+        # vertical - see https://www.naics.com/search/.
+        # Corresponds to the JSON property `industryNaicsCodeOfAudio`
+        # @return [Fixnum]
+        attr_accessor :industry_naics_code_of_audio
+      
+        # The use case most closely describing the audio content to be recognized.
+        # Corresponds to the JSON property `interactionType`
+        # @return [String]
+        attr_accessor :interaction_type
+      
+        # The audio type that most closely describes the audio being recognized.
+        # Corresponds to the JSON property `microphoneDistance`
+        # @return [String]
+        attr_accessor :microphone_distance
+      
+        # Obfuscated (privacy-protected) ID of the user, to identify number of
+        # unique users using the service.
+        # Corresponds to the JSON property `obfuscatedId`
+        # @return [Fixnum]
+        attr_accessor :obfuscated_id
+      
+        # The original media the speech was recorded on.
+        # Corresponds to the JSON property `originalMediaType`
+        # @return [String]
+        attr_accessor :original_media_type
+      
+        # Mime type of the original audio file.  For example `audio/m4a`,
+        # `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.
+        # A list of possible audio mime types is maintained at
+        # http://www.iana.org/assignments/media-types/media-types.xhtml#audio
+        # Corresponds to the JSON property `originalMimeType`
+        # @return [String]
+        attr_accessor :original_mime_type
+      
+        # The device used to make the recording.  Examples 'Nexus 5X' or
+        # 'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or
+        # 'Cardioid Microphone'.
+        # Corresponds to the JSON property `recordingDeviceName`
+        # @return [String]
+        attr_accessor :recording_device_name
+      
+        # The type of device the speech was recorded with.
+        # Corresponds to the JSON property `recordingDeviceType`
+        # @return [String]
+        attr_accessor :recording_device_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_topic = args[:audio_topic] if args.key?(:audio_topic)
+          @industry_naics_code_of_audio = args[:industry_naics_code_of_audio] if args.key?(:industry_naics_code_of_audio)
+          @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+          @microphone_distance = args[:microphone_distance] if args.key?(:microphone_distance)
+          @obfuscated_id = args[:obfuscated_id] if args.key?(:obfuscated_id)
+          @original_media_type = args[:original_media_type] if args.key?(:original_media_type)
+          @original_mime_type = args[:original_mime_type] if args.key?(:original_mime_type)
+          @recording_device_name = args[:recording_device_name] if args.key?(:recording_device_name)
+          @recording_device_type = args[:recording_device_type] if args.key?(:recording_device_type)
         end
       end
       

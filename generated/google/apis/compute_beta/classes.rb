@@ -1052,7 +1052,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # 
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1097,7 +1098,8 @@ module Google
         attr_accessor :specific_allocation_required
         alias_method :specific_allocation_required?, :specific_allocation_required
       
-        # 
+        # Zone in which the allocation resides, must be provided if allocation is
+        # created with commitment creation.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1487,6 +1489,26 @@ module Google
       end
       
       # 
+      class AllocationsResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Number of allocated resources can be resized with minimum = 1 and maximum =
+        # 1000.
+        # Corresponds to the JSON property `specificSkuCount`
+        # @return [Fixnum]
+        attr_accessor :specific_sku_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @specific_sku_count = args[:specific_sku_count] if args.key?(:specific_sku_count)
+        end
+      end
+      
+      # 
       class AllocationsScopedList
         include Google::Apis::Core::Hashable
       
@@ -1740,6 +1762,15 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
+        # Guest OS features are applied by merging initializeParams.guestOsFeatures and
+        # disks.guestOsFeatures
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # Labels to apply to this disk. These can be later modified by the disks.
         # setLabels method. This field is only applicable for persistent disks.
         # Corresponds to the JSON property `labels`
@@ -1781,6 +1812,7 @@ module Google
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
@@ -2979,6 +3011,12 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # The available logging options for the load balancer traffic served by this
+        # backend service.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeBeta::BackendServiceLogConfig]
+        attr_accessor :log_config
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3067,6 +3105,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
@@ -3414,6 +3453,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # The available logging options for the load balancer traffic served by this
+      # backend service.
+      class BackendServiceLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # This field denotes whether to enable logging for the load balancer traffic
+        # served by this backend service.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # This field can only be specified if logging is enabled for this backend
+        # service. The value of the field must be in [0, 1]. This configures the
+        # sampling rate of requests to the load balancer where 1.0 means all logged
+        # requests are reported and 0.0 means no logged requests are reported. The
+        # default value is 1.0.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Float]
+        attr_accessor :sample_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
         end
       end
       
@@ -4126,12 +4197,7 @@ module Google
         # @return [String]
         attr_accessor :sys
       
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
+        # The objects of the condition.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -4146,7 +4212,6 @@ module Google
           @op = args[:op] if args.key?(:op)
           @svc = args[:svc] if args.key?(:svc)
           @sys = args[:sys] if args.key?(:sys)
-          @value = args[:value] if args.key?(:value)
           @values = args[:values] if args.key?(:values)
         end
       end
@@ -6199,6 +6264,15 @@ module Google
         attr_accessor :all_ports
         alias_method :all_ports?, :all_ports
       
+        # This field is used along with the backend_service field for internal load
+        # balancing or with the target field for internal TargetInstance. If the field
+        # is set to TRUE, clients can access ILB from all regions. Otherwise only allows
+        # access from clients in the same region as the internal load balancer.
+        # Corresponds to the JSON property `allowGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_global_access
+        alias_method :allow_global_access?, :allow_global_access
+      
         # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
@@ -6368,7 +6442,7 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets
+        # object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
         # are valid.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -6383,6 +6457,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
+          @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -8554,6 +8629,17 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ComputeBeta::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        # The policy describes the baseline against which Instance boot integrity is
+        # measured.
+        # Corresponds to the JSON property `shieldedInstanceIntegrityPolicy`
+        # @return [Google::Apis::ComputeBeta::ShieldedInstanceIntegrityPolicy]
+        attr_accessor :shielded_instance_integrity_policy
+      
         # A set of Shielded VM options.
         # Corresponds to the JSON property `shieldedVmConfig`
         # @return [Google::Apis::ComputeBeta::ShieldedVmConfig]
@@ -8624,6 +8710,8 @@ module Google
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @shielded_instance_integrity_policy = args[:shielded_instance_integrity_policy] if args.key?(:shielded_instance_integrity_policy)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @shielded_vm_integrity_policy = args[:shielded_vm_integrity_policy] if args.key?(:shielded_vm_integrity_policy)
           @start_restricted = args[:start_restricted] if args.key?(:start_restricted)
@@ -10749,6 +10837,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ComputeBeta::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # A set of Shielded VM options.
         # Corresponds to the JSON property `shieldedVmConfig`
         # @return [Google::Apis::ComputeBeta::ShieldedVmConfig]
@@ -10778,6 +10871,7 @@ module Google
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
         end
@@ -12227,15 +12321,21 @@ module Google
       class InterconnectDiagnosticsLinkOpticalPower
         include Google::Apis::Core::Hashable
       
-        # 
+        # The status of the current value when compared to the warning and alarm levels
+        # for the receiving or transmitting transceiver. Possible states include:
+        # - OK: The value has not crossed a warning threshold.
+        # - LOW_WARNING: The value has crossed below the low warning threshold.
+        # - HIGH_WARNING: The value has crossed above the high warning threshold.
+        # - LOW_ALARM: The value has crossed below the low alarm threshold.
+        # - HIGH_ALARM: The value has crossed above the high alarm threshold.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Value of the current optical power, read in dBm. Take a known good optical
-        # value, give it a 10% margin and trigger warnings relative to that value. In
-        # general, a -7dBm warning and a -11dBm alarm are good optical value estimates
-        # for most links.
+        # Value of the current receiving or transmitting optical power, read in dBm.
+        # Take a known good optical value, give it a 10% margin and trigger warnings
+        # relative to that value. In general, a -7dBm warning and a -11dBm alarm are
+        # good optical value estimates for most links.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -12276,12 +12376,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus]
         attr_accessor :lacp_status
       
-        # 
+        # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+        # value and status of the received light level.
         # Corresponds to the JSON property `receivingOpticalPower`
         # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower]
         attr_accessor :receiving_optical_power
       
-        # 
+        # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+        # value and status of the transmitted light level.
         # Corresponds to the JSON property `transmittingOpticalPower`
         # @return [Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower]
         attr_accessor :transmitting_optical_power
@@ -13920,9 +14022,9 @@ module Google
       class Network
         include Google::Apis::Core::Hashable
       
-        # The range of internal addresses that are legal on this network. This range is
-        # a CIDR specification, for example: 192.168.0.0/16. Provided by the client when
-        # the network is created.
+        # Deprecated in favor of subnet mode networks. The range of internal addresses
+        # that are legal on this network. This range is a CIDR specification, for
+        # example: 192.168.0.0/16. Provided by the client when the network is created.
         # Corresponds to the JSON property `IPv4Range`
         # @return [String]
         attr_accessor :i_pv4_range
@@ -14942,10 +15044,12 @@ module Google
       class NetworkPeering
         include Google::Apis::Core::Hashable
       
-        # Indicates whether full mesh connectivity is created and managed automatically.
-        # When it is set to true, Google Compute Engine will automatically create and
-        # manage the routes between two networks when the state is ACTIVE. Otherwise,
-        # user needs to create routes manually to route packets to peer network.
+        # This field will be deprecated soon. Prefer using exchange_subnet_routes
+        # instead. Indicates whether full mesh connectivity is created and managed
+        # automatically. When it is set to true, Google Compute Engine will
+        # automatically create and manage the routes between two networks when the state
+        # is ACTIVE. Otherwise, user needs to create routes manually to route packets to
+        # peer network.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
@@ -15045,7 +15149,9 @@ module Google
       class NetworksAddPeeringRequest
         include Google::Apis::Core::Hashable
       
-        # Whether Google Compute Engine manages the routes automatically.
+        # This field will be deprecated soon. Prefer using exchange_subnet_routes in
+        # network_peering instead. Whether Google Compute Engine manages the routes
+        # automatically.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
@@ -15462,6 +15568,11 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
+        # Binding properties for the physical server.
+        # Corresponds to the JSON property `serverBinding`
+        # @return [Google::Apis::ComputeBeta::ServerBinding]
+        attr_accessor :server_binding
+      
         # 
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -15476,6 +15587,7 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
+          @server_binding = args[:server_binding] if args.key?(:server_binding)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -15814,6 +15926,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Binding properties for the physical server.
+        # Corresponds to the JSON property `serverBinding`
+        # @return [Google::Apis::ComputeBeta::ServerBinding]
+        attr_accessor :server_binding
+      
         # [Output Only] The status of the node template. One of the following values:
         # CREATING, READY, and DELETING.
         # Corresponds to the JSON property `status`
@@ -15841,6 +15958,7 @@ module Google
           @node_type_flexibility = args[:node_type_flexibility] if args.key?(:node_type_flexibility)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @server_binding = args[:server_binding] if args.key?(:server_binding)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
         end
@@ -17930,6 +18048,26 @@ module Google
       end
       
       # 
+      class RegionCommitmentsUpdateAllocationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of allocations for the capacity move of VMs with accelerators and local
+        # ssds.
+        # Corresponds to the JSON property `allocations`
+        # @return [Array<Google::Apis::ComputeBeta::Allocation>]
+        attr_accessor :allocations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocations = args[:allocations] if args.key?(:allocations)
+        end
+      end
+      
+      # 
       class RegionDiskTypeList
         include Google::Apis::Core::Hashable
       
@@ -18876,6 +19014,12 @@ module Google
       class ResourceCommitment
         include Google::Apis::Core::Hashable
       
+        # Name of the accelerator type resource. Applicable only when the type is
+        # ACCELERATOR.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
         # The amount of the resource purchased (in a type-dependent unit, such as bytes).
         # For vCPUs, this can just be an integer. For memory, this must be provided in
         # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
@@ -18896,6 +19040,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @amount = args[:amount] if args.key?(:amount)
           @type = args[:type] if args.key?(:type)
         end
@@ -21571,6 +21716,25 @@ module Google
         end
       end
       
+      # 
+      class ServerBinding
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
@@ -21593,6 +21757,119 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # A set of Shielded Instance options.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Defines whether the instance has the vTPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # A shielded Instance identity entry.
+      class ShieldedInstanceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # A Shielded Instance Identity Entry.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry]
+        attr_accessor :encryption_key
+      
+        # [Output Only] Type of the resource. Always compute#shieldedInstanceIdentity
+        # for shielded Instance identity entry.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A Shielded Instance Identity Entry.
+        # Corresponds to the JSON property `signingKey`
+        # @return [Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry]
+        attr_accessor :signing_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @kind = args[:kind] if args.key?(:kind)
+          @signing_key = args[:signing_key] if args.key?(:signing_key)
+        end
+      end
+      
+      # A Shielded Instance Identity Entry.
+      class ShieldedInstanceIdentityEntry
+        include Google::Apis::Core::Hashable
+      
+        # A PEM-encoded X.509 certificate. This field can be empty.
+        # Corresponds to the JSON property `ekCert`
+        # @return [String]
+        attr_accessor :ek_cert
+      
+        # A PEM-encoded public key.
+        # Corresponds to the JSON property `ekPub`
+        # @return [String]
+        attr_accessor :ek_pub
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ek_cert = args[:ek_cert] if args.key?(:ek_cert)
+          @ek_pub = args[:ek_pub] if args.key?(:ek_pub)
+        end
+      end
+      
+      # The policy describes the baseline against which Instance boot integrity is
+      # measured.
+      class ShieldedInstanceIntegrityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Updates the integrity policy baseline using the measurements from the VM
+        # instance's most recent boot.
+        # Corresponds to the JSON property `updateAutoLearnPolicy`
+        # @return [Boolean]
+        attr_accessor :update_auto_learn_policy
+        alias_method :update_auto_learn_policy?, :update_auto_learn_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_auto_learn_policy = args[:update_auto_learn_policy] if args.key?(:update_auto_learn_policy)
         end
       end
       
@@ -26581,6 +26858,29 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # URL of the peer side external VPN gateway to which this VPN tunnel is
+        # connected. Provided by the client when the VPN tunnel is created. This field
+        # is exclusive with the field peerGcpGateway.
+        # Corresponds to the JSON property `peerExternalGateway`
+        # @return [String]
+        attr_accessor :peer_external_gateway
+      
+        # The interface ID of the external VPN gateway to which this VPN tunnel is
+        # connected. Provided by the client when the VPN tunnel is created.
+        # Corresponds to the JSON property `peerExternalGatewayInterface`
+        # @return [Fixnum]
+        attr_accessor :peer_external_gateway_interface
+      
+        # URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+        # Provided by the client when the VPN tunnel is created. This field can be used
+        # when creating highly available VPN from VPC network to VPC network, the field
+        # is exclusive with the field peerExternalGateway. If provided, the VPN tunnel
+        # will automatically use the same vpnGatewayInterface ID in the peer GCP VPN
+        # gateway.
+        # Corresponds to the JSON property `peerGcpGateway`
+        # @return [String]
+        attr_accessor :peer_gcp_gateway
+      
         # IP address of the peer VPN gateway. Only IPv4 is supported.
         # Corresponds to the JSON property `peerIp`
         # @return [String]
@@ -26648,6 +26948,9 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @local_traffic_selector = args[:local_traffic_selector] if args.key?(:local_traffic_selector)
           @name = args[:name] if args.key?(:name)
+          @peer_external_gateway = args[:peer_external_gateway] if args.key?(:peer_external_gateway)
+          @peer_external_gateway_interface = args[:peer_external_gateway_interface] if args.key?(:peer_external_gateway_interface)
+          @peer_gcp_gateway = args[:peer_gcp_gateway] if args.key?(:peer_gcp_gateway)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @region = args[:region] if args.key?(:region)
           @remote_traffic_selector = args[:remote_traffic_selector] if args.key?(:remote_traffic_selector)

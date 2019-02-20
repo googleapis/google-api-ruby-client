@@ -1290,7 +1290,7 @@ module Google
         attr_accessor :create_time
       
         # Output only. The number of attempts dispatched.
-        # This count includes tasks which have been dispatched but haven't
+        # This count includes attempts which have been dispatched but haven't
         # received a response.
         # Corresponds to the JSON property `dispatchCount`
         # @return [Fixnum]

@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecognitionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecognizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -165,18 +171,36 @@ module Google
       class RecognitionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_channel_count, as: 'audioChannelCount'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_separate_recognition_per_channel, as: 'enableSeparateRecognitionPerChannel'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
           property :language_code, as: 'languageCode'
           property :max_alternatives, as: 'maxAlternatives'
+          property :metadata, as: 'metadata', class: Google::Apis::SpeechV1::RecognitionMetadata, decorator: Google::Apis::SpeechV1::RecognitionMetadata::Representation
+      
           property :model, as: 'model'
           property :profanity_filter, as: 'profanityFilter'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::SpeechV1::SpeechContext, decorator: Google::Apis::SpeechV1::SpeechContext::Representation
       
           property :use_enhanced, as: 'useEnhanced'
+        end
+      end
+      
+      class RecognitionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_topic, as: 'audioTopic'
+          property :industry_naics_code_of_audio, as: 'industryNaicsCodeOfAudio'
+          property :interaction_type, as: 'interactionType'
+          property :microphone_distance, as: 'microphoneDistance'
+          property :obfuscated_id, :numeric_string => true, as: 'obfuscatedId'
+          property :original_media_type, as: 'originalMediaType'
+          property :original_mime_type, as: 'originalMimeType'
+          property :recording_device_name, as: 'recordingDeviceName'
+          property :recording_device_type, as: 'recordingDeviceType'
         end
       end
       

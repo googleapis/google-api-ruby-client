@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -499,6 +505,17 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :kind, as: 'kind'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class Notification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -645,7 +662,8 @@ module Google
         class Binding
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :condition, as: 'condition'
+            property :condition, as: 'condition', class: Google::Apis::StorageV1::Expr, decorator: Google::Apis::StorageV1::Expr::Representation
+        
             collection :members, as: 'members'
             property :role, as: 'role'
           end

@@ -1371,8 +1371,6 @@ module Google
           property :phones, as: 'phones'
           property :posix_accounts, as: 'posixAccounts'
           property :primary_email, as: 'primaryEmail'
-          property :recovery_email, as: 'recoveryEmail'
-          property :recovery_phone, as: 'recoveryPhone'
           property :relations, as: 'relations'
           property :ssh_public_keys, as: 'sshPublicKeys'
           property :suspended, as: 'suspended'

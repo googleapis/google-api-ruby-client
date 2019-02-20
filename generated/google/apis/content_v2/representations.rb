@@ -1588,6 +1588,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransitTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitTableTransitTimeRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitTableTransitTimeRowTransitTimeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UnitInvoice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2306,6 +2324,8 @@ module Google
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
           property :min_handling_time_in_days, as: 'minHandlingTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+          property :transit_time_table, as: 'transitTimeTable', class: Google::Apis::ContentV2::TransitTable, decorator: Google::Apis::ContentV2::TransitTable::Representation
+      
         end
       end
       
@@ -4376,10 +4396,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_date, as: 'creationDate'
+          property :delivery_date, as: 'deliveryDate'
           property :return_method_type, as: 'returnMethodType'
           property :shipment_id, as: 'shipmentId'
           collection :shipment_tracking_infos, as: 'shipmentTrackingInfos', class: Google::Apis::ContentV2::ShipmentTrackingInfo, decorator: Google::Apis::ContentV2::ShipmentTrackingInfo::Representation
       
+          property :shipping_date, as: 'shippingDate'
+          property :state, as: 'state'
         end
       end
       
@@ -4617,6 +4640,32 @@ module Google
           property :last_four_digits, as: 'lastFourDigits'
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :type, as: 'type'
+        end
+      end
+      
+      class TransitTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postal_code_group_names, as: 'postalCodeGroupNames'
+          collection :rows, as: 'rows', class: Google::Apis::ContentV2::TransitTableTransitTimeRow, decorator: Google::Apis::ContentV2::TransitTableTransitTimeRow::Representation
+      
+          collection :transit_time_labels, as: 'transitTimeLabels'
+        end
+      end
+      
+      class TransitTableTransitTimeRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::ContentV2::TransitTableTransitTimeRowTransitTimeValue, decorator: Google::Apis::ContentV2::TransitTableTransitTimeRowTransitTimeValue::Representation
+      
+        end
+      end
+      
+      class TransitTableTransitTimeRowTransitTimeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
+          property :min_transit_time_in_days, as: 'minTransitTimeInDays'
         end
       end
       

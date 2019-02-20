@@ -1038,8 +1038,7 @@ module Google
         #   * `projectId = my-project AND labels.color = *`
         #   * `projectId = my-project AND labels.color = red`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If unspecified, defaults to
-        #   256. The maximum value is 2048.
+        #   The maximum number of results to return. The maximum value is 256.
         # @param [String] page_token
         #   The standard list page token.
         # @param [String] fields

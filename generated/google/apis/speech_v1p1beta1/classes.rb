@@ -607,6 +607,11 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionConfig]
         attr_accessor :config
       
+        # *Optional* The name of the model to use for recognition.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -615,6 +620,7 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @config = args[:config] if args.key?(:config)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

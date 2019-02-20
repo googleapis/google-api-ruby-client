@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationsResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -456,6 +462,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2428,6 +2440,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionCommitmentsUpdateAllocationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionDiskTypeList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2980,7 +2998,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServerBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIdentityEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIntegrityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4217,6 +4265,13 @@ module Google
         end
       end
       
+      class AllocationsResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :specific_sku_count, :numeric_string => true, as: 'specificSkuCount'
+        end
+      end
+      
       class AllocationsScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4274,6 +4329,8 @@ module Google
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
           hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
@@ -4560,6 +4617,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::BackendServiceLogConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLogConfig::Representation
+      
           property :name, as: 'name'
           property :port, as: 'port'
           property :port_name, as: 'portName'
@@ -4662,6 +4721,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :sample_rate, as: 'sampleRate'
         end
       end
       
@@ -4850,7 +4917,6 @@ module Google
           property :op, as: 'op'
           property :svc, as: 'svc'
           property :sys, as: 'sys'
-          property :value, as: 'value'
           collection :values, as: 'values'
         end
       end
@@ -5348,6 +5414,7 @@ module Google
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
+          property :allow_global_access, as: 'allowGlobalAccess'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -5879,6 +5946,10 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
+      
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeBeta::ShieldedInstanceConfig, decorator: Google::Apis::ComputeBeta::ShieldedInstanceConfig::Representation
+      
+          property :shielded_instance_integrity_policy, as: 'shieldedInstanceIntegrityPolicy', class: Google::Apis::ComputeBeta::ShieldedInstanceIntegrityPolicy, decorator: Google::Apis::ComputeBeta::ShieldedInstanceIntegrityPolicy::Representation
       
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeBeta::ShieldedVmConfig, decorator: Google::Apis::ComputeBeta::ShieldedVmConfig::Representation
       
@@ -6450,6 +6521,8 @@ module Google
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
+      
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeBeta::ShieldedInstanceConfig, decorator: Google::Apis::ComputeBeta::ShieldedInstanceConfig::Representation
       
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeBeta::ShieldedVmConfig, decorator: Google::Apis::ComputeBeta::ShieldedVmConfig::Representation
       
@@ -7657,6 +7730,8 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeBeta::ServerBinding, decorator: Google::Apis::ComputeBeta::ServerBinding::Representation
+      
           property :status, as: 'status'
         end
       end
@@ -7756,6 +7831,8 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeBeta::ServerBinding, decorator: Google::Apis::ComputeBeta::ServerBinding::Representation
+      
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
         end
@@ -8305,6 +8382,14 @@ module Google
         end
       end
       
+      class RegionCommitmentsUpdateAllocationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allocations, as: 'allocations', class: Google::Apis::ComputeBeta::Allocation, decorator: Google::Apis::ComputeBeta::Allocation::Representation
+      
+        end
+      end
+      
       class RegionDiskTypeList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8578,6 +8663,7 @@ module Google
       class ResourceCommitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
           property :amount, :numeric_string => true, as: 'amount'
           property :type, as: 'type'
         end
@@ -9268,11 +9354,53 @@ module Google
         end
       end
       
+      class ServerBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class ShieldedInstanceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry::Representation
+      
+          property :kind, as: 'kind'
+          property :signing_key, as: 'signingKey', class: Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeBeta::ShieldedInstanceIdentityEntry::Representation
+      
+        end
+      end
+      
+      class ShieldedInstanceIdentityEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ek_cert, as: 'ekCert'
+          property :ek_pub, as: 'ekPub'
+        end
+      end
+      
+      class ShieldedInstanceIntegrityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_auto_learn_policy, as: 'updateAutoLearnPolicy'
         end
       end
       
@@ -10551,6 +10679,9 @@ module Google
           hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
+          property :peer_external_gateway, as: 'peerExternalGateway'
+          property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
+          property :peer_gcp_gateway, as: 'peerGcpGateway'
           property :peer_ip, as: 'peerIp'
           property :region, as: 'region'
           collection :remote_traffic_selector, as: 'remoteTrafficSelector'

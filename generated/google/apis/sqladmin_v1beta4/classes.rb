@@ -791,8 +791,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Options for exporting data as CSV.
-        # Exporting in CSV format using the Cloud SQL Admin API is not supported for
-        # PostgreSQL instances.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
@@ -803,8 +801,9 @@ module Google
         # CSV, you can specify one database, either by using this property or by using
         # the csvExportOptions.selectQuery property, which takes precedence over this
         # property.
-        # PostgreSQL instances: If fileType is SQL, you must specify one database to be
-        # exported. A fileType of CSV is not supported for PostgreSQL instances.
+        # PostgreSQL instances: Specify exactly one database to be exported. If fileType
+        # is CSV, this database must match the database used in the csvExportOptions.
+        # selectQuery property.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
@@ -812,7 +811,6 @@ module Google
         # The file type for the specified uri.
         # SQL: The file contains SQL statements.
         # CSV: The file contains CSV data.
-        # CSV is not supported for PostgreSQL instances.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -850,8 +848,6 @@ module Google
         end
         
         # Options for exporting data as CSV.
-        # Exporting in CSV format using the Cloud SQL Admin API is not supported for
-        # PostgreSQL instances.
         class CsvExportOptions
           include Google::Apis::Core::Hashable
         
@@ -968,6 +964,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :applies_to
       
+        # True if the flag is only released in Beta.
+        # Corresponds to the JSON property `inBeta`
+        # @return [Boolean]
+        attr_accessor :in_beta
+        alias_method :in_beta?, :in_beta
+      
         # This is always sql#flag.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1011,6 +1013,7 @@ module Google
         def update!(**args)
           @allowed_string_values = args[:allowed_string_values] if args.key?(:allowed_string_values)
           @applies_to = args[:applies_to] if args.key?(:applies_to)
+          @in_beta = args[:in_beta] if args.key?(:in_beta)
           @kind = args[:kind] if args.key?(:kind)
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
@@ -1050,8 +1053,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Options for importing data as CSV.
-        # Importing CSV data using the Cloud SQL Admin API is not supported for
-        # PostgreSQL instances.
         # Corresponds to the JSON property `csvImportOptions`
         # @return [Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions]
         attr_accessor :csv_import_options
@@ -1067,14 +1068,11 @@ module Google
         # The file type for the specified uri.
         # SQL: The file contains SQL statements.
         # CSV: The file contains CSV data.
-        # Importing CSV data using the Cloud SQL Admin API is not supported for
-        # PostgreSQL instances.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
       
-        # The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser.
-        # PostgreSQL instances only.
+        # The PostgreSQL user for this import operation. PostgreSQL instances only.
         # Corresponds to the JSON property `importUser`
         # @return [String]
         attr_accessor :import_user
@@ -1106,8 +1104,6 @@ module Google
         end
         
         # Options for importing data as CSV.
-        # Importing CSV data using the Cloud SQL Admin API is not supported for
-        # PostgreSQL instances.
         class CsvImportOptions
           include Google::Apis::Core::Hashable
         

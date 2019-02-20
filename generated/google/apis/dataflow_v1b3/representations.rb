@@ -1146,6 +1146,7 @@ module Google
           property :cluster_manager_api_service, as: 'clusterManagerApiService'
           property :dataset, as: 'dataset'
           collection :experiments, as: 'experiments'
+          property :flex_resource_scheduling_goal, as: 'flexResourceSchedulingGoal'
           hash :internal_experiments, as: 'internalExperiments'
           hash :sdk_pipeline_options, as: 'sdkPipelineOptions'
           property :service_account_email, as: 'serviceAccountEmail'
@@ -2065,6 +2066,7 @@ module Google
       class StreamingConfigTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_work_item_commit_bytes, :numeric_string => true, as: 'maxWorkItemCommitBytes'
           collection :streaming_computation_configs, as: 'streamingComputationConfigs', class: Google::Apis::DataflowV1b3::StreamingComputationConfig, decorator: Google::Apis::DataflowV1b3::StreamingComputationConfig::Representation
       
           hash :user_step_to_state_family_name_map, as: 'userStepToStateFamilyNameMap'

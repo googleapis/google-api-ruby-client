@@ -147,13 +147,13 @@ module Google
         end
       end
       
-      # Data source is a logical namespace for items to be indexed.
-      # All items must belong to a data source.  This is the prerequisite before
+      # Datasource is a logical namespace for items to be indexed.
+      # All items must belong to a datasource.  This is the prerequisite before
       # items can be indexed into Cloud Search.
       class DataSource
         include Google::Apis::Core::Hashable
       
-        # If true, Indexing API rejects any modification calls to this data source
+        # If true, Indexing API rejects any modification calls to this datasource
         # such as create, update, and delete.
         # Disabling this does not imply halting process of previously
         # accepted data.
@@ -168,7 +168,7 @@ module Google
         attr_accessor :disable_serving
         alias_method :disable_serving?, :disable_serving
       
-        # Required. Display name of the data source
+        # Required. Display name of the datasource
         # The maximum length is 300 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -179,19 +179,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :indexing_service_accounts
       
-        # This restricts visibility to items at a data source level to the
-        # disjunction of users/groups mentioned with the field. Note that, this
-        # does not ensure access to a specific item, as users need to have ACL
-        # permissions on the contained items. This ensures a high level access
-        # on the entire data source, and that the individual items are not shared
-        # outside this visibility.
+        # This field restricts visibility to items at the datasource level. Items
+        # within the datasource are restricted to the union of users and groups
+        # included in this field. Note that, this does not ensure access to a
+        # specific item, as users need to have ACL permissions on the contained
+        # items. This ensures a high level access on the entire datasource, and
+        # that the individual items are not shared outside this visibility.
         # Corresponds to the JSON property `itemsVisibility`
         # @return [Array<Google::Apis::CloudsearchV1::GSuitePrincipal>]
         attr_accessor :items_visibility
       
-        # Name of the data source resource.
+        # Name of the datasource resource.
         # Format: datasources/`source_id`.
-        # <br />The name is ignored when creating a data source.
+        # <br />The name is ignored when creating a datasource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -204,7 +204,7 @@ module Google
         # A short name or alias for the source.  This value will be used to match the
         # 'source' operator. For example, if the short name is *&lt;value&gt;* then
         # queries like *source:&lt;value&gt;* will only return results for this
-        # source. The value must be unique across all data sources. The value must
+        # source. The value must be unique across all datasources. The value must
         # only contain alphanumeric characters (a-zA-Z0-9). The value cannot start
         # with 'google' and cannot be one of the following: mail, gmail, docs, drive,
         # groups, sites, calendar, hangouts, gplus, keep, people, teams.
@@ -1070,8 +1070,8 @@ module Google
       class FreshnessOptions
         include Google::Apis::Core::Hashable
       
-        # The duration (in seconds) after which an object should be considered
-        # stale.
+        # The duration after which an object should be considered
+        # stale. The default value is 180 days (in seconds).
         # Corresponds to the JSON property `freshnessDuration`
         # @return [String]
         attr_accessor :freshness_duration
@@ -1087,6 +1087,8 @@ module Google
         # updateTime
         # as the freshness indicator.
         # The maximum length is 256 characters.
+        # When a property is used to calculate fresheness, the value defaults
+        # to 2 years from the current time.
         # Corresponds to the JSON property `freshnessProperty`
         # @return [String]
         attr_accessor :freshness_property
@@ -1170,6 +1172,101 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Gmail Action restricts (i.e. read/replied/snoozed).
+      class GmailActionRestrict
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
+      class GmailAttachmentRestrict
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
+      class GmailFolderRestrict
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Gmail Intelligent restricts (i.e. smartlabels, important).
+      class GmailIntelligentRestrict
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Gmail Time restricts (i.e. received today, this week).
+      class GmailTimeRestrict
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2087,7 +2184,10 @@ module Google
         # @return [Google::Apis::CloudsearchV1::Source]
         attr_accessor :source
       
-        # The last modified date for the object in the search result.
+        # The last modified date for the object in the search result. If not
+        # set in the item, the value returned here is empty. When
+        # `updateTime` is used for calculating freshness and is not set, this
+        # value defaults to 2 years from the current time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3293,7 +3393,7 @@ module Google
       end
       
       # Information relevant only to a restrict entry.
-      # NextId: 7
+      # NextId: 12
       class RestrictItem
         include Google::Apis::Core::Hashable
       
@@ -3317,6 +3417,31 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DriveTimeSpanRestrict]
         attr_accessor :drive_time_span_restrict
       
+        # Gmail Action restricts (i.e. read/replied/snoozed).
+        # Corresponds to the JSON property `gmailActionRestrict`
+        # @return [Google::Apis::CloudsearchV1::GmailActionRestrict]
+        attr_accessor :gmail_action_restrict
+      
+        # Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
+        # Corresponds to the JSON property `gmailAttachmentRestrict`
+        # @return [Google::Apis::CloudsearchV1::GmailAttachmentRestrict]
+        attr_accessor :gmail_attachment_restrict
+      
+        # Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
+        # Corresponds to the JSON property `gmailFolderRestrict`
+        # @return [Google::Apis::CloudsearchV1::GmailFolderRestrict]
+        attr_accessor :gmail_folder_restrict
+      
+        # Gmail Intelligent restricts (i.e. smartlabels, important).
+        # Corresponds to the JSON property `gmailIntelligentRestrict`
+        # @return [Google::Apis::CloudsearchV1::GmailIntelligentRestrict]
+        attr_accessor :gmail_intelligent_restrict
+      
+        # Gmail Time restricts (i.e. received today, this week).
+        # Corresponds to the JSON property `gmailTimeRestrict`
+        # @return [Google::Apis::CloudsearchV1::GmailTimeRestrict]
+        attr_accessor :gmail_time_restrict
+      
         # The search restrict (e.g. "after:2017-09-11 before:2017-09-12").
         # Corresponds to the JSON property `searchOperator`
         # @return [String]
@@ -3332,6 +3457,11 @@ module Google
           @drive_location_restrict = args[:drive_location_restrict] if args.key?(:drive_location_restrict)
           @drive_mime_type_restrict = args[:drive_mime_type_restrict] if args.key?(:drive_mime_type_restrict)
           @drive_time_span_restrict = args[:drive_time_span_restrict] if args.key?(:drive_time_span_restrict)
+          @gmail_action_restrict = args[:gmail_action_restrict] if args.key?(:gmail_action_restrict)
+          @gmail_attachment_restrict = args[:gmail_attachment_restrict] if args.key?(:gmail_attachment_restrict)
+          @gmail_folder_restrict = args[:gmail_folder_restrict] if args.key?(:gmail_folder_restrict)
+          @gmail_intelligent_restrict = args[:gmail_intelligent_restrict] if args.key?(:gmail_intelligent_restrict)
+          @gmail_time_restrict = args[:gmail_time_restrict] if args.key?(:gmail_time_restrict)
           @search_operator = args[:search_operator] if args.key?(:search_operator)
         end
       end
@@ -3664,7 +3794,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An indication of the quality of the item, used to influence search quality.
-        # Value should be between 0.0 (lowest quality) and 1.0 (highest quality).
+        # Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The
+        # default value is 0.0.
         # Corresponds to the JSON property `quality`
         # @return [Float]
         attr_accessor :quality
@@ -4606,8 +4737,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
       
-        # Data source is a logical namespace for items to be indexed.
-        # All items must belong to a data source.  This is the prerequisite before
+        # Datasource is a logical namespace for items to be indexed.
+        # All items must belong to a datasource.  This is the prerequisite before
         # items can be indexed into Cloud Search.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CloudsearchV1::DataSource]

@@ -74,6 +74,19 @@ module Google
         end
       end
       
+      # Request message for ActivateJobTrigger.
+      class GooglePrivacyDlpV2ActivateJobTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Result of a risk analysis operation request.
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         include Google::Apis::Core::Hashable

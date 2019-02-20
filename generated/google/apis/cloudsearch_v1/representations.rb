@@ -256,6 +256,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GmailActionRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GmailAttachmentRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GmailFolderRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GmailIntelligentRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GmailTimeRestrict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HtmlOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1175,6 +1205,41 @@ module Google
         end
       end
       
+      class GmailActionRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GmailAttachmentRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GmailFolderRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GmailIntelligentRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GmailTimeRestrict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class HtmlOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1759,6 +1824,16 @@ module Google
           property :drive_mime_type_restrict, as: 'driveMimeTypeRestrict', class: Google::Apis::CloudsearchV1::DriveMimeTypeRestrict, decorator: Google::Apis::CloudsearchV1::DriveMimeTypeRestrict::Representation
       
           property :drive_time_span_restrict, as: 'driveTimeSpanRestrict', class: Google::Apis::CloudsearchV1::DriveTimeSpanRestrict, decorator: Google::Apis::CloudsearchV1::DriveTimeSpanRestrict::Representation
+      
+          property :gmail_action_restrict, as: 'gmailActionRestrict', class: Google::Apis::CloudsearchV1::GmailActionRestrict, decorator: Google::Apis::CloudsearchV1::GmailActionRestrict::Representation
+      
+          property :gmail_attachment_restrict, as: 'gmailAttachmentRestrict', class: Google::Apis::CloudsearchV1::GmailAttachmentRestrict, decorator: Google::Apis::CloudsearchV1::GmailAttachmentRestrict::Representation
+      
+          property :gmail_folder_restrict, as: 'gmailFolderRestrict', class: Google::Apis::CloudsearchV1::GmailFolderRestrict, decorator: Google::Apis::CloudsearchV1::GmailFolderRestrict::Representation
+      
+          property :gmail_intelligent_restrict, as: 'gmailIntelligentRestrict', class: Google::Apis::CloudsearchV1::GmailIntelligentRestrict, decorator: Google::Apis::CloudsearchV1::GmailIntelligentRestrict::Representation
+      
+          property :gmail_time_restrict, as: 'gmailTimeRestrict', class: Google::Apis::CloudsearchV1::GmailTimeRestrict, decorator: Google::Apis::CloudsearchV1::GmailTimeRestrict::Representation
       
           property :search_operator, as: 'searchOperator'
         end

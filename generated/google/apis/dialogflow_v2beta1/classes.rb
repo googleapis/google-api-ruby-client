@@ -66,7 +66,7 @@ module Google
       
         # Optional. The number of conversational query requests after which the
         # context expires. If set to `0` (the default) the context expires
-        # immediately. Contexts expire automatically after 20 minutes even if there
+        # immediately. Contexts expire automatically after 20 minutes if there
         # are no matching queries.
         # Corresponds to the JSON property `lifespanCount`
         # @return [Fixnum]
@@ -1845,7 +1845,7 @@ module Google
       
         # Optional. The number of conversational query requests after which the
         # context expires. If set to `0` (the default) the context expires
-        # immediately. Contexts expire automatically after 10 minutes even if there
+        # immediately. Contexts expire automatically after 20 minutes if there
         # are no matching queries.
         # Corresponds to the JSON property `lifespanCount`
         # @return [Fixnum]

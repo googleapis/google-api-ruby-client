@@ -86,7 +86,9 @@ module Google
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many.
         #   The actual number of jobs returned will be the lesser of max_responses
@@ -129,11 +131,18 @@ module Google
         end
         
         # Creates a Cloud Dataflow job.
+        # To create a job, we recommend using `projects.locations.jobs.create` with a
+        # [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.create` is not recommended, as your job will always start
+        # in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] replace_job_id
         #   Deprecated. This field is now in the Job message.
         # @param [String] view
@@ -171,12 +180,19 @@ module Google
         end
         
         # Gets the state of the specified Cloud Dataflow job.
+        # To get the state of a job, we recommend using `projects.locations.jobs.get`
+        # with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.get` is not recommended, as you can only get the state of
+        # jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
         #   The job ID.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] view
         #   The level of information requested in response.
         # @param [String] fields
@@ -210,12 +226,19 @@ module Google
         end
         
         # Request the job status.
+        # To request the status of a job, we recommend using
+        # `projects.locations.jobs.getMetrics` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.getMetrics` is not recommended, as you can only request the
+        # status of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   A project id.
         # @param [String] job_id
         #   The job to get messages for.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] start_time
         #   Return only metric data that has changed since this time.
         #   Default is to return all information about all metrics for the job.
@@ -249,13 +272,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the jobs of a project in a given region.
+        # List the jobs of a project.
+        # To list the jobs of a project in a region, we recommend using
+        # `projects.locations.jobs.get` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
+        # list the all jobs across all regions, use `projects.jobs.aggregated`. Using
+        # `projects.jobs.list` is not recommended, as you can only get the list of
+        # jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many.
         #   The actual number of jobs returned will be the lesser of max_responses
@@ -334,13 +365,20 @@ module Google
         end
         
         # Updates the state of an existing Cloud Dataflow job.
+        # To update the state of an existing job, we recommend using
+        # `projects.locations.jobs.update` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.update` is not recommended, as you can only update the state
+        # of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
         #   The job ID.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -445,6 +483,11 @@ module Google
         end
         
         # Request the job status.
+        # To request the status of a job, we recommend using
+        # `projects.locations.jobs.messages.list` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.messages.list` is not recommended, as you can only request
+        # the status of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   A project id.
         # @param [String] job_id
@@ -453,7 +496,9 @@ module Google
         #   Return only messages with timestamps < end_time. The default is now
         #   (i.e. return up to the latest messages available).
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] minimum_importance
         #   Filter to only get messages with importance >= level
         # @param [Fixnum] page_size
@@ -577,7 +622,9 @@ module Google
         # @param [String] project_id
         #   The project to send the WorkerMessages to.
         # @param [String] location
-        #   The location which contains the job
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job.
         # @param [Google::Apis::DataflowV1b3::SendWorkerMessagesRequest] send_worker_messages_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -610,10 +657,17 @@ module Google
         end
         
         # Creates a Cloud Dataflow job.
+        # To create a job, we recommend using `projects.locations.jobs.create` with a
+        # [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.create` is not recommended, as your job will always start
+        # in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
         # @param [String] replace_job_id
         #   Deprecated. This field is now in the Job message.
@@ -652,10 +706,17 @@ module Google
         end
         
         # Gets the state of the specified Cloud Dataflow job.
+        # To get the state of a job, we recommend using `projects.locations.jobs.get`
+        # with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.get` is not recommended, as you can only get the state of
+        # jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] job_id
         #   The job ID.
         # @param [String] view
@@ -691,10 +752,17 @@ module Google
         end
         
         # Request the job status.
+        # To request the status of a job, we recommend using
+        # `projects.locations.jobs.getMetrics` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.getMetrics` is not recommended, as you can only request the
+        # status of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] job_id
         #   The job to get messages for.
         # @param [String] start_time
@@ -730,11 +798,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the jobs of a project in a given region.
+        # List the jobs of a project.
+        # To list the jobs of a project in a region, we recommend using
+        # `projects.locations.jobs.get` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
+        # list the all jobs across all regions, use `projects.jobs.aggregated`. Using
+        # `projects.jobs.list` is not recommended, as you can only get the list of
+        # jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [Fixnum] page_size
@@ -818,10 +894,17 @@ module Google
         end
         
         # Updates the state of an existing Cloud Dataflow job.
+        # To update the state of an existing job, we recommend using
+        # `projects.locations.jobs.update` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.update` is not recommended, as you can only update the state
+        # of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location that contains this job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains this job.
         # @param [String] job_id
         #   The job ID.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
@@ -860,7 +943,9 @@ module Google
         # @param [String] project_id
         #   The project id.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] job_id
         #   The job id.
         # @param [Google::Apis::DataflowV1b3::GetDebugConfigRequest] get_debug_config_request_object
@@ -899,7 +984,9 @@ module Google
         # @param [String] project_id
         #   The project id.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] job_id
         #   The job id.
         # @param [Google::Apis::DataflowV1b3::SendDebugCaptureRequest] send_debug_capture_request_object
@@ -935,10 +1022,17 @@ module Google
         end
         
         # Request the job status.
+        # To request the status of a job, we recommend using
+        # `projects.locations.jobs.messages.list` with a [regional endpoint]
+        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+        # `projects.jobs.messages.list` is not recommended, as you can only request
+        # the status of jobs that are running in `us-central1`.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the job specified by job_id.
         # @param [String] job_id
         #   The job to get messages about.
         # @param [String] end_time
@@ -995,7 +1089,9 @@ module Google
         # @param [String] project_id
         #   Identifies the project this worker belongs to.
         # @param [String] location
-        #   The location which contains the WorkItem's job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the WorkItem's job.
         # @param [String] job_id
         #   Identifies the workflow job this worker belongs to.
         # @param [Google::Apis::DataflowV1b3::LeaseWorkItemRequest] lease_work_item_request_object
@@ -1034,7 +1130,9 @@ module Google
         # @param [String] project_id
         #   The project which owns the WorkItem's job.
         # @param [String] location
-        #   The location which contains the WorkItem's job.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        #   contains the WorkItem's job.
         # @param [String] job_id
         #   The job which the WorkItem is part of.
         # @param [Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest] report_work_item_status_request_object
@@ -1073,7 +1171,9 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location to which to direct the request.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request.
         # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1109,7 +1209,9 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location to which to direct the request.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request.
         # @param [String] gcs_path
         #   Required. A Cloud Storage path to the template from which to
         #   create the job.
@@ -1150,7 +1252,9 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
-        #   The location to which to direct the request.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
         # @param [String] dynamic_template_gcs_path
         #   Path to dynamic template spec file on GCS.
@@ -1240,7 +1344,9 @@ module Google
         #   create the job.
         #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] location
-        #   The location to which to direct the request.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request.
         # @param [String] view
         #   The view to retrieve. Defaults to METADATA_ONLY.
         # @param [String] fields
@@ -1288,7 +1394,9 @@ module Google
         #   the job.
         #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] location
-        #   The location to which to direct the request.
+        #   The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request.
         # @param [Boolean] validate_only
         #   If true, the request is validated but not actually executed.
         #   Defaults to false.

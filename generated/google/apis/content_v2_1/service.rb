@@ -3070,6 +3070,82 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates regional inventory for multiple products or regions in a single
+        # request.
+        # @param [Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequest] regionalinventory_custom_batch_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def custombatch_regionalinventory(regionalinventory_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'regionalinventory/batch', options)
+          command.request_representation = Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequest::Representation
+          command.request_object = regionalinventory_custom_batch_request_object
+          command.response_representation = Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the regional inventory of a product in your Merchant Center account. If
+        # a regional inventory with the same region ID already exists, this method
+        # updates that entry.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that contains the product. This account cannot be a
+        #   multi-client account.
+        # @param [String] product_id
+        #   The REST id of the product for which to update the regional inventory.
+        # @param [Google::Apis::ContentV2_1::RegionalInventory] regional_inventory_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::RegionalInventory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::RegionalInventory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_regionalinventory(merchant_id, product_id, regional_inventory_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/products/{productId}/regionalinventory', options)
+          command.request_representation = Google::Apis::ContentV2_1::RegionalInventory::Representation
+          command.request_object = regional_inventory_object
+          command.response_representation = Google::Apis::ContentV2_1::RegionalInventory::Representation
+          command.response_class = Google::Apis::ContentV2_1::RegionalInventory
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves and updates the shipping settings of multiple accounts in a single
         # request.
         # @param [Google::Apis::ContentV2_1::ShippingsettingsCustomBatchRequest] shippingsettings_custom_batch_request_object

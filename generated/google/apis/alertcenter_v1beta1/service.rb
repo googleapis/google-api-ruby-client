@@ -86,10 +86,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified alert.
+        # Gets the specified alert. Attempting to get a nonexistent alert returns
+        # `NOT_FOUND` error.
         # @param [String] alert_id
         #   Required. The identifier of the alert to retrieve.
-        #   Returns a NOT_FOUND error if no such alert.
         # @param [String] customer_id
         #   Optional. The unique identifier of the G Suite organization account of the
         #   customer the alert is associated with.
@@ -215,10 +215,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates new feedback for an alert.
+        # Creates new feedback for an alert. Attempting to create a feedback for
+        # a non-existent alert returns `NOT_FOUND` error.
         # @param [String] alert_id
         #   Required. The identifier of the alert this feedback belongs to.
-        #   Returns a `NOT_FOUND` error if no such alert.
         # @param [Google::Apis::AlertcenterV1beta1::AlertFeedback] alert_feedback_object
         # @param [String] customer_id
         #   Optional. The unique identifier of the G Suite organization account of the
@@ -254,11 +254,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the feedback for an alert.
+        # Lists all the feedback for an alert. Attempting to list feedbacks for
+        # a non-existent alert returns `NOT_FOUND` error.
         # @param [String] alert_id
         #   Required. The alert identifier.
         #   The "-" wildcard could be used to represent all alerts.
-        #   If alert does not exist returns a `NOT_FOUND` error.
         # @param [String] customer_id
         #   Optional. The unique identifier of the G Suite organization account of the
         #   customer the alert feedback are associated with.
@@ -330,7 +330,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the customer-level settings.
+        # Updates the customer-level settings.
         # @param [Google::Apis::AlertcenterV1beta1::Settings] settings_object
         # @param [String] customer_id
         #   Optional. The unique identifier of the G Suite organization account of the

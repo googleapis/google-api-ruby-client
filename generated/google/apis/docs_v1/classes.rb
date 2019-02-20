@@ -2261,6 +2261,8 @@ module Google
       # and content inserted inside a named range generally expands that range.
       # However, certain document changes can cause the range to be split into
       # multiple ranges.
+      # Named ranges are not private. All applications and collaborators that have
+      # access to the document can see its named ranges.
       class NamedRange
         include Google::Apis::Core::Hashable
       
@@ -2884,11 +2886,8 @@ module Google
         # @return [Google::Apis::DocsV1::ColumnBreak]
         attr_accessor :column_break
       
-        # The zero-base end index of this paragraph element, exclusive, in Unicode
-        # code units of the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-base end index of this paragraph element, exclusive, in UTF-16
+        # code units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
@@ -2925,11 +2924,7 @@ module Google
         # @return [Google::Apis::DocsV1::PageBreak]
         attr_accessor :page_break
       
-        # The zero-based start index of this paragraph element, in Unicode code
-        # units of the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based start index of this paragraph element, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
@@ -3463,8 +3458,7 @@ module Google
       class Range
         include Google::Apis::Core::Hashable
       
-        # The zero-based end index of this range, exclusive, in Unicode code units of
-        # the UTF-16 encoding.
+        # The zero-based end index of this range, exclusive, in UTF-16 code units.
         # In all current uses, an end index must be provided. This field is an
         # Int32Value in order to accommodate future use cases with open-ended ranges.
         # Corresponds to the JSON property `endIndex`
@@ -3477,8 +3471,7 @@ module Google
         # @return [String]
         attr_accessor :segment_id
       
-        # The zero-based start index of this range, in Unicode code units of the
-        # UTF-16 encoding.
+        # The zero-based start index of this range, in UTF-16 code units.
         # In all current uses, a start index must be provided. This field is an
         # Int32Value in order to accommodate future use cases with open-ended ranges.
         # Corresponds to the JSON property `startIndex`
@@ -3974,11 +3967,8 @@ module Google
       class StructuralElement
         include Google::Apis::Core::Hashable
       
-        # The zero-based end index of this structural element, exclusive, in Unicode
-        # code units of the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based end index of this structural element, exclusive, in UTF-16
+        # code units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
@@ -4000,11 +3990,8 @@ module Google
         # @return [Google::Apis::DocsV1::SectionBreak]
         attr_accessor :section_break
       
-        # The zero-based start index of this structural element, in Unicode code
-        # units of the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based start index of this structural element, in UTF-16 code
+        # units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
@@ -4457,20 +4444,12 @@ module Google
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
       
-        # The zero-based end index of this cell, exclusive, in Unicode code units of
-        # the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based end index of this cell, exclusive, in UTF-16 code units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # The zero-based start index of this cell, in Unicode code units of the
-        # UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based start index of this cell, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
@@ -4832,20 +4811,12 @@ module Google
       class TableRow
         include Google::Apis::Core::Hashable
       
-        # The zero-based end index of this row, exclusive, in Unicode code units of
-        # the UTF-16 encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based end index of this row, exclusive, in UTF-16 code units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # The zero-based start index of this row, in Unicode code units of the UTF-16
-        # encoding.
-        # Unicode code units of the UTF-16 encoding means that surrogate pairs
-        # consume two indexes. For example, the "GRINNING FACE" emoji would be
-        # represented as "\uD83D\uDE00" and would consume two indexes.
+        # The zero-based start index of this row, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index

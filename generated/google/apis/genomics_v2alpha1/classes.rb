@@ -141,8 +141,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The PID namespace to run the action inside. If unspecified, a separate
-        # isolated namespace is used.
+        # An optional identifier for a PID namespace to run the action inside.
+        # Multiple actions should use the same string to share a namespace.  If
+        # unspecified, a separate isolated namespace is used.
         # Corresponds to the JSON property `pidNamespace`
         # @return [String]
         attr_accessor :pid_namespace

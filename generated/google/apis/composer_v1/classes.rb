@@ -586,16 +586,22 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :env_variables
       
-        # Output only.
         # The version of the software running in the environment.
         # This encapsulates both the version of Cloud Composer functionality and the
         # version of Apache Airflow. It must match the regular expression
-        # `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        # `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        # When used as input, the server also checks if the provided version is
+        # supported and denies the request for an unsupported version.
         # The Cloud Composer portion of the version is a
-        # [semantic version](https://semver.org). The portion of the image version
-        # following _airflow-_ is an official Apache Airflow repository
+        # [semantic version](https://semver.org) or `latest`. When the patch version
+        # is omitted, the current Cloud Composer patch version is selected.
+        # When `latest` is provided instead of an explicit version number,
+        # the server replaces `latest` with the current Cloud Composer version
+        # and stores that version number in the same field.
+        # The portion of the image version that follows <em>airflow-</em> is an
+        # official Apache Airflow repository
         # [release name](https://github.com/apache/incubator-airflow/releases).
-        # See also [Release Notes](/composer/docs/release-notes).
+        # See also [Version List](/composer/docs/concepts/versioning/composer-versions).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version

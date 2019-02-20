@@ -1788,7 +1788,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Enable session affinity.
+        # Enable session affinity. Only applicable in the App Engine flexible
+        # environment.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [Boolean]
         attr_accessor :session_affinity

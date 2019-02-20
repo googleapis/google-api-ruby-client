@@ -3346,13 +3346,13 @@ module Google
         # @return [Google::Apis::DfareportingV3_3::CreativeAssetId]
         attr_accessor :asset_identifier
       
-        # Audio stream bit rate in kbps.This is a read-only field. Applicable to the
+        # Audio stream bit rate in kbps. This is a read-only field. Applicable to the
         # following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
         # Corresponds to the JSON property `audioBitRate`
         # @return [Fixnum]
         attr_accessor :audio_bit_rate
       
-        # Audio sample bit rate in hertz.This is a read-only field. Applicable to the
+        # Audio sample bit rate in hertz. This is a read-only field. Applicable to the
         # following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
         # Corresponds to the JSON property `audioSampleRate`
         # @return [Fixnum]
@@ -3444,7 +3444,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :flash_version
       
-        # Video frame rate for video asset in frames per second.This is a read-only
+        # Video frame rate for video asset in frames per second. This is a read-only
         # field. Applicable to the following creative types: INSTREAM_VIDEO and all
         # VPAID.
         # Corresponds to the JSON property `frameRate`

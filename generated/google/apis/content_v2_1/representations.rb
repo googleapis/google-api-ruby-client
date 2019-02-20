@@ -1192,12 +1192,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Promotion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RateGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1205,6 +1199,36 @@ module Google
       end
       
       class RefundReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalinventoryCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalinventoryCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalinventoryCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalinventoryCustomBatchResponseEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1325,6 +1349,24 @@ module Google
       end
       
       class TestOrderLineItemProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitTableTransitTimeRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitTableTransitTimeRowTransitTimeValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2003,6 +2045,8 @@ module Google
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
           property :min_handling_time_in_days, as: 'minHandlingTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+          property :transit_time_table, as: 'transitTimeTable', class: Google::Apis::ContentV2_1::TransitTable, decorator: Google::Apis::ContentV2_1::TransitTable::Representation
+      
         end
       end
       
@@ -2095,15 +2139,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_charge_summaries, as: 'additionalChargeSummaries', class: Google::Apis::ContentV2_1::InvoiceSummaryAdditionalChargeSummary, decorator: Google::Apis::ContentV2_1::InvoiceSummaryAdditionalChargeSummary::Representation
       
-          property :customer_balance, as: 'customerBalance', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
-          property :google_balance, as: 'googleBalance', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
-          property :merchant_balance, as: 'merchantBalance', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
           property :product_total, as: 'productTotal', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
-          collection :promotion_summaries, as: 'promotionSummaries', class: Google::Apis::ContentV2_1::Promotion, decorator: Google::Apis::ContentV2_1::Promotion::Representation
       
         end
       end
@@ -2348,7 +2384,9 @@ module Google
       
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :merchant_order_id, as: 'merchantOrderId'
-          property :net_amount, as: 'netAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+          property :net_price_amount, as: 'netPriceAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :net_tax_amount, as: 'netTaxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :payment_status, as: 'paymentStatus'
           property :placed_date, as: 'placedDate'
@@ -3549,15 +3587,6 @@ module Google
         end
       end
       
-      class Promotion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :promotion_amount, as: 'promotionAmount', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
-          property :promotion_id, as: 'promotionId'
-        end
-      end
-      
       class RateGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3582,14 +3611,74 @@ module Google
         end
       end
       
+      class RegionalInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability'
+          collection :custom_attributes, as: 'customAttributes', class: Google::Apis::ContentV2_1::CustomAttribute, decorator: Google::Apis::ContentV2_1::CustomAttribute::Representation
+      
+          property :kind, as: 'kind'
+          property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :region_id, as: 'regionId'
+          property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :sale_price_effective_date, as: 'salePriceEffectiveDate'
+        end
+      end
+      
+      class RegionalinventoryCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequestEntry, decorator: Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class RegionalinventoryCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :product_id, as: 'productId'
+          property :regional_inventory, as: 'regionalInventory', class: Google::Apis::ContentV2_1::RegionalInventory, decorator: Google::Apis::ContentV2_1::RegionalInventory::Representation
+      
+        end
+      end
+      
+      class RegionalinventoryCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponseEntry, decorator: Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class RegionalinventoryCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2_1::Errors, decorator: Google::Apis::ContentV2_1::Errors::Representation
+      
+          property :kind, as: 'kind'
+          property :regional_inventory, as: 'regionalInventory', class: Google::Apis::ContentV2_1::RegionalInventory, decorator: Google::Apis::ContentV2_1::RegionalInventory::Representation
+      
+        end
+      end
+      
       class ReturnShipment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_date, as: 'creationDate'
+          property :delivery_date, as: 'deliveryDate'
           property :return_method_type, as: 'returnMethodType'
           property :shipment_id, as: 'shipmentId'
           collection :shipment_tracking_infos, as: 'shipmentTrackingInfos', class: Google::Apis::ContentV2_1::ShipmentTrackingInfo, decorator: Google::Apis::ContentV2_1::ShipmentTrackingInfo::Representation
       
+          property :shipping_date, as: 'shippingDate'
+          property :state, as: 'state'
         end
       end
       
@@ -3757,8 +3846,6 @@ module Google
       
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
-          property :shipping_cost_tax, as: 'shippingCostTax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
-      
           property :shipping_option, as: 'shippingOption'
         end
       end
@@ -3815,12 +3902,36 @@ module Google
         end
       end
       
+      class TransitTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postal_code_group_names, as: 'postalCodeGroupNames'
+          collection :rows, as: 'rows', class: Google::Apis::ContentV2_1::TransitTableTransitTimeRow, decorator: Google::Apis::ContentV2_1::TransitTableTransitTimeRow::Representation
+      
+          collection :transit_time_labels, as: 'transitTimeLabels'
+        end
+      end
+      
+      class TransitTableTransitTimeRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::ContentV2_1::TransitTableTransitTimeRowTransitTimeValue, decorator: Google::Apis::ContentV2_1::TransitTableTransitTimeRowTransitTimeValue::Representation
+      
+        end
+      end
+      
+      class TransitTableTransitTimeRowTransitTimeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
+          property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+        end
+      end
+      
       class UnitInvoice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_charges, as: 'additionalCharges', class: Google::Apis::ContentV2_1::UnitInvoiceAdditionalCharge, decorator: Google::Apis::ContentV2_1::UnitInvoiceAdditionalCharge::Representation
-      
-          collection :promotions, as: 'promotions', class: Google::Apis::ContentV2_1::Promotion, decorator: Google::Apis::ContentV2_1::Promotion::Representation
       
           property :unit_price, as: 'unitPrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
@@ -3833,8 +3944,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_charge_amount, as: 'additionalChargeAmount', class: Google::Apis::ContentV2_1::Amount, decorator: Google::Apis::ContentV2_1::Amount::Representation
-      
-          collection :additional_charge_promotions, as: 'additionalChargePromotions', class: Google::Apis::ContentV2_1::Promotion, decorator: Google::Apis::ContentV2_1::Promotion::Representation
       
           property :type, as: 'type'
         end

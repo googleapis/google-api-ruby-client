@@ -600,6 +600,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :friendly_name, as: 'friendlyName'
+          hash :labels, as: 'labels'
         end
       end
       
@@ -1014,6 +1015,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destination_uri_file_counts, as: 'destinationUriFileCounts'
+          property :input_bytes, :numeric_string => true, as: 'inputBytes'
         end
       end
       
