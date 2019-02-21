@@ -864,6 +864,8 @@ module Google
       
       # The field type of `value` and `field` do not need to match to be
       # considered equal, but not all comparisons are possible.
+      # EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types,
+      # but all other comparisons are invalid with incompatible types.
       # A `value` of type:
       # - `string` can be compared against all other types
       # - `boolean` can only be compared against other booleans
@@ -2409,14 +2411,14 @@ module Google
       
         # Max number of findings that will be returned for each item scanned.
         # When set within `InspectDataSourceRequest`,
-        # the maximum returned is 1000 regardless if this is set higher.
+        # the maximum returned is 2000 regardless if this is set higher.
         # When set within `InspectContentRequest`, this field is ignored.
         # Corresponds to the JSON property `maxFindingsPerItem`
         # @return [Fixnum]
         attr_accessor :max_findings_per_item
       
         # Max number of findings that will be returned per request/job.
-        # When set within `InspectContentRequest`, the maximum returned is 1000
+        # When set within `InspectContentRequest`, the maximum returned is 2000
         # regardless if this is set higher.
         # Corresponds to the JSON property `maxFindingsPerRequest`
         # @return [Fixnum]

@@ -4177,7 +4177,6 @@ module Google
           property :op, as: 'op'
           property :svc, as: 'svc'
           property :sys, as: 'sys'
-          property :value, as: 'value'
           collection :values, as: 'values'
         end
       end
@@ -4606,6 +4605,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
+          property :all_ports, as: 'allPorts'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -6462,6 +6462,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create_routes, as: 'autoCreateRoutes'
+          property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :name, as: 'name'
           property :network, as: 'network'
           property :state, as: 'state'
@@ -6481,6 +6482,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create_routes, as: 'autoCreateRoutes'
           property :name, as: 'name'
+          property :network_peering, as: 'networkPeering', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
+      
           property :peer_network, as: 'peerNetwork'
         end
       end

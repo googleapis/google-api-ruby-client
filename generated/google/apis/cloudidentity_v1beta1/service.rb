@@ -222,11 +222,8 @@ module Google
         
         # Searches for Groups.
         # @param [Fixnum] page_size
-        #   The max number of groups to return.
-        #   GroupView | Default | Maximum
-        #   --------- | ------- | -------
-        #   BASIC     | 200     | 1000
-        #   FULL      | 50      | 500
+        #   The default page size is 200 (max 1000) for the BASIC view, and 50
+        #   (max 500) for the FULL view.
         # @param [String] page_token
         #   The next_page_token value returned from a previous search request, if any.
         # @param [String] query
@@ -380,11 +377,8 @@ module Google
         #   Format: `groups/`group_id``, where `group_id` is the unique id assigned to
         #   the Group.
         # @param [Fixnum] page_size
-        #   Maximum number of Memberships to return.
-        #   MembershipView | Default | Maximum
-        #   -------------- | ------- | -------
-        #   BASIC          | 200     | 1000
-        #   FULL           | 50      | 500
+        #   The default page size is 200 (max 1000) for the BASIC view, and 50
+        #   (max 500) for the FULL view.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any
         # @param [String] view

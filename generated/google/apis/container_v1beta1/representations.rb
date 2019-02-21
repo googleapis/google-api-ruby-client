@@ -667,6 +667,8 @@ module Google
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
       
+          property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1beta1::DatabaseEncryption, decorator: Google::Apis::ContainerV1beta1::DatabaseEncryption::Representation
+      
           property :desired_image_type, as: 'desiredImageType'
           collection :desired_locations, as: 'desiredLocations'
           property :desired_logging_service, as: 'desiredLoggingService'

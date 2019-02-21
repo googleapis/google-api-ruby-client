@@ -3473,12 +3473,7 @@ module Google
         # @return [String]
         attr_accessor :sys
       
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
+        # The objects of the condition.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -3493,7 +3488,6 @@ module Google
           @op = args[:op] if args.key?(:op)
           @svc = args[:svc] if args.key?(:svc)
           @sys = args[:sys] if args.key?(:sys)
-          @value = args[:value] if args.key?(:value)
           @values = args[:values] if args.key?(:values)
         end
       end
@@ -5281,6 +5275,17 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
+        # This field is used along with the backend_service field for internal load
+        # balancing or with the target field for internal TargetInstance. This field
+        # cannot be used with port or portRange fields.
+        # When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify
+        # this field to allow packets addressed to any ports will be forwarded to the
+        # backends configured with this forwarding rule.
+        # Corresponds to the JSON property `allPorts`
+        # @return [Boolean]
+        attr_accessor :all_ports
+        alias_method :all_ports?, :all_ports
+      
         # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
@@ -5430,7 +5435,7 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets
+        # object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
         # are valid.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -5444,6 +5449,7 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @all_ports = args[:all_ports] if args.key?(:all_ports)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -10734,15 +10740,21 @@ module Google
       class InterconnectDiagnosticsLinkOpticalPower
         include Google::Apis::Core::Hashable
       
-        # 
+        # The status of the current value when compared to the warning and alarm levels
+        # for the receiving or transmitting transceiver. Possible states include:
+        # - OK: The value has not crossed a warning threshold.
+        # - LOW_WARNING: The value has crossed below the low warning threshold.
+        # - HIGH_WARNING: The value has crossed above the high warning threshold.
+        # - LOW_ALARM: The value has crossed below the low alarm threshold.
+        # - HIGH_ALARM: The value has crossed above the high alarm threshold.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Value of the current optical power, read in dBm. Take a known good optical
-        # value, give it a 10% margin and trigger warnings relative to that value. In
-        # general, a -7dBm warning and a -11dBm alarm are good optical value estimates
-        # for most links.
+        # Value of the current receiving or transmitting optical power, read in dBm.
+        # Take a known good optical value, give it a 10% margin and trigger warnings
+        # relative to that value. In general, a -7dBm warning and a -11dBm alarm are
+        # good optical value estimates for most links.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -10783,12 +10795,14 @@ module Google
         # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus]
         attr_accessor :lacp_status
       
-        # 
+        # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+        # value and status of the received light level.
         # Corresponds to the JSON property `receivingOpticalPower`
         # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower]
         attr_accessor :receiving_optical_power
       
-        # 
+        # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+        # value and status of the transmitted light level.
         # Corresponds to the JSON property `transmittingOpticalPower`
         # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower]
         attr_accessor :transmitting_optical_power
@@ -12427,9 +12441,9 @@ module Google
       class Network
         include Google::Apis::Core::Hashable
       
-        # The range of internal addresses that are legal on this network. This range is
-        # a CIDR specification, for example: 192.168.0.0/16. Provided by the client when
-        # the network is created.
+        # Deprecated in favor of subnet mode networks. The range of internal addresses
+        # that are legal on this network. This range is a CIDR specification, for
+        # example: 192.168.0.0/16. Provided by the client when the network is created.
         # Corresponds to the JSON property `IPv4Range`
         # @return [String]
         attr_accessor :i_pv4_range
@@ -12740,14 +12754,25 @@ module Google
       class NetworkPeering
         include Google::Apis::Core::Hashable
       
-        # Indicates whether full mesh connectivity is created and managed automatically.
-        # When it is set to true, Google Compute Engine will automatically create and
-        # manage the routes between two networks when the state is ACTIVE. Otherwise,
-        # user needs to create routes manually to route packets to peer network.
+        # This field will be deprecated soon. Prefer using exchange_subnet_routes
+        # instead. Indicates whether full mesh connectivity is created and managed
+        # automatically. When it is set to true, Google Compute Engine will
+        # automatically create and manage the routes between two networks when the state
+        # is ACTIVE. Otherwise, user needs to create routes manually to route packets to
+        # peer network.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
         alias_method :auto_create_routes?, :auto_create_routes
+      
+        # Whether full mesh connectivity is created and managed automatically. When it
+        # is set to true, Google Compute Engine will automatically create and manage the
+        # routes between two networks when the peering state is ACTIVE. Otherwise, user
+        # needs to create routes manually to route packets to peer network.
+        # Corresponds to the JSON property `exchangeSubnetRoutes`
+        # @return [Boolean]
+        attr_accessor :exchange_subnet_routes
+        alias_method :exchange_subnet_routes?, :exchange_subnet_routes
       
         # Name of this peering. Provided by the client when the peering is created. The
         # name must comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -12784,6 +12809,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_create_routes = args[:auto_create_routes] if args.key?(:auto_create_routes)
+          @exchange_subnet_routes = args[:exchange_subnet_routes] if args.key?(:exchange_subnet_routes)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @state = args[:state] if args.key?(:state)
@@ -12819,7 +12845,9 @@ module Google
       class NetworksAddPeeringRequest
         include Google::Apis::Core::Hashable
       
-        # Whether Google Compute Engine manages the routes automatically.
+        # This field will be deprecated soon. Prefer using exchange_subnet_routes in
+        # network_peering instead. Whether Google Compute Engine manages the routes
+        # automatically.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
@@ -12829,6 +12857,13 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # A network peering attached to a network resource. The message includes the
+        # peering name, peer network, peering state, and a flag indicating whether
+        # Google Compute Engine should automatically create routes for the peering.
+        # Corresponds to the JSON property `networkPeering`
+        # @return [Google::Apis::ComputeV1::NetworkPeering]
+        attr_accessor :network_peering
       
         # URL of the peer network. It can be either full URL or partial URL. The peer
         # network may belong to a different project. If the partial URL does not contain
@@ -12846,6 +12881,7 @@ module Google
         def update!(**args)
           @auto_create_routes = args[:auto_create_routes] if args.key?(:auto_create_routes)
           @name = args[:name] if args.key?(:name)
+          @network_peering = args[:network_peering] if args.key?(:network_peering)
           @peer_network = args[:peer_network] if args.key?(:peer_network)
         end
       end

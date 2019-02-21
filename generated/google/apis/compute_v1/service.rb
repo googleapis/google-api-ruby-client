@@ -7232,7 +7232,7 @@ module Google
         # @param [Google::Apis::ComputeV1::AttachedDisk] attached_disk_object
         # @param [Boolean] force_attach
         #   Whether to force attach the disk even if it's currently attached to another
-        #   instance. This is only available for regional disks.
+        #   instance.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

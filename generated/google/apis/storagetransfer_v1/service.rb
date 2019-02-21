@@ -31,7 +31,7 @@ module Google
       #    Storagetransfer = Google::Apis::StoragetransferV1 # Alias the module
       #    service = Storagetransfer::StoragetransferService.new
       #
-      # @see https://cloud.google.com/storage/transfer
+      # @see https://cloud.google.com/storage-transfer/docs
       class StoragetransferService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

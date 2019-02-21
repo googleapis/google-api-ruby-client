@@ -23,10 +23,10 @@ module Google
     # Transfers data from external data sources to a Google Cloud Storage bucket or
     # between Google Cloud Storage buckets.
     #
-    # @see https://cloud.google.com/storage/transfer
+    # @see https://cloud.google.com/storage-transfer/docs
     module StoragetransferV1
       VERSION = 'V1'
-      REVISION = '20190204'
+      REVISION = '20190219'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

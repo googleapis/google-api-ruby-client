@@ -116,7 +116,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # The available types of accelerators.
+        # The type of accelerator to use.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -164,8 +164,10 @@ module Google
         # </pre>
         # HTTP request:
         # <pre>
-        # PATCH https://ml.googleapis.com/v1/`name=projects/*/models/*/versions/*`?
-        # update_mask=autoScaling.minNodes -d @./update_body.json
+        # PATCH
+        # https://ml.googleapis.com/v1/`name=projects/*/models/*/versions/*`?update_mask=
+        # autoScaling.minNodes
+        # -d @./update_body.json
         # </pre>
         # Corresponds to the JSON property `minNodes`
         # @return [Fixnum]
@@ -666,6 +668,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
+        # Next ID: 29
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -792,6 +795,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
+        # Next ID: 29
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1079,7 +1083,7 @@ module Google
         end
       end
       
-      # Represents the configration for a replica in a cluster.
+      # Represents the configuration for a replica in a cluster.
       class GoogleCloudMlV1ReplicaConfig
         include Google::Apis::Core::Hashable
       
@@ -1088,8 +1092,9 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
         attr_accessor :accelerator_config
       
-        # The docker image to run on worker.
-        # This image must be in Google Container Registry.
+        # The Docker image to run on the replica. This image must be in Container
+        # Registry. Learn more about [configuring custom
+        # containers](/ml-engine/docs/distributed-training-containers).
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -1146,7 +1151,7 @@ module Google
         # @return [String]
         attr_accessor :job_dir
       
-        # Represents the configration for a replica in a cluster.
+        # Represents the configuration for a replica in a cluster.
         # Corresponds to the JSON property `masterConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
         attr_accessor :master_config
@@ -1236,6 +1241,27 @@ module Google
         # your model</a>.
         # </dd>
         # </dl>
+        # You may also use certain Compute Engine machine types directly in this
+        # field. The following types are supported:
+        # - `n1-standard-4`
+        # - `n1-standard-8`
+        # - `n1-standard-16`
+        # - `n1-standard-32`
+        # - `n1-standard-64`
+        # - `n1-standard-96`
+        # - `n1-highmem-2`
+        # - `n1-highmem-4`
+        # - `n1-highmem-8`
+        # - `n1-highmem-16`
+        # - `n1-highmem-32`
+        # - `n1-highmem-64`
+        # - `n1-highmem-96`
+        # - `n1-highcpu-16`
+        # - `n1-highcpu-32`
+        # - `n1-highcpu-64`
+        # - `n1-highcpu-96`
+        # See more about [using Compute Engine machine
+        # types](/ml-engine/docs/tensorflow/machine-types#compute-engine-machine-types).
         # You must set this value when `scaleTier` is set to `CUSTOM`.
         # Corresponds to the JSON property `masterType`
         # @return [String]
@@ -1248,7 +1274,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :package_uris
       
-        # Represents the configration for a replica in a cluster.
+        # Represents the configuration for a replica in a cluster.
         # Corresponds to the JSON property `parameterServerConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
         attr_accessor :parameter_server_config
@@ -1267,6 +1293,9 @@ module Google
         # job's parameter server.
         # The supported values are the same as those described in the entry for
         # `master_type`.
+        # This value must be consistent with the category of machine type that
+        # `masterType` uses. In other words, both must be Cloud ML Engine machine
+        # types or both must be Compute Engine machine types.
         # This value must be present when `scaleTier` is set to `CUSTOM` and
         # `parameter_server_count` is greater than zero.
         # Corresponds to the JSON property `parameterServerType`
@@ -1309,7 +1338,7 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
-        # Represents the configration for a replica in a cluster.
+        # Represents the configuration for a replica in a cluster.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
         attr_accessor :worker_config
@@ -1327,6 +1356,13 @@ module Google
         # job's worker nodes.
         # The supported values are the same as those described in the entry for
         # `masterType`.
+        # This value must be consistent with the category of machine type that
+        # `masterType` uses. In other words, both must be Cloud ML Engine machine
+        # types or both must be Compute Engine machine types.
+        # If you use `cloud_tpu` for this value, see special instructions for
+        # [configuring a custom TPU
+        # machine](/ml-engine/docs/tensorflow/using-tpus#
+        # configuring_a_custom_tpu_machine).
         # This value must be present when `scaleTier` is set to `CUSTOM` and
         # `workerCount` is greater than zero.
         # Corresponds to the JSON property `workerType`
@@ -1405,6 +1441,7 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
+      # Next ID: 29
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
@@ -1492,13 +1529,18 @@ module Google
       
         # Optional. The type of machine on which to serve the model. Currently only
         # applies to online prediction service.
-        # The following are currently supported and will be deprecated in
-        # Beta release.
-        # mls1-highmem-1    1 core    2 Gb RAM
-        # mls1-highcpu-4    4 core    2 Gb RAM
-        # The following are available in Beta:
-        # mls1-c1-m2        1 core    2 Gb RAM   Default
-        # mls1-c4-m2        4 core    2 Gb RAM
+        # <dl>
+        # <dt>mls1-c1-m2</dt>
+        # <dd>
+        # The <b>default</b> machine type, with 1 core and 2 GB RAM. The deprecated
+        # name for this machine type is "mls1-highmem-1".
+        # </dd>
+        # <dt>mls1-c4-m2</dt>
+        # <dd>
+        # In <b>Beta</b>. This machine type has 4 cores and 2 GB RAM. The
+        # deprecated name for this machine type is "mls1-highcpu-4".
+        # </dd>
+        # </dl>
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type

@@ -1112,9 +1112,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The collection of training phrase parts (can be annotated).
-        # Fields: `entity_type`, `alias` and `user_defined` should be populated
-        # only for the annotated parts of the training phrase.
+        # Required. The ordered list of training phrase parts.
+        # The parts are concatenated in order to form the training phrase.
+        # Note: The API does not automatically annotate training phrases like the
+        # Dialogflow Console does.
+        # Note: Do not forget to include whitespace at part boundaries,
+        # so the training phrase is well formatted when the parts are concatenated.
+        # If the training phrase does not need to be annotated with parameters,
+        # you just need a single part with only the Part.text field set.
+        # If you want to annotate the training phrase, you must create multiple
+        # parts, where the fields of each part are populated in one of two ways:
+        # -   `Part.text` is set to a part of the phrase that has no parameters.
+        # -   `Part.text` is set to a part of the phrase that you want to annotate,
+        # and the `entity_type`, `alias`, and `user_defined` fields are all
+        # set.
         # Corresponds to the JSON property `parts`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentTrainingPhrasePart>]
         attr_accessor :parts
@@ -1150,26 +1161,26 @@ module Google
       
         # Optional. The parameter name for the value extracted from the
         # annotated part of the example.
+        # This field is required for annotated parts of the training phrase.
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
       
-        # Optional. The entity type name prefixed with `@`. This field is
-        # required for the annotated part of the text and applies only to
-        # examples.
+        # Optional. The entity type name prefixed with `@`.
+        # This field is required for annotated parts of the training phrase.
         # Corresponds to the JSON property `entityType`
         # @return [String]
         attr_accessor :entity_type
       
-        # Required. The text corresponding to the example,
-        # if there are no annotations. For
-        # annotated examples, it is the text for one of the example's parts.
+        # Required. The text for this part.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Optional. Indicates whether the text was manually annotated by the
-        # developer.
+        # Optional. Indicates whether the text was manually annotated.
+        # This field is set to true when the Dialogflow Console is used to
+        # manually annotate the part. When creating an annotated part with the
+        # API, you must set this to true.
         # Corresponds to the JSON property `userDefined`
         # @return [Boolean]
         attr_accessor :user_defined
@@ -1497,7 +1508,7 @@ module Google
         # Optional. To filter out false positive results and still get variety in
         # matched natural language inputs for your agent, you can tune the machine
         # learning classification threshold. If the returned score value is less than
-        # the threshold value, then a fallback intent is be triggered or, if there
+        # the threshold value, then a fallback intent will be triggered or, if there
         # are no fallback intents defined, no intent will be triggered. The score
         # values range from 0.0 (completely uncertain) to 1.0 (completely certain).
         # If set to 0.0, the default of 0.3 is used.
@@ -3409,9 +3420,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The collection of training phrase parts (can be annotated).
-        # Fields: `entity_type`, `alias` and `user_defined` should be populated
-        # only for the annotated parts of the training phrase.
+        # Required. The ordered list of training phrase parts.
+        # The parts are concatenated in order to form the training phrase.
+        # Note: The API does not automatically annotate training phrases like the
+        # Dialogflow Console does.
+        # Note: Do not forget to include whitespace at part boundaries,
+        # so the training phrase is well formatted when the parts are concatenated.
+        # If the training phrase does not need to be annotated with parameters,
+        # you just need a single part with only the Part.text field set.
+        # If you want to annotate the training phrase, you must create multiple
+        # parts, where the fields of each part are populated in one of two ways:
+        # -   `Part.text` is set to a part of the phrase that has no parameters.
+        # -   `Part.text` is set to a part of the phrase that you want to annotate,
+        # and the `entity_type`, `alias`, and `user_defined` fields are all
+        # set.
         # Corresponds to the JSON property `parts`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>]
         attr_accessor :parts
@@ -3447,26 +3469,26 @@ module Google
       
         # Optional. The parameter name for the value extracted from the
         # annotated part of the example.
+        # This field is required for annotated parts of the training phrase.
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
       
-        # Optional. The entity type name prefixed with `@`. This field is
-        # required for the annotated part of the text and applies only to
-        # examples.
+        # Optional. The entity type name prefixed with `@`.
+        # This field is required for annotated parts of the training phrase.
         # Corresponds to the JSON property `entityType`
         # @return [String]
         attr_accessor :entity_type
       
-        # Required. The text corresponding to the example,
-        # if there are no annotations. For
-        # annotated examples, it is the text for one of the example's parts.
+        # Required. The text for this part.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Optional. Indicates whether the text was manually annotated by the
-        # developer.
+        # Optional. Indicates whether the text was manually annotated.
+        # This field is set to true when the Dialogflow Console is used to
+        # manually annotate the part. When creating an annotated part with the
+        # API, you must set this to true.
         # Corresponds to the JSON property `userDefined`
         # @return [Boolean]
         attr_accessor :user_defined

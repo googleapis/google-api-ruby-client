@@ -782,6 +782,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ClusterAutoscaling]
         attr_accessor :desired_cluster_autoscaling
       
+        # Configuration of etcd encryption.
+        # Corresponds to the JSON property `desiredDatabaseEncryption`
+        # @return [Google::Apis::ContainerV1beta1::DatabaseEncryption]
+        attr_accessor :desired_database_encryption
+      
         # The desired image type for the node pool.
         # NOTE: Set the "desired_node_pool" field as well.
         # Corresponds to the JSON property `desiredImageType`
@@ -892,6 +897,7 @@ module Google
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
+          @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
@@ -2037,6 +2043,7 @@ module Google
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"
+        # "containerd-configure-sh"
         # "enable-oslogin"
         # "gci-ensure-gke-docker"
         # "gci-update-strategy"

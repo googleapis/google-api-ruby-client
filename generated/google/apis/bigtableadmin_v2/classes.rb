@@ -345,7 +345,7 @@ module Google
       class ClusterState
         include Google::Apis::Core::Hashable
       
-        # (`OutputOnly`)
+        # Output only.
         # The state of replication for the table in this cluster.
         # Corresponds to the JSON property `replicationState`
         # @return [String]
@@ -1484,7 +1484,7 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # (`OutputOnly`)
+        # Output only.
         # Map from cluster ID to per-cluster table state.
         # If it could not be determined whether or not the table has data in a
         # particular cluster (for example, if its zone is unavailable), then
@@ -1510,7 +1510,7 @@ module Google
         # @return [String]
         attr_accessor :granularity
       
-        # (`OutputOnly`)
+        # Output only.
         # The unique name of the table. Values are of the form
         # `projects/<project>/instances/<instance>/tables/_a-zA-Z0-9*`.
         # Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
