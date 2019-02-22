@@ -487,52 +487,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a GTM Environment. This method supports patch semantics.
-        # @param [String] account_id
-        #   The GTM Account ID.
-        # @param [String] container_id
-        #   The GTM Container ID.
-        # @param [String] environment_id
-        #   The GTM Environment ID.
-        # @param [Google::Apis::TagmanagerV1::Environment] environment_object
-        # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the environment
-        #   in storage.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TagmanagerV1::Environment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TagmanagerV1::Environment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_container_environment(account_id, container_id, environment_id, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
-          command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
-          command.request_object = environment_object
-          command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
-          command.response_class = Google::Apis::TagmanagerV1::Environment
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['containerId'] = container_id unless container_id.nil?
-          command.params['environmentId'] = environment_id unless environment_id.nil?
-          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a GTM Environment.
         # @param [String] account_id
         #   The GTM Account ID.

@@ -23,7 +23,8 @@ module Google
       # Cloud Video Intelligence API
       #
       # Detects objects, explicit content, and scene changes in videos. It also
-      #  specifies the region for annotation and transcribes speech to text.
+      #  specifies the region for annotation and transcribes speech to text. Supports
+      #  both asynchronous API and streaming API.
       #
       # @example
       #    require 'google/apis/videointelligence_v1beta2'

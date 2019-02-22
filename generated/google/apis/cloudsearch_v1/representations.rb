@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndexItemOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IndexItemRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1264,11 +1270,20 @@ module Google
         end
       end
       
+      class IndexItemOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_unknown_gsuite_principals, as: 'allowUnknownGsuitePrincipals'
+        end
+      end
+      
       class IndexItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connector_name, as: 'connectorName'
           property :debug_options, as: 'debugOptions', class: Google::Apis::CloudsearchV1::DebugOptions, decorator: Google::Apis::CloudsearchV1::DebugOptions::Representation
+      
+          property :index_item_options, as: 'indexItemOptions', class: Google::Apis::CloudsearchV1::IndexItemOptions, decorator: Google::Apis::CloudsearchV1::IndexItemOptions::Representation
       
           property :item, as: 'item', class: Google::Apis::CloudsearchV1::Item, decorator: Google::Apis::CloudsearchV1::Item::Representation
       

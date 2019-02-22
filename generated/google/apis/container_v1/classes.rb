@@ -1535,6 +1535,7 @@ module Google
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"
+        # "containerd-configure-sh"
         # "enable-os-login"
         # "gci-update-strategy"
         # "gci-ensure-gke-docker"

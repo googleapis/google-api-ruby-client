@@ -88,7 +88,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateWorkspaceProposalRequest
+      class CustomTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MergeConflict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevertZoneResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetupTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,12 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateWorkspaceProposalRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UserPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,37 +310,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VariableFormatValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Workspace
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class WorkspaceProposal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class WorkspaceProposalHistory
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class WorkspaceProposalHistoryComment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class WorkspaceProposalHistoryStatusChange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class WorkspaceProposalUser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -438,6 +420,8 @@ module Google
       
           property :container_id, as: 'containerId'
           property :container_version_id, as: 'containerVersionId'
+          collection :custom_template, as: 'customTemplate', class: Google::Apis::TagmanagerV2::CustomTemplate, decorator: Google::Apis::TagmanagerV2::CustomTemplate::Representation
+      
           property :deleted, as: 'deleted'
           property :description, as: 'description'
           property :fingerprint, as: 'fingerprint'
@@ -465,6 +449,7 @@ module Google
           property :container_version_id, as: 'containerVersionId'
           property :deleted, as: 'deleted'
           property :name, as: 'name'
+          property :num_custom_templates, as: 'numCustomTemplates'
           property :num_macros, as: 'numMacros'
           property :num_rules, as: 'numRules'
           property :num_tags, as: 'numTags'
@@ -503,13 +488,18 @@ module Google
         end
       end
       
-      class CreateWorkspaceProposalRequest
+      class CustomTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :initial_comment, as: 'initialComment', class: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment::Representation
-      
-          collection :reviewers, as: 'reviewers', class: Google::Apis::TagmanagerV2::WorkspaceProposalUser, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalUser::Representation
-      
+          property :account_id, as: 'accountId'
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :tag_manager_url, as: 'tagManagerUrl'
+          property :template_data, as: 'templateData'
+          property :template_id, as: 'templateId'
+          property :workspace_id, as: 'workspaceId'
         end
       end
       
@@ -687,6 +677,15 @@ module Google
         end
       end
       
+      class ListZonesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :zone, as: 'zone', class: Google::Apis::TagmanagerV2::Zone, decorator: Google::Apis::TagmanagerV2::Zone::Representation
+      
+        end
+      end
+      
       class MergeConflict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -765,6 +764,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :variable, as: 'variable', class: Google::Apis::TagmanagerV2::Variable, decorator: Google::Apis::TagmanagerV2::Variable::Representation
+      
+        end
+      end
+      
+      class RevertZoneResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone', class: Google::Apis::TagmanagerV2::Zone, decorator: Google::Apis::TagmanagerV2::Zone::Representation
       
         end
       end
@@ -904,18 +911,6 @@ module Google
         end
       end
       
-      class UpdateWorkspaceProposalRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fingerprint, as: 'fingerprint'
-          property :new_comment, as: 'newComment', class: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment::Representation
-      
-          collection :reviewers, as: 'reviewers', class: Google::Apis::TagmanagerV2::WorkspaceProposalUser, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalUser::Representation
-      
-          property :status, as: 'status'
-        end
-      end
-      
       class UserPermission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -937,6 +932,8 @@ module Google
           collection :disabling_trigger_id, as: 'disablingTriggerId'
           collection :enabling_trigger_id, as: 'enablingTriggerId'
           property :fingerprint, as: 'fingerprint'
+          property :format_value, as: 'formatValue', class: Google::Apis::TagmanagerV2::VariableFormatValue, decorator: Google::Apis::TagmanagerV2::VariableFormatValue::Representation
+      
           property :name, as: 'name'
           property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
@@ -952,6 +949,21 @@ module Google
         end
       end
       
+      class VariableFormatValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_conversion_type, as: 'caseConversionType'
+          property :convert_false_to_value, as: 'convertFalseToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :convert_null_to_value, as: 'convertNullToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :convert_true_to_value, as: 'convertTrueToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :convert_undefined_to_value, as: 'convertUndefinedToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+        end
+      end
+      
       class Workspace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -963,59 +975,6 @@ module Google
           property :path, as: 'path'
           property :tag_manager_url, as: 'tagManagerUrl'
           property :workspace_id, as: 'workspaceId'
-        end
-      end
-      
-      class WorkspaceProposal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :authors, as: 'authors', class: Google::Apis::TagmanagerV2::WorkspaceProposalUser, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalUser::Representation
-      
-          property :fingerprint, as: 'fingerprint'
-          collection :history, as: 'history', class: Google::Apis::TagmanagerV2::WorkspaceProposalHistory, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalHistory::Representation
-      
-          property :path, as: 'path'
-          collection :reviewers, as: 'reviewers', class: Google::Apis::TagmanagerV2::WorkspaceProposalUser, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalUser::Representation
-      
-          property :status, as: 'status'
-        end
-      end
-      
-      class WorkspaceProposalHistory
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :comment, as: 'comment', class: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment::Representation
-      
-          property :created_by, as: 'createdBy', class: Google::Apis::TagmanagerV2::WorkspaceProposalUser, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalUser::Representation
-      
-          property :created_timestamp, as: 'createdTimestamp', class: Google::Apis::TagmanagerV2::Timestamp, decorator: Google::Apis::TagmanagerV2::Timestamp::Representation
-      
-          property :status_change, as: 'statusChange', class: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryStatusChange, decorator: Google::Apis::TagmanagerV2::WorkspaceProposalHistoryStatusChange::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class WorkspaceProposalHistoryComment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-        end
-      end
-      
-      class WorkspaceProposalHistoryStatusChange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_status, as: 'newStatus'
-          property :old_status, as: 'oldStatus'
-        end
-      end
-      
-      class WorkspaceProposalUser
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gaia_id, :numeric_string => true, as: 'gaiaId'
-          property :type, as: 'type'
         end
       end
       

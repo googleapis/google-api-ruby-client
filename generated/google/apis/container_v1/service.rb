@@ -50,8 +50,8 @@ module Google
         
         # Returns configuration info about the Kubernetes Engine service.
         # @param [String] name
-        #   The name (project and location) of the server config to get
-        #   Specified in the format 'projects/*/locations/*'.
+        #   The name (project and location) of the server config to get,
+        #   specified in the format 'projects/*/locations/*'.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1279,8 +1279,8 @@ module Google
         #   [zone](/compute/docs/zones#available) to return operations for.
         #   This field has been deprecated and replaced by the name field.
         # @param [String] name
-        #   The name (project and location) of the server config to get
-        #   Specified in the format 'projects/*/locations/*'.
+        #   The name (project and location) of the server config to get,
+        #   specified in the format 'projects/*/locations/*'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

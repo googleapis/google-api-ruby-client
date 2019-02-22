@@ -1348,6 +1348,27 @@ module Google
       end
       
       # 
+      class IndexItemOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if the index request should allow gsuite principals that do not
+        # exist or are deleted in the index request.
+        # Corresponds to the JSON property `allowUnknownGsuitePrincipals`
+        # @return [Boolean]
+        attr_accessor :allow_unknown_gsuite_principals
+        alias_method :allow_unknown_gsuite_principals?, :allow_unknown_gsuite_principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_unknown_gsuite_principals = args[:allow_unknown_gsuite_principals] if args.key?(:allow_unknown_gsuite_principals)
+        end
+      end
+      
+      # 
       class IndexItemRequest
         include Google::Apis::Core::Hashable
       
@@ -1361,6 +1382,11 @@ module Google
         # Corresponds to the JSON property `debugOptions`
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
+      
+        # 
+        # Corresponds to the JSON property `indexItemOptions`
+        # @return [Google::Apis::CloudsearchV1::IndexItemOptions]
+        attr_accessor :index_item_options
       
         # Represents a single object that is an item in the search index, such as a
         # file, folder, or a database record.
@@ -1381,6 +1407,7 @@ module Google
         def update!(**args)
           @connector_name = args[:connector_name] if args.key?(:connector_name)
           @debug_options = args[:debug_options] if args.key?(:debug_options)
+          @index_item_options = args[:index_item_options] if args.key?(:index_item_options)
           @item = args[:item] if args.key?(:item)
           @mode = args[:mode] if args.key?(:mode)
         end
@@ -2862,13 +2889,13 @@ module Google
         attr_accessor :is_repeatable
         alias_method :is_repeatable?, :is_repeatable
       
-        # Indicates that the property identifies data that should be returned in search
-        # results via the Query API. If set to *true*, indicates that Query API
-        # users can use matching property fields in results. However, storing fields
-        # requires more space allocation and uses more bandwidth for search queries,
-        # which impacts performance over large datasets. Set to *true* here only if
-        # the field is needed for search results. Cannot be true for properties
-        # whose type is an object.
+        # Indicates that the property identifies data that should be returned in
+        # search results via the Query API. If set to *true*, indicates that Query
+        # API users can use matching property fields in results. However, storing
+        # fields requires more space allocation and uses more bandwidth for search
+        # queries, which impacts performance over large datasets. Set to *true* here
+        # only if the field is needed for search results. Cannot be true for
+        # properties whose type is an object.
         # Corresponds to the JSON property `isReturnable`
         # @return [Boolean]
         attr_accessor :is_returnable
@@ -3696,8 +3723,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # IDs of the Long Running Operations (LROs) currently running for this schema.
-        # Output only field.
+        # IDs of the Long Running Operations (LROs) currently running for this
+        # schema. Output only field.
         # Corresponds to the JSON property `operationIds`
         # @return [Array<String>]
         attr_accessor :operation_ids

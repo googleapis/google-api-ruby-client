@@ -1106,6 +1106,12 @@ module Google
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
+        # @OutputOnly A bool indicate if the service account is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Optional. A user-specified name for the service account.
         # Must be less than or equal to 100 UTF-8 bytes.
         # Corresponds to the JSON property `displayName`
@@ -1158,6 +1164,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
           @etag = args[:etag] if args.key?(:etag)
@@ -1463,6 +1470,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
+        end
+      end
+      
+      # The service account undelete request.
+      class UndeleteServiceAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class UndeleteServiceAccountResponse
+        include Google::Apis::Core::Hashable
+      
+        # A service account in the Identity and Access Management API.
+        # To create a service account, specify the `project_id` and the `account_id`
+        # for the account.  The `account_id` is unique within the project, and is used
+        # to generate the service account email address and a stable
+        # `unique_id`.
+        # If the account already exists, the account's resource name is returned
+        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
+        # can use the name in other methods to access the account.
+        # All other methods can identify the service account using the format
+        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        # the account. The `ACCOUNT` value can be the `email` address or the
+        # `unique_id` of the service account.
+        # Corresponds to the JSON property `restoredAccount`
+        # @return [Google::Apis::IamV1::ServiceAccount]
+        attr_accessor :restored_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restored_account = args[:restored_account] if args.key?(:restored_account)
         end
       end
     end

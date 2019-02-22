@@ -320,9 +320,15 @@ module Google
         # these restrictions:
         # * Source file type should be a zip file.
         # * Source file size should not exceed 100MB limit.
+        # * No credentials should be attached - the signed URLs provide access to the
+        # target bucket using internal service identity; if credentials were
+        # attached, the identity from the credentials would be used, but that
+        # identity does not have permissions to upload files to the URL.
         # When making a HTTP PUT request, these two headers need to be specified:
         # * `content-type: application/zip`
         # * `x-goog-content-length-range: 0,104857600`
+        # And this header SHOULD NOT be specified:
+        # * `Authorization: Bearer YOUR_TOKEN`
         # @param [String] parent
         #   The project and location in which the Google Cloud Storage signed URL
         #   should be generated, specified in the format `projects/*/locations/*`.

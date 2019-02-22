@@ -244,6 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteServiceAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteServiceAccountResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -501,6 +513,7 @@ module Google
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :etag, :base64 => true, as: 'etag'
@@ -581,6 +594,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, :base64 => true, as: 'etag'
+        end
+      end
+      
+      class UndeleteServiceAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteServiceAccountResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restored_account, as: 'restoredAccount', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+      
         end
       end
     end

@@ -159,7 +159,8 @@ module Google
         # @return [String]
         attr_accessor :runtime
       
-        # Output only. The service account of the function.
+        # The email of the function's service account. If empty, defaults to
+        # `project_id`@appspot.gserviceaccount.com.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account

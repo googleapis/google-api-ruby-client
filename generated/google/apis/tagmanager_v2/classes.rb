@@ -313,6 +313,11 @@ module Google
         # @return [String]
         attr_accessor :container_version_id
       
+        # The custom templates in the container that this version was taken from.
+        # Corresponds to the JSON property `customTemplate`
+        # @return [Array<Google::Apis::TagmanagerV2::CustomTemplate>]
+        attr_accessor :custom_template
+      
         # A value of true indicates this container version has been deleted.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
@@ -381,6 +386,7 @@ module Google
           @container = args[:container] if args.key?(:container)
           @container_id = args[:container_id] if args.key?(:container_id)
           @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
+          @custom_template = args[:custom_template] if args.key?(:custom_template)
           @deleted = args[:deleted] if args.key?(:deleted)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -424,6 +430,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Number of custom templates in the container version.
+        # Corresponds to the JSON property `numCustomTemplates`
+        # @return [String]
+        attr_accessor :num_custom_templates
       
         # Number of macros in the container version.
         # Corresponds to the JSON property `numMacros`
@@ -471,6 +482,7 @@ module Google
           @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
           @deleted = args[:deleted] if args.key?(:deleted)
           @name = args[:name] if args.key?(:name)
+          @num_custom_templates = args[:num_custom_templates] if args.key?(:num_custom_templates)
           @num_macros = args[:num_macros] if args.key?(:num_macros)
           @num_rules = args[:num_rules] if args.key?(:num_rules)
           @num_tags = args[:num_tags] if args.key?(:num_tags)
@@ -564,19 +576,55 @@ module Google
         end
       end
       
-      # Creates a workspace proposal to start a review of a workspace.
-      class CreateWorkspaceProposalRequest
+      # Represents a Google Tag Manager Custom Template's contents.
+      class CustomTemplate
         include Google::Apis::Core::Hashable
       
-        # A comment from the reviewer or author.
-        # Corresponds to the JSON property `initialComment`
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment]
-        attr_accessor :initial_comment
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
       
-        # List of users to review the workspace proposal.
-        # Corresponds to the JSON property `reviewers`
-        # @return [Array<Google::Apis::TagmanagerV2::WorkspaceProposalUser>]
-        attr_accessor :reviewers
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the GTM Custom Template as computed at storage time. This
+        # value is recomputed whenever the template is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Custom Template display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # GTM Custom Template's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Auto generated link to the tag manager UI
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        # The custom template in text format.
+        # Corresponds to the JSON property `templateData`
+        # @return [String]
+        attr_accessor :template_data
+      
+        # The Custom Template ID uniquely identifies the GTM custom template.
+        # Corresponds to the JSON property `templateId`
+        # @return [String]
+        attr_accessor :template_id
+      
+        # GTM Workspace ID.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [String]
+        attr_accessor :workspace_id
       
         def initialize(**args)
            update!(**args)
@@ -584,8 +632,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @initial_comment = args[:initial_comment] if args.key?(:initial_comment)
-          @reviewers = args[:reviewers] if args.key?(:reviewers)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @template_data = args[:template_data] if args.key?(:template_data)
+          @template_id = args[:template_id] if args.key?(:template_id)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
         end
       end
       
@@ -649,16 +704,17 @@ module Google
         # @return [String]
         attr_accessor :authorization_code
       
-        # A Timestamp represents a point in time independent of any time zone or
-        # calendar, represented as seconds and fractions of seconds at nanosecond
-        # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-        # Calendar which extends the Gregorian calendar backwards to year one. It is
-        # encoded assuming all minutes are 60 seconds long, i.e. leap seconds are "
-        # smeared" so that no leap second table is needed for interpretation. Range is
-        # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
-        # that range, we ensure that we can convert to and from RFC 3339 date strings.
-        # See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.
-        # txt).
+        # A Timestamp represents a point in time independent of any time zone or local
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
+        # backwards to year one.
+        # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+        # second table is needed for interpretation, using a [24-hour linear smear](
+        # https://developers.google.com/time/smear).
+        # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
+        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # # Examples
         # Example 1: Compute Timestamp from POSIX `time()`.
         # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
@@ -686,18 +742,20 @@ module Google
         # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
         # zero-padded to two digits each. The fractional seconds, which can go up to 9
         # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required, though only UTC (as
-        # indicated by "Z") is presently supported.
+        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
+        # serializer should always use UTC (as indicated by "Z") when printing the
+        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
+        # other timezones (as indicated by an offset).
         # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
         # January 15, 2017.
         # In JavaScript, one can convert a Date object to this format using the standard
         # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString] method. In Python, a standard `
+        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
         # datetime.datetime` object can be converted to this format using [`strftime`](
         # https://docs.python.org/2/library/time.html#time.strftime) with the time
         # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://joda-time.sourceforge.net/
-        # apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a
+        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
         # formatter capable of generating timestamps in this format.
         # Corresponds to the JSON property `authorizationTimestamp`
         # @return [Google::Apis::TagmanagerV2::Timestamp]
@@ -1197,6 +1255,31 @@ module Google
         end
       end
       
+      # 
+      class ListZonesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All GTM Zones of a GTM Container.
+        # Corresponds to the JSON property `zone`
+        # @return [Array<Google::Apis::TagmanagerV2::Zone>]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # Represents a merge conflict.
       class MergeConflict
         include Google::Apis::Core::Hashable
@@ -1426,6 +1509,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @variable = args[:variable] if args.key?(:variable)
+        end
+      end
+      
+      # The result of reverting a zone in a workspace.
+      class RevertZoneResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Google Tag Manager Zone's contents.
+        # Corresponds to the JSON property `zone`
+        # @return [Google::Apis::TagmanagerV2::Zone]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1704,16 +1806,17 @@ module Google
         end
       end
       
-      # A Timestamp represents a point in time independent of any time zone or
-      # calendar, represented as seconds and fractions of seconds at nanosecond
-      # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-      # Calendar which extends the Gregorian calendar backwards to year one. It is
-      # encoded assuming all minutes are 60 seconds long, i.e. leap seconds are "
-      # smeared" so that no leap second table is needed for interpretation. Range is
-      # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
-      # that range, we ensure that we can convert to and from RFC 3339 date strings.
-      # See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.
-      # txt).
+      # A Timestamp represents a point in time independent of any time zone or local
+      # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+      # resolution. The count is relative to an epoch at UTC midnight on January 1,
+      # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
+      # backwards to year one.
+      # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+      # second table is needed for interpretation, using a [24-hour linear smear](
+      # https://developers.google.com/time/smear).
+      # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+      # restricting to that range, we ensure that we can convert to and from [RFC 3339]
+      # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
       # # Examples
       # Example 1: Compute Timestamp from POSIX `time()`.
       # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
@@ -1741,18 +1844,20 @@ module Google
       # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
       # zero-padded to two digits each. The fractional seconds, which can go up to 9
       # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-      # indicates the timezone ("UTC"); the timezone is required, though only UTC (as
-      # indicated by "Z") is presently supported.
+      # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
+      # serializer should always use UTC (as indicated by "Z") when printing the
+      # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
+      # other timezones (as indicated by an offset).
       # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
       # January 15, 2017.
       # In JavaScript, one can convert a Date object to this format using the standard
       # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-      # Reference/Global_Objects/Date/toISOString] method. In Python, a standard `
+      # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
       # datetime.datetime` object can be converted to this format using [`strftime`](
       # https://docs.python.org/2/library/time.html#time.strftime) with the time
       # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-      # Time's [`ISODateTimeFormat.dateTime()`]( http://joda-time.sourceforge.net/
-      # apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a
+      # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
+      # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
       # formatter capable of generating timestamps in this format.
       class Timestamp
         include Google::Apis::Core::Hashable
@@ -1987,44 +2092,6 @@ module Google
         end
       end
       
-      # Updates a workspace proposal with patch-like semantics.
-      class UpdateWorkspaceProposalRequest
-        include Google::Apis::Core::Hashable
-      
-        # When provided, this fingerprint must match the fingerprint of the proposal in
-        # storage.
-        # Corresponds to the JSON property `fingerprint`
-        # @return [String]
-        attr_accessor :fingerprint
-      
-        # A comment from the reviewer or author.
-        # Corresponds to the JSON property `newComment`
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment]
-        attr_accessor :new_comment
-      
-        # If present, the list of reviewers of the workspace proposal is updated.
-        # Corresponds to the JSON property `reviewers`
-        # @return [Array<Google::Apis::TagmanagerV2::WorkspaceProposalUser>]
-        attr_accessor :reviewers
-      
-        # If present, the status of the workspace proposal is updated.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @new_comment = args[:new_comment] if args.key?(:new_comment)
-          @reviewers = args[:reviewers] if args.key?(:reviewers)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
       # Represents a user's permissions to an account and its container.
       class UserPermission
         include Google::Apis::Core::Hashable
@@ -2102,6 +2169,11 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Option to convert a variable value to other value.
+        # Corresponds to the JSON property `formatValue`
+        # @return [Google::Apis::TagmanagerV2::VariableFormatValue]
+        attr_accessor :format_value
+      
         # Variable display name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2168,6 +2240,7 @@ module Google
           @disabling_trigger_id = args[:disabling_trigger_id] if args.key?(:disabling_trigger_id)
           @enabling_trigger_id = args[:enabling_trigger_id] if args.key?(:enabling_trigger_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @format_value = args[:format_value] if args.key?(:format_value)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
           @parameter = args[:parameter] if args.key?(:parameter)
@@ -2179,6 +2252,50 @@ module Google
           @type = args[:type] if args.key?(:type)
           @variable_id = args[:variable_id] if args.key?(:variable_id)
           @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
+      # 
+      class VariableFormatValue
+        include Google::Apis::Core::Hashable
+      
+        # The option to convert a string-type variable value to either lowercase or
+        # uppercase.
+        # Corresponds to the JSON property `caseConversionType`
+        # @return [String]
+        attr_accessor :case_conversion_type
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `convertFalseToValue`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :convert_false_to_value
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `convertNullToValue`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :convert_null_to_value
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `convertTrueToValue`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :convert_true_to_value
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `convertUndefinedToValue`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :convert_undefined_to_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_conversion_type = args[:case_conversion_type] if args.key?(:case_conversion_type)
+          @convert_false_to_value = args[:convert_false_to_value] if args.key?(:convert_false_to_value)
+          @convert_null_to_value = args[:convert_null_to_value] if args.key?(:convert_null_to_value)
+          @convert_true_to_value = args[:convert_true_to_value] if args.key?(:convert_true_to_value)
+          @convert_undefined_to_value = args[:convert_undefined_to_value] if args.key?(:convert_undefined_to_value)
         end
       end
       
@@ -2241,218 +2358,6 @@ module Google
           @path = args[:path] if args.key?(:path)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
           @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
-        end
-      end
-      
-      # A workspace proposal represents an ongoing review of workspace changes in an
-      # effort to gain approval for container version creation.
-      class WorkspaceProposal
-        include Google::Apis::Core::Hashable
-      
-        # List of authors for the workspace proposal.
-        # Corresponds to the JSON property `authors`
-        # @return [Array<Google::Apis::TagmanagerV2::WorkspaceProposalUser>]
-        attr_accessor :authors
-      
-        # The fingerprint of the GTM workspace proposal as computed at storage time.
-        # This value is recomputed whenever the proposal is modified.
-        # Corresponds to the JSON property `fingerprint`
-        # @return [String]
-        attr_accessor :fingerprint
-      
-        # Records the history of comments and status changes.
-        # Corresponds to the JSON property `history`
-        # @return [Array<Google::Apis::TagmanagerV2::WorkspaceProposalHistory>]
-        attr_accessor :history
-      
-        # GTM workspace proposal's relative path.
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        # Lists of reviewers for the workspace proposal.
-        # Corresponds to the JSON property `reviewers`
-        # @return [Array<Google::Apis::TagmanagerV2::WorkspaceProposalUser>]
-        attr_accessor :reviewers
-      
-        # The status of the workspace proposal as it goes through review.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authors = args[:authors] if args.key?(:authors)
-          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @history = args[:history] if args.key?(:history)
-          @path = args[:path] if args.key?(:path)
-          @reviewers = args[:reviewers] if args.key?(:reviewers)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # A history event that represents a comment or status change in the proposal.
-      class WorkspaceProposalHistory
-        include Google::Apis::Core::Hashable
-      
-        # A comment from the reviewer or author.
-        # Corresponds to the JSON property `comment`
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposalHistoryComment]
-        attr_accessor :comment
-      
-        # Represents an external user or internal Google Tag Manager system.
-        # Corresponds to the JSON property `createdBy`
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposalUser]
-        attr_accessor :created_by
-      
-        # A Timestamp represents a point in time independent of any time zone or
-        # calendar, represented as seconds and fractions of seconds at nanosecond
-        # resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-        # Calendar which extends the Gregorian calendar backwards to year one. It is
-        # encoded assuming all minutes are 60 seconds long, i.e. leap seconds are "
-        # smeared" so that no leap second table is needed for interpretation. Range is
-        # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
-        # that range, we ensure that we can convert to and from RFC 3339 date strings.
-        # See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.
-        # txt).
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required, though only UTC (as
-        # indicated by "Z") is presently supported.
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString] method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://joda-time.sourceforge.net/
-        # apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a
-        # formatter capable of generating timestamps in this format.
-        # Corresponds to the JSON property `createdTimestamp`
-        # @return [Google::Apis::TagmanagerV2::Timestamp]
-        attr_accessor :created_timestamp
-      
-        # A change in the proposal's status.
-        # Corresponds to the JSON property `statusChange`
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposalHistoryStatusChange]
-        attr_accessor :status_change
-      
-        # The history type distinguishing between comments and status changes.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @comment = args[:comment] if args.key?(:comment)
-          @created_by = args[:created_by] if args.key?(:created_by)
-          @created_timestamp = args[:created_timestamp] if args.key?(:created_timestamp)
-          @status_change = args[:status_change] if args.key?(:status_change)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # A comment from the reviewer or author.
-      class WorkspaceProposalHistoryComment
-        include Google::Apis::Core::Hashable
-      
-        # The contents of the reviewer or author comment.
-        # Corresponds to the JSON property `content`
-        # @return [String]
-        attr_accessor :content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content = args[:content] if args.key?(:content)
-        end
-      end
-      
-      # A change in the proposal's status.
-      class WorkspaceProposalHistoryStatusChange
-        include Google::Apis::Core::Hashable
-      
-        # The new proposal status after that status change.
-        # Corresponds to the JSON property `newStatus`
-        # @return [String]
-        attr_accessor :new_status
-      
-        # The old proposal status before the status change.
-        # Corresponds to the JSON property `oldStatus`
-        # @return [String]
-        attr_accessor :old_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @new_status = args[:new_status] if args.key?(:new_status)
-          @old_status = args[:old_status] if args.key?(:old_status)
-        end
-      end
-      
-      # Represents an external user or internal Google Tag Manager system.
-      class WorkspaceProposalUser
-        include Google::Apis::Core::Hashable
-      
-        # Gaia id associated with a user, absent for the Google Tag Manager system.
-        # Corresponds to the JSON property `gaiaId`
-        # @return [Fixnum]
-        attr_accessor :gaia_id
-      
-        # User type distinguishes between a user and the Google Tag Manager system.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gaia_id = args[:gaia_id] if args.key?(:gaia_id)
-          @type = args[:type] if args.key?(:type)
         end
       end
       

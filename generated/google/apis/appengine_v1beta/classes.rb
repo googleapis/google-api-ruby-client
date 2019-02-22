@@ -1989,58 +1989,6 @@ module Google
       end
       
       # Metadata for the given google.longrunning.Operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Timestamp that this operation completed.@OutputOnly
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Timestamp that this operation was created.@OutputOnly
-        # Corresponds to the JSON property `insertTime`
-        # @return [String]
-        attr_accessor :insert_time
-      
-        # API method that initiated this operation. Example: google.appengine.v1beta4.
-        # Version.CreateVersion.@OutputOnly
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Type of this operation. Deprecated, use method field instead. Example: "
-        # create_version".@OutputOnly
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # Name of the resource that this operation is acting on. Example: apps/myapp/
-        # modules/default.@OutputOnly
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # User who requested this operation.@OutputOnly
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @insert_time = args[:insert_time] if args.key?(:insert_time)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @target = args[:target] if args.key?(:target)
-          @user = args[:user] if args.key?(:user)
-        end
-      end
-      
-      # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
@@ -2232,51 +2180,6 @@ module Google
           @target = args[:target] if args.key?(:target)
           @user = args[:user] if args.key?(:user)
           @warning = args[:warning] if args.key?(:warning)
-        end
-      end
-      
-      # Metadata for the given google.longrunning.Operation.
-      class OperationMetadataV1Beta5
-        include Google::Apis::Core::Hashable
-      
-        # Timestamp that this operation completed.@OutputOnly
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Timestamp that this operation was created.@OutputOnly
-        # Corresponds to the JSON property `insertTime`
-        # @return [String]
-        attr_accessor :insert_time
-      
-        # API method name that initiated this operation. Example: google.appengine.
-        # v1beta5.Version.CreateVersion.@OutputOnly
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Name of the resource that this operation is acting on. Example: apps/myapp/
-        # services/default.@OutputOnly
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # User who requested this operation.@OutputOnly
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @insert_time = args[:insert_time] if args.key?(:insert_time)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
-          @target = args[:target] if args.key?(:target)
-          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -3091,7 +2994,7 @@ module Google
         attr_accessor :vpc_access_connector
       
         # The Google Compute Engine zones that are supported by this version in the App
-        # Engine flexible environment.
+        # Engine flexible environment. Deprecated.
         # Corresponds to the JSON property `zones`
         # @return [Array<String>]
         attr_accessor :zones

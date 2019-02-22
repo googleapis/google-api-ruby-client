@@ -310,12 +310,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OperationMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,12 +323,6 @@ module Google
       end
       
       class OperationMetadataV1Beta
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadataV1Beta5
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,18 +910,6 @@ module Google
         end
       end
       
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :insert_time, as: 'insertTime'
-          property :method_prop, as: 'method'
-          property :operation_type, as: 'operationType'
-          property :target, as: 'target'
-          property :user, as: 'user'
-        end
-      end
-      
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -976,17 +952,6 @@ module Google
           property :target, as: 'target'
           property :user, as: 'user'
           collection :warning, as: 'warning'
-        end
-      end
-      
-      class OperationMetadataV1Beta5
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :insert_time, as: 'insertTime'
-          property :method_prop, as: 'method'
-          property :target, as: 'target'
-          property :user, as: 'user'
         end
       end
       

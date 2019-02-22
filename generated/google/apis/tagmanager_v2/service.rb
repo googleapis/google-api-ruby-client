@@ -476,47 +476,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a GTM Environment. This method supports patch semantics.
-        # @param [String] path
-        #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
-        #   `container_id`/environments/`environment_id`
-        # @param [Google::Apis::TagmanagerV2::Environment] environment_object
-        # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the environment
-        #   in storage.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TagmanagerV2::Environment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TagmanagerV2::Environment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_container_environment(path, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{+path}', options)
-          command.request_representation = Google::Apis::TagmanagerV2::Environment::Representation
-          command.request_object = environment_object
-          command.response_representation = Google::Apis::TagmanagerV2::Environment::Representation
-          command.response_class = Google::Apis::TagmanagerV2::Environment
-          command.params['path'] = path unless path.nil?
-          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Re-generates the authorization code for a GTM Environment.
         # @param [String] path
         #   GTM Environment's API relative path. Example: accounts/`account_id`/containers/
@@ -1063,40 +1022,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a GTM Workspace Proposal.
-        # @param [String] path
-        #   GTM workspace proposal's relative path: Example: accounts/`aid`/containers/`
-        #   cid`/workspace/`wid`/workspace_proposal
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TagmanagerV2::WorkspaceProposal] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposal]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_container_workspace_proposal(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{+path}', options)
-          command.response_representation = Google::Apis::TagmanagerV2::WorkspaceProposal::Representation
-          command.response_class = Google::Apis::TagmanagerV2::WorkspaceProposal
-          command.params['path'] = path unless path.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Finds conflicting and modified entities in the workspace.
         # @param [String] path
         #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
@@ -1313,43 +1238,6 @@ module Google
           command.response_class = Google::Apis::TagmanagerV2::Workspace
           command.params['path'] = path unless path.nil?
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a GTM Workspace Proposal.
-        # @param [String] path
-        #   GTM workspace proposal's relative path: Example: accounts/`aid`/containers/`
-        #   cid`/workspace/`wid`/workspace_proposal
-        # @param [Google::Apis::TagmanagerV2::UpdateWorkspaceProposalRequest] update_workspace_proposal_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TagmanagerV2::WorkspaceProposal] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposal]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_workspace_proposal(path, update_workspace_proposal_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{+path}', options)
-          command.request_representation = Google::Apis::TagmanagerV2::UpdateWorkspaceProposalRequest::Representation
-          command.request_object = update_workspace_proposal_request_object
-          command.response_representation = Google::Apis::TagmanagerV2::WorkspaceProposal::Representation
-          command.response_class = Google::Apis::TagmanagerV2::WorkspaceProposal
-          command.params['path'] = path unless path.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1796,75 +1684,6 @@ module Google
           command.response_class = Google::Apis::TagmanagerV2::Folder
           command.params['path'] = path unless path.nil?
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a GTM Workspace Proposal.
-        # @param [String] parent
-        #   GTM Workspace's API relative path. Example: accounts/`aid`/containers/`cid`/
-        #   workspace/`wid`
-        # @param [Google::Apis::TagmanagerV2::CreateWorkspaceProposalRequest] create_workspace_proposal_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TagmanagerV2::WorkspaceProposal] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TagmanagerV2::WorkspaceProposal]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_workspace_proposal(parent, create_workspace_proposal_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{+parent}/proposal', options)
-          command.request_representation = Google::Apis::TagmanagerV2::CreateWorkspaceProposalRequest::Representation
-          command.request_object = create_workspace_proposal_request_object
-          command.response_representation = Google::Apis::TagmanagerV2::WorkspaceProposal::Representation
-          command.response_class = Google::Apis::TagmanagerV2::WorkspaceProposal
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a GTM Workspace Proposal.
-        # @param [String] path
-        #   GTM workspace proposal's relative path: Example: accounts/`aid`/containers/`
-        #   cid`/workspace/`wid`/workspace_proposal
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_container_workspace_proposal(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{+path}', options)
-          command.params['path'] = path unless path.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2520,6 +2339,225 @@ module Google
           command.request_object = variable_object
           command.response_representation = Google::Apis::TagmanagerV2::Variable::Representation
           command.response_class = Google::Apis::TagmanagerV2::Variable
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a GTM Zone.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [Google::Apis::TagmanagerV2::Zone] zone_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Zone] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Zone]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_container_workspace_zone(parent, zone_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{+parent}/zones', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Zone::Representation
+          command.request_object = zone_object
+          command.response_representation = Google::Apis::TagmanagerV2::Zone::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Zone
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GTM Zone.
+        # @param [String] path
+        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_container_workspace_zone(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{+path}', options)
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GTM Zone.
+        # @param [String] path
+        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Zone] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Zone]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_container_workspace_zone(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{+path}', options)
+          command.response_representation = Google::Apis::TagmanagerV2::Zone::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Zone
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GTM Zones of a GTM container workspace.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::ListZonesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::ListZonesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_container_workspace_zones(parent, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{+parent}/zones', options)
+          command.response_representation = Google::Apis::TagmanagerV2::ListZonesResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::ListZonesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reverts changes to a GTM Zone in a GTM Workspace.
+        # @param [String] path
+        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the zone in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::RevertZoneResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::RevertZoneResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_account_container_workspace_zone(path, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{+path}:revert', options)
+          command.response_representation = Google::Apis::TagmanagerV2::RevertZoneResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::RevertZoneResponse
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Zone.
+        # @param [String] path
+        #   GTM Zone's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/zones/`zone_id`
+        # @param [Google::Apis::TagmanagerV2::Zone] zone_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the zone in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Zone] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Zone]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_workspace_zone(path, zone_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{+path}', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Zone::Representation
+          command.request_object = zone_object
+          command.response_representation = Google::Apis::TagmanagerV2::Zone::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Zone
           command.params['path'] = path unless path.nil?
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?

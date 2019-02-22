@@ -1097,7 +1097,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Ends a session, releasing server resources associated with it.
+        # Ends a session, releasing server resources associated with it. This will
+        # asynchronously trigger cancellation of any operations that are running with
+        # this session.
         # @param [String] name
         #   Required. The name of the session to delete.
         # @param [String] fields
