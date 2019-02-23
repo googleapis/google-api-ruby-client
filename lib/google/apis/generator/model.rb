@@ -163,7 +163,7 @@ module Google
         end
 
         def parameters
-          Hash[(@parameters || {}).sort].reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
+          Hash[(@parameters || {}).sort].delete_if { |k, _v| PARAMETER_BLACKLIST.include?(k) }
         end
 
         def schemas
