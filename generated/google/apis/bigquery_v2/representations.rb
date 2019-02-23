@@ -938,6 +938,8 @@ module Google
       
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobStatistics3, decorator: Google::Apis::BigqueryV2::JobStatistics3::Representation
       
+          property :num_child_jobs, :numeric_string => true, as: 'numChildJobs'
+          property :parent_job_id, as: 'parentJobId'
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
           collection :quota_deferments, as: 'quotaDeferments'

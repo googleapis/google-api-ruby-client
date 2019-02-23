@@ -2199,6 +2199,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobStatistics3]
         attr_accessor :load
       
+        # [Output-only] Number of child jobs executed.
+        # Corresponds to the JSON property `numChildJobs`
+        # @return [Fixnum]
+        attr_accessor :num_child_jobs
+      
+        # [Output-only] If this is a child job, the id of the parent.
+        # Corresponds to the JSON property `parentJobId`
+        # @return [String]
+        attr_accessor :parent_job_id
+      
         # [Output-only] Statistics for a query job.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::BigqueryV2::JobStatistics2]
@@ -2243,6 +2253,8 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
           @load = args[:load] if args.key?(:load)
+          @num_child_jobs = args[:num_child_jobs] if args.key?(:num_child_jobs)
+          @parent_job_id = args[:parent_job_id] if args.key?(:parent_job_id)
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
