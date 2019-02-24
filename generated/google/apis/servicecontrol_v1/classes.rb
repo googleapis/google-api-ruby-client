@@ -387,6 +387,15 @@ module Google
         # @return [String]
         attr_accessor :principal_email
       
+        # Identity delegation history of an authenticated service account that makes
+        # the request. It contains information on the real authorities that try to
+        # access GCP resources by delegating on a service account. When multiple
+        # authorities present, they are guaranteed to be sorted based on the original
+        # ordering of the identity delegation events.
+        # Corresponds to the JSON property `serviceAccountDelegationInfo`
+        # @return [Array<Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo>]
+        attr_accessor :service_account_delegation_info
+      
         # The name of the service account key used to create or exchange
         # credentials for authenticating the service account making the request.
         # This is a scheme-less URI full resource name. For example:
@@ -412,6 +421,7 @@ module Google
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
           @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
         end
@@ -845,6 +855,33 @@ module Google
           @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
           @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
           @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # First party identity principal.
+      class FirstPartyPrincipal
+        include Google::Apis::Core::Hashable
+      
+        # The email address of a Google account.
+        # .
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # Metadata about the service that uses the service account.
+        # .
+        # Corresponds to the JSON property `serviceMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :service_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @service_metadata = args[:service_metadata] if args.key?(:service_metadata)
         end
       end
       
@@ -2139,6 +2176,31 @@ module Google
         end
       end
       
+      # Identity delegation history of an authenticated service account.
+      class ServiceAccountDelegationInfo
+        include Google::Apis::Core::Hashable
+      
+        # First party identity principal.
+        # Corresponds to the JSON property `firstPartyPrincipal`
+        # @return [Google::Apis::ServicecontrolV1::FirstPartyPrincipal]
+        attr_accessor :first_party_principal
+      
+        # Third party identity principal.
+        # Corresponds to the JSON property `thirdPartyPrincipal`
+        # @return [Google::Apis::ServicecontrolV1::ThirdPartyPrincipal]
+        attr_accessor :third_party_principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_party_principal = args[:first_party_principal] if args.key?(:first_party_principal)
+          @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -2208,6 +2270,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Third party identity principal.
+      class ThirdPartyPrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about third party identity.
+        # Corresponds to the JSON property `thirdPartyClaims`
+        # @return [Hash<String,Object>]
+        attr_accessor :third_party_claims
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @third_party_claims = args[:third_party_claims] if args.key?(:third_party_claims)
         end
       end
     end

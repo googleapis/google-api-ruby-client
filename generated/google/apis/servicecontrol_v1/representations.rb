@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirstPartyPrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,7 +250,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccountDelegationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThirdPartyPrincipal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -321,6 +339,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority_selector, as: 'authoritySelector'
           property :principal_email, as: 'principalEmail'
+          collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo, decorator: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo::Representation
+      
           property :service_account_key_name, as: 'serviceAccountKeyName'
           hash :third_party_principal, as: 'thirdPartyPrincipal'
         end
@@ -422,6 +442,14 @@ module Google
           property :growth_factor, as: 'growthFactor'
           property :num_finite_buckets, as: 'numFiniteBuckets'
           property :scale, as: 'scale'
+        end
+      end
+      
+      class FirstPartyPrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal_email, as: 'principalEmail'
+          hash :service_metadata, as: 'serviceMetadata'
         end
       end
       
@@ -691,12 +719,29 @@ module Google
         end
       end
       
+      class ServiceAccountDelegationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_party_principal, as: 'firstPartyPrincipal', class: Google::Apis::ServicecontrolV1::FirstPartyPrincipal, decorator: Google::Apis::ServicecontrolV1::FirstPartyPrincipal::Representation
+      
+          property :third_party_principal, as: 'thirdPartyPrincipal', class: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal, decorator: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ThirdPartyPrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :third_party_claims, as: 'thirdPartyClaims'
         end
       end
     end
