@@ -80,7 +80,7 @@ module Google
       
         # Optional. The time the event that caused this alert ceased being active.
         # If provided, the end time must not be earlier than the start time.
-        # If not provided, the end time defaults to the start time.
+        # If not provided, it indicates an ongoing alert.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
