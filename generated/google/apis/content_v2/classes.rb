@@ -4026,7 +4026,7 @@ module Google
         # @return [Google::Apis::ContentV2::OrderDeliveryDetails]
         attr_accessor :delivery_details
       
-        # The REST id of the order. Globally unique.
+        # The REST ID of the order. Globally unique.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4047,7 +4047,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Merchant-provided id of the order.
+        # Merchant-provided ID of the order.
         # Corresponds to the JSON property `merchantOrderId`
         # @return [String]
         attr_accessor :merchant_order_id
@@ -4101,7 +4101,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :shipping_cost_tax
       
-        # The requested shipping option.
+        # Deprecated. Shipping details are provided with line items instead.
         # Corresponds to the JSON property `shippingOption`
         # @return [String]
         attr_accessor :shipping_option
@@ -4479,7 +4479,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrderCancellation>]
         attr_accessor :cancellations
       
-        # The id of the line item.
+        # The ID of the line item.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4606,7 +4606,7 @@ module Google
         # @return [String]
         attr_accessor :gtin
       
-        # The REST id of the product.
+        # The REST ID of the product.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4653,7 +4653,7 @@ module Google
       
         # Variant attributes for the item. These are dimensions of the product, such as
         # color, gender, material, pattern, and size. You can find a comprehensive list
-        # of variant attributes here.
+        # of variant attributes <a href="
         # Corresponds to the JSON property `variantAttributes`
         # @return [Array<Google::Apis::ContentV2::OrderLineItemProductVariantAttribute>]
         attr_accessor :variant_attributes
@@ -5160,7 +5160,7 @@ module Google
         # @return [String]
         attr_accessor :delivery_date
       
-        # The id of the shipment.
+        # The ID of the shipment.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5175,7 +5175,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The tracking id for the shipment.
+        # The tracking ID for the shipment.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -5200,7 +5200,7 @@ module Google
       class OrderShipmentLineItemShipment
         include Google::Apis::Core::Hashable
       
-        # The id of the line item that is shipped. Either lineItemId or productId is
+        # The ID of the line item that is shipped. Either lineItemId or productId is
         # required.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
@@ -6143,7 +6143,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The merchant order id. Required for updateMerchantOrderId and
+        # The merchant order ID. Required for updateMerchantOrderId and
         # getByMerchantOrderId methods.
         # Corresponds to the JSON property `merchantOrderId`
         # @return [String]
@@ -6660,7 +6660,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>]
         attr_accessor :shipment_infos
       
-        # Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.
+        # Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -6690,12 +6690,13 @@ module Google
         # @return [String]
         attr_accessor :carrier
       
-        # The ID of the shipment.
+        # The ID of the shipment. This is assigned by the merchant and is unique to each
+        # shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
         attr_accessor :shipment_id
       
-        # The tracking id for the shipment.
+        # The tracking ID for the shipment.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -6779,7 +6780,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The tracking id for the shipment. Not updated if missing.
+        # The tracking ID for the shipment. Not updated if missing.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -7464,7 +7465,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>]
         attr_accessor :shipment_infos
       
-        # Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.
+        # Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -7666,7 +7667,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The tracking id for the shipment. Not updated if missing.
+        # The tracking ID for the shipment. Not updated if missing.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id

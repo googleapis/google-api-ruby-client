@@ -2400,7 +2400,6 @@ module Google
       
           property :shipping_cost_tax, as: 'shippingCostTax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
-          property :shipping_option, as: 'shippingOption'
           property :status, as: 'status'
           property :tax_collector, as: 'taxCollector'
         end

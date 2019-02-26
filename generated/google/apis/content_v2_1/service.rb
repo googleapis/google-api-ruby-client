@@ -2305,7 +2305,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets (overrides) merchant provided annotations on the line item.
+        # Sets (or overrides if it already exists) merchant provided annotations in the
+        # form of key-value pairs. A common use case would be to supply us with
+        # additional structured information about a line item that cannot be provided
+        # via other methods. Submitted key-value pairs can be retrieved as part of the
+        # orders resource.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

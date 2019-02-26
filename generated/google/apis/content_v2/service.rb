@@ -129,7 +129,8 @@ module Google
         # accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountsRequest] batch_accounts_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -169,7 +170,8 @@ module Google
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [Boolean] force
         #   Flag to delete sub-accounts with products. The default value is false.
         # @param [String] fields
@@ -246,7 +248,8 @@ module Google
         #   The ID of the managing account. This must be a multi-client account.
         # @param [Google::Apis::ContentV2::Account] account_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -370,7 +373,8 @@ module Google
         #   The ID of the account.
         # @param [Google::Apis::ContentV2::Account] account_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -414,7 +418,8 @@ module Google
         #   The ID of the account.
         # @param [Google::Apis::ContentV2::Account] account_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -572,7 +577,8 @@ module Google
         # Retrieves and updates tax settings of multiple accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountTaxRequest] batch_account_tax_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -691,7 +697,8 @@ module Google
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -735,7 +742,8 @@ module Google
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -773,7 +781,8 @@ module Google
         # 
         # @param [Google::Apis::ContentV2::BatchDatafeedsRequest] batch_datafeeds_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -813,7 +822,8 @@ module Google
         # @param [Fixnum] datafeed_id
         #   The ID of the datafeed.
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -851,7 +861,8 @@ module Google
         # @param [Fixnum] datafeed_id
         #   The ID of the datafeed to be fetched.
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -927,7 +938,8 @@ module Google
         #   multi-client account.
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1010,7 +1022,8 @@ module Google
         #   The ID of the datafeed.
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1053,7 +1066,8 @@ module Google
         #   The ID of the datafeed.
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1214,7 +1228,8 @@ module Google
         # request. This operation does not update the expiration date of the products.
         # @param [Google::Apis::ContentV2::BatchInventoryRequest] batch_inventory_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1258,7 +1273,8 @@ module Google
         #   The REST id of the product for which to update price and availability.
         # @param [Google::Apis::ContentV2::SetInventoryRequest] set_inventory_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1298,7 +1314,8 @@ module Google
         # request.
         # @param [Google::Apis::ContentV2::LiasettingsCustomBatchRequest] liasettings_custom_batch_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1487,7 +1504,8 @@ module Google
         #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1713,7 +1731,8 @@ module Google
         #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2877,7 +2896,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets (overrides) merchant provided annotations on the line item.
+        # Sets (or overrides if it already exists) merchant provided annotations in the
+        # form of key-value pairs. A common use case would be to supply us with
+        # additional structured information about a line item that cannot be provided
+        # via other methods. Submitted key-value pairs can be retrieved as part of the
+        # orders resource.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -3080,7 +3103,8 @@ module Google
         # Batches multiple POS-related calls in a single request.
         # @param [Google::Apis::ContentV2::PosCustomBatchRequest] pos_custom_batch_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3121,7 +3145,8 @@ module Google
         # @param [String] store_code
         #   A store code that is unique per merchant.
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3199,7 +3224,8 @@ module Google
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosStore] pos_store_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3241,7 +3267,8 @@ module Google
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosInventoryRequest] pos_inventory_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3319,7 +3346,8 @@ module Google
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosSaleRequest] pos_sale_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3357,7 +3385,8 @@ module Google
         # Retrieves, inserts, and deletes multiple products in a single request.
         # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3397,7 +3426,8 @@ module Google
         # @param [String] product_id
         #   The REST id of the product.
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3473,7 +3503,8 @@ module Google
         #   multi-client account.
         # @param [Google::Apis::ContentV2::Product] product_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3690,7 +3721,8 @@ module Google
         # request.
         # @param [Google::Apis::ContentV2::ShippingsettingsCustomBatchRequest] shippingsettings_custom_batch_request_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3878,7 +3910,8 @@ module Google
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3922,7 +3955,8 @@ module Google
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object
         # @param [Boolean] dry_run
-        #   Flag to run the request in dry-run mode.
+        #   Flag to simulate a request like in a live environment. If set to true, dry-run
+        #   mode checks the validity of the request and returns errors (if any).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
