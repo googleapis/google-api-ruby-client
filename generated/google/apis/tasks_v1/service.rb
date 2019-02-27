@@ -22,7 +22,7 @@ module Google
     module TasksV1
       # Tasks API
       #
-      # Lets you manage your tasks and task lists.
+      # Manages your tasks and task lists.
       #
       # @example
       #    require 'google/apis/tasks_v1'
@@ -150,8 +150,8 @@ module Google
         
         # Returns all the authenticated user's task lists.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is
-        #   100.
+        #   Maximum number of task lists returned on one page. Optional. The default is 20
+        #   (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [String] fields
@@ -421,8 +421,8 @@ module Google
         #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is
-        #   100.
+        #   Maximum number of task lists returned on one page. Optional. The default is 20
+        #   (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [Boolean] show_completed

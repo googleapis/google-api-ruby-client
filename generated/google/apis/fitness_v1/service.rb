@@ -213,50 +213,6 @@ module Google
         # Updates the specified data source. The dataStreamId, dataType, type,
         # dataStreamName, and device properties with the exception of version, cannot be
         # modified.
-        # Data sources are identified by their dataStreamId. This method supports patch
-        # semantics.
-        # @param [String] user_id
-        #   Update the data source for the person identified. Use me to indicate the
-        #   authenticated user. Only me is supported at this time.
-        # @param [String] data_source_id
-        #   The data stream ID of the data source to update.
-        # @param [Google::Apis::FitnessV1::DataSource] data_source_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FitnessV1::DataSource] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FitnessV1::DataSource]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_data_source(user_id, data_source_id, data_source_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{userId}/dataSources/{dataSourceId}', options)
-          command.request_representation = Google::Apis::FitnessV1::DataSource::Representation
-          command.request_object = data_source_object
-          command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
-          command.response_class = Google::Apis::FitnessV1::DataSource
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['dataSourceId'] = data_source_id unless data_source_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the specified data source. The dataStreamId, dataType, type,
-        # dataStreamName, and device properties with the exception of version, cannot be
-        # modified.
         # Data sources are identified by their dataStreamId.
         # @param [String] user_id
         #   Update the data source for the person identified. Use me to indicate the

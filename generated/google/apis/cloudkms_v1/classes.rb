@@ -242,7 +242,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -373,7 +373,9 @@ module Google
         # @return [String]
         attr_accessor :algorithm
       
-        # Contains an HSM-generated attestation about a key operation.
+        # Contains an HSM-generated attestation about a key operation. For more
+        # information, see [Verifying attestations]
+        # (https://cloud.google.com/kms/docs/attest-key).
         # Corresponds to the JSON property `attestation`
         # @return [Google::Apis::CloudkmsV1::KeyOperationAttestation]
         attr_accessor :attestation
@@ -680,7 +682,9 @@ module Google
         end
       end
       
-      # Contains an HSM-generated attestation about a key operation.
+      # Contains an HSM-generated attestation about a key operation. For more
+      # information, see [Verifying attestations]
+      # (https://cloud.google.com/kms/docs/attest-key).
       class KeyOperationAttestation
         include Google::Apis::Core::Hashable
       
