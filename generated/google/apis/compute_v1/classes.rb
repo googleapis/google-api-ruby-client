@@ -7031,8 +7031,8 @@ module Google
           # @return [String]
           attr_accessor :container_type
         
-          # An optional SHA1 checksum of the disk image before unpackaging; provided by
-          # the client when the disk image is created.
+          # An optional SHA1 checksum of the disk image before unpackaging provided by the
+          # client when the disk image is created.
           # Corresponds to the JSON property `sha1Checksum`
           # @return [String]
           attr_accessor :sha1_checksum
@@ -9898,8 +9898,8 @@ module Google
         # @return [String]
         attr_accessor :google_ip_address
       
-        # [Output Only] Google reference ID; to be used when raising support tickets
-        # with Google or otherwise to debug backend connectivity issues.
+        # [Output Only] Google reference ID to be used when raising support tickets with
+        # Google or otherwise to debug backend connectivity issues.
         # Corresponds to the JSON property `googleReferenceId`
         # @return [String]
         attr_accessor :google_reference_id
@@ -12253,6 +12253,11 @@ module Google
         # @return [Google::Apis::ComputeV1::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
+        # [Output Only] Intended version of this instance.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12264,6 +12269,7 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -12336,6 +12342,32 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
           end
+        end
+      end
+      
+      # 
+      class ManagedInstanceVersion
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The intended template of the instance. This field is empty when
+        # current_action is one of ` DELETING, ABANDONING `.
+        # Corresponds to the JSON property `instanceTemplate`
+        # @return [String]
+        attr_accessor :instance_template
+      
+        # [Output Only] Name of the version.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_template = args[:instance_template] if args.key?(:instance_template)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

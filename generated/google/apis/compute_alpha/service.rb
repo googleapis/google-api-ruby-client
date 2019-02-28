@@ -10599,7 +10599,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs a reset on the instance. This is a hard reset; the VM does not do a
+        # Performs a reset on the instance. This is a hard reset the VM does not do a
         # graceful shutdown. For more information, see Resetting an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -16710,6 +16710,10 @@ module Google
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeAlpha::SecurityPolicyAssociation] security_policy_association_object
+        # @param [Boolean] replace_existing_association
+        #   Indicates whether or not to replace it if an association of the attachment
+        #   already exists. This is false by default, in which case an error will be
+        #   returned if an assocation already exists.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -16740,13 +16744,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_organization_security_policy_association(security_policy, security_policy_association_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_organization_security_policy_association(security_policy, security_policy_association_object = nil, replace_existing_association: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addAssociation', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
           command.request_object = security_policy_association_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
+          command.query['replaceExistingAssociation'] = replace_existing_association unless replace_existing_association.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

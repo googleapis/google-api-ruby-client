@@ -3670,6 +3670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleRateLimitOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecuritySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5346,6 +5352,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          collection :replica_zones, as: 'replicaZones'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -9511,7 +9518,9 @@ module Google
           property :auto_create_routes, as: 'autoCreateRoutes'
           property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :export_custom_routes, as: 'exportCustomRoutes'
+          property :export_subnet_routes_with_public_ip, as: 'exportSubnetRoutesWithPublicIp'
           property :import_custom_routes, as: 'importCustomRoutes'
+          property :import_subnet_routes_with_public_ip, as: 'importSubnetRoutesWithPublicIp'
           property :name, as: 'name'
           property :network, as: 'network'
           property :state, as: 'state'
@@ -11620,6 +11629,8 @@ module Google
       
           property :preview, as: 'preview'
           property :priority, as: 'priority'
+          property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions::Representation
+      
           collection :target_resources, as: 'targetResources'
         end
       end
@@ -11650,6 +11661,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_duration, as: 'blockDuration'
+          property :conform_action, as: 'conformAction'
+          property :enforce_on_key, as: 'enforceOnKey'
+          property :exceed_action, as: 'exceedAction'
+          property :threshold_rps, as: 'thresholdRps'
         end
       end
       

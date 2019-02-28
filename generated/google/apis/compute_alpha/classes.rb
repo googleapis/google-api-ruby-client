@@ -1867,6 +1867,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # URLs of the zones where the disk should be replicated to. Only applicable for
+        # regional resources.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
         # The source image to create this disk. When creating a new instance, one of
         # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
@@ -1920,6 +1926,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -2011,16 +2018,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of authentication methods that can be used for origin authentication.
-        # Similar to peers, these will be evaluated in order; the first valid one will
-        # be used to set origin identity. If none of these methods pass, the request
-        # will be rejected with authentication failed error (401). Leave the list empty
-        # if origin authentication is not required.
+        # Similar to peers, these will be evaluated in order the first valid one will be
+        # used to set origin identity. If none of these methods pass, the request will
+        # be rejected with authentication failed error (401). Leave the list empty if
+        # origin authentication is not required.
         # Corresponds to the JSON property `origins`
         # @return [Array<Google::Apis::ComputeAlpha::OriginAuthenticationMethod>]
         attr_accessor :origins
       
         # List of authentication methods that can be used for peer authentication. They
-        # will be evaluated in order; the first valid one will be used to set peer
+        # will be evaluated in order the first valid one will be used to set peer
         # identity. If none of these methods pass, the request will be rejected with
         # authentication failed error (401). Leave the list empty if peer authentication
         # is not required.
@@ -10674,8 +10681,8 @@ module Google
           # @return [String]
           attr_accessor :container_type
         
-          # An optional SHA1 checksum of the disk image before unpackaging; provided by
-          # the client when the disk image is created.
+          # An optional SHA1 checksum of the disk image before unpackaging provided by the
+          # client when the disk image is created.
           # Corresponds to the JSON property `sha1Checksum`
           # @return [String]
           attr_accessor :sha1_checksum
@@ -14163,8 +14170,8 @@ module Google
         # @return [String]
         attr_accessor :google_ip_address
       
-        # [Output Only] Google reference ID; to be used when raising support tickets
-        # with Google or otherwise to debug backend connectivity issues.
+        # [Output Only] Google reference ID to be used when raising support tickets with
+        # Google or otherwise to debug backend connectivity issues.
         # Corresponds to the JSON property `googleReferenceId`
         # @return [String]
         attr_accessor :google_reference_id
@@ -18788,11 +18795,29 @@ module Google
         attr_accessor :export_custom_routes
         alias_method :export_custom_routes?, :export_custom_routes
       
+        # Whether subnet routes with public IP range are exported. The default value is
+        # true, all subnet routes are exported. The IPv4 special-use ranges (https://en.
+        # wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and
+        # are not controlled by this field.
+        # Corresponds to the JSON property `exportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :export_subnet_routes_with_public_ip
+        alias_method :export_subnet_routes_with_public_ip?, :export_subnet_routes_with_public_ip
+      
         # Whether to import the custom routes from peer network.
         # Corresponds to the JSON property `importCustomRoutes`
         # @return [Boolean]
         attr_accessor :import_custom_routes
         alias_method :import_custom_routes?, :import_custom_routes
+      
+        # Whether subnet routes with public IP range are imported. The default value is
+        # false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#
+        # Special_addresses) are always imported from peers and are not controlled by
+        # this field.
+        # Corresponds to the JSON property `importSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :import_subnet_routes_with_public_ip
+        alias_method :import_subnet_routes_with_public_ip?, :import_subnet_routes_with_public_ip
       
         # Name of this peering. Provided by the client when the peering is created. The
         # name must comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -18832,7 +18857,9 @@ module Google
           @auto_create_routes = args[:auto_create_routes] if args.key?(:auto_create_routes)
           @exchange_subnet_routes = args[:exchange_subnet_routes] if args.key?(:exchange_subnet_routes)
           @export_custom_routes = args[:export_custom_routes] if args.key?(:export_custom_routes)
+          @export_subnet_routes_with_public_ip = args[:export_subnet_routes_with_public_ip] if args.key?(:export_subnet_routes_with_public_ip)
           @import_custom_routes = args[:import_custom_routes] if args.key?(:import_custom_routes)
+          @import_subnet_routes_with_public_ip = args[:import_subnet_routes_with_public_ip] if args.key?(:import_subnet_routes_with_public_ip)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @state = args[:state] if args.key?(:state)
@@ -26869,6 +26896,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # Must be specified if the action is "rate_based_blacklist" or "throttle".
+        # Cannot be specified for any other actions.
+        # Corresponds to the JSON property `rateLimitOptions`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions]
+        attr_accessor :rate_limit_options
+      
         # A list of network resource URLs to which this rule applies. This field allows
         # you to control which network?s VMs get this rule. If this field is left blank,
         # all VMs within the organization will receive the rule.
@@ -26891,6 +26924,7 @@ module Google
           @match = args[:match] if args.key?(:match)
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
+          @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
         end
       end
@@ -26996,6 +27030,57 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleRateLimitOptions
+        include Google::Apis::Core::Hashable
+      
+        # Can only be specifed if the action for the rule is "rate_based_blacklist" If
+        # specified, determines the time (in seconds) the traffic will continue to be
+        # blocked by the rate limit after the rate falls below the threshold. The
+        # default value is 0 seconds.
+        # Corresponds to the JSON property `blockDuration`
+        # @return [Fixnum]
+        attr_accessor :block_duration
+      
+        # Action to take when requests are under the given threshold. When requests are
+        # throttled, this is also the action for all requests which are not dropped.
+        # Valid options are "allow", "fairshare", and "drop_overload".
+        # Corresponds to the JSON property `conformAction`
+        # @return [String]
+        attr_accessor :conform_action
+      
+        # Determines the key to enforce the threshold_rps limit on. If key is "IP", each
+        # IP has this limit enforced separately, whereas "ALL_IPs" means a single limit
+        # is applied to all requests matching this rule.
+        # Corresponds to the JSON property `enforceOnKey`
+        # @return [String]
+        attr_accessor :enforce_on_key
+      
+        # When a request is denied, returns the HTTP response code specified. Valid
+        # options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        # Corresponds to the JSON property `exceedAction`
+        # @return [String]
+        attr_accessor :exceed_action
+      
+        # Rate in requests per second at which to begin ratelimiting.
+        # Corresponds to the JSON property `thresholdRps`
+        # @return [Fixnum]
+        attr_accessor :threshold_rps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_duration = args[:block_duration] if args.key?(:block_duration)
+          @conform_action = args[:conform_action] if args.key?(:conform_action)
+          @enforce_on_key = args[:enforce_on_key] if args.key?(:enforce_on_key)
+          @exceed_action = args[:exceed_action] if args.key?(:exceed_action)
+          @threshold_rps = args[:threshold_rps] if args.key?(:threshold_rps)
         end
       end
       

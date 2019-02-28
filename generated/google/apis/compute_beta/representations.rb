@@ -802,6 +802,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3760,6 +3790,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewaysScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5315,6 +5411,64 @@ module Google
         end
       end
       
+      class ExternalVpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeBeta::ExternalVpnGatewayInterface, decorator: Google::Apis::ComputeBeta::ExternalVpnGatewayInterface::Representation
+      
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :redundancy_type, as: 'redundancyType'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ExternalVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class ExternalVpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ExternalVpnGateway, decorator: Google::Apis::ComputeBeta::ExternalVpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ExternalVpnGatewayList::Warning, decorator: Google::Apis::ComputeBeta::ExternalVpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ExternalVpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ExternalVpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5418,6 +5572,7 @@ module Google
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
@@ -10666,6 +10821,124 @@ module Google
         end
       end
       
+      class VpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeBeta::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeBeta::VpnGatewayVpnGatewayInterface::Representation
+      
+        end
+      end
+      
+      class VpnGatewayAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::VpnGatewaysScopedList, decorator: Google::Apis::ComputeBeta::VpnGatewaysScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::VpnGatewayAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::VpnGatewayAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::VpnGatewayAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::VpnGatewayAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::VpnGateway, decorator: Google::Apis::ComputeBeta::VpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::VpnGatewayList::Warning, decorator: Google::Apis::ComputeBeta::VpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::VpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeBeta::VpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class VpnGatewaysScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_gateways, as: 'vpnGateways', class: Google::Apis::ComputeBeta::VpnGateway, decorator: Google::Apis::ComputeBeta::VpnGateway::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::VpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeBeta::VpnGatewaysScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::VpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::VpnGatewaysScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10691,6 +10964,8 @@ module Google
           property :shared_secret_hash, as: 'sharedSecretHash'
           property :status, as: 'status'
           property :target_vpn_gateway, as: 'targetVpnGateway'
+          property :vpn_gateway, as: 'vpnGateway'
+          property :vpn_gateway_interface, as: 'vpnGatewayInterface'
         end
       end
       

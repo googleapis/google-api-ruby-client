@@ -25,9 +25,9 @@ module Google
     # @see https://developers.google.com/games/services
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20181113'
+      REVISION = '20190222'
 
-      # Share your Google+ profile information and view and manage your game activity
+      # Create, edit, and delete your Google Play Games activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'
     end
   end

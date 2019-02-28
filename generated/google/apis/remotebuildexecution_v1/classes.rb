@@ -1537,6 +1537,11 @@ module Google
         attr_accessor :docker_cache_hit
         alias_method :docker_cache_hit?, :docker_cache_hit
       
+        # The input cache miss ratio.
+        # Corresponds to the JSON property `inputCacheMiss`
+        # @return [Float]
+        attr_accessor :input_cache_miss
+      
         # The number of errors reported.
         # Corresponds to the JSON property `numErrors`
         # @return [Fixnum]
@@ -1554,6 +1559,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @docker_cache_hit = args[:docker_cache_hit] if args.key?(:docker_cache_hit)
+          @input_cache_miss = args[:input_cache_miss] if args.key?(:input_cache_miss)
           @num_errors = args[:num_errors] if args.key?(:num_errors)
           @num_warnings = args[:num_warnings] if args.key?(:num_warnings)
         end
@@ -1908,8 +1914,8 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Determines whether the worker is reserved (and therefore won't be
-        # preempted).
+        # Determines whether the worker is reserved (equivalent to a Compute Engine
+        # on-demand VM and therefore won't be preempted).
         # See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
         # details.
         # Corresponds to the JSON property `reserved`

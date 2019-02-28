@@ -52,25 +52,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The id of the Android device to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `androidModelId`
         # @return [String]
         attr_accessor :android_model_id
       
         # Required. The id of the Android OS version to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `androidVersionId`
         # @return [String]
         attr_accessor :android_version_id
       
         # Required. The locale the test device used for testing.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
         # Required. How the device is oriented during the test.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `orientation`
         # @return [String]
         attr_accessor :orientation
@@ -238,25 +238,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The ids of the set of Android device to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `androidModelIds`
         # @return [Array<String>]
         attr_accessor :android_model_ids
       
         # Required. The ids of the set of Android OS version to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `androidVersionIds`
         # @return [Array<String>]
         attr_accessor :android_version_ids
       
         # Required. The set of locales the test device will enable for testing.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `locales`
         # @return [Array<String>]
         attr_accessor :locales
       
         # Required. The set of orientations to test with.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `orientations`
         # @return [Array<String>]
         attr_accessor :orientations
@@ -1098,25 +1098,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The id of the iOS device to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `iosModelId`
         # @return [String]
         attr_accessor :ios_model_id
       
         # Required. The id of the iOS major software version to be used.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `iosVersionId`
         # @return [String]
         attr_accessor :ios_version_id
       
         # Required. The locale the test device used for testing.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
         # Required. How the device is oriented during the test.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Corresponds to the JSON property `orientation`
         # @return [String]
         attr_accessor :orientation
@@ -1360,7 +1360,7 @@ module Google
         attr_accessor :tests_zip
       
         # The Xcode version that should be used for the test.
-        # Use the TestEnvironmentDiscoveryService to get supported options.
+        # Use the EnvironmentDiscoveryService to get supported options.
         # Defaults to the latest Xcode version Firebase Test Lab supports.
         # Corresponds to the JSON property `xcodeVersion`
         # @return [String]

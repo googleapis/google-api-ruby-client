@@ -326,7 +326,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -1992,7 +1992,7 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
         attr_accessor :fixed_location
       
-        # The severity (eg: distro assigned severity) for this vulnerability.
+        # 
         # Corresponds to the JSON property `severityName`
         # @return [String]
         attr_accessor :severity_name

@@ -1636,6 +1636,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -6336,6 +6342,8 @@ module Google
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Representation
       
+          property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
+      
         end
       end
       
@@ -6361,6 +6369,14 @@ module Google
               property :message, as: 'message'
             end
           end
+        end
+      end
+      
+      class ManagedInstanceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+          property :name, as: 'name'
         end
       end
       

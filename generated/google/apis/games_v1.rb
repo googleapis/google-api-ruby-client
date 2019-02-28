@@ -25,12 +25,12 @@ module Google
     # @see https://developers.google.com/games/services/
     module GamesV1
       VERSION = 'V1'
-      REVISION = '20190131'
+      REVISION = '20190222'
 
       # View and manage its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'
 
-      # Share your Google+ profile information and view and manage your game activity
+      # Create, edit, and delete your Google Play Games activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'
 
       # Know who you are on Google

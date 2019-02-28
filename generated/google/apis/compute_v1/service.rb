@@ -7786,7 +7786,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs a reset on the instance. This is a hard reset; the VM does not do a
+        # Performs a reset on the instance. This is a hard reset the VM does not do a
         # graceful shutdown. For more information, see Resetting an instance.
         # @param [String] project
         #   Project ID for this request.
