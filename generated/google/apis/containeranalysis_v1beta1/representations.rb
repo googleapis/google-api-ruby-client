@@ -830,6 +830,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :effective_severity, as: 'effectiveSeverity'
           property :long_description, as: 'longDescription'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1beta1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1beta1::PackageIssue::Representation
       

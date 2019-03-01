@@ -390,7 +390,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -1161,7 +1161,7 @@ module Google
         end
       end
       
-      # Per resource and severity counts of fixable and total vulnerabilites.
+      # Per resource and severity counts of fixable and total vulnerabilities.
       class FixableTotalByDigest
         include Google::Apis::Core::Hashable
       
@@ -1428,6 +1428,13 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # The distro assigned severity for this vulnerability when it is
+        # available, and note provider assigned severity when distro has not yet
+        # assigned a severity for this vulnerability.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
         # Output only. A detailed description of this vulnerability.
         # Corresponds to the JSON property `longDescription`
         # @return [String]
@@ -1467,6 +1474,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @related_urls = args[:related_urls] if args.key?(:related_urls)
@@ -2017,6 +2025,7 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation]
         attr_accessor :fixed_location
       
+        # Deprecated, use Details.effective_severity instead
         # The severity (e.g., distro assigned severity) for this vulnerability.
         # Corresponds to the JSON property `severityName`
         # @return [String]

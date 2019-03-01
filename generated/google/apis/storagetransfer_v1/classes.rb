@@ -353,7 +353,8 @@ module Google
         end
       end
       
-      # Conditions that determine which objects will be transferred.
+      # Conditions that determine which objects will be transferred. Applies only
+      # to S3 and GCS objects.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
@@ -394,19 +395,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
-        # `maxTimeElapsedSinceLastModification` is the complement to
-        # `minTimeElapsedSinceLastModification`.
+        # If specified, only objects with a `lastModificationTime` on or after
+        # `NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have
+        # a `lastModificationTime` are transferred.
+        # Note that `NOW` refers to the creation time of the transfer job, and
+        # `lastModificationTime` refers to the time of the last change to the
+        # object's content or metadata. Specifically, this would be the `updated`
+        # property of GCS objects and the `LastModified` field of S3 objects.
         # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :max_time_elapsed_since_last_modification
       
-        # If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
-        # and `maxTimeElapsedSinceLastModification` takes the maximum possible
-        # value of Duration. Objects that satisfy the object conditions
-        # must either have a `lastModificationTime` greater or equal to
-        # `NOW` - `maxTimeElapsedSinceLastModification` and less than
-        # `NOW` - `minTimeElapsedSinceLastModification`, or not have a
-        # `lastModificationTime`.
+        # If specified, only objects with a `lastModificationTime` before
+        # `NOW` - `minTimeElapsedSinceLastModification` and objects that don't have a
+        # `lastModificationTime` are transferred.
+        # Note that `NOW` refers to the creation time of the transfer job, and
+        # `lastModificationTime` refers to the time of the last change to the
+        # object's content or metadata. Specifically, this would be the `updated`
+        # property of GCS objects and the `LastModified` field of S3 objects.
         # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :min_time_elapsed_since_last_modification
@@ -1064,7 +1070,8 @@ module Google
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
       
-        # Conditions that determine which objects will be transferred.
+        # Conditions that determine which objects will be transferred. Applies only
+        # to S3 and GCS objects.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions

@@ -2886,7 +2886,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedOptions]
         attr_accessor :requested_options
       
-        # A summary of the outcome of this inspect job.
+        # All result fields mentioned below are updated while the job is processing.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Result]
         attr_accessor :result
@@ -4869,7 +4869,7 @@ module Google
         end
       end
       
-      # 
+      # All result fields mentioned below are updated while the job is processing.
       class GooglePrivacyDlpV2Result
         include Google::Apis::Core::Hashable
       

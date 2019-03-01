@@ -86,6 +86,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_token, as: 'accessToken'
+          property :expire_time, as: 'expireTime'
         end
       end
       

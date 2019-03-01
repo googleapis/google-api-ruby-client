@@ -251,7 +251,10 @@ module Google
         # @param [Boolean] show_deleted
         #   Include Roles that have been deleted.
         # @param [String] view
-        #   Optional view for the returned Role objects.
+        #   Optional view for the returned Role objects. When `FULL` is specified,
+        #   the `includedPermissions` field is returned, which includes a list of all
+        #   permissions in the role. The default value is `BASIC`, which does not
+        #   return the `includedPermissions` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -510,7 +513,10 @@ module Google
         # @param [Boolean] show_deleted
         #   Include Roles that have been deleted.
         # @param [String] view
-        #   Optional view for the returned Role objects.
+        #   Optional view for the returned Role objects. When `FULL` is specified,
+        #   the `includedPermissions` field is returned, which includes a list of all
+        #   permissions in the role. The default value is `BASIC`, which does not
+        #   return the `includedPermissions` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -719,8 +725,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the IAM access control policy for a
+        # Returns the Cloud IAM access control policy for a
         # ServiceAccount.
+        # Note: Service accounts are both
+        # [resources and identities](/iam/docs/service-accounts#
+        # service_account_permissions).
+        # This method treats the service account as a resource. It returns the Cloud
+        # IAM policy that reflects what members have access to the service account.
+        # This method does not return what resources the service account has access
+        # to. To see if a service account has access to a resource, call the
+        # `getIamPolicy` method on the target resource. For example, to view grants
+        # for a project, call the
+        # [projects.getIamPolicy](/resource-manager/reference/rest/v1/projects/
+        # getIamPolicy)
+        # method.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -792,8 +810,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for a
+        # Sets the Cloud IAM access control policy for a
         # ServiceAccount.
+        # Note: Service accounts are both
+        # [resources and identities](/iam/docs/service-accounts#
+        # service_account_permissions).
+        # This method treats the service account as a resource. Use it to grant
+        # members access to the service account, such as when they need to
+        # impersonate it.
+        # This method does not grant the service account access to other resources,
+        # such as projects. To grant a service account access to resources, include
+        # the service account in the Cloud IAM policy for the desired resource, then
+        # call the appropriate `setIamPolicy` method on the target resource. For
+        # example, to grant a service account access to a project, call the
+        # [projects.setIamPolicy](/resource-manager/reference/rest/v1/projects/
+        # setIamPolicy)
+        # method.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -983,6 +1015,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Note: This method is in the process of being deprecated. Use
+        # PatchServiceAccount instead.
         # Updates a ServiceAccount.
         # Currently, only the following fields are updatable:
         # `display_name` .
@@ -1221,7 +1255,10 @@ module Google
         # @param [Boolean] show_deleted
         #   Include Roles that have been deleted.
         # @param [String] view
-        #   Optional view for the returned Role objects.
+        #   Optional view for the returned Role objects. When `FULL` is specified,
+        #   the `includedPermissions` field is returned, which includes a list of all
+        #   permissions in the role. The default value is `BASIC`, which does not
+        #   return the `includedPermissions` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
