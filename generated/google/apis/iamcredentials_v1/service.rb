@@ -51,7 +51,8 @@ module Google
         # @param [String] name
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        #   character is required; replacing it with a project ID is invalid.
         # @param [Google::Apis::IamcredentialsV1::GenerateAccessTokenRequest] generate_access_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -86,7 +87,8 @@ module Google
         # @param [String] name
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        #   character is required; replacing it with a project ID is invalid.
         # @param [Google::Apis::IamcredentialsV1::GenerateIdTokenRequest] generate_id_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,7 +123,8 @@ module Google
         # @param [String] name
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        #   character is required; replacing it with a project ID is invalid.
         # @param [Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenRequest] generate_identity_binding_access_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -156,7 +159,8 @@ module Google
         # @param [String] name
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        #   character is required; replacing it with a project ID is invalid.
         # @param [Google::Apis::IamcredentialsV1::SignBlobRequest] sign_blob_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -191,7 +195,8 @@ module Google
         # @param [String] name
         #   The resource name of the service account for which the credentials
         #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        #   character is required; replacing it with a project ID is invalid.
         # @param [Google::Apis::IamcredentialsV1::SignJwtRequest] sign_jwt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

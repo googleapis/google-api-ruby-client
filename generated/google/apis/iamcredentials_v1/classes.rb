@@ -33,7 +33,8 @@ module Google
         # on the service account that is specified in the `name` field of the
         # request.
         # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``
+        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        # character is required; replacing it with a project ID is invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
@@ -109,7 +110,8 @@ module Google
         # on the service account that is specified in the `name` field of the
         # request.
         # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``
+        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        # character is required; replacing it with a project ID is invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
@@ -260,7 +262,8 @@ module Google
         # on the service account that is specified in the `name` field of the
         # request.
         # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``
+        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        # character is required; replacing it with a project ID is invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
@@ -319,7 +322,8 @@ module Google
         # on the service account that is specified in the `name` field of the
         # request.
         # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``
+        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
+        # character is required; replacing it with a project ID is invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
