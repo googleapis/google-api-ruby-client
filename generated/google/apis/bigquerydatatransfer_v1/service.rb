@@ -22,8 +22,8 @@ module Google
     module BigquerydatatransferV1
       # BigQuery Data Transfer API
       #
-      # Transfers data from partner SaaS applications to Google BigQuery on a
-      #  scheduled, managed basis.
+      # Schedule queries or transfer external data from SaaS applications to Google
+      #  BigQuery on a regular basis.
       #
       # @example
       #    require 'google/apis/bigquerydatatransfer_v1'
