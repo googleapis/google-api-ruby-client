@@ -354,6 +354,15 @@ module Google
         # @return [String]
         attr_accessor :hyperparameter_metric_tag
       
+        # Optional. How many failed trials that need to be seen before failing the
+        # hyperparameter tuning job. User can specify this field to override the
+        # default failing criteria for CloudML Engine hyperparameter tuning jobs.
+        # Defaults to zero, which means to let the service decide when a
+        # hyperparameter job should fail.
+        # Corresponds to the JSON property `maxFailedTrials`
+        # @return [Fixnum]
+        attr_accessor :max_failed_trials
+      
         # Optional. The number of training trials to run concurrently.
         # You can reduce the time it takes to perform hyperparameter tuning by adding
         # trials in parallel. However, each trail only benefits from the information
@@ -395,6 +404,7 @@ module Google
           @enable_trial_early_stopping = args[:enable_trial_early_stopping] if args.key?(:enable_trial_early_stopping)
           @goal = args[:goal] if args.key?(:goal)
           @hyperparameter_metric_tag = args[:hyperparameter_metric_tag] if args.key?(:hyperparameter_metric_tag)
+          @max_failed_trials = args[:max_failed_trials] if args.key?(:max_failed_trials)
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
           @max_trials = args[:max_trials] if args.key?(:max_trials)
           @params = args[:params] if args.key?(:params)
@@ -935,11 +945,6 @@ module Google
       class GoogleCloudMlV1PredictionInput
         include Google::Apis::Core::Hashable
       
-        # Represents a hardware accelerator request config.
-        # Corresponds to the JSON property `accelerator`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
-        attr_accessor :accelerator
-      
         # Optional. Number of records per batch, defaults to 64.
         # The service will buffer batch_size number of records in memory before
         # invoking one Tensorflow prediction call internally. So take the record
@@ -1030,7 +1035,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @accelerator = args[:accelerator] if args.key?(:accelerator)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
           @data_format = args[:data_format] if args.key?(:data_format)
           @input_paths = args[:input_paths] if args.key?(:input_paths)
@@ -1742,7 +1746,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]

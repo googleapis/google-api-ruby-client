@@ -345,6 +345,7 @@ module Google
           property :enable_trial_early_stopping, as: 'enableTrialEarlyStopping'
           property :goal, as: 'goal'
           property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'
+          property :max_failed_trials, as: 'maxFailedTrials'
           property :max_parallel_trials, as: 'maxParallelTrials'
           property :max_trials, as: 'maxTrials'
           collection :params, as: 'params', class: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec::Representation
@@ -481,8 +482,6 @@ module Google
       class GoogleCloudMlV1PredictionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :accelerator, as: 'accelerator', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
-      
           property :batch_size, :numeric_string => true, as: 'batchSize'
           property :data_format, as: 'dataFormat'
           collection :input_paths, as: 'inputPaths'
