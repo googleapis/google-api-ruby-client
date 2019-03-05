@@ -20,7 +20,7 @@ ruby --version
 # https://github.com/bundler/bundler/issues/6154
 export BUNDLE_GEMFILE=
 
-RUBY_VERSIONS=("2.3.8" "2.4.5" "2.5.3" "2.6.0")
+RUBY_VERSIONS=("2.3.8" "2.4.5" "2.5.3" "2.6.1")
 
 # Capture failures
 EXIT_STATUS=0 # everything passed
