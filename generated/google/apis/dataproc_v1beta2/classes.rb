@@ -33,13 +33,12 @@ module Google
         attr_accessor :accelerator_count
       
         # Full URL, partial URI, or short name of the accelerator type resource to
-        # expose to this instance. See Compute Engine AcceleratorTypes( /compute/docs/
-        # reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/
-        # beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 *
-        # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 *
-        # nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc Auto
-        # Zone Placement feature, you must use the short name of the accelerator type
-        # resource, for example, nvidia-tesla-k80.
+        # expose to this instance. See Compute Engine AcceleratorTypesExamples * https://
+        # www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
+        # acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/
+        # acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If
+        # you are using the Cloud Dataproc Auto Zone Placement feature, you must use the
+        # short name of the accelerator type resource, for example, nvidia-tesla-k80.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -86,6 +85,156 @@ module Google
         end
       end
       
+      # Autoscaling Policy config associated with the cluster.
+      class AutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The autoscaling policy used by the cluster.Only resource names
+        # including projectid and location (region) are valid. Examples:
+        # https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[
+        # dataproc_region]/autoscalingPolicies/[policy_id]
+        # projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[
+        # policy_id]Note that the policy must be in the same project and Cloud Dataproc
+        # region.
+        # Corresponds to the JSON property `policyUri`
+        # @return [String]
+        attr_accessor :policy_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
+        end
+      end
+      
+      # Describes an autoscaling policy for Dataproc cluster autoscaler.
+      class AutoscalingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Basic algorithm for autoscaling.
+        # Corresponds to the JSON property `basicAlgorithm`
+        # @return [Google::Apis::DataprocV1beta2::BasicAutoscalingAlgorithm]
+        attr_accessor :basic_algorithm
+      
+        # Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (
+        # 0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or
+        # hyphen. Must consist of between 3 and 50 characters.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The "resource name" of the policy, as described in https://cloud.
+        # google.com/apis/design/resource_names of the form projects/`project_id`/
+        # regions/`region`/autoscalingPolicies/`policy_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for the size bounds of an instance group, including its
+        # proportional size to other groups.
+        # Corresponds to the JSON property `secondaryWorkerConfig`
+        # @return [Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig]
+        attr_accessor :secondary_worker_config
+      
+        # Configuration for the size bounds of an instance group, including its
+        # proportional size to other groups.
+        # Corresponds to the JSON property `workerConfig`
+        # @return [Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig]
+        attr_accessor :worker_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_algorithm = args[:basic_algorithm] if args.key?(:basic_algorithm)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
+          @worker_config = args[:worker_config] if args.key?(:worker_config)
+        end
+      end
+      
+      # Basic algorithm for autoscaling.
+      class BasicAutoscalingAlgorithm
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Cooldown period in between scaling. Note that a cooldown period
+        # begins after a scaling operation has completed.Default: 120s.
+        # Corresponds to the JSON property `cooldownPeriod`
+        # @return [String]
+        attr_accessor :cooldown_period
+      
+        # Basic autoscaling configurations for YARN.
+        # Corresponds to the JSON property `yarnConfig`
+        # @return [Google::Apis::DataprocV1beta2::BasicYarnAutoscalingConfig]
+        attr_accessor :yarn_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cooldown_period = args[:cooldown_period] if args.key?(:cooldown_period)
+          @yarn_config = args[:yarn_config] if args.key?(:yarn_config)
+        end
+      end
+      
+      # Basic autoscaling configurations for YARN.
+      class BasicYarnAutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timeout used during an autoscaling event (cluster update) between 0
+        # seconds (no graceful decommission) and 1 day.Default: 0s.
+        # Corresponds to the JSON property `gracefulDecommissionTimeout`
+        # @return [String]
+        attr_accessor :graceful_decommission_timeout
+      
+        # Optional. Fraction of suggested decrease in workers to scale down by between 0
+        # and 1. Suggested decrease when scaling down is determined by the amount of
+        # average available memory since the last cooldown period.Default: 1.0.
+        # Corresponds to the JSON property `scaleDownFactor`
+        # @return [Float]
+        attr_accessor :scale_down_factor
+      
+        # Optional. Minimum workers as a fraction of the current cluster size to to
+        # scale down by between 0 and 1.Default: 0.0.
+        # Corresponds to the JSON property `scaleDownMinWorkerFraction`
+        # @return [Float]
+        attr_accessor :scale_down_min_worker_fraction
+      
+        # Required. Fraction of suggested increase in workers to scale up by between 0
+        # and 1. Suggested increase when scaling up is determined by the amount of
+        # average pending memory since the last cooldown period.
+        # Corresponds to the JSON property `scaleUpFactor`
+        # @return [Float]
+        attr_accessor :scale_up_factor
+      
+        # Optional. Minimum workers as a fraction of the current cluster size to to
+        # scale up by between 0 and 1.Default: 0.0.
+        # Corresponds to the JSON property `scaleUpMinWorkerFraction`
+        # @return [Float]
+        attr_accessor :scale_up_min_worker_fraction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
+          @scale_down_factor = args[:scale_down_factor] if args.key?(:scale_down_factor)
+          @scale_down_min_worker_fraction = args[:scale_down_min_worker_fraction] if args.key?(:scale_down_min_worker_fraction)
+          @scale_up_factor = args[:scale_up_factor] if args.key?(:scale_up_factor)
+          @scale_up_min_worker_fraction = args[:scale_up_min_worker_fraction] if args.key?(:scale_up_min_worker_fraction)
+        end
+      end
+      
       # Associates members with a role.
       class Binding
         include Google::Apis::Core::Hashable
@@ -110,8 +259,8 @@ module Google
         # For example, my-other-app@appspot.gserviceaccount.com.
         # group:`emailid`: An email address that represents a Google group.  For example,
         # admins@example.com.
-        # domain:`domain`: A Google Apps domain name that represents all the  users of
-        # that domain. For example, google.com or example.com.
+        # domain:`domain`: The G Suite domain (primary) that represents all the  users
+        # of that domain. For example, google.com or example.com.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -221,6 +370,11 @@ module Google
       class ClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Autoscaling Policy config associated with the cluster.
+        # Corresponds to the JSON property `autoscalingConfig`
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingConfig]
+        attr_accessor :autoscaling_config
+      
         # Optional. A Cloud Storage staging bucket used for sharing generated SSH keys
         # and config. If you do not specify a staging bucket, Cloud Dataproc will
         # determine an appropriate Cloud Storage location (US, ASIA, or EU) for your
@@ -291,6 +445,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
@@ -940,6 +1095,46 @@ module Google
         end
       end
       
+      # Configuration for the size bounds of an instance group, including its
+      # proportional size to other groups.
+      class InstanceGroupAutoscalingPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum number of instances for this group. Must be >= min_instances.
+        # Corresponds to the JSON property `maxInstances`
+        # @return [Fixnum]
+        attr_accessor :max_instances
+      
+        # Optional. Minimum number of instances for this group.Default for primary
+        # workers is 2, default for secondary workers is 0.
+        # Corresponds to the JSON property `minInstances`
+        # @return [Fixnum]
+        attr_accessor :min_instances
+      
+        # Optional. Weight for instance group. Determines fraction of total workers in
+        # cluster that will be composed of instances from this instance group (e.g. if
+        # primary workers have weight 2 and secondary workers have weight 1, then the
+        # cluster should have approximately 2 primary workers to each secondary worker.
+        # Cluster may not reach these exact weights if constrained by min/max bounds or
+        # other autoscaling configurations.Default 1. Note that all groups have equal an
+        # equal weight by default, so the cluster will attempt to maintain an equal
+        # number of workers in each group within configured size bounds per group.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_instances = args[:max_instances] if args.key?(:max_instances)
+          @min_instances = args[:min_instances] if args.key?(:min_instances)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
       # Optional. The config settings for Compute Engine resources in an instance
       # group, such as a master or worker group.
       class InstanceGroupConfig
@@ -1240,11 +1435,10 @@ module Google
       class JobReference
         include Google::Apis::Core::Hashable
       
-        # Optional. The job ID, which must be unique within the project. The job ID is
-        # generated by the server upon job submission or provided by the user as a means
-        # to perform retries without creating duplicate jobs. The ID must contain only
-        # letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The
-        # maximum length is 100 characters.
+        # Optional. The job ID, which must be unique within the project.The ID must
+        # contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-)
+        # . The maximum length is 100 characters.If not specified by the caller, the job
+        # ID will be provided by the server.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -1359,6 +1553,32 @@ module Google
           @auto_delete_time = args[:auto_delete_time] if args.key?(:auto_delete_time)
           @auto_delete_ttl = args[:auto_delete_ttl] if args.key?(:auto_delete_ttl)
           @idle_delete_ttl = args[:idle_delete_ttl] if args.key?(:idle_delete_ttl)
+        end
+      end
+      
+      # A response to a request to list autoscaling policies in a project.
+      class ListAutoscalingPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This token is included in the response if there are more results
+        # to fetch.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Autoscaling policies list.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::DataprocV1beta2::AutoscalingPolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
         end
       end
       

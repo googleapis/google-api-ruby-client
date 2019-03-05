@@ -34,6 +34,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicAutoscalingAlgorithm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicYarnAutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupAutoscalingPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +227,12 @@ module Google
       end
       
       class LifecycleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAutoscalingPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -417,6 +453,47 @@ module Google
         end
       end
       
+      class AutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_uri, as: 'policyUri'
+        end
+      end
+      
+      class AutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_algorithm, as: 'basicAlgorithm', class: Google::Apis::DataprocV1beta2::BasicAutoscalingAlgorithm, decorator: Google::Apis::DataprocV1beta2::BasicAutoscalingAlgorithm::Representation
+      
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig::Representation
+      
+          property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupAutoscalingPolicyConfig::Representation
+      
+        end
+      end
+      
+      class BasicAutoscalingAlgorithm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cooldown_period, as: 'cooldownPeriod'
+          property :yarn_config, as: 'yarnConfig', class: Google::Apis::DataprocV1beta2::BasicYarnAutoscalingConfig, decorator: Google::Apis::DataprocV1beta2::BasicYarnAutoscalingConfig::Representation
+      
+        end
+      end
+      
+      class BasicYarnAutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
+          property :scale_down_factor, as: 'scaleDownFactor'
+          property :scale_down_min_worker_fraction, as: 'scaleDownMinWorkerFraction'
+          property :scale_up_factor, as: 'scaleUpFactor'
+          property :scale_up_min_worker_fraction, as: 'scaleUpMinWorkerFraction'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -454,6 +531,8 @@ module Google
       class ClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::DataprocV1beta2::AutoscalingConfig, decorator: Google::Apis::DataprocV1beta2::AutoscalingConfig::Representation
+      
           property :config_bucket, as: 'configBucket'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1beta2::EncryptionConfig, decorator: Google::Apis::DataprocV1beta2::EncryptionConfig::Representation
       
@@ -630,6 +709,15 @@ module Google
         end
       end
       
+      class InstanceGroupAutoscalingPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_instances, as: 'maxInstances'
+          property :min_instances, as: 'minInstances'
+          property :weight, as: 'weight'
+        end
+      end
+      
       class InstanceGroupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -734,6 +822,15 @@ module Google
           property :auto_delete_time, as: 'autoDeleteTime'
           property :auto_delete_ttl, as: 'autoDeleteTtl'
           property :idle_delete_ttl, as: 'idleDeleteTtl'
+        end
+      end
+      
+      class ListAutoscalingPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :policies, as: 'policies', class: Google::Apis::DataprocV1beta2::AutoscalingPolicy, decorator: Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+      
         end
       end
       

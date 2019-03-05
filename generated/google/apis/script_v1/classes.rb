@@ -533,11 +533,6 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # User-facing name for the user executing the script.
-        # Corresponds to the JSON property `executingUser`
-        # @return [String]
-        attr_accessor :executing_user
-      
         # Name of the function the started the execution.
         # Corresponds to the JSON property `functionName`
         # @return [String]
@@ -575,7 +570,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
-          @executing_user = args[:executing_user] if args.key?(:executing_user)
           @function_name = args[:function_name] if args.key?(:function_name)
           @process_status = args[:process_status] if args.key?(:process_status)
           @process_type = args[:process_type] if args.key?(:process_type)

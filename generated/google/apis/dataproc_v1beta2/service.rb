@@ -47,6 +47,286 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates new autoscaling policy.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`.
+        # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_autoscaling_policy(parent, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.request_object = autoscaling_policy_object
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an autoscaling policy. It is an error to delete an autoscaling policy
+        # that is in use by one or more clusters.
+        # @param [String] name
+        #   Required. The "resource name" of the autoscaling policy, as described in https:
+        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
+        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves autoscaling policy.
+        # @param [String] name
+        #   Required. The "resource name" of the autoscaling policy, as described in https:
+        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
+        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_autoscaling_policy_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists autoscaling policies in the project.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in each response.
+        # @param [String] page_token
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_autoscaling_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DataprocV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_autoscaling_policy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a
+        # NOT_FOUND error.Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DataprocV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_autoscaling_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates (replaces) autoscaling policy.Disabled check for update_mask, because
+        # all updates will be full replacements.
+        # @param [String] name
+        #   Output only. The "resource name" of the policy, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_autoscaling_policy(name, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.request_object = autoscaling_policy_object
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates new workflow template.
         # @param [String] parent
         #   Required. The "resource name" of the region, as described in https://cloud.
@@ -430,6 +710,289 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates new autoscaling policy.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`.
+        # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_region_autoscaling_policy(parent, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.request_object = autoscaling_policy_object
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an autoscaling policy. It is an error to delete an autoscaling policy
+        # that is in use by one or more clusters.
+        # @param [String] name
+        #   Required. The "resource name" of the autoscaling policy, as described in https:
+        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
+        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_region_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves autoscaling policy.
+        # @param [String] name
+        #   Required. The "resource name" of the autoscaling policy, as described in https:
+        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
+        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_region_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DataprocV1beta2::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_autoscaling_policy_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists autoscaling policies in the project.
+        # @param [String] parent
+        #   Required. The "resource name" of the region, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in each response.
+        # @param [String] page_token
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_region_autoscaling_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command.response_representation = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DataprocV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_region_autoscaling_policy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a
+        # NOT_FOUND error.Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DataprocV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_region_autoscaling_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates (replaces) autoscaling policy.Disabled check for update_mask, because
+        # all updates will be full replacements.
+        # @param [String] name
+        #   Output only. The "resource name" of the policy, as described in https://cloud.
+        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   regions/`region`/autoscalingPolicies/`policy_id`.
+        # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::AutoscalingPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::AutoscalingPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_region_autoscaling_policy(name, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.request_object = autoscaling_policy_object
+          command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a cluster in a project.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
@@ -759,6 +1322,10 @@ module Google
         #   <tr>
         #   <td>config.lifecycle_config.idle_delete_ttl</td><td>Update Idle TTL duration</
         #   td>
+        #   </tr>
+        #   <tr>
+        #   <td>config.autoscaling_config.policy_uri</td><td>Use, stop using, or change
+        #   autoscaling policies</td>
         #   </tr>
         #   </table>
         # @param [String] fields

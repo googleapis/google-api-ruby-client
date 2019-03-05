@@ -26,8 +26,8 @@ module Google
       class BatchDeletePhotosRequest
         include Google::Apis::Core::Hashable
       
-        # Required. IDs of the Photos. For HTTP
-        # GET requests, the URL query parameter should be
+        # Required. IDs of the Photos. HTTP
+        # GET requests require the following syntax for the URL query parameter:
         # `photoIds=<id1>&photoIds=<id2>&...`.
         # Corresponds to the JSON property `photoIds`
         # @return [Array<String>]
@@ -235,9 +235,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of photos. The maximum number of items returned is based on the
+        # List of photos. The
         # pageSize field
-        # in the request.
+        # in the request determines the number of items returned.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::StreetviewpublishV1::Photo>]
         attr_accessor :photos
@@ -377,7 +377,7 @@ module Google
         attr_accessor :download_url
       
         # Output only. Status in Google Maps, whether this photo was published, or
-        # rejected for a possibly specified reason.
+        # rejected.
         # Corresponds to the JSON property `mapsPublishStatus`
         # @return [String]
         attr_accessor :maps_publish_status
@@ -721,7 +721,7 @@ module Google
       
         # Mask that identifies fields on the photo metadata to update.
         # If not present, the old Photo
-        # metadata will be entirely replaced with the
+        # metadata is entirely replaced with the
         # new Photo metadata in this request.
         # The update fails if invalid fields are specified. Multiple fields can be
         # specified in a comma-delimited list.
@@ -734,13 +734,13 @@ module Google
         # * `pose.altitude`
         # * `connections`
         # * `places`
-        # <aside class="note"><b>Note:</b> Repeated fields in
+        # <aside class="note"><b>Note:</b> When
         # updateMask
-        # mean the entire set of repeated values will be replaced with the new
-        # contents. For example, if
+        # contains repeated fields, the entire set of repeated values get replaced
+        # with the new contents. For example, if
         # updateMask
         # contains `connections` and `UpdatePhotoRequest.photo.connections` is empty,
-        # all connections will be removed.</aside>
+        # all connections are removed.</aside>
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask

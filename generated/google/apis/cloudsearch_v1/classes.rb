@@ -147,9 +147,10 @@ module Google
         end
       end
       
-      # Datasource is a logical namespace for items to be indexed.
-      # All items must belong to a datasource.  This is the prerequisite before
-      # items can be indexed into Cloud Search.
+      # Frontend protos implement autoconverters for this message type. If you add
+      # fields to this proto, please add corresponding fields to the frontend proto
+      # with the same names.
+      # LINT.IfChange
       class DataSource
         include Google::Apis::Core::Hashable
       
@@ -4764,9 +4765,10 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
       
-        # Datasource is a logical namespace for items to be indexed.
-        # All items must belong to a datasource.  This is the prerequisite before
-        # items can be indexed into Cloud Search.
+        # Frontend protos implement autoconverters for this message type. If you add
+        # fields to this proto, please add corresponding fields to the frontend proto
+        # with the same names.
+        # LINT.IfChange
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CloudsearchV1::DataSource]
         attr_accessor :source

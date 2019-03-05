@@ -354,7 +354,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
-          property :executing_user, as: 'executingUser'
           property :function_name, as: 'functionName'
           property :process_status, as: 'processStatus'
           property :process_type, as: 'processType'

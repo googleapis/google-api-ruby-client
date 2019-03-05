@@ -1217,7 +1217,8 @@ module Google
         # @return [String]
         attr_accessor :department
       
-        # The domain name associated with the organization; for example, `google.com`.
+        # The domain name associated with the organization; for example,
+        # `google.com`.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -1674,8 +1675,8 @@ module Google
       class PhoneNumber
         include Google::Apis::Core::Hashable
       
-        # The read-only canonicalized [ITU-T E.164](https://law.resource.org/pub/us/cfr/
-        # ibr/004/itu-t.E.164.1.2008.pdf)
+        # The read-only canonicalized [ITU-T
+        # E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
         # form of the phone number.
         # Corresponds to the JSON property `canonicalForm`
         # @return [String]

@@ -872,6 +872,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_version, as: 'imageVersion'
+          collection :optional_components, as: 'optionalComponents'
           hash :properties, as: 'properties'
         end
       end

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/apps-script/api/
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20190131'
+      REVISION = '20190303'
 
       # Read, compose, send, and permanently delete all your email from Gmail
       AUTH_SCOPE = 'https://mail.google.com/'
