@@ -32,7 +32,7 @@ module Google
           version = java.lang.System.getProperty('os.version')
           "#{name}/#{version}"
         else
-          `uname -sr`.sub(' ', '/')
+          `uname -sr`.sub(' ', '/').strip
         end
       rescue Exception
         RUBY_PLATFORM
