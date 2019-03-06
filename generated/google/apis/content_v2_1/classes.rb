@@ -594,7 +594,7 @@ module Google
         attr_accessor :country
       
         # State (or province) is which the tax is applicable, described by its location
-        # id (also called criteria id).
+        # ID (also called criteria ID).
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
         attr_accessor :location_id
@@ -3639,11 +3639,6 @@ module Google
       class OrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Deprecated.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
         # Full name of the customer.
         # Corresponds to the JSON property `fullName`
         # @return [String]
@@ -3660,7 +3655,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @email = args[:email] if args.key?(:email)
           @full_name = args[:full_name] if args.key?(:full_name)
           @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
         end
@@ -3682,8 +3676,9 @@ module Google
         # @return [String]
         attr_accessor :last_updated_timestamp
       
-        # Email address that can be used for marketing purposes. This field is only
-        # filled when explicitMarketingPreference is equal to 'granted'.
+        # Email address that can be used for marketing purposes. The field may be empty
+        # even if explicitMarketingPreference is 'granted'. This happens when retrieving
+        # an old order from the customer who deleted his account.
         # Corresponds to the JSON property `marketingEmailAddress`
         # @return [String]
         attr_accessor :marketing_email_address
@@ -3913,7 +3908,7 @@ module Google
       
         # Variant attributes for the item. These are dimensions of the product, such as
         # color, gender, material, pattern, and size. You can find a comprehensive list
-        # of variant attributes <a href="
+        # of variant attributes here.
         # Corresponds to the JSON property `variantAttributes`
         # @return [Array<Google::Apis::ContentV2_1::OrderLineItemProductVariantAttribute>]
         attr_accessor :variant_attributes
@@ -4342,12 +4337,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Merchant-provided id of the order.
+        # Merchant-provided ID of the order.
         # Corresponds to the JSON property `merchantOrderId`
         # @return [String]
         attr_accessor :merchant_order_id
       
-        # The id of the order.
+        # The ID of the order.
         # Corresponds to the JSON property `orderId`
         # @return [String]
         attr_accessor :order_id
@@ -6847,9 +6842,9 @@ module Google
         # @return [String]
         attr_accessor :gtin
       
-        # The REST id of the product. Content API methods that operate on products take
+        # The REST ID of the product. Content API methods that operate on products take
         # this as their productId parameter.
-        # The REST id for a product is of the form channel:contentLanguage:targetCountry:
+        # The REST ID for a product is of the form channel:contentLanguage:targetCountry:
         # offerId.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -6952,7 +6947,7 @@ module Google
         # stripped and multiple whitespaces are replaced by a single whitespace upon
         # submission. Only valid unicode characters are accepted. See the products feed
         # specification for details.
-        # Note: Content API methods that operate on products take the REST id of the
+        # Note: Content API methods that operate on products take the REST ID of the
         # product, not this identifier.
         # Corresponds to the JSON property `offerId`
         # @return [String]
@@ -7198,7 +7193,7 @@ module Google
         # @return [String]
         attr_accessor :location_group_name
       
-        # The numeric id of a location that the shipping rate applies to as defined in
+        # The numeric ID of a location that the shipping rate applies to as defined in
         # the AdWords API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
@@ -7333,7 +7328,7 @@ module Google
         # @return [String]
         attr_accessor :link
       
-        # The id of the product for which status is reported.
+        # The ID of the product for which status is reported.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -7456,7 +7451,7 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The numeric id of a location that the tax rate applies to as defined in the
+        # The numeric ID of a location that the tax rate applies to as defined in the
         # AdWords API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
@@ -7987,7 +7982,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # The id (name) of the region.
+        # The ID (name) of the region.
         # Corresponds to the JSON property `regionId`
         # @return [String]
         attr_accessor :region_id
@@ -8675,11 +8670,6 @@ module Google
       class TestOrder
         include Google::Apis::Core::Hashable
       
-        # The details of the customer who placed the order.
-        # Corresponds to the JSON property `customer`
-        # @return [Google::Apis::ContentV2_1::TestOrderCustomer]
-        attr_accessor :customer
-      
         # Whether the orderinvoices service should support this order.
         # Corresponds to the JSON property `enableOrderinvoices`
         # @return [Boolean]
@@ -8713,6 +8703,11 @@ module Google
         # @return [String]
         attr_accessor :predefined_delivery_address
       
+        # Email address of the customer.
+        # Corresponds to the JSON property `predefinedEmail`
+        # @return [String]
+        attr_accessor :predefined_email
+      
         # Promotions associated with the order.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotion>]
@@ -8736,74 +8731,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
           @enable_orderinvoices = args[:enable_orderinvoices] if args.key?(:enable_orderinvoices)
           @kind = args[:kind] if args.key?(:kind)
           @line_items = args[:line_items] if args.key?(:line_items)
           @notification_mode = args[:notification_mode] if args.key?(:notification_mode)
           @predefined_billing_address = args[:predefined_billing_address] if args.key?(:predefined_billing_address)
           @predefined_delivery_address = args[:predefined_delivery_address] if args.key?(:predefined_delivery_address)
+          @predefined_email = args[:predefined_email] if args.key?(:predefined_email)
           @promotions = args[:promotions] if args.key?(:promotions)
           @shipping_cost = args[:shipping_cost] if args.key?(:shipping_cost)
           @shipping_option = args[:shipping_option] if args.key?(:shipping_option)
-        end
-      end
-      
-      # 
-      class TestOrderCustomer
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # Full name of the customer.
-        # Corresponds to the JSON property `fullName`
-        # @return [String]
-        attr_accessor :full_name
-      
-        # Customer's marketing preferences.
-        # Corresponds to the JSON property `marketingRightsInfo`
-        # @return [Google::Apis::ContentV2_1::TestOrderCustomerMarketingRightsInfo]
-        attr_accessor :marketing_rights_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @full_name = args[:full_name] if args.key?(:full_name)
-          @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
-        end
-      end
-      
-      # 
-      class TestOrderCustomerMarketingRightsInfo
-        include Google::Apis::Core::Hashable
-      
-        # Last know user use selection regards marketing preferences. In certain cases
-        # selection might not be known, so this field would be empty.
-        # Corresponds to the JSON property `explicitMarketingPreference`
-        # @return [String]
-        attr_accessor :explicit_marketing_preference
-      
-        # Timestamp when last time marketing preference was updated. Could be empty, if
-        # user wasn't offered a selection yet.
-        # Corresponds to the JSON property `lastUpdatedTimestamp`
-        # @return [String]
-        attr_accessor :last_updated_timestamp
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
-          @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
         end
       end
       

@@ -73,10 +73,11 @@ module Google
         # @return [Google::Apis::CloudassetV1beta1::Policy]
         attr_accessor :iam_policy
       
-        # The full name of the asset. For example: `//compute.googleapis.com/projects/
-        # my_project_123/zones/zone1/instances/instance1`.
-        # See [Resource Names](https://cloud.google.com/apis/design/resource_names#
-        # full_resource_name)
+        # The full name of the asset. For example:
+        # `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
+        # instance1`.
+        # See [Resource
+        # Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
         # for more information.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -259,7 +260,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -626,12 +627,13 @@ module Google
         attr_accessor :discovery_name
       
         # The full name of the immediate parent of this resource. See
-        # [Resource Names](https://cloud.google.com/apis/design/resource_names#
-        # full_resource_name)
+        # [Resource
+        # Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
         # for more information.
         # For GCP assets, it is the parent resource defined in the [Cloud IAM policy
         # hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
-        # For example: `"//cloudresourcemanager.googleapis.com/projects/my_project_123"`.
+        # For example:
+        # `"//cloudresourcemanager.googleapis.com/projects/my_project_123"`.
         # For third-party assets, it is up to the users to define.
         # Corresponds to the JSON property `parent`
         # @return [String]

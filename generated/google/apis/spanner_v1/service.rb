@@ -1129,6 +1129,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Executes a batch of SQL DML statements. This method allows many statements
+        # to be run with lower latency than submitting them sequentially with
+        # ExecuteSql.
+        # Statements are executed in order, sequentially.
+        # ExecuteBatchDmlResponse will contain a
+        # ResultSet for each DML statement that has successfully executed. If a
+        # statement fails, its error status will be returned as part of the
+        # ExecuteBatchDmlResponse. Execution will
+        # stop at the first failed statement; the remaining statements will not run.
+        # ExecuteBatchDml is expected to return an OK status with a response even if
+        # there was an error while processing one of the DML statements. Clients must
+        # inspect response.status to determine if there were any errors while
+        # processing the request.
+        # See more details in
+        # ExecuteBatchDmlRequest and
+        # ExecuteBatchDmlResponse.
+        # @param [String] session
+        #   Required. The session in which the DML statements should be performed.
+        # @param [Google::Apis::SpannerV1::ExecuteBatchDmlRequest] execute_batch_dml_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ExecuteBatchDmlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ExecuteBatchDmlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_session_batch_dml(session, execute_batch_dml_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:executeBatchDml', options)
+          command.request_representation = Google::Apis::SpannerV1::ExecuteBatchDmlRequest::Representation
+          command.request_object = execute_batch_dml_request_object
+          command.response_representation = Google::Apis::SpannerV1::ExecuteBatchDmlResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ExecuteBatchDmlResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Executes an SQL statement, returning all results in a single reply. This
         # method cannot be used to return a result set larger than 10 MiB;
         # if the query yields more data than that, the query fails with

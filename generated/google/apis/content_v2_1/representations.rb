@@ -1330,18 +1330,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestOrderCustomer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestOrderCustomerMarketingRightsInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TestOrderLineItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2433,7 +2421,6 @@ module Google
       class OrderCustomer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
           property :full_name, as: 'fullName'
           property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2_1::OrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2_1::OrderCustomerMarketingRightsInfo::Representation
       
@@ -3832,8 +3819,6 @@ module Google
       class TestOrder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer', class: Google::Apis::ContentV2_1::TestOrderCustomer, decorator: Google::Apis::ContentV2_1::TestOrderCustomer::Representation
-      
           property :enable_orderinvoices, as: 'enableOrderinvoices'
           property :kind, as: 'kind'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2_1::TestOrderLineItem, decorator: Google::Apis::ContentV2_1::TestOrderLineItem::Representation
@@ -3841,29 +3826,12 @@ module Google
           property :notification_mode, as: 'notificationMode'
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
+          property :predefined_email, as: 'predefinedEmail'
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2_1::OrderPromotion, decorator: Google::Apis::ContentV2_1::OrderPromotion::Representation
       
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :shipping_option, as: 'shippingOption'
-        end
-      end
-      
-      class TestOrderCustomer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
-          property :full_name, as: 'fullName'
-          property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2_1::TestOrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2_1::TestOrderCustomerMarketingRightsInfo::Representation
-      
-        end
-      end
-      
-      class TestOrderCustomerMarketingRightsInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :explicit_marketing_preference, as: 'explicitMarketingPreference'
-          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
         end
       end
       

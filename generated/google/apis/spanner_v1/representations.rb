@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteBatchDmlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteBatchDmlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecuteSqlRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Statement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +520,27 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExecuteBatchDmlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :seqno, :numeric_string => true, as: 'seqno'
+          collection :statements, as: 'statements', class: Google::Apis::SpannerV1::Statement, decorator: Google::Apis::SpannerV1::Statement::Representation
+      
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+      
+        end
+      end
+      
+      class ExecuteBatchDmlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :result_sets, as: 'resultSets', class: Google::Apis::SpannerV1::ResultSet, decorator: Google::Apis::SpannerV1::ResultSet::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
+      
         end
       end
       
@@ -876,6 +915,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           hash :subqueries, as: 'subqueries'
+        end
+      end
+      
+      class Statement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
+      
+          hash :params, as: 'params'
+          property :sql, as: 'sql'
         end
       end
       

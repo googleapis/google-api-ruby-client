@@ -729,7 +729,7 @@ module Google
         attr_accessor :country
       
         # State (or province) is which the tax is applicable, described by its location
-        # id (also called criteria id).
+        # ID (also called criteria ID).
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
         attr_accessor :location_id
@@ -4314,8 +4314,9 @@ module Google
         # @return [String]
         attr_accessor :last_updated_timestamp
       
-        # Email address that can be used for marketing purposes. This field is only
-        # filled when explicitMarketingPreference is equal to 'granted'.
+        # Email address that can be used for marketing purposes. The field may be empty
+        # even if explicitMarketingPreference is 'granted'. This happens when retrieving
+        # an old order from the customer who deleted his account.
         # Corresponds to the JSON property `marketingEmailAddress`
         # @return [String]
         attr_accessor :marketing_email_address
@@ -4653,7 +4654,7 @@ module Google
       
         # Variant attributes for the item. These are dimensions of the product, such as
         # color, gender, material, pattern, and size. You can find a comprehensive list
-        # of variant attributes <a href="
+        # of variant attributes here.
         # Corresponds to the JSON property `variantAttributes`
         # @return [Array<Google::Apis::ContentV2::OrderLineItemProductVariantAttribute>]
         attr_accessor :variant_attributes
@@ -5033,12 +5034,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Merchant-provided id of the order.
+        # Merchant-provided ID of the order.
         # Corresponds to the JSON property `merchantOrderId`
         # @return [String]
         attr_accessor :merchant_order_id
       
-        # The id of the order.
+        # The ID of the order.
         # Corresponds to the JSON property `orderId`
         # @return [String]
         attr_accessor :order_id
@@ -8681,9 +8682,9 @@ module Google
         # @return [String]
         attr_accessor :gtin
       
-        # The REST id of the product. Content API methods that operate on products take
+        # The REST ID of the product. Content API methods that operate on products take
         # this as their productId parameter.
-        # The REST id for a product is of the form channel:contentLanguage:targetCountry:
+        # The REST ID for a product is of the form channel:contentLanguage:targetCountry:
         # offerId.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -8779,7 +8780,7 @@ module Google
         # stripped and multiple whitespaces are replaced by a single whitespace upon
         # submission. Only valid unicode characters are accepted. See the products feed
         # specification for details.
-        # Note: Content API methods that operate on products take the REST id of the
+        # Note: Content API methods that operate on products take the REST ID of the
         # product, not this identifier.
         # Corresponds to the JSON property `offerId`
         # @return [String]
@@ -9103,7 +9104,7 @@ module Google
         # @return [String]
         attr_accessor :location_group_name
       
-        # The numeric id of a location that the shipping rate applies to as defined in
+        # The numeric ID of a location that the shipping rate applies to as defined in
         # the AdWords API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
@@ -9249,7 +9250,7 @@ module Google
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
       
-        # The id of the product for which status is reported.
+        # The ID of the product for which status is reported.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -9298,7 +9299,7 @@ module Google
         # @return [String]
         attr_accessor :fetch_status
       
-        # The id of the data quality issue.
+        # The ID of the data quality issue.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -9454,7 +9455,7 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The numeric id of a location that the tax rate applies to as defined in the
+        # The numeric ID of a location that the tax rate applies to as defined in the
         # AdWords API.
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
@@ -10596,7 +10597,7 @@ module Google
       class TestOrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Deprecated.
+        # Email address of the customer.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email

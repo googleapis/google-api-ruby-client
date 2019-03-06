@@ -2033,12 +2033,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order using merchant order id.
+        # Retrieves an order using merchant order ID.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
         # @param [String] merchant_order_id
-        #   The merchant order id to be looked for.
+        #   The merchant order ID to be looked for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2809,7 +2809,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2844,7 +2844,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2993,7 +2993,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [Array<String>, String] destinations
         #   If set, only issues for the specified destinations are returned, otherwise
         #   only issues for the Shopping destination.
@@ -3115,7 +3115,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product for which to update the regional inventory.
+        #   The REST ID of the product for which to update the regional inventory.
         # @param [Google::Apis::ContentV2_1::RegionalInventory] regional_inventory_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

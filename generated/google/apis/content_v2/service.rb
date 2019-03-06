@@ -1270,7 +1270,7 @@ module Google
         #   The code of the store for which to update price and availability. Use online
         #   to update price and availability of an online product.
         # @param [String] product_id
-        #   The REST id of the product for which to update price and availability.
+        #   The REST ID of the product for which to update price and availability.
         # @param [Google::Apis::ContentV2::SetInventoryRequest] set_inventory_request_object
         # @param [Boolean] dry_run
         #   Flag to simulate a request like in a live environment. If set to true, dry-run
@@ -2544,12 +2544,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order using merchant order id.
+        # Retrieves an order using merchant order ID.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
         # @param [String] merchant_order_id
-        #   The merchant order id to be looked for.
+        #   The merchant order ID to be looked for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3424,7 +3424,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [Boolean] dry_run
         #   Flag to simulate a request like in a live environment. If set to true, dry-run
         #   mode checks the validity of the request and returns errors (if any).
@@ -3463,7 +3463,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3624,7 +3624,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] product_id
-        #   The REST id of the product.
+        #   The REST ID of the product.
         # @param [Array<String>, String] destinations
         #   If set, only issues for the specified destinations are returned, otherwise
         #   only issues for the Shopping destination.

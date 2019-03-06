@@ -236,9 +236,9 @@ module Google
         attr_accessor :create_time
       
         # [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        # Membership in the format: `groups/`group_id`/memberships/`member_id``, where
-        # group_id is the unique ID assigned to the Group to which Membership belongs
-        # to, and member_id is the unique ID assigned to the member
+        # Membership in the format: `groups/`group_id`/memberships/`member_id``,
+        # where group_id is the unique ID assigned to the Group to which Membership
+        # belongs to, and member_id is the unique ID assigned to the member
         # Must be left blank while creating a Membership.
         # Corresponds to the JSON property `name`
         # @return [String]

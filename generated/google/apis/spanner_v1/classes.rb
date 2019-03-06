@@ -830,6 +830,130 @@ module Google
         end
       end
       
+      # The request for ExecuteBatchDml
+      class ExecuteBatchDmlRequest
+        include Google::Apis::Core::Hashable
+      
+        # A per-transaction sequence number used to identify this request. This is
+        # used in the same space as the seqno in
+        # ExecuteSqlRequest. See more details
+        # in ExecuteSqlRequest.
+        # Corresponds to the JSON property `seqno`
+        # @return [Fixnum]
+        attr_accessor :seqno
+      
+        # The list of statements to execute in this batch. Statements are executed
+        # serially, such that the effects of statement i are visible to statement
+        # i+1. Each statement must be a DML statement. Execution will stop at the
+        # first failed statement; the remaining statements will not run.
+        # REQUIRES: statements_size() > 0.
+        # Corresponds to the JSON property `statements`
+        # @return [Array<Google::Apis::SpannerV1::Statement>]
+        attr_accessor :statements
+      
+        # This message is used to select the transaction in which a
+        # Read or
+        # ExecuteSql call runs.
+        # See TransactionOptions for more information about transactions.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::SpannerV1::TransactionSelector]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @seqno = args[:seqno] if args.key?(:seqno)
+          @statements = args[:statements] if args.key?(:statements)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # The response for ExecuteBatchDml. Contains a list
+      # of ResultSet, one for each DML statement that has successfully executed.
+      # If a statement fails, the error is returned as part of the response payload.
+      # Clients can determine whether all DML statements have run successfully, or if
+      # a statement failed, using one of the following approaches:
+      # 1. Check if 'status' field is OkStatus.
+      # 2. Check if result_sets_size() equals the number of statements in
+      # ExecuteBatchDmlRequest.
+      # Example 1: A request with 5 DML statements, all executed successfully.
+      # Result: A response with 5 ResultSets, one for each statement in the same
+      # order, and an OK status.
+      # Example 2: A request with 5 DML statements. The 3rd statement has a syntax
+      # error.
+      # Result: A response with 2 ResultSets, for the first 2 statements that
+      # run successfully, and a syntax error (INVALID_ARGUMENT) status. From
+      # result_set_size() client can determine that the 3rd statement has failed.
+      class ExecuteBatchDmlResponse
+        include Google::Apis::Core::Hashable
+      
+        # ResultSets, one for each statement in the request that ran successfully, in
+        # the same order as the statements in the request. Each ResultSet will
+        # not contain any rows. The ResultSetStats in each ResultSet will
+        # contain the number of rows modified by the statement.
+        # Only the first ResultSet in the response contains a valid
+        # ResultSetMetadata.
+        # Corresponds to the JSON property `resultSets`
+        # @return [Array<Google::Apis::SpannerV1::ResultSet>]
+        attr_accessor :result_sets
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SpannerV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result_sets = args[:result_sets] if args.key?(:result_sets)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # The request for ExecuteSql and
       # ExecuteStreamingSql.
       class ExecuteSqlRequest
@@ -2519,6 +2643,53 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @subqueries = args[:subqueries] if args.key?(:subqueries)
+        end
+      end
+      
+      # A single DML statement.
+      class Statement
+        include Google::Apis::Core::Hashable
+      
+        # It is not always possible for Cloud Spanner to infer the right SQL type
+        # from a JSON value.  For example, values of type `BYTES` and values
+        # of type `STRING` both appear in params as JSON strings.
+        # In these cases, `param_types` can be used to specify the exact
+        # SQL type for some or all of the SQL statement parameters. See the
+        # definition of Type for more information
+        # about SQL types.
+        # Corresponds to the JSON property `paramTypes`
+        # @return [Hash<String,Google::Apis::SpannerV1::Type>]
+        attr_accessor :param_types
+      
+        # The DML string can contain parameter placeholders. A parameter
+        # placeholder consists of `'@'` followed by the parameter
+        # name. Parameter names consist of any combination of letters,
+        # numbers, and underscores.
+        # Parameters can appear anywhere that a literal value is expected.  The
+        # same parameter name can be used more than once, for example:
+        # `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        # It is an error to execute an SQL statement with unbound parameters.
+        # Parameter values are specified using `params`, which is a JSON
+        # object whose keys are parameter names, and whose values are the
+        # corresponding parameter values.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        # Required. The DML string.
+        # Corresponds to the JSON property `sql`
+        # @return [String]
+        attr_accessor :sql
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @param_types = args[:param_types] if args.key?(:param_types)
+          @params = args[:params] if args.key?(:params)
+          @sql = args[:sql] if args.key?(:sql)
         end
       end
       
