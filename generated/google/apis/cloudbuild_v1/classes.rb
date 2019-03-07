@@ -615,6 +615,13 @@ module Google
         # @return [String]
         attr_accessor :filename
       
+        # GitHubEventsConfig describes the configuration of a trigger that creates a
+        # build whenever a GitHub event is received.
+        # This message is experimental.
+        # Corresponds to the JSON property `github`
+        # @return [Google::Apis::CloudbuildV1::GitHubEventsConfig]
+        attr_accessor :github
+      
         # Output only. Unique identifier of the trigger.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -663,6 +670,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @filename = args[:filename] if args.key?(:filename)
+          @github = args[:github] if args.key?(:github)
           @id = args[:id] if args.key?(:id)
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
           @included_files = args[:included_files] if args.key?(:included_files)
@@ -729,6 +737,20 @@ module Google
         end
       end
       
+      # A CheckSuiteFilter is a filter that indicates that we should build on all
+      # check suite events.
+      class CheckSuiteFilter
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -765,6 +787,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # GitHubEventsConfig describes the configuration of a trigger that creates a
+      # build whenever a GitHub event is received.
+      # This message is experimental.
+      class GitHubEventsConfig
+        include Google::Apis::Core::Hashable
+      
+        # A CheckSuiteFilter is a filter that indicates that we should build on all
+        # check suite events.
+        # Corresponds to the JSON property `checkSuite`
+        # @return [Google::Apis::CloudbuildV1::CheckSuiteFilter]
+        attr_accessor :check_suite
+      
+        # The installationID that emmits the GitHub event.
+        # Corresponds to the JSON property `installationId`
+        # @return [Fixnum]
+        attr_accessor :installation_id
+      
+        # Name of the repository.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Owner of the repository.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
+        # PullRequestFilter contains filter properties for matching GitHub Pull
+        # Requests.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::CloudbuildV1::PullRequestFilter]
+        attr_accessor :pull_request
+      
+        # Push contains filter properties for matching GitHub git pushes.
+        # Corresponds to the JSON property `push`
+        # @return [Google::Apis::CloudbuildV1::PushFilter]
+        attr_accessor :push
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_suite = args[:check_suite] if args.key?(:check_suite)
+          @installation_id = args[:installation_id] if args.key?(:installation_id)
+          @name = args[:name] if args.key?(:name)
+          @owner = args[:owner] if args.key?(:owner)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
+          @push = args[:push] if args.key?(:push)
         end
       end
       
@@ -876,14 +951,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -957,6 +1032,64 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # PullRequestFilter contains filter properties for matching GitHub Pull
+      # Requests.
+      class PullRequestFilter
+        include Google::Apis::Core::Hashable
+      
+        # Regex of branches to match.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Whether to block builds on a "/gcbrun" comment from a repository owner or
+        # collaborator.
+        # Corresponds to the JSON property `commentControl`
+        # @return [String]
+        attr_accessor :comment_control
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @comment_control = args[:comment_control] if args.key?(:comment_control)
+        end
+      end
+      
+      # Push contains filter properties for matching GitHub git pushes.
+      class PushFilter
+        include Google::Apis::Core::Hashable
+      
+        # Regexes of branches to match.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Regexes of tags to match.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @tag = args[:tag] if args.key?(:tag)
         end
       end
       
@@ -1168,14 +1301,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckSuiteFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitHubEventsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +137,18 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullRequestFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PushFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +335,8 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :filename, as: 'filename'
+          property :github, as: 'github', class: Google::Apis::CloudbuildV1::GitHubEventsConfig, decorator: Google::Apis::CloudbuildV1::GitHubEventsConfig::Representation
+      
           property :id, as: 'id'
           collection :ignored_files, as: 'ignoredFiles'
           collection :included_files, as: 'includedFiles'
@@ -342,6 +368,12 @@ module Google
         end
       end
       
+      class CheckSuiteFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -352,6 +384,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
+      
+        end
+      end
+      
+      class GitHubEventsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_suite, as: 'checkSuite', class: Google::Apis::CloudbuildV1::CheckSuiteFilter, decorator: Google::Apis::CloudbuildV1::CheckSuiteFilter::Representation
+      
+          property :installation_id, :numeric_string => true, as: 'installationId'
+          property :name, as: 'name'
+          property :owner, as: 'owner'
+          property :pull_request, as: 'pullRequest', class: Google::Apis::CloudbuildV1::PullRequestFilter, decorator: Google::Apis::CloudbuildV1::PullRequestFilter::Representation
+      
+          property :push, as: 'push', class: Google::Apis::CloudbuildV1::PushFilter, decorator: Google::Apis::CloudbuildV1::PushFilter::Representation
       
         end
       end
@@ -399,6 +446,22 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class PullRequestFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :comment_control, as: 'commentControl'
+        end
+      end
+      
+      class PushFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :tag, as: 'tag'
         end
       end
       

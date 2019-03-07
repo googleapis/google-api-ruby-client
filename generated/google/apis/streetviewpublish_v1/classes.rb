@@ -376,7 +376,7 @@ module Google
         # @return [String]
         attr_accessor :download_url
       
-        # Output only. Status in Google Maps, whether this photo was published, or
+        # Output only. Status in Google Maps, whether this photo was published or
         # rejected.
         # Corresponds to the JSON property `mapsPublishStatus`
         # @return [String]

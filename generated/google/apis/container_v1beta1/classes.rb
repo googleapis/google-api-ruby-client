@@ -103,34 +103,6 @@ module Google
         end
       end
       
-      # Configuration for returning group information from authenticators.
-      class AuthenticatorGroupsConfig
-        include Google::Apis::Core::Hashable
-      
-        # Whether this cluster should return group membership lookups
-        # during authentication using a group of security groups.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # The name of the security group-of-groups to be used. Only relevant
-        # if enabled = true.
-        # Corresponds to the JSON property `securityGroup`
-        # @return [String]
-        attr_accessor :security_group
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @security_group = args[:security_group] if args.key?(:security_group)
-        end
-      end
-      
       # AutoUpgradeOptions defines the set of options for the user to control how
       # the Auto Upgrades will proceed.
       class AutoUpgradeOptions
@@ -317,11 +289,6 @@ module Google
         # Corresponds to the JSON property `addonsConfig`
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
-      
-        # Configuration for returning group information from authenticators.
-        # Corresponds to the JSON property `authenticatorGroupsConfig`
-        # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
-        attr_accessor :authenticator_groups_config
       
         # ClusterAutoscaling contains global, per-cluster information
         # required by Cluster Autoscaler to automatically adjust
@@ -674,7 +641,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
-          @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)

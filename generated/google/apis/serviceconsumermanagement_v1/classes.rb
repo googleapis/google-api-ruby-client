@@ -198,8 +198,8 @@ module Google
       end
       
       # Configuration for an anthentication provider, including support for
-      # [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
-      # token-32).
+      # [JSON Web Token
+      # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
         include Google::Apis::Core::Hashable
       
@@ -243,15 +243,16 @@ module Google
         attr_accessor :issuer
       
         # URL of the provider's public key set to validate signature of the JWT. See
-        # [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#
+        # [OpenID
+        # Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#
         # ProviderMetadata).
         # Optional if the key set document:
         # - can be retrieved from
-        # [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.
-        # html
-        # of the issuer.
-        # - can be inferred from the email domain of the issuer (e.g. a Google service
-        # account).
+        # [OpenID
+        # Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+        # the issuer.
+        # - can be inferred from the email domain of the issuer (e.g. a Google
+        # service account).
         # Example: https://www.googleapis.com/oauth2/v1/certs
         # Corresponds to the JSON property `jwksUri`
         # @return [String]
@@ -272,8 +273,8 @@ module Google
       end
       
       # User-defined authentication requirements, including support for
-      # [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
-      # token-32).
+      # [JSON Web Token
+      # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthRequirement
         include Google::Apis::Core::Hashable
       
@@ -952,8 +953,8 @@ module Google
       class DocumentationRule
         include Google::Apis::Core::Hashable
       
-        # Deprecation description of the selected element(s). It can be provided if an
-        # element is marked as `deprecated`.
+        # Deprecation description of the selected element(s). It can be provided if
+        # an element is marked as `deprecated`.
         # Corresponds to the JSON property `deprecationDescription`
         # @return [String]
         attr_accessor :deprecation_description
@@ -1051,10 +1052,10 @@ module Google
         attr_accessor :name
       
         # The specification of an Internet routable address of API frontend that will
-        # handle requests to this [API Endpoint](https://cloud.google.com/apis/design/
-        # glossary).
-        # It should be either a valid IPv4 address or a fully-qualified domain name.
-        # For example, "8.8.8.8" or "myservice.appspot.com".
+        # handle requests to this [API
+        # Endpoint](https://cloud.google.com/apis/design/glossary). It should be
+        # either a valid IPv4 address or a fully-qualified domain name. For example,
+        # "8.8.8.8" or "myservice.appspot.com".
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -2482,9 +2483,8 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # The Markdown content of the page. You can use <code>&#40;== include `path` ==&#
-        # 41;</code>
-        # to include content from a Markdown file.
+        # The Markdown content of the page. You can use <code>&#40;== include `path`
+        # ==&#41;</code> to include content from a Markdown file.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

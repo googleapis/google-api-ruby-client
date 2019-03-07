@@ -81,7 +81,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a `WorkerPool` by its project ID and WorkerPool ID.
+        # Deletes a `WorkerPool` by its project ID and WorkerPool name.
         # This API is experimental.
         # @param [String] name
         #   The field will contain name of the resource requested, for example:

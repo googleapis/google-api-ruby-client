@@ -36,14 +36,18 @@ module Google
       
         # App Engine Routing.
         # For more information about services, versions, and instances see
-        # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
-        # overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](https://cloud.google.com/
-        # appengine/docs/python/microservices-on-app-engine),
-        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-        # standard/python/how-requests-are-routed), and
-        # [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-        # flexible/python/how-requests-are-routed).
+        # [An Overview of App
+        # Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+        # engine),
+        # [Microservices Architecture on Google App
+        # Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-
+        # engine),
+        # [App Engine Standard request
+        # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed),
+        # and [App Engine Flex request
+        # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `appEngineRouting`
         # @return [Google::Apis::CloudschedulerV1beta1::AppEngineRouting]
         attr_accessor :app_engine_routing
@@ -67,8 +71,8 @@ module Google
         # `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
         # modified `User-Agent`.
         # * `X-CloudScheduler`: This header will be set to true.
-        # If the job has an body, Cloud Scheduler sets the
-        # following headers:
+        # If the job has an body, Cloud Scheduler sets
+        # the following headers:
         # * `Content-Type`: By default, the `Content-Type` header is set to
         # `"application/octet-stream"`. The default can be overridden by explictly
         # setting `Content-Type` to a particular media type when the job is
@@ -116,14 +120,18 @@ module Google
       
       # App Engine Routing.
       # For more information about services, versions, and instances see
-      # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
-      # overview-of-app-engine),
-      # [Microservices Architecture on Google App Engine](https://cloud.google.com/
-      # appengine/docs/python/microservices-on-app-engine),
-      # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-      # standard/python/how-requests-are-routed), and
-      # [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-      # flexible/python/how-requests-are-routed).
+      # [An Overview of App
+      # Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+      # engine),
+      # [Microservices Architecture on Google App
+      # Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-
+      # engine),
+      # [App Engine Standard request
+      # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+      # are-routed),
+      # and [App Engine Flex request
+      # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+      # are-routed).
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
@@ -177,14 +185,16 @@ module Google
         # By default, the job is sent to an instance which is available when
         # the job is attempted.
         # Requests can only be sent to a specific instance if
-        # [manual scaling is used in App Engine Standard](https://cloud.google.com/
-        # appengine/docs/python/an-overview-of-app-engine?hl=en_US#
-        # scaling_types_and_instance_classes).
+        # [manual scaling is used in App Engine
+        # Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+        # engine?hl=en_US#scaling_types_and_instance_classes).
         # App Engine Flex does not support instances. For more information, see
-        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-        # standard/python/how-requests-are-routed) and
-        # [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-        # flexible/python/how-requests-are-routed).
+        # [App Engine Standard request
+        # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed)
+        # and [App Engine Flex request
+        # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -317,6 +327,8 @@ module Google
         # @return [Google::Apis::CloudschedulerV1beta1::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
       
+        # Optionally caller-specified in CreateJob or
+        # UpdateJob.
         # A human-readable description for the job. This string must not contain
         # more than 500 characters.
         # Corresponds to the JSON property `description`
@@ -338,13 +350,16 @@ module Google
         # @return [String]
         attr_accessor :last_attempt_time
       
+        # Optionally caller-specified in CreateJob, after
+        # which it becomes output only.
         # The job name. For example:
         # `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
         # For more information, see
-        # [Identifying projects](https://cloud.google.com/resource-manager/docs/
-        # creating-managing-projects#identifying_projects)
+        # [Identifying
+        # projects](https://cloud.google.com/resource-manager/docs/creating-managing-
+        # projects#identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the job's location.
         # The list of available locations can be obtained by calling
         # ListLocations.
@@ -369,8 +384,13 @@ module Google
         # @return [Google::Apis::CloudschedulerV1beta1::RetryConfig]
         attr_accessor :retry_config
       
-        # Required.
+        # Required, except when used with UpdateJob.
         # Describes the schedule on which the job will be executed.
+        # The schedule can be either of the following types:
+        # * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview)
+        # * English-like
+        # [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-
+        # schedules)
         # As a general rule, execution `n + 1` of a job will not begin
         # until execution `n` has finished. Cloud Scheduler will never
         # allow two simultaneously outstanding executions. For example,
@@ -383,10 +403,6 @@ module Google
         # the job will be tried a total of retry_count
         # times, with exponential backoff, until the next scheduled start
         # time.
-        # The schedule can be either of the following types:
-        # * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview)
-        # * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/
-        # cron-job-schedules)
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -744,8 +760,8 @@ module Google
       
         # The time limit for retrying a failed job, measured from time when an
         # execution was first attempted. If specified with
-        # retry_count, the job will be retried until both limits are
-        # reached.
+        # retry_count, the job will be retried until both
+        # limits are reached.
         # The default value for max_retry_duration is zero, which means retry
         # duration is unlimited.
         # Corresponds to the JSON property `maxRetryDuration`

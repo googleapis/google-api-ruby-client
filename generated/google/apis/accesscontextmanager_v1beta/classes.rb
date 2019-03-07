@@ -572,33 +572,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :resources
       
-        # GCP services that are subject to the Service Perimeter restrictions. May
-        # contain a list of services or a single wildcard "*". For example, if
+        # GCP services that are subject to the Service Perimeter restrictions. Must
+        # contain a list of services. For example, if
         # `storage.googleapis.com` is specified, access to the storage buckets
         # inside the perimeter must meet the perimeter's access restrictions.
-        # Wildcard means that unless explicitly specified by "unrestricted_services"
-        # list, any service is treated as restricted. One of the fields
-        # "restricted_services", "unrestricted_services" must contain a wildcard "*",
-        # otherwise the Service Perimeter specification is invalid. It also means
-        # that both field being empty is invalid as well. "restricted_services" can
-        # be empty if and only if "unrestricted_services" list contains a "*"
-        # wildcard.
         # Corresponds to the JSON property `restrictedServices`
         # @return [Array<String>]
         attr_accessor :restricted_services
       
-        # GCP services that are not subject to the Service Perimeter restrictions.
-        # May contain a list of services or a single wildcard "*". For example, if
-        # `logging.googleapis.com` is unrestricted, users can access logs inside the
-        # perimeter as if the perimeter doesn't exist, and it also means VMs inside
-        # the perimeter can access logs outside the perimeter.
+        # GCP services that are not subject to the Service Perimeter
+        # restrictions. Deprecated. Must be set to a single wildcard "*".
         # The wildcard means that unless explicitly specified by
-        # "restricted_services" list, any service is treated as unrestricted. One of
-        # the fields "restricted_services", "unrestricted_services" must contain a
-        # wildcard "*", otherwise the Service Perimeter specification is invalid. It
-        # also means that both field being empty is invalid as well.
-        # "unrestricted_services" can be empty if and only if "restricted_services"
-        # list contains a "*" wildcard.
+        # "restricted_services" list, any service is treated as unrestricted.
         # Corresponds to the JSON property `unrestrictedServices`
         # @return [Array<String>]
         attr_accessor :unrestricted_services
