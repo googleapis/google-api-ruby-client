@@ -1167,7 +1167,8 @@ module Google
       
         # The path to the page to run the check against. Will be combined with the host (
         # specified within the MonitoredResource) and port to construct the full URL.
-        # Optional (defaults to "/").
+        # Optional (defaults to "/"). If the provided path does not begin with "/", it
+        # will be prepended automatically.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path

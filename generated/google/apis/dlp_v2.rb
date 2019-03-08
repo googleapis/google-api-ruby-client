@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/dlp/docs/
     module DlpV2
       VERSION = 'V2'
-      REVISION = '20190226'
+      REVISION = '20190305'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -784,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Http2HealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3893,6 +3899,7 @@ module Google
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeV1::ConnectionDraining, decorator: Google::Apis::ComputeV1::ConnectionDraining::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_request_headers, as: 'customRequestHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -4751,6 +4758,18 @@ module Google
         end
       end
       
+      class Http2HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :proxy_header, as: 'proxyHeader'
+          property :request_path, as: 'requestPath'
+          property :response, as: 'response'
+        end
+      end
+      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4782,6 +4801,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :healthy_threshold, as: 'healthyThreshold'
+          property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeV1::Http2HealthCheck, decorator: Google::Apis::ComputeV1::Http2HealthCheck::Representation
+      
           property :http_health_check, as: 'httpHealthCheck', class: Google::Apis::ComputeV1::HttpHealthCheck, decorator: Google::Apis::ComputeV1::HttpHealthCheck::Representation
       
           property :https_health_check, as: 'httpsHealthCheck', class: Google::Apis::ComputeV1::HttpsHealthCheck, decorator: Google::Apis::ComputeV1::HttpsHealthCheck::Representation

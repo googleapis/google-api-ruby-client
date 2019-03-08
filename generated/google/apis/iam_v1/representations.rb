@@ -76,7 +76,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableServiceAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,7 +347,19 @@ module Google
         end
       end
       
+      class DisableServiceAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableServiceAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

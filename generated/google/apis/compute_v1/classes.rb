@@ -2292,6 +2292,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Headers that the HTTP/S load balancer should add to proxied requests.
+        # Corresponds to the JSON property `customRequestHeaders`
+        # @return [Array<String>]
+        attr_accessor :custom_request_headers
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -2431,6 +2436,7 @@ module Google
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -2903,8 +2909,8 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
         # example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -3603,11 +3609,12 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or
-        # DELETED. Operations which create a new resource using a DEPRECATED resource
-        # will return successfully, but with a warning indicating the deprecated
-        # resource and recommending its replacement. Operations which use OBSOLETE or
-        # DELETED resources will be rejected and result in an error.
+        # The deprecation state of this resource. This can be ACTIVE DEPRECATED,
+        # OBSOLETE, or DELETED. Operations which communicate the end of life date for an
+        # image, can use ACTIVE. Operations which create a new resource using a
+        # DEPRECATED resource will return successfully, but with a warning indicating
+        # the deprecated resource and recommending its replacement. Operations which use
+        # OBSOLETE or DELETED resources will be rejected and result in an error.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5905,6 +5912,62 @@ module Google
       end
       
       # 
+      class Http2HealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The value of the host header in the HTTP/2 health check request. If left empty
+        # (default value), the IP on behalf of which this health check is performed will
+        # be used.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The TCP port number for the health check request. The default value is 443.
+        # Valid values are 1 through 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies the type of proxy header to append before sending data to the
+        # backend, either NONE or PROXY_V1. The default is NONE.
+        # Corresponds to the JSON property `proxyHeader`
+        # @return [String]
+        attr_accessor :proxy_header
+      
+        # The request path of the HTTP/2 health check request. The default value is /.
+        # Corresponds to the JSON property `requestPath`
+        # @return [String]
+        attr_accessor :request_path
+      
+        # The string to match anywhere in the first 1024 bytes of the response body. If
+        # left empty (the default value), the status code determines health. The
+        # response data can only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @request_path = args[:request_path] if args.key?(:request_path)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # 
       class HttpHealthCheck
         include Google::Apis::Core::Hashable
       
@@ -6045,6 +6108,11 @@ module Google
         attr_accessor :healthy_threshold
       
         # 
+        # Corresponds to the JSON property `http2HealthCheck`
+        # @return [Google::Apis::ComputeV1::Http2HealthCheck]
+        attr_accessor :http2_health_check
+      
+        # 
         # Corresponds to the JSON property `httpHealthCheck`
         # @return [Google::Apis::ComputeV1::HttpHealthCheck]
         attr_accessor :http_health_check
@@ -6120,6 +6188,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
+          @http2_health_check = args[:http2_health_check] if args.key?(:http2_health_check)
           @http_health_check = args[:http_health_check] if args.key?(:http_health_check)
           @https_health_check = args[:https_health_check] if args.key?(:https_health_check)
           @id = args[:id] if args.key?(:id)
@@ -17766,7 +17835,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router.
+      # Status of a NAT contained in this router. Next tag: 9
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -21930,7 +21999,7 @@ module Google
         attr_accessor :description
       
         # [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules
-        # are created using compute.forwardingRules.insert and associated to a VPN
+        # are created using compute.forwardingRules.insert and associated with a VPN
         # gateway.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
@@ -21976,13 +22045,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of the VPN gateway.
+        # [Output Only] The status of the VPN gateway, which can be one of the following:
+        # CREATING, READY, FAILED, or DELETING.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
         # [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
-        # using compute.vpntunnels.insert method and associated to a VPN gateway.
+        # using the compute.vpntunnels.insert method and associated with a VPN gateway.
         # Corresponds to the JSON property `tunnels`
         # @return [Array<String>]
         attr_accessor :tunnels
@@ -22247,7 +22317,7 @@ module Google
       class TargetVpnGatewaysScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of target vpn gateways contained in this scope.
+        # [Output Only] A list of target VPN gateways contained in this scope.
         # Corresponds to the JSON property `targetVpnGateways`
         # @return [Array<Google::Apis::ComputeV1::TargetVpnGateway>]
         attr_accessor :target_vpn_gateways
@@ -23197,8 +23267,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # IKE protocol version to use when establishing the VPN tunnel with peer VPN
-        # gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+        # IKE protocol version to use when establishing the VPN tunnel with the peer VPN
+        # gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
         # Corresponds to the JSON property `ikeVersion`
         # @return [Fixnum]
         attr_accessor :ike_version
@@ -23208,9 +23278,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Local traffic selector to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Local traffic selector to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `localTrafficSelector`
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
@@ -23237,14 +23307,14 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Remote traffic selectors to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Remote traffic selectors to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `remoteTrafficSelector`
         # @return [Array<String>]
         attr_accessor :remote_traffic_selector
       
-        # URL of router resource to be used for dynamic routing.
+        # URL of the router resource to be used for dynamic routing.
         # Corresponds to the JSON property `router`
         # @return [String]
         attr_accessor :router
@@ -23265,7 +23335,18 @@ module Google
         # @return [String]
         attr_accessor :shared_secret_hash
       
-        # [Output Only] The status of the VPN tunnel.
+        # [Output Only] The status of the VPN tunnel, which can be one of the following:
+        # - PROVISIONING: Resource is being allocated for the VPN tunnel.
+        # - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the
+        # user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route
+        # resources are needed to setup the VPN tunnel.
+        # - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
+        # - ESTABLISHED: Secure session is successfully established with the peer VPN.
+        # - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
+        # - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
+        # - NEGOTIATION_FAILURE: Handshake failed.
+        # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+        # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -23540,7 +23621,7 @@ module Google
       class VpnTunnelsScopedList
         include Google::Apis::Core::Hashable
       
-        # A list of vpn tunnels contained in this scope.
+        # A list of VPN tunnels contained in this scope.
         # Corresponds to the JSON property `vpnTunnels`
         # @return [Array<Google::Apis::ComputeV1::VpnTunnel>]
         attr_accessor :vpn_tunnels

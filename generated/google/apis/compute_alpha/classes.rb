@@ -1073,8 +1073,8 @@ module Google
       class Allocation
         include Google::Apis::Core::Hashable
       
-        # Full or partial url for commitment in which this allocation is to be created.
-        # This field is ignored when allocations are created during committment creation.
+        # [OutputOnly] Full or partial url for parent commitment for allocations which
+        # are tied to a commitment.
         # Corresponds to the JSON property `commitment`
         # @return [String]
         attr_accessor :commitment
@@ -1635,41 +1635,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # 
-      class AllocationsUpdateResourceShapeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Number of allocated resources which are to be updated with minimum = 1 and
-        # maximum = 100.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # The name of destination allocation where the modified machines are added. If
-        # existing, its machine spec must match the modified machine spec. If non
-        # existing, new allocation with this name and modified machine spec is created
-        # automatically.
-        # Corresponds to the JSON property `destinationAllocation`
-        # @return [String]
-        attr_accessor :destination_allocation
-      
-        # Properties of the SKU instances being reserved.
-        # Corresponds to the JSON property `updatedResourceProperties`
-        # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstanceProperties]
-        attr_accessor :updated_resource_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @destination_allocation = args[:destination_allocation] if args.key?(:destination_allocation)
-          @updated_resource_properties = args[:updated_resource_properties] if args.key?(:updated_resource_properties)
         end
       end
       
@@ -4146,8 +4111,8 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
         # example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -5205,11 +5170,12 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or
-        # DELETED. Operations which create a new resource using a DEPRECATED resource
-        # will return successfully, but with a warning indicating the deprecated
-        # resource and recommending its replacement. Operations which use OBSOLETE or
-        # DELETED resources will be rejected and result in an error.
+        # The deprecation state of this resource. This can be ACTIVE DEPRECATED,
+        # OBSOLETE, or DELETED. Operations which communicate the end of life date for an
+        # image, can use ACTIVE. Operations which create a new resource using a
+        # DEPRECATED resource will return successfully, but with a warning indicating
+        # the deprecated resource and recommending its replacement. Operations which use
+        # OBSOLETE or DELETED resources will be rejected and result in an error.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -12278,6 +12244,11 @@ module Google
         # @return [String]
         attr_accessor :minimal_action
       
+        # What action should be used to replace instances. See minimal_action.REPLACE
+        # Corresponds to the JSON property `replacementMethod`
+        # @return [String]
+        attr_accessor :replacement_method
+      
         # 
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -12294,6 +12265,7 @@ module Google
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @min_ready_sec = args[:min_ready_sec] if args.key?(:min_ready_sec)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+          @replacement_method = args[:replacement_method] if args.key?(:replacement_method)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -24046,6 +24018,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # A GroupPlacementPolicy specifies resource placement configuration. It
+        # specifies the failure bucket separation as well as network locality
+        # Corresponds to the JSON property `groupPlacementPolicy`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy]
+        attr_accessor :group_placement_policy
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -24104,6 +24082,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @group_placement_policy = args[:group_placement_policy] if args.key?(:group_placement_policy)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -24268,6 +24247,38 @@ module Google
           @days_in_cycle = args[:days_in_cycle] if args.key?(:days_in_cycle)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A GroupPlacementPolicy specifies resource placement configuration. It
+      # specifies the failure bucket separation as well as network locality
+      class ResourcePolicyGroupPlacementPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies network locality
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Specifies instances to hosts placement relationship
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        # Number of vms in this placement group
+        # Corresponds to the JSON property `vmCount`
+        # @return [Fixnum]
+        attr_accessor :vm_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locality = args[:locality] if args.key?(:locality)
+          @style = args[:style] if args.key?(:style)
+          @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
       end
       
@@ -25764,13 +25775,6 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Indicates whether or not to export logs. This is false by default. [Deprecated]
-        # Use 'enable' instead.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
         # Specifies the desired filtering of logs on this NAT. If unspecified, logs are
         # exported for all connections handled by this NAT.
         # Corresponds to the JSON property `filter`
@@ -25784,7 +25788,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
-          @enabled = args[:enabled] if args.key?(:enabled)
           @filter = args[:filter] if args.key?(:filter)
         end
       end
@@ -25942,7 +25945,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router.
+      # Status of a NAT contained in this router. Next tag: 9
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -32151,7 +32154,7 @@ module Google
         attr_accessor :description
       
         # [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules
-        # are created using compute.forwardingRules.insert and associated to a VPN
+        # are created using compute.forwardingRules.insert and associated with a VPN
         # gateway.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
@@ -32217,13 +32220,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of the VPN gateway.
+        # [Output Only] The status of the VPN gateway, which can be one of the following:
+        # CREATING, READY, FAILED, or DELETING.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
         # [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
-        # using compute.vpntunnels.insert method and associated to a VPN gateway.
+        # using the compute.vpntunnels.insert method and associated with a VPN gateway.
         # Corresponds to the JSON property `tunnels`
         # @return [Array<String>]
         attr_accessor :tunnels
@@ -32490,7 +32494,7 @@ module Google
       class TargetVpnGatewaysScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of target vpn gateways contained in this scope.
+        # [Output Only] A list of target VPN gateways contained in this scope.
         # Corresponds to the JSON property `targetVpnGateways`
         # @return [Array<Google::Apis::ComputeAlpha::TargetVpnGateway>]
         attr_accessor :target_vpn_gateways
@@ -34327,8 +34331,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # IKE protocol version to use when establishing the VPN tunnel with peer VPN
-        # gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+        # IKE protocol version to use when establishing the VPN tunnel with the peer VPN
+        # gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
         # Corresponds to the JSON property `ikeVersion`
         # @return [Fixnum]
         attr_accessor :ike_version
@@ -34357,9 +34361,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Local traffic selector to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Local traffic selector to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `localTrafficSelector`
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
@@ -34409,14 +34413,14 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Remote traffic selectors to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Remote traffic selectors to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `remoteTrafficSelector`
         # @return [Array<String>]
         attr_accessor :remote_traffic_selector
       
-        # URL of router resource to be used for dynamic routing.
+        # URL of the router resource to be used for dynamic routing.
         # Corresponds to the JSON property `router`
         # @return [String]
         attr_accessor :router
@@ -34437,7 +34441,18 @@ module Google
         # @return [String]
         attr_accessor :shared_secret_hash
       
-        # [Output Only] The status of the VPN tunnel.
+        # [Output Only] The status of the VPN tunnel, which can be one of the following:
+        # - PROVISIONING: Resource is being allocated for the VPN tunnel.
+        # - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the
+        # user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route
+        # resources are needed to setup the VPN tunnel.
+        # - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
+        # - ESTABLISHED: Secure session is successfully established with the peer VPN.
+        # - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
+        # - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
+        # - NEGOTIATION_FAILURE: Handshake failed.
+        # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+        # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -34731,7 +34746,7 @@ module Google
       class VpnTunnelsScopedList
         include Google::Apis::Core::Hashable
       
-        # A list of vpn tunnels contained in this scope.
+        # A list of VPN tunnels contained in this scope.
         # Corresponds to the JSON property `vpnTunnels`
         # @return [Array<Google::Apis::ComputeAlpha::VpnTunnel>]
         attr_accessor :vpn_tunnels

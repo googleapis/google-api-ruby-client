@@ -1258,6 +1258,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusVersionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3250,6 +3256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworkSecondaryRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4245,6 +4257,7 @@ module Google
       class Allocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment, as: 'commitment'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -6374,6 +6387,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
+          property :version_target, as: 'versionTarget', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusVersionTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_reached, as: 'isReached'
         end
       end
       
@@ -9835,6 +9857,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::SubnetworkLogConfig, decorator: Google::Apis::ComputeBeta::SubnetworkLogConfig::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
@@ -9906,6 +9930,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SubnetworkLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :enable, as: 'enable'
+          property :flow_sampling, as: 'flowSampling'
+          property :metadata, as: 'metadata'
         end
       end
       

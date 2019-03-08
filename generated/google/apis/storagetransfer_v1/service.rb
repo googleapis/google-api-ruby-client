@@ -159,9 +159,9 @@ module Google
         #   "job_names":["jobid1","jobid2",...],
         #   "job_statuses":["status1","status2",...]`.
         #   Since `job_names` and `job_statuses` support multiple values, their values
-        #   must be specified with array notation. `project_id` is required. `job_names`
-        #   and `job_statuses` are optional.  The valid values for `job_statuses` are
-        #   case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
+        #   must be specified with array notation. `project_id` is required.
+        #   `job_names` and `job_statuses` are optional.  The valid values for
+        #   `job_statuses` are case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.
         # @param [String] page_token

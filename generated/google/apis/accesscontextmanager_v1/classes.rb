@@ -217,6 +217,12 @@ module Google
         attr_accessor :negate
         alias_method :negate?, :negate
       
+        # The request must originate from one of the provided countries/regions.
+        # Must be valid ISO 3166-1 alpha-2 codes.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
         # A list of other access levels defined in the same `Policy`, referenced by
         # resource name. Referencing an `AccessLevel` which does not exist is an
         # error. All access levels listed must be granted for the Condition
@@ -236,6 +242,7 @@ module Google
           @ip_subnetworks = args[:ip_subnetworks] if args.key?(:ip_subnetworks)
           @members = args[:members] if args.key?(:members)
           @negate = args[:negate] if args.key?(:negate)
+          @regions = args[:regions] if args.key?(:regions)
           @required_access_levels = args[:required_access_levels] if args.key?(:required_access_levels)
         end
       end
@@ -268,6 +275,18 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::OsConstraint>]
         attr_accessor :os_constraints
       
+        # Whether the device needs to be approved by the customer admin.
+        # Corresponds to the JSON property `requireAdminApproval`
+        # @return [Boolean]
+        attr_accessor :require_admin_approval
+        alias_method :require_admin_approval?, :require_admin_approval
+      
+        # Whether the device needs to be corp owned.
+        # Corresponds to the JSON property `requireCorpOwned`
+        # @return [Boolean]
+        attr_accessor :require_corp_owned
+        alias_method :require_corp_owned?, :require_corp_owned
+      
         # Whether or not screenlock is required for the DevicePolicy to be true.
         # Defaults to `false`.
         # Corresponds to the JSON property `requireScreenlock`
@@ -284,6 +303,8 @@ module Google
           @allowed_device_management_levels = args[:allowed_device_management_levels] if args.key?(:allowed_device_management_levels)
           @allowed_encryption_statuses = args[:allowed_encryption_statuses] if args.key?(:allowed_encryption_statuses)
           @os_constraints = args[:os_constraints] if args.key?(:os_constraints)
+          @require_admin_approval = args[:require_admin_approval] if args.key?(:require_admin_approval)
+          @require_corp_owned = args[:require_corp_owned] if args.key?(:require_corp_owned)
           @require_screenlock = args[:require_screenlock] if args.key?(:require_screenlock)
         end
       end
@@ -423,14 +444,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -523,6 +544,15 @@ module Google
         # @return [String]
         attr_accessor :os_type
       
+        # Only allows requests from devices with a verified Chrome OS.
+        # Verifications includes requirements that the device is enterprise-managed,
+        # conformant to Dasher domain policies, and the caller has permission to call
+        # the API targeted by the request.
+        # Corresponds to the JSON property `requireVerifiedChromeOs`
+        # @return [Boolean]
+        attr_accessor :require_verified_chrome_os
+        alias_method :require_verified_chrome_os?, :require_verified_chrome_os
+      
         def initialize(**args)
            update!(**args)
         end
@@ -531,6 +561,7 @@ module Google
         def update!(**args)
           @minimum_version = args[:minimum_version] if args.key?(:minimum_version)
           @os_type = args[:os_type] if args.key?(:os_type)
+          @require_verified_chrome_os = args[:require_verified_chrome_os] if args.key?(:require_verified_chrome_os)
         end
       end
       
@@ -648,14 +679,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

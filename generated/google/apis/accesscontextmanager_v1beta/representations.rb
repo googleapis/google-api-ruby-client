@@ -141,6 +141,7 @@ module Google
           collection :ip_subnetworks, as: 'ipSubnetworks'
           collection :members, as: 'members'
           property :negate, as: 'negate'
+          collection :regions, as: 'regions'
           collection :required_access_levels, as: 'requiredAccessLevels'
         end
       end
@@ -152,6 +153,8 @@ module Google
           collection :allowed_encryption_statuses, as: 'allowedEncryptionStatuses'
           collection :os_constraints, as: 'osConstraints', class: Google::Apis::AccesscontextmanagerV1beta::OsConstraint, decorator: Google::Apis::AccesscontextmanagerV1beta::OsConstraint::Representation
       
+          property :require_admin_approval, as: 'requireAdminApproval'
+          property :require_corp_owned, as: 'requireCorpOwned'
           property :require_screenlock, as: 'requireScreenlock'
         end
       end
@@ -200,6 +203,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :minimum_version, as: 'minimumVersion'
           property :os_type, as: 'osType'
+          property :require_verified_chrome_os, as: 'requireVerifiedChromeOs'
         end
       end
       

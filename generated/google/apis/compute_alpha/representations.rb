@@ -250,12 +250,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllocationsUpdateResourceShapeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3316,6 +3310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyGroupPlacementPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyHourlyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5305,16 +5305,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class AllocationsUpdateResourceShapeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
-          property :destination_allocation, as: 'destinationAllocation'
-          property :updated_resource_properties, as: 'updatedResourceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstanceProperties::Representation
-      
         end
       end
       
@@ -7808,6 +7798,7 @@ module Google
       
           property :min_ready_sec, as: 'minReadySec'
           property :minimal_action, as: 'minimalAction'
+          property :replacement_method, as: 'replacementMethod'
           property :type, as: 'type'
         end
       end
@@ -10928,6 +10919,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -10980,6 +10973,15 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyGroupPlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locality, as: 'locality'
+          property :style, as: 'style'
+          property :vm_count, as: 'vmCount'
         end
       end
       
@@ -11349,7 +11351,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
-          property :enabled, as: 'enabled'
           property :filter, as: 'filter'
         end
       end

@@ -1218,6 +1218,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Include to use an existing data crypto key wrapped by KMS.
+        # The wrapped key must be a 128/192/256 bit key.
         # Authorization requires the following IAM permissions when sending a request
         # to perform a crypto transformation using a kms-wrapped crypto key:
         # dlp.kms.encrypt
@@ -1249,16 +1250,9 @@ module Google
         end
       end
       
-      # Replaces an identifier with a surrogate using FPE with the FFX
-      # mode of operation; however when used in the `ReidentifyContent` API method,
-      # it serves the opposite function by reversing the surrogate back into
-      # the original identifier.
-      # The identifier must be encoded as ASCII.
-      # For a given crypto key and context, the same identifier will be
-      # replaced with the same surrogate.
-      # Identifiers must be at least two characters long.
-      # In the case that the identifier is the empty string, it will be skipped.
-      # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+      # Note: We recommend using  CryptoDeterministicConfig for all use cases which
+      # do not require preserving the input alphabet space and size, plus warrant
+      # referential integrity.
       class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -3509,6 +3503,7 @@ module Google
       end
       
       # Include to use an existing data crypto key wrapped by KMS.
+      # The wrapped key must be a 128/192/256 bit key.
       # Authorization requires the following IAM permissions when sending a request
       # to perform a crypto transformation using a kms-wrapped crypto key:
       # dlp.kms.encrypt
@@ -4123,16 +4118,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig]
         attr_accessor :crypto_hash_config
       
-        # Replaces an identifier with a surrogate using FPE with the FFX
-        # mode of operation; however when used in the `ReidentifyContent` API method,
-        # it serves the opposite function by reversing the surrogate back into
-        # the original identifier.
-        # The identifier must be encoded as ASCII.
-        # For a given crypto key and context, the same identifier will be
-        # replaced with the same surrogate.
-        # Identifiers must be at least two characters long.
-        # In the case that the identifier is the empty string, it will be skipped.
-        # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        # Note: We recommend using  CryptoDeterministicConfig for all use cases which
+        # do not require preserving the input alphabet space and size, plus warrant
+        # referential integrity.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
@@ -5484,7 +5472,7 @@ module Google
         end
       end
       
-      # Summary of a single tranformation.
+      # Summary of a single transformation.
       # Only one of 'transformation', 'field_transformation', or 'record_suppress'
       # will be set.
       class GooglePrivacyDlpV2TransformationSummary
@@ -5593,7 +5581,7 @@ module Google
       class GooglePrivacyDlpV2UnwrappedCryptoKey
         include Google::Apis::Core::Hashable
       
-        # The AES 128/192/256 bit key. [required]
+        # A 128/192/256 bit key. [required]
         # Corresponds to the JSON property `key`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

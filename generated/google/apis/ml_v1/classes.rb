@@ -412,7 +412,7 @@ module Google
         end
       end
       
-      # Represents a training or prediction job.
+      # Represents a training, prediction or explanation job.
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -678,7 +678,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 29
+        # Next ID: 30
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -805,7 +805,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 29
+        # Next ID: 30
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -959,7 +959,8 @@ module Google
         attr_accessor :data_format
       
         # Required. The Google Cloud Storage location of the input data files.
-        # May contain wildcards.
+        # May contain wildcards. See <a href="https://cloud.google.com/storage/docs/
+        # gsutil/addlhelp/WildcardNames</a>
         # Corresponds to the JSON property `inputPaths`
         # @return [Array<String>]
         attr_accessor :input_paths
@@ -1445,7 +1446,7 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 29
+      # Next ID: 30
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       

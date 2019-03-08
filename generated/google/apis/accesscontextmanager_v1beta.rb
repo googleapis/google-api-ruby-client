@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/access-context-manager/docs/reference/rest/
     module AccesscontextmanagerV1beta
       VERSION = 'V1beta'
-      REVISION = '20190306'
+      REVISION = '20190307'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

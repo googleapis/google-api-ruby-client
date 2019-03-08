@@ -144,8 +144,9 @@ module Google
         # depends on how securely the parties involved (in particular the
         # bluetooth client) handle the identity key, and obviously on how
         # securely the identity key was generated.
-        # See [the Eddystone specification](https://github.com/google/eddystone/tree/
-        # master/eddystone-eid) at GitHub.
+        # See [the Eddystone
+        # specification](https://github.com/google/eddystone/tree/master/eddystone-eid)
+        # at GitHub.
         # Corresponds to the JSON property `ephemeralIdRegistration`
         # @return [Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistration]
         attr_accessor :ephemeral_id_registration
@@ -461,8 +462,9 @@ module Google
       # depends on how securely the parties involved (in particular the
       # bluetooth client) handle the identity key, and obviously on how
       # securely the identity key was generated.
-      # See [the Eddystone specification](https://github.com/google/eddystone/tree/
-      # master/eddystone-eid) at GitHub.
+      # See [the Eddystone
+      # specification](https://github.com/google/eddystone/tree/master/eddystone-eid)
+      # at GitHub.
       class EphemeralIdRegistration
         include Google::Apis::Core::Hashable
       
@@ -503,8 +505,8 @@ module Google
       
         # Indicates the nominal period between each rotation of the beacon's
         # ephemeral ID. "Nominal" because the beacon should randomize the
-        # actual interval. See [the spec at github](https://github.com/google/eddystone/
-        # tree/master/eddystone-eid)
+        # actual interval. See [the spec at
+        # github](https://github.com/google/eddystone/tree/master/eddystone-eid)
         # for details. This value corresponds to a power-of-two scaler on the
         # beacon's clock: when the scaler value is K, the beacon will begin
         # broadcasting a new ephemeral ID on average every 2^K seconds.

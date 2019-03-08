@@ -1047,6 +1047,12 @@ module Google
       class Allocation
         include Google::Apis::Core::Hashable
       
+        # [OutputOnly] Full or partial url for parent commitment for allocations which
+        # are tied to a commitment.
+        # Corresponds to the JSON property `commitment`
+        # @return [String]
+        attr_accessor :commitment
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -1110,6 +1116,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -3621,8 +3628,8 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
         # example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the users
-        # of that domain. For example, `google.com` or `example.com`.
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -4340,11 +4347,12 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or
-        # DELETED. Operations which create a new resource using a DEPRECATED resource
-        # will return successfully, but with a warning indicating the deprecated
-        # resource and recommending its replacement. Operations which use OBSOLETE or
-        # DELETED resources will be rejected and result in an error.
+        # The deprecation state of this resource. This can be ACTIVE DEPRECATED,
+        # OBSOLETE, or DELETED. Operations which communicate the end of life date for an
+        # image, can use ACTIVE. Operations which create a new resource using a
+        # DEPRECATED resource will return successfully, but with a warning indicating
+        # the deprecated resource and recommending its replacement. Operations which use
+        # OBSOLETE or DELETED resources will be rejected and result in an error.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10057,6 +10065,12 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
+        # [Output Only] A status of consistency of Instances' versions with their target
+        # version specified by version field on Instance Group Manager.
+        # Corresponds to the JSON property `versionTarget`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget]
+        attr_accessor :version_target
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10064,6 +10078,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
+          @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusVersionTarget
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether version target has been reached in this
+        # managed instance group, i.e. all instances are in their target version.
+        # Instances' target version are specified by version field on Instance Group
+        # Manager.
+        # Corresponds to the JSON property `isReached`
+        # @return [Boolean]
+        attr_accessor :is_reached
+        alias_method :is_reached?, :is_reached
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_reached = args[:is_reached] if args.key?(:is_reached)
         end
       end
       
@@ -21144,7 +21182,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router.
+      # Status of a NAT contained in this router. Next tag: 9
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -23276,6 +23314,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The available logging options for this subnetwork.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeBeta::SubnetworkLogConfig]
+        attr_accessor :log_config
+      
         # The name of the resource, provided by the client when initially creating the
         # resource. The name must be 1-63 characters long, and comply with RFC1035.
         # Specifically, the name must be 1-63 characters long and match the regular
@@ -23336,6 +23379,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
@@ -23578,6 +23622,55 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # The available logging options for this subnetwork.
+      class SubnetworkLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Can only be specified if VPC flow logging for this subnetwork is enabled.
+        # Toggles the aggregation interval for collecting flow logs. Increasing the
+        # interval time will reduce the amount of generated flow logs for long lasting
+        # connections. Default is an interval of 5 seconds per connection.
+        # Corresponds to the JSON property `aggregationInterval`
+        # @return [String]
+        attr_accessor :aggregation_interval
+      
+        # Whether to enable flow logging for this subnetwork. If this field is not
+        # explicitly set, it will not appear in get listings. If not set the default
+        # behavior is to disable flow logging.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Can only be specified if VPC flow logging for this subnetwork is enabled. The
+        # value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs
+        # within the subnetwork where 1.0 means all collected logs are reported and 0.0
+        # means no logs are reported. Default is 0.5 which means half of all collected
+        # logs are reported.
+        # Corresponds to the JSON property `flowSampling`
+        # @return [Float]
+        attr_accessor :flow_sampling
+      
+        # Can only be specified if VPC flow logging for this subnetwork is enabled.
+        # Configures whether metadata fields should be added to the reported VPC flow
+        # logs. Default is INCLUDE_ALL_METADATA.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @enable = args[:enable] if args.key?(:enable)
+          @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -25786,7 +25879,7 @@ module Google
         attr_accessor :description
       
         # [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules
-        # are created using compute.forwardingRules.insert and associated to a VPN
+        # are created using compute.forwardingRules.insert and associated with a VPN
         # gateway.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
@@ -25852,13 +25945,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of the VPN gateway.
+        # [Output Only] The status of the VPN gateway, which can be one of the following:
+        # CREATING, READY, FAILED, or DELETING.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
         # [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
-        # using compute.vpntunnels.insert method and associated to a VPN gateway.
+        # using the compute.vpntunnels.insert method and associated with a VPN gateway.
         # Corresponds to the JSON property `tunnels`
         # @return [Array<String>]
         attr_accessor :tunnels
@@ -26125,7 +26219,7 @@ module Google
       class TargetVpnGatewaysScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of target vpn gateways contained in this scope.
+        # [Output Only] A list of target VPN gateways contained in this scope.
         # Corresponds to the JSON property `targetVpnGateways`
         # @return [Array<Google::Apis::ComputeBeta::TargetVpnGateway>]
         attr_accessor :target_vpn_gateways
@@ -27521,8 +27615,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # IKE protocol version to use when establishing the VPN tunnel with peer VPN
-        # gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+        # IKE protocol version to use when establishing the VPN tunnel with the peer VPN
+        # gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
         # Corresponds to the JSON property `ikeVersion`
         # @return [Fixnum]
         attr_accessor :ike_version
@@ -27551,9 +27645,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Local traffic selector to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Local traffic selector to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `localTrafficSelector`
         # @return [Array<String>]
         attr_accessor :local_traffic_selector
@@ -27603,14 +27697,14 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Remote traffic selectors to use when establishing the VPN tunnel with peer VPN
-        # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
-        # 16. The ranges should be disjoint. Only IPv4 is supported.
+        # Remote traffic selectors to use when establishing the VPN tunnel with the peer
+        # VPN gateway. The value should be a CIDR formatted string, for example: 192.168.
+        # 0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         # Corresponds to the JSON property `remoteTrafficSelector`
         # @return [Array<String>]
         attr_accessor :remote_traffic_selector
       
-        # URL of router resource to be used for dynamic routing.
+        # URL of the router resource to be used for dynamic routing.
         # Corresponds to the JSON property `router`
         # @return [String]
         attr_accessor :router
@@ -27631,7 +27725,18 @@ module Google
         # @return [String]
         attr_accessor :shared_secret_hash
       
-        # [Output Only] The status of the VPN tunnel.
+        # [Output Only] The status of the VPN tunnel, which can be one of the following:
+        # - PROVISIONING: Resource is being allocated for the VPN tunnel.
+        # - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the
+        # user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route
+        # resources are needed to setup the VPN tunnel.
+        # - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
+        # - ESTABLISHED: Secure session is successfully established with the peer VPN.
+        # - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
+        # - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
+        # - NEGOTIATION_FAILURE: Handshake failed.
+        # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+        # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -27925,7 +28030,7 @@ module Google
       class VpnTunnelsScopedList
         include Google::Apis::Core::Hashable
       
-        # A list of vpn tunnels contained in this scope.
+        # A list of VPN tunnels contained in this scope.
         # Corresponds to the JSON property `vpnTunnels`
         # @return [Array<Google::Apis::ComputeBeta::VpnTunnel>]
         attr_accessor :vpn_tunnels
