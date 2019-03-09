@@ -1038,7 +1038,7 @@ module Google
       
         # The template id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
         # characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `templateId`
         # @return [String]
@@ -1068,7 +1068,7 @@ module Google
       
         # The job id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
         # characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `jobId`
         # @return [String]
@@ -1106,7 +1106,7 @@ module Google
       
         # The template id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
         # characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `templateId`
         # @return [String]
@@ -1135,7 +1135,7 @@ module Google
       
         # The trigger id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
         # characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `triggerId`
         # @return [String]
@@ -1163,7 +1163,7 @@ module Google
       
         # The storedInfoType ID can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
         # characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `storedInfoTypeId`
         # @return [String]

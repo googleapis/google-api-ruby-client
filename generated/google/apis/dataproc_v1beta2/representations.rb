@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class JobStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KerberosConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrestoJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PySparkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +347,12 @@ module Google
       end
       
       class RegexValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -536,6 +560,8 @@ module Google
           property :config_bucket, as: 'configBucket'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1beta2::EncryptionConfig, decorator: Google::Apis::DataprocV1beta2::EncryptionConfig::Representation
       
+          property :endpoint_config, as: 'endpointConfig', class: Google::Apis::DataprocV1beta2::EndpointConfig, decorator: Google::Apis::DataprocV1beta2::EndpointConfig::Representation
+      
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1beta2::GceClusterConfig, decorator: Google::Apis::DataprocV1beta2::GceClusterConfig::Representation
       
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1beta2::NodeInitializationAction, decorator: Google::Apis::DataprocV1beta2::NodeInitializationAction::Representation
@@ -545,6 +571,8 @@ module Google
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupConfig::Representation
       
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupConfig::Representation
+      
+          property :security_config, as: 'securityConfig', class: Google::Apis::DataprocV1beta2::SecurityConfig, decorator: Google::Apis::DataprocV1beta2::SecurityConfig::Representation
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::DataprocV1beta2::SoftwareConfig, decorator: Google::Apis::DataprocV1beta2::SoftwareConfig::Representation
       
@@ -646,6 +674,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
+        end
+      end
+      
+      class EndpointConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_http_port_access, as: 'enableHttpPortAccess'
+          hash :http_ports, as: 'httpPorts'
         end
       end
       
@@ -761,6 +797,8 @@ module Google
       
           property :placement, as: 'placement', class: Google::Apis::DataprocV1beta2::JobPlacement, decorator: Google::Apis::DataprocV1beta2::JobPlacement::Representation
       
+          property :presto_job, as: 'prestoJob', class: Google::Apis::DataprocV1beta2::PrestoJob, decorator: Google::Apis::DataprocV1beta2::PrestoJob::Representation
+      
           property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1beta2::PySparkJob, decorator: Google::Apis::DataprocV1beta2::PySparkJob::Representation
       
           property :reference, as: 'reference', class: Google::Apis::DataprocV1beta2::JobReference, decorator: Google::Apis::DataprocV1beta2::JobReference::Representation
@@ -813,6 +851,26 @@ module Google
           property :state, as: 'state'
           property :state_start_time, as: 'stateStartTime'
           property :substate, as: 'substate'
+        end
+      end
+      
+      class KerberosConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_realm_trust_admin_server, as: 'crossRealmTrustAdminServer'
+          property :cross_realm_trust_kdc, as: 'crossRealmTrustKdc'
+          property :cross_realm_trust_realm, as: 'crossRealmTrustRealm'
+          property :cross_realm_trust_shared_password_uri, as: 'crossRealmTrustSharedPasswordUri'
+          property :enable_kerberos, as: 'enableKerberos'
+          property :kdc_db_key_uri, as: 'kdcDbKeyUri'
+          property :key_password_uri, as: 'keyPasswordUri'
+          property :keystore_password_uri, as: 'keystorePasswordUri'
+          property :keystore_uri, as: 'keystoreUri'
+          property :kms_key_uri, as: 'kmsKeyUri'
+          property :root_principal_password_uri, as: 'rootPrincipalPasswordUri'
+          property :tgt_lifetime_hours, as: 'tgtLifetimeHours'
+          property :truststore_password_uri, as: 'truststorePasswordUri'
+          property :truststore_uri, as: 'truststoreUri'
         end
       end
       
@@ -973,6 +1031,21 @@ module Google
         end
       end
       
+      class PrestoJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_tags, as: 'clientTags'
+          property :continue_on_failure, as: 'continueOnFailure'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1beta2::LoggingConfig, decorator: Google::Apis::DataprocV1beta2::LoggingConfig::Representation
+      
+          property :output_format, as: 'outputFormat'
+          hash :properties, as: 'properties'
+          property :query_file_uri, as: 'queryFileUri'
+          property :query_list, as: 'queryList', class: Google::Apis::DataprocV1beta2::QueryList, decorator: Google::Apis::DataprocV1beta2::QueryList::Representation
+      
+        end
+      end
+      
       class PySparkJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -999,6 +1072,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class SecurityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::DataprocV1beta2::KerberosConfig, decorator: Google::Apis::DataprocV1beta2::KerberosConfig::Representation
+      
         end
       end
       

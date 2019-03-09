@@ -163,8 +163,9 @@ module Google
       class BasicAutoscalingAlgorithm
         include Google::Apis::Core::Hashable
       
-        # Optional. Cooldown period in between scaling. Note that a cooldown period
-        # begins after a scaling operation has completed.Default: 120s.
+        # Optional. Duration between scaling events. A scaling period starts after the
+        # update operation from the previous event has completed.Bounds: 2m, 1d. Default:
+        # 2m.
         # Corresponds to the JSON property `cooldownPeriod`
         # @return [String]
         attr_accessor :cooldown_period
@@ -189,34 +190,46 @@ module Google
       class BasicYarnAutoscalingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Timeout used during an autoscaling event (cluster update) between 0
-        # seconds (no graceful decommission) and 1 day.Default: 0s.
+        # Required. Timeout for YARN graceful decommissioning of Node Managers.
+        # Specifies the duration to wait for jobs to complete before forcefully removing
+        # workers (and potentially interrupting jobs). Only applicable to downscaling
+        # operations.Bounds: 0s, 1d.
         # Corresponds to the JSON property `gracefulDecommissionTimeout`
         # @return [String]
         attr_accessor :graceful_decommission_timeout
       
-        # Optional. Fraction of suggested decrease in workers to scale down by between 0
-        # and 1. Suggested decrease when scaling down is determined by the amount of
-        # average available memory since the last cooldown period.Default: 1.0.
+        # Required. Fraction of average pending memory in the last cooldown period for
+        # which to remove workers. A scale-down factor of 1 will result in scaling down
+        # so that there is no available memory remaining after the update (more
+        # aggressive scaling). A scale-down factor of 0 disables removing workers, which
+        # can be beneficial for autoscaling a single job.Bounds: 0.0, 1.0.
         # Corresponds to the JSON property `scaleDownFactor`
         # @return [Float]
         attr_accessor :scale_down_factor
       
-        # Optional. Minimum workers as a fraction of the current cluster size to to
-        # scale down by between 0 and 1.Default: 0.0.
+        # Optional. Minimum scale-down threshold as a fraction of total cluster size
+        # before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1
+        # means the autoscaler must recommend at least a 2 worker scale-down for the
+        # cluster to scale. A threshold of 0 means the autoscaler will scale down on any
+        # recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         # Corresponds to the JSON property `scaleDownMinWorkerFraction`
         # @return [Float]
         attr_accessor :scale_down_min_worker_fraction
       
-        # Required. Fraction of suggested increase in workers to scale up by between 0
-        # and 1. Suggested increase when scaling up is determined by the amount of
-        # average pending memory since the last cooldown period.
+        # Required. Fraction of average pending memory in the last cooldown period for
+        # which to add workers. A scale-up factor of 1.0 will result in scaling up so
+        # that there is no pending memory remaining after the update (more aggressive
+        # scaling). A scale-up factor closer to 0 will result in a smaller magnitude of
+        # scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
         # Corresponds to the JSON property `scaleUpFactor`
         # @return [Float]
         attr_accessor :scale_up_factor
       
-        # Optional. Minimum workers as a fraction of the current cluster size to to
-        # scale up by between 0 and 1.Default: 0.0.
+        # Optional. Minimum scale-up threshold as a fraction of total cluster size
+        # before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1
+        # means the autoscaler must recommend at least a 2-worker scale-up for the
+        # cluster to scale. A threshold of 0 means the autoscaler will scale up on any
+        # recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         # Corresponds to the JSON property `scaleUpMinWorkerFraction`
         # @return [Float]
         attr_accessor :scale_up_min_worker_fraction
@@ -375,12 +388,12 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::AutoscalingConfig]
         attr_accessor :autoscaling_config
       
-        # Optional. A Cloud Storage staging bucket used for sharing generated SSH keys
-        # and config. If you do not specify a staging bucket, Cloud Dataproc will
-        # determine an appropriate Cloud Storage location (US, ASIA, or EU) for your
-        # cluster's staging bucket according to the Google Compute Engine zone where
-        # your cluster is deployed, and then it will create and manage this project-
-        # level, per-location bucket for you.
+        # Optional. A Google Cloud Storage bucket used to stage job dependencies, config
+        # files, and job driver console output. If you do not specify a staging bucket,
+        # Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
+        # your cluster's staging bucket according to the Google Compute Engine zone
+        # where your cluster is deployed, and then create and manage this project-level,
+        # per-location bucket (see Cloud Dataproc staging bucket).
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -389,6 +402,11 @@ module Google
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::DataprocV1beta2::EncryptionConfig]
         attr_accessor :encryption_config
+      
+        # Endpoint config for this cluster
+        # Corresponds to the JSON property `endpointConfig`
+        # @return [Google::Apis::DataprocV1beta2::EndpointConfig]
+        attr_accessor :endpoint_config
       
         # Common config settings for resources of Compute Engine cluster instances,
         # applicable to all instances in the cluster.
@@ -428,6 +446,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :secondary_worker_config
       
+        # Security related configuration, including encryption, Kerberos, etc.
+        # Corresponds to the JSON property `securityConfig`
+        # @return [Google::Apis::DataprocV1beta2::SecurityConfig]
+        attr_accessor :security_config
+      
         # Specifies the selection and config of software inside the cluster.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::DataprocV1beta2::SoftwareConfig]
@@ -448,11 +471,13 @@ module Google
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
           @master_config = args[:master_config] if args.key?(:master_config)
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
+          @security_config = args[:security_config] if args.key?(:security_config)
           @software_config = args[:software_config] if args.key?(:software_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
@@ -789,6 +814,34 @@ module Google
         end
       end
       
+      # Endpoint config for this cluster
+      class EndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable http access to specific ports on the cluster from
+        # external sources. Defaults to false.
+        # Corresponds to the JSON property `enableHttpPortAccess`
+        # @return [Boolean]
+        attr_accessor :enable_http_port_access
+        alias_method :enable_http_port_access?, :enable_http_port_access
+      
+        # Output only. The map of port descriptions to URLs. Will only be populated if
+        # enable_http_port_access is true.
+        # Corresponds to the JSON property `httpPorts`
+        # @return [Hash<String,String>]
+        attr_accessor :http_ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_http_port_access = args[:enable_http_port_access] if args.key?(:enable_http_port_access)
+          @http_ports = args[:http_ports] if args.key?(:http_ports)
+        end
+      end
+      
       # Represents an expression text. Example:
       # title: "User account presence"
       # description: "Determines whether the request has a user account"
@@ -1100,13 +1153,17 @@ module Google
       class InstanceGroupAutoscalingPolicyConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Maximum number of instances for this group. Must be >= min_instances.
+        # Optional. Maximum number of instances for this group. Required for primary
+        # workers. Note that by default, clusters will not use secondary workers.Primary
+        # workers - Bounds: [min_instances, ). Secondary workers - Bounds: [
+        # min_instances, ). Default: 0.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
       
-        # Optional. Minimum number of instances for this group.Default for primary
-        # workers is 2, default for secondary workers is 0.
+        # Optional. Minimum number of instances for this group.Primary workers - Bounds:
+        # 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances.
+        # Default: 0.
         # Corresponds to the JSON property `minInstances`
         # @return [Fixnum]
         attr_accessor :min_instances
@@ -1116,9 +1173,12 @@ module Google
         # primary workers have weight 2 and secondary workers have weight 1, then the
         # cluster should have approximately 2 primary workers to each secondary worker.
         # Cluster may not reach these exact weights if constrained by min/max bounds or
-        # other autoscaling configurations.Default 1. Note that all groups have equal an
-        # equal weight by default, so the cluster will attempt to maintain an equal
-        # number of workers in each group within configured size bounds per group.
+        # other autoscaling configurations.Note that all groups have an equal weight by
+        # default, so the cluster will attempt to maintain an equal number of workers in
+        # each group within configured size bounds per group. The cluster may not reach
+        # this balance of weights if not allowed by worker-count bounds. For example, if
+        # max_instances for secondary workers is 0, only primary workers will be added.
+        # The cluster can also be out of balance when created.Default: 1.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -1321,6 +1381,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::JobPlacement]
         attr_accessor :placement
       
+        # A Cloud Dataproc job for running Presto (https://prestosql.io/) queries
+        # Corresponds to the JSON property `prestoJob`
+        # @return [Google::Apis::DataprocV1beta2::PrestoJob]
+        attr_accessor :presto_job
+      
         # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
         # 0.9.0/python-programming-guide.html) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
@@ -1392,6 +1457,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @pig_job = args[:pig_job] if args.key?(:pig_job)
           @placement = args[:placement] if args.key?(:placement)
+          @presto_job = args[:presto_job] if args.key?(:presto_job)
           @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
           @reference = args[:reference] if args.key?(:reference)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -1517,6 +1583,120 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
           @substate = args[:substate] if args.key?(:substate)
+        end
+      end
+      
+      # Specifies Kerberos related configuration.
+      class KerberosConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The admin server (IP or hostname) for the remote trusted realm in a
+        # cross realm trust relationship.
+        # Corresponds to the JSON property `crossRealmTrustAdminServer`
+        # @return [String]
+        attr_accessor :cross_realm_trust_admin_server
+      
+        # Optional. The KDC (IP or hostname) for the remote trusted realm in a cross
+        # realm trust relationship.
+        # Corresponds to the JSON property `crossRealmTrustKdc`
+        # @return [String]
+        attr_accessor :cross_realm_trust_kdc
+      
+        # Optional. The remote realm the Dataproc on-cluster KDC will trust, should the
+        # user enable cross realm trust.
+        # Corresponds to the JSON property `crossRealmTrustRealm`
+        # @return [String]
+        attr_accessor :cross_realm_trust_realm
+      
+        # Optional. The GCS uri of a KMS encrypted file containing the shared password
+        # between the on-cluster Kerberos realm and the remote trusted realm, in a cross
+        # realm trust relationship.
+        # Corresponds to the JSON property `crossRealmTrustSharedPasswordUri`
+        # @return [String]
+        attr_accessor :cross_realm_trust_shared_password_uri
+      
+        # Optional. Flag to indicate whether to Kerberize the cluster.
+        # Corresponds to the JSON property `enableKerberos`
+        # @return [Boolean]
+        attr_accessor :enable_kerberos
+        alias_method :enable_kerberos?, :enable_kerberos
+      
+        # Optional. The GCS uri of a KMS encrypted file containing the master key of the
+        # KDC database.
+        # Corresponds to the JSON property `kdcDbKeyUri`
+        # @return [String]
+        attr_accessor :kdc_db_key_uri
+      
+        # Optional. The GCS uri of a KMS encrypted file containing the password to the
+        # user provided key. For the self-signed certificate, this password is generated
+        # by Dataproc.
+        # Corresponds to the JSON property `keyPasswordUri`
+        # @return [String]
+        attr_accessor :key_password_uri
+      
+        # Optional. The GCS uri of a KMS encrypted file containing the password to the
+        # user provided keystore. For the self-signed certificate, this password is
+        # generated by Dataproc.
+        # Corresponds to the JSON property `keystorePasswordUri`
+        # @return [String]
+        attr_accessor :keystore_password_uri
+      
+        # Optional. The GCS uri of the keystore file used for SSL encryption. If not
+        # provided, Dataproc will provide a self-signed certificate.
+        # Corresponds to the JSON property `keystoreUri`
+        # @return [String]
+        attr_accessor :keystore_uri
+      
+        # Required. The uri of the KMS key used to encrypt various sensitive files.
+        # Corresponds to the JSON property `kmsKeyUri`
+        # @return [String]
+        attr_accessor :kms_key_uri
+      
+        # Required. The GCS uri of a KMS encrypted file containing the root principal
+        # password.
+        # Corresponds to the JSON property `rootPrincipalPasswordUri`
+        # @return [String]
+        attr_accessor :root_principal_password_uri
+      
+        # Optional. The lifetime of the ticket granting ticket, in hours. If not
+        # specified, or user specifies 0, then default value 10 will be used.
+        # Corresponds to the JSON property `tgtLifetimeHours`
+        # @return [Fixnum]
+        attr_accessor :tgt_lifetime_hours
+      
+        # Optional. The GCS uri of a KMS encrypted file containing the password to the
+        # user provided truststore. For the self-signed certificate, this password is
+        # generated by Dataproc.
+        # Corresponds to the JSON property `truststorePasswordUri`
+        # @return [String]
+        attr_accessor :truststore_password_uri
+      
+        # Optional. The GCS uri of the truststore file used for SSL encryption. If not
+        # provided, Dataproc will provide a self-signed certificate.
+        # Corresponds to the JSON property `truststoreUri`
+        # @return [String]
+        attr_accessor :truststore_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cross_realm_trust_admin_server = args[:cross_realm_trust_admin_server] if args.key?(:cross_realm_trust_admin_server)
+          @cross_realm_trust_kdc = args[:cross_realm_trust_kdc] if args.key?(:cross_realm_trust_kdc)
+          @cross_realm_trust_realm = args[:cross_realm_trust_realm] if args.key?(:cross_realm_trust_realm)
+          @cross_realm_trust_shared_password_uri = args[:cross_realm_trust_shared_password_uri] if args.key?(:cross_realm_trust_shared_password_uri)
+          @enable_kerberos = args[:enable_kerberos] if args.key?(:enable_kerberos)
+          @kdc_db_key_uri = args[:kdc_db_key_uri] if args.key?(:kdc_db_key_uri)
+          @key_password_uri = args[:key_password_uri] if args.key?(:key_password_uri)
+          @keystore_password_uri = args[:keystore_password_uri] if args.key?(:keystore_password_uri)
+          @keystore_uri = args[:keystore_uri] if args.key?(:keystore_uri)
+          @kms_key_uri = args[:kms_key_uri] if args.key?(:kms_key_uri)
+          @root_principal_password_uri = args[:root_principal_password_uri] if args.key?(:root_principal_password_uri)
+          @tgt_lifetime_hours = args[:tgt_lifetime_hours] if args.key?(:tgt_lifetime_hours)
+          @truststore_password_uri = args[:truststore_password_uri] if args.key?(:truststore_password_uri)
+          @truststore_uri = args[:truststore_uri] if args.key?(:truststore_uri)
         end
       end
       
@@ -2146,6 +2326,67 @@ module Google
         end
       end
       
+      # A Cloud Dataproc job for running Presto (https://prestosql.io/) queries
+      class PrestoJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Presto client tags to attach to this query
+        # Corresponds to the JSON property `clientTags`
+        # @return [Array<String>]
+        attr_accessor :client_tags
+      
+        # Optional. Whether to continue executing queries if a query fails. The default
+        # value is false. Setting to true can be useful when executing independent
+        # parallel queries.
+        # Corresponds to the JSON property `continueOnFailure`
+        # @return [Boolean]
+        attr_accessor :continue_on_failure
+        alias_method :continue_on_failure?, :continue_on_failure
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1beta2::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional. The format in which query output will be displayed. See the Presto
+        # documentation for supported output formats
+        # Corresponds to the JSON property `outputFormat`
+        # @return [String]
+        attr_accessor :output_format
+      
+        # Optional. A mapping of property names to values. Used to set Presto session
+        # properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent
+        # to using the --session flag in the Presto CLI
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # The HCFS URI of the script that contains SQL queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1beta2::QueryList]
+        attr_accessor :query_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_tags = args[:client_tags] if args.key?(:client_tags)
+          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @output_format = args[:output_format] if args.key?(:output_format)
+          @properties = args[:properties] if args.key?(:properties)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
+          @query_list = args[:query_list] if args.key?(:query_list)
+        end
+      end
+      
       # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
       # 0.9.0/python-programming-guide.html) applications on YARN.
       class PySparkJob
@@ -2270,6 +2511,25 @@ module Google
         end
       end
       
+      # Security related configuration, including encryption, Kerberos, etc.
+      class SecurityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies Kerberos related configuration.
+        # Corresponds to the JSON property `kerberosConfig`
+        # @return [Google::Apis::DataprocV1beta2::KerberosConfig]
+        attr_accessor :kerberos_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
+        end
+      end
+      
       # Request message for SetIamPolicy method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2341,8 +2601,8 @@ module Google
         attr_accessor :optional_components
       
         # Optional. The properties to set on daemon config files.Property keys are
-        # specified in prefix:property format, such as core:fs.defaultFS. The following
-        # are supported prefixes and their mappings:
+        # specified in prefix:property format, for example core:hadoop.tmp.dir. The
+        # following are supported prefixes and their mappings:
         # capacity-scheduler: capacity-scheduler.xml
         # core: core-site.xml
         # distcp: distcp-default.xml

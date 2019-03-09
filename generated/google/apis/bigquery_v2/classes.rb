@@ -471,9 +471,12 @@ module Google
           # @return [String]
           attr_accessor :iam_member
         
-          # [Required] Describes the rights granted to the user specified by the other
-          # member of the access object. The following string values are supported: READER,
-          # WRITER, OWNER.
+          # [Required] An IAM role ID that should be granted to the user, group, or domain
+          # specified in this access entry. The following legacy mappings will be applied:
+          # OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER
+          # roles/bigquery.dataViewer This field will accept any of the above formats, but
+          # will return only the legacy format. For example, if you set this field to "
+          # roles/bigquery.dataOwner", it will be returned back as "OWNER".
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
@@ -2403,7 +2406,7 @@ module Google
         # [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this
         # field specifies the accuracy of the estimate. Possible values can be: UNKNOWN:
         # accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND:
-        # estimate is lower bound of what the query would cost. UPPER_BOUND: estiamte
+        # estimate is lower bound of what the query would cost. UPPER_BOUND: estimate
         # is upper bound of what the query would cost.
         # Corresponds to the JSON property `totalBytesProcessedAccuracy`
         # @return [String]
