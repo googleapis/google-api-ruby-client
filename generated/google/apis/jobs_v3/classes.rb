@@ -185,7 +185,7 @@ module Google
         # @return [Google::Apis::JobsV3::JobEvent]
         attr_accessor :job_event
       
-        # Required except the first event.
+        # Optional.
         # The event_id of an event that resulted in the current event. For example, a
         # Job view event usually follows a parent
         # impression event: A job seeker first does a
