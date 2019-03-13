@@ -481,6 +481,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_manifest, as: 'artifactManifest'
+          property :artifact_timing, as: 'artifactTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation

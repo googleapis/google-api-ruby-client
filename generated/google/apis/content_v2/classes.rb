@@ -329,7 +329,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2::AccountStatusAccountLevelIssue>]
         attr_accessor :account_level_issues
       
-        # A list of data quality issues.
+        # DEPRECATED - never populated.
         # Corresponds to the JSON property `dataQualityIssues`
         # @return [Array<Google::Apis::ContentV2::AccountStatusDataQualityIssue>]
         attr_accessor :data_quality_issues
@@ -426,57 +426,57 @@ module Google
       class AccountStatusDataQualityIssue
         include Google::Apis::Core::Hashable
       
-        # Country for which this issue is reported.
+        # 
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # The destination the issue applies to.
+        # 
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
       
-        # A more detailed description of the issue.
+        # 
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
       
-        # Actual value displayed on the landing page.
+        # 
         # Corresponds to the JSON property `displayedValue`
         # @return [String]
         attr_accessor :displayed_value
       
-        # Example items featuring the issue.
+        # 
         # Corresponds to the JSON property `exampleItems`
         # @return [Array<Google::Apis::ContentV2::AccountStatusExampleItem>]
         attr_accessor :example_items
       
-        # Issue identifier.
+        # 
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Last time the account was checked for this issue.
+        # 
         # Corresponds to the JSON property `lastChecked`
         # @return [String]
         attr_accessor :last_checked
       
-        # The attribute name that is relevant for the issue.
+        # 
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Number of items in the account found to have the said issue.
+        # 
         # Corresponds to the JSON property `numItems`
         # @return [Fixnum]
         attr_accessor :num_items
       
-        # Severity of the problem.
+        # 
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # Submitted value that causes the issue.
+        # 
         # Corresponds to the JSON property `submittedValue`
         # @return [String]
         attr_accessor :submitted_value
@@ -501,32 +501,31 @@ module Google
         end
       end
       
-      # An example of an item that has poor data quality. An item value on the landing
-      # page differs from what is submitted, or conflicts with a policy.
+      # 
       class AccountStatusExampleItem
         include Google::Apis::Core::Hashable
       
-        # Unique item ID as specified in the uploaded product data.
+        # 
         # Corresponds to the JSON property `itemId`
         # @return [String]
         attr_accessor :item_id
       
-        # Landing page of the item.
+        # 
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
       
-        # The item value that was submitted.
+        # 
         # Corresponds to the JSON property `submittedValue`
         # @return [String]
         attr_accessor :submitted_value
       
-        # Title of the item.
+        # 
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # The actual value on the landing page.
+        # 
         # Corresponds to the JSON property `valueOnLandingPage`
         # @return [String]
         attr_accessor :value_on_landing_page
@@ -4011,7 +4010,7 @@ module Google
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
       
-        # The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+        # Deprecated.
         # Corresponds to the JSON property `channelType`
         # @return [String]
         attr_accessor :channel_type
@@ -4074,9 +4073,8 @@ module Google
         # @return [String]
         attr_accessor :placed_date
       
-        # Deprecated. Ignored if provided for createTestOrder. The details of the
-        # merchant provided promotions applied to the order. More details about the
-        # program are here.
+        # The details of the merchant provided promotions applied to the order. More
+        # details about the program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
         attr_accessor :promotions
@@ -4316,7 +4314,7 @@ module Google
       
         # Email address that can be used for marketing purposes. The field may be empty
         # even if explicitMarketingPreference is 'granted'. This happens when retrieving
-        # an old order from the customer who deleted his account.
+        # an old order from the customer who deleted their account.
         # Corresponds to the JSON property `marketingEmailAddress`
         # @return [String]
         attr_accessor :marketing_email_address
@@ -9199,7 +9197,7 @@ module Google
       end
       
       # The status of a product, i.e., information about a product computed
-      # asynchronously by the data quality analysis.
+      # asynchronously.
       class ProductStatus
         include Google::Apis::Core::Hashable
       
@@ -9208,7 +9206,7 @@ module Google
         # @return [String]
         attr_accessor :creation_date
       
-        # A list of data quality issues associated with the product.
+        # DEPRECATED - never populated
         # Corresponds to the JSON property `dataQualityIssues`
         # @return [Array<Google::Apis::ContentV2::ProductStatusDataQualityIssue>]
         attr_accessor :data_quality_issues
@@ -9284,47 +9282,47 @@ module Google
       class ProductStatusDataQualityIssue
         include Google::Apis::Core::Hashable
       
-        # The destination the issue applies to.
+        # 
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
       
-        # A more detailed error string.
+        # 
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
       
-        # The fetch status for landing_page_errors.
+        # 
         # Corresponds to the JSON property `fetchStatus`
         # @return [String]
         attr_accessor :fetch_status
       
-        # The ID of the data quality issue.
+        # 
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The attribute name that is relevant for the issue.
+        # 
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The severity of the data quality issue.
+        # 
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # The time stamp of the data quality issue.
+        # 
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
       
-        # The value of that attribute that was found on the landing page
+        # 
         # Corresponds to the JSON property `valueOnLandingPage`
         # @return [String]
         attr_accessor :value_on_landing_page
       
-        # The value the attribute had at time of evaluation.
+        # 
         # Corresponds to the JSON property `valueProvided`
         # @return [String]
         attr_accessor :value_provided
@@ -9827,7 +9825,7 @@ module Google
         attr_accessor :kind
       
         # The status of a product, i.e., information about a product computed
-        # asynchronously by the data quality analysis.
+        # asynchronously.
         # Corresponds to the JSON property `productStatus`
         # @return [Google::Apis::ContentV2::ProductStatus]
         attr_accessor :product_status
@@ -10550,8 +10548,7 @@ module Google
         # @return [String]
         attr_accessor :predefined_delivery_address
       
-        # Deprecated. The details of the merchant provided promotions applied to the
-        # order. More details about the program are here.
+        # Deprecated. Ignored if provided.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
         attr_accessor :promotions
@@ -10710,7 +10707,7 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # The item's channel.
+        # Deprecated.
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel

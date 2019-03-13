@@ -87,7 +87,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -162,14 +162,14 @@ module Google
         # @return [String]
         attr_accessor :last_config_send_time
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1066,14 +1066,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

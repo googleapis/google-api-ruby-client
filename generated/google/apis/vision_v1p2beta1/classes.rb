@@ -63,14 +63,14 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -340,7 +340,11 @@ module Google
       # can be trivially provided to the constructor of "java.awt.Color" in Java; it
       # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
       # method in iOS; and, with just a little work, it can be easily formatted into
-      # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+      # a CSS "rgba()" string in JavaScript, as well.
+      # Note: this proto does not carry information about the absolute color space
+      # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+      # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+      # space.
       # Example (Java):
       # import com.google.type.Color;
       # // ...
@@ -488,7 +492,11 @@ module Google
         # can be trivially provided to the constructor of "java.awt.Color" in Java; it
         # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
         # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
         # Example (Java):
         # import com.google.type.Color;
         # // ...
@@ -1013,14 +1021,14 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1261,7 +1269,11 @@ module Google
         # can be trivially provided to the constructor of "java.awt.Color" in Java; it
         # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
         # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
         # Example (Java):
         # import com.google.type.Color;
         # // ...
@@ -2792,14 +2804,14 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -3135,7 +3147,11 @@ module Google
         # can be trivially provided to the constructor of "java.awt.Color" in Java; it
         # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
         # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
         # Example (Java):
         # import com.google.type.Color;
         # // ...
@@ -4912,14 +4928,14 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -5194,7 +5210,11 @@ module Google
         # can be trivially provided to the constructor of "java.awt.Color" in Java; it
         # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
         # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
         # Example (Java):
         # import com.google.type.Color;
         # // ...
@@ -6775,14 +6795,14 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -7096,7 +7116,11 @@ module Google
         # can be trivially provided to the constructor of "java.awt.Color" in Java; it
         # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
         # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
         # Example (Java):
         # import com.google.type.Color;
         # // ...
@@ -8962,14 +8986,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -9476,14 +9500,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

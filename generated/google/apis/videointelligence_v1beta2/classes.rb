@@ -623,14 +623,14 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1079,6 +1079,16 @@ module Google
       class GoogleCloudVideointelligenceV1beta2LabelDetectionConfig
         include Google::Apis::Core::Hashable
       
+        # The confidence threshold we perform filtering on the labels from
+        # frame-level detection. If not set, it is set to 0.4 by default. The valid
+        # range for this threshold is [0.1, 0.9]. Any value set outside of this
+        # range will be clipped.
+        # Note: for best results please follow the default threshold. We will update
+        # the default threshold everytime when we release a new model.
+        # Corresponds to the JSON property `frameConfidenceThreshold`
+        # @return [Float]
+        attr_accessor :frame_confidence_threshold
+      
         # What labels should be detected with LABEL_DETECTION, in addition to
         # video-level labels or segment-level labels.
         # If unspecified, defaults to `SHOT_MODE`.
@@ -1101,15 +1111,27 @@ module Google
         attr_accessor :stationary_camera
         alias_method :stationary_camera?, :stationary_camera
       
+        # The confidence threshold we perform filtering on the labels from
+        # video-level and shot-level detections. If not set, it is set to 0.3 by
+        # default. The valid range for this threshold is [0.1, 0.9]. Any value set
+        # outside of this range will be clipped.
+        # Note: for best results please follow the default threshold. We will update
+        # the default threshold everytime when we release a new model.
+        # Corresponds to the JSON property `videoConfidenceThreshold`
+        # @return [Float]
+        attr_accessor :video_confidence_threshold
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @frame_confidence_threshold = args[:frame_confidence_threshold] if args.key?(:frame_confidence_threshold)
           @label_detection_mode = args[:label_detection_mode] if args.key?(:label_detection_mode)
           @model = args[:model] if args.key?(:model)
           @stationary_camera = args[:stationary_camera] if args.key?(:stationary_camera)
+          @video_confidence_threshold = args[:video_confidence_threshold] if args.key?(:video_confidence_threshold)
         end
       end
       
@@ -1719,14 +1741,14 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -2572,14 +2594,14 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -3374,14 +3396,14 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -3578,12 +3600,12 @@ module Google
       # Video annotation progress. Included in the `metadata`
       # field of the `Operation` returned by the `GetOperation`
       # call of the `google::longrunning::Operations` service.
-      class GoogleCloudVideointelligenceV2beta1AnnotateVideoProgress
+      class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress
         include Google::Apis::Core::Hashable
       
         # Progress metadata for all videos specified in `AnnotateVideoRequest`.
         # Corresponds to the JSON property `annotationProgress`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoAnnotationProgress>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>]
         attr_accessor :annotation_progress
       
         def initialize(**args)
@@ -3599,12 +3621,12 @@ module Google
       # Video annotation response. Included in the `response`
       # field of the `Operation` returned by the `GetOperation`
       # call of the `google::longrunning::Operations` service.
-      class GoogleCloudVideointelligenceV2beta1AnnotateVideoResponse
+      class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse
         include Google::Apis::Core::Hashable
       
         # Annotation results for all videos specified in `AnnotateVideoRequest`.
         # Corresponds to the JSON property `annotationResults`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoAnnotationResults>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>]
         attr_accessor :annotation_results
       
         def initialize(**args)
@@ -3618,7 +3640,7 @@ module Google
       end
       
       # Detected entity from video analysis.
-      class GoogleCloudVideointelligenceV2beta1Entity
+      class GoogleCloudVideointelligenceV1p3beta1Entity
         include Google::Apis::Core::Hashable
       
         # Textual description, e.g. `Fixed-gear bicycle`.
@@ -3653,12 +3675,12 @@ module Google
       # Explicit content annotation (based on per-frame visual signals only).
       # If no explicit content has been detected in a frame, no annotations are
       # present for that frame.
-      class GoogleCloudVideointelligenceV2beta1ExplicitContentAnnotation
+      class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
         include Google::Apis::Core::Hashable
       
         # All video frames where explicit content was detected.
         # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ExplicitContentFrame>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>]
         attr_accessor :frames
       
         def initialize(**args)
@@ -3672,7 +3694,7 @@ module Google
       end
       
       # Video frame level annotation results for explicit content.
-      class GoogleCloudVideointelligenceV2beta1ExplicitContentFrame
+      class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
         include Google::Apis::Core::Hashable
       
         # Likelihood of the pornography content..
@@ -3698,7 +3720,7 @@ module Google
       end
       
       # Label annotation.
-      class GoogleCloudVideointelligenceV2beta1LabelAnnotation
+      class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
@@ -3706,22 +3728,22 @@ module Google
         # cases there might be more than one categories e.g. `Terrier` could also be
         # a `pet`.
         # Corresponds to the JSON property `categoryEntities`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1Entity>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1Entity>]
         attr_accessor :category_entities
       
         # Detected entity from video analysis.
         # Corresponds to the JSON property `entity`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1Entity]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1Entity]
         attr_accessor :entity
       
         # All video frames where a label was detected.
         # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelFrame>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelFrame>]
         attr_accessor :frames
       
         # All video segments where a label was detected.
         # Corresponds to the JSON property `segments`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelSegment>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelSegment>]
         attr_accessor :segments
       
         def initialize(**args)
@@ -3738,7 +3760,7 @@ module Google
       end
       
       # Video frame level annotation results for label detection.
-      class GoogleCloudVideointelligenceV2beta1LabelFrame
+      class GoogleCloudVideointelligenceV1p3beta1LabelFrame
         include Google::Apis::Core::Hashable
       
         # Confidence that the label is accurate. Range: [0, 1].
@@ -3764,7 +3786,7 @@ module Google
       end
       
       # Video segment level annotation results for label detection.
-      class GoogleCloudVideointelligenceV2beta1LabelSegment
+      class GoogleCloudVideointelligenceV1p3beta1LabelSegment
         include Google::Apis::Core::Hashable
       
         # Confidence that the label is accurate. Range: [0, 1].
@@ -3774,7 +3796,7 @@ module Google
       
         # Video segment.
         # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoSegment]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
         attr_accessor :segment
       
         def initialize(**args)
@@ -3791,7 +3813,7 @@ module Google
       # Normalized bounding box.
       # The normalized vertex coordinates are relative to the original image.
       # Range: [0, 1].
-      class GoogleCloudVideointelligenceV2beta1NormalizedBoundingBox
+      class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
         include Google::Apis::Core::Hashable
       
         # Bottom Y coordinate.
@@ -3842,12 +3864,12 @@ module Google
       # and the vertex order will still be (0, 1, 2, 3). Note that values can be less
       # than 0, or greater than 1 due to trignometric calculations for location of
       # the box.
-      class GoogleCloudVideointelligenceV2beta1NormalizedBoundingPoly
+      class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
         # Normalized vertices of the bounding polygon.
         # Corresponds to the JSON property `vertices`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1NormalizedVertex>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>]
         attr_accessor :vertices
       
         def initialize(**args)
@@ -3863,7 +3885,7 @@ module Google
       # A vertex represents a 2D point in the image.
       # NOTE: the normalized vertex coordinates are relative to the original image
       # and range from 0 to 1.
-      class GoogleCloudVideointelligenceV2beta1NormalizedVertex
+      class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
         # X coordinate.
@@ -3888,7 +3910,7 @@ module Google
       end
       
       # Annotations corresponding to one tracked object.
-      class GoogleCloudVideointelligenceV2beta1ObjectTrackingAnnotation
+      class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
         include Google::Apis::Core::Hashable
       
         # Object category's labeling confidence of this track.
@@ -3898,7 +3920,7 @@ module Google
       
         # Detected entity from video analysis.
         # Corresponds to the JSON property `entity`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1Entity]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1Entity]
         attr_accessor :entity
       
         # Information corresponding to all frames where this object track appears.
@@ -3906,12 +3928,12 @@ module Google
         # messages in frames.
         # Streaming mode: it can only be one ObjectTrackingFrame message in frames.
         # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ObjectTrackingFrame>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>]
         attr_accessor :frames
       
         # Video segment.
         # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoSegment]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
         attr_accessor :segment
       
         # Streaming mode ONLY.
@@ -3940,14 +3962,14 @@ module Google
       
       # Video frame level annotations for object detection and tracking. This field
       # stores per frame location, time offset, and confidence.
-      class GoogleCloudVideointelligenceV2beta1ObjectTrackingFrame
+      class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame
         include Google::Apis::Core::Hashable
       
         # Normalized bounding box.
         # The normalized vertex coordinates are relative to the original image.
         # Range: [0, 1].
         # Corresponds to the JSON property `normalizedBoundingBox`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1NormalizedBoundingBox]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox]
         attr_accessor :normalized_bounding_box
       
         # The timestamp of the frame in microseconds.
@@ -3967,7 +3989,7 @@ module Google
       end
       
       # Alternative hypotheses (a.k.a. n-best list).
-      class GoogleCloudVideointelligenceV2beta1SpeechRecognitionAlternative
+      class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
         # The confidence estimate between 0.0 and 1.0. A higher number
@@ -3987,7 +4009,7 @@ module Google
       
         # A list of word-specific information for each recognized word.
         # Corresponds to the JSON property `words`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1WordInfo>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1WordInfo>]
         attr_accessor :words
       
         def initialize(**args)
@@ -4003,7 +4025,7 @@ module Google
       end
       
       # A speech recognition result corresponding to a portion of the audio.
-      class GoogleCloudVideointelligenceV2beta1SpeechTranscription
+      class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription
         include Google::Apis::Core::Hashable
       
         # May contain one or more recognition hypotheses (up to the maximum specified
@@ -4011,7 +4033,7 @@ module Google
         # accuracy, with the top (first) alternative being the most probable, as
         # ranked by the recognizer.
         # Corresponds to the JSON property `alternatives`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1SpeechRecognitionAlternative>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
         # Output only. The
@@ -4036,13 +4058,13 @@ module Google
       # `StreamingAnnotateVideoResponse` is the only message returned to the client
       # by `StreamingAnnotateVideo`. A series of zero or more
       # `StreamingAnnotateVideoResponse` messages are streamed back to the client.
-      class GoogleCloudVideointelligenceV2beta1StreamingAnnotateVideoResponse
+      class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse
         include Google::Apis::Core::Hashable
       
         # Streaming annotation results corresponding to a portion of the video
         # that is currently being processed.
         # Corresponds to the JSON property `annotationResults`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1StreamingVideoAnnotationResults]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults]
         attr_accessor :annotation_results
       
         # GCS URI that stores annotation results of one streaming session.
@@ -4053,14 +4075,14 @@ module Google
         # @return [String]
         attr_accessor :annotation_results_uri
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4110,29 +4132,29 @@ module Google
       
       # Streaming annotation results corresponding to a portion of the video
       # that is currently being processed.
-      class GoogleCloudVideointelligenceV2beta1StreamingVideoAnnotationResults
+      class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
         include Google::Apis::Core::Hashable
       
         # Explicit content annotation (based on per-frame visual signals only).
         # If no explicit content has been detected in a frame, no annotations are
         # present for that frame.
         # Corresponds to the JSON property `explicitAnnotation`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ExplicitContentAnnotation]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
         # Label annotation results.
         # Corresponds to the JSON property `labelAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :label_annotations
       
         # Object tracking results.
         # Corresponds to the JSON property `objectAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ObjectTrackingAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
         # Shot annotation results. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoSegment>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment>]
         attr_accessor :shot_annotations
       
         def initialize(**args)
@@ -4151,12 +4173,12 @@ module Google
       # Annotations related to one detected OCR text snippet. This will contain the
       # corresponding text, confidence value, and frame level information for each
       # detection.
-      class GoogleCloudVideointelligenceV2beta1TextAnnotation
+      class GoogleCloudVideointelligenceV1p3beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
         # All video segments where OCR detected text appears.
         # Corresponds to the JSON property `segments`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1TextSegment>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1TextSegment>]
         attr_accessor :segments
       
         # The detected text.
@@ -4178,7 +4200,7 @@ module Google
       # Video frame level annotation results for text annotation (OCR).
       # Contains information regarding timestamp and bounding box locations for the
       # frames containing detected OCR text snippets.
-      class GoogleCloudVideointelligenceV2beta1TextFrame
+      class GoogleCloudVideointelligenceV1p3beta1TextFrame
         include Google::Apis::Core::Hashable
       
         # Normalized bounding polygon for text (that might not be aligned with axis).
@@ -4197,7 +4219,7 @@ module Google
         # than 0, or greater than 1 due to trignometric calculations for location of
         # the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1NormalizedBoundingPoly]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
       
         # Timestamp of this frame.
@@ -4217,7 +4239,7 @@ module Google
       end
       
       # Video segment level annotation results for text detection.
-      class GoogleCloudVideointelligenceV2beta1TextSegment
+      class GoogleCloudVideointelligenceV1p3beta1TextSegment
         include Google::Apis::Core::Hashable
       
         # Confidence for the track of detected text. It is calculated as the highest
@@ -4228,12 +4250,12 @@ module Google
       
         # Information related to the frames where OCR detected text appears.
         # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1TextFrame>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1TextFrame>]
         attr_accessor :frames
       
         # Video segment.
         # Corresponds to the JSON property `segment`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoSegment]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
         attr_accessor :segment
       
         def initialize(**args)
@@ -4249,7 +4271,7 @@ module Google
       end
       
       # Annotation progress for a single video.
-      class GoogleCloudVideointelligenceV2beta1VideoAnnotationProgress
+      class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
         # Video file location in
@@ -4288,17 +4310,17 @@ module Google
       end
       
       # Annotation results for a single video.
-      class GoogleCloudVideointelligenceV2beta1VideoAnnotationResults
+      class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4338,13 +4360,13 @@ module Google
         # If no explicit content has been detected in a frame, no annotations are
         # present for that frame.
         # Corresponds to the JSON property `explicitAnnotation`
-        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ExplicitContentAnnotation]
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
         # Label annotations on frame level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `frameLabelAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :frame_label_annotations
       
         # Video file location in
@@ -4355,36 +4377,36 @@ module Google
       
         # Annotations for list of objects detected and tracked in video.
         # Corresponds to the JSON property `objectAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1ObjectTrackingAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
         # Label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1VideoSegment>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment>]
         attr_accessor :shot_annotations
       
         # Label annotations on shot level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `shotLabelAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1LabelAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :shot_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1SpeechTranscription>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>]
         attr_accessor :speech_transcriptions
       
         # OCR text detection and tracking.
         # Annotations for list of detected text snippets. Each will have list of
         # frame information associated with it.
         # Corresponds to the JSON property `textAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV2beta1TextAnnotation>]
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1TextAnnotation>]
         attr_accessor :text_annotations
       
         def initialize(**args)
@@ -4407,7 +4429,7 @@ module Google
       end
       
       # Video segment.
-      class GoogleCloudVideointelligenceV2beta1VideoSegment
+      class GoogleCloudVideointelligenceV1p3beta1VideoSegment
         include Google::Apis::Core::Hashable
       
         # Time-offset, relative to the beginning of the video,
@@ -4436,7 +4458,7 @@ module Google
       # Word-specific information for recognized words. Word information is only
       # included in the response when certain request parameters are set, such
       # as `enable_word_time_offsets`.
-      class GoogleCloudVideointelligenceV2beta1WordInfo
+      class GoogleCloudVideointelligenceV1p3beta1WordInfo
         include Google::Apis::Core::Hashable
       
         # Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -4505,14 +4527,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4589,14 +4611,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

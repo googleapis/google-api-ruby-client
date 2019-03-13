@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/iap
     module IapV1
       VERSION = 'V1'
-      REVISION = '20190109'
+      REVISION = '20190306'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -2361,7 +2361,6 @@ module Google
           property :acknowledged, as: 'acknowledged'
           property :billing_address, as: 'billingAddress', class: Google::Apis::ContentV2_1::OrderAddress, decorator: Google::Apis::ContentV2_1::OrderAddress::Representation
       
-          property :channel_type, as: 'channelType'
           property :customer, as: 'customer', class: Google::Apis::ContentV2_1::OrderCustomer, decorator: Google::Apis::ContentV2_1::OrderCustomer::Representation
       
           property :delivery_details, as: 'deliveryDetails', class: Google::Apis::ContentV2_1::OrderDeliveryDetails, decorator: Google::Apis::ContentV2_1::OrderDeliveryDetails::Representation
@@ -2478,7 +2477,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :brand, as: 'brand'
-          property :channel, as: 'channel'
           property :condition, as: 'condition'
           property :content_language, as: 'contentLanguage'
           collection :fees, as: 'fees', class: Google::Apis::ContentV2_1::OrderLineItemProductFee, decorator: Google::Apis::ContentV2_1::OrderLineItemProductFee::Representation
@@ -3852,7 +3850,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :brand, as: 'brand'
-          property :channel, as: 'channel'
           property :condition, as: 'condition'
           property :content_language, as: 'contentLanguage'
           property :gtin, as: 'gtin'

@@ -1155,6 +1155,11 @@ module Google
         # @return [String]
         attr_accessor :artifact_manifest
       
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `artifactTiming`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :artifact_timing
+      
         # List of build step digests, in the order corresponding to build step
         # indices.
         # Corresponds to the JSON property `buildStepImages`
@@ -1187,6 +1192,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_manifest = args[:artifact_manifest] if args.key?(:artifact_manifest)
+          @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
           @images = args[:images] if args.key?(:images)

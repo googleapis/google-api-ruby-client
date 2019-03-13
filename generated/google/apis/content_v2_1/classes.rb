@@ -3391,11 +3391,6 @@ module Google
         # @return [Google::Apis::ContentV2_1::OrderAddress]
         attr_accessor :billing_address
       
-        # The channel type of the order: "purchaseOnGoogle" or "googleExpress".
-        # Corresponds to the JSON property `channelType`
-        # @return [String]
-        attr_accessor :channel_type
-      
         # The details of the customer who placed the order.
         # Corresponds to the JSON property `customer`
         # @return [Google::Apis::ContentV2_1::OrderCustomer]
@@ -3499,7 +3494,6 @@ module Google
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
           @billing_address = args[:billing_address] if args.key?(:billing_address)
-          @channel_type = args[:channel_type] if args.key?(:channel_type)
           @customer = args[:customer] if args.key?(:customer)
           @delivery_details = args[:delivery_details] if args.key?(:delivery_details)
           @id = args[:id] if args.key?(:id)
@@ -3678,7 +3672,7 @@ module Google
       
         # Email address that can be used for marketing purposes. The field may be empty
         # even if explicitMarketingPreference is 'granted'. This happens when retrieving
-        # an old order from the customer who deleted his account.
+        # an old order from the customer who deleted their account.
         # Corresponds to the JSON property `marketingEmailAddress`
         # @return [String]
         attr_accessor :marketing_email_address
@@ -3836,11 +3830,6 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # The item's channel (online or local).
-        # Corresponds to the JSON property `channel`
-        # @return [String]
-        attr_accessor :channel
-      
         # Condition or state of the item.
         # Corresponds to the JSON property `condition`
         # @return [String]
@@ -3920,7 +3909,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @brand = args[:brand] if args.key?(:brand)
-          @channel = args[:channel] if args.key?(:channel)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
           @fees = args[:fees] if args.key?(:fees)
@@ -7288,7 +7276,7 @@ module Google
       end
       
       # The status of a product, i.e., information about a product computed
-      # asynchronously by the data quality analysis.
+      # asynchronously.
       class ProductStatus
         include Google::Apis::Core::Hashable
       
@@ -7823,7 +7811,7 @@ module Google
         attr_accessor :kind
       
         # The status of a product, i.e., information about a product computed
-        # asynchronously by the data quality analysis.
+        # asynchronously.
         # Corresponds to the JSON property `productStatus`
         # @return [Google::Apis::ContentV2_1::ProductStatus]
         attr_accessor :product_status
@@ -8790,11 +8778,6 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # The item's channel.
-        # Corresponds to the JSON property `channel`
-        # @return [String]
-        attr_accessor :channel
-      
         # Condition or state of the item.
         # Corresponds to the JSON property `condition`
         # @return [String]
@@ -8858,7 +8841,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @brand = args[:brand] if args.key?(:brand)
-          @channel = args[:channel] if args.key?(:channel)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
           @gtin = args[:gtin] if args.key?(:gtin)

@@ -180,14 +180,15 @@ module Google
       
         # The MIME content-type, such as `image/png`.
         # For more information, see
-        # [MIME types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/
-        # MIME_types).
+        # [MIME
+        # types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
       
-        # The path of the resource file relative to the root file.
-        # For root or thumbnail files, this is just the filename.
+        # The path of the resource file relative to the
+        # root file. For root or thumbnail files,
+        # this is just the filename.
         # Corresponds to the JSON property `relativePath`
         # @return [String]
         attr_accessor :relative_path
