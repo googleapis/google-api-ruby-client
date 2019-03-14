@@ -605,6 +605,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_format, as: 'exportFormat'
+          property :show_confidential_mode_content, as: 'showConfidentialModeContent'
         end
       end
       

@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZonePrivateVisibilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZonePrivateVisibilityConfigNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZonesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -219,6 +231,9 @@ module Google
           property :name, as: 'name'
           property :name_server_set, as: 'nameServerSet'
           collection :name_servers, as: 'nameServers'
+          property :private_visibility_config, as: 'privateVisibilityConfig', class: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfig, decorator: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfig::Representation
+      
+          property :visibility, as: 'visibility'
         end
       end
       
@@ -242,6 +257,23 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DnsV2beta1::Operation, decorator: Google::Apis::DnsV2beta1::Operation::Representation
       
+        end
+      end
+      
+      class ManagedZonePrivateVisibilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :networks, as: 'networks', class: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfigNetwork, decorator: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfigNetwork::Representation
+      
+        end
+      end
+      
+      class ManagedZonePrivateVisibilityConfigNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :network_url, as: 'networkUrl'
         end
       end
       
@@ -310,6 +342,8 @@ module Google
           property :dns_keys_per_managed_zone, as: 'dnsKeysPerManagedZone'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
+          property :managed_zones_per_network, as: 'managedZonesPerNetwork'
+          property :networks_per_managed_zone, as: 'networksPerManagedZone'
           property :resource_records_per_rrset, as: 'resourceRecordsPerRrset'
           property :rrset_additions_per_change, as: 'rrsetAdditionsPerChange'
           property :rrset_deletions_per_change, as: 'rrsetDeletionsPerChange'

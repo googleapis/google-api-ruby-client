@@ -36,7 +36,7 @@ module Google
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
-      # View your basic profile info
+      # See your personal info, including any personal info you've made publically available
       AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
     end
   end

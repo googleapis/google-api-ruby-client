@@ -90,11 +90,7 @@ module Google
         end
       end
       
-      # Request for the `CreateSnapshot` method.<br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be changed
-      # in
-      # backward-incompatible ways and is not recommended for production use.
-      # It is not subject to any SLA or deprecation policy.
+      # Request for the `CreateSnapshot` method.
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
@@ -219,10 +215,7 @@ module Google
         end
       end
       
-      # Response for the `ListSnapshots` method.<br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be
-      # changed in backward-incompatible ways and is not recommended for production
-      # use. It is not subject to any SLA or deprecation policy.
+      # Response for the `ListSnapshots` method.
       class ListSnapshotsResponse
         include Google::Apis::Core::Hashable
       
@@ -275,10 +268,7 @@ module Google
         end
       end
       
-      # Response for the `ListTopicSnapshots` method.<br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be
-      # changed in backward-incompatible ways and is not recommended for production
-      # use. It is not subject to any SLA or deprecation policy.
+      # Response for the `ListTopicSnapshots` method.
       class ListTopicSnapshotsResponse
         include Google::Apis::Core::Hashable
       
@@ -702,10 +692,7 @@ module Google
         end
       end
       
-      # Request for the `Seek` method. <br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be
-      # changed in backward-incompatible ways and is not recommended for production
-      # use. It is not subject to any SLA or deprecation policy.
+      # Request for the `Seek` method.
       class SeekRequest
         include Google::Apis::Core::Hashable
       
@@ -815,10 +802,7 @@ module Google
       # operations, which allow
       # you to manage message acknowledgments in bulk. That is, you can set the
       # acknowledgment state of messages in an existing subscription to the state
-      # captured by a snapshot.<br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be
-      # changed in backward-incompatible ways and is not recommended for production
-      # use. It is not subject to any SLA or deprecation policy.
+      # captured by a snapshot.
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -907,10 +891,7 @@ module Google
         # If `retain_acked_messages` is true, then this also configures the retention
         # of acknowledged messages, and thus configures how far back in time a `Seek`
         # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
-        # minutes.<br><br>
-        # <b>BETA:</b> This feature is part of a beta release. This API might be
-        # changed in backward-incompatible ways and is not recommended for production
-        # use. It is not subject to any SLA or deprecation policy.
+        # minutes.
         # Corresponds to the JSON property `messageRetentionDuration`
         # @return [String]
         attr_accessor :message_retention_duration
@@ -936,10 +917,6 @@ module Google
         # window. This must be true if you would like to
         # <a href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
         # Seek to a timestamp</a>.
-        # <br><br>
-        # <b>BETA:</b> This feature is part of a beta release. This API might be
-        # changed in backward-incompatible ways and is not recommended for production
-        # use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `retainAckedMessages`
         # @return [Boolean]
         attr_accessor :retain_acked_messages
@@ -1043,10 +1020,7 @@ module Google
         end
       end
       
-      # Request for the UpdateSnapshot method.<br><br>
-      # <b>BETA:</b> This feature is part of a beta release. This API might be
-      # changed in backward-incompatible ways and is not recommended for production
-      # use. It is not subject to any SLA or deprecation policy.
+      # Request for the UpdateSnapshot method.
       class UpdateSnapshotRequest
         include Google::Apis::Core::Hashable
       
@@ -1055,10 +1029,7 @@ module Google
         # operations, which allow
         # you to manage message acknowledgments in bulk. That is, you can set the
         # acknowledgment state of messages in an existing subscription to the state
-        # captured by a snapshot.<br><br>
-        # <b>BETA:</b> This feature is part of a beta release. This API might be
-        # changed in backward-incompatible ways and is not recommended for production
-        # use. It is not subject to any SLA or deprecation policy.
+        # captured by a snapshot.
         # Corresponds to the JSON property `snapshot`
         # @return [Google::Apis::PubsubV1::Snapshot]
         attr_accessor :snapshot

@@ -1710,7 +1710,8 @@ module Google
         # List of principals who are allowed to see the item in search results.
         # Optional if inheriting permissions from another item or if the item
         # is not intended to be visible, such as
-        # virtual containers.
+        # virtual
+        # containers.
         # The maximum number of elements is 1000.
         # Corresponds to the JSON property `readers`
         # @return [Array<Google::Apis::CloudsearchV1::Principal>]
@@ -3641,7 +3642,7 @@ module Google
         attr_accessor :object_definitions
       
         # IDs of the Long Running Operations (LROs) currently running for this
-        # schema. After modifying the schema, wait for opeations to complete
+        # schema. After modifying the schema, wait for operations to complete
         # before indexing additional content.
         # Corresponds to the JSON property `operationIds`
         # @return [Array<String>]

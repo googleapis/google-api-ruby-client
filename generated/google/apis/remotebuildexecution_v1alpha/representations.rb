@@ -1023,6 +1023,7 @@ module Google
       
           collection :inline_blobs, as: 'inlineBlobs', class: Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Blob, decorator: Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Blob::Representation
       
+          property :working_directory, as: 'workingDirectory'
         end
       end
       

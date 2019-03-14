@@ -962,6 +962,12 @@ module Google
         # @return [String]
         attr_accessor :export_format
       
+        # Set to true to export confidential mode content.
+        # Corresponds to the JSON property `showConfidentialModeContent`
+        # @return [Boolean]
+        attr_accessor :show_confidential_mode_content
+        alias_method :show_confidential_mode_content?, :show_confidential_mode_content
+      
         def initialize(**args)
            update!(**args)
         end
@@ -969,6 +975,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @export_format = args[:export_format] if args.key?(:export_format)
+          @show_confidential_mode_content = args[:show_confidential_mode_content] if args.key?(:show_confidential_mode_content)
         end
       end
       
