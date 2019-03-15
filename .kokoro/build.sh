@@ -27,6 +27,7 @@ function set_failed_status {
 
 for version in "${versions[@]}"; do
     rbenv global "$version"
+    echo "Using Ruby $version"
     (bundle update && bundle exec rake) || set_failed_status
 done
 
