@@ -248,7 +248,8 @@ module Google
         attr_accessor :status
       
         # The user agent sent by the client. Example: "Mozilla/4.0 (compatible; MSIE 6.0;
-        # Windows 98; Q312461; .NET CLR 1.0.3705)".
+        # Windows 98; Q312461; .NET
+        # CLR 1.0.3705)".
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent

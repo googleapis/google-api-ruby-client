@@ -224,6 +224,172 @@ module Google
       end
       
       # 
+      class BqmlIterationResult
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only, Beta] Time taken to run the training iteration in milliseconds.
+        # Corresponds to the JSON property `durationMs`
+        # @return [Fixnum]
+        attr_accessor :duration_ms
+      
+        # [Output-only, Beta] Eval loss computed on the eval data at the end of the
+        # iteration. The eval loss is used for early stopping to avoid overfitting. No
+        # eval loss if eval_split_method option is specified as no_split or auto_split
+        # with input data size less than 500 rows.
+        # Corresponds to the JSON property `evalLoss`
+        # @return [Float]
+        attr_accessor :eval_loss
+      
+        # [Output-only, Beta] Index of the ML training iteration, starting from zero for
+        # each training run.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # [Output-only, Beta] Learning rate used for this iteration, it varies for
+        # different training iterations if learn_rate_strategy option is not constant.
+        # Corresponds to the JSON property `learnRate`
+        # @return [Float]
+        attr_accessor :learn_rate
+      
+        # [Output-only, Beta] Training loss computed on the training data at the end of
+        # the iteration. The training loss function is defined by model type.
+        # Corresponds to the JSON property `trainingLoss`
+        # @return [Float]
+        attr_accessor :training_loss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
+          @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
+          @index = args[:index] if args.key?(:index)
+          @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+          @training_loss = args[:training_loss] if args.key?(:training_loss)
+        end
+      end
+      
+      # 
+      class BqmlTrainingRun
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only, Beta] List of each iteration results.
+        # Corresponds to the JSON property `iterationResults`
+        # @return [Array<Google::Apis::BigqueryV2::BqmlIterationResult>]
+        attr_accessor :iteration_results
+      
+        # [Output-only, Beta] Training run start time in milliseconds since the epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [DateTime]
+        attr_accessor :start_time
+      
+        # [Output-only, Beta] Different state applicable for a training run. IN PROGRESS:
+        # Training run is in progress. FAILED: Training run ended due to a non-
+        # retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED:
+        # Training run cancelled by the user.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # [Output-only, Beta] Training options used by this training run. These options
+        # are mutable for subsequent training runs. Default values are explicitly stored
+        # for options not specified in the input query of the first training run. For
+        # subsequent training runs, any option not explicitly specified in the input
+        # query will be copied from the previous training run.
+        # Corresponds to the JSON property `trainingOptions`
+        # @return [Google::Apis::BigqueryV2::BqmlTrainingRun::TrainingOptions]
+        attr_accessor :training_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iteration_results = args[:iteration_results] if args.key?(:iteration_results)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @training_options = args[:training_options] if args.key?(:training_options)
+        end
+        
+        # [Output-only, Beta] Training options used by this training run. These options
+        # are mutable for subsequent training runs. Default values are explicitly stored
+        # for options not specified in the input query of the first training run. For
+        # subsequent training runs, any option not explicitly specified in the input
+        # query will be copied from the previous training run.
+        class TrainingOptions
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `earlyStop`
+          # @return [Boolean]
+          attr_accessor :early_stop
+          alias_method :early_stop?, :early_stop
+        
+          # 
+          # Corresponds to the JSON property `l1Reg`
+          # @return [Float]
+          attr_accessor :l1_reg
+        
+          # 
+          # Corresponds to the JSON property `l2Reg`
+          # @return [Float]
+          attr_accessor :l2_reg
+        
+          # 
+          # Corresponds to the JSON property `learnRate`
+          # @return [Float]
+          attr_accessor :learn_rate
+        
+          # 
+          # Corresponds to the JSON property `learnRateStrategy`
+          # @return [String]
+          attr_accessor :learn_rate_strategy
+        
+          # 
+          # Corresponds to the JSON property `lineSearchInitLearnRate`
+          # @return [Float]
+          attr_accessor :line_search_init_learn_rate
+        
+          # 
+          # Corresponds to the JSON property `maxIteration`
+          # @return [Fixnum]
+          attr_accessor :max_iteration
+        
+          # 
+          # Corresponds to the JSON property `minRelProgress`
+          # @return [Float]
+          attr_accessor :min_rel_progress
+        
+          # 
+          # Corresponds to the JSON property `warmStart`
+          # @return [Boolean]
+          attr_accessor :warm_start
+          alias_method :warm_start?, :warm_start
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @early_stop = args[:early_stop] if args.key?(:early_stop)
+            @l1_reg = args[:l1_reg] if args.key?(:l1_reg)
+            @l2_reg = args[:l2_reg] if args.key?(:l2_reg)
+            @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+            @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
+            @line_search_init_learn_rate = args[:line_search_init_learn_rate] if args.key?(:line_search_init_learn_rate)
+            @max_iteration = args[:max_iteration] if args.key?(:max_iteration)
+            @min_rel_progress = args[:min_rel_progress] if args.key?(:min_rel_progress)
+            @warm_start = args[:warm_start] if args.key?(:warm_start)
+          end
+        end
+      end
+      
+      # 
       class Clustering
         include Google::Apis::Core::Hashable
       
@@ -1225,55 +1391,6 @@ module Google
         def update!(**args)
           @range = args[:range] if args.key?(:range)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
-        end
-      end
-      
-      # 
-      class IterationResult
-        include Google::Apis::Core::Hashable
-      
-        # [Output-only, Beta] Time taken to run the training iteration in milliseconds.
-        # Corresponds to the JSON property `durationMs`
-        # @return [Fixnum]
-        attr_accessor :duration_ms
-      
-        # [Output-only, Beta] Eval loss computed on the eval data at the end of the
-        # iteration. The eval loss is used for early stopping to avoid overfitting. No
-        # eval loss if eval_split_method option is specified as no_split or auto_split
-        # with input data size less than 500 rows.
-        # Corresponds to the JSON property `evalLoss`
-        # @return [Float]
-        attr_accessor :eval_loss
-      
-        # [Output-only, Beta] Index of the ML training iteration, starting from zero for
-        # each training run.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        # [Output-only, Beta] Learning rate used for this iteration, it varies for
-        # different training iterations if learn_rate_strategy option is not constant.
-        # Corresponds to the JSON property `learnRate`
-        # @return [Float]
-        attr_accessor :learn_rate
-      
-        # [Output-only, Beta] Training loss computed on the training data at the end of
-        # the iteration. The training loss function is defined by model type.
-        # Corresponds to the JSON property `trainingLoss`
-        # @return [Float]
-        attr_accessor :training_loss
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
-          @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
-          @index = args[:index] if args.key?(:index)
-          @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
-          @training_loss = args[:training_loss] if args.key?(:training_loss)
         end
       end
       
@@ -2318,6 +2435,12 @@ module Google
         # @return [String]
         attr_accessor :ddl_operation_performed
       
+        # The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE
+        # queries.
+        # Corresponds to the JSON property `ddlTargetRoutine`
+        # @return [Google::Apis::BigqueryV2::RoutineReference]
+        attr_accessor :ddl_target_routine
+      
         # The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
@@ -2382,8 +2505,9 @@ module Google
         # CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
         # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "
         # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
-        # SELECT ... . "DROP_VIEW": DROP VIEW query. "ALTER_TABLE": ALTER TABLE query. "
-        # ALTER_VIEW": ALTER VIEW query.
+        # SELECT ... . "DROP_VIEW": DROP VIEW query. "CREATE_FUNCTION": CREATE FUNCTION
+        # query. "DROP_FUNCTION" : DROP FUNCTION query. "ALTER_TABLE": ALTER TABLE query.
+        # "ALTER_VIEW": ALTER VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type
@@ -2438,6 +2562,7 @@ module Google
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
+          @ddl_target_routine = args[:ddl_target_routine] if args.key?(:ddl_target_routine)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
           @model_training = args[:model_training] if args.key?(:model_training)
@@ -2637,7 +2762,7 @@ module Google
         # the model if warm start is used or if a user decides to continue a previously
         # cancelled query.
         # Corresponds to the JSON property `trainingRuns`
-        # @return [Array<Google::Apis::BigqueryV2::TrainingRun>]
+        # @return [Array<Google::Apis::BigqueryV2::BqmlTrainingRun>]
         attr_accessor :training_runs
       
         def initialize(**args)
@@ -3223,6 +3348,38 @@ module Google
             @interval = args[:interval] if args.key?(:interval)
             @start = args[:start] if args.key?(:start)
           end
+        end
+      end
+      
+      # 
+      class RoutineReference
+        include Google::Apis::Core::Hashable
+      
+        # [Required] The ID of the dataset containing this routine.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # [Required] The ID of the project containing this routine.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z),
+        # numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        # Corresponds to the JSON property `routineId`
+        # @return [String]
+        attr_accessor :routine_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @routine_id = args[:routine_id] if args.key?(:routine_id)
         end
       end
       
@@ -4004,123 +4161,6 @@ module Google
           @field = args[:field] if args.key?(:field)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class TrainingRun
-        include Google::Apis::Core::Hashable
-      
-        # [Output-only, Beta] List of each iteration results.
-        # Corresponds to the JSON property `iterationResults`
-        # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
-        attr_accessor :iteration_results
-      
-        # [Output-only, Beta] Training run start time in milliseconds since the epoch.
-        # Corresponds to the JSON property `startTime`
-        # @return [DateTime]
-        attr_accessor :start_time
-      
-        # [Output-only, Beta] Different state applicable for a training run. IN PROGRESS:
-        # Training run is in progress. FAILED: Training run ended due to a non-
-        # retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED:
-        # Training run cancelled by the user.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # [Output-only, Beta] Training options used by this training run. These options
-        # are mutable for subsequent training runs. Default values are explicitly stored
-        # for options not specified in the input query of the first training run. For
-        # subsequent training runs, any option not explicitly specified in the input
-        # query will be copied from the previous training run.
-        # Corresponds to the JSON property `trainingOptions`
-        # @return [Google::Apis::BigqueryV2::TrainingRun::TrainingOptions]
-        attr_accessor :training_options
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iteration_results = args[:iteration_results] if args.key?(:iteration_results)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @state = args[:state] if args.key?(:state)
-          @training_options = args[:training_options] if args.key?(:training_options)
-        end
-        
-        # [Output-only, Beta] Training options used by this training run. These options
-        # are mutable for subsequent training runs. Default values are explicitly stored
-        # for options not specified in the input query of the first training run. For
-        # subsequent training runs, any option not explicitly specified in the input
-        # query will be copied from the previous training run.
-        class TrainingOptions
-          include Google::Apis::Core::Hashable
-        
-          # 
-          # Corresponds to the JSON property `earlyStop`
-          # @return [Boolean]
-          attr_accessor :early_stop
-          alias_method :early_stop?, :early_stop
-        
-          # 
-          # Corresponds to the JSON property `l1Reg`
-          # @return [Float]
-          attr_accessor :l1_reg
-        
-          # 
-          # Corresponds to the JSON property `l2Reg`
-          # @return [Float]
-          attr_accessor :l2_reg
-        
-          # 
-          # Corresponds to the JSON property `learnRate`
-          # @return [Float]
-          attr_accessor :learn_rate
-        
-          # 
-          # Corresponds to the JSON property `learnRateStrategy`
-          # @return [String]
-          attr_accessor :learn_rate_strategy
-        
-          # 
-          # Corresponds to the JSON property `lineSearchInitLearnRate`
-          # @return [Float]
-          attr_accessor :line_search_init_learn_rate
-        
-          # 
-          # Corresponds to the JSON property `maxIteration`
-          # @return [Fixnum]
-          attr_accessor :max_iteration
-        
-          # 
-          # Corresponds to the JSON property `minRelProgress`
-          # @return [Float]
-          attr_accessor :min_rel_progress
-        
-          # 
-          # Corresponds to the JSON property `warmStart`
-          # @return [Boolean]
-          attr_accessor :warm_start
-          alias_method :warm_start?, :warm_start
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @early_stop = args[:early_stop] if args.key?(:early_stop)
-            @l1_reg = args[:l1_reg] if args.key?(:l1_reg)
-            @l2_reg = args[:l2_reg] if args.key?(:l2_reg)
-            @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
-            @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
-            @line_search_init_learn_rate = args[:line_search_init_learn_rate] if args.key?(:line_search_init_learn_rate)
-            @max_iteration = args[:max_iteration] if args.key?(:max_iteration)
-            @min_rel_progress = args[:min_rel_progress] if args.key?(:min_rel_progress)
-            @warm_start = args[:warm_start] if args.key?(:warm_start)
-          end
         end
       end
       

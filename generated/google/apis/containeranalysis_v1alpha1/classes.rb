@@ -846,14 +846,14 @@ module Google
         # @return [String]
         attr_accessor :analysis_status
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1866,14 +1866,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -2448,14 +2448,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing
@@ -2676,6 +2676,13 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # The distro assigned severity for this vulnerability when that is
+        # available and note provider assigned severity when distro has not yet
+        # assigned a severity for this vulnerability.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
         # The set of affected locations and their fixes (if available) within
         # the associated resource.
         # Corresponds to the JSON property `packageIssue`
@@ -2700,6 +2707,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)

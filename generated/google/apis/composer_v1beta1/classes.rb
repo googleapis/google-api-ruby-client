@@ -146,6 +146,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
+        # The configuration information for configuring a private Composer environment.
+        # Corresponds to the JSON property `privateEnvironmentConfig`
+        # @return [Google::Apis::ComposerV1beta1::PrivateEnvironmentConfig]
+        attr_accessor :private_environment_config
+      
         # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1beta1::SoftwareConfig]
@@ -162,7 +167,82 @@ module Google
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
+          @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+        end
+      end
+      
+      # Configuration for controlling how IPs are allocated in the
+      # GKE cluster.
+      class IpAllocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IP address range used to allocate IP addresses to pods in
+        # the cluster.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Set to blank to have GKE choose a range with the default size.
+        # Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block`
+        # but not both.
+        # Corresponds to the JSON property `clusterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cluster_ipv4_cidr_block
+      
+        # Optional. The name of the cluster's secondary range used to allocate
+        # IP addresses to pods. Specify either `cluster_secondary_range_name`
+        # or `cluster_ipv4_cidr_block` but not both.
+        # Corresponds to the JSON property `clusterSecondaryRangeName`
+        # @return [String]
+        attr_accessor :cluster_secondary_range_name
+      
+        # Optional. The IP address range of the services IP addresses in this
+        # cluster.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Set to blank to have GKE choose a range with the default size.
+        # Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Specify `services_secondary_range_name` or `services_ipv4_cidr_block`
+        # but not both.
+        # Corresponds to the JSON property `servicesIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :services_ipv4_cidr_block
+      
+        # Optional. The name of the services' secondary range used to allocate
+        # IP addresses to the cluster. Specify either `services_secondary_range_name`
+        # or `services_ipv4_cidr_block` but not both.
+        # Corresponds to the JSON property `servicesSecondaryRangeName`
+        # @return [String]
+        attr_accessor :services_secondary_range_name
+      
+        # Optional. Whether or not to enable Alias IPs in the GKE cluster.
+        # If true or if left blank, a VPC-native cluster is created.
+        # Corresponds to the JSON property `useIpAliases`
+        # @return [Boolean]
+        attr_accessor :use_ip_aliases
+        alias_method :use_ip_aliases?, :use_ip_aliases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
+          @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
+          @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
+          @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
+          @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
         end
       end
       
@@ -286,6 +366,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Configuration for controlling how IPs are allocated in the
+        # GKE cluster.
+        # Corresponds to the JSON property `ipAllocationPolicy`
+        # @return [Google::Apis::ComposerV1beta1::IpAllocationPolicy]
+        attr_accessor :ip_allocation_policy
+      
         # Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
         # to deploy the VMs used to run the Apache Airflow software, specified as a
         # [relative resource name](/apis/design/resource_names#relative_resource_name).
@@ -379,6 +465,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
           @location = args[:location] if args.key?(:location)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @network = args[:network] if args.key?(:network)
@@ -402,14 +489,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -543,6 +630,65 @@ module Google
         end
       end
       
+      # Configuration options for private cluster of Composer environment.
+      class PrivateClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, access to public endpoint of gke cluster will be denied.
+        # `IPAllocationPolicy.use_ip_aliases` must be true if this field is
+        # set to true. Default value is false.
+        # Corresponds to the JSON property `enablePrivateEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_private_endpoint
+        alias_method :enable_private_endpoint?, :enable_private_endpoint
+      
+        # The IP range in CIDR notation to use for the hosted master network. This
+        # range will be used for assigning internal IP addresses to the cluster
+        # master or set of masters, as well as the ILB VIP (Internal Load Balance
+        # Virtual IP).This range must not overlap with any other ranges in use
+        # within the cluster's network. If left blank, default value of
+        # '172.16.0.0/28' will be used.
+        # Corresponds to the JSON property `masterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :master_ipv4_cidr_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
+          @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+        end
+      end
+      
+      # The configuration information for configuring a private Composer environment.
+      class PrivateEnvironmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, a private Composer environment is created.
+        # Corresponds to the JSON property `enablePrivateEnvironment`
+        # @return [Boolean]
+        attr_accessor :enable_private_environment
+        alias_method :enable_private_environment?, :enable_private_environment
+      
+        # Configuration options for private cluster of Composer environment.
+        # Corresponds to the JSON property `privateClusterConfig`
+        # @return [Google::Apis::ComposerV1beta1::PrivateClusterConfig]
+        attr_accessor :private_cluster_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
+          @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+        end
+      end
+      
       # Specifies the selection and configuration of software inside the environment.
       class SoftwareConfig
         include Google::Apis::Core::Hashable
@@ -642,14 +788,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

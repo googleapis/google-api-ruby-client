@@ -499,9 +499,6 @@ module Google
         #   only jobs created after or at this timestamp are returned
         # @param [String] page_token
         #   Page token, returned by a previous call, to request the next page of results
-        # @param [String] parent_job_id
-        #   If set, retrieves only jobs whose parent is this job. Otherwise, retrieves
-        #   only jobs which have no parent.
         # @param [String] projection
         #   Restrict information returned to a set of selected fields
         # @param [Array<String>, String] state_filter
@@ -525,7 +522,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(project_id, all_users: nil, max_creation_time: nil, max_results: nil, min_creation_time: nil, page_token: nil, parent_job_id: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_jobs(project_id, all_users: nil, max_creation_time: nil, max_results: nil, min_creation_time: nil, page_token: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::BigqueryV2::JobList::Representation
           command.response_class = Google::Apis::BigqueryV2::JobList
@@ -535,7 +532,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['minCreationTime'] = min_creation_time unless min_creation_time.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['parentJobId'] = parent_job_id unless parent_job_id.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['stateFilter'] = state_filter unless state_filter.nil?
           command.query['fields'] = fields unless fields.nil?

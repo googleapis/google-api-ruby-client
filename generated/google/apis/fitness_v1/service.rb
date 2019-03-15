@@ -559,7 +559,7 @@ module Google
         #   . If specified, the API returns sessions modified since this time. The page
         #   token is ignored if either start or end time is specified. If none of start
         #   time, end time, and the page token is specified, sessions modified in the last
-        #   7 days are returned.
+        #   30 days are returned.
         # @param [String] start_time
         #   An RFC3339 timestamp. Only sessions ending between the start and end times
         #   will be included in the response.

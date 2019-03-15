@@ -255,6 +255,10 @@ module Google
         end
         
         # Modify the members of a contact group owned by the authenticated user.
+        # <br>
+        # The only system contact groups that can have members added are
+        # `contactGroups/myContacts` and `contactGroups/starred`. Other system
+        # contact groups are deprecated and can only have contacts removed.
         # @param [String] resource_name
         #   The resource name of the contact group to modify.
         # @param [Google::Apis::PeopleV1::ModifyContactGroupMembersRequest] modify_contact_group_members_request_object

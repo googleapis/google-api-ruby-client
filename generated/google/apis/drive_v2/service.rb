@@ -2635,7 +2635,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a revision.
+        # Permanently deletes a file version. You can only delete revisions for files
+        # with binary content, like images or videos. Revisions for other files, like
+        # Google Docs or Sheets, and the last remaining file version can't be deleted.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id

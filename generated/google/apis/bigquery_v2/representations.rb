@@ -46,6 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BqmlIterationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BqmlTrainingRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class TrainingOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Clustering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +155,6 @@ module Google
       end
       
       class GoogleSheetsOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IterationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutineReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,18 +460,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TrainingRun
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class TrainingOptions
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UserDefinedFunctionResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -505,6 +511,45 @@ module Google
       
           property :ignore_unspecified_column_families, as: 'ignoreUnspecifiedColumnFamilies'
           property :read_rowkey_as_string, as: 'readRowkeyAsString'
+        end
+      end
+      
+      class BqmlIterationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_ms, :numeric_string => true, as: 'durationMs'
+          property :eval_loss, as: 'evalLoss'
+          property :index, as: 'index'
+          property :learn_rate, as: 'learnRate'
+          property :training_loss, as: 'trainingLoss'
+        end
+      end
+      
+      class BqmlTrainingRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iteration_results, as: 'iterationResults', class: Google::Apis::BigqueryV2::BqmlIterationResult, decorator: Google::Apis::BigqueryV2::BqmlIterationResult::Representation
+      
+          property :start_time, as: 'startTime', type: DateTime
+      
+          property :state, as: 'state'
+          property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::BqmlTrainingRun::TrainingOptions, decorator: Google::Apis::BigqueryV2::BqmlTrainingRun::TrainingOptions::Representation
+      
+        end
+        
+        class TrainingOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :early_stop, as: 'earlyStop'
+            property :l1_reg, as: 'l1Reg'
+            property :l2_reg, as: 'l2Reg'
+            property :learn_rate, as: 'learnRate'
+            property :learn_rate_strategy, as: 'learnRateStrategy'
+            property :line_search_init_learn_rate, as: 'lineSearchInitLearnRate'
+            property :max_iteration, :numeric_string => true, as: 'maxIteration'
+            property :min_rel_progress, as: 'minRelProgress'
+            property :warm_start, as: 'warmStart'
+          end
         end
       end
       
@@ -721,17 +766,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
-        end
-      end
-      
-      class IterationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration_ms, :numeric_string => true, as: 'durationMs'
-          property :eval_loss, as: 'evalLoss'
-          property :index, as: 'index'
-          property :learn_rate, as: 'learnRate'
-          property :training_loss, as: 'trainingLoss'
         end
       end
       
@@ -965,6 +999,8 @@ module Google
           property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
           property :ddl_operation_performed, as: 'ddlOperationPerformed'
+          property :ddl_target_routine, as: 'ddlTargetRoutine', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
+      
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
@@ -1045,7 +1081,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_options, as: 'modelOptions', class: Google::Apis::BigqueryV2::ModelDefinition::ModelOptions, decorator: Google::Apis::BigqueryV2::ModelDefinition::ModelOptions::Representation
       
-          collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::TrainingRun, decorator: Google::Apis::BigqueryV2::TrainingRun::Representation
+          collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::BqmlTrainingRun, decorator: Google::Apis::BigqueryV2::BqmlTrainingRun::Representation
       
         end
         
@@ -1200,6 +1236,15 @@ module Google
             property :interval, :numeric_string => true, as: 'interval'
             property :start, :numeric_string => true, as: 'start'
           end
+        end
+      end
+      
+      class RoutineReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
+          property :routine_id, as: 'routineId'
         end
       end
       
@@ -1407,34 +1452,6 @@ module Google
           property :field, as: 'field'
           property :require_partition_filter, as: 'requirePartitionFilter'
           property :type, as: 'type'
-        end
-      end
-      
-      class TrainingRun
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :iteration_results, as: 'iterationResults', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation
-      
-          property :start_time, as: 'startTime', type: DateTime
-      
-          property :state, as: 'state'
-          property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingRun::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingRun::TrainingOptions::Representation
-      
-        end
-        
-        class TrainingOptions
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :early_stop, as: 'earlyStop'
-            property :l1_reg, as: 'l1Reg'
-            property :l2_reg, as: 'l2Reg'
-            property :learn_rate, as: 'learnRate'
-            property :learn_rate_strategy, as: 'learnRateStrategy'
-            property :line_search_init_learn_rate, as: 'lineSearchInitLearnRate'
-            property :max_iteration, :numeric_string => true, as: 'maxIteration'
-            property :min_rel_progress, as: 'minRelProgress'
-            property :warm_start, as: 'warmStart'
-          end
         end
       end
       

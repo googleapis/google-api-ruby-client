@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PatchServiceAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +442,15 @@ module Google
         end
       end
       
+      class PatchServiceAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
       class Permission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -537,6 +552,7 @@ module Google
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'

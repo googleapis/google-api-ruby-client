@@ -1075,6 +1075,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :effective_severity, as: 'effectiveSeverity'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1alpha1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1alpha1::PackageIssue::Representation
       
           property :severity, as: 'severity'
