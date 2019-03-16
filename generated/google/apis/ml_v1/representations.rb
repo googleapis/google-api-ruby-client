@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1BuiltInAlgorithmOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -294,6 +300,16 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1BuiltInAlgorithmOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :framework, as: 'framework'
+          property :model_path, as: 'modelPath'
+          property :python_version, as: 'pythonVersion'
+          property :runtime_version, as: 'runtimeVersion'
+        end
+      end
+      
       class GoogleCloudMlV1CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -329,6 +345,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :all_metrics, as: 'allMetrics', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric::Representation
+      
+          property :built_in_algorithm_output, as: 'builtInAlgorithmOutput', class: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput::Representation
       
           property :final_metric, as: 'finalMetric', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric::Representation
       
@@ -552,8 +570,11 @@ module Google
       class GoogleCloudMlV1TrainingOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :built_in_algorithm_output, as: 'builtInAlgorithmOutput', class: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput::Representation
+      
           property :completed_trial_count, :numeric_string => true, as: 'completedTrialCount'
           property :consumed_ml_units, as: 'consumedMLUnits'
+          property :is_built_in_algorithm_job, as: 'isBuiltInAlgorithmJob'
           property :is_hyperparameter_tuning_job, as: 'isHyperparameterTuningJob'
           collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput::Representation
       

@@ -183,6 +183,44 @@ module Google
         end
       end
       
+      # Represents output related to a built-in algorithm Job.
+      class GoogleCloudMlV1BuiltInAlgorithmOutput
+        include Google::Apis::Core::Hashable
+      
+        # Framework on which the built-in algorithm was trained on.
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
+      
+        # Built-in algorithm's saved model path.
+        # Only set for non-hptuning succeeded jobs.
+        # Corresponds to the JSON property `modelPath`
+        # @return [String]
+        attr_accessor :model_path
+      
+        # Python version on which the built-in algorithm was trained on.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
+        # CMLE runtime version on which the built-in algorithm was trained on.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @framework = args[:framework] if args.key?(:framework)
+          @model_path = args[:model_path] if args.key?(:model_path)
+          @python_version = args[:python_version] if args.key?(:python_version)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+        end
+      end
+      
       # Request message for the CancelJob method.
       class GoogleCloudMlV1CancelJobRequest
         include Google::Apis::Core::Hashable
@@ -284,6 +322,11 @@ module Google
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>]
         attr_accessor :all_metrics
       
+        # Represents output related to a built-in algorithm Job.
+        # Corresponds to the JSON property `builtInAlgorithmOutput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput]
+        attr_accessor :built_in_algorithm_output
+      
         # An observed value of a metric.
         # Corresponds to the JSON property `finalMetric`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric]
@@ -312,6 +355,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_metrics = args[:all_metrics] if args.key?(:all_metrics)
+          @built_in_algorithm_output = args[:built_in_algorithm_output] if args.key?(:built_in_algorithm_output)
           @final_metric = args[:final_metric] if args.key?(:final_metric)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
           @is_trial_stopped_early = args[:is_trial_stopped_early] if args.key?(:is_trial_stopped_early)
@@ -412,7 +456,7 @@ module Google
         end
       end
       
-      # Represents a training, prediction or explanation job.
+      # Represents a training or prediction job.
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -678,7 +722,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 30
+        # Next ID: 29
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -805,7 +849,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 30
+        # Next ID: 29
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -959,8 +1003,7 @@ module Google
         attr_accessor :data_format
       
         # Required. The Google Cloud Storage location of the input data files.
-        # May contain wildcards. See <a href="https://cloud.google.com/storage/docs/
-        # gsutil/addlhelp/WildcardNames</a>
+        # May contain wildcards.
         # Corresponds to the JSON property `inputPaths`
         # @return [Array<String>]
         attr_accessor :input_paths
@@ -1404,6 +1447,11 @@ module Google
       class GoogleCloudMlV1TrainingOutput
         include Google::Apis::Core::Hashable
       
+        # Represents output related to a built-in algorithm Job.
+        # Corresponds to the JSON property `builtInAlgorithmOutput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput]
+        attr_accessor :built_in_algorithm_output
+      
         # The number of hyperparameter tuning trials that completed successfully.
         # Only set for hyperparameter tuning jobs.
         # Corresponds to the JSON property `completedTrialCount`
@@ -1414,6 +1462,12 @@ module Google
         # Corresponds to the JSON property `consumedMLUnits`
         # @return [Float]
         attr_accessor :consumed_ml_units
+      
+        # Whether this job is a built-in Algorithm job.
+        # Corresponds to the JSON property `isBuiltInAlgorithmJob`
+        # @return [Boolean]
+        attr_accessor :is_built_in_algorithm_job
+        alias_method :is_built_in_algorithm_job?, :is_built_in_algorithm_job
       
         # Whether this job is a hyperparameter tuning job.
         # Corresponds to the JSON property `isHyperparameterTuningJob`
@@ -1433,8 +1487,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @built_in_algorithm_output = args[:built_in_algorithm_output] if args.key?(:built_in_algorithm_output)
           @completed_trial_count = args[:completed_trial_count] if args.key?(:completed_trial_count)
           @consumed_ml_units = args[:consumed_ml_units] if args.key?(:consumed_ml_units)
+          @is_built_in_algorithm_job = args[:is_built_in_algorithm_job] if args.key?(:is_built_in_algorithm_job)
           @is_hyperparameter_tuning_job = args[:is_hyperparameter_tuning_job] if args.key?(:is_hyperparameter_tuning_job)
           @trials = args[:trials] if args.key?(:trials)
         end
@@ -1446,7 +1502,7 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 30
+      # Next ID: 29
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
