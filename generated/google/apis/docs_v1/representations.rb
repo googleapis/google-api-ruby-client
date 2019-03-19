@@ -304,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertPageBreakRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertTableRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertTableRowRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1296,6 +1308,28 @@ module Google
         end
       end
       
+      class InsertPageBreakRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
+      class InsertTableRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :columns, as: 'columns'
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :rows, as: 'rows'
+        end
+      end
+      
       class InsertTableRowRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1713,6 +1747,10 @@ module Google
           property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::DocsV1::DeleteTableRowRequest, decorator: Google::Apis::DocsV1::DeleteTableRowRequest::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageRequest, decorator: Google::Apis::DocsV1::InsertInlineImageRequest::Representation
+      
+          property :insert_page_break, as: 'insertPageBreak', class: Google::Apis::DocsV1::InsertPageBreakRequest, decorator: Google::Apis::DocsV1::InsertPageBreakRequest::Representation
+      
+          property :insert_table, as: 'insertTable', class: Google::Apis::DocsV1::InsertTableRequest, decorator: Google::Apis::DocsV1::InsertTableRequest::Representation
       
           property :insert_table_row, as: 'insertTableRow', class: Google::Apis::DocsV1::InsertTableRowRequest, decorator: Google::Apis::DocsV1::InsertTableRowRequest::Representation
       
@@ -2202,6 +2240,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :required_revision_id, as: 'requiredRevisionId'
+          property :target_revision_id, as: 'targetRevisionId'
         end
       end
     end

@@ -1986,6 +1986,71 @@ module Google
         end
       end
       
+      # Inserts a page break followed by a newline at the specified location.
+      class InsertPageBreakRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Inserts a table at the specified location.
+      # A newline character will be inserted before the inserted table.
+      class InsertTableRequest
+        include Google::Apis::Core::Hashable
+      
+        # The number of columns in the table.
+        # Corresponds to the JSON property `columns`
+        # @return [Fixnum]
+        attr_accessor :columns
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # The number of rows in the table.
+        # Corresponds to the JSON property `rows`
+        # @return [Fixnum]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
       # Inserts an empty row into a table.
       class InsertTableRowRequest
         include Google::Apis::Core::Hashable
@@ -3595,6 +3660,17 @@ module Google
         # @return [Google::Apis::DocsV1::InsertInlineImageRequest]
         attr_accessor :insert_inline_image
       
+        # Inserts a page break followed by a newline at the specified location.
+        # Corresponds to the JSON property `insertPageBreak`
+        # @return [Google::Apis::DocsV1::InsertPageBreakRequest]
+        attr_accessor :insert_page_break
+      
+        # Inserts a table at the specified location.
+        # A newline character will be inserted before the inserted table.
+        # Corresponds to the JSON property `insertTable`
+        # @return [Google::Apis::DocsV1::InsertTableRequest]
+        attr_accessor :insert_table
+      
         # Inserts an empty row into a table.
         # Corresponds to the JSON property `insertTableRow`
         # @return [Google::Apis::DocsV1::InsertTableRowRequest]
@@ -3635,6 +3711,8 @@ module Google
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
+          @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
+          @insert_table = args[:insert_table] if args.key?(:insert_table)
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
@@ -5331,14 +5409,35 @@ module Google
       class WriteControl
         include Google::Apis::Core::Hashable
       
-        # The ID of the revision of the document that the write request will be
-        # applied to. If this is not the latest revision of the document, the
-        # request will not be processed and will return a 400 bad request error.
+        # The revision ID of the
+        # document that the write request will be applied to. If this is not the
+        # latest revision of the document, the request will not be processed and
+        # will return a 400 bad request error.
         # When a required revision ID is returned in a response, it indicates the
         # revision ID of the document after the request was applied.
         # Corresponds to the JSON property `requiredRevisionId`
         # @return [String]
         attr_accessor :required_revision_id
+      
+        # The target revision ID of the
+        # document that the write request will be applied to.
+        # If collaborator changes have occurred after the document was read using
+        # the API, the changes produced by this write request will be transformed
+        # against the collaborator changes. This results in a new revision of the
+        # document which incorporates both the changes in the request and the
+        # collaborator changes, and the Docs server will resolve conflicting
+        # changes. When using `target_revision_id`, the API client can be thought
+        # of as another collaborator of the document.
+        # The target revision ID may only be used to write to recent versions of a
+        # document. If the target revision is too far behind the latest revision,
+        # the request will not be processed and will return a 400 bad request error
+        # and the request should be retried after reading the latest version of the
+        # document. In most cases a `revision_id` will remain valid for use as a
+        # target revision for several minutes after it is read, but for
+        # frequently-edited documents this window may be shorter.
+        # Corresponds to the JSON property `targetRevisionId`
+        # @return [String]
+        attr_accessor :target_revision_id
       
         def initialize(**args)
            update!(**args)
@@ -5347,6 +5446,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @required_revision_id = args[:required_revision_id] if args.key?(:required_revision_id)
+          @target_revision_id = args[:target_revision_id] if args.key?(:target_revision_id)
         end
       end
     end

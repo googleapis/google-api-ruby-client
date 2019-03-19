@@ -25,10 +25,7 @@ module Google
     # @see https://developers.google.com/accounts/docs/OAuth2
     module Oauth2V2
       VERSION = 'V2'
-      REVISION = '20190129'
-
-      # View your basic profile info, including your age range and language
-      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
+      REVISION = '20190313'
 
       # Know who you are on Google
       AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'

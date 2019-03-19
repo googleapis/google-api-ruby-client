@@ -22,30 +22,6 @@ module Google
   module Apis
     module Oauth2V1
       
-      class Jwk
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Key
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Raw
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Keyvalue
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Tokeninfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -56,44 +32,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Jwk
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :keys, as: 'keys', class: Google::Apis::Oauth2V1::Jwk::Key, decorator: Google::Apis::Oauth2V1::Jwk::Key::Representation
-      
-        end
-        
-        class Key
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :alg, as: 'alg'
-            property :e, as: 'e'
-            property :kid, as: 'kid'
-            property :kty, as: 'kty'
-            property :n, as: 'n'
-            property :use, as: 'use'
-          end
-        end
-      end
-      
-      class Raw
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :keyvalues, as: 'keyvalues', class: Google::Apis::Oauth2V1::Raw::Keyvalue, decorator: Google::Apis::Oauth2V1::Raw::Keyvalue::Representation
-      
-        end
-        
-        class Keyvalue
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :algorithm, as: 'algorithm'
-            property :exponent, as: 'exponent'
-            property :keyid, as: 'keyid'
-            property :modulus, as: 'modulus'
-          end
-        end
       end
       
       class Tokeninfo
