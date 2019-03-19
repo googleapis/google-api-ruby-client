@@ -32,6 +32,8 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       attr_accessor :boolean_value_false
       attr_accessor :datetime_value
       attr_accessor :nil_datetime_value
+      attr_accessor :date_value
+      attr_accessor :nil_date_value
       attr_accessor :bytes_value
       attr_accessor :big_value
       attr_accessor :items
@@ -51,6 +53,8 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       property :boolean_value_false, as: 'booleanValueFalse'
       property :datetime_value, as: 'dateTimeValue', type: DateTime
       property :nil_datetime_value, as: 'nullDateTimeValue', type: DateTime
+      property :date_value, as: 'dateValue', type: Date
+      property :nil_date_value, as: 'nullDateValue', type: Date
       property :bytes_value, as: 'bytesValue', base64: true
       property :big_value, as: 'bigValue', numeric_string: true
       property :items
@@ -93,6 +97,14 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       expect(json).to be_json_eql(%(null)).at_path('nullDateTimeValue')
     end
 
+    it 'serializes date values' do
+      expect(json).to be_json_eql(%("2015-05-01")).at_path('dateValue')
+    end
+
+    it 'allows nil date values' do
+      expect(json).to be_json_eql(%(null)).at_path('nullDateValue')
+    end
+
     it 'serializes byte values to base64' do
       expect(json).to be_json_eql(%("SGVsbG8gd29ybGQ=")).at_path('bytesValue')
     end
@@ -122,6 +134,9 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       model.numeric_value = 123
       model.string_value = 'test'
       model.datetime_value = DateTime.new(2015, 5, 1, 12)
+      model.nil_datetime_value = nil
+      model.date_value = Date.new(2015, 5, 1)
+      model.nil_date_value = nil
       model.boolean_value_true = true
       model.boolean_value_false = false
       model.bytes_value = 'Hello world'
@@ -129,7 +144,6 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       model.child = child_class.new
       model.child.value = 'child'
       model.children = [model.child]
-      model.nil_datetime_value = nil
       model.big_value = 1208925819614629174706176
       model
     end
@@ -147,6 +161,8 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
         numeric_value: 123,
         datetime_value: DateTime.new(2015, 5, 1, 12),
         nil_datetime_value: nil,
+        date_value: Date.new(2015, 5, 1),
+        nil_date_value: nil,
         boolean_value_true: true,
         boolean_value_false: false,
         bytes_value: 'Hello world',
@@ -172,6 +188,9 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   "booleanValueFalse": false,
   "numericValue": 123,
   "dateTimeValue": "2015-05-01T12:00:00+00:00",
+  "nullDateTimeValue": null,
+  "dateValue": "2015-05-01",
+  "nullDateValue": null,
   "bytesValue": "SGVsbG8gd29ybGQ=",
   "bigValue": "1208925819614629174706176",
   "items": [1,2,3],
@@ -200,6 +219,18 @@ EOF
 
     it 'deserializes datetime values' do
       expect(model.datetime_value).to eql DateTime.new(2015, 5, 1, 12)
+    end
+
+    it 'deserializes null datetime values' do
+      expect(model.nil_datetime_value).to be_nil
+    end
+
+    it 'deserializes date values' do
+      expect(model.date_value).to eql Date.new(2015, 5, 1)
+    end
+
+    it 'deserializes null date values' do
+      expect(model.nil_date_value).to be_nil
     end
 
     it 'deserializes basic collections' do
