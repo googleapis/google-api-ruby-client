@@ -928,6 +928,13 @@ module Google
         attr_accessor :split_health_checks
         alias_method :split_health_checks?, :split_health_checks
       
+        # If true, use Container-Optimized OS (https://cloud.google.com/container-
+        # optimized-os/) base image for VMs, rather than a base Debian image.
+        # Corresponds to the JSON property `useContainerOptimizedOs`
+        # @return [Boolean]
+        attr_accessor :use_container_optimized_os
+        alias_method :use_container_optimized_os?, :use_container_optimized_os
+      
         def initialize(**args)
            update!(**args)
         end
@@ -935,6 +942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @split_health_checks = args[:split_health_checks] if args.key?(:split_health_checks)
+          @use_container_optimized_os = args[:use_container_optimized_os] if args.key?(:use_container_optimized_os)
         end
       end
       
@@ -2864,6 +2872,11 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
+        # VPC access connector specification.
+        # Corresponds to the JSON property `vpcAccessConnector`
+        # @return [Google::Apis::AppengineV1::VpcAccessConnector]
+        attr_accessor :vpc_access_connector
+      
         # The Google Compute Engine zones that are supported by this version in the App
         # Engine flexible environment. Deprecated.
         # Corresponds to the JSON property `zones`
@@ -2911,6 +2924,7 @@ module Google
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
+          @vpc_access_connector = args[:vpc_access_connector] if args.key?(:vpc_access_connector)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -2944,6 +2958,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @volume_type = args[:volume_type] if args.key?(:volume_type)
+        end
+      end
+      
+      # VPC access connector specification.
+      class VpcAccessConnector
+        include Google::Apis::Core::Hashable
+      
+        # Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/
+        # us-central1/connectors/c1.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

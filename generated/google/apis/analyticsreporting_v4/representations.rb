@@ -22,6 +22,12 @@ module Google
   module Apis
     module AnalyticsreportingV4
       
+      class Activity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cohort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class ColumnHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomDimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EcommerceData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetReportsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +107,18 @@ module Google
       end
       
       class GetReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoalSetData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PageviewData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pivot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +191,12 @@ module Google
       end
       
       class PivotValueRegion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +227,24 @@ module Google
       end
       
       class ResourceQuotasRemaining
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScreenviewData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchUserActivityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchUserActivityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +304,51 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransactionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserActivitySession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Activity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_time, as: 'activityTime'
+          property :activity_type, as: 'activityType'
+          property :appview, as: 'appview', class: Google::Apis::AnalyticsreportingV4::ScreenviewData, decorator: Google::Apis::AnalyticsreportingV4::ScreenviewData::Representation
+      
+          property :campaign, as: 'campaign'
+          property :channel_grouping, as: 'channelGrouping'
+          collection :custom_dimension, as: 'customDimension', class: Google::Apis::AnalyticsreportingV4::CustomDimension, decorator: Google::Apis::AnalyticsreportingV4::CustomDimension::Representation
+      
+          property :ecommerce, as: 'ecommerce', class: Google::Apis::AnalyticsreportingV4::EcommerceData, decorator: Google::Apis::AnalyticsreportingV4::EcommerceData::Representation
+      
+          property :event, as: 'event', class: Google::Apis::AnalyticsreportingV4::EventData, decorator: Google::Apis::AnalyticsreportingV4::EventData::Representation
+      
+          property :goals, as: 'goals', class: Google::Apis::AnalyticsreportingV4::GoalSetData, decorator: Google::Apis::AnalyticsreportingV4::GoalSetData::Representation
+      
+          property :hostname, as: 'hostname'
+          property :keyword, as: 'keyword'
+          property :landing_page_path, as: 'landingPagePath'
+          property :medium, as: 'medium'
+          property :pageview, as: 'pageview', class: Google::Apis::AnalyticsreportingV4::PageviewData, decorator: Google::Apis::AnalyticsreportingV4::PageviewData::Representation
+      
+          property :source, as: 'source'
+        end
+      end
+      
       class Cohort
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -263,6 +374,14 @@ module Google
           collection :dimensions, as: 'dimensions'
           property :metric_header, as: 'metricHeader', class: Google::Apis::AnalyticsreportingV4::MetricHeader, decorator: Google::Apis::AnalyticsreportingV4::MetricHeader::Representation
       
+        end
+      end
+      
+      class CustomDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :value, as: 'value'
         end
       end
       
@@ -322,6 +441,29 @@ module Google
         end
       end
       
+      class EcommerceData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :ecommerce_type, as: 'ecommerceType'
+          collection :products, as: 'products', class: Google::Apis::AnalyticsreportingV4::ProductData, decorator: Google::Apis::AnalyticsreportingV4::ProductData::Representation
+      
+          property :transaction, as: 'transaction', class: Google::Apis::AnalyticsreportingV4::TransactionData, decorator: Google::Apis::AnalyticsreportingV4::TransactionData::Representation
+      
+        end
+      end
+      
+      class EventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_action, as: 'eventAction'
+          property :event_category, as: 'eventCategory'
+          property :event_count, :numeric_string => true, as: 'eventCount'
+          property :event_label, as: 'eventLabel'
+          property :event_value, :numeric_string => true, as: 'eventValue'
+        end
+      end
+      
       class GetReportsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -338,6 +480,28 @@ module Google
           collection :reports, as: 'reports', class: Google::Apis::AnalyticsreportingV4::Report, decorator: Google::Apis::AnalyticsreportingV4::Report::Representation
       
           property :resource_quotas_remaining, as: 'resourceQuotasRemaining', class: Google::Apis::AnalyticsreportingV4::ResourceQuotasRemaining, decorator: Google::Apis::AnalyticsreportingV4::ResourceQuotasRemaining::Representation
+      
+        end
+      end
+      
+      class GoalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :goal_completion_location, as: 'goalCompletionLocation'
+          property :goal_completions, :numeric_string => true, as: 'goalCompletions'
+          property :goal_index, as: 'goalIndex'
+          property :goal_name, as: 'goalName'
+          property :goal_previous_step1, as: 'goalPreviousStep1'
+          property :goal_previous_step2, as: 'goalPreviousStep2'
+          property :goal_previous_step3, as: 'goalPreviousStep3'
+          property :goal_value, as: 'goalValue'
+        end
+      end
+      
+      class GoalSetData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :goals, as: 'goals', class: Google::Apis::AnalyticsreportingV4::GoalData, decorator: Google::Apis::AnalyticsreportingV4::GoalData::Representation
       
         end
       end
@@ -405,6 +569,14 @@ module Google
         end
       end
       
+      class PageviewData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_path, as: 'pagePath'
+          property :page_title, as: 'pageTitle'
+        end
+      end
+      
       class Pivot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,6 +614,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class ProductData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_revenue, as: 'itemRevenue'
+          property :product_name, as: 'productName'
+          property :product_quantity, :numeric_string => true, as: 'productQuantity'
+          property :product_sku, as: 'productSku'
         end
       end
       
@@ -521,6 +703,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :daily_quota_tokens_remaining, as: 'dailyQuotaTokensRemaining'
           property :hourly_quota_tokens_remaining, as: 'hourlyQuotaTokensRemaining'
+        end
+      end
+      
+      class ScreenviewData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_name, as: 'appName'
+          property :mobile_device_branding, as: 'mobileDeviceBranding'
+          property :mobile_device_model, as: 'mobileDeviceModel'
+          property :screen_name, as: 'screenName'
+        end
+      end
+      
+      class SearchUserActivityRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :activity_types, as: 'activityTypes'
+          property :date_range, as: 'dateRange', class: Google::Apis::AnalyticsreportingV4::DateRange, decorator: Google::Apis::AnalyticsreportingV4::DateRange::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :user, as: 'user', class: Google::Apis::AnalyticsreportingV4::User, decorator: Google::Apis::AnalyticsreportingV4::User::Representation
+      
+          property :view_id, as: 'viewId'
+        end
+      end
+      
+      class SearchUserActivityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :sample_rate, as: 'sampleRate'
+          collection :sessions, as: 'sessions', class: Google::Apis::AnalyticsreportingV4::UserActivitySession, decorator: Google::Apis::AnalyticsreportingV4::UserActivitySession::Representation
+      
+          property :total_rows, as: 'totalRows'
         end
       end
       
@@ -609,6 +826,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :or_filters_for_segment, as: 'orFiltersForSegment', class: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment, decorator: Google::Apis::AnalyticsreportingV4::OrFiltersForSegment::Representation
       
+        end
+      end
+      
+      class TransactionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transaction_id, as: 'transactionId'
+          property :transaction_revenue, as: 'transactionRevenue'
+          property :transaction_shipping, as: 'transactionShipping'
+          property :transaction_tax, as: 'transactionTax'
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class UserActivitySession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :activities, as: 'activities', class: Google::Apis::AnalyticsreportingV4::Activity, decorator: Google::Apis::AnalyticsreportingV4::Activity::Representation
+      
+          property :data_source, as: 'dataSource'
+          property :device_category, as: 'deviceCategory'
+          property :platform, as: 'platform'
+          property :session_date, as: 'sessionDate'
+          property :session_id, as: 'sessionId'
         end
       end
     end

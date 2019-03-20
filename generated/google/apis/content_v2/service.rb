@@ -778,7 +778,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Deletes, fetches, gets, inserts and updates multiple datafeeds in a single
+        # request.
         # @param [Google::Apis::ContentV2::BatchDatafeedsRequest] batch_datafeeds_request_object
         # @param [Boolean] dry_run
         #   Flag to simulate a request like in a live environment. If set to true, dry-run
@@ -1102,7 +1103,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Gets multiple Merchant Center datafeed statuses in a single request.
         # @param [Google::Apis::ContentV2::BatchDatafeedStatusesRequest] batch_datafeed_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2624,6 +2625,12 @@ module Google
         
         # Notifies that item return and refund was handled directly by merchant outside
         # of Google payments processing (e.g. cash refund done in store).
+        # Note: We recommend calling the returnrefundlineitem method to refund in-store
+        # returns. We will issue the refund directly to the customer. This helps to
+        # prevent possible differences arising between merchant and Google transaction
+        # records. We also recommend having the point of sale system communicate with
+        # Google to ensure that customers do not receive a double refund by first
+        # refunding via Google then via an in-store return.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

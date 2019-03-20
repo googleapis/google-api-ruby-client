@@ -4540,7 +4540,9 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # [required] ID of the shipment group.
+        # [required] ID of the shipment group. It is assigned by the merchant in the
+        # shipLineItems method and is used to group multiple line items that have the
+        # same kind of shipping charges.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
         attr_accessor :shipment_group_id
@@ -5682,6 +5684,8 @@ module Google
       
         # Updated delivery by date, in ISO 8601 format. If not specified only ship by
         # date is updated.
+        # Provided date should be within 1 year timeframe and can not be a date in the
+        # past.
         # Corresponds to the JSON property `deliverByDate`
         # @return [String]
         attr_accessor :deliver_by_date
@@ -5705,6 +5709,8 @@ module Google
       
         # Updated ship by date, in ISO 8601 format. If not specified only deliver by
         # date is updated.
+        # Provided date should be within 1 year timeframe and can not be a date in the
+        # past.
         # Corresponds to the JSON property `shipByDate`
         # @return [String]
         attr_accessor :ship_by_date
@@ -8289,7 +8295,9 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ShipmentInvoiceLineItemInvoice>]
         attr_accessor :line_item_invoices
       
-        # [required] ID of the shipment group.
+        # [required] ID of the shipment group. It is assigned by the merchant in the
+        # shipLineItems method and is used to group multiple line items that have the
+        # same kind of shipping charges.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
         attr_accessor :shipment_group_id
@@ -8321,7 +8329,10 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # [required] Unit IDs to define specific units within the line item.
+        # [required] The shipment unit ID is assigned by the merchant and defines
+        # individual quantities within a line item. The same ID can be assigned to units
+        # that are the same while units that differ must be assigned a different ID (for
+        # example: free or promotional units).
         # Corresponds to the JSON property `shipmentUnitIds`
         # @return [Array<String>]
         attr_accessor :shipment_unit_ids

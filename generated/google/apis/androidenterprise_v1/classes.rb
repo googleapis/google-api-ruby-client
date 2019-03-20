@@ -2182,6 +2182,13 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AutoInstallPolicy]
         attr_accessor :auto_install_policy
       
+        # A managed configuration resource contains the set of managed properties
+        # defined by the app developer in the app's managed configurations schema, as
+        # well as any configuration variables defined for the user.
+        # Corresponds to the JSON property `managedConfiguration`
+        # @return [Google::Apis::AndroidenterpriseV1::ManagedConfiguration]
+        attr_accessor :managed_configuration
+      
         # The ID of the product. For example, "app:com.google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
@@ -2206,6 +2213,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_install_policy = args[:auto_install_policy] if args.key?(:auto_install_policy)
+          @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
           @product_id = args[:product_id] if args.key?(:product_id)
           @track_ids = args[:track_ids] if args.key?(:track_ids)
           @tracks = args[:tracks] if args.key?(:tracks)

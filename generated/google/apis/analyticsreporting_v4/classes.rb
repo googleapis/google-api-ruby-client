@@ -22,6 +22,135 @@ module Google
   module Apis
     module AnalyticsreportingV4
       
+      # An Activity represents data for an activity of a user. Note that an
+      # Activity is different from a hit.
+      # A hit might result in multiple Activity's. For example, if a hit
+      # includes a transaction and a goal completion, there will be two
+      # Activity protos for this hit, one for ECOMMERCE and one for GOAL.
+      # Conversely, multiple hits can also construct one Activity. In classic
+      # e-commerce, data for one transaction might be sent through multiple hits.
+      # These hits will be merged into one ECOMMERCE Activity.
+      class Activity
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of the activity.
+        # Corresponds to the JSON property `activityTime`
+        # @return [String]
+        attr_accessor :activity_time
+      
+        # Type of this activity.
+        # Corresponds to the JSON property `activityType`
+        # @return [String]
+        attr_accessor :activity_type
+      
+        # This will be set if `activity_type` equals `SCREEN_VIEW`.
+        # Corresponds to the JSON property `appview`
+        # @return [Google::Apis::AnalyticsreportingV4::ScreenviewData]
+        attr_accessor :appview
+      
+        # For manual campaign tracking, it is the value of the utm_campaign campaign
+        # tracking parameter. For AdWords autotagging, it is the name(s) of the
+        # online ad campaign(s) you use for the property. If you use neither, its
+        # value is (not set).
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # The Channel Group associated with an end user's session for this View
+        # (defined by the View's Channel Groupings).
+        # Corresponds to the JSON property `channelGrouping`
+        # @return [String]
+        attr_accessor :channel_grouping
+      
+        # A list of all custom dimensions associated with this activity.
+        # Corresponds to the JSON property `customDimension`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::CustomDimension>]
+        attr_accessor :custom_dimension
+      
+        # E-commerce details associated with the user activity.
+        # Corresponds to the JSON property `ecommerce`
+        # @return [Google::Apis::AnalyticsreportingV4::EcommerceData]
+        attr_accessor :ecommerce
+      
+        # Represents all the details pertaining to an event.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::AnalyticsreportingV4::EventData]
+        attr_accessor :event
+      
+        # Represents a set of goals that were reached in an activity.
+        # Corresponds to the JSON property `goals`
+        # @return [Google::Apis::AnalyticsreportingV4::GoalSetData]
+        attr_accessor :goals
+      
+        # The hostname from which the tracking request was made.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # For manual campaign tracking, it is the value of the utm_term campaign
+        # tracking parameter. For AdWords traffic, it contains the best matching
+        # targeting criteria. For the display network, where multiple targeting
+        # criteria could have caused the ad to show up, it returns the best matching
+        # targeting criteria as selected by Ads. This could be display_keyword, site
+        # placement, boomuserlist, user_interest, age, or gender. Otherwise its value
+        # is (not set).
+        # Corresponds to the JSON property `keyword`
+        # @return [String]
+        attr_accessor :keyword
+      
+        # The first page in users' sessions, or the landing page.
+        # Corresponds to the JSON property `landingPagePath`
+        # @return [String]
+        attr_accessor :landing_page_path
+      
+        # The type of referrals. For manual campaign tracking, it is the value of the
+        # utm_medium campaign tracking parameter. For AdWords autotagging, it is cpc.
+        # If users came from a search engine detected by Google Analytics, it is
+        # organic. If the referrer is not a search engine, it is referral. If users
+        # came directly to the property and document.referrer is empty, its value is
+        # (none).
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        # Represents details collected when the visitor views a page.
+        # Corresponds to the JSON property `pageview`
+        # @return [Google::Apis::AnalyticsreportingV4::PageviewData]
+        attr_accessor :pageview
+      
+        # The source of referrals. For manual campaign tracking, it is the value of
+        # the utm_source campaign tracking parameter. For AdWords autotagging, it is
+        # google. If you use neither, it is the domain of the source
+        # (e.g., document.referrer) referring the users. It may also contain a port
+        # address. If users arrived without a referrer, its value is (direct).
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_time = args[:activity_time] if args.key?(:activity_time)
+          @activity_type = args[:activity_type] if args.key?(:activity_type)
+          @appview = args[:appview] if args.key?(:appview)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @channel_grouping = args[:channel_grouping] if args.key?(:channel_grouping)
+          @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
+          @ecommerce = args[:ecommerce] if args.key?(:ecommerce)
+          @event = args[:event] if args.key?(:event)
+          @goals = args[:goals] if args.key?(:goals)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @keyword = args[:keyword] if args.key?(:keyword)
+          @landing_page_path = args[:landing_page_path] if args.key?(:landing_page_path)
+          @medium = args[:medium] if args.key?(:medium)
+          @pageview = args[:pageview] if args.key?(:pageview)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Defines a cohort. A cohort is a group of users who share a common
       # characteristic. For example, all users with the same acquisition date
       # belong to the same cohort.
@@ -146,6 +275,32 @@ module Google
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @metric_header = args[:metric_header] if args.key?(:metric_header)
+        end
+      end
+      
+      # Custom dimension.
+      class CustomDimension
+        include Google::Apis::Core::Hashable
+      
+        # Slot number of custom dimension.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Value of the custom dimension. Default value (i.e. empty string) indicates
+        # clearing sesion/visitor scope custom dimension value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -365,6 +520,87 @@ module Google
         end
       end
       
+      # E-commerce details associated with the user activity.
+      class EcommerceData
+        include Google::Apis::Core::Hashable
+      
+        # Action associated with this e-commerce action.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # The type of this e-commerce activity.
+        # Corresponds to the JSON property `ecommerceType`
+        # @return [String]
+        attr_accessor :ecommerce_type
+      
+        # Details of the products in this transaction.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::ProductData>]
+        attr_accessor :products
+      
+        # Represents details collected when the visitor performs a transaction on the
+        # page.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::AnalyticsreportingV4::TransactionData]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @ecommerce_type = args[:ecommerce_type] if args.key?(:ecommerce_type)
+          @products = args[:products] if args.key?(:products)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # Represents all the details pertaining to an event.
+      class EventData
+        include Google::Apis::Core::Hashable
+      
+        # Type of interaction with the object. Eg: 'play'.
+        # Corresponds to the JSON property `eventAction`
+        # @return [String]
+        attr_accessor :event_action
+      
+        # The object on the page that was interacted with. Eg: 'Video'.
+        # Corresponds to the JSON property `eventCategory`
+        # @return [String]
+        attr_accessor :event_category
+      
+        # Number of such events in this activity.
+        # Corresponds to the JSON property `eventCount`
+        # @return [Fixnum]
+        attr_accessor :event_count
+      
+        # Label attached with the event.
+        # Corresponds to the JSON property `eventLabel`
+        # @return [String]
+        attr_accessor :event_label
+      
+        # Numeric value associated with the event.
+        # Corresponds to the JSON property `eventValue`
+        # @return [Fixnum]
+        attr_accessor :event_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_action = args[:event_action] if args.key?(:event_action)
+          @event_category = args[:event_category] if args.key?(:event_category)
+          @event_count = args[:event_count] if args.key?(:event_count)
+          @event_label = args[:event_label] if args.key?(:event_label)
+          @event_value = args[:event_value] if args.key?(:event_value)
+        end
+      end
+      
       # The batch request containing multiple report request.
       class GetReportsRequest
         include Google::Apis::Core::Hashable
@@ -433,6 +669,86 @@ module Google
           @query_cost = args[:query_cost] if args.key?(:query_cost)
           @reports = args[:reports] if args.key?(:reports)
           @resource_quotas_remaining = args[:resource_quotas_remaining] if args.key?(:resource_quotas_remaining)
+        end
+      end
+      
+      # Represents all the details pertaining to a goal.
+      class GoalData
+        include Google::Apis::Core::Hashable
+      
+        # URL of the page where this goal was completed.
+        # Corresponds to the JSON property `goalCompletionLocation`
+        # @return [String]
+        attr_accessor :goal_completion_location
+      
+        # Total number of goal completions in this activity.
+        # Corresponds to the JSON property `goalCompletions`
+        # @return [Fixnum]
+        attr_accessor :goal_completions
+      
+        # This identifies the goal as configured for the profile.
+        # Corresponds to the JSON property `goalIndex`
+        # @return [Fixnum]
+        attr_accessor :goal_index
+      
+        # Name of the goal.
+        # Corresponds to the JSON property `goalName`
+        # @return [String]
+        attr_accessor :goal_name
+      
+        # URL of the page one step prior to the goal completion.
+        # Corresponds to the JSON property `goalPreviousStep1`
+        # @return [String]
+        attr_accessor :goal_previous_step1
+      
+        # URL of the page two steps prior to the goal completion.
+        # Corresponds to the JSON property `goalPreviousStep2`
+        # @return [String]
+        attr_accessor :goal_previous_step2
+      
+        # URL of the page three steps prior to the goal completion.
+        # Corresponds to the JSON property `goalPreviousStep3`
+        # @return [String]
+        attr_accessor :goal_previous_step3
+      
+        # Value in this goal.
+        # Corresponds to the JSON property `goalValue`
+        # @return [Float]
+        attr_accessor :goal_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goal_completion_location = args[:goal_completion_location] if args.key?(:goal_completion_location)
+          @goal_completions = args[:goal_completions] if args.key?(:goal_completions)
+          @goal_index = args[:goal_index] if args.key?(:goal_index)
+          @goal_name = args[:goal_name] if args.key?(:goal_name)
+          @goal_previous_step1 = args[:goal_previous_step1] if args.key?(:goal_previous_step1)
+          @goal_previous_step2 = args[:goal_previous_step2] if args.key?(:goal_previous_step2)
+          @goal_previous_step3 = args[:goal_previous_step3] if args.key?(:goal_previous_step3)
+          @goal_value = args[:goal_value] if args.key?(:goal_value)
+        end
+      end
+      
+      # Represents a set of goals that were reached in an activity.
+      class GoalSetData
+        include Google::Apis::Core::Hashable
+      
+        # All the goals that were reached in the current activity.
+        # Corresponds to the JSON property `goals`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::GoalData>]
+        attr_accessor :goals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goals = args[:goals] if args.key?(:goals)
         end
       end
       
@@ -657,6 +973,31 @@ module Google
         end
       end
       
+      # Represents details collected when the visitor views a page.
+      class PageviewData
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the page that the visitor viewed.
+        # Corresponds to the JSON property `pagePath`
+        # @return [String]
+        attr_accessor :page_path
+      
+        # The title of the page that the visitor viewed.
+        # Corresponds to the JSON property `pageTitle`
+        # @return [String]
+        attr_accessor :page_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_path = args[:page_path] if args.key?(:page_path)
+          @page_title = args[:page_title] if args.key?(:page_title)
+        end
+      end
+      
       # The Pivot describes the pivot section in the request.
       # The Pivot helps rearrange the information in the table for certain reports
       # by pivoting your data on a second dimension.
@@ -796,6 +1137,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Details of the products in an e-commerce transaction.
+      class ProductData
+        include Google::Apis::Core::Hashable
+      
+        # The total revenue from purchased product items.
+        # Corresponds to the JSON property `itemRevenue`
+        # @return [Float]
+        attr_accessor :item_revenue
+      
+        # The product name, supplied by the e-commerce tracking application, for
+        # the purchased items.
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
+      
+        # Total number of this product units in the transaction.
+        # Corresponds to the JSON property `productQuantity`
+        # @return [Fixnum]
+        attr_accessor :product_quantity
+      
+        # Unique code that represents the product.
+        # Corresponds to the JSON property `productSku`
+        # @return [String]
+        attr_accessor :product_sku
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_revenue = args[:item_revenue] if args.key?(:item_revenue)
+          @product_name = args[:product_name] if args.key?(:product_name)
+          @product_quantity = args[:product_quantity] if args.key?(:product_quantity)
+          @product_sku = args[:product_sku] if args.key?(:product_sku)
         end
       end
       
@@ -1159,6 +1538,148 @@ module Google
         end
       end
       
+      # 
+      class ScreenviewData
+        include Google::Apis::Core::Hashable
+      
+        # The application name.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.
+        # Corresponds to the JSON property `mobileDeviceBranding`
+        # @return [String]
+        attr_accessor :mobile_device_branding
+      
+        # Mobile device model. Eg: "Pixel", "iPhone" etc.
+        # Corresponds to the JSON property `mobileDeviceModel`
+        # @return [String]
+        attr_accessor :mobile_device_model
+      
+        # The name of the screen.
+        # Corresponds to the JSON property `screenName`
+        # @return [String]
+        attr_accessor :screen_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @mobile_device_branding = args[:mobile_device_branding] if args.key?(:mobile_device_branding)
+          @mobile_device_model = args[:mobile_device_model] if args.key?(:mobile_device_model)
+          @screen_name = args[:screen_name] if args.key?(:screen_name)
+        end
+      end
+      
+      # The request to fetch User Report from Reporting API `userActivity:get` call.
+      class SearchUserActivityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Set of all activity types being requested. Only acvities matching these
+        # types will be returned in the response. If empty, all activies will be
+        # returned.
+        # Corresponds to the JSON property `activityTypes`
+        # @return [Array<String>]
+        attr_accessor :activity_types
+      
+        # A contiguous set of days: startDate, startDate + 1 day, ..., endDate.
+        # The start and end dates are specified in
+        # [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date format `YYYY-MM-DD`.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::AnalyticsreportingV4::DateRange]
+        attr_accessor :date_range
+      
+        # Page size is for paging and specifies the maximum number of returned rows.
+        # Page size should be > 0. If the value is 0 or if the field isn't specified,
+        # the request returns the default of 1000 rows per page.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A continuation token to get the next page of the results. Adding this to
+        # the request will return the rows after the pageToken. The pageToken should
+        # be the value returned in the nextPageToken parameter in the response to
+        # the [SearchUserActivityRequest](#SearchUserActivityRequest) request.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Contains information to identify a particular user uniquely.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::AnalyticsreportingV4::User]
+        attr_accessor :user
+      
+        # Required. The Analytics
+        # [view ID](https://support.google.com/analytics/answer/1009618)
+        # from which to retrieve data. Every
+        # [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the
+        # `viewId`.
+        # Corresponds to the JSON property `viewId`
+        # @return [String]
+        attr_accessor :view_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_types = args[:activity_types] if args.key?(:activity_types)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @user = args[:user] if args.key?(:user)
+          @view_id = args[:view_id] if args.key?(:view_id)
+        end
+      end
+      
+      # The response from `userActivity:get` call.
+      class SearchUserActivityResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token should be passed to
+        # [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the
+        # next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # This field represents the
+        # [sampling rate](https://support.google.com/analytics/answer/2637192) for
+        # the given request and is a number between 0.0 to 1.0. See
+        # [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        # for details.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Float]
+        attr_accessor :sample_rate
+      
+        # Each record represents a session (device details, duration, etc).
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::UserActivitySession>]
+        attr_accessor :sessions
+      
+        # Total rows returned by this query (across different pages).
+        # Corresponds to the JSON property `totalRows`
+        # @return [Fixnum]
+        attr_accessor :total_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+          @sessions = args[:sessions] if args.key?(:sessions)
+          @total_rows = args[:total_rows] if args.key?(:total_rows)
+        end
+      end
+      
       # The segment definition, if the report needs to be segmented.
       # A Segment is a subset of the Analytics data. For example, of the entire
       # set of users, one Segment might be users from a particular country or city.
@@ -1469,6 +1990,123 @@ module Google
         # Update properties of this object
         def update!(**args)
           @or_filters_for_segment = args[:or_filters_for_segment] if args.key?(:or_filters_for_segment)
+        end
+      end
+      
+      # Represents details collected when the visitor performs a transaction on the
+      # page.
+      class TransactionData
+        include Google::Apis::Core::Hashable
+      
+        # The transaction ID, supplied by the e-commerce tracking method, for the
+        # purchase in the shopping cart.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        # The total sale revenue (excluding shipping and tax) of the transaction.
+        # Corresponds to the JSON property `transactionRevenue`
+        # @return [Float]
+        attr_accessor :transaction_revenue
+      
+        # Total cost of shipping.
+        # Corresponds to the JSON property `transactionShipping`
+        # @return [Float]
+        attr_accessor :transaction_shipping
+      
+        # Total tax for the transaction.
+        # Corresponds to the JSON property `transactionTax`
+        # @return [Float]
+        attr_accessor :transaction_tax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+          @transaction_revenue = args[:transaction_revenue] if args.key?(:transaction_revenue)
+          @transaction_shipping = args[:transaction_shipping] if args.key?(:transaction_shipping)
+          @transaction_tax = args[:transaction_tax] if args.key?(:transaction_tax)
+        end
+      end
+      
+      # Contains information to identify a particular user uniquely.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # Type of the user in the request. The field `userId` is associated with this
+        # type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Unique Id of the user for which the data is being requested.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # This represents a user session performed on a specific device at a certain
+      # time over a period of time.
+      class UserActivitySession
+        include Google::Apis::Core::Hashable
+      
+        # Represents a detailed view into each of the activity in this session.
+        # Corresponds to the JSON property `activities`
+        # @return [Array<Google::Apis::AnalyticsreportingV4::Activity>]
+        attr_accessor :activities
+      
+        # The data source of a hit. By default, hits sent from analytics.js are
+        # reported as "web" and hits sent from the mobile SDKs are reported as "app".
+        # These values can be overridden in the Measurement Protocol.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # The type of device used: "mobile", "tablet" etc.
+        # Corresponds to the JSON property `deviceCategory`
+        # @return [String]
+        attr_accessor :device_category
+      
+        # Platform on which the activity happened: "android", "ios" etc.
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        # Date of this session in ISO-8601 format.
+        # Corresponds to the JSON property `sessionDate`
+        # @return [String]
+        attr_accessor :session_date
+      
+        # Unique ID of the session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activities = args[:activities] if args.key?(:activities)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @device_category = args[:device_category] if args.key?(:device_category)
+          @platform = args[:platform] if args.key?(:platform)
+          @session_date = args[:session_date] if args.key?(:session_date)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
     end

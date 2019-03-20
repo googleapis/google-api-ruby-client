@@ -1083,6 +1083,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_install_policy, as: 'autoInstallPolicy', class: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy, decorator: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy::Representation
       
+          property :managed_configuration, as: 'managedConfiguration', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
+      
           property :product_id, as: 'productId'
           collection :track_ids, as: 'trackIds'
           collection :tracks, as: 'tracks'
