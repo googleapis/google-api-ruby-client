@@ -326,4 +326,22 @@ EOF
       end
     end
   end
+
+  context 'with minimal API description' do
+    before do
+      generated_files = Google::Apis::Generator.new.render(
+        '{ "name": "minimal_api", "id": "minimal_api", "version": "v1" }'
+      )
+
+      namespace.send(:binding).eval(
+        generated_files.fetch('google/apis/minimal_api_v1/service.rb')
+      )
+    end
+
+    let(:namespace) { Module.new }
+
+    it 'should define service class' do
+      expect(namespace).to be_const_defined('Google::Apis::MinimalApiV1::MinimalApiService')
+    end
+  end
 end
