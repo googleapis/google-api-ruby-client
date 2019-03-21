@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenericSignedAttestation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GerritSourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -474,6 +486,8 @@ module Google
       class Attestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_signed_attestation, as: 'genericSignedAttestation', class: Google::Apis::ContaineranalysisV1beta1::GenericSignedAttestation, decorator: Google::Apis::ContaineranalysisV1beta1::GenericSignedAttestation::Representation
+      
           property :pgp_signed_attestation, as: 'pgpSignedAttestation', class: Google::Apis::ContaineranalysisV1beta1::PgpSignedAttestation, decorator: Google::Apis::ContaineranalysisV1beta1::PgpSignedAttestation::Representation
       
         end
@@ -749,6 +763,16 @@ module Google
       
           property :severity, as: 'severity'
           property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GenericSignedAttestation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :serialized_payload, :base64 => true, as: 'serializedPayload'
+          collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1beta1::Signature, decorator: Google::Apis::ContaineranalysisV1beta1::Signature::Representation
+      
         end
       end
       
@@ -1079,6 +1103,14 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::ContaineranalysisV1beta1::Policy, decorator: Google::Apis::ContaineranalysisV1beta1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_id, as: 'publicKeyId'
+          property :signature, :base64 => true, as: 'signature'
         end
       end
       

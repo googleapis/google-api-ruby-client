@@ -455,6 +455,7 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :online_prediction_console_logging, as: 'onlinePredictionConsoleLogging'
           property :online_prediction_logging, as: 'onlinePredictionLogging'
           collection :regions, as: 'regions'
         end

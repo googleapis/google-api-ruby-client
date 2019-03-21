@@ -161,6 +161,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # A public key in the PkixPublicKey format (see
+        # https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details).
+        # Public keys of this type are typically textually encoded using the PEM
+        # format.
+        # Corresponds to the JSON property `pkixPublicKey`
+        # @return [Google::Apis::BinaryauthorizationV1beta1::PkixPublicKey]
+        attr_accessor :pkix_public_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -170,6 +178,7 @@ module Google
           @ascii_armored_pgp_public_key = args[:ascii_armored_pgp_public_key] if args.key?(:ascii_armored_pgp_public_key)
           @comment = args[:comment] if args.key?(:comment)
           @id = args[:id] if args.key?(:id)
+          @pkix_public_key = args[:pkix_public_key] if args.key?(:pkix_public_key)
         end
       end
       
@@ -391,6 +400,39 @@ module Google
         end
       end
       
+      # A public key in the PkixPublicKey format (see
+      # https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details).
+      # Public keys of this type are typically textually encoded using the PEM
+      # format.
+      class PkixPublicKey
+        include Google::Apis::Core::Hashable
+      
+        # A PEM-encoded public key, as described in
+        # https://tools.ietf.org/html/rfc7468#section-13
+        # Corresponds to the JSON property `publicKeyPem`
+        # @return [String]
+        attr_accessor :public_key_pem
+      
+        # The signature algorithm used to verify a message against a signature using
+        # this key.
+        # These signature algorithm must match the structure and any object
+        # identifiers encoded in `public_key_pem` (i.e. this algorithm must match
+        # that of the public key).
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_pem = args[:public_key_pem] if args.key?(:public_key_pem)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
+        end
+      end
+      
       # A policy for container image binary authorization.
       class Policy
         include Google::Apis::Core::Hashable
@@ -429,6 +471,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Controls the evaluation of a Google-maintained global admission
+        # policy for common system-level images. Images not covered by the global
+        # policy will be subject to the project admission policy. This setting
+        # has no effect when specified inside a global admission policy.
+        # Corresponds to the JSON property `globalPolicyEvaluationMode`
+        # @return [String]
+        attr_accessor :global_policy_evaluation_mode
+      
         # Output only. The resource name, in the format `projects/*/policy`. There is
         # at most one policy per project.
         # Corresponds to the JSON property `name`
@@ -450,6 +500,7 @@ module Google
           @cluster_admission_rules = args[:cluster_admission_rules] if args.key?(:cluster_admission_rules)
           @default_admission_rule = args[:default_admission_rule] if args.key?(:default_admission_rule)
           @description = args[:description] if args.key?(:description)
+          @global_policy_evaluation_mode = args[:global_policy_evaluation_mode] if args.key?(:global_policy_evaluation_mode)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

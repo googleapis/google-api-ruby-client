@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PkixPublicKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -139,6 +145,8 @@ module Google
           property :ascii_armored_pgp_public_key, as: 'asciiArmoredPgpPublicKey'
           property :comment, as: 'comment'
           property :id, as: 'id'
+          property :pkix_public_key, as: 'pkixPublicKey', class: Google::Apis::BinaryauthorizationV1beta1::PkixPublicKey, decorator: Google::Apis::BinaryauthorizationV1beta1::PkixPublicKey::Representation
+      
         end
       end
       
@@ -187,6 +195,14 @@ module Google
         end
       end
       
+      class PkixPublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_pem, as: 'publicKeyPem'
+          property :signature_algorithm, as: 'signatureAlgorithm'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -197,6 +213,7 @@ module Google
           property :default_admission_rule, as: 'defaultAdmissionRule', class: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule::Representation
       
           property :description, as: 'description'
+          property :global_policy_evaluation_mode, as: 'globalPolicyEvaluationMode'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end

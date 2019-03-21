@@ -1330,7 +1330,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets indexed item statistics aggreggated across all data sources.
+        # Gets indexed item statistics aggreggated across all data sources. This
+        # API only returns statistics for previous dates; it doesn't return
+        # statistics for the current day.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month

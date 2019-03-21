@@ -456,7 +456,7 @@ module Google
         end
       end
       
-      # Represents a training or prediction job.
+      # Represents a training, prediction or explanation job.
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -722,7 +722,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 29
+        # Next ID: 30
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -759,7 +759,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. If true, enables StackDriver Logging for online prediction.
+        # Optional. If true, enables logging of stderr and stdout streams
+        # for online prediction in Stackdriver Logging. These can be more verbose
+        # than the standard access logs (see `online_prediction_logging`) and thus
+        # can incur higher cost. However, they are helpful for debugging. Note that
+        # since Stackdriver logs may incur a cost, particularly if the total QPS
+        # in your project is high, be sure to estimate your costs before enabling
+        # this flag.
+        # Default is false.
+        # Corresponds to the JSON property `onlinePredictionConsoleLogging`
+        # @return [Boolean]
+        attr_accessor :online_prediction_console_logging
+        alias_method :online_prediction_console_logging?, :online_prediction_console_logging
+      
+        # Optional. If true, online prediction access logs are sent to StackDriver
+        # Logging. These logs are like standard server access logs, containing
+        # information like timestamp and latency for each request. Note that
+        # Stackdriver logs may incur a cost, particular if the total QPS in your
+        # project is high.
         # Default is false.
         # Corresponds to the JSON property `onlinePredictionLogging`
         # @return [Boolean]
@@ -792,6 +809,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @online_prediction_console_logging = args[:online_prediction_console_logging] if args.key?(:online_prediction_console_logging)
           @online_prediction_logging = args[:online_prediction_logging] if args.key?(:online_prediction_logging)
           @regions = args[:regions] if args.key?(:regions)
         end
@@ -849,7 +867,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 29
+        # Next ID: 30
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1003,7 +1021,8 @@ module Google
         attr_accessor :data_format
       
         # Required. The Google Cloud Storage location of the input data files.
-        # May contain wildcards.
+        # May contain wildcards. See <a href="https://cloud.google.com/storage/docs/
+        # gsutil/addlhelp/WildcardNames</a>
         # Corresponds to the JSON property `inputPaths`
         # @return [Array<String>]
         attr_accessor :input_paths
@@ -1502,7 +1521,7 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 29
+      # Next ID: 30
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
@@ -2055,14 +2074,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -2158,14 +2177,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

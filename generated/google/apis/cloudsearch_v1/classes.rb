@@ -147,10 +147,9 @@ module Google
         end
       end
       
-      # Frontend protos implement autoconverters for this message type. If you add
-      # fields to this proto, please add corresponding fields to the frontend proto
-      # with the same names.
-      # LINT.IfChange
+      # Datasource is a logical namespace for items to be indexed.
+      # All items must belong to a datasource.  This is the prerequisite before
+      # items can be indexed into Cloud Search.
       class DataSource
         include Google::Apis::Core::Hashable
       
@@ -197,7 +196,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # IDs of the Long Running Operations (LROs) currently running for this schema.
+        # IDs of the Long Running Operations (LROs) currently running for this
+        # schema.
         # Corresponds to the JSON property `operationIds`
         # @return [Array<String>]
         attr_accessor :operation_ids
@@ -2517,14 +2517,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4312,14 +4312,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4766,10 +4766,9 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
       
-        # Frontend protos implement autoconverters for this message type. If you add
-        # fields to this proto, please add corresponding fields to the frontend proto
-        # with the same names.
-        # LINT.IfChange
+        # Datasource is a logical namespace for items to be indexed.
+        # All items must belong to a datasource.  This is the prerequisite before
+        # items can be indexed into Cloud Search.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CloudsearchV1::DataSource]
         attr_accessor :source

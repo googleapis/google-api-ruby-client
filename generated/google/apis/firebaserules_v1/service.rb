@@ -464,7 +464,7 @@ module Google
         #   `Ruleset.name`.
         #   Filters on `Ruleset.create_time` should use the `date` function which
         #   parses strings that conform to the RFC 3339 date/time specifications.
-        #   Example: `create_time > date("2017-01-01") AND name=UUID-*`
+        #   Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*`
         # @param [Fixnum] page_size
         #   Page size to load. Maximum of 100. Defaults to 10.
         #   Note: `page_size` is just a hint and the service may choose to load less

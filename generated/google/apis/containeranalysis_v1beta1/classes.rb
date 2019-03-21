@@ -95,6 +95,14 @@ module Google
       class Attestation
         include Google::Apis::Core::Hashable
       
+        # An attestation wrapper that uses the Grafeas `Signature` message.
+        # This attestation must define the `plaintext` that the `signatures` verify
+        # and any metadata necessary to interpret that plaintext.  The signatures
+        # should always be over the `plaintext` bytestring.
+        # Corresponds to the JSON property `genericSignedAttestation`
+        # @return [Google::Apis::ContaineranalysisV1beta1::GenericSignedAttestation]
+        attr_accessor :generic_signed_attestation
+      
         # An attestation wrapper with a PGP-compatible signature. This message only
         # supports `ATTACHED` signatures, where the payload that is signed is included
         # alongside the signature itself in the same file.
@@ -108,6 +116,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generic_signed_attestation = args[:generic_signed_attestation] if args.key?(:generic_signed_attestation)
           @pgp_signed_attestation = args[:pgp_signed_attestation] if args.key?(:pgp_signed_attestation)
         end
       end
@@ -1196,6 +1205,49 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @severity = args[:severity] if args.key?(:severity)
           @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
+      # An attestation wrapper that uses the Grafeas `Signature` message.
+      # This attestation must define the `plaintext` that the `signatures` verify
+      # and any metadata necessary to interpret that plaintext.  The signatures
+      # should always be over the `plaintext` bytestring.
+      class GenericSignedAttestation
+        include Google::Apis::Core::Hashable
+      
+        # Type (for example schema) of the attestation payload that was signed.
+        # The verifier must ensure that the provided type is one that the verifier
+        # supports, and that the attestation payload is a valid instantiation of that
+        # type (for example by validating a JSON schema).
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The serialized payload that is verified by one or more `signatures`.
+        # The encoding and semantic meaning of this payload must match what is set in
+        # `content_type`.
+        # Corresponds to the JSON property `serializedPayload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_payload
+      
+        # One or more signatures over `serialized_payload`.  Verifier implementations
+        # should consider this attestation message verified if at least one
+        # `signature` verifies `serialized_payload`.  See `Signature` in common.proto
+        # for more details on signature structure and verification.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::Signature>]
+        attr_accessor :signatures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @serialized_payload = args[:serialized_payload] if args.key?(:serialized_payload)
+          @signatures = args[:signatures] if args.key?(:signatures)
         end
       end
       
@@ -2405,6 +2457,70 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Verifiers (e.g. Kritis implementations) MUST verify signatures
+      # with respect to the trust anchors defined in policy (e.g. a Kritis policy).
+      # Typically this means that the verifier has been configured with a map from
+      # `public_key_id` to public key material (and any required parameters, e.g.
+      # signing algorithm).
+      # In particular, verification implementations MUST NOT treat the signature
+      # `public_key_id` as anything more than a key lookup hint. The `public_key_id`
+      # DOES NOT validate or authenticate a public key; it only provides a mechanism
+      # for quickly selecting a public key ALREADY CONFIGURED on the verifier through
+      # a trusted channel. Verification implementations MUST reject signatures in any
+      # of the following circumstances:
+      # * The `public_key_id` is not recognized by the verifier.
+      # * The public key that `public_key_id` refers to does not verify the
+      # signature with respect to the payload.
+      # The `signature` contents SHOULD NOT be "attached" (where the payload is
+      # included with the serialized `signature` bytes). Verifiers MUST ignore any
+      # "attached" payload and only verify signatures with respect to explicitly
+      # provided payload (e.g. a `payload` field on the proto message that holds
+      # this Signature, or the canonical serialization of the proto message that
+      # holds this signature).
+      class Signature
+        include Google::Apis::Core::Hashable
+      
+        # The identifier for the public key that verifies this signature.
+        # * The `public_key_id` is required.
+        # * The `public_key_id` MUST be an RFC3986 conformant URI.
+        # * When possible, the `public_key_id` SHOULD be an immutable reference,
+        # such as a cryptographic digest.
+        # Examples of valid `public_key_id`s:
+        # OpenPGP V4 public key fingerprint:
+        # * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA"
+        # See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
+        # details on this scheme.
+        # RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER
+        # serialization):
+        # * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+        # * "nih:///sha-256;
+        # 703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
+        # Corresponds to the JSON property `publicKeyId`
+        # @return [String]
+        attr_accessor :public_key_id
+      
+        # The content of the signature, an opaque bytestring.
+        # The payload that this signature verifies MUST be unambiguously provided
+        # with the Signature during verification. A wrapper message might provide
+        # the payload explicitly. Alternatively, a message might have a canonical
+        # serialization that can always be unambiguously computed to derive the
+        # payload.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_id = args[:public_key_id] if args.key?(:public_key_id)
+          @signature = args[:signature] if args.key?(:signature)
         end
       end
       
