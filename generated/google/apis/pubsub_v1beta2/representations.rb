@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OidcToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -230,6 +236,14 @@ module Google
         end
       end
       
+      class OidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -285,6 +299,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::PubsubV1beta2::OidcToken, decorator: Google::Apis::PubsubV1beta2::OidcToken::Representation
+      
           property :push_endpoint, as: 'pushEndpoint'
         end
       end

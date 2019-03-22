@@ -1707,10 +1707,9 @@ module Google
         # expired job can't be deleted or listed by the DeleteJob and
         # ListJobs APIs, but it can be retrieved with the GetJob API or
         # updated with the UpdateJob API. An expired job can be updated and
-        # opened again by using a future expiration timestamp. Updating an expired job
-        # fails if there is another
-        # existing open job with same requisition_id, company_name and
-        # language_code.
+        # opened again by using a future expiration timestamp. Updating an expired
+        # job fails if there is another existing open job with same
+        # requisition_id, company_name and language_code.
         # The expired jobs are retained in our system for 90 days. However, the
         # overall expired job count cannot exceed 3 times the maximum of open jobs
         # count over the past week, otherwise jobs with earlier expire time are
@@ -1723,11 +1722,10 @@ module Google
         # A valid date range is between 1970-01-01T00:00:00.0Z and
         # 2100-12-31T23:59:59.999Z. Invalid dates are ignored and treated as expire
         # time not provided.
-        # If this value is not provided at the time of job creation or is invalid, the
-        # job posting
-        # expires after 30 days from the job's creation time. For example, if the
-        # job was created on 2017/01/01 13:00AM UTC with an unspecified expiration
-        # date, the job expires after 2017/01/31 13:00AM UTC.
+        # If this value is not provided at the time of job creation or is invalid,
+        # the job posting expires after 30 days from the job's creation time. For
+        # example, if the job was created on 2017/01/01 13:00AM UTC with an
+        # unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC.
         # If this value is not provided but expiry_date is, expiry_date is
         # used.
         # If this value is not provided on job update, it depends on the field masks

@@ -717,8 +717,8 @@ module Google
         # inline within
         # update.
         # @param [String] name
-        #   Name of the Data Source to start a resumable upload.
-        #   Format: datasources/`source_id`
+        #   Name of the Item to start a resumable upload.
+        #   Format: datasources/`source_id`/items/`item_id`.
         # @param [Google::Apis::CloudsearchV1::StartUploadItemRequest] start_upload_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

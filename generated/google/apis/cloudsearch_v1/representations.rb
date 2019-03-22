@@ -1134,6 +1134,7 @@ module Google
       class FacetOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_facet_buckets, as: 'numFacetBuckets'
           property :object_type, as: 'objectType'
           property :operator_name, as: 'operatorName'
           property :source_name, as: 'sourceName'

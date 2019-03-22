@@ -866,14 +866,16 @@ module Google
       class FacetBucket
         include Google::Apis::Core::Hashable
       
-        # Number of results that match the bucket value.
+        # Number of results that match the bucket value. Counts are only returned
+        # for searches when count accuracy is ensured. Can be empty.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
         # Percent of results that match the bucket value. This value is between
-        # (0-100].
-        # This may not be accurate and is a best effort estimate.
+        # (0-100]. Percentages are returned for all searches, but are an estimate.
+        # Because percentages are always returned, you should render percentages
+        # instead of counts.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
         attr_accessor :percentage
@@ -900,6 +902,13 @@ module Google
       class FacetOptions
         include Google::Apis::Core::Hashable
       
+        # Maximum number of facet buckets that should be returned for this facet.
+        # Defaults to 10.
+        # Maximum value is 100.
+        # Corresponds to the JSON property `numFacetBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_facet_buckets
+      
         # If object_type is set, only those objects of that type will be used to
         # compute facets. If empty, then all objects will be used to compute facets.
         # Corresponds to the JSON property `objectType`
@@ -924,6 +933,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @num_facet_buckets = args[:num_facet_buckets] if args.key?(:num_facet_buckets)
           @object_type = args[:object_type] if args.key?(:object_type)
           @operator_name = args[:operator_name] if args.key?(:operator_name)
           @source_name = args[:source_name] if args.key?(:source_name)
@@ -934,7 +944,7 @@ module Google
       class FacetResult
         include Google::Apis::Core::Hashable
       
-        # FacetBuckets for values in response containing atleast a single result.
+        # FacetBuckets for values in response containing at least a single result.
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::CloudsearchV1::FacetBucket>]
         attr_accessor :buckets
@@ -3666,7 +3676,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to use freshness as a ranking signal. By default, freshness is used
-        # as a ranking signal.
+        # as a ranking signal. Note that this setting is not available in the Admin
+        # UI.
         # Corresponds to the JSON property `disableFreshness`
         # @return [Boolean]
         attr_accessor :disable_freshness
@@ -4021,7 +4032,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The URL of the result.
+        # The URL of the search result. The URL contains a Google redirect to the
+        # actual item.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

@@ -26,7 +26,7 @@ module Google
     # @see https://sites.google.com/corp/google.com/cloudprivatecatalog
     module CloudprivatecatalogproducerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190309'
+      REVISION = '20190316'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

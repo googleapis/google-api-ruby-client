@@ -291,6 +291,42 @@ module Google
         end
       end
       
+      # Contains information needed for generating an
+      # [OpenID Connect
+      # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+      class OidcToken
+        include Google::Apis::Core::Hashable
+      
+        # Audience to be used when generating OIDC token. The audience claim
+        # identifies the recipients that the JWT is intended for. The audience
+        # value is a single case-sensitive string. Having multiple values (array)
+        # for the audience field is not supported. More info about the OIDC JWT
+        # token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+        # Note: if not specified, the Push endpoint URL will be used.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # [Service account
+        # email](https://cloud.google.com/iam/docs/service-accounts)
+        # to be used for generating the OIDC token. The caller (for
+        # CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
+        # have the iam.serviceAccounts.actAs permission for the service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
@@ -531,6 +567,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Contains information needed for generating an
+        # [OpenID Connect
+        # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+        # Corresponds to the JSON property `oidcToken`
+        # @return [Google::Apis::PubsubV1beta2::OidcToken]
+        attr_accessor :oidc_token
+      
         # A URL locating the endpoint to which messages should be pushed.
         # For example, a Webhook endpoint might use "https://example.com/push".
         # Corresponds to the JSON property `pushEndpoint`
@@ -544,6 +587,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
         end
       end

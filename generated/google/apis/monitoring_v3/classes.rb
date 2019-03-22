@@ -2146,7 +2146,7 @@ module Google
       
         # An optional human-readable description of this notification channel. This
         # description may provide additional details, beyond the display name, for the
-        # channel. This may not exceeed 1024 Unicode characters.
+        # channel. This may not exceed 1024 Unicode characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
