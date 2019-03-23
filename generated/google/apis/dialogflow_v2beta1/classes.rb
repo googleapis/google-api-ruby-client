@@ -81,8 +81,10 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of parameters associated with this context.
-        # Refer to [this doc](https://dialogflow.com/docs/actions-and-parameters) for
-        # syntax.
+        # Refer to [this
+        # doc](https://cloud.google.com/dialogflow-enterprise/docs/intents-actions-
+        # parameters)
+        # for syntax.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -193,9 +195,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this query. See [Language
-        # Support](https://dialogflow.com/docs/languages) for a list of the
-        # currently supported language codes. Note that queries in the same session
-        # do not necessarily need to specify the same language.
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # for a list of the currently supported language codes. Note that queries in
+        # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1297,7 +1300,9 @@ module Google
         attr_accessor :intent_detection_confidence
       
         # The language that was triggered during intent detection.
-        # See [Language Support](https://dialogflow.com/docs/reference/language)
+        # See [Language
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -1500,7 +1505,10 @@ module Google
       
         # Optional. The URI of the agent's avatar.
         # Avatars are used throughout the Dialogflow console and in the self-hosted
-        # [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.
+        # [Web
+        # Demo](https://cloud.google.com/dialogflow-enterprise/docs/integrations/web-
+        # demo)
+        # integration.
         # Corresponds to the JSON property `avatarUri`
         # @return [String]
         attr_accessor :avatar_uri
@@ -1517,9 +1525,11 @@ module Google
         attr_accessor :classification_threshold
       
         # Required. The default language of the agent as a language tag. See
-        # [Language Support](https://dialogflow.com/docs/reference/language) for a
-        # list of the currently supported language codes.
-        # This field cannot be set by the `Update` method.
+        # [Language
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # for a list of the currently supported language codes. This field cannot be
+        # set by the `Update` method.
         # Corresponds to the JSON property `defaultLanguageCode`
         # @return [String]
         attr_accessor :default_language_code
@@ -1595,9 +1605,11 @@ module Google
       
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
-        # [More than a dozen
-        # languages](https://dialogflow.com/docs/reference/language) are supported.
-        # Note: languages must be enabled in the agent, before they can be used.
+        # [Many
+        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # are supported. Note: languages must be enabled in the agent before they can
+        # be used.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1626,9 +1638,11 @@ module Google
       
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
-        # [More than a dozen
-        # languages](https://dialogflow.com/docs/reference/language) are supported.
-        # Note: languages must be enabled in the agent, before they can be used.
+        # [Many
+        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # are supported. Note: languages must be enabled in the agent before they can
+        # be used.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1695,9 +1709,11 @@ module Google
       
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
-        # [More than a dozen
-        # languages](https://dialogflow.com/docs/reference/language) are supported.
-        # Note: languages must be enabled in the agent, before they can be used.
+        # [Many
+        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # are supported. Note: languages must be enabled in the agent before they can
+        # be used.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1738,9 +1754,11 @@ module Google
       
         # Optional. The language of entity synonyms defined in `entity_types`. If not
         # specified, the agent's default language is used.
-        # [More than a dozen
-        # languages](https://dialogflow.com/docs/reference/language) are supported.
-        # Note: languages must be enabled in the agent, before they can be used.
+        # [Many
+        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # are supported. Note: languages must be enabled in the agent before they can
+        # be used.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1805,9 +1823,11 @@ module Google
       
         # Optional. The language of training phrases, parameters and rich messages
         # defined in `intents`. If not specified, the agent's default language is
-        # used. [More than a dozen
-        # languages](https://dialogflow.com/docs/reference/language) are supported.
-        # Note: languages must be enabled in the agent, before they can be used.
+        # used. [Many
+        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # are supported. Note: languages must be enabled in the agent before they can
+        # be used.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1875,8 +1895,10 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of parameters associated with this context.
-        # Refer to [this doc](https://dialogflow.com/docs/actions-and-parameters) for
-        # syntax.
+        # Refer to [this
+        # doc](https://cloud.google.com/dialogflow-enterprise/docs/intents-actions-
+        # parameters)
+        # for syntax.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -2223,9 +2245,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this query. See [Language
-        # Support](https://dialogflow.com/docs/languages) for a list of the
-        # currently supported language codes. Note that queries in the same session
-        # do not necessarily need to specify the same language.
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # for a list of the currently supported language codes. Note that queries in
+        # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2366,9 +2389,10 @@ module Google
       
         # Required. The language of the supplied audio. Dialogflow does not do
         # translations. See [Language
-        # Support](https://dialogflow.com/docs/languages) for a list of the
-        # currently supported language codes. Note that queries in the same session
-        # do not necessarily need to specify the same language.
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # for a list of the currently supported language codes. Note that queries in
+        # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4047,7 +4071,9 @@ module Google
         attr_accessor :knowledge_answers
       
         # The language that was triggered during intent detection.
-        # See [Language Support](https://dialogflow.com/docs/reference/language)
+        # See [Language
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -4390,9 +4416,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this conversational query. See [Language
-        # Support](https://dialogflow.com/docs/languages) for a list of the
-        # currently supported language codes. Note that queries in the same session
-        # do not necessarily need to specify the same language.
+        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        # language)
+        # for a list of the currently supported language codes. Note that queries in
+        # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code

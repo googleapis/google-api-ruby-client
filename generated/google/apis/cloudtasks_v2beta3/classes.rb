@@ -40,14 +40,18 @@ module Google
         # Defines routing characteristics specific to App Engine - service, version,
         # and instance.
         # For more information about services, versions, and instances see
-        # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
-        # overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](https://cloud.google.com/
-        # appengine/docs/python/microservices-on-app-engine),
-        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-        # standard/python/how-requests-are-routed),
-        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-        # flexible/python/how-requests-are-routed).
+        # [An Overview of App
+        # Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+        # engine),
+        # [Microservices Architecture on Google App
+        # Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-
+        # engine),
+        # [App Engine Standard request
+        # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed),
+        # and [App Engine Flex request
+        # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `appEngineRoutingOverride`
         # @return [Google::Apis::CloudtasksV2beta3::AppEngineRouting]
         attr_accessor :app_engine_routing_override
@@ -75,11 +79,12 @@ module Google
       # `https://www.googleapis.com/auth/cloud-platform`
       # The task will be delivered to the App Engine app which belongs to the same
       # project as the queue. For more information, see
-      # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
-      # python/how-requests-are-routed)
+      # [How Requests are
+      # Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+      # are-routed)
       # and how routing is affected by
-      # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
-      # dispatchref).
+      # [dispatch
+      # files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
       # Traffic is encrypted during transport and never leaves Google datacenters.
       # Because this traffic is carried over a communication mechanism internal to
       # Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
@@ -97,12 +102,13 @@ module Google
       # relative_uri
       # Tasks can be dispatched to secure app handlers, unsecure app handlers, and
       # URIs restricted with
-      # [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/
-      # config/appref).
+      # [`login:
+      # admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).
       # Because tasks are not run as any user, they cannot be dispatched to URIs
       # restricted with
-      # [`login: required`](https://cloud.google.com/appengine/docs/standard/python/
-      # config/appref)
+      # [`login:
+      # required`](https://cloud.google.com/appengine/docs/standard/python/config/
+      # appref)
       # Task dispatches also do not follow redirects.
       # The task attempt has succeeded if the app's request handler returns
       # an HTTP response code in the range [`200` - `299`]. `503` is
@@ -118,14 +124,18 @@ module Google
         # Defines routing characteristics specific to App Engine - service, version,
         # and instance.
         # For more information about services, versions, and instances see
-        # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
-        # overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](https://cloud.google.com/
-        # appengine/docs/python/microservices-on-app-engine),
-        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-        # standard/python/how-requests-are-routed),
-        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-        # flexible/python/how-requests-are-routed).
+        # [An Overview of App
+        # Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+        # engine),
+        # [Microservices Architecture on Google App
+        # Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-
+        # engine),
+        # [App Engine Standard request
+        # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed),
+        # and [App Engine Flex request
+        # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `appEngineRouting`
         # @return [Google::Apis::CloudtasksV2beta3::AppEngineRouting]
         attr_accessor :app_engine_routing
@@ -164,8 +174,9 @@ module Google
         # * `X-AppEngine-*`
         # In addition, Cloud Tasks sets some headers when the task is dispatched,
         # such as headers containing information about the task; see
-        # [request headers](https://cloud.google.com/appengine/docs/python/taskqueue/
-        # push/creating-handlers#reading_request_headers).
+        # [request
+        # headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/
+        # creating-handlers#reading_request_headers).
         # These headers are set only when the task is dispatched, so they are not
         # visible when the task is returned in a Cloud Tasks response.
         # Although there is no specific limit for the maximum number of headers or
@@ -179,12 +190,14 @@ module Google
         # The app's request handler for the task's target URL must be able to handle
         # HTTP requests with this http_method, otherwise the task attempt will fail
         # with error code 405 (Method Not Allowed). See
-        # [Writing a push task request handler](https://cloud.google.com/appengine/docs/
-        # java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
+        # [Writing a push task request
+        # handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-
+        # handlers#writing_a_push_task_request_handler)
         # and the documentation for the request handlers in the language your app is
         # written in e.g.
-        # [Python Request Handler](https://cloud.google.com/appengine/docs/python/tools/
-        # webapp/requesthandlerclass).
+        # [Python Request
+        # Handler](https://cloud.google.com/appengine/docs/python/tools/webapp/
+        # requesthandlerclass).
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
         attr_accessor :http_method
@@ -216,14 +229,18 @@ module Google
       # Defines routing characteristics specific to App Engine - service, version,
       # and instance.
       # For more information about services, versions, and instances see
-      # [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-
-      # overview-of-app-engine),
-      # [Microservices Architecture on Google App Engine](https://cloud.google.com/
-      # appengine/docs/python/microservices-on-app-engine),
-      # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-      # standard/python/how-requests-are-routed),
-      # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-      # flexible/python/how-requests-are-routed).
+      # [An Overview of App
+      # Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+      # engine),
+      # [Microservices Architecture on Google App
+      # Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-
+      # engine),
+      # [App Engine Standard request
+      # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+      # are-routed),
+      # and [App Engine Flex request
+      # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+      # are-routed).
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
@@ -234,8 +251,9 @@ module Google
         # and instance. Tasks which were created using
         # the App Engine SDK might have a custom domain name.
         # For more information, see
-        # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
-        # python/how-requests-are-routed).
+        # [How Requests are
+        # Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -244,14 +262,16 @@ module Google
         # By default, the task is sent to an instance which is available when
         # the task is attempted.
         # Requests can only be sent to a specific instance if
-        # [manual scaling is used in App Engine Standard](https://cloud.google.com/
-        # appengine/docs/python/an-overview-of-app-engine?hl=en_US#
-        # scaling_types_and_instance_classes).
+        # [manual scaling is used in App Engine
+        # Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-
+        # engine?hl=en_US#scaling_types_and_instance_classes).
         # App Engine Flex does not support instances. For more information, see
-        # [App Engine Standard request routing](https://cloud.google.com/appengine/docs/
-        # standard/python/how-requests-are-routed)
-        # and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/
-        # flexible/python/how-requests-are-routed).
+        # [App Engine Standard request
+        # routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed)
+        # and [App Engine Flex request
+        # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
+        # are-routed).
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -315,14 +335,14 @@ module Google
         # @return [String]
         attr_accessor :dispatch_time
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -807,8 +827,9 @@ module Google
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
         # For more information, see
-        # [Identifying projects](https://cloud.google.com/resource-manager/docs/
-        # creating-managing-projects#identifying_projects)
+        # [Identifying
+        # projects](https://cloud.google.com/resource-manager/docs/creating-managing-
+        # projects#identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the queue's location.
         # The list of available locations can be obtained by calling
         # ListLocations.
@@ -823,9 +844,9 @@ module Google
         # All tasks that were created before this time
         # were purged.
         # A queue can be purged using PurgeQueue, the
-        # [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/
-        # appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#
-        # purging_all_tasks_from_a_queue).
+        # [App Engine Task Queue SDK, or the Cloud
+        # Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/
+        # push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).
         # Purge time will be truncated to the nearest microsecond. Purge
         # time will be unset if the queue has never been purged.
         # Corresponds to the JSON property `purgeTime`
@@ -922,8 +943,9 @@ module Google
         # default.
         # The maximum allowed value is 5,000.
         # This field has the same meaning as
-        # [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/
-        # docs/standard/python/config/queueref#max_concurrent_requests).
+        # [max_concurrent_requests in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#max_concurrent_requests).
         # Corresponds to the JSON property `maxConcurrentDispatches`
         # @return [Fixnum]
         attr_accessor :max_concurrent_dispatches
@@ -934,8 +956,9 @@ module Google
         # * For App Engine queues, the maximum allowed value
         # is 500.
         # This field has the same meaning as
-        # [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/
-        # python/config/queueref#rate).
+        # [rate in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#rate).
         # Corresponds to the JSON property `maxDispatchesPerSecond`
         # @return [Float]
         attr_accessor :max_dispatches_per_second
@@ -978,8 +1001,9 @@ module Google
         # default.
         # -1 indicates unlimited attempts.
         # This field has the same meaning as
-        # [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/
-        # standard/python/config/queueref#retry_parameters).
+        # [task_retry_limit in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxAttempts`
         # @return [Fixnum]
         attr_accessor :max_attempts
@@ -993,8 +1017,9 @@ module Google
         # default.
         # `max_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/
-        # docs/standard/python/config/queueref#retry_parameters).
+        # [max_backoff_seconds in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxBackoff`
         # @return [String]
         attr_accessor :max_backoff
@@ -1018,8 +1043,9 @@ module Google
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
         # This field has the same meaning as
-        # [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/
-        # standard/python/config/queueref#retry_parameters).
+        # [max_doublings in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
@@ -1035,8 +1061,9 @@ module Google
         # default.
         # `max_retry_duration` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/
-        # standard/python/config/queueref#retry_parameters).
+        # [task_age_limit in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxRetryDuration`
         # @return [String]
         attr_accessor :max_retry_duration
@@ -1050,8 +1077,9 @@ module Google
         # default.
         # `min_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/
-        # docs/standard/python/config/queueref#retry_parameters).
+        # [min_backoff_seconds in
+        # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `minBackoff`
         # @return [String]
         attr_accessor :min_backoff
@@ -1154,14 +1182,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1243,11 +1271,12 @@ module Google
         # `https://www.googleapis.com/auth/cloud-platform`
         # The task will be delivered to the App Engine app which belongs to the same
         # project as the queue. For more information, see
-        # [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/
-        # python/how-requests-are-routed)
+        # [How Requests are
+        # Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
+        # are-routed)
         # and how routing is affected by
-        # [dispatch files](https://cloud.google.com/appengine/docs/python/config/
-        # dispatchref).
+        # [dispatch
+        # files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
         # Traffic is encrypted during transport and never leaves Google datacenters.
         # Because this traffic is carried over a communication mechanism internal to
         # Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
@@ -1265,12 +1294,13 @@ module Google
         # relative_uri
         # Tasks can be dispatched to secure app handlers, unsecure app handlers, and
         # URIs restricted with
-        # [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/
-        # config/appref).
+        # [`login:
+        # admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).
         # Because tasks are not run as any user, they cannot be dispatched to URIs
         # restricted with
-        # [`login: required`](https://cloud.google.com/appengine/docs/standard/python/
-        # config/appref)
+        # [`login:
+        # required`](https://cloud.google.com/appengine/docs/standard/python/config/
+        # appref)
         # Task dispatches also do not follow redirects.
         # The task attempt has succeeded if the app's request handler returns
         # an HTTP response code in the range [`200` - `299`]. `503` is
@@ -1307,8 +1337,9 @@ module Google
         # The default and maximum values depend on the type of request:
         # * For App Engine tasks, 0 indicates that the
         # request has the default deadline. The default deadline depends on the
-        # [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-
-        # instances-are-managed#instance_scaling)
+        # [scaling
+        # type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-
+        # managed#instance_scaling)
         # of the service: 10 minutes for standard apps with automatic scaling, 24
         # hours for standard apps with manual and basic scaling, and 60 minutes for
         # flex apps. If the request deadline is set, it must be in the interval [15
@@ -1342,8 +1373,9 @@ module Google
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
         # For more information, see
-        # [Identifying projects](https://cloud.google.com/resource-manager/docs/
-        # creating-managing-projects#identifying_projects)
+        # [Identifying
+        # projects](https://cloud.google.com/resource-manager/docs/creating-managing-
+        # projects#identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the task's location.
         # The list of available locations can be obtained by calling
         # ListLocations.

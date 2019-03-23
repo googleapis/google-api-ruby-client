@@ -28,10 +28,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This structure defines a tenant project to be added to the specified tenancy
-        # unit and its initial configuration and properties. A project lien will be
-        # created for the tenant project to prevent the tenant project from being
-        # deleted accidentally. The lien will be deleted as part of tenant project
-        # removal.
+        # unit and its initial configuration and properties. A project lien is created
+        # for the tenant project to prevent the tenant project from being deleted
+        # accidentally. The lien is deleted as part of tenant project removal.
         # Corresponds to the JSON property `projectConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig]
         attr_accessor :project_config
@@ -137,10 +136,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This structure defines a tenant project to be added to the specified tenancy
-        # unit and its initial configuration and properties. A project lien will be
-        # created for the tenant project to prevent the tenant project from being
-        # deleted accidentally. The lien will be deleted as part of tenant project
-        # removal.
+        # unit and its initial configuration and properties. A project lien is created
+        # for the tenant project to prevent the tenant project from being deleted
+        # accidentally. The lien is deleted as part of tenant project removal.
         # Corresponds to the JSON property `projectConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig]
         attr_accessor :project_config
@@ -172,9 +170,10 @@ module Google
         # @return [String]
         attr_accessor :external_resource
       
-        # When attaching a reserved project already in Tenancy Units, this is the
-        # tag of tenant resource under the tenancy unit for the service's producer
-        # project. The reserved tenant resource must be in active state.
+        # When attaching a reserved project already in tenancy units, this is the
+        # tag of a tenant resource under the tenancy unit for the managed service's
+        # service producer project. The reserved tenant resource must be in an
+        # active state.
         # Corresponds to the JSON property `reservedResource`
         # @return [String]
         attr_accessor :reserved_resource
@@ -555,7 +554,7 @@ module Google
         end
       end
       
-      # Describes billing configuration for a new tenant project.
+      # Describes the billing configuration for a new tenant project.
       class BillingConfig
         include Google::Apis::Core::Hashable
       
@@ -732,17 +731,18 @@ module Google
         end
       end
       
-      # Request to create a tenancy unit for a consumer of a service.
+      # Request to create a tenancy unit for a service consumer of a managed service.
       class CreateTenancyUnitRequest
         include Google::Apis::Core::Hashable
       
-        # Optional producer provided identifier of the tenancy unit.
+        # Optional service producer-provided identifier of the tenancy unit.
         # Must be no longer than 40 characters and preferably URI friendly.
-        # If it is not provided, a UID for the tenancy unit will be auto generated.
-        # It must be unique across a service.
-        # If the tenancy unit already exists for the service and consumer pair,
-        # `CreateTenancyUnit` will return the existing tenancy unit if the provided
-        # identifier is identical or empty, otherwise the call will fail.
+        # If it isn't provided, a UID for the tenancy unit is automatically
+        # generated. The identifier must be unique across a managed service.
+        # If the tenancy unit already exists for the managed service and service
+        # consumer pair, calling `CreateTenancyUnit` returns the existing tenancy
+        # unit if the provided identifier is identical or empty, otherwise the call
+        # fails.
         # Corresponds to the JSON property `tenancyUnitId`
         # @return [String]
         attr_accessor :tenancy_unit_id
@@ -2530,7 +2530,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Uses the same format as in IAM policy.
-        # `member` must include both prefix and ID. For example, `user:`emailId``,
+        # `member` must include both a prefix and ID. For example, `user:`emailId``,
         # `serviceAccount:`emailId``, `group:`emailId``.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -2695,7 +2695,7 @@ module Google
         end
       end
       
-      # Request message to remove tenant project resource from the tenancy unit.
+      # Request message to remove a tenant project resource from the tenancy unit.
       class RemoveTenantProjectRequest
         include Google::Apis::Core::Hashable
       
@@ -3151,16 +3151,16 @@ module Google
         end
       end
       
-      # Describes service account configuration for the tenant project.
+      # Describes the service account configuration for the tenant project.
       class ServiceAccountConfig
         include Google::Apis::Core::Hashable
       
         # ID of the IAM service account to be created in tenant project.
-        # The email format of the service account will be
+        # The email format of the service account is
         # "<account-id>@<tenant-project-id>.iam.gserviceaccount.com".
-        # This account id has to be unique within tenant project and producers
-        # have to guarantee it. And it must be 6-30 characters long, and matches the
-        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])`.
+        # This account ID must be unique within tenant project and service
+        # producers have to guarantee it. The ID must be 6-30 characters long, and
+        # match the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])`.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
@@ -3425,7 +3425,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # @OutputOnly Google Cloud API name of the service owning this tenancy unit.
+        # Output only. Google Cloud API name of the managed service owning this
+        # tenancy unit.
         # For example 'serviceconsumermanagement.googleapis.com'.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -3452,20 +3453,19 @@ module Google
       end
       
       # This structure defines a tenant project to be added to the specified tenancy
-      # unit and its initial configuration and properties. A project lien will be
-      # created for the tenant project to prevent the tenant project from being
-      # deleted accidentally. The lien will be deleted as part of tenant project
-      # removal.
+      # unit and its initial configuration and properties. A project lien is created
+      # for the tenant project to prevent the tenant project from being deleted
+      # accidentally. The lien is deleted as part of tenant project removal.
       class TenantProjectConfig
         include Google::Apis::Core::Hashable
       
-        # Describes billing configuration for a new tenant project.
+        # Describes the billing configuration for a new tenant project.
         # Corresponds to the JSON property `billingConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::BillingConfig]
         attr_accessor :billing_config
       
         # Folder where project in this tenancy unit must be located
-        # This folder must have been previously created with proper
+        # This folder must have been previously created with the required
         # permissions for the caller to create and configure a project in it.
         # Valid folder resource names have the format `folders/`folder_number``
         # (for example, `folders/123456`).
@@ -3473,19 +3473,19 @@ module Google
         # @return [String]
         attr_accessor :folder
       
-        # Labels that will be applied to this project.
+        # Labels that are applied to this project.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Describes service account configuration for the tenant project.
+        # Describes the service account configuration for the tenant project.
         # Corresponds to the JSON property `serviceAccountConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::ServiceAccountConfig]
         attr_accessor :service_account_config
       
-        # Google Cloud API names of services that will be activated on this project
-        # during provisioning.  If any of these services can not be activated,
-        # request will fail.
+        # Google Cloud API names of services that are activated on this project
+        # during provisioning.  If any of these services can't be activated,
+        # the request fails.
         # For example: 'compute.googleapis.com','cloudfunctions.googleapis.com'
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
@@ -3521,8 +3521,8 @@ module Google
         # 'roles/owner' role granted to the Service Consumer Management service
         # account.
         # At least one binding must have the role `roles/owner`. Among the list of
-        # members for `roles/owner`, at least one of them must be either `user` or
-        # `group` type.
+        # members for `roles/owner`, at least one of them must be either the `user`
+        # or `group` type.
         # Corresponds to the JSON property `policyBindings`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::PolicyBinding>]
         attr_accessor :policy_bindings

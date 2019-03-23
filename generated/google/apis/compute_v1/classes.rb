@@ -7387,6 +7387,17 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ComputeV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        # The policy describes the baseline against which Instance boot integrity is
+        # measured.
+        # Corresponds to the JSON property `shieldedInstanceIntegrityPolicy`
+        # @return [Google::Apis::ComputeV1::ShieldedInstanceIntegrityPolicy]
+        attr_accessor :shielded_instance_integrity_policy
+      
         # [Output Only] Whether a VM has been restricted for start because Compute
         # Engine has detected suspicious activity.
         # Corresponds to the JSON property `startRestricted`
@@ -7444,6 +7455,8 @@ module Google
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @shielded_instance_integrity_policy = args[:shielded_instance_integrity_policy] if args.key?(:shielded_instance_integrity_policy)
           @start_restricted = args[:start_restricted] if args.key?(:start_restricted)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -18606,6 +18619,119 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # A set of Shielded Instance options.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Defines whether the instance has the vTPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # A shielded Instance identity entry.
+      class ShieldedInstanceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # A Shielded Instance Identity Entry.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry]
+        attr_accessor :encryption_key
+      
+        # [Output Only] Type of the resource. Always compute#shieldedInstanceIdentity
+        # for shielded Instance identity entry.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A Shielded Instance Identity Entry.
+        # Corresponds to the JSON property `signingKey`
+        # @return [Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry]
+        attr_accessor :signing_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @kind = args[:kind] if args.key?(:kind)
+          @signing_key = args[:signing_key] if args.key?(:signing_key)
+        end
+      end
+      
+      # A Shielded Instance Identity Entry.
+      class ShieldedInstanceIdentityEntry
+        include Google::Apis::Core::Hashable
+      
+        # A PEM-encoded X.509 certificate. This field can be empty.
+        # Corresponds to the JSON property `ekCert`
+        # @return [String]
+        attr_accessor :ek_cert
+      
+        # A PEM-encoded public key.
+        # Corresponds to the JSON property `ekPub`
+        # @return [String]
+        attr_accessor :ek_pub
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ek_cert = args[:ek_cert] if args.key?(:ek_cert)
+          @ek_pub = args[:ek_pub] if args.key?(:ek_pub)
+        end
+      end
+      
+      # The policy describes the baseline against which Instance boot integrity is
+      # measured.
+      class ShieldedInstanceIntegrityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Updates the integrity policy baseline using the measurements from the VM
+        # instance's most recent boot.
+        # Corresponds to the JSON property `updateAutoLearnPolicy`
+        # @return [Boolean]
+        attr_accessor :update_auto_learn_policy
+        alias_method :update_auto_learn_policy?, :update_auto_learn_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_auto_learn_policy = args[:update_auto_learn_policy] if args.key?(:update_auto_learn_policy)
         end
       end
       

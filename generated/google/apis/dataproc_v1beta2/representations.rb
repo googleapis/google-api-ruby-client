@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllocationAffinity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AutoscalingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -465,15 +465,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
-        end
-      end
-      
-      class AllocationAffinity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consume_allocation_type, as: 'consumeAllocationType'
-          property :key, as: 'key'
-          collection :values, as: 'values'
         end
       end
       
@@ -698,11 +689,11 @@ module Google
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::DataprocV1beta2::AllocationAffinity, decorator: Google::Apis::DataprocV1beta2::AllocationAffinity::Representation
-      
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::DataprocV1beta2::ReservationAffinity, decorator: Google::Apis::DataprocV1beta2::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :subnetwork_uri, as: 'subnetworkUri'
@@ -1072,6 +1063,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       

@@ -346,9 +346,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -417,9 +419,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language to retrieve entity synonyms for. If not specified,
         #   the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -455,9 +459,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language to list entity synonyms for. If not specified,
         #   the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -503,9 +509,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields
@@ -1194,9 +1202,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
-        #   used. [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   used. [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1269,9 +1279,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language to retrieve training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1310,9 +1322,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language to list training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
-        #   [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent before they can be used.
+        #   [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1361,9 +1375,11 @@ module Google
         # @param [String] language_code
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
-        #   used. [More than a dozen
-        #   languages](https://dialogflow.com/docs/reference/language) are supported.
-        #   Note: languages must be enabled in the agent, before they can be used.
+        #   used. [Many
+        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
+        #   language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields

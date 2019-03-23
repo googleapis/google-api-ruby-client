@@ -1306,22 +1306,24 @@ module Google
         #   <td>labels</td><td>Updates labels</td>
         #   </tr>
         #   <tr>
-        #   <td>config.worker_config.num_instances</td><td>Resize primary worker group</td>
+        #   <td>config.worker_config.num_instances</td><td>Resize primary worker
+        #   group</td>
         #   </tr>
         #   <tr>
         #   <td>config.secondary_worker_config.num_instances</td><td>Resize secondary
         #   worker group</td>
         #   </tr>
         #   <tr>
-        #   <td>config.lifecycle_config.auto_delete_ttl</td><td>Reset MAX TTL duration</td>
+        #   <td>config.lifecycle_config.auto_delete_ttl</td><td>Reset MAX TTL
+        #   duration</td>
         #   </tr>
         #   <tr>
-        #   <td>config.lifecycle_config.auto_delete_time</td><td>Update MAX TTL deletion
-        #   timestamp</td>
+        #   <td>config.lifecycle_config.auto_delete_time</td><td>Update MAX TTL
+        #   deletion timestamp</td>
         #   </tr>
         #   <tr>
-        #   <td>config.lifecycle_config.idle_delete_ttl</td><td>Update Idle TTL duration</
-        #   td>
+        #   <td>config.lifecycle_config.idle_delete_ttl</td><td>Update Idle TTL
+        #   duration</td>
         #   </tr>
         #   <tr>
         #   <td>config.autoscaling_config.policy_uri</td><td>Use, stop using, or change

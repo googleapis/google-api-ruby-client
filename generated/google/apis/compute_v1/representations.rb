@@ -2536,6 +2536,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIdentityEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedInstanceIntegrityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignedUrlKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5091,6 +5115,10 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
+      
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeV1::ShieldedInstanceConfig, decorator: Google::Apis::ComputeV1::ShieldedInstanceConfig::Representation
+      
+          property :shielded_instance_integrity_policy, as: 'shieldedInstanceIntegrityPolicy', class: Google::Apis::ComputeV1::ShieldedInstanceIntegrityPolicy, decorator: Google::Apis::ComputeV1::ShieldedInstanceIntegrityPolicy::Representation
       
           property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
@@ -7986,6 +8014,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class ShieldedInstanceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry::Representation
+      
+          property :kind, as: 'kind'
+          property :signing_key, as: 'signingKey', class: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry::Representation
+      
+        end
+      end
+      
+      class ShieldedInstanceIdentityEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ek_cert, as: 'ekCert'
+          property :ek_pub, as: 'ekPub'
+        end
+      end
+      
+      class ShieldedInstanceIntegrityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_auto_learn_policy, as: 'updateAutoLearnPolicy'
         end
       end
       

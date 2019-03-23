@@ -160,92 +160,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Allocation
+      class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllocationAffinity
+      class AllocationSpecificSkuAllocationReservedInstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllocationAggregatedList
+      class AllocationSpecificSkuReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationSpecificSkuAllocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationSpecificSkuAllocationAllocatedInstanceProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationSpecificSkuAllocationAllocatedInstancePropertiesAllocatedDisk
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationsResizeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AllocationsScopedList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -928,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileContentBuffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1360,6 +1294,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitialStateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1560,6 +1500,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersPatchPerInstanceConfigsReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2848,6 +2794,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OriginAuthenticationMethod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3010,7 +2962,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RegionCommitmentsUpdateAllocationsRequest
+      class RegionCommitmentsUpdateReservationsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3090,6 +3042,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagerPatchInstanceConfigReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3246,6 +3204,78 @@ module Google
       
       class RequestMirrorPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4732,7 +4762,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGatewayStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusHighAvailabilityRequirementState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusTunnel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusVpnConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewaysGetStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5152,120 +5212,7 @@ module Google
         end
       end
       
-      class Allocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :commitment, as: 'commitment'
-          property :creation_timestamp, as: 'creationTimestamp'
-          property :description, as: 'description'
-          property :id, :numeric_string => true, as: 'id'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-          property :self_link, as: 'selfLink'
-          property :self_link_with_id, as: 'selfLinkWithId'
-          property :specific_allocation, as: 'specificAllocation', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocation, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocation::Representation
-      
-          property :specific_allocation_required, as: 'specificAllocationRequired'
-          property :zone, as: 'zone'
-        end
-      end
-      
-      class AllocationAffinity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consume_allocation_type, as: 'consumeAllocationType'
-          property :key, as: 'key'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class AllocationAggregatedList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::AllocationsScopedList, decorator: Google::Apis::ComputeAlpha::AllocationsScopedList::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationAggregatedList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
-      class AllocationList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::AllocationList::Warning, decorator: Google::Apis::ComputeAlpha::AllocationList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
-      class AllocationSpecificSkuAllocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :in_use_count, :numeric_string => true, as: 'inUseCount'
-          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstanceProperties::Representation
-      
-        end
-      end
-      
-      class AllocationSpecificSkuAllocationAllocatedInstanceProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
-      
-          collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesAllocatedDisk, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesAllocatedDisk::Representation
-      
-          property :machine_type, as: 'machineType'
-          property :min_cpu_platform, as: 'minCpuPlatform'
-        end
-      end
-      
-      class AllocationSpecificSkuAllocationAllocatedInstancePropertiesAllocatedDisk
+      class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -5273,38 +5220,25 @@ module Google
         end
       end
       
-      class AllocationsResizeRequest
+      class AllocationSpecificSkuAllocationReservedInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :specific_sku_count, :numeric_string => true, as: 'specificSkuCount'
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
+          collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
+      
+          property :machine_type, as: 'machineType'
+          property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
       
-      class AllocationsScopedList
+      class AllocationSpecificSkuReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allocations, as: 'allocations', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
+          property :count, :numeric_string => true, as: 'count'
+          property :in_use_count, :numeric_string => true, as: 'inUseCount'
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
       
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::AllocationsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::AllocationsScopedList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::AllocationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::AllocationsScopedList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
         end
       end
       
@@ -5327,6 +5261,8 @@ module Google
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
           property :saved_state, as: 'savedState'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeAlpha::InitialStateConfig, decorator: Google::Apis::ComputeAlpha::InitialStateConfig::Representation
+      
           property :source, as: 'source'
           property :type, as: 'type'
         end
@@ -5958,8 +5894,6 @@ module Google
       class Commitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allocations, as: 'allocations', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
-      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
@@ -5968,6 +5902,8 @@ module Google
           property :name, as: 'name'
           property :plan, as: 'plan'
           property :region, as: 'region'
+          collection :reservations, as: 'reservations', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::ResourceCommitment, decorator: Google::Apis::ComputeAlpha::ResourceCommitment::Representation
       
           property :self_link, as: 'selfLink'
@@ -6579,6 +6515,14 @@ module Google
         end
       end
       
+      class FileContentBuffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :file_type, as: 'fileType'
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6691,6 +6635,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeAlpha::MetadataFilter, decorator: Google::Apis::ComputeAlpha::MetadataFilter::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
@@ -7398,6 +7344,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeAlpha::InitialStateConfig, decorator: Google::Apis::ComputeAlpha::InitialStateConfig::Representation
+      
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -7457,11 +7405,23 @@ module Google
         end
       end
       
+      class InitialStateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dbs, as: 'dbs', class: Google::Apis::ComputeAlpha::FileContentBuffer, decorator: Google::Apis::ComputeAlpha::FileContentBuffer::Representation
+      
+          collection :dbxs, as: 'dbxs', class: Google::Apis::ComputeAlpha::FileContentBuffer, decorator: Google::Apis::ComputeAlpha::FileContentBuffer::Representation
+      
+          collection :keks, as: 'keks', class: Google::Apis::ComputeAlpha::FileContentBuffer, decorator: Google::Apis::ComputeAlpha::FileContentBuffer::Representation
+      
+          property :pk, as: 'pk', class: Google::Apis::ComputeAlpha::FileContentBuffer, decorator: Google::Apis::ComputeAlpha::FileContentBuffer::Representation
+      
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::ComputeAlpha::AllocationAffinity, decorator: Google::Apis::ComputeAlpha::AllocationAffinity::Representation
-      
           property :can_ip_forward, as: 'canIpForward'
           property :cpu_platform, as: 'cpuPlatform'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -7488,6 +7448,8 @@ module Google
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
+      
           collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
@@ -7892,6 +7854,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagersPatchPerInstanceConfigsReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeAlpha::PerInstanceConfig, decorator: Google::Apis::ComputeAlpha::PerInstanceConfig::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagersRecreateInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8133,8 +8103,6 @@ module Google
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocation_affinity, as: 'allocationAffinity', class: Google::Apis::ComputeAlpha::AllocationAffinity, decorator: Google::Apis::ComputeAlpha::AllocationAffinity::Representation
-      
           property :can_ip_forward, as: 'canIpForward'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
@@ -8149,6 +8117,8 @@ module Google
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
+      
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
@@ -9259,6 +9229,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
@@ -9999,6 +9970,7 @@ module Google
       class NotificationEndpointGrpcSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
           property :endpoint, as: 'endpoint'
           property :payload_name, as: 'payloadName'
           property :retry_duration_sec, as: 'retryDurationSec'
@@ -10193,6 +10165,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::SecurityPolicyAssociation, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       
@@ -10507,10 +10488,10 @@ module Google
         end
       end
       
-      class RegionCommitmentsUpdateAllocationsRequest
+      class RegionCommitmentsUpdateReservationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allocations, as: 'allocations', class: Google::Apis::ComputeAlpha::Allocation, decorator: Google::Apis::ComputeAlpha::Allocation::Representation
+          collection :reservations, as: 'reservations', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
       
         end
       end
@@ -10637,6 +10618,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RegionInstanceGroupManagerPatchInstanceConfigReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeAlpha::PerInstanceConfig, decorator: Google::Apis::ComputeAlpha::PerInstanceConfig::Representation
+      
         end
       end
       
@@ -10867,6 +10856,132 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class Reservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment, as: 'commitment'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuReservation::Representation
+      
+          property :specific_reservation_required, as: 'specificReservationRequired'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class ReservationAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::ReservationsScopedList, decorator: Google::Apis::ComputeAlpha::ReservationsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ReservationAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::ReservationAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReservationAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReservationAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ReservationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ReservationList::Warning, decorator: Google::Apis::ComputeAlpha::ReservationList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReservationList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReservationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ReservationsResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :specific_sku_count, :numeric_string => true, as: 'specificSkuCount'
+        end
+      end
+      
+      class ReservationsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reservations, as: 'reservations', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ReservationsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::ReservationsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReservationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReservationsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -11331,6 +11446,7 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ips, as: 'drainNatIps'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::RouterNatLogConfig, decorator: Google::Apis::ComputeAlpha::RouterNatLogConfig::Representation
       
@@ -11400,6 +11516,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          collection :drain_auto_allocated_nat_ips, as: 'drainAutoAllocatedNatIps'
+          collection :drain_user_allocated_nat_ips, as: 'drainUserAllocatedNatIps'
           property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
           property :name, as: 'name'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
@@ -11564,6 +11682,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
@@ -11577,6 +11696,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_id, as: 'attachmentId'
           property :name, as: 'name'
+          property :security_policy_id, as: 'securityPolicyId'
         end
       end
       
@@ -11632,6 +11752,7 @@ module Google
           property :priority, as: 'priority'
           property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions::Representation
       
+          property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
         end
       end
@@ -12200,6 +12321,7 @@ module Google
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
+          property :range_type, as: 'rangeType'
           property :region, as: 'region'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeAlpha::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeAlpha::SubnetworkSecondaryRange::Representation
@@ -12289,6 +12411,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
+          property :range_type, as: 'rangeType'
         end
       end
       
@@ -12296,6 +12419,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_type, as: 'rangeType'
         end
       end
       
@@ -13411,7 +13535,9 @@ module Google
       class VmEndpointNatMappingsInterfaceNatMappings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'
@@ -13532,11 +13658,56 @@ module Google
         end
       end
       
+      class VpnGatewayStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_connections, as: 'vpnConnections', class: Google::Apis::ComputeAlpha::VpnGatewayStatusVpnConnection, decorator: Google::Apis::ComputeAlpha::VpnGatewayStatusVpnConnection::Representation
+      
+        end
+      end
+      
+      class VpnGatewayStatusHighAvailabilityRequirementState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :unsatisfied_reason, as: 'unsatisfiedReason'
+        end
+      end
+      
+      class VpnGatewayStatusTunnel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_gateway_interface, as: 'localGatewayInterface'
+          property :peer_gateway_interface, as: 'peerGatewayInterface'
+          property :tunnel_url, as: 'tunnelUrl'
+        end
+      end
+      
+      class VpnGatewayStatusVpnConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_external_gateway, as: 'peerExternalGateway'
+          property :peer_gcp_gateway, as: 'peerGcpGateway'
+          property :state, as: 'state', class: Google::Apis::ComputeAlpha::VpnGatewayStatusHighAvailabilityRequirementState, decorator: Google::Apis::ComputeAlpha::VpnGatewayStatusHighAvailabilityRequirementState::Representation
+      
+          collection :tunnels, as: 'tunnels', class: Google::Apis::ComputeAlpha::VpnGatewayStatusTunnel, decorator: Google::Apis::ComputeAlpha::VpnGatewayStatusTunnel::Representation
+      
+        end
+      end
+      
       class VpnGatewayVpnGatewayInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class VpnGatewaysGetStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ComputeAlpha::VpnGatewayStatus, decorator: Google::Apis::ComputeAlpha::VpnGatewayStatus::Representation
+      
         end
       end
       

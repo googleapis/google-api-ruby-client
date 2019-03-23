@@ -360,8 +360,9 @@ module Google
         #   * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         #   hyphens (-), colons (:), or periods (.).
         #   For more information, see
-        #   [Identifying projects](https://cloud.google.com/resource-manager/docs/
-        #   creating-managing-projects#identifying_projects)
+        #   [Identifying
+        #   projects](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   projects#identifying_projects)
         #   * `LOCATION_ID` is the canonical ID for the queue's location.
         #   The list of available locations can be obtained by calling
         #   ListLocations.

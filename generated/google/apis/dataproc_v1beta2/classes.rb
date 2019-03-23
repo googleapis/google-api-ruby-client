@@ -54,37 +54,6 @@ module Google
         end
       end
       
-      # Allocation Affinity for consuming Zonal allocation.
-      class AllocationAffinity
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `consumeAllocationType`
-        # @return [String]
-        attr_accessor :consume_allocation_type
-      
-        # Corresponds to the label key of Allocation resource.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Corresponds to the label values of allocation resource.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consume_allocation_type = args[:consume_allocation_type] if args.key?(:consume_allocation_type)
-          @key = args[:key] if args.key?(:key)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
       # Autoscaling Policy config associated with the cluster.
       class AutoscalingConfig
         include Google::Apis::Core::Hashable
@@ -418,8 +387,8 @@ module Google
         # default, executables are run on master and all worker nodes. You can test a
         # node's <code>role</code> metadata to run an executable on a master or worker
         # node, as shown below using curl (you can also use wget):
-        # ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/
-        # instance/attributes/dataproc-role)
+        # ROLE=$(curl -H Metadata-Flavor:Google
+        # http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role)
         # if [[ "$`ROLE`" == 'Master' ]]; then
         # ... master specific actions ...
         # else
@@ -892,11 +861,6 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Allocation Affinity for consuming Zonal allocation.
-        # Corresponds to the JSON property `allocationAffinity`
-        # @return [Google::Apis::DataprocV1beta2::AllocationAffinity]
-        attr_accessor :allocation_affinity
-      
         # Optional. If true, all instances in the cluster will only have internal IP
         # addresses. By default, clusters are not restricted to internal IP addresses,
         # and will have ephemeral external IP addresses assigned to each instance. This
@@ -927,6 +891,11 @@ module Google
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
+      
+        # Reservation Affinity for consuming Zonal reservation.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::DataprocV1beta2::ReservationAffinity]
+        attr_accessor :reservation_affinity
       
         # Optional. The service account of the instances. Defaults to the default
         # Compute Engine service account. Custom service accounts need permissions
@@ -987,10 +956,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allocation_affinity = args[:allocation_affinity] if args.key?(:allocation_affinity)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
@@ -1154,9 +1123,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Maximum number of instances for this group. Required for primary
-        # workers. Note that by default, clusters will not use secondary workers.Primary
-        # workers - Bounds: [min_instances, ). Secondary workers - Bounds: [
-        # min_instances, ). Default: 0.
+        # workers. Note that by default, clusters will not use secondary workers.
+        # Required for secondary workers if the minimum secondary instances is set.
+        # Primary workers - Bounds: [min_instances, ). Required. Secondary workers -
+        # Bounds: [min_instances, ). Default: 0.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
@@ -1168,17 +1138,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_instances
       
-        # Optional. Weight for instance group. Determines fraction of total workers in
-        # cluster that will be composed of instances from this instance group (e.g. if
-        # primary workers have weight 2 and secondary workers have weight 1, then the
-        # cluster should have approximately 2 primary workers to each secondary worker.
-        # Cluster may not reach these exact weights if constrained by min/max bounds or
-        # other autoscaling configurations.Note that all groups have an equal weight by
-        # default, so the cluster will attempt to maintain an equal number of workers in
-        # each group within configured size bounds per group. The cluster may not reach
-        # this balance of weights if not allowed by worker-count bounds. For example, if
-        # max_instances for secondary workers is 0, only primary workers will be added.
-        # The cluster can also be out of balance when created.Default: 1.
+        # 
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -2508,6 +2468,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @regexes = args[:regexes] if args.key?(:regexes)
+        end
+      end
+      
+      # Reservation Affinity for consuming Zonal reservation.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of reservation to consume
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of reservation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
