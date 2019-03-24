@@ -134,7 +134,6 @@ module Google
           property :location_id, as: 'locationId'
           property :memory_size_gb, as: 'memorySizeGb'
           property :name, as: 'name'
-          property :persistence_iam_identity, as: 'persistenceIamIdentity'
           property :port, as: 'port'
           hash :redis_configs, as: 'redisConfigs'
           property :redis_version, as: 'redisVersion'
