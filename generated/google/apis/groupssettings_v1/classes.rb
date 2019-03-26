@@ -56,6 +56,12 @@ module Google
         # @return [String]
         attr_accessor :custom_reply_to
       
+        # If any of the settings that will be merged have custom roles which is anything
+        # other than owners, managers, or group scopes.
+        # Corresponds to the JSON property `customRolesEnabledForSettingsToBeMerged`
+        # @return [String]
+        attr_accessor :custom_roles_enabled_for_settings_to_be_merged
+      
         # Default message deny notification message
         # Corresponds to the JSON property `defaultMessageDenyNotificationText`
         # @return [String]
@@ -70,6 +76,11 @@ module Google
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
+      
+        # If a primary Collab Inbox feature is enabled.
+        # Corresponds to the JSON property `enableCollaborativeInbox`
+        # @return [String]
+        attr_accessor :enable_collaborative_inbox
       
         # If favorite replies should be displayed above other replies.
         # Corresponds to the JSON property `favoriteRepliesOnTop`
@@ -163,11 +174,35 @@ module Google
         # @return [String]
         attr_accessor :who_can_add_references
       
+        # Permission to approve members. Possible values are: ALL_OWNERS_CAN_APPROVE
+        # ALL_MANAGERS_CAN_APPROVE ALL_MEMBERS_CAN_APPROVE NONE_CAN_APPROVE
+        # Corresponds to the JSON property `whoCanApproveMembers`
+        # @return [String]
+        attr_accessor :who_can_approve_members
+      
+        # Permission to approve pending messages in the moderation queue. Possible
+        # values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanApproveMessages`
+        # @return [String]
+        attr_accessor :who_can_approve_messages
+      
         # Permission to assign topics in a forum to another user. Possible values are:
         # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
         # Corresponds to the JSON property `whoCanAssignTopics`
         # @return [String]
         attr_accessor :who_can_assign_topics
+      
+        # Permission for content assistants. Possible values are: Possible values are:
+        # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanAssistContent`
+        # @return [String]
+        attr_accessor :who_can_assist_content
+      
+        # Permission to ban users. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanBanUsers`
+        # @return [String]
+        attr_accessor :who_can_ban_users
       
         # Permission to contact owner of the group via web UI. Possible values are:
         # ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
@@ -176,11 +211,35 @@ module Google
         # @return [String]
         attr_accessor :who_can_contact_owner
       
+        # Permission to delete replies to topics. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanDeleteAnyPost`
+        # @return [String]
+        attr_accessor :who_can_delete_any_post
+      
+        # Permission to delete topics. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanDeleteTopics`
+        # @return [String]
+        attr_accessor :who_can_delete_topics
+      
+        # Permission for who can discover the group. Possible values are:
+        # ALL_MEMBERS_CAN_DISCOVER ALL_IN_DOMAIN_CAN_DISCOVER ANYONE_CAN_DISCOVER
+        # Corresponds to the JSON property `whoCanDiscoverGroup`
+        # @return [String]
+        attr_accessor :who_can_discover_group
+      
         # Permission to enter free form tags for topics in a forum. Possible values are:
         # NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
         # Corresponds to the JSON property `whoCanEnterFreeFormTags`
         # @return [String]
         attr_accessor :who_can_enter_free_form_tags
+      
+        # Permission to hide posts by reporting them as abuse. Possible values are: NONE
+        # OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanHideAbuse`
+        # @return [String]
+        attr_accessor :who_can_hide_abuse
       
         # Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
         # ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
@@ -199,6 +258,18 @@ module Google
         # Corresponds to the JSON property `whoCanLeaveGroup`
         # @return [String]
         attr_accessor :who_can_leave_group
+      
+        # Permission to lock topics. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanLockTopics`
+        # @return [String]
+        attr_accessor :who_can_lock_topics
+      
+        # Permission to make topics appear at the top of the topic list. Possible values
+        # are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMakeTopicsSticky`
+        # @return [String]
+        attr_accessor :who_can_make_topics_sticky
       
         # Permission to mark a topic as a duplicate of another topic. Possible values
         # are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
@@ -225,11 +296,47 @@ module Google
         # @return [String]
         attr_accessor :who_can_mark_no_response_needed
       
+        # Permission for content moderation. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanModerateContent`
+        # @return [String]
+        attr_accessor :who_can_moderate_content
+      
+        # Permission for membership moderation. Possible values are: NONE OWNERS_ONLY
+        # OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanModerateMembers`
+        # @return [String]
+        attr_accessor :who_can_moderate_members
+      
+        # Permission to modify members (change member roles). Possible values are: NONE
+        # OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanModifyMembers`
+        # @return [String]
+        attr_accessor :who_can_modify_members
+      
         # Permission to change tags and categories. Possible values are: NONE
         # OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
         # Corresponds to the JSON property `whoCanModifyTagsAndCategories`
         # @return [String]
         attr_accessor :who_can_modify_tags_and_categories
+      
+        # Permission to move topics into the group or forum. Possible values are: NONE
+        # OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMoveTopicsIn`
+        # @return [String]
+        attr_accessor :who_can_move_topics_in
+      
+        # Permission to move topics out of the group or forum. Possible values are: NONE
+        # OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanMoveTopicsOut`
+        # @return [String]
+        attr_accessor :who_can_move_topics_out
+      
+        # Permission to post announcements, a special topic type. Possible values are:
+        # NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+        # Corresponds to the JSON property `whoCanPostAnnouncements`
+        # @return [String]
+        attr_accessor :who_can_post_announcements
       
         # Permissions to post messages to the group. Possible values are: NONE_CAN_POST
         # ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST ALL_OWNERS_CAN_POST
@@ -264,7 +371,7 @@ module Google
         attr_accessor :who_can_view_group
       
         # Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW
-        # ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
+        # ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW ALL_OWNERS_CAN_VIEW
         # Corresponds to the JSON property `whoCanViewMembership`
         # @return [String]
         attr_accessor :who_can_view_membership
@@ -281,9 +388,11 @@ module Google
           @archive_only = args[:archive_only] if args.key?(:archive_only)
           @custom_footer_text = args[:custom_footer_text] if args.key?(:custom_footer_text)
           @custom_reply_to = args[:custom_reply_to] if args.key?(:custom_reply_to)
+          @custom_roles_enabled_for_settings_to_be_merged = args[:custom_roles_enabled_for_settings_to_be_merged] if args.key?(:custom_roles_enabled_for_settings_to_be_merged)
           @default_message_deny_notification_text = args[:default_message_deny_notification_text] if args.key?(:default_message_deny_notification_text)
           @description = args[:description] if args.key?(:description)
           @email = args[:email] if args.key?(:email)
+          @enable_collaborative_inbox = args[:enable_collaborative_inbox] if args.key?(:enable_collaborative_inbox)
           @favorite_replies_on_top = args[:favorite_replies_on_top] if args.key?(:favorite_replies_on_top)
           @include_custom_footer = args[:include_custom_footer] if args.key?(:include_custom_footer)
           @include_in_global_address_list = args[:include_in_global_address_list] if args.key?(:include_in_global_address_list)
@@ -301,17 +410,33 @@ module Google
           @spam_moderation_level = args[:spam_moderation_level] if args.key?(:spam_moderation_level)
           @who_can_add = args[:who_can_add] if args.key?(:who_can_add)
           @who_can_add_references = args[:who_can_add_references] if args.key?(:who_can_add_references)
+          @who_can_approve_members = args[:who_can_approve_members] if args.key?(:who_can_approve_members)
+          @who_can_approve_messages = args[:who_can_approve_messages] if args.key?(:who_can_approve_messages)
           @who_can_assign_topics = args[:who_can_assign_topics] if args.key?(:who_can_assign_topics)
+          @who_can_assist_content = args[:who_can_assist_content] if args.key?(:who_can_assist_content)
+          @who_can_ban_users = args[:who_can_ban_users] if args.key?(:who_can_ban_users)
           @who_can_contact_owner = args[:who_can_contact_owner] if args.key?(:who_can_contact_owner)
+          @who_can_delete_any_post = args[:who_can_delete_any_post] if args.key?(:who_can_delete_any_post)
+          @who_can_delete_topics = args[:who_can_delete_topics] if args.key?(:who_can_delete_topics)
+          @who_can_discover_group = args[:who_can_discover_group] if args.key?(:who_can_discover_group)
           @who_can_enter_free_form_tags = args[:who_can_enter_free_form_tags] if args.key?(:who_can_enter_free_form_tags)
+          @who_can_hide_abuse = args[:who_can_hide_abuse] if args.key?(:who_can_hide_abuse)
           @who_can_invite = args[:who_can_invite] if args.key?(:who_can_invite)
           @who_can_join = args[:who_can_join] if args.key?(:who_can_join)
           @who_can_leave_group = args[:who_can_leave_group] if args.key?(:who_can_leave_group)
+          @who_can_lock_topics = args[:who_can_lock_topics] if args.key?(:who_can_lock_topics)
+          @who_can_make_topics_sticky = args[:who_can_make_topics_sticky] if args.key?(:who_can_make_topics_sticky)
           @who_can_mark_duplicate = args[:who_can_mark_duplicate] if args.key?(:who_can_mark_duplicate)
           @who_can_mark_favorite_reply_on_any_topic = args[:who_can_mark_favorite_reply_on_any_topic] if args.key?(:who_can_mark_favorite_reply_on_any_topic)
           @who_can_mark_favorite_reply_on_own_topic = args[:who_can_mark_favorite_reply_on_own_topic] if args.key?(:who_can_mark_favorite_reply_on_own_topic)
           @who_can_mark_no_response_needed = args[:who_can_mark_no_response_needed] if args.key?(:who_can_mark_no_response_needed)
+          @who_can_moderate_content = args[:who_can_moderate_content] if args.key?(:who_can_moderate_content)
+          @who_can_moderate_members = args[:who_can_moderate_members] if args.key?(:who_can_moderate_members)
+          @who_can_modify_members = args[:who_can_modify_members] if args.key?(:who_can_modify_members)
           @who_can_modify_tags_and_categories = args[:who_can_modify_tags_and_categories] if args.key?(:who_can_modify_tags_and_categories)
+          @who_can_move_topics_in = args[:who_can_move_topics_in] if args.key?(:who_can_move_topics_in)
+          @who_can_move_topics_out = args[:who_can_move_topics_out] if args.key?(:who_can_move_topics_out)
+          @who_can_post_announcements = args[:who_can_post_announcements] if args.key?(:who_can_post_announcements)
           @who_can_post_message = args[:who_can_post_message] if args.key?(:who_can_post_message)
           @who_can_take_topics = args[:who_can_take_topics] if args.key?(:who_can_take_topics)
           @who_can_unassign_topic = args[:who_can_unassign_topic] if args.key?(:who_can_unassign_topic)

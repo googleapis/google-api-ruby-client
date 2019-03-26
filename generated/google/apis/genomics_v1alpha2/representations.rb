@@ -94,18 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImportReadGroupSetsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportVariantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,20 +344,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
           property :code, as: 'code'
-        end
-      end
-      
-      class ImportReadGroupSetsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :read_group_set_ids, as: 'readGroupSetIds'
-        end
-      end
-      
-      class ImportVariantsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :call_set_ids, as: 'callSetIds'
         end
       end
       

@@ -351,7 +351,7 @@ module Google
         # project of a managed service, or from a separate project.
         # The caller is checked against a set of permissions as if calling
         # `AddTenantProject` on the same service consumer.
-        # To trigger the attachement, the targeted tenant project must be in a
+        # To trigger the attachment, the targeted tenant project must be in a
         # folder. Make sure the ServiceConsumerManagement service account is
         # the owner of that project. These two requirements are already met
         # if the project is reserved by calling `AddTenantProject`.

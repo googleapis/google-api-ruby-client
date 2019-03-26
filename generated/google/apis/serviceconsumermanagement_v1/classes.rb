@@ -165,7 +165,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When attaching an external project, this is in the format of
-        # `projects/`project_number`’.
+        # `projects/`project_number``.
         # Corresponds to the JSON property `externalResource`
         # @return [String]
         attr_accessor :external_resource

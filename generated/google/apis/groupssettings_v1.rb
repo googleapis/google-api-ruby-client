@@ -20,12 +20,12 @@ module Google
   module Apis
     # Groups Settings API
     #
-    # Lets you manage permission levels and related settings of a group.
+    # Manages permission levels and related settings of a group.
     #
     # @see https://developers.google.com/google-apps/groups-settings/get_started
     module GroupssettingsV1
       VERSION = 'V1'
-      REVISION = '20180615'
+      REVISION = '20190315'
 
       # View and manage the settings of a G Suite group
       AUTH_APPS_GROUPS_SETTINGS = 'https://www.googleapis.com/auth/apps.groups.settings'

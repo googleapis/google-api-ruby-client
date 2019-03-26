@@ -22,7 +22,7 @@ module Google
     module GroupssettingsV1
       # Groups Settings API
       #
-      # Lets you manage permission levels and related settings of a group.
+      # Manages permission levels and related settings of a group.
       #
       # @example
       #    require 'google/apis/groupssettings_v1'
