@@ -449,6 +449,16 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Disk encryption configuration.
+        # Corresponds to the JSON property `diskEncryptionConfiguration`
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration]
+        attr_accessor :disk_encryption_configuration
+      
+        # Disk encryption status.
+        # Corresponds to the JSON property `diskEncryptionStatus`
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionStatus]
+        attr_accessor :disk_encryption_status
+      
         # This field is deprecated and will be removed from a future version of the API.
         # Use the settings.settingsVersion field instead.
         # Corresponds to the JSON property `etag`
@@ -585,6 +595,8 @@ module Google
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
+          @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
           @etag = args[:etag] if args.key?(:etag)
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
@@ -783,6 +795,56 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Disk encryption configuration.
+      class DiskEncryptionConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#diskEncryptionConfiguration.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # KMS key resource name
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Disk encryption status.
+      class DiskEncryptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#diskEncryptionStatus.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # KMS key version used to encrypt the Cloud SQL instance disk
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
         end
       end
       

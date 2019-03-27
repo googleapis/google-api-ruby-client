@@ -241,6 +241,8 @@ module Google
         # google.longrunning.Operations interface. Returns either an
         # `Operation.error` or an `Operation.response` which contains
         # a `LongRunningRecognizeResponse` message.
+        # For more information on asynchronous speech recognition, see the
+        # [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
         # @param [Google::Apis::SpeechV1::LongRunningRecognizeRequest] long_running_recognize_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

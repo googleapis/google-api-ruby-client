@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskEncryptionConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskEncryptionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -488,6 +500,10 @@ module Google
           property :connection_name, as: 'connectionName'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
+          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration::Representation
+      
+          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionStatus::Representation
+      
           property :etag, as: 'etag'
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica::Representation
       
@@ -564,6 +580,22 @@ module Google
           property :kind, as: 'kind'
           property :password, as: 'password'
           property :username, as: 'username'
+        end
+      end
+      
+      class DiskEncryptionConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class DiskEncryptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
         end
       end
       

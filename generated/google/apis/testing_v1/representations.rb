@@ -962,7 +962,6 @@ module Google
       
           property :android_test_loop, as: 'androidTestLoop', class: Google::Apis::TestingV1::AndroidTestLoop, decorator: Google::Apis::TestingV1::AndroidTestLoop::Representation
       
-          property :auto_google_login, as: 'autoGoogleLogin'
           property :disable_performance_metrics, as: 'disablePerformanceMetrics'
           property :disable_video_recording, as: 'disableVideoRecording'
           property :ios_test_setup, as: 'iosTestSetup', class: Google::Apis::TestingV1::IosTestSetup, decorator: Google::Apis::TestingV1::IosTestSetup::Representation

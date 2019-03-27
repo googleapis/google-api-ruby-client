@@ -800,7 +800,7 @@ module Google
         # Required. The language of the supplied audio. Dialogflow does not do
         # translations. See [Language
         # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # languages)
+        # language)
         # for a list of the currently supported language codes. Note that queries in
         # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`

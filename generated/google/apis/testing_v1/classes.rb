@@ -2057,19 +2057,6 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidTestLoop]
         attr_accessor :android_test_loop
       
-        # Enables automatic Google account login.
-        # If set, the service will automatically generate a Google test account and
-        # add it to the device, before executing the test. Note that test accounts
-        # might be reused.
-        # Many applications show their full set of functionalities when an account is
-        # present on the device. Logging into the device with these generated
-        # accounts allows testing more functionalities.
-        # Default is false.
-        # Corresponds to the JSON property `autoGoogleLogin`
-        # @return [Boolean]
-        attr_accessor :auto_google_login
-        alias_method :auto_google_login?, :auto_google_login
-      
         # Disables performance metrics recording; may reduce test latency.
         # Corresponds to the JSON property `disablePerformanceMetrics`
         # @return [Boolean]
@@ -2118,7 +2105,6 @@ module Google
           @android_instrumentation_test = args[:android_instrumentation_test] if args.key?(:android_instrumentation_test)
           @android_robo_test = args[:android_robo_test] if args.key?(:android_robo_test)
           @android_test_loop = args[:android_test_loop] if args.key?(:android_test_loop)
-          @auto_google_login = args[:auto_google_login] if args.key?(:auto_google_login)
           @disable_performance_metrics = args[:disable_performance_metrics] if args.key?(:disable_performance_metrics)
           @disable_video_recording = args[:disable_video_recording] if args.key?(:disable_video_recording)
           @ios_test_setup = args[:ios_test_setup] if args.key?(:ios_test_setup)
