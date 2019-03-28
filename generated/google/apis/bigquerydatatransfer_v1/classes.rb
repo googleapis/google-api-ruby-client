@@ -603,6 +603,52 @@ module Google
         end
       end
       
+      # A request to start manual transfer runs.
+      class StartManualTransferRunsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specific run_time for a transfer run to be started. The
+        # requested_run_time must not be in the future.
+        # Corresponds to the JSON property `requestedRunTime`
+        # @return [String]
+        attr_accessor :requested_run_time
+      
+        # A specification for a time range, this will request transfer runs with
+        # run_time between start_time (inclusive) and end_time (exclusive).
+        # Corresponds to the JSON property `requestedTimeRange`
+        # @return [Google::Apis::BigquerydatatransferV1::TimeRange]
+        attr_accessor :requested_time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_run_time = args[:requested_run_time] if args.key?(:requested_run_time)
+          @requested_time_range = args[:requested_time_range] if args.key?(:requested_time_range)
+        end
+      end
+      
+      # A response to start manual transfer runs.
+      class StartManualTransferRunsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The transfer runs that were created.
+        # Corresponds to the JSON property `runs`
+        # @return [Array<Google::Apis::BigquerydatatransferV1::TransferRun>]
+        attr_accessor :runs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runs = args[:runs] if args.key?(:runs)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
       # used by [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -672,6 +718,38 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A specification for a time range, this will request transfer runs with
+      # run_time between start_time (inclusive) and end_time (exclusive).
+      class TimeRange
+        include Google::Apis::Core::Hashable
+      
+        # End time of the range of transfer runs. For example,
+        # `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
+        # Creates transfer runs where run_time is in the range betwen start_time
+        # (inclusive) and end_time (exlusive).
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start time of the range of transfer runs. For example,
+        # `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
+        # the end_time. Creates transfer runs where run_time is in the range betwen
+        # start_time (inclusive) and end_time (exlusive).
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       

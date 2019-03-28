@@ -106,7 +106,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartManualTransferRunsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartManualTransferRunsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -277,12 +295,37 @@ module Google
         end
       end
       
+      class StartManualTransferRunsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_run_time, as: 'requestedRunTime'
+          property :requested_time_range, as: 'requestedTimeRange', class: Google::Apis::BigquerydatatransferV1::TimeRange, decorator: Google::Apis::BigquerydatatransferV1::TimeRange::Representation
+      
+        end
+      end
+      
+      class StartManualTransferRunsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :runs, as: 'runs', class: Google::Apis::BigquerydatatransferV1::TransferRun, decorator: Google::Apis::BigquerydatatransferV1::TransferRun::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

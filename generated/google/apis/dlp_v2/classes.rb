@@ -1180,6 +1180,43 @@ module Google
         end
       end
       
+      # Pseudonymization method that generates deterministic encryption for the given
+      # input. Outputs a base64 encoded representation of the encrypted output.
+      # Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
+      class GooglePrivacyDlpV2CryptoDeterministicConfig
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :context
+      
+        # This is a data encryption key (DEK) (as opposed to
+        # a key encryption key (KEK) stored by KMS).
+        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # unwrap the data crypto key.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
+        attr_accessor :crypto_key
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `surrogateInfoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :surrogate_info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @surrogate_info_type = args[:surrogate_info_type] if args.key?(:surrogate_info_type)
+        end
+      end
+      
       # Pseudonymization method that generates surrogates via cryptographic hashing.
       # Uses SHA-256.
       # The key size must be either 32 or 64 bytes.
@@ -4107,6 +4144,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CharacterMaskConfig]
         attr_accessor :character_mask_config
       
+        # Pseudonymization method that generates deterministic encryption for the given
+        # input. Outputs a base64 encoded representation of the encrypted output.
+        # Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
+        # Corresponds to the JSON property `cryptoDeterministicConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoDeterministicConfig]
+        attr_accessor :crypto_deterministic_config
+      
         # Pseudonymization method that generates surrogates via cryptographic hashing.
         # Uses SHA-256.
         # The key size must be either 32 or 64 bytes.
@@ -4179,6 +4223,7 @@ module Google
         def update!(**args)
           @bucketing_config = args[:bucketing_config] if args.key?(:bucketing_config)
           @character_mask_config = args[:character_mask_config] if args.key?(:character_mask_config)
+          @crypto_deterministic_config = args[:crypto_deterministic_config] if args.key?(:crypto_deterministic_config)
           @crypto_hash_config = args[:crypto_hash_config] if args.key?(:crypto_hash_config)
           @crypto_replace_ffx_fpe_config = args[:crypto_replace_ffx_fpe_config] if args.key?(:crypto_replace_ffx_fpe_config)
           @date_shift_config = args[:date_shift_config] if args.key?(:date_shift_config)

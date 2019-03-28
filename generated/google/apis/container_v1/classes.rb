@@ -274,6 +274,12 @@ module Google
         attr_accessor :enable_kubernetes_alpha
         alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
+        # Enable the ability to use Cloud TPUs in this cluster.
+        # Corresponds to the JSON property `enableTpu`
+        # @return [Boolean]
+        attr_accessor :enable_tpu
+        alias_method :enable_tpu?, :enable_tpu
+      
         # [Output only] The IP address of this cluster's master endpoint.
         # The endpoint can be accessed from the internet at
         # `https://username:password@endpoint/`.
@@ -480,6 +486,13 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # [Output only] The IP address range of the Cloud TPUs in this cluster, in
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `1.2.3.4/29`).
+        # Corresponds to the JSON property `tpuIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :tpu_ipv4_cidr_block
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -503,6 +516,7 @@ module Google
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
           @description = args[:description] if args.key?(:description)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
+          @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
@@ -532,6 +546,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -1049,6 +1064,21 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_name
       
+        # The IP address range of the Cloud TPUs in this cluster. If unspecified, a
+        # range will be automatically chosen with the default size.
+        # This field is only applicable when `use_ip_aliases` is true.
+        # If unspecified, the range will use the default size.
+        # Set to /netmask (e.g. `/14`) to have a range chosen with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `tpuIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :tpu_ipv4_cidr_block
+      
         # Whether alias IPs will be used for pod IPs in the cluster.
         # Corresponds to the JSON property `useIpAliases`
         # @return [Boolean]
@@ -1071,6 +1101,7 @@ module Google
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
           @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
+          @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
         end
       end

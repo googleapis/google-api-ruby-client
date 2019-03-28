@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker
     module ServicebrokerV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20180713'
+      REVISION = '20190325'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

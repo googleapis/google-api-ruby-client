@@ -873,6 +873,11 @@ module Google
       class ListBuildTriggersResponse
         include Google::Apis::Core::Hashable
       
+        # Token to receive the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # `BuildTriggers` for the project, sorted by `create_time` descending.
         # Corresponds to the JSON property `triggers`
         # @return [Array<Google::Apis::CloudbuildV1::BuildTrigger>]
@@ -884,6 +889,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @triggers = args[:triggers] if args.key?(:triggers)
         end
       end

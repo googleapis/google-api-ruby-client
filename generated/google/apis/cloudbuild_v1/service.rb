@@ -477,6 +477,10 @@ module Google
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project for which to list BuildTriggers.
+        # @param [Fixnum] page_size
+        #   Number of results to return in the list.
+        # @param [String] page_token
+        #   Token to provide to skip to a particular spot in the list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -494,11 +498,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_triggers(project_id, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_triggers(project_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/triggers', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListBuildTriggersResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListBuildTriggersResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CryptoDeterministicConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2CryptoHashConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1373,6 +1379,18 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2CryptoDeterministicConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
+          property :crypto_key, as: 'cryptoKey', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey::Representation
+      
+          property :surrogate_info_type, as: 'surrogateInfoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2CryptoHashConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2209,6 +2227,8 @@ module Google
           property :bucketing_config, as: 'bucketingConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BucketingConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BucketingConfig::Representation
       
           property :character_mask_config, as: 'characterMaskConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CharacterMaskConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CharacterMaskConfig::Representation
+      
+          property :crypto_deterministic_config, as: 'cryptoDeterministicConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoDeterministicConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoDeterministicConfig::Representation
       
           property :crypto_hash_config, as: 'cryptoHashConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig::Representation
       

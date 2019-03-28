@@ -48,11 +48,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Sends an access token to a running environment on behalf of a user. When
-        # this completes, the environment will be authorized to run gcloud commands
-        # without requiring the user to manually authenticate.
+        # Sends OAuth credentials to a running environment on behalf of a user. When
+        # this completes, the environment will be authorized to run various Google
+        # Cloud command line tools without requiring the user to manually
+        # authenticate.
         # @param [String] name
-        #   Name of the resource that should receive the token, for example
+        #   Name of the resource that should receive the credentials, for example
         #   `users/me/environments/default` or
         #   `users/someone@example.com/environments/default`.
         # @param [Google::Apis::CloudshellV1alpha1::AuthorizeEnvironmentRequest] authorize_environment_request_object

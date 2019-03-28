@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/+/api/
     module PlusV1
       VERSION = 'V1'
-      REVISION = '20190313'
+      REVISION = '20190322'
 
       # View your basic profile info, including your age range and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
@@ -36,7 +36,7 @@ module Google
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
-      # See your personal info, including any personal info you've made publically available
+      # See your personal info, including any personal info you've made publicly available
       AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
     end
   end

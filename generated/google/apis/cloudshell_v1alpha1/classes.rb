@@ -31,11 +31,16 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
-        # The time when the token expires. If not set, defaults to one hour from when
-        # the server received the request.
+        # The time when the credentials expire. If not set, defaults to one hour from
+        # when the server received the request.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
+      
+        # The OAuth ID token that should be sent to the environment.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
       
         def initialize(**args)
            update!(**args)
@@ -45,6 +50,7 @@ module Google
         def update!(**args)
           @access_token = args[:access_token] if args.key?(:access_token)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @id_token = args[:id_token] if args.key?(:id_token)
         end
       end
       

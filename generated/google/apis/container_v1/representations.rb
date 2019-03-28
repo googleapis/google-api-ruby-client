@@ -433,6 +433,7 @@ module Google
           property :current_node_version, as: 'currentNodeVersion'
           property :description, as: 'description'
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
+          property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
           property :expire_time, as: 'expireTime'
           property :initial_cluster_version, as: 'initialClusterVersion'
@@ -472,6 +473,7 @@ module Google
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
+          property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :zone, as: 'zone'
         end
       end
@@ -589,6 +591,7 @@ module Google
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
           property :subnetwork_name, as: 'subnetworkName'
+          property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
         end
       end

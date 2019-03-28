@@ -585,6 +585,7 @@ module Google
         # For each date - or whatever granularity the data source supports - in the
         # range, one transfer run is created.
         # Note that runs are created per UTC time in the time range.
+        # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
         #   Transfer configuration name in the form:
         #   `projects/`project_id`/transferConfigs/`config_id``.
@@ -612,6 +613,43 @@ module Google
           command.request_object = schedule_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Start manual transfer runs to be executed now with schedule_time equal to
+        # current time. The transfer runs can be created for a time range where the
+        # run_time is between start_time (inclusive) and end_time (exclusive), or for
+        # a specific run_time.
+        # @param [String] parent
+        #   Transfer configuration name in the form:
+        #   `projects/`project_id`/transferConfigs/`config_id``.
+        # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_transfer_config_manual_runs(parent, start_manual_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
+          command.request_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest::Representation
+          command.request_object = start_manual_transfer_runs_request_object
+          command.response_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1015,6 +1053,7 @@ module Google
         # For each date - or whatever granularity the data source supports - in the
         # range, one transfer run is created.
         # Note that runs are created per UTC time in the time range.
+        # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
         #   Transfer configuration name in the form:
         #   `projects/`project_id`/transferConfigs/`config_id``.
@@ -1042,6 +1081,43 @@ module Google
           command.request_object = schedule_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Start manual transfer runs to be executed now with schedule_time equal to
+        # current time. The transfer runs can be created for a time range where the
+        # run_time is between start_time (inclusive) and end_time (exclusive), or for
+        # a specific run_time.
+        # @param [String] parent
+        #   Transfer configuration name in the form:
+        #   `projects/`project_id`/transferConfigs/`config_id``.
+        # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_transfer_config_manual_runs(parent, start_manual_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
+          command.request_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest::Representation
+          command.request_object = start_manual_transfer_runs_request_object
+          command.response_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
