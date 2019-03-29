@@ -222,8 +222,13 @@ module Google
         # Optional. Redis configuration parameters, according to
         # http://redis.io/topics/config. Currently, the only supported parameters
         # are:
+        # Redis 3.2 and above:
         # *   maxmemory-policy
         # *   notify-keyspace-events
+        # Redis 4.0 and above:
+        # *   activedefrag
+        # *   lfu-log-factor
+        # *   lfu-decay-time
         # Corresponds to the JSON property `redisConfigs`
         # @return [Hash<String,String>]
         attr_accessor :redis_configs
@@ -231,7 +236,9 @@ module Google
         # Optional. The version of Redis software.
         # If not provided, latest supported version will be used. Updating the
         # version will perform an upgrade/downgrade to the new version. Currently,
-        # the supported values are `REDIS_3_2` for Redis 3.2.
+        # the supported values are:
+        # *   `REDIS_4_0` for Redis 4.0 compatibility
+        # *   `REDIS_3_2` for Redis 3.2 compatibility
         # Corresponds to the JSON property `redisVersion`
         # @return [String]
         attr_accessor :redis_version
@@ -438,14 +445,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -530,14 +537,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

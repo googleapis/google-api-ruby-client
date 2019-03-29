@@ -25,10 +25,10 @@ module Google
     # @see https://developers.google.com/fact-check/tools/api/
     module FactchecktoolsV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20190325'
+      REVISION = '20190328'
 
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      # View your email address
+      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
     end
   end
 end
