@@ -103,6 +103,34 @@ module Google
         end
       end
       
+      # Configuration for returning group information from authenticators.
+      class AuthenticatorGroupsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether this cluster should return group membership lookups
+        # during authentication using a group of security groups.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The name of the security group-of-groups to be used. Only relevant
+        # if enabled = true.
+        # Corresponds to the JSON property `securityGroup`
+        # @return [String]
+        attr_accessor :security_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @security_group = args[:security_group] if args.key?(:security_group)
+        end
+      end
+      
       # AutoUpgradeOptions defines the set of options for the user to control how
       # the Auto Upgrades will proceed.
       class AutoUpgradeOptions
@@ -289,6 +317,11 @@ module Google
         # Corresponds to the JSON property `addonsConfig`
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
+      
+        # Configuration for returning group information from authenticators.
+        # Corresponds to the JSON property `authenticatorGroupsConfig`
+        # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
+        attr_accessor :authenticator_groups_config
       
         # ClusterAutoscaling contains global, per-cluster information
         # required by Cluster Autoscaler to automatically adjust
@@ -641,6 +674,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
@@ -759,6 +793,12 @@ module Google
         # @return [String]
         attr_accessor :desired_image_type
       
+        # IntraNodeVisibilityConfig contains the desired config of the intra-node
+        # visibility on this cluster.
+        # Corresponds to the JSON property `desiredIntraNodeVisibilityConfig`
+        # @return [Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig]
+        attr_accessor :desired_intra_node_visibility_config
+      
         # The desired list of Google Compute Engine
         # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
@@ -865,6 +905,7 @@ module Google
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
+          @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
@@ -1373,6 +1414,27 @@ module Google
         end
       end
       
+      # IntraNodeVisibilityConfig contains the desired config of the intra-node
+      # visibility on this cluster.
+      class IntraNodeVisibilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables intra node visibility for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Configuration options for Istio addon.
       class IstioConfig
         include Google::Apis::Core::Hashable
@@ -1865,6 +1927,13 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # Whether Intra-node visibility is enabled for this cluster.
+        # This makes same node pod to pod traffic visible for VPC network.
+        # Corresponds to the JSON property `enableIntraNodeVisibility`
+        # @return [Boolean]
+        attr_accessor :enable_intra_node_visibility
+        alias_method :enable_intra_node_visibility?, :enable_intra_node_visibility
+      
         # Output only. The relative name of the Google Compute Engine
         # network(/compute/docs/networks-and-firewalls#networks) to which
         # the cluster is connected.
@@ -1886,6 +1955,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @network = args[:network] if args.key?(:network)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end

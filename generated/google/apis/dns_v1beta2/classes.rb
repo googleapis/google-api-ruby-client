@@ -356,6 +356,11 @@ module Google
         attr_accessor :name_servers
       
         # 
+        # Corresponds to the JSON property `peeringConfig`
+        # @return [Google::Apis::DnsV1beta2::ManagedZonePeeringConfig]
+        attr_accessor :peering_config
+      
+        # 
         # Corresponds to the JSON property `privateVisibilityConfig`
         # @return [Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig]
         attr_accessor :private_visibility_config
@@ -382,6 +387,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @name_server_set = args[:name_server_set] if args.key?(:name_server_set)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
+          @peering_config = args[:peering_config] if args.key?(:peering_config)
           @private_visibility_config = args[:private_visibility_config] if args.key?(:private_visibility_config)
           @visibility = args[:visibility] if args.key?(:visibility)
         end
@@ -511,6 +517,64 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # 
+      class ManagedZonePeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePeeringConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [Google::Apis::DnsV1beta2::ManagedZonePeeringConfigTargetNetwork]
+        attr_accessor :target_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @target_network = args[:target_network] if args.key?(:target_network)
+        end
+      end
+      
+      # 
+      class ManagedZonePeeringConfigTargetNetwork
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deactivateTime`
+        # @return [String]
+        attr_accessor :deactivate_time
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePeeringConfigTargetNetwork".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deactivate_time = args[:deactivate_time] if args.key?(:deactivate_time)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_url = args[:network_url] if args.key?(:network_url)
         end
       end
       
@@ -823,6 +887,12 @@ module Google
         alias_method :enable_inbound_forwarding?, :enable_inbound_forwarding
       
         # 
+        # Corresponds to the JSON property `enableLogging`
+        # @return [Boolean]
+        attr_accessor :enable_logging
+        alias_method :enable_logging?, :enable_logging
+      
+        # 
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -851,6 +921,7 @@ module Google
           @alternative_name_server_config = args[:alternative_name_server_config] if args.key?(:alternative_name_server_config)
           @description = args[:description] if args.key?(:description)
           @enable_inbound_forwarding = args[:enable_inbound_forwarding] if args.key?(:enable_inbound_forwarding)
+          @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)

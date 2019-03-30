@@ -458,6 +458,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the specified project resource identified by a tenant resource tag.
+        # The mothod removes a project lien with a 'TenantManager' origin if that was
+        # added. It will then attempt to delete the project. If that operation fails,
+        # this method also fails.
+        # After the project has been deleted, the tenant resource state is set to
+        # DELETED.  To permanently remove resource metadata, call the
+        # `RemoveTenantProject` method.
+        # New resources with the same tag can't be added if there are existing
+        # resources in a DELETED state.
+        # Operation<response: Empty>.
+        # @param [String] name
+        #   Name of the tenancy unit.
+        #   Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
+        # @param [Google::Apis::ServiceconsumermanagementV1::DeleteTenantProjectRequest] delete_tenant_project_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service_tenancy_unit_project(name, delete_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:deleteProject', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1::DeleteTenantProjectRequest::Representation
+          command.request_object = delete_tenant_project_request_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Find the tenancy unit for a managed service and service consumer.
         # This method shouldn't be used in a service producer's runtime path, for
         # example to find the tenant project number when creating VMs. Service
@@ -541,6 +584,46 @@ module Google
           command =  make_simple_command(:post, 'v1/{+name}:removeProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::RemoveTenantProjectRequest::Representation
           command.request_object = remove_tenant_project_request_object
+          command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
+          command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Attempts to undelete a previously deleted tenant project. The project must
+        # be in a DELETED state.
+        # There are no guarantees that an undeleted project will be in
+        # a fully restored and functional state. Call the `ApplyTenantProjectConfig`
+        # method to update its configuration and then validate all managed service
+        # resources.
+        # Operation<response: Empty>.
+        # @param [String] name
+        #   Name of the tenancy unit.
+        #   Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
+        # @param [Google::Apis::ServiceconsumermanagementV1::UndeleteTenantProjectRequest] undelete_tenant_project_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceconsumermanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceconsumermanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_service_tenancy_unit_project(name, undelete_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:undeleteProject', options)
+          command.request_representation = Google::Apis::ServiceconsumermanagementV1::UndeleteTenantProjectRequest::Representation
+          command.request_object = undelete_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
           command.params['name'] = name unless name.nil?

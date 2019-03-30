@@ -1146,6 +1146,14 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
+        # If set, contains the Cloud KMS key identifier used to encrypt data
+        # at rest, AKA a Customer Managed Encryption Key (CMEK).
+        # Format:
+        # projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        # Corresponds to the JSON property `serviceKmsKeyName`
+        # @return [String]
+        attr_accessor :service_kms_key_name
+      
         # The prefix of the resources the system should use for temporary
         # storage.  The system will append the suffix "/temp-`JOBNAME` to
         # this resource prefix, where `JOBNAME` is the value of the
@@ -1191,6 +1199,7 @@ module Google
           @internal_experiments = args[:internal_experiments] if args.key?(:internal_experiments)
           @sdk_pipeline_options = args[:sdk_pipeline_options] if args.key?(:sdk_pipeline_options)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @service_kms_key_name = args[:service_kms_key_name] if args.key?(:service_kms_key_name)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)
@@ -1454,14 +1463,14 @@ module Google
         # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
         attr_accessor :metadata
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -4234,14 +4243,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

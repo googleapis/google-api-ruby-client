@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PauseJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -146,6 +158,10 @@ module Google
           property :body, :base64 => true, as: 'body'
           hash :headers, as: 'headers'
           property :http_method, as: 'httpMethod'
+          property :oauth_token, as: 'oauthToken', class: Google::Apis::CloudschedulerV1beta1::OAuthToken, decorator: Google::Apis::CloudschedulerV1beta1::OAuthToken::Representation
+      
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::CloudschedulerV1beta1::OidcToken, decorator: Google::Apis::CloudschedulerV1beta1::OidcToken::Representation
+      
           property :uri, as: 'uri'
         end
       end
@@ -155,6 +171,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_http_target, as: 'appEngineHttpTarget', class: Google::Apis::CloudschedulerV1beta1::AppEngineHttpTarget, decorator: Google::Apis::CloudschedulerV1beta1::AppEngineHttpTarget::Representation
       
+          property :attempt_deadline, as: 'attemptDeadline'
           property :description, as: 'description'
           property :http_target, as: 'httpTarget', class: Google::Apis::CloudschedulerV1beta1::HttpTarget, decorator: Google::Apis::CloudschedulerV1beta1::HttpTarget::Representation
       
@@ -200,6 +217,22 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class OAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class OidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account_email, as: 'serviceAccountEmail'
         end
       end
       

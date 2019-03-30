@@ -22,10 +22,10 @@ module Google
     #
     # The cloud asset API manages the history and inventory of cloud resources.
     #
-    # @see https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview
+    # @see https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory
     module CloudassetV1
       VERSION = 'V1'
-      REVISION = '20190321'
+      REVISION = '20190327'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

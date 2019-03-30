@@ -621,7 +621,6 @@ module Google
       end
       
       # A creative and its classification data.
-      # Next ID: 42
       class Creative
         include Google::Apis::Core::Hashable
       

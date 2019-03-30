@@ -146,7 +146,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # The configuration information for configuring a private Composer environment.
+        # The configuration information for configuring a Private IP Cloud Composer
+        # environment.
         # Corresponds to the JSON property `privateEnvironmentConfig`
         # @return [Google::Apis::ComposerV1beta1::PrivateEnvironmentConfig]
         attr_accessor :private_environment_config
@@ -197,6 +198,7 @@ module Google
         # Optional. The name of the cluster's secondary range used to allocate
         # IP addresses to pods. Specify either `cluster_secondary_range_name`
         # or `cluster_ipv4_cidr_block` but not both.
+        # This field is applicable only when `use_ip_aliases` is true.
         # Corresponds to the JSON property `clusterSecondaryRangeName`
         # @return [String]
         attr_accessor :cluster_secondary_range_name
@@ -221,12 +223,13 @@ module Google
         # Optional. The name of the services' secondary range used to allocate
         # IP addresses to the cluster. Specify either `services_secondary_range_name`
         # or `services_ipv4_cidr_block` but not both.
+        # This field is applicable only when `use_ip_aliases` is true.
         # Corresponds to the JSON property `servicesSecondaryRangeName`
         # @return [String]
         attr_accessor :services_secondary_range_name
       
         # Optional. Whether or not to enable Alias IPs in the GKE cluster.
-        # If true or if left blank, a VPC-native cluster is created.
+        # If `true`, a VPC-native cluster is created.
         # Corresponds to the JSON property `useIpAliases`
         # @return [Boolean]
         attr_accessor :use_ip_aliases
@@ -422,9 +425,8 @@ module Google
         attr_accessor :network
       
         # Optional. The set of Google API scopes to be made available on all
-        # node VMs. Defaults to
-        # ["https://www.googleapis.com/auth/cloud-platform"] and must be included in
-        # the list of specified scopes. Cannot be updated.
+        # node VMs. If `oauth_scopes` is empty, defaults to
+        # ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -442,10 +444,8 @@ module Google
         # For example:
         # "projects/`projectId`/regions/`regionId`/subnetworks/`subnetworkId`"
         # If a subnetwork is provided, `nodeConfig.network` must also be provided,
-        # and the subnetwork must belong to the same project as the network.
-        # For Shared VPC, you must configure the subnetwork with secondary ranges
-        # named <strong>composer-pods</strong> and
-        # <strong>composer-services</strong> to support Alias IPs.
+        # and the subnetwork must belong to the enclosing environment's project and
+        # location.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -630,24 +630,24 @@ module Google
         end
       end
       
-      # Configuration options for private cluster of Composer environment.
+      # Configuration options for the private GKE cluster in a Cloud Composer
+      # environment.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. If true, access to public endpoint of gke cluster will be denied.
-        # `IPAllocationPolicy.use_ip_aliases` must be true if this field is
-        # set to true. Default value is false.
+        # Optional. If `true`, access to the public endpoint of the GKE cluster is
+        # denied.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
         # The IP range in CIDR notation to use for the hosted master network. This
-        # range will be used for assigning internal IP addresses to the cluster
-        # master or set of masters, as well as the ILB VIP (Internal Load Balance
-        # Virtual IP).This range must not overlap with any other ranges in use
-        # within the cluster's network. If left blank, default value of
-        # '172.16.0.0/28' will be used.
+        # range is used for assigning internal IP addresses to the cluster
+        # master or set of masters and to the internal load balancer virtual IP.
+        # This range must not overlap with any other ranges in use
+        # within the cluster's network. If left blank, the default value of
+        # '172.16.0.0/28' is used.
         # Corresponds to the JSON property `masterIpv4CidrBlock`
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
@@ -663,17 +663,20 @@ module Google
         end
       end
       
-      # The configuration information for configuring a private Composer environment.
+      # The configuration information for configuring a Private IP Cloud Composer
+      # environment.
       class PrivateEnvironmentConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. If `true`, a private Composer environment is created.
+        # Optional. If `true`, a Private IP Cloud Composer environment is created.
+        # If this field is true, `use_ip_aliases` must be true.
         # Corresponds to the JSON property `enablePrivateEnvironment`
         # @return [Boolean]
         attr_accessor :enable_private_environment
         alias_method :enable_private_environment?, :enable_private_environment
       
-        # Configuration options for private cluster of Composer environment.
+        # Configuration options for the private GKE cluster in a Cloud Composer
+        # environment.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::ComposerV1beta1::PrivateClusterConfig]
         attr_accessor :private_cluster_config

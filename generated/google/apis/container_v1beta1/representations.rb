@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthenticatorGroupsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoUpgradeOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class IpAllocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntraNodeVisibilityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -504,6 +516,14 @@ module Google
         end
       end
       
+      class AuthenticatorGroupsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :security_group, as: 'securityGroup'
+        end
+      end
+      
       class AutoUpgradeOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -562,6 +582,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
+      
+          property :authenticator_groups_config, as: 'authenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
       
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
       
@@ -654,6 +676,8 @@ module Google
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1beta1::DatabaseEncryption, decorator: Google::Apis::ContainerV1beta1::DatabaseEncryption::Representation
       
           property :desired_image_type, as: 'desiredImageType'
+          property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig::Representation
+      
           collection :desired_locations, as: 'desiredLocations'
           property :desired_logging_service, as: 'desiredLoggingService'
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
@@ -779,6 +803,13 @@ module Google
           property :subnetwork_name, as: 'subnetworkName'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
+        end
+      end
+      
+      class IntraNodeVisibilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -930,6 +961,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
         end

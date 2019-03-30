@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteTenantProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteTenantProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -639,6 +651,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :path, as: 'path'
+        end
+      end
+      
+      class DeleteTenantProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag, as: 'tag'
         end
       end
       
@@ -1156,6 +1175,13 @@ module Google
           property :source_context, as: 'sourceContext', class: Google::Apis::ServiceconsumermanagementV1::SourceContext, decorator: Google::Apis::ServiceconsumermanagementV1::SourceContext::Representation
       
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class UndeleteTenantProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag, as: 'tag'
         end
       end
       
