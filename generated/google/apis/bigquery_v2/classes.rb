@@ -22,6 +22,74 @@ module Google
   module Apis
     module BigqueryV2
       
+      # Aggregate metrics for classification models. For multi-class models,
+      # the metrics are either macro-averaged: metrics are calculated for each
+      # label and then an unweighted average is taken of those values or
+      # micro-averaged: the metric is calculated globally by counting the total
+      # number of correctly predicted rows.
+      class AggregateClassificationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Accuracy is the fraction of predictions given the correct label. For
+        # multiclass this is a micro-averaged metric.
+        # Corresponds to the JSON property `accuracy`
+        # @return [Float]
+        attr_accessor :accuracy
+      
+        # The F1 score is an average of recall and precision. For multiclass
+        # this is a macro-averaged metric.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # Logarithmic Loss. For multiclass this is a macro-averaged metric.
+        # Corresponds to the JSON property `logLoss`
+        # @return [Float]
+        attr_accessor :log_loss
+      
+        # Precision is the fraction of actual positive predictions that had
+        # positive actual labels. For multiclass this is a macro-averaged
+        # metric treating each class as a binary classifier.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # Recall is the fraction of actual positive labels that were given a
+        # positive prediction. For multiclass this is a macro-averaged metric.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # Area Under a ROC Curve. For multiclass this is a macro-averaged
+        # metric.
+        # Corresponds to the JSON property `rocAuc`
+        # @return [Float]
+        attr_accessor :roc_auc
+      
+        # Threshold at which the metrics are computed. For binary
+        # classification models this is the positive class threshold.
+        # For multi-class classfication models this is the confidence
+        # threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy = args[:accuracy] if args.key?(:accuracy)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @log_loss = args[:log_loss] if args.key?(:log_loss)
+          @precision = args[:precision] if args.key?(:precision)
+          @recall = args[:recall] if args.key?(:recall)
+          @roc_auc = args[:roc_auc] if args.key?(:roc_auc)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # 
       class BigQueryModelTraining
         include Google::Apis::Core::Hashable
@@ -223,6 +291,90 @@ module Google
         end
       end
       
+      # Evaluation metrics for binary classification models.
+      class BinaryClassificationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Aggregate metrics for classification models. For multi-class models,
+        # the metrics are either macro-averaged: metrics are calculated for each
+        # label and then an unweighted average is taken of those values or
+        # micro-averaged: the metric is calculated globally by counting the total
+        # number of correctly predicted rows.
+        # Corresponds to the JSON property `aggregateClassificationMetrics`
+        # @return [Google::Apis::BigqueryV2::AggregateClassificationMetrics]
+        attr_accessor :aggregate_classification_metrics
+      
+        # Binary confusion matrix at multiple thresholds.
+        # Corresponds to the JSON property `binaryConfusionMatrixList`
+        # @return [Array<Google::Apis::BigqueryV2::BinaryConfusionMatrix>]
+        attr_accessor :binary_confusion_matrix_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_classification_metrics = args[:aggregate_classification_metrics] if args.key?(:aggregate_classification_metrics)
+          @binary_confusion_matrix_list = args[:binary_confusion_matrix_list] if args.key?(:binary_confusion_matrix_list)
+        end
+      end
+      
+      # Confusion matrix for binary classification models.
+      class BinaryConfusionMatrix
+        include Google::Apis::Core::Hashable
+      
+        # Number of false samples predicted as false.
+        # Corresponds to the JSON property `falseNegatives`
+        # @return [Fixnum]
+        attr_accessor :false_negatives
+      
+        # Number of false samples predicted as true.
+        # Corresponds to the JSON property `falsePositives`
+        # @return [Fixnum]
+        attr_accessor :false_positives
+      
+        # Threshold value used when computing each of the following metric.
+        # Corresponds to the JSON property `positiveClassThreshold`
+        # @return [Float]
+        attr_accessor :positive_class_threshold
+      
+        # Aggregate precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # Aggregate recall.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # Number of true samples predicted as false.
+        # Corresponds to the JSON property `trueNegatives`
+        # @return [Fixnum]
+        attr_accessor :true_negatives
+      
+        # Number of true samples predicted as true.
+        # Corresponds to the JSON property `truePositives`
+        # @return [Fixnum]
+        attr_accessor :true_positives
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @false_negatives = args[:false_negatives] if args.key?(:false_negatives)
+          @false_positives = args[:false_positives] if args.key?(:false_positives)
+          @positive_class_threshold = args[:positive_class_threshold] if args.key?(:positive_class_threshold)
+          @precision = args[:precision] if args.key?(:precision)
+          @recall = args[:recall] if args.key?(:recall)
+          @true_negatives = args[:true_negatives] if args.key?(:true_negatives)
+          @true_positives = args[:true_positives] if args.key?(:true_positives)
+        end
+      end
+      
       # 
       class BqmlIterationResult
         include Google::Apis::Core::Hashable
@@ -389,6 +541,38 @@ module Google
         end
       end
       
+      # Information about a single cluster for clustering model.
+      class ClusterInfo
+        include Google::Apis::Core::Hashable
+      
+        # Centroid id.
+        # Corresponds to the JSON property `centroidId`
+        # @return [Fixnum]
+        attr_accessor :centroid_id
+      
+        # Cluster radius, the average distance from centroid
+        # to each point assigned to the cluster.
+        # Corresponds to the JSON property `clusterRadius`
+        # @return [Float]
+        attr_accessor :cluster_radius
+      
+        # Cluster size, the total number of points assigned to the cluster.
+        # Corresponds to the JSON property `clusterSize`
+        # @return [Fixnum]
+        attr_accessor :cluster_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @centroid_id = args[:centroid_id] if args.key?(:centroid_id)
+          @cluster_radius = args[:cluster_radius] if args.key?(:cluster_radius)
+          @cluster_size = args[:cluster_size] if args.key?(:cluster_size)
+        end
+      end
+      
       # 
       class Clustering
         include Google::Apis::Core::Hashable
@@ -408,6 +592,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Evaluation metrics for clustering models.
+      class ClusteringMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Davies-Bouldin index.
+        # Corresponds to the JSON property `daviesBouldinIndex`
+        # @return [Float]
+        attr_accessor :davies_bouldin_index
+      
+        # Mean of squared distances between each sample to its cluster centroid.
+        # Corresponds to the JSON property `meanSquaredDistance`
+        # @return [Float]
+        attr_accessor :mean_squared_distance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @davies_bouldin_index = args[:davies_bouldin_index] if args.key?(:davies_bouldin_index)
+          @mean_squared_distance = args[:mean_squared_distance] if args.key?(:mean_squared_distance)
+        end
+      end
+      
+      # Confusion matrix for multi-class classification models.
+      class ConfusionMatrix
+        include Google::Apis::Core::Hashable
+      
+        # Confidence threshold used when computing the entries of the
+        # confusion matrix.
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # One row per actual label.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::BigqueryV2::Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -867,6 +1102,33 @@ module Google
         end
       end
       
+      # A single entry in the confusion matrix.
+      class Entry
+        include Google::Apis::Core::Hashable
+      
+        # Number of items being predicted as this label.
+        # Corresponds to the JSON property `itemCount`
+        # @return [Fixnum]
+        attr_accessor :item_count
+      
+        # The predicted label. For confidence_threshold > 0, we will
+        # also add an entry indicating the number of items under the
+        # confidence threshold.
+        # Corresponds to the JSON property `predictedLabel`
+        # @return [String]
+        attr_accessor :predicted_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_count = args[:item_count] if args.key?(:item_count)
+          @predicted_label = args[:predicted_label] if args.key?(:predicted_label)
+        end
+      end
+      
       # 
       class ErrorProto
         include Google::Apis::Core::Hashable
@@ -902,6 +1164,45 @@ module Google
           @location = args[:location] if args.key?(:location)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Evaluation metrics of a model. These are either computed on all
+      # training data or just the eval data based on whether eval data was used
+      # during training.
+      class EvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics for binary classification models.
+        # Corresponds to the JSON property `binaryClassificationMetrics`
+        # @return [Google::Apis::BigqueryV2::BinaryClassificationMetrics]
+        attr_accessor :binary_classification_metrics
+      
+        # Evaluation metrics for clustering models.
+        # Corresponds to the JSON property `clusteringMetrics`
+        # @return [Google::Apis::BigqueryV2::ClusteringMetrics]
+        attr_accessor :clustering_metrics
+      
+        # Evaluation metrics for multi-class classification models.
+        # Corresponds to the JSON property `multiClassClassificationMetrics`
+        # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
+        attr_accessor :multi_class_classification_metrics
+      
+        # Evaluation metrics for regression models.
+        # Corresponds to the JSON property `regressionMetrics`
+        # @return [Google::Apis::BigqueryV2::RegressionMetrics]
+        attr_accessor :regression_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
+          @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
+          @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
+          @regression_metrics = args[:regression_metrics] if args.key?(:regression_metrics)
         end
       end
       
@@ -1391,6 +1692,55 @@ module Google
         def update!(**args)
           @range = args[:range] if args.key?(:range)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
+        end
+      end
+      
+      # Information about a single iteration of the training run.
+      class IterationResult
+        include Google::Apis::Core::Hashable
+      
+        # [Beta] Information about top clusters for clustering models.
+        # Corresponds to the JSON property `clusterInfos`
+        # @return [Array<Google::Apis::BigqueryV2::ClusterInfo>]
+        attr_accessor :cluster_infos
+      
+        # Time taken to run the iteration in milliseconds.
+        # Corresponds to the JSON property `durationMs`
+        # @return [Fixnum]
+        attr_accessor :duration_ms
+      
+        # Loss computed on the eval data at the end of iteration.
+        # Corresponds to the JSON property `evalLoss`
+        # @return [Float]
+        attr_accessor :eval_loss
+      
+        # Index of the iteration, 0 based.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Learn rate used for this iteration.
+        # Corresponds to the JSON property `learnRate`
+        # @return [Float]
+        attr_accessor :learn_rate
+      
+        # Loss computed on the training data at the end of iteration.
+        # Corresponds to the JSON property `trainingLoss`
+        # @return [Float]
+        attr_accessor :training_loss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_infos = args[:cluster_infos] if args.key?(:cluster_infos)
+          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
+          @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
+          @index = args[:index] if args.key?(:index)
+          @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+          @training_loss = args[:training_loss] if args.key?(:training_loss)
         end
       end
       
@@ -2721,6 +3071,33 @@ module Google
       end
       
       # 
+      class ListModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Models in the requested dataset. Only the following fields are populated:
+        # model_reference, model_type, creation_time, last_modified_time and
+        # labels.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::BigqueryV2::Model>]
+        attr_accessor :models
+      
+        # A token to request the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class MaterializedViewDefinition
         include Google::Apis::Core::Hashable
       
@@ -2743,6 +3120,115 @@ module Google
         def update!(**args)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # 
+      class Model
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this model was created, in millisecs since the
+        # epoch.
+        # Corresponds to the JSON property `creationTime`
+        # @return [Fixnum]
+        attr_accessor :creation_time
+      
+        # [Optional] A user-friendly description of this model.
+        # @mutable bigquery.models.patch
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. A hash of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Optional] The time when this model expires, in milliseconds since the
+        # epoch. If not present, the model will persist indefinitely. Expired models
+        # will be deleted and their storage reclaimed.  The defaultTableExpirationMs
+        # property of the encapsulating dataset can be used to set a default
+        # expirationTime on newly created models.
+        # @mutable bigquery.models.patch
+        # Corresponds to the JSON property `expirationTime`
+        # @return [Fixnum]
+        attr_accessor :expiration_time
+      
+        # Output only. Input feature columns that were used to train this model.
+        # Corresponds to the JSON property `featureColumns`
+        # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
+        attr_accessor :feature_columns
+      
+        # [Optional] A descriptive name for this model.
+        # @mutable bigquery.models.patch
+        # Corresponds to the JSON property `friendlyName`
+        # @return [String]
+        attr_accessor :friendly_name
+      
+        # Output only. Label columns that were used to train this model.
+        # The output of the model will have a “predicted_” prefix to these columns.
+        # Corresponds to the JSON property `labelColumns`
+        # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
+        attr_accessor :label_columns
+      
+        # [Optional] The labels associated with this model. You can use these to
+        # organize and group your models. Label keys and values can be no longer
+        # than 63 characters, can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter and each
+        # label in the list must have a different key.
+        # @mutable bigquery.models.patch
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The time when this model was last modified, in millisecs
+        # since the epoch.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [Fixnum]
+        attr_accessor :last_modified_time
+      
+        # Output only. The geographic location where the model resides. This value
+        # is inherited from the dataset.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Id path of a model.
+        # Corresponds to the JSON property `modelReference`
+        # @return [Google::Apis::BigqueryV2::ModelReference]
+        attr_accessor :model_reference
+      
+        # Output only. Type of the model resource.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        # Output only. Information for all training runs in increasing order of
+        # start_time.
+        # Corresponds to the JSON property `trainingRuns`
+        # @return [Array<Google::Apis::BigqueryV2::TrainingRun>]
+        attr_accessor :training_runs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @feature_columns = args[:feature_columns] if args.key?(:feature_columns)
+          @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+          @label_columns = args[:label_columns] if args.key?(:label_columns)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @location = args[:location] if args.key?(:location)
+          @model_reference = args[:model_reference] if args.key?(:model_reference)
+          @model_type = args[:model_type] if args.key?(:model_type)
+          @training_runs = args[:training_runs] if args.key?(:training_runs)
         end
       end
       
@@ -2806,6 +3292,68 @@ module Google
             @loss_type = args[:loss_type] if args.key?(:loss_type)
             @model_type = args[:model_type] if args.key?(:model_type)
           end
+        end
+      end
+      
+      # Id path of a model.
+      class ModelReference
+        include Google::Apis::Core::Hashable
+      
+        # [Required] The ID of the dataset containing this model.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # [Required] The ID of the model. The ID must contain only
+        # letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+        # length is 1,024 characters.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # [Required] The ID of the project containing this model.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Evaluation metrics for multi-class classification models.
+      class MultiClassClassificationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Aggregate metrics for classification models. For multi-class models,
+        # the metrics are either macro-averaged: metrics are calculated for each
+        # label and then an unweighted average is taken of those values or
+        # micro-averaged: the metric is calculated globally by counting the total
+        # number of correctly predicted rows.
+        # Corresponds to the JSON property `aggregateClassificationMetrics`
+        # @return [Google::Apis::BigqueryV2::AggregateClassificationMetrics]
+        attr_accessor :aggregate_classification_metrics
+      
+        # Confusion matrix at different thresholds.
+        # Corresponds to the JSON property `confusionMatrixList`
+        # @return [Array<Google::Apis::BigqueryV2::ConfusionMatrix>]
+        attr_accessor :confusion_matrix_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_classification_metrics = args[:aggregate_classification_metrics] if args.key?(:aggregate_classification_metrics)
+          @confusion_matrix_list = args[:confusion_matrix_list] if args.key?(:confusion_matrix_list)
         end
       end
       
@@ -3351,6 +3899,49 @@ module Google
         end
       end
       
+      # Evaluation metrics for regression models.
+      class RegressionMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Mean absolute error.
+        # Corresponds to the JSON property `meanAbsoluteError`
+        # @return [Float]
+        attr_accessor :mean_absolute_error
+      
+        # Mean squared error.
+        # Corresponds to the JSON property `meanSquaredError`
+        # @return [Float]
+        attr_accessor :mean_squared_error
+      
+        # Mean squared log error.
+        # Corresponds to the JSON property `meanSquaredLogError`
+        # @return [Float]
+        attr_accessor :mean_squared_log_error
+      
+        # Median absolute error.
+        # Corresponds to the JSON property `medianAbsoluteError`
+        # @return [Float]
+        attr_accessor :median_absolute_error
+      
+        # R^2 score.
+        # Corresponds to the JSON property `rSquared`
+        # @return [Float]
+        attr_accessor :r_squared
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mean_absolute_error = args[:mean_absolute_error] if args.key?(:mean_absolute_error)
+          @mean_squared_error = args[:mean_squared_error] if args.key?(:mean_squared_error)
+          @mean_squared_log_error = args[:mean_squared_log_error] if args.key?(:mean_squared_log_error)
+          @median_absolute_error = args[:median_absolute_error] if args.key?(:median_absolute_error)
+          @r_squared = args[:r_squared] if args.key?(:r_squared)
+        end
+      end
+      
       # 
       class RoutineReference
         include Google::Apis::Core::Hashable
@@ -3380,6 +3971,134 @@ module Google
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @routine_id = args[:routine_id] if args.key?(:routine_id)
+        end
+      end
+      
+      # A single row in the confusion matrix.
+      class Row
+        include Google::Apis::Core::Hashable
+      
+        # The original label of this row.
+        # Corresponds to the JSON property `actualLabel`
+        # @return [String]
+        attr_accessor :actual_label
+      
+        # Info describing predicted label distribution.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::BigqueryV2::Entry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actual_label = args[:actual_label] if args.key?(:actual_label)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # The type of a variable, e.g., a function argument.
+      # Examples:
+      # INT64: `type_kind="INT64"`
+      # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
+      # STRUCT<x STRING, y ARRAY<DATE>>:
+      # `type_kind="STRUCT",
+      # struct_type=`fields=[
+      # `name="x", type=`type_kind="STRING"``,
+      # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
+      # ]``
+      class StandardSqlDataType
+        include Google::Apis::Core::Hashable
+      
+        # The type of a variable, e.g., a function argument.
+        # Examples:
+        # INT64: `type_kind="INT64"`
+        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
+        # STRUCT<x STRING, y ARRAY<DATE>>:
+        # `type_kind="STRUCT",
+        # struct_type=`fields=[
+        # `name="x", type=`type_kind="STRING"``,
+        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
+        # ]``
+        # Corresponds to the JSON property `arrayElementType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :array_element_type
+      
+        # The fields of this struct, in order, if type_kind = "STRUCT".
+        # Corresponds to the JSON property `structType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlStructType]
+        attr_accessor :struct_type
+      
+        # Required. The top level type of this field.
+        # Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        # Corresponds to the JSON property `typeKind`
+        # @return [String]
+        attr_accessor :type_kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
+          @struct_type = args[:struct_type] if args.key?(:struct_type)
+          @type_kind = args[:type_kind] if args.key?(:type_kind)
+        end
+      end
+      
+      # A field or a column.
+      class StandardSqlField
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of this field. Can be absent for struct fields.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of a variable, e.g., a function argument.
+        # Examples:
+        # INT64: `type_kind="INT64"`
+        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
+        # STRUCT<x STRING, y ARRAY<DATE>>:
+        # `type_kind="STRUCT",
+        # struct_type=`fields=[
+        # `name="x", type=`type_kind="STRING"``,
+        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
+        # ]``
+        # Corresponds to the JSON property `type`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class StandardSqlStructType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
         end
       end
       
@@ -4161,6 +4880,179 @@ module Google
           @field = args[:field] if args.key?(:field)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class TrainingOptions
+        include Google::Apis::Core::Hashable
+      
+        # The column to split data with. This column won't be used as a
+        # feature.
+        # 1. When data_split_method is CUSTOM, the corresponding column should
+        # be boolean. The rows with true value tag are eval data, and the false
+        # are training data.
+        # 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION
+        # rows (from smallest to largest) in the corresponding column are used
+        # as training data, and the rest are eval data. It respects the order
+        # in Orderable data types:
+        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-
+        # type-properties
+        # Corresponds to the JSON property `dataSplitColumn`
+        # @return [String]
+        attr_accessor :data_split_column
+      
+        # The fraction of evaluation data over the whole input data. The rest
+        # of data will be used as training data. The format should be double.
+        # Accurate to two decimal places.
+        # Default value is 0.2.
+        # Corresponds to the JSON property `dataSplitEvalFraction`
+        # @return [Float]
+        attr_accessor :data_split_eval_fraction
+      
+        # The data split type for training and evaluation, e.g. RANDOM.
+        # Corresponds to the JSON property `dataSplitMethod`
+        # @return [String]
+        attr_accessor :data_split_method
+      
+        # [Beta] Distance type for clustering models.
+        # Corresponds to the JSON property `distanceType`
+        # @return [String]
+        attr_accessor :distance_type
+      
+        # Whether to stop early when the loss doesn't improve significantly
+        # any more (compared to min_relative_progress).
+        # Corresponds to the JSON property `earlyStop`
+        # @return [Boolean]
+        attr_accessor :early_stop
+        alias_method :early_stop?, :early_stop
+      
+        # Specifies the initial learning rate for line search to start at.
+        # Corresponds to the JSON property `initialLearnRate`
+        # @return [Float]
+        attr_accessor :initial_learn_rate
+      
+        # Name of input label columns in training data.
+        # Corresponds to the JSON property `inputLabelColumns`
+        # @return [Array<String>]
+        attr_accessor :input_label_columns
+      
+        # L1 regularization coefficient.
+        # Corresponds to the JSON property `l1Regularization`
+        # @return [Float]
+        attr_accessor :l1_regularization
+      
+        # L2 regularization coefficient.
+        # Corresponds to the JSON property `l2Regularization`
+        # @return [Float]
+        attr_accessor :l2_regularization
+      
+        # Weights associated with each label class, for rebalancing the
+        # training data.
+        # Corresponds to the JSON property `labelClassWeights`
+        # @return [Hash<String,Float>]
+        attr_accessor :label_class_weights
+      
+        # Learning rate in training.
+        # Corresponds to the JSON property `learnRate`
+        # @return [Float]
+        attr_accessor :learn_rate
+      
+        # The strategy to determine learning rate.
+        # Corresponds to the JSON property `learnRateStrategy`
+        # @return [String]
+        attr_accessor :learn_rate_strategy
+      
+        # Type of loss function used during training run.
+        # Corresponds to the JSON property `lossType`
+        # @return [String]
+        attr_accessor :loss_type
+      
+        # The maximum number of iterations in training.
+        # Corresponds to the JSON property `maxIterations`
+        # @return [Fixnum]
+        attr_accessor :max_iterations
+      
+        # When early_stop is true, stops training when accuracy improvement is
+        # less than 'min_relative_progress'.
+        # Corresponds to the JSON property `minRelativeProgress`
+        # @return [Float]
+        attr_accessor :min_relative_progress
+      
+        # [Beta] Number of clusters for clustering models.
+        # Corresponds to the JSON property `numClusters`
+        # @return [Fixnum]
+        attr_accessor :num_clusters
+      
+        # Whether to train a model from the last checkpoint.
+        # Corresponds to the JSON property `warmStart`
+        # @return [Boolean]
+        attr_accessor :warm_start
+        alias_method :warm_start?, :warm_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
+          @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
+          @data_split_method = args[:data_split_method] if args.key?(:data_split_method)
+          @distance_type = args[:distance_type] if args.key?(:distance_type)
+          @early_stop = args[:early_stop] if args.key?(:early_stop)
+          @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
+          @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
+          @l1_regularization = args[:l1_regularization] if args.key?(:l1_regularization)
+          @l2_regularization = args[:l2_regularization] if args.key?(:l2_regularization)
+          @label_class_weights = args[:label_class_weights] if args.key?(:label_class_weights)
+          @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+          @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
+          @loss_type = args[:loss_type] if args.key?(:loss_type)
+          @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+          @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
+          @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
+          @warm_start = args[:warm_start] if args.key?(:warm_start)
+        end
+      end
+      
+      # Information about a single training query run for the model.
+      class TrainingRun
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics of a model. These are either computed on all
+        # training data or just the eval data based on whether eval data was used
+        # during training.
+        # Corresponds to the JSON property `evaluationMetrics`
+        # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
+        attr_accessor :evaluation_metrics
+      
+        # Output of each iteration run, results.size() <= max_iterations.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
+        attr_accessor :results
+      
+        # The start time of this training run.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Options that were used for this training run, includes
+        # user specified and default options that were used.
+        # Corresponds to the JSON property `trainingOptions`
+        # @return [Google::Apis::BigqueryV2::TrainingOptions]
+        attr_accessor :training_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
+          @results = args[:results] if args.key?(:results)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @training_options = args[:training_options] if args.key?(:training_options)
         end
       end
       
