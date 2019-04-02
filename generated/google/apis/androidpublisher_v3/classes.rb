@@ -293,6 +293,32 @@ module Google
         end
       end
       
+      # 
+      class CountryTargeting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `countries`
+        # @return [Array<String>]
+        attr_accessor :countries
+      
+        # 
+        # Corresponds to the JSON property `includeRestOfWorld`
+        # @return [Boolean]
+        attr_accessor :include_rest_of_world
+        alias_method :include_rest_of_world?, :include_rest_of_world
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @countries = args[:countries] if args.key?(:countries)
+          @include_rest_of_world = args[:include_rest_of_world] if args.key?(:include_rest_of_world)
+        end
+      end
+      
       # Represents a deobfuscation file.
       class DeobfuscationFile
         include Google::Apis::Core::Hashable
@@ -1723,6 +1749,11 @@ module Google
       class TrackRelease
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `countryTargeting`
+        # @return [Google::Apis::AndroidpublisherV3::CountryTargeting]
+        attr_accessor :country_targeting
+      
         # The release name, used to identify this release in the Play Console UI. Not
         # required to be unique. This is optional, if not set it will be generated from
         # the version_name in the APKs.
@@ -1760,6 +1791,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @country_targeting = args[:country_targeting] if args.key?(:country_targeting)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
           @status = args[:status] if args.key?(:status)

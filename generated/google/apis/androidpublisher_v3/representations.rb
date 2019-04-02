@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CountryTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeobfuscationFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,14 @@ module Google
       
           property :user_comment, as: 'userComment', class: Google::Apis::AndroidpublisherV3::UserComment, decorator: Google::Apis::AndroidpublisherV3::UserComment::Representation
       
+        end
+      end
+      
+      class CountryTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :countries, as: 'countries'
+          property :include_rest_of_world, as: 'includeRestOfWorld'
         end
       end
       
@@ -837,6 +851,8 @@ module Google
       class TrackRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_targeting, as: 'countryTargeting', class: Google::Apis::AndroidpublisherV3::CountryTargeting, decorator: Google::Apis::AndroidpublisherV3::CountryTargeting::Representation
+      
           property :name, as: 'name'
           collection :release_notes, as: 'releaseNotes', class: Google::Apis::AndroidpublisherV3::LocalizedText, decorator: Google::Apis::AndroidpublisherV3::LocalizedText::Representation
       
