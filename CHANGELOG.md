@@ -1,3 +1,10 @@
+# 0.28.7
+* Backwards compatible changes:
+  * Added `run_v1`
+  * Added `run_v1alpha1`
+  * Updated `androidpublisher_v3`
+  * Updated `texttospeech_v1`
+
 # 0.28.6
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
