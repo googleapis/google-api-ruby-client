@@ -26,8 +26,4 @@ RSpec.describe $LOAD_PATH do
   it('should contain GENERATED_DIR') do
     expect($LOAD_PATH).to include(GENERATED_DIR)
   end
-
-  it('should contain THIRD_PARTY_DIR') do
-    expect($LOAD_PATH).to include(THIRD_PARTY_DIR)
-  end
 end

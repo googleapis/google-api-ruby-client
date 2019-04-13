@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
                        .reject { |f| f.match(%r{^(spec|script)/|^api_names_out}) }
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.require_paths = %w[lib generated third_party]
+  spec.require_paths = %w[lib generated]
 
   spec.required_ruby_version = '~> 2.0'
 
