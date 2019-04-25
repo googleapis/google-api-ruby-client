@@ -382,7 +382,8 @@ module Google
         #   Typically, this is the value of
         #   ListClientUsersResponse.nextPageToken
         #   returned from the previous call to the
-        #   accounts.clients.users.list method.
+        #   accounts.clients.users.list
+        #   method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1440,47 +1441,6 @@ module Google
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a single creative.
-        # A creative is deactivated upon deletion and does not count against active
-        # snippet quota. A deleted creative should not be used in bidding (all bids
-        # with that creative will be rejected).
-        # @param [String] owner_name
-        #   Name of the owner (bidder or account) of the creative to be deleted.
-        #   For example:
-        #   - For an account-level creative for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123`
-        #   - For an account-level creative for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456`
-        # @param [String] creative_id
-        #   The ID of the creative to delete.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_bidder_account_creative(owner_name, creative_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+ownerName}/creatives/{creativeId}', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
-          command.params['ownerName'] = owner_name unless owner_name.nil?
-          command.params['creativeId'] = creative_id unless creative_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -239,7 +239,7 @@ module Google
         end
       end
       
-      # Configuration for an anthentication provider, including support for
+      # Configuration for an authentication provider, including support for
       # [JSON Web Token
       # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
@@ -722,8 +722,8 @@ module Google
         # used for the index (usually selector, name, or id). For maps, the term
         # 'key' is used. If the field has no unique identifier, the numeric index
         # is used.
-        # ## Examples:
-        # visibility.rules[selector=="google.LibraryService.CreateBook"].restriction
+        # Examples:
+        # - visibility.rules[selector=="google.LibraryService.ListBooks"].restriction
         # - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value
         # - logging.producer_destinations[0]
         # Corresponds to the JSON property `element`
@@ -1233,9 +1233,9 @@ module Google
         # The selector is a comma-separated list of patterns. Each pattern is a
         # qualified name of the element which may end in "*", indicating a wildcard.
         # Wildcards are only allowed at the end and for a whole component of the
-        # qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". To
-        # specify a default for all applicable elements, the whole pattern "*"
-        # is used.
+        # qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A
+        # wildcard will match one or more components. To specify a default for all
+        # applicable elements, the whole pattern "*" is used.
         # Corresponds to the JSON property `selector`
         # @return [String]
         attr_accessor :selector
@@ -1747,8 +1747,9 @@ module Google
       # This enables a HTTP JSON to RPC mapping as below:
       # HTTP | gRPC
       # -----|-----
-      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id:
-      # "123456" revision: 2 sub: SubMessage(subfield: "foo"))`
+      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` |
+      # `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
+      # "foo"))`
       # Note that fields which are mapped to URL query parameters must have a
       # primitive type or a repeated primitive type or a non-repeated message type.
       # In the case of a repeated type, the parameter can be repeated in the URL
@@ -1775,8 +1776,8 @@ module Google
       # protos JSON encoding:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" message ` text: "Hi!" `)`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" message ` text: "Hi!" `)`
       # The special name `*` can be used in the body mapping to define that
       # every field not bound by the path template should be mapped to the
       # request body.  This enables the following alternative definition of
@@ -1796,8 +1797,8 @@ module Google
       # The following HTTP JSON to RPC mapping is enabled:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" text: "Hi!")`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" text: "Hi!")`
       # Note that when using `*` in the body mapping, it is not possible to
       # have HTTP parameters, as all fields not bound by the path end in
       # the body. This makes this option more rarely used in practice when
@@ -1823,8 +1824,8 @@ module Google
       # HTTP | gRPC
       # -----|-----
       # `GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
-      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "
-      # 123456")`
+      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
+      # "123456")`
       # ## Rules for HTTP mapping
       # 1. Leaf request fields (recursive expansion nested messages in the request
       # message) are classified into three categories:
@@ -1860,15 +1861,17 @@ module Google
       # `"`var=*`"`, when such a variable is expanded into a URL path on the client
       # side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
       # server side does the reverse decoding. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``var``.
       # If a variable contains multiple path segments, such as `"`var=foo/*`"`
       # or `"`var=**`"`, when such a variable is expanded into a URL path on the
       # client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
       # The server side does the reverse decoding, except "%2F" and "%2f" are left
       # unchanged. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``+var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``+var``.
       # ## Using gRPC API Service Configuration
       # gRPC API Service Configuration (service config) is a configuration language
       # for configuring a gRPC service to become a user-facing product. The
@@ -3128,7 +3131,46 @@ module Google
         end
       end
       
-      # 
+      # Quota configuration helps to achieve fairness and budgeting in service
+      # usage.
+      # The metric based quota configuration works this way:
+      # - The service configuration defines a set of metrics.
+      # - For API calls, the quota.metric_rules maps methods to metrics with
+      # corresponding costs.
+      # - The quota.limits defines limits on the metrics, which will be used for
+      # quota checks at runtime.
+      # An example quota configuration in yaml format:
+      # quota:
+      # limits:
+      # - name: apiWriteQpsPerProject
+      # metric: library.googleapis.com/write_calls
+      # unit: "1/min/`project`"  # rate limit for consumer projects
+      # values:
+      # STANDARD: 10000
+      # # The metric rules bind all methods to the read_calls metric,
+      # # except for the UpdateBook and DeleteBook methods. These two methods
+      # # are mapped to the write_calls metric, with the UpdateBook method
+      # # consuming at twice rate as the DeleteBook method.
+      # metric_rules:
+      # - selector: "*"
+      # metric_costs:
+      # library.googleapis.com/read_calls: 1
+      # - selector: google.example.library.v1.LibraryService.UpdateBook
+      # metric_costs:
+      # library.googleapis.com/write_calls: 2
+      # - selector: google.example.library.v1.LibraryService.DeleteBook
+      # metric_costs:
+      # library.googleapis.com/write_calls: 1
+      # Corresponding Metric definition:
+      # metrics:
+      # - name: library.googleapis.com/read_calls
+      # display_name: Read requests
+      # metric_kind: DELTA
+      # value_type: INT64
+      # - name: library.googleapis.com/write_calls
+      # display_name: Write requests
+      # metric_kind: DELTA
+      # value_type: INT64
       class Quota
         include Google::Apis::Core::Hashable
       
@@ -3687,7 +3729,46 @@ module Google
         # @return [String]
         attr_accessor :producer_project_id
       
-        # Quota configuration.
+        # Quota configuration helps to achieve fairness and budgeting in service
+        # usage.
+        # The metric based quota configuration works this way:
+        # - The service configuration defines a set of metrics.
+        # - For API calls, the quota.metric_rules maps methods to metrics with
+        # corresponding costs.
+        # - The quota.limits defines limits on the metrics, which will be used for
+        # quota checks at runtime.
+        # An example quota configuration in yaml format:
+        # quota:
+        # limits:
+        # - name: apiWriteQpsPerProject
+        # metric: library.googleapis.com/write_calls
+        # unit: "1/min/`project`"  # rate limit for consumer projects
+        # values:
+        # STANDARD: 10000
+        # # The metric rules bind all methods to the read_calls metric,
+        # # except for the UpdateBook and DeleteBook methods. These two methods
+        # # are mapped to the write_calls metric, with the UpdateBook method
+        # # consuming at twice rate as the DeleteBook method.
+        # metric_rules:
+        # - selector: "*"
+        # metric_costs:
+        # library.googleapis.com/read_calls: 1
+        # - selector: google.example.library.v1.LibraryService.UpdateBook
+        # metric_costs:
+        # library.googleapis.com/write_calls: 2
+        # - selector: google.example.library.v1.LibraryService.DeleteBook
+        # metric_costs:
+        # library.googleapis.com/write_calls: 1
+        # Corresponding Metric definition:
+        # metrics:
+        # - name: library.googleapis.com/read_calls
+        # display_name: Read requests
+        # metric_kind: DELTA
+        # value_type: INT64
+        # - name: library.googleapis.com/write_calls
+        # display_name: Write requests
+        # metric_kind: DELTA
+        # value_type: INT64
         # Corresponds to the JSON property `quota`
         # @return [Google::Apis::ServicemanagementV1::Quota]
         attr_accessor :quota

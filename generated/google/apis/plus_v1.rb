@@ -25,12 +25,12 @@ module Google
     # @see https://developers.google.com/+/api/
     module PlusV1
       VERSION = 'V1'
-      REVISION = '20190322'
+      REVISION = '20190328'
 
       # View your basic profile info, including your age range and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
 
-      # Know who you are on Google
+      # Associate you with your personal info on Google
       AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'
 
       # View your email address

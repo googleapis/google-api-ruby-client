@@ -80,6 +80,353 @@ module Google
         end
       end
       
+      # Instance represents the interface for SLM services to actuate the state
+      # of control plane resources.
+      # Example Instance in JSON, where
+      # consumer-project=snapchat,
+      # producer-project=cloud-sql:
+      # ```json
+      # Instance:
+      # `
+      # "name":
+      # "projects/snapchat/locations/us-east1/instances/prod-instance",
+      # "create_time": `
+      # "seconds": 1526406431,
+      # `,
+      # "labels": `
+      # "env": "prod",
+      # "foo": "bar"
+      # `,
+      # "state": READY,
+      # "software_version": "cloud-sql-09-28-2018",
+      # "maintenance_policy_names": `
+      # "UpdatePolicy":
+      # "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-
+      # policy",
+      # `
+      # "rollout_metadata": `
+      # "projects/cloud-sql/locations/global/rolloutTypes/software_update": `
+      # "release":
+      # "projects/cloud-sql/locations/global/releases/cloud-sql-09-28-2018",
+      # "rollout":
+      # "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-
+      # canary",
+      # `
+      # "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": `
+      # "release":
+      # "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair",
+      # "rollout":
+      # "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-
+      # 100-percent",
+      # `
+      # `
+      # "tenant_project_id": "cloud-sql-test-tenant",
+      # "producer_metadata": `
+      # "cloud-sql-tier": "basic",
+      # "cloud-sql-instance-size": "1G",
+      # `,
+      # "provisioned_resources": [
+      # `
+      # "resource-type": "compute-instance",
+      # "resource-url":
+      # "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-
+      # b/instances/vm-1",
+      # `
+      # ],
+      # `
+      # ```
+      class GoogleCloudSaasacceleratorManagementProvidersV1Instance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Resource labels to represent user provided metadata. Each label
+        # is a key-value pair, where both the key and the value are arbitrary strings
+        # provided by the user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The MaintenancePolicies that have been attached to the instance.
+        # The key must be of the type name of the oneof policy name defined in
+        # MaintenancePolicy, and the referenced policy must define the same policy
+        # type. For complete details of MaintenancePolicy, please refer to
+        # //depot/google3/google/cloud/saasaccelerator/maintenancepolicy/api/v1/
+        # maintenance_policy_resources.proto
+        # Corresponds to the JSON property `maintenancePolicyNames`
+        # @return [Hash<String,String>]
+        attr_accessor :maintenance_policy_names
+      
+        # Unique name of the resource. It uses the form:
+        # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Custom string attributes used primarily to expose
+        # producer-specific information in monitoring dashboards.
+        # See go/get-instance-metadata.
+        # Corresponds to the JSON property `producerMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :producer_metadata
+      
+        # Output only. The list of data plane resources provisioned for this
+        # instance, e.g. compute VMs. See go/get-instance-metadata.
+        # Corresponds to the JSON property `provisionedResources`
+        # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>]
+        attr_accessor :provisioned_resources
+      
+        # The map between RolloutType and the corresponding RolloutMetadata.
+        # This is only mutated by rollout service. For actuation implementation,
+        # this information is pass-through for Rollout management. Producer shall
+        # not modify by itself.
+        # For update of a single entry in this map, the update field mask shall
+        # follow this sementics: go/advanced-field-masks
+        # Corresponds to the JSON property `rolloutMetadata`
+        # @return [Hash<String,Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata>]
+        attr_accessor :rollout_metadata
+      
+        # SloMetadata contains resources required for proper SLO classification of the
+        # instance.
+        # Corresponds to the JSON property `sloMetadata`
+        # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata]
+        attr_accessor :slo_metadata
+      
+        # Software versions that are used to deploy this instance. This can be
+        # mutated by rollout services.
+        # Corresponds to the JSON property `softwareVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :software_versions
+      
+        # Output only. Current lifecycle state of the resource (e.g. if it's being
+        # created or ready to use).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. ID of the associated GCP tenant project.
+        # See go/get-instance-metadata.
+        # Corresponds to the JSON property `tenantProjectId`
+        # @return [String]
+        attr_accessor :tenant_project_id
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
+          @name = args[:name] if args.key?(:name)
+          @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
+          @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
+          @rollout_metadata = args[:rollout_metadata] if args.key?(:rollout_metadata)
+          @slo_metadata = args[:slo_metadata] if args.key?(:slo_metadata)
+          @software_versions = args[:software_versions] if args.key?(:software_versions)
+          @state = args[:state] if args.key?(:state)
+          @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # NotificationMetadata is the notification state for an instance.
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether the instance update has been rescheduled.
+        # Corresponds to the JSON property `rescheduled`
+        # @return [Boolean]
+        attr_accessor :rescheduled
+        alias_method :rescheduled?, :rescheduled
+      
+        # The scheduled end time for the maintenance window during which update
+        # can be performed on the instance.
+        # Corresponds to the JSON property `scheduledEndTime`
+        # @return [String]
+        attr_accessor :scheduled_end_time
+      
+        # The scheduled start time for the maintenance window during which
+        # update can be performed on the instance.
+        # Corresponds to the JSON property `scheduledStartTime`
+        # @return [String]
+        attr_accessor :scheduled_start_time
+      
+        # The target release to be applied to the instance.
+        # Corresponds to the JSON property `targetRelease`
+        # @return [String]
+        attr_accessor :target_release
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rescheduled = args[:rescheduled] if args.key?(:rescheduled)
+          @scheduled_end_time = args[:scheduled_end_time] if args.key?(:scheduled_end_time)
+          @scheduled_start_time = args[:scheduled_start_time] if args.key?(:scheduled_start_time)
+          @target_release = args[:target_release] if args.key?(:target_release)
+        end
+      end
+      
+      # Describes provisioned dataplane resources.
+      class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+        include Google::Apis::Core::Hashable
+      
+        # Type of the resource. This can be either a GCP resource or a custom one
+        # (e.g. another cloud provider's VM). For GCP compute resources use singular
+        # form of the names listed in GCP compute API documentation
+        # (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with
+        # 'compute-', for example: 'compute-instance', 'compute-disk',
+        # 'compute-autoscaler'.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # URL identifying the resource, e.g.
+        # "https://www.googleapis.com/compute/v1/projects/...)".
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
+      # RolloutMetadata for an actuation instance. It maps to a single RolloutType.
+      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
+        include Google::Apis::Core::Hashable
+      
+        # NotificationMetadata is the notification state for an instance.
+        # Corresponds to the JSON property `notification`
+        # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata]
+        attr_accessor :notification
+      
+        # The last Release that has been applied to the instance.
+        # Corresponds to the JSON property `releaseName`
+        # @return [String]
+        attr_accessor :release_name
+      
+        # The last rollout that has been applied to the instance.
+        # Corresponds to the JSON property `rolloutName`
+        # @return [String]
+        attr_accessor :rollout_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notification = args[:notification] if args.key?(:notification)
+          @release_name = args[:release_name] if args.key?(:release_name)
+          @rollout_name = args[:rollout_name] if args.key?(:rollout_name)
+        end
+      end
+      
+      # A temporal SLO exclusion specification.
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
+        include Google::Apis::Core::Hashable
+      
+        # Exclusion duration. No restrictions on the possible values.
+        # When an ongoing operation is taking longer than initially expected,
+        # an existing entry in the exclusion list can be updated by extending the
+        # duration. This is supported by the subsystem exporting eligibility data
+        # as long as such extension is committed at least 10 minutes before the
+        # original exclusion expiration - otherwise it is possible that there will
+        # be "gaps" in the exclusion application in the exported timeseries.
+        # Corresponds to the JSON property `exclusionDuration`
+        # @return [String]
+        attr_accessor :exclusion_duration
+      
+        # Start time of the exclusion. No alignment (e.g. to a full minute) needed.
+        # Corresponds to the JSON property `exclusionStartTime`
+        # @return [String]
+        attr_accessor :exclusion_start_time
+      
+        # Human-readable reason for the exclusion.
+        # This should be a static string (e.g. "Disruptive update in progress")
+        # and should not contain dynamically generated data (e.g. instance name).
+        # Can be left empty.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Name of an SLI/SLO that this exclusion applies to. Can be left empty,
+        # signaling that the instance should be excluded from all SLI/SLOs defined
+        # in the service SLO configuration.
+        # Corresponds to the JSON property `sloName`
+        # @return [String]
+        attr_accessor :slo_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusion_duration = args[:exclusion_duration] if args.key?(:exclusion_duration)
+          @exclusion_start_time = args[:exclusion_start_time] if args.key?(:exclusion_start_time)
+          @reason = args[:reason] if args.key?(:reason)
+          @slo_name = args[:slo_name] if args.key?(:slo_name)
+        end
+      end
+      
+      # SloMetadata contains resources required for proper SLO classification of the
+      # instance.
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        include Google::Apis::Core::Hashable
+      
+        # List of SLO exclusion windows. When multiple entries in the list match
+        # (matching the exclusion time-window against current time point)
+        # the exclusion reason used in the first matching entry will be published.
+        # It is not needed to include expired exclusion in this list, as only the
+        # currently applicable exclusions are taken into account by the eligibility
+        # exporting subsystem (the historical state of exclusions will be reflected
+        # in the historically produced timeseries regardless of the current state).
+        # This field can be used to mark the instance as temporary ineligible
+        # for the purpose of SLO calculation. For permanent instance SLO exclusion,
+        # a dedicated tier name can be used that does not have targets specified
+        # in the service SLO configuration.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
+        attr_accessor :exclusions
+      
+        # Name of the SLO tier the Instance belongs to. This name will be expected to
+        # match the tiers specified in the service SLO configuration.
+        # Field is mandatory and must not be empty.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
       # A Cloud Filestore instance.
       class Instance
         include Google::Apis::Core::Hashable

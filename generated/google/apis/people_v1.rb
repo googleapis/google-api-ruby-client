@@ -25,16 +25,13 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20190323'
+      REVISION = '20190422'
 
       # See, edit, download, and permanently delete your contacts
       AUTH_CONTACTS = 'https://www.googleapis.com/auth/contacts'
 
       # See and download your contacts
       AUTH_CONTACTS_READONLY = 'https://www.googleapis.com/auth/contacts.readonly'
-
-      # View your basic profile info, including your age range and language
-      AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
 
       # View your street addresses
       AUTH_USER_ADDRESSES_READ = 'https://www.googleapis.com/auth/user.addresses.read'

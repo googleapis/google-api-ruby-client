@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListUsableSubnetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class MasterAuthorizedNetworksConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaxPodsConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsableSubnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsableSubnetworkSecondaryRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -431,6 +455,8 @@ module Google
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
+          property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
+      
           property :description, as: 'description'
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
@@ -651,6 +677,15 @@ module Google
         end
       end
       
+      class ListUsableSubnetworksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ContainerV1::UsableSubnetwork, decorator: Google::Apis::ContainerV1::UsableSubnetwork::Representation
+      
+        end
+      end
+      
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -686,6 +721,13 @@ module Google
           collection :cidr_blocks, as: 'cidrBlocks', class: Google::Apis::ContainerV1::CidrBlock, decorator: Google::Apis::ContainerV1::CidrBlock::Representation
       
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class MaxPodsConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_pods_per_node, :numeric_string => true, as: 'maxPodsPerNode'
         end
       end
       
@@ -756,6 +798,8 @@ module Google
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
+      
+          property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
       
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -1032,6 +1076,27 @@ module Google
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UsableSubnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ContainerV1::UsableSubnetworkSecondaryRange, decorator: Google::Apis::ContainerV1::UsableSubnetworkSecondaryRange::Representation
+      
+          property :status_message, as: 'statusMessage'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class UsableSubnetworkSecondaryRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
+          property :status, as: 'status'
         end
       end
     end

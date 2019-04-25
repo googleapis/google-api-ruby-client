@@ -269,6 +269,9 @@ module Google
         # Filters with the same object type are joined conjunctively, then
         # the resulting expressions are joined disjunctively.
         # The maximum number of elements is 20.
+        # NOTE: Suggest API supports only few filters at the moment:
+        # "objecttype", "type" and "mimetype".
+        # For now, schema specific filters cannot be used to filter suggestions.
         # Corresponds to the JSON property `filterOptions`
         # @return [Array<Google::Apis::CloudsearchV1::FilterOptions>]
         attr_accessor :filter_options
@@ -425,8 +428,8 @@ module Google
       class DebugOptions
         include Google::Apis::Core::Hashable
       
-        # If set, the request will enable debugging features of Cloud Search.
-        # Only turn on this field, if asked by Google to help with debugging.
+        # If you are asked by Google to help with debugging, set this field.
+        # Otherwise, ignore this field.
         # Corresponds to the JSON property `enableDebugging`
         # @return [Boolean]
         attr_accessor :enable_debugging
@@ -2611,7 +2614,7 @@ module Google
         end
       end
       
-      # A people suggestion.
+      # This field contains information about the person being suggested.
       class PeopleSuggestion
         include Google::Apis::Core::Hashable
       
@@ -3304,7 +3307,8 @@ module Google
         end
       end
       
-      # A completed query suggestion.
+      # This field does not contain anything as of now and is just used as an
+      # indicator that the suggest result was a phrase completion.
       class QuerySuggestion
         include Google::Apis::Core::Hashable
       
@@ -3362,6 +3366,10 @@ module Google
         # For more information, see
         # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # For translations.
+        # When specified, the documents in search results are biased towards the
+        # specified language.
+        # Suggest API does not use this parameter. It autocompletes only based on
+        # characters in the query.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4441,11 +4449,15 @@ module Google
       
         # The sources to use for suggestions. If not specified, all data sources
         # from the current search application are used.
+        # Suggestions are based on Gmail titles. Suggestions from third party sources
+        # are not available.
         # Corresponds to the JSON property `dataSourceRestrictions`
         # @return [Array<Google::Apis::CloudsearchV1::DataSourceRestriction>]
         attr_accessor :data_source_restrictions
       
-        # Partial query for the completion suggestion.
+        # Partial query for which autocomplete suggestions will be shown.
+        # For example, if the query is "sea", then the server might return
+        # "season", "search", "seagull" and so on.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -4471,7 +4483,7 @@ module Google
       class SuggestResponse
         include Google::Apis::Core::Hashable
       
-        # List of suggestion results.
+        # List of suggestions.
         # Corresponds to the JSON property `suggestResults`
         # @return [Array<Google::Apis::CloudsearchV1::SuggestResult>]
         attr_accessor :suggest_results
@@ -4490,12 +4502,13 @@ module Google
       class SuggestResult
         include Google::Apis::Core::Hashable
       
-        # A people suggestion.
+        # This field contains information about the person being suggested.
         # Corresponds to the JSON property `peopleSuggestion`
         # @return [Google::Apis::CloudsearchV1::PeopleSuggestion]
         attr_accessor :people_suggestion
       
-        # A completed query suggestion.
+        # This field does not contain anything as of now and is just used as an
+        # indicator that the suggest result was a phrase completion.
         # Corresponds to the JSON property `querySuggestion`
         # @return [Google::Apis::CloudsearchV1::QuerySuggestion]
         attr_accessor :query_suggestion

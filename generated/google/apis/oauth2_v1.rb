@@ -27,7 +27,7 @@ module Google
       VERSION = 'V1'
       REVISION = '20190313'
 
-      # Know who you are on Google
+      # Associate you with your personal info on Google
       AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'
 
       # View your email address

@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/poly/
     module PolyV1
       VERSION = 'V1'
-      REVISION = '20190309'
+      REVISION = '20190409'
     end
   end
 end

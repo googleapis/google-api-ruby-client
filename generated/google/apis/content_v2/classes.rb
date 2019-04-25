@@ -8510,7 +8510,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
-        # Additional categories of the item (formatted as in products feed specification)
+        # Additional categories of the item (formatted as in products data specification)
         # .
         # Corresponds to the JSON property `additionalProductTypes`
         # @return [Array<String>]
@@ -8591,8 +8591,8 @@ module Google
       
         # A list of custom (merchant-provided) attributes. It can also be used for
         # submitting any attribute of the feed specification in its generic form (e.g., `
-        # "name": "size type", "type": "text", "value": "regular" `). This is useful
-        # for submitting attributes not explicitly exposed by the API.
+        # "name": "size type", "value": "regular" `). This is useful for submitting
+        # attributes not explicitly exposed by the API.
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::ContentV2::CustomAttribute>]
         attr_accessor :custom_attributes
@@ -8810,7 +8810,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # Your category of the item (formatted as in products feed specification).
+        # Your category of the item (formatted as in products data specification).
         # Corresponds to the JSON property `productType`
         # @return [String]
         attr_accessor :product_type
@@ -8825,7 +8825,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :sale_price
       
-        # Date range during which the item is on sale (see products feed specification).
+        # Date range during which the item is on sale (see products data specification).
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date

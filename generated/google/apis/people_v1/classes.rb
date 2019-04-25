@@ -329,14 +329,20 @@ module Google
       class ContactGroupMembership
         include Google::Apis::Core::Hashable
       
-        # The contact group ID for the contact group membership. The contact group
-        # ID can be custom or one of these predefined values:
-        # *  `myContacts`
-        # *  `starred`
-        # *  A numerical ID for user-created groups.
+        # The read-only contact group ID for the contact group membership.
         # Corresponds to the JSON property `contactGroupId`
         # @return [String]
         attr_accessor :contact_group_id
+      
+        # The resource name for the contact group, assigned by the server. An ASCII
+        # string, in the form of `contactGroups/`<var>contact_group_id</var>.
+        # Only contact_group_resource_name can be used for modifying memberships.
+        # Any contact group membership can be removed, but only user group or
+        # "myContacts" or "starred" system groups memberships can be added. A
+        # contact must always have at least one contact group membership.
+        # Corresponds to the JSON property `contactGroupResourceName`
+        # @return [String]
+        attr_accessor :contact_group_resource_name
       
         def initialize(**args)
            update!(**args)
@@ -345,6 +351,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contact_group_id = args[:contact_group_id] if args.key?(:contact_group_id)
+          @contact_group_resource_name = args[:contact_group_resource_name] if args.key?(:contact_group_resource_name)
         end
       end
       
@@ -540,11 +547,11 @@ module Google
         end
       end
       
-      # A Google Apps Domain membership.
+      # A read-only G Suite Domain membership.
       class DomainMembership
         include Google::Apis::Core::Hashable
       
-        # True if the person is in the viewer's Google Apps domain.
+        # True if the person is in the viewer's G Suite domain.
         # Corresponds to the JSON property `inViewerDomain`
         # @return [Boolean]
         attr_accessor :in_viewer_domain
@@ -965,7 +972,8 @@ module Google
         end
       end
       
-      # A person's read-only membership in a group.
+      # A person's membership in a group. Only contact group memberships can be
+      # modified.
       class Membership
         include Google::Apis::Core::Hashable
       
@@ -974,7 +982,7 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroupMembership]
         attr_accessor :contact_group_membership
       
-        # A Google Apps Domain membership.
+        # A read-only G Suite Domain membership.
         # Corresponds to the JSON property `domainMembership`
         # @return [Google::Apis::PeopleV1::DomainMembership]
         attr_accessor :domain_membership
@@ -998,7 +1006,7 @@ module Google
       
       # A request to modify an existing contact group's members. Contacts can be
       # removed from any group but they can only be added to a user group or
-      # myContacts or starred system groups.
+      # "myContacts" or "starred" system groups.
       class ModifyContactGroupMembersRequest
         include Google::Apis::Core::Hashable
       
@@ -1400,7 +1408,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Locale>]
         attr_accessor :locales
       
-        # The person's read-only group memberships.
+        # The person's group memberships.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::PeopleV1::Membership>]
         attr_accessor :memberships

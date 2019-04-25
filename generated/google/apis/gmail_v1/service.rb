@@ -1296,6 +1296,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets language settings.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::LanguageSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::LanguageSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_setting_language(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/settings/language', options)
+          command.response_representation = Google::Apis::GmailV1::LanguageSettings::Representation
+          command.response_class = Google::Apis::GmailV1::LanguageSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets POP settings.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -1434,6 +1468,48 @@ module Google
           command.request_object = imap_settings_object
           command.response_representation = Google::Apis::GmailV1::ImapSettings::Representation
           command.response_class = Google::Apis::GmailV1::ImapSettings
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates language settings.
+        # If successful, the return object contains the displayLanguage that was saved
+        # for the user, which may differ from the value passed into the request. This is
+        # because the requested displayLanguage may not be directly supported by Gmail
+        # but have a close variant that is, and so the variant may be chosen and saved
+        # instead.
+        # @param [String] user_id
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
+        # @param [Google::Apis::GmailV1::LanguageSettings] language_settings_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GmailV1::LanguageSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GmailV1::LanguageSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_setting_language(user_id, language_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{userId}/settings/language', options)
+          command.request_representation = Google::Apis::GmailV1::LanguageSettings::Representation
+          command.request_object = language_settings_object
+          command.response_representation = Google::Apis::GmailV1::LanguageSettings::Representation
+          command.response_class = Google::Apis::GmailV1::LanguageSettings
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

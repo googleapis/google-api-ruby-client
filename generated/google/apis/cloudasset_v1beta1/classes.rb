@@ -391,6 +391,18 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # The uri prefix of all generated Cloud Storage objects. For example:
+        # "gs://bucket_name/object_name_prefix". Each object uri is in format:
+        # "gs://bucket_name/object_name_prefix/<asset type>/<shard number> and only
+        # contains assets for that type. <shard number> starts from 0. For example:
+        # "gs://bucket_name/object_name_prefix/google.compute.disk/0" is the first
+        # shard of output objects containing all google.compute.disk assets.
+        # An INVALID_ARGUMENT error will be returned if file with the same name
+        # "gs://bucket_name/object_name_prefix" already exists.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -398,6 +410,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
         end
       end
       

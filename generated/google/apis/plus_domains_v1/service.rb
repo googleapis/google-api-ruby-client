@@ -51,7 +51,7 @@ module Google
           @batch_path = 'batch/plusDomains/v1'
         end
         
-        # Get an activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get.
         # @param [String] fields
@@ -84,7 +84,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the activities in the specified collection for a particular user.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] user_id
         #   The ID of the user to get activities for. The special value "me" can be used
         #   to indicate the authenticated user.
@@ -131,7 +131,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the audiences to which a user can share.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] user_id
         #   The ID of the user to get audiences for. The special value "me" can be used to
         #   indicate the authenticated user.
@@ -175,7 +175,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the circles for a user.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] user_id
         #   The ID of the user to get circles for. The special value "me" can be used to
         #   indicate the authenticated user.
@@ -219,7 +219,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a comment.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] comment_id
         #   The ID of the comment to get.
         # @param [String] fields
@@ -252,43 +252,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new comment in reply to an activity.
-        # @param [String] activity_id
-        #   The ID of the activity to reply to.
-        # @param [Google::Apis::PlusDomainsV1::Comment] comment_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PlusDomainsV1::Comment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PlusDomainsV1::Comment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(activity_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'activities/{activityId}/comments', options)
-          command.request_representation = Google::Apis::PlusDomainsV1::Comment::Representation
-          command.request_object = comment_object
-          command.response_representation = Google::Apis::PlusDomainsV1::Comment::Representation
-          command.response_class = Google::Apis::PlusDomainsV1::Comment
-          command.params['activityId'] = activity_id unless activity_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all of the comments for an activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get comments for.
         # @param [Fixnum] max_results
@@ -334,10 +298,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add a new media item to an album. The current upload size limitations are 36MB
-        # for a photo and 1GB for a video. Uploads do not count against quota if photos
-        # are less than 2048 pixels on their longest side or videos are less than 15
-        # minutes in length.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of.
         # @param [String] collection
@@ -469,7 +430,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the people in the specified collection for a particular activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get the list of people for.
         # @param [String] collection
@@ -507,49 +468,6 @@ module Google
           command.response_class = Google::Apis::PlusDomainsV1::PeopleFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.params['collection'] = collection unless collection.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all of the people who are members of a circle.
-        # @param [String] circle_id
-        #   The ID of the circle to get the members of.
-        # @param [Fixnum] max_results
-        #   The maximum number of people to include in the response, which is used for
-        #   paging. For any response, the actual number returned might be less than the
-        #   specified maxResults.
-        # @param [String] page_token
-        #   The continuation token, which is used to page through large result sets. To
-        #   get the next page of results, set this parameter to the value of "
-        #   nextPageToken" from the previous response.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PlusDomainsV1::PeopleFeed] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PlusDomainsV1::PeopleFeed]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_people_by_circle(circle_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'circles/{circleId}/people', options)
-          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeed::Representation
-          command.response_class = Google::Apis::PlusDomainsV1::PeopleFeed
-          command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -771,42 +771,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deprecated and unused.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig] android_device_policy_config_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_enterprise_android_device_policy_config(enterprise_id, android_device_policy_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/androidDevicePolicyConfig', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig::Representation
-          command.request_object = android_device_policy_config_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Sets the store layout for the enterprise. By default, storeLayoutType is set
         # to "basic" and the basic store layout is enabled. The basic layout only
         # contains apps approved by the admin, and that have been added to the available

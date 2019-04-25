@@ -268,6 +268,7 @@ module Google
         # Operation<response: Empty>.
         # @param [String] parent
         #   Name of the tenancy unit.
+        #   Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::AddTenantProjectRequest] add_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -308,6 +309,8 @@ module Google
         # If specified, new billing configuration is applied.
         # Omit a billing configuration to keep the existing one.
         # A service account in the project is created if previously non existed.
+        # Specified labels will be appended to tenant project, note that the value of
+        # existing label key will be updated if the same label key is requested.
         # The specified folder is ignored, as moving a tenant project to a different
         # folder isn't supported.
         # The operation fails if any of the steps fail, but no rollback of already
@@ -315,6 +318,7 @@ module Google
         # Operation<response: Empty>.
         # @param [String] name
         #   Name of the tenancy unit.
+        #   Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::ApplyTenantProjectConfigRequest] apply_tenant_project_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -358,6 +362,7 @@ module Google
         # Operation<response: Empty>.
         # @param [String] name
         #   Name of the tenancy unit that the project will be attached to.
+        #   Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::AttachTenantProjectRequest] attach_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

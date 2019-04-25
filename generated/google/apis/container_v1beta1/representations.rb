@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SandboxConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -997,6 +1003,8 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
+          property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1beta1::SandboxConfig, decorator: Google::Apis::ContainerV1beta1::SandboxConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
@@ -1137,6 +1145,13 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class SandboxConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sandbox_type, as: 'sandboxType'
         end
       end
       

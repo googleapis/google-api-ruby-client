@@ -39,7 +39,8 @@ module Google
       # `
       # service ResourceService `
       # rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
-      # rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty);
+      # rpc UpdateResource(google.api.HttpBody) returns
+      # (google.protobuf.Empty);
       # `
       # Example with streaming methods:
       # service CaldavService `
@@ -187,23 +188,25 @@ module Google
       class GoogleCloudMlV1BuiltInAlgorithmOutput
         include Google::Apis::Core::Hashable
       
-        # Framework on which the built-in algorithm was trained on.
+        # Framework on which the built-in algorithm was trained.
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
       
-        # Built-in algorithm's saved model path.
-        # Only set for non-hptuning succeeded jobs.
+        # The Cloud Storage path to the `model/` directory where the training job
+        # saves the trained model. Only set for successful jobs that don't use
+        # hyperparameter tuning.
         # Corresponds to the JSON property `modelPath`
         # @return [String]
         attr_accessor :model_path
       
-        # Python version on which the built-in algorithm was trained on.
+        # Python version on which the built-in algorithm was trained.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
       
-        # CMLE runtime version on which the built-in algorithm was trained on.
+        # Cloud ML Engine runtime version on which the built-in algorithm was
+        # trained.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
@@ -398,11 +401,11 @@ module Google
         # @return [String]
         attr_accessor :hyperparameter_metric_tag
       
-        # Optional. How many failed trials that need to be seen before failing the
-        # hyperparameter tuning job. User can specify this field to override the
-        # default failing criteria for CloudML Engine hyperparameter tuning jobs.
-        # Defaults to zero, which means to let the service decide when a
-        # hyperparameter job should fail.
+        # Optional. The number of failed trials that need to be seen before failing
+        # the hyperparameter tuning job. You can specify this field to override the
+        # default failing criteria for Cloud ML Engine hyperparameter tuning jobs.
+        # Defaults to zero, which means the service decides when a hyperparameter
+        # job should fail.
         # Corresponds to the JSON property `maxFailedTrials`
         # @return [Fixnum]
         attr_accessor :max_failed_trials
@@ -456,7 +459,7 @@ module Google
         end
       end
       
-      # Represents a training, prediction or explanation job.
+      # Represents a training or prediction job.
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -978,7 +981,8 @@ module Google
         # `
         # service ResourceService `
         # rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
-        # rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty);
+        # rpc UpdateResource(google.api.HttpBody) returns
+        # (google.protobuf.Empty);
         # `
         # Example with streaming methods:
         # service CaldavService `
@@ -1020,9 +1024,8 @@ module Google
         # @return [String]
         attr_accessor :data_format
       
-        # Required. The Google Cloud Storage location of the input data files.
-        # May contain wildcards. See <a href="https://cloud.google.com/storage/docs/
-        # gsutil/addlhelp/WildcardNames</a>
+        # Required. The Cloud Storage location of the input data files. May contain
+        # <a href="/storage/docs/gsutil/addlhelp/WildcardNames">wildcards</a>.
         # Corresponds to the JSON property `inputPaths`
         # @return [Array<String>]
         attr_accessor :input_paths
@@ -1636,6 +1639,49 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The Google Cloud Storage location of the packages for custom
+        # prediction and any additional dependencies.
+        # Corresponds to the JSON property `packageUris`
+        # @return [Array<String>]
+        attr_accessor :package_uris
+      
+        # class PredictionClass(object):
+        # """A Model performs predictions on a given list of instances.
+        # The input instances are the raw values sent by the user. It is the
+        # responsibility of a Model to translate these instances into
+        # actual predictions.
+        # The input instances and the output use python data types. The input
+        # instances have been decoded prior to being passed to the predict
+        # method. The output, which should use python data types is
+        # encoded after being returned from the predict method.
+        # """
+        # def predict(self, instances, **kwargs):
+        # """Returns predictions for the provided instances.
+        # Instances are the decoded values from the request. Clients need not
+        # worry about decoding json nor base64 decoding.
+        # Args:
+        # instances: A list of instances, as described in the API.
+        # **kwargs: Additional keyword arguments, will be passed into the
+        # client's predict method.
+        # Returns:
+        # A list of outputs containing the prediction results.
+        # """
+        # @classmethod
+        # def from_path(cls, model_path):
+        # """Creates a model using the given model path.
+        # Path is useful, e.g., to load files from the exported directory
+        # containing the model.
+        # Args:
+        # model_path: The local directory that contains the exported model
+        # file along with any additional files uploaded when creating the
+        # version resource.
+        # Returns:
+        # An instance implementing this Model class.
+        # """
+        # Corresponds to the JSON property `predictionClass`
+        # @return [String]
+        attr_accessor :prediction_class
+      
         # Optional. The version of Python used in prediction. If not set, the default
         # version is '2.7'. Python '3.5' is available when `runtime_version` is set
         # to '1.4' and above. Python '2.7' works with all supported runtime versions.
@@ -1676,6 +1722,8 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)
+          @package_uris = args[:package_uris] if args.key?(:package_uris)
+          @prediction_class = args[:prediction_class] if args.key?(:prediction_class)
           @python_version = args[:python_version] if args.key?(:python_version)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @state = args[:state] if args.key?(:state)

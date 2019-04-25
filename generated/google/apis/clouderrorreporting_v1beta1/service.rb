@@ -148,14 +148,15 @@ module Google
         # **or** an [API key](https://support.google.com/cloud/answer/6158862)
         # for authentication. To use an API key, append it to the URL as the value of
         # a `key` parameter. For example:
-        # `POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
-        # project/events:report?key=123ABC456`
+        # `POST
+        # https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/
+        # events:report?key=123ABC456`
         # @param [String] project_name
         #   [Required] The resource name of the Google Cloud Platform project. Written
         #   as `projects/` plus the
-        #   [Google Cloud Platform project ID](https://support.google.com/cloud/answer/
-        #   6158840).
-        #   Example: `projects/my-project-123`.
+        #   [Google Cloud Platform project
+        #   ID](https://support.google.com/cloud/answer/6158840). Example:
+        #   `projects/my-project-123`.
         # @param [Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent] reported_error_event_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -1013,6 +1013,144 @@ module Google
         end
       end
       
+      # JSON template to produce a JSON-style HMAC Key resource for Create responses.
+      class HmacKey
+        include Google::Apis::Core::Hashable
+      
+        # The kind of item this is. For HMAC keys, this is always storage#hmacKey.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Key metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
+      
+        # HMAC secret key material.
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @secret = args[:secret] if args.key?(:secret)
+        end
+      end
+      
+      # JSON template to produce a JSON-style HMAC Key metadata resource.
+      class HmacKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the HMAC Key.
+        # Corresponds to the JSON property `accessId`
+        # @return [String]
+        attr_accessor :access_id
+      
+        # HTTP 1.1 Entity tag for the access-control entry.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID of the HMAC key, including the Project ID and the Access ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The kind of item this is. For HMAC Key metadata, this is always storage#
+        # hmacKeyMetadata.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Project ID owning the service account to which the key authenticates.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The link to this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The email address of the key's associated service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The creation time of the HMAC key in RFC 3339 format.
+        # Corresponds to the JSON property `timeCreated`
+        # @return [String]
+        attr_accessor :time_created
+      
+        # The last modification time of the HMAC key metadata in RFC 3339 format.
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_id = args[:access_id] if args.key?(:access_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @time_created = args[:time_created] if args.key?(:time_created)
+          @updated = args[:updated] if args.key?(:updated)
+        end
+      end
+      
+      # A list of hmacKeys.
+      class HmacKeysMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::HmacKeyMetadata>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of hmacKeys, this is always storage#
+        # hmacKeysMetadata.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A subscription to receive Google PubSub notifications.
       class Notification
         include Google::Apis::Core::Hashable

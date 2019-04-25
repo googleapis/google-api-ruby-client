@@ -130,8 +130,8 @@ module Google
         #   `domain`, where the domain is a G Suite domain, for example:
         #   |Filter|Description|
         #   |------|-----------|
-        #   |owner.directorycustomerid:123456789|Organizations with `owner.
-        #   directory_customer_id` equal to `123456789`.|
+        #   |owner.directorycustomerid:123456789|Organizations with
+        #   `owner.directory_customer_id` equal to `123456789`.|
         #   |domain:google.com|Organizations corresponding to the domain `google.com`.|
         #   This field is optional.
         # @param [Fixnum] page_size
@@ -335,8 +335,9 @@ module Google
         # and the Project remains visible to ListProjects.
         # However, you cannot update the project.
         # After the deletion completes, the Project is not retrievable by
-        # the  GetProject and
-        # ListProjects methods.
+        # the  GetProject
+        # and ListProjects
+        # methods.
         # The caller must have modify permissions for this Project.
         # @param [String] project_id
         #   The Project ID (for example, `foo-bar-123`).

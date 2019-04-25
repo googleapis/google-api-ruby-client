@@ -498,8 +498,9 @@ module Google
         attr_accessor :mentions
       
         # Metadata associated with the entity.
-        # Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if
-        # available. The associated keys are "wikipedia_url" and "mid", respectively.
+        # For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)
+        # and Knowledge Graph MID (`mid`), if they are available. For the metadata
+        # associated with other entity types, see the Type table below.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata

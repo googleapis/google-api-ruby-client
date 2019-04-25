@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2Sentiment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1072,9 +1084,27 @@ module Google
       
           hash :parameters, as: 'parameters'
           property :query_text, as: 'queryText'
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SentimentAnalysisResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SentimentAnalysisResult::Representation
+      
           property :speech_recognition_confidence, as: 'speechRecognitionConfidence'
           hash :webhook_payload, as: 'webhookPayload'
           property :webhook_source, as: 'webhookSource'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2Sentiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Sentiment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Sentiment::Representation
+      
         end
       end
       
@@ -1319,6 +1349,7 @@ module Google
           property :audio_encoding, as: 'audioEncoding'
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
+          property :model_variant, as: 'modelVariant'
           collection :phrase_hints, as: 'phraseHints'
           property :sample_rate_hertz, as: 'sampleRateHertz'
         end

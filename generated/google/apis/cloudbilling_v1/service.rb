@@ -155,8 +155,8 @@ module Google
         end
         
         # Lists the billing accounts that the current authenticated user has
-        # permission to [view](https://cloud.google.com/billing/docs/how-to/billing-
-        # access).
+        # permission to
+        # [view](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] filter
         #   Options for how to filter the returned billing accounts.
         #   Currently this only supports filtering for

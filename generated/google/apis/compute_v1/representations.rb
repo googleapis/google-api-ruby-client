@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServicesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -748,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForwardingRuleReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRulesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -833,6 +845,12 @@ module Google
       end
       
       class HealthStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthStatusForNetworkEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1667,6 +1685,114 @@ module Google
       end
       
       class Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsListEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsListNetworkEndpoints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointWithHealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3849,8 +3975,10 @@ module Google
           property :description, as: 'description'
           property :group, as: 'group'
           property :max_connections, as: 'maxConnections'
+          property :max_connections_per_endpoint, as: 'maxConnectionsPerEndpoint'
           property :max_connections_per_instance, as: 'maxConnectionsPerInstance'
           property :max_rate, as: 'maxRate'
+          property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
         end
@@ -4035,6 +4163,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
         end
       end
       
@@ -4728,6 +4863,13 @@ module Google
         end
       end
       
+      class ForwardingRuleReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
       class ForwardingRulesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4788,6 +4930,7 @@ module Google
           property :host, as: 'host'
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
@@ -4800,6 +4943,7 @@ module Google
           property :host, as: 'host'
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
@@ -4812,6 +4956,7 @@ module Google
           property :host, as: 'host'
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
@@ -4891,6 +5036,19 @@ module Google
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
+        end
+      end
+      
+      class HealthStatusForNetworkEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService', class: Google::Apis::ComputeV1::BackendServiceReference, decorator: Google::Apis::ComputeV1::BackendServiceReference::Representation
+      
+          property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::ComputeV1::ForwardingRuleReference, decorator: Google::Apis::ComputeV1::ForwardingRuleReference::Representation
+      
+          property :health_check, as: 'healthCheck', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
+      
+          property :health_state, as: 'healthState'
         end
       end
       
@@ -5650,6 +5808,8 @@ module Google
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
+      
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ComputeV1::ShieldedInstanceConfig, decorator: Google::Apis::ComputeV1::ShieldedInstanceConfig::Representation
       
           property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
       
@@ -6472,6 +6632,189 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class NetworkEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :ip_address, as: 'ipAddress'
+          property :port, as: 'port'
+        end
+      end
+      
+      class NetworkEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :default_port, as: 'defaultPort'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :network_endpoint_type, as: 'networkEndpointType'
+          property :self_link, as: 'selfLink'
+          property :size, as: 'size'
+          property :subnetwork, as: 'subnetwork'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NetworkEndpointGroupAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkEndpointGroupList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NetworkEndpointGroup, decorator: Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class NetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class NetworkEndpointGroupsListEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_status, as: 'healthStatus'
+        end
+      end
+      
+      class NetworkEndpointGroupsListNetworkEndpoints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NetworkEndpointWithHealthStatus, decorator: Google::Apis::ComputeV1::NetworkEndpointWithHealthStatus::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkEndpointGroupsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoint_groups, as: 'networkEndpointGroups', class: Google::Apis::ComputeV1::NetworkEndpointGroup, decorator: Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkEndpointWithHealthStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :healths, as: 'healths', class: Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint, decorator: Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint::Representation
+      
+          property :network_endpoint, as: 'networkEndpoint', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
         end
       end
       
@@ -7890,6 +8233,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request, as: 'request'
           property :response, as: 'response'
@@ -8083,6 +8427,7 @@ module Google
           property :status, as: 'status'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -8395,6 +8740,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :port, as: 'port'
           property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
           property :proxy_header, as: 'proxyHeader'
           property :request, as: 'request'
           property :response, as: 'response'

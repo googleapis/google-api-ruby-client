@@ -283,8 +283,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs an action on a link between a Merchant Center account and another
-        # account.
+        # Performs an action on a link between two Merchant Center accounts, namely
+        # accountId and linkedAccountId.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
@@ -1769,7 +1769,7 @@ module Google
         end
         
         # Creates a charge invoice for a shipment group, and triggers a charge capture
-        # for non-facilitated payment orders.
+        # for orderinvoice enabled orders.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -1810,9 +1810,9 @@ module Google
         end
         
         # Creates a refund invoice for one or more shipment groups, and triggers a
-        # refund for non-facilitated payment orders. This can only be used for line
-        # items that have previously been charged using createChargeInvoice. All amounts
-        # (except for the summary) are incremental with respect to the previous invoice.
+        # refund for orderinvoice enabled orders. This can only be used for line items
+        # that have previously been charged using createChargeInvoice. All amounts (
+        # except for the summary) are incremental with respect to the previous invoice.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.

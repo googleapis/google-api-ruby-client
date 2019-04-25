@@ -52,14 +52,14 @@ module Google
         # @return [Google::Apis::VaultV1::HeldAccount]
         attr_accessor :account
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -624,10 +624,26 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # When the account was put on hold.
+        # The primary email address of the account. If used as an input, this takes
+        # precedence over account ID.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The first name of the account holder.
+        # Corresponds to the JSON property `firstName`
+        # @return [String]
+        attr_accessor :first_name
+      
+        # Output only. When the account was put on hold.
         # Corresponds to the JSON property `holdTime`
         # @return [String]
         attr_accessor :hold_time
+      
+        # Output only. The last name of the account holder.
+        # Corresponds to the JSON property `lastName`
+        # @return [String]
+        attr_accessor :last_name
       
         def initialize(**args)
            update!(**args)
@@ -636,7 +652,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @email = args[:email] if args.key?(:email)
+          @first_name = args[:first_name] if args.key?(:first_name)
           @hold_time = args[:hold_time] if args.key?(:hold_time)
+          @last_name = args[:last_name] if args.key?(:last_name)
         end
       end
       
@@ -1334,14 +1353,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

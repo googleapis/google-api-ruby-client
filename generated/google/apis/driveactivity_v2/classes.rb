@@ -463,6 +463,39 @@ module Google
         end
       end
       
+      # Information about a shared drive.
+      class Drive
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the shared drive. The format is
+        # "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
+        # ID for this resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A Drive item, such as a file or folder.
+        # Corresponds to the JSON property `root`
+        # @return [Google::Apis::DriveactivityV2::DriveItem]
+        attr_accessor :root
+      
+        # The title of the shared drive.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @root = args[:root] if args.key?(:root)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # A single Drive activity comprising one or more Actions by one or more
       # Actors on one or more Targets. Some Action groupings occur spontaneously,
       # such as moving an item into a shared folder triggering a permission change.
@@ -487,7 +520,7 @@ module Google
         # @return [Google::Apis::DriveactivityV2::ActionDetail]
         attr_accessor :primary_action_detail
       
-        # All Drive objects this activity is about (e.g. file, folder, Team Drive).
+        # All Google Drive objects this activity is about (e.g. file, folder, drive).
         # This represents the state of the target immediately after the actions
         # occurred.
         # Corresponds to the JSON property `targets`
@@ -519,16 +552,58 @@ module Google
         end
       end
       
+      # A Drive item which is a file.
+      class DriveFile
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A Drive item which is a folder.
+      class DriveFolder
+        include Google::Apis::Core::Hashable
+      
+        # The type of Drive folder.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A Drive item, such as a file or folder.
       class DriveItem
         include Google::Apis::Core::Hashable
       
         # A Drive item which is a file.
+        # Corresponds to the JSON property `driveFile`
+        # @return [Google::Apis::DriveactivityV2::DriveFile]
+        attr_accessor :drive_file
+      
+        # A Drive item which is a folder.
+        # Corresponds to the JSON property `driveFolder`
+        # @return [Google::Apis::DriveactivityV2::DriveFolder]
+        attr_accessor :drive_folder
+      
+        # This item is deprecated; please see `DriveFile` instead.
         # Corresponds to the JSON property `file`
         # @return [Google::Apis::DriveactivityV2::File]
         attr_accessor :file
       
-        # A Drive item which is a folder.
+        # This item is deprecated; please see `DriveFolder` instead.
         # Corresponds to the JSON property `folder`
         # @return [Google::Apis::DriveactivityV2::Folder]
         attr_accessor :folder
@@ -560,6 +635,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drive_file = args[:drive_file] if args.key?(:drive_file)
+          @drive_folder = args[:drive_folder] if args.key?(:drive_folder)
           @file = args[:file] if args.key?(:file)
           @folder = args[:folder] if args.key?(:folder)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
@@ -574,11 +651,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Drive item which is a file.
+        # Corresponds to the JSON property `driveFile`
+        # @return [Google::Apis::DriveactivityV2::DriveFile]
+        attr_accessor :drive_file
+      
+        # A Drive item which is a folder.
+        # Corresponds to the JSON property `driveFolder`
+        # @return [Google::Apis::DriveactivityV2::DriveFolder]
+        attr_accessor :drive_folder
+      
+        # This item is deprecated; please see `DriveFile` instead.
         # Corresponds to the JSON property `file`
         # @return [Google::Apis::DriveactivityV2::File]
         attr_accessor :file
       
-        # A Drive item which is a folder.
+        # This item is deprecated; please see `DriveFolder` instead.
         # Corresponds to the JSON property `folder`
         # @return [Google::Apis::DriveactivityV2::Folder]
         attr_accessor :folder
@@ -599,8 +686,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drive_file = args[:drive_file] if args.key?(:drive_file)
+          @drive_folder = args[:drive_folder] if args.key?(:drive_folder)
           @file = args[:file] if args.key?(:file)
           @folder = args[:folder] if args.key?(:folder)
+          @name = args[:name] if args.key?(:name)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A lightweight reference to a shared drive.
+      class DriveReference
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the shared drive. The format is
+        # "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
+        # ID for this resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The title of the shared drive.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] if args.key?(:name)
           @title = args[:title] if args.key?(:title)
         end
@@ -619,7 +735,7 @@ module Google
         end
       end
       
-      # A Drive item which is a file.
+      # This item is deprecated; please see `DriveFile` instead.
       class File
         include Google::Apis::Core::Hashable
       
@@ -675,11 +791,11 @@ module Google
         end
       end
       
-      # A Drive item which is a folder.
+      # This item is deprecated; please see `DriveFolder` instead.
       class Folder
         include Google::Apis::Core::Hashable
       
-        # The type of Drive folder.
+        # This field is deprecated; please see `DriveFolder.type` instead.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -844,7 +960,12 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Domain]
         attr_accessor :domain
       
-        # A lightweight reference to a Team Drive.
+        # A lightweight reference to a shared drive.
+        # Corresponds to the JSON property `drive`
+        # @return [Google::Apis::DriveactivityV2::DriveReference]
+        attr_accessor :drive
+      
+        # This item is deprecated; please see `DriveReference` instead.
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveactivityV2::TeamDriveReference]
         attr_accessor :team_drive
@@ -861,6 +982,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
+          @drive = args[:drive] if args.key?(:drive)
           @team_drive = args[:team_drive] if args.key?(:team_drive)
           @user = args[:user] if args.key?(:user)
         end
@@ -1192,6 +1314,11 @@ module Google
       class Target
         include Google::Apis::Core::Hashable
       
+        # Information about a shared drive.
+        # Corresponds to the JSON property `drive`
+        # @return [Google::Apis::DriveactivityV2::Drive]
+        attr_accessor :drive
+      
         # A Drive item, such as a file or folder.
         # Corresponds to the JSON property `driveItem`
         # @return [Google::Apis::DriveactivityV2::DriveItem]
@@ -1202,7 +1329,7 @@ module Google
         # @return [Google::Apis::DriveactivityV2::FileComment]
         attr_accessor :file_comment
       
-        # Information about a Team Drive.
+        # This item is deprecated; please see `Drive` instead.
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveactivityV2::TeamDrive]
         attr_accessor :team_drive
@@ -1213,6 +1340,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drive = args[:drive] if args.key?(:drive)
           @drive_item = args[:drive_item] if args.key?(:drive_item)
           @file_comment = args[:file_comment] if args.key?(:file_comment)
           @team_drive = args[:team_drive] if args.key?(:team_drive)
@@ -1223,12 +1351,17 @@ module Google
       class TargetReference
         include Google::Apis::Core::Hashable
       
+        # A lightweight reference to a shared drive.
+        # Corresponds to the JSON property `drive`
+        # @return [Google::Apis::DriveactivityV2::DriveReference]
+        attr_accessor :drive
+      
         # A lightweight reference to a Drive item, such as a file or folder.
         # Corresponds to the JSON property `driveItem`
         # @return [Google::Apis::DriveactivityV2::DriveItemReference]
         attr_accessor :drive_item
       
-        # A lightweight reference to a Team Drive.
+        # This item is deprecated; please see `DriveReference` instead.
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveactivityV2::TeamDriveReference]
         attr_accessor :team_drive
@@ -1239,17 +1372,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drive = args[:drive] if args.key?(:drive)
           @drive_item = args[:drive_item] if args.key?(:drive_item)
           @team_drive = args[:team_drive] if args.key?(:team_drive)
         end
       end
       
-      # Information about a Team Drive.
+      # This item is deprecated; please see `Drive` instead.
       class TeamDrive
         include Google::Apis::Core::Hashable
       
-        # The resource name of the Team Drive. The format is
-        # "teamDrives/TEAM_DRIVE_ID".
+        # This field is deprecated; please see `Drive.name` instead.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1259,7 +1392,7 @@ module Google
         # @return [Google::Apis::DriveactivityV2::DriveItem]
         attr_accessor :root
       
-        # The title of the Team Drive.
+        # This field is deprecated; please see `Drive.title` instead.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1276,17 +1409,16 @@ module Google
         end
       end
       
-      # A lightweight reference to a Team Drive.
+      # This item is deprecated; please see `DriveReference` instead.
       class TeamDriveReference
         include Google::Apis::Core::Hashable
       
-        # The resource name of the Team Drive. The format is
-        # "teamDrives/TEAM_DRIVE_ID".
+        # This field is deprecated; please see `DriveReference.name` instead.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The title of the Team Drive.
+        # This field is deprecated; please see `DriveReference.title` instead.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

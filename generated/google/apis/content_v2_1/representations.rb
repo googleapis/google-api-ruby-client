@@ -3350,9 +3350,11 @@ module Google
           collection :sizes, as: 'sizes'
           property :source, as: 'source'
           property :target_country, as: 'targetCountry'
+          property :tax_category, as: 'taxCategory'
           collection :taxes, as: 'taxes', class: Google::Apis::ContentV2_1::ProductTax, decorator: Google::Apis::ContentV2_1::ProductTax::Representation
       
           property :title, as: 'title'
+          property :transit_time_label, as: 'transitTimeLabel'
           property :unit_pricing_base_measure, as: 'unitPricingBaseMeasure', class: Google::Apis::ContentV2_1::ProductUnitPricingBaseMeasure, decorator: Google::Apis::ContentV2_1::ProductUnitPricingBaseMeasure::Representation
       
           property :unit_pricing_measure, as: 'unitPricingMeasure', class: Google::Apis::ContentV2_1::ProductUnitPricingMeasure, decorator: Google::Apis::ContentV2_1::ProductUnitPricingMeasure::Representation

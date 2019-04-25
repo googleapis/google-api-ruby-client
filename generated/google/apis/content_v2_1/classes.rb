@@ -6741,8 +6741,8 @@ module Google
       
         # A list of custom (merchant-provided) attributes. It can also be used for
         # submitting any attribute of the feed specification in its generic form (e.g., `
-        # "name": "size type", "type": "text", "value": "regular" `). This is useful
-        # for submitting attributes not explicitly exposed by the API.
+        # "name": "size type", "value": "regular" `). This is useful for submitting
+        # attributes not explicitly exposed by the API.
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
         attr_accessor :custom_attributes
@@ -6957,7 +6957,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # Categories of the item (formatted as in products feed specification).
+        # Categories of the item (formatted as in products data specification).
         # Corresponds to the JSON property `productTypes`
         # @return [Array<String>]
         attr_accessor :product_types
@@ -6972,7 +6972,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :sale_price
       
-        # Date range during which the item is on sale (see products feed specification).
+        # Date range during which the item is on sale (see products data specification).
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date
@@ -7039,6 +7039,12 @@ module Google
         # @return [String]
         attr_accessor :target_country
       
+        # The tax category of the product, used to configure detailed tax nexus in
+        # account-level tax settings.
+        # Corresponds to the JSON property `taxCategory`
+        # @return [String]
+        attr_accessor :tax_category
+      
         # Tax information.
         # Corresponds to the JSON property `taxes`
         # @return [Array<Google::Apis::ContentV2_1::ProductTax>]
@@ -7048,6 +7054,12 @@ module Google
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
+      
+        # The transit time label of the product, used to group product in account-level
+        # transit time tables.
+        # Corresponds to the JSON property `transitTimeLabel`
+        # @return [String]
+        attr_accessor :transit_time_label
       
         # The preference of the denominator of the unit price.
         # Corresponds to the JSON property `unitPricingBaseMeasure`
@@ -7134,8 +7146,10 @@ module Google
           @sizes = args[:sizes] if args.key?(:sizes)
           @source = args[:source] if args.key?(:source)
           @target_country = args[:target_country] if args.key?(:target_country)
+          @tax_category = args[:tax_category] if args.key?(:tax_category)
           @taxes = args[:taxes] if args.key?(:taxes)
           @title = args[:title] if args.key?(:title)
+          @transit_time_label = args[:transit_time_label] if args.key?(:transit_time_label)
           @unit_pricing_base_measure = args[:unit_pricing_base_measure] if args.key?(:unit_pricing_base_measure)
           @unit_pricing_measure = args[:unit_pricing_measure] if args.key?(:unit_pricing_measure)
         end

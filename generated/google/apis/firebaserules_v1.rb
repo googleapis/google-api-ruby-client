@@ -26,7 +26,7 @@ module Google
     # @see https://firebase.google.com/docs/storage/security
     module FirebaserulesV1
       VERSION = 'V1'
-      REVISION = '20190319'
+      REVISION = '20190417'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

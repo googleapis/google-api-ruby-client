@@ -1287,6 +1287,15 @@ module Google
         end
       end
       
+      # Replaces an identifier with a surrogate using Format Preserving Encryption
+      # (FPE) with the FFX mode of operation; however when used in the
+      # `ReidentifyContent` API method, it serves the opposite function by reversing
+      # the surrogate back into the original identifier. The identifier must be
+      # encoded as ASCII. For a given crypto key and context, the same identifier
+      # will be replaced with the same surrogate. Identifiers must be at least two
+      # characters long. In the case that the identifier is the empty string, it will
+      # be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn
+      # more.
       # Note: We recommend using  CryptoDeterministicConfig for all use cases which
       # do not require preserving the input alphabet space and size, plus warrant
       # referential integrity.
@@ -2937,8 +2946,7 @@ module Google
       class GooglePrivacyDlpV2InspectJobConfig
         include Google::Apis::Core::Hashable
       
-        # Actions to execute at the completion of the job. Are executed in the order
-        # provided.
+        # Actions to execute at the completion of the job.
         # Corresponds to the JSON property `actions`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Action>]
         attr_accessor :actions
@@ -4162,6 +4170,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig]
         attr_accessor :crypto_hash_config
       
+        # Replaces an identifier with a surrogate using Format Preserving Encryption
+        # (FPE) with the FFX mode of operation; however when used in the
+        # `ReidentifyContent` API method, it serves the opposite function by reversing
+        # the surrogate back into the original identifier. The identifier must be
+        # encoded as ASCII. For a given crypto key and context, the same identifier
+        # will be replaced with the same surrogate. Identifiers must be at least two
+        # characters long. In the case that the identifier is the empty string, it will
+        # be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn
+        # more.
         # Note: We recommend using  CryptoDeterministicConfig for all use cases which
         # do not require preserving the input alphabet space and size, plus warrant
         # referential integrity.

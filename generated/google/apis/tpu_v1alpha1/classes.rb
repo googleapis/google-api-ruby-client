@@ -341,10 +341,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Output only. The network endpoints where TPU workers can be accessed and sent
-        # work.
-        # It is recommended that Tensorflow clients of the node reach out to the 0th
-        # entry in this map first.
+        # Output only. The network endpoints where TPU workers can be accessed and
+        # sent work. It is recommended that Tensorflow clients of the node reach out
+        # to the 0th entry in this map first.
         # Corresponds to the JSON property `networkEndpoints`
         # @return [Array<Google::Apis::TpuV1alpha1::NetworkEndpoint>]
         attr_accessor :network_endpoints

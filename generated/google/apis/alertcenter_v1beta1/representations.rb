@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivityRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Alert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -193,6 +199,24 @@ module Google
         end
       end
       
+      class ActivityRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_names, as: 'actionNames'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :query, as: 'query'
+          collection :superseded_alerts, as: 'supersededAlerts'
+          property :superseding_alert, as: 'supersedingAlert'
+          property :threshold, as: 'threshold'
+          property :trigger_source, as: 'triggerSource'
+          property :update_time, as: 'updateTime'
+          property :window_size, as: 'windowSize'
+        end
+      end
+      
       class Alert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -206,6 +230,7 @@ module Google
           property :source, as: 'source'
           property :start_time, as: 'startTime'
           property :type, as: 'type'
+          property :update_time, as: 'updateTime'
         end
       end
       

@@ -2393,6 +2393,201 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new HMAC key for the specified service account.
+        # @param [String] project_id
+        #   Project ID owning the service account.
+        # @param [String] service_account_email
+        #   Email address of the service account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::HmacKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::HmacKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_hmac_key(project_id, service_account_email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{projectId}/hmacKeys', options)
+          command.response_representation = Google::Apis::StorageV1::HmacKey::Representation
+          command.response_class = Google::Apis::StorageV1::HmacKey
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['serviceAccountEmail'] = service_account_email unless service_account_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an HMAC key.
+        # @param [String] project_id
+        #   Project ID owning the requested key
+        # @param [String] access_id
+        #   Name of the HMAC key to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_hmac_key(project_id, access_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'projects/{projectId}/hmacKeys/{accessId}', options)
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['accessId'] = access_id unless access_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an HMAC key's metadata
+        # @param [String] project_id
+        #   Project ID owning the service account of the requested key.
+        # @param [String] access_id
+        #   Name of the HMAC key.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::HmacKeyMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::HmacKeyMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_hmac_key(project_id, access_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'projects/{projectId}/hmacKeys/{accessId}', options)
+          command.response_representation = Google::Apis::StorageV1::HmacKeyMetadata::Representation
+          command.response_class = Google::Apis::StorageV1::HmacKeyMetadata
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['accessId'] = access_id unless access_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of HMAC keys matching the criteria.
+        # @param [String] project_id
+        #   Name of the project in which to look for HMAC keys.
+        # @param [Fixnum] max_results
+        #   Maximum number of items plus prefixes to return in a single page of responses.
+        #   Because duplicate prefixes are omitted, fewer total results may be returned
+        #   than requested. The service uses this parameter or 1,000 items, whichever is
+        #   smaller.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] service_account_email
+        #   If present, only keys for the given service account are returned.
+        # @param [Boolean] show_deleted_keys
+        #   Whether or not to show keys in the DELETED state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::HmacKeysMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::HmacKeysMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_hmac_keys(project_id, max_results: nil, page_token: nil, service_account_email: nil, show_deleted_keys: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'projects/{projectId}/hmacKeys', options)
+          command.response_representation = Google::Apis::StorageV1::HmacKeysMetadata::Representation
+          command.response_class = Google::Apis::StorageV1::HmacKeysMetadata
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['serviceAccountEmail'] = service_account_email unless service_account_email.nil?
+          command.query['showDeletedKeys'] = show_deleted_keys unless show_deleted_keys.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the state of an HMAC key. See the HMAC Key resource descriptor for
+        # valid states.
+        # @param [String] project_id
+        #   Project ID owning the service account of the updated key.
+        # @param [String] access_id
+        #   Name of the HMAC key being updated.
+        # @param [Google::Apis::StorageV1::HmacKeyMetadata] hmac_key_metadata_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::HmacKeyMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::HmacKeyMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_hmac_key(project_id, access_id, hmac_key_metadata_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'projects/{projectId}/hmacKeys/{accessId}', options)
+          command.request_representation = Google::Apis::StorageV1::HmacKeyMetadata::Representation
+          command.request_object = hmac_key_metadata_object
+          command.response_representation = Google::Apis::StorageV1::HmacKeyMetadata::Representation
+          command.response_class = Google::Apis::StorageV1::HmacKeyMetadata
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['accessId'] = access_id unless access_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get the email address of this project's Google Cloud Storage service account.
         # @param [String] project_id
         #   Project ID

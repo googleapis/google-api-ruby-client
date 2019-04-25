@@ -1985,6 +1985,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_connections
       
+        # The max number of simultaneous connections that a single backend network
+        # endpoint can handle. This is used to calculate the capacity of the group. Can
+        # be used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION
+        # mode, either maxConnections or maxConnectionsPerEndpoint must be set.
+        # This cannot be used for internal load balancing.
+        # Corresponds to the JSON property `maxConnectionsPerEndpoint`
+        # @return [Fixnum]
+        attr_accessor :max_connections_per_endpoint
+      
         # The max number of simultaneous connections that a single backend instance can
         # handle. This is used to calculate the capacity of the group. Can be used in
         # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
@@ -2001,6 +2010,15 @@ module Google
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
+      
+        # The max requests per second (RPS) that a single backend network endpoint can
+        # handle. This is used to calculate the capacity of the group. Can be used in
+        # either balancing mode. For RATE mode, either maxRate or maxRatePerEndpoint
+        # must be set.
+        # This cannot be used for internal load balancing.
+        # Corresponds to the JSON property `maxRatePerEndpoint`
+        # @return [Float]
+        attr_accessor :max_rate_per_endpoint
       
         # The max requests per second (RPS) that a single backend instance can handle.
         # This is used to calculate the capacity of the group. Can be used in either
@@ -2029,8 +2047,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @group = args[:group] if args.key?(:group)
           @max_connections = args[:max_connections] if args.key?(:max_connections)
+          @max_connections_per_endpoint = args[:max_connections_per_endpoint] if args.key?(:max_connections_per_endpoint)
           @max_connections_per_instance = args[:max_connections_per_instance] if args.key?(:max_connections_per_instance)
           @max_rate = args[:max_rate] if args.key?(:max_rate)
+          @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
         end
@@ -2792,6 +2812,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class BackendServiceReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
         end
       end
       
@@ -3609,7 +3648,7 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # The deprecation state of this resource. This can be ACTIVE DEPRECATED,
+        # The deprecation state of this resource. This can be ACTIVE, DEPRECATED,
         # OBSOLETE, or DELETED. Operations which communicate the end of life date for an
         # image, can use ACTIVE. Operations which create a new resource using a
         # DEPRECATED resource will return successfully, but with a warning indicating
@@ -5202,7 +5241,8 @@ module Google
         # [Output Only] Absolute value of VM instances calculated based on the specific
         # mode.
         # 
-        # - If the value is fixed, then the caculated value is equal to the fixed value.
+        # - If the value is fixed, then the calculated value is equal to the fixed value.
+        # 
         # - If the value is a percent, then the calculated value is percent/100 *
         # targetSize. For example, the calculated value of a 80% of a managed instance
         # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
@@ -5714,6 +5754,25 @@ module Google
       end
       
       # 
+      class ForwardingRuleReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # 
       class ForwardingRulesScopedList
         include Google::Apis::Core::Hashable
       
@@ -5934,6 +5993,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTP2 health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -5961,6 +6040,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -5990,6 +6070,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTP health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -6017,6 +6117,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -6046,6 +6147,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTPS health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -6073,6 +6194,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -6165,9 +6287,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not
-        # specified, the default is TCP. Exactly one of the protocol-specific health
-        # check field must be specified, which must match type field.
+        # Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2.
+        # If not specified, the default is TCP. Exactly one of the protocol-specific
+        # health check field must be specified, which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6378,6 +6500,51 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # 
+      class HealthStatusForNetworkEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # URL of the backend service associated with the health state of the network
+        # endpoint.
+        # Corresponds to the JSON property `backendService`
+        # @return [Google::Apis::ComputeV1::BackendServiceReference]
+        attr_accessor :backend_service
+      
+        # URL of the forwarding rule associated with the health state of the network
+        # endpoint.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [Google::Apis::ComputeV1::ForwardingRuleReference]
+        attr_accessor :forwarding_rule
+      
+        # A full or valid partial URL to a health check. For example, the following are
+        # valid URLs:
+        # - https://www.googleapis.com/compute/beta/projects/project-id/global/
+        # httpHealthChecks/health-check
+        # - projects/project-id/global/httpHealthChecks/health-check
+        # - global/httpHealthChecks/health-check
+        # Corresponds to the JSON property `healthCheck`
+        # @return [Google::Apis::ComputeV1::HealthCheckReference]
+        attr_accessor :health_check
+      
+        # Health state of the network endpoint determined based on the health checks
+        # configured.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @health_check = args[:health_check] if args.key?(:health_check)
+          @health_state = args[:health_state] if args.key?(:health_state)
         end
       end
       
@@ -8057,8 +8224,8 @@ module Google
       
         # Specifies the instance templates used by this managed instance group to create
         # instances.
-        # Each version is defined by an instanceTemplate. Every template can appear at
-        # most once per instance group. This field overrides the top-level
+        # Each version is defined by an instanceTemplate and a name. Every version can
+        # appear at most once per instance group. This field overrides the top-level
         # instanceTemplate field. Read more about the relationships between these fields.
         # Exactly one version must leave the targetSize field unset. That version will
         # be applied to all remaining instances. For more information, read about canary
@@ -8528,7 +8695,9 @@ module Google
       class InstanceGroupManagerVersion
         include Google::Apis::Core::Hashable
       
-        # 
+        # The URL of the instance template that is specified for this managed instance
+        # group. The group uses this template to create new instances in the managed
+        # instance group until the `targetSize` for this version is reached.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -9426,6 +9595,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ComputeV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # A set of instance tags.
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ComputeV1::Tags]
@@ -9448,6 +9622,7 @@ module Google
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
@@ -12653,6 +12828,668 @@ module Google
         end
       end
       
+      # The network endpoint.
+      class NetworkEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The name for a specific VM instance that the IP address belongs to. This is
+        # required for network endpoints of type GCE_VM_IP_PORT. The instance must be in
+        # the same zone of network endpoint group.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Optional IPv4 address of network endpoint. The IP address must belong to a VM
+        # in GCE (either the primary IP or as part of an aliased IP range). If the IP
+        # address is not specified, then the primary IP address for the VM instance in
+        # the network that the network endpoint group belongs to will be used.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Optional port number of network endpoint. If not specified and the
+        # NetworkEndpointGroup.network_endpoint_type is GCE_IP_PORT, the defaultPort for
+        # the network endpoint group will be used.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # Represents a collection of network endpoints.
+      class NetworkEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # The default port used if the port number is not specified in the network
+        # endpoint.
+        # Corresponds to the JSON property `defaultPort`
+        # @return [Fixnum]
+        attr_accessor :default_port
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#networkEndpointGroup for
+        # network endpoint group.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource; provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The URL of the network to which all network endpoints in the NEG belong. Uses "
+        # default" project network if unspecified.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Type of network endpoints in this network endpoint group. Currently the only
+        # supported value is GCE_VM_IP_PORT.
+        # Corresponds to the JSON property `networkEndpointType`
+        # @return [String]
+        attr_accessor :network_endpoint_type
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output only] Number of network endpoints in the network endpoint group.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # Optional URL of the subnetwork to which all network endpoints in the NEG
+        # belong.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # [Output Only] The URL of the zone where the network endpoint group is located.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_port = args[:default_port] if args.key?(:default_port)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @size = args[:size] if args.key?(:size)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkEndpointGroupsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] The resource type, which is always compute#
+        # networkEndpointGroupAggregatedList for aggregated lists of network endpoint
+        # groups.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkEndpointGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroup>]
+        attr_accessor :items
+      
+        # [Output Only] The resource type, which is always compute#
+        # networkEndpointGroupList for network endpoint group lists.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupsAttachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be attached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupsDetachEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of network endpoints to be detached.
+        # Corresponds to the JSON property `networkEndpoints`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpoint>]
+        attr_accessor :network_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupsListEndpointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional query parameter for showing the health status of each network
+        # endpoint. Valid options are SKIP or SHOW. If you don't specifiy this parameter,
+        # the health status of network endpoints will not be provided.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_status = args[:health_status] if args.key?(:health_status)
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupsListNetworkEndpoints
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkEndpointWithHealthStatus resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpointWithHealthStatus>]
+        attr_accessor :items
+      
+        # [Output Only] The resource type, which is always compute#
+        # networkEndpointGroupsListNetworkEndpoints for the list of network endpoints in
+        # the specified network endpoint group.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkEndpointGroupsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The list of network endpoint groups that are contained in this
+        # scope.
+        # Corresponds to the JSON property `networkEndpointGroups`
+        # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroup>]
+        attr_accessor :network_endpoint_groups
+      
+        # [Output Only] An informational warning that replaces the list of network
+        # endpoint groups when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_endpoint_groups = args[:network_endpoint_groups] if args.key?(:network_endpoint_groups)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] An informational warning that replaces the list of network
+        # endpoint groups when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkEndpointWithHealthStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] The health status of network endpoint;
+        # Corresponds to the JSON property `healths`
+        # @return [Array<Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint>]
+        attr_accessor :healths
+      
+        # The network endpoint.
+        # Corresponds to the JSON property `networkEndpoint`
+        # @return [Google::Apis::ComputeV1::NetworkEndpoint]
+        attr_accessor :network_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @healths = args[:healths] if args.key?(:healths)
+          @network_endpoint = args[:network_endpoint] if args.key?(:network_endpoint)
+        end
+      end
+      
       # A network interface resource attached to an instance.
       class NetworkInterface
         include Google::Apis::Core::Hashable
@@ -13019,7 +13856,10 @@ module Google
         end
       end
       
-      # A NodeGroup resource.
+      # A NodeGroup resource. To create a node group, you must first create a node
+      # templates. To learn more about node groups and sole-tenant nodes, read the
+      # Sole-tenant nodes documentation. (== resource_for beta.nodeGroups ==) (==
+      # resource_for v1.nodeGroups ==)
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -13642,7 +14482,9 @@ module Google
         end
       end
       
-      # A Node Template resource.
+      # A Node Template resource. To learn more about node templates and sole-tenant
+      # nodes, read the Sole-tenant nodes documentation. (== resource_for beta.
+      # nodeTemplates ==) (== resource_for v1.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -18112,6 +18954,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, SSL health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -18141,6 +19003,7 @@ module Google
         def update!(**args)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
@@ -18887,6 +19750,11 @@ module Google
         # @return [String]
         attr_accessor :storage_bytes_status
       
+        # GCS bucket storage location of the snapshot (regional or multi-regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18911,6 +19779,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -20118,6 +20987,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, TCP health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -20147,6 +21036,7 @@ module Google
         def update!(**args)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
@@ -23979,6 +24869,7 @@ module Google
       end
       
       # A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)
+      # Next ID: 17
       class Zone
         include Google::Apis::Core::Hashable
       

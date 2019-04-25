@@ -51,7 +51,7 @@ module Google
           @batch_path = 'batch/plus/v1'
         end
         
-        # Get an activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get.
         # @param [String] fields
@@ -84,7 +84,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the activities in the specified collection for a particular user.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] user_id
         #   The ID of the user to get activities for. The special value "me" can be used
         #   to indicate the authenticated user.
@@ -131,7 +131,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search public activities.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] query
         #   Full-text search query string.
         # @param [String] language
@@ -181,7 +181,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a comment.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] comment_id
         #   The ID of the comment to get.
         # @param [String] fields
@@ -214,7 +214,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the comments for an activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get comments for.
         # @param [Fixnum] max_results
@@ -345,7 +345,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the people in the specified collection for a particular activity.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] activity_id
         #   The ID of the activity to get the list of people for.
         # @param [String] collection
@@ -391,7 +391,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search all public profiles.
+        # Shut down. See https://developers.google.com/+/api-shutdown for more details.
         # @param [String] query
         #   Specify a query string for full text search of public text in all profiles.
         # @param [String] language

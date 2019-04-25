@@ -454,6 +454,84 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1AddVisibilityLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1BatchCreateProducerOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1DisableConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1EnableConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1ImportProducerOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1QuotaOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1RefreshConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1DisableConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1EnableConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1GenerateServiceAccountResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1RefreshConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1RemoveVisibilityLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddTenantProjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1201,6 +1279,102 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
+        end
+      end
+      
+      class V1AddVisibilityLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels'
+        end
+      end
+      
+      class V1Beta1BatchCreateProducerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride::Representation
+      
+        end
+      end
+      
+      class V1Beta1DisableConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1Beta1EnableConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1Beta1ImportProducerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride::Representation
+      
+        end
+      end
+      
+      class V1Beta1QuotaOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
+          property :override_value, :numeric_string => true, as: 'overrideValue'
+          property :unit, as: 'unit'
+        end
+      end
+      
+      class V1Beta1RefreshConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1DisableConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1EnableConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1GenerateServiceAccountResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::ServiceconsumermanagementV1::V1ServiceAccount, decorator: Google::Apis::ServiceconsumermanagementV1::V1ServiceAccount::Representation
+      
+        end
+      end
+      
+      class V1RefreshConsumerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1RemoveVisibilityLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels'
+        end
+      end
+      
+      class V1ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :iam_account_name, as: 'iamAccountName'
+          property :name, as: 'name'
+          property :tag, as: 'tag'
+          property :unique_id, as: 'uniqueId'
         end
       end
     end

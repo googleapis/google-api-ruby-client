@@ -478,7 +478,7 @@ module Google
         # The exact format of the data stream ID created by a REST client is: type:
         # dataType.name:developer project number:device.manufacturer:device.model:device.
         # uid:dataStreamName
-        # When any of the optional fields that comprise of the data stream ID are blank,
+        # When any of the optional fields that make up the data stream ID are absent,
         # they will be omitted from the data stream ID. The minimum viable data stream
         # ID would be: type:dataType.name:developer project number
         # Finally, the developer project number is obfuscated when read by any REST or

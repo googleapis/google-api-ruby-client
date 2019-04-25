@@ -61,10 +61,10 @@ module Google
         # the request, the server will assign a random
         # name for this snapshot on the same project as the subscription, conforming
         # to the
-        # [resource name format](https://cloud.google.com/pubsub/docs/admin#
-        # resource_names).
-        # The generated name is populated in the returned Snapshot object. Note that
-        # for REST API requests, you must specify a name in the request.
+        # [resource name
+        # format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        # generated name is populated in the returned Snapshot object. Note that for
+        # REST API requests, you must specify a name in the request.
         # @param [String] name
         #   Optional user-provided name for this snapshot.
         #   If the name is not provided in the request, the server will assign a random
@@ -414,10 +414,10 @@ module Google
         # If the name is not provided in the request, the server will assign a random
         # name for this subscription on the same project as the topic, conforming
         # to the
-        # [resource name format](https://cloud.google.com/pubsub/docs/admin#
-        # resource_names).
-        # The generated name is populated in the returned Subscription object.
-        # Note that for REST API requests, you must specify a name in the request.
+        # [resource name
+        # format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        # generated name is populated in the returned Subscription object. Note that
+        # for REST API requests, you must specify a name in the request.
         # @param [String] name
         #   The name of the subscription. It must have the format
         #   `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must

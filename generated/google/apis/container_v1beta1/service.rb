@@ -48,7 +48,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists subnetworks that are usable for creating clusters in a project.
+        # Lists subnetworks that can be used for creating clusters in a project.
         # @param [String] parent
         #   The parent project where subnetworks are usable.
         #   Specified in the format 'projects/*'.
@@ -95,7 +95,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns configuration info about the Kubernetes Engine service.
+        # Returns configuration info about the Google Kubernetes Engine service.
         # @param [String] name
         #   The name (project and location) of the server config to get,
         #   specified in the format 'projects/*/locations/*'.
@@ -136,7 +136,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used to fetch locations that offer GKE.
+        # Fetches locations that offer Google Kubernetes Engine.
         # @param [String] parent
         #   Contains the name of the resource requested.
         #   Specified in the format 'projects/*'.
@@ -206,11 +206,11 @@ module Google
         # By default, the cluster is created in the project's
         # [default network](/compute/docs/networks-and-firewalls#networks).
         # One firewall is added for the cluster. After cluster creation,
-        # the cluster creates routes for each node to allow the containers
+        # the Kubelet creates routes for each node to allow the containers
         # on that node to communicate with all other instances in the
         # cluster.
         # Finally, an entry is added to the project's global metadata indicating
-        # which CIDR range is being used by the cluster.
+        # which CIDR range the cluster is using.
         # @param [String] parent
         #   The parent (project and location) where the cluster will be created.
         #   Specified in the format 'projects/*/locations/*'.
@@ -248,9 +248,9 @@ module Google
         # nodes.
         # Firewalls and routes that were configured during cluster creation
         # are also deleted.
-        # Other Google Compute Engine resources that might be in use by the cluster
-        # (e.g. load balancer resources) will not be deleted if they weren't present
-        # at the initial create time.
+        # Other Google Compute Engine resources that might be in use by the cluster,
+        # such as load balancer resources, are not deleted if they weren't present
+        # when the cluster was initially created.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to delete.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -342,7 +342,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetJSONWebKeys gets the public component of the cluster signing keys in
+        # Gets the public component of the cluster signing keys in
         # JSON Web Key format.
         # This API is not yet intended for general use, and is not available for all
         # clusters.
@@ -591,10 +591,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used to set master auth materials. Currently supports :-
-        # Changing the admin password for a specific cluster.
-        # This can be either via password generation or explicitly set.
-        # Modify basic_auth.csv and reset the K8S API server.
+        # Sets master auth materials. Currently supports changing the admin password
+        # or a specific cluster, either via password generation or explicitly setting
+        # the password.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set auth.
         #   Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -662,7 +661,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables/Disables Network Policy for a cluster.
+        # Enables or disables Network Policy for a cluster.
         # @param [String] name
         #   The name (project, location, cluster id) of the cluster to set networking
         #   policy. Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -730,7 +729,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Start master IP rotation.
+        # Starts master IP rotation.
         # @param [String] name
         #   The name (project, location, cluster id) of the cluster to start IP
         #   rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
@@ -918,7 +917,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the node pool requested.
+        # Retrieves the requested node pool.
         # @param [String] name
         #   The name (project, location, cluster, node pool id) of the node pool to
         #   get. Specified in the format
@@ -1015,8 +1014,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Roll back the previously Aborted or Failed NodePool upgrade.
-        # This will be an no-op if the last upgrade successfully completed.
+        # Rolls back a previously Aborted or Failed NodePool upgrade.
+        # This makes no changes if the last upgrade successfully completed.
         # @param [String] name
         #   The name (project, location, cluster, node pool id) of the node poll to
         #   rollback upgrade.
@@ -1191,9 +1190,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetOpenIDConfig gets the OIDC discovery document for the cluster.
-        # See the OpenID Connect Discovery 1.0 specification for details.
-        # https://openid.net/specs/openid-connect-discovery-1_0.html
+        # Gets the OIDC discovery document for the cluster.
+        # See the
+        # [OpenID Connect Discovery 1.0
+        # specification](https://openid.net/specs/openid-connect-discovery-1_0.html)
+        # for details.
         # This API is not yet intended for general use, and is not available for all
         # clusters.
         # @param [String] parent
@@ -1306,7 +1307,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all operations in a project in a specific zone or all zones.
+        # Lists all operations in a project in the specified zone or all zones.
         # @param [String] parent
         #   The parent (project and location) where the operations will be listed.
         #   Specified in the format 'projects/*/locations/*'.
@@ -1348,7 +1349,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns configuration info about the Kubernetes Engine service.
+        # Returns configuration info about the Google Kubernetes Engine service.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1484,11 +1485,11 @@ module Google
         # By default, the cluster is created in the project's
         # [default network](/compute/docs/networks-and-firewalls#networks).
         # One firewall is added for the cluster. After cluster creation,
-        # the cluster creates routes for each node to allow the containers
+        # the Kubelet creates routes for each node to allow the containers
         # on that node to communicate with all other instances in the
         # cluster.
         # Finally, an entry is added to the project's global metadata indicating
-        # which CIDR range is being used by the cluster.
+        # which CIDR range the cluster is using.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1533,9 +1534,9 @@ module Google
         # nodes.
         # Firewalls and routes that were configured during cluster creation
         # are also deleted.
-        # Other Google Compute Engine resources that might be in use by the cluster
-        # (e.g. load balancer resources) will not be deleted if they weren't present
-        # at the initial create time.
+        # Other Google Compute Engine resources that might be in use by the cluster,
+        # such as load balancer resources, are not deleted if they weren't present
+        # when the cluster was initially created.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -1983,10 +1984,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used to set master auth materials. Currently supports :-
-        # Changing the admin password for a specific cluster.
-        # This can be either via password generation or explicitly set.
-        # Modify basic_auth.csv and reset the K8S API server.
+        # Sets master auth materials. Currently supports changing the admin password
+        # or a specific cluster, either via password generation or explicitly setting
+        # the password.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -2031,7 +2031,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables/Disables Network Policy for a cluster.
+        # Enables or disables Network Policy for a cluster.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://developers.google.com/console/help/new/#projectnumber).
@@ -2076,7 +2076,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Start master IP rotation.
+        # Starts master IP rotation.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://developers.google.com/console/help/new/#projectnumber).
@@ -2311,7 +2311,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the node pool requested.
+        # Retrieves the requested node pool.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://developers.google.com/console/help/new/#projectnumber).
@@ -2408,8 +2408,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Roll back the previously Aborted or Failed NodePool upgrade.
-        # This will be an no-op if the last upgrade successfully completed.
+        # Rolls back a previously Aborted or Failed NodePool upgrade.
+        # This makes no changes if the last upgrade successfully completed.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).
@@ -2695,7 +2695,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all operations in a project in a specific zone or all zones.
+        # Lists all operations in a project in the specified zone or all zones.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).

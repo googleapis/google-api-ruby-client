@@ -144,8 +144,7 @@ module Google
         # [self service
         # tools](https://console.cloud.google.com/talent-solution/overview).
         # [Learn
-        # more](https://cloud.google.com/talent-solution/job-search/docs/management-
-        # tools)
+        # more](https://cloud.google.com/talent-solution/docs/management-tools)
         # about self service tools.
         # @param [String] parent
         #   Parent project name.

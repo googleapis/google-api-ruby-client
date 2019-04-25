@@ -406,6 +406,8 @@ module Google
           property :owner_company_id, :numeric_string => true, as: 'ownerCompanyId'
           property :reseller_id, :numeric_string => true, as: 'resellerId'
           property :section_type, as: 'sectionType'
+          property :vacation_mode_expire_time, as: 'vacationModeExpireTime'
+          property :vacation_mode_start_time, as: 'vacationModeStartTime'
         end
       end
       
@@ -584,6 +586,8 @@ module Google
           property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
       
           property :section_type, as: 'sectionType'
+          property :vacation_mode_days, as: 'vacationModeDays'
+          property :vacation_mode_expire_time, as: 'vacationModeExpireTime'
         end
       end
       
@@ -613,6 +617,8 @@ module Google
           property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
       
           property :section_type, as: 'sectionType'
+          property :vacation_mode_days, as: 'vacationModeDays'
+          property :vacation_mode_expire_time, as: 'vacationModeExpireTime'
         end
       end
       

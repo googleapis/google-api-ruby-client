@@ -249,14 +249,19 @@ module Google
         attr_accessor :current_node_count
       
         # [Output only] Deprecated, use
-        # [NodePool.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.
-        # clusters.nodePool)
+        # [NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.
+        # clusters.nodePools)
         # instead. The current version of the node software components. If they are
         # currently at multiple versions because they're in the process of being
         # upgraded, this reflects the minimum version of all nodes.
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
+      
+        # Constraints applied to pods.
+        # Corresponds to the JSON property `defaultMaxPodsConstraint`
+        # @return [Google::Apis::ContainerV1::MaxPodsConstraint]
+        attr_accessor :default_max_pods_constraint
       
         # An optional description of this cluster.
         # Corresponds to the JSON property `description`
@@ -514,6 +519,7 @@ module Google
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
+          @default_max_pods_constraint = args[:default_max_pods_constraint] if args.key?(:default_max_pods_constraint)
           @description = args[:description] if args.key?(:description)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
@@ -869,37 +875,37 @@ module Google
       class GetOpenIdConfigResponse
         include Google::Apis::Core::Hashable
       
-        # NOLINT
+        # Supported claims.
         # Corresponds to the JSON property `claims_supported`
         # @return [Array<String>]
         attr_accessor :claims_supported
       
-        # NOLINT
+        # Supported grant types.
         # Corresponds to the JSON property `grant_types`
         # @return [Array<String>]
         attr_accessor :grant_types
       
-        # NOLINT
+        # supported ID Token signing Algorithms.
         # Corresponds to the JSON property `id_token_signing_alg_values_supported`
         # @return [Array<String>]
         attr_accessor :id_token_signing_alg_values_supported
       
-        # NOLINT
+        # OIDC Issuer.
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
       
-        # NOLINT
+        # JSON Web Key uri.
         # Corresponds to the JSON property `jwks_uri`
         # @return [String]
         attr_accessor :jwks_uri
       
-        # NOLINT
+        # Supported response types.
         # Corresponds to the JSON property `response_types_supported`
         # @return [Array<String>]
         attr_accessor :response_types_supported
       
-        # NOLINT
+        # Supported subject types.
         # Corresponds to the JSON property `subject_types_supported`
         # @return [Array<String>]
         attr_accessor :subject_types_supported
@@ -1110,49 +1116,47 @@ module Google
       class Jwk
         include Google::Apis::Core::Hashable
       
-        # NOLINT
+        # Algorithm.
         # Corresponds to the JSON property `alg`
         # @return [String]
         attr_accessor :alg
       
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `crv`
         # @return [String]
         attr_accessor :crv
       
-        # NOLINT
+        # Used for RSA keys.
         # Corresponds to the JSON property `e`
         # @return [String]
         attr_accessor :e
       
-        # NOLINT
+        # Key ID.
         # Corresponds to the JSON property `kid`
         # @return [String]
         attr_accessor :kid
       
-        # NOLINT
+        # Key Type.
         # Corresponds to the JSON property `kty`
         # @return [String]
         attr_accessor :kty
       
-        # Fields for RSA keys.
-        # NOLINT
+        # Used for RSA keys.
         # Corresponds to the JSON property `n`
         # @return [String]
         attr_accessor :n
       
-        # NOLINT
+        # Permitted uses for the public keys.
         # Corresponds to the JSON property `use`
         # @return [String]
         attr_accessor :use
       
-        # Fields for ECDSA keys.
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `x`
         # @return [String]
         attr_accessor :x
       
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `y`
         # @return [String]
         attr_accessor :y
@@ -1291,6 +1295,35 @@ module Google
         end
       end
       
+      # ListUsableSubnetworksResponse is the response of
+      # ListUsableSubnetworksRequest.
+      class ListUsableSubnetworksResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token allows you to get the next page of results for list requests.
+        # If the number of results is larger than `page_size`, use the
+        # `next_page_token` as a value for the query parameter `page_token` in the
+        # next request. The value will become empty when there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of usable subnetworks in the specified network project.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<Google::Apis::ContainerV1::UsableSubnetwork>]
+        attr_accessor :subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
       # MaintenancePolicy defines the maintenance policy to be used for the cluster.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
@@ -1415,6 +1448,25 @@ module Google
         def update!(**args)
           @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Constraints applied to pods.
+      class MaxPodsConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Constraint enforced on the max num of pods per node.
+        # Corresponds to the JSON property `maxPodsPerNode`
+        # @return [Fixnum]
+        attr_accessor :max_pods_per_node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
         end
       end
       
@@ -1747,6 +1799,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeManagement]
         attr_accessor :management
       
+        # Constraints applied to pods.
+        # Corresponds to the JSON property `maxPodsConstraint`
+        # @return [Google::Apis::ContainerV1::MaxPodsConstraint]
+        attr_accessor :max_pods_constraint
+      
         # The name of the node pool.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1785,6 +1842,7 @@ module Google
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @management = args[:management] if args.key?(:management)
+          @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -3027,6 +3085,87 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # UsableSubnetwork resource returns the subnetwork name, its associated network
+      # and the primary CIDR range.
+      class UsableSubnetwork
+        include Google::Apis::Core::Hashable
+      
+        # The range of internal addresses that are owned by this subnetwork.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Network Name.
+        # Example: projects/my-project/global/networks/my-network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Secondary IP ranges.
+        # Corresponds to the JSON property `secondaryIpRanges`
+        # @return [Array<Google::Apis::ContainerV1::UsableSubnetworkSecondaryRange>]
+        attr_accessor :secondary_ip_ranges
+      
+        # A human readable status message representing the reasons for cases where
+        # the caller cannot use the secondary ranges under the subnet. For example if
+        # the secondary_ip_ranges is empty due to a permission issue, an insufficient
+        # permission message will be given by status_message.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Subnetwork Name.
+        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @network = args[:network] if args.key?(:network)
+          @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # Secondary IP range of a usable subnetwork.
+      class UsableSubnetworkSecondaryRange
+        include Google::Apis::Core::Hashable
+      
+        # The range of IP addresses belonging to this subnetwork secondary range.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # The name associated with this subnetwork secondary range, used when adding
+        # an alias IP range to a VM instance.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # This field is to determine the status of the secondary range programmably.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @status = args[:status] if args.key?(:status)
         end
       end
     end

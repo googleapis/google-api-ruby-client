@@ -196,7 +196,7 @@ module Google
         end
       end
       
-      # Configuration for an anthentication provider, including support for
+      # Configuration for an authentication provider, including support for
       # [JSON Web Token
       # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
@@ -1361,8 +1361,9 @@ module Google
       # This enables a HTTP JSON to RPC mapping as below:
       # HTTP | gRPC
       # -----|-----
-      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id:
-      # "123456" revision: 2 sub: SubMessage(subfield: "foo"))`
+      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` |
+      # `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
+      # "foo"))`
       # Note that fields which are mapped to URL query parameters must have a
       # primitive type or a repeated primitive type or a non-repeated message type.
       # In the case of a repeated type, the parameter can be repeated in the URL
@@ -1389,8 +1390,8 @@ module Google
       # protos JSON encoding:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" message ` text: "Hi!" `)`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" message ` text: "Hi!" `)`
       # The special name `*` can be used in the body mapping to define that
       # every field not bound by the path template should be mapped to the
       # request body.  This enables the following alternative definition of
@@ -1410,8 +1411,8 @@ module Google
       # The following HTTP JSON to RPC mapping is enabled:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" text: "Hi!")`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" text: "Hi!")`
       # Note that when using `*` in the body mapping, it is not possible to
       # have HTTP parameters, as all fields not bound by the path end in
       # the body. This makes this option more rarely used in practice when
@@ -1437,8 +1438,8 @@ module Google
       # HTTP | gRPC
       # -----|-----
       # `GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
-      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "
-      # 123456")`
+      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
+      # "123456")`
       # ## Rules for HTTP mapping
       # 1. Leaf request fields (recursive expansion nested messages in the request
       # message) are classified into three categories:
@@ -1474,15 +1475,17 @@ module Google
       # `"`var=*`"`, when such a variable is expanded into a URL path on the client
       # side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
       # server side does the reverse decoding. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``var``.
       # If a variable contains multiple path segments, such as `"`var=foo/*`"`
       # or `"`var=**`"`, when such a variable is expanded into a URL path on the
       # client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
       # The server side does the reverse decoding, except "%2F" and "%2f" are left
       # unchanged. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``+var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``+var``.
       # ## Using gRPC API Service Configuration
       # gRPC API Service Configuration (service config) is a configuration language
       # for configuring a gRPC service to become a user-facing product. The
@@ -3830,6 +3833,314 @@ module Google
           @allow_unregistered_calls = args[:allow_unregistered_calls] if args.key?(:allow_unregistered_calls)
           @selector = args[:selector] if args.key?(:selector)
           @skip_service_control = args[:skip_service_control] if args.key?(:skip_service_control)
+        end
+      end
+      
+      # Response message for the `AddVisibilityLabels` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1AddVisibilityLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated set of visibility labels for this consumer on this service.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Response message for BatchCreateProducerOverrides
+      class V1Beta1BatchCreateProducerOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The overrides that were created.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Response message for the `DisableConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1Beta1DisableConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the `EnableConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1Beta1EnableConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for ImportProducerOverrides
+      class V1Beta1ImportProducerOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The overrides that were created from the imported data.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # A quota override
+      class V1Beta1QuotaOverride
+        include Google::Apis::Core::Hashable
+      
+        # If this map is nonempty, then this override applies only to specific values
+        # for dimensions defined in the limit unit.
+        # For example, an override on a limit with the unit 1/`project`/`region`
+        # could contain an entry with the key "region" and the value "us-east-1";
+        # the override is only applied to quota consumed in that region.
+        # This map has the following restrictions:
+        # - Keys that are not defined in the limit's unit are not valid keys.
+        # Any string appearing in `brackets` in the unit (besides `project` or
+        # `user`) is a defined key.
+        # - "project" is not a valid key; the project is already specified in
+        # the parent resource name.
+        # - "user" is not a valid key; the API does not support quota overrides
+        # that apply only to a specific user.
+        # - If "region" appears as a key, its value must be a valid Cloud region.
+        # - If "zone" appears as a key, its value must be a valid Cloud zone.
+        # - If any valid key other than "region" or "zone" appears in the map, then
+        # all valid keys other than "region" or "zone" must also appear in the map.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # The name of the metric to which this override applies.
+        # An example name would be:
+        # `compute.googleapis.com/cpus`
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource name of the producer override.
+        # An example name would be:
+        # `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.
+        # googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The overriding quota limit value.
+        # Can be any nonnegative integer, or -1 (unlimited quota).
+        # Corresponds to the JSON property `overrideValue`
+        # @return [Fixnum]
+        attr_accessor :override_value
+      
+        # The limit unit of the limit to which this override applies.
+        # An example unit would be:
+        # `1/`project`/`region``
+        # Note that ``project`` and ``region`` are not placeholders in this example;
+        # the literal characters ``` and ``` occur in the string.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @metric = args[:metric] if args.key?(:metric)
+          @name = args[:name] if args.key?(:name)
+          @override_value = args[:override_value] if args.key?(:override_value)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Response message for the `RefreshConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1Beta1RefreshConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the `DisableConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1DisableConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the `EnableConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1EnableConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the `GenerateServiceAccount` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1GenerateServiceAccountResponse
+        include Google::Apis::Core::Hashable
+      
+        # A service account in the Identity and Access Management API.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::ServiceconsumermanagementV1::V1ServiceAccount]
+        attr_accessor :account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+        end
+      end
+      
+      # Response message for the `RefreshConsumer` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1RefreshConsumerResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the `RemoveVisibilityLabels` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1RemoveVisibilityLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated set of visibility labels for this consumer on this service.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # A service account in the Identity and Access Management API.
+      class V1ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The IAM resource name of the service account in the following format:
+        # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`.
+        # Corresponds to the JSON property `iamAccountName`
+        # @return [String]
+        attr_accessor :iam_account_name
+      
+        # P4 SA resource name.
+        # An example name would be:
+        # `services/serviceconsumermanagement.googleapis.com/projects/123/
+        # serviceAccounts/default`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The P4 SA configuration tag. This must be defined in activation_grants.
+        # If not specified when creating the account, the tag is set to "default".
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # The unique and stable id of the service account.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @iam_account_name = args[:iam_account_name] if args.key?(:iam_account_name)
+          @name = args[:name] if args.key?(:name)
+          @tag = args[:tag] if args.key?(:tag)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
         end
       end
     end

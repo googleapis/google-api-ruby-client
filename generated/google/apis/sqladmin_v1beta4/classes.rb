@@ -443,8 +443,9 @@ module Google
       
         # The database engine type and version. The databaseVersion field can not be
         # changed after instance creation. MySQL Second Generation instances: MYSQL_5_7 (
-        # default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 MySQL First
-        # Generation instances: MYSQL_5_6 (default) or MYSQL_5_5
+        # default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 (default) or
+        # POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6 (default) or
+        # MYSQL_5_5
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -546,6 +547,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_names
       
+        # Initial root password. Use only on creation.
+        # Corresponds to the JSON property `rootPassword`
+        # @return [String]
+        attr_accessor :root_password
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -612,6 +618,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
           @replica_names = args[:replica_names] if args.key?(:replica_names)
+          @root_password = args[:root_password] if args.key?(:root_password)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)

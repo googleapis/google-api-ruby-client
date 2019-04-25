@@ -866,7 +866,8 @@ module Google
         end
       end
       
-      # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+      # A [GQL
+      # query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
       class GqlQuery
         include Google::Apis::Core::Hashable
       
@@ -1394,8 +1395,9 @@ module Google
       
         # An ending point for the query results. Query cursors are
         # returned in query result batches and
-        # [can only be used to limit the same query](https://cloud.google.com/datastore/
-        # docs/concepts/queries#cursors_limits_and_offsets).
+        # [can only be used to limit the same
+        # query](https://cloud.google.com/datastore/docs/concepts/queries#
+        # cursors_limits_and_offsets).
         # Corresponds to the JSON property `endCursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1438,8 +1440,9 @@ module Google
       
         # A starting point for the query results. Query cursors are
         # returned in query result batches and
-        # [can only be used to continue the same query](https://cloud.google.com/
-        # datastore/docs/concepts/queries#cursors_limits_and_offsets).
+        # [can only be used to continue the same
+        # query](https://cloud.google.com/datastore/docs/concepts/queries#
+        # cursors_limits_and_offsets).
         # Corresponds to the JSON property `startCursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1668,7 +1671,8 @@ module Google
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
-        # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+        # A [GQL
+        # query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
         # @return [Google::Apis::DatastoreV1beta3::GqlQuery]
         attr_accessor :gql_query

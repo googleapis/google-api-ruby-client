@@ -240,32 +240,6 @@ module Google
         end
       end
       
-      # Deprecated and unused.
-      class AndroidDevicePolicyConfig
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#androidDevicePolicyConfig".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Deprecated and unused.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
       # Represents the list of app restrictions available to be pre-configured for the
       # product.
       class AppRestrictionsSchema

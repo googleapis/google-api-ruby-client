@@ -1319,6 +1319,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Resource policies applied to this disk for automatic snapshot creations.
+        # Specified using the full or partial URL. For instance template, specify only
+        # the resource policy name.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Array<String>]
+        attr_accessor :resource_policies
+      
         # The source image to create this disk. When creating a new instance, one of
         # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
@@ -1344,6 +1351,22 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
+        # The source snapshot to create this disk. When creating a new instance, one of
+        # initializeParams.sourceSnapshot or disks.source is required except for local
+        # SSD.
+        # To create a disk with a snapshot that you created, specify the snapshot name
+        # in the following format:
+        # global/snapshots/my-backup
+        # If the source snapshot is deleted later, this field will not be set.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :source_snapshot_encryption_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1356,8 +1379,11 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
         end
       end
       
@@ -3945,7 +3971,7 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # The deprecation state of this resource. This can be ACTIVE DEPRECATED,
+        # The deprecation state of this resource. This can be ACTIVE, DEPRECATED,
         # OBSOLETE, or DELETED. Operations which communicate the end of life date for an
         # image, can use ACTIVE. Operations which create a new resource using a
         # DEPRECATED resource will return successfully, but with a warning indicating
@@ -6030,7 +6056,8 @@ module Google
         # [Output Only] Absolute value of VM instances calculated based on the specific
         # mode.
         # 
-        # - If the value is fixed, then the caculated value is equal to the fixed value.
+        # - If the value is fixed, then the calculated value is equal to the fixed value.
+        # 
         # - If the value is a percent, then the calculated value is percent/100 *
         # targetSize. For example, the calculated value of a 80% of a managed instance
         # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
@@ -7221,9 +7248,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not
-        # specified, the default is TCP. Exactly one of the protocol-specific health
-        # check field must be specified, which must match type field.
+        # Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2.
+        # If not specified, the default is TCP. Exactly one of the protocol-specific
+        # health check field must be specified, which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -9152,8 +9179,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
-        # [Output Only] The list of instance actions and the number of instances in this
-        # managed instance group that are pending for each of those actions.
+        # [Deprecated] This field is deprecated and will be removed. Prefer using the
+        # status field instead. Please contact cloud-updater-feedback@google.com to
+        # leave feedback if your workload relies on this field. [Output Only] The list
+        # of instance actions and the number of instances in this managed instance group
+        # that are pending for each of those actions.
         # Corresponds to the JSON property `pendingActions`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary]
         attr_accessor :pending_actions
@@ -9204,8 +9234,8 @@ module Google
       
         # Specifies the instance templates used by this managed instance group to create
         # instances.
-        # Each version is defined by an instanceTemplate. Every template can appear at
-        # most once per instance group. This field overrides the top-level
+        # Each version is defined by an instanceTemplate and a name. Every version can
+        # appear at most once per instance group. This field overrides the top-level
         # instanceTemplate field. Read more about the relationships between these fields.
         # Exactly one version must leave the targetSize field unset. That version will
         # be applied to all remaining instances. For more information, read about canary
@@ -9611,26 +9641,34 @@ module Google
       class InstanceGroupManagerPendingActionsSummary
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The number of instances in the managed instance group that are
-        # pending to be created.
+        # [Deprecated] This field is deprecated and will be removed. Prefer using the
+        # status field instead. Please contact cloud-updater-feedback@google.com to
+        # leave feedback if your workload relies on this field. [Output Only] The number
+        # of instances in the managed instance group that are pending to be created.
         # Corresponds to the JSON property `creating`
         # @return [Fixnum]
         attr_accessor :creating
       
-        # [Output Only] The number of instances in the managed instance group that are
-        # pending to be deleted.
+        # [Deprecated] This field is deprecated and will be removed. Prefer using the
+        # status field instead. Please contact cloud-updater-feedback@google.com to
+        # leave feedback if your workload relies on this field. [Output Only] The number
+        # of instances in the managed instance group that are pending to be deleted.
         # Corresponds to the JSON property `deleting`
         # @return [Fixnum]
         attr_accessor :deleting
       
-        # [Output Only] The number of instances in the managed instance group that are
-        # pending to be recreated.
+        # [Deprecated] This field is deprecated and will be removed. Prefer using the
+        # status field instead. Please contact cloud-updater-feedback@google.com to
+        # leave feedback if your workload relies on this field. [Output Only] The number
+        # of instances in the managed instance group that are pending to be recreated.
         # Corresponds to the JSON property `recreating`
         # @return [Fixnum]
         attr_accessor :recreating
       
-        # [Output Only] The number of instances in the managed instance group that are
-        # pending to be restarted.
+        # [Deprecated] This field is deprecated and will be removed. Prefer using the
+        # status field instead. Please contact cloud-updater-feedback@google.com to
+        # leave feedback if your workload relies on this field. [Output Only] The number
+        # of instances in the managed instance group that are pending to be restarted.
         # Corresponds to the JSON property `restarting`
         # @return [Fixnum]
         attr_accessor :restarting
@@ -9707,6 +9745,11 @@ module Google
       class InstanceGroupManagerUpdatePolicy
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `instanceRedistributionType`
+        # @return [String]
+        attr_accessor :instance_redistribution_type
+      
         # Encapsulates numeric value that can be either absolute or relative.
         # Corresponds to the JSON property `maxSurge`
         # @return [Google::Apis::ComputeBeta::FixedOrPercent]
@@ -9744,6 +9787,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_redistribution_type = args[:instance_redistribution_type] if args.key?(:instance_redistribution_type)
           @max_surge = args[:max_surge] if args.key?(:max_surge)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @min_ready_sec = args[:min_ready_sec] if args.key?(:min_ready_sec)
@@ -9756,7 +9800,9 @@ module Google
       class InstanceGroupManagerVersion
         include Google::Apis::Core::Hashable
       
-        # 
+        # The URL of the instance template that is specified for this managed instance
+        # group. The group uses this template to create new instances in the managed
+        # instance group until the `targetSize` for this version is reached.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -15164,7 +15210,10 @@ module Google
         end
       end
       
-      # A NodeGroup resource.
+      # A NodeGroup resource. To create a node group, you must first create a node
+      # templates. To learn more about node groups and sole-tenant nodes, read the
+      # Sole-tenant nodes documentation. (== resource_for beta.nodeGroups ==) (==
+      # resource_for v1.nodeGroups ==)
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -15793,7 +15842,9 @@ module Google
         end
       end
       
-      # A Node Template resource.
+      # A Node Template resource. To learn more about node templates and sole-tenant
+      # nodes, read the Sole-tenant nodes documentation. (== resource_for beta.
+      # nodeTemplates ==) (== resource_for v1.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -19644,6 +19695,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy]
         attr_accessor :snapshot_schedule_policy
       
+        # [Output Only] The status of resource policy creation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19658,6 +19714,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -20236,6 +20293,13 @@ module Google
         # @return [String]
         attr_accessor :next_hop_instance
       
+        # [Output Only] The URL to an InterconnectAttachment which is the next hop for
+        # the route. This field will only be populated for the dynamic routes generated
+        # by Cloud Router with a linked interconnectAttachment.
+        # Corresponds to the JSON property `nextHopInterconnectAttachment`
+        # @return [String]
+        attr_accessor :next_hop_interconnect_attachment
+      
         # The network IP address of an instance that should handle matching packets.
         # Only IPv4 is supported.
         # Corresponds to the JSON property `nextHopIp`
@@ -20298,6 +20362,7 @@ module Google
           @next_hop_gateway = args[:next_hop_gateway] if args.key?(:next_hop_gateway)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
+          @next_hop_interconnect_attachment = args[:next_hop_interconnect_attachment] if args.key?(:next_hop_interconnect_attachment)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
@@ -28594,6 +28659,7 @@ module Google
       end
       
       # A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)
+      # Next ID: 17
       class Zone
         include Google::Apis::Core::Hashable
       

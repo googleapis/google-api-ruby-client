@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/storage-transfer/docs
     module StoragetransferV1
       VERSION = 'V1'
-      REVISION = '20190306'
+      REVISION = '20190417'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

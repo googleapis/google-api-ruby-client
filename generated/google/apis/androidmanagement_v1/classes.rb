@@ -284,6 +284,11 @@ module Google
         # @return [String]
         attr_accessor :installer_package_name
       
+        # List of keyed app states reported by the app.
+        # Corresponds to the JSON property `keyedAppStates`
+        # @return [Array<Google::Apis::AndroidmanagementV1::KeyedAppState>]
+        attr_accessor :keyed_app_states
+      
         # Package name of the app.
         # Corresponds to the JSON property `packageName`
         # @return [String]
@@ -330,12 +335,33 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @events = args[:events] if args.key?(:events)
           @installer_package_name = args[:installer_package_name] if args.key?(:installer_package_name)
+          @keyed_app_states = args[:keyed_app_states] if args.key?(:keyed_app_states)
           @package_name = args[:package_name] if args.key?(:package_name)
           @package_sha256_hash = args[:package_sha256_hash] if args.key?(:package_sha256_hash)
           @signing_key_cert_fingerprints = args[:signing_key_cert_fingerprints] if args.key?(:signing_key_cert_fingerprints)
           @state = args[:state] if args.key?(:state)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # Settings controlling the behavior of application reports.
+      class ApplicationReportingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether removed apps are included in application reports.
+        # Corresponds to the JSON property `includeRemovedApps`
+        # @return [Boolean]
+        attr_accessor :include_removed_apps
+        alias_method :include_removed_apps?, :include_removed_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_removed_apps = args[:include_removed_apps] if args.key?(:include_removed_apps)
         end
       end
       
@@ -1202,6 +1228,61 @@ module Google
         end
       end
       
+      # Keyed app state reported by the app.
+      class KeyedAppState
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the app state on the device.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optionally, a machine-readable value to be read by the EMM. For example,
+        # setting values that the admin can choose to query against in the EMM console (
+        # e.g. “notify me if the battery_warning data < 10”).
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        # The key for the app state. Acts as a point of reference for what the app is
+        # providing state for. For example, when providing managed configuration
+        # feedback, this key could be the managed configuration key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The time the app state was most recently updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Optionally, a free-form message string to explain the app state. If the state
+        # was triggered by a particular value (e.g. a managed configuration value), it
+        # should be included in the message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The severity of the app state.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data = args[:data] if args.key?(:data)
+          @key = args[:key] if args.key?(:key)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # An action to launch an app.
       class LaunchAppAction
         include Google::Apis::Core::Hashable
@@ -1293,6 +1374,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # Response to a request to list web apps for a given enterprise.
+      class ListWebAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there are more results, a token to retrieve next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of web apps.
+        # Corresponds to the JSON property `webApps`
+        # @return [Array<Google::Apis::AndroidmanagementV1::WebApp>]
+        attr_accessor :web_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @web_apps = args[:web_apps] if args.key?(:web_apps)
         end
       end
       
@@ -2745,6 +2851,11 @@ module Google
       class StatusReportingSettings
         include Google::Apis::Core::Hashable
       
+        # Settings controlling the behavior of application reports.
+        # Corresponds to the JSON property `applicationReportingSettings`
+        # @return [Google::Apis::AndroidmanagementV1::ApplicationReportingSettings]
+        attr_accessor :application_reporting_settings
+      
         # Whether app reports are enabled.
         # Corresponds to the JSON property `applicationReportsEnabled`
         # @return [Boolean]
@@ -2799,6 +2910,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application_reporting_settings = args[:application_reporting_settings] if args.key?(:application_reporting_settings)
           @application_reports_enabled = args[:application_reports_enabled] if args.key?(:application_reports_enabled)
           @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
@@ -2925,6 +3037,82 @@ module Google
         def update!(**args)
           @default_message = args[:default_message] if args.key?(:default_message)
           @localized_messages = args[:localized_messages] if args.key?(:localized_messages)
+        end
+      end
+      
+      # A web app.
+      class WebApp
+        include Google::Apis::Core::Hashable
+      
+        # The display mode of the web app.
+        # Corresponds to the JSON property `displayMode`
+        # @return [String]
+        attr_accessor :display_mode
+      
+        # A list of icons for the web app. Must have at least one element.
+        # Corresponds to the JSON property `icons`
+        # @return [Array<Google::Apis::AndroidmanagementV1::WebAppIcon>]
+        attr_accessor :icons
+      
+        # The name of the web app, which is generated by the server during creation in
+        # the form enterprises/`enterpriseId`/webApps/`packageName`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The start URL, i.e. the URL that should load when the user opens the
+        # application.
+        # Corresponds to the JSON property `startUrl`
+        # @return [String]
+        attr_accessor :start_url
+      
+        # The title of the web app as displayed to the user (e.g., amongst a list of
+        # other applications, or as a label for an icon).
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The current version of the app.<p>Note that the version can automatically
+        # increase during the lifetime of the web app, while Google does internal
+        # housekeeping to keep the web app up-to-date.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_mode = args[:display_mode] if args.key?(:display_mode)
+          @icons = args[:icons] if args.key?(:icons)
+          @name = args[:name] if args.key?(:name)
+          @start_url = args[:start_url] if args.key?(:start_url)
+          @title = args[:title] if args.key?(:title)
+          @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
+      # An icon for a web app. Supported formats are: png, jpg and webp.
+      class WebAppIcon
+        include Google::Apis::Core::Hashable
+      
+        # The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
+        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). <ul> <li>
+        # The image type can be png or jpg. <li>The image should ideally be square. <li>
+        # The image should ideally have a size of 512x512. </ul>
+        # Corresponds to the JSON property `imageData`
+        # @return [String]
+        attr_accessor :image_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_data = args[:image_data] if args.key?(:image_data)
         end
       end
       

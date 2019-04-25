@@ -706,8 +706,8 @@ module Google
         # A token to retrieve next page of results.
         # Pass this value in the
         # ListReportTypesRequest.page_token
-        # field in the subsequent call to `ListReportTypes` method to retrieve the next
-        # page of results.
+        # field in the subsequent call to `ListReportTypes` method to retrieve the
+        # next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

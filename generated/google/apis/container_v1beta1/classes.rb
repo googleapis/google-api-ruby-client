@@ -368,7 +368,7 @@ module Google
       
         # [Output only] Deprecated, use
         # [NodePool.version](/kubernetes-engine/docs/reference/rest/v1beta1/projects.
-        # zones.clusters.nodePool)
+        # locations.clusters.nodePools)
         # instead. The current version of the node software components.
         # If they are currently at multiple versions because they're in the process
         # of being upgraded, this reflects the minimum version of all nodes.
@@ -1160,37 +1160,37 @@ module Google
       class GetOpenIdConfigResponse
         include Google::Apis::Core::Hashable
       
-        # NOLINT
+        # Supported claims.
         # Corresponds to the JSON property `claims_supported`
         # @return [Array<String>]
         attr_accessor :claims_supported
       
-        # NOLINT
+        # Supported grant types.
         # Corresponds to the JSON property `grant_types`
         # @return [Array<String>]
         attr_accessor :grant_types
       
-        # NOLINT
+        # supported ID Token signing Algorithms.
         # Corresponds to the JSON property `id_token_signing_alg_values_supported`
         # @return [Array<String>]
         attr_accessor :id_token_signing_alg_values_supported
       
-        # NOLINT
+        # OIDC Issuer.
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
       
-        # NOLINT
+        # JSON Web Key uri.
         # Corresponds to the JSON property `jwks_uri`
         # @return [String]
         attr_accessor :jwks_uri
       
-        # NOLINT
+        # Supported response types.
         # Corresponds to the JSON property `response_types_supported`
         # @return [Array<String>]
         attr_accessor :response_types_supported
       
-        # NOLINT
+        # Supported subject types.
         # Corresponds to the JSON property `subject_types_supported`
         # @return [Array<String>]
         attr_accessor :subject_types_supported
@@ -1465,49 +1465,47 @@ module Google
       class Jwk
         include Google::Apis::Core::Hashable
       
-        # NOLINT
+        # Algorithm.
         # Corresponds to the JSON property `alg`
         # @return [String]
         attr_accessor :alg
       
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `crv`
         # @return [String]
         attr_accessor :crv
       
-        # NOLINT
+        # Used for RSA keys.
         # Corresponds to the JSON property `e`
         # @return [String]
         attr_accessor :e
       
-        # NOLINT
+        # Key ID.
         # Corresponds to the JSON property `kid`
         # @return [String]
         attr_accessor :kid
       
-        # NOLINT
+        # Key Type.
         # Corresponds to the JSON property `kty`
         # @return [String]
         attr_accessor :kty
       
-        # Fields for RSA keys.
-        # NOLINT
+        # Used for RSA keys.
         # Corresponds to the JSON property `n`
         # @return [String]
         attr_accessor :n
       
-        # NOLINT
+        # Permitted uses for the public keys.
         # Corresponds to the JSON property `use`
         # @return [String]
         attr_accessor :use
       
-        # Fields for ECDSA keys.
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `x`
         # @return [String]
         attr_accessor :x
       
-        # NOLINT
+        # Used for ECDSA keys.
         # Corresponds to the JSON property `y`
         # @return [String]
         attr_accessor :y
@@ -2130,6 +2128,11 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # SandboxConfig contains configurations of the sandbox to use for the node.
+        # Corresponds to the JSON property `sandboxConfig`
+        # @return [Google::Apis::ContainerV1beta1::SandboxConfig]
+        attr_accessor :sandbox_config
+      
         # The Google Cloud Platform Service Account to be used by the node VMs. If
         # no Service Account is specified, the "default" service account is used.
         # Corresponds to the JSON property `serviceAccount`
@@ -2174,6 +2177,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
@@ -2721,6 +2725,25 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # SandboxConfig contains configurations of the sandbox to use for the node.
+      class SandboxConfig
+        include Google::Apis::Core::Hashable
+      
+        # Type of the sandbox to use for the node (e.g. 'gvisor')
+        # Corresponds to the JSON property `sandboxType`
+        # @return [String]
+        attr_accessor :sandbox_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sandbox_type = args[:sandbox_type] if args.key?(:sandbox_type)
         end
       end
       
@@ -3796,8 +3819,8 @@ module Google
       class WorkloadMetadataConfig
         include Google::Apis::Core::Hashable
       
-        # NodeMetadata is the configuration for how to expose the node metadata to
-        # the workload running on the node.
+        # NodeMetadata is the configuration for how to expose metadata to the
+        # workloads running on the node.
         # Corresponds to the JSON property `nodeMetadata`
         # @return [String]
         attr_accessor :node_metadata

@@ -1332,6 +1332,12 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
+        # The result of sentiment analysis as configured by
+        # `sentiment_analysis_request_config`.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
+      
         # The Speech recognition confidence between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. The default of 0.0 is a sentinel value indicating that confidence
@@ -1373,9 +1379,59 @@ module Google
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @parameters = args[:parameters] if args.key?(:parameters)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
+        end
+      end
+      
+      # The sentiment, such as positive/negative feeling or association, for a unit
+      # of analysis, such as the query text.
+      class GoogleCloudDialogflowV2Sentiment
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+        # sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # The result of sentiment analysis as configured by
+      # `sentiment_analysis_request_config`.
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # The sentiment, such as positive/negative feeling or association, for a unit
+        # of analysis, such as the query text.
+        # Corresponds to the JSON property `queryTextSentiment`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Sentiment]
+        attr_accessor :query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
         end
       end
       
@@ -2413,6 +2469,11 @@ module Google
         # @return [String]
         attr_accessor :model
       
+        # Optional. Which variant of the Speech model to use.
+        # Corresponds to the JSON property `modelVariant`
+        # @return [String]
+        attr_accessor :model_variant
+      
         # Optional. The collection of phrase hints which are used to boost accuracy
         # of speech recognition.
         # Refer to
@@ -2442,6 +2503,7 @@ module Google
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
+          @model_variant = args[:model_variant] if args.key?(:model_variant)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end

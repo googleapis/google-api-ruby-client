@@ -279,7 +279,7 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -716,7 +716,7 @@ module Google
         attr_accessor :instance
       
         # Required. The ID of the instance to create.  Valid identifiers are of the
-        # form `a-z*[a-z0-9]` and must be between 6 and 30 characters in
+        # form `a-z*[a-z0-9]` and must be between 2 and 64 characters in
         # length.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
@@ -900,14 +900,14 @@ module Google
         # @return [Array<Google::Apis::SpannerV1::ResultSet>]
         attr_accessor :result_sets
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -1209,7 +1209,7 @@ module Google
         # Required. A unique identifier for the instance, which cannot be changed
         # after the instance is created. Values are of the form
         # `projects/<project>/instances/a-z*[a-z0-9]`. The final
-        # segment of the name must be between 6 and 30 characters in length.
+        # segment of the name must be between 2 and 64 characters in length.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1280,7 +1280,8 @@ module Google
       # closed, indicating if the range includes rows with that key.
       # Keys are represented by lists, where the ith value in the list
       # corresponds to the ith component of the table or index primary key.
-      # Individual values are encoded as described here.
+      # Individual values are encoded as described
+      # here.
       # For example, consider the following table definition:
       # CREATE TABLE UserEvents (
       # UserName STRING(MAX),
@@ -1612,14 +1613,14 @@ module Google
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
         # - Simple to use and understand for most users
         # - Flexible enough to meet unexpected needs
         # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
+        # The `Status` message contains three pieces of data: error code, error
+        # message, and error details. The error code should be an enum value of
         # google.rpc.Code, but it may accept additional error codes if needed.  The
         # error message should be a developer-facing English message that helps
         # developers *understand* and *resolve* the error. If a localized user-facing
@@ -2693,14 +2694,14 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
       # - Simple to use and understand for most users
       # - Flexible enough to meet unexpected needs
       # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
+      # The `Status` message contains three pieces of data: error code, error
+      # message, and error details. The error code should be an enum value of
       # google.rpc.Code, but it may accept additional error codes if needed.  The
       # error message should be a developer-facing English message that helps
       # developers *understand* and *resolve* the error. If a localized user-facing

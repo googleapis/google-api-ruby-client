@@ -976,6 +976,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1714,6 +1726,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesRemoveResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2062,6 +2086,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2344,6 +2374,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupsListNetworkEndpoints
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2423,6 +2459,18 @@ module Google
       end
       
       class NetworksAddPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5279,6 +5327,7 @@ module Google
       
           hash :labels, as: 'labels'
           collection :replica_zones, as: 'replicaZones'
+          collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -6116,6 +6165,8 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -6748,6 +6799,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
+      
         end
       end
       
@@ -8207,6 +8274,25 @@ module Google
         end
       end
       
+      class InstancesGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeAlpha::Firewall, decorator: Google::Apis::ComputeAlpha::Firewall::Representation
+      
+          collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeAlpha::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeAlpha::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
+      
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
+      
+        end
+      end
+      
       class InstancesRemoveResourcePoliciesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8848,6 +8934,15 @@ module Google
         end
       end
       
+      class LocalDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_count, as: 'diskCount'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+        end
+      end
+      
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9214,6 +9309,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancer_vm_encryption, as: 'loadBalancerVmEncryption'
+          property :multicast_mode, as: 'multicastMode'
           property :name, as: 'name'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
       
@@ -9352,7 +9448,17 @@ module Google
       class NetworkEndpointGroupsListEndpointsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_filters, as: 'endpointFilters', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter::Representation
+      
           property :health_status, as: 'healthStatus'
+        end
+      end
+      
+      class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_endpoint, as: 'networkEndpoint', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
+      
         end
       end
       
@@ -9433,6 +9539,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -9510,6 +9617,25 @@ module Google
         end
       end
       
+      class NetworksGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeAlpha::Firewall, decorator: Google::Apis::ComputeAlpha::Firewall::Representation
+      
+          collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeAlpha::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeAlpha::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
+      
+        end
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
+      
+        end
+      end
+      
       class NetworksRemovePeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9534,6 +9660,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed_holdback, as: 'managedHoldback'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -9619,6 +9746,8 @@ module Google
       class NodeGroupNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::LocalDisk, decorator: Google::Apis::ComputeAlpha::LocalDisk::Representation
+      
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
@@ -9722,6 +9851,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::LocalDisk, decorator: Google::Apis::ComputeAlpha::LocalDisk::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -11044,6 +11175,7 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicySnapshotSchedulePolicy::Representation
       
+          property :status, as: 'status'
           property :vm_maintenance_policy, as: 'vmMaintenancePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicy::Representation
       
         end
@@ -11230,6 +11362,7 @@ module Google
           property :next_hop_gateway, as: 'nextHopGateway'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
           property :next_hop_peering, as: 'nextHopPeering'
@@ -11628,6 +11761,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :latency_tolerant, as: 'latencyTolerant'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       

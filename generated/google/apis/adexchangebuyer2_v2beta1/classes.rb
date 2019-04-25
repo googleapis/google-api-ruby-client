@@ -319,7 +319,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the callout status.
-        # See [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/
+        # See
+        # [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/
         # downloads/callout-status-codes).
         # Corresponds to the JSON property `calloutStatusId`
         # @return [Fixnum]
@@ -987,8 +988,9 @@ module Google
         attr_accessor :bid_count
       
         # The ID of the creative status.
-        # See [creative-status-codes](https://developers.google.com/authorized-buyers/
-        # rtb/downloads/creative-status-codes).
+        # See
+        # [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
+        # downloads/creative-status-codes).
         # Corresponds to the JSON property `creativeStatusId`
         # @return [Fixnum]
         attr_accessor :creative_status_id
@@ -1141,9 +1143,8 @@ module Google
       end
       
       # A deal represents a segment of inventory for displaying ads on.
-      # A proposal can contain multiple deals. A deal contains the terms and targeting
-      # information that
-      # is used for serving.
+      # A proposal can contain multiple deals. A deal contains the terms and
+      # targeting information that is used for serving.
       class Deal
         include Google::Apis::Core::Hashable
       
@@ -1156,9 +1157,9 @@ module Google
       
         # Optional proposed flight start time of the deal.
         # This will generally be stored in the granularity of one second since deal
-        # serving
-        # starts at seconds boundary. Any time specified with more granularity
-        # (e.g., in milliseconds) will be truncated towards the start of time in seconds.
+        # serving starts at seconds boundary. Any time specified with more
+        # granularity (e.g., in milliseconds) will be truncated towards the start of
+        # time in seconds.
         # Corresponds to the JSON property `availableStartTime`
         # @return [String]
         attr_accessor :available_start_time
@@ -3199,18 +3200,15 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
-        # The proposed end time for the deal. The field will be truncated to the order
-        # of
-        # seconds during serving.
+        # The proposed end time for the deal. The field will be truncated to the
+        # order of seconds during serving.
         # Corresponds to the JSON property `availableEndTime`
         # @return [String]
         attr_accessor :available_end_time
       
         # Inventory availability dates. The start time will be truncated to seconds
-        # during serving.
-        # Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to 3:
-        # 23:34
-        # when serving.
+        # during serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will
+        # be truncated to 3:23:34 when serving.
         # Corresponds to the JSON property `availableStartTime`
         # @return [String]
         attr_accessor :available_start_time
@@ -3348,9 +3346,8 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::PrivateData]
         attr_accessor :buyer_private_data
       
-        # The deals associated with this proposal. For Private Auction proposals (whose
-        # deals have
-        # NonGuaranteedAuctionTerms), there will only be one deal.
+        # The deals associated with this proposal. For Private Auction proposals
+        # (whose deals have NonGuaranteedAuctionTerms), there will only be one deal.
         # Corresponds to the JSON property `deals`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Deal>]
         attr_accessor :deals
@@ -3472,8 +3469,7 @@ module Google
       # account manager for access to Marketplace resources.
       # Represents a publisher profile in Marketplace.
       # All fields are read only. All string fields are free-form text entered by the
-      # publisher
-      # unless noted otherwise.
+      # publisher unless noted otherwise.
       class PublisherProfile
         include Google::Apis::Core::Hashable
       
@@ -3482,16 +3478,15 @@ module Google
         # @return [String]
         attr_accessor :audience_description
       
-        # Statement explaining what's unique about publisher's business, and why buyers
-        # should
-        # partner with the publisher.
+        # Statement explaining what's unique about publisher's business, and why
+        # buyers should partner with the publisher.
         # Corresponds to the JSON property `buyerPitchStatement`
         # @return [String]
         attr_accessor :buyer_pitch_statement
       
-        # Contact information for direct reservation deals. This is free text entered by
-        # the publisher
-        # and may include information like names, phone numbers and email addresses.
+        # Contact information for direct reservation deals. This is free text entered
+        # by the publisher and may include information like names, phone numbers and
+        # email addresses.
         # Corresponds to the JSON property `directDealsContact`
         # @return [String]
         attr_accessor :direct_deals_contact
@@ -3501,11 +3496,10 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The list of domains represented in this publisher profile. Empty if this is a
-        # parent profile.
-        # These are top private domains, meaning that these will not contain a string
-        # like
-        # "photos.google.co.uk/123", but will instead contain "google.co.uk".
+        # The list of domains represented in this publisher profile. Empty if this is
+        # a parent profile. These are top private domains, meaning that these will
+        # not contain a string like "photos.google.co.uk/123", but will instead
+        # contain "google.co.uk".
         # Corresponds to the JSON property `domains`
         # @return [Array<String>]
         attr_accessor :domains
@@ -3515,9 +3509,8 @@ module Google
         # @return [String]
         attr_accessor :google_plus_url
       
-        # A Google public URL to the logo for this publisher profile. The logo is stored
-        # as
-        # a PNG, JPG, or GIF image.
+        # A Google public URL to the logo for this publisher profile. The logo is
+        # stored as a PNG, JPG, or GIF image.
         # Corresponds to the JSON property `logoUrl`
         # @return [String]
         attr_accessor :logo_url
@@ -3532,9 +3525,9 @@ module Google
         # @return [String]
         attr_accessor :overview
       
-        # Contact information for programmatic deals. This is free text entered by the
-        # publisher
-        # and may include information like names, phone numbers and email addresses.
+        # Contact information for programmatic deals. This is free text entered by
+        # the publisher and may include information like names, phone numbers and
+        # email addresses.
         # Corresponds to the JSON property `programmaticDealsContact`
         # @return [String]
         attr_accessor :programmatic_deals_contact

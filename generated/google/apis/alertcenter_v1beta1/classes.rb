@@ -47,6 +47,98 @@ module Google
         end
       end
       
+      # Alerts from G Suite Security Center rules service configured by admin.
+      class ActivityRule
+        include Google::Apis::Core::Hashable
+      
+        # List of action names associated with the rule threshold.
+        # Corresponds to the JSON property `actionNames`
+        # @return [Array<String>]
+        attr_accessor :action_names
+      
+        # Rule create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Alert display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Rule name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Query that is used to get the data from the associated source.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # List of alert ids superseded by this alert. It is used to indicate that
+        # this alert is essentially extension of superseded alerts and we found the
+        # relationship after creating these alerts.
+        # Corresponds to the JSON property `supersededAlerts`
+        # @return [Array<String>]
+        attr_accessor :superseded_alerts
+      
+        # Alert id superseding this alert. It is used to indicate that superseding
+        # alert is essentially extension of this alert and we found the relationship
+        # after creating both alerts.
+        # Corresponds to the JSON property `supersedingAlert`
+        # @return [String]
+        attr_accessor :superseding_alert
+      
+        # Alert threshold is for example “COUNT > 5”.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        # The trigger sources for this rule.
+        # * GMAIL_EVENTS
+        # * DEVICE_EVENTS
+        # * USER_EVENTS
+        # Corresponds to the JSON property `triggerSource`
+        # @return [String]
+        attr_accessor :trigger_source
+      
+        # The timestamp of the last update to the rule.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Rule window size. Possible values are 1 hour or 24 hours.
+        # Corresponds to the JSON property `windowSize`
+        # @return [String]
+        attr_accessor :window_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_names = args[:action_names] if args.key?(:action_names)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+          @superseded_alerts = args[:superseded_alerts] if args.key?(:superseded_alerts)
+          @superseding_alert = args[:superseding_alert] if args.key?(:superseding_alert)
+          @threshold = args[:threshold] if args.key?(:threshold)
+          @trigger_source = args[:trigger_source] if args.key?(:trigger_source)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @window_size = args[:window_size] if args.key?(:window_size)
+        end
+      end
+      
       # An alert affecting a customer.
       class Alert
         include Google::Apis::Core::Hashable
@@ -119,6 +211,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Output only. The time this alert was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -135,6 +232,7 @@ module Google
           @source = args[:source] if args.key?(:source)
           @start_time = args[:start_time] if args.key?(:start_time)
           @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

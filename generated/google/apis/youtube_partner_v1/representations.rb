@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AdSlot
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AllowedAdvertisingOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -591,16 +585,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :midroll_seconds, as: 'midrollSeconds'
           property :position, as: 'position'
-          collection :slot, as: 'slot', class: Google::Apis::YoutubePartnerV1::AdSlot, decorator: Google::Apis::YoutubePartnerV1::AdSlot::Representation
-      
-        end
-      end
-      
-      class AdSlot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :type, as: 'type'
         end
       end
       
@@ -1112,6 +1096,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
+          property :manual_segment, as: 'manual_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
+      
           property :reference_segment, as: 'reference_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
       
           property :video_segment, as: 'video_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
@@ -1497,8 +1483,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, :numeric_string => true, as: 'duration'
+          property :finish, as: 'finish'
           property :kind, as: 'kind'
-          property :start, :numeric_string => true, as: 'start'
+          property :start, as: 'start'
         end
       end
       

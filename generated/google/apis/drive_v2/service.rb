@@ -178,10 +178,14 @@ module Google
         # changes.
         # @param [String] change_id
         #   The ID of the change.
+        # @param [String] drive_id
+        #   The shared drive from which the change will be returned.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
-        #   The Team Drive from which the change will be returned.
+        #   Deprecated use driveId instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -201,11 +205,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_change(change_id, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_change(change_id, drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'changes/{changeId}', options)
           command.response_representation = Google::Apis::DriveV2::Change::Representation
           command.response_class = Google::Apis::DriveV2::Change
           command.params['changeId'] = change_id unless change_id.nil?
+          command.query['driveId'] = drive_id unless drive_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -215,11 +221,15 @@ module Google
         end
         
         # Gets the starting pageToken for listing future changes.
+        # @param [String] drive_id
+        #   The ID of the shared drive for which the starting pageToken for listing future
+        #   changes from that shared drive will be returned.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
-        #   The ID of the Team Drive for which the starting pageToken for listing future
-        #   changes from that Team Drive will be returned.
+        #   Deprecated use driveId instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -239,10 +249,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_change_start_page_token(supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_change_start_page_token(drive_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'changes/startPageToken', options)
           command.response_representation = Google::Apis::DriveV2::StartPageToken::Representation
           command.response_class = Google::Apis::DriveV2::StartPageToken
+          command.query['driveId'] = drive_id unless drive_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -251,7 +263,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the changes for a user or Team Drive.
+        # Lists the changes for a user or shared drive.
+        # @param [String] drive_id
+        #   The shared drive from which changes will be returned. If specified the change
+        #   IDs will be reflective of the shared drive; use the combined drive ID and
+        #   change ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -260,13 +276,15 @@ module Google
         # @param [Boolean] include_deleted
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
+        # @param [Boolean] include_items_from_all_drives
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
         #   shared files which have not been added to My Drive will be omitted from the
         #   result.
         # @param [Boolean] include_team_drive_items
-        #   Whether Team Drive files or changes should be included in results.
+        #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
@@ -278,12 +296,12 @@ module Google
         #   appDataFolder' and 'photos'.
         # @param [Fixnum] start_change_id
         #   Deprecated - use pageToken instead.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
-        #   The Team Drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the Team Drive; use the combined Team Drive ID and
-        #   change ID as an identifier.
+        #   Deprecated use driveId instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -303,18 +321,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_changes(include_corpus_removals: nil, include_deleted: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_changes(drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'changes', options)
           command.response_representation = Google::Apis::DriveV2::ChangeList::Representation
           command.response_class = Google::Apis::DriveV2::ChangeList
+          command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['includeCorpusRemovals'] = include_corpus_removals unless include_corpus_removals.nil?
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
+          command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['spaces'] = spaces unless spaces.nil?
           command.query['startChangeId'] = start_change_id unless start_change_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -325,6 +346,10 @@ module Google
         
         # Subscribe to changes for a user.
         # @param [Google::Apis::DriveV2::Channel] channel_object
+        # @param [String] drive_id
+        #   The shared drive from which changes will be returned. If specified the change
+        #   IDs will be reflective of the shared drive; use the combined drive ID and
+        #   change ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -333,13 +358,15 @@ module Google
         # @param [Boolean] include_deleted
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
+        # @param [Boolean] include_items_from_all_drives
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
         #   shared files which have not been added to My Drive will be omitted from the
         #   result.
         # @param [Boolean] include_team_drive_items
-        #   Whether Team Drive files or changes should be included in results.
+        #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
         #   Maximum number of changes to return.
         # @param [String] page_token
@@ -351,12 +378,12 @@ module Google
         #   appDataFolder' and 'photos'.
         # @param [Fixnum] start_change_id
         #   Deprecated - use pageToken instead.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
-        #   The Team Drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the Team Drive; use the combined Team Drive ID and
-        #   change ID as an identifier.
+        #   Deprecated use driveId instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -376,20 +403,23 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(channel_object = nil, include_corpus_removals: nil, include_deleted: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(channel_object = nil, drive_id: nil, include_corpus_removals: nil, include_deleted: nil, include_items_from_all_drives: nil, include_subscribed: nil, include_team_drive_items: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'changes/watch', options)
           command.request_representation = Google::Apis::DriveV2::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::DriveV2::Channel::Representation
           command.response_class = Google::Apis::DriveV2::Channel
+          command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['includeCorpusRemovals'] = include_corpus_removals unless include_corpus_removals.nil?
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
+          command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['spaces'] = spaces unless spaces.nil?
           command.query['startChangeId'] = start_change_id unless start_change_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -503,8 +533,10 @@ module Google
         # @param [String] folder_id
         #   The ID of the folder.
         # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -524,13 +556,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_child(folder_id, child_reference_object = nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_child(folder_id, child_reference_object = nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{folderId}/children', options)
           command.request_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.request_object = child_reference_object
           command.response_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.response_class = Google::Apis::DriveV2::ChildReference
           command.params['folderId'] = folder_id unless folder_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -826,6 +859,266 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes a shared drive for which the user is an organizer. The
+        # shared drive cannot contain any untrashed items.
+        # @param [String] drive_id
+        #   The ID of the shared drive.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'drives/{driveId}', options)
+          command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a shared drive's metadata by ID.
+        # @param [String] drive_id
+        #   The ID of the shared drive.
+        # @param [Boolean] use_domain_admin_access
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the shared drive belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::Drive] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::Drive]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_drife(drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'drives/{driveId}', options)
+          command.response_representation = Google::Apis::DriveV2::Drive::Representation
+          command.response_class = Google::Apis::DriveV2::Drive
+          command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Hides a shared drive from the default view.
+        # @param [String] drive_id
+        #   The ID of the shared drive.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::Drive] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::Drive]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def hide_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'drives/{driveId}/hide', options)
+          command.response_representation = Google::Apis::DriveV2::Drive::Representation
+          command.response_class = Google::Apis::DriveV2::Drive
+          command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new shared drive.
+        # @param [String] request_id
+        #   An ID, such as a random UUID, which uniquely identifies this user's request
+        #   for idempotent creation of a shared drive. A repeated request by the same user
+        #   and with the same request ID will avoid creating duplicates by attempting to
+        #   create the same shared drive. If the shared drive already exists a 409 error
+        #   will be returned.
+        # @param [Google::Apis::DriveV2::Drive] drive_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::Drive] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::Drive]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_drife(request_id, drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'drives', options)
+          command.request_representation = Google::Apis::DriveV2::Drive::Representation
+          command.request_object = drive_object
+          command.response_representation = Google::Apis::DriveV2::Drive::Representation
+          command.response_class = Google::Apis::DriveV2::Drive
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the user's shared drives.
+        # @param [Fixnum] max_results
+        #   Maximum number of shared drives to return.
+        # @param [String] page_token
+        #   Page token for shared drives.
+        # @param [String] q
+        #   Query string for searching shared drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Issue the request as a domain administrator; if set to true, then all shared
+        #   drives of the domain in which the requester is an administrator are returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::DriveList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::DriveList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_drives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'drives', options)
+          command.response_representation = Google::Apis::DriveV2::DriveList::Representation
+          command.response_class = Google::Apis::DriveV2::DriveList
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['q'] = q unless q.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a shared drive to the default view.
+        # @param [String] drive_id
+        #   The ID of the shared drive.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::Drive] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::Drive]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unhide_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'drives/{driveId}/unhide', options)
+          command.response_representation = Google::Apis::DriveV2::Drive::Representation
+          command.response_class = Google::Apis::DriveV2::Drive
+          command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the metadata for a shared drive.
+        # @param [String] drive_id
+        #   The ID of the shared drive.
+        # @param [Google::Apis::DriveV2::Drive] drive_object
+        # @param [Boolean] use_domain_admin_access
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the shared drive belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::Drive] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::Drive]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_drife(drive_id, drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'drives/{driveId}', options)
+          command.request_representation = Google::Apis::DriveV2::Drive::Representation
+          command.request_object = drive_object
+          command.response_representation = Google::Apis::DriveV2::Drive::Representation
+          command.response_class = Google::Apis::DriveV2::Drive
+          command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a copy of the specified file.
         # @param [String] file_id
         #   The ID of the file to copy.
@@ -839,8 +1132,10 @@ module Google
         # @param [Boolean] pinned
         #   Whether to pin the head revision of the new copy. A file can have a maximum of
         #   200 pinned revisions.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -867,7 +1162,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -878,6 +1173,7 @@ module Google
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['pinned'] = pinned unless pinned.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['timedTextLanguage'] = timed_text_language unless timed_text_language.nil?
           command.query['timedTextTrackName'] = timed_text_track_name unless timed_text_track_name.nil?
@@ -889,11 +1185,13 @@ module Google
         end
         
         # Permanently deletes a file by ID. Skips the trash. The currently authenticated
-        # user must own the file or be an organizer on the parent for Team Drive files.
+        # user must own the file or be an organizer on the parent for shared drive files.
         # @param [String] file_id
         #   The ID of the file to delete.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -913,9 +1211,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_file(file_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_file(file_id, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'files/{fileId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1041,8 +1340,10 @@ module Google
         # @param [String] revision_id
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] update_viewed_date
         #   Deprecated: Use files.update with modifiedDateBehavior=noChange,
         #   updateViewedDate=true and an empty request body.
@@ -1067,7 +1368,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_file(file_id, acknowledge_abuse: nil, projection: nil, revision_id: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_file(file_id, acknowledge_abuse: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command =  make_simple_command(:get, 'files/{fileId}', options)
           else
@@ -1080,6 +1381,7 @@ module Google
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['revisionId'] = revision_id unless revision_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1099,8 +1401,10 @@ module Google
         # @param [Boolean] pinned
         #   Whether to pin the head revision of the uploaded file. A file can have a
         #   maximum of 200 pinned revisions.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1133,7 +1437,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_file(file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_file(file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, 'files', options)
           else
@@ -1149,6 +1453,7 @@ module Google
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['pinned'] = pinned unless pinned.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['timedTextLanguage'] = timed_text_language unless timed_text_language.nil?
           command.query['timedTextTrackName'] = timed_text_track_name unless timed_text_track_name.nil?
@@ -1162,16 +1467,18 @@ module Google
         
         # Lists the user's files.
         # @param [String] corpora
-        #   Comma-separated list of bodies of items (files/documents) to which the query
-        #   applies. Supported bodies are 'default', 'domain', 'teamDrive' and '
-        #   allTeamDrives'. 'allTeamDrives' must be combined with 'default'; all other
-        #   values must be used in isolation. Prefer 'default' or 'teamDrive' to '
-        #   allTeamDrives' for efficiency.
+        #   Bodies of items (files/documents) to which the query applies. Supported bodies
+        #   are 'default', 'domain', 'drive' and 'allDrives'. Prefer 'default' or 'drive'
+        #   to 'allDrives' for efficiency.
         # @param [String] corpus
         #   The body of items (files/documents) to which the query applies. Deprecated:
         #   use 'corpora' instead.
+        # @param [String] drive_id
+        #   ID of the shared drive to search.
+        # @param [Boolean] include_items_from_all_drives
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_team_drive_items
-        #   Whether Team Drive items should be included in results.
+        #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
         #   The maximum number of files to return per page. Partial or empty result pages
         #   are possible even before the end of the files list has been reached.
@@ -1192,10 +1499,12 @@ module Google
         # @param [String] spaces
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
-        #   ID of Team Drive to search.
+        #   Deprecated use driveId instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1215,12 +1524,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_files(corpora: nil, corpus: nil, include_team_drive_items: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, q: nil, spaces: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_files(corpora: nil, corpus: nil, drive_id: nil, include_items_from_all_drives: nil, include_team_drive_items: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, q: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files', options)
           command.response_representation = Google::Apis::DriveV2::FileList::Representation
           command.response_class = Google::Apis::DriveV2::FileList
           command.query['corpora'] = corpora unless corpora.nil?
           command.query['corpus'] = corpus unless corpus.nil?
+          command.query['driveId'] = drive_id unless drive_id.nil?
+          command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
@@ -1228,6 +1539,7 @@ module Google
           command.query['projection'] = projection unless projection.nil?
           command.query['q'] = q unless q.nil?
           command.query['spaces'] = spaces unless spaces.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['teamDriveId'] = team_drive_id unless team_drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1268,8 +1580,10 @@ module Google
         #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
         #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
         #   to the modified date set modifiedDateBehavior=noChange.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1297,7 +1611,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'files/{fileId}', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -1313,6 +1627,7 @@ module Google
           command.query['pinned'] = pinned unless pinned.nil?
           command.query['removeParents'] = remove_parents unless remove_parents.nil?
           command.query['setModifiedDate'] = set_modified_date unless set_modified_date.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['timedTextLanguage'] = timed_text_language unless timed_text_language.nil?
           command.query['timedTextTrackName'] = timed_text_track_name unless timed_text_track_name.nil?
@@ -1327,8 +1642,10 @@ module Google
         # Set the file's updated time to the current server time.
         # @param [String] file_id
         #   The ID of the file to update.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1348,11 +1665,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def touch_file(file_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def touch_file(file_id, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/touch', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1361,11 +1679,13 @@ module Google
         end
         
         # Moves a file to the trash. The currently authenticated user must own the file
-        # or be at least a fileOrganizer on the parent for Team Drive files.
+        # or be at least a fileOrganizer on the parent for shared drive files.
         # @param [String] file_id
         #   The ID of the file to trash.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1385,11 +1705,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def trash_file(file_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def trash_file(file_id, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/trash', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1400,8 +1721,10 @@ module Google
         # Restores a file from the trash.
         # @param [String] file_id
         #   The ID of the file to untrash.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1421,11 +1744,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def untrash_file(file_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def untrash_file(file_id, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/untrash', options)
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1465,8 +1789,10 @@ module Google
         #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
         #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
         #   to the modified date set modifiedDateBehavior=noChange.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
         #   The language of the timed text.
         # @param [String] timed_text_track_name
@@ -1498,7 +1824,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:put, 'files/{fileId}', options)
           else
@@ -1520,6 +1846,7 @@ module Google
           command.query['pinned'] = pinned unless pinned.nil?
           command.query['removeParents'] = remove_parents unless remove_parents.nil?
           command.query['setModifiedDate'] = set_modified_date unless set_modified_date.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['timedTextLanguage'] = timed_text_language unless timed_text_language.nil?
           command.query['timedTextTrackName'] = timed_text_track_name unless timed_text_track_name.nil?
@@ -1543,8 +1870,10 @@ module Google
         # @param [String] revision_id
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] update_viewed_date
         #   Deprecated: Use files.update with modifiedDateBehavior=noChange,
         #   updateViewedDate=true and an empty request body.
@@ -1569,7 +1898,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, projection: nil, revision_id: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, projection: nil, revision_id: nil, supports_all_drives: nil, supports_team_drives: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command =  make_simple_command(:post, 'files/{fileId}/watch', options)
           else
@@ -1584,6 +1913,7 @@ module Google
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['revisionId'] = revision_id unless revision_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1666,8 +1996,10 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1687,13 +2019,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_parent(file_id, parent_reference_object = nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_parent(file_id, parent_reference_object = nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/parents', options)
           command.request_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.request_object = parent_reference_object
           command.response_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.response_class = Google::Apis::DriveV2::ParentReference
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1734,17 +2067,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a permission from a file or Team Drive.
+        # Deletes a permission from a file or shared drive.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [String] permission_id
         #   The ID for the permission.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1764,10 +2100,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(file_id, permission_id, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1778,15 +2115,18 @@ module Google
         
         # Gets a permission by ID.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [String] permission_id
         #   The ID for the permission.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1806,12 +2146,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission(file_id, permission_id, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files/{fileId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1853,21 +2194,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a permission for a file or Team Drive.
+        # Inserts a permission for a file or shared drive.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1887,7 +2231,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -1896,6 +2240,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['emailMessage'] = email_message unless email_message.nil?
           command.query['sendNotificationEmails'] = send_notification_emails unless send_notification_emails.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1904,22 +2249,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's or Team Drive's permissions.
+        # Lists a file's or shared drive's permissions.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [Fixnum] max_results
         #   The maximum number of permissions to return per page. When not set for files
-        #   in a Team Drive, at most 100 results will be returned. When not set for files
-        #   that are not in a Team Drive, the entire list will be returned.
+        #   in a shared drive, at most 100 results will be returned. When not set for
+        #   files that are not in a shared drive, the entire list will be returned.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1939,13 +2287,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(file_id, max_results: nil, page_token: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_permissions(file_id, max_results: nil, page_token: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files/{fileId}/permissions', options)
           command.response_representation = Google::Apis::DriveV2::PermissionList::Representation
           command.response_class = Google::Apis::DriveV2::PermissionList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1956,21 +2305,24 @@ module Google
         
         # Updates a permission using patch semantics.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1990,7 +2342,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -1999,6 +2351,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['transferOwnership'] = transfer_ownership unless transfer_ownership.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
@@ -2010,21 +2363,24 @@ module Google
         
         # Updates a permission.
         # @param [String] file_id
-        #   The ID for the file or Team Drive.
+        #   The ID for the file or shared drive.
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
+        # @param [Boolean] supports_all_drives
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
-        #   Whether the requesting application supports Team Drives.
+        #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if they are an administrator of the domain to
-        #   which the item belongs.
+        #   requester will be granted access if the file ID parameter refers to a shared
+        #   drive and the requester is an administrator of the domain to which the shared
+        #   drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2044,7 +2400,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2053,6 +2409,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
+          command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['transferOwnership'] = transfer_ownership unless transfer_ownership.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
@@ -2825,8 +3182,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a Team Drive for which the user is an organizer. The Team
-        # Drive cannot contain any untrashed items.
+        # Deprecated use drives.delete instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [String] fields
@@ -2857,7 +3213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a Team Drive's metadata by ID.
+        # Deprecated use drives.get instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Boolean] use_domain_admin_access
@@ -2895,7 +3251,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Team Drive.
+        # Deprecated use drives.insert instead.
         # @param [String] request_id
         #   An ID, such as a random UUID, which uniquely identifies this user's request
         #   for idempotent creation of a Team Drive. A repeated request by the same user
@@ -2935,7 +3291,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's Team Drives.
+        # Deprecated use drives.list instead.
         # @param [Fixnum] max_results
         #   Maximum number of Team Drives to return.
         # @param [String] page_token
@@ -2978,7 +3334,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Team Drive's metadata
+        # Deprecated use drives.update instead.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
         # @param [Google::Apis::DriveV2::TeamDrive] team_drive_object

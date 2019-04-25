@@ -102,21 +102,21 @@ module Google
         end
       end
       
-      # A configured rewrite that will direct any requests to a Cloud Run service. If
-      # the Cloud Run service does not exist when setting or updating your Firebase
-      # Hosting configuration then the request will fail. Any errors from the Cloud
-      # Run service (including when the service has been deleted) will be passed back
-      # down to the end user.
+      # A configured rewrite that directs requests to a Cloud Run service. If the
+      # Cloud Run service does not exist when setting or updating your Firebase
+      # Hosting configuration, then the request fails. Any errors from the Cloud Run
+      # service are passed to the end user (for example, if you delete a service, any
+      # requests directed to that service receive a `404` error).
       class CloudRunRewrite
         include Google::Apis::Core::Hashable
       
-        # Optional. The region where the Cloud Run service is hosted.  Defaults to
-        # `us-central1` if not supplied.
+        # Optional. User-provided region where the Cloud Run service is hosted.<br>
+        # Defaults to `us-central1` if not supplied.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Required. User supplied ID of the Cloud Run service.
+        # Required. User-defined ID of the Cloud Run service.
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -583,11 +583,11 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # A configured rewrite that will direct any requests to a Cloud Run service. If
-        # the Cloud Run service does not exist when setting or updating your Firebase
-        # Hosting configuration then the request will fail. Any errors from the Cloud
-        # Run service (including when the service has been deleted) will be passed back
-        # down to the end user.
+        # A configured rewrite that directs requests to a Cloud Run service. If the
+        # Cloud Run service does not exist when setting or updating your Firebase
+        # Hosting configuration, then the request fails. Any errors from the Cloud Run
+        # service are passed to the end user (for example, if you delete a service, any
+        # requests directed to that service receive a `404` error).
         # Corresponds to the JSON property `run`
         # @return [Google::Apis::FirebasehostingV1beta1::CloudRunRewrite]
         attr_accessor :run

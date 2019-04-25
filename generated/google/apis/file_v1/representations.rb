@@ -40,6 +40,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -111,6 +147,74 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          hash :maintenance_policy_names, as: 'maintenancePolicyNames'
+          property :name, as: 'name'
+          hash :producer_metadata, as: 'producerMetadata'
+          collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
+      
+          hash :rollout_metadata, as: 'rolloutMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata::Representation
+      
+          property :slo_metadata, as: 'sloMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata::Representation
+      
+          hash :software_versions, as: 'softwareVersions'
+          property :state, as: 'state'
+          property :tenant_project_id, as: 'tenantProjectId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rescheduled, as: 'rescheduled'
+          property :scheduled_end_time, as: 'scheduledEndTime'
+          property :scheduled_start_time, as: 'scheduledStartTime'
+          property :target_release, as: 'targetRelease'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_type, as: 'resourceType'
+          property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notification, as: 'notification', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata::Representation
+      
+          property :release_name, as: 'releaseName'
+          property :rollout_name, as: 'rolloutName'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusion_duration, as: 'exclusionDuration'
+          property :exclusion_start_time, as: 'exclusionStartTime'
+          property :reason, as: 'reason'
+          property :slo_name, as: 'sloName'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
+      
+          property :tier, as: 'tier'
         end
       end
       

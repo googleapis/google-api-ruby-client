@@ -497,7 +497,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          property :email, as: 'email'
+          property :first_name, as: 'firstName'
           property :hold_time, as: 'holdTime'
+          property :last_name, as: 'lastName'
         end
       end
       

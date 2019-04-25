@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2OutputAudioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2QueryInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +364,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2Sentiment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SynthesizeSpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +401,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2TrainAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2VoiceSelectionParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -780,6 +816,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :input_audio, :base64 => true, as: 'inputAudio'
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig::Representation
+      
           property :query_input, as: 'queryInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryInput::Representation
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters::Representation
@@ -790,6 +828,9 @@ module Google
       class GoogleCloudDialogflowV2DetectIntentResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_audio, :base64 => true, as: 'outputAudio'
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig::Representation
+      
           property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryResult::Representation
       
           property :response_id, as: 'responseId'
@@ -863,6 +904,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
           property :language_code, as: 'languageCode'
+          property :model_variant, as: 'modelVariant'
           collection :phrase_hints, as: 'phraseHints'
           property :sample_rate_hertz, as: 'sampleRateHertz'
         end
@@ -1181,6 +1223,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2OutputAudioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_encoding, as: 'audioEncoding'
+          property :sample_rate_hertz, as: 'sampleRateHertz'
+          property :synthesize_speech_config, as: 'synthesizeSpeechConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SynthesizeSpeechConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2QueryInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1202,6 +1254,8 @@ module Google
       
           hash :payload, as: 'payload'
           property :reset_contexts, as: 'resetContexts'
+          property :sentiment_analysis_request_config, as: 'sentimentAnalysisRequestConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisRequestConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisRequestConfig::Representation
+      
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
       
           property :time_zone, as: 'timeZone'
@@ -1225,6 +1279,8 @@ module Google
       
           hash :parameters, as: 'parameters'
           property :query_text, as: 'queryText'
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult::Representation
+      
           property :speech_recognition_confidence, as: 'speechRecognitionConfidence'
           hash :webhook_payload, as: 'webhookPayload'
           property :webhook_source, as: 'webhookSource'
@@ -1248,6 +1304,29 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2Sentiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Sentiment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Sentiment::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2SessionEntityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1255,6 +1334,18 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SynthesizeSpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effects_profile_id, as: 'effectsProfileId'
+          property :pitch, as: 'pitch'
+          property :speaking_rate, as: 'speakingRate'
+          property :voice, as: 'voice', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2VoiceSelectionParams, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2VoiceSelectionParams::Representation
+      
+          property :volume_gain_db, as: 'volumeGainDb'
         end
       end
       
@@ -1269,6 +1360,14 @@ module Google
       class GoogleCloudDialogflowV2TrainAgentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2VoiceSelectionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :ssml_gender, as: 'ssmlGender'
         end
       end
       

@@ -1522,8 +1522,7 @@ module Google
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [String] track
-        #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production", "rollout" or "internal".
+        #   The track to read or modify.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1563,8 +1562,7 @@ module Google
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [String] track
-        #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production", "rollout" or "internal".
+        #   The track to read or modify.
         # @param [Google::Apis::AndroidpublisherV2::Testers] testers_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1607,8 +1605,7 @@ module Google
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [String] track
-        #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production", "rollout" or "internal".
+        #   The track to read or modify.
         # @param [Google::Apis::AndroidpublisherV2::Testers] testers_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1722,9 +1719,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the track configuration for the specified track type. When halted, the
-        # rollout track cannot be updated without adding new APKs, and adding new APKs
-        # will cause it to resume. This method supports patch semantics.
+        # Updates the track configuration for the specified track type. This method
+        # supports patch semantics.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1767,9 +1763,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the track configuration for the specified track type. When halted, the
-        # rollout track cannot be updated without adding new APKs, and adding new APKs
-        # will cause it to resume.
+        # Updates the track configuration for the specified track type.
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".

@@ -407,6 +407,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_group_id, as: 'contactGroupId'
+          property :contact_group_resource_name, as: 'contactGroupResourceName'
         end
       end
       

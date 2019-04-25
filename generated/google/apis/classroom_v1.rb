@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20181113'
+      REVISION = '20190409'
 
       # View and manage announcements in Google Classroom
       AUTH_CLASSROOM_ANNOUNCEMENTS = 'https://www.googleapis.com/auth/classroom.announcements'
@@ -80,6 +80,12 @@ module Google
 
       # View course work and grades for students in the Google Classroom classes you teach or administer
       AUTH_CLASSROOM_STUDENT_SUBMISSIONS_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.students.readonly'
+
+      # See, create, and edit topics in Google Classroom
+      AUTH_CLASSROOM_TOPICS = 'https://www.googleapis.com/auth/classroom.topics'
+
+      # View topics in Google Classroom
+      AUTH_CLASSROOM_TOPICS_READONLY = 'https://www.googleapis.com/auth/classroom.topics.readonly'
     end
   end
 end

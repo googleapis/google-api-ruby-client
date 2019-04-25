@@ -184,6 +184,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+          property :uri_prefix, as: 'uriPrefix'
         end
       end
       

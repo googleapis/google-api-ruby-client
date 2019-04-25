@@ -1213,6 +1213,122 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets details of a Test Case for a Step. Experimental test cases API. Still in
+        # active development.
+        # May return any of the following canonical error codes:
+        # - PERMISSION_DENIED - if the user is not authorized to write to project -
+        # INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing
+        # Test Case does not exist
+        # @param [String] project_id
+        #   A Project id.
+        #   Required.
+        # @param [String] history_id
+        #   A History id.
+        #   Required.
+        # @param [String] execution_id
+        #   A Execution id
+        #   Required.
+        # @param [String] step_id
+        #   A Step id. Note: This step must include a TestExecutionStep.
+        #   Required.
+        # @param [String] test_case_id
+        #   A Test Case id.
+        #   Required.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ToolresultsV1beta3::TestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ToolresultsV1beta3::TestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_history_execution_step_test_case(project_id, history_id, execution_id, step_id, test_case_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}', options)
+          command.response_representation = Google::Apis::ToolresultsV1beta3::TestCase::Representation
+          command.response_class = Google::Apis::ToolresultsV1beta3::TestCase
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['historyId'] = history_id unless history_id.nil?
+          command.params['executionId'] = execution_id unless execution_id.nil?
+          command.params['stepId'] = step_id unless step_id.nil?
+          command.params['testCaseId'] = test_case_id unless test_case_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Test Cases attached to a Step. Experimental test cases API. Still in
+        # active development.
+        # May return any of the following canonical error codes:
+        # - PERMISSION_DENIED - if the user is not authorized to write to project -
+        # INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing
+        # Step does not exist
+        # @param [String] project_id
+        #   A Project id.
+        #   Required.
+        # @param [String] history_id
+        #   A History id.
+        #   Required.
+        # @param [String] execution_id
+        #   A Execution id
+        #   Required.
+        # @param [String] step_id
+        #   A Step id. Note: This step must include a TestExecutionStep.
+        #   Required.
+        # @param [Fixnum] page_size
+        #   The maximum number of TestCases to fetch.
+        #   Default value: 100. The server will use this default if the field is not set
+        #   or has a value of 0.
+        #   Optional.
+        # @param [String] page_token
+        #   A continuation token to resume the query at the next item.
+        #   Optional.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ToolresultsV1beta3::ListTestCasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ToolresultsV1beta3::ListTestCasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_history_execution_step_test_cases(project_id, history_id, execution_id, step_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases', options)
+          command.response_representation = Google::Apis::ToolresultsV1beta3::ListTestCasesResponse::Representation
+          command.response_class = Google::Apis::ToolresultsV1beta3::ListTestCasesResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['historyId'] = history_id unless history_id.nil?
+          command.params['executionId'] = execution_id unless execution_id.nil?
+          command.params['stepId'] = step_id unless step_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists thumbnails of images attached to a step.
         # May return any of the following canonical error codes: - PERMISSION_DENIED -
         # if the user is not authorized to read from the project, or from any of the

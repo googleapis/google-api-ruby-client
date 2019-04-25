@@ -546,6 +546,18 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
+        # The timestamp when the device will exit ‘vacation mode’. This value is
+        # present iff the device is in 'vacation mode'.
+        # Corresponds to the JSON property `vacationModeExpireTime`
+        # @return [String]
+        attr_accessor :vacation_mode_expire_time
+      
+        # The timestamp when the device was put into ‘vacation mode’. This value is
+        # present iff the device is in 'vacation mode'.
+        # Corresponds to the JSON property `vacationModeStartTime`
+        # @return [String]
+        attr_accessor :vacation_mode_start_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -555,6 +567,8 @@ module Google
           @owner_company_id = args[:owner_company_id] if args.key?(:owner_company_id)
           @reseller_id = args[:reseller_id] if args.key?(:reseller_id)
           @section_type = args[:section_type] if args.key?(:section_type)
+          @vacation_mode_expire_time = args[:vacation_mode_expire_time] if args.key?(:vacation_mode_expire_time)
+          @vacation_mode_start_time = args[:vacation_mode_start_time] if args.key?(:vacation_mode_start_time)
         end
       end
       
@@ -1211,6 +1225,17 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
+        # The duration of the vacation unlock starting from when the request is
+        # processed. (1 day is treated as 24 hours)
+        # Corresponds to the JSON property `vacationModeDays`
+        # @return [Fixnum]
+        attr_accessor :vacation_mode_days
+      
+        # The expiration time of the vacation unlock.
+        # Corresponds to the JSON property `vacationModeExpireTime`
+        # @return [String]
+        attr_accessor :vacation_mode_expire_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1220,6 +1245,8 @@ module Google
           @device_id = args[:device_id] if args.key?(:device_id)
           @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
           @section_type = args[:section_type] if args.key?(:section_type)
+          @vacation_mode_days = args[:vacation_mode_days] if args.key?(:vacation_mode_days)
+          @vacation_mode_expire_time = args[:vacation_mode_expire_time] if args.key?(:vacation_mode_expire_time)
         end
       end
       
@@ -1353,6 +1380,17 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
+        # The duration of the vacation unlock starting from when the request is
+        # processed. (1 day is treated as 24 hours)
+        # Corresponds to the JSON property `vacationModeDays`
+        # @return [Fixnum]
+        attr_accessor :vacation_mode_days
+      
+        # The expiration time of the vacation unlock.
+        # Corresponds to the JSON property `vacationModeExpireTime`
+        # @return [String]
+        attr_accessor :vacation_mode_expire_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1362,6 +1400,8 @@ module Google
           @device_id = args[:device_id] if args.key?(:device_id)
           @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
           @section_type = args[:section_type] if args.key?(:section_type)
+          @vacation_mode_days = args[:vacation_mode_days] if args.key?(:vacation_mode_days)
+          @vacation_mode_expire_time = args[:vacation_mode_expire_time] if args.key?(:vacation_mode_expire_time)
         end
       end
       

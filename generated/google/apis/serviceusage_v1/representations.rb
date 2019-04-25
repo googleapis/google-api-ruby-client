@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateAdminOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateConsumerOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchEnableServicesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotaOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -513,6 +531,22 @@ module Google
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class BatchCreateAdminOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1::QuotaOverride, decorator: Google::Apis::ServiceusageV1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class BatchCreateConsumerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1::QuotaOverride, decorator: Google::Apis::ServiceusageV1::QuotaOverride::Representation
+      
         end
       end
       
@@ -1062,6 +1096,15 @@ module Google
           property :name, as: 'name'
           property :unit, as: 'unit'
           hash :values, as: 'values'
+        end
+      end
+      
+      class QuotaOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :name, as: 'name'
+          property :override_value, :numeric_string => true, as: 'overrideValue'
         end
       end
       

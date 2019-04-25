@@ -54,8 +54,8 @@ module Google
         #   datasources/`source_id`/items/`item_id`
         # @param [Google::Apis::CloudsearchV1::Principal] principal_object
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -126,8 +126,8 @@ module Google
         #   The name of the item, in the following format:
         #   datasources/`source_id`/items/`ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
         #   Defaults to 100.
@@ -168,8 +168,8 @@ module Google
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id``
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] group_resource_name
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
@@ -214,8 +214,8 @@ module Google
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
         #   Defaults to 100.
@@ -259,8 +259,8 @@ module Google
         #   Name of the data source to delete Schema.  Format:
         #   datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,8 +294,8 @@ module Google
         #   Name of the data source to get Schema.  Format:
         #   datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -367,8 +367,8 @@ module Google
         #   Name of connector making this call.
         #   <br />Format: datasources/`source_id`/connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] mode
         #   Required. The RequestMode for this request.
         # @param [String] version
@@ -455,8 +455,8 @@ module Google
         #   Name of connector making this call.
         #   <br />Format: datasources/`source_id`/connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -542,8 +542,8 @@ module Google
         #   Name of connector making this call.
         #   <br />Format: datasources/`source_id`/connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [Fixnum] page_size
         #   Maximum number of items to fetch in a request.
         #   The max value is 1000 when brief is true.  The max value is 10 if brief
@@ -903,13 +903,17 @@ module Google
         # @param [String] page_token
         #   Number of sources to return in the response.
         # @param [Boolean] request_options_debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] request_options_language_code
         #   The BCP-47 language code, such as "en-US" or "sr-Latn".
         #   For more information, see
         #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         #   For translations.
+        #   When specified, the documents in search results are biased towards the
+        #   specified language.
+        #   Suggest API does not use this parameter. It autocompletes only based on
+        #   characters in the query.
         # @param [String] request_options_search_application_id
         #   Id of the application created using SearchApplicationsService.
         # @param [String] request_options_time_zone
@@ -984,8 +988,8 @@ module Google
         #   Name of the datasource.
         #   Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1019,8 +1023,8 @@ module Google
         #   Name of the datasource resource.
         #   Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1051,8 +1055,8 @@ module Google
         
         # Lists datasources.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [Fixnum] page_size
         #   Maximum number of datasources to fetch in a request.
         #   The max value is 100.
@@ -1158,8 +1162,8 @@ module Google
         #   The name of the search application to be deleted.
         #   <br />Format: applications/`application_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1193,8 +1197,8 @@ module Google
         #   Name of the search application.
         #   <br />Format: applications/`application_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1225,8 +1229,8 @@ module Google
         
         # Lists all search applications.
         # @param [Boolean] debug_options_enable_debugging
-        #   If set, the request will enable debugging features of Cloud Search.
-        #   Only turn on this field, if asked by Google to help with debugging.
+        #   If you are asked by Google to help with debugging, set this field.
+        #   Otherwise, ignore this field.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token

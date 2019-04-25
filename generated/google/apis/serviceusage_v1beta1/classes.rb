@@ -102,7 +102,7 @@ module Google
         end
       end
       
-      # Configuration for an anthentication provider, including support for
+      # Configuration for an authentication provider, including support for
       # [JSON Web Token
       # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
@@ -417,6 +417,44 @@ module Google
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @path_translation = args[:path_translation] if args.key?(:path_translation)
           @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
+      # Response message for BatchCreateAdminOverrides
+      class BatchCreateAdminOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The overrides that were created.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Response message for BatchCreateConsumerOverrides
+      class BatchCreateConsumerOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The overrides that were created.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
         end
       end
       
@@ -2014,8 +2052,9 @@ module Google
       # This enables a HTTP JSON to RPC mapping as below:
       # HTTP | gRPC
       # -----|-----
-      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id:
-      # "123456" revision: 2 sub: SubMessage(subfield: "foo"))`
+      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` |
+      # `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
+      # "foo"))`
       # Note that fields which are mapped to URL query parameters must have a
       # primitive type or a repeated primitive type or a non-repeated message type.
       # In the case of a repeated type, the parameter can be repeated in the URL
@@ -2042,8 +2081,8 @@ module Google
       # protos JSON encoding:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" message ` text: "Hi!" `)`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" message ` text: "Hi!" `)`
       # The special name `*` can be used in the body mapping to define that
       # every field not bound by the path template should be mapped to the
       # request body.  This enables the following alternative definition of
@@ -2063,8 +2102,8 @@ module Google
       # The following HTTP JSON to RPC mapping is enabled:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" text: "Hi!")`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" text: "Hi!")`
       # Note that when using `*` in the body mapping, it is not possible to
       # have HTTP parameters, as all fields not bound by the path end in
       # the body. This makes this option more rarely used in practice when
@@ -2090,8 +2129,8 @@ module Google
       # HTTP | gRPC
       # -----|-----
       # `GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
-      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "
-      # 123456")`
+      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
+      # "123456")`
       # ## Rules for HTTP mapping
       # 1. Leaf request fields (recursive expansion nested messages in the request
       # message) are classified into three categories:
@@ -2127,15 +2166,17 @@ module Google
       # `"`var=*`"`, when such a variable is expanded into a URL path on the client
       # side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
       # server side does the reverse decoding. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``var``.
       # If a variable contains multiple path segments, such as `"`var=foo/*`"`
       # or `"`var=**`"`, when such a variable is expanded into a URL path on the
       # client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
       # The server side does the reverse decoding, except "%2F" and "%2f" are left
       # unchanged. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``+var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``+var``.
       # ## Using gRPC API Service Configuration
       # gRPC API Service Configuration (service config) is a configuration language
       # for configuring a gRPC service to become a user-facing product. The
@@ -3396,6 +3437,62 @@ module Google
           @name = args[:name] if args.key?(:name)
           @unit = args[:unit] if args.key?(:unit)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A quota override
+      class QuotaOverride
+        include Google::Apis::Core::Hashable
+      
+        # If this map is nonempty, then this override applies only to specific values
+        # for dimensions defined in the limit unit.
+        # For example, an override on a limit with the unit 1/`project`/`region`
+        # could contain an entry with the key "region" and the value "us-east-1";
+        # the override is only applied to quota consumed in that region.
+        # This map has the following restrictions:
+        # - Keys that are not defined in the limit's unit are not valid keys.
+        # Any string appearing in `brackets` in the unit (besides `project` or
+        # `user`) is a defined key.
+        # - "project" is not a valid key; the project is already specified in
+        # the parent resource name.
+        # - "user" is not a valid key; the API does not support quota overrides
+        # that apply only to a specific user.
+        # - If "region" appears as a key, its value must be a valid Cloud region.
+        # - If "zone" appears as a key, its value must be a valid Cloud zone.
+        # - If any valid key other than "region" or "zone" appears in the map, then
+        # all valid keys other than "region" or "zone" must also appear in the map.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # The resource name of the override.
+        # This name is generated by the server when the override is created.
+        # Example names would be:
+        # `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        # googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+        # `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        # googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
+        # The resource name is intended to be opaque and should not be parsed for
+        # its component strings, since its representation could change in the future.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The overriding quota limit value.
+        # Can be any nonnegative integer, or -1 (unlimited quota).
+        # Corresponds to the JSON property `overrideValue`
+        # @return [Fixnum]
+        attr_accessor :override_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @name = args[:name] if args.key?(:name)
+          @override_value = args[:override_value] if args.key?(:override_value)
         end
       end
       

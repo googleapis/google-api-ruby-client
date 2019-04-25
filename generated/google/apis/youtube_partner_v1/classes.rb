@@ -37,12 +37,6 @@ module Google
         # @return [String]
         attr_accessor :position
       
-        # A list of ad slots that occur in an ad break. Ad slots let you specify the
-        # number of ads that should run in each break.
-        # Corresponds to the JSON property `slot`
-        # @return [Array<Google::Apis::YoutubePartnerV1::AdSlot>]
-        attr_accessor :slot
-      
         def initialize(**args)
            update!(**args)
         end
@@ -51,33 +45,6 @@ module Google
         def update!(**args)
           @midroll_seconds = args[:midroll_seconds] if args.key?(:midroll_seconds)
           @position = args[:position] if args.key?(:position)
-          @slot = args[:slot] if args.key?(:slot)
-        end
-      end
-      
-      # 
-      class AdSlot
-        include Google::Apis::Core::Hashable
-      
-        # A value that identifies the ad slot to the ad server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The type of ad that runs in the slot. The value may affect YouTube's fallback
-        # behavior if the third-party platform does not return ads.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1895,6 +1862,13 @@ module Google
         # @return [String]
         attr_accessor :channel
       
+        # On insert operation of manual claims, the manual_segment object contains
+        # information about the specific portion of the video that is claimed to be
+        # matching.
+        # Corresponds to the JSON property `manual_segment`
+        # @return [Google::Apis::YoutubePartnerV1::Segment]
+        attr_accessor :manual_segment
+      
         # The reference_segment object contains information about the matched portion of
         # the reference content.
         # Corresponds to the JSON property `reference_segment`
@@ -1914,6 +1888,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel = args[:channel] if args.key?(:channel)
+          @manual_segment = args[:manual_segment] if args.key?(:manual_segment)
           @reference_segment = args[:reference_segment] if args.key?(:reference_segment)
           @video_segment = args[:video_segment] if args.key?(:video_segment)
         end
@@ -3476,6 +3451,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :duration
       
+        # The finish time of the segment, measured in milliseconds from the beginning.
+        # Corresponds to the JSON property `finish`
+        # @return [String]
+        attr_accessor :finish
+      
         # The type of the API resource. For segment resources, the value is
         # youtubePartner#segment.
         # Corresponds to the JSON property `kind`
@@ -3484,7 +3464,7 @@ module Google
       
         # The start time of the segment, measured in milliseconds from the beginning.
         # Corresponds to the JSON property `start`
-        # @return [Fixnum]
+        # @return [String]
         attr_accessor :start
       
         def initialize(**args)
@@ -3494,6 +3474,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
+          @finish = args[:finish] if args.key?(:finish)
           @kind = args[:kind] if args.key?(:kind)
           @start = args[:start] if args.key?(:start)
         end

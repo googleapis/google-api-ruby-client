@@ -496,9 +496,9 @@ module Google
         #   Required. The name of the project for which available locations are to be
         #   listed (since some locations might be whitelisted for specific projects).
         # @param [Fixnum] page_size
-        #   Optional. The number of locations to retrieve per "page" of results. If there
-        #   are more remaining results than this number, the response message will
-        #   contain a valid value in the `next_page_token` field.
+        #   Optional. The number of locations to retrieve per "page" of results. If
+        #   there are more remaining results than this number, the response message
+        #   will contain a valid value in the `next_page_token` field.
         #   The default value is 20, and the maximum page size is 100.
         # @param [String] page_token
         #   Optional. A page token to request the next page of results.

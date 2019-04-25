@@ -118,7 +118,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Drive
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DriveActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveFolder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +149,12 @@ module Google
       end
       
       class DriveItemReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +509,16 @@ module Google
         end
       end
       
+      class Drive
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :root, as: 'root', class: Google::Apis::DriveactivityV2::DriveItem, decorator: Google::Apis::DriveactivityV2::DriveItem::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class DriveActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -502,9 +536,26 @@ module Google
         end
       end
       
+      class DriveFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DriveFolder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class DriveItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_file, as: 'driveFile', class: Google::Apis::DriveactivityV2::DriveFile, decorator: Google::Apis::DriveactivityV2::DriveFile::Representation
+      
+          property :drive_folder, as: 'driveFolder', class: Google::Apis::DriveactivityV2::DriveFolder, decorator: Google::Apis::DriveactivityV2::DriveFolder::Representation
+      
           property :file, as: 'file', class: Google::Apis::DriveactivityV2::File, decorator: Google::Apis::DriveactivityV2::File::Representation
       
           property :folder, as: 'folder', class: Google::Apis::DriveactivityV2::Folder, decorator: Google::Apis::DriveactivityV2::Folder::Representation
@@ -520,10 +571,22 @@ module Google
       class DriveItemReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_file, as: 'driveFile', class: Google::Apis::DriveactivityV2::DriveFile, decorator: Google::Apis::DriveactivityV2::DriveFile::Representation
+      
+          property :drive_folder, as: 'driveFolder', class: Google::Apis::DriveactivityV2::DriveFolder, decorator: Google::Apis::DriveactivityV2::DriveFolder::Representation
+      
           property :file, as: 'file', class: Google::Apis::DriveactivityV2::File, decorator: Google::Apis::DriveactivityV2::File::Representation
       
           property :folder, as: 'folder', class: Google::Apis::DriveactivityV2::Folder, decorator: Google::Apis::DriveactivityV2::Folder::Representation
       
+          property :name, as: 'name'
+          property :title, as: 'title'
+        end
+      end
+      
+      class DriveReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :title, as: 'title'
         end
@@ -615,6 +678,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain', class: Google::Apis::DriveactivityV2::Domain, decorator: Google::Apis::DriveactivityV2::Domain::Representation
+      
+          property :drive, as: 'drive', class: Google::Apis::DriveactivityV2::DriveReference, decorator: Google::Apis::DriveactivityV2::DriveReference::Representation
       
           property :team_drive, as: 'teamDrive', class: Google::Apis::DriveactivityV2::TeamDriveReference, decorator: Google::Apis::DriveactivityV2::TeamDriveReference::Representation
       
@@ -726,6 +791,8 @@ module Google
       class Target
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive, as: 'drive', class: Google::Apis::DriveactivityV2::Drive, decorator: Google::Apis::DriveactivityV2::Drive::Representation
+      
           property :drive_item, as: 'driveItem', class: Google::Apis::DriveactivityV2::DriveItem, decorator: Google::Apis::DriveactivityV2::DriveItem::Representation
       
           property :file_comment, as: 'fileComment', class: Google::Apis::DriveactivityV2::FileComment, decorator: Google::Apis::DriveactivityV2::FileComment::Representation
@@ -738,6 +805,8 @@ module Google
       class TargetReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive, as: 'drive', class: Google::Apis::DriveactivityV2::DriveReference, decorator: Google::Apis::DriveactivityV2::DriveReference::Representation
+      
           property :drive_item, as: 'driveItem', class: Google::Apis::DriveactivityV2::DriveItemReference, decorator: Google::Apis::DriveactivityV2::DriveItemReference::Representation
       
           property :team_drive, as: 'teamDrive', class: Google::Apis::DriveactivityV2::TeamDriveReference, decorator: Google::Apis::DriveactivityV2::TeamDriveReference::Representation

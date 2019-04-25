@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AndroidDevicePolicyConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppRestrictionsSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,14 +569,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
-        end
-      end
-      
-      class AndroidDevicePolicyConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :state, as: 'state'
         end
       end
       

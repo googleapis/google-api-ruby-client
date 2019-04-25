@@ -287,8 +287,7 @@ module Google
         attr_accessor :labels
       
         # The limit on the maximum number of function instances that may coexist at a
-        # given time. This feature is currently in alpha, available only for
-        # whitelisted users.
+        # given time.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
@@ -316,14 +315,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The runtime in which the function is going to run. Example values include:
-        # `go111`: for Go 1.11
-        # `nodejs6`: for Node.js 6
-        # `nodejs8`: for Node.js 8
-        # `nodejs10`: for Node.js 10
-        # `python37`: for Python 3.7
-        # `ruby25`: for Ruby 2.5
-        # If empty, defaults to `nodejs6`.
+        # Required. The runtime in which the function is going to run. Choices:
+        # * `nodejs6`: Node.js 6
+        # * `nodejs8`: Node.js 8
+        # * `nodejs10`: Node.js 10
+        # * `python37`: Python 3.7
+        # * `go111`: Go 1.11
         # Corresponds to the JSON property `runtime`
         # @return [String]
         attr_accessor :runtime

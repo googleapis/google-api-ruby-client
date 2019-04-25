@@ -523,6 +523,7 @@ module Google
           property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::ReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::ReplicaConfiguration::Representation
       
           collection :replica_names, as: 'replicaNames'
+          property :root_password, as: 'rootPassword'
           property :self_link, as: 'selfLink'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       

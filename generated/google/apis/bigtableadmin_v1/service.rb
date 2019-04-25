@@ -22,7 +22,7 @@ module Google
     module BigtableadminV1
       # Cloud Bigtable Admin API
       #
-      # 
+      # Administer your Cloud Bigtable tables and instances.
       #
       # @example
       #    require 'google/apis/bigtableadmin_v1'

@@ -225,11 +225,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional.
-        # If `true`, jobs without street level addresses may also be returned.
-        # For city level addresses, the city center is used. For state and coarser
-        # level addresses, text matching is used.
-        # If this field is set to `false` or is not specified, only jobs that include
-        # street level addresses will be returned by commute search.
+        # If true, jobs without "precise" addresses (street level addresses or GPS
+        # coordinates) might also be returned. For city and coarser level addresses,
+        # text matching is used. If this field is set to false or is not specified,
+        # only jobs that include precise addresses are returned by Commute
+        # Search.
+        # Note: If `allow_imprecise_addresses` is set to true, Commute Search is not
+        # able to calculate accurate commute times to jobs with city level and
+        # coarser address information. Jobs with imprecise addresses will return a
+        # `travel_duration` time of 0 regardless of distance from the job seeker.
         # Corresponds to the JSON property `allowImpreciseAddresses`
         # @return [Boolean]
         attr_accessor :allow_imprecise_addresses

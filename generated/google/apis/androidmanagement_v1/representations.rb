@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationReportingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChoosePrivateKeyRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyedAppState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LaunchAppAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +167,12 @@ module Google
       end
       
       class ListPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWebAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebAppIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -392,12 +422,21 @@ module Google
           collection :events, as: 'events', class: Google::Apis::AndroidmanagementV1::ApplicationEvent, decorator: Google::Apis::AndroidmanagementV1::ApplicationEvent::Representation
       
           property :installer_package_name, as: 'installerPackageName'
+          collection :keyed_app_states, as: 'keyedAppStates', class: Google::Apis::AndroidmanagementV1::KeyedAppState, decorator: Google::Apis::AndroidmanagementV1::KeyedAppState::Representation
+      
           property :package_name, as: 'packageName'
           property :package_sha256_hash, as: 'packageSha256Hash'
           collection :signing_key_cert_fingerprints, as: 'signingKeyCertFingerprints'
           property :state, as: 'state'
           property :version_code, as: 'versionCode'
           property :version_name, as: 'versionName'
+        end
+      end
+      
+      class ApplicationReportingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_removed_apps, as: 'includeRemovedApps'
         end
       end
       
@@ -591,6 +630,18 @@ module Google
         end
       end
       
+      class KeyedAppState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data, as: 'data'
+          property :key, as: 'key'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :message, as: 'message'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class LaunchAppAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -621,6 +672,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :policies, as: 'policies', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
+      
+        end
+      end
+      
+      class ListWebAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :web_apps, as: 'webApps', class: Google::Apis::AndroidmanagementV1::WebApp, decorator: Google::Apis::AndroidmanagementV1::WebApp::Representation
       
         end
       end
@@ -931,6 +991,8 @@ module Google
       class StatusReportingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_reporting_settings, as: 'applicationReportingSettings', class: Google::Apis::AndroidmanagementV1::ApplicationReportingSettings, decorator: Google::Apis::AndroidmanagementV1::ApplicationReportingSettings::Representation
+      
           property :application_reports_enabled, as: 'applicationReportsEnabled'
           property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
@@ -973,6 +1035,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_message, as: 'defaultMessage'
           hash :localized_messages, as: 'localizedMessages'
+        end
+      end
+      
+      class WebApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_mode, as: 'displayMode'
+          collection :icons, as: 'icons', class: Google::Apis::AndroidmanagementV1::WebAppIcon, decorator: Google::Apis::AndroidmanagementV1::WebAppIcon::Representation
+      
+          property :name, as: 'name'
+          property :start_url, as: 'startUrl'
+          property :title, as: 'title'
+          property :version_code, :numeric_string => true, as: 'versionCode'
+        end
+      end
+      
+      class WebAppIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_data, as: 'imageData'
         end
       end
       

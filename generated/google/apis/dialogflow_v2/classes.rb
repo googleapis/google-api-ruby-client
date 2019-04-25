@@ -446,6 +446,11 @@ module Google
         # @return [String]
         attr_accessor :input_audio
       
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
         # Represents the query input. It can contain either:
         # 1.  An audio config which
         # instructs the speech recognizer how to process the speech audio.
@@ -467,6 +472,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @input_audio = args[:input_audio] if args.key?(:input_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_input = args[:query_input] if args.key?(:query_input)
           @query_params = args[:query_params] if args.key?(:query_params)
         end
@@ -475,6 +481,22 @@ module Google
       # The message returned from the DetectIntent method.
       class GoogleCloudDialogflowV2DetectIntentResponse
         include Google::Apis::Core::Hashable
+      
+        # The audio data bytes encoded as specified in the request.
+        # Note: The output audio is generated based on the values of default platform
+        # text responses found in the `query_result.fulfillment_messages` field. If
+        # multiple default text responses exist, they will be concatenated when
+        # generating audio. If no default platform text responses exist, the
+        # generated audio content will be empty.
+        # Corresponds to the JSON property `outputAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output_audio
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
+        attr_accessor :output_audio_config
       
         # Represents the result of conversational query or event processing.
         # Corresponds to the JSON property `queryResult`
@@ -536,6 +558,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_audio = args[:output_audio] if args.key?(:output_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
           @webhook_status = args[:webhook_status] if args.key?(:webhook_status)
@@ -807,6 +831,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Optional. Which variant of the Speech model to use.
+        # Corresponds to the JSON property `modelVariant`
+        # @return [String]
+        attr_accessor :model_variant
+      
         # Optional. The collection of phrase hints which are used to boost accuracy
         # of speech recognition.
         # Refer to
@@ -835,6 +864,7 @@ module Google
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model_variant = args[:model_variant] if args.key?(:model_variant)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end
@@ -1949,6 +1979,41 @@ module Google
         end
       end
       
+      # Instructs the speech synthesizer how to generate the output audio content.
+      class GoogleCloudDialogflowV2OutputAudioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Audio encoding of the synthesized audio content.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # Optional. The synthesis sample rate (in hertz) for this audio. If not
+        # provided, then the synthesizer will use the default sample rate based on
+        # the audio encoding. If this is different from the voice's natural sample
+        # rate, then the synthesizer will honor this request by converting to the
+        # desired sample rate (which might result in worse audio quality).
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        # Configuration of how speech should be synthesized.
+        # Corresponds to the JSON property `synthesizeSpeechConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SynthesizeSpeechConfig]
+        attr_accessor :synthesize_speech_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @synthesize_speech_config = args[:synthesize_speech_config] if args.key?(:synthesize_speech_config)
+        end
+      end
+      
       # Represents the query input. It can contain either:
       # 1.  An audio config which
       # instructs the speech recognizer how to process the speech audio.
@@ -2020,6 +2085,11 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
+        # Configures the types of sentiment analysis to perform.
+        # Corresponds to the JSON property `sentimentAnalysisRequestConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisRequestConfig]
+        attr_accessor :sentiment_analysis_request_config
+      
         # Optional. Additional session entity types to replace or extend developer
         # entity types with. The entity synonyms apply to all languages and persist
         # for the session of this query.
@@ -2045,6 +2115,7 @@ module Google
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @payload = args[:payload] if args.key?(:payload)
           @reset_contexts = args[:reset_contexts] if args.key?(:reset_contexts)
+          @sentiment_analysis_request_config = args[:sentiment_analysis_request_config] if args.key?(:sentiment_analysis_request_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
@@ -2135,6 +2206,12 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
+        # The result of sentiment analysis as configured by
+        # `sentiment_analysis_request_config`.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
+      
         # The Speech recognition confidence between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. The default of 0.0 is a sentinel value indicating that confidence
@@ -2176,6 +2253,7 @@ module Google
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @parameters = args[:parameters] if args.key?(:parameters)
           @query_text = args[:query_text] if args.key?(:query_text)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @speech_recognition_confidence = args[:speech_recognition_confidence] if args.key?(:speech_recognition_confidence)
           @webhook_payload = args[:webhook_payload] if args.key?(:webhook_payload)
           @webhook_source = args[:webhook_source] if args.key?(:webhook_source)
@@ -2249,6 +2327,77 @@ module Google
         end
       end
       
+      # The sentiment, such as positive/negative feeling or association, for a unit
+      # of analysis, such as the query text.
+      class GoogleCloudDialogflowV2Sentiment
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+        # sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Configures the types of sentiment analysis to perform.
+      class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Instructs the service to perform sentiment analysis on
+        # `query_text`. If not provided, sentiment analysis is not performed on
+        # `query_text`.
+        # Corresponds to the JSON property `analyzeQueryTextSentiment`
+        # @return [Boolean]
+        attr_accessor :analyze_query_text_sentiment
+        alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
+        end
+      end
+      
+      # The result of sentiment analysis as configured by
+      # `sentiment_analysis_request_config`.
+      class GoogleCloudDialogflowV2SentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # The sentiment, such as positive/negative feeling or association, for a unit
+        # of analysis, such as the query text.
+        # Corresponds to the JSON property `queryTextSentiment`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Sentiment]
+        attr_accessor :query_text_sentiment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+        end
+      end
+      
       # Represents a session entity type.
       # Extends or replaces a developer entity type at the user session level (we
       # refer to the entity types defined at the agent level as "developer entity
@@ -2287,6 +2436,63 @@ module Google
           @entities = args[:entities] if args.key?(:entities)
           @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration of how speech should be synthesized.
+      class GoogleCloudDialogflowV2SynthesizeSpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An identifier which selects 'audio effects' profiles that are
+        # applied on (post synthesized) text to speech. Effects are applied on top of
+        # each other in the order they are given.
+        # Corresponds to the JSON property `effectsProfileId`
+        # @return [Array<String>]
+        attr_accessor :effects_profile_id
+      
+        # Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
+        # semitones from the original pitch. -20 means decrease 20 semitones from the
+        # original pitch.
+        # Corresponds to the JSON property `pitch`
+        # @return [Float]
+        attr_accessor :pitch
+      
+        # Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
+        # native speed supported by the specific voice. 2.0 is twice as fast, and
+        # 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
+        # other values < 0.25 or > 4.0 will return an error.
+        # Corresponds to the JSON property `speakingRate`
+        # @return [Float]
+        attr_accessor :speaking_rate
+      
+        # Description of which voice to use for speech synthesis.
+        # Corresponds to the JSON property `voice`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2VoiceSelectionParams]
+        attr_accessor :voice
+      
+        # Optional. Volume gain (in dB) of the normal native volume supported by the
+        # specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of
+        # 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
+        # will play at approximately half the amplitude of the normal native signal
+        # amplitude. A value of +6.0 (dB) will play at approximately twice the
+        # amplitude of the normal native signal amplitude. We strongly recommend not
+        # to exceed +10 (dB) as there's usually no effective increase in loudness for
+        # any value greater than that.
+        # Corresponds to the JSON property `volumeGainDb`
+        # @return [Float]
+        attr_accessor :volume_gain_db
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effects_profile_id = args[:effects_profile_id] if args.key?(:effects_profile_id)
+          @pitch = args[:pitch] if args.key?(:pitch)
+          @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
+          @voice = args[:voice] if args.key?(:voice)
+          @volume_gain_db = args[:volume_gain_db] if args.key?(:volume_gain_db)
         end
       end
       
@@ -2330,6 +2536,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Description of which voice to use for speech synthesis.
+      class GoogleCloudDialogflowV2VoiceSelectionParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the voice. If not set, the service will choose a
+        # voice based on the other parameters such as language_code and gender.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The preferred gender of the voice. If not set, the service will
+        # choose a voice based on the other parameters such as language_code and
+        # name. Note that this is only a preference, not requirement. If a
+        # voice of the appropriate gender is not available, the synthesizer should
+        # substitute a voice with a different gender rather than failing the request.
+        # Corresponds to the JSON property `ssmlGender`
+        # @return [String]
+        attr_accessor :ssml_gender
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
         end
       end
       

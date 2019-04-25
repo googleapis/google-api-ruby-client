@@ -381,7 +381,7 @@ module Google
         #   Required. A unique identifier for the instance, which cannot be changed
         #   after the instance is created. Values are of the form
         #   `projects/<project>/instances/a-z*[a-z0-9]`. The final
-        #   segment of the name must be between 6 and 30 characters in length.
+        #   segment of the name must be between 2 and 64 characters in length.
         # @param [Google::Apis::SpannerV1::UpdateInstanceRequest] update_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -560,8 +560,9 @@ module Google
         end
       end
       
-      # A response message from a request to startImport.
-      # This is returned in the response field of the Operation.
+      # A response message from a request to
+      # startImport. This is returned in the response
+      # field of the Operation.
       class StartAssetImportResponse
         include Google::Apis::Core::Hashable
       

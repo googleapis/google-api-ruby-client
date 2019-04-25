@@ -25,6 +25,12 @@ module Google
       class About
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class DriveTheme
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class StorageQuota
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -71,6 +77,36 @@ module Google
       end
       
       class CommentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Drive
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class BackgroundImageFile
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class Capabilities
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class Restrictions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -132,6 +168,12 @@ module Google
       
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class PermissionDetail
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
         
         class TeamDrivePermissionDetail
           class Representation < Google::Apis::Core::JsonRepresentation; end
@@ -218,7 +260,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_installed, as: 'appInstalled'
+          property :can_create_drives, as: 'canCreateDrives'
           property :can_create_team_drives, as: 'canCreateTeamDrives'
+          collection :drive_themes, as: 'driveThemes', class: Google::Apis::DriveV3::About::DriveTheme, decorator: Google::Apis::DriveV3::About::DriveTheme::Representation
+      
           hash :export_formats, as: 'exportFormats', :class => Array do
         include Representable::JSON::Collection
         items
@@ -239,6 +284,15 @@ module Google
       
           property :user, as: 'user', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
+        end
+        
+        class DriveTheme
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :background_image_link, as: 'backgroundImageLink'
+            property :color_rgb, as: 'colorRgb'
+            property :id, as: 'id'
+          end
         end
         
         class StorageQuota
@@ -264,6 +318,10 @@ module Google
       class Change
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_type, as: 'changeType'
+          property :drive, as: 'drive', class: Google::Apis::DriveV3::Drive, decorator: Google::Apis::DriveV3::Drive::Representation
+      
+          property :drive_id, as: 'driveId'
           property :file, as: 'file', class: Google::Apis::DriveV3::File, decorator: Google::Apis::DriveV3::File::Representation
       
           property :file_id, as: 'fileId'
@@ -346,6 +404,81 @@ module Google
         end
       end
       
+      class Drive
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_image_file, as: 'backgroundImageFile', class: Google::Apis::DriveV3::Drive::BackgroundImageFile, decorator: Google::Apis::DriveV3::Drive::BackgroundImageFile::Representation
+      
+          property :background_image_link, as: 'backgroundImageLink'
+          property :capabilities, as: 'capabilities', class: Google::Apis::DriveV3::Drive::Capabilities, decorator: Google::Apis::DriveV3::Drive::Capabilities::Representation
+      
+          property :color_rgb, as: 'colorRgb'
+          property :created_time, as: 'createdTime', type: DateTime
+      
+          property :hidden, as: 'hidden'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :restrictions, as: 'restrictions', class: Google::Apis::DriveV3::Drive::Restrictions, decorator: Google::Apis::DriveV3::Drive::Restrictions::Representation
+      
+          property :theme_id, as: 'themeId'
+        end
+        
+        class BackgroundImageFile
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :id, as: 'id'
+            property :width, as: 'width'
+            property :x_coordinate, as: 'xCoordinate'
+            property :y_coordinate, as: 'yCoordinate'
+          end
+        end
+        
+        class Capabilities
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :can_add_children, as: 'canAddChildren'
+            property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
+            property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_drive_background, as: 'canChangeDriveBackground'
+            property :can_change_drive_members_only_restriction, as: 'canChangeDriveMembersOnlyRestriction'
+            property :can_comment, as: 'canComment'
+            property :can_copy, as: 'canCopy'
+            property :can_delete_children, as: 'canDeleteChildren'
+            property :can_delete_drive, as: 'canDeleteDrive'
+            property :can_download, as: 'canDownload'
+            property :can_edit, as: 'canEdit'
+            property :can_list_children, as: 'canListChildren'
+            property :can_manage_members, as: 'canManageMembers'
+            property :can_read_revisions, as: 'canReadRevisions'
+            property :can_rename, as: 'canRename'
+            property :can_rename_drive, as: 'canRenameDrive'
+            property :can_share, as: 'canShare'
+            property :can_trash_children, as: 'canTrashChildren'
+          end
+        end
+        
+        class Restrictions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :admin_managed_restrictions, as: 'adminManagedRestrictions'
+            property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
+            property :domain_users_only, as: 'domainUsersOnly'
+            property :drive_members_only, as: 'driveMembersOnly'
+          end
+        end
+      end
+      
+      class DriveList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drives, as: 'drives', class: Google::Apis::DriveV3::Drive, decorator: Google::Apis::DriveV3::Drive::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -358,6 +491,7 @@ module Google
           property :created_time, as: 'createdTime', type: DateTime
       
           property :description, as: 'description'
+          property :drive_id, as: 'driveId'
           property :explicitly_trashed, as: 'explicitlyTrashed'
           hash :export_links, as: 'exportLinks'
           property :file_extension, as: 'fileExtension'
@@ -433,12 +567,17 @@ module Google
             property :can_download, as: 'canDownload'
             property :can_edit, as: 'canEdit'
             property :can_list_children, as: 'canListChildren'
+            property :can_move_children_out_of_drive, as: 'canMoveChildrenOutOfDrive'
             property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
+            property :can_move_children_within_drive, as: 'canMoveChildrenWithinDrive'
             property :can_move_children_within_team_drive, as: 'canMoveChildrenWithinTeamDrive'
             property :can_move_item_into_team_drive, as: 'canMoveItemIntoTeamDrive'
+            property :can_move_item_out_of_drive, as: 'canMoveItemOutOfDrive'
             property :can_move_item_out_of_team_drive, as: 'canMoveItemOutOfTeamDrive'
+            property :can_move_item_within_drive, as: 'canMoveItemWithinDrive'
             property :can_move_item_within_team_drive, as: 'canMoveItemWithinTeamDrive'
             property :can_move_team_drive_item, as: 'canMoveTeamDriveItem'
+            property :can_read_drive, as: 'canReadDrive'
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
             property :can_remove_children, as: 'canRemoveChildren'
@@ -546,11 +685,23 @@ module Google
       
           property :id, as: 'id'
           property :kind, as: 'kind'
+          collection :permission_details, as: 'permissionDetails', class: Google::Apis::DriveV3::Permission::PermissionDetail, decorator: Google::Apis::DriveV3::Permission::PermissionDetail::Representation
+      
           property :photo_link, as: 'photoLink'
           property :role, as: 'role'
           collection :team_drive_permission_details, as: 'teamDrivePermissionDetails', class: Google::Apis::DriveV3::Permission::TeamDrivePermissionDetail, decorator: Google::Apis::DriveV3::Permission::TeamDrivePermissionDetail::Representation
       
           property :type, as: 'type'
+        end
+        
+        class PermissionDetail
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :inherited, as: 'inherited'
+            property :inherited_from, as: 'inheritedFrom'
+            property :permission_type, as: 'permissionType'
+            property :role, as: 'role'
+          end
         end
         
         class TeamDrivePermissionDetail

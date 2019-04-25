@@ -716,6 +716,176 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a web app.
+        # @param [String] parent
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
+        # @param [Google::Apis::AndroidmanagementV1::WebApp] web_app_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::WebApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::WebApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_enterprise_web_app(parent, web_app_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/webApps', options)
+          command.request_representation = Google::Apis::AndroidmanagementV1::WebApp::Representation
+          command.request_object = web_app_object
+          command.response_representation = Google::Apis::AndroidmanagementV1::WebApp::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::WebApp
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a web app.
+        # @param [String] name
+        #   The name of the web app in the form enterprises/`enterpriseId`/webApps/`
+        #   packageName`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_enterprise_web_app(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::Empty::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a web app.
+        # @param [String] name
+        #   The name of the web app in the form enterprises/`enterpriseId`/webApp/`
+        #   packageName`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::WebApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::WebApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_enterprise_web_app(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::WebApp::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::WebApp
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists web apps for a given enterprise.
+        # @param [String] parent
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
+        # @param [Fixnum] page_size
+        #   The requested page size. The actual page size may be fixed to a min or max
+        #   value.
+        # @param [String] page_token
+        #   A token identifying a page of results returned by the server.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::ListWebAppsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::ListWebAppsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_enterprise_web_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/webApps', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::ListWebAppsResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::ListWebAppsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a web app.
+        # @param [String] name
+        #   The name of the web app in the form enterprises/`enterpriseId`/webApps/`
+        #   packageName`.
+        # @param [Google::Apis::AndroidmanagementV1::WebApp] web_app_object
+        # @param [String] update_mask
+        #   The field mask indicating the fields to update. If not set, all modifiable
+        #   fields will be modified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::WebApp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::WebApp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_enterprise_web_app(name, web_app_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AndroidmanagementV1::WebApp::Representation
+          command.request_object = web_app_object
+          command.response_representation = Google::Apis::AndroidmanagementV1::WebApp::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::WebApp
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a web token to access an embeddable managed Google Play web UI for a
         # given enterprise.
         # @param [String] parent

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/zero-touch/
     module AndroiddeviceprovisioningV1
       VERSION = 'V1'
-      REVISION = '20190309'
+      REVISION = '20190406'
     end
   end
 end

@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class SuccessDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestCase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -570,7 +582,10 @@ module Google
       class IndividualOutcome
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :multistep_number, as: 'multistepNumber'
           property :outcome_summary, as: 'outcomeSummary'
+          property :run_duration, as: 'runDuration', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
           property :step_id, as: 'stepId'
         end
       end
@@ -632,6 +647,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :steps, as: 'steps', class: Google::Apis::ToolresultsV1beta3::Step, decorator: Google::Apis::ToolresultsV1beta3::Step::Representation
+      
+        end
+      end
+      
+      class ListTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :test_cases, as: 'testCases', class: Google::Apis::ToolresultsV1beta3::TestCase, decorator: Google::Apis::ToolresultsV1beta3::TestCase::Representation
       
         end
       end
@@ -850,6 +874,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :other_native_crash, as: 'otherNativeCrash'
+        end
+      end
+      
+      class TestCase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
+      
+          property :skipped_message, as: 'skippedMessage'
+          collection :stack_traces, as: 'stackTraces', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
+      
+          property :status, as: 'status'
+          property :test_case_id, as: 'testCaseId'
+          property :test_case_reference, as: 'testCaseReference', class: Google::Apis::ToolresultsV1beta3::TestCaseReference, decorator: Google::Apis::ToolresultsV1beta3::TestCaseReference::Representation
+      
+          collection :tool_outputs, as: 'toolOutputs', class: Google::Apis::ToolresultsV1beta3::ToolOutputReference, decorator: Google::Apis::ToolresultsV1beta3::ToolOutputReference::Representation
+      
         end
       end
       

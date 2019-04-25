@@ -166,6 +166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HmacKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HmacKeyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HmacKeysMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -513,6 +531,41 @@ module Google
           property :kind, as: 'kind'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class HmacKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata'
+          property :secret, as: 'secret'
+        end
+      end
+      
+      class HmacKeyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_id, as: 'accessId'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :project_id, as: 'projectId'
+          property :self_link, as: 'selfLink'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :time_created, as: 'timeCreated'
+          property :updated, as: 'updated'
+        end
+      end
+      
+      class HmacKeysMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::HmacKeyMetadata, decorator: Google::Apis::StorageV1::HmacKeyMetadata::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

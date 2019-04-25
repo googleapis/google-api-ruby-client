@@ -541,6 +541,7 @@ module Google
         #   * imClients
         #   * interests
         #   * locales
+        #   * memberships
         #   * names
         #   * nicknames
         #   * occupations

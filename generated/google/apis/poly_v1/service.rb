@@ -51,7 +51,8 @@ module Google
         
         # Returns detailed information about an asset given its name.
         # PRIVATE assets are returned only if
-        # the currently authenticated user (via OAuth token) is the author of the asset.
+        # the currently authenticated user (via OAuth token) is the author of the
+        # asset.
         # @param [String] name
         #   Required. An asset's name in the form `assets/`ASSET_ID``.
         # @param [String] fields
@@ -81,14 +82,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all public, remixable assets. These are assets with an access level of
-        # PUBLIC and published under the
+        # Lists all public, remixable assets. These are assets with an access level
+        # of PUBLIC and published under the
         # CC-By license.
         # @param [String] category
         #   Filter assets based on the specified category. Supported values are:
-        #   `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`, `
-        #   scenes`,
-        #   `technology`, and `transport`.
+        #   `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
+        #   `scenes`, `technology`, and `transport`.
         # @param [Boolean] curated
         #   Return only assets that have been curated by the Poly team.
         # @param [String] format
@@ -114,7 +114,8 @@ module Google
         # @param [String] page_token
         #   Specifies a continuation token from a previous search whose results were
         #   split into multiple pages. To get the next page, submit the same request
-        #   specifying the value from next_page_token.
+        #   specifying the value from
+        #   next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -176,7 +177,9 @@ module Google
         #   next_page_token.
         # @param [String] visibility
         #   The visibility of the assets to be returned.
-        #   Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
+        #   Defaults to
+        #   VISIBILITY_UNSPECIFIED
+        #   which returns all assets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

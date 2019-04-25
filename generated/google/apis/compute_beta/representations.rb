@@ -4364,8 +4364,12 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
         end
       end
@@ -6337,6 +6341,7 @@ module Google
       class InstanceGroupManagerUpdatePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_redistribution_type, as: 'instanceRedistributionType'
           property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
       
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
@@ -8971,6 +8976,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy::Representation
       
+          property :status, as: 'status'
         end
       end
       
@@ -9129,6 +9135,7 @@ module Google
           property :next_hop_gateway, as: 'nextHopGateway'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_interconnect_attachment, as: 'nextHopInterconnectAttachment'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
           property :next_hop_peering, as: 'nextHopPeering'

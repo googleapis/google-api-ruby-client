@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LanguageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDelegatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,6 +448,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_color, as: 'backgroundColor'
           property :text_color, as: 'textColor'
+        end
+      end
+      
+      class LanguageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_language, as: 'displayLanguage'
         end
       end
       

@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTopicResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Material
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +347,12 @@ module Google
       end
       
       class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Topic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -512,6 +524,7 @@ module Google
           property :state, as: 'state'
           property :submission_modification_mode, as: 'submissionModificationMode'
           property :title, as: 'title'
+          property :topic_id, as: 'topicId'
           property :update_time, as: 'updateTime'
           property :work_type, as: 'workType'
         end
@@ -735,6 +748,15 @@ module Google
         end
       end
       
+      class ListTopicResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :topic, as: 'topic', class: Google::Apis::ClassroomV1::Topic, decorator: Google::Apis::ClassroomV1::Topic::Representation
+      
+        end
+      end
+      
       class Material
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -921,6 +943,16 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class Topic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :name, as: 'name'
+          property :topic_id, as: 'topicId'
+          property :update_time, as: 'updateTime'
         end
       end
       

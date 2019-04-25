@@ -1098,7 +1098,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The project ID of the GCP project in which the `WorkerPool` is created.
+        # The project ID of the GCP project for which the `WorkerPool` is created.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

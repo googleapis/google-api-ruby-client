@@ -183,7 +183,7 @@ module Google
         end
       end
       
-      # Configuration for an anthentication provider, including support for
+      # Configuration for an authentication provider, including support for
       # [JSON Web Token
       # (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
@@ -1381,8 +1381,9 @@ module Google
       # This enables a HTTP JSON to RPC mapping as below:
       # HTTP | gRPC
       # -----|-----
-      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id:
-      # "123456" revision: 2 sub: SubMessage(subfield: "foo"))`
+      # `GET /v1/messages/123456?revision=2&sub.subfield=foo` |
+      # `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
+      # "foo"))`
       # Note that fields which are mapped to URL query parameters must have a
       # primitive type or a repeated primitive type or a non-repeated message type.
       # In the case of a repeated type, the parameter can be repeated in the URL
@@ -1409,8 +1410,8 @@ module Google
       # protos JSON encoding:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" message ` text: "Hi!" `)`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" message ` text: "Hi!" `)`
       # The special name `*` can be used in the body mapping to define that
       # every field not bound by the path template should be mapped to the
       # request body.  This enables the following alternative definition of
@@ -1430,8 +1431,8 @@ module Google
       # The following HTTP JSON to RPC mapping is enabled:
       # HTTP | gRPC
       # -----|-----
-      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id: "
-      # 123456" text: "Hi!")`
+      # `PATCH /v1/messages/123456 ` "text": "Hi!" `` | `UpdateMessage(message_id:
+      # "123456" text: "Hi!")`
       # Note that when using `*` in the body mapping, it is not possible to
       # have HTTP parameters, as all fields not bound by the path end in
       # the body. This makes this option more rarely used in practice when
@@ -1457,8 +1458,8 @@ module Google
       # HTTP | gRPC
       # -----|-----
       # `GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
-      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "
-      # 123456")`
+      # `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
+      # "123456")`
       # ## Rules for HTTP mapping
       # 1. Leaf request fields (recursive expansion nested messages in the request
       # message) are classified into three categories:
@@ -1494,15 +1495,17 @@ module Google
       # `"`var=*`"`, when such a variable is expanded into a URL path on the client
       # side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
       # server side does the reverse decoding. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``var``.
       # If a variable contains multiple path segments, such as `"`var=foo/*`"`
       # or `"`var=**`"`, when such a variable is expanded into a URL path on the
       # client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
       # The server side does the reverse decoding, except "%2F" and "%2f" are left
       # unchanged. Such variables show up in the
-      # [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
-      # as ``+var``.
+      # [Discovery
+      # Document](https://developers.google.com/discovery/v1/reference/apis) as
+      # ``+var``.
       # ## Using gRPC API Service Configuration
       # gRPC API Service Configuration (service config) is a configuration language
       # for configuring a gRPC service to become a user-facing product. The

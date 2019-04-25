@@ -96,9 +96,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An attestation wrapper that uses the Grafeas `Signature` message.
-        # This attestation must define the `plaintext` that the `signatures` verify
-        # and any metadata necessary to interpret that plaintext.  The signatures
-        # should always be over the `plaintext` bytestring.
+        # This attestation must define the `serialized_payload` that the `signatures`
+        # verify and any metadata necessary to interpret that plaintext.  The
+        # signatures should always be over the `serialized_payload` bytestring.
         # Corresponds to the JSON property `genericSignedAttestation`
         # @return [Google::Apis::ContaineranalysisV1beta1::GenericSignedAttestation]
         attr_accessor :generic_signed_attestation
@@ -594,6 +594,88 @@ module Google
           @key_type = args[:key_type] if args.key?(:key_type)
           @public_key = args[:public_key] if args.key?(:public_key)
           @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # Common Vulnerability Scoring System version 3.
+      # For details, see https://www.first.org/cvss/specification-document
+      class CvsSv3
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # Base Metrics
+        # Represents the intrinsic characteristics of a vulnerability that are
+        # constant over time and across user environments.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # 
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores.
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # 
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # 
+        # Corresponds to the JSON property `exploitabilityScore`
+        # @return [Float]
+        attr_accessor :exploitability_score
+      
+        # 
+        # Corresponds to the JSON property `impactScore`
+        # @return [Float]
+        attr_accessor :impact_score
+      
+        # 
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # 
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # 
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
+          @impact_score = args[:impact_score] if args.key?(:impact_score)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
         end
       end
       
@@ -1209,9 +1291,9 @@ module Google
       end
       
       # An attestation wrapper that uses the Grafeas `Signature` message.
-      # This attestation must define the `plaintext` that the `signatures` verify
-      # and any metadata necessary to interpret that plaintext.  The signatures
-      # should always be over the `plaintext` bytestring.
+      # This attestation must define the `serialized_payload` that the `signatures`
+      # verify and any metadata necessary to interpret that plaintext.  The
+      # signatures should always be over the `serialized_payload` bytestring.
       class GenericSignedAttestation
         include Google::Apis::Core::Hashable
       
@@ -2773,6 +2855,12 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Common Vulnerability Scoring System version 3.
+        # For details, see https://www.first.org/cvss/specification-document
+        # Corresponds to the JSON property `cvssV3`
+        # @return [Google::Apis::ContaineranalysisV1beta1::CvsSv3]
+        attr_accessor :cvss_v3
+      
         # All information about the package to specifically identify this
         # vulnerability. One entry per (version range and cpe_uri) the package
         # vulnerability has manifested in.
@@ -2800,6 +2888,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
           @details = args[:details] if args.key?(:details)
           @severity = args[:severity] if args.key?(:severity)
           @windows_details = args[:windows_details] if args.key?(:windows_details)

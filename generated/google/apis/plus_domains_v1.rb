@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/+/domains/
     module PlusDomainsV1
       VERSION = 'V1'
-      REVISION = '20190322'
+      REVISION = '20190415'
 
       # View your circles and the people and pages in them
       AUTH_PLUS_CIRCLES_READ = 'https://www.googleapis.com/auth/plus.circles.read'
@@ -33,7 +33,7 @@ module Google
       # View your basic profile info, including your age range and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
 
-      # Know who you are on Google
+      # Associate you with your personal info on Google
       AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'
 
       # Send your photos and videos to Google+
@@ -44,9 +44,6 @@ module Google
 
       # View your Google+ posts, comments, and stream
       AUTH_PLUS_STREAM_READ = 'https://www.googleapis.com/auth/plus.stream.read'
-
-      # Manage your Google+ posts, comments, and stream
-      AUTH_PLUS_STREAM_WRITE = 'https://www.googleapis.com/auth/plus.stream.write'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'

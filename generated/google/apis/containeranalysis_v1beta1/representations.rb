@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CvsSv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRepoSourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -607,6 +613,23 @@ module Google
           property :key_type, as: 'keyType'
           property :public_key, as: 'publicKey'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class CvsSv3
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploitability_score, as: 'exploitabilityScore'
+          property :impact_score, as: 'impactScore'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
         end
       end
       
@@ -1177,6 +1200,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1beta1::CvsSv3, decorator: Google::Apis::ContaineranalysisV1beta1::CvsSv3::Representation
+      
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
           property :severity, as: 'severity'
