@@ -324,9 +324,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set to true to include access level information for users
-        # with <a href="https://support.google.com/vault/answer/6099459#metadata">
-        # indirect access</a>
-        # to files.
+        # with <a
+        # href="https://support.google.com/vault/answer/6099459#metadata">indirect
+        # access</a> to files.
         # Corresponds to the JSON property `includeAccessInfo`
         # @return [Boolean]
         attr_accessor :include_access_info
@@ -1069,8 +1069,8 @@ module Google
       class MatterPermission
         include Google::Apis::Core::Hashable
       
-        # The account id, as provided by <a href="https://developers.google.com/admin-
-        # sdk/">Admin SDK</a>.
+        # The account id, as provided by <a
+        # href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
@@ -1179,8 +1179,8 @@ module Google
         attr_accessor :team_drive_info
       
         # The corpus-specific
-        # <a href="https://support.google.com/vault/answer/2474474">search operators</a>
-        # used to generate search results.
+        # <a href="https://support.google.com/vault/answer/2474474">search
+        # operators</a> used to generate search results.
         # Corresponds to the JSON property `terms`
         # @return [String]
         attr_accessor :terms

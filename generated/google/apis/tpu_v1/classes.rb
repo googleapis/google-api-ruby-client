@@ -591,6 +591,12 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # Whether the node is created under a reservation.
+        # Corresponds to the JSON property `reserved`
+        # @return [Boolean]
+        attr_accessor :reserved
+        alias_method :reserved?, :reserved
+      
         def initialize(**args)
            update!(**args)
         end
@@ -598,6 +604,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @reserved = args[:reserved] if args.key?(:reserved)
         end
       end
       

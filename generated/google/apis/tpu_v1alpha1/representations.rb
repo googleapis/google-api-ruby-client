@@ -269,6 +269,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preemptible, as: 'preemptible'
+          property :reserved, as: 'reserved'
         end
       end
       

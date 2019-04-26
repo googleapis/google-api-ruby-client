@@ -2256,7 +2256,8 @@ module Google
       class Metaline
         include Google::Apis::Core::Hashable
       
-        # The list of displayed properties for the metaline.
+        # The list of displayed properties for the metaline. The maxiumum number of
+        # properties is 5.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::CloudsearchV1::DisplayedProperty>]
         attr_accessor :properties
@@ -2421,7 +2422,7 @@ module Google
         # to specify singular properties before repeated properties in this list. All
         # of the properties must set
         # is_returnable
-        # to true. The maximum number of elements is 3.
+        # to true. The maximum number of metalines is 3.
         # Corresponds to the JSON property `metalines`
         # @return [Array<Google::Apis::CloudsearchV1::Metaline>]
         attr_accessor :metalines
@@ -4041,7 +4042,7 @@ module Google
         attr_accessor :title
       
         # The URL of the search result. The URL contains a Google redirect to the
-        # actual item.
+        # actual item. This URL is signed and shouldn't be changed.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

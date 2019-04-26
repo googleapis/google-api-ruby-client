@@ -323,8 +323,10 @@ module Google
           property :requested_link, as: 'requestedLink'
           property :resolved_link, as: 'resolvedLink'
           property :utm_campaign, as: 'utmCampaign'
+          property :utm_content, as: 'utmContent'
           property :utm_medium, as: 'utmMedium'
           property :utm_source, as: 'utmSource'
+          property :utm_term, as: 'utmTerm'
         end
       end
       
@@ -345,8 +347,10 @@ module Google
           property :ios_min_app_version, as: 'iosMinAppVersion'
           property :resolved_link, as: 'resolvedLink'
           property :utm_campaign, as: 'utmCampaign'
+          property :utm_content, as: 'utmContent'
           property :utm_medium, as: 'utmMedium'
           property :utm_source, as: 'utmSource'
+          property :utm_term, as: 'utmTerm'
         end
       end
       

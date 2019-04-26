@@ -634,6 +634,11 @@ module Google
         # @return [String]
         attr_accessor :utm_campaign
       
+        # Scion content value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmContent`
+        # @return [String]
+        attr_accessor :utm_content
+      
         # Scion medium value to be propagated by iSDK to Scion at post-install.
         # Corresponds to the JSON property `utmMedium`
         # @return [String]
@@ -643,6 +648,11 @@ module Google
         # Corresponds to the JSON property `utmSource`
         # @return [String]
         attr_accessor :utm_source
+      
+        # Scion term value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmTerm`
+        # @return [String]
+        attr_accessor :utm_term
       
         def initialize(**args)
            update!(**args)
@@ -662,8 +672,10 @@ module Google
           @requested_link = args[:requested_link] if args.key?(:requested_link)
           @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
           @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)
+          @utm_content = args[:utm_content] if args.key?(:utm_content)
           @utm_medium = args[:utm_medium] if args.key?(:utm_medium)
           @utm_source = args[:utm_source] if args.key?(:utm_source)
+          @utm_term = args[:utm_term] if args.key?(:utm_term)
         end
       end
       
@@ -739,6 +751,11 @@ module Google
         # @return [String]
         attr_accessor :utm_campaign
       
+        # Scion content value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmContent`
+        # @return [String]
+        attr_accessor :utm_content
+      
         # Scion medium value to be propagated by iSDK to Scion at app-reopen.
         # Corresponds to the JSON property `utmMedium`
         # @return [String]
@@ -748,6 +765,11 @@ module Google
         # Corresponds to the JSON property `utmSource`
         # @return [String]
         attr_accessor :utm_source
+      
+        # Scion term value to be propagated by iSDK to Scion at app-reopen.
+        # Corresponds to the JSON property `utmTerm`
+        # @return [String]
+        attr_accessor :utm_term
       
         def initialize(**args)
            update!(**args)
@@ -760,8 +782,10 @@ module Google
           @ios_min_app_version = args[:ios_min_app_version] if args.key?(:ios_min_app_version)
           @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
           @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)
+          @utm_content = args[:utm_content] if args.key?(:utm_content)
           @utm_medium = args[:utm_medium] if args.key?(:utm_medium)
           @utm_source = args[:utm_source] if args.key?(:utm_source)
+          @utm_term = args[:utm_term] if args.key?(:utm_term)
         end
       end
       
