@@ -693,6 +693,11 @@ module Google
         # @return [String]
         attr_accessor :package_name
       
+        # Specifies the API Level on which the application is designed to run.
+        # Corresponds to the JSON property `targetSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :target_sdk_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -704,6 +709,7 @@ module Google
           @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
           @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
           @package_name = args[:package_name] if args.key?(:package_name)
+          @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
         end
       end
       

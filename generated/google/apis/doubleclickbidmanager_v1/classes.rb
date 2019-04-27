@@ -86,14 +86,15 @@ module Google
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
-        # File types that will be returned.
+        # File types that will be returned. If INVENTORY_SOURCE is requested, no other
+        # file types may be requested.
         # Acceptable values are:
         # - "AD"
         # - "AD_GROUP"
         # - "CAMPAIGN"
         # - "INSERTION_ORDER"
-        # - "LINE_ITEM"
         # - "INVENTORY_SOURCE"
+        # - "LINE_ITEM"
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
@@ -104,7 +105,8 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :filter_ids
       
-        # Filter type used to filter entities to fetch.
+        # Filter type used to filter entities to fetch. PARTNER_ID and
+        # INVENTORY_SOURCE_ID may only be used when downloading inventory sources.
         # Corresponds to the JSON property `filterType`
         # @return [String]
         attr_accessor :filter_type
@@ -268,7 +270,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :group_bys
       
-        # Whether to include data from Invite Media.
+        # Deprecated. This field is no longer in use.
         # Corresponds to the JSON property `includeInviteData`
         # @return [Boolean]
         attr_accessor :include_invite_data

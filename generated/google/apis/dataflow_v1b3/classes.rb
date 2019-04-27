@@ -836,6 +836,19 @@ module Google
         end
       end
       
+      # Response from deleting a snapshot.
+      class DeleteSnapshotResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specification of one of the bundles produced as a result of splitting
       # a Source (e.g. when executing a SourceSplitRequest, or when
       # splitting an active task using WorkItemStatus.dynamic_source_split),
@@ -2377,6 +2390,25 @@ module Google
         end
       end
       
+      # List of snapshots.
+      class ListSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returned snapshots.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::DataflowV1b3::Snapshot>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
+        end
+      end
+      
       # MapTask consists of an ordered set of instructions, each of which
       # describes one particular low-level operation for the worker to
       # perform in order to accomplish the MapTask's WorkItem.
@@ -3283,7 +3315,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
-        # Additional user labels attached to the job.
+        # Additional user labels to be specified for the job.
+        # Keys and values should follow the restrictions specified in the [labeling
+        # restrictions](https://cloud.google.com/compute/docs/labeling-resources#
+        # restrictions)
+        # page.
         # Corresponds to the JSON property `additionalUserLabels`
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
@@ -4996,6 +5032,25 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @output_collection_name = args[:output_collection_name] if args.key?(:output_collection_name)
+        end
+      end
+      
+      # Response to the validation request.
+      class ValidateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Will be empty if validation succeeds.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
         end
       end
       

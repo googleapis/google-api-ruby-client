@@ -1456,7 +1456,8 @@ module Google
       
         # Optional.
         # Specifies the custom attributes histogram requests.
-        # Duplicate values of CustomAttributeHistogramRequest.key are not allowed.
+        # Duplicate values of CustomAttributeHistogramRequest.key are not
+        # allowed.
         # Corresponds to the JSON property `customAttributeHistogramFacets`
         # @return [Array<Google::Apis::JobsV2::CustomAttributeHistogramRequest>]
         attr_accessor :custom_attribute_histogram_facets
@@ -2111,9 +2112,9 @@ module Google
         # for example, "en-US".
         # If a value is not specified, the search results may contain jobs in any
         # locale.
-        # Language codes should be in BCP-47 format, for example, "en-US" or "sr-Latn".
-        # For more information, see
-        # [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+        # Language codes should be in BCP-47 format, for example, "en-US" or
+        # "sr-Latn". For more information, see [Tags for Identifying
+        # Languages](https://tools.ietf.org/html/bcp47).
         # At most 10 language code filters are allowed.
         # Corresponds to the JSON property `languageCodes`
         # @return [Array<String>]
@@ -2683,8 +2684,8 @@ module Google
         attr_accessor :job_summary
       
         # Contains snippets of text from the Job.job_title field most
-        # closely matching a search query's keywords, if available. The matching query
-        # keywords are enclosed in HTML bold tags.
+        # closely matching a search query's keywords, if available. The matching
+        # query keywords are enclosed in HTML bold tags.
         # Corresponds to the JSON property `jobTitleSnippet`
         # @return [String]
         attr_accessor :job_title_snippet
@@ -3134,8 +3135,8 @@ module Google
       
         # Optional.
         # An integer that specifies the current offset (that is, starting result
-        # location, amongst the jobs deemed by the API as relevant) in
-        # search results. This field is only considered if page_token is unset.
+        # location, amongst the jobs deemed by the API as relevant) in search
+        # results. This field is only considered if page_token is unset.
         # For example, 0 means to  return results starting from the first matching
         # job, and 10 means to return from the 11th job. This can be used for
         # pagination, (for example, pageSize = 10 and offset = 10 means to return

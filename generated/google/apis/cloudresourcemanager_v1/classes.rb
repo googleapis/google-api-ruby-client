@@ -1560,11 +1560,12 @@ module Google
         # the response. Filter rules are case-insensitive.
         # Organizations may be filtered by `owner.directoryCustomerId` or by
         # `domain`, where the domain is a G Suite domain, for example:
-        # |Filter|Description|
-        # |------|-----------|
-        # |owner.directorycustomerid:123456789|Organizations with
-        # `owner.directory_customer_id` equal to `123456789`.|
-        # |domain:google.com|Organizations corresponding to the domain `google.com`.|
+        # | Filter                              | Description                      |
+        # |-------------------------------------|----------------------------------|
+        # | owner.directorycustomerid:123456789 | Organizations with `owner.
+        # directory_customer_id` equal to `123456789`.|
+        # | domain:google.com                   | Organizations corresponding to the
+        # domain `google.com`.|
         # This field is optional.
         # Corresponds to the JSON property `filter`
         # @return [String]

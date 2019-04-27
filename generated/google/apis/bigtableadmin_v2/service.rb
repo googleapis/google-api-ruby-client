@@ -1130,7 +1130,12 @@ module Google
         #   Values are of the form `projects/<project>/instances/<instance>`.
         # @param [Fixnum] page_size
         #   Maximum number of results per page.
-        #   CURRENTLY UNIMPLEMENTED AND IGNORED.
+        #   A page_size of zero lets the server choose the number of items to return.
+        #   A page_size which is strictly positive will return at most that many items.
+        #   A negative page_size will cause an error.
+        #   Following the first request, subsequent paginated calls are not required
+        #   to pass a page_size. If a page_size is set in subsequent calls, it must
+        #   match the page_size given in the first request.
         # @param [String] page_token
         #   The value of `next_page_token` returned by a previous call.
         # @param [String] view

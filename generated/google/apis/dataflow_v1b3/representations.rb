@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DerivedSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,12 @@ module Google
       end
       
       class ListJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSnapshotsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -766,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1074,6 +1092,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :namespace, as: 'namespace'
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class DeleteSnapshotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1473,6 +1497,14 @@ module Google
           collection :jobs, as: 'jobs', class: Google::Apis::DataflowV1b3::Job, decorator: Google::Apis::DataflowV1b3::Job::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :snapshots, as: 'snapshots', class: Google::Apis::DataflowV1b3::Snapshot, decorator: Google::Apis::DataflowV1b3::Snapshot::Representation
+      
         end
       end
       
@@ -2180,6 +2212,13 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           collection :output_collection_name, as: 'outputCollectionName'
+        end
+      end
+      
+      class ValidateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
         end
       end
       

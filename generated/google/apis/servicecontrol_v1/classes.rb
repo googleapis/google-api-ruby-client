@@ -686,7 +686,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :project_number
       
-        # 
+        # The type of the consumer which should have been defined in
+        # [Google Resource Manager](https://cloud.google.com/resource-manager/).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

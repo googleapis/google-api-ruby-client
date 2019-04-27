@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/talent-solution/job-search/docs/
     module JobsV3
       VERSION = 'V3'
-      REVISION = '20190423'
+      REVISION = '20190425'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
