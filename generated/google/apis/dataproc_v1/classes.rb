@@ -215,8 +215,8 @@ module Google
         # default, executables are run on master and all worker nodes. You can test a
         # node's role metadata to run an executable on a master or worker node, as shown
         # below using curl (you can also use wget):
-        # ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/
-        # instance/attributes/dataproc-role)
+        # ROLE=$(curl -H Metadata-Flavor:Google
+        # http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
         # if [[ "$`ROLE`" == 'Master' ]]; then
         # ... master specific actions ...
         # else
@@ -707,8 +707,8 @@ module Google
         # Cannot be specified with network_uri.A full URL, partial URI, or short name
         # are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/
-        # sub0
-        # projects/[project_id]/regions/us-east1/sub0
+        # subnetworks/sub0
+        # projects/[project_id]/regions/us-east1/subnetworks/sub0
         # sub0
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
@@ -2003,7 +2003,7 @@ module Google
         # Optional. The version of software inside the cluster. It must be one of the
         # supported Cloud Dataproc Versions, such as "1.2" (including a subminor version,
         # such as "1.2.29"), or the "preview" version. If unspecified, it defaults to
-        # the latest version.
+        # the latest Debian version.
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version

@@ -324,7 +324,8 @@ module Google
         # @return [Google::Apis::AppengineV1beta::CpuUtilization]
         attr_accessor :cpu_utilization
       
-        # Target scaling by user-provided metrics.
+        # Target scaling by user-provided metrics. Only applicable in the App Engine
+        # flexible environment.
         # Corresponds to the JSON property `customMetrics`
         # @return [Array<Google::Apis::AppengineV1beta::CustomMetric>]
         attr_accessor :custom_metrics
