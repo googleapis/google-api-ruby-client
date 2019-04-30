@@ -155,7 +155,7 @@ module Google
         end
       end
       
-      # @OutputOnly The app type the restriction applies to for mobile device.
+      # Output only. The app type the restriction applies to for mobile device.
       class AppContext
         include Google::Apis::Core::Hashable
       
@@ -174,7 +174,7 @@ module Google
         end
       end
       
-      # @OutputOnly The auction type the restriction applies to.
+      # Output only. The auction type the restriction applies to.
       class AuctionContext
         include Google::Apis::Core::Hashable
       
@@ -590,7 +590,7 @@ module Google
         end
       end
       
-      # @OutputOnly Shows any corrections that were applied to this creative.
+      # Output only. Shows any corrections that were applied to this creative.
       class Correction
         include Google::Apis::Core::Hashable
       
@@ -648,7 +648,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :agency_id
       
-        # @OutputOnly The last update timestamp of the creative via API.
+        # Output only. The last update timestamp of the creative via API.
         # Corresponds to the JSON property `apiUpdateTime`
         # @return [String]
         attr_accessor :api_update_time
@@ -666,7 +666,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :click_through_urls
       
-        # @OutputOnly Shows any corrections that were applied to this creative.
+        # Output only. Shows any corrections that were applied to this creative.
         # Corresponds to the JSON property `corrections`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Correction>]
         attr_accessor :corrections
@@ -679,7 +679,7 @@ module Google
         # @return [String]
         attr_accessor :creative_id
       
-        # @OutputOnly The top-level deals status of this creative.
+        # Output only. The top-level deals status of this creative.
         # If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
         # serving_restrictions will also exist. Note
         # that this may be nuanced with other contextual restrictions, in which case,
@@ -696,33 +696,31 @@ module Google
         # @return [Array<String>]
         attr_accessor :declared_click_through_urls
       
-        # @OutputOnly Detected advertiser IDs, if any.
+        # Output only. Detected advertiser IDs, if any.
         # Corresponds to the JSON property `detectedAdvertiserIds`
         # @return [Array<Fixnum>]
         attr_accessor :detected_advertiser_ids
       
-        # @OutputOnly
-        # The detected domains for this creative.
+        # Output only. The detected domains for this creative.
         # Corresponds to the JSON property `detectedDomains`
         # @return [Array<String>]
         attr_accessor :detected_domains
       
-        # @OutputOnly
-        # The detected languages for this creative. The order is arbitrary. The codes
-        # are 2 or 5 characters and are documented at
+        # Output only. The detected languages for this creative. The order is
+        # arbitrary. The codes are 2 or 5 characters and are documented at
         # https://developers.google.com/adwords/api/docs/appendix/languagecodes.
         # Corresponds to the JSON property `detectedLanguages`
         # @return [Array<String>]
         attr_accessor :detected_languages
       
-        # @OutputOnly Detected product categories, if any.
+        # Output only. Detected product categories, if any.
         # See the ad-product-categories.txt file in the technical documentation
         # for a list of IDs.
         # Corresponds to the JSON property `detectedProductCategories`
         # @return [Array<Fixnum>]
         attr_accessor :detected_product_categories
       
-        # @OutputOnly Detected sensitive categories, if any.
+        # Output only. Detected sensitive categories, if any.
         # See the ad-sensitive-categories.txt file in the technical documentation for
         # a list of IDs. You should use these IDs along with the
         # excluded-sensitive-category field in the bid request to filter your bids.
@@ -730,7 +728,7 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :detected_sensitive_categories
       
-        # @OutputOnly Filtering reasons for this creative during a period of a single
+        # Output only. Filtering reasons for this creative during a period of a single
         # day (from midnight to midnight Pacific).
         # Corresponds to the JSON property `filteringStats`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::FilteringStats]
@@ -751,7 +749,7 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::NativeContent]
         attr_accessor :native
       
-        # @OutputOnly The top-level open auction status of this creative.
+        # Output only. The top-level open auction status of this creative.
         # If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
         # serving_restrictions will also exist. Note
         # that this may be nuanced with other contextual restrictions, in which case,
@@ -768,7 +766,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :restricted_categories
       
-        # @OutputOnly The granular status of this ad in specific contexts.
+        # Output only. The granular status of this ad in specific contexts.
         # A context here relates to where something ultimately serves (for example,
         # a physical location, a platform, an HTTPS vs HTTP request, or the type
         # of auction).
@@ -783,7 +781,7 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :vendor_ids
       
-        # @OutputOnly The version of this creative.
+        # Output only. The version of this creative.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -915,9 +913,8 @@ module Google
         # @return [String]
         attr_accessor :creative_size_type
       
-        # The native template for this creative. It will have a value only if
-        # creative_size_type = CreativeSizeType.NATIVE.
-        # @OutputOnly
+        # Output only. The native template for this creative. It will have a value
+        # only if creative_size_type = CreativeSizeType.NATIVE.
         # Corresponds to the JSON property `nativeTemplate`
         # @return [String]
         attr_accessor :native_template
@@ -1186,14 +1183,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :create_product_revision
       
-        # The time of the deal creation.
-        # @OutputOnly
+        # Output only. The time of the deal creation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Specifies the creative pre-approval policy.
-        # @OutputOnly
+        # Output only. Specifies the creative pre-approval policy.
         # Corresponds to the JSON property `creativePreApprovalPolicy`
         # @return [String]
         attr_accessor :creative_pre_approval_policy
@@ -1205,14 +1200,12 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeRestrictions]
         attr_accessor :creative_restrictions
       
-        # Specifies whether the creative is safeFrame compatible.
-        # @OutputOnly
+        # Output only. Specifies whether the creative is safeFrame compatible.
         # Corresponds to the JSON property `creativeSafeFrameCompatibility`
         # @return [String]
         attr_accessor :creative_safe_frame_compatibility
       
-        # A unique deal ID for the deal (server-assigned).
-        # @OutputOnly
+        # Output only. A unique deal ID for the deal (server-assigned).
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
@@ -1244,36 +1237,32 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The external deal ID assigned to this deal once the deal is finalized.
-        # This is the deal ID that shows up in serving/reporting etc.
-        # @OutputOnly
+        # Output only. The external deal ID assigned to this deal once the deal is
+        # finalized. This is the deal ID that shows up in serving/reporting etc.
         # Corresponds to the JSON property `externalDealId`
         # @return [String]
         attr_accessor :external_deal_id
       
-        # True, if the buyside inventory setup is complete for this deal.
-        # @OutputOnly
+        # Output only. True, if the buyside inventory setup is complete for this
+        # deal.
         # Corresponds to the JSON property `isSetupComplete`
         # @return [Boolean]
         attr_accessor :is_setup_complete
         alias_method :is_setup_complete?, :is_setup_complete
       
-        # Specifies the creative source for programmatic deals. PUBLISHER means
-        # creative is provided by seller and ADVERTISER means creative is
-        # provided by buyer.
-        # @OutputOnly
+        # Output only. Specifies the creative source for programmatic deals.
+        # PUBLISHER means creative is provided by seller and ADVERTISER means
+        # creative is provided by buyer.
         # Corresponds to the JSON property `programmaticCreativeSource`
         # @return [String]
         attr_accessor :programmatic_creative_source
       
-        # ID of the proposal that this deal is part of.
-        # @OutputOnly
+        # Output only. ID of the proposal that this deal is part of.
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
       
-        # Seller contact information for the deal.
-        # @OutputOnly
+        # Output only. Seller contact information for the deal.
         # Corresponds to the JSON property `sellerContacts`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ContactInformation>]
         attr_accessor :seller_contacts
@@ -1300,8 +1289,7 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::TargetingCriteria>]
         attr_accessor :targeting_criterion
       
-        # The time when the deal was last updated.
-        # @OutputOnly
+        # Output only. The time when the deal was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1486,20 +1474,17 @@ module Google
       class DeliveryControl
         include Google::Apis::Core::Hashable
       
-        # Specified the creative blocking levels to be applied.
-        # @OutputOnly
+        # Output only. Specified the creative blocking levels to be applied.
         # Corresponds to the JSON property `creativeBlockingLevel`
         # @return [String]
         attr_accessor :creative_blocking_level
       
-        # Specifies how the impression delivery will be paced.
-        # @OutputOnly
+        # Output only. Specifies how the impression delivery will be paced.
         # Corresponds to the JSON property `deliveryRateType`
         # @return [String]
         attr_accessor :delivery_rate_type
       
-        # Specifies any frequency caps.
-        # @OutputOnly
+        # Output only. Specifies any frequency caps.
         # Corresponds to the JSON property `frequencyCaps`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::FrequencyCap>]
         attr_accessor :frequency_caps
@@ -1516,7 +1501,7 @@ module Google
         end
       end
       
-      # @OutputOnly The reason and details for a disapproval.
+      # Output only. The reason and details for a disapproval.
       class Disapproval
         include Google::Apis::Core::Hashable
       
@@ -1766,7 +1751,7 @@ module Google
         end
       end
       
-      # @OutputOnly Filtering reasons for this creative during a period of a single
+      # Output only. Filtering reasons for this creative during a period of a single
       # day (from midnight to midnight Pacific).
       class FilteringStats
         include Google::Apis::Core::Hashable
@@ -2615,7 +2600,7 @@ module Google
         end
       end
       
-      # @OutputOnly The Geo criteria the restriction applies to.
+      # Output only. The Geo criteria the restriction applies to.
       class LocationContext
         include Google::Apis::Core::Hashable
       
@@ -2965,14 +2950,12 @@ module Google
       class Note
         include Google::Apis::Core::Hashable
       
-        # The timestamp for when this note was created.
-        # @OutputOnly
+        # Output only. The timestamp for when this note was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The role of the person (buyer/seller) creating the note.
-        # @OutputOnly
+        # Output only. The role of the person (buyer/seller) creating the note.
         # Corresponds to the JSON property `creatorRole`
         # @return [String]
         attr_accessor :creator_role
@@ -2985,14 +2968,12 @@ module Google
         # @return [String]
         attr_accessor :note
       
-        # The unique ID for the note.
-        # @OutputOnly
+        # Output only. The unique ID for the note.
         # Corresponds to the JSON property `noteId`
         # @return [String]
         attr_accessor :note_id
       
-        # The revision number of the proposal when the note is created.
-        # @OutputOnly
+        # Output only. The revision number of the proposal when the note is created.
         # Corresponds to the JSON property `proposalRevision`
         # @return [Fixnum]
         attr_accessor :proposal_revision
@@ -3090,7 +3071,7 @@ module Google
         end
       end
       
-      # @OutputOnly The type of platform the restriction applies to.
+      # Output only. The type of platform the restriction applies to.
       class PlatformContext
         include Google::Apis::Core::Hashable
       
@@ -3357,65 +3338,58 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # True if the proposal is being renegotiated.
-        # @OutputOnly
+        # Output only. True if the proposal is being renegotiated.
         # Corresponds to the JSON property `isRenegotiating`
         # @return [Boolean]
         attr_accessor :is_renegotiating
         alias_method :is_renegotiating?, :is_renegotiating
       
-        # True, if the buyside inventory setup is complete for this proposal.
-        # @OutputOnly
+        # Output only. True, if the buyside inventory setup is complete for this
+        # proposal.
         # Corresponds to the JSON property `isSetupComplete`
         # @return [Boolean]
         attr_accessor :is_setup_complete
         alias_method :is_setup_complete?, :is_setup_complete
       
-        # The role of the last user that either updated the proposal or left a
-        # comment.
-        # @OutputOnly
+        # Output only. The role of the last user that either updated the proposal or
+        # left a comment.
         # Corresponds to the JSON property `lastUpdaterOrCommentorRole`
         # @return [String]
         attr_accessor :last_updater_or_commentor_role
       
-        # The notes associated with this proposal.
-        # @OutputOnly
+        # Output only. The notes associated with this proposal.
         # Corresponds to the JSON property `notes`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Note>]
         attr_accessor :notes
       
-        # Indicates whether the buyer/seller created the proposal.
-        # @OutputOnly
+        # Output only. Indicates whether the buyer/seller created the proposal.
         # Corresponds to the JSON property `originatorRole`
         # @return [String]
         attr_accessor :originator_role
       
-        # Private auction ID if this proposal is a private auction proposal.
-        # @OutputOnly
+        # Output only. Private auction ID if this proposal is a private auction
+        # proposal.
         # Corresponds to the JSON property `privateAuctionId`
         # @return [String]
         attr_accessor :private_auction_id
       
-        # The unique ID of the proposal.
-        # @OutputOnly
+        # Output only. The unique ID of the proposal.
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
       
-        # The revision number for the proposal.
+        # Output only. The revision number for the proposal.
         # Each update to the proposal or the deal causes the proposal revision number
         # to auto-increment. The buyer keeps track of the last revision number they
         # know of and pass it in when making an update. If the head revision number
         # on the server has since incremented, then an ABORTED error is returned
         # during the update operation to let the buyer know that a subsequent update
         # was made.
-        # @OutputOnly
         # Corresponds to the JSON property `proposalRevision`
         # @return [Fixnum]
         attr_accessor :proposal_revision
       
-        # The current state of the proposal.
-        # @OutputOnly
+        # Output only. The current state of the proposal.
         # Corresponds to the JSON property `proposalState`
         # @return [String]
         attr_accessor :proposal_state
@@ -3426,14 +3400,12 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Seller]
         attr_accessor :seller
       
-        # Contact information for the seller.
-        # @OutputOnly
+        # Output only. Contact information for the seller.
         # Corresponds to the JSON property `sellerContacts`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ContactInformation>]
         attr_accessor :seller_contacts
       
-        # The time when the proposal was last revised.
-        # @OutputOnly
+        # Output only. The time when the proposal was last revised.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3728,7 +3700,7 @@ module Google
         end
       end
       
-      # @OutputOnly A security context.
+      # Output only. A security context.
       class SecurityContext
         include Google::Apis::Core::Hashable
       
@@ -3783,27 +3755,27 @@ module Google
         # @return [String]
         attr_accessor :all
       
-        # @OutputOnly The app type the restriction applies to for mobile device.
+        # Output only. The app type the restriction applies to for mobile device.
         # Corresponds to the JSON property `appType`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::AppContext]
         attr_accessor :app_type
       
-        # @OutputOnly The auction type the restriction applies to.
+        # Output only. The auction type the restriction applies to.
         # Corresponds to the JSON property `auctionType`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::AuctionContext]
         attr_accessor :auction_type
       
-        # @OutputOnly The Geo criteria the restriction applies to.
+        # Output only. The Geo criteria the restriction applies to.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::LocationContext]
         attr_accessor :location
       
-        # @OutputOnly The type of platform the restriction applies to.
+        # Output only. The type of platform the restriction applies to.
         # Corresponds to the JSON property `platform`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::PlatformContext]
         attr_accessor :platform
       
-        # @OutputOnly A security context.
+        # Output only. A security context.
         # Corresponds to the JSON property `securityType`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::SecurityContext]
         attr_accessor :security_type
@@ -3823,7 +3795,7 @@ module Google
         end
       end
       
-      # @OutputOnly A representation of the status of an ad in a
+      # Output only. A representation of the status of an ad in a
       # specific context. A context here relates to where something ultimately serves
       # (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,
       # or the type of auction).
@@ -3835,7 +3807,7 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingContext>]
         attr_accessor :contexts
       
-        # @OutputOnly The reason and details for a disapproval.
+        # Output only. The reason and details for a disapproval.
         # Corresponds to the JSON property `disapproval`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Disapproval]
         attr_accessor :disapproval

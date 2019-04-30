@@ -559,17 +559,17 @@ module Google
         # * integer literals without quotes.
         # * boolean literals `true` and `false` without quotes.
         # The following field and operator combinations are supported:
-        # name | '='
-        # update_time | '>', '<', '>=', '<=', '='
-        # create_time | '>', '<', '>=', '<=', '='
-        # iam_policy.policy_blob | '=', ':'
-        # resource_properties | '=', ':', '>', '<', '>=', '<='
-        # security_marks | '=', ':'
-        # security_center_properties.resource_name | '=', ':'
-        # security_center_properties.resource_type | '=', ':'
-        # security_center_properties.resource_parent | '=', ':'
-        # security_center_properties.resource_project | '=', ':'
-        # security_center_properties.resource_owners | '=', ':'
+        # * name: `=`
+        # * update_time: `>`, `<`, `>=`, `<=`, `=`
+        # * create_time: `>`, `<`, `>=`, `<=`, `=`
+        # * iam_policy.policy_blob: `=`, `:`
+        # * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
+        # * security_marks: `=`, `:`
+        # * security_center_properties.resource_name: `=`, `:`
+        # * security_center_properties.resource_type: `=`, `:`
+        # * security_center_properties.resource_parent: `=`, `:`
+        # * security_center_properties.resource_project: `=`, `:`
+        # * security_center_properties.resource_owners: `=`, `:`
         # For example, `resource_properties.size = 100` is a valid filter string.
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -713,15 +713,15 @@ module Google
         # * integer literals without quotes.
         # * boolean literals `true` and `false` without quotes.
         # The following field and operator combinations are supported:
-        # name | `=`
-        # parent | '=', ':'
-        # resource_name | '=', ':'
-        # state | '=', ':'
-        # category | '=', ':'
-        # external_uri | '=', ':'
-        # event_time | `>`, `<`, `>=`, `<=`
-        # security_marks | '=', ':'
-        # source_properties | '=', ':', `>`, `<`, `>=`, `<=`
+        # * name: `=`
+        # * parent: `=`, `:`
+        # * resource_name: `=`, `:`
+        # * state: `=`, `:`
+        # * category: `=`, `:`
+        # * external_uri: `=`, `:`
+        # * event_time: `>`, `<`, `>=`, `<=`
+        # * security_marks: `=`, `:`
+        # * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
         # For example, `source_properties.size = 100` is a valid filter string.
         # Corresponds to the JSON property `filter`
         # @return [String]

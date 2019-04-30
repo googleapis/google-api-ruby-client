@@ -288,9 +288,9 @@ module Google
         #   Optional. Specifies the subset of jobs to retrieve.
         #   You can filter on the value of one or more attributes of the job object.
         #   For example, retrieve jobs with a job identifier that starts with 'census':
-        #   <p><code>gcloud ml-engine jobs list --filter='jobId:census*'</code>
+        #   <p><code>gcloud ai-platform jobs list --filter='jobId:census*'</code>
         #   <p>List all failed jobs with names that start with 'rnn':
-        #   <p><code>gcloud ml-engine jobs list --filter='jobId:rnn*
+        #   <p><code>gcloud ai-platform jobs list --filter='jobId:rnn*
         #   AND state:FAILED'</code>
         #   <p>For more examples, see the guide to
         #   <a href="/ml-engine/docs/tensorflow/monitor-training">monitoring jobs</a>.
