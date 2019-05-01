@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -171,6 +177,15 @@ module Google
         end
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
+      
+          property :node_id, as: 'nodeId'
+        end
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -213,6 +228,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
+      
+          collection :nodes, as: 'nodes', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
       
           property :tier, as: 'tier'
         end

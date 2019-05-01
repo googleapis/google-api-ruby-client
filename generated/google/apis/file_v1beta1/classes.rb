@@ -98,7 +98,9 @@ module Google
       # "foo": "bar"
       # `,
       # "state": READY,
-      # "software_version": "cloud-sql-09-28-2018",
+      # "software_versions": `
+      # "software_update": "cloud-sql-09-28-2018",
+      # `,
       # "maintenance_policy_names": `
       # "UpdatePolicy":
       # "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-
@@ -111,7 +113,7 @@ module Google
       # "rollout":
       # "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-
       # canary",
-      # `
+      # `,
       # "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": `
       # "release":
       # "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair",
@@ -154,8 +156,7 @@ module Google
         # The key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy
         # type. For complete details of MaintenancePolicy, please refer to
-        # //depot/google3/google/cloud/saasaccelerator/maintenancepolicy/api/v1/
-        # maintenance_policy_resources.proto
+        # go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
         attr_accessor :maintenance_policy_names
@@ -236,6 +237,39 @@ module Google
           @state = args[:state] if args.key?(:state)
           @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Node information for custom per-node SLO implementations.
+      # SSA does not support per-node SLO, but producers can populate per-node
+      # information in SloMetadata for custom precomputations.
+      # SSA Eligibility Exporter will emit per-node metric based on this information.
+      class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+        include Google::Apis::Core::Hashable
+      
+        # By default node is eligible if instance is eligible.
+        # But individual node might be excluded from SLO by adding entry here.
+        # For semantic see SloMetadata.exclusions.
+        # If both instance and node level exclusions are present for time period,
+        # the node level's reason will be reported by Eligibility Exporter.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
+        attr_accessor :exclusions
+      
+        # The id of the node.
+        # This should be equal to SaasInstanceNode.node_id.
+        # Corresponds to the JSON property `nodeId`
+        # @return [String]
+        attr_accessor :node_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @node_id = args[:node_id] if args.key?(:node_id)
         end
       end
       
@@ -409,6 +443,15 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
       
+        # Optional: list of nodes.
+        # Some producers need to use per-node metadata to calculate SLO.
+        # This field allows such producers to publish per-node SLO meta data,
+        # which will be consumed by SSA Eligibility Exporter and published in the
+        # form of per node metric to Monarch.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>]
+        attr_accessor :nodes
+      
         # Name of the SLO tier the Instance belongs to. This name will be expected to
         # match the tiers specified in the service SLO configuration.
         # Field is mandatory and must not be empty.
@@ -423,6 +466,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -648,8 +692,8 @@ module Google
         # Output only.
         # IPv4 addresses in the format
         # `octet 1`.`octet 2`.`octet 3`.`octet 4` or IPv6 addresses in the format
-        # `block 1`:`block 2`:`block 3`:`block 4`:`block 5`:`block 6`:`block 7`:`block 8`
-        # .
+        # `block 1`:`block 2`:`block 3`:`block 4`:`block 5`:`block 6`:`block
+        # 7`:`block 8`.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<String>]
         attr_accessor :ip_addresses
@@ -668,12 +712,12 @@ module Google
         attr_accessor :network
       
         # A /29 CIDR block in one of the
-        # [internal IP address ranges](https://www.arin.net/knowledge/address_filters.
-        # html)
-        # that identifies the range of IP addresses reserved for this
-        # instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify
-        # can't overlap with either existing subnets or assigned IP address ranges
-        # for other Cloud Filestore instances in the selected VPC network.
+        # [internal IP address
+        # ranges](https://www.arin.net/knowledge/address_filters.html) that
+        # identifies the range of IP addresses reserved for this instance. For
+        # example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap
+        # with either existing subnets or assigned IP address ranges for other Cloud
+        # Filestore instances in the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
