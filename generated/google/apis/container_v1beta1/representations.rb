@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoprovisioningNodePoolDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +544,14 @@ module Google
         end
       end
       
+      class AutoprovisioningNodePoolDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :oauth_scopes, as: 'oauthScopes'
+          property :service_account, as: 'serviceAccount'
+        end
+      end
+      
       class BigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -664,6 +678,8 @@ module Google
       class ClusterAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults::Representation
+      
           property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
           collection :resource_limits, as: 'resourceLimits', class: Google::Apis::ContainerV1beta1::ResourceLimit, decorator: Google::Apis::ContainerV1beta1::ResourceLimit::Representation
       
@@ -1040,6 +1056,7 @@ module Google
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
       
           property :name, as: 'name'
+          property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'

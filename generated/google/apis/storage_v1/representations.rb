@@ -291,6 +291,7 @@ module Google
           property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Representation
       
           property :location, as: 'location'
+          property :location_type, as: 'locationType'
           property :logging, as: 'logging', class: Google::Apis::StorageV1::Bucket::Logging, decorator: Google::Apis::StorageV1::Bucket::Logging::Representation
       
           property :metageneration, :numeric_string => true, as: 'metageneration'
@@ -554,8 +555,10 @@ module Google
           property :self_link, as: 'selfLink'
           property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
-          property :time_created, as: 'timeCreated'
-          property :updated, as: 'updated'
+          property :time_created, as: 'timeCreated', type: DateTime
+      
+          property :updated, as: 'updated', type: DateTime
+      
         end
       end
       

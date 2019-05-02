@@ -64,42 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UrlCrawlErrorCount
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UrlCrawlErrorCountsPerType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QueryUrlCrawlErrorsCountsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UrlCrawlErrorsSample
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListUrlCrawlErrorsSamplesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UrlSampleDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class WmxSite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,63 +148,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSite::Representation
       
-        end
-      end
-      
-      class UrlCrawlErrorCount
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :timestamp, as: 'timestamp', type: DateTime
-      
-        end
-      end
-      
-      class UrlCrawlErrorCountsPerType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :category, as: 'category'
-          collection :entries, as: 'entries', class: Google::Apis::WebmastersV3::UrlCrawlErrorCount, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCount::Representation
-      
-          property :platform, as: 'platform'
-        end
-      end
-      
-      class QueryUrlCrawlErrorsCountsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType::Representation
-      
-        end
-      end
-      
-      class UrlCrawlErrorsSample
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_detected, as: 'first_detected', type: DateTime
-      
-          property :last_crawled, as: 'last_crawled', type: DateTime
-      
-          property :page_url, as: 'pageUrl'
-          property :response_code, as: 'responseCode'
-          property :url_details, as: 'urlDetails', class: Google::Apis::WebmastersV3::UrlSampleDetails, decorator: Google::Apis::WebmastersV3::UrlSampleDetails::Representation
-      
-        end
-      end
-      
-      class ListUrlCrawlErrorsSamplesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation
-      
-        end
-      end
-      
-      class UrlSampleDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :containing_sitemaps, as: 'containingSitemaps'
-          collection :linked_from_urls, as: 'linkedFromUrls'
         end
       end
       

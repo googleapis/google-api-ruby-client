@@ -2852,12 +2852,14 @@ module Google
         # DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-
         # sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.
         # com/bigquery/docs/reference/standard-sql/data-manipulation-language. "
+        # ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "
+        # CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE]
+        # MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "
         # CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
         # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "
-        # DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
-        # SELECT ... . "DROP_VIEW": DROP VIEW query. "CREATE_FUNCTION": CREATE FUNCTION
-        # query. "DROP_FUNCTION" : DROP FUNCTION query. "ALTER_TABLE": ALTER TABLE query.
-        # "ALTER_VIEW": ALTER VIEW query.
+        # CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" :
+        # DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE":
+        # DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type
@@ -3094,6 +3096,28 @@ module Google
         def update!(**args)
           @models = args[:models] if args.key?(:models)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # BigQuery-specific metadata about a location. This will be set on
+      # google.cloud.location.Location.metadata in Cloud Location API
+      # responses.
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
+        # This is for any API consumers that need the legacy “US” and “EU” locations.
+        # Corresponds to the JSON property `legacyLocationId`
+        # @return [String]
+        attr_accessor :legacy_location_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @legacy_location_id = args[:legacy_location_id] if args.key?(:legacy_location_id)
         end
       end
       

@@ -2254,7 +2254,7 @@ module Google
         # return a `412 Precondition Failed` error.
         # If the search criteria identify zero matches, and the supplied resource
         # body contains an `id`, and the FHIR store has
-        # [enable_update_create](FhirStore.enable_update_create) set, creates the
+        # enable_update_create set, creates the
         # resource with the client-specified ID. If the search criteria identify zero
         # matches, and the supplied resource body does not contain an `id`, the
         # resource will be created with a server-assigned ID as per the
@@ -2677,7 +2677,7 @@ module Google
         # interaction](http://hl7.org/implement/standards/fhir/STU3/http.html#update).
         # If the specified resource does
         # not exist and the FHIR store has
-        # [enable_update_create](FhirStore.enable_update_create) set, creates the
+        # enable_update_create set, creates the
         # resource with the client-specified ID.
         # The request body must contain a JSON-encoded FHIR resource, and the request
         # headers must contain `Content-Type: application/fhir+json`. The resource

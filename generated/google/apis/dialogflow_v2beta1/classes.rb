@@ -2434,7 +2434,7 @@ module Google
         end
       end
       
-      # Instructs the speech recognizer how to process the audio content.
+      # Instructs the speech recognizer on how to process the audio content.
       class GoogleCloudDialogflowV2beta1InputAudioConfig
         include Google::Apis::Core::Hashable
       
@@ -3968,7 +3968,7 @@ module Google
       class GoogleCloudDialogflowV2beta1QueryInput
         include Google::Apis::Core::Hashable
       
-        # Instructs the speech recognizer how to process the audio content.
+        # Instructs the speech recognizer on how to process the audio content.
         # Corresponds to the JSON property `audioConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig]
         attr_accessor :audio_config

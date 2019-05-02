@@ -285,6 +285,23 @@ module Google
         # @return [String]
         attr_accessor :http_method
       
+        # Contains information needed for generating an
+        # [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+        # This type of authorization should be used when sending requests to a GCP
+        # endpoint.
+        # Corresponds to the JSON property `oauthToken`
+        # @return [Google::Apis::CloudschedulerV1::OAuthToken]
+        attr_accessor :oauth_token
+      
+        # Contains information needed for generating an
+        # [OpenID Connect
+        # token](https://developers.google.com/identity/protocols/OpenIDConnect). This
+        # type of authorization should be used when sending requests to third party
+        # endpoints or Cloud Run.
+        # Corresponds to the JSON property `oidcToken`
+        # @return [Google::Apis::CloudschedulerV1::OidcToken]
+        attr_accessor :oidc_token
+      
         # Required.
         # The full URI path that the request will be sent to. This string
         # must begin with either "http://" or "https://". Some examples of
@@ -305,6 +322,8 @@ module Google
           @body = args[:body] if args.key?(:body)
           @headers = args[:headers] if args.key?(:headers)
           @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_token = args[:oauth_token] if args.key?(:oauth_token)
+          @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -326,6 +345,19 @@ module Google
         # Corresponds to the JSON property `appEngineHttpTarget`
         # @return [Google::Apis::CloudschedulerV1::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
+      
+        # The deadline for job attempts. If the request handler does not respond by
+        # this deadline then the request is cancelled and the attempt is marked as a
+        # `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in
+        # execution logs. Cloud Scheduler will retry the job according
+        # to the RetryConfig.
+        # The allowed duration for this deadline is:
+        # * For HTTP targets, between 15 seconds and 30 minutes.
+        # * For App Engine HTTP targets, between 15
+        # seconds and 24 hours.
+        # Corresponds to the JSON property `attemptDeadline`
+        # @return [String]
+        attr_accessor :attempt_deadline
       
         # Optionally caller-specified in CreateJob or
         # UpdateJob.
@@ -486,6 +518,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_http_target = args[:app_engine_http_target] if args.key?(:app_engine_http_target)
+          @attempt_deadline = args[:attempt_deadline] if args.key?(:attempt_deadline)
           @description = args[:description] if args.key?(:description)
           @http_target = args[:http_target] if args.key?(:http_target)
           @last_attempt_time = args[:last_attempt_time] if args.key?(:last_attempt_time)
@@ -600,6 +633,72 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Contains information needed for generating an
+      # [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+      # This type of authorization should be used when sending requests to a GCP
+      # endpoint.
+      class OAuthToken
+        include Google::Apis::Core::Hashable
+      
+        # OAuth scope to be used for generating OAuth access token.
+        # If not specified, "https://www.googleapis.com/auth/cloud-platform"
+        # will be used.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+        # to be used for generating OAuth token.
+        # The service account must be within the same project as the job. The caller
+        # must have iam.serviceAccounts.actAs permission for the service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
+      # Contains information needed for generating an
+      # [OpenID Connect
+      # token](https://developers.google.com/identity/protocols/OpenIDConnect). This
+      # type of authorization should be used when sending requests to third party
+      # endpoints or Cloud Run.
+      class OidcToken
+        include Google::Apis::Core::Hashable
+      
+        # Audience to be used when generating OIDC token. If not specified, the URI
+        # specified in target will be used.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+        # to be used for generating OIDC token.
+        # The service account must be within the same project as the job. The caller
+        # must have iam.serviceAccounts.actAs permission for the service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
         end
       end
       

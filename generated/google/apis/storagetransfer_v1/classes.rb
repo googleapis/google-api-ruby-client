@@ -832,12 +832,12 @@ module Google
       class TransferJob
         include Google::Apis::Core::Hashable
       
-        # This field cannot be changed by user requests.
+        # Output only. The time that the transfer job was created.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # This field cannot be changed by user requests.
+        # Output only. The time that the transfer job was deleted.
         # Corresponds to the JSON property `deletionTime`
         # @return [String]
         attr_accessor :deletion_time
@@ -848,7 +848,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # This field cannot be changed by user requests.
+        # Output only. The time that the transfer job was last modified.
         # Corresponds to the JSON property `lastModificationTime`
         # @return [String]
         attr_accessor :last_modification_time

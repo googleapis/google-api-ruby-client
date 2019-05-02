@@ -106,6 +106,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The type of the bucket location.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
         # The bucket's logging configuration, which defines the destination bucket and
         # optional name prefix for the current bucket's logs.
         # Corresponds to the JSON property `logging`
@@ -201,6 +206,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @lifecycle = args[:lifecycle] if args.key?(:lifecycle)
           @location = args[:location] if args.key?(:location)
+          @location_type = args[:location_type] if args.key?(:location_type)
           @logging = args[:logging] if args.key?(:logging)
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
@@ -1053,7 +1059,7 @@ module Google
         # @return [String]
         attr_accessor :access_id
       
-        # HTTP 1.1 Entity tag for the access-control entry.
+        # HTTP 1.1 Entity tag for the HMAC key.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1091,12 +1097,12 @@ module Google
       
         # The creation time of the HMAC key in RFC 3339 format.
         # Corresponds to the JSON property `timeCreated`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :time_created
       
         # The last modification time of the HMAC key metadata in RFC 3339 format.
         # Corresponds to the JSON property `updated`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :updated
       
         def initialize(**args)

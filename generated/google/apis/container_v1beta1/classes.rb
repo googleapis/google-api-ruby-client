@@ -160,6 +160,34 @@ module Google
         end
       end
       
+      # AutoprovisioningNodePoolDefaults contains defaults for a node pool created
+      # by NAP.
+      class AutoprovisioningNodePoolDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Scopes that are used by NAP when creating node pools. If oauth_scopes are
+        # specified, service_account should be empty.
+        # Corresponds to the JSON property `oauthScopes`
+        # @return [Array<String>]
+        attr_accessor :oauth_scopes
+      
+        # The Google Cloud Platform Service Account to be used by the node VMs. If
+        # service_account is specified, scopes should be empty.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
       # Parameters for using BigQuery as the destination of resource usage export.
       class BigQueryDestination
         include Google::Apis::Core::Hashable
@@ -446,6 +474,7 @@ module Google
         # "node_pool" object, since this configuration (along with the
         # "node_config") will be used to create a "NodePool" object with an
         # auto-generated name. Do not use this and a node_pool at the same time.
+        # This field is deprecated, use node_pool.initial_node_count instead.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
@@ -734,6 +763,12 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
+        # AutoprovisioningNodePoolDefaults contains defaults for a node pool created
+        # by NAP.
+        # Corresponds to the JSON property `autoprovisioningNodePoolDefaults`
+        # @return [Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults]
+        attr_accessor :autoprovisioning_node_pool_defaults
+      
         # Enables automatic node pool creation and deletion.
         # Corresponds to the JSON property `enableNodeAutoprovisioning`
         # @return [Boolean]
@@ -752,6 +787,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
         end
@@ -2276,6 +2312,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] The pod CIDR block size per node in this node pool.
+        # Corresponds to the JSON property `podIpv4CidrSize`
+        # @return [Fixnum]
+        attr_accessor :pod_ipv4_cidr_size
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -2311,6 +2352,7 @@ module Google
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
+          @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)

@@ -323,6 +323,7 @@ module Google
         # "node_pool" object, since this configuration (along with the
         # "node_config") will be used to create a "NodePool" object with an
         # auto-generated name. Do not use this and a node_pool at the same time.
+        # This field is deprecated, use node_pool.initial_node_count instead.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
@@ -1428,7 +1429,7 @@ module Google
       class MasterAuthorizedNetworksConfig
         include Google::Apis::Core::Hashable
       
-        # cidr_blocks define up to 10 external networks that could access
+        # cidr_blocks define up to 50 external networks that could access
         # Kubernetes master through HTTPS.
         # Corresponds to the JSON property `cidrBlocks`
         # @return [Array<Google::Apis::ContainerV1::CidrBlock>]
@@ -1809,6 +1810,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] The pod CIDR block size per node in this node pool.
+        # Corresponds to the JSON property `podIpv4CidrSize`
+        # @return [Fixnum]
+        attr_accessor :pod_ipv4_cidr_size
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1844,6 +1850,7 @@ module Google
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
+          @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)

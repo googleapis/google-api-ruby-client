@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaterializedViewDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1291,6 +1297,13 @@ module Google
           collection :models, as: 'models', class: Google::Apis::BigqueryV2::Model, decorator: Google::Apis::BigqueryV2::Model::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_location_id, as: 'legacyLocationId'
         end
       end
       
