@@ -341,6 +341,7 @@ module Google
           collection :ignored_files, as: 'ignoredFiles'
           collection :included_files, as: 'includedFiles'
           hash :substitutions, as: 'substitutions'
+          collection :tags, as: 'tags'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
         end

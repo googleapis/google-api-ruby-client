@@ -61,10 +61,11 @@ module Google
         # an HTTPS website or an Android app, the API will ensure that any
         # statements used to generate the response have been made in a secure way by
         # the owner of that asset.  Conversely, if the source asset is an insecure
-        # HTTP website (that is, the URL starts with `http://` instead of `https://`),
-        # the API cannot verify its statements securely, and it is not possible to
-        # ensure that the website's statements have not been altered by a third
-        # party.  For more information, see the [Digital Asset Links technical design
+        # HTTP website (that is, the URL starts with `http://` instead of
+        # `https://`), the API cannot verify its statements securely, and it is not
+        # possible to ensure that the website's statements have not been altered by a
+        # third party.  For more information, see the [Digital Asset Links technical
+        # design
         # specification](https://github.com/google/digitalassetlinks/blob/master/well-
         # known/details.md).
         # @param [String] relation

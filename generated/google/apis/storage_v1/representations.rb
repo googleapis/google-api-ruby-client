@@ -539,7 +539,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata'
+          property :metadata, as: 'metadata', class: Google::Apis::StorageV1::HmacKeyMetadata, decorator: Google::Apis::StorageV1::HmacKeyMetadata::Representation
+      
           property :secret, as: 'secret'
         end
       end

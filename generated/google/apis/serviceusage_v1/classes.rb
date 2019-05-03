@@ -2923,6 +2923,11 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1::LabelDescriptor>]
         attr_accessor :labels
       
+        # Optional. The launch stage of the monitored resource definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Optional. The resource name of the monitored resource descriptor:
         # `"projects/`project_id`/monitoredResourceDescriptors/`type`"` where
         # `type` is the value of the `type` field in this object and
@@ -2949,6 +2954,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end

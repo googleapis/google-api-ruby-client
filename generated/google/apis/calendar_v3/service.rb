@@ -1346,14 +1346,14 @@ module Google
         #   Learn more about incremental synchronization.
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
-        #   Upper bound (exclusive) for an event's end time to filter by. Optional. The
-        #   default is not to filter by end time. Must be an RFC3339 timestamp with
+        #   Upper bound (exclusive) for an event's start time to filter by. Optional. The
+        #   default is not to filter by start time. Must be an RFC3339 timestamp with
         #   mandatory time zone offset, for example, 2011-06-03T10:00:00-07:00, 2011-06-
         #   03T10:00:00Z. Milliseconds may be provided but are ignored. If timeMin is set,
         #   timeMax must be greater than timeMin.
         # @param [DateTime] time_min
-        #   Lower bound (inclusive) for an event's start time to filter by. Optional. The
-        #   default is not to filter by start time. Must be an RFC3339 timestamp with
+        #   Lower bound (exclusive) for an event's end time to filter by. Optional. The
+        #   default is not to filter by end time. Must be an RFC3339 timestamp with
         #   mandatory time zone offset, for example, 2011-06-03T10:00:00-07:00, 2011-06-
         #   03T10:00:00Z. Milliseconds may be provided but are ignored. If timeMax is set,
         #   timeMin must be smaller than timeMax.
@@ -1733,14 +1733,14 @@ module Google
         #   Learn more about incremental synchronization.
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
-        #   Upper bound (exclusive) for an event's end time to filter by. Optional. The
-        #   default is not to filter by end time. Must be an RFC3339 timestamp with
+        #   Upper bound (exclusive) for an event's start time to filter by. Optional. The
+        #   default is not to filter by start time. Must be an RFC3339 timestamp with
         #   mandatory time zone offset, for example, 2011-06-03T10:00:00-07:00, 2011-06-
         #   03T10:00:00Z. Milliseconds may be provided but are ignored. If timeMin is set,
         #   timeMax must be greater than timeMin.
         # @param [DateTime] time_min
-        #   Lower bound (inclusive) for an event's start time to filter by. Optional. The
-        #   default is not to filter by start time. Must be an RFC3339 timestamp with
+        #   Lower bound (exclusive) for an event's end time to filter by. Optional. The
+        #   default is not to filter by end time. Must be an RFC3339 timestamp with
         #   mandatory time zone offset, for example, 2011-06-03T10:00:00-07:00, 2011-06-
         #   03T10:00:00Z. Milliseconds may be provided but are ignored. If timeMax is set,
         #   timeMin must be smaller than timeMax.

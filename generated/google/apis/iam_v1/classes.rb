@@ -22,6 +22,28 @@ module Google
   module Apis
     module IamV1
       
+      # Audit log information specific to Cloud IAM admin APIs. This message is
+      # serialized as an `Any` type in the `ServiceData` message of an
+      # `AuditLog` message.
+      class AdminAuditData
+        include Google::Apis::Core::Hashable
+      
+        # A PermissionDelta message to record the added_permissions and
+        # removed_permissions inside a role.
+        # Corresponds to the JSON property `permissionDelta`
+        # @return [Google::Apis::IamV1::PermissionDelta]
+        attr_accessor :permission_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permission_delta = args[:permission_delta] if args.key?(:permission_delta)
+        end
+      end
+      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -812,6 +834,32 @@ module Google
           @only_in_predefined_roles = args[:only_in_predefined_roles] if args.key?(:only_in_predefined_roles)
           @stage = args[:stage] if args.key?(:stage)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A PermissionDelta message to record the added_permissions and
+      # removed_permissions inside a role.
+      class PermissionDelta
+        include Google::Apis::Core::Hashable
+      
+        # Added permissions.
+        # Corresponds to the JSON property `addedPermissions`
+        # @return [Array<String>]
+        attr_accessor :added_permissions
+      
+        # Removed permissions.
+        # Corresponds to the JSON property `removedPermissions`
+        # @return [Array<String>]
+        attr_accessor :removed_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_permissions = args[:added_permissions] if args.key?(:added_permissions)
+          @removed_permissions = args[:removed_permissions] if args.key?(:removed_permissions)
         end
       end
       

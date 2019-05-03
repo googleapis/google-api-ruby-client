@@ -654,6 +654,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :substitutions
       
+        # Tags for annotation of a `BuildTrigger`
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
         # Location of the source in a Google Cloud Source Repository.
         # Corresponds to the JSON property `triggerTemplate`
         # @return [Google::Apis::CloudbuildV1::RepoSource]
@@ -675,6 +680,7 @@ module Google
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
           @included_files = args[:included_files] if args.key?(:included_files)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
+          @tags = args[:tags] if args.key?(:tags)
           @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
         end
       end

@@ -787,6 +787,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::ServicenetworkingV1beta::LabelDescriptor, decorator: Google::Apis::ServicenetworkingV1beta::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
         end

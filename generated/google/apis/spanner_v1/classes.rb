@@ -846,7 +846,7 @@ module Google
         # serially, such that the effects of statement i are visible to statement
         # i+1. Each statement must be a DML statement. Execution will stop at the
         # first failed statement; the remaining statements will not run.
-        # REQUIRES: statements_size() > 0.
+        # REQUIRES: `statements_size()` > 0.
         # Corresponds to the JSON property `statements`
         # @return [Array<Google::Apis::SpannerV1::Statement>]
         attr_accessor :statements
@@ -876,17 +876,17 @@ module Google
       # If a statement fails, the error is returned as part of the response payload.
       # Clients can determine whether all DML statements have run successfully, or if
       # a statement failed, using one of the following approaches:
-      # 1. Check if 'status' field is OkStatus.
-      # 2. Check if result_sets_size() equals the number of statements in
+      # 1. Check if `'status'` field is `OkStatus`.
+      # 2. Check if `result_sets_size()` equals the number of statements in
       # ExecuteBatchDmlRequest.
       # Example 1: A request with 5 DML statements, all executed successfully.
       # Result: A response with 5 ResultSets, one for each statement in the same
-      # order, and an OK status.
+      # order, and an `OkStatus`.
       # Example 2: A request with 5 DML statements. The 3rd statement has a syntax
       # error.
       # Result: A response with 2 ResultSets, for the first 2 statements that
-      # run successfully, and a syntax error (INVALID_ARGUMENT) status. From
-      # result_set_size() client can determine that the 3rd statement has failed.
+      # run successfully, and a syntax error (`INVALID_ARGUMENT`) status. From
+      # `result_set_size()` client can determine that the 3rd statement has failed.
       class ExecuteBatchDmlResponse
         include Google::Apis::Core::Hashable
       
@@ -1264,6 +1264,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The geographic placement of nodes in this instance configuration and their
+        # replication properties.
+        # Corresponds to the JSON property `replicas`
+        # @return [Array<Google::Apis::SpannerV1::ReplicaInfo>]
+        attr_accessor :replicas
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1272,6 +1278,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @replicas = args[:replicas] if args.key?(:replicas)
         end
       end
       
@@ -2387,6 +2394,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class ReplicaInfo
+        include Google::Apis::Core::Hashable
+      
+        # If true, this location is designated as the default leader location where
+        # leader replicas are placed. See the [region types
+        # documentation](https://cloud.google.com/spanner/docs/instances#region_types)
+        # for more details.
+        # Corresponds to the JSON property `defaultLeaderLocation`
+        # @return [Boolean]
+        attr_accessor :default_leader_location
+        alias_method :default_leader_location?, :default_leader_location
+      
+        # The location of the serving resources, e.g. "us-central1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The type of replica.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_leader_location = args[:default_leader_location] if args.key?(:default_leader_location)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

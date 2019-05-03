@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicaInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResultSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -609,6 +615,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :replicas, as: 'replicas', class: Google::Apis::SpannerV1::ReplicaInfo, decorator: Google::Apis::SpannerV1::ReplicaInfo::Representation
+      
         end
       end
       
@@ -846,6 +854,15 @@ module Google
       class ReadWrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ReplicaInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_leader_location, as: 'defaultLeaderLocation'
+          property :location, as: 'location'
+          property :type, as: 'type'
         end
       end
       

@@ -446,7 +446,7 @@ module Google
         # @return [String]
         attr_accessor :input_audio
       
-        # Instructs the speech synthesizer how to generate the output audio content.
+        # Instructs the speech synthesizer on how to generate the output audio content.
         # Corresponds to the JSON property `outputAudioConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
         attr_accessor :output_audio_config
@@ -493,7 +493,7 @@ module Google
         # @return [String]
         attr_accessor :output_audio
       
-        # Instructs the speech synthesizer how to generate the output audio content.
+        # Instructs the speech synthesizer on how to generate the output audio content.
         # Corresponds to the JSON property `outputAudioConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
         attr_accessor :output_audio_config
@@ -1979,7 +1979,7 @@ module Google
         end
       end
       
-      # Instructs the speech synthesizer how to generate the output audio content.
+      # Instructs the speech synthesizer on how to generate the output audio content.
       class GoogleCloudDialogflowV2OutputAudioConfig
         include Google::Apis::Core::Hashable
       

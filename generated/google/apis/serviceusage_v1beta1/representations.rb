@@ -1005,6 +1005,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::ServiceusageV1beta1::LabelDescriptor, decorator: Google::Apis::ServiceusageV1beta1::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
         end

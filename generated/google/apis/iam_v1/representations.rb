@@ -22,6 +22,12 @@ module Google
   module Apis
     module IamV1
       
+      class AdminAuditData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class Permission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PermissionDelta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -272,6 +284,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdminAuditData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_delta, as: 'permissionDelta', class: Google::Apis::IamV1::PermissionDelta, decorator: Google::Apis::IamV1::PermissionDelta::Representation
+      
+        end
       end
       
       class AuditConfig
@@ -461,6 +481,14 @@ module Google
           property :only_in_predefined_roles, as: 'onlyInPredefinedRoles'
           property :stage, as: 'stage'
           property :title, as: 'title'
+        end
+      end
+      
+      class PermissionDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :added_permissions, as: 'addedPermissions'
+          collection :removed_permissions, as: 'removedPermissions'
         end
       end
       

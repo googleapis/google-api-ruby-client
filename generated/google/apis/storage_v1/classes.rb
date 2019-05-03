@@ -1028,9 +1028,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Key metadata.
+        # JSON template to produce a JSON-style HMAC Key metadata resource.
         # Corresponds to the JSON property `metadata`
-        # @return [Object]
+        # @return [Google::Apis::StorageV1::HmacKeyMetadata]
         attr_accessor :metadata
       
         # HMAC secret key material.
