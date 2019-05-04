@@ -425,17 +425,17 @@ module Google
         class TeamDriveTheme
           include Google::Apis::Core::Hashable
         
-          # A link to this Team Drive theme's background image.
+          # Deprecated - use driveThemes/backgroundImageLink instead.
           # Corresponds to the JSON property `backgroundImageLink`
           # @return [String]
           attr_accessor :background_image_link
         
-          # The color of this Team Drive theme as an RGB hex string.
+          # Deprecated - use driveThemes/colorRgb instead.
           # Corresponds to the JSON property `colorRgb`
           # @return [String]
           attr_accessor :color_rgb
         
-          # The ID of the theme.
+          # Deprecated - use driveThemes/id instead.
           # Corresponds to the JSON property `id`
           # @return [String]
           attr_accessor :id
@@ -761,7 +761,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Representation of a Team Drive.
+        # Deprecated: use the drive collection instead.
         # Corresponds to the JSON property `teamDrive`
         # @return [Google::Apis::DriveV2::TeamDrive]
         attr_accessor :team_drive
@@ -3128,39 +3128,28 @@ module Google
         class TeamDrivePermissionDetail
           include Google::Apis::Core::Hashable
         
-          # Additional roles for this user. Only commenter is currently possible, though
-          # more may be supported in the future.
+          # Deprecated - use permissionDetails/additionalRoles instead.
           # Corresponds to the JSON property `additionalRoles`
           # @return [Array<String>]
           attr_accessor :additional_roles
         
-          # Whether this permission is inherited. This field is always populated. This is
-          # an output-only field.
+          # Deprecated - use permissionDetails/inherited instead.
           # Corresponds to the JSON property `inherited`
           # @return [Boolean]
           attr_accessor :inherited
           alias_method :inherited?, :inherited
         
-          # The ID of the item from which this permission is inherited. This is an output-
-          # only field and is only populated for members of the Team Drive.
+          # Deprecated - use permissionDetails/inheritedFrom instead.
           # Corresponds to the JSON property `inheritedFrom`
           # @return [String]
           attr_accessor :inherited_from
         
-          # The primary role for this user. While new values may be added in the future,
-          # the following are currently possible:
-          # - organizer
-          # - fileOrganizer
-          # - writer
-          # - reader
+          # Deprecated - use permissionDetails/role instead.
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
         
-          # The Team Drive permission type for this user. While new values may be added in
-          # future, the following are currently possible:
-          # - file
-          # - member
+          # Deprecated - use permissionDetails/permissionType instead.
           # Corresponds to the JSON property `teamDrivePermissionType`
           # @return [String]
           attr_accessor :team_drive_permission_type
@@ -3554,7 +3543,7 @@ module Google
         end
       end
       
-      # Representation of a Team Drive.
+      # Deprecated: use the drive collection instead.
       class TeamDrive
         include Google::Apis::Core::Hashable
       
