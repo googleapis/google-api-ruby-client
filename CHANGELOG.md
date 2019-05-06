@@ -1,3 +1,23 @@
+# 0.29.1
+* Backwards compatible changes:
+  * Updated `bigquery_v2`
+  * Updated `calendar_v3`
+  * Updated `cloudbuild_v1`
+  * Updated `dialogflow_v2`
+  * Updated `digitalassetlinks_v1`
+  * Updated `dns_v2beta1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `iam_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicenetworking_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `spanner_v1`
+  * Updated `storage_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.29.0
 * Breaking changes:
   * Deleted `logging_v2beta1`
