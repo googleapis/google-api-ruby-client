@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertTableColumnRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -755,6 +761,18 @@ module Google
       end
       
       class UpdateParagraphStyleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateTableColumnPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateTableRowStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1318,6 +1336,15 @@ module Google
         end
       end
       
+      class InsertTableColumnRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insert_right, as: 'insertRight'
+          property :table_cell_location, as: 'tableCellLocation', class: Google::Apis::DocsV1::TableCellLocation, decorator: Google::Apis::DocsV1::TableCellLocation::Representation
+      
+        end
+      end
+      
       class InsertTableRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1752,6 +1779,8 @@ module Google
       
           property :insert_table, as: 'insertTable', class: Google::Apis::DocsV1::InsertTableRequest, decorator: Google::Apis::DocsV1::InsertTableRequest::Representation
       
+          property :insert_table_column, as: 'insertTableColumn', class: Google::Apis::DocsV1::InsertTableColumnRequest, decorator: Google::Apis::DocsV1::InsertTableColumnRequest::Representation
+      
           property :insert_table_row, as: 'insertTableRow', class: Google::Apis::DocsV1::InsertTableRowRequest, decorator: Google::Apis::DocsV1::InsertTableRowRequest::Representation
       
           property :insert_text, as: 'insertText', class: Google::Apis::DocsV1::InsertTextRequest, decorator: Google::Apis::DocsV1::InsertTextRequest::Representation
@@ -1759,6 +1788,10 @@ module Google
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::DocsV1::ReplaceAllTextRequest, decorator: Google::Apis::DocsV1::ReplaceAllTextRequest::Representation
       
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
+      
+          property :update_table_column_properties, as: 'updateTableColumnProperties', class: Google::Apis::DocsV1::UpdateTableColumnPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateTableColumnPropertiesRequest::Representation
+      
+          property :update_table_row_style, as: 'updateTableRowStyle', class: Google::Apis::DocsV1::UpdateTableRowStyleRequest, decorator: Google::Apis::DocsV1::UpdateTableRowStyleRequest::Representation
       
           property :update_text_style, as: 'updateTextStyle', class: Google::Apis::DocsV1::UpdateTextStyleRequest, decorator: Google::Apis::DocsV1::UpdateTextStyleRequest::Representation
       
@@ -2213,6 +2246,30 @@ module Google
           property :paragraph_style, as: 'paragraphStyle', class: Google::Apis::DocsV1::ParagraphStyle, decorator: Google::Apis::DocsV1::ParagraphStyle::Representation
       
           property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
+      
+        end
+      end
+      
+      class UpdateTableColumnPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_indices, as: 'columnIndices'
+          property :fields, as: 'fields'
+          property :table_column_properties, as: 'tableColumnProperties', class: Google::Apis::DocsV1::TableColumnProperties, decorator: Google::Apis::DocsV1::TableColumnProperties::Representation
+      
+          property :table_start_location, as: 'tableStartLocation', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
+      class UpdateTableRowStyleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          collection :row_indices, as: 'rowIndices'
+          property :table_row_style, as: 'tableRowStyle', class: Google::Apis::DocsV1::TableRowStyle, decorator: Google::Apis::DocsV1::TableRowStyle::Representation
+      
+          property :table_start_location, as: 'tableStartLocation', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
       
         end
       end

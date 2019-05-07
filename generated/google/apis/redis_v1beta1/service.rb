@@ -128,7 +128,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the instance location using the form:
         #   `projects/`project_id`/locations/`location_id``
-        #   where `location_id` refers to a GCP region
+        #   where `location_id` refers to a GCP region.
         # @param [Google::Apis::RedisV1beta1::Instance] instance_object
         # @param [String] instance_id
         #   Required. The logical name of the Redis instance in the customer project
@@ -173,7 +173,7 @@ module Google
         # @param [String] name
         #   Required. Redis instance resource name using the form:
         #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
-        #   where `location_id` refers to a GCP region
+        #   where `location_id` refers to a GCP region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,7 +205,7 @@ module Google
         # @param [String] name
         #   Required. Redis instance resource name using the form:
         #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
-        #   where `location_id` refers to a GCP region
+        #   where `location_id` refers to a GCP region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -242,7 +242,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the instance location using the form:
         #   `projects/`project_id`/locations/`location_id``
-        #   where `location_id` refers to a GCP region
+        #   where `location_id` refers to a GCP region.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         #   If not specified, a default value of 1000 will be used by the service.

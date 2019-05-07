@@ -2012,6 +2012,34 @@ module Google
         end
       end
       
+      # Inserts an empty column into a table.
+      class InsertTableColumnRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to insert new column to the right of the reference cell location.
+        # - `True`: insert to the right.
+        # - `False`: insert to the left.
+        # Corresponds to the JSON property `insertRight`
+        # @return [Boolean]
+        attr_accessor :insert_right
+        alias_method :insert_right?, :insert_right
+      
+        # Location of a single cell within a table.
+        # Corresponds to the JSON property `tableCellLocation`
+        # @return [Google::Apis::DocsV1::TableCellLocation]
+        attr_accessor :table_cell_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insert_right = args[:insert_right] if args.key?(:insert_right)
+          @table_cell_location = args[:table_cell_location] if args.key?(:table_cell_location)
+        end
+      end
+      
       # Inserts a table at the specified location.
       # A newline character will be inserted before the inserted table.
       class InsertTableRequest
@@ -3671,6 +3699,11 @@ module Google
         # @return [Google::Apis::DocsV1::InsertTableRequest]
         attr_accessor :insert_table
       
+        # Inserts an empty column into a table.
+        # Corresponds to the JSON property `insertTableColumn`
+        # @return [Google::Apis::DocsV1::InsertTableColumnRequest]
+        attr_accessor :insert_table_column
+      
         # Inserts an empty row into a table.
         # Corresponds to the JSON property `insertTableRow`
         # @return [Google::Apis::DocsV1::InsertTableRowRequest]
@@ -3690,6 +3723,19 @@ module Google
         # Corresponds to the JSON property `updateParagraphStyle`
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
         attr_accessor :update_paragraph_style
+      
+        # Updates the
+        # TableColumnProperties of columns
+        # in a table.
+        # Corresponds to the JSON property `updateTableColumnProperties`
+        # @return [Google::Apis::DocsV1::UpdateTableColumnPropertiesRequest]
+        attr_accessor :update_table_column_properties
+      
+        # Updates the TableRowStyle of rows in a
+        # table.
+        # Corresponds to the JSON property `updateTableRowStyle`
+        # @return [Google::Apis::DocsV1::UpdateTableRowStyleRequest]
+        attr_accessor :update_table_row_style
       
         # Update the styling of text.
         # Corresponds to the JSON property `updateTextStyle`
@@ -3713,10 +3759,13 @@ module Google
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
           @insert_table = args[:insert_table] if args.key?(:insert_table)
+          @insert_table_column = args[:insert_table_column] if args.key?(:insert_table_column)
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
+          @update_table_column_properties = args[:update_table_column_properties] if args.key?(:update_table_column_properties)
+          @update_table_row_style = args[:update_table_row_style] if args.key?(:update_table_row_style)
           @update_text_style = args[:update_text_style] if args.key?(:update_text_style)
         end
       end
@@ -5319,6 +5368,94 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @paragraph_style = args[:paragraph_style] if args.key?(:paragraph_style)
           @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Updates the
+      # TableColumnProperties of columns
+      # in a table.
+      class UpdateTableColumnPropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of zero-based column indices whose property should be updated. If
+        # no indices are specified, all columns will be updated.
+        # Corresponds to the JSON property `columnIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :column_indices
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `tableColumnProperties` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the column width, set `fields` to `"width"`.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The properties of a column in a table.
+        # Corresponds to the JSON property `tableColumnProperties`
+        # @return [Google::Apis::DocsV1::TableColumnProperties]
+        attr_accessor :table_column_properties
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `tableStartLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :table_start_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_indices = args[:column_indices] if args.key?(:column_indices)
+          @fields = args[:fields] if args.key?(:fields)
+          @table_column_properties = args[:table_column_properties] if args.key?(:table_column_properties)
+          @table_start_location = args[:table_start_location] if args.key?(:table_start_location)
+        end
+      end
+      
+      # Updates the TableRowStyle of rows in a
+      # table.
+      class UpdateTableRowStyleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `tableRowStyle` is implied
+        # and should not be specified. A single `"*"` can be used as short-hand for
+        # listing every field.
+        # For example to update the minimum row height, set `fields` to
+        # `"min_row_height"`.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The list of zero-based row indices whose style should be updated. If no
+        # indices are specified, all rows will be updated.
+        # Corresponds to the JSON property `rowIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :row_indices
+      
+        # Styles that apply to a table row.
+        # Corresponds to the JSON property `tableRowStyle`
+        # @return [Google::Apis::DocsV1::TableRowStyle]
+        attr_accessor :table_row_style
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `tableStartLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :table_start_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @row_indices = args[:row_indices] if args.key?(:row_indices)
+          @table_row_style = args[:table_row_style] if args.key?(:table_row_style)
+          @table_start_location = args[:table_start_location] if args.key?(:table_start_location)
         end
       end
       

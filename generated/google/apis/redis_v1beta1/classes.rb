@@ -238,7 +238,7 @@ module Google
         # version will perform an upgrade/downgrade to the new version. Currently,
         # the supported values are:
         # *   `REDIS_4_0` for Redis 4.0 compatibility
-        # *   `REDIS_3_2` for Redis 3.2 compatibility
+        # *   `REDIS_3_2` for Redis 3.2 compatibility (default)
         # Corresponds to the JSON property `redisVersion`
         # @return [String]
         attr_accessor :redis_version

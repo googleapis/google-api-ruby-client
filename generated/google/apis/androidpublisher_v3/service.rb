@@ -1782,6 +1782,96 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads an APK to internal app sharing. If you are using the Google API client
+        # libraries, please increase the timeout of the http request before calling this
+        # endpoint (a timeout of 2 minutes is recommended). See: https://developers.
+        # google.com/api-client-library/java/google-api-java-client/errors for an
+        # example in java.
+        # @param [String] package_name
+        #   Unique identifier for the Android app; for example, "com.spiffygame".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def uploadapk_internalappsharingartifact(package_name, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command =  make_simple_command(:post, 'internalappsharing/{packageName}/artifacts/apk', options)
+          else
+            command = make_upload_command(:post, 'internalappsharing/{packageName}/artifacts/apk', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads an app bundle to internal app sharing. If you are using the Google API
+        # client libraries, please increase the timeout of the http request before
+        # calling this endpoint (a timeout of 2 minutes is recommended). See: https://
+        # developers.google.com/api-client-library/java/google-api-java-client/errors
+        # for an example in java.
+        # @param [String] package_name
+        #   Unique identifier for the Android app; for example, "com.spiffygame".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def uploadbundle_internalappsharingartifact(package_name, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command =  make_simple_command(:post, 'internalappsharing/{packageName}/artifacts/bundle', options)
+          else
+            command = make_upload_command(:post, 'internalappsharing/{packageName}/artifacts/bundle', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Refund a user's subscription or in-app purchase order.
         # @param [String] package_name
         #   The package name of the application for which this subscription or in-app item
