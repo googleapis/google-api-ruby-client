@@ -1039,6 +1039,7 @@ module Google
         #   * `max_points`
         #   * `scheduled_time`
         #   * `submission_modification_mode`
+        #   * `topic_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

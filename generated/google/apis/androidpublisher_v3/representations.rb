@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InternalAppSharingArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Listing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -608,6 +614,15 @@ module Google
       
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV3::TokenPagination, decorator: Google::Apis::AndroidpublisherV3::TokenPagination::Representation
       
+        end
+      end
+      
+      class InternalAppSharingArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_fingerprint, as: 'certificateFingerprint'
+          property :download_url, as: 'downloadUrl'
+          property :sha256, as: 'sha256'
         end
       end
       

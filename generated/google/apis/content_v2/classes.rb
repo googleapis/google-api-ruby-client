@@ -4278,7 +4278,10 @@ module Google
         # @return [String]
         attr_accessor :full_name
       
-        # Customer's marketing preferences.
+        # Customer's marketing preferences. Contains the marketing opt-in information
+        # that is current at the time that the merchant call. User preference selections
+        # can change from one order to the next so preferences must be checked with
+        # every order.
         # Corresponds to the JSON property `marketingRightsInfo`
         # @return [Google::Apis::ContentV2::OrderCustomerMarketingRightsInfo]
         attr_accessor :marketing_rights_info
@@ -4300,8 +4303,11 @@ module Google
       class OrderCustomerMarketingRightsInfo
         include Google::Apis::Core::Hashable
       
-        # Last known user selection regarding marketing preferences. In certain cases
-        # this selection might not be known, so this field would be empty.
+        # Last known customer selection regarding marketing preferences. In certain
+        # cases this selection might not be known, so this field would be empty. If a
+        # customer selected granted in their most recent order, they can be subscribed
+        # to marketing emails. Customers who have chosen denied must not be subscribed,
+        # or must be unsubscribed if already opted-in.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [String]
         attr_accessor :explicit_marketing_preference

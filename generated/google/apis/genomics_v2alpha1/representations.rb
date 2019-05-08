@@ -564,6 +564,7 @@ module Google
           property :cpu_platform, as: 'cpuPlatform'
           collection :disks, as: 'disks', class: Google::Apis::GenomicsV2alpha1::Disk, decorator: Google::Apis::GenomicsV2alpha1::Disk::Representation
       
+          property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :network, as: 'network', class: Google::Apis::GenomicsV2alpha1::Network, decorator: Google::Apis::GenomicsV2alpha1::Network::Representation

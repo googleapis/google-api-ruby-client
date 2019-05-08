@@ -983,8 +983,8 @@ module Google
         # the private VM's Internal IP.  If noAddress is set, this pipeline run may
         # only load docker images from Google Container Registry and not Docker Hub.
         # Before using this, you must
-        # [configure access to Google services from internal IPs](https://cloud.google.
-        # com/compute/docs/configure-private-google-access#
+        # [configure access to Google services from internal
+        # IPs](https://cloud.google.com/compute/docs/configure-private-google-access#
         # configuring_access_to_google_services_from_internal_ips).
         # Corresponds to the JSON property `noAddress`
         # @return [Boolean]

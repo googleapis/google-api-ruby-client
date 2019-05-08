@@ -887,6 +887,41 @@ module Google
         end
       end
       
+      # An artifact resource which gets created when uploading an APK or Android App
+      # Bundle through internal app sharing.
+      class InternalAppSharingArtifact
+        include Google::Apis::Core::Hashable
+      
+        # The SHA256 fingerprint of the certificate used to signed the generated
+        # artifact.
+        # Corresponds to the JSON property `certificateFingerprint`
+        # @return [String]
+        attr_accessor :certificate_fingerprint
+      
+        # The download URL generated for the uploaded artifact. Users that are
+        # authorized to download can follow the link to the Play Store app to install it.
+        # Corresponds to the JSON property `downloadUrl`
+        # @return [String]
+        attr_accessor :download_url
+      
+        # The SHA-256 hash of the artifact represented as a lowercase hexadecimal number,
+        # matching the output of the sha256sum command.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_fingerprint = args[:certificate_fingerprint] if args.key?(:certificate_fingerprint)
+          @download_url = args[:download_url] if args.key?(:download_url)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+        end
+      end
+      
       # 
       class Listing
         include Google::Apis::Core::Hashable

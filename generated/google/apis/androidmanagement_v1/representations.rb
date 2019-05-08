@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlockAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChoosePrivateKeyRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyEnforcementRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PowerManagementEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +359,12 @@ module Google
       end
       
       class WebToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WipeAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -440,6 +458,13 @@ module Google
         end
       end
       
+      class BlockAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_after_days, as: 'blockAfterDays'
+        end
+      end
+      
       class ChoosePrivateKeyRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -517,6 +542,7 @@ module Google
           property :software_info, as: 'softwareInfo', class: Google::Apis::AndroidmanagementV1::SoftwareInfo, decorator: Google::Apis::AndroidmanagementV1::SoftwareInfo::Representation
       
           property :state, as: 'state'
+          hash :system_properties, as: 'systemProperties'
           property :user, as: 'user', class: Google::Apis::AndroidmanagementV1::User, decorator: Google::Apis::AndroidmanagementV1::User::Representation
       
           property :user_name, as: 'userName'
@@ -862,6 +888,7 @@ module Google
           property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :maximum_time_to_lock, :numeric_string => true, as: 'maximumTimeToLock'
+          property :minimum_api_level, as: 'minimumApiLevel'
           property :mobile_networks_config_disabled, as: 'mobileNetworksConfigDisabled'
           property :modify_accounts_disabled, as: 'modifyAccountsDisabled'
           property :mount_physical_media_disabled, as: 'mountPhysicalMediaDisabled'
@@ -882,6 +909,8 @@ module Google
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
       
           property :play_store_mode, as: 'playStoreMode'
+          collection :policy_enforcement_rules, as: 'policyEnforcementRules', class: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule, decorator: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule::Representation
+      
           property :private_key_selection_enabled, as: 'privateKeySelectionEnabled'
           property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       
@@ -912,6 +941,17 @@ module Google
           property :vpn_config_disabled, as: 'vpnConfigDisabled'
           property :wifi_config_disabled, as: 'wifiConfigDisabled'
           property :wifi_configs_lockdown_enabled, as: 'wifiConfigsLockdownEnabled'
+        end
+      end
+      
+      class PolicyEnforcementRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_action, as: 'blockAction', class: Google::Apis::AndroidmanagementV1::BlockAction, decorator: Google::Apis::AndroidmanagementV1::BlockAction::Representation
+      
+          property :setting_name, as: 'settingName'
+          property :wipe_action, as: 'wipeAction', class: Google::Apis::AndroidmanagementV1::WipeAction, decorator: Google::Apis::AndroidmanagementV1::WipeAction::Representation
+      
         end
       end
       
@@ -1065,6 +1105,14 @@ module Google
           property :parent_frame_url, as: 'parentFrameUrl'
           collection :permissions, as: 'permissions'
           property :value, as: 'value'
+        end
+      end
+      
+      class WipeAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preserve_frp, as: 'preserveFrp'
+          property :wipe_after_days, as: 'wipeAfterDays'
         end
       end
     end

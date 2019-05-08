@@ -365,6 +365,30 @@ module Google
         end
       end
       
+      # An action to block access to apps and data on a fully managed device or in a
+      # work profile. This action also triggers a device or work profile to displays a
+      # user-facing notification with information (where possible) on how to correct
+      # the compliance issue. Note: wipeAction must also be specified.
+      class BlockAction
+        include Google::Apis::Core::Hashable
+      
+        # Number of days the policy is non-compliant before the device or work profile
+        # is blocked. To block access immediately, set to 0. blockAfterDays must be less
+        # than wipeAfterDays.
+        # Corresponds to the JSON property `blockAfterDays`
+        # @return [Fixnum]
+        attr_accessor :block_after_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_after_days = args[:block_after_days] if args.key?(:block_after_days)
+        end
+      end
+      
       # A rule for automatically choosing a private key and certificate to
       # authenticate the device to a server.
       class ChoosePrivateKeyRule
@@ -688,6 +712,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Map of selected system properties name and value related to the device.
+        # Corresponds to the JSON property `systemProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :system_properties
+      
         # A user belonging to an enterprise.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::AndroidmanagementV1::User]
@@ -733,6 +762,7 @@ module Google
           @previous_device_names = args[:previous_device_names] if args.key?(:previous_device_names)
           @software_info = args[:software_info] if args.key?(:software_info)
           @state = args[:state] if args.key?(:state)
+          @system_properties = args[:system_properties] if args.key?(:system_properties)
           @user = args[:user] if args.key?(:user)
           @user_name = args[:user_name] if args.key?(:user_name)
         end
@@ -2204,6 +2234,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :maximum_time_to_lock
       
+        # The minimum allowed Android API level.
+        # Corresponds to the JSON property `minimumApiLevel`
+        # @return [Fixnum]
+        attr_accessor :minimum_api_level
+      
         # Whether configuring mobile networks is disabled.
         # Corresponds to the JSON property `mobileNetworksConfigDisabled`
         # @return [Boolean]
@@ -2296,6 +2331,12 @@ module Google
         # Corresponds to the JSON property `playStoreMode`
         # @return [String]
         attr_accessor :play_store_mode
+      
+        # Rules that define the behavior when a particular policy can not be applied on
+        # device
+        # Corresponds to the JSON property `policyEnforcementRules`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PolicyEnforcementRule>]
+        attr_accessor :policy_enforcement_rules
       
         # Allows showing UI on a device for a user to choose a private key alias if
         # there are no matching rules in ChoosePrivateKeyRules. For devices below
@@ -2491,6 +2532,7 @@ module Google
           @location_mode = args[:location_mode] if args.key?(:location_mode)
           @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
+          @minimum_api_level = args[:minimum_api_level] if args.key?(:minimum_api_level)
           @mobile_networks_config_disabled = args[:mobile_networks_config_disabled] if args.key?(:mobile_networks_config_disabled)
           @modify_accounts_disabled = args[:modify_accounts_disabled] if args.key?(:modify_accounts_disabled)
           @mount_physical_media_disabled = args[:mount_physical_media_disabled] if args.key?(:mount_physical_media_disabled)
@@ -2506,6 +2548,7 @@ module Google
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
           @play_store_mode = args[:play_store_mode] if args.key?(:play_store_mode)
+          @policy_enforcement_rules = args[:policy_enforcement_rules] if args.key?(:policy_enforcement_rules)
           @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
           @recommended_global_proxy = args[:recommended_global_proxy] if args.key?(:recommended_global_proxy)
           @remove_user_disabled = args[:remove_user_disabled] if args.key?(:remove_user_disabled)
@@ -2531,6 +2574,43 @@ module Google
           @vpn_config_disabled = args[:vpn_config_disabled] if args.key?(:vpn_config_disabled)
           @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)
           @wifi_configs_lockdown_enabled = args[:wifi_configs_lockdown_enabled] if args.key?(:wifi_configs_lockdown_enabled)
+        end
+      end
+      
+      # A rule that defines the actions to take if a device or work profile is not
+      # compliant with the policy specified in settingName.
+      class PolicyEnforcementRule
+        include Google::Apis::Core::Hashable
+      
+        # An action to block access to apps and data on a fully managed device or in a
+        # work profile. This action also triggers a device or work profile to displays a
+        # user-facing notification with information (where possible) on how to correct
+        # the compliance issue. Note: wipeAction must also be specified.
+        # Corresponds to the JSON property `blockAction`
+        # @return [Google::Apis::AndroidmanagementV1::BlockAction]
+        attr_accessor :block_action
+      
+        # The top-level policy to enforce. For example, applications or
+        # passwordRequirements.
+        # Corresponds to the JSON property `settingName`
+        # @return [String]
+        attr_accessor :setting_name
+      
+        # An action to reset a fully managed device or delete a work profile. Note:
+        # blockAction must also be specified.
+        # Corresponds to the JSON property `wipeAction`
+        # @return [Google::Apis::AndroidmanagementV1::WipeAction]
+        attr_accessor :wipe_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_action = args[:block_action] if args.key?(:block_action)
+          @setting_name = args[:setting_name] if args.key?(:setting_name)
+          @wipe_action = args[:wipe_action] if args.key?(:wipe_action)
         end
       end
       
@@ -3155,6 +3235,35 @@ module Google
           @parent_frame_url = args[:parent_frame_url] if args.key?(:parent_frame_url)
           @permissions = args[:permissions] if args.key?(:permissions)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An action to reset a fully managed device or delete a work profile. Note:
+      # blockAction must also be specified.
+      class WipeAction
+        include Google::Apis::Core::Hashable
+      
+        # Whether the factory-reset protection data is preserved on the device. This
+        # setting doesn’t apply to work profiles.
+        # Corresponds to the JSON property `preserveFrp`
+        # @return [Boolean]
+        attr_accessor :preserve_frp
+        alias_method :preserve_frp?, :preserve_frp
+      
+        # Number of days the policy is non-compliant before the device or work profile
+        # is wiped. wipeAfterDays must be greater than blockAfterDays.
+        # Corresponds to the JSON property `wipeAfterDays`
+        # @return [Fixnum]
+        attr_accessor :wipe_after_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preserve_frp = args[:preserve_frp] if args.key?(:preserve_frp)
+          @wipe_after_days = args[:wipe_after_days] if args.key?(:wipe_after_days)
         end
       end
     end

@@ -250,12 +250,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FilteringStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FirstPartyMobileApplicationTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,12 +527,6 @@ module Google
       end
       
       class RealtimeTimeRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Reason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -847,8 +835,6 @@ module Google
           collection :detected_languages, as: 'detectedLanguages'
           collection :detected_product_categories, as: 'detectedProductCategories'
           collection :detected_sensitive_categories, as: 'detectedSensitiveCategories'
-          property :filtering_stats, as: 'filteringStats', class: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats::Representation
-      
           property :html, as: 'html', class: Google::Apis::Adexchangebuyer2V2beta1::HtmlContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::HtmlContent::Representation
       
           collection :impression_tracking_urls, as: 'impressionTrackingUrls'
@@ -1096,16 +1082,6 @@ module Google
       
           property :detail_id, as: 'detailId'
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
-      
-        end
-      end
-      
-      class FilteringStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :date, as: 'date', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
-      
-          collection :reasons, as: 'reasons', class: Google::Apis::Adexchangebuyer2V2beta1::Reason, decorator: Google::Apis::Adexchangebuyer2V2beta1::Reason::Representation
       
         end
       end
@@ -1609,14 +1585,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_timestamp, as: 'startTimestamp'
-        end
-      end
-      
-      class Reason
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :status, as: 'status'
         end
       end
       

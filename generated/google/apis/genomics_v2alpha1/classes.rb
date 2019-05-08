@@ -1357,6 +1357,12 @@ module Google
         # @return [Array<Google::Apis::GenomicsV2alpha1::Disk>]
         attr_accessor :disks
       
+        # Whether Stackdriver monitoring should be enabled on the VM.
+        # Corresponds to the JSON property `enableStackdriverMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_monitoring
+        alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
+      
         # Optional set of labels to apply to the VM and any attached disk resources.
         # These labels must adhere to the name and value restrictions on VM labels
         # imposed by Compute Engine.
@@ -1413,6 +1419,7 @@ module Google
           @boot_image = args[:boot_image] if args.key?(:boot_image)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @disks = args[:disks] if args.key?(:disks)
+          @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @network = args[:network] if args.key?(:network)

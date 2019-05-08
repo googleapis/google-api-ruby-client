@@ -2162,7 +2162,9 @@ module Google
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The type of the resource to delete.
+        #   The FHIR resource type to delete, such as Patient or Observation. For a
+        #   complete list, see the [FHIR Resource
+        #   Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2211,7 +2213,9 @@ module Google
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The type of the resource to update.
+        #   The FHIR resource type to update, such as Patient or Observation. For a
+        #   complete list, see the [FHIR Resource
+        #   Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2270,7 +2274,10 @@ module Google
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The type of the resource to update.
+        #   The FHIR resource type to update, such as Patient or Observation. For a
+        #   complete list, see the [FHIR Resource
+        #   Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
+        #   Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2323,7 +2330,10 @@ module Google
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
-        #   The type of the resource to create.
+        #   The FHIR resource type to create, such as Patient or Observation. For a
+        #   complete list, see the [FHIR Resource
+        #   Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
+        #   Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

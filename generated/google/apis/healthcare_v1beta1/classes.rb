@@ -1860,7 +1860,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
+        # `name` should be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2180,7 +2180,9 @@ module Google
       class SearchResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # The type of the resource to search.
+        # The FHIR resource type to search, such as Patient or Observation. For a
+        # complete list, see the [FHIR Resource
+        # Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type

@@ -728,12 +728,6 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :detected_sensitive_categories
       
-        # Output only. Filtering reasons for this creative during a period of a single
-        # day (from midnight to midnight Pacific).
-        # Corresponds to the JSON property `filteringStats`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::FilteringStats]
-        attr_accessor :filtering_stats
-      
         # HTML content for a creative.
         # Corresponds to the JSON property `html`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::HtmlContent]
@@ -813,7 +807,6 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @detected_product_categories = args[:detected_product_categories] if args.key?(:detected_product_categories)
           @detected_sensitive_categories = args[:detected_sensitive_categories] if args.key?(:detected_sensitive_categories)
-          @filtering_stats = args[:filtering_stats] if args.key?(:filtering_stats)
           @html = args[:html] if args.key?(:html)
           @impression_tracking_urls = args[:impression_tracking_urls] if args.key?(:impression_tracking_urls)
           @native = args[:native] if args.key?(:native)
@@ -1748,39 +1741,6 @@ module Google
           @bid_count = args[:bid_count] if args.key?(:bid_count)
           @detail_id = args[:detail_id] if args.key?(:detail_id)
           @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
-        end
-      end
-      
-      # Output only. Filtering reasons for this creative during a period of a single
-      # day (from midnight to midnight Pacific).
-      class FilteringStats
-        include Google::Apis::Core::Hashable
-      
-        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
-        # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `date`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
-        attr_accessor :date
-      
-        # The set of filtering reasons for this date.
-        # Corresponds to the JSON property `reasons`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Reason>]
-        attr_accessor :reasons
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @date = args[:date] if args.key?(:date)
-          @reasons = args[:reasons] if args.key?(:reasons)
         end
       end
       
@@ -3573,35 +3533,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
-        end
-      end
-      
-      # A specific filtering status and how many times it occurred.
-      class Reason
-        include Google::Apis::Core::Hashable
-      
-        # The number of times the creative was filtered for the status. The
-        # count is aggregated across all publishers on the exchange.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # The filtering status code. Please refer to the
-        # [creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-
-        # dictionaries/creative-status-codes.txt)
-        # file for different statuses.
-        # Corresponds to the JSON property `status`
-        # @return [Fixnum]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @status = args[:status] if args.key?(:status)
         end
       end
       

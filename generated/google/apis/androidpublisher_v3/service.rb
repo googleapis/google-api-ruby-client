@@ -1804,10 +1804,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1820,6 +1820,8 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
+          command.response_representation = Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1849,10 +1851,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1865,6 +1867,8 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
+          command.response_representation = Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::InternalAppSharingArtifact
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
