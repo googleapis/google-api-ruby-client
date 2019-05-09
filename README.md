@@ -329,7 +329,7 @@ available in [LICENSE](LICENSE).
 
 ## Contributing
 
-See [CONTRIBUTING](CONTRIBUTING.md).
+See [CONTRIBUTING](.github/CONTRIBUTING.md).
 
 ## Support
 
