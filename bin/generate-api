@@ -37,7 +37,9 @@ module Google
       generate_from_url(options[:url]) if options[:url]
       generate_from_file(options[:file]) if options[:file]
       generate_from_discovery(preferred_only: options[:preferred_only]) if options[:from_discovery]
-      create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
+      if options[:names_out]
+        create_file(options[:names_out]) { |*| generator.dump_api_names } unless File.exist? options[:names_out]
+      end
     end
 
     desc 'list', 'List public APIs'
