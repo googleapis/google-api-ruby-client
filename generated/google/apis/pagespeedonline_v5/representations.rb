@@ -85,6 +85,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class StackPack
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Timing
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -184,6 +190,8 @@ module Google
           collection :run_warnings, as: 'runWarnings'
           property :runtime_error, as: 'runtimeError', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::RuntimeError, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::RuntimeError::Representation
       
+          collection :stack_packs, as: 'stackPacks', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::StackPack, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::StackPack::Representation
+      
           property :timing, as: 'timing', class: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Timing, decorator: Google::Apis::PagespeedonlineV5::LighthouseResultV5::Timing::Representation
       
           property :user_agent, as: 'userAgent'
@@ -266,6 +274,16 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             property :message, as: 'message'
+          end
+        end
+        
+        class StackPack
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :descriptions, as: 'descriptions'
+            property :icon_data_url, as: 'iconDataURL'
+            property :id, as: 'id'
+            property :title, as: 'title'
           end
         end
         

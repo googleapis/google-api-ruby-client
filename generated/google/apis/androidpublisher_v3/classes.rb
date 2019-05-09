@@ -1104,6 +1104,13 @@ module Google
       class ProductPurchase
         include Google::Apis::Core::Hashable
       
+        # The acknowledgement state of the inapp product. Possible values are:
+        # - Yet to be acknowledged
+        # - Acknowledged
+        # Corresponds to the JSON property `acknowledgementState`
+        # @return [Fixnum]
+        attr_accessor :acknowledgement_state
+      
         # The consumption state of the inapp product. Possible values are:
         # - Yet to be consumed
         # - Consumed
@@ -1156,6 +1163,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
           @consumption_state = args[:consumption_state] if args.key?(:consumption_state)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @kind = args[:kind] if args.key?(:kind)
@@ -1163,6 +1171,25 @@ module Google
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
+        end
+      end
+      
+      # 
+      class ProductPurchasesAcknowledgeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Payload to attach to the purchase.
+        # Corresponds to the JSON property `developerPayload`
+        # @return [String]
+        attr_accessor :developer_payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
         end
       end
       
@@ -1637,6 +1664,25 @@ module Google
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
           @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)
+        end
+      end
+      
+      # 
+      class SubscriptionPurchasesAcknowledgeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Payload to attach to the purchase.
+        # Corresponds to the JSON property `developerPayload`
+        # @return [String]
+        attr_accessor :developer_payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
         end
       end
       

@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductPurchasesAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Prorate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class SubscriptionPurchase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionPurchasesAcknowledgeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -682,6 +694,7 @@ module Google
       class ProductPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement_state, as: 'acknowledgementState'
           property :consumption_state, as: 'consumptionState'
           property :developer_payload, as: 'developerPayload'
           property :kind, as: 'kind'
@@ -689,6 +702,13 @@ module Google
           property :purchase_state, as: 'purchaseState'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_type, as: 'purchaseType'
+        end
+      end
+      
+      class ProductPurchasesAcknowledgeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_payload, as: 'developerPayload'
         end
       end
       
@@ -812,6 +832,13 @@ module Google
           property :purchase_type, as: 'purchaseType'
           property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
           property :user_cancellation_time_millis, :numeric_string => true, as: 'userCancellationTimeMillis'
+        end
+      end
+      
+      class SubscriptionPurchasesAcknowledgeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_payload, as: 'developerPayload'
         end
       end
       

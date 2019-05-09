@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessApprovalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -115,6 +121,8 @@ module Google
           property :requested_reason, as: 'requestedReason', class: Google::Apis::AccessapprovalV1beta1::AccessReason, decorator: Google::Apis::AccessapprovalV1beta1::AccessReason::Representation
       
           property :requested_resource_name, as: 'requestedResourceName'
+          property :requested_resource_properties, as: 'requestedResourceProperties', class: Google::Apis::AccessapprovalV1beta1::ResourceProperties, decorator: Google::Apis::AccessapprovalV1beta1::ResourceProperties::Representation
+      
         end
       end
       
@@ -152,6 +160,13 @@ module Google
           collection :approval_requests, as: 'approvalRequests', class: Google::Apis::AccessapprovalV1beta1::ApprovalRequest, decorator: Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ResourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :excludes_descendants, as: 'excludesDescendants'
         end
       end
     end

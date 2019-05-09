@@ -184,6 +184,11 @@ module Google
         # @return [String]
         attr_accessor :requested_resource_name
       
+        # The properties associated with the resource of the request.
+        # Corresponds to the JSON property `requestedResourceProperties`
+        # @return [Google::Apis::AccessapprovalV1beta1::ResourceProperties]
+        attr_accessor :requested_resource_properties
+      
         def initialize(**args)
            update!(**args)
         end
@@ -198,6 +203,7 @@ module Google
           @requested_locations = args[:requested_locations] if args.key?(:requested_locations)
           @requested_reason = args[:requested_reason] if args.key?(:requested_reason)
           @requested_resource_name = args[:requested_resource_name] if args.key?(:requested_resource_name)
+          @requested_resource_properties = args[:requested_resource_properties] if args.key?(:requested_resource_properties)
         end
       end
       
@@ -299,6 +305,27 @@ module Google
         def update!(**args)
           @approval_requests = args[:approval_requests] if args.key?(:approval_requests)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The properties associated with the resource of the request.
+      class ResourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Whether an approval will exclude the descendants of the resource being
+        # requested.
+        # Corresponds to the JSON property `excludesDescendants`
+        # @return [Boolean]
+        attr_accessor :excludes_descendants
+        alias_method :excludes_descendants?, :excludes_descendants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excludes_descendants = args[:excludes_descendants] if args.key?(:excludes_descendants)
         end
       end
     end

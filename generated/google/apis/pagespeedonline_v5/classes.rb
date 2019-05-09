@@ -240,6 +240,11 @@ module Google
         # @return [Google::Apis::PagespeedonlineV5::LighthouseResultV5::RuntimeError]
         attr_accessor :runtime_error
       
+        # The Stack Pack advice strings.
+        # Corresponds to the JSON property `stackPacks`
+        # @return [Array<Google::Apis::PagespeedonlineV5::LighthouseResultV5::StackPack>]
+        attr_accessor :stack_packs
+      
         # Timing information for this LHR.
         # Corresponds to the JSON property `timing`
         # @return [Google::Apis::PagespeedonlineV5::LighthouseResultV5::Timing]
@@ -268,6 +273,7 @@ module Google
           @requested_url = args[:requested_url] if args.key?(:requested_url)
           @run_warnings = args[:run_warnings] if args.key?(:run_warnings)
           @runtime_error = args[:runtime_error] if args.key?(:runtime_error)
+          @stack_packs = args[:stack_packs] if args.key?(:stack_packs)
           @timing = args[:timing] if args.key?(:timing)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
         end
@@ -555,6 +561,43 @@ module Google
           def update!(**args)
             @code = args[:code] if args.key?(:code)
             @message = args[:message] if args.key?(:message)
+          end
+        end
+        
+        # 
+        class StackPack
+          include Google::Apis::Core::Hashable
+        
+          # The stack pack advice strings.
+          # Corresponds to the JSON property `descriptions`
+          # @return [Hash<String,String>]
+          attr_accessor :descriptions
+        
+          # The stack pack icon data uri.
+          # Corresponds to the JSON property `iconDataURL`
+          # @return [String]
+          attr_accessor :icon_data_url
+        
+          # The stack pack id.
+          # Corresponds to the JSON property `id`
+          # @return [String]
+          attr_accessor :id
+        
+          # The stack pack title.
+          # Corresponds to the JSON property `title`
+          # @return [String]
+          attr_accessor :title
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @descriptions = args[:descriptions] if args.key?(:descriptions)
+            @icon_data_url = args[:icon_data_url] if args.key?(:icon_data_url)
+            @id = args[:id] if args.key?(:id)
+            @title = args[:title] if args.key?(:title)
           end
         end
         
