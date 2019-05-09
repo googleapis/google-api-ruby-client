@@ -104,7 +104,7 @@ module Google
       end
 
       def generator
-        @generator ||= Google::Apis::Generator.new(api_names: options[:names])
+        @generator ||= Google::Apis::Generator.new(api_names: options[:names], api_names_out: options[:names_out])
       end
 
       def ensure_active_support
