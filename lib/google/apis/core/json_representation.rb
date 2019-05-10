@@ -80,6 +80,10 @@ module Google
               options[:render_filter] = ->(value, _doc, *_args) { value.nil? ? nil : value.is_a?(DateTime) ? value.rfc3339(3) : value.to_s }
               options[:parse_filter] = ->(fragment, _doc, *_args) { DateTime.parse(fragment) }
             end
+            if options[:type] == Date
+              options[:render_filter] = ->(value, _doc, *_args) { value.nil? ? nil : value.to_s}
+              options[:parse_filter] = ->(fragment, _doc, *_args) { Date.parse(fragment) }
+            end
 
             options[:render_nil] = true
             options[:getter] = getter_fn(name)
