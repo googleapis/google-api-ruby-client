@@ -69,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_matter_permissions(matter_id, add_matter_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}:addPermissions', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}:addPermissions', options)
           command.request_representation = Google::Apis::VaultV1::AddMatterPermissionsRequest::Representation
           command.request_object = add_matter_permissions_request_object
           command.response_representation = Google::Apis::VaultV1::MatterPermission::Representation
@@ -102,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def close_matter(matter_id, close_matter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}:close', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}:close', options)
           command.request_representation = Google::Apis::VaultV1::CloseMatterRequest::Representation
           command.request_object = close_matter_request_object
           command.response_representation = Google::Apis::VaultV1::CloseMatterResponse::Representation
@@ -135,7 +135,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_matter(matter_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters', options)
+          command = make_simple_command(:post, 'v1/matters', options)
           command.request_representation = Google::Apis::VaultV1::Matter::Representation
           command.request_object = matter_object
           command.response_representation = Google::Apis::VaultV1::Matter::Representation
@@ -166,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_matter(matter_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/matters/{matterId}', options)
+          command = make_simple_command(:delete, 'v1/matters/{matterId}', options)
           command.response_representation = Google::Apis::VaultV1::Matter::Representation
           command.response_class = Google::Apis::VaultV1::Matter
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -198,7 +198,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_matter(matter_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}', options)
           command.response_representation = Google::Apis::VaultV1::Matter::Representation
           command.response_class = Google::Apis::VaultV1::Matter
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -237,7 +237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_matters(page_size: nil, page_token: nil, state: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters', options)
+          command = make_simple_command(:get, 'v1/matters', options)
           command.response_representation = Google::Apis::VaultV1::ListMattersResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListMattersResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -271,7 +271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_matter_permissions(matter_id, remove_matter_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}:removePermissions', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}:removePermissions', options)
           command.request_representation = Google::Apis::VaultV1::RemoveMatterPermissionsRequest::Representation
           command.request_object = remove_matter_permissions_request_object
           command.response_representation = Google::Apis::VaultV1::Empty::Representation
@@ -304,7 +304,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reopen_matter(matter_id, reopen_matter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}:reopen', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}:reopen', options)
           command.request_representation = Google::Apis::VaultV1::ReopenMatterRequest::Representation
           command.request_object = reopen_matter_request_object
           command.response_representation = Google::Apis::VaultV1::ReopenMatterResponse::Representation
@@ -337,7 +337,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_matter(matter_id, undelete_matter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}:undelete', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}:undelete', options)
           command.request_representation = Google::Apis::VaultV1::UndeleteMatterRequest::Representation
           command.request_object = undelete_matter_request_object
           command.response_representation = Google::Apis::VaultV1::Matter::Representation
@@ -373,7 +373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_matter(matter_id, matter_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/matters/{matterId}', options)
+          command = make_simple_command(:put, 'v1/matters/{matterId}', options)
           command.request_representation = Google::Apis::VaultV1::Matter::Representation
           command.request_object = matter_object
           command.response_representation = Google::Apis::VaultV1::Matter::Representation
@@ -406,7 +406,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_matter_export(matter_id, export_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/exports', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/exports', options)
           command.request_representation = Google::Apis::VaultV1::Export::Representation
           command.request_object = export_object
           command.response_representation = Google::Apis::VaultV1::Export::Representation
@@ -440,7 +440,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_matter_export(matter_id, export_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/matters/{matterId}/exports/{exportId}', options)
+          command = make_simple_command(:delete, 'v1/matters/{matterId}/exports/{exportId}', options)
           command.response_representation = Google::Apis::VaultV1::Empty::Representation
           command.response_class = Google::Apis::VaultV1::Empty
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -473,7 +473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_matter_export(matter_id, export_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/exports/{exportId}', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/exports/{exportId}', options)
           command.response_representation = Google::Apis::VaultV1::Export::Representation
           command.response_class = Google::Apis::VaultV1::Export
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -508,7 +508,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_matter_exports(matter_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/exports', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/exports', options)
           command.response_representation = Google::Apis::VaultV1::ListExportsResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListExportsResponse
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -545,7 +545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_hold_held_accounts(matter_id, hold_id, add_held_accounts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}:addHeldAccounts', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}:addHeldAccounts', options)
           command.request_representation = Google::Apis::VaultV1::AddHeldAccountsRequest::Representation
           command.request_object = add_held_accounts_request_object
           command.response_representation = Google::Apis::VaultV1::AddHeldAccountsResponse::Representation
@@ -579,7 +579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_matter_hold(matter_id, hold_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/holds', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/holds', options)
           command.request_representation = Google::Apis::VaultV1::Hold::Representation
           command.request_object = hold_object
           command.response_representation = Google::Apis::VaultV1::Hold::Representation
@@ -613,7 +613,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_matter_hold(matter_id, hold_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/matters/{matterId}/holds/{holdId}', options)
+          command = make_simple_command(:delete, 'v1/matters/{matterId}/holds/{holdId}', options)
           command.response_representation = Google::Apis::VaultV1::Empty::Representation
           command.response_class = Google::Apis::VaultV1::Empty
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -648,7 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_matter_hold(matter_id, hold_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/holds/{holdId}', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/holds/{holdId}', options)
           command.response_representation = Google::Apis::VaultV1::Hold::Representation
           command.response_class = Google::Apis::VaultV1::Hold
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -689,7 +689,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_matter_holds(matter_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/holds', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/holds', options)
           command.response_representation = Google::Apis::VaultV1::ListHoldsResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListHoldsResponse
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -727,7 +727,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_hold_held_accounts(matter_id, hold_id, remove_held_accounts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts', options)
           command.request_representation = Google::Apis::VaultV1::RemoveHeldAccountsRequest::Representation
           command.request_object = remove_held_accounts_request_object
           command.response_representation = Google::Apis::VaultV1::RemoveHeldAccountsResponse::Representation
@@ -765,7 +765,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_matter_hold(matter_id, hold_id, hold_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/matters/{matterId}/holds/{holdId}', options)
+          command = make_simple_command(:put, 'v1/matters/{matterId}/holds/{holdId}', options)
           command.request_representation = Google::Apis::VaultV1::Hold::Representation
           command.request_object = hold_object
           command.response_representation = Google::Apis::VaultV1::Hold::Representation
@@ -803,7 +803,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_matter_hold_account(matter_id, hold_id, held_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}/accounts', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/holds/{holdId}/accounts', options)
           command.request_representation = Google::Apis::VaultV1::HeldAccount::Representation
           command.request_object = held_account_object
           command.response_representation = Google::Apis::VaultV1::HeldAccount::Representation
@@ -841,7 +841,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_matter_hold_account(matter_id, hold_id, account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}', options)
+          command = make_simple_command(:delete, 'v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}', options)
           command.response_representation = Google::Apis::VaultV1::Empty::Representation
           command.response_class = Google::Apis::VaultV1::Empty
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -878,7 +878,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_matter_hold_accounts(matter_id, hold_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/holds/{holdId}/accounts', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/holds/{holdId}/accounts', options)
           command.response_representation = Google::Apis::VaultV1::ListHeldAccountsResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListHeldAccountsResponse
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -911,7 +911,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_matter_saved_query(matter_id, saved_query_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/matters/{matterId}/savedQueries', options)
+          command = make_simple_command(:post, 'v1/matters/{matterId}/savedQueries', options)
           command.request_representation = Google::Apis::VaultV1::SavedQuery::Representation
           command.request_object = saved_query_object
           command.response_representation = Google::Apis::VaultV1::SavedQuery::Representation
@@ -946,7 +946,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_matter_saved_query(matter_id, saved_query_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
+          command = make_simple_command(:delete, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
           command.response_representation = Google::Apis::VaultV1::Empty::Representation
           command.response_class = Google::Apis::VaultV1::Empty
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -980,7 +980,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_matter_saved_query(matter_id, saved_query_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/savedQueries/{savedQueryId}', options)
           command.response_representation = Google::Apis::VaultV1::SavedQuery::Representation
           command.response_class = Google::Apis::VaultV1::SavedQuery
           command.params['matterId'] = matter_id unless matter_id.nil?
@@ -1018,7 +1018,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_matter_saved_queries(matter_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/matters/{matterId}/savedQueries', options)
+          command = make_simple_command(:get, 'v1/matters/{matterId}/savedQueries', options)
           command.response_representation = Google::Apis::VaultV1::ListSavedQueriesResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListSavedQueriesResponse
           command.params['matterId'] = matter_id unless matter_id.nil?

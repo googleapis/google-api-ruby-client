@@ -84,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_photo(photo_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/photo', options)
+          command = make_simple_command(:post, 'v1/photo', options)
           command.request_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
           command.request_object = photo_object
           command.response_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
@@ -119,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_photo(photo_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/photo/{photoId}', options)
+          command = make_simple_command(:delete, 'v1/photo/{photoId}', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::Empty::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::Empty
           command.params['photoId'] = photo_id unless photo_id.nil?
@@ -166,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_photo(photo_id, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/photo/{photoId}', options)
+          command = make_simple_command(:get, 'v1/photo/{photoId}', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::Photo
           command.params['photoId'] = photo_id unless photo_id.nil?
@@ -213,7 +213,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_photo_upload(empty_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/photo:startUpload', options)
+          command = make_simple_command(:post, 'v1/photo:startUpload', options)
           command.request_representation = Google::Apis::StreetviewpublishV1::Empty::Representation
           command.request_object = empty_object
           command.response_representation = Google::Apis::StreetviewpublishV1::UploadRef::Representation
@@ -281,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_photo(id, photo_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/photo/{id}', options)
+          command = make_simple_command(:put, 'v1/photo/{id}', options)
           command.request_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
           command.request_object = photo_object
           command.response_representation = Google::Apis::StreetviewpublishV1::Photo::Representation
@@ -327,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_photos(batch_delete_photos_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/photos:batchDelete', options)
+          command = make_simple_command(:post, 'v1/photos:batchDelete', options)
           command.request_representation = Google::Apis::StreetviewpublishV1::BatchDeletePhotosRequest::Representation
           command.request_object = batch_delete_photos_request_object
           command.response_representation = Google::Apis::StreetviewpublishV1::BatchDeletePhotosResponse::Representation
@@ -383,7 +383,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_photo_get(language_code: nil, photo_ids: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/photos:batchGet', options)
+          command = make_simple_command(:get, 'v1/photos:batchGet', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::BatchGetPhotosResponse::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::BatchGetPhotosResponse
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -442,7 +442,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_photos(batch_update_photos_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/photos:batchUpdate', options)
+          command = make_simple_command(:post, 'v1/photos:batchUpdate', options)
           command.request_representation = Google::Apis::StreetviewpublishV1::BatchUpdatePhotosRequest::Representation
           command.request_object = batch_update_photos_request_object
           command.response_representation = Google::Apis::StreetviewpublishV1::BatchUpdatePhotosResponse::Representation
@@ -498,7 +498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_photos(filter: nil, language_code: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/photos', options)
+          command = make_simple_command(:get, 'v1/photos', options)
           command.response_representation = Google::Apis::StreetviewpublishV1::ListPhotosResponse::Representation
           command.response_class = Google::Apis::StreetviewpublishV1::ListPhotosResponse
           command.query['filter'] = filter unless filter.nil?

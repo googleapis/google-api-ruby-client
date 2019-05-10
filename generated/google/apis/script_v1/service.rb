@@ -100,7 +100,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_processes(page_size: nil, page_token: nil, user_process_filter_deployment_id: nil, user_process_filter_end_time: nil, user_process_filter_function_name: nil, user_process_filter_project_name: nil, user_process_filter_script_id: nil, user_process_filter_start_time: nil, user_process_filter_statuses: nil, user_process_filter_types: nil, user_process_filter_user_access_levels: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/processes', options)
+          command = make_simple_command(:get, 'v1/processes', options)
           command.response_representation = Google::Apis::ScriptV1::ListUserProcessesResponse::Representation
           command.response_class = Google::Apis::ScriptV1::ListUserProcessesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_process_script_processes(page_size: nil, page_token: nil, script_id: nil, script_process_filter_deployment_id: nil, script_process_filter_end_time: nil, script_process_filter_function_name: nil, script_process_filter_start_time: nil, script_process_filter_statuses: nil, script_process_filter_types: nil, script_process_filter_user_access_levels: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/processes:listScriptProcesses', options)
+          command = make_simple_command(:get, 'v1/processes:listScriptProcesses', options)
           command.response_representation = Google::Apis::ScriptV1::ListScriptProcessesResponse::Representation
           command.response_class = Google::Apis::ScriptV1::ListScriptProcessesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -207,7 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project(create_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects', options)
+          command = make_simple_command(:post, 'v1/projects', options)
           command.request_representation = Google::Apis::ScriptV1::CreateProjectRequest::Representation
           command.request_object = create_project_request_object
           command.response_representation = Google::Apis::ScriptV1::Project::Representation
@@ -238,7 +238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(script_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}', options)
           command.response_representation = Google::Apis::ScriptV1::Project::Representation
           command.response_class = Google::Apis::ScriptV1::Project
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_content(script_id, version_number: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/content', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/content', options)
           command.response_representation = Google::Apis::ScriptV1::Content::Representation
           command.response_class = Google::Apis::ScriptV1::Content
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -308,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_metrics(script_id, metrics_filter_deployment_id: nil, metrics_granularity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/metrics', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/metrics', options)
           command.response_representation = Google::Apis::ScriptV1::Metrics::Representation
           command.response_class = Google::Apis::ScriptV1::Metrics
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -345,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_content(script_id, content_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/projects/{scriptId}/content', options)
+          command = make_simple_command(:put, 'v1/projects/{scriptId}/content', options)
           command.request_representation = Google::Apis::ScriptV1::Content::Representation
           command.request_object = content_object
           command.response_representation = Google::Apis::ScriptV1::Content::Representation
@@ -378,7 +378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_deployment(script_id, deployment_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{scriptId}/deployments', options)
+          command = make_simple_command(:post, 'v1/projects/{scriptId}/deployments', options)
           command.request_representation = Google::Apis::ScriptV1::DeploymentConfig::Representation
           command.request_object = deployment_config_object
           command.response_representation = Google::Apis::ScriptV1::Deployment::Representation
@@ -412,7 +412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_deployment(script_id, deployment_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
           command.response_representation = Google::Apis::ScriptV1::Empty::Representation
           command.response_class = Google::Apis::ScriptV1::Empty
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -445,7 +445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_deployment(script_id, deployment_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
           command.response_representation = Google::Apis::ScriptV1::Deployment::Representation
           command.response_class = Google::Apis::ScriptV1::Deployment
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -481,7 +481,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_deployments(script_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/deployments', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/deployments', options)
           command.response_representation = Google::Apis::ScriptV1::ListDeploymentsResponse::Representation
           command.response_class = Google::Apis::ScriptV1::ListDeploymentsResponse
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -516,7 +516,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_deployment(script_id, deployment_id, update_deployment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
+          command = make_simple_command(:put, 'v1/projects/{scriptId}/deployments/{deploymentId}', options)
           command.request_representation = Google::Apis::ScriptV1::UpdateDeploymentRequest::Representation
           command.request_object = update_deployment_request_object
           command.response_representation = Google::Apis::ScriptV1::Deployment::Representation
@@ -551,7 +551,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_version(script_id, version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{scriptId}/versions', options)
+          command = make_simple_command(:post, 'v1/projects/{scriptId}/versions', options)
           command.request_representation = Google::Apis::ScriptV1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::ScriptV1::Version::Representation
@@ -585,7 +585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_version(script_id, version_number, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/versions/{versionNumber}', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/versions/{versionNumber}', options)
           command.response_representation = Google::Apis::ScriptV1::Version::Representation
           command.response_class = Google::Apis::ScriptV1::Version
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -621,7 +621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_versions(script_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{scriptId}/versions', options)
+          command = make_simple_command(:get, 'v1/projects/{scriptId}/versions', options)
           command.response_representation = Google::Apis::ScriptV1::ListVersionsResponse::Representation
           command.response_class = Google::Apis::ScriptV1::ListVersionsResponse
           command.params['scriptId'] = script_id unless script_id.nil?
@@ -666,7 +666,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_script(script_id, execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/scripts/{scriptId}:run', options)
+          command = make_simple_command(:post, 'v1/scripts/{scriptId}:run', options)
           command.request_representation = Google::Apis::ScriptV1::ExecutionRequest::Representation
           command.request_object = execution_request_object
           command.response_representation = Google::Apis::ScriptV1::Operation::Representation

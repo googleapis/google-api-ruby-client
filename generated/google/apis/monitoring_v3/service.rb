@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_alert_policy(name, alert_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/alertPolicies', options)
+          command = make_simple_command(:post, 'v3/{+name}/alertPolicies', options)
           command.request_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
           command.request_object = alert_policy_object
           command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
@@ -110,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_alert_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_alert_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
           command.response_class = Google::Apis::MonitoringV3::AlertPolicy
           command.params['name'] = name unless name.nil?
@@ -190,7 +190,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_alert_policies(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/alertPolicies', options)
+          command = make_simple_command(:get, 'v3/{+name}/alertPolicies', options)
           command.response_representation = Google::Apis::MonitoringV3::ListAlertPoliciesResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListAlertPoliciesResponse
           command.params['name'] = name unless name.nil?
@@ -250,7 +250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_alert_policy(name, alert_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
           command.request_object = alert_policy_object
           command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
@@ -287,7 +287,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_collectd_time_series(name, create_collectd_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
+          command = make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
           command.request_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest::Representation
           command.request_object = create_collectd_time_series_request_object
           command.response_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesResponse::Representation
@@ -323,7 +323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/groups', options)
+          command = make_simple_command(:post, 'v3/{+name}/groups', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
@@ -361,7 +361,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_group(name, recursive: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -393,7 +393,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_group(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
           command.response_class = Google::Apis::MonitoringV3::Group
           command.params['name'] = name unless name.nil?
@@ -444,7 +444,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_groups(name, ancestors_of_group: nil, children_of_group: nil, descendants_of_group: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/groups', options)
+          command = make_simple_command(:get, 'v3/{+name}/groups', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupsResponse
           command.params['name'] = name unless name.nil?
@@ -485,7 +485,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_group(name, group_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v3/{+name}', options)
+          command = make_simple_command(:put, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::MonitoringV3::Group::Representation
@@ -536,7 +536,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_group_members(name, filter: nil, interval_end_time: nil, interval_start_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/members', options)
+          command = make_simple_command(:get, 'v3/{+name}/members', options)
           command.response_representation = Google::Apis::MonitoringV3::ListGroupMembersResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListGroupMembersResponse
           command.params['name'] = name unless name.nil?
@@ -574,7 +574,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_metric_descriptor(name, metric_descriptor_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/metricDescriptors', options)
+          command = make_simple_command(:post, 'v3/{+name}/metricDescriptors', options)
           command.request_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.request_object = metric_descriptor_object
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
@@ -608,7 +608,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -641,7 +641,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_metric_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MetricDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MetricDescriptor
           command.params['name'] = name unless name.nil?
@@ -684,7 +684,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_metric_descriptors(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
+          command = make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse
           command.params['name'] = name unless name.nil?
@@ -720,7 +720,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_monitored_resource_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::MonitoredResourceDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::MonitoredResourceDescriptor
           command.params['name'] = name unless name.nil?
@@ -763,7 +763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_monitored_resource_descriptors(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/monitoredResourceDescriptors', options)
+          command = make_simple_command(:get, 'v3/{+name}/monitoredResourceDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMonitoredResourceDescriptorsResponse
           command.params['name'] = name unless name.nil?
@@ -798,7 +798,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_notification_channel_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::NotificationChannelDescriptor::Representation
           command.response_class = Google::Apis::MonitoringV3::NotificationChannelDescriptor
           command.params['name'] = name unless name.nil?
@@ -840,7 +840,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_notification_channel_descriptors(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/notificationChannelDescriptors', options)
+          command = make_simple_command(:get, 'v3/{+name}/notificationChannelDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse
           command.params['name'] = name unless name.nil?
@@ -879,7 +879,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_notification_channel(name, notification_channel_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/notificationChannels', options)
+          command = make_simple_command(:post, 'v3/{+name}/notificationChannels', options)
           command.request_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
           command.request_object = notification_channel_object
           command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
@@ -917,7 +917,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_notification_channel(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -953,7 +953,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_notification_channel(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
           command.response_class = Google::Apis::MonitoringV3::NotificationChannel
           command.params['name'] = name unless name.nil?
@@ -1003,7 +1003,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_notification_channel_verification_code(name, get_notification_channel_verification_code_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:getVerificationCode', options)
+          command = make_simple_command(:post, 'v3/{+name}:getVerificationCode', options)
           command.request_representation = Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeRequest::Representation
           command.request_object = get_notification_channel_verification_code_request_object
           command.response_representation = Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeResponse::Representation
@@ -1054,7 +1054,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_notification_channels(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/notificationChannels', options)
+          command = make_simple_command(:get, 'v3/{+name}/notificationChannels', options)
           command.response_representation = Google::Apis::MonitoringV3::ListNotificationChannelsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListNotificationChannelsResponse
           command.params['name'] = name unless name.nil?
@@ -1094,7 +1094,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_notification_channel(name, notification_channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
           command.request_object = notification_channel_object
           command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
@@ -1129,7 +1129,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_notification_channel_verification_code(name, send_notification_channel_verification_code_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:sendVerificationCode', options)
+          command = make_simple_command(:post, 'v3/{+name}:sendVerificationCode', options)
           command.request_representation = Google::Apis::MonitoringV3::SendNotificationChannelVerificationCodeRequest::Representation
           command.request_object = send_notification_channel_verification_code_request_object
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
@@ -1163,7 +1163,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def verify_notification_channel(name, verify_notification_channel_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}:verify', options)
+          command = make_simple_command(:post, 'v3/{+name}:verify', options)
           command.request_representation = Google::Apis::MonitoringV3::VerifyNotificationChannelRequest::Representation
           command.request_object = verify_notification_channel_request_object
           command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
@@ -1199,7 +1199,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_time_series(name, create_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+name}/timeSeries', options)
+          command = make_simple_command(:post, 'v3/{+name}/timeSeries', options)
           command.request_representation = Google::Apis::MonitoringV3::CreateTimeSeriesRequest::Representation
           command.request_object = create_time_series_request_object
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
@@ -1294,7 +1294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_time_series(name, aggregation_alignment_period: nil, aggregation_cross_series_reducer: nil, aggregation_group_by_fields: nil, aggregation_per_series_aligner: nil, filter: nil, interval_end_time: nil, interval_start_time: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}/timeSeries', options)
+          command = make_simple_command(:get, 'v3/{+name}/timeSeries', options)
           command.response_representation = Google::Apis::MonitoringV3::ListTimeSeriesResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListTimeSeriesResponse
           command.params['name'] = name unless name.nil?
@@ -1337,7 +1337,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_uptime_check_config(parent, uptime_check_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/uptimeCheckConfigs', options)
+          command = make_simple_command(:post, 'v3/{+parent}/uptimeCheckConfigs', options)
           command.request_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
           command.request_object = uptime_check_config_object
           command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
@@ -1372,7 +1372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_uptime_check_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
           command.response_class = Google::Apis::MonitoringV3::Empty
           command.params['name'] = name unless name.nil?
@@ -1403,7 +1403,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_uptime_check_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
           command.response_class = Google::Apis::MonitoringV3::UptimeCheckConfig
           command.params['name'] = name unless name.nil?
@@ -1444,7 +1444,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_uptime_check_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+parent}/uptimeCheckConfigs', options)
+          command = make_simple_command(:get, 'v3/{+parent}/uptimeCheckConfigs', options)
           command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1488,7 +1488,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_uptime_check_config(name, uptime_check_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
           command.request_object = uptime_check_config_object
           command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
@@ -1529,7 +1529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_uptime_check_ips(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/uptimeCheckIps', options)
+          command = make_simple_command(:get, 'v3/uptimeCheckIps', options)
           command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse
           command.query['pageSize'] = page_size unless page_size.nil?

@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_project_data_source_valid_creds(name, check_valid_creds_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:checkValidCreds', options)
+          command = make_simple_command(:post, 'v1/{+name}:checkValidCreds', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest::Representation
           command.request_object = check_valid_creds_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::CheckValidCredsResponse::Representation
@@ -110,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_data_source(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::DataSource::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::DataSource
           command.params['name'] = name unless name.nil?
@@ -150,7 +150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_data_sources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/dataSources', options)
+          command = make_simple_command(:get, 'v1/{+parent}/dataSources', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListDataSourcesResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListDataSourcesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -182,7 +182,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::Location::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::Location
           command.params['name'] = name unless name.nil?
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -258,7 +258,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_project_location_data_source_valid_creds(name, check_valid_creds_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:checkValidCreds', options)
+          command = make_simple_command(:post, 'v1/{+name}:checkValidCreds', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest::Representation
           command.request_object = check_valid_creds_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::CheckValidCredsResponse::Representation
@@ -292,7 +292,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_data_source(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::DataSource::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::DataSource
           command.params['name'] = name unless name.nil?
@@ -332,7 +332,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_data_sources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/dataSources', options)
+          command = make_simple_command(:get, 'v1/{+parent}/dataSources', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListDataSourcesResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListDataSourcesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -392,7 +392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
+          command = make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
@@ -428,7 +428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_transfer_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -459,7 +459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_transfer_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferConfig
           command.params['name'] = name unless name.nil?
@@ -500,7 +500,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_transfer_configs(parent, data_source_ids: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/transferConfigs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/transferConfigs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferConfigsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -567,7 +567,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
@@ -608,7 +608,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def schedule_project_location_transfer_config_runs(parent, schedule_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:scheduleRuns', options)
+          command = make_simple_command(:post, 'v1/{+parent}:scheduleRuns', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest::Representation
           command.request_object = schedule_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse::Representation
@@ -645,7 +645,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_project_location_transfer_config_manual_runs(parent, start_manual_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
+          command = make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest::Representation
           command.request_object = start_manual_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse::Representation
@@ -678,7 +678,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_transfer_config_run(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -709,7 +709,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_transfer_config_run(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferRun::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferRun
           command.params['name'] = name unless name.nil?
@@ -753,7 +753,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, states: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/runs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/runs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -799,7 +799,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_transfer_config_run_transfer_logs(parent, message_types: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/transferLogs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/transferLogs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferLogsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -860,7 +860,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_transfer_config(parent, transfer_config_object = nil, authorization_code: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
+          command = make_simple_command(:post, 'v1/{+parent}/transferConfigs', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
@@ -896,7 +896,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_transfer_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -927,7 +927,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_transfer_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferConfig
           command.params['name'] = name unless name.nil?
@@ -968,7 +968,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_transfer_configs(parent, data_source_ids: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/transferConfigs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/transferConfigs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferConfigsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1035,7 +1035,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_transfer_config(name, transfer_config_object = nil, authorization_code: nil, update_mask: nil, version_info: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
           command.request_object = transfer_config_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferConfig::Representation
@@ -1076,7 +1076,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def schedule_project_transfer_config_runs(parent, schedule_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:scheduleRuns', options)
+          command = make_simple_command(:post, 'v1/{+parent}:scheduleRuns', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest::Representation
           command.request_object = schedule_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsResponse::Representation
@@ -1113,7 +1113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_project_transfer_config_manual_runs(parent, start_manual_transfer_runs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
+          command = make_simple_command(:post, 'v1/{+parent}:startManualRuns', options)
           command.request_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest::Representation
           command.request_object = start_manual_transfer_runs_request_object
           command.response_representation = Google::Apis::BigquerydatatransferV1::StartManualTransferRunsResponse::Representation
@@ -1146,7 +1146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_transfer_config_run(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1177,7 +1177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_transfer_config_run(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::TransferRun::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::TransferRun
           command.params['name'] = name unless name.nil?
@@ -1221,7 +1221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, states: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/runs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/runs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1267,7 +1267,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_transfer_config_run_transfer_logs(parent, message_types: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/transferLogs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/transferLogs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferLogsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferLogsResponse
           command.params['parent'] = parent unless parent.nil?

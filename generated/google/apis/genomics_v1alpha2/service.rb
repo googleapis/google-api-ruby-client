@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha2/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1alpha2/{+name}:cancel', options)
           command.request_representation = Google::Apis::GenomicsV1alpha2::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::GenomicsV1alpha2::Empty::Representation
@@ -114,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha2/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha2/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::Operation::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::Operation
           command.params['name'] = name unless name.nil?
@@ -178,7 +178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha2/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha2/{+name}', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -214,7 +214,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_pipeline(pipeline_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha2/pipelines', options)
+          command = make_simple_command(:post, 'v1alpha2/pipelines', options)
           command.request_representation = Google::Apis::GenomicsV1alpha2::Pipeline::Representation
           command.request_object = pipeline_object
           command.response_representation = Google::Apis::GenomicsV1alpha2::Pipeline::Representation
@@ -247,7 +247,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_pipeline(pipeline_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha2/pipelines/{pipelineId}', options)
+          command = make_simple_command(:delete, 'v1alpha2/pipelines/{pipelineId}', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::Empty::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::Empty
           command.params['pipelineId'] = pipeline_id unless pipeline_id.nil?
@@ -279,7 +279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_pipeline(pipeline_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha2/pipelines/{pipelineId}', options)
+          command = make_simple_command(:get, 'v1alpha2/pipelines/{pipelineId}', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::Pipeline::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::Pipeline
           command.params['pipelineId'] = pipeline_id unless pipeline_id.nil?
@@ -311,7 +311,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_pipeline_controller_config(operation_id: nil, validation_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha2/pipelines:getControllerConfig', options)
+          command = make_simple_command(:get, 'v1alpha2/pipelines:getControllerConfig', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::ControllerConfig::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::ControllerConfig
           command.query['operationId'] = operation_id unless operation_id.nil?
@@ -354,7 +354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pipelines(name_prefix: nil, page_size: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha2/pipelines', options)
+          command = make_simple_command(:get, 'v1alpha2/pipelines', options)
           command.response_representation = Google::Apis::GenomicsV1alpha2::ListPipelinesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1alpha2::ListPipelinesResponse
           command.query['namePrefix'] = name_prefix unless name_prefix.nil?
@@ -392,7 +392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_pipeline(run_pipeline_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha2/pipelines:run', options)
+          command = make_simple_command(:post, 'v1alpha2/pipelines:run', options)
           command.request_representation = Google::Apis::GenomicsV1alpha2::RunPipelineRequest::Representation
           command.request_object = run_pipeline_request_object
           command.response_representation = Google::Apis::GenomicsV1alpha2::Operation::Representation
@@ -424,7 +424,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_pipeline_operation_status(set_operation_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1alpha2/pipelines:setOperationStatus', options)
+          command = make_simple_command(:put, 'v1alpha2/pipelines:setOperationStatus', options)
           command.request_representation = Google::Apis::GenomicsV1alpha2::SetOperationStatusRequest::Representation
           command.request_object = set_operation_status_request_object
           command.response_representation = Google::Apis::GenomicsV1alpha2::Empty::Representation

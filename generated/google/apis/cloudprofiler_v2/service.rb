@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_profile(parent, create_profile_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/profiles', options)
+          command = make_simple_command(:post, 'v2/{+parent}/profiles', options)
           command.request_representation = Google::Apis::CloudprofilerV2::CreateProfileRequest::Representation
           command.request_object = create_profile_request_object
           command.response_representation = Google::Apis::CloudprofilerV2::Profile::Representation
@@ -114,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_profile_offline(parent, profile_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/profiles:createOffline', options)
+          command = make_simple_command(:post, 'v2/{+parent}/profiles:createOffline', options)
           command.request_representation = Google::Apis::CloudprofilerV2::Profile::Representation
           command.request_object = profile_object
           command.response_representation = Google::Apis::CloudprofilerV2::Profile::Representation
@@ -155,7 +155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_profile(name, profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::CloudprofilerV2::Profile::Representation
           command.request_object = profile_object
           command.response_representation = Google::Apis::CloudprofilerV2::Profile::Representation

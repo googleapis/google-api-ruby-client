@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_site_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::SiteConfig
           command.params['name'] = name unless name.nil?
@@ -109,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_site_config(name, site_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
           command.request_object = site_config_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
@@ -144,7 +144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_site_domain(parent, domain_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/domains', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/domains', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Domain::Representation
           command.request_object = domain_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Domain::Representation
@@ -176,7 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_site_domain(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -206,7 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_site_domain(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Domain::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::Domain
           command.params['name'] = name unless name.nil?
@@ -241,7 +241,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_site_domains(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/domains', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/domains', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::ListDomainsResponse::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::ListDomainsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -276,7 +276,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_site_domain(name, domain_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Domain::Representation
           command.request_object = domain_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Domain::Representation
@@ -319,7 +319,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_site_release(parent, release_object = nil, version_name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/releases', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/releases', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
           command.request_object = release_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Release::Representation
@@ -357,7 +357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_site_releases(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/releases', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/releases', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::ListReleasesResponse::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::ListReleasesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -397,7 +397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_site_version(parent, version_object = nil, size_bytes: nil, version_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/versions', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/versions', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
@@ -432,7 +432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_site_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -477,7 +477,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_site_version(name, version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::Version::Representation
@@ -512,7 +512,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def populate_site_version_files(parent, populate_version_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}:populateFiles', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:populateFiles', options)
           command.request_representation = Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesRequest::Representation
           command.request_object = populate_version_files_request_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesResponse::Representation
@@ -552,7 +552,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_site_version_files(parent, page_size: nil, page_token: nil, status: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/files', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/files', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::ListVersionFilesResponse::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::ListVersionFilesResponse
           command.params['parent'] = parent unless parent.nil?

@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_customers(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/customers', options)
+          command = make_simple_command(:get, 'v1/customers', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_customer_configuration(parent, configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/configurations', options)
+          command = make_simple_command(:post, 'v1/{+parent}/configurations', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
           command.request_object = configuration_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_customer_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Empty
           command.params['name'] = name unless name.nil?
@@ -172,7 +172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_customer_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Configuration
           command.params['name'] = name unless name.nil?
@@ -203,7 +203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_customer_configurations(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/configurations', options)
+          command = make_simple_command(:get, 'v1/{+parent}/configurations', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -241,7 +241,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_customer_configuration(name, configuration_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
           command.request_object = configuration_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
@@ -278,7 +278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def apply_customer_device_configuration(parent, customer_apply_configuration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/devices:applyConfiguration', options)
+          command = make_simple_command(:post, 'v1/{+parent}/devices:applyConfiguration', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerApplyConfigurationRequest::Representation
           command.request_object = customer_apply_configuration_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
@@ -311,7 +311,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_customer_device(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Device
           command.params['name'] = name unless name.nil?
@@ -347,7 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_customer_devices(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
+          command = make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -381,7 +381,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_customer_device_configuration(parent, customer_remove_configuration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/devices:removeConfiguration', options)
+          command = make_simple_command(:post, 'v1/{+parent}/devices:removeConfiguration', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerRemoveConfigurationRequest::Representation
           command.request_object = customer_remove_configuration_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
@@ -418,7 +418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unclaim_customer_device(parent, customer_unclaim_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/devices:unclaim', options)
+          command = make_simple_command(:post, 'v1/{+parent}/devices:unclaim', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerUnclaimDeviceRequest::Representation
           command.request_object = customer_unclaim_device_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
@@ -452,7 +452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_customer_dpcs(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/dpcs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/dpcs', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -484,7 +484,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Operation::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Operation
           command.params['name'] = name unless name.nil?
@@ -520,7 +520,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_customer(parent, create_customer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/customers', options)
+          command = make_simple_command(:post, 'v1/{+parent}/customers', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CreateCustomerRequest::Representation
           command.request_object = create_customer_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
@@ -559,7 +559,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_partner_customers(partner_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/partners/{+partnerId}/customers', options)
+          command = make_simple_command(:get, 'v1/partners/{+partnerId}/customers', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ListCustomersResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::ListCustomersResponse
           command.params['partnerId'] = partner_id unless partner_id.nil?
@@ -593,7 +593,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def claim_device(partner_id, claim_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:claim', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:claim', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::ClaimDeviceRequest::Representation
           command.request_object = claim_device_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ClaimDeviceResponse::Representation
@@ -628,7 +628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def claim_partner_device_async(partner_id, claim_devices_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:claimAsync', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:claimAsync', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::ClaimDevicesRequest::Representation
           command.request_object = claim_devices_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Operation::Representation
@@ -661,7 +661,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_partner_device_by_identifier(partner_id, find_devices_by_device_identifier_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:findByIdentifier', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:findByIdentifier', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByDeviceIdentifierRequest::Representation
           command.request_object = find_devices_by_device_identifier_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByDeviceIdentifierResponse::Representation
@@ -697,7 +697,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_partner_device_by_owner(partner_id, find_devices_by_owner_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:findByOwner', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:findByOwner', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByOwnerRequest::Representation
           command.request_object = find_devices_by_owner_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByOwnerResponse::Representation
@@ -730,7 +730,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_partner_device(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Device
           command.params['name'] = name unless name.nil?
@@ -763,7 +763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def metadata_partner_device(metadata_owner_id, device_id, update_device_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', options)
+          command = make_simple_command(:post, 'v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataRequest::Representation
           command.request_object = update_device_metadata_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata::Representation
@@ -798,7 +798,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unclaim_device(partner_id, unclaim_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:unclaim', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:unclaim', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::UnclaimDeviceRequest::Representation
           command.request_object = unclaim_device_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
@@ -833,7 +833,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unclaim_partner_device_async(partner_id, unclaim_devices_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:unclaimAsync', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:unclaimAsync', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::UnclaimDevicesRequest::Representation
           command.request_object = unclaim_devices_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Operation::Representation
@@ -869,7 +869,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_partner_device_metadata_async(partner_id, update_device_metadata_in_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/partners/{+partnerId}/devices:updateMetadataAsync', options)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/devices:updateMetadataAsync', options)
           command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataInBatchRequest::Representation
           command.request_object = update_device_metadata_in_batch_request_object
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Operation::Representation
@@ -905,7 +905,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_partner_vendors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/vendors', options)
+          command = make_simple_command(:get, 'v1/{+parent}/vendors', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::ListVendorsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -942,7 +942,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_partner_vendor_customers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/customers', options)
+          command = make_simple_command(:get, 'v1/{+parent}/customers', options)
           command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse::Representation
           command.response_class = Google::Apis::AndroiddeviceprovisioningV1::ListVendorCustomersResponse
           command.params['parent'] = parent unless parent.nil?

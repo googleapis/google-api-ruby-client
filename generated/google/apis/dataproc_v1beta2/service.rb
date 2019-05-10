@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_autoscaling_policy(parent, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
           command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.request_object = autoscaling_policy_object
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
           command.params['name'] = name unless name.nil?
@@ -170,7 +170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_autoscaling_policy_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -207,7 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_autoscaling_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -242,7 +242,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_autoscaling_policy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -280,7 +280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_location_autoscaling_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -316,7 +316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_autoscaling_policy(name, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command = make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.request_object = autoscaling_policy_object
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
@@ -351,7 +351,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_workflow_template(parent, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
@@ -388,7 +388,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -426,7 +426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.response_class = Google::Apis::DataprocV1beta2::WorkflowTemplate
           command.params['name'] = name unless name.nil?
@@ -459,7 +459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_workflow_template_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -498,7 +498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instantiate_project_location_workflow_template(name, instantiate_workflow_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+name}:instantiate', options)
+          command = make_simple_command(:post, 'v1beta2/{+name}:instantiate', options)
           command.request_representation = Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest::Representation
           command.request_object = instantiate_workflow_template_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -549,7 +549,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instantiate_project_location_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -590,7 +590,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_workflow_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/workflowTemplates', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/workflowTemplates', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListWorkflowTemplatesResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListWorkflowTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -625,7 +625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_workflow_template_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -663,7 +663,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_location_workflow_template_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -699,7 +699,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_workflow_template(name, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command = make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
@@ -734,7 +734,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_region_autoscaling_policy(parent, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/autoscalingPolicies', options)
           command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.request_object = autoscaling_policy_object
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
@@ -769,7 +769,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -801,7 +801,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_autoscaling_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::AutoscalingPolicy
           command.params['name'] = name unless name.nil?
@@ -815,7 +815,6 @@ module Google
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::DataprocV1beta2::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -833,10 +832,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_autoscaling_policy_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:getIamPolicy', options)
-          command.request_representation = Google::Apis::DataprocV1beta2::GetIamPolicyRequest::Representation
-          command.request_object = get_iam_policy_request_object
+        def get_autoscaling_policy_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -873,7 +870,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_autoscaling_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/autoscalingPolicies', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListAutoscalingPoliciesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -908,7 +905,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_region_autoscaling_policy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -946,7 +943,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_region_autoscaling_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -982,7 +979,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_region_autoscaling_policy(name, autoscaling_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command = make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
           command.request_object = autoscaling_policy_object
           command.response_representation = Google::Apis::DataprocV1beta2::AutoscalingPolicy::Representation
@@ -1026,7 +1023,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_region_cluster(project_id, region, cluster_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1076,7 +1073,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_cluster(project_id, region, cluster_name, cluster_uuid: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1117,7 +1114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def diagnose_cluster(project_id, region, cluster_name, diagnose_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', options)
           command.request_representation = Google::Apis::DataprocV1beta2::DiagnoseClusterRequest::Representation
           command.request_object = diagnose_cluster_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1156,7 +1153,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1190,7 +1187,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_cluster_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -1239,7 +1236,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_clusters(project_id, region, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListClustersResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1348,7 +1345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1388,7 +1385,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -1426,7 +1423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_cluster_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -1464,7 +1461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, region, job_id, cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', options)
           command.request_representation = Google::Apis::DataprocV1beta2::CancelJobRequest::Representation
           command.request_object = cancel_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1503,7 +1500,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1539,7 +1536,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1573,7 +1570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_job_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -1624,7 +1621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_jobs(project_id, region, cluster_name: nil, filter: nil, job_state_matcher: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1671,7 +1668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_job(project_id, region, job_id, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1709,7 +1706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_job_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -1744,7 +1741,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_job(project_id, region, submit_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs:submit', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs:submit', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SubmitJobRequest::Representation
           command.request_object = submit_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1783,7 +1780,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_job_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -1822,7 +1819,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_region_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1beta2/{+name}:cancel', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -1855,7 +1852,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -1886,7 +1883,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['name'] = name unless name.nil?
@@ -1918,7 +1915,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_operation_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -1961,7 +1958,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -1997,7 +1994,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_operation_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -2035,7 +2032,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_operation_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -2070,7 +2067,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_region_workflow_template(parent, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
@@ -2107,7 +2104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -2145,7 +2142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_workflow_template(name, version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.response_class = Google::Apis::DataprocV1beta2::WorkflowTemplate
           command.params['name'] = name unless name.nil?
@@ -2178,7 +2175,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_workflow_template_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -2217,7 +2214,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instantiate_project_region_workflow_template(name, instantiate_workflow_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+name}:instantiate', options)
+          command = make_simple_command(:post, 'v1beta2/{+name}:instantiate', options)
           command.request_representation = Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest::Representation
           command.request_object = instantiate_workflow_template_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -2268,7 +2265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instantiate_project_region_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -2309,7 +2306,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_workflow_templates(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/workflowTemplates', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/workflowTemplates', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListWorkflowTemplatesResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListWorkflowTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2344,7 +2341,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_region_workflow_template_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Policy::Representation
@@ -2382,7 +2379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_region_workflow_template_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::TestIamPermissionsResponse::Representation
@@ -2418,7 +2415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_region_workflow_template(name, workflow_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
+          command = make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
           command.request_object = workflow_template_object
           command.response_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation

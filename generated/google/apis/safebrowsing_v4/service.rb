@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_encoded_full_hash(encoded_request, client_id: nil, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/encodedFullHashes/{encodedRequest}', options)
+          command = make_simple_command(:get, 'v4/encodedFullHashes/{encodedRequest}', options)
           command.response_representation = Google::Apis::SafebrowsingV4::FindFullHashesResponse::Representation
           command.response_class = Google::Apis::SafebrowsingV4::FindFullHashesResponse
           command.params['encodedRequest'] = encoded_request unless encoded_request.nil?
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_encoded_update(encoded_request, client_id: nil, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/encodedUpdates/{encodedRequest}', options)
+          command = make_simple_command(:get, 'v4/encodedUpdates/{encodedRequest}', options)
           command.response_representation = Google::Apis::SafebrowsingV4::FetchThreatListUpdatesResponse::Representation
           command.response_class = Google::Apis::SafebrowsingV4::FetchThreatListUpdatesResponse
           command.params['encodedRequest'] = encoded_request unless encoded_request.nil?
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_full_hashes(find_full_hashes_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/fullHashes:find', options)
+          command = make_simple_command(:post, 'v4/fullHashes:find', options)
           command.request_representation = Google::Apis::SafebrowsingV4::FindFullHashesRequest::Representation
           command.request_object = find_full_hashes_request_object
           command.response_representation = Google::Apis::SafebrowsingV4::FindFullHashesResponse::Representation
@@ -173,7 +173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_threat_hit(threat_hit_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/threatHits', options)
+          command = make_simple_command(:post, 'v4/threatHits', options)
           command.request_representation = Google::Apis::SafebrowsingV4::ThreatHit::Representation
           command.request_object = threat_hit_object
           command.response_representation = Google::Apis::SafebrowsingV4::Empty::Representation
@@ -204,7 +204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def fetch_threat_list_updates(fetch_threat_list_updates_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/threatListUpdates:fetch', options)
+          command = make_simple_command(:post, 'v4/threatListUpdates:fetch', options)
           command.request_representation = Google::Apis::SafebrowsingV4::FetchThreatListUpdatesRequest::Representation
           command.request_object = fetch_threat_list_updates_request_object
           command.response_representation = Google::Apis::SafebrowsingV4::FetchThreatListUpdatesResponse::Representation
@@ -233,7 +233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_threat_lists(fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/threatLists', options)
+          command = make_simple_command(:get, 'v4/threatLists', options)
           command.response_representation = Google::Apis::SafebrowsingV4::ListThreatListsResponse::Representation
           command.response_class = Google::Apis::SafebrowsingV4::ListThreatListsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -261,7 +261,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_threat_matches(find_threat_matches_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/threatMatches:find', options)
+          command = make_simple_command(:post, 'v4/threatMatches:find', options)
           command.request_representation = Google::Apis::SafebrowsingV4::FindThreatMatchesRequest::Representation
           command.request_object = find_threat_matches_request_object
           command.response_representation = Google::Apis::SafebrowsingV4::FindThreatMatchesResponse::Representation

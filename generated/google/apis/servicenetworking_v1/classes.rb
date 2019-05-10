@@ -396,32 +396,6 @@ module Google
         end
       end
       
-      # Configuration of authorization.
-      # This section determines the authorization provider, if unspecified, then no
-      # authorization check will be done.
-      # Example:
-      # experimental:
-      # authorization:
-      # provider: firebaserules.googleapis.com
-      class AuthorizationConfig
-        include Google::Apis::Core::Hashable
-      
-        # The name of the authorization provider, such as
-        # firebaserules.googleapis.com.
-        # Corresponds to the JSON property `provider`
-        # @return [String]
-        attr_accessor :provider
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @provider = args[:provider] if args.key?(:provider)
-        end
-      end
-      
       # `Backend` defines the backend configuration for a service.
       class Backend
         include Google::Apis::Core::Hashable
@@ -1142,32 +1116,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @number = args[:number] if args.key?(:number)
           @options = args[:options] if args.key?(:options)
-        end
-      end
-      
-      # Experimental service configuration. These configuration options can
-      # only be used by whitelisted users.
-      class Experimental
-        include Google::Apis::Core::Hashable
-      
-        # Configuration of authorization.
-        # This section determines the authorization provider, if unspecified, then no
-        # authorization check will be done.
-        # Example:
-        # experimental:
-        # authorization:
-        # provider: firebaserules.googleapis.com
-        # Corresponds to the JSON property `authorization`
-        # @return [Google::Apis::ServicenetworkingV1::AuthorizationConfig]
-        attr_accessor :authorization
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authorization = args[:authorization] if args.key?(:authorization)
         end
       end
       
@@ -1929,6 +1877,11 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::LabelDescriptor>]
         attr_accessor :labels
       
+        # Optional. The launch stage of the metric definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Additional annotations that can be used to guide the usage of a metric.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ServicenetworkingV1::MetricDescriptorMetadata]
@@ -2027,6 +1980,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @name = args[:name] if args.key?(:name)
@@ -2047,6 +2001,7 @@ module Google
         # @return [String]
         attr_accessor :ingest_delay
       
+        # Deprecated. Please use the MetricDescriptor.launch_stage instead.
         # The launch stage of the metric definition.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
@@ -3018,12 +2973,6 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::Enum>]
         attr_accessor :enums
       
-        # Experimental service configuration. These configuration options can
-        # only be used by whitelisted users.
-        # Corresponds to the JSON property `experimental`
-        # @return [Google::Apis::ServicenetworkingV1::Experimental]
-        attr_accessor :experimental
-      
         # Defines the HTTP configuration for an API service. It contains a list of
         # HttpRule, each specifying the mapping of an RPC method
         # to one or more HTTP REST API methods.
@@ -3242,7 +3191,6 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @enums = args[:enums] if args.key?(:enums)
-          @experimental = args[:experimental] if args.key?(:experimental)
           @http = args[:http] if args.key?(:http)
           @id = args[:id] if args.key?(:id)
           @logging = args[:logging] if args.key?(:logging)

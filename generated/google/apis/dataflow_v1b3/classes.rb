@@ -3713,6 +3713,11 @@ module Google
         # @return [String]
         attr_accessor :source_job_id
       
+        # State of the snapshot.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The time after which this snapshot will be automatically deleted.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -3728,6 +3733,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @source_job_id = args[:source_job_id] if args.key?(:source_job_id)
+          @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
@@ -5359,6 +5365,11 @@ module Google
       class WorkerHealthReport
         include Google::Apis::Core::Hashable
       
+        # A message describing any unusual health reports.
+        # Corresponds to the JSON property `msg`
+        # @return [String]
+        attr_accessor :msg
+      
         # The pods running on the worker. See:
         # http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
         # This field is used by the worker to send the status of the indvidual
@@ -5374,7 +5385,15 @@ module Google
         # @return [String]
         attr_accessor :report_interval
       
-        # Whether the VM is healthy.
+        # Whether the VM is in a permanently broken state.
+        # Broken VMs should be abandoned or deleted ASAP to avoid assigning or
+        # completing any work.
+        # Corresponds to the JSON property `vmIsBroken`
+        # @return [Boolean]
+        attr_accessor :vm_is_broken
+        alias_method :vm_is_broken?, :vm_is_broken
+      
+        # Whether the VM is currently healthy.
         # Corresponds to the JSON property `vmIsHealthy`
         # @return [Boolean]
         attr_accessor :vm_is_healthy
@@ -5391,8 +5410,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @msg = args[:msg] if args.key?(:msg)
           @pods = args[:pods] if args.key?(:pods)
           @report_interval = args[:report_interval] if args.key?(:report_interval)
+          @vm_is_broken = args[:vm_is_broken] if args.key?(:vm_is_broken)
           @vm_is_healthy = args[:vm_is_healthy] if args.key?(:vm_is_healthy)
           @vm_startup_time = args[:vm_startup_time] if args.key?(:vm_startup_time)
         end

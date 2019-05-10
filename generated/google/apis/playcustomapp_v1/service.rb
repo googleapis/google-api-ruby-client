@@ -80,7 +80,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_custom_app(account, custom_app_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{account}/customApps', options)
+            command = make_simple_command(:post, '{account}/customApps', options)
           else
             command = make_upload_command(:post, '{account}/customApps', options)
             command.upload_source = upload_source

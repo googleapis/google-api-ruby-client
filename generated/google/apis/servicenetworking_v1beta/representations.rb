@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,12 +149,6 @@ module Google
       end
       
       class EnumValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Experimental
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -454,13 +442,6 @@ module Google
         end
       end
       
-      class AuthorizationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :provider, as: 'provider'
-        end
-      end
-      
       class Backend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -616,14 +597,6 @@ module Google
         end
       end
       
-      class Experimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization, as: 'authorization', class: Google::Apis::ServicenetworkingV1beta::AuthorizationConfig, decorator: Google::Apis::ServicenetworkingV1beta::AuthorizationConfig::Representation
-      
-        end
-      end
-      
       class Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -745,6 +718,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::ServicenetworkingV1beta::LabelDescriptor, decorator: Google::Apis::ServicenetworkingV1beta::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :metadata, as: 'metadata', class: Google::Apis::ServicenetworkingV1beta::MetricDescriptorMetadata, decorator: Google::Apis::ServicenetworkingV1beta::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'
@@ -913,8 +887,6 @@ module Google
           collection :endpoints, as: 'endpoints', class: Google::Apis::ServicenetworkingV1beta::Endpoint, decorator: Google::Apis::ServicenetworkingV1beta::Endpoint::Representation
       
           collection :enums, as: 'enums', class: Google::Apis::ServicenetworkingV1beta::Enum, decorator: Google::Apis::ServicenetworkingV1beta::Enum::Representation
-      
-          property :experimental, as: 'experimental', class: Google::Apis::ServicenetworkingV1beta::Experimental, decorator: Google::Apis::ServicenetworkingV1beta::Experimental::Representation
       
           property :http, as: 'http', class: Google::Apis::ServicenetworkingV1beta::Http, decorator: Google::Apis::ServicenetworkingV1beta::Http::Representation
       

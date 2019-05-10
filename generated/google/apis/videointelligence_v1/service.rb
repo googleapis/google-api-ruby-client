@@ -80,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, google_longrunning_cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/operations/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/operations/{+name}:cancel', options)
           command.request_representation = Google::Apis::VideointelligenceV1::GoogleLongrunningCancelOperationRequest::Representation
           command.request_object = google_longrunning_cancel_operation_request_object
           command.response_representation = Google::Apis::VideointelligenceV1::GoogleProtobufEmpty::Representation
@@ -115,7 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/operations/{+name}', options)
+          command = make_simple_command(:delete, 'v1/operations/{+name}', options)
           command.response_representation = Google::Apis::VideointelligenceV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::VideointelligenceV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -147,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations/{+name}', options)
+          command = make_simple_command(:get, 'v1/operations/{+name}', options)
           command.response_representation = Google::Apis::VideointelligenceV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::VideointelligenceV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -191,7 +191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
+          command = make_simple_command(:get, 'v1/operations', options)
           command.response_representation = Google::Apis::VideointelligenceV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::VideointelligenceV1::GoogleLongrunningListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_video(google_cloud_videointelligence_v1_annotate_video_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/videos:annotate', options)
+          command = make_simple_command(:post, 'v1/videos:annotate', options)
           command.request_representation = Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1AnnotateVideoRequest::Representation
           command.request_object = google_cloud_videointelligence_v1_annotate_video_request_object
           command.response_representation = Google::Apis::VideointelligenceV1::GoogleLongrunningOperation::Representation

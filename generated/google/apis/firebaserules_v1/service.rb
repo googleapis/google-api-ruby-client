@@ -91,7 +91,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_ruleset(name, test_ruleset_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:test', options)
+          command = make_simple_command(:post, 'v1/{+name}:test', options)
           command.request_representation = Google::Apis::FirebaserulesV1::TestRulesetRequest::Representation
           command.request_object = test_ruleset_request_object
           command.response_representation = Google::Apis::FirebaserulesV1::TestRulesetResponse::Representation
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}/releases', options)
+          command = make_simple_command(:post, 'v1/{+name}/releases', options)
           command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.request_object = release_object
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
@@ -175,7 +175,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
@@ -206,7 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Release
           command.params['name'] = name unless name.nil?
@@ -240,7 +240,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_release_executable(name, executable_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}:getExecutable', options)
+          command = make_simple_command(:get, 'v1/{+name}:getExecutable', options)
           command.response_representation = Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse
           command.params['name'] = name unless name.nil?
@@ -302,7 +302,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_releases(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/releases', options)
+          command = make_simple_command(:get, 'v1/{+name}/releases', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListReleasesResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListReleasesResponse
           command.params['name'] = name unless name.nil?
@@ -340,7 +340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_release(name, update_release_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::FirebaserulesV1::UpdateReleaseRequest::Representation
           command.request_object = update_release_request_object
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
@@ -378,7 +378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_ruleset(name, ruleset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}/rulesets', options)
+          command = make_simple_command(:post, 'v1/{+name}/rulesets', options)
           command.request_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
           command.request_object = ruleset_object
           command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
@@ -412,7 +412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
@@ -443,7 +443,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Ruleset
           command.params['name'] = name unless name.nil?
@@ -490,7 +490,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_rulesets(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/rulesets', options)
+          command = make_simple_command(:get, 'v1/{+name}/rulesets', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListRulesetsResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListRulesetsResponse
           command.params['name'] = name unless name.nil?

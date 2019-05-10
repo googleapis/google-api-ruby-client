@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_entities(analyze_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:analyzeEntities', options)
+          command = make_simple_command(:post, 'v1/documents:analyzeEntities', options)
           command.request_representation = Google::Apis::LanguageV1::AnalyzeEntitiesRequest::Representation
           command.request_object = analyze_entities_request_object
           command.response_representation = Google::Apis::LanguageV1::AnalyzeEntitiesResponse::Representation
@@ -102,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_entity_sentiment(analyze_entity_sentiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:analyzeEntitySentiment', options)
+          command = make_simple_command(:post, 'v1/documents:analyzeEntitySentiment', options)
           command.request_representation = Google::Apis::LanguageV1::AnalyzeEntitySentimentRequest::Representation
           command.request_object = analyze_entity_sentiment_request_object
           command.response_representation = Google::Apis::LanguageV1::AnalyzeEntitySentimentResponse::Representation
@@ -132,7 +132,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_sentiment(analyze_sentiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:analyzeSentiment', options)
+          command = make_simple_command(:post, 'v1/documents:analyzeSentiment', options)
           command.request_representation = Google::Apis::LanguageV1::AnalyzeSentimentRequest::Representation
           command.request_object = analyze_sentiment_request_object
           command.response_representation = Google::Apis::LanguageV1::AnalyzeSentimentResponse::Representation
@@ -164,7 +164,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_document_syntax(analyze_syntax_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:analyzeSyntax', options)
+          command = make_simple_command(:post, 'v1/documents:analyzeSyntax', options)
           command.request_representation = Google::Apis::LanguageV1::AnalyzeSyntaxRequest::Representation
           command.request_object = analyze_syntax_request_object
           command.response_representation = Google::Apis::LanguageV1::AnalyzeSyntaxResponse::Representation
@@ -195,7 +195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_document_text(annotate_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:annotateText', options)
+          command = make_simple_command(:post, 'v1/documents:annotateText', options)
           command.request_representation = Google::Apis::LanguageV1::AnnotateTextRequest::Representation
           command.request_object = annotate_text_request_object
           command.response_representation = Google::Apis::LanguageV1::AnnotateTextResponse::Representation
@@ -225,7 +225,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def classify_document_text(classify_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents:classifyText', options)
+          command = make_simple_command(:post, 'v1/documents:classifyText', options)
           command.request_representation = Google::Apis::LanguageV1::ClassifyTextRequest::Representation
           command.request_object = classify_text_request_object
           command.response_representation = Google::Apis::LanguageV1::ClassifyTextResponse::Representation

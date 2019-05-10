@@ -75,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def register_debuggee(register_debuggee_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/controller/debuggees/register', options)
+          command = make_simple_command(:post, 'v2/controller/debuggees/register', options)
           command.request_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest::Representation
           command.request_object = register_debuggee_request_object
           command.response_representation = Google::Apis::ClouddebuggerV2::RegisterDebuggeeResponse::Representation
@@ -127,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_controller_debuggee_breakpoints(debuggee_id, success_on_timeout: nil, wait_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/controller/debuggees/{debuggeeId}/breakpoints', options)
+          command = make_simple_command(:get, 'v2/controller/debuggees/{debuggeeId}/breakpoints', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_active_breakpoint(debuggee_id, id, update_active_breakpoint_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/controller/debuggees/{debuggeeId}/breakpoints/{id}', options)
+          command = make_simple_command(:put, 'v2/controller/debuggees/{debuggeeId}/breakpoints/{id}', options)
           command.request_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest::Representation
           command.request_object = update_active_breakpoint_request_object
           command.response_representation = Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointResponse::Representation
@@ -207,7 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_debugger_debuggees(client_version: nil, include_inactive: nil, project: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/debugger/debuggees', options)
+          command = make_simple_command(:get, 'v2/debugger/debuggees', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::ListDebuggeesResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::ListDebuggeesResponse
           command.query['clientVersion'] = client_version unless client_version.nil?
@@ -244,7 +244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_debugger_debuggee_breakpoint(debuggee_id, breakpoint_id, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}', options)
+          command = make_simple_command(:delete, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::Empty::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::Empty
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
@@ -281,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_debugger_debuggee_breakpoint(debuggee_id, breakpoint_id, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}', options)
+          command = make_simple_command(:get, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::GetBreakpointResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::GetBreakpointResponse
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
@@ -333,7 +333,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_debugger_debuggee_breakpoints(debuggee_id, action_value: nil, client_version: nil, include_all_users: nil, include_inactive: nil, strip_results: nil, wait_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/debugger/debuggees/{debuggeeId}/breakpoints', options)
+          command = make_simple_command(:get, 'v2/debugger/debuggees/{debuggeeId}/breakpoints', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::ListBreakpointsResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::ListBreakpointsResponse
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
@@ -373,7 +373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_debugger_debuggee_breakpoint(debuggee_id, breakpoint_object = nil, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/set', options)
+          command = make_simple_command(:post, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/set', options)
           command.request_representation = Google::Apis::ClouddebuggerV2::Breakpoint::Representation
           command.request_object = breakpoint_object
           command.response_representation = Google::Apis::ClouddebuggerV2::SetBreakpointResponse::Representation

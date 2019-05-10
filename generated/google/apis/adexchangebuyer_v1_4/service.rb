@@ -75,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{id}', options)
+          command = make_simple_command(:get, 'accounts/{id}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Account
           command.params['id'] = id unless id.nil?
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts', options)
+          command = make_simple_command(:get, 'accounts', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::AccountsList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::AccountsList
           command.query['fields'] = fields unless fields.nil?
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account(id, account_object = nil, confirm_unsafe_account_change: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'accounts/{id}', options)
+          command = make_simple_command(:patch, 'accounts/{id}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
@@ -180,7 +180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account(id, account_object = nil, confirm_unsafe_account_change: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'accounts/{id}', options)
+          command = make_simple_command(:put, 'accounts/{id}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Account::Representation
@@ -216,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_info(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'billinginfo/{accountId}', options)
+          command = make_simple_command(:get, 'billinginfo/{accountId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::BillingInfo::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::BillingInfo
           command.params['accountId'] = account_id unless account_id.nil?
@@ -248,7 +248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_infos(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'billinginfo', options)
+          command = make_simple_command(:get, 'billinginfo', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::BillingInfoList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::BillingInfoList
           command.query['fields'] = fields unless fields.nil?
@@ -283,7 +283,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_budget(account_id, billing_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'billinginfo/{accountId}/{billingId}', options)
+          command = make_simple_command(:get, 'billinginfo/{accountId}/{billingId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Budget::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Budget
           command.params['accountId'] = account_id unless account_id.nil?
@@ -322,7 +322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_budget(account_id, billing_id, budget_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'billinginfo/{accountId}/{billingId}', options)
+          command = make_simple_command(:patch, 'billinginfo/{accountId}/{billingId}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Budget::Representation
           command.request_object = budget_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Budget::Representation
@@ -362,7 +362,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_budget(account_id, billing_id, budget_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'billinginfo/{accountId}/{billingId}', options)
+          command = make_simple_command(:put, 'billinginfo/{accountId}/{billingId}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Budget::Representation
           command.request_object = budget_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Budget::Representation
@@ -402,7 +402,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_creative_deal(account_id, buyer_creative_id, deal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'creatives/{accountId}/{buyerCreativeId}/addDeal/{dealId}', options)
+          command = make_simple_command(:post, 'creatives/{accountId}/{buyerCreativeId}/addDeal/{dealId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['buyerCreativeId'] = buyer_creative_id unless buyer_creative_id.nil?
           command.params['dealId'] = deal_id unless deal_id.nil?
@@ -438,7 +438,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_creative(account_id, buyer_creative_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'creatives/{accountId}/{buyerCreativeId}', options)
+          command = make_simple_command(:get, 'creatives/{accountId}/{buyerCreativeId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Creative::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Creative
           command.params['accountId'] = account_id unless account_id.nil?
@@ -471,7 +471,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_creative(creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'creatives', options)
+          command = make_simple_command(:post, 'creatives', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Creative::Representation
           command.request_object = creative_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Creative::Representation
@@ -520,7 +520,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creatives(account_id: nil, buyer_creative_id: nil, deals_status_filter: nil, max_results: nil, open_auction_status_filter: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'creatives', options)
+          command = make_simple_command(:get, 'creatives', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::CreativesList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::CreativesList
           command.query['accountId'] = account_id unless account_id.nil?
@@ -560,7 +560,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_creative_deals(account_id, buyer_creative_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'creatives/{accountId}/{buyerCreativeId}/listDeals', options)
+          command = make_simple_command(:get, 'creatives/{accountId}/{buyerCreativeId}/listDeals', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::CreativeDealIds::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::CreativeDealIds
           command.params['accountId'] = account_id unless account_id.nil?
@@ -598,7 +598,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_creative_deal(account_id, buyer_creative_id, deal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'creatives/{accountId}/{buyerCreativeId}/removeDeal/{dealId}', options)
+          command = make_simple_command(:post, 'creatives/{accountId}/{buyerCreativeId}/removeDeal/{dealId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['buyerCreativeId'] = buyer_creative_id unless buyer_creative_id.nil?
           command.params['dealId'] = deal_id unless deal_id.nil?
@@ -632,7 +632,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_marketplacedeal_order_deals(proposal_id, delete_order_deals_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/{proposalId}/deals/delete', options)
+          command = make_simple_command(:post, 'proposals/{proposalId}/deals/delete', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::DeleteOrderDealsRequest::Representation
           command.request_object = delete_order_deals_request_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::DeleteOrderDealsResponse::Representation
@@ -668,7 +668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_marketplacedeal(proposal_id, add_order_deals_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/{proposalId}/deals/insert', options)
+          command = make_simple_command(:post, 'proposals/{proposalId}/deals/insert', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::AddOrderDealsRequest::Representation
           command.request_object = add_order_deals_request_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::AddOrderDealsResponse::Representation
@@ -706,7 +706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_marketplacedeals(proposal_id, pql_query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'proposals/{proposalId}/deals', options)
+          command = make_simple_command(:get, 'proposals/{proposalId}/deals', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetOrderDealsResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetOrderDealsResponse
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
@@ -741,7 +741,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_marketplacedeal(proposal_id, edit_all_order_deals_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/{proposalId}/deals/update', options)
+          command = make_simple_command(:post, 'proposals/{proposalId}/deals/update', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::EditAllOrderDealsRequest::Representation
           command.request_object = edit_all_order_deals_request_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::EditAllOrderDealsResponse::Representation
@@ -777,7 +777,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_marketplacenote(proposal_id, add_order_notes_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/{proposalId}/notes/insert', options)
+          command = make_simple_command(:post, 'proposals/{proposalId}/notes/insert', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::AddOrderNotesRequest::Representation
           command.request_object = add_order_notes_request_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::AddOrderNotesResponse::Representation
@@ -817,7 +817,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_marketplacenotes(proposal_id, pql_query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'proposals/{proposalId}/notes', options)
+          command = make_simple_command(:get, 'proposals/{proposalId}/notes', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetOrderNotesResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetOrderNotesResponse
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
@@ -852,7 +852,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_marketplace_private_auction_proposal(private_auction_id, update_private_auction_proposal_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'privateauction/{privateAuctionId}/updateproposal', options)
+          command = make_simple_command(:post, 'privateauction/{privateAuctionId}/updateproposal', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::UpdatePrivateAuctionProposalRequest::Representation
           command.request_object = update_private_auction_proposal_request_object
           command.params['privateAuctionId'] = private_auction_id unless private_auction_id.nil?
@@ -896,7 +896,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_performance_reports(account_id, end_date_time, start_date_time, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'performancereport', options)
+          command = make_simple_command(:get, 'performancereport', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PerformanceReportList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::PerformanceReportList
           command.query['accountId'] = account_id unless account_id.nil?
@@ -935,7 +935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_pretargeting_config(account_id, config_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'pretargetingconfigs/{accountId}/{configId}', options)
+          command = make_simple_command(:delete, 'pretargetingconfigs/{accountId}/{configId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['configId'] = config_id unless config_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -969,7 +969,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_pretargeting_config(account_id, config_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'pretargetingconfigs/{accountId}/{configId}', options)
+          command = make_simple_command(:get, 'pretargetingconfigs/{accountId}/{configId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1004,7 +1004,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_pretargeting_config(account_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'pretargetingconfigs/{accountId}', options)
+          command = make_simple_command(:post, 'pretargetingconfigs/{accountId}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
           command.request_object = pretargeting_config_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
@@ -1039,7 +1039,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pretargeting_configs(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'pretargetingconfigs/{accountId}', options)
+          command = make_simple_command(:get, 'pretargetingconfigs/{accountId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfigList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::PretargetingConfigList
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1075,7 +1075,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_pretargeting_config(account_id, config_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'pretargetingconfigs/{accountId}/{configId}', options)
+          command = make_simple_command(:patch, 'pretargetingconfigs/{accountId}/{configId}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
           command.request_object = pretargeting_config_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
@@ -1114,7 +1114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_pretargeting_config(account_id, config_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'pretargetingconfigs/{accountId}/{configId}', options)
+          command = make_simple_command(:put, 'pretargetingconfigs/{accountId}/{configId}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
           command.request_object = pretargeting_config_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::PretargetingConfig::Representation
@@ -1150,7 +1150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_product(product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'products/{productId}', options)
+          command = make_simple_command(:get, 'products/{productId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Product::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Product
           command.params['productId'] = product_id unless product_id.nil?
@@ -1183,7 +1183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_products(pql_query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'products/search', options)
+          command = make_simple_command(:get, 'products/search', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetOffersResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetOffersResponse
           command.query['pqlQuery'] = pql_query unless pql_query.nil?
@@ -1216,7 +1216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_proposal(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'proposals/{proposalId}', options)
+          command = make_simple_command(:get, 'proposals/{proposalId}', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Proposal::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::Proposal
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
@@ -1248,7 +1248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_proposal(create_orders_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/insert', options)
+          command = make_simple_command(:post, 'proposals/insert', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::CreateOrdersRequest::Representation
           command.request_object = create_orders_request_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::CreateOrdersResponse::Representation
@@ -1291,7 +1291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_proposal(proposal_id, revision_number, update_action, proposal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'proposals/{proposalId}/{revisionNumber}/{updateAction}', options)
+          command = make_simple_command(:patch, 'proposals/{proposalId}/{revisionNumber}/{updateAction}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Proposal::Representation
           command.request_object = proposal_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Proposal::Representation
@@ -1328,7 +1328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_proposals(pql_query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'proposals/search', options)
+          command = make_simple_command(:get, 'proposals/search', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetOrdersResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetOrdersResponse
           command.query['pqlQuery'] = pql_query unless pql_query.nil?
@@ -1361,7 +1361,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def proposal_setup_complete(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'proposals/{proposalId}/setupcomplete', options)
+          command = make_simple_command(:post, 'proposals/{proposalId}/setupcomplete', options)
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1401,7 +1401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_proposal(proposal_id, revision_number, update_action, proposal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'proposals/{proposalId}/{revisionNumber}/{updateAction}', options)
+          command = make_simple_command(:put, 'proposals/{proposalId}/{revisionNumber}/{updateAction}', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::Proposal::Representation
           command.request_object = proposal_object
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::Proposal::Representation
@@ -1438,7 +1438,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pub_profiles(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'publisher/{accountId}/profiles', options)
+          command = make_simple_command(:get, 'publisher/{accountId}/profiles', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse
           command.params['accountId'] = account_id unless account_id.nil?

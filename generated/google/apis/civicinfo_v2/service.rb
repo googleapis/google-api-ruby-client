@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_divisions(division_search_request_object = nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'divisions', options)
+          command = make_simple_command(:get, 'divisions', options)
           command.request_representation = Google::Apis::CivicinfoV2::DivisionSearchRequest::Representation
           command.request_object = division_search_request_object
           command.response_representation = Google::Apis::CivicinfoV2::SearchDivisionResponse::Representation
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_election(elections_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'elections', options)
+          command = make_simple_command(:get, 'elections', options)
           command.request_representation = Google::Apis::CivicinfoV2::ElectionsQueryRequest::Representation
           command.request_object = elections_query_request_object
           command.response_representation = Google::Apis::CivicinfoV2::QueryElectionsResponse::Representation
@@ -161,7 +161,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_voter_info(address, voter_info_request_object = nil, election_id: nil, official_only: nil, return_all_available_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'voterinfo', options)
+          command = make_simple_command(:get, 'voterinfo', options)
           command.request_representation = Google::Apis::CivicinfoV2::VoterInfoRequest::Representation
           command.request_object = voter_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
@@ -213,7 +213,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def representative_info_by_address(representative_info_request_object = nil, address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'representatives', options)
+          command = make_simple_command(:get, 'representatives', options)
           command.request_representation = Google::Apis::CivicinfoV2::RepresentativeInfoRequest::Representation
           command.request_object = representative_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoResponse::Representation
@@ -264,7 +264,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def representative_info_by_division(ocd_id, division_representative_info_request_object = nil, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'representatives/{ocdId}', options)
+          command = make_simple_command(:get, 'representatives/{ocdId}', options)
           command.request_representation = Google::Apis::CivicinfoV2::DivisionRepresentativeInfoRequest::Representation
           command.request_object = division_representative_info_request_object
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoData::Representation

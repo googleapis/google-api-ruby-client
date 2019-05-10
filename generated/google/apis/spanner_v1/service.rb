@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::InstanceConfig::Representation
           command.response_class = Google::Apis::SpannerV1::InstanceConfig
           command.params['name'] = name unless name.nil?
@@ -109,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstanceConfigsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstanceConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_instance(parent, create_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/instances', options)
+          command = make_simple_command(:post, 'v1/{+parent}/instances', options)
           command.request_representation = Google::Apis::SpannerV1::CreateInstanceRequest::Representation
           command.request_object = create_instance_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -208,7 +208,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -239,7 +239,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Instance::Representation
           command.response_class = Google::Apis::SpannerV1::Instance
           command.params['name'] = name unless name.nil?
@@ -276,7 +276,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -333,7 +333,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instances(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v1/{+parent}/instances', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -401,7 +401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_instance(name, update_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::SpannerV1::UpdateInstanceRequest::Representation
           command.request_object = update_instance_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -440,7 +440,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -480,7 +480,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
@@ -521,7 +521,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_database(parent, create_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/databases', options)
+          command = make_simple_command(:post, 'v1/{+parent}/databases', options)
           command.request_representation = Google::Apis::SpannerV1::CreateDatabaseRequest::Representation
           command.request_object = create_database_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -553,7 +553,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def drop_project_instance_database_database(database, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+database}', options)
+          command = make_simple_command(:delete, 'v1/{+database}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['database'] = database unless database.nil?
@@ -584,7 +584,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Database::Representation
           command.response_class = Google::Apis::SpannerV1::Database
           command.params['name'] = name unless name.nil?
@@ -616,7 +616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_ddl(database, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+database}/ddl', options)
+          command = make_simple_command(:get, 'v1/{+database}/ddl', options)
           command.response_representation = Google::Apis::SpannerV1::GetDatabaseDdlResponse::Representation
           command.response_class = Google::Apis::SpannerV1::GetDatabaseDdlResponse
           command.params['database'] = database unless database.nil?
@@ -654,7 +654,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_database_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -694,7 +694,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_databases(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/databases', options)
+          command = make_simple_command(:get, 'v1/{+parent}/databases', options)
           command.response_representation = Google::Apis::SpannerV1::ListDatabasesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListDatabasesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -733,7 +733,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_database_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SpannerV1::Policy::Representation
@@ -773,7 +773,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_database_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
@@ -812,7 +812,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_instance_database_ddl(database, update_database_ddl_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+database}/ddl', options)
+          command = make_simple_command(:patch, 'v1/{+database}/ddl', options)
           command.request_representation = Google::Apis::SpannerV1::UpdateDatabaseDdlRequest::Representation
           command.request_object = update_database_ddl_request_object
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
@@ -853,7 +853,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_instance_database_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -886,7 +886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_database_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -918,7 +918,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -962,7 +962,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_database_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -999,7 +999,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def begin_session_transaction(session, begin_transaction_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:beginTransaction', options)
+          command = make_simple_command(:post, 'v1/{+session}:beginTransaction', options)
           command.request_representation = Google::Apis::SpannerV1::BeginTransactionRequest::Representation
           command.request_object = begin_transaction_request_object
           command.response_representation = Google::Apis::SpannerV1::Transaction::Representation
@@ -1038,7 +1038,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def commit_session(session, commit_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:commit', options)
+          command = make_simple_command(:post, 'v1/{+session}:commit', options)
           command.request_representation = Google::Apis::SpannerV1::CommitRequest::Representation
           command.request_object = commit_request_object
           command.response_representation = Google::Apis::SpannerV1::CommitResponse::Representation
@@ -1086,7 +1086,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance_database_session(database, create_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+database}/sessions', options)
+          command = make_simple_command(:post, 'v1/{+database}/sessions', options)
           command.request_representation = Google::Apis::SpannerV1::CreateSessionRequest::Representation
           command.request_object = create_session_request_object
           command.response_representation = Google::Apis::SpannerV1::Session::Representation
@@ -1120,7 +1120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_database_session(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1166,7 +1166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_session_batch_dml(session, execute_batch_dml_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeBatchDml', options)
+          command = make_simple_command(:post, 'v1/{+session}:executeBatchDml', options)
           command.request_representation = Google::Apis::SpannerV1::ExecuteBatchDmlRequest::Representation
           command.request_object = execute_batch_dml_request_object
           command.response_representation = Google::Apis::SpannerV1::ExecuteBatchDmlResponse::Representation
@@ -1207,7 +1207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_session_sql(session, execute_sql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeSql', options)
+          command = make_simple_command(:post, 'v1/{+session}:executeSql', options)
           command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
           command.request_object = execute_sql_request_object
           command.response_representation = Google::Apis::SpannerV1::ResultSet::Representation
@@ -1244,7 +1244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_project_instance_database_session_streaming_sql(session, execute_sql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
+          command = make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
           command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
           command.request_object = execute_sql_request_object
           command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
@@ -1278,7 +1278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_database_session(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Session::Representation
           command.response_class = Google::Apis::SpannerV1::Session
           command.params['name'] = name unless name.nil?
@@ -1323,7 +1323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_database_sessions(database, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+database}/sessions', options)
+          command = make_simple_command(:get, 'v1/{+database}/sessions', options)
           command.response_representation = Google::Apis::SpannerV1::ListSessionsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListSessionsResponse
           command.params['database'] = database unless database.nil?
@@ -1366,7 +1366,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def partition_session_query(session, partition_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:partitionQuery', options)
+          command = make_simple_command(:post, 'v1/{+session}:partitionQuery', options)
           command.request_representation = Google::Apis::SpannerV1::PartitionQueryRequest::Representation
           command.request_object = partition_query_request_object
           command.response_representation = Google::Apis::SpannerV1::PartitionResponse::Representation
@@ -1410,7 +1410,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def partition_session_read(session, partition_read_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:partitionRead', options)
+          command = make_simple_command(:post, 'v1/{+session}:partitionRead', options)
           command.request_representation = Google::Apis::SpannerV1::PartitionReadRequest::Representation
           command.request_object = partition_read_request_object
           command.response_representation = Google::Apis::SpannerV1::PartitionResponse::Representation
@@ -1453,7 +1453,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def read_session(session, read_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:read', options)
+          command = make_simple_command(:post, 'v1/{+session}:read', options)
           command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
           command.request_object = read_request_object
           command.response_representation = Google::Apis::SpannerV1::ResultSet::Representation
@@ -1492,7 +1492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_session(session, rollback_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:rollback', options)
+          command = make_simple_command(:post, 'v1/{+session}:rollback', options)
           command.request_representation = Google::Apis::SpannerV1::RollbackRequest::Representation
           command.request_object = rollback_request_object
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
@@ -1529,7 +1529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def streaming_project_instance_database_session_read(session, read_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:streamingRead', options)
+          command = make_simple_command(:post, 'v1/{+session}:streamingRead', options)
           command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
           command.request_object = read_request_object
           command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
@@ -1570,7 +1570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_instance_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1603,7 +1603,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1635,7 +1635,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1679,7 +1679,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?

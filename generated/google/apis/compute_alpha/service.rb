@@ -108,7 +108,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_accelerator_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
+          command = make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::AcceleratorTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AcceleratorTypeAggregatedList
           command.params['project'] = project unless project.nil?
@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_accelerator_type(project, zone, accelerator_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes/{acceleratorType}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes/{acceleratorType}', options)
           command.response_representation = Google::Apis::ComputeAlpha::AcceleratorType::Representation
           command.response_class = Google::Apis::ComputeAlpha::AcceleratorType
           command.params['project'] = project unless project.nil?
@@ -220,7 +220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::AcceleratorTypeList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AcceleratorTypeList
           command.params['project'] = project unless project.nil?
@@ -292,7 +292,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_address_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/addresses', options)
+          command = make_simple_command(:get, '{project}/aggregated/addresses', options)
           command.response_representation = Google::Apis::ComputeAlpha::AddressAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AddressAggregatedList
           command.params['project'] = project unless project.nil?
@@ -344,7 +344,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_address(project, region, address, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/addresses/{address}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -384,7 +384,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_address(project, region, address, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/addresses/{address}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Address::Representation
           command.response_class = Google::Apis::ComputeAlpha::Address
           command.params['project'] = project unless project.nil?
@@ -434,7 +434,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_address(project, region, address_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/addresses', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/addresses', options)
           command.request_representation = Google::Apis::ComputeAlpha::Address::Representation
           command.request_object = address_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -507,7 +507,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_addresses(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/addresses', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/addresses', options)
           command.response_representation = Google::Apis::ComputeAlpha::AddressList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AddressList
           command.params['project'] = project unless project.nil?
@@ -562,7 +562,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_address_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -605,7 +605,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_address_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -676,7 +676,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_autoscaler_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/autoscalers', options)
+          command = make_simple_command(:get, '{project}/aggregated/autoscalers', options)
           command.response_representation = Google::Apis::ComputeAlpha::AutoscalerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AutoscalerAggregatedList
           command.params['project'] = project unless project.nil?
@@ -728,7 +728,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_autoscaler(project, zone, autoscaler, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/autoscalers/{autoscaler}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -769,7 +769,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/autoscalers/{autoscaler}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.response_class = Google::Apis::ComputeAlpha::Autoscaler
           command.params['project'] = project unless project.nil?
@@ -819,7 +819,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_autoscaler(project, zone, autoscaler_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/autoscalers', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -892,7 +892,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_autoscalers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/autoscalers', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/autoscalers', options)
           command.response_representation = Google::Apis::ComputeAlpha::AutoscalerList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AutoscalerList
           command.params['project'] = project unless project.nil?
@@ -948,7 +948,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/autoscalers', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -991,7 +991,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_autoscaler_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/autoscalers/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/autoscalers/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -1045,7 +1045,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/zones/{zone}/autoscalers', options)
+          command = make_simple_command(:put, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1098,7 +1098,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_backend_bucket_signed_url_key(project, backend_bucket, signed_url_key_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey', options)
+          command = make_simple_command(:post, '{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey', options)
           command.request_representation = Google::Apis::ComputeAlpha::SignedUrlKey::Representation
           command.request_object = signed_url_key_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1148,7 +1148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_backend_bucket(project, backend_bucket, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/backendBuckets/{backendBucket}', options)
+          command = make_simple_command(:delete, '{project}/global/backendBuckets/{backendBucket}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -1199,7 +1199,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_backend_bucket_signed_url_key(project, backend_bucket, key_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey', options)
+          command = make_simple_command(:post, '{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -1238,7 +1238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_backend_bucket(project, backend_bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/backendBuckets/{backendBucket}', options)
+          command = make_simple_command(:get, '{project}/global/backendBuckets/{backendBucket}', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendBucket::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendBucket
           command.params['project'] = project unless project.nil?
@@ -1275,7 +1275,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_backend_bucket_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/backendBuckets/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/backendBuckets/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -1322,7 +1322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_backend_bucket(project, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendBuckets', options)
+          command = make_simple_command(:post, '{project}/global/backendBuckets', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendBucket::Representation
           command.request_object = backend_bucket_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1393,7 +1393,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_backend_buckets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/backendBuckets', options)
+          command = make_simple_command(:get, '{project}/global/backendBuckets', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendBucketList::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendBucketList
           command.params['project'] = project unless project.nil?
@@ -1446,7 +1446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_backend_bucket(project, backend_bucket, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/backendBuckets/{backendBucket}', options)
+          command = make_simple_command(:patch, '{project}/global/backendBuckets/{backendBucket}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendBucket::Representation
           command.request_object = backend_bucket_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1487,7 +1487,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_backend_bucket_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendBuckets/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/backendBuckets/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -1526,7 +1526,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_backend_bucket_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendBuckets/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/backendBuckets/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -1577,7 +1577,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_backend_bucket(project, backend_bucket, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/backendBuckets/{backendBucket}', options)
+          command = make_simple_command(:put, '{project}/global/backendBuckets/{backendBucket}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendBucket::Representation
           command.request_object = backend_bucket_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1629,7 +1629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_backend_service_signed_url_key(project, backend_service, signed_url_key_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices/{backendService}/addSignedUrlKey', options)
+          command = make_simple_command(:post, '{project}/global/backendServices/{backendService}/addSignedUrlKey', options)
           command.request_representation = Google::Apis::ComputeAlpha::SignedUrlKey::Representation
           command.request_object = signed_url_key_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -1701,7 +1701,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_backend_service_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/backendServices', options)
+          command = make_simple_command(:get, '{project}/aggregated/backendServices', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendServiceAggregatedList
           command.params['project'] = project unless project.nil?
@@ -1751,7 +1751,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_backend_service(project, backend_service, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/backendServices/{backendService}', options)
+          command = make_simple_command(:delete, '{project}/global/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -1803,7 +1803,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_backend_service_signed_url_key(project, backend_service, key_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices/{backendService}/deleteSignedUrlKey', options)
+          command = make_simple_command(:post, '{project}/global/backendServices/{backendService}/deleteSignedUrlKey', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -1842,7 +1842,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_backend_service(project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/backendServices/{backendService}', options)
+          command = make_simple_command(:get, '{project}/global/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendService
           command.params['project'] = project unless project.nil?
@@ -1878,7 +1878,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_backend_service_health(project, backend_service, resource_group_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices/{backendService}/getHealth', options)
+          command = make_simple_command(:post, '{project}/global/backendServices/{backendService}/getHealth', options)
           command.request_representation = Google::Apis::ComputeAlpha::ResourceGroupReference::Representation
           command.request_object = resource_group_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::BackendServiceGroupHealth::Representation
@@ -1929,7 +1929,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_backend_service(project, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices', options)
+          command = make_simple_command(:post, '{project}/global/backendServices', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2000,7 +2000,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_backend_services(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/backendServices', options)
+          command = make_simple_command(:get, '{project}/global/backendServices', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendServiceList::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendServiceList
           command.params['project'] = project unless project.nil?
@@ -2055,7 +2055,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_backend_service(project, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/backendServices/{backendService}', options)
+          command = make_simple_command(:patch, '{project}/global/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2107,7 +2107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_backend_service_security_policy(project, backend_service, security_policy_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices/{backendService}/setSecurityPolicy', options)
+          command = make_simple_command(:post, '{project}/global/backendServices/{backendService}/setSecurityPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyReference::Representation
           command.request_object = security_policy_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2147,7 +2147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_backend_service_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/backendServices/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/backendServices/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -2200,7 +2200,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_backend_service(project, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/backendServices/{backendService}', options)
+          command = make_simple_command(:put, '{project}/global/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2271,7 +2271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_disk_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/diskTypes', options)
+          command = make_simple_command(:get, '{project}/aggregated/diskTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskTypeAggregatedList
           command.params['project'] = project unless project.nil?
@@ -2313,7 +2313,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_disk_type(project, zone, disk_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/diskTypes/{diskType}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/diskTypes/{diskType}', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskType::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskType
           command.params['project'] = project unless project.nil?
@@ -2384,7 +2384,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_disk_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/diskTypes', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/diskTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskTypeList::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskTypeList
           command.params['project'] = project unless project.nil?
@@ -2439,7 +2439,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_disk_resource_policies(project, zone, disk, disks_add_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/addResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/addResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::DisksAddResourcePoliciesRequest::Representation
           command.request_object = disks_add_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2511,7 +2511,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_disk_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/disks', options)
+          command = make_simple_command(:get, '{project}/aggregated/disks', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskAggregatedList
           command.params['project'] = project unless project.nil?
@@ -2565,7 +2565,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_disk_snapshot(project, zone, disk, snapshot_object = nil, guest_flush: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/createSnapshot', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/createSnapshot', options)
           command.request_representation = Google::Apis::ComputeAlpha::Snapshot::Representation
           command.request_object = snapshot_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2621,7 +2621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_disk(project, zone, disk, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/disks/{disk}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/disks/{disk}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -2662,7 +2662,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_disk(project, zone, disk, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/disks/{disk}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/disks/{disk}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Disk::Representation
           command.response_class = Google::Apis::ComputeAlpha::Disk
           command.params['project'] = project unless project.nil?
@@ -2702,7 +2702,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_disk_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/disks/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/disks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -2756,7 +2756,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_disk(project, zone, disk_object = nil, request_id: nil, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks', options)
           command.request_representation = Google::Apis::ComputeAlpha::Disk::Representation
           command.request_object = disk_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2830,7 +2830,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_disks(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/disks', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/disks', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskList::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskList
           command.params['project'] = project unless project.nil?
@@ -2884,7 +2884,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_disk_resource_policies(project, zone, disk, disks_remove_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/removeResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/removeResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::DisksRemoveResourcePoliciesRequest::Representation
           command.request_object = disks_remove_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2939,7 +2939,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_disk(project, zone, disk, disks_resize_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/resize', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/resize', options)
           command.request_representation = Google::Apis::ComputeAlpha::DisksResizeRequest::Representation
           command.request_object = disks_resize_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -2983,7 +2983,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_disk_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
           command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -3037,7 +3037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_disk_labels(project, zone, resource, zone_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::ZoneSetLabelsRequest::Representation
           command.request_object = zone_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3080,7 +3080,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_disk_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -3130,7 +3130,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_external_vpn_gateway(project, external_vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
+          command = make_simple_command(:delete, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -3168,7 +3168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_external_vpn_gateway(project, external_vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
+          command = make_simple_command(:get, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::ExternalVpnGateway::Representation
           command.response_class = Google::Apis::ComputeAlpha::ExternalVpnGateway
           command.params['project'] = project unless project.nil?
@@ -3215,7 +3215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_external_vpn_gateway(project, external_vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/externalVpnGateways', options)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways', options)
           command.request_representation = Google::Apis::ComputeAlpha::ExternalVpnGateway::Representation
           command.request_object = external_vpn_gateway_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3285,7 +3285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_external_vpn_gateways(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/externalVpnGateways', options)
+          command = make_simple_command(:get, '{project}/global/externalVpnGateways', options)
           command.response_representation = Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ExternalVpnGatewayList
           command.params['project'] = project unless project.nil?
@@ -3326,7 +3326,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_external_vpn_gateway_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3365,7 +3365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_external_vpn_gateway_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -3414,7 +3414,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_firewall(project, firewall, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/firewalls/{firewall}', options)
+          command = make_simple_command(:delete, '{project}/global/firewalls/{firewall}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -3451,7 +3451,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_firewall(project, firewall, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/firewalls/{firewall}', options)
+          command = make_simple_command(:get, '{project}/global/firewalls/{firewall}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Firewall::Representation
           command.response_class = Google::Apis::ComputeAlpha::Firewall
           command.params['project'] = project unless project.nil?
@@ -3498,7 +3498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_firewall(project, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/firewalls', options)
+          command = make_simple_command(:post, '{project}/global/firewalls', options)
           command.request_representation = Google::Apis::ComputeAlpha::Firewall::Representation
           command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3568,7 +3568,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_firewalls(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/firewalls', options)
+          command = make_simple_command(:get, '{project}/global/firewalls', options)
           command.response_representation = Google::Apis::ComputeAlpha::FirewallList::Representation
           command.response_class = Google::Apis::ComputeAlpha::FirewallList
           command.params['project'] = project unless project.nil?
@@ -3621,7 +3621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_firewall(project, firewall, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/firewalls/{firewall}', options)
+          command = make_simple_command(:patch, '{project}/global/firewalls/{firewall}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Firewall::Representation
           command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3661,7 +3661,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_firewall_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/firewalls/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/firewalls/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -3713,7 +3713,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_firewall(project, firewall, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/firewalls/{firewall}', options)
+          command = make_simple_command(:put, '{project}/global/firewalls/{firewall}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Firewall::Representation
           command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -3784,7 +3784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_forwarding_rule_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/forwardingRules', options)
+          command = make_simple_command(:get, '{project}/aggregated/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeAlpha::ForwardingRuleAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ForwardingRuleAggregatedList
           command.params['project'] = project unless project.nil?
@@ -3836,7 +3836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_forwarding_rule(project, region, forwarding_rule, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -3876,7 +3876,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_forwarding_rule(project, region, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.response_class = Google::Apis::ComputeAlpha::ForwardingRule
           command.params['project'] = project unless project.nil?
@@ -3926,7 +3926,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_forwarding_rule(project, region, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/forwardingRules', options)
           command.request_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4000,7 +4000,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_forwarding_rules(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/forwardingRules', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeAlpha::ForwardingRuleList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ForwardingRuleList
           command.params['project'] = project unless project.nil?
@@ -4056,7 +4056,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_forwarding_rule(project, region, forwarding_rule, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
           command.request_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4111,7 +4111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_forwarding_rule_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4166,7 +4166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_forwarding_rule_target(project, region, forwarding_rule, target_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{forwardingRule}/setTarget', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{forwardingRule}/setTarget', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetReference::Representation
           command.request_object = target_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4209,7 +4209,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_forwarding_rule_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -4259,7 +4259,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_address(project, address, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/addresses/{address}', options)
+          command = make_simple_command(:delete, '{project}/global/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -4297,7 +4297,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_address(project, address, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/addresses/{address}', options)
+          command = make_simple_command(:get, '{project}/global/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Address::Representation
           command.response_class = Google::Apis::ComputeAlpha::Address
           command.params['project'] = project unless project.nil?
@@ -4344,7 +4344,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_global_address(project, address_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/addresses', options)
+          command = make_simple_command(:post, '{project}/global/addresses', options)
           command.request_representation = Google::Apis::ComputeAlpha::Address::Representation
           command.request_object = address_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4414,7 +4414,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_addresses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/addresses', options)
+          command = make_simple_command(:get, '{project}/global/addresses', options)
           command.response_representation = Google::Apis::ComputeAlpha::AddressList::Representation
           command.response_class = Google::Apis::ComputeAlpha::AddressList
           command.params['project'] = project unless project.nil?
@@ -4455,7 +4455,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_global_address_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/addresses/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/addresses/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4494,7 +4494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_global_address_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/addresses/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/addresses/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -4543,7 +4543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_forwarding_rule(project, forwarding_rule, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:delete, '{project}/global/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -4581,7 +4581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_forwarding_rule(project, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:get, '{project}/global/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.response_class = Google::Apis::ComputeAlpha::ForwardingRule
           command.params['project'] = project unless project.nil?
@@ -4628,7 +4628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_global_forwarding_rule(project, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/forwardingRules', options)
+          command = make_simple_command(:post, '{project}/global/forwardingRules', options)
           command.request_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4699,7 +4699,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_forwarding_rules(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/forwardingRules', options)
+          command = make_simple_command(:get, '{project}/global/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeAlpha::ForwardingRuleList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ForwardingRuleList
           command.params['project'] = project unless project.nil?
@@ -4752,7 +4752,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_global_forwarding_rule(project, forwarding_rule, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/forwardingRules/{forwardingRule}', options)
+          command = make_simple_command(:patch, '{project}/global/forwardingRules/{forwardingRule}', options)
           command.request_representation = Google::Apis::ComputeAlpha::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4793,7 +4793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_global_forwarding_rule_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/forwardingRules/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/forwardingRules/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4844,7 +4844,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_global_forwarding_rule_target(project, forwarding_rule, target_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/forwardingRules/{forwardingRule}/setTarget', options)
+          command = make_simple_command(:post, '{project}/global/forwardingRules/{forwardingRule}/setTarget', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetReference::Representation
           command.request_object = target_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4884,7 +4884,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_global_forwarding_rule_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/forwardingRules/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/forwardingRules/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -4935,7 +4935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def attach_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, global_network_endpoint_groups_attach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalNetworkEndpointGroupsAttachEndpointsRequest::Representation
           command.request_object = global_network_endpoint_groups_attach_endpoints_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -4987,7 +4987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_network_endpoint_group(project, network_endpoint_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
+          command = make_simple_command(:delete, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -5037,7 +5037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def detach_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, global_network_endpoint_groups_detach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalNetworkEndpointGroupsDetachEndpointsRequest::Representation
           command.request_object = global_network_endpoint_groups_detach_endpoints_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -5077,7 +5077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_network_endpoint_group(project, network_endpoint_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
+          command = make_simple_command(:get, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroup::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroup
           command.params['project'] = project unless project.nil?
@@ -5124,7 +5124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_global_network_endpoint_group(project, network_endpoint_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networkEndpointGroups', options)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroup::Representation
           command.request_object = network_endpoint_group_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -5195,7 +5195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_network_endpoint_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networkEndpointGroups', options)
+          command = make_simple_command(:get, '{project}/global/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroupList
           command.params['project'] = project unless project.nil?
@@ -5269,7 +5269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupsListNetworkEndpoints::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroupsListNetworkEndpoints
           command.params['project'] = project unless project.nil?
@@ -5341,7 +5341,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_global_operation_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/operations', options)
+          command = make_simple_command(:get, '{project}/aggregated/operations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OperationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::OperationAggregatedList
           command.params['project'] = project unless project.nil?
@@ -5380,7 +5380,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/operations/{operation}', options)
+          command = make_simple_command(:delete, '{project}/global/operations/{operation}', options)
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5415,7 +5415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/operations/{operation}', options)
+          command = make_simple_command(:get, '{project}/global/operations/{operation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -5483,7 +5483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/operations', options)
+          command = make_simple_command(:get, '{project}/global/operations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OperationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::OperationList
           command.params['project'] = project unless project.nil?
@@ -5529,7 +5529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def wait_global_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/operations/{operation}/wait', options)
+          command = make_simple_command(:post, '{project}/global/operations/{operation}/wait', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -5565,7 +5565,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_global_organization_operation(operation, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'locations/global/operations/{operation}', options)
+          command = make_simple_command(:delete, 'locations/global/operations/{operation}', options)
           command.params['operation'] = operation unless operation.nil?
           command.query['parentId'] = parent_id unless parent_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5600,7 +5600,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_global_organization_operation(operation, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/operations/{operation}', options)
+          command = make_simple_command(:get, 'locations/global/operations/{operation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['operation'] = operation unless operation.nil?
@@ -5669,7 +5669,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_global_organization_operations(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/operations', options)
+          command = make_simple_command(:get, 'locations/global/operations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OperationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::OperationList
           command.query['filter'] = filter unless filter.nil?
@@ -5715,7 +5715,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def wait_global_organization_operation(operation, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/operations/{operation}/wait', options)
+          command = make_simple_command(:post, 'locations/global/operations/{operation}/wait', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['operation'] = operation unless operation.nil?
@@ -5784,7 +5784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_health_check_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/healthChecks', options)
+          command = make_simple_command(:get, '{project}/aggregated/healthChecks', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthChecksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthChecksAggregatedList
           command.params['project'] = project unless project.nil?
@@ -5834,7 +5834,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_health_check(project, health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:delete, '{project}/global/healthChecks/{healthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -5872,7 +5872,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_health_check(project, health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:get, '{project}/global/healthChecks/{healthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheck
           command.params['project'] = project unless project.nil?
@@ -5919,7 +5919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_health_check(project, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/healthChecks', options)
+          command = make_simple_command(:post, '{project}/global/healthChecks', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -5989,7 +5989,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/healthChecks', options)
+          command = make_simple_command(:get, '{project}/global/healthChecks', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheckList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheckList
           command.params['project'] = project unless project.nil?
@@ -6042,7 +6042,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_health_check(project, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:patch, '{project}/global/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6082,7 +6082,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/healthChecks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/healthChecks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -6133,7 +6133,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_health_check(project, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:put, '{project}/global/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6183,7 +6183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_http_health_check(project, http_health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
+          command = make_simple_command(:delete, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -6221,7 +6221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_http_health_check(project, http_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
+          command = make_simple_command(:get, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::HttpHealthCheck::Representation
           command.response_class = Google::Apis::ComputeAlpha::HttpHealthCheck
           command.params['project'] = project unless project.nil?
@@ -6268,7 +6268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_http_health_check(project, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/httpHealthChecks', options)
+          command = make_simple_command(:post, '{project}/global/httpHealthChecks', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6339,7 +6339,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_http_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/httpHealthChecks', options)
+          command = make_simple_command(:get, '{project}/global/httpHealthChecks', options)
           command.response_representation = Google::Apis::ComputeAlpha::HttpHealthCheckList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HttpHealthCheckList
           command.params['project'] = project unless project.nil?
@@ -6392,7 +6392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_http_health_check(project, http_health_check, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
+          command = make_simple_command(:patch, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6432,7 +6432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_http_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/httpHealthChecks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/httpHealthChecks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -6483,7 +6483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_http_health_check(project, http_health_check, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
+          command = make_simple_command(:put, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6533,7 +6533,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_https_health_check(project, https_health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
+          command = make_simple_command(:delete, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -6571,7 +6571,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_https_health_check(project, https_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
+          command = make_simple_command(:get, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::HttpsHealthCheck::Representation
           command.response_class = Google::Apis::ComputeAlpha::HttpsHealthCheck
           command.params['project'] = project unless project.nil?
@@ -6618,7 +6618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_https_health_check(project, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/httpsHealthChecks', options)
+          command = make_simple_command(:post, '{project}/global/httpsHealthChecks', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6689,7 +6689,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_https_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/httpsHealthChecks', options)
+          command = make_simple_command(:get, '{project}/global/httpsHealthChecks', options)
           command.response_representation = Google::Apis::ComputeAlpha::HttpsHealthCheckList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HttpsHealthCheckList
           command.params['project'] = project unless project.nil?
@@ -6742,7 +6742,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_https_health_check(project, https_health_check, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
+          command = make_simple_command(:patch, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6782,7 +6782,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_https_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/httpsHealthChecks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/httpsHealthChecks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -6833,7 +6833,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_https_health_check(project, https_health_check, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
+          command = make_simple_command(:put, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6883,7 +6883,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_image(project, image, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/images/{image}', options)
+          command = make_simple_command(:delete, '{project}/global/images/{image}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -6933,7 +6933,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deprecate_image(project, image, deprecation_status_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/images/{image}/deprecate', options)
+          command = make_simple_command(:post, '{project}/global/images/{image}/deprecate', options)
           command.request_representation = Google::Apis::ComputeAlpha::DeprecationStatus::Representation
           command.request_object = deprecation_status_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -6973,7 +6973,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_image(project, image, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/images/{image}', options)
+          command = make_simple_command(:get, '{project}/global/images/{image}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Image::Representation
           command.response_class = Google::Apis::ComputeAlpha::Image
           command.params['project'] = project unless project.nil?
@@ -7009,7 +7009,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_image_from_family(project, family, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/images/family/{family}', options)
+          command = make_simple_command(:get, '{project}/global/images/family/{family}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Image::Representation
           command.response_class = Google::Apis::ComputeAlpha::Image
           command.params['project'] = project unless project.nil?
@@ -7046,7 +7046,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_image_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/images/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/images/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -7095,7 +7095,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_image(project, image_object = nil, force_create: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/images', options)
+          command = make_simple_command(:post, '{project}/global/images', options)
           command.request_representation = Google::Apis::ComputeAlpha::Image::Representation
           command.request_object = image_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7171,7 +7171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/images', options)
+          command = make_simple_command(:get, '{project}/global/images', options)
           command.response_representation = Google::Apis::ComputeAlpha::ImageList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ImageList
           command.params['project'] = project unless project.nil?
@@ -7212,7 +7212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_image_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/images/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/images/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -7252,7 +7252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_image_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/images/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/images/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7291,7 +7291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_image_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/images/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/images/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -7354,7 +7354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def abandon_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_abandon_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersAbandonInstancesRequest::Representation
           command.request_object = instance_group_managers_abandon_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7426,7 +7426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_instance_group_manager_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/instanceGroupManagers', options)
+          command = make_simple_command(:get, '{project}/aggregated/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManagerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManagerAggregatedList
           command.params['project'] = project unless project.nil?
@@ -7470,7 +7470,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def apply_instance_group_manager_updates_to_instances(project, zone, instance_group_manager, instance_group_managers_apply_updates_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersApplyUpdatesRequest::Representation
           command.request_object = instance_group_managers_apply_updates_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7528,7 +7528,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersCreateInstancesRequest::Representation
           command.request_object = instance_group_managers_create_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7583,7 +7583,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_group_manager(project, zone, instance_group_manager, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -7645,7 +7645,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_delete_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersDeleteInstancesRequest::Representation
           command.request_object = instance_group_managers_delete_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7689,7 +7689,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_delete_per_instance_configs_req_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersDeletePerInstanceConfigsReq::Representation
           command.request_object = instance_group_managers_delete_per_instance_configs_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7731,7 +7731,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManager
           command.params['project'] = project unless project.nil?
@@ -7787,7 +7787,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance_group_manager(project, zone, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -7861,7 +7861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_group_managers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManagerList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManagerList
           command.params['project'] = project unless project.nil?
@@ -7941,7 +7941,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_group_manager_managed_instances(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersListManagedInstancesResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManagersListManagedInstancesResponse
           command.params['project'] = project unless project.nil?
@@ -8019,7 +8019,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersListPerInstanceConfigsResp::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManagersListPerInstanceConfigsResp
           command.params['project'] = project unless project.nil?
@@ -8079,7 +8079,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8136,7 +8136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_patch_per_instance_configs_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersPatchPerInstanceConfigsReq::Representation
           command.request_object = instance_group_managers_patch_per_instance_configs_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8199,7 +8199,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def recreate_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_recreate_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersRecreateInstancesRequest::Representation
           command.request_object = instance_group_managers_recreate_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8271,7 +8271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_instance_group_manager(project, zone, instance_group_manager, size, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -8335,7 +8335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_instance_group_manager_advanced(project, zone, instance_group_manager, instance_group_managers_resize_advanced_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeAdvanced', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeAdvanced', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersResizeAdvancedRequest::Representation
           command.request_object = instance_group_managers_resize_advanced_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8390,7 +8390,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_group_manager_auto_healing_policies(project, zone, instance_group_manager, instance_group_managers_set_auto_healing_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersSetAutoHealingRequest::Representation
           command.request_object = instance_group_managers_set_auto_healing_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8446,7 +8446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_group_manager_instance_template(project, zone, instance_group_manager, instance_group_managers_set_instance_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersSetInstanceTemplateRequest::Representation
           command.request_object = instance_group_managers_set_instance_template_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8505,7 +8505,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_group_manager_target_pools(project, zone, instance_group_manager, instance_group_managers_set_target_pools_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = instance_group_managers_set_target_pools_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8548,7 +8548,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_group_manager_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -8605,7 +8605,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:put, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8662,7 +8662,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_update_per_instance_configs_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManagersUpdatePerInstanceConfigsReq::Representation
           command.request_object = instance_group_managers_update_per_instance_configs_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8718,7 +8718,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_instance_group_instances(project, zone, instance_group, instance_groups_add_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupsAddInstancesRequest::Representation
           command.request_object = instance_groups_add_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -8790,7 +8790,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_instance_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/instanceGroups', options)
+          command = make_simple_command(:get, '{project}/aggregated/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupAggregatedList
           command.params['project'] = project unless project.nil?
@@ -8844,7 +8844,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_group(project, zone, instance_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/instanceGroups/{instanceGroup}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/instanceGroups/{instanceGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -8885,7 +8885,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_group(project, zone, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroups/{instanceGroup}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instanceGroups/{instanceGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroup::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroup
           command.params['project'] = project unless project.nil?
@@ -8935,7 +8935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance_group(project, zone, instance_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroup::Representation
           command.request_object = instance_group_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9009,7 +9009,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroups', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupList
           command.params['project'] = project unless project.nil?
@@ -9087,7 +9087,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_group_instances(project, zone, instance_group, instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupsListInstancesRequest::Representation
           command.request_object = instance_groups_list_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupsListInstances::Representation
@@ -9148,7 +9148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_instance_group_instances(project, zone, instance_group, instance_groups_remove_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupsRemoveInstancesRequest::Representation
           command.request_object = instance_groups_remove_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9202,7 +9202,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_group_named_ports(project, zone, instance_group, instance_groups_set_named_ports_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupsSetNamedPortsRequest::Representation
           command.request_object = instance_groups_set_named_ports_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9245,7 +9245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_group_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -9297,7 +9297,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_template(project, instance_template, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/instanceTemplates/{instanceTemplate}', options)
+          command = make_simple_command(:delete, '{project}/global/instanceTemplates/{instanceTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -9335,7 +9335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_template(project, instance_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/instanceTemplates/{instanceTemplate}', options)
+          command = make_simple_command(:get, '{project}/global/instanceTemplates/{instanceTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplate::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplate
           command.params['project'] = project unless project.nil?
@@ -9372,7 +9372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_template_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/instanceTemplates/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/instanceTemplates/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -9421,7 +9421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance_template(project, instance_template_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/instanceTemplates', options)
+          command = make_simple_command(:post, '{project}/global/instanceTemplates', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceTemplate::Representation
           command.request_object = instance_template_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9492,7 +9492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_templates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/instanceTemplates', options)
+          command = make_simple_command(:get, '{project}/global/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceTemplateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceTemplateList
           command.params['project'] = project unless project.nil?
@@ -9533,7 +9533,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_template_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/instanceTemplates/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/instanceTemplates/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -9572,7 +9572,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_template_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/instanceTemplates/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/instanceTemplates/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -9626,7 +9626,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_instance_access_config(project, zone, instance, network_interface, access_config_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addAccessConfig', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addAccessConfig', options)
           command.request_representation = Google::Apis::ComputeAlpha::AccessConfig::Representation
           command.request_object = access_config_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9683,7 +9683,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_instance_resource_policies(project, zone, instance, instances_add_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesAddResourcePoliciesRequest::Representation
           command.request_object = instances_add_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9756,7 +9756,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_instance_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/instances', options)
+          command = make_simple_command(:get, '{project}/aggregated/instances', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceAggregatedList
           command.params['project'] = project unless project.nil?
@@ -9815,7 +9815,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def attach_instance_disk(project, zone, instance, attached_disk_object = nil, force_attach: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/attachDisk', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/attachDisk', options)
           command.request_representation = Google::Apis::ComputeAlpha::AttachedDisk::Representation
           command.request_object = attached_disk_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -9870,7 +9870,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/instances/{instance}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/instances/{instance}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -9925,7 +9925,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_access_config(project, zone, instance, access_config, network_interface, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/deleteAccessConfig', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/deleteAccessConfig', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -9981,7 +9981,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def detach_instance_disk(project, zone, instance, device_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/detachDisk', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/detachDisk', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -10023,7 +10023,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.response_class = Google::Apis::ComputeAlpha::Instance
           command.params['project'] = project unless project.nil?
@@ -10064,7 +10064,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_effective_firewalls(project, zone, instance, network_interface, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getEffectiveFirewalls', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getEffectiveFirewalls', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstancesGetEffectiveFirewallsResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstancesGetEffectiveFirewallsResponse
           command.params['project'] = project unless project.nil?
@@ -10108,7 +10108,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_guest_attributes(project, zone, instance, query_path: nil, variable_key: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getGuestAttributes', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getGuestAttributes', options)
           command.response_representation = Google::Apis::ComputeAlpha::GuestAttributes::Representation
           command.response_class = Google::Apis::ComputeAlpha::GuestAttributes
           command.params['project'] = project unless project.nil?
@@ -10150,7 +10150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -10196,7 +10196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_serial_port_output(project, zone, instance, port: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/serialPort', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/serialPort', options)
           command.response_representation = Google::Apis::ComputeAlpha::SerialPortOutput::Representation
           command.response_class = Google::Apis::ComputeAlpha::SerialPortOutput
           command.params['project'] = project unless project.nil?
@@ -10237,7 +10237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_shielded_instance_identity(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity', options)
           command.response_representation = Google::Apis::ComputeAlpha::ShieldedInstanceIdentity::Representation
           command.response_class = Google::Apis::ComputeAlpha::ShieldedInstanceIdentity
           command.params['project'] = project unless project.nil?
@@ -10276,7 +10276,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_shielded_vm_identity(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity', options)
           command.response_representation = Google::Apis::ComputeAlpha::ShieldedVmIdentity::Representation
           command.response_class = Google::Apis::ComputeAlpha::ShieldedVmIdentity
           command.params['project'] = project unless project.nil?
@@ -10342,7 +10342,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance(project, zone, instance_object = nil, request_id: nil, source_instance_template: nil, source_machine_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances', options)
           command.request_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -10417,7 +10417,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceList
           command.params['project'] = project unless project.nil?
@@ -10495,7 +10495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_referrers(project, zone, instance, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/referrers', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instances/{instance}/referrers', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceListReferrers::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceListReferrers
           command.params['project'] = project unless project.nil?
@@ -10550,7 +10550,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_instance_resource_policies(project, zone, instance, instances_remove_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/removeResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/removeResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesRemoveResourcePoliciesRequest::Representation
           command.request_object = instances_remove_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -10604,7 +10604,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/reset', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/reset', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -10656,7 +10656,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resume_instance(project, zone, instance, instances_resume_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/resume', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/resume', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesResumeRequest::Representation
           command.request_object = instances_resume_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -10711,7 +10711,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_deletion_protection(project, zone, resource, deletion_protection: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setDeletionProtection', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setDeletionProtection', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -10768,7 +10768,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_disk_auto_delete(project, zone, instance, auto_delete, device_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setDiskAutoDelete', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setDiskAutoDelete', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -10812,7 +10812,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
           command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -10866,7 +10866,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_labels(project, zone, instance, instances_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setLabels', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesSetLabelsRequest::Representation
           command.request_object = instances_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -10921,7 +10921,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesSetMachineResourcesRequest::Representation
           command.request_object = instances_set_machine_resources_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -10976,7 +10976,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_machine_type(project, zone, instance, instances_set_machine_type_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineType', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineType', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesSetMachineTypeRequest::Representation
           command.request_object = instances_set_machine_type_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11030,7 +11030,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_metadata(project, zone, instance, metadata_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMetadata', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMetadata', options)
           command.request_representation = Google::Apis::ComputeAlpha::Metadata::Representation
           command.request_object = metadata_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11086,7 +11086,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_min_cpu_platform(project, zone, instance, instances_set_min_cpu_platform_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMinCpuPlatform', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMinCpuPlatform', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesSetMinCpuPlatformRequest::Representation
           command.request_object = instances_set_min_cpu_platform_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11140,7 +11140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_scheduling(project, zone, instance, scheduling_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setScheduling', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setScheduling', options)
           command.request_representation = Google::Apis::ComputeAlpha::Scheduling::Representation
           command.request_object = scheduling_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11195,7 +11195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_service_account(project, zone, instance, instances_set_service_account_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setServiceAccount', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setServiceAccount', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesSetServiceAccountRequest::Representation
           command.request_object = instances_set_service_account_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11251,7 +11251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_shielded_instance_integrity_policy(project, zone, instance, shielded_instance_integrity_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/setShieldedInstanceIntegrityPolicy', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/setShieldedInstanceIntegrityPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ShieldedInstanceIntegrityPolicy::Representation
           command.request_object = shielded_instance_integrity_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11307,7 +11307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_shielded_vm_integrity_policy(project, zone, instance, shielded_vm_integrity_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/setShieldedVmIntegrityPolicy', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/setShieldedVmIntegrityPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ShieldedVmIntegrityPolicy::Representation
           command.request_object = shielded_vm_integrity_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11362,7 +11362,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_tags(project, zone, instance, tags_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setTags', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setTags', options)
           command.request_representation = Google::Apis::ComputeAlpha::Tags::Representation
           command.request_object = tags_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11404,7 +11404,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def simulate_instance_maintenance_event(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -11455,7 +11455,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/start', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/start', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -11508,7 +11508,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_instance_with_encryption_key(project, zone, instance, instances_start_with_encryption_key_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstancesStartWithEncryptionKeyRequest::Representation
           command.request_object = instances_start_with_encryption_key_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11568,7 +11568,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/stop', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/stop', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -11628,7 +11628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def suspend_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/suspend', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/suspend', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -11670,7 +11670,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -11727,7 +11727,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_access_config(project, zone, instance, network_interface, access_config_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/updateAccessConfig', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/updateAccessConfig', options)
           command.request_representation = Google::Apis::ComputeAlpha::AccessConfig::Representation
           command.request_object = access_config_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11784,7 +11784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_display_device(project, zone, instance, display_device_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateDisplayDevice', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateDisplayDevice', options)
           command.request_representation = Google::Apis::ComputeAlpha::DisplayDevice::Representation
           command.request_object = display_device_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11840,7 +11840,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_network_interface(project, zone, instance, network_interface, network_interface_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateNetworkInterface', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateNetworkInterface', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkInterface::Representation
           command.request_object = network_interface_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11897,7 +11897,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_shielded_instance_config(project, zone, instance, shielded_instance_config_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateShieldedInstanceConfig', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateShieldedInstanceConfig', options)
           command.request_representation = Google::Apis::ComputeAlpha::ShieldedInstanceConfig::Representation
           command.request_object = shielded_instance_config_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -11953,7 +11953,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance_shielded_vm_config(project, zone, instance, shielded_vm_config_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateShieldedVmConfig', options)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateShieldedVmConfig', options)
           command.request_representation = Google::Apis::ComputeAlpha::ShieldedVmConfig::Representation
           command.request_object = shielded_vm_config_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12025,7 +12025,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_interconnect_attachment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/interconnectAttachments', options)
+          command = make_simple_command(:get, '{project}/aggregated/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectAttachmentAggregatedList
           command.params['project'] = project unless project.nil?
@@ -12077,7 +12077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_interconnect_attachment(project, region, interconnect_attachment, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -12117,7 +12117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect_attachment(project, region, interconnect_attachment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectAttachment::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectAttachment
           command.params['project'] = project unless project.nil?
@@ -12157,7 +12157,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect_attachment_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -12207,7 +12207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_interconnect_attachment(project, region, interconnect_attachment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments', options)
           command.request_representation = Google::Apis::ComputeAlpha::InterconnectAttachment::Representation
           command.request_object = interconnect_attachment_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12281,7 +12281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_interconnect_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectAttachmentList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectAttachmentList
           command.params['project'] = project unless project.nil?
@@ -12337,7 +12337,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_interconnect_attachment(project, region, interconnect_attachment, interconnect_attachment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}', options)
           command.request_representation = Google::Apis::ComputeAlpha::InterconnectAttachment::Representation
           command.request_object = interconnect_attachment_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12381,7 +12381,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_interconnect_attachment_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
           command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -12435,7 +12435,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_interconnect_attachment_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12478,7 +12478,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_interconnect_attachment_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -12518,7 +12518,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect_location(project, interconnect_location, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnectLocations/{interconnectLocation}', options)
+          command = make_simple_command(:get, '{project}/global/interconnectLocations/{interconnectLocation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectLocation::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectLocation
           command.params['project'] = project unless project.nil?
@@ -12587,7 +12587,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_interconnect_locations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnectLocations', options)
+          command = make_simple_command(:get, '{project}/global/interconnectLocations', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectLocationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectLocationList
           command.params['project'] = project unless project.nil?
@@ -12627,7 +12627,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_interconnect_location_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/interconnectLocations/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/interconnectLocations/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -12676,7 +12676,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_interconnect(project, interconnect, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/interconnects/{interconnect}', options)
+          command = make_simple_command(:delete, '{project}/global/interconnects/{interconnect}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -12714,7 +12714,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect(project, interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnects/{interconnect}', options)
+          command = make_simple_command(:get, '{project}/global/interconnects/{interconnect}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Interconnect::Representation
           command.response_class = Google::Apis::ComputeAlpha::Interconnect
           command.params['project'] = project unless project.nil?
@@ -12750,7 +12750,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect_diagnostics(project, interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnects/{interconnect}/getDiagnostics', options)
+          command = make_simple_command(:get, '{project}/global/interconnects/{interconnect}/getDiagnostics', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectsGetDiagnosticsResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectsGetDiagnosticsResponse
           command.params['project'] = project unless project.nil?
@@ -12787,7 +12787,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_interconnect_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnects/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/interconnects/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -12834,7 +12834,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_interconnect(project, interconnect_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/interconnects', options)
+          command = make_simple_command(:post, '{project}/global/interconnects', options)
           command.request_representation = Google::Apis::ComputeAlpha::Interconnect::Representation
           command.request_object = interconnect_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12904,7 +12904,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_interconnects(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/interconnects', options)
+          command = make_simple_command(:get, '{project}/global/interconnects', options)
           command.response_representation = Google::Apis::ComputeAlpha::InterconnectList::Representation
           command.response_class = Google::Apis::ComputeAlpha::InterconnectList
           command.params['project'] = project unless project.nil?
@@ -12957,7 +12957,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_interconnect(project, interconnect, interconnect_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/interconnects/{interconnect}', options)
+          command = make_simple_command(:patch, '{project}/global/interconnects/{interconnect}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Interconnect::Representation
           command.request_object = interconnect_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -12998,7 +12998,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_interconnect_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/interconnects/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/interconnects/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -13038,7 +13038,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_interconnect_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/interconnects/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/interconnects/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -13077,7 +13077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_interconnect_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/interconnects/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/interconnects/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -13116,7 +13116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_license_code(project, license_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/licenseCodes/{licenseCode}', options)
+          command = make_simple_command(:get, '{project}/global/licenseCodes/{licenseCode}', options)
           command.response_representation = Google::Apis::ComputeAlpha::LicenseCode::Representation
           command.response_class = Google::Apis::ComputeAlpha::LicenseCode
           command.params['project'] = project unless project.nil?
@@ -13153,7 +13153,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_license_code_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/licenseCodes/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/licenseCodes/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -13191,7 +13191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_license_code_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/licenseCodes/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/licenseCodes/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -13230,7 +13230,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_license_code_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/licenseCodes/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/licenseCodes/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -13279,7 +13279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_license(project, license, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/licenses/{license}', options)
+          command = make_simple_command(:delete, '{project}/global/licenses/{license}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -13316,7 +13316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_license(project, license, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/licenses/{license}', options)
+          command = make_simple_command(:get, '{project}/global/licenses/{license}', options)
           command.response_representation = Google::Apis::ComputeAlpha::License::Representation
           command.response_class = Google::Apis::ComputeAlpha::License
           command.params['project'] = project unless project.nil?
@@ -13353,7 +13353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_license_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/licenses/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/licenses/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -13399,7 +13399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_license(project, license_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/licenses', options)
+          command = make_simple_command(:post, '{project}/global/licenses', options)
           command.request_representation = Google::Apis::ComputeAlpha::License::Representation
           command.request_object = license_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -13473,7 +13473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_licenses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/licenses', options)
+          command = make_simple_command(:get, '{project}/global/licenses', options)
           command.response_representation = Google::Apis::ComputeAlpha::LicensesListResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::LicensesListResponse
           command.params['project'] = project unless project.nil?
@@ -13514,7 +13514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_license_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/licenses/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/licenses/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -13553,7 +13553,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_license_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/licenses/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/licenses/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -13603,7 +13603,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_machine_image(project, machine_image, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/machineImages/{machineImage}', options)
+          command = make_simple_command(:delete, '{project}/global/machineImages/{machineImage}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -13641,7 +13641,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_machine_image(project, machine_image, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/machineImages/{machineImage}', options)
+          command = make_simple_command(:get, '{project}/global/machineImages/{machineImage}', options)
           command.response_representation = Google::Apis::ComputeAlpha::MachineImage::Representation
           command.response_class = Google::Apis::ComputeAlpha::MachineImage
           command.params['project'] = project unless project.nil?
@@ -13678,7 +13678,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_machine_image_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/machineImages/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/machineImages/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -13729,7 +13729,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_machine_image(project, machine_image_object = nil, request_id: nil, source_instance: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/machineImages', options)
+          command = make_simple_command(:post, '{project}/global/machineImages', options)
           command.request_representation = Google::Apis::ComputeAlpha::MachineImage::Representation
           command.request_object = machine_image_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -13801,7 +13801,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_machine_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/machineImages', options)
+          command = make_simple_command(:get, '{project}/global/machineImages', options)
           command.response_representation = Google::Apis::ComputeAlpha::MachineImageList::Representation
           command.response_class = Google::Apis::ComputeAlpha::MachineImageList
           command.params['project'] = project unless project.nil?
@@ -13842,7 +13842,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_machine_image_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/machineImages/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/machineImages/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -13881,7 +13881,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_machine_image_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/machineImages/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/machineImages/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -13951,7 +13951,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_machine_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/machineTypes', options)
+          command = make_simple_command(:get, '{project}/aggregated/machineTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::MachineTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::MachineTypeAggregatedList
           command.params['project'] = project unless project.nil?
@@ -13993,7 +13993,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_machine_type(project, zone, machine_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/machineTypes/{machineType}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/machineTypes/{machineType}', options)
           command.response_representation = Google::Apis::ComputeAlpha::MachineType::Representation
           command.response_class = Google::Apis::ComputeAlpha::MachineType
           command.params['project'] = project unless project.nil?
@@ -14064,7 +14064,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_machine_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/machineTypes', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/machineTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::MachineTypeList::Representation
           command.response_class = Google::Apis::ComputeAlpha::MachineTypeList
           command.params['project'] = project unless project.nil?
@@ -14136,7 +14136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_network_endpoint_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/networkEndpointGroups', options)
+          command = make_simple_command(:get, '{project}/aggregated/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroupAggregatedList
           command.params['project'] = project unless project.nil?
@@ -14191,7 +14191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def attach_network_endpoint_group_network_endpoints(project, zone, network_endpoint_group, network_endpoint_groups_attach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupsAttachEndpointsRequest::Representation
           command.request_object = network_endpoint_groups_attach_endpoints_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -14249,7 +14249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_network_endpoint_group(project, zone, network_endpoint_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -14303,7 +14303,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def detach_network_endpoint_group_network_endpoints(project, zone, network_endpoint_group, network_endpoint_groups_detach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupsDetachEndpointsRequest::Representation
           command.request_object = network_endpoint_groups_detach_endpoints_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -14347,7 +14347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_network_endpoint_group(project, zone, network_endpoint_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroup::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroup
           command.params['project'] = project unless project.nil?
@@ -14398,7 +14398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_network_endpoint_group(project, zone, network_endpoint_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroup::Representation
           command.request_object = network_endpoint_group_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -14473,7 +14473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_network_endpoint_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/networkEndpointGroups', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkEndpointGroupList
           command.params['project'] = project unless project.nil?
@@ -14552,7 +14552,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_network_endpoint_group_network_endpoints(project, zone, network_endpoint_group, network_endpoint_groups_list_endpoints_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupsListEndpointsRequest::Representation
           command.request_object = network_endpoint_groups_list_endpoints_request_object
           command.response_representation = Google::Apis::ComputeAlpha::NetworkEndpointGroupsListNetworkEndpoints::Representation
@@ -14598,7 +14598,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_network_endpoint_group_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/networkEndpointGroups/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -14649,7 +14649,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_network_peering(project, network, networks_add_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networks/{network}/addPeering', options)
+          command = make_simple_command(:post, '{project}/global/networks/{network}/addPeering', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworksAddPeeringRequest::Representation
           command.request_object = networks_add_peering_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -14699,7 +14699,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_network(project, network, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/networks/{network}', options)
+          command = make_simple_command(:delete, '{project}/global/networks/{network}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -14737,7 +14737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_network(project, network, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks/{network}', options)
+          command = make_simple_command(:get, '{project}/global/networks/{network}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Network::Representation
           command.response_class = Google::Apis::ComputeAlpha::Network
           command.params['project'] = project unless project.nil?
@@ -14773,7 +14773,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_network_effective_firewalls(project, network, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks/{network}/getEffectiveFirewalls', options)
+          command = make_simple_command(:get, '{project}/global/networks/{network}/getEffectiveFirewalls', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworksGetEffectiveFirewallsResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworksGetEffectiveFirewallsResponse
           command.params['project'] = project unless project.nil?
@@ -14820,7 +14820,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_network(project, network_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networks', options)
+          command = make_simple_command(:post, '{project}/global/networks', options)
           command.request_representation = Google::Apis::ComputeAlpha::Network::Representation
           command.request_object = network_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -14890,7 +14890,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_networks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks', options)
+          command = make_simple_command(:get, '{project}/global/networks', options)
           command.response_representation = Google::Apis::ComputeAlpha::NetworkList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NetworkList
           command.params['project'] = project unless project.nil?
@@ -14966,7 +14966,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_network_ip_addresses(project, network, filter: nil, max_results: nil, order_by: nil, page_token: nil, types: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks/{network}/listIpAddresses', options)
+          command = make_simple_command(:get, '{project}/global/networks/{network}/listIpAddresses', options)
           command.response_representation = Google::Apis::ComputeAlpha::IpAddressesList::Representation
           command.response_class = Google::Apis::ComputeAlpha::IpAddressesList
           command.params['project'] = project unless project.nil?
@@ -15051,7 +15051,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_network_ip_owners(project, network, filter: nil, ip_cidr_range: nil, max_results: nil, order_by: nil, owner_projects: nil, owner_types: nil, page_token: nil, subnet_name: nil, subnet_region: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks/{network}/listIpOwners', options)
+          command = make_simple_command(:get, '{project}/global/networks/{network}/listIpOwners', options)
           command.response_representation = Google::Apis::ComputeAlpha::IpOwnerList::Representation
           command.response_class = Google::Apis::ComputeAlpha::IpOwnerList
           command.params['project'] = project unless project.nil?
@@ -15137,7 +15137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_network_peering_routes(project, network, direction: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peering_name: nil, region: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/networks/{network}/listPeeringRoutes', options)
+          command = make_simple_command(:get, '{project}/global/networks/{network}/listPeeringRoutes', options)
           command.response_representation = Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList
           command.params['project'] = project unless project.nil?
@@ -15193,7 +15193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_network(project, network, network_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/networks/{network}', options)
+          command = make_simple_command(:patch, '{project}/global/networks/{network}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Network::Representation
           command.request_object = network_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15244,7 +15244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_network_peering(project, network, networks_remove_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networks/{network}/removePeering', options)
+          command = make_simple_command(:post, '{project}/global/networks/{network}/removePeering', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworksRemovePeeringRequest::Representation
           command.request_object = networks_remove_peering_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15294,7 +15294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def switch_network_to_custom_mode(project, network, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networks/{network}/switchToCustomMode', options)
+          command = make_simple_command(:post, '{project}/global/networks/{network}/switchToCustomMode', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -15332,7 +15332,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_network_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/networks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/networks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -15384,7 +15384,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_network_peering(project, network, networks_update_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/networks/{network}/updatePeering', options)
+          command = make_simple_command(:patch, '{project}/global/networks/{network}/updatePeering', options)
           command.request_representation = Google::Apis::ComputeAlpha::NetworksUpdatePeeringRequest::Representation
           command.request_object = networks_update_peering_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15437,7 +15437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_node_group_nodes(project, zone, node_group, node_groups_add_nodes_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/addNodes', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/addNodes', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsAddNodesRequest::Representation
           command.request_object = node_groups_add_nodes_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15510,7 +15510,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_node_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/nodeGroups', options)
+          command = make_simple_command(:get, '{project}/aggregated/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeGroupAggregatedList
           command.params['project'] = project unless project.nil?
@@ -15562,7 +15562,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_node_group(project, zone, node_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -15614,7 +15614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_node_group_nodes(project, zone, node_group, node_groups_delete_nodes_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/deleteNodes', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/deleteNodes', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsDeleteNodesRequest::Representation
           command.request_object = node_groups_delete_nodes_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15658,7 +15658,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_node_group(project, zone, node_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeGroup::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeGroup
           command.params['project'] = project unless project.nil?
@@ -15698,7 +15698,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_node_group_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -15750,7 +15750,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_node_group(project, zone, initial_node_count, node_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeGroup::Representation
           command.request_object = node_group_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -15825,7 +15825,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_node_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeGroups', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeGroupList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeGroupList
           command.params['project'] = project unless project.nil?
@@ -15901,7 +15901,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_node_group_nodes(project, zone, node_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/listNodes', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/listNodes', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeGroupsListNodes::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeGroupsListNodes
           command.params['project'] = project unless project.nil?
@@ -15956,7 +15956,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_node_group_autoscaling_policy(project, zone, node_group, node_groups_set_autoscaling_policy_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setAutoscalingPolicy', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setAutoscalingPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsSetAutoscalingPolicyRequest::Representation
           command.request_object = node_groups_set_autoscaling_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -16000,7 +16000,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_node_group_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
           command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -16053,7 +16053,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_node_group_node_template(project, zone, node_group, node_groups_set_node_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setNodeTemplate', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setNodeTemplate', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsSetNodeTemplateRequest::Representation
           command.request_object = node_groups_set_node_template_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -16096,7 +16096,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_node_group_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -16167,7 +16167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_node_template_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/nodeTemplates', options)
+          command = make_simple_command(:get, '{project}/aggregated/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeTemplateAggregatedList
           command.params['project'] = project unless project.nil?
@@ -16219,7 +16219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_node_template(project, region, node_template, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -16260,7 +16260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_node_template(project, region, node_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeTemplate::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeTemplate
           command.params['project'] = project unless project.nil?
@@ -16300,7 +16300,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_node_template_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -16350,7 +16350,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_node_template(project, region, node_template_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/nodeTemplates', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/nodeTemplates', options)
           command.request_representation = Google::Apis::ComputeAlpha::NodeTemplate::Representation
           command.request_object = node_template_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -16423,7 +16423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_node_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/nodeTemplates', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeTemplateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeTemplateList
           command.params['project'] = project unless project.nil?
@@ -16467,7 +16467,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_node_template_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/nodeTemplates/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/nodeTemplates/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
           command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -16509,7 +16509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_node_template_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/nodeTemplates/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/nodeTemplates/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -16580,7 +16580,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_node_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/nodeTypes', options)
+          command = make_simple_command(:get, '{project}/aggregated/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeTypeAggregatedList
           command.params['project'] = project unless project.nil?
@@ -16622,7 +16622,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_node_type(project, zone, node_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeTypes/{nodeType}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/nodeTypes/{nodeType}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeType::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeType
           command.params['project'] = project unless project.nil?
@@ -16693,7 +16693,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_node_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeTypes', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::NodeTypeList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NodeTypeList
           command.params['project'] = project unless project.nil?
@@ -16747,7 +16747,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_organization_security_policy_association(security_policy, security_policy_association_object = nil, replace_existing_association: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addAssociation', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addAssociation', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
           command.request_object = security_policy_association_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -16796,7 +16796,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addRule', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/addRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -16845,7 +16845,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_organization_security_policy_rules(security_policy, request_id: nil, source_security_policy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/copyRules', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/copyRules', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -16891,7 +16891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_security_policy(security_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'locations/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:delete, 'locations/global/securityPolicies/{securityPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -16925,7 +16925,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_security_policy(security_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicy
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -16960,7 +16960,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_security_policy_association(security_policy, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getAssociation', options)
+          command = make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getAssociation', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyAssociation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -16996,7 +16996,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_security_policy_rule(security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getRule', options)
+          command = make_simple_command(:get, 'locations/global/securityPolicies/{securityPolicy}/getRule', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyRule
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -17043,7 +17043,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_organization_security_policy(security_policy_object = nil, parent_id: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.request_object = security_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17113,7 +17113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_security_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/securityPolicies', options)
+          command = make_simple_command(:get, 'locations/global/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyList
           command.query['filter'] = filter unless filter.nil?
@@ -17150,7 +17150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_security_policy_associations(target_resource: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/global/securityPolicies/listAssociations', options)
+          command = make_simple_command(:get, 'locations/global/securityPolicies/listAssociations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OrganizationSecurityPoliciesListAssociationsResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::OrganizationSecurityPoliciesListAssociationsResponse
           command.query['targetResource'] = target_resource unless target_resource.nil?
@@ -17196,7 +17196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_organization_security_policy(security_policy, parent_id: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/move', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/move', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -17243,7 +17243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_security_policy(security_policy, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'locations/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:patch, 'locations/global/securityPolicies/{securityPolicy}', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.request_object = security_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17293,7 +17293,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/patchRule', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17343,7 +17343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_organization_security_policy_association(security_policy, name: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeAssociation', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeAssociation', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -17391,7 +17391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_organization_security_policy_rule(security_policy, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeRule', options)
+          command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/removeRule', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
@@ -17437,7 +17437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_project_xpn_host(project, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/disableXpnHost', options)
+          command = make_simple_command(:post, '{project}/disableXpnHost', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -17484,7 +17484,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_project_xpn_resource(project, projects_disable_xpn_resource_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/disableXpnResource', options)
+          command = make_simple_command(:post, '{project}/disableXpnResource', options)
           command.request_representation = Google::Apis::ComputeAlpha::ProjectsDisableXpnResourceRequest::Representation
           command.request_object = projects_disable_xpn_resource_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17531,7 +17531,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_project_xpn_host(project, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/enableXpnHost', options)
+          command = make_simple_command(:post, '{project}/enableXpnHost', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -17578,7 +17578,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_project_xpn_resource(project, projects_enable_xpn_resource_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/enableXpnResource', options)
+          command = make_simple_command(:post, '{project}/enableXpnResource', options)
           command.request_representation = Google::Apis::ComputeAlpha::ProjectsEnableXpnResourceRequest::Representation
           command.request_object = projects_enable_xpn_resource_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17614,7 +17614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}', options)
+          command = make_simple_command(:get, '{project}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Project::Representation
           command.response_class = Google::Apis::ComputeAlpha::Project
           command.params['project'] = project unless project.nil?
@@ -17648,7 +17648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/getXpnHost', options)
+          command = make_simple_command(:get, '{project}/getXpnHost', options)
           command.response_representation = Google::Apis::ComputeAlpha::Project::Representation
           command.response_class = Google::Apis::ComputeAlpha::Project
           command.params['project'] = project unless project.nil?
@@ -17716,7 +17716,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_xpn_resources(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/getXpnResources', options)
+          command = make_simple_command(:get, '{project}/getXpnResources', options)
           command.response_representation = Google::Apis::ComputeAlpha::ProjectsGetXpnResources::Representation
           command.response_class = Google::Apis::ComputeAlpha::ProjectsGetXpnResources
           command.params['project'] = project unless project.nil?
@@ -17788,7 +17788,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/listXpnHosts', options)
+          command = make_simple_command(:post, '{project}/listXpnHosts', options)
           command.request_representation = Google::Apis::ComputeAlpha::ProjectsListXpnHostsRequest::Representation
           command.request_object = projects_list_xpn_hosts_request_object
           command.response_representation = Google::Apis::ComputeAlpha::XpnHostList::Representation
@@ -17839,7 +17839,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_project_disk(project, disk_move_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/moveDisk', options)
+          command = make_simple_command(:post, '{project}/moveDisk', options)
           command.request_representation = Google::Apis::ComputeAlpha::DiskMoveRequest::Representation
           command.request_object = disk_move_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17887,7 +17887,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_project_instance(project, instance_move_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/moveInstance', options)
+          command = make_simple_command(:post, '{project}/moveInstance', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceMoveRequest::Representation
           command.request_object = instance_move_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17936,7 +17936,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_common_instance_metadata(project, metadata_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/setCommonInstanceMetadata', options)
+          command = make_simple_command(:post, '{project}/setCommonInstanceMetadata', options)
           command.request_representation = Google::Apis::ComputeAlpha::Metadata::Representation
           command.request_object = metadata_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -17986,7 +17986,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_default_network_tier(project, projects_set_default_network_tier_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/setDefaultNetworkTier', options)
+          command = make_simple_command(:post, '{project}/setDefaultNetworkTier', options)
           command.request_representation = Google::Apis::ComputeAlpha::ProjectsSetDefaultNetworkTierRequest::Representation
           command.request_object = projects_set_default_network_tier_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18036,7 +18036,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_default_service_account(project, projects_set_default_service_account_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/setDefaultServiceAccount', options)
+          command = make_simple_command(:post, '{project}/setDefaultServiceAccount', options)
           command.request_representation = Google::Apis::ComputeAlpha::ProjectsSetDefaultServiceAccountRequest::Representation
           command.request_object = projects_set_default_service_account_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18086,7 +18086,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_usage_export_bucket(project, usage_export_location_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/setUsageExportBucket', options)
+          command = make_simple_command(:post, '{project}/setUsageExportBucket', options)
           command.request_representation = Google::Apis::ComputeAlpha::UsageExportLocation::Representation
           command.request_object = usage_export_location_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18137,7 +18137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_autoscaler(project, region, autoscaler, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -18177,7 +18177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_autoscaler(project, region, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.response_class = Google::Apis::ComputeAlpha::Autoscaler
           command.params['project'] = project unless project.nil?
@@ -18227,7 +18227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_autoscaler(project, region, autoscaler_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/autoscalers', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18300,7 +18300,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_autoscalers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/autoscalers', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/autoscalers', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionAutoscalerList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionAutoscalerList
           command.params['project'] = project unless project.nil?
@@ -18356,7 +18356,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18399,7 +18399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_autoscaler_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/autoscalers/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/autoscalers/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -18453,7 +18453,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/autoscalers', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18506,7 +18506,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_backend_service(project, region, backend_service, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/backendServices/{backendService}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -18546,7 +18546,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_backend_service(project, region, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/backendServices/{backendService}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendService
           command.params['project'] = project unless project.nil?
@@ -18585,7 +18585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_backend_service_health(project, region, backend_service, resource_group_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/backendServices/{backendService}/getHealth', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/backendServices/{backendService}/getHealth', options)
           command.request_representation = Google::Apis::ComputeAlpha::ResourceGroupReference::Representation
           command.request_object = resource_group_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::BackendServiceGroupHealth::Representation
@@ -18639,7 +18639,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_backend_service(project, region, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/backendServices', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/backendServices', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18713,7 +18713,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_backend_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/backendServices', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/backendServices', options)
           command.response_representation = Google::Apis::ComputeAlpha::BackendServiceList::Representation
           command.response_class = Google::Apis::ComputeAlpha::BackendServiceList
           command.params['project'] = project unless project.nil?
@@ -18771,7 +18771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_backend_service(project, region, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/backendServices/{backendService}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18814,7 +18814,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_backend_service_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/backendServices/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/backendServices/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -18870,7 +18870,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_backend_service(project, region, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/backendServices/{backendService}', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -18942,7 +18942,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_region_commitment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/commitments', options)
+          command = make_simple_command(:get, '{project}/aggregated/commitments', options)
           command.response_representation = Google::Apis::ComputeAlpha::CommitmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::CommitmentAggregatedList
           command.params['project'] = project unless project.nil?
@@ -18984,7 +18984,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_commitment(project, region, commitment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/commitments/{commitment}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/commitments/{commitment}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Commitment::Representation
           command.response_class = Google::Apis::ComputeAlpha::Commitment
           command.params['project'] = project unless project.nil?
@@ -19034,7 +19034,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_commitment(project, region, commitment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/commitments', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/commitments', options)
           command.request_representation = Google::Apis::ComputeAlpha::Commitment::Representation
           command.request_object = commitment_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19107,7 +19107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_commitments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/commitments', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/commitments', options)
           command.response_representation = Google::Apis::ComputeAlpha::CommitmentList::Representation
           command.response_class = Google::Apis::ComputeAlpha::CommitmentList
           command.params['project'] = project unless project.nil?
@@ -19150,7 +19150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_commitment_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/commitments/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/commitments/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -19204,7 +19204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_commitment_reservations(project, region, commitment, region_commitments_update_reservations_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/commitments/{commitment}/updateReservations', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/commitments/{commitment}/updateReservations', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionCommitmentsUpdateReservationsRequest::Representation
           command.request_object = region_commitments_update_reservations_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19247,7 +19247,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_disk_type(project, region, disk_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/diskTypes/{diskType}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/diskTypes/{diskType}', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskType::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskType
           command.params['project'] = project unless project.nil?
@@ -19318,7 +19318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_disk_types(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/diskTypes', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/diskTypes', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionDiskTypeList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionDiskTypeList
           command.params['project'] = project unless project.nil?
@@ -19373,7 +19373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_region_disk_resource_policies(project, region, disk, region_disks_add_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/addResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/addResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionDisksAddResourcePoliciesRequest::Representation
           command.request_object = region_disks_add_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19428,7 +19428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_region_disk_snapshot(project, region, disk, snapshot_object = nil, guest_flush: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/createSnapshot', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/createSnapshot', options)
           command.request_representation = Google::Apis::ComputeAlpha::Snapshot::Representation
           command.request_object = snapshot_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19485,7 +19485,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_disk(project, region, disk, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/disks/{disk}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/disks/{disk}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -19525,7 +19525,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_disk(project, region, disk, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/disks/{disk}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/disks/{disk}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Disk::Representation
           command.response_class = Google::Apis::ComputeAlpha::Disk
           command.params['project'] = project unless project.nil?
@@ -19565,7 +19565,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_disk_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/disks/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/disks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -19617,7 +19617,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_disk(project, region, disk_object = nil, request_id: nil, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks', options)
           command.request_representation = Google::Apis::ComputeAlpha::Disk::Representation
           command.request_object = disk_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19691,7 +19691,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_disks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/disks', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/disks', options)
           command.response_representation = Google::Apis::ComputeAlpha::DiskList::Representation
           command.response_class = Google::Apis::ComputeAlpha::DiskList
           command.params['project'] = project unless project.nil?
@@ -19745,7 +19745,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_region_disk_resource_policies(project, region, disk, region_disks_remove_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/removeResourcePolicies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/removeResourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionDisksRemoveResourcePoliciesRequest::Representation
           command.request_object = region_disks_remove_resource_policies_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19799,7 +19799,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_region_disk(project, region, disk, region_disks_resize_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/resize', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{disk}/resize', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionDisksResizeRequest::Representation
           command.request_object = region_disks_resize_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19843,7 +19843,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_disk_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
           command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -19896,7 +19896,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_disk_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -19939,7 +19939,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_disk_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/disks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -19992,7 +19992,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_health_check_service(project, region, health_check_service, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/healthCheckServices/{healthCheckService}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/healthCheckServices/{healthCheckService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -20033,7 +20033,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_health_check_service(project, region, health_check_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/healthCheckServices/{healthCheckService}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/healthCheckServices/{healthCheckService}', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheckService::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheckService
           command.params['project'] = project unless project.nil?
@@ -20083,7 +20083,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_health_check_service(project, region, health_check_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/healthCheckServices', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/healthCheckServices', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheckService::Representation
           command.request_object = health_check_service_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20157,7 +20157,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_health_check_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/healthCheckServices', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/healthCheckServices', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheckServicesList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheckServicesList
           command.params['project'] = project unless project.nil?
@@ -20200,7 +20200,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_health_check_service_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/healthCheckServices/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/healthCheckServices/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -20252,7 +20252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_health_check(project, region, health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -20293,7 +20293,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_health_check(project, region, health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheck
           command.params['project'] = project unless project.nil?
@@ -20343,7 +20343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_health_check(project, region, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/healthChecks', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/healthChecks', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20416,7 +20416,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_health_checks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/healthChecks', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/healthChecks', options)
           command.response_representation = Google::Apis::ComputeAlpha::HealthCheckList::Representation
           command.response_class = Google::Apis::ComputeAlpha::HealthCheckList
           command.params['project'] = project unless project.nil?
@@ -20472,7 +20472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_health_check(project, region, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20515,7 +20515,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_health_check_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/healthChecks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/healthChecks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -20569,7 +20569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_health_check(project, region, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeAlpha::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20634,7 +20634,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def abandon_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_abandon_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersAbandonInstancesRequest::Representation
           command.request_object = region_instance_group_managers_abandon_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20677,7 +20677,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def apply_region_instance_group_manager_updates_to_instances(project, region, instance_group_manager, region_instance_group_managers_apply_updates_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersApplyUpdatesRequest::Representation
           command.request_object = region_instance_group_managers_apply_updates_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20735,7 +20735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersCreateInstancesRequest::Representation
           command.request_object = region_instance_group_managers_create_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20789,7 +20789,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_instance_group_manager(project, region, instance_group_manager, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -20851,7 +20851,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_delete_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersDeleteInstancesRequest::Representation
           command.request_object = region_instance_group_managers_delete_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20894,7 +20894,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_delete_instance_config_req_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagerDeleteInstanceConfigReq::Representation
           command.request_object = region_instance_group_manager_delete_instance_config_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -20935,7 +20935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_instance_group_manager(project, region, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroupManager
           command.params['project'] = project unless project.nil?
@@ -20990,7 +20990,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_instance_group_manager(project, region, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21064,7 +21064,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_instance_group_managers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagerList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionInstanceGroupManagerList
           command.params['project'] = project unless project.nil?
@@ -21142,7 +21142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_instance_group_manager_managed_instances(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersListInstancesResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersListInstancesResponse
           command.params['project'] = project unless project.nil?
@@ -21219,7 +21219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersListInstanceConfigsResp::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersListInstanceConfigsResp
           command.params['project'] = project unless project.nil?
@@ -21279,7 +21279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21335,7 +21335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_patch_instance_config_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagerPatchInstanceConfigReq::Representation
           command.request_object = region_instance_group_manager_patch_instance_config_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21398,7 +21398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def recreate_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_recreate_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersRecreateRequest::Representation
           command.request_object = region_instance_group_managers_recreate_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21461,7 +21461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_region_instance_group_manager(project, region, instance_group_manager, size, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resize', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resize', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -21515,7 +21515,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_instance_group_manager_auto_healing_policies(project, region, instance_group_manager, region_instance_group_managers_set_auto_healing_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersSetAutoHealingRequest::Representation
           command.request_object = region_instance_group_managers_set_auto_healing_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21570,7 +21570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_instance_group_manager_instance_template(project, region, instance_group_manager, region_instance_group_managers_set_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersSetTemplateRequest::Representation
           command.request_object = region_instance_group_managers_set_template_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21625,7 +21625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_instance_group_manager_target_pools(project, region, instance_group_manager, region_instance_group_managers_set_target_pools_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = region_instance_group_managers_set_target_pools_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21668,7 +21668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_instance_group_manager_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -21725,7 +21725,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21781,7 +21781,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_update_instance_config_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupManagerUpdateInstanceConfigReq::Representation
           command.request_object = region_instance_group_manager_update_instance_config_req_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -21823,7 +21823,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_instance_group(project, region, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroups/{instanceGroup}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/instanceGroups/{instanceGroup}', options)
           command.response_representation = Google::Apis::ComputeAlpha::InstanceGroup::Representation
           command.response_class = Google::Apis::ComputeAlpha::InstanceGroup
           command.params['project'] = project unless project.nil?
@@ -21895,7 +21895,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_instance_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/instanceGroups', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionInstanceGroupList
           command.params['project'] = project unless project.nil?
@@ -21974,7 +21974,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_instance_group_instances(project, region, instance_group, region_instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupsListInstancesRequest::Representation
           command.request_object = region_instance_groups_list_instances_request_object
           command.response_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupsListInstances::Representation
@@ -22031,7 +22031,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_instance_group_named_ports(project, region, instance_group, region_instance_groups_set_named_ports_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionInstanceGroupsSetNamedPortsRequest::Representation
           command.request_object = region_instance_groups_set_named_ports_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -22074,7 +22074,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_instance_group_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -22126,7 +22126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_notification_endpoint(project, region, notification_endpoint, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -22166,7 +22166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_notification_endpoint(project, region, notification_endpoint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}', options)
           command.response_representation = Google::Apis::ComputeAlpha::NotificationEndpoint::Representation
           command.response_class = Google::Apis::ComputeAlpha::NotificationEndpoint
           command.params['project'] = project unless project.nil?
@@ -22216,7 +22216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_notification_endpoint(project, region, notification_endpoint_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/notificationEndpoints', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/notificationEndpoints', options)
           command.request_representation = Google::Apis::ComputeAlpha::NotificationEndpoint::Representation
           command.request_object = notification_endpoint_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -22289,7 +22289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_notification_endpoints(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/notificationEndpoints', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/notificationEndpoints', options)
           command.response_representation = Google::Apis::ComputeAlpha::NotificationEndpointList::Representation
           command.response_class = Google::Apis::ComputeAlpha::NotificationEndpointList
           command.params['project'] = project unless project.nil?
@@ -22332,7 +22332,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_notification_endpoint_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/notificationEndpoints/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/notificationEndpoints/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -22373,7 +22373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_operation(project, region, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/operations/{operation}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/operations/{operation}', options)
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['operation'] = operation unless operation.nil?
@@ -22410,7 +22410,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_operation(project, region, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/operations/{operation}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/operations/{operation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -22481,7 +22481,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_operations(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/operations', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/operations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OperationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::OperationList
           command.params['project'] = project unless project.nil?
@@ -22531,7 +22531,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def wait_region_operation(project, region, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/operations/{operation}/wait', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/operations/{operation}/wait', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -22581,7 +22581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_ssl_certificate(project, region, ssl_certificate, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/sslCertificates/{sslCertificate}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/sslCertificates/{sslCertificate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -22622,7 +22622,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_ssl_certificate(project, region, ssl_certificate, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/sslCertificates/{sslCertificate}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/sslCertificates/{sslCertificate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslCertificate::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslCertificate
           command.params['project'] = project unless project.nil?
@@ -22672,7 +22672,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_ssl_certificate(project, region, ssl_certificate_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/sslCertificates', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/sslCertificates', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslCertificate::Representation
           command.request_object = ssl_certificate_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -22746,7 +22746,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_ssl_certificates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/sslCertificates', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslCertificateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslCertificateList
           command.params['project'] = project unless project.nil?
@@ -22789,7 +22789,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_ssl_certificate_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/sslCertificates/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/sslCertificates/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -22841,7 +22841,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_target_http_proxy(project, region, target_http_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -22882,7 +22882,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_target_http_proxy(project, region, target_http_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpProxy
           command.params['project'] = project unless project.nil?
@@ -22932,7 +22932,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_target_http_proxy(project, region, target_http_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpProxy::Representation
           command.request_object = target_http_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23006,7 +23006,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_target_http_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetHttpProxies', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpProxyList
           command.params['project'] = project unless project.nil?
@@ -23060,7 +23060,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_target_http_proxy_url_map(project, region, target_http_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}/setUrlMap', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMapReference::Representation
           command.request_object = url_map_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23103,7 +23103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_target_http_proxy_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -23155,7 +23155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_target_https_proxy(project, region, target_https_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -23196,7 +23196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_target_https_proxy(project, region, target_https_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpsProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpsProxy
           command.params['project'] = project unless project.nil?
@@ -23246,7 +23246,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_target_https_proxy(project, region, target_https_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpsProxy::Representation
           command.request_object = target_https_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23320,7 +23320,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_target_https_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetHttpsProxies', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpsProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpsProxyList
           command.params['project'] = project unless project.nil?
@@ -23374,7 +23374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_target_https_proxy_ssl_certificates(project, region, target_https_proxy, region_target_https_proxies_set_ssl_certificates_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionTargetHttpsProxiesSetSslCertificatesRequest::Representation
           command.request_object = region_target_https_proxies_set_ssl_certificates_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23428,7 +23428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_region_target_https_proxy_url_map(project, region, target_https_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMapReference::Representation
           command.request_object = url_map_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23471,7 +23471,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_target_https_proxy_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetHttpsProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -23514,7 +23514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region_url_map(project, region, url_map, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/urlMaps/{urlMap}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/urlMaps/{urlMap}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -23555,7 +23555,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region_url_map(project, region, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/urlMaps/{urlMap}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/urlMaps/{urlMap}', options)
           command.response_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.response_class = Google::Apis::ComputeAlpha::UrlMap
           command.params['project'] = project unless project.nil?
@@ -23596,7 +23596,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_region_url_map(project, region, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/urlMaps', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/urlMaps', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23641,7 +23641,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def invalidate_region_url_map_cache(project, region, url_map, cache_invalidation_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/urlMaps/{urlMap}/invalidateCache', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/urlMaps/{urlMap}/invalidateCache', options)
           command.request_representation = Google::Apis::ComputeAlpha::CacheInvalidationRule::Representation
           command.request_object = cache_invalidation_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23716,7 +23716,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_region_url_maps(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/urlMaps', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/urlMaps', options)
           command.response_representation = Google::Apis::ComputeAlpha::UrlMapList::Representation
           command.response_class = Google::Apis::ComputeAlpha::UrlMapList
           command.params['project'] = project unless project.nil?
@@ -23763,7 +23763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region_url_map(project, region, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/urlMaps/{urlMap}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23806,7 +23806,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_region_url_map_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/urlMaps/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/urlMaps/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -23850,7 +23850,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_region_url_map(project, region, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/urlMaps/{urlMap}', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -23894,7 +23894,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_region_url_map(project, region, url_map, region_url_maps_validate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/urlMaps/{urlMap}/validate', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/urlMaps/{urlMap}/validate', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionUrlMapsValidateRequest::Representation
           command.request_object = region_url_maps_validate_request_object
           command.response_representation = Google::Apis::ComputeAlpha::UrlMapsValidateResponse::Representation
@@ -23934,7 +23934,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region(project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Region::Representation
           command.response_class = Google::Apis::ComputeAlpha::Region
           command.params['project'] = project unless project.nil?
@@ -24002,7 +24002,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_regions(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions', options)
+          command = make_simple_command(:get, '{project}/regions', options)
           command.response_representation = Google::Apis::ComputeAlpha::RegionList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RegionList
           command.params['project'] = project unless project.nil?
@@ -24073,7 +24073,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_reservation_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/reservations', options)
+          command = make_simple_command(:get, '{project}/aggregated/reservations', options)
           command.response_representation = Google::Apis::ComputeAlpha::ReservationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ReservationAggregatedList
           command.params['project'] = project unless project.nil?
@@ -24125,7 +24125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_reservation(project, zone, reservation, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/reservations/{reservation}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/reservations/{reservation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -24165,7 +24165,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reservation(project, zone, reservation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/reservations/{reservation}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/reservations/{reservation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Reservation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Reservation
           command.params['project'] = project unless project.nil?
@@ -24205,7 +24205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reservation_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/reservations/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/reservations/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -24254,7 +24254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_reservation(project, zone, reservation_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/reservations', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/reservations', options)
           command.request_representation = Google::Apis::ComputeAlpha::Reservation::Representation
           command.request_object = reservation_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -24328,7 +24328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reservations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/reservations', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/reservations', options)
           command.response_representation = Google::Apis::ComputeAlpha::ReservationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ReservationList
           command.params['project'] = project unless project.nil?
@@ -24382,7 +24382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_reservation(project, zone, reservation, reservations_resize_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/reservations/{reservation}/resize', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/reservations/{reservation}/resize', options)
           command.request_representation = Google::Apis::ComputeAlpha::ReservationsResizeRequest::Representation
           command.request_object = reservations_resize_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -24426,7 +24426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_reservation_iam_policy(project, zone, resource, zone_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/reservations/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/reservations/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::ZoneSetPolicyRequest::Representation
           command.request_object = zone_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -24468,7 +24468,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_reservation_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/reservations/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/reservations/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -24539,7 +24539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_resource_policy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/resourcePolicies', options)
+          command = make_simple_command(:get, '{project}/aggregated/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeAlpha::ResourcePolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ResourcePolicyAggregatedList
           command.params['project'] = project unless project.nil?
@@ -24591,7 +24591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_resource_policy(project, region, resource_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/resourcePolicies/{resourcePolicy}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/resourcePolicies/{resourcePolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -24631,7 +24631,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_resource_policy(project, region, resource_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/resourcePolicies/{resourcePolicy}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/resourcePolicies/{resourcePolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::ResourcePolicy::Representation
           command.response_class = Google::Apis::ComputeAlpha::ResourcePolicy
           command.params['project'] = project unless project.nil?
@@ -24671,7 +24671,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_resource_policy_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/resourcePolicies/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/resourcePolicies/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -24720,7 +24720,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_resource_policy(project, region, resource_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/resourcePolicies', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/resourcePolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::ResourcePolicy::Representation
           command.request_object = resource_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -24794,7 +24794,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_resource_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/resourcePolicies', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeAlpha::ResourcePolicyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ResourcePolicyList
           command.params['project'] = project unless project.nil?
@@ -24838,7 +24838,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_resource_policy_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/resourcePolicies/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/resourcePolicies/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
           command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -24880,7 +24880,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_resource_policy_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/resourcePolicies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/resourcePolicies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -24951,7 +24951,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_router_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/routers', options)
+          command = make_simple_command(:get, '{project}/aggregated/routers', options)
           command.response_representation = Google::Apis::ComputeAlpha::RouterAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RouterAggregatedList
           command.params['project'] = project unless project.nil?
@@ -25003,7 +25003,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_router(project, region, router, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/routers/{router}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/routers/{router}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -25044,7 +25044,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_router(project, region, router, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/routers/{router}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/routers/{router}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Router::Representation
           command.response_class = Google::Apis::ComputeAlpha::Router
           command.params['project'] = project unless project.nil?
@@ -25122,7 +25122,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, nat_name: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
           command.response_representation = Google::Apis::ComputeAlpha::VmEndpointNatMappingsList::Representation
           command.response_class = Google::Apis::ComputeAlpha::VmEndpointNatMappingsList
           command.params['project'] = project unless project.nil?
@@ -25166,7 +25166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_router_router_status(project, region, router, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getRouterStatus', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getRouterStatus', options)
           command.response_representation = Google::Apis::ComputeAlpha::RouterStatusResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::RouterStatusResponse
           command.params['project'] = project unless project.nil?
@@ -25216,7 +25216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_router(project, region, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/routers', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/routers', options)
           command.request_representation = Google::Apis::ComputeAlpha::Router::Representation
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -25289,7 +25289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_routers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/routers', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/routers', options)
           command.response_representation = Google::Apis::ComputeAlpha::RouterList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RouterList
           command.params['project'] = project unless project.nil?
@@ -25345,7 +25345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_router(project, region, router, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/routers/{router}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/routers/{router}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Router::Representation
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -25389,7 +25389,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def preview_router(project, region, router, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/routers/{router}/preview', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/routers/{router}/preview', options)
           command.request_representation = Google::Apis::ComputeAlpha::Router::Representation
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeAlpha::RoutersPreviewResponse::Representation
@@ -25431,7 +25431,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_router_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/routers/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/routers/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -25484,7 +25484,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_router(project, region, router, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/regions/{region}/routers/{router}', options)
+          command = make_simple_command(:put, '{project}/regions/{region}/routers/{router}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Router::Representation
           command.request_object = router_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -25535,7 +25535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_route(project, route, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/routes/{route}', options)
+          command = make_simple_command(:delete, '{project}/global/routes/{route}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -25573,7 +25573,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_route(project, route, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/routes/{route}', options)
+          command = make_simple_command(:get, '{project}/global/routes/{route}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Route::Representation
           command.response_class = Google::Apis::ComputeAlpha::Route
           command.params['project'] = project unless project.nil?
@@ -25620,7 +25620,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_route(project, route_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/routes', options)
+          command = make_simple_command(:post, '{project}/global/routes', options)
           command.request_representation = Google::Apis::ComputeAlpha::Route::Representation
           command.request_object = route_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -25690,7 +25690,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_routes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/routes', options)
+          command = make_simple_command(:get, '{project}/global/routes', options)
           command.response_representation = Google::Apis::ComputeAlpha::RouteList::Representation
           command.response_class = Google::Apis::ComputeAlpha::RouteList
           command.params['project'] = project unless project.nil?
@@ -25730,7 +25730,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_route_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/routes/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/routes/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -25771,7 +25771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_security_policy_rule(project, security_policy, security_policy_rule_object = nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/addRule', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/addRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -25821,7 +25821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_security_policy(project, security_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:delete, '{project}/global/securityPolicies/{securityPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -25858,7 +25858,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_security_policy(project, security_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:get, '{project}/global/securityPolicies/{securityPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicy
           command.params['project'] = project unless project.nil?
@@ -25896,7 +25896,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_security_policy_rule(project, security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/securityPolicies/{securityPolicy}/getRule', options)
+          command = make_simple_command(:get, '{project}/global/securityPolicies/{securityPolicy}/getRule', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyRule
           command.params['project'] = project unless project.nil?
@@ -25946,7 +25946,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_security_policy(project, security_policy_object = nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.request_object = security_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26017,7 +26017,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_security_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/securityPolicies', options)
+          command = make_simple_command(:get, '{project}/global/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPolicyList
           command.params['project'] = project unless project.nil?
@@ -26089,7 +26089,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_security_policy_preconfigured_expression_sets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/securityPolicies/listPreconfiguredExpressionSets', options)
+          command = make_simple_command(:get, '{project}/global/securityPolicies/listPreconfiguredExpressionSets', options)
           command.response_representation = Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::SecurityPoliciesListPreconfiguredExpressionSetsResponse
           command.params['project'] = project unless project.nil?
@@ -26140,7 +26140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_security_policy(project, security_policy, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/securityPolicies/{securityPolicy}', options)
+          command = make_simple_command(:patch, '{project}/global/securityPolicies/{securityPolicy}', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicy::Representation
           command.request_object = security_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26184,7 +26184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_security_policy_rule(project, security_policy, security_policy_rule_object = nil, priority: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/patchRule', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26226,7 +26226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_security_policy_rule(project, security_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/removeRule', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies/{securityPolicy}/removeRule', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -26265,7 +26265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_security_policy_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26304,7 +26304,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_security_policy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/securityPolicies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/securityPolicies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -26357,7 +26357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_snapshot(project, snapshot, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/snapshots/{snapshot}', options)
+          command = make_simple_command(:delete, '{project}/global/snapshots/{snapshot}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -26395,7 +26395,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_snapshot(project, snapshot, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/snapshots/{snapshot}', options)
+          command = make_simple_command(:get, '{project}/global/snapshots/{snapshot}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Snapshot::Representation
           command.response_class = Google::Apis::ComputeAlpha::Snapshot
           command.params['project'] = project unless project.nil?
@@ -26432,7 +26432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_snapshot_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/snapshots/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/global/snapshots/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -26501,7 +26501,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_snapshots(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/snapshots', options)
+          command = make_simple_command(:get, '{project}/global/snapshots', options)
           command.response_representation = Google::Apis::ComputeAlpha::SnapshotList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SnapshotList
           command.params['project'] = project unless project.nil?
@@ -26542,7 +26542,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_snapshot_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/global/snapshots/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -26582,7 +26582,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_snapshot_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/global/snapshots/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::GlobalSetLabelsRequest::Representation
           command.request_object = global_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26621,7 +26621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_snapshot_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/snapshots/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -26692,7 +26692,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_ssl_certificate_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/sslCertificates', options)
+          command = make_simple_command(:get, '{project}/aggregated/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslCertificateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslCertificateAggregatedList
           command.params['project'] = project unless project.nil?
@@ -26742,7 +26742,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_ssl_certificate(project, ssl_certificate, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/sslCertificates/{sslCertificate}', options)
+          command = make_simple_command(:delete, '{project}/global/sslCertificates/{sslCertificate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -26780,7 +26780,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ssl_certificate(project, ssl_certificate, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/sslCertificates/{sslCertificate}', options)
+          command = make_simple_command(:get, '{project}/global/sslCertificates/{sslCertificate}', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslCertificate::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslCertificate
           command.params['project'] = project unless project.nil?
@@ -26827,7 +26827,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_ssl_certificate(project, ssl_certificate_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/sslCertificates', options)
+          command = make_simple_command(:post, '{project}/global/sslCertificates', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslCertificate::Representation
           command.request_object = ssl_certificate_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -26898,7 +26898,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ssl_certificates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/sslCertificates', options)
+          command = make_simple_command(:get, '{project}/global/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslCertificateList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslCertificateList
           command.params['project'] = project unless project.nil?
@@ -26938,7 +26938,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_ssl_certificate_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/sslCertificates/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/sslCertificates/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -26989,7 +26989,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_ssl_policy(project, ssl_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/sslPolicies/{sslPolicy}', options)
+          command = make_simple_command(:delete, '{project}/global/sslPolicies/{sslPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -27027,7 +27027,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ssl_policy(project, ssl_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/sslPolicies/{sslPolicy}', options)
+          command = make_simple_command(:get, '{project}/global/sslPolicies/{sslPolicy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslPolicy::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslPolicy
           command.params['project'] = project unless project.nil?
@@ -27074,7 +27074,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_ssl_policy(project, ssl_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/sslPolicies', options)
+          command = make_simple_command(:post, '{project}/global/sslPolicies', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslPolicy::Representation
           command.request_object = ssl_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27144,7 +27144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ssl_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/sslPolicies', options)
+          command = make_simple_command(:get, '{project}/global/sslPolicies', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslPoliciesList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslPoliciesList
           command.params['project'] = project unless project.nil?
@@ -27216,7 +27216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ssl_policy_available_features(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/sslPolicies/listAvailableFeatures', options)
+          command = make_simple_command(:get, '{project}/global/sslPolicies/listAvailableFeatures', options)
           command.response_representation = Google::Apis::ComputeAlpha::SslPoliciesListAvailableFeaturesResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::SslPoliciesListAvailableFeaturesResponse
           command.params['project'] = project unless project.nil?
@@ -27268,7 +27268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_ssl_policy(project, ssl_policy, ssl_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/sslPolicies/{sslPolicy}', options)
+          command = make_simple_command(:patch, '{project}/global/sslPolicies/{sslPolicy}', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslPolicy::Representation
           command.request_object = ssl_policy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27308,7 +27308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_ssl_policy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/sslPolicies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/sslPolicies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -27378,7 +27378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_subnetwork_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/subnetworks', options)
+          command = make_simple_command(:get, '{project}/aggregated/subnetworks', options)
           command.response_representation = Google::Apis::ComputeAlpha::SubnetworkAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SubnetworkAggregatedList
           command.params['project'] = project unless project.nil?
@@ -27430,7 +27430,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subnetwork(project, region, subnetwork, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -27482,7 +27482,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def expand_subnetwork_ip_cidr_range(project, region, subnetwork, subnetworks_expand_ip_cidr_range_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange', options)
           command.request_representation = Google::Apis::ComputeAlpha::SubnetworksExpandIpCidrRangeRequest::Representation
           command.request_object = subnetworks_expand_ip_cidr_range_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27525,7 +27525,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subnetwork(project, region, subnetwork, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Subnetwork::Representation
           command.response_class = Google::Apis::ComputeAlpha::Subnetwork
           command.params['project'] = project unless project.nil?
@@ -27565,7 +27565,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subnetwork_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/subnetworks/{resource}/getIamPolicy', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/subnetworks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
           command.response_class = Google::Apis::ComputeAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -27615,7 +27615,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_subnetwork(project, region, subnetwork_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/subnetworks', options)
           command.request_representation = Google::Apis::ComputeAlpha::Subnetwork::Representation
           command.request_object = subnetwork_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27688,7 +27688,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subnetworks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/subnetworks', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/subnetworks', options)
           command.response_representation = Google::Apis::ComputeAlpha::SubnetworkList::Representation
           command.response_class = Google::Apis::ComputeAlpha::SubnetworkList
           command.params['project'] = project unless project.nil?
@@ -27760,7 +27760,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/subnetworks/listUsable', options)
+          command = make_simple_command(:get, '{project}/aggregated/subnetworks/listUsable', options)
           command.response_representation = Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList
           command.params['project'] = project unless project.nil?
@@ -27824,7 +27824,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_subnetwork(project, region, subnetwork, subnetwork_object = nil, drain_timeout_seconds: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
+          command = make_simple_command(:patch, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Subnetwork::Representation
           command.request_object = subnetwork_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27869,7 +27869,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_subnetwork_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/setIamPolicy', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetPolicyRequest::Representation
           command.request_object = region_set_policy_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
@@ -27923,7 +27923,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_subnetwork_private_ip_google_access(project, region, subnetwork, subnetworks_set_private_ip_google_access_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess', options)
           command.request_representation = Google::Apis::ComputeAlpha::SubnetworksSetPrivateIpGoogleAccessRequest::Representation
           command.request_object = subnetworks_set_private_ip_google_access_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -27966,7 +27966,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_subnetwork_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/subnetworks/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -28038,7 +28038,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_target_http_proxy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/targetHttpProxies', options)
+          command = make_simple_command(:get, '{project}/aggregated/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpProxyAggregatedList
           command.params['project'] = project unless project.nil?
@@ -28088,7 +28088,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_http_proxy(project, target_http_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/targetHttpProxies/{targetHttpProxy}', options)
+          command = make_simple_command(:delete, '{project}/global/targetHttpProxies/{targetHttpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -28126,7 +28126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_http_proxy(project, target_http_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetHttpProxies/{targetHttpProxy}', options)
+          command = make_simple_command(:get, '{project}/global/targetHttpProxies/{targetHttpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpProxy
           command.params['project'] = project unless project.nil?
@@ -28173,7 +28173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_http_proxy(project, target_http_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpProxies', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpProxy::Representation
           command.request_object = target_http_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28244,7 +28244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_http_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetHttpProxies', options)
+          command = make_simple_command(:get, '{project}/global/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpProxyList
           command.params['project'] = project unless project.nil?
@@ -28295,7 +28295,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_http_proxy_url_map(project, target_http_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap', options)
+          command = make_simple_command(:post, '{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMapReference::Representation
           command.request_object = url_map_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28335,7 +28335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_http_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -28406,7 +28406,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_target_https_proxy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/targetHttpsProxies', options)
+          command = make_simple_command(:get, '{project}/aggregated/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpsProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpsProxyAggregatedList
           command.params['project'] = project unless project.nil?
@@ -28456,7 +28456,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_https_proxy(project, target_https_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
+          command = make_simple_command(:delete, '{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -28494,7 +28494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_https_proxy(project, target_https_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
+          command = make_simple_command(:get, '{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpsProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpsProxy
           command.params['project'] = project unless project.nil?
@@ -28541,7 +28541,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_https_proxy(project, target_https_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpsProxies', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpsProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpsProxy::Representation
           command.request_object = target_https_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28612,7 +28612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_https_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetHttpsProxies', options)
+          command = make_simple_command(:get, '{project}/global/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetHttpsProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetHttpsProxyList
           command.params['project'] = project unless project.nil?
@@ -28664,7 +28664,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_https_proxy_quic_override(project, target_https_proxy, target_https_proxies_set_quic_override_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpsProxies/{targetHttpsProxy}/setQuicOverride', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpsProxies/{targetHttpsProxy}/setQuicOverride', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpsProxiesSetQuicOverrideRequest::Representation
           command.request_object = target_https_proxies_set_quic_override_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28715,7 +28715,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_https_proxy_ssl_certificates(project, target_https_proxy, target_https_proxies_set_ssl_certificates_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates', options)
+          command = make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetHttpsProxiesSetSslCertificatesRequest::Representation
           command.request_object = target_https_proxies_set_ssl_certificates_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28770,7 +28770,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_https_proxy_ssl_policy(project, target_https_proxy, ssl_policy_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpsProxies/{targetHttpsProxy}/setSslPolicy', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpsProxies/{targetHttpsProxy}/setSslPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslPolicyReference::Representation
           command.request_object = ssl_policy_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28821,7 +28821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_https_proxy_url_map(project, target_https_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap', options)
+          command = make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMapReference::Representation
           command.request_object = url_map_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -28861,7 +28861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_https_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetHttpsProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/targetHttpsProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -28931,7 +28931,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_target_instance_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/targetInstances', options)
+          command = make_simple_command(:get, '{project}/aggregated/targetInstances', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetInstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetInstanceAggregatedList
           command.params['project'] = project unless project.nil?
@@ -28983,7 +28983,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_instance(project, zone, target_instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/targetInstances/{targetInstance}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/targetInstances/{targetInstance}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -29024,7 +29024,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_instance(project, zone, target_instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/targetInstances/{targetInstance}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/targetInstances/{targetInstance}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetInstance::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetInstance
           command.params['project'] = project unless project.nil?
@@ -29074,7 +29074,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_instance(project, zone, target_instance_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/targetInstances', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/targetInstances', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetInstance::Representation
           command.request_object = target_instance_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29148,7 +29148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/targetInstances', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/targetInstances', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetInstanceList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetInstanceList
           command.params['project'] = project unless project.nil?
@@ -29191,7 +29191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_instance_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/targetInstances/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/targetInstances/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -29244,7 +29244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_target_pool_health_check(project, region, target_pool, target_pools_add_health_check_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetPoolsAddHealthCheckRequest::Representation
           command.request_object = target_pools_add_health_check_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29298,7 +29298,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_target_pool_instance(project, region, target_pool, target_pools_add_instance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addInstance', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addInstance', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetPoolsAddInstanceRequest::Representation
           command.request_object = target_pools_add_instance_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29370,7 +29370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_target_pool_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/targetPools', options)
+          command = make_simple_command(:get, '{project}/aggregated/targetPools', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetPoolAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetPoolAggregatedList
           command.params['project'] = project unless project.nil?
@@ -29422,7 +29422,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_pool(project, region, target_pool, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/targetPools/{targetPool}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/targetPools/{targetPool}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -29463,7 +29463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_pool(project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetPools/{targetPool}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetPools/{targetPool}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetPool::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetPool
           command.params['project'] = project unless project.nil?
@@ -29504,7 +29504,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_pool_health(project, region, target_pool, instance_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/getHealth', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/getHealth', options)
           command.request_representation = Google::Apis::ComputeAlpha::InstanceReference::Representation
           command.request_object = instance_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::TargetPoolInstanceHealth::Representation
@@ -29556,7 +29556,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_pool(project, region, target_pool_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetPool::Representation
           command.request_object = target_pool_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29629,7 +29629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_pools(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetPools', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetPools', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetPoolList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetPoolList
           command.params['project'] = project unless project.nil?
@@ -29683,7 +29683,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_target_pool_health_check(project, region, target_pool, target_pools_remove_health_check_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetPoolsRemoveHealthCheckRequest::Representation
           command.request_object = target_pools_remove_health_check_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29737,7 +29737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_target_pool_instance(project, region, target_pool, target_pools_remove_instance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeInstance', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeInstance', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetPoolsRemoveInstanceRequest::Representation
           command.request_object = target_pools_remove_instance_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29793,7 +29793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_pool_backup(project, region, target_pool, target_reference_object = nil, failover_ratio: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/setBackup', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/setBackup', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetReference::Representation
           command.request_object = target_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -29837,7 +29837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_pool_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetPools/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -29887,7 +29887,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_ssl_proxy(project, target_ssl_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/targetSslProxies/{targetSslProxy}', options)
+          command = make_simple_command(:delete, '{project}/global/targetSslProxies/{targetSslProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -29925,7 +29925,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_ssl_proxy(project, target_ssl_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetSslProxies/{targetSslProxy}', options)
+          command = make_simple_command(:get, '{project}/global/targetSslProxies/{targetSslProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetSslProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetSslProxy
           command.params['project'] = project unless project.nil?
@@ -29972,7 +29972,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_ssl_proxy(project, target_ssl_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetSslProxy::Representation
           command.request_object = target_ssl_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30043,7 +30043,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_ssl_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetSslProxies', options)
+          command = make_simple_command(:get, '{project}/global/targetSslProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetSslProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetSslProxyList
           command.params['project'] = project unless project.nil?
@@ -30094,7 +30094,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_ssl_proxy_backend_service(project, target_ssl_proxy, target_ssl_proxies_set_backend_service_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setBackendService', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setBackendService', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetSslProxiesSetBackendServiceRequest::Representation
           command.request_object = target_ssl_proxies_set_backend_service_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30145,7 +30145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_ssl_proxy_proxy_header(project, target_ssl_proxy, target_ssl_proxies_set_proxy_header_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetSslProxiesSetProxyHeaderRequest::Representation
           command.request_object = target_ssl_proxies_set_proxy_header_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30196,7 +30196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_ssl_proxy_ssl_certificates(project, target_ssl_proxy, target_ssl_proxies_set_ssl_certificates_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetSslProxiesSetSslCertificatesRequest::Representation
           command.request_object = target_ssl_proxies_set_ssl_certificates_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30251,7 +30251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_ssl_proxy_ssl_policy(project, target_ssl_proxy, ssl_policy_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setSslPolicy', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setSslPolicy', options)
           command.request_representation = Google::Apis::ComputeAlpha::SslPolicyReference::Representation
           command.request_object = ssl_policy_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30291,7 +30291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_ssl_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetSslProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/targetSslProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -30340,7 +30340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_tcp_proxy(project, target_tcp_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command = make_simple_command(:delete, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -30378,7 +30378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command = make_simple_command(:get, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetTcpProxy::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetTcpProxy
           command.params['project'] = project unless project.nil?
@@ -30425,7 +30425,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_tcp_proxy(project, target_tcp_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetTcpProxies', options)
+          command = make_simple_command(:post, '{project}/global/targetTcpProxies', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetTcpProxy::Representation
           command.request_object = target_tcp_proxy_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30496,7 +30496,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_tcp_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/targetTcpProxies', options)
+          command = make_simple_command(:get, '{project}/global/targetTcpProxies', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetTcpProxyList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetTcpProxyList
           command.params['project'] = project unless project.nil?
@@ -30547,7 +30547,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_tcp_proxy_backend_service(project, target_tcp_proxy, target_tcp_proxies_set_backend_service_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService', options)
+          command = make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetTcpProxiesSetBackendServiceRequest::Representation
           command.request_object = target_tcp_proxies_set_backend_service_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30598,7 +30598,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_tcp_proxy_proxy_header(project, target_tcp_proxy, target_tcp_proxies_set_proxy_header_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader', options)
+          command = make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetTcpProxiesSetProxyHeaderRequest::Representation
           command.request_object = target_tcp_proxies_set_proxy_header_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30638,7 +30638,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_tcp_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/targetTcpProxies/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -30708,7 +30708,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_target_vpn_gateway_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/targetVpnGateways', options)
+          command = make_simple_command(:get, '{project}/aggregated/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetVpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetVpnGatewayAggregatedList
           command.params['project'] = project unless project.nil?
@@ -30760,7 +30760,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_target_vpn_gateway(project, region, target_vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -30801,7 +30801,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_target_vpn_gateway(project, region, target_vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetVpnGateway::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetVpnGateway
           command.params['project'] = project unless project.nil?
@@ -30851,7 +30851,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_target_vpn_gateway(project, region, target_vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways', options)
           command.request_representation = Google::Apis::ComputeAlpha::TargetVpnGateway::Representation
           command.request_object = target_vpn_gateway_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -30925,7 +30925,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_target_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/targetVpnGateways', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeAlpha::TargetVpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeAlpha::TargetVpnGatewayList
           command.params['project'] = project unless project.nil?
@@ -30980,7 +30980,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_vpn_gateway_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31023,7 +31023,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_target_vpn_gateway_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -31095,7 +31095,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_url_map_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/urlMaps', options)
+          command = make_simple_command(:get, '{project}/aggregated/urlMaps', options)
           command.response_representation = Google::Apis::ComputeAlpha::UrlMapsAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::UrlMapsAggregatedList
           command.params['project'] = project unless project.nil?
@@ -31145,7 +31145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_url_map(project, url_map, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/global/urlMaps/{urlMap}', options)
+          command = make_simple_command(:delete, '{project}/global/urlMaps/{urlMap}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -31183,7 +31183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_url_map(project, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/urlMaps/{urlMap}', options)
+          command = make_simple_command(:get, '{project}/global/urlMaps/{urlMap}', options)
           command.response_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.response_class = Google::Apis::ComputeAlpha::UrlMap
           command.params['project'] = project unless project.nil?
@@ -31230,7 +31230,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_url_map(project, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/urlMaps', options)
+          command = make_simple_command(:post, '{project}/global/urlMaps', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31281,7 +31281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def invalidate_url_map_cache(project, url_map, cache_invalidation_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/invalidateCache', options)
+          command = make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/invalidateCache', options)
           command.request_representation = Google::Apis::ComputeAlpha::CacheInvalidationRule::Representation
           command.request_object = cache_invalidation_rule_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31352,7 +31352,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_url_maps(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/global/urlMaps', options)
+          command = make_simple_command(:get, '{project}/global/urlMaps', options)
           command.response_representation = Google::Apis::ComputeAlpha::UrlMapList::Representation
           command.response_class = Google::Apis::ComputeAlpha::UrlMapList
           command.params['project'] = project unless project.nil?
@@ -31405,7 +31405,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_url_map(project, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{project}/global/urlMaps/{urlMap}', options)
+          command = make_simple_command(:patch, '{project}/global/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31445,7 +31445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_url_map_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/urlMaps/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/global/urlMaps/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -31495,7 +31495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_url_map(project, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{project}/global/urlMaps/{urlMap}', options)
+          command = make_simple_command(:put, '{project}/global/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31536,7 +31536,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_url_map(project, url_map, url_maps_validate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/validate', options)
+          command = make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/validate', options)
           command.request_representation = Google::Apis::ComputeAlpha::UrlMapsValidateRequest::Representation
           command.request_object = url_maps_validate_request_object
           command.response_representation = Google::Apis::ComputeAlpha::UrlMapsValidateResponse::Representation
@@ -31606,7 +31606,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_vpn_gateway_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/vpnGateways', options)
+          command = make_simple_command(:get, '{project}/aggregated/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnGatewayAggregatedList
           command.params['project'] = project unless project.nil?
@@ -31658,7 +31658,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_vpn_gateway(project, region, vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -31699,7 +31699,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_vpn_gateway(project, region, vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnGateway::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnGateway
           command.params['project'] = project unless project.nil?
@@ -31738,7 +31738,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_vpn_gateway_status(project, region, vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}/getStatus', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}/getStatus', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnGatewaysGetStatusResponse::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnGatewaysGetStatusResponse
           command.params['project'] = project unless project.nil?
@@ -31788,7 +31788,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_vpn_gateway(project, region, vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways', options)
           command.request_representation = Google::Apis::ComputeAlpha::VpnGateway::Representation
           command.request_object = vpn_gateway_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31861,7 +31861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/vpnGateways', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnGatewayList
           command.params['project'] = project unless project.nil?
@@ -31916,7 +31916,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_vpn_gateway_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -31959,7 +31959,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_vpn_gateway_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -32030,7 +32030,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_vpn_tunnel_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/vpnTunnels', options)
+          command = make_simple_command(:get, '{project}/aggregated/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnTunnelAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnTunnelAggregatedList
           command.params['project'] = project unless project.nil?
@@ -32082,7 +32082,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_vpn_tunnel(project, region, vpn_tunnel, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/vpnTunnels/{vpnTunnel}', options)
+          command = make_simple_command(:delete, '{project}/regions/{region}/vpnTunnels/{vpnTunnel}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -32123,7 +32123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_vpn_tunnel(project, region, vpn_tunnel, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/vpnTunnels/{vpnTunnel}', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnTunnels/{vpnTunnel}', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnTunnel::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnTunnel
           command.params['project'] = project unless project.nil?
@@ -32173,7 +32173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_vpn_tunnel(project, region, vpn_tunnel_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnTunnels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnTunnels', options)
           command.request_representation = Google::Apis::ComputeAlpha::VpnTunnel::Representation
           command.request_object = vpn_tunnel_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -32247,7 +32247,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_vpn_tunnels(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/vpnTunnels', options)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeAlpha::VpnTunnelList::Representation
           command.response_class = Google::Apis::ComputeAlpha::VpnTunnelList
           command.params['project'] = project unless project.nil?
@@ -32302,7 +32302,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_vpn_tunnel_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnTunnels/{resource}/setLabels', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnTunnels/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
           command.request_object = region_set_labels_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
@@ -32345,7 +32345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_vpn_tunnel_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/vpnTunnels/{resource}/testIamPermissions', options)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnTunnels/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
@@ -32386,7 +32386,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/zones/{zone}/operations/{operation}', options)
+          command = make_simple_command(:delete, '{project}/zones/{zone}/operations/{operation}', options)
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['operation'] = operation unless operation.nil?
@@ -32423,7 +32423,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -32494,7 +32494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}/operations', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ComputeAlpha::OperationList::Representation
           command.response_class = Google::Apis::ComputeAlpha::OperationList
           command.params['project'] = project unless project.nil?
@@ -32544,7 +32544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def wait_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/operations/{operation}/wait', options)
+          command = make_simple_command(:post, '{project}/zones/{zone}/operations/{operation}/wait', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -32582,7 +32582,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone(project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones/{zone}', options)
+          command = make_simple_command(:get, '{project}/zones/{zone}', options)
           command.response_representation = Google::Apis::ComputeAlpha::Zone::Representation
           command.response_class = Google::Apis::ComputeAlpha::Zone
           command.params['project'] = project unless project.nil?
@@ -32650,7 +32650,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zones(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/zones', options)
+          command = make_simple_command(:get, '{project}/zones', options)
           command.response_representation = Google::Apis::ComputeAlpha::ZoneList::Representation
           command.response_class = Google::Apis::ComputeAlpha::ZoneList
           command.params['project'] = project unless project.nil?

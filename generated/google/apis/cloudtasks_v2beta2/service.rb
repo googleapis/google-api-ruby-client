@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+name}', options)
+          command = make_simple_command(:get, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Location::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+name}/locations', options)
+          command = make_simple_command(:get, 'v2beta2/{+name}/locations', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::ListLocationsResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -153,7 +153,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_queue(parent, queue_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+parent}/queues', options)
+          command = make_simple_command(:post, 'v2beta2/{+parent}/queues', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
           command.request_object = queue_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
@@ -196,7 +196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_queue(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Empty::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -228,7 +228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_queue(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+name}', options)
+          command = make_simple_command(:get, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Queue
           command.params['name'] = name unless name.nil?
@@ -266,7 +266,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_queue_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v2beta2/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Policy::Representation
@@ -326,7 +326,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_queues(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+parent}/queues', options)
+          command = make_simple_command(:get, 'v2beta2/{+parent}/queues', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::ListQueuesResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::ListQueuesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -391,7 +391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_queue(name, queue_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2beta2/{+name}', options)
+          command = make_simple_command(:patch, 'v2beta2/{+name}', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
           command.request_object = queue_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
@@ -432,7 +432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def pause_queue(name, pause_queue_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:pause', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:pause', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::PauseQueueRequest::Representation
           command.request_object = pause_queue_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
@@ -470,7 +470,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def purge_queue(name, purge_queue_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:purge', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:purge', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::PurgeQueueRequest::Representation
           command.request_object = purge_queue_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
@@ -515,7 +515,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resume_queue(name, resume_queue_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:resume', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:resume', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::ResumeQueueRequest::Representation
           command.request_object = resume_queue_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
@@ -556,7 +556,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_queue_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v2beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Policy::Representation
@@ -595,7 +595,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_queue_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v2beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::TestIamPermissionsResponse::Representation
@@ -640,7 +640,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def acknowledge_task(name, acknowledge_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:acknowledge', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:acknowledge', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::AcknowledgeTaskRequest::Representation
           command.request_object = acknowledge_task_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Empty::Representation
@@ -679,7 +679,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_task_lease(name, cancel_lease_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:cancelLease', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:cancelLease', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::CancelLeaseRequest::Representation
           command.request_object = cancel_lease_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Task::Representation
@@ -719,7 +719,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_task(parent, create_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+parent}/tasks', options)
+          command = make_simple_command(:post, 'v2beta2/{+parent}/tasks', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::CreateTaskRequest::Representation
           command.request_object = create_task_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Task::Representation
@@ -756,7 +756,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_queue_task(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Empty::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -799,7 +799,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_queue_task(name, response_view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+name}', options)
+          command = make_simple_command(:get, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Task::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Task
           command.params['name'] = name unless name.nil?
@@ -851,7 +851,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lease_tasks(parent, lease_tasks_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+parent}/tasks:lease', options)
+          command = make_simple_command(:post, 'v2beta2/{+parent}/tasks:lease', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::LeaseTasksRequest::Representation
           command.request_object = lease_tasks_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::LeaseTasksResponse::Representation
@@ -917,7 +917,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_queue_tasks(parent, page_size: nil, page_token: nil, response_view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta2/{+parent}/tasks', options)
+          command = make_simple_command(:get, 'v2beta2/{+parent}/tasks', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::ListTasksResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::ListTasksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -956,7 +956,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def renew_task_lease(name, renew_lease_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:renewLease', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:renewLease', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::RenewLeaseRequest::Representation
           command.request_object = renew_lease_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Task::Representation
@@ -1011,7 +1011,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_task(name, run_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}:run', options)
+          command = make_simple_command(:post, 'v2beta2/{+name}:run', options)
           command.request_representation = Google::Apis::CloudtasksV2beta2::RunTaskRequest::Representation
           command.request_object = run_task_request_object
           command.response_representation = Google::Apis::CloudtasksV2beta2::Task::Representation

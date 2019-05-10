@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def detect_detection_language(detect_language_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/detect', options)
+          command = make_simple_command(:post, 'v2/detect', options)
           command.request_representation = Google::Apis::TranslateV2::DetectLanguageRequest::Representation
           command.request_object = detect_language_request_object
           command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
@@ -103,7 +103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_detections(q, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/detect', options)
+          command = make_simple_command(:get, 'v2/detect', options)
           command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListDetectionsResponse
           command.query['q'] = q unless q.nil?
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_languages(model: nil, target: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/languages', options)
+          command = make_simple_command(:get, 'v2/languages', options)
           command.response_representation = Google::Apis::TranslateV2::ListLanguagesResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListLanguagesResponse
           command.query['model'] = model unless model.nil?
@@ -186,7 +186,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_translations(q, target, cid: nil, format: nil, model: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2', options)
+          command = make_simple_command(:get, 'v2', options)
           command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListTranslationsResponse
           command.query['cid'] = cid unless cid.nil?
@@ -221,7 +221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def translate_translation_text(translate_text_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2', options)
+          command = make_simple_command(:post, 'v2', options)
           command.request_representation = Google::Apis::TranslateV2::TranslateTextRequest::Representation
           command.request_object = translate_text_request_object
           command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation

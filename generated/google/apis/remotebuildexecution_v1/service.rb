@@ -73,7 +73,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_medium(resource_name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'v1/media/{+resourceName}', options)
+            command = make_simple_command(:get, 'v1/media/{+resourceName}', options)
           else
             command = make_download_command(:get, 'v1/media/{+resourceName}', options)
             command.download_dest = download_dest
@@ -115,7 +115,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_medium(resource_name, google_bytestream_media_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'v1/media/{+resourceName}', options)
+            command = make_simple_command(:post, 'v1/media/{+resourceName}', options)
           else
             command = make_upload_command(:post, 'v1/media/{+resourceName}', options)
             command.upload_source = upload_source
@@ -162,7 +162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, google_longrunning_cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV1::GoogleLongrunningCancelOperationRequest::Representation
           command.request_object = google_longrunning_cancel_operation_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV1::GoogleProtobufEmpty::Representation
@@ -197,7 +197,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -241,7 +241,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -276,7 +276,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -352,7 +352,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch(resume_marker: nil, target: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1:watch', options)
+          command = make_simple_command(:get, 'v1:watch', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1::GoogleWatcherV1ChangeBatch::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1::GoogleWatcherV1ChangeBatch
           command.query['resumeMarker'] = resume_marker unless resume_marker.nil?

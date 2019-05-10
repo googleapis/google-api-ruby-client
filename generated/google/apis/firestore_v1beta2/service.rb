@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_project_database_documents(name, google_firestore_admin_v1beta2_export_documents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+name}:exportDocuments', options)
+          command = make_simple_command(:post, 'v1beta2/{+name}:exportDocuments', options)
           command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ExportDocumentsRequest::Representation
           command.request_object = google_firestore_admin_v1beta2_export_documents_request_object
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
@@ -116,7 +116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_project_database_documents(name, google_firestore_admin_v1beta2_import_documents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+name}:importDocuments', options)
+          command = make_simple_command(:post, 'v1beta2/{+name}:importDocuments', options)
           command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ImportDocumentsRequest::Representation
           command.request_object = google_firestore_admin_v1beta2_import_documents_request_object
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
@@ -150,7 +150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_database_collection_group_field(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Field::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Field
           command.params['name'] = name unless name.nil?
@@ -198,7 +198,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_database_collection_group_fields(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/fields', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/fields', options)
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListFieldsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListFieldsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -269,7 +269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_database_collection_group_field(name, google_firestore_admin_v1beta2_field_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta2/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Field::Representation
           command.request_object = google_firestore_admin_v1beta2_field_object
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
@@ -307,7 +307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_database_collection_group_index(parent, google_firestore_admin_v1beta2_index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta2/{+parent}/indexes', options)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/indexes', options)
           command.request_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
           command.request_object = google_firestore_admin_v1beta2_index_object
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleLongrunningOperation::Representation
@@ -341,7 +341,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_database_collection_group_index(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta2/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1beta2::Empty::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::Empty
           command.params['name'] = name unless name.nil?
@@ -373,7 +373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_database_collection_group_index(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+name}', options)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2Index
           command.params['name'] = name unless name.nil?
@@ -413,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_database_collection_group_indexes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta2/{+parent}/indexes', options)
+          command = make_simple_command(:get, 'v1beta2/{+parent}/indexes', options)
           command.response_representation = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse::Representation
           command.response_class = Google::Apis::FirestoreV1beta2::GoogleFirestoreAdminV1beta2ListIndexesResponse
           command.params['parent'] = parent unless parent.nil?

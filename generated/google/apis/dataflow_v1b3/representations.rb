@@ -1864,6 +1864,7 @@ module Google
           property :id, as: 'id'
           property :project_id, as: 'projectId'
           property :source_job_id, as: 'sourceJobId'
+          property :state, as: 'state'
           property :ttl, as: 'ttl'
         end
       end
@@ -2301,8 +2302,10 @@ module Google
       class WorkerHealthReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :msg, as: 'msg'
           collection :pods, as: 'pods'
           property :report_interval, as: 'reportInterval'
+          property :vm_is_broken, as: 'vmIsBroken'
           property :vm_is_healthy, as: 'vmIsHealthy'
           property :vm_startup_time, as: 'vmStartupTime'
         end

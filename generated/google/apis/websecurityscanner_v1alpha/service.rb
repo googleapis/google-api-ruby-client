@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_scan_config(parent, scan_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha/{+parent}/scanConfigs', options)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/scanConfigs', options)
           command.request_representation = Google::Apis::WebsecurityscannerV1alpha::ScanConfig::Representation
           command.request_object = scan_config_object
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanConfig::Representation
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_scan_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::Empty::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::Empty
           command.params['name'] = name unless name.nil?
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_scan_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanConfig::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ScanConfig
           command.params['name'] = name unless name.nil?
@@ -177,7 +177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/scanConfigs', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/scanConfigs', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ListScanConfigsResponse::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ListScanConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_scan_config(name, scan_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
           command.request_representation = Google::Apis::WebsecurityscannerV1alpha::ScanConfig::Representation
           command.request_object = scan_config_object
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanConfig::Representation
@@ -254,7 +254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_scan_config_scan_run(name, start_scan_run_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha/{+name}:start', options)
+          command = make_simple_command(:post, 'v1alpha/{+name}:start', options)
           command.request_representation = Google::Apis::WebsecurityscannerV1alpha::StartScanRunRequest::Representation
           command.request_object = start_scan_run_request_object
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanRun::Representation
@@ -289,7 +289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_scan_config_scan_run(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanRun::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ScanRun
           command.params['name'] = name unless name.nil?
@@ -330,7 +330,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_config_scan_runs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/scanRuns', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/scanRuns', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ListScanRunsResponse::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ListScanRunsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -366,7 +366,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_scan_run(name, stop_scan_run_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha/{+name}:stop', options)
+          command = make_simple_command(:post, 'v1alpha/{+name}:stop', options)
           command.request_representation = Google::Apis::WebsecurityscannerV1alpha::StopScanRunRequest::Representation
           command.request_object = stop_scan_run_request_object
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ScanRun::Representation
@@ -409,7 +409,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_config_scan_run_crawled_urls(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/crawledUrls', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/crawledUrls', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ListCrawledUrlsResponse::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ListCrawledUrlsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -444,7 +444,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_config_scan_run_finding_type_stats(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/findingTypeStats', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/findingTypeStats', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ListFindingTypeStatsResponse::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ListFindingTypeStatsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -478,7 +478,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_scan_config_scan_run_finding(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::Finding::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::Finding
           command.params['name'] = name unless name.nil?
@@ -524,7 +524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_config_scan_run_findings(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/findings', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/findings', options)
           command.response_representation = Google::Apis::WebsecurityscannerV1alpha::ListFindingsResponse::Representation
           command.response_class = Google::Apis::WebsecurityscannerV1alpha::ListFindingsResponse
           command.params['parent'] = parent unless parent.nil?

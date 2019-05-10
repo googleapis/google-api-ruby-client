@@ -67,7 +67,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_reports(get_reports_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/reports:batchGet', options)
+          command = make_simple_command(:post, 'v4/reports:batchGet', options)
           command.request_representation = Google::Apis::AnalyticsreportingV4::GetReportsRequest::Representation
           command.request_object = get_reports_request_object
           command.response_representation = Google::Apis::AnalyticsreportingV4::GetReportsResponse::Representation
@@ -97,7 +97,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_user_activity(search_user_activity_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/userActivity:search', options)
+          command = make_simple_command(:post, 'v4/userActivity:search', options)
           command.request_representation = Google::Apis::AnalyticsreportingV4::SearchUserActivityRequest::Representation
           command.request_object = search_user_activity_request_object
           command.response_representation = Google::Apis::AnalyticsreportingV4::SearchUserActivityResponse::Representation

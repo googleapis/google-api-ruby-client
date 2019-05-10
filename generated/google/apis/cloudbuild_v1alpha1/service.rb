@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_worker_pool(parent, worker_pool_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+parent}/workerPools', options)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/workerPools', options)
           command.request_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
           command.request_object = worker_pool_object
           command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::CloudbuildV1alpha1::Empty::Representation
           command.response_class = Google::Apis::CloudbuildV1alpha1::Empty
           command.params['name'] = name unless name.nil?
@@ -136,7 +136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
           command.response_class = Google::Apis::CloudbuildV1alpha1::WorkerPool
           command.params['name'] = name unless name.nil?
@@ -167,7 +167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_worker_pools(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+parent}/workerPools', options)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/workerPools', options)
           command.response_representation = Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -200,7 +200,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_worker_pool(name, worker_pool_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
           command.request_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
           command.request_object = worker_pool_object
           command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation

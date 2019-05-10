@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def synthesize_text_speech(synthesize_speech_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/text:synthesize', options)
+          command = make_simple_command(:post, 'v1beta1/text:synthesize', options)
           command.request_representation = Google::Apis::TexttospeechV1beta1::SynthesizeSpeechRequest::Representation
           command.request_object = synthesize_speech_request_object
           command.response_representation = Google::Apis::TexttospeechV1beta1::SynthesizeSpeechResponse::Representation
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_voices(language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/voices', options)
+          command = make_simple_command(:get, 'v1beta1/voices', options)
           command.response_representation = Google::Apis::TexttospeechV1beta1::ListVoicesResponse::Representation
           command.response_class = Google::Apis::TexttospeechV1beta1::ListVoicesResponse
           command.query['languageCode'] = language_code unless language_code.nil?

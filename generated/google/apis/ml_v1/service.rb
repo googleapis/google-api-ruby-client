@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}:getConfig', options)
+          command = make_simple_command(:get, 'v1/{+name}:getConfig', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1GetConfigResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1GetConfigResponse
           command.params['name'] = name unless name.nil?
@@ -139,7 +139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def predict_project(name, google_cloud_ml_v1__predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:predict', options)
+          command = make_simple_command(:post, 'v1/{+name}:predict', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1PredictRequest::Representation
           command.request_object = google_cloud_ml_v1__predict_request_object
           command.response_representation = Google::Apis::MlV1::GoogleApiHttpBody::Representation
@@ -172,7 +172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_job(name, google_cloud_ml_v1__cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1CancelJobRequest::Representation
           command.request_object = google_cloud_ml_v1__cancel_job_request_object
           command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
@@ -205,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_job(parent, google_cloud_ml_v1__job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/jobs', options)
+          command = make_simple_command(:post, 'v1/{+parent}/jobs', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
           command.request_object = google_cloud_ml_v1__job_object
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
@@ -237,7 +237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Job
           command.params['name'] = name unless name.nil?
@@ -270,7 +270,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::MlV1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::MlV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
@@ -321,7 +321,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_jobs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/jobs', options)
+          command = make_simple_command(:get, 'v1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListJobsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -374,7 +374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_job(name, google_cloud_ml_v1__job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
           command.request_object = google_cloud_ml_v1__job_object
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
@@ -410,7 +410,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_job_iam_policy(resource, google_iam_v1__set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::MlV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1__set_iam_policy_request_object
           command.response_representation = Google::Apis::MlV1::GoogleIamV1Policy::Representation
@@ -449,7 +449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_job_iam_permissions(resource, google_iam_v1__test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::MlV1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1__test_iam_permissions_request_object
           command.response_representation = Google::Apis::MlV1::GoogleIamV1TestIamPermissionsResponse::Representation
@@ -482,7 +482,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Location::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Location
           command.params['name'] = name unless name.nil?
@@ -522,7 +522,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/locations', options)
+          command = make_simple_command(:get, 'v1/{+parent}/locations', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -559,7 +559,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_model(parent, google_cloud_ml_v1__model_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/models', options)
+          command = make_simple_command(:post, 'v1/{+parent}/models', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
           command.request_object = google_cloud_ml_v1__model_object
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
@@ -595,7 +595,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_model(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -627,7 +627,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_model(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Model
           command.params['name'] = name unless name.nil?
@@ -660,7 +660,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_model_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::MlV1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::MlV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
@@ -705,7 +705,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/models', options)
+          command = make_simple_command(:get, 'v1/{+parent}/models', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -755,7 +755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_model(name, google_cloud_ml_v1__model_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
           command.request_object = google_cloud_ml_v1__model_object
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
@@ -791,7 +791,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_model_iam_policy(resource, google_iam_v1__set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::MlV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1__set_iam_policy_request_object
           command.response_representation = Google::Apis::MlV1::GoogleIamV1Policy::Representation
@@ -830,7 +830,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_model_iam_permissions(resource, google_iam_v1__test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::MlV1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1__test_iam_permissions_request_object
           command.response_representation = Google::Apis::MlV1::GoogleIamV1TestIamPermissionsResponse::Representation
@@ -870,7 +870,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_model_version(parent, google_cloud_ml_v1__version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/versions', options)
+          command = make_simple_command(:post, 'v1/{+parent}/versions', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
           command.request_object = google_cloud_ml_v1__version_object
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
@@ -909,7 +909,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_model_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -944,7 +944,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_model_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Version
           command.params['name'] = name unless name.nil?
@@ -990,7 +990,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_model_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1037,7 +1037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_model_version(name, google_cloud_ml_v1__version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
           command.request_object = google_cloud_ml_v1__version_object
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
@@ -1079,7 +1079,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_model_version_default(name, google_cloud_ml_v1__set_default_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setDefault', options)
+          command = make_simple_command(:post, 'v1/{+name}:setDefault', options)
           command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1SetDefaultVersionRequest::Representation
           command.request_object = google_cloud_ml_v1__set_default_version_request_object
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
@@ -1120,7 +1120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1152,7 +1152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -1196,7 +1196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::MlV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?

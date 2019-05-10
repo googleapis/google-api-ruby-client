@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset_label(asset_label_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assetLabels', options)
+          command = make_simple_command(:post, 'assetLabels', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetLabel::Representation
           command.request_object = asset_label_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetLabel::Representation
@@ -119,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_labels(label_prefix: nil, on_behalf_of_content_owner: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetLabels', options)
+          command = make_simple_command(:get, 'assetLabels', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetLabelListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetLabelListResponse
           command.query['labelPrefix'] = label_prefix unless label_prefix.nil?
@@ -161,7 +161,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset_match_policy(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:get, 'assets/{assetId}/matchPolicy', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetMatchPolicy
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -204,7 +204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_asset_match_policy(asset_id, asset_match_policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:patch, 'assets/{assetId}/matchPolicy', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.request_object = asset_match_policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
@@ -249,7 +249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_asset_match_policy(asset_id, asset_match_policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}/matchPolicy', options)
+          command = make_simple_command(:put, 'assets/{assetId}/matchPolicy', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
           command.request_object = asset_match_policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetMatchPolicy::Representation
@@ -290,7 +290,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_asset_relationship(asset_relationship_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'assetRelationships/{assetRelationshipId}', options)
+          command = make_simple_command(:delete, 'assetRelationships/{assetRelationshipId}', options)
           command.params['assetRelationshipId'] = asset_relationship_id unless asset_relationship_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -325,7 +325,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset_relationship(asset_relationship_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assetRelationships', options)
+          command = make_simple_command(:post, 'assetRelationships', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::AssetRelationship::Representation
           command.request_object = asset_relationship_object
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetRelationship::Representation
@@ -371,7 +371,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_relationships(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetRelationships', options)
+          command = make_simple_command(:get, 'assetRelationships', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -458,7 +458,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_searches(created_after: nil, created_before: nil, has_conflicts: nil, include_any_providedlabel: nil, isrcs: nil, labels: nil, metadata_search_fields: nil, on_behalf_of_content_owner: nil, ownership_restriction: nil, page_token: nil, q: nil, sort: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetSearch', options)
+          command = make_simple_command(:get, 'assetSearch', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetSearchResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetSearchResponse
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -518,7 +518,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_shares(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assetShares', options)
+          command = make_simple_command(:get, 'assetShares', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetShareListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetShareListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -576,7 +576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset(asset_id, fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}', options)
+          command = make_simple_command(:get, 'assets/{assetId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Asset
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -618,7 +618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_asset(asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'assets', options)
+          command = make_simple_command(:post, 'assets', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -684,7 +684,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_assets(id, fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets', options)
+          command = make_simple_command(:get, 'assets', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetListResponse
           command.query['fetchMatchPolicy'] = fetch_match_policy unless fetch_match_policy.nil?
@@ -729,7 +729,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_asset(asset_id, asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}', options)
+          command = make_simple_command(:patch, 'assets/{assetId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -771,7 +771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_asset(asset_id, asset_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}', options)
+          command = make_simple_command(:put, 'assets/{assetId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
           command.request_object = asset_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Asset::Representation
@@ -812,7 +812,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_campaign(campaign_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:delete, 'campaigns/{campaignId}', options)
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -849,7 +849,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_campaign(campaign_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:get, 'campaigns/{campaignId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Campaign
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
@@ -886,7 +886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_campaign(campaign_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'campaigns', options)
+          command = make_simple_command(:post, 'campaigns', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.request_object = campaign_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
@@ -928,7 +928,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_campaigns(on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'campaigns', options)
+          command = make_simple_command(:get, 'campaigns', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::CampaignList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::CampaignList
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -968,7 +968,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_campaign(campaign_id, campaign_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:patch, 'campaigns/{campaignId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.request_object = campaign_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
@@ -1010,7 +1010,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_campaign(campaign_id, campaign_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'campaigns/{campaignId}', options)
+          command = make_simple_command(:put, 'campaigns/{campaignId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
           command.request_object = campaign_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Campaign::Representation
@@ -1051,7 +1051,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_claim_history(claim_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claimHistory/{claimId}', options)
+          command = make_simple_command(:get, 'claimHistory/{claimId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ClaimHistory::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ClaimHistory
           command.params['claimId'] = claim_id unless claim_id.nil?
@@ -1148,7 +1148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_claim_searches(asset_id: nil, content_type: nil, created_after: nil, created_before: nil, inactive_reasons: nil, include_third_party_claims: nil, on_behalf_of_content_owner: nil, origin: nil, page_token: nil, partner_uploaded: nil, q: nil, reference_id: nil, sort: nil, status: nil, status_modified_after: nil, status_modified_before: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claimSearch', options)
+          command = make_simple_command(:get, 'claimSearch', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ClaimSearchResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ClaimSearchResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -1201,7 +1201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_claim(claim_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claims/{claimId}', options)
+          command = make_simple_command(:get, 'claims/{claimId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Claim
           command.params['claimId'] = claim_id unless claim_id.nil?
@@ -1245,7 +1245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_claim(claim_object = nil, is_manual_claim: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'claims', options)
+          command = make_simple_command(:post, 'claims', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1308,7 +1308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_claims(asset_id: nil, id: nil, on_behalf_of_content_owner: nil, page_token: nil, q: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'claims', options)
+          command = make_simple_command(:get, 'claims', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ClaimListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ClaimListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -1353,7 +1353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_claim(claim_id, claim_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'claims/{claimId}', options)
+          command = make_simple_command(:patch, 'claims/{claimId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1396,7 +1396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_claim(claim_id, claim_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'claims/{claimId}', options)
+          command = make_simple_command(:put, 'claims/{claimId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
           command.request_object = claim_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Claim::Representation
@@ -1435,7 +1435,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_content_owner_advertising_option(on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:get, 'contentOwnerAdvertisingOptions', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -1472,7 +1472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_content_owner_advertising_option(content_owner_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:patch, 'contentOwnerAdvertisingOptions', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.request_object = content_owner_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
@@ -1511,7 +1511,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_content_owner_advertising_option(content_owner_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'contentOwnerAdvertisingOptions', options)
+          command = make_simple_command(:put, 'contentOwnerAdvertisingOptions', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
           command.request_object = content_owner_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerAdvertisingOption::Representation
@@ -1551,7 +1551,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_content_owner(content_owner_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwners/{contentOwnerId}', options)
+          command = make_simple_command(:get, 'contentOwners/{contentOwnerId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwner::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwner
           command.params['contentOwnerId'] = content_owner_id unless content_owner_id.nil?
@@ -1593,7 +1593,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_content_owners(fetch_mine: nil, id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contentOwners', options)
+          command = make_simple_command(:get, 'contentOwners', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ContentOwnerListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ContentOwnerListResponse
           command.query['fetchMine'] = fetch_mine unless fetch_mine.nil?
@@ -1636,7 +1636,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_live_cuepoint(channel_id, live_cuepoint_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'liveCuepoints', options)
+          command = make_simple_command(:post, 'liveCuepoints', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::LiveCuepoint::Representation
           command.request_object = live_cuepoint_object
           command.response_representation = Google::Apis::YoutubePartnerV1::LiveCuepoint::Representation
@@ -1678,7 +1678,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metadata_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'metadataHistory', options)
+          command = make_simple_command(:get, 'metadataHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -1715,7 +1715,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_order(order_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'orders/{orderId}', options)
+          command = make_simple_command(:delete, 'orders/{orderId}', options)
           command.params['orderId'] = order_id unless order_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1749,7 +1749,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order(order_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'orders/{orderId}', options)
+          command = make_simple_command(:get, 'orders/{orderId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Order
           command.params['orderId'] = order_id unless order_id.nil?
@@ -1785,7 +1785,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_order(order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'orders', options)
+          command = make_simple_command(:post, 'orders', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -1851,7 +1851,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orders(channel_id: nil, content_type: nil, country: nil, custom_id: nil, on_behalf_of_content_owner: nil, page_token: nil, priority: nil, production_house: nil, q: nil, status: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'orders', options)
+          command = make_simple_command(:get, 'orders', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::OrderListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OrderListResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -1897,7 +1897,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_order(order_id, order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'orders/{orderId}', options)
+          command = make_simple_command(:patch, 'orders/{orderId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -1936,7 +1936,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_order(order_id, order_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'orders/{orderId}', options)
+          command = make_simple_command(:put, 'orders/{orderId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Order::Representation
           command.request_object = order_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Order::Representation
@@ -1978,7 +1978,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ownership(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:get, 'assets/{assetId}/ownership', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::RightsOwnership
           command.params['assetId'] = asset_id unless asset_id.nil?
@@ -2024,7 +2024,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_ownership(asset_id, rights_ownership_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:patch, 'assets/{assetId}/ownership', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.request_object = rights_ownership_object
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
@@ -2071,7 +2071,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_ownership(asset_id, rights_ownership_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'assets/{assetId}/ownership', options)
+          command = make_simple_command(:put, 'assets/{assetId}/ownership', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
           command.request_object = rights_ownership_object
           command.response_representation = Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
@@ -2117,7 +2117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ownership_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'ownershipHistory', options)
+          command = make_simple_command(:get, 'ownershipHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -2156,7 +2156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_package(package_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'package/{packageId}', options)
+          command = make_simple_command(:get, 'package/{packageId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Package::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Package
           command.params['packageId'] = package_id unless package_id.nil?
@@ -2193,7 +2193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_package(package_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'package', options)
+          command = make_simple_command(:post, 'package', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Package::Representation
           command.request_object = package_object
           command.response_representation = Google::Apis::YoutubePartnerV1::PackageInsertResponse::Representation
@@ -2233,7 +2233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_policy(policy_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'policies/{policyId}', options)
+          command = make_simple_command(:get, 'policies/{policyId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Policy
           command.params['policyId'] = policy_id unless policy_id.nil?
@@ -2270,7 +2270,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_policy(policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'policies', options)
+          command = make_simple_command(:post, 'policies', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2313,7 +2313,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_policies(id: nil, on_behalf_of_content_owner: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'policies', options)
+          command = make_simple_command(:get, 'policies', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::PolicyList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::PolicyList
           command.query['id'] = id unless id.nil?
@@ -2354,7 +2354,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_policy(policy_id, policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'policies/{policyId}', options)
+          command = make_simple_command(:patch, 'policies/{policyId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2396,7 +2396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_policy(policy_id, policy_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'policies/{policyId}', options)
+          command = make_simple_command(:put, 'policies/{policyId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Policy::Representation
@@ -2437,7 +2437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_publisher(publisher_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'publishers/{publisherId}', options)
+          command = make_simple_command(:get, 'publishers/{publisherId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Publisher::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Publisher
           command.params['publisherId'] = publisher_id unless publisher_id.nil?
@@ -2493,7 +2493,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_publishers(cae_number: nil, id: nil, ipi_number: nil, max_results: nil, name_prefix: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'publishers', options)
+          command = make_simple_command(:get, 'publishers', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::PublisherList::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::PublisherList
           command.query['caeNumber'] = cae_number unless cae_number.nil?
@@ -2537,7 +2537,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference_conflict(reference_conflict_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'referenceConflicts/{referenceConflictId}', options)
+          command = make_simple_command(:get, 'referenceConflicts/{referenceConflictId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceConflict::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceConflict
           command.params['referenceConflictId'] = reference_conflict_id unless reference_conflict_id.nil?
@@ -2577,7 +2577,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_reference_conflicts(on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'referenceConflicts', options)
+          command = make_simple_command(:get, 'referenceConflicts', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceConflictListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceConflictListResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2616,7 +2616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_reference(reference_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'references/{referenceId}', options)
+          command = make_simple_command(:get, 'references/{referenceId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Reference
           command.params['referenceId'] = reference_id unless reference_id.nil?
@@ -2670,7 +2670,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_reference(reference_object = nil, claim_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'references', options)
+            command = make_simple_command(:post, 'references', options)
           else
             command = make_upload_command(:post, 'references', options)
             command.upload_source = upload_source
@@ -2724,7 +2724,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_references(asset_id: nil, id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'references', options)
+          command = make_simple_command(:get, 'references', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::ReferenceListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::ReferenceListResponse
           command.query['assetId'] = asset_id unless asset_id.nil?
@@ -2771,7 +2771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_reference(reference_id, reference_object = nil, on_behalf_of_content_owner: nil, release_claims: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'references/{referenceId}', options)
+          command = make_simple_command(:patch, 'references/{referenceId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.request_object = reference_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
@@ -2819,7 +2819,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_reference(reference_id, reference_object = nil, on_behalf_of_content_owner: nil, release_claims: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'references/{referenceId}', options)
+          command = make_simple_command(:put, 'references/{referenceId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
           command.request_object = reference_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Reference::Representation
@@ -2862,7 +2862,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_spreadsheet_templates(locale: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'spreadsheetTemplate', options)
+          command = make_simple_command(:get, 'spreadsheetTemplate', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::SpreadsheetTemplateListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::SpreadsheetTemplateListResponse
           command.query['locale'] = locale unless locale.nil?
@@ -2898,7 +2898,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_uploaders(on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'uploader', options)
+          command = make_simple_command(:get, 'uploader', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::UploaderListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::UploaderListResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2934,7 +2934,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_validator(validate_request_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'validator', options)
+          command = make_simple_command(:post, 'validator', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ValidateRequest::Representation
           command.request_object = validate_request_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ValidateResponse::Representation
@@ -2972,7 +2972,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_validator_async(validate_async_request_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'validatorAsync', options)
+          command = make_simple_command(:post, 'validatorAsync', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ValidateAsyncRequest::Representation
           command.request_object = validate_async_request_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ValidateAsyncResponse::Representation
@@ -3010,7 +3010,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_validator_async_status(validate_status_request_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'validatorAsyncStatus', options)
+          command = make_simple_command(:post, 'validatorAsyncStatus', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::ValidateStatusRequest::Representation
           command.request_object = validate_status_request_object
           command.response_representation = Google::Apis::YoutubePartnerV1::ValidateStatusResponse::Representation
@@ -3050,7 +3050,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_advertising_option(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:get, 'videoAdvertisingOptions/{videoId}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption
           command.params['videoId'] = video_id unless video_id.nil?
@@ -3090,7 +3090,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_advertising_option_enabled_ads(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'videoAdvertisingOptions/{videoId}/getEnabledAds', options)
+          command = make_simple_command(:get, 'videoAdvertisingOptions/{videoId}/getEnabledAds', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOptionGetEnabledAdsResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::VideoAdvertisingOptionGetEnabledAdsResponse
           command.params['videoId'] = video_id unless video_id.nil?
@@ -3131,7 +3131,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_video_advertising_option(video_id, video_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:patch, 'videoAdvertisingOptions/{videoId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.request_object = video_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
@@ -3173,7 +3173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_video_advertising_option(video_id, video_advertising_option_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'videoAdvertisingOptions/{videoId}', options)
+          command = make_simple_command(:put, 'videoAdvertisingOptions/{videoId}', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
           command.request_object = video_advertising_option_object
           command.response_representation = Google::Apis::YoutubePartnerV1::VideoAdvertisingOption::Representation
@@ -3214,7 +3214,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_whitelist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'whitelists/{id}', options)
+          command = make_simple_command(:delete, 'whitelists/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3251,7 +3251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_whitelist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'whitelists/{id}', options)
+          command = make_simple_command(:get, 'whitelists/{id}', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::Whitelist
           command.params['id'] = id unless id.nil?
@@ -3291,7 +3291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_whitelist(whitelist_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'whitelists', options)
+          command = make_simple_command(:post, 'whitelists', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
           command.request_object = whitelist_object
           command.response_representation = Google::Apis::YoutubePartnerV1::Whitelist::Representation
@@ -3335,7 +3335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_whitelists(id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'whitelists', options)
+          command = make_simple_command(:get, 'whitelists', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::WhitelistListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::WhitelistListResponse
           command.query['id'] = id unless id.nil?

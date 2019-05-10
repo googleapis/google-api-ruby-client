@@ -90,7 +90,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_claims(language_code: nil, max_age_days: nil, offset: nil, page_size: nil, page_token: nil, query: nil, review_publisher_site_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/claims:search', options)
+          command = make_simple_command(:get, 'v1alpha1/claims:search', options)
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse::Representation
           command.response_class = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -125,7 +125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_page(google_factchecking_factchecktools_v1alpha1_claim_review_markup_page_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/pages', options)
+          command = make_simple_command(:post, 'v1alpha1/pages', options)
           command.request_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage::Representation
           command.request_object = google_factchecking_factchecktools_v1alpha1_claim_review_markup_page_object
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage::Representation
@@ -156,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_page(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::FactchecktoolsV1alpha1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -186,7 +186,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_page(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage::Representation
           command.response_class = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
           command.params['name'] = name unless name.nil?
@@ -236,7 +236,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pages(offset: nil, organization: nil, page_size: nil, page_token: nil, url: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/pages', options)
+          command = make_simple_command(:get, 'v1alpha1/pages', options)
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse::Representation
           command.response_class = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
           command.query['offset'] = offset unless offset.nil?
@@ -277,7 +277,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_page(name, google_factchecking_factchecktools_v1alpha1_claim_review_markup_page_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:put, 'v1alpha1/{+name}', options)
           command.request_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage::Representation
           command.request_object = google_factchecking_factchecktools_v1alpha1_claim_review_markup_page_object
           command.response_representation = Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage::Representation

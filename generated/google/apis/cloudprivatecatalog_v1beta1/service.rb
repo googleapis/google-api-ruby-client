@@ -82,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_folder_catalogs(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -130,7 +130,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_folder_products(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -178,7 +178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_folder_versions(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -224,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_organization_catalogs(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_organization_products(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -320,7 +320,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_organization_versions(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -366,7 +366,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_catalogs(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/catalogs:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -414,7 +414,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_products(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/products:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchProductsResponse
           command.params['resource'] = resource unless resource.nil?
@@ -462,7 +462,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_versions(resource, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}/versions:search', options)
           command.response_representation = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogV1beta1::GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse
           command.params['resource'] = resource unless resource.nil?

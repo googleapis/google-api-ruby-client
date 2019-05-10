@@ -73,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::PolyV1::Asset::Representation
           command.response_class = Google::Apis::PolyV1::Asset
           command.params['name'] = name unless name.nil?
@@ -134,7 +134,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_assets(category: nil, curated: nil, format: nil, keywords: nil, max_complexity: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/assets', options)
+          command = make_simple_command(:get, 'v1/assets', options)
           command.response_representation = Google::Apis::PolyV1::ListAssetsResponse::Representation
           command.response_class = Google::Apis::PolyV1::ListAssetsResponse
           command.query['category'] = category unless category.nil?
@@ -198,7 +198,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_assets(name, format: nil, order_by: nil, page_size: nil, page_token: nil, visibility: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/assets', options)
+          command = make_simple_command(:get, 'v1/{+name}/assets', options)
           command.response_representation = Google::Apis::PolyV1::ListUserAssetsResponse::Representation
           command.response_class = Google::Apis::PolyV1::ListUserAssetsResponse
           command.params['name'] = name unless name.nil?
@@ -252,7 +252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_likedassets(name, format: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/likedassets', options)
+          command = make_simple_command(:get, 'v1/{+name}/likedassets', options)
           command.response_representation = Google::Apis::PolyV1::ListLikedAssetsResponse::Representation
           command.response_class = Google::Apis::PolyV1::ListLikedAssetsResponse
           command.params['name'] = name unless name.nil?

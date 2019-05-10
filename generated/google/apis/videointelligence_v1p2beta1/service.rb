@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_video(google_cloud_videointelligence_v1p2beta1_annotate_video_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p2beta1/videos:annotate', options)
+          command = make_simple_command(:post, 'v1p2beta1/videos:annotate', options)
           command.request_representation = Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1AnnotateVideoRequest::Representation
           command.request_object = google_cloud_videointelligence_v1p2beta1_annotate_video_request_object
           command.response_representation = Google::Apis::VideointelligenceV1p2beta1::GoogleLongrunningOperation::Representation

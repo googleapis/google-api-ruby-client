@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_alert(alert_id, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/alerts/{alertId}', options)
+          command = make_simple_command(:delete, 'v1beta1/alerts/{alertId}', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::Empty::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::Empty
           command.params['alertId'] = alert_id unless alert_id.nil?
@@ -112,7 +112,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_alert(alert_id, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/alerts/{alertId}', options)
+          command = make_simple_command(:get, 'v1beta1/alerts/{alertId}', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::Alert::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::Alert
           command.params['alertId'] = alert_id unless alert_id.nil?
@@ -166,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_alerts(customer_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/alerts', options)
+          command = make_simple_command(:get, 'v1beta1/alerts', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::ListAlertsResponse::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::ListAlertsResponse
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -205,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_alert(alert_id, undelete_alert_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/alerts/{alertId}:undelete', options)
+          command = make_simple_command(:post, 'v1beta1/alerts/{alertId}:undelete', options)
           command.request_representation = Google::Apis::AlertcenterV1beta1::UndeleteAlertRequest::Representation
           command.request_object = undelete_alert_request_object
           command.response_representation = Google::Apis::AlertcenterV1beta1::Alert::Representation
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_alert_feedback(alert_id, alert_feedback_object = nil, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/alerts/{alertId}/feedback', options)
+          command = make_simple_command(:post, 'v1beta1/alerts/{alertId}/feedback', options)
           command.request_representation = Google::Apis::AlertcenterV1beta1::AlertFeedback::Representation
           command.request_object = alert_feedback_object
           command.response_representation = Google::Apis::AlertcenterV1beta1::AlertFeedback::Representation
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_alert_feedbacks(alert_id, customer_id: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/alerts/{alertId}/feedback', options)
+          command = make_simple_command(:get, 'v1beta1/alerts/{alertId}/feedback', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::ListAlertFeedbackResponse::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::ListAlertFeedbackResponse
           command.params['alertId'] = alert_id unless alert_id.nil?
@@ -322,7 +322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_settings(customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/settings', options)
+          command = make_simple_command(:get, 'v1beta1/settings', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::Settings::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::Settings
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -355,7 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_settings(settings_object = nil, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/settings', options)
+          command = make_simple_command(:patch, 'v1beta1/settings', options)
           command.request_representation = Google::Apis::AlertcenterV1beta1::Settings::Representation
           command.request_object = settings_object
           command.response_representation = Google::Apis::AlertcenterV1beta1::Settings::Representation

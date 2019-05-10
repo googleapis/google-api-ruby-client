@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['name'] = name unless name.nil?
@@ -125,7 +125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
+          command = make_simple_command(:get, 'v1/operations', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -159,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service(managed_service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services', options)
+          command = make_simple_command(:post, 'v1/services', options)
           command.request_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
           command.request_object = managed_service_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -195,7 +195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/services/{serviceName}', options)
+          command = make_simple_command(:delete, 'v1/services/{serviceName}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -230,7 +230,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_service(service_name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:disable', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:disable', options)
           command.request_representation = Google::Apis::ServicemanagementV1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -268,7 +268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_service(service_name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:enable', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:enable', options)
           command.request_representation = Google::Apis::ServicemanagementV1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -308,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_service_config_report(generate_config_report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services:generateConfigReport', options)
+          command = make_simple_command(:post, 'v1/services:generateConfigReport', options)
           command.request_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportRequest::Representation
           command.request_object = generate_config_report_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::GenerateConfigReportResponse::Representation
@@ -341,7 +341,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ManagedService::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ManagedService
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -379,7 +379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_configuration(service_name, config_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/config', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/config', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Service
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -415,7 +415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -464,7 +464,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_services(consumer_id: nil, page_size: nil, page_token: nil, producer_project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services', options)
+          command = make_simple_command(:get, 'v1/services', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServicesResponse
           command.query['consumerId'] = consumer_id unless consumer_id.nil?
@@ -500,7 +500,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_service_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -539,7 +539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_service_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsResponse::Representation
@@ -576,7 +576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_service(service_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:undelete', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:undelete', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -614,7 +614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service_config(service_name, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/configs', options)
           command.request_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
@@ -654,7 +654,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_config(service_name, config_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/configs/{configId}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/configs/{configId}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Service::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Service
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -693,7 +693,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_configs(service_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/configs', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/configs', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServiceConfigsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServiceConfigsResponse
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -737,7 +737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_config_source(service_name, submit_config_source_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/configs:submit', options)
           command.request_representation = Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest::Representation
           command.request_object = submit_config_source_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -773,7 +773,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_consumer_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -808,7 +808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_consumer_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ServicemanagementV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::Policy::Representation
@@ -847,7 +847,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_consumer_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicemanagementV1::TestIamPermissionsResponse::Representation
@@ -891,7 +891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_service_rollout(service_name, rollout_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
           command.request_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
           command.request_object = rollout_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
@@ -926,7 +926,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service_rollout(service_name, rollout_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/rollouts/{rolloutId}', options)
           command.response_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Rollout
           command.params['serviceName'] = service_name unless service_name.nil?
@@ -973,7 +973,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_rollouts(service_name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
+          command = make_simple_command(:get, 'v1/services/{serviceName}/rollouts', options)
           command.response_representation = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse::Representation
           command.response_class = Google::Apis::ServicemanagementV1::ListServiceRolloutsResponse
           command.params['serviceName'] = service_name unless service_name.nil?

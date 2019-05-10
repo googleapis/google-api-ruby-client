@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+parent}/products/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+parent}/products/{+name}', options)
           command.response_representation = Google::Apis::ManufacturersV1::Empty::Representation
           command.response_class = Google::Apis::ManufacturersV1::Empty
           command.params['parent'] = parent unless parent.nil?
@@ -127,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_product(parent, name, include: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
           command.response_representation = Google::Apis::ManufacturersV1::Product::Representation
           command.response_class = Google::Apis::ManufacturersV1::Product
           command.params['parent'] = parent unless parent.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_products(parent, include: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products', options)
+          command = make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::ManufacturersV1::ListProductsResponse::Representation
           command.response_class = Google::Apis::ManufacturersV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -224,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account_product(parent, name, attributes_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+parent}/products/{+name}', options)
+          command = make_simple_command(:put, 'v1/{+parent}/products/{+name}', options)
           command.request_representation = Google::Apis::ManufacturersV1::Attributes::Representation
           command.request_object = attributes_object
           command.response_representation = Google::Apis::ManufacturersV1::Empty::Representation

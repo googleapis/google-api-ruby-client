@@ -84,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_config(parent, runtime_config_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/configs', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/configs', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig::Representation
           command.request_object = runtime_config_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig::Representation
@@ -118,7 +118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig
           command.params['name'] = name unless name.nil?
@@ -182,7 +182,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Policy::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -220,7 +220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/configs', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/configs', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::ListConfigsResponse::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::ListConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -255,7 +255,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_config_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Policy::Representation
@@ -294,7 +294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_config_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsResponse::Representation
@@ -328,7 +328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_config(name, runtime_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig::Representation
           command.request_object = runtime_config_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::RuntimeConfig::Representation
@@ -362,7 +362,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Operation::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -399,7 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_operation_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsResponse::Representation
@@ -449,7 +449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_config_variable(parent, variable_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/variables', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/variables', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
           command.request_object = variable_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
@@ -490,7 +490,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_config_variable(name, recursive: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -522,7 +522,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config_variable(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Variable
           command.params['name'] = name unless name.nil?
@@ -571,7 +571,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_config_variables(parent, filter: nil, page_size: nil, page_token: nil, return_values: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/variables', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/variables', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::ListVariablesResponse::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::ListVariablesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -612,7 +612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_variable_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsResponse::Representation
@@ -646,7 +646,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_config_variable(name, variable_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
           command.request_object = variable_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
@@ -690,7 +690,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_variable(name, watch_variable_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:watch', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:watch', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::WatchVariableRequest::Representation
           command.request_object = watch_variable_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Variable::Representation
@@ -738,7 +738,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_config_waiter(parent, waiter_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/waiters', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/waiters', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::Waiter::Representation
           command.request_object = waiter_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Operation::Representation
@@ -772,7 +772,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_config_waiter(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -804,7 +804,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config_waiter(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::Waiter::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::Waiter
           command.params['name'] = name unless name.nil?
@@ -842,7 +842,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_config_waiters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/waiters', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/waiters', options)
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::ListWaitersResponse::Representation
           command.response_class = Google::Apis::RuntimeconfigV1beta1::ListWaitersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -881,7 +881,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_waiter_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsResponse::Representation

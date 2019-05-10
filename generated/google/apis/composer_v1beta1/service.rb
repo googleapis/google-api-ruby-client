@@ -69,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_environment(parent, environment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/environments', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/environments', options)
           command.request_representation = Google::Apis::ComposerV1beta1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
@@ -102,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_environment(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ComposerV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -133,7 +133,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_environment(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ComposerV1beta1::Environment::Representation
           command.response_class = Google::Apis::ComposerV1beta1::Environment
           command.params['name'] = name unless name.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_environments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/environments', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/environments', options)
           command.response_representation = Google::Apis::ComposerV1beta1::ListEnvironmentsResponse::Representation
           command.response_class = Google::Apis::ComposerV1beta1::ListEnvironmentsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -336,7 +336,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_environment(name, environment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ComposerV1beta1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
@@ -374,7 +374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_image_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/imageVersions', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/imageVersions', options)
           command.response_representation = Google::Apis::ComposerV1beta1::ListImageVersionsResponse::Representation
           command.response_class = Google::Apis::ComposerV1beta1::ListImageVersionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -409,7 +409,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ComposerV1beta1::Empty::Representation
           command.response_class = Google::Apis::ComposerV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -441,7 +441,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ComposerV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -485,7 +485,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::ComposerV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ComposerV1beta1::ListOperationsResponse
           command.params['name'] = name unless name.nil?

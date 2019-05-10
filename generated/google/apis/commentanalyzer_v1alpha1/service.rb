@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def analyze_comment(analyze_comment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/comments:analyze', options)
+          command = make_simple_command(:post, 'v1alpha1/comments:analyze', options)
           command.request_representation = Google::Apis::CommentanalyzerV1alpha1::AnalyzeCommentRequest::Representation
           command.request_object = analyze_comment_request_object
           command.response_representation = Google::Apis::CommentanalyzerV1alpha1::AnalyzeCommentResponse::Representation
@@ -102,7 +102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def suggestscore_comment(suggest_comment_score_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/comments:suggestscore', options)
+          command = make_simple_command(:post, 'v1alpha1/comments:suggestscore', options)
           command.request_representation = Google::Apis::CommentanalyzerV1alpha1::SuggestCommentScoreRequest::Representation
           command.request_object = suggest_comment_score_request_object
           command.response_representation = Google::Apis::CommentanalyzerV1alpha1::SuggestCommentScoreResponse::Representation

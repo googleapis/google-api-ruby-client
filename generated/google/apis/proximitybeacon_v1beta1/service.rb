@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getforobserved_beaconinfo(get_info_for_observed_beacons_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/beaconinfo:getforobserved', options)
+          command = make_simple_command(:post, 'v1beta1/beaconinfo:getforobserved', options)
           command.request_representation = Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsRequest::Representation
           command.request_object = get_info_for_observed_beacons_request_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsResponse::Representation
@@ -120,7 +120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def activate_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}:activate', options)
+          command = make_simple_command(:post, 'v1beta1/{+beaconName}:activate', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deactivate_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}:deactivate', options)
+          command = make_simple_command(:post, 'v1beta1/{+beaconName}:deactivate', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def decommission_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}:decommission', options)
+          command = make_simple_command(:post, 'v1beta1/{+beaconName}:decommission', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -265,7 +265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+beaconName}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+beaconName}', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -316,7 +316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+beaconName}', options)
+          command = make_simple_command(:get, 'v1beta1/{+beaconName}', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Beacon
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -424,7 +424,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_beacons(page_size: nil, page_token: nil, project_id: nil, q: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/beacons', options)
+          command = make_simple_command(:get, 'v1beta1/beacons', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -466,7 +466,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def register_beacon(beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/beacons:register', options)
+          command = make_simple_command(:post, 'v1beta1/beacons:register', options)
           command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
           command.request_object = beacon_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
@@ -519,7 +519,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_beacon(beacon_name, beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+beaconName}', options)
+          command = make_simple_command(:put, 'v1beta1/{+beaconName}', options)
           command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
           command.request_object = beacon_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
@@ -579,7 +579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_beacon_attachment_delete(beacon_name, namespaced_type: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}/attachments:batchDelete', options)
+          command = make_simple_command(:post, 'v1beta1/{+beaconName}/attachments:batchDelete', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::DeleteAttachmentsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::DeleteAttachmentsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -637,7 +637,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_beacon_attachment(beacon_name, beacon_attachment_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}/attachments', options)
+          command = make_simple_command(:post, 'v1beta1/{+beaconName}/attachments', options)
           command.request_representation = Google::Apis::ProximitybeaconV1beta1::BeaconAttachment::Representation
           command.request_object = beacon_attachment_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::BeaconAttachment::Representation
@@ -687,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_beacon_attachment(attachment_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+attachmentName}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+attachmentName}', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
           command.params['attachmentName'] = attachment_name unless attachment_name.nil?
@@ -744,7 +744,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_beacon_attachments(beacon_name, namespaced_type: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/attachments', options)
+          command = make_simple_command(:get, 'v1beta1/{+beaconName}/attachments', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -795,7 +795,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_beacon_diagnostics(beacon_name, alert_filter: nil, page_size: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/diagnostics', options)
+          command = make_simple_command(:get, 'v1beta1/{+beaconName}/diagnostics', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
@@ -836,7 +836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_namespaces(project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/namespaces', options)
+          command = make_simple_command(:get, 'v1beta1/namespaces', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::ListNamespacesResponse
           command.query['projectId'] = project_id unless project_id.nil?
@@ -874,7 +874,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_namespace(namespace_name, namespace_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+namespaceName}', options)
+          command = make_simple_command(:put, 'v1beta1/{+namespaceName}', options)
           command.request_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
           command.request_object = namespace_object
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::Namespace::Representation
@@ -911,7 +911,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_eidparams(fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/eidparams', options)
+          command = make_simple_command(:get, 'v1beta1/eidparams', options)
           command.response_representation = Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistrationParams::Representation
           command.response_class = Google::Apis::ProximitybeaconV1beta1::EphemeralIdRegistrationParams
           command.query['fields'] = fields unless fields.nil?

@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_shelf(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Shelf::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Shelf
           command.params['name'] = name unless name.nil?
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_shelves(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/shelves', options)
+          command = make_simple_command(:get, 'v1/shelves', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1ListShelvesResponse::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1ListShelvesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -139,7 +139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def borrow_shelf_book(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:borrow', options)
+          command = make_simple_command(:post, 'v1/{+name}:borrow', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book
           command.params['name'] = name unless name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_shelf_book(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book
           command.params['name'] = name unless name.nil?
@@ -209,7 +209,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_shelf_books(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/books', options)
+          command = make_simple_command(:get, 'v1/{+parent}/books', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1ListBooksResponse::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1ListBooksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -244,7 +244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def return_shelf_book(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:return', options)
+          command = make_simple_command(:post, 'v1/{+name}:return', options)
           command.response_representation = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book::Representation
           command.response_class = Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book
           command.params['name'] = name unless name.nil?

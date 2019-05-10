@@ -85,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_presentation(presentation_id, batch_update_presentation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/presentations/{presentationId}:batchUpdate', options)
+          command = make_simple_command(:post, 'v1/presentations/{presentationId}:batchUpdate', options)
           command.request_representation = Google::Apis::SlidesV1::BatchUpdatePresentationRequest::Representation
           command.request_object = batch_update_presentation_request_object
           command.response_representation = Google::Apis::SlidesV1::BatchUpdatePresentationResponse::Representation
@@ -120,7 +120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_presentation(presentation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/presentations', options)
+          command = make_simple_command(:post, 'v1/presentations', options)
           command.request_representation = Google::Apis::SlidesV1::Presentation::Representation
           command.request_object = presentation_object
           command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
@@ -151,7 +151,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation(presentation_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
+          command = make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
           command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
           command.response_class = Google::Apis::SlidesV1::Presentation
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
@@ -183,7 +183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation_page(presentation_id, page_object_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}', options)
+          command = make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}', options)
           command.response_representation = Google::Apis::SlidesV1::Page::Representation
           command.response_class = Google::Apis::SlidesV1::Page
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_presentation_page_thumbnail(presentation_id, page_object_id, thumbnail_properties_mime_type: nil, thumbnail_properties_thumbnail_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', options)
+          command = make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', options)
           command.response_representation = Google::Apis::SlidesV1::Thumbnail::Representation
           command.response_class = Google::Apis::SlidesV1::Thumbnail
           command.params['presentationId'] = presentation_id unless presentation_id.nil?

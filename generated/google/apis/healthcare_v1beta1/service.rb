@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Location::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -146,7 +146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_dataset(parent, dataset_object = nil, dataset_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/datasets', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/datasets', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -189,7 +189,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deidentify_dataset(source_dataset, deidentify_dataset_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+sourceDataset}:deidentify', options)
+          command = make_simple_command(:post, 'v1beta1/{+sourceDataset}:deidentify', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::DeidentifyDatasetRequest::Representation
           command.request_object = deidentify_dataset_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -224,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -255,7 +255,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Dataset::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Dataset
           command.params['name'] = name unless name.nil?
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -324,7 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_datasets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/datasets', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/datasets', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListDatasetsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListDatasetsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -363,7 +363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset(name, dataset_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Dataset::Representation
@@ -399,7 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_dataset_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
@@ -438,7 +438,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_dataset_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse::Representation
@@ -474,7 +474,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_dataset_dicom_store(parent, dicom_store_object = nil, dicom_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/dicomStores', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dicomStores', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::DicomStore::Representation
           command.request_object = dicom_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::DicomStore::Representation
@@ -508,7 +508,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -544,7 +544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_dicom_store_dicom_data(name, export_dicom_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:export', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:export', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ExportDicomDataRequest::Representation
           command.request_object = export_dicom_data_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -576,7 +576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_dicom_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::DicomStore::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::DicomStore
           command.params['name'] = name unless name.nil?
@@ -609,7 +609,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_dicom_store_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -647,7 +647,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_dicom_store_dicom_data(name, import_dicom_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:import', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:import', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ImportDicomDataRequest::Representation
           command.request_object = import_dicom_data_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -688,7 +688,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_dataset_dicom_stores(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomStores', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomStores', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListDicomStoresResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListDicomStoresResponse
           command.params['parent'] = parent unless parent.nil?
@@ -729,7 +729,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset_dicom_store(name, dicom_store_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::DicomStore::Representation
           command.request_object = dicom_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::DicomStore::Representation
@@ -769,7 +769,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_for_instances(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -807,7 +807,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_for_series(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -845,7 +845,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_for_studies(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -879,7 +879,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_dicom_store_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
@@ -919,7 +919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def store_project_location_dataset_dicom_store_instances(parent, dicom_web_path, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -959,7 +959,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_dicom_store_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse::Representation
@@ -997,7 +997,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store_study(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['parent'] = parent unless parent.nil?
@@ -1035,7 +1035,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_metadata(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1072,7 +1072,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_study(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1110,7 +1110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_study_for_instances(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1148,7 +1148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_study_for_series(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1187,7 +1187,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def store_project_location_dataset_dicom_store_study_instances(parent, dicom_web_path, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -1227,7 +1227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store_study_series(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['parent'] = parent unless parent.nil?
@@ -1265,7 +1265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_metadata(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1302,7 +1302,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_series(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1340,7 +1340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_dataset_dicom_store_study_series_for_instances(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1379,7 +1379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store_study_series_instance(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['parent'] = parent unless parent.nil?
@@ -1418,7 +1418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_instance_instance(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1458,7 +1458,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_instance_metadata(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1497,7 +1497,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_instance_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1537,7 +1537,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_frames(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1578,7 +1578,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -1613,7 +1613,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_dataset_fhir_store(parent, fhir_store_object = nil, fhir_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/fhirStores', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/fhirStores', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::FhirStore::Representation
           command.request_object = fhir_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::FhirStore::Representation
@@ -1646,7 +1646,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_fhir_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -1690,7 +1690,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_fhir_store_resources(name, export_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:export', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:export', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ExportResourcesRequest::Representation
           command.request_object = export_resources_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -1722,7 +1722,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_fhir_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::FhirStore::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::FhirStore
           command.params['name'] = name unless name.nil?
@@ -1755,7 +1755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_fhir_store_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -1812,7 +1812,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_fhir_store_resources(name, import_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:import', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:import', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ImportResourcesRequest::Representation
           command.request_object = import_resources_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
@@ -1853,7 +1853,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_dataset_fhir_stores(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/fhirStores', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/fhirStores', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListFhirStoresResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListFhirStoresResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1893,7 +1893,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset_fhir_store(name, fhir_store_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::FhirStore::Representation
           command.request_object = fhir_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::FhirStore::Representation
@@ -1929,7 +1929,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_fhir_store_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
@@ -1968,7 +1968,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_fhir_store_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse::Representation
@@ -2016,7 +2016,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def observation_project_location_dataset_fhir_store_fhir_lastn(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/fhir/Observation/$lastn', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/fhir/Observation/$lastn', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -2063,7 +2063,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patient_project_location_dataset_fhir_store_fhir_everything(name, end_: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/$everything', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/$everything', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2098,7 +2098,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resource_project_location_dataset_fhir_store_fhir_purge(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}/$purge', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}/$purge', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -2137,7 +2137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def capabilities_project_location_dataset_fhir_store_fhir(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/fhir/metadata', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/fhir/metadata', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2183,7 +2183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def conditional_project_location_dataset_fhir_store_fhir_delete(parent, type, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+parent}/fhir/{+type}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+parent}/fhir/{+type}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['parent'] = parent unless parent.nil?
@@ -2235,7 +2235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def conditional_project_location_dataset_fhir_store_fhir_patch(parent, type, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+parent}/fhir/{+type}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+parent}/fhir/{+type}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2297,7 +2297,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def conditional_project_location_dataset_fhir_store_fhir_update(parent, type, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+parent}/fhir/{+type}', options)
+          command = make_simple_command(:put, 'v1beta1/{+parent}/fhir/{+type}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2353,7 +2353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_dataset_fhir_store_fhir(parent, type, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/fhir/{+type}', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/fhir/{+type}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2394,7 +2394,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_fhir_store_fhir(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2444,7 +2444,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_project_location_dataset_fhir_store_fhir_bundle(parent, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/fhir', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/fhir', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2509,7 +2509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def history_project_location_dataset_fhir_store_fhir(name, at: nil, count: nil, page: nil, since: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/_history', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/_history', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2555,7 +2555,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset_fhir_store_fhir(name, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2599,7 +2599,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def read_project_location_dataset_fhir_store_fhir(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2671,7 +2671,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_fhir_resources(parent, search_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/fhir/_search', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/fhir/_search', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::SearchResourcesRequest::Representation
           command.request_object = search_resources_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2720,7 +2720,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_dataset_fhir_store_fhir(name, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
@@ -2761,7 +2761,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def vread_project_location_dataset_fhir_store_fhir(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
@@ -2795,7 +2795,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_dataset_hl7_v2_store(parent, hl7_v2_store_object = nil, hl7_v2_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/hl7V2Stores', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/hl7V2Stores', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::Hl7V2Store::Representation
           command.request_object = hl7_v2_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Hl7V2Store::Representation
@@ -2829,7 +2829,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_hl7_v2_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -2859,7 +2859,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_hl7_v2_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Hl7V2Store::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Hl7V2Store
           command.params['name'] = name unless name.nil?
@@ -2892,7 +2892,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_hl7_v2_store_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -2931,7 +2931,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_dataset_hl7_v2_stores(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/hl7V2Stores', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/hl7V2Stores', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListHl7V2StoresResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListHl7V2StoresResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2971,7 +2971,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset_hl7_v2_store(name, hl7_v2_store_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::Hl7V2Store::Representation
           command.request_object = hl7_v2_store_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Hl7V2Store::Representation
@@ -3007,7 +3007,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_hl7_v2_store_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Policy::Representation
@@ -3046,7 +3046,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_hl7_v2_store_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse::Representation
@@ -3084,7 +3084,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_message(parent, create_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/messages', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/messages', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::CreateMessageRequest::Representation
           command.request_object = create_message_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Message::Representation
@@ -3116,7 +3116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_hl7_v2_store_message(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -3149,7 +3149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_hl7_v2_store_message(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Message::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Message
           command.params['name'] = name unless name.nil?
@@ -3185,7 +3185,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def ingest_message(parent, ingest_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/messages:ingest', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/messages:ingest', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::IngestMessageRequest::Representation
           command.request_object = ingest_message_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::IngestMessageResponse::Representation
@@ -3264,7 +3264,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_dataset_hl7_v2_store_messages(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/messages', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/messages', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListMessagesResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListMessagesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -3310,7 +3310,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_dataset_hl7_v2_store_message(name, message_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Message::Representation
@@ -3345,7 +3345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_dataset_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -3389,7 +3389,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_dataset_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListOperationsResponse
           command.params['name'] = name unless name.nil?

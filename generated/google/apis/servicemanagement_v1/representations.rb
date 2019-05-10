@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlowErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateConfigReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -891,6 +897,14 @@ module Google
         end
       end
       
+      class FlowErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exception_type, as: 'exceptionType'
+          property :flow_step_id, as: 'flowStepId'
+        end
+      end
+      
       class GenerateConfigReportRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1089,6 +1103,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
         end

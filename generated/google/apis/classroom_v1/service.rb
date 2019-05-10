@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course(course_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses', options)
+          command = make_simple_command(:post, 'v1/courses', options)
           command.request_representation = Google::Apis::ClassroomV1::Course::Representation
           command.request_object = course_object
           command.response_representation = Google::Apis::ClassroomV1::Course::Representation
@@ -115,7 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course(id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{id}', options)
+          command = make_simple_command(:delete, 'v1/courses/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['id'] = id unless id.nil?
@@ -151,7 +151,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course(id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{id}', options)
+          command = make_simple_command(:get, 'v1/courses/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Course::Representation
           command.response_class = Google::Apis::ClassroomV1::Course
           command.params['id'] = id unless id.nil?
@@ -211,7 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_courses(course_states: nil, page_size: nil, page_token: nil, student_id: nil, teacher_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses', options)
+          command = make_simple_command(:get, 'v1/courses', options)
           command.response_representation = Google::Apis::ClassroomV1::ListCoursesResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListCoursesResponse
           command.query['courseStates'] = course_states unless course_states.nil?
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_course(id, course_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/courses/{id}', options)
+          command = make_simple_command(:patch, 'v1/courses/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::Course::Representation
           command.request_object = course_object
           command.response_representation = Google::Apis::ClassroomV1::Course::Representation
@@ -314,7 +314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_course(id, course_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/courses/{id}', options)
+          command = make_simple_command(:put, 'v1/courses/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::Course::Representation
           command.request_object = course_object
           command.response_representation = Google::Apis::ClassroomV1::Course::Representation
@@ -357,7 +357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_alias(course_id, course_alias_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/aliases', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/aliases', options)
           command.request_representation = Google::Apis::ClassroomV1::CourseAlias::Representation
           command.request_object = course_alias_object
           command.response_representation = Google::Apis::ClassroomV1::CourseAlias::Representation
@@ -401,7 +401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_alias(course_id, alias_, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/aliases/{alias}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/aliases/{alias}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -449,7 +449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_aliases(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/aliases', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/aliases', options)
           command.response_representation = Google::Apis::ClassroomV1::ListCourseAliasesResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListCourseAliasesResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -492,7 +492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_announcement(course_id, announcement_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/announcements', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/announcements', options)
           command.request_representation = Google::Apis::ClassroomV1::Announcement::Representation
           command.request_object = announcement_object
           command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
@@ -539,7 +539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_announcement(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/announcements/{id}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/announcements/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -579,7 +579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course_announcement(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/announcements/{id}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/announcements/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
           command.response_class = Google::Apis::ClassroomV1::Announcement
           command.params['courseId'] = course_id unless course_id.nil?
@@ -639,7 +639,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_announcements(course_id, announcement_states: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/announcements', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/announcements', options)
           command.response_representation = Google::Apis::ClassroomV1::ListAnnouncementsResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListAnnouncementsResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -685,7 +685,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_course_announcement_assignees(course_id, id, modify_announcement_assignees_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/announcements/{id}:modifyAssignees', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/announcements/{id}:modifyAssignees', options)
           command.request_representation = Google::Apis::ClassroomV1::ModifyAnnouncementAssigneesRequest::Representation
           command.request_object = modify_announcement_assignees_request_object
           command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
@@ -742,7 +742,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_course_announcement(course_id, id, announcement_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/courses/{courseId}/announcements/{id}', options)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/announcements/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::Announcement::Representation
           command.request_object = announcement_object
           command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
@@ -793,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_work(course_id, course_work_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork', options)
           command.request_representation = Google::Apis::ClassroomV1::CourseWork::Representation
           command.request_object = course_work_object
           command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
@@ -840,7 +840,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_course_work(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/courseWork/{id}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/courseWork/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -880,7 +880,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course_work(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{id}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
           command.response_class = Google::Apis::ClassroomV1::CourseWork
           command.params['courseId'] = course_id unless course_id.nil?
@@ -941,7 +941,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_works(course_id, course_work_states: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/courseWork', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork', options)
           command.response_representation = Google::Apis::ClassroomV1::ListCourseWorkResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListCourseWorkResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -987,7 +987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_course_course_work_assignees(course_id, id, modify_course_work_assignees_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{id}:modifyAssignees', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{id}:modifyAssignees', options)
           command.request_representation = Google::Apis::ClassroomV1::ModifyCourseWorkAssigneesRequest::Representation
           command.request_object = modify_course_work_assignees_request_object
           command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
@@ -1058,7 +1058,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_course_course_work(course_id, id, course_work_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{id}', options)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::CourseWork::Representation
           command.request_object = course_work_object
           command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
@@ -1104,7 +1104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_student_submission(course_id, course_work_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::StudentSubmission::Representation
           command.response_class = Google::Apis::ClassroomV1::StudentSubmission
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1177,7 +1177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_student_submissions(course_id, course_work_id, late: nil, page_size: nil, page_token: nil, states: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions', options)
           command.response_representation = Google::Apis::ClassroomV1::ListStudentSubmissionsResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListStudentSubmissionsResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1233,7 +1233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_student_submission_attachments(course_id, course_work_id, id, modify_attachments_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments', options)
           command.request_representation = Google::Apis::ClassroomV1::ModifyAttachmentsRequest::Representation
           command.request_object = modify_attachments_request_object
           command.response_representation = Google::Apis::ClassroomV1::StudentSubmission::Representation
@@ -1294,7 +1294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_student_submission(course_id, course_work_id, id, student_submission_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', options)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::StudentSubmission::Representation
           command.request_object = student_submission_object
           command.response_representation = Google::Apis::ClassroomV1::StudentSubmission::Representation
@@ -1351,7 +1351,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reclaim_student_submission(course_id, course_work_id, id, reclaim_student_submission_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', options)
           command.request_representation = Google::Apis::ClassroomV1::ReclaimStudentSubmissionRequest::Representation
           command.request_object = reclaim_student_submission_request_object
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
@@ -1408,7 +1408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def return_student_submission(course_id, course_work_id, id, return_student_submission_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', options)
           command.request_representation = Google::Apis::ClassroomV1::ReturnStudentSubmissionRequest::Representation
           command.request_object = return_student_submission_request_object
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
@@ -1463,7 +1463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def turn_in_student_submission(course_id, course_work_id, id, turn_in_student_submission_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', options)
           command.request_representation = Google::Apis::ClassroomV1::TurnInStudentSubmissionRequest::Representation
           command.request_object = turn_in_student_submission_request_object
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
@@ -1516,7 +1516,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_student(course_id, student_object = nil, enrollment_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/students', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/students', options)
           command.request_representation = Google::Apis::ClassroomV1::Student::Representation
           command.request_object = student_object
           command.response_representation = Google::Apis::ClassroomV1::Student::Representation
@@ -1562,7 +1562,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_student(course_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/students/{userId}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/students/{userId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1606,7 +1606,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course_student(course_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/students/{userId}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/students/{userId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Student::Representation
           command.response_class = Google::Apis::ClassroomV1::Student
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1653,7 +1653,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_students(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/students', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/students', options)
           command.response_representation = Google::Apis::ClassroomV1::ListStudentsResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListStudentsResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1700,7 +1700,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_teacher(course_id, teacher_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/teachers', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/teachers', options)
           command.request_representation = Google::Apis::ClassroomV1::Teacher::Representation
           command.request_object = teacher_object
           command.response_representation = Google::Apis::ClassroomV1::Teacher::Representation
@@ -1747,7 +1747,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_teacher(course_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/teachers/{userId}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/teachers/{userId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1791,7 +1791,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course_teacher(course_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/teachers/{userId}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/teachers/{userId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Teacher::Representation
           command.response_class = Google::Apis::ClassroomV1::Teacher
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1838,7 +1838,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_teachers(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/teachers', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/teachers', options)
           command.response_representation = Google::Apis::ClassroomV1::ListTeachersResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListTeachersResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1879,7 +1879,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_course_topic(course_id, topic_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/courses/{courseId}/topics', options)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/topics', options)
           command.request_representation = Google::Apis::ClassroomV1::Topic::Representation
           command.request_object = topic_object
           command.response_representation = Google::Apis::ClassroomV1::Topic::Representation
@@ -1921,7 +1921,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_course_topic(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/courses/{courseId}/topics/{id}', options)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/topics/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['courseId'] = course_id unless course_id.nil?
@@ -1959,7 +1959,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_course_topic(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/topics/{id}', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/topics/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Topic::Representation
           command.response_class = Google::Apis::ClassroomV1::Topic
           command.params['courseId'] = course_id unless course_id.nil?
@@ -2008,7 +2008,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_course_topics(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/courses/{courseId}/topics', options)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/topics', options)
           command.response_representation = Google::Apis::ClassroomV1::ListTopicResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListTopicResponse
           command.params['courseId'] = course_id unless course_id.nil?
@@ -2060,7 +2060,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_course_topic(course_id, id, topic_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/courses/{courseId}/topics/{id}', options)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/topics/{id}', options)
           command.request_representation = Google::Apis::ClassroomV1::Topic::Representation
           command.request_object = topic_object
           command.response_representation = Google::Apis::ClassroomV1::Topic::Representation
@@ -2105,7 +2105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def accept_invitation(id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/invitations/{id}:accept', options)
+          command = make_simple_command(:post, 'v1/invitations/{id}:accept', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['id'] = id unless id.nil?
@@ -2143,7 +2143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_invitation(invitation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/invitations', options)
+          command = make_simple_command(:post, 'v1/invitations', options)
           command.request_representation = Google::Apis::ClassroomV1::Invitation::Representation
           command.request_object = invitation_object
           command.response_representation = Google::Apis::ClassroomV1::Invitation::Representation
@@ -2178,7 +2178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_invitation(id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/invitations/{id}', options)
+          command = make_simple_command(:delete, 'v1/invitations/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['id'] = id unless id.nil?
@@ -2212,7 +2212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_invitation(id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/invitations/{id}', options)
+          command = make_simple_command(:get, 'v1/invitations/{id}', options)
           command.response_representation = Google::Apis::ClassroomV1::Invitation::Representation
           command.response_class = Google::Apis::ClassroomV1::Invitation
           command.params['id'] = id unless id.nil?
@@ -2264,7 +2264,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_invitations(course_id: nil, page_size: nil, page_token: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/invitations', options)
+          command = make_simple_command(:get, 'v1/invitations', options)
           command.response_representation = Google::Apis::ClassroomV1::ListInvitationsResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListInvitationsResponse
           command.query['courseId'] = course_id unless course_id.nil?
@@ -2321,7 +2321,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_registration(registration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/registrations', options)
+          command = make_simple_command(:post, 'v1/registrations', options)
           command.request_representation = Google::Apis::ClassroomV1::Registration::Representation
           command.request_object = registration_object
           command.response_representation = Google::Apis::ClassroomV1::Registration::Representation
@@ -2353,7 +2353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_registration(registration_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/registrations/{registrationId}', options)
+          command = make_simple_command(:delete, 'v1/registrations/{registrationId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['registrationId'] = registration_id unless registration_id.nil?
@@ -2391,7 +2391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_profile(user_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/userProfiles/{userId}', options)
+          command = make_simple_command(:get, 'v1/userProfiles/{userId}', options)
           command.response_representation = Google::Apis::ClassroomV1::UserProfile::Representation
           command.response_class = Google::Apis::ClassroomV1::UserProfile
           command.params['userId'] = user_id unless user_id.nil?
@@ -2447,7 +2447,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_profile_guardian_invitation(student_id, guardian_invitation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/userProfiles/{studentId}/guardianInvitations', options)
+          command = make_simple_command(:post, 'v1/userProfiles/{studentId}/guardianInvitations', options)
           command.request_representation = Google::Apis::ClassroomV1::GuardianInvitation::Representation
           command.request_object = guardian_invitation_object
           command.response_representation = Google::Apis::ClassroomV1::GuardianInvitation::Representation
@@ -2492,7 +2492,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_profile_guardian_invitation(student_id, invitation_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', options)
+          command = make_simple_command(:get, 'v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', options)
           command.response_representation = Google::Apis::ClassroomV1::GuardianInvitation::Representation
           command.response_class = Google::Apis::ClassroomV1::GuardianInvitation
           command.params['studentId'] = student_id unless student_id.nil?
@@ -2560,7 +2560,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_profile_guardian_invitations(student_id, invited_email_address: nil, page_size: nil, page_token: nil, states: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/userProfiles/{studentId}/guardianInvitations', options)
+          command = make_simple_command(:get, 'v1/userProfiles/{studentId}/guardianInvitations', options)
           command.response_representation = Google::Apis::ClassroomV1::ListGuardianInvitationsResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListGuardianInvitationsResponse
           command.params['studentId'] = student_id unless student_id.nil?
@@ -2618,7 +2618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_profile_guardian_invitation(student_id, invitation_id, guardian_invitation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', options)
+          command = make_simple_command(:patch, 'v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', options)
           command.request_representation = Google::Apis::ClassroomV1::GuardianInvitation::Representation
           command.request_object = guardian_invitation_object
           command.response_representation = Google::Apis::ClassroomV1::GuardianInvitation::Representation
@@ -2671,7 +2671,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_profile_guardian(student_id, guardian_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/userProfiles/{studentId}/guardians/{guardianId}', options)
+          command = make_simple_command(:delete, 'v1/userProfiles/{studentId}/guardians/{guardianId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
           command.response_class = Google::Apis::ClassroomV1::Empty
           command.params['studentId'] = student_id unless student_id.nil?
@@ -2719,7 +2719,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_profile_guardian(student_id, guardian_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/userProfiles/{studentId}/guardians/{guardianId}', options)
+          command = make_simple_command(:get, 'v1/userProfiles/{studentId}/guardians/{guardianId}', options)
           command.response_representation = Google::Apis::ClassroomV1::Guardian::Representation
           command.response_class = Google::Apis::ClassroomV1::Guardian
           command.params['studentId'] = student_id unless student_id.nil?
@@ -2787,7 +2787,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_profile_guardians(student_id, invited_email_address: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/userProfiles/{studentId}/guardians', options)
+          command = make_simple_command(:get, 'v1/userProfiles/{studentId}/guardians', options)
           command.response_representation = Google::Apis::ClassroomV1::ListGuardiansResponse::Representation
           command.response_class = Google::Apis::ClassroomV1::ListGuardiansResponse
           command.params['studentId'] = student_id unless student_id.nil?

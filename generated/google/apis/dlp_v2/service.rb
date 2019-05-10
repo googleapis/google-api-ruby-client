@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_info_types(filter: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/infoTypes', options)
+          command = make_simple_command(:get, 'v2/infoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
           command.query['filter'] = filter unless filter.nil?
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -183,7 +183,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
           command.params['name'] = name unless name.nil?
@@ -233,7 +233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_deidentify_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -271,7 +271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_deidentify_template(name, google_privacy_dlp_v2_update_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
@@ -307,7 +307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
@@ -342,7 +342,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -375,7 +375,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
           command.params['name'] = name unless name.nil?
@@ -424,7 +424,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_inspect_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -461,7 +461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_inspect_template(name, google_privacy_dlp_v2_update_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
@@ -497,7 +497,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
@@ -533,7 +533,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -567,7 +567,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
           command.params['name'] = name unless name.nil?
@@ -618,7 +618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_stored_info_types(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -657,7 +657,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_stored_info_type(name, google_privacy_dlp_v2_update_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
@@ -696,7 +696,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deidentify_project_content(parent, google_privacy_dlp_v2_deidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/content:deidentify', options)
+          command = make_simple_command(:post, 'v2/{+parent}/content:deidentify', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_deidentify_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse::Representation
@@ -735,7 +735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def inspect_project_content(parent, google_privacy_dlp_v2_inspect_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/content:inspect', options)
+          command = make_simple_command(:post, 'v2/{+parent}/content:inspect', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_inspect_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse::Representation
@@ -772,7 +772,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reidentify_project_content(parent, google_privacy_dlp_v2_reidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/content:reidentify', options)
+          command = make_simple_command(:post, 'v2/{+parent}/content:reidentify', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_reidentify_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse::Representation
@@ -809,7 +809,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
@@ -845,7 +845,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -879,7 +879,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
           command.params['name'] = name unless name.nil?
@@ -929,7 +929,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_deidentify_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -967,7 +967,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_deidentify_template(name, google_privacy_dlp_v2_update_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
@@ -1004,7 +1004,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_dlp_job(name, google_privacy_dlp_v2_cancel_dlp_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v2/{+name}:cancel', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest::Representation
           command.request_object = google_privacy_dlp_v2_cancel_dlp_job_request_object
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
@@ -1042,7 +1042,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_dlp_job(parent, google_privacy_dlp_v2_create_dlp_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/dlpJobs', options)
+          command = make_simple_command(:post, 'v2/{+parent}/dlpJobs', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_dlp_job_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob::Representation
@@ -1078,7 +1078,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_dlp_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1110,7 +1110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_dlp_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob
           command.params['name'] = name unless name.nil?
@@ -1178,7 +1178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_dlp_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/dlpJobs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/dlpJobs', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1220,7 +1220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def redact_project_image(parent, google_privacy_dlp_v2_redact_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/image:redact', options)
+          command = make_simple_command(:post, 'v2/{+parent}/image:redact', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest::Representation
           command.request_object = google_privacy_dlp_v2_redact_image_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageResponse::Representation
@@ -1256,7 +1256,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
@@ -1291,7 +1291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1324,7 +1324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
           command.params['name'] = name unless name.nil?
@@ -1373,7 +1373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_inspect_templates(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1410,7 +1410,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_inspect_template(name, google_privacy_dlp_v2_update_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
@@ -1445,7 +1445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def activate_project_job_trigger(name, google_privacy_dlp_v2_activate_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:activate', options)
+          command = make_simple_command(:post, 'v2/{+name}:activate', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ActivateJobTriggerRequest::Representation
           command.request_object = google_privacy_dlp_v2_activate_job_trigger_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob::Representation
@@ -1480,7 +1480,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_job_trigger(parent, google_privacy_dlp_v2_create_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/jobTriggers', options)
+          command = make_simple_command(:post, 'v2/{+parent}/jobTriggers', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_job_trigger_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
@@ -1514,7 +1514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_job_trigger(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1546,7 +1546,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job_trigger(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger
           command.params['name'] = name unless name.nil?
@@ -1616,7 +1616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_job_triggers(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
+          command = make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1653,7 +1653,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_job_trigger(name, google_privacy_dlp_v2_update_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateJobTriggerRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_job_trigger_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
@@ -1689,7 +1689,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
@@ -1725,7 +1725,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1759,7 +1759,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
           command.params['name'] = name unless name.nil?
@@ -1810,7 +1810,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_stored_info_types(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1849,7 +1849,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_stored_info_type(name, google_privacy_dlp_v2_update_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_update_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation

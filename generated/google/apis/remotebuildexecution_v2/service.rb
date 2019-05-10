@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_action_result(instance_name, hash_, size_bytes, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+instanceName}/actionResults/{hash}/{sizeBytes}', options)
+          command = make_simple_command(:get, 'v2/{+instanceName}/actionResults/{hash}/{sizeBytes}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult
           command.params['instanceName'] = instance_name unless instance_name.nil?
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_action_result(instance_name, hash_, size_bytes, build_bazel_remote_execution_v2_action_result_object = nil, results_cache_policy_priority: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+instanceName}/actionResults/{hash}/{sizeBytes}', options)
+          command = make_simple_command(:put, 'v2/{+instanceName}/actionResults/{hash}/{sizeBytes}', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult::Representation
           command.request_object = build_bazel_remote_execution_v2_action_result_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult::Representation
@@ -235,7 +235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_action(instance_name, build_bazel_remote_execution_v2_execute_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+instanceName}/actions:execute', options)
+          command = make_simple_command(:post, 'v2/{+instanceName}/actions:execute', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ExecuteRequest::Representation
           command.request_object = build_bazel_remote_execution_v2_execute_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::GoogleLongrunningOperation::Representation
@@ -286,7 +286,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_blob_read(instance_name, build_bazel_remote_execution_v2_batch_read_blobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+instanceName}/blobs:batchRead', options)
+          command = make_simple_command(:post, 'v2/{+instanceName}/blobs:batchRead', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2BatchReadBlobsRequest::Representation
           command.request_object = build_bazel_remote_execution_v2_batch_read_blobs_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2BatchReadBlobsResponse::Representation
@@ -340,7 +340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_blob_update(instance_name, build_bazel_remote_execution_v2_batch_update_blobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+instanceName}/blobs:batchUpdate', options)
+          command = make_simple_command(:post, 'v2/{+instanceName}/blobs:batchUpdate', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest::Representation
           command.request_object = build_bazel_remote_execution_v2_batch_update_blobs_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse::Representation
@@ -380,7 +380,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def find_blob_missing(instance_name, build_bazel_remote_execution_v2_find_missing_blobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+instanceName}/blobs:findMissing', options)
+          command = make_simple_command(:post, 'v2/{+instanceName}/blobs:findMissing', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2FindMissingBlobsRequest::Representation
           command.request_object = build_bazel_remote_execution_v2_find_missing_blobs_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2FindMissingBlobsResponse::Representation
@@ -445,7 +445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_blob_tree(instance_name, hash_, size_bytes, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+instanceName}/blobs/{hash}/{sizeBytes}:getTree', options)
+          command = make_simple_command(:get, 'v2/{+instanceName}/blobs/{hash}/{sizeBytes}:getTree', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2GetTreeResponse::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2GetTreeResponse
           command.params['instanceName'] = instance_name unless instance_name.nil?
@@ -486,7 +486,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def wait_operation_execution(name, build_bazel_remote_execution_v2_wait_execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:waitExecution', options)
+          command = make_simple_command(:post, 'v2/{+name}:waitExecution', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2WaitExecutionRequest::Representation
           command.request_object = build_bazel_remote_execution_v2_wait_execution_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV2::GoogleLongrunningOperation::Representation
@@ -522,7 +522,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_capabilities(instance_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+instanceName}/capabilities', options)
+          command = make_simple_command(:get, 'v2/{+instanceName}/capabilities', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ServerCapabilities::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ServerCapabilities
           command.params['instanceName'] = instance_name unless instance_name.nil?

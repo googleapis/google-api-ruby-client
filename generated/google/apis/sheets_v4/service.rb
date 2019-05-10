@@ -84,7 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_spreadsheet(spreadsheet_id, batch_update_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:batchUpdate', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:batchUpdate', options)
           command.request_representation = Google::Apis::SheetsV4::BatchUpdateSpreadsheetRequest::Representation
           command.request_object = batch_update_spreadsheet_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateSpreadsheetResponse::Representation
@@ -115,7 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_spreadsheet(spreadsheet_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets', options)
+          command = make_simple_command(:post, 'v4/spreadsheets', options)
           command.request_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
           command.request_object = spreadsheet_object
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
@@ -166,7 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet(spreadsheet_id, include_grid_data: nil, ranges: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}', options)
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
           command.response_class = Google::Apis::SheetsV4::Spreadsheet
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -215,7 +215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet_by_data_filter(spreadsheet_id, get_spreadsheet_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:getByDataFilter', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:getByDataFilter', options)
           command.request_representation = Google::Apis::SheetsV4::GetSpreadsheetByDataFilterRequest::Representation
           command.request_object = get_spreadsheet_by_data_filter_request_object
           command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
@@ -251,7 +251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet_developer_metadatum(spreadsheet_id, metadata_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}', options)
           command.response_representation = Google::Apis::SheetsV4::DeveloperMetadata::Representation
           command.response_class = Google::Apis::SheetsV4::DeveloperMetadata
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -287,7 +287,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_developer_metadatum_developer_metadata(spreadsheet_id, search_developer_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/developerMetadata:search', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/developerMetadata:search', options)
           command.request_representation = Google::Apis::SheetsV4::SearchDeveloperMetadataRequest::Representation
           command.request_object = search_developer_metadata_request_object
           command.response_representation = Google::Apis::SheetsV4::SearchDeveloperMetadataResponse::Representation
@@ -323,7 +323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_spreadsheet(spreadsheet_id, sheet_id, copy_sheet_to_another_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
           command.request_representation = Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest::Representation
           command.request_object = copy_sheet_to_another_spreadsheet_request_object
           command.response_representation = Google::Apis::SheetsV4::SheetProperties::Representation
@@ -388,7 +388,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def append_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, include_values_in_response: nil, insert_data_option: nil, response_date_time_render_option: nil, response_value_render_option: nil, value_input_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:append', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
           command.response_representation = Google::Apis::SheetsV4::AppendValuesResponse::Representation
@@ -430,7 +430,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_clear_values(spreadsheet_id, batch_clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClear', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClear', options)
           command.request_representation = Google::Apis::SheetsV4::BatchClearValuesRequest::Representation
           command.request_object = batch_clear_values_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchClearValuesResponse::Representation
@@ -467,7 +467,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_spreadsheet_value_clear_by_data_filter(spreadsheet_id, batch_clear_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', options)
           command.request_representation = Google::Apis::SheetsV4::BatchClearValuesByDataFilterRequest::Representation
           command.request_object = batch_clear_values_by_data_filter_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchClearValuesByDataFilterResponse::Representation
@@ -517,7 +517,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_spreadsheet_values(spreadsheet_id, date_time_render_option: nil, major_dimension: nil, ranges: nil, value_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values:batchGet', options)
           command.response_representation = Google::Apis::SheetsV4::BatchGetValuesResponse::Representation
           command.response_class = Google::Apis::SheetsV4::BatchGetValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -555,7 +555,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_spreadsheet_value_get_by_data_filter(spreadsheet_id, batch_get_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', options)
           command.request_representation = Google::Apis::SheetsV4::BatchGetValuesByDataFilterRequest::Representation
           command.request_object = batch_get_values_by_data_filter_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchGetValuesByDataFilterResponse::Representation
@@ -591,7 +591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_values(spreadsheet_id, batch_update_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdate', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdate', options)
           command.request_representation = Google::Apis::SheetsV4::BatchUpdateValuesRequest::Representation
           command.request_object = batch_update_values_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesResponse::Representation
@@ -627,7 +627,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_spreadsheet_value_update_by_data_filter(spreadsheet_id, batch_update_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', options)
           command.request_representation = Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterRequest::Representation
           command.request_object = batch_update_values_by_data_filter_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterResponse::Representation
@@ -665,7 +665,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_values(spreadsheet_id, range, clear_values_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
+          command = make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values/{range}:clear', options)
           command.request_representation = Google::Apis::SheetsV4::ClearValuesRequest::Representation
           command.request_object = clear_values_request_object
           command.response_representation = Google::Apis::SheetsV4::ClearValuesResponse::Representation
@@ -716,7 +716,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_spreadsheet_values(spreadsheet_id, range, date_time_render_option: nil, major_dimension: nil, value_render_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
+          command = make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.response_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.response_class = Google::Apis::SheetsV4::ValueRange
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
@@ -773,7 +773,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_spreadsheet_value(spreadsheet_id, range, value_range_object = nil, include_values_in_response: nil, response_date_time_render_option: nil, response_value_render_option: nil, value_input_option: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
+          command = make_simple_command(:put, 'v4/spreadsheets/{spreadsheetId}/values/{range}', options)
           command.request_representation = Google::Apis::SheetsV4::ValueRange::Representation
           command.request_object = value_range_object
           command.response_representation = Google::Apis::SheetsV4::UpdateValuesResponse::Representation

@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_google_service_account(project_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/googleServiceAccounts/{projectId}', options)
+          command = make_simple_command(:get, 'v1/googleServiceAccounts/{projectId}', options)
           command.response_representation = Google::Apis::StoragetransferV1::GoogleServiceAccount::Representation
           command.response_class = Google::Apis::StoragetransferV1::GoogleServiceAccount
           command.params['projectId'] = project_id unless project_id.nil?
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_transfer_job(transfer_job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/transferJobs', options)
+          command = make_simple_command(:post, 'v1/transferJobs', options)
           command.request_representation = Google::Apis::StoragetransferV1::TransferJob::Representation
           command.request_object = transfer_job_object
           command.response_representation = Google::Apis::StoragetransferV1::TransferJob::Representation
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_transfer_job(job_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+jobName}', options)
+          command = make_simple_command(:get, 'v1/{+jobName}', options)
           command.response_representation = Google::Apis::StoragetransferV1::TransferJob::Representation
           command.response_class = Google::Apis::StoragetransferV1::TransferJob
           command.params['jobName'] = job_name unless job_name.nil?
@@ -184,7 +184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_transfer_jobs(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/transferJobs', options)
+          command = make_simple_command(:get, 'v1/transferJobs', options)
           command.response_representation = Google::Apis::StoragetransferV1::ListTransferJobsResponse::Representation
           command.response_class = Google::Apis::StoragetransferV1::ListTransferJobsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -220,7 +220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_transfer_job(job_name, update_transfer_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+jobName}', options)
+          command = make_simple_command(:patch, 'v1/{+jobName}', options)
           command.request_representation = Google::Apis::StoragetransferV1::UpdateTransferJobRequest::Representation
           command.request_object = update_transfer_job_request_object
           command.response_representation = Google::Apis::StoragetransferV1::TransferJob::Representation
@@ -253,7 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_transfer_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
           command.response_class = Google::Apis::StoragetransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -283,7 +283,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_transfer_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
           command.response_class = Google::Apis::StoragetransferV1::Empty
           command.params['name'] = name unless name.nil?
@@ -315,7 +315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_transfer_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragetransferV1::Operation::Representation
           command.response_class = Google::Apis::StoragetransferV1::Operation
           command.params['name'] = name unless name.nil?
@@ -364,7 +364,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_transfer_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragetransferV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::StoragetransferV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -399,7 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def pause_transfer_operation(name, pause_transfer_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:pause', options)
+          command = make_simple_command(:post, 'v1/{+name}:pause', options)
           command.request_representation = Google::Apis::StoragetransferV1::PauseTransferOperationRequest::Representation
           command.request_object = pause_transfer_operation_request_object
           command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
@@ -433,7 +433,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resume_transfer_operation(name, resume_transfer_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:resume', options)
+          command = make_simple_command(:post, 'v1/{+name}:resume', options)
           command.request_representation = Google::Apis::StoragetransferV1::ResumeTransferOperationRequest::Representation
           command.request_object = resume_transfer_operation_request_object
           command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation

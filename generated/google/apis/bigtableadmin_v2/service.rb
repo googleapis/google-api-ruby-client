@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v2/{+name}:cancel', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -110,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
           command.response_class = Google::Apis::BigtableadminV2::Operation
           command.params['name'] = name unless name.nil?
@@ -186,7 +186,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operation_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}/operations', options)
+          command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -221,7 +221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_instance(parent, create_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/instances', options)
+          command = make_simple_command(:post, 'v2/{+parent}/instances', options)
           command.request_representation = Google::Apis::BigtableadminV2::CreateInstanceRequest::Representation
           command.request_object = create_instance_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
@@ -254,7 +254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -285,7 +285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Instance::Representation
           command.response_class = Google::Apis::BigtableadminV2::Instance
           command.params['name'] = name unless name.nil?
@@ -318,7 +318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::BigtableadminV2::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
@@ -353,7 +353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instances(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v2/{+parent}/instances', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListInstancesResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -391,7 +391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def partial_project_instance_update_instance(name, instance_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::BigtableadminV2::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
@@ -427,7 +427,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BigtableadminV2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
@@ -461,7 +461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_instance_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BigtableadminV2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::BigtableadminV2::TestIamPermissionsResponse::Representation
@@ -498,7 +498,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_instance(name, instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+name}', options)
+          command = make_simple_command(:put, 'v2/{+name}', options)
           command.request_representation = Google::Apis::BigtableadminV2::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::BigtableadminV2::Instance::Representation
@@ -539,7 +539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance_app_profile(parent, app_profile_object = nil, app_profile_id: nil, ignore_warnings: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/appProfiles', options)
+          command = make_simple_command(:post, 'v2/{+parent}/appProfiles', options)
           command.request_representation = Google::Apis::BigtableadminV2::AppProfile::Representation
           command.request_object = app_profile_object
           command.response_representation = Google::Apis::BigtableadminV2::AppProfile::Representation
@@ -576,7 +576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_app_profile(name, ignore_warnings: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -608,7 +608,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_app_profile(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::AppProfile::Representation
           command.response_class = Google::Apis::BigtableadminV2::AppProfile
           command.params['name'] = name unless name.nil?
@@ -647,7 +647,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_app_profiles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/appProfiles', options)
+          command = make_simple_command(:get, 'v2/{+parent}/appProfiles', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListAppProfilesResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListAppProfilesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -687,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_instance_app_profile(name, app_profile_object = nil, ignore_warnings: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::BigtableadminV2::AppProfile::Representation
           command.request_object = app_profile_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
@@ -728,7 +728,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance_cluster(parent, cluster_object = nil, cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/clusters', options)
+          command = make_simple_command(:post, 'v2/{+parent}/clusters', options)
           command.request_representation = Google::Apis::BigtableadminV2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
@@ -762,7 +762,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -793,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Cluster::Representation
           command.response_class = Google::Apis::BigtableadminV2::Cluster
           command.params['name'] = name unless name.nil?
@@ -828,7 +828,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_clusters(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/clusters', options)
+          command = make_simple_command(:get, 'v2/{+parent}/clusters', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListClustersResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListClustersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -862,7 +862,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_instance_cluster(name, cluster_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+name}', options)
+          command = make_simple_command(:put, 'v2/{+name}', options)
           command.request_representation = Google::Apis::BigtableadminV2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
@@ -899,7 +899,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_table_consistency(name, check_consistency_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:checkConsistency', options)
+          command = make_simple_command(:post, 'v2/{+name}:checkConsistency', options)
           command.request_representation = Google::Apis::BigtableadminV2::CheckConsistencyRequest::Representation
           command.request_object = check_consistency_request_object
           command.response_representation = Google::Apis::BigtableadminV2::CheckConsistencyResponse::Representation
@@ -935,7 +935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_table(parent, create_table_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/tables', options)
+          command = make_simple_command(:post, 'v2/{+parent}/tables', options)
           command.request_representation = Google::Apis::BigtableadminV2::CreateTableRequest::Representation
           command.request_object = create_table_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Table::Representation
@@ -969,7 +969,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_table(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
           command.response_class = Google::Apis::BigtableadminV2::Empty
           command.params['name'] = name unless name.nil?
@@ -1004,7 +1004,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def drop_table_row_range(name, drop_row_range_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:dropRowRange', options)
+          command = make_simple_command(:post, 'v2/{+name}:dropRowRange', options)
           command.request_representation = Google::Apis::BigtableadminV2::DropRowRangeRequest::Representation
           command.request_object = drop_row_range_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
@@ -1042,7 +1042,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_table_consistency_token(name, generate_consistency_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:generateConsistencyToken', options)
+          command = make_simple_command(:post, 'v2/{+name}:generateConsistencyToken', options)
           command.request_representation = Google::Apis::BigtableadminV2::GenerateConsistencyTokenRequest::Representation
           command.request_object = generate_consistency_token_request_object
           command.response_representation = Google::Apis::BigtableadminV2::GenerateConsistencyTokenResponse::Representation
@@ -1079,7 +1079,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_table(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::Table::Representation
           command.response_class = Google::Apis::BigtableadminV2::Table
           command.params['name'] = name unless name.nil?
@@ -1113,7 +1113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_table_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::BigtableadminV2::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
@@ -1159,7 +1159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_tables(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/tables', options)
+          command = make_simple_command(:get, 'v2/{+parent}/tables', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListTablesResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListTablesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1198,7 +1198,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_table_column_families(name, modify_column_families_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}:modifyColumnFamilies', options)
+          command = make_simple_command(:post, 'v2/{+name}:modifyColumnFamilies', options)
           command.request_representation = Google::Apis::BigtableadminV2::ModifyColumnFamiliesRequest::Representation
           command.request_object = modify_column_families_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Table::Representation
@@ -1233,7 +1233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_table_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BigtableadminV2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
@@ -1267,7 +1267,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_table_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BigtableadminV2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::BigtableadminV2::TestIamPermissionsResponse::Representation

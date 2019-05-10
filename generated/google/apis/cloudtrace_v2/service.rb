@@ -75,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_trace_write_spans(name, batch_write_spans_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}/traces:batchWrite', options)
+          command = make_simple_command(:post, 'v2/{+name}/traces:batchWrite', options)
           command.request_representation = Google::Apis::CloudtraceV2::BatchWriteSpansRequest::Representation
           command.request_object = batch_write_spans_request_object
           command.response_representation = Google::Apis::CloudtraceV2::Empty::Representation
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_trace_span_span(name, span_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}', options)
+          command = make_simple_command(:post, 'v2/{+name}', options)
           command.request_representation = Google::Apis::CloudtraceV2::Span::Representation
           command.request_object = span_object
           command.response_representation = Google::Apis::CloudtraceV2::Span::Representation

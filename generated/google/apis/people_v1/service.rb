@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_contact_group_get(max_members: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/contactGroups:batchGet', options)
+          command = make_simple_command(:get, 'v1/contactGroups:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::BatchGetContactGroupsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::BatchGetContactGroupsResponse
           command.query['maxMembers'] = max_members unless max_members.nil?
@@ -101,7 +101,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_contact_group(create_contact_group_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/contactGroups', options)
+          command = make_simple_command(:post, 'v1/contactGroups', options)
           command.request_representation = Google::Apis::PeopleV1::CreateContactGroupRequest::Representation
           command.request_object = create_contact_group_request_object
           command.response_representation = Google::Apis::PeopleV1::ContactGroup::Representation
@@ -135,7 +135,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_contact_group(resource_name, delete_contacts: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+resourceName}', options)
+          command = make_simple_command(:delete, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::Empty::Representation
           command.response_class = Google::Apis::PeopleV1::Empty
           command.params['resourceName'] = resource_name unless resource_name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_contact_group(resource_name, max_members: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resourceName}', options)
+          command = make_simple_command(:get, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::ContactGroup::Representation
           command.response_class = Google::Apis::PeopleV1::ContactGroup
           command.params['resourceName'] = resource_name unless resource_name.nil?
@@ -208,7 +208,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_contact_groups(page_size: nil, page_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/contactGroups', options)
+          command = make_simple_command(:get, 'v1/contactGroups', options)
           command.response_representation = Google::Apis::PeopleV1::ListContactGroupsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListContactGroupsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_contact_group(resource_name, update_contact_group_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+resourceName}', options)
+          command = make_simple_command(:put, 'v1/{+resourceName}', options)
           command.request_representation = Google::Apis::PeopleV1::UpdateContactGroupRequest::Representation
           command.request_object = update_contact_group_request_object
           command.response_representation = Google::Apis::PeopleV1::ContactGroup::Representation
@@ -280,7 +280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_contact_group_members(resource_name, modify_contact_group_members_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resourceName}/members:modify', options)
+          command = make_simple_command(:post, 'v1/{+resourceName}/members:modify', options)
           command.request_representation = Google::Apis::PeopleV1::ModifyContactGroupMembersRequest::Representation
           command.request_object = modify_contact_group_members_request_object
           command.response_representation = Google::Apis::PeopleV1::ModifyContactGroupMembersResponse::Representation
@@ -313,7 +313,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_person_contact(person_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/people:createContact', options)
+          command = make_simple_command(:post, 'v1/people:createContact', options)
           command.request_representation = Google::Apis::PeopleV1::Person::Representation
           command.request_object = person_object
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
@@ -345,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_person_contact(resource_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+resourceName}:deleteContact', options)
+          command = make_simple_command(:delete, 'v1/{+resourceName}:deleteContact', options)
           command.response_representation = Google::Apis::PeopleV1::Empty::Representation
           command.response_class = Google::Apis::PeopleV1::Empty
           command.params['resourceName'] = resource_name unless resource_name.nil?
@@ -421,7 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_person(resource_name, person_fields: nil, request_mask_include_field: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resourceName}', options)
+          command = make_simple_command(:get, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
           command.params['resourceName'] = resource_name unless resource_name.nil?
@@ -501,7 +501,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_people(person_fields: nil, request_mask_include_field: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/people:batchGet', options)
+          command = make_simple_command(:get, 'v1/people:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::GetPeopleResponse::Representation
           command.response_class = Google::Apis::PeopleV1::GetPeopleResponse
           command.query['personFields'] = person_fields unless person_fields.nil?
@@ -570,7 +570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_person_contact(resource_name, person_object = nil, update_person_fields: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+resourceName}:updateContact', options)
+          command = make_simple_command(:patch, 'v1/{+resourceName}:updateContact', options)
           command.request_representation = Google::Apis::PeopleV1::Person::Representation
           command.request_object = person_object
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
@@ -660,7 +660,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_person_connections(resource_name, page_size: nil, page_token: nil, person_fields: nil, request_mask_include_field: nil, request_sync_token: nil, sort_order: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resourceName}/connections', options)
+          command = make_simple_command(:get, 'v1/{+resourceName}/connections', options)
           command.response_representation = Google::Apis::PeopleV1::ListConnectionsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListConnectionsResponse
           command.params['resourceName'] = resource_name unless resource_name.nil?

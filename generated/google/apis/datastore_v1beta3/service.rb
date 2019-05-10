@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def allocate_project_ids(project_id, allocate_ids_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:allocateIds', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:allocateIds', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::AllocateIdsRequest::Representation
           command.request_object = allocate_ids_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::AllocateIdsResponse::Representation
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def begin_project_transaction(project_id, begin_transaction_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:beginTransaction', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:beginTransaction', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::BeginTransactionRequest::Representation
           command.request_object = begin_transaction_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::BeginTransactionResponse::Representation
@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def commit_project(project_id, commit_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:commit', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:commit', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::CommitRequest::Representation
           command.request_object = commit_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::CommitResponse::Representation
@@ -171,7 +171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lookup_project(project_id, lookup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:lookup', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:lookup', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::LookupRequest::Representation
           command.request_object = lookup_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::LookupResponse::Representation
@@ -205,7 +205,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reserve_project_ids(project_id, reserve_ids_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:reserveIds', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:reserveIds', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::ReserveIdsRequest::Representation
           command.request_object = reserve_ids_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::ReserveIdsResponse::Representation
@@ -238,7 +238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_project(project_id, rollback_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:rollback', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:rollback', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::RollbackRequest::Representation
           command.request_object = rollback_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::RollbackResponse::Representation
@@ -271,7 +271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_project_query(project_id, run_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta3/projects/{projectId}:runQuery', options)
+          command = make_simple_command(:post, 'v1beta3/projects/{projectId}:runQuery', options)
           command.request_representation = Google::Apis::DatastoreV1beta3::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.response_representation = Google::Apis::DatastoreV1beta3::RunQueryResponse::Representation

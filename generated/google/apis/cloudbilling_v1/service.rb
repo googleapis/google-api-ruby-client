@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_billing_account(billing_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/billingAccounts', options)
+          command = make_simple_command(:post, 'v1/billingAccounts', options)
           command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.request_object = billing_account_object
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.response_class = Google::Apis::CloudbillingV1::BillingAccount
           command.params['name'] = name unless name.nil?
@@ -145,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudbillingV1::Policy::Representation
           command.response_class = Google::Apis::CloudbillingV1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -189,7 +189,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_accounts(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/billingAccounts', options)
+          command = make_simple_command(:get, 'v1/billingAccounts', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -230,7 +230,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_billing_account(name, billing_account_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
           command.request_object = billing_account_object
           command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
@@ -269,7 +269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_billing_account_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudbillingV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudbillingV1::Policy::Representation
@@ -305,7 +305,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_billing_account_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudbillingV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudbillingV1::TestIamPermissionsResponse::Representation
@@ -348,7 +348,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_projects(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/projects', options)
+          command = make_simple_command(:get, 'v1/{+name}/projects', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListProjectBillingInfoResponse
           command.params['name'] = name unless name.nil?
@@ -384,7 +384,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_billing_info(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/billingInfo', options)
+          command = make_simple_command(:get, 'v1/{+name}/billingInfo', options)
           command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
           command.response_class = Google::Apis::CloudbillingV1::ProjectBillingInfo
           command.params['name'] = name unless name.nil?
@@ -442,7 +442,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_billing_info(name, project_billing_info_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}/billingInfo', options)
+          command = make_simple_command(:put, 'v1/{+name}/billingInfo', options)
           command.request_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
           command.request_object = project_billing_info_object
           command.response_representation = Google::Apis::CloudbillingV1::ProjectBillingInfo::Representation
@@ -478,7 +478,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_services(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services', options)
+          command = make_simple_command(:get, 'v1/services', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListServicesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -534,7 +534,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_skus(parent, currency_code: nil, end_time: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/skus', options)
+          command = make_simple_command(:get, 'v1/{+parent}/skus', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListSkusResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListSkusResponse
           command.params['parent'] = parent unless parent.nil?

@@ -67,7 +67,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_drive_activity(query_drive_activity_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/activity:query', options)
+          command = make_simple_command(:post, 'v2/activity:query', options)
           command.request_representation = Google::Apis::DriveactivityV2::QueryDriveActivityRequest::Representation
           command.request_object = query_drive_activity_request_object
           command.response_representation = Google::Apis::DriveactivityV2::QueryDriveActivityResponse::Representation

@@ -73,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app(application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps', options)
+          command = make_simple_command(:post, 'v1/apps', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app(apps_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Application::Representation
           command.response_class = Google::Apis::AppengineV1::Application
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app(apps_id, application_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}', options)
           command.request_representation = Google::Apis::AppengineV1::Application::Representation
           command.request_object = application_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -185,7 +185,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def repair_application(apps_id, repair_application_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}:repair', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}:repair', options)
           command.request_representation = Google::Apis::AppengineV1::RepairApplicationRequest::Representation
           command.request_object = repair_application_request_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app_authorized_certificate(apps_id, authorized_certificate_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/authorizedCertificates', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/authorizedCertificates', options)
           command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
           command.request_object = authorized_certificate_object
           command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
@@ -253,7 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_authorized_certificate(apps_id, authorized_certificates_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Empty::Representation
           command.response_class = Google::Apis::AppengineV1::Empty
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -289,7 +289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_authorized_certificate(apps_id, authorized_certificates_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
           command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
           command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -327,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_authorized_certificates(apps_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates', options)
           command.response_representation = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -370,7 +370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_authorized_certificate(apps_id, authorized_certificates_id, authorized_certificate_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
           command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
           command.request_object = authorized_certificate_object
           command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
@@ -408,7 +408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_authorized_domains(apps_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedDomains', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/authorizedDomains', options)
           command.response_representation = Google::Apis::AppengineV1::ListAuthorizedDomainsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListAuthorizedDomainsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -446,7 +446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app_domain_mapping(apps_id, domain_mapping_object = nil, override_strategy: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/domainMappings', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/domainMappings', options)
           command.request_representation = Google::Apis::AppengineV1::DomainMapping::Representation
           command.request_object = domain_mapping_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -483,7 +483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_domain_mapping(apps_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -517,7 +517,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_domain_mapping(apps_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
           command.response_representation = Google::Apis::AppengineV1::DomainMapping::Representation
           command.response_class = Google::Apis::AppengineV1::DomainMapping
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -552,7 +552,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_domain_mappings(apps_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/domainMappings', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/domainMappings', options)
           command.response_representation = Google::Apis::AppengineV1::ListDomainMappingsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListDomainMappingsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -593,7 +593,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_domain_mapping(apps_id, domain_mappings_id, domain_mapping_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
           command.request_representation = Google::Apis::AppengineV1::DomainMapping::Representation
           command.request_object = domain_mapping_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -632,7 +632,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_ingress_rules(apps_id, batch_update_ingress_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules:batchUpdate', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules:batchUpdate', options)
           command.request_representation = Google::Apis::AppengineV1::BatchUpdateIngressRulesRequest::Representation
           command.request_object = batch_update_ingress_rules_request_object
           command.response_representation = Google::Apis::AppengineV1::BatchUpdateIngressRulesResponse::Representation
@@ -666,7 +666,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app_firewall_ingress_rule(apps_id, firewall_rule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules', options)
           command.request_representation = Google::Apis::AppengineV1::FirewallRule::Representation
           command.request_object = firewall_rule_object
           command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
@@ -701,7 +701,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_firewall_ingress_rule(apps_id, ingress_rules_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Empty::Representation
           command.response_class = Google::Apis::AppengineV1::Empty
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -735,7 +735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_firewall_ingress_rule(apps_id, ingress_rules_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
           command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
           command.response_class = Google::Apis::AppengineV1::FirewallRule
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -774,7 +774,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_firewall_ingress_rules(apps_id, matching_address: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules', options)
           command.response_representation = Google::Apis::AppengineV1::ListIngressRulesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListIngressRulesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -813,7 +813,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_firewall_ingress_rule(apps_id, ingress_rules_id, firewall_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
           command.request_representation = Google::Apis::AppengineV1::FirewallRule::Representation
           command.request_object = firewall_rule_object
           command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
@@ -849,7 +849,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_location(apps_id, locations_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/locations/{locationsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/locations/{locationsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Location::Representation
           command.response_class = Google::Apis::AppengineV1::Location
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -886,7 +886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_locations(apps_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
           command.response_representation = Google::Apis::AppengineV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListLocationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -922,7 +922,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_operation(apps_id, operations_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/operations/{operationsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/operations/{operationsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -966,7 +966,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_operations(apps_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/operations', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/operations', options)
           command.response_representation = Google::Apis::AppengineV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListOperationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1002,7 +1002,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service(apps_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1036,7 +1036,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service(apps_id, services_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Service::Representation
           command.response_class = Google::Apis::AppengineV1::Service
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1071,7 +1071,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_services(apps_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services', options)
           command.response_representation = Google::Apis::AppengineV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListServicesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1122,7 +1122,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_service(apps_id, services_id, service_object = nil, migrate_traffic: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}', options)
           command.request_representation = Google::Apis::AppengineV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -1161,7 +1161,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_app_service_version(apps_id, services_id, version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
           command.request_representation = Google::Apis::AppengineV1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -1199,7 +1199,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service_version(apps_id, services_id, versions_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1239,7 +1239,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service_version(apps_id, services_id, versions_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.response_representation = Google::Apis::AppengineV1::Version::Representation
           command.response_class = Google::Apis::AppengineV1::Version
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1281,7 +1281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_service_versions(apps_id, services_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions', options)
           command.response_representation = Google::Apis::AppengineV1::ListVersionsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListVersionsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1365,7 +1365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_app_service_version(apps_id, services_id, versions_id, version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command = make_simple_command(:patch, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
           command.request_representation = Google::Apis::AppengineV1::Version::Representation
           command.request_object = version_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -1413,7 +1413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def debug_instance(apps_id, services_id, versions_id, instances_id, debug_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
+          command = make_simple_command(:post, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
           command.request_representation = Google::Apis::AppengineV1::DebugInstanceRequest::Representation
           command.request_object = debug_instance_request_object
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
@@ -1455,7 +1455,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service_version_instance(apps_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command = make_simple_command(:delete, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Operation::Representation
           command.response_class = Google::Apis::AppengineV1::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1495,7 +1495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_app_service_version_instance(apps_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
           command.response_representation = Google::Apis::AppengineV1::Instance::Representation
           command.response_class = Google::Apis::AppengineV1::Instance
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -1539,7 +1539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_app_service_version_instances(apps_id, services_id, versions_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', options)
+          command = make_simple_command(:get, 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', options)
           command.response_representation = Google::Apis::AppengineV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListInstancesResponse
           command.params['appsId'] = apps_id unless apps_id.nil?

@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def acknowledge_subscription(acknowledge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions/acknowledge', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions/acknowledge', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::AcknowledgeRequest::Representation
           command.request_object = acknowledge_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_subscription(subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Subscription::Representation
@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subscription(subscription, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1a/subscriptions/{+subscription}', options)
+          command = make_simple_command(:delete, 'v1beta1a/subscriptions/{+subscription}', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::Empty
           command.params['subscription'] = subscription unless subscription.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subscription(subscription, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1a/subscriptions/{+subscription}', options)
+          command = make_simple_command(:get, 'v1beta1a/subscriptions/{+subscription}', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::Subscription::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::Subscription
           command.params['subscription'] = subscription unless subscription.nil?
@@ -203,7 +203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(max_results: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1a/subscriptions', options)
+          command = make_simple_command(:get, 'v1beta1a/subscriptions', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::ListSubscriptionsResponse::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::ListSubscriptionsResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -234,7 +234,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_subscription_ack_deadline(modify_ack_deadline_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions/modifyAckDeadline', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions/modifyAckDeadline', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::ModifyAckDeadlineRequest::Representation
           command.request_object = modify_ack_deadline_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
@@ -268,7 +268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_subscription_push_config(modify_push_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions/modifyPushConfig', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions/modifyPushConfig', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::ModifyPushConfigRequest::Representation
           command.request_object = modify_push_config_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
@@ -302,7 +302,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def pull_subscription(pull_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions/pull', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions/pull', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::PullRequest::Representation
           command.request_object = pull_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::PullResponse::Representation
@@ -334,7 +334,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def pull_subscription_batch(pull_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/subscriptions/pullBatch', options)
+          command = make_simple_command(:post, 'v1beta1a/subscriptions/pullBatch', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::PullBatchRequest::Representation
           command.request_object = pull_batch_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::PullBatchResponse::Representation
@@ -364,7 +364,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_topic(topic_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/topics', options)
+          command = make_simple_command(:post, 'v1beta1a/topics', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::Topic::Representation
           command.request_object = topic_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Topic::Representation
@@ -397,7 +397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_topic(topic, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1a/topics/{+topic}', options)
+          command = make_simple_command(:delete, 'v1beta1a/topics/{+topic}', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::Empty
           command.params['topic'] = topic unless topic.nil?
@@ -429,7 +429,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_topic(topic, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1a/topics/{+topic}', options)
+          command = make_simple_command(:get, 'v1beta1a/topics/{+topic}', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::Topic::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::Topic
           command.params['topic'] = topic unless topic.nil?
@@ -464,7 +464,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_topics(max_results: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1a/topics', options)
+          command = make_simple_command(:get, 'v1beta1a/topics', options)
           command.response_representation = Google::Apis::PubsubV1beta1a::ListTopicsResponse::Representation
           command.response_class = Google::Apis::PubsubV1beta1a::ListTopicsResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -496,7 +496,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_topic(publish_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/topics/publish', options)
+          command = make_simple_command(:post, 'v1beta1a/topics/publish', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::PublishRequest::Representation
           command.request_object = publish_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::Empty::Representation
@@ -527,7 +527,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_topic_batch(publish_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1a/topics/publishBatch', options)
+          command = make_simple_command(:post, 'v1beta1a/topics/publishBatch', options)
           command.request_representation = Google::Apis::PubsubV1beta1a::PublishBatchRequest::Representation
           command.request_object = publish_batch_request_object
           command.response_representation = Google::Apis::PubsubV1beta1a::PublishBatchResponse::Representation

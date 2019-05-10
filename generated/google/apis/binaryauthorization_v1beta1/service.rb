@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Policy::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::Policy
           command.params['name'] = name unless name.nil?
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_policy(name, policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::Policy::Representation
           command.request_object = policy_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Policy::Representation
@@ -145,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_attestor(parent, attestor_object = nil, attestor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/attestors', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/attestors', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::Attestor::Representation
           command.request_object = attestor_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Attestor::Representation
@@ -180,7 +180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_attestor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Empty::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -212,7 +212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_attestor(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Attestor::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::Attestor
           command.params['name'] = name unless name.nil?
@@ -245,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_attestor_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::IamPolicy::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::IamPolicy
           command.params['resource'] = resource unless resource.nil?
@@ -284,7 +284,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_attestors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/attestors', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/attestors', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::ListAttestorsResponse::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::ListAttestorsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -319,7 +319,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_attestor_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::IamPolicy::Representation
@@ -358,7 +358,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_attestor_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::TestIamPermissionsResponse::Representation
@@ -393,7 +393,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_attestor(name, attestor_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::Attestor::Representation
           command.request_object = attestor_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::Attestor::Representation
@@ -428,7 +428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_policy_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::IamPolicy::Representation
           command.response_class = Google::Apis::BinaryauthorizationV1beta1::IamPolicy
           command.params['resource'] = resource unless resource.nil?
@@ -461,7 +461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::IamPolicy::Representation
@@ -500,7 +500,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::BinaryauthorizationV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::BinaryauthorizationV1beta1::TestIamPermissionsResponse::Representation

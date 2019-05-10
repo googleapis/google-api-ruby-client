@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_access_policy(access_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta/accessPolicies', options)
+          command = make_simple_command(:post, 'v1beta/accessPolicies', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::AccessPolicy::Representation
           command.request_object = access_policy_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_access_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::Operation
           command.params['name'] = name unless name.nil?
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_access_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+name}', options)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::AccessPolicy::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::AccessPolicy
           command.params['name'] = name unless name.nil?
@@ -176,7 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_access_policies(page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/accessPolicies', options)
+          command = make_simple_command(:get, 'v1beta/accessPolicies', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::ListAccessPoliciesResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::ListAccessPoliciesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -216,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_access_policy(name, access_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::AccessPolicy::Representation
           command.request_object = access_policy_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -256,7 +256,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_access_policy_access_level(parent, access_level_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta/{+parent}/accessLevels', options)
+          command = make_simple_command(:post, 'v1beta/{+parent}/accessLevels', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::AccessLevel::Representation
           command.request_object = access_level_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -293,7 +293,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_access_policy_access_level(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::Operation
           command.params['name'] = name unless name.nil?
@@ -334,7 +334,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_access_policy_access_level(name, access_level_format: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+name}', options)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::AccessLevel::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::AccessLevel
           command.params['name'] = name unless name.nil?
@@ -378,7 +378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_access_policy_access_levels(parent, access_level_format: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+parent}/accessLevels', options)
+          command = make_simple_command(:get, 'v1beta/{+parent}/accessLevels', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::ListAccessLevelsResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::ListAccessLevelsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -420,7 +420,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_access_policy_access_level(name, access_level_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::AccessLevel::Representation
           command.request_object = access_level_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -460,7 +460,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_access_policy_service_perimeter(parent, service_perimeter_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta/{+parent}/servicePerimeters', options)
+          command = make_simple_command(:post, 'v1beta/{+parent}/servicePerimeters', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter::Representation
           command.request_object = service_perimeter_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -497,7 +497,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_access_policy_service_perimeter(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::Operation
           command.params['name'] = name unless name.nil?
@@ -530,7 +530,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_access_policy_service_perimeter(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+name}', options)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter
           command.params['name'] = name unless name.nil?
@@ -569,7 +569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_access_policy_service_perimeters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+parent}/servicePerimeters', options)
+          command = make_simple_command(:get, 'v1beta/{+parent}/servicePerimeters', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::ListServicePerimetersResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::ListServicePerimetersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -610,7 +610,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_access_policy_service_perimeter(name, service_perimeter_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter::Representation
           command.request_object = service_perimeter_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
@@ -645,7 +645,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta/{+name}', options)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1beta::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1beta::Operation
           command.params['name'] = name unless name.nil?

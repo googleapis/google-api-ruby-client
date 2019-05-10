@@ -80,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::ServiceusageV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::ServiceusageV1::Empty::Representation
@@ -115,7 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceusageV1::Empty::Representation
           command.response_class = Google::Apis::ServiceusageV1::Empty
           command.params['name'] = name unless name.nil?
@@ -147,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
           command.response_class = Google::Apis::ServiceusageV1::Operation
           command.params['name'] = name unless name.nil?
@@ -191,7 +191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
+          command = make_simple_command(:get, 'v1/operations', options)
           command.response_representation = Google::Apis::ServiceusageV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ServiceusageV1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -230,7 +230,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_enable_services(parent, batch_enable_services_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/services:batchEnable', options)
+          command = make_simple_command(:post, 'v1/{+parent}/services:batchEnable', options)
           command.request_representation = Google::Apis::ServiceusageV1::BatchEnableServicesRequest::Representation
           command.request_object = batch_enable_services_request_object
           command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_service(name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:disable', options)
+          command = make_simple_command(:post, 'v1/{+name}:disable', options)
           command.request_representation = Google::Apis::ServiceusageV1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
           command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
@@ -312,7 +312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_service(name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:enable', options)
+          command = make_simple_command(:post, 'v1/{+name}:enable', options)
           command.request_representation = Google::Apis::ServiceusageV1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
           command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
@@ -347,7 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service::Representation
           command.response_class = Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service
           command.params['name'] = name unless name.nil?
@@ -396,7 +396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_services(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/services', options)
+          command = make_simple_command(:get, 'v1/{+parent}/services', options)
           command.response_representation = Google::Apis::ServiceusageV1::ListServicesResponse::Representation
           command.response_class = Google::Apis::ServiceusageV1::ListServicesResponse
           command.params['parent'] = parent unless parent.nil?

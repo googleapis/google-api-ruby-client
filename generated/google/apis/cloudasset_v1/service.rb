@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudassetV1::Operation::Representation
           command.response_class = Google::Apis::CloudassetV1::Operation
           command.params['name'] = name unless name.nil?
@@ -127,7 +127,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_get_assets_history(parent, asset_names: nil, content_type: nil, read_time_window_end_time: nil, read_time_window_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}:batchGetAssetsHistory', options)
+          command = make_simple_command(:get, 'v1/{+parent}:batchGetAssetsHistory', options)
           command.response_representation = Google::Apis::CloudassetV1::BatchGetAssetsHistoryResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::BatchGetAssetsHistoryResponse
           command.params['parent'] = parent unless parent.nil?
@@ -168,7 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_assets(parent, export_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:exportAssets', options)
+          command = make_simple_command(:post, 'v1/{+parent}:exportAssets', options)
           command.request_representation = Google::Apis::CloudassetV1::ExportAssetsRequest::Representation
           command.request_object = export_assets_request_object
           command.response_representation = Google::Apis::CloudassetV1::Operation::Representation

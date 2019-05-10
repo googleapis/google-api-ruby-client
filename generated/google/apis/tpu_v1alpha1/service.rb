@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Location::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}/locations', options)
           command.response_representation = Google::Apis::TpuV1alpha1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::TpuV1alpha1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_accelerator_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::AcceleratorType::Representation
           command.response_class = Google::Apis::TpuV1alpha1::AcceleratorType
           command.params['name'] = name unless name.nil?
@@ -175,7 +175,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_accelerator_types(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+parent}/acceleratorTypes', options)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/acceleratorTypes', options)
           command.response_representation = Google::Apis::TpuV1alpha1::ListAcceleratorTypesResponse::Representation
           command.response_class = Google::Apis::TpuV1alpha1::ListAcceleratorTypesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -212,7 +212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_node(parent, node_object = nil, node_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+parent}/nodes', options)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/nodes', options)
           command.request_representation = Google::Apis::TpuV1alpha1::Node::Representation
           command.request_object = node_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
@@ -245,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_node(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['name'] = name unless name.nil?
@@ -275,7 +275,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_node(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Node::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Node
           command.params['name'] = name unless name.nil?
@@ -309,7 +309,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
           command.response_representation = Google::Apis::TpuV1alpha1::ListNodesResponse::Representation
           command.response_class = Google::Apis::TpuV1alpha1::ListNodesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -342,7 +342,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reimage_project_location_node(name, reimage_node_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:reimage', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:reimage', options)
           command.request_representation = Google::Apis::TpuV1alpha1::ReimageNodeRequest::Representation
           command.request_object = reimage_node_request_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
@@ -375,7 +375,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_node(name, start_node_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:start', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:start', options)
           command.request_representation = Google::Apis::TpuV1alpha1::StartNodeRequest::Representation
           command.request_object = start_node_request_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
@@ -408,7 +408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_node(name, stop_node_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:stop', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:stop', options)
           command.request_representation = Google::Apis::TpuV1alpha1::StopNodeRequest::Representation
           command.request_object = stop_node_request_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
@@ -449,7 +449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:cancel', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Empty::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Empty
           command.params['name'] = name unless name.nil?
@@ -482,7 +482,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Empty::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Empty
           command.params['name'] = name unless name.nil?
@@ -514,7 +514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['name'] = name unless name.nil?
@@ -558,7 +558,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}/operations', options)
           command.response_representation = Google::Apis::TpuV1alpha1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::TpuV1alpha1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -591,7 +591,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_tensorflow_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::TensorFlowVersion::Representation
           command.response_class = Google::Apis::TpuV1alpha1::TensorFlowVersion
           command.params['name'] = name unless name.nil?
@@ -629,7 +629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_tensorflow_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+parent}/tensorflowVersions', options)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/tensorflowVersions', options)
           command.response_representation = Google::Apis::TpuV1alpha1::ListTensorFlowVersionsResponse::Representation
           command.response_class = Google::Apis::TpuV1alpha1::ListTensorFlowVersionsResponse
           command.params['parent'] = parent unless parent.nil?

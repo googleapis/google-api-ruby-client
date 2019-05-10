@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_snapshots(project_id, location: nil, snapshot_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1b3/projects/{projectId}/snapshots', options)
+          command = make_simple_command(:delete, 'v1b3/projects/{projectId}/snapshots', options)
           command.response_representation = Google::Apis::DataflowV1b3::DeleteSnapshotResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::DeleteSnapshotResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def worker_project_messages(project_id, send_worker_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/WorkerMessages', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/WorkerMessages', options)
           command.request_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesRequest::Representation
           command.request_object = send_worker_messages_request_object
           command.response_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesResponse::Representation
@@ -152,7 +152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def aggregated_project_job(project_id, filter: nil, location: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs:aggregated', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs:aggregated', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -201,7 +201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_job(project_id, job_object = nil, location: nil, replace_job_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -249,7 +249,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job(project_id, job_id, location: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.response_class = Google::Apis::DataflowV1b3::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -296,7 +296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job_metrics(project_id, job_id, location: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/metrics', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/metrics', options)
           command.response_representation = Google::Apis::DataflowV1b3::JobMetrics::Representation
           command.response_class = Google::Apis::DataflowV1b3::JobMetrics
           command.params['projectId'] = project_id unless project_id.nil?
@@ -350,7 +350,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_jobs(project_id, filter: nil, location: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -388,7 +388,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def snapshot_project_job(project_id, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}:snapshot', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}:snapshot', options)
           command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
           command.request_object = snapshot_job_request_object
           command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
@@ -433,7 +433,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_job(project_id, job_id, job_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
+          command = make_simple_command(:put, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -470,7 +470,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job_debug_config(project_id, job_id, get_debug_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig', options)
           command.request_representation = Google::Apis::DataflowV1b3::GetDebugConfigRequest::Representation
           command.request_object = get_debug_config_request_object
           command.response_representation = Google::Apis::DataflowV1b3::GetDebugConfigResponse::Representation
@@ -506,7 +506,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_job_debug_capture(project_id, job_id, send_debug_capture_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture', options)
           command.request_representation = Google::Apis::DataflowV1b3::SendDebugCaptureRequest::Representation
           command.request_object = send_debug_capture_request_object
           command.response_representation = Google::Apis::DataflowV1b3::SendDebugCaptureResponse::Representation
@@ -566,7 +566,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_job_messages(project_id, job_id, end_time: nil, location: nil, minimum_importance: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/messages', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/messages', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobMessagesResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobMessagesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -606,7 +606,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lease_project_work_item(project_id, job_id, lease_work_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease', options)
           command.request_representation = Google::Apis::DataflowV1b3::LeaseWorkItemRequest::Representation
           command.request_object = lease_work_item_request_object
           command.response_representation = Google::Apis::DataflowV1b3::LeaseWorkItemResponse::Representation
@@ -642,7 +642,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def report_project_job_work_item_status(project_id, job_id, report_work_item_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus', options)
           command.request_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest::Representation
           command.request_object = report_work_item_status_request_object
           command.response_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse::Representation
@@ -680,7 +680,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def worker_project_location_messages(project_id, location, send_worker_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/WorkerMessages', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/WorkerMessages', options)
           command.request_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesRequest::Representation
           command.request_object = send_worker_messages_request_object
           command.response_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesResponse::Representation
@@ -727,7 +727,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_job(project_id, location, job_object = nil, replace_job_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -775,7 +775,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_job(project_id, location, job_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.response_class = Google::Apis::DataflowV1b3::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -822,7 +822,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_job_metrics(project_id, location, job_id, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics', options)
           command.response_representation = Google::Apis::DataflowV1b3::JobMetrics::Representation
           command.response_class = Google::Apis::DataflowV1b3::JobMetrics
           command.params['projectId'] = project_id unless project_id.nil?
@@ -876,7 +876,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_jobs(project_id, location, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -916,7 +916,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def snapshot_project_location_job(project_id, location, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', options)
           command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
           command.request_object = snapshot_job_request_object
           command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
@@ -962,7 +962,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_job(project_id, location, job_id, job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', options)
+          command = make_simple_command(:put, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -1003,7 +1003,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_job_debug_config(project_id, location, job_id, get_debug_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig', options)
           command.request_representation = Google::Apis::DataflowV1b3::GetDebugConfigRequest::Representation
           command.request_object = get_debug_config_request_object
           command.response_representation = Google::Apis::DataflowV1b3::GetDebugConfigResponse::Representation
@@ -1044,7 +1044,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_location_job_debug_capture(project_id, location, job_id, send_debug_capture_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture', options)
           command.request_representation = Google::Apis::DataflowV1b3::SendDebugCaptureRequest::Representation
           command.request_object = send_debug_capture_request_object
           command.response_representation = Google::Apis::DataflowV1b3::SendDebugCaptureResponse::Representation
@@ -1105,7 +1105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_job_messages(project_id, location, job_id, end_time: nil, minimum_importance: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobMessagesResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobMessagesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1149,7 +1149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lease_project_location_work_item(project_id, location, job_id, lease_work_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease', options)
           command.request_representation = Google::Apis::DataflowV1b3::LeaseWorkItemRequest::Representation
           command.request_object = lease_work_item_request_object
           command.response_representation = Google::Apis::DataflowV1b3::LeaseWorkItemResponse::Representation
@@ -1190,7 +1190,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def report_project_location_job_work_item_status(project_id, location, job_id, report_work_item_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', options)
           command.request_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest::Representation
           command.request_object = report_work_item_status_request_object
           command.response_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse::Representation
@@ -1228,7 +1228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_snapshot(project_id, location, snapshot_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
+          command = make_simple_command(:delete, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::DeleteSnapshotResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::DeleteSnapshotResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1264,7 +1264,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_snapshot(project_id, location, snapshot_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
           command.response_class = Google::Apis::DataflowV1b3::Snapshot
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1298,7 +1298,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_snapshots(project_id, location, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListSnapshotsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListSnapshotsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1338,7 +1338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_project_location_sql(project_id, location, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/sql:validate', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/sql:validate', options)
           command.response_representation = Google::Apis::DataflowV1b3::ValidateResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ValidateResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1375,7 +1375,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_job_from_template_with_location(project_id, location, create_job_from_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates', options)
           command.request_representation = Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest::Representation
           command.request_object = create_job_from_template_request_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -1418,7 +1418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_template(project_id, location, gcs_path: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/templates:get', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/templates:get', options)
           command.response_representation = Google::Apis::DataflowV1b3::GetTemplateResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::GetTemplateResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1469,7 +1469,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def launch_project_location_template(project_id, location, launch_template_parameters_object = nil, dynamic_template_gcs_path: nil, dynamic_template_staging_location: nil, gcs_path: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates:launch', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates:launch', options)
           command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
           command.request_object = launch_template_parameters_object
           command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation
@@ -1510,7 +1510,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_snapshot(project_id, snapshot_id, location: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots/{snapshotId}', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots/{snapshotId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
           command.response_class = Google::Apis::DataflowV1b3::Snapshot
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1544,7 +1544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_snapshots(project_id, location: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListSnapshotsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListSnapshotsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1576,7 +1576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_job_from_template(project_id, create_job_from_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/templates', options)
           command.request_representation = Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest::Representation
           command.request_object = create_job_from_template_request_object
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
@@ -1618,7 +1618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_template(project_id, gcs_path: nil, location: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/templates:get', options)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/templates:get', options)
           command.response_representation = Google::Apis::DataflowV1b3::GetTemplateResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::GetTemplateResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1669,7 +1669,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def launch_project_template(project_id, launch_template_parameters_object = nil, dynamic_template_gcs_path: nil, dynamic_template_staging_location: nil, gcs_path: nil, location: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates:launch', options)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/templates:launch', options)
           command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
           command.request_object = launch_template_parameters_object
           command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation

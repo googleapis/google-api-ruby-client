@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/agent', options)
+          command = make_simple_command(:get, 'v2/{+parent}/agent', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent
           command.params['parent'] = parent unless parent.nil?
@@ -103,7 +103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_project_agent(parent, google_cloud_dialogflow_v2_export_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/agent:export', options)
+          command = make_simple_command(:post, 'v2/{+parent}/agent:export', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ExportAgentRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_export_agent_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_project_agent(parent, google_cloud_dialogflow_v2_import_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/agent:import', options)
+          command = make_simple_command(:post, 'v2/{+parent}/agent:import', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ImportAgentRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_import_agent_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -178,7 +178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def restore_project_agent(parent, google_cloud_dialogflow_v2_restore_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/agent:restore', options)
+          command = make_simple_command(:post, 'v2/{+parent}/agent:restore', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2RestoreAgentRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_restore_agent_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -222,7 +222,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_agents(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/agent:search', options)
+          command = make_simple_command(:get, 'v2/{+parent}/agent:search', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchAgentsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchAgentsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -257,7 +257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def train_project_agent(parent, google_cloud_dialogflow_v2_train_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/agent:train', options)
+          command = make_simple_command(:post, 'v2/{+parent}/agent:train', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TrainAgentRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_train_agent_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -292,7 +292,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_entity_type_delete(parent, google_cloud_dialogflow_v2_batch_delete_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entityTypes:batchDelete', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entityTypes:batchDelete', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_delete_entity_types_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -327,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_entity_type_update(parent, google_cloud_dialogflow_v2_batch_update_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entityTypes:batchUpdate', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entityTypes:batchUpdate', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_update_entity_types_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -369,7 +369,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_agent_entity_type(parent, google_cloud_dialogflow_v2_entity_type_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entityTypes', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entityTypes', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType::Representation
           command.request_object = google_cloud_dialogflow_v2_entity_type_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType::Representation
@@ -403,7 +403,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -442,7 +442,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_entity_type(name, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType
           command.params['name'] = name unless name.nil?
@@ -487,7 +487,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_entity_types(parent, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/entityTypes', options)
+          command = make_simple_command(:get, 'v2/{+parent}/entityTypes', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEntityTypesResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEntityTypesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -534,7 +534,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_agent_entity_type(name, google_cloud_dialogflow_v2_entity_type_object = nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType::Representation
           command.request_object = google_cloud_dialogflow_v2_entity_type_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType::Representation
@@ -571,7 +571,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_entity_type_entity_create(parent, google_cloud_dialogflow_v2_batch_create_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entities:batchCreate', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entities:batchCreate', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchCreateEntitiesRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_create_entities_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -606,7 +606,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_entity_type_entity_delete(parent, google_cloud_dialogflow_v2_batch_delete_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entities:batchDelete', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entities:batchDelete', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchDeleteEntitiesRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_delete_entities_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -643,7 +643,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_entity_type_entity_update(parent, google_cloud_dialogflow_v2_batch_update_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entities:batchUpdate', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entities:batchUpdate', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchUpdateEntitiesRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_update_entities_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -678,7 +678,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_intent_delete(parent, google_cloud_dialogflow_v2_batch_delete_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/intents:batchDelete', options)
+          command = make_simple_command(:post, 'v2/{+parent}/intents:batchDelete', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchDeleteIntentsRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_delete_intents_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -713,7 +713,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_project_agent_intent_update(parent, google_cloud_dialogflow_v2_batch_update_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/intents:batchUpdate', options)
+          command = make_simple_command(:post, 'v2/{+parent}/intents:batchUpdate', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2BatchUpdateIntentsRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_batch_update_intents_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
@@ -757,7 +757,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_agent_intent(parent, google_cloud_dialogflow_v2_intent_object = nil, intent_view: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/intents', options)
+          command = make_simple_command(:post, 'v2/{+parent}/intents', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent::Representation
           command.request_object = google_cloud_dialogflow_v2_intent_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent::Representation
@@ -793,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_intent(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -834,7 +834,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_intent(name, intent_view: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent
           command.params['name'] = name unless name.nil?
@@ -882,7 +882,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_intents(parent, intent_view: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/intents', options)
+          command = make_simple_command(:get, 'v2/{+parent}/intents', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListIntentsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListIntentsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -932,7 +932,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_agent_intent(name, google_cloud_dialogflow_v2_intent_object = nil, intent_view: nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent::Representation
           command.request_object = google_cloud_dialogflow_v2_intent_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Intent::Representation
@@ -968,7 +968,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_contexts(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+parent}/contexts', options)
+          command = make_simple_command(:delete, 'v2/{+parent}/contexts', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
           command.params['parent'] = parent unless parent.nil?
@@ -1006,7 +1006,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def detect_project_agent_session_intent(session, google_cloud_dialogflow_v2_detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+session}:detectIntent', options)
+          command = make_simple_command(:post, 'v2/{+session}:detectIntent', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentRequest::Representation
           command.request_object = google_cloud_dialogflow_v2_detect_intent_request_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse::Representation
@@ -1041,7 +1041,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_agent_session_context(parent, google_cloud_dialogflow_v2_context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/contexts', options)
+          command = make_simple_command(:post, 'v2/{+parent}/contexts', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
           command.request_object = google_cloud_dialogflow_v2_context_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
@@ -1074,7 +1074,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1105,7 +1105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context
           command.params['name'] = name unless name.nil?
@@ -1141,7 +1141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_session_contexts(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/contexts', options)
+          command = make_simple_command(:get, 'v2/{+parent}/contexts', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListContextsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListContextsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1179,7 +1179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_agent_session_context(name, google_cloud_dialogflow_v2_context_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
           command.request_object = google_cloud_dialogflow_v2_context_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
@@ -1216,7 +1216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_agent_session_entity_type(parent, google_cloud_dialogflow_v2_session_entity_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/entityTypes', options)
+          command = make_simple_command(:post, 'v2/{+parent}/entityTypes', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
           command.request_object = google_cloud_dialogflow_v2_session_entity_type_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
@@ -1250,7 +1250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1282,7 +1282,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType
           command.params['name'] = name unless name.nil?
@@ -1318,7 +1318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_session_entity_types(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/entityTypes', options)
+          command = make_simple_command(:get, 'v2/{+parent}/entityTypes', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListSessionEntityTypesResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListSessionEntityTypesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1357,7 +1357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_agent_session_entity_type(name, google_cloud_dialogflow_v2_session_entity_type_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
           command.request_object = google_cloud_dialogflow_v2_session_entity_type_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
@@ -1392,7 +1392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?

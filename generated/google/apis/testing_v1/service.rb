@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_application_detail_service_apk_details(file_reference_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/applicationDetailService/getApkDetails', options)
+          command = make_simple_command(:post, 'v1/applicationDetailService/getApkDetails', options)
           command.request_representation = Google::Apis::TestingV1::FileReference::Representation
           command.request_object = file_reference_object
           command.response_representation = Google::Apis::TestingV1::GetApkDetailsResponse::Representation
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_test_matrix(project_id, test_matrix_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel', options)
           command.response_representation = Google::Apis::TestingV1::CancelTestMatrixResponse::Representation
           command.response_class = Google::Apis::TestingV1::CancelTestMatrixResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -151,7 +151,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_test_matrix(project_id, test_matrix_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/testMatrices', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/testMatrices', options)
           command.request_representation = Google::Apis::TestingV1::TestMatrix::Representation
           command.request_object = test_matrix_object
           command.response_representation = Google::Apis::TestingV1::TestMatrix::Representation
@@ -190,7 +190,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_test_matrix(project_id, test_matrix_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/testMatrices/{testMatrixId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/testMatrices/{testMatrixId}', options)
           command.response_representation = Google::Apis::TestingV1::TestMatrix::Representation
           command.response_class = Google::Apis::TestingV1::TestMatrix
           command.params['projectId'] = project_id unless project_id.nil?
@@ -227,7 +227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_test_environment_catalog(environment_type, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/testEnvironmentCatalog/{environmentType}', options)
+          command = make_simple_command(:get, 'v1/testEnvironmentCatalog/{environmentType}', options)
           command.response_representation = Google::Apis::TestingV1::TestEnvironmentCatalog::Representation
           command.response_class = Google::Apis::TestingV1::TestEnvironmentCatalog
           command.params['environmentType'] = environment_type unless environment_type.nil?

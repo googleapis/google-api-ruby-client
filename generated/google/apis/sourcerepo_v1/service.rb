@@ -69,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/config', options)
+          command = make_simple_command(:get, 'v1/{+name}/config', options)
           command.response_representation = Google::Apis::SourcerepoV1::ProjectConfig::Representation
           command.response_class = Google::Apis::SourcerepoV1::ProjectConfig
           command.params['name'] = name unless name.nil?
@@ -101,7 +101,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_config(name, update_project_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}/config', options)
+          command = make_simple_command(:patch, 'v1/{+name}/config', options)
           command.request_representation = Google::Apis::SourcerepoV1::UpdateProjectConfigRequest::Representation
           command.request_object = update_project_config_request_object
           command.response_representation = Google::Apis::SourcerepoV1::ProjectConfig::Representation
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_repo(parent, repo_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/repos', options)
+          command = make_simple_command(:post, 'v1/{+parent}/repos', options)
           command.request_representation = Google::Apis::SourcerepoV1::Repo::Representation
           command.request_object = repo_object
           command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation
@@ -170,7 +170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_repo(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SourcerepoV1::Empty::Representation
           command.response_class = Google::Apis::SourcerepoV1::Empty
           command.params['name'] = name unless name.nil?
@@ -201,7 +201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_repo(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation
           command.response_class = Google::Apis::SourcerepoV1::Repo
           command.params['name'] = name unless name.nil?
@@ -234,7 +234,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_repo_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::SourcerepoV1::Policy::Representation
           command.response_class = Google::Apis::SourcerepoV1::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -273,7 +273,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_repos(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/repos', options)
+          command = make_simple_command(:get, 'v1/{+name}/repos', options)
           command.response_representation = Google::Apis::SourcerepoV1::ListReposResponse::Representation
           command.response_class = Google::Apis::SourcerepoV1::ListReposResponse
           command.params['name'] = name unless name.nil?
@@ -307,7 +307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_repo(name, update_repo_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::SourcerepoV1::UpdateRepoRequest::Representation
           command.request_object = update_repo_request_object
           command.response_representation = Google::Apis::SourcerepoV1::Repo::Representation
@@ -342,7 +342,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_repo_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SourcerepoV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SourcerepoV1::Policy::Representation
@@ -377,7 +377,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sync_repo(name, sync_repo_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:sync', options)
+          command = make_simple_command(:post, 'v1/{+name}:sync', options)
           command.request_representation = Google::Apis::SourcerepoV1::SyncRepoRequest::Representation
           command.request_object = sync_repo_request_object
           command.response_representation = Google::Apis::SourcerepoV1::Operation::Representation
@@ -413,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_repo_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SourcerepoV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SourcerepoV1::TestIamPermissionsResponse::Representation

@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_customer_license(application_id, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'customerLicense/{applicationId}/{customerId}', options)
+          command = make_simple_command(:get, 'customerLicense/{applicationId}/{customerId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::CustomerLicense::Representation
           command.response_class = Google::Apis::AppsmarketV2::CustomerLicense
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -117,7 +117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_license_notifications(application_id, max_results: nil, start_token: nil, timestamp: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'licenseNotification/{applicationId}', options)
+          command = make_simple_command(:get, 'licenseNotification/{applicationId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::LicenseNotificationList::Representation
           command.response_class = Google::Apis::AppsmarketV2::LicenseNotificationList
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -155,7 +155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_license(application_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'userLicense/{applicationId}/{userId}', options)
+          command = make_simple_command(:get, 'userLicense/{applicationId}/{userId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::UserLicense::Representation
           command.response_class = Google::Apis::AppsmarketV2::UserLicense
           command.params['applicationId'] = application_id unless application_id.nil?

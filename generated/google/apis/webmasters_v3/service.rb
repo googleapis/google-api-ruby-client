@@ -81,7 +81,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_search_analytics(site_url, search_analytics_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'sites/{siteUrl}/searchAnalytics/query', options)
+          command = make_simple_command(:post, 'sites/{siteUrl}/searchAnalytics/query', options)
           command.request_representation = Google::Apis::WebmastersV3::SearchAnalyticsQueryRequest::Representation
           command.request_object = search_analytics_query_request_object
           command.response_representation = Google::Apis::WebmastersV3::SearchAnalyticsQueryResponse::Representation
@@ -118,7 +118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_sitemap(site_url, feedpath, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
+          command = make_simple_command(:delete, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.params['feedpath'] = feedpath unless feedpath.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -152,7 +152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_sitemap(site_url, feedpath, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
+          command = make_simple_command(:get, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
           command.response_representation = Google::Apis::WebmastersV3::WmxSitemap::Representation
           command.response_class = Google::Apis::WebmastersV3::WmxSitemap
           command.params['siteUrl'] = site_url unless site_url.nil?
@@ -190,7 +190,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sitemaps(site_url, sitemap_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'sites/{siteUrl}/sitemaps', options)
+          command = make_simple_command(:get, 'sites/{siteUrl}/sitemaps', options)
           command.response_representation = Google::Apis::WebmastersV3::ListSitemapsResponse::Representation
           command.response_class = Google::Apis::WebmastersV3::ListSitemapsResponse
           command.params['siteUrl'] = site_url unless site_url.nil?
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_sitemap(site_url, feedpath, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
+          command = make_simple_command(:put, 'sites/{siteUrl}/sitemaps/{feedpath}', options)
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.params['feedpath'] = feedpath unless feedpath.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -258,7 +258,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_site(site_url, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'sites/{siteUrl}', options)
+          command = make_simple_command(:put, 'sites/{siteUrl}', options)
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -291,7 +291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_site(site_url, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'sites/{siteUrl}', options)
+          command = make_simple_command(:delete, 'sites/{siteUrl}', options)
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -324,7 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_site(site_url, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'sites/{siteUrl}', options)
+          command = make_simple_command(:get, 'sites/{siteUrl}', options)
           command.response_representation = Google::Apis::WebmastersV3::WmxSite::Representation
           command.response_class = Google::Apis::WebmastersV3::WmxSite
           command.params['siteUrl'] = site_url unless site_url.nil?
@@ -355,7 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sites(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'sites', options)
+          command = make_simple_command(:get, 'sites', options)
           command.response_representation = Google::Apis::WebmastersV3::ListSitesResponse::Representation
           command.response_class = Google::Apis::WebmastersV3::ListSitesResponse
           command.query['fields'] = fields unless fields.nil?

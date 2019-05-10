@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_billing_account_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:post, 'v2/{+parent}/exclusions', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_billing_account_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
@@ -148,7 +148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.response_class = Google::Apis::LoggingV2::LogExclusion
           command.params['name'] = name unless name.nil?
@@ -191,7 +191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:get, 'v2/{+parent}/exclusions', options)
           command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -236,7 +236,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_billing_account_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -278,7 +278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_billing_account_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -322,7 +322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -373,7 +373,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_billing_account_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -413,7 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_billing_account_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -448,7 +448,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_billing_account_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -491,7 +491,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_billing_account_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -551,7 +551,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_billing_account_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+sinkName}', options)
+          command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -613,7 +613,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_billing_account_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -648,7 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_entry_log_entries(list_log_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/entries:list', options)
+          command = make_simple_command(:post, 'v2/entries:list', options)
           command.request_representation = Google::Apis::LoggingV2::ListLogEntriesRequest::Representation
           command.request_object = list_log_entries_request_object
           command.response_representation = Google::Apis::LoggingV2::ListLogEntriesResponse::Representation
@@ -682,7 +682,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def write_entry_log_entries(write_log_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/entries:write', options)
+          command = make_simple_command(:post, 'v2/entries:write', options)
           command.request_representation = Google::Apis::LoggingV2::WriteLogEntriesRequest::Representation
           command.request_object = write_log_entries_request_object
           command.response_representation = Google::Apis::LoggingV2::WriteLogEntriesResponse::Representation
@@ -721,7 +721,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:post, 'v2/{+parent}/exclusions', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -758,7 +758,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
@@ -793,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.response_class = Google::Apis::LoggingV2::LogExclusion
           command.params['name'] = name unless name.nil?
@@ -836,7 +836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:get, 'v2/{+parent}/exclusions', options)
           command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -881,7 +881,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -922,7 +922,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_folder_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:post, 'v2/{+parent}/exclusions', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -959,7 +959,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
@@ -994,7 +994,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.response_class = Google::Apis::LoggingV2::LogExclusion
           command.params['name'] = name unless name.nil?
@@ -1037,7 +1037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:get, 'v2/{+parent}/exclusions', options)
           command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1082,7 +1082,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_folder_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -1124,7 +1124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -1168,7 +1168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1219,7 +1219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_folder_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1259,7 +1259,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1294,7 +1294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1337,7 +1337,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1397,7 +1397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_folder_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+sinkName}', options)
+          command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1459,7 +1459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_folder_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1502,7 +1502,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -1546,7 +1546,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1585,7 +1585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_monitored_resource_descriptors(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/monitoredResourceDescriptors', options)
+          command = make_simple_command(:get, 'v2/monitoredResourceDescriptors', options)
           command.response_representation = Google::Apis::LoggingV2::ListMonitoredResourceDescriptorsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListMonitoredResourceDescriptorsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1624,7 +1624,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:post, 'v2/{+parent}/exclusions', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -1661,7 +1661,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
@@ -1696,7 +1696,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.response_class = Google::Apis::LoggingV2::LogExclusion
           command.params['name'] = name unless name.nil?
@@ -1739,7 +1739,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:get, 'v2/{+parent}/exclusions', options)
           command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1784,7 +1784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -1826,7 +1826,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -1870,7 +1870,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1921,7 +1921,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -1961,7 +1961,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -1996,7 +1996,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -2039,7 +2039,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2099,7 +2099,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+sinkName}', options)
+          command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -2161,7 +2161,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -2203,7 +2203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:post, 'v2/{+parent}/exclusions', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -2240,7 +2240,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
@@ -2275,7 +2275,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.response_class = Google::Apis::LoggingV2::LogExclusion
           command.params['name'] = name unless name.nil?
@@ -2318,7 +2318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command = make_simple_command(:get, 'v2/{+parent}/exclusions', options)
           command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2363,7 +2363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
           command.request_object = log_exclusion_object
           command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
@@ -2405,7 +2405,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+logName}', options)
+          command = make_simple_command(:delete, 'v2/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['logName'] = log_name unless log_name.nil?
@@ -2449,7 +2449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/logs', options)
+          command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2484,7 +2484,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_metric(parent, log_metric_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/metrics', options)
+          command = make_simple_command(:post, 'v2/{+parent}/metrics', options)
           command.request_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.request_object = log_metric_object
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
@@ -2517,7 +2517,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+metricName}', options)
+          command = make_simple_command(:delete, 'v2/{+metricName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['metricName'] = metric_name unless metric_name.nil?
@@ -2548,7 +2548,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+metricName}', options)
+          command = make_simple_command(:get, 'v2/{+metricName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.response_class = Google::Apis::LoggingV2::LogMetric
           command.params['metricName'] = metric_name unless metric_name.nil?
@@ -2588,7 +2588,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_metrics(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/metrics', options)
+          command = make_simple_command(:get, 'v2/{+parent}/metrics', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogMetricsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogMetricsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2625,7 +2625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_metric(metric_name, log_metric_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+metricName}', options)
+          command = make_simple_command(:put, 'v2/{+metricName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogMetric::Representation
           command.request_object = log_metric_object
           command.response_representation = Google::Apis::LoggingV2::LogMetric::Representation
@@ -2676,7 +2676,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -2716,7 +2716,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -2751,7 +2751,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -2794,7 +2794,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -2854,7 +2854,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/{+sinkName}', options)
+          command = make_simple_command(:patch, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -2916,7 +2916,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -2969,7 +2969,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_sink(parent, log_sink_object = nil, unique_writer_identity: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:post, 'v2/{+parent}/sinks', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
@@ -3009,7 +3009,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/{+sinkName}', options)
+          command = make_simple_command(:delete, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -3044,7 +3044,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+sinkName}', options)
+          command = make_simple_command(:get, 'v2/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
@@ -3087,7 +3087,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sinks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/{+parent}/sinks', options)
+          command = make_simple_command(:get, 'v2/{+parent}/sinks', options)
           command.response_representation = Google::Apis::LoggingV2::ListSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListSinksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -3147,7 +3147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_sink(sink_name, log_sink_object = nil, unique_writer_identity: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+sinkName}', options)
+          command = make_simple_command(:put, 'v2/{+sinkName}', options)
           command.request_representation = Google::Apis::LoggingV2::LogSink::Representation
           command.request_object = log_sink_object
           command.response_representation = Google::Apis::LoggingV2::LogSink::Representation

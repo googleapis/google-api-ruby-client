@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_catalog(google_cloud_privatecatalogproducer_v1beta1_catalog_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/catalogs', options)
+          command = make_simple_command(:post, 'v1beta1/catalogs', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_catalog_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningOperation::Representation
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_catalog(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog
           command.params['name'] = name unless name.nil?
@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_catalog(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog
           command.params['name'] = name unless name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_catalog_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
@@ -206,7 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_catalogs(page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/catalogs', options)
+          command = make_simple_command(:get, 'v1beta1/catalogs', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListCatalogsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListCatalogsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -244,7 +244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_catalog(name, google_cloud_privatecatalogproducer_v1beta1_catalog_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_catalog_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
@@ -279,7 +279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_catalog_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1_set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1Policy::Representation
@@ -313,7 +313,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_catalog_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1_test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleIamV1TestIamPermissionsResponse::Representation
@@ -346,7 +346,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_catalog(name, google_cloud_privatecatalogproducer_v1beta1_undelete_catalog_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:undelete', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:undelete', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_undelete_catalog_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Catalog::Representation
@@ -379,7 +379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_catalog_association(parent, google_cloud_privatecatalogproducer_v1beta1_create_association_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/associations', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/associations', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1CreateAssociationRequest::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_create_association_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Association::Representation
@@ -411,7 +411,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_catalog_association(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -441,7 +441,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_catalog_association(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Association::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Association
           command.params['name'] = name unless name.nil?
@@ -477,7 +477,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_catalog_associations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/associations', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/associations', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -510,7 +510,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_catalog_product(name, google_cloud_privatecatalogproducer_v1beta1_copy_product_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:copy', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:copy', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1CopyProductRequest::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_copy_product_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningOperation::Representation
@@ -543,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_catalog_product(parent, google_cloud_privatecatalogproducer_v1beta1_product_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/products', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/products', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_product_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product::Representation
@@ -575,7 +575,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_catalog_product(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -605,7 +605,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_catalog_product(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product
           command.params['name'] = name unless name.nil?
@@ -645,7 +645,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_catalog_products(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/products', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/products', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -685,7 +685,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_catalog_product(name, google_cloud_privatecatalogproducer_v1beta1_product_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_product_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Product::Representation
@@ -724,7 +724,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_catalog_product_icon(product, google_cloud_privatecatalogproducer_v1beta1_upload_icon_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+product}/icons:upload', options)
+          command = make_simple_command(:post, 'v1beta1/{+product}/icons:upload', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1UploadIconRequest::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_upload_icon_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
@@ -757,7 +757,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_catalog_product_version(parent, google_cloud_privatecatalogproducer_v1beta1_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/versions', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/versions', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Version::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_version_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningOperation::Representation
@@ -789,7 +789,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_catalog_product_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -819,7 +819,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_catalog_product_version(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Version::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Version
           command.params['name'] = name unless name.nil?
@@ -856,7 +856,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_catalog_product_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/versions', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/versions', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -895,7 +895,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_catalog_product_version(name, google_cloud_privatecatalogproducer_v1beta1_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Version::Representation
           command.request_object = google_cloud_privatecatalogproducer_v1beta1_version_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleCloudPrivatecatalogproducerV1beta1Version::Representation
@@ -938,7 +938,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, google_longrunning_cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
           command.request_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningCancelOperationRequest::Representation
           command.request_object = google_longrunning_cancel_operation_request_object
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
@@ -973,7 +973,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -1005,7 +1005,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -1049,7 +1049,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/operations', options)
+          command = make_simple_command(:get, 'v1beta1/operations', options)
           command.response_representation = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::CloudprivatecatalogproducerV1beta1::GoogleLongrunningListOperationsResponse
           command.query['filter'] = filter unless filter.nil?

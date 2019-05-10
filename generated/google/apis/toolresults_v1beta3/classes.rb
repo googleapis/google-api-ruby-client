@@ -711,7 +711,7 @@ module Google
         end
       end
       
-      # 
+      # Details for an outcome with a FAILURE outcome summary.
       class FailureDetail
         include Google::Apis::Core::Hashable
       
@@ -1015,7 +1015,7 @@ module Google
         end
       end
       
-      # 
+      # Details for an outcome with an INCONCLUSIVE outcome summary.
       class InconclusiveDetail
         include Google::Apis::Core::Hashable
       
@@ -1384,31 +1384,22 @@ module Google
       class Outcome
         include Google::Apis::Core::Hashable
       
-        # More information about a FAILURE outcome.
-        # Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.
-        # Optional
+        # Details for an outcome with a FAILURE outcome summary.
         # Corresponds to the JSON property `failureDetail`
         # @return [Google::Apis::ToolresultsV1beta3::FailureDetail]
         attr_accessor :failure_detail
       
-        # More information about an INCONCLUSIVE outcome.
-        # Returns INVALID_ARGUMENT if this field is set but the summary is not
-        # INCONCLUSIVE.
-        # Optional
+        # Details for an outcome with an INCONCLUSIVE outcome summary.
         # Corresponds to the JSON property `inconclusiveDetail`
         # @return [Google::Apis::ToolresultsV1beta3::InconclusiveDetail]
         attr_accessor :inconclusive_detail
       
-        # More information about a SKIPPED outcome.
-        # Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.
-        # Optional
+        # Details for an outcome with a SKIPPED outcome summary.
         # Corresponds to the JSON property `skippedDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SkippedDetail]
         attr_accessor :skipped_detail
       
-        # More information about a SUCCESS outcome.
-        # Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.
-        # Optional
+        # Details for an outcome with a SUCCESS outcome summary.
         # Corresponds to the JSON property `successDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SuccessDetail]
         attr_accessor :success_detail
@@ -1801,7 +1792,7 @@ module Google
         end
       end
       
-      # 
+      # Details for an outcome with a SKIPPED outcome summary.
       class SkippedDetail
         include Google::Apis::Core::Hashable
       
@@ -2328,7 +2319,7 @@ module Google
         end
       end
       
-      # 
+      # Details for an outcome with a SUCCESS outcome summary.
       class SuccessDetail
         include Google::Apis::Core::Hashable
       

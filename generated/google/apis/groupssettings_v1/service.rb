@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group(group_unique_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{groupUniqueId}', options)
+          command = make_simple_command(:get, '{groupUniqueId}', options)
           command.query['alt'] = 'json'
           command.response_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
@@ -109,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, '{groupUniqueId}', options)
+          command = make_simple_command(:patch, '{groupUniqueId}', options)
           command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.request_object = groups_object
           command.query['alt'] = 'json'
@@ -146,7 +146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, '{groupUniqueId}', options)
+          command = make_simple_command(:put, '{groupUniqueId}', options)
           command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.request_object = groups_object
           command.query['alt'] = 'json'

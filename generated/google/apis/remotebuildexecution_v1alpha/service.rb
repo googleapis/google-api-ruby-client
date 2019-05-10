@@ -73,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance(parent, google_devtools_remotebuildexecution_admin_v1alpha_create_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha/{+parent}/instances', options)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/instances', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest::Representation
           command.request_object = google_devtools_remotebuildexecution_admin_v1alpha_create_instance_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
@@ -110,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance
           command.params['name'] = name unless name.nil?
@@ -172,7 +172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instances(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/instances', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -207,7 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_instance_workerpool(parent, google_devtools_remotebuildexecution_admin_v1alpha_create_worker_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha/{+parent}/workerpools', options)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/workerpools', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest::Representation
           command.request_object = google_devtools_remotebuildexecution_admin_v1alpha_create_worker_pool_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
@@ -245,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_instance_workerpool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -277,7 +277,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_instance_workerpool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool
           command.params['name'] = name unless name.nil?
@@ -308,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_instance_workerpools(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+parent}/workerpools', options)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/workerpools', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -345,7 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_instance_workerpool(name, google_devtools_remotebuildexecution_admin_v1alpha_update_worker_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
           command.request_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest::Representation
           command.request_object = google_devtools_remotebuildexecution_admin_v1alpha_update_worker_pool_request_object
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
@@ -379,7 +379,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?

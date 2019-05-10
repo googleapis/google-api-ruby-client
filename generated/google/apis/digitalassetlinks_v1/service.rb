@@ -193,7 +193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_assetlink(relation: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, target_android_app_certificate_sha256_fingerprint: nil, target_android_app_package_name: nil, target_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/assetlinks:check', options)
+          command = make_simple_command(:get, 'v1/assetlinks:check', options)
           command.response_representation = Google::Apis::DigitalassetlinksV1::CheckResponse::Representation
           command.response_class = Google::Apis::DigitalassetlinksV1::CheckResponse
           command.query['relation'] = relation unless relation.nil?
@@ -300,7 +300,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_statements(relation: nil, source_android_app_certificate_sha256_fingerprint: nil, source_android_app_package_name: nil, source_web_site: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/statements:list', options)
+          command = make_simple_command(:get, 'v1/statements:list', options)
           command.response_representation = Google::Apis::DigitalassetlinksV1::ListResponse::Representation
           command.response_class = Google::Apis::DigitalassetlinksV1::ListResponse
           command.query['relation'] = relation unless relation.nil?

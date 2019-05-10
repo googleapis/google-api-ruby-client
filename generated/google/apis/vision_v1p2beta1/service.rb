@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_file(google_cloud_vision_v1p2beta1_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p2beta1/files:annotate', options)
+          command = make_simple_command(:post, 'v1p2beta1/files:annotate', options)
           command.request_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest::Representation
           command.request_object = google_cloud_vision_v1p2beta1_batch_annotate_files_request_object
           command.response_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse::Representation
@@ -109,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def async_file_batch_annotate(google_cloud_vision_v1p2beta1_async_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p2beta1/files:asyncBatchAnnotate', options)
+          command = make_simple_command(:post, 'v1p2beta1/files:asyncBatchAnnotate', options)
           command.request_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest::Representation
           command.request_object = google_cloud_vision_v1p2beta1_async_batch_annotate_files_request_object
           command.response_representation = Google::Apis::VisionV1p2beta1::Operation::Representation
@@ -139,7 +139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_image(google_cloud_vision_v1p2beta1_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p2beta1/images:annotate', options)
+          command = make_simple_command(:post, 'v1p2beta1/images:annotate', options)
           command.request_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest::Representation
           command.request_object = google_cloud_vision_v1p2beta1_batch_annotate_images_request_object
           command.response_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse::Representation
@@ -175,7 +175,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def async_image_batch_annotate(google_cloud_vision_v1p2beta1_async_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p2beta1/images:asyncBatchAnnotate', options)
+          command = make_simple_command(:post, 'v1p2beta1/images:asyncBatchAnnotate', options)
           command.request_representation = Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest::Representation
           command.request_object = google_cloud_vision_v1p2beta1_async_batch_annotate_images_request_object
           command.response_representation = Google::Apis::VisionV1p2beta1::Operation::Representation

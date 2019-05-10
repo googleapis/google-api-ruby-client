@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_organization_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::OrganizationSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::OrganizationSettings
           command.params['name'] = name unless name.nil?
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_organization_settings(name, organization_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::OrganizationSettings::Representation
           command.request_object = organization_settings_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::OrganizationSettings::Representation
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def group_assets(parent, group_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/assets:group', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/assets:group', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::GroupAssetsRequest::Representation
           command.request_object = group_assets_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::GroupAssetsResponse::Representation
@@ -242,7 +242,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_assets(parent, compare_duration: nil, field_mask: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/assets', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/assets', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::ListAssetsResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::ListAssetsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -285,7 +285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_organization_asset_discovery(parent, run_asset_discovery_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/assets:runDiscovery', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/assets:runDiscovery', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::RunAssetDiscoveryRequest::Representation
           command.request_object = run_asset_discovery_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Operation::Representation
@@ -326,7 +326,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_asset_security_marks(name, security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
           command.request_object = security_marks_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
@@ -370,7 +370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Empty::Representation
@@ -405,7 +405,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_organization_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Empty::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -437,7 +437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Operation::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -481,7 +481,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -516,7 +516,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_source(parent, source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/sources', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/sources', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::Source::Representation
           command.request_object = source_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Source::Representation
@@ -549,7 +549,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_source(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Source::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::Source
           command.params['name'] = name unless name.nil?
@@ -581,7 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_source_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Policy::Representation
@@ -621,7 +621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_sources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/sources', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/sources', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::ListSourcesResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::ListSourcesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -659,7 +659,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_source(name, source_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::Source::Representation
           command.request_object = source_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Source::Representation
@@ -694,7 +694,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_source_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Policy::Representation
@@ -728,7 +728,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_source_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::TestIamPermissionsResponse::Representation
@@ -767,7 +767,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_organization_source_finding(parent, finding_object = nil, finding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/findings', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/findings', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
           command.request_object = finding_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
@@ -807,7 +807,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def group_findings(parent, group_findings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/findings:group', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/findings:group', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::GroupFindingsRequest::Representation
           command.request_object = group_findings_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::GroupFindingsResponse::Representation
@@ -888,7 +888,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_source_findings(parent, field_mask: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/findings', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/findings', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta1::ListFindingsResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta1::ListFindingsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -932,7 +932,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_organization_source_finding(name, finding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
           command.request_object = finding_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
@@ -969,7 +969,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_organization_source_finding_state(name, set_finding_state_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:setState', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:setState', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::SetFindingStateRequest::Representation
           command.request_object = set_finding_state_request_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
@@ -1010,7 +1010,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_source_finding_security_marks(name, security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
           command.request_object = security_marks_object
           command.response_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation

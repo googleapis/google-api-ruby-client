@@ -83,7 +83,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_aggregated_usable_subnetworks(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/aggregated/usableSubnetworks', options)
+          command = make_simple_command(:get, 'v1/{+parent}/aggregated/usableSubnetworks', options)
           command.response_representation = Google::Apis::ContainerV1::ListUsableSubnetworksResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListUsableSubnetworksResponse
           command.params['parent'] = parent unless parent.nil?
@@ -125,7 +125,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_server_config(name, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/serverConfig', options)
+          command = make_simple_command(:get, 'v1/{+name}/serverConfig', options)
           command.response_representation = Google::Apis::ContainerV1::ServerConfig::Representation
           command.response_class = Google::Apis::ContainerV1::ServerConfig
           command.params['name'] = name unless name.nil?
@@ -159,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def complete_project_location_cluster_ip_rotation(name, complete_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:completeIpRotation', options)
+          command = make_simple_command(:post, 'v1/{+name}:completeIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::CompleteIpRotationRequest::Representation
           command.request_object = complete_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -202,7 +202,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_cluster(parent, create_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/clusters', options)
+          command = make_simple_command(:post, 'v1/{+parent}/clusters', options)
           command.request_representation = Google::Apis::ContainerV1::CreateClusterRequest::Representation
           command.request_object = create_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -253,7 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_cluster(name, cluster_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -299,7 +299,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_cluster(name, cluster_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ContainerV1::Cluster::Representation
           command.response_class = Google::Apis::ContainerV1::Cluster
           command.params['name'] = name unless name.nil?
@@ -336,7 +336,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_cluster_jwks(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/jwks', options)
+          command = make_simple_command(:get, 'v1/{+parent}/jwks', options)
           command.response_representation = Google::Apis::ContainerV1::GetJsonWebKeysResponse::Representation
           command.response_class = Google::Apis::ContainerV1::GetJsonWebKeysResponse
           command.params['parent'] = parent unless parent.nil?
@@ -378,7 +378,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_clusters(parent, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/clusters', options)
+          command = make_simple_command(:get, 'v1/{+parent}/clusters', options)
           command.response_representation = Google::Apis::ContainerV1::ListClustersResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListClustersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -412,7 +412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_addons_config(name, set_addons_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setAddons', options)
+          command = make_simple_command(:post, 'v1/{+name}:setAddons', options)
           command.request_representation = Google::Apis::ContainerV1::SetAddonsConfigRequest::Representation
           command.request_object = set_addons_config_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -446,7 +446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_legacy_abac(name, set_legacy_abac_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setLegacyAbac', options)
+          command = make_simple_command(:post, 'v1/{+name}:setLegacyAbac', options)
           command.request_representation = Google::Apis::ContainerV1::SetLegacyAbacRequest::Representation
           command.request_object = set_legacy_abac_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -480,7 +480,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_locations(name, set_locations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setLocations', options)
+          command = make_simple_command(:post, 'v1/{+name}:setLocations', options)
           command.request_representation = Google::Apis::ContainerV1::SetLocationsRequest::Representation
           command.request_object = set_locations_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -514,7 +514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_logging_service(name, set_logging_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setLogging', options)
+          command = make_simple_command(:post, 'v1/{+name}:setLogging', options)
           command.request_representation = Google::Apis::ContainerV1::SetLoggingServiceRequest::Representation
           command.request_object = set_logging_service_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -549,7 +549,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_maintenance_policy(name, set_maintenance_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setMaintenancePolicy', options)
+          command = make_simple_command(:post, 'v1/{+name}:setMaintenancePolicy', options)
           command.request_representation = Google::Apis::ContainerV1::SetMaintenancePolicyRequest::Representation
           command.request_object = set_maintenance_policy_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -585,7 +585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_master_auth(name, set_master_auth_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setMasterAuth', options)
+          command = make_simple_command(:post, 'v1/{+name}:setMasterAuth', options)
           command.request_representation = Google::Apis::ContainerV1::SetMasterAuthRequest::Representation
           command.request_object = set_master_auth_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -619,7 +619,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_monitoring_service(name, set_monitoring_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setMonitoring', options)
+          command = make_simple_command(:post, 'v1/{+name}:setMonitoring', options)
           command.request_representation = Google::Apis::ContainerV1::SetMonitoringServiceRequest::Representation
           command.request_object = set_monitoring_service_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -653,7 +653,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_network_policy(name, set_network_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setNetworkPolicy', options)
+          command = make_simple_command(:post, 'v1/{+name}:setNetworkPolicy', options)
           command.request_representation = Google::Apis::ContainerV1::SetNetworkPolicyRequest::Representation
           command.request_object = set_network_policy_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -687,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_resource_labels(name, set_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setResourceLabels', options)
+          command = make_simple_command(:post, 'v1/{+name}:setResourceLabels', options)
           command.request_representation = Google::Apis::ContainerV1::SetLabelsRequest::Representation
           command.request_object = set_labels_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -721,7 +721,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_project_location_cluster_ip_rotation(name, start_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:startIpRotation', options)
+          command = make_simple_command(:post, 'v1/{+name}:startIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::StartIpRotationRequest::Representation
           command.request_object = start_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -755,7 +755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_cluster(name, update_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateClusterRequest::Representation
           command.request_object = update_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -789,7 +789,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_cluster_master(name, update_master_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:updateMaster', options)
+          command = make_simple_command(:post, 'v1/{+name}:updateMaster', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateMasterRequest::Representation
           command.request_object = update_master_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -824,7 +824,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_cluster_node_pool(parent, create_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/nodePools', options)
+          command = make_simple_command(:post, 'v1/{+parent}/nodePools', options)
           command.request_representation = Google::Apis::ContainerV1::CreateNodePoolRequest::Representation
           command.request_object = create_node_pool_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -873,7 +873,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_cluster_node_pool(name, cluster_id: nil, node_pool_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -924,7 +924,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_cluster_node_pool(name, cluster_id: nil, node_pool_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ContainerV1::NodePool::Representation
           command.response_class = Google::Apis::ContainerV1::NodePool
           command.params['name'] = name unless name.nil?
@@ -971,7 +971,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_cluster_node_pools(parent, cluster_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/nodePools', options)
+          command = make_simple_command(:get, 'v1/{+parent}/nodePools', options)
           command.response_representation = Google::Apis::ContainerV1::ListNodePoolsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListNodePoolsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1008,7 +1008,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_project_location_cluster_node_pool(name, rollback_node_pool_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:rollback', options)
+          command = make_simple_command(:post, 'v1/{+name}:rollback', options)
           command.request_representation = Google::Apis::ContainerV1::RollbackNodePoolUpgradeRequest::Representation
           command.request_object = rollback_node_pool_upgrade_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1043,7 +1043,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_node_pool_autoscaling(name, set_node_pool_autoscaling_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setAutoscaling', options)
+          command = make_simple_command(:post, 'v1/{+name}:setAutoscaling', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolAutoscalingRequest::Representation
           command.request_object = set_node_pool_autoscaling_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1078,7 +1078,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_node_pool_management(name, set_node_pool_management_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setManagement', options)
+          command = make_simple_command(:post, 'v1/{+name}:setManagement', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolManagementRequest::Representation
           command.request_object = set_node_pool_management_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1113,7 +1113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_cluster_node_pool_size(name, set_node_pool_size_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setSize', options)
+          command = make_simple_command(:post, 'v1/{+name}:setSize', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolSizeRequest::Representation
           command.request_object = set_node_pool_size_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1148,7 +1148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_location_cluster_node_pool(name, update_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateNodePoolRequest::Representation
           command.request_object = update_node_pool_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1187,7 +1187,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_cluster_well_known_openid_configuration(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/.well-known/openid-configuration', options)
+          command = make_simple_command(:get, 'v1/{+parent}/.well-known/openid-configuration', options)
           command.response_representation = Google::Apis::ContainerV1::GetOpenIdConfigResponse::Representation
           command.response_class = Google::Apis::ContainerV1::GetOpenIdConfigResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1219,7 +1219,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_location_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::ContainerV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::ContainerV1::Empty::Representation
@@ -1264,7 +1264,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, operation_id: nil, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1307,7 +1307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_operations(parent, project_id: nil, zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/operations', options)
+          command = make_simple_command(:get, 'v1/{+parent}/operations', options)
           command.response_representation = Google::Apis::ContainerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListOperationsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1348,7 +1348,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_zone_serverconfig(project_id, zone, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/serverconfig', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/serverconfig', options)
           command.response_representation = Google::Apis::ContainerV1::ServerConfig::Representation
           command.response_class = Google::Apis::ContainerV1::ServerConfig
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1391,7 +1391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def addons_project_zone_cluster(project_id, zone, cluster_id, set_addons_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons', options)
           command.request_representation = Google::Apis::ContainerV1::SetAddonsConfigRequest::Representation
           command.request_object = set_addons_config_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1436,7 +1436,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def complete_cluster_ip_rotation(project_id, zone, cluster_id, complete_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::CompleteIpRotationRequest::Representation
           command.request_object = complete_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1487,7 +1487,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_cluster(project_id, zone, create_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
           command.request_representation = Google::Apis::ContainerV1::CreateClusterRequest::Representation
           command.request_object = create_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1539,7 +1539,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_cluster(project_id, zone, cluster_id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1585,7 +1585,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_cluster(project_id, zone, cluster_id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.response_representation = Google::Apis::ContainerV1::Cluster::Representation
           command.response_class = Google::Apis::ContainerV1::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1629,7 +1629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def legacy_project_zone_cluster_abac(project_id, zone, cluster_id, set_legacy_abac_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', options)
           command.request_representation = Google::Apis::ContainerV1::SetLegacyAbacRequest::Representation
           command.request_object = set_legacy_abac_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1675,7 +1675,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_clusters(project_id, zone, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters', options)
           command.response_representation = Google::Apis::ContainerV1::ListClustersResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1718,7 +1718,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def locations_project_zone_cluster(project_id, zone, cluster_id, set_locations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations', options)
           command.request_representation = Google::Apis::ContainerV1::SetLocationsRequest::Representation
           command.request_object = set_locations_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1763,7 +1763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def logging_project_zone_cluster(project_id, zone, cluster_id, set_logging_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging', options)
           command.request_representation = Google::Apis::ContainerV1::SetLoggingServiceRequest::Representation
           command.request_object = set_logging_service_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1808,7 +1808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def master_project_zone_cluster(project_id, zone, cluster_id, update_master_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateMasterRequest::Representation
           command.request_object = update_master_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1853,7 +1853,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def monitoring_project_zone_cluster(project_id, zone, cluster_id, set_monitoring_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring', options)
           command.request_representation = Google::Apis::ContainerV1::SetMonitoringServiceRequest::Representation
           command.request_object = set_monitoring_service_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1898,7 +1898,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resource_project_zone_cluster_labels(project_id, zone, cluster_id, set_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', options)
           command.request_representation = Google::Apis::ContainerV1::SetLabelsRequest::Representation
           command.request_object = set_labels_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1940,7 +1940,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_maintenance_policy(project_id, zone, cluster_id, set_maintenance_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy', options)
           command.request_representation = Google::Apis::ContainerV1::SetMaintenancePolicyRequest::Representation
           command.request_object = set_maintenance_policy_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -1987,7 +1987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_master_auth(project_id, zone, cluster_id, set_master_auth_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', options)
           command.request_representation = Google::Apis::ContainerV1::SetMasterAuthRequest::Representation
           command.request_object = set_master_auth_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2032,7 +2032,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_cluster_network_policy(project_id, zone, cluster_id, set_network_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy', options)
           command.request_representation = Google::Apis::ContainerV1::SetNetworkPolicyRequest::Representation
           command.request_object = set_network_policy_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2077,7 +2077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_cluster_ip_rotation(project_id, zone, cluster_id, start_ip_rotation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', options)
           command.request_representation = Google::Apis::ContainerV1::StartIpRotationRequest::Representation
           command.request_object = start_ip_rotation_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2122,7 +2122,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_cluster(project_id, zone, cluster_id, update_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
+          command = make_simple_command(:put, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateClusterRequest::Representation
           command.request_object = update_cluster_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2170,7 +2170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def autoscaling_project_zone_cluster_node_pool(project_id, zone, cluster_id, node_pool_id, set_node_pool_autoscaling_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolAutoscalingRequest::Representation
           command.request_object = set_node_pool_autoscaling_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2216,7 +2216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_node_pool(project_id, zone, cluster_id, create_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
           command.request_representation = Google::Apis::ContainerV1::CreateNodePoolRequest::Representation
           command.request_object = create_node_pool_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2267,7 +2267,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_zone_cluster_node_pool(project_id, zone, cluster_id, node_pool_id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -2318,7 +2318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_zone_cluster_node_pool(project_id, zone, cluster_id, node_pool_id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', options)
           command.response_representation = Google::Apis::ContainerV1::NodePool::Representation
           command.response_class = Google::Apis::ContainerV1::NodePool
           command.params['projectId'] = project_id unless project_id.nil?
@@ -2365,7 +2365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_zone_cluster_node_pools(project_id, zone, cluster_id, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', options)
           command.response_representation = Google::Apis::ContainerV1::ListNodePoolsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListNodePoolsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -2413,7 +2413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rollback_node_pool_upgrade(project_id, zone, cluster_id, node_pool_id, rollback_node_pool_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', options)
           command.request_representation = Google::Apis::ContainerV1::RollbackNodePoolUpgradeRequest::Representation
           command.request_object = rollback_node_pool_upgrade_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2462,7 +2462,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_zone_cluster_node_pool_management(project_id, zone, cluster_id, node_pool_id, set_node_pool_management_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolManagementRequest::Representation
           command.request_object = set_node_pool_management_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2511,7 +2511,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_zone_cluster_node_pool_size(project_id, zone, cluster_id, node_pool_id, set_node_pool_size_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', options)
           command.request_representation = Google::Apis::ContainerV1::SetNodePoolSizeRequest::Representation
           command.request_object = set_node_pool_size_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2560,7 +2560,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_node_pool(project_id, zone, cluster_id, node_pool_id, update_node_pool_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update', options)
           command.request_representation = Google::Apis::ContainerV1::UpdateNodePoolRequest::Representation
           command.request_object = update_node_pool_request_object
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
@@ -2605,7 +2605,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(project_id, zone, operation_id, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', options)
           command.request_representation = Google::Apis::ContainerV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::ContainerV1::Empty::Representation
@@ -2652,7 +2652,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project_id, zone, operation_id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}', options)
           command.response_representation = Google::Apis::ContainerV1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -2695,7 +2695,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project_id, zone, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ContainerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ContainerV1::ListOperationsResponse
           command.params['projectId'] = project_id unless project_id.nil?

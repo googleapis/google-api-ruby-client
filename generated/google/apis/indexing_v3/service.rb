@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_url_notification_metadata(url: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/urlNotifications/metadata', options)
+          command = make_simple_command(:get, 'v3/urlNotifications/metadata', options)
           command.response_representation = Google::Apis::IndexingV3::UrlNotificationMetadata::Representation
           command.response_class = Google::Apis::IndexingV3::UrlNotificationMetadata
           command.query['url'] = url unless url.nil?
@@ -99,7 +99,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_url_notification(url_notification_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/urlNotifications:publish', options)
+          command = make_simple_command(:post, 'v3/urlNotifications:publish', options)
           command.request_representation = Google::Apis::IndexingV3::UrlNotification::Representation
           command.request_object = url_notification_object
           command.response_representation = Google::Apis::IndexingV3::PublishUrlNotificationResponse::Representation

@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV1::Location::Representation
           command.response_class = Google::Apis::BigtableadminV1::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1/{+name}/locations', options)
           command.response_representation = Google::Apis::BigtableadminV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::BigtableadminV1::ListLocationsResponse
           command.params['name'] = name unless name.nil?

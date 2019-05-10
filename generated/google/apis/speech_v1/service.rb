@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations/{+name}', options)
+          command = make_simple_command(:get, 'v1/operations/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1::Operation::Representation
           command.response_class = Google::Apis::SpeechV1::Operation
           command.params['name'] = name unless name.nil?
@@ -114,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
+          command = make_simple_command(:get, 'v1/operations', options)
           command.response_representation = Google::Apis::SpeechV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpeechV1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1::Operation::Representation
           command.response_class = Google::Apis::SpeechV1::Operation
           command.params['name'] = name unless name.nil?
@@ -193,7 +193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::SpeechV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpeechV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -228,7 +228,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation_manual_recognition_task(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpeechV1::Operation::Representation
           command.response_class = Google::Apis::SpeechV1::Operation
           command.params['name'] = name unless name.nil?
@@ -262,7 +262,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def longrunningrecognize_speech(long_running_recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/speech:longrunningrecognize', options)
+          command = make_simple_command(:post, 'v1/speech:longrunningrecognize', options)
           command.request_representation = Google::Apis::SpeechV1::LongRunningRecognizeRequest::Representation
           command.request_object = long_running_recognize_request_object
           command.response_representation = Google::Apis::SpeechV1::Operation::Representation
@@ -293,7 +293,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def recognize_speech(recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/speech:recognize', options)
+          command = make_simple_command(:post, 'v1/speech:recognize', options)
           command.request_representation = Google::Apis::SpeechV1::RecognizeRequest::Representation
           command.request_object = recognize_request_object
           command.response_representation = Google::Apis::SpeechV1::RecognizeResponse::Representation

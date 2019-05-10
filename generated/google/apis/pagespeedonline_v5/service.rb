@@ -88,7 +88,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def runpagespeed_pagespeedapi(url, category: nil, locale: nil, strategy: nil, utm_campaign: nil, utm_source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'runPagespeed', options)
+          command = make_simple_command(:get, 'runPagespeed', options)
           command.response_representation = Google::Apis::PagespeedonlineV5::PagespeedApiPagespeedResponseV5::Representation
           command.response_class = Google::Apis::PagespeedonlineV5::PagespeedApiPagespeedResponseV5
           command.query['category'] = category unless category.nil?

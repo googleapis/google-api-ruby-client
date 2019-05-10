@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_traces(project_id, traces_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/projects/{projectId}/traces', options)
+          command = make_simple_command(:patch, 'v1/projects/{projectId}/traces', options)
           command.request_representation = Google::Apis::CloudtraceV1::Traces::Representation
           command.request_object = traces_object
           command.response_representation = Google::Apis::CloudtraceV1::Empty::Representation
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_trace(project_id, trace_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/traces/{traceId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/traces/{traceId}', options)
           command.response_representation = Google::Apis::CloudtraceV1::Trace::Representation
           command.response_class = Google::Apis::CloudtraceV1::Trace
           command.params['projectId'] = project_id unless project_id.nil?
@@ -198,7 +198,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_traces(project_id, end_time: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/traces', options)
           command.response_representation = Google::Apis::CloudtraceV1::ListTracesResponse::Representation
           command.response_class = Google::Apis::CloudtraceV1::ListTracesResponse
           command.params['projectId'] = project_id unless project_id.nil?

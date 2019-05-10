@@ -49,6 +49,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Service that performs image detection and annotation for a batch of files.
+        # Now only "application/pdf", "image/tiff" and "image/gif" are supported.
+        # This service will extract at most 5 (customers can specify which 5 in
+        # AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        # file provided and perform detection and annotation for each image
+        # extracted.
+        # @param [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest] google_cloud_vision_v1p1beta1_batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_file(google_cloud_vision_v1p1beta1_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1p1beta1/files:annotate', options)
+          command.request_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest::Representation
+          command.request_object = google_cloud_vision_v1p1beta1_batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse::Representation
+          command.response_class = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Run asynchronous image detection and annotation for a list of generic
         # files, such as PDF files, which may contain multiple pages and multiple
         # images per page. Progress and results can be retrieved through the
@@ -74,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def async_file_batch_annotate(google_cloud_vision_v1p1beta1_async_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/files:asyncBatchAnnotate', options)
+          command = make_simple_command(:post, 'v1p1beta1/files:asyncBatchAnnotate', options)
           command.request_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest::Representation
           command.request_object = google_cloud_vision_v1p1beta1_async_batch_annotate_files_request_object
           command.response_representation = Google::Apis::VisionV1p1beta1::Operation::Representation
@@ -104,11 +139,47 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_image(google_cloud_vision_v1p1beta1_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1p1beta1/images:annotate', options)
+          command = make_simple_command(:post, 'v1p1beta1/images:annotate', options)
           command.request_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest::Representation
           command.request_object = google_cloud_vision_v1p1beta1_batch_annotate_images_request_object
           command.response_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse::Representation
           command.response_class = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of images.
+        # Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
+        # This service will write image annotation outputs to json files in customer
+        # GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+        # @param [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest] google_cloud_vision_v1p1beta1_async_batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1p1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1p1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_image_batch_annotate(google_cloud_vision_v1p1beta1_async_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1p1beta1/images:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest::Representation
+          command.request_object = google_cloud_vision_v1p1beta1_async_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1p1beta1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1p1beta1::Operation
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

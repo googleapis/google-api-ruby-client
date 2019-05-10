@@ -72,7 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_service_account_access_token(name, generate_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:generateAccessToken', options)
+          command = make_simple_command(:post, 'v1/{+name}:generateAccessToken', options)
           command.request_representation = Google::Apis::IamcredentialsV1::GenerateAccessTokenRequest::Representation
           command.request_object = generate_access_token_request_object
           command.response_representation = Google::Apis::IamcredentialsV1::GenerateAccessTokenResponse::Representation
@@ -108,7 +108,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_service_account_id_token(name, generate_id_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:generateIdToken', options)
+          command = make_simple_command(:post, 'v1/{+name}:generateIdToken', options)
           command.request_representation = Google::Apis::IamcredentialsV1::GenerateIdTokenRequest::Representation
           command.request_object = generate_id_token_request_object
           command.response_representation = Google::Apis::IamcredentialsV1::GenerateIdTokenResponse::Representation
@@ -144,7 +144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_service_account_identity_binding_access_token(name, generate_identity_binding_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:generateIdentityBindingAccessToken', options)
+          command = make_simple_command(:post, 'v1/{+name}:generateIdentityBindingAccessToken', options)
           command.request_representation = Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenRequest::Representation
           command.request_object = generate_identity_binding_access_token_request_object
           command.response_representation = Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenResponse::Representation
@@ -180,7 +180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sign_service_account_blob(name, sign_blob_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:signBlob', options)
+          command = make_simple_command(:post, 'v1/{+name}:signBlob', options)
           command.request_representation = Google::Apis::IamcredentialsV1::SignBlobRequest::Representation
           command.request_object = sign_blob_request_object
           command.response_representation = Google::Apis::IamcredentialsV1::SignBlobResponse::Representation
@@ -216,7 +216,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sign_service_account_jwt(name, sign_jwt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:signJwt', options)
+          command = make_simple_command(:post, 'v1/{+name}:signJwt', options)
           command.request_representation = Google::Apis::IamcredentialsV1::SignJwtRequest::Representation
           command.request_object = sign_jwt_request_object
           command.response_representation = Google::Apis::IamcredentialsV1::SignJwtResponse::Representation

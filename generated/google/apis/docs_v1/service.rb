@@ -85,7 +85,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_document(document_id, batch_update_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents/{documentId}:batchUpdate', options)
+          command = make_simple_command(:post, 'v1/documents/{documentId}:batchUpdate', options)
           command.request_representation = Google::Apis::DocsV1::BatchUpdateDocumentRequest::Representation
           command.request_object = batch_update_document_request_object
           command.response_representation = Google::Apis::DocsV1::BatchUpdateDocumentResponse::Representation
@@ -118,7 +118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_document(document_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/documents', options)
+          command = make_simple_command(:post, 'v1/documents', options)
           command.request_representation = Google::Apis::DocsV1::Document::Representation
           command.request_object = document_object
           command.response_representation = Google::Apis::DocsV1::Document::Representation
@@ -154,7 +154,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_document(document_id, suggestions_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/documents/{documentId}', options)
+          command = make_simple_command(:get, 'v1/documents/{documentId}', options)
           command.response_representation = Google::Apis::DocsV1::Document::Representation
           command.response_class = Google::Apis::DocsV1::Document
           command.params['documentId'] = document_id unless document_id.nil?

@@ -100,7 +100,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
+          command = make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
+          command = make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminReportsV1::Channel::Representation
@@ -213,7 +213,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '/admin/reports_v1/channels/stop', options)
+          command = make_simple_command(:post, '/admin/reports_v1/channels/stop', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
@@ -253,7 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_customer_usage_report(date, customer_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'usage/dates/{date}', options)
+          command = make_simple_command(:get, 'usage/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['date'] = date unless date.nil?
@@ -305,7 +305,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_entity_usage_report(entity_type, entity_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'usage/{entityType}/{entityKey}/dates/{date}', options)
+          command = make_simple_command(:get, 'usage/{entityType}/{entityKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['entityType'] = entity_type unless entity_type.nil?
@@ -363,7 +363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
+          command = make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['userKey'] = user_key unless user_key.nil?

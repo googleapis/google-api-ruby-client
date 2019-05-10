@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::CloudbuildV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
@@ -112,7 +112,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['name'] = name unless name.nil?
@@ -156,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -192,7 +192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_build(project_id, id, cancel_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/builds/{id}:cancel', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/builds/{id}:cancel', options)
           command.request_representation = Google::Apis::CloudbuildV1::CancelBuildRequest::Representation
           command.request_object = cancel_build_request_object
           command.response_representation = Google::Apis::CloudbuildV1::Build::Representation
@@ -229,7 +229,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_build(project_id, build_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/builds', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/builds', options)
           command.request_representation = Google::Apis::CloudbuildV1::Build::Representation
           command.request_object = build_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
@@ -265,7 +265,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_build(project_id, id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/builds/{id}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/builds/{id}', options)
           command.response_representation = Google::Apis::CloudbuildV1::Build::Representation
           command.response_class = Google::Apis::CloudbuildV1::Build
           command.params['projectId'] = project_id unless project_id.nil?
@@ -304,7 +304,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_builds(project_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/builds', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/builds', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListBuildsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListBuildsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -359,7 +359,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def retry_build(project_id, id, retry_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/builds/{id}:retry', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/builds/{id}:retry', options)
           command.request_representation = Google::Apis::CloudbuildV1::RetryBuildRequest::Representation
           command.request_object = retry_build_request_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
@@ -394,7 +394,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_trigger(project_id, build_trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/triggers', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/triggers', options)
           command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.request_object = build_trigger_object
           command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
@@ -429,7 +429,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_trigger(project_id, trigger_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/triggers/{triggerId}', options)
           command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
           command.response_class = Google::Apis::CloudbuildV1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -463,7 +463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_trigger(project_id, trigger_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/triggers/{triggerId}', options)
           command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
           command.params['projectId'] = project_id unless project_id.nil?
@@ -499,7 +499,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_triggers(project_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/triggers', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}/triggers', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListBuildTriggersResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListBuildTriggersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -535,7 +535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_trigger(project_id, trigger_id, build_trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command = make_simple_command(:patch, 'v1/projects/{projectId}/triggers/{triggerId}', options)
           command.request_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.request_object = build_trigger_object
           command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
@@ -571,7 +571,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_project_trigger(project_id, trigger_id, repo_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/triggers/{triggerId}:run', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/triggers/{triggerId}:run', options)
           command.request_representation = Google::Apis::CloudbuildV1::RepoSource::Representation
           command.request_object = repo_source_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation

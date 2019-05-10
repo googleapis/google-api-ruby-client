@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def bind_registry_device_to_gateway(parent, bind_device_to_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
+          command = make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
           command.request_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayRequest::Representation
           command.request_object = bind_device_to_gateway_request_object
           command.response_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse::Representation
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_registry(parent, device_registry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/registries', options)
+          command = make_simple_command(:post, 'v1/{+parent}/registries', options)
           command.request_representation = Google::Apis::CloudiotV1::DeviceRegistry::Representation
           command.request_object = device_registry_object
           command.response_representation = Google::Apis::CloudiotV1::DeviceRegistry::Representation
@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_registry(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::Empty::Representation
           command.response_class = Google::Apis::CloudiotV1::Empty
           command.params['name'] = name unless name.nil?
@@ -169,7 +169,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_registry(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::DeviceRegistry::Representation
           command.response_class = Google::Apis::CloudiotV1::DeviceRegistry
           command.params['name'] = name unless name.nil?
@@ -203,7 +203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_registry_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudiotV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudiotV1::Policy::Representation
@@ -245,7 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/registries', options)
+          command = make_simple_command(:get, 'v1/{+parent}/registries', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDeviceRegistriesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDeviceRegistriesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -285,7 +285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_registry(name, device_registry_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudiotV1::DeviceRegistry::Representation
           command.request_object = device_registry_object
           command.response_representation = Google::Apis::CloudiotV1::DeviceRegistry::Representation
@@ -321,7 +321,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_registry_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudiotV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudiotV1::Policy::Representation
@@ -357,7 +357,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_registry_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudiotV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudiotV1::TestIamPermissionsResponse::Representation
@@ -391,7 +391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unbind_registry_device_from_gateway(parent, unbind_device_from_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
+          command = make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
           command.request_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest::Representation
           command.request_object = unbind_device_from_gateway_request_object
           command.response_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse::Representation
@@ -426,7 +426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_registry_device(parent, device_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/devices', options)
+          command = make_simple_command(:post, 'v1/{+parent}/devices', options)
           command.request_representation = Google::Apis::CloudiotV1::Device::Representation
           command.request_object = device_object
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
@@ -460,7 +460,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_registry_device(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::Empty::Representation
           command.response_class = Google::Apis::CloudiotV1::Empty
           command.params['name'] = name unless name.nil?
@@ -495,7 +495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_registry_device(name, field_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
           command.response_class = Google::Apis::CloudiotV1::Device
           command.params['name'] = name unless name.nil?
@@ -560,7 +560,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_list_options_associations_device_id: nil, gateway_list_options_associations_gateway_id: nil, gateway_list_options_gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
+          command = make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -603,7 +603,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_cloud_to_device_config(name, modify_cloud_to_device_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:modifyCloudToDeviceConfig', options)
+          command = make_simple_command(:post, 'v1/{+name}:modifyCloudToDeviceConfig', options)
           command.request_representation = Google::Apis::CloudiotV1::ModifyCloudToDeviceConfigRequest::Representation
           command.request_object = modify_cloud_to_device_config_request_object
           command.response_representation = Google::Apis::CloudiotV1::DeviceConfig::Representation
@@ -645,7 +645,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_registry_device(name, device_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudiotV1::Device::Representation
           command.request_object = device_object
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
@@ -693,7 +693,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_location_registry_device_command_to_device(name, send_command_to_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
+          command = make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
           command.request_representation = Google::Apis::CloudiotV1::SendCommandToDeviceRequest::Representation
           command.request_object = send_command_to_device_request_object
           command.response_representation = Google::Apis::CloudiotV1::SendCommandToDeviceResponse::Representation
@@ -732,7 +732,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_device_config_versions(name, num_versions: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/configVersions', options)
+          command = make_simple_command(:get, 'v1/{+name}/configVersions', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDeviceConfigVersionsResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDeviceConfigVersionsResponse
           command.params['name'] = name unless name.nil?
@@ -770,7 +770,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_device_states(name, num_states: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/states', options)
+          command = make_simple_command(:get, 'v1/{+name}/states', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDeviceStatesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDeviceStatesResponse
           command.params['name'] = name unless name.nil?
@@ -803,7 +803,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def bind_group_device_to_gateway(parent, bind_device_to_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
+          command = make_simple_command(:post, 'v1/{+parent}:bindDeviceToGateway', options)
           command.request_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayRequest::Representation
           command.request_object = bind_device_to_gateway_request_object
           command.response_representation = Google::Apis::CloudiotV1::BindDeviceToGatewayResponse::Representation
@@ -839,7 +839,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudiotV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudiotV1::Policy::Representation
@@ -874,7 +874,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_group_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudiotV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudiotV1::Policy::Representation
@@ -910,7 +910,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_group_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudiotV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudiotV1::TestIamPermissionsResponse::Representation
@@ -944,7 +944,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unbind_group_device_from_gateway(parent, unbind_device_from_gateway_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
+          command = make_simple_command(:post, 'v1/{+parent}:unbindDeviceFromGateway', options)
           command.request_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest::Representation
           command.request_object = unbind_device_from_gateway_request_object
           command.response_representation = Google::Apis::CloudiotV1::UnbindDeviceFromGatewayResponse::Representation
@@ -981,7 +981,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_registry_group_device(name, field_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
           command.response_class = Google::Apis::CloudiotV1::Device
           command.params['name'] = name unless name.nil?
@@ -1046,7 +1046,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_group_devices(parent, device_ids: nil, device_num_ids: nil, field_mask: nil, gateway_list_options_associations_device_id: nil, gateway_list_options_associations_gateway_id: nil, gateway_list_options_gateway_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
+          command = make_simple_command(:get, 'v1/{+parent}/devices', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDevicesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1089,7 +1089,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def modify_project_location_registry_group_device_cloud_to_device_config(name, modify_cloud_to_device_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:modifyCloudToDeviceConfig', options)
+          command = make_simple_command(:post, 'v1/{+name}:modifyCloudToDeviceConfig', options)
           command.request_representation = Google::Apis::CloudiotV1::ModifyCloudToDeviceConfigRequest::Representation
           command.request_object = modify_cloud_to_device_config_request_object
           command.response_representation = Google::Apis::CloudiotV1::DeviceConfig::Representation
@@ -1131,7 +1131,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_registry_group_device(name, device_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::CloudiotV1::Device::Representation
           command.request_object = device_object
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
@@ -1179,7 +1179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_location_registry_group_device_command_to_device(name, send_command_to_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
+          command = make_simple_command(:post, 'v1/{+name}:sendCommandToDevice', options)
           command.request_representation = Google::Apis::CloudiotV1::SendCommandToDeviceRequest::Representation
           command.request_object = send_command_to_device_request_object
           command.response_representation = Google::Apis::CloudiotV1::SendCommandToDeviceResponse::Representation
@@ -1218,7 +1218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_group_device_config_versions(name, num_versions: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/configVersions', options)
+          command = make_simple_command(:get, 'v1/{+name}/configVersions', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDeviceConfigVersionsResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDeviceConfigVersionsResponse
           command.params['name'] = name unless name.nil?
@@ -1256,7 +1256,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_registry_group_device_states(name, num_states: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/states', options)
+          command = make_simple_command(:get, 'v1/{+name}/states', options)
           command.response_representation = Google::Apis::CloudiotV1::ListDeviceStatesResponse::Representation
           command.response_class = Google::Apis::CloudiotV1::ListDeviceStatesResponse
           command.params['name'] = name unless name.nil?

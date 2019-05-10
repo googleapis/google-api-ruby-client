@@ -80,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def allocate_service_quota(service_name, allocate_quota_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:allocateQuota', options)
           command.request_representation = Google::Apis::ServicecontrolV1::AllocateQuotaRequest::Representation
           command.request_object = allocate_quota_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::AllocateQuotaResponse::Representation
@@ -130,7 +130,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_service(service_name, check_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:check', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:check', options)
           command.request_representation = Google::Apis::ServicecontrolV1::CheckRequest::Representation
           command.request_object = check_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::CheckResponse::Representation
@@ -178,7 +178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def report_service(service_name, report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:report', options)
+          command = make_simple_command(:post, 'v1/services/{serviceName}:report', options)
           command.request_representation = Google::Apis::ServicecontrolV1::ReportRequest::Representation
           command.request_object = report_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::ReportResponse::Representation

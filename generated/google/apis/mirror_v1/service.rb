@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_account(user_token, account_type, account_name, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'accounts/{userToken}/{accountType}/{accountName}', options)
+          command = make_simple_command(:post, 'accounts/{userToken}/{accountType}/{accountName}', options)
           command.request_representation = Google::Apis::MirrorV1::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::MirrorV1::Account::Representation
@@ -116,7 +116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_contact(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'contacts/{id}', options)
+          command = make_simple_command(:delete, 'contacts/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -147,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_contact(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contacts/{id}', options)
+          command = make_simple_command(:get, 'contacts/{id}', options)
           command.response_representation = Google::Apis::MirrorV1::Contact::Representation
           command.response_class = Google::Apis::MirrorV1::Contact
           command.params['id'] = id unless id.nil?
@@ -179,7 +179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_contact(contact_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'contacts', options)
+          command = make_simple_command(:post, 'contacts', options)
           command.request_representation = Google::Apis::MirrorV1::Contact::Representation
           command.request_object = contact_object
           command.response_representation = Google::Apis::MirrorV1::Contact::Representation
@@ -211,7 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_contacts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'contacts', options)
+          command = make_simple_command(:get, 'contacts', options)
           command.response_representation = Google::Apis::MirrorV1::ListContactsResponse::Representation
           command.response_class = Google::Apis::MirrorV1::ListContactsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -244,7 +244,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_contact(id, contact_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'contacts/{id}', options)
+          command = make_simple_command(:patch, 'contacts/{id}', options)
           command.request_representation = Google::Apis::MirrorV1::Contact::Representation
           command.request_object = contact_object
           command.response_representation = Google::Apis::MirrorV1::Contact::Representation
@@ -280,7 +280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_contact(id, contact_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'contacts/{id}', options)
+          command = make_simple_command(:put, 'contacts/{id}', options)
           command.request_representation = Google::Apis::MirrorV1::Contact::Representation
           command.request_object = contact_object
           command.response_representation = Google::Apis::MirrorV1::Contact::Representation
@@ -315,7 +315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_location(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations/{id}', options)
+          command = make_simple_command(:get, 'locations/{id}', options)
           command.response_representation = Google::Apis::MirrorV1::Location::Representation
           command.response_class = Google::Apis::MirrorV1::Location
           command.params['id'] = id unless id.nil?
@@ -346,7 +346,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_locations(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'locations', options)
+          command = make_simple_command(:get, 'locations', options)
           command.response_representation = Google::Apis::MirrorV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::MirrorV1::ListLocationsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -382,7 +382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_setting(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'settings/{id}', options)
+          command = make_simple_command(:get, 'settings/{id}', options)
           command.response_representation = Google::Apis::MirrorV1::Setting::Representation
           command.response_class = Google::Apis::MirrorV1::Setting
           command.params['id'] = id unless id.nil?
@@ -415,7 +415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subscription(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'subscriptions/{id}', options)
+          command = make_simple_command(:delete, 'subscriptions/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -445,7 +445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_subscription(subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'subscriptions', options)
+          command = make_simple_command(:post, 'subscriptions', options)
           command.request_representation = Google::Apis::MirrorV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::MirrorV1::Subscription::Representation
@@ -477,7 +477,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'subscriptions', options)
+          command = make_simple_command(:get, 'subscriptions', options)
           command.response_representation = Google::Apis::MirrorV1::ListSubscriptionsResponse::Representation
           command.response_class = Google::Apis::MirrorV1::ListSubscriptionsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -510,7 +510,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_subscription(id, subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'subscriptions/{id}', options)
+          command = make_simple_command(:put, 'subscriptions/{id}', options)
           command.request_representation = Google::Apis::MirrorV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::MirrorV1::Subscription::Representation
@@ -545,7 +545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_timeline(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'timeline/{id}', options)
+          command = make_simple_command(:delete, 'timeline/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -576,7 +576,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_timeline(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'timeline/{id}', options)
+          command = make_simple_command(:get, 'timeline/{id}', options)
           command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
           command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?
@@ -613,7 +613,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_timeline(timeline_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'timeline', options)
+            command = make_simple_command(:post, 'timeline', options)
           else
             command = make_upload_command(:post, 'timeline', options)
             command.upload_source = upload_source
@@ -664,7 +664,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timelines(bundle_id: nil, include_deleted: nil, max_results: nil, order_by: nil, page_token: nil, pinned_only: nil, source_item_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'timeline', options)
+          command = make_simple_command(:get, 'timeline', options)
           command.response_representation = Google::Apis::MirrorV1::ListTimelineResponse::Representation
           command.response_class = Google::Apis::MirrorV1::ListTimelineResponse
           command.query['bundleId'] = bundle_id unless bundle_id.nil?
@@ -704,7 +704,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_timeline(id, timeline_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'timeline/{id}', options)
+          command = make_simple_command(:patch, 'timeline/{id}', options)
           command.request_representation = Google::Apis::MirrorV1::TimelineItem::Representation
           command.request_object = timeline_item_object
           command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
@@ -745,7 +745,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_timeline(id, timeline_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:put, 'timeline/{id}', options)
+            command = make_simple_command(:put, 'timeline/{id}', options)
           else
             command = make_upload_command(:put, 'timeline/{id}', options)
             command.upload_source = upload_source
@@ -787,7 +787,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_timeline_attachment(item_id, attachment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'timeline/{itemId}/attachments/{attachmentId}', options)
+          command = make_simple_command(:delete, 'timeline/{itemId}/attachments/{attachmentId}', options)
           command.params['itemId'] = item_id unless item_id.nil?
           command.params['attachmentId'] = attachment_id unless attachment_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -824,7 +824,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_timeline_attachment(item_id, attachment_id, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'timeline/{itemId}/attachments/{attachmentId}', options)
+            command = make_simple_command(:get, 'timeline/{itemId}/attachments/{attachmentId}', options)
           else
             command = make_download_command(:get, 'timeline/{itemId}/attachments/{attachmentId}', options)
             command.download_dest = download_dest
@@ -867,7 +867,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_timeline_attachment(item_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'timeline/{itemId}/attachments', options)
+            command = make_simple_command(:post, 'timeline/{itemId}/attachments', options)
           else
             command = make_upload_command(:post, 'timeline/{itemId}/attachments', options)
             command.upload_source = upload_source
@@ -905,7 +905,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeline_attachments(item_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'timeline/{itemId}/attachments', options)
+          command = make_simple_command(:get, 'timeline/{itemId}/attachments', options)
           command.response_representation = Google::Apis::MirrorV1::ListAttachmentsResponse::Representation
           command.response_class = Google::Apis::MirrorV1::ListAttachmentsResponse
           command.params['itemId'] = item_id unless item_id.nil?

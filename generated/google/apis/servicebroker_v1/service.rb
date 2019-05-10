@@ -73,7 +73,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::ServicebrokerV1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::ServicebrokerV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_iam_policy(resource, google_iam_v1__set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ServicebrokerV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1__set_iam_policy_request_object
           command.response_representation = Google::Apis::ServicebrokerV1::GoogleIamV1Policy::Representation
@@ -145,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_iam_permissions(resource, google_iam_v1__test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicebrokerV1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1__test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicebrokerV1::GoogleIamV1TestIamPermissionsResponse::Representation

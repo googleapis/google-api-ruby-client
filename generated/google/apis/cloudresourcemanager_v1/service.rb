@@ -70,7 +70,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_folder_org_policy(resource, clear_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest::Representation
           command.request_object = clear_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_effective_org_policy(resource, get_effective_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest::Representation
           command.request_object = get_effective_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -144,7 +144,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_org_policy(resource, get_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetOrgPolicyRequest::Representation
           command.request_object = get_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -177,7 +177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_available_org_policy_constraints(resource, list_available_org_policy_constraints_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest::Representation
           command.request_object = list_available_org_policy_constraints_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse::Representation
@@ -210,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_org_policies(resource, list_org_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest::Representation
           command.request_object = list_org_policies_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
@@ -246,7 +246,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_folder_org_policy(resource, set_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetOrgPolicyRequest::Representation
           command.request_object = set_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -281,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_lien(lien_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/liens', options)
+          command = make_simple_command(:post, 'v1/liens', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::Lien::Representation
           command.request_object = lien_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Lien::Representation
@@ -315,7 +315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_lien(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Empty
           command.params['name'] = name unless name.nil?
@@ -349,7 +349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_lien(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Lien::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Lien
           command.params['name'] = name unless name.nil?
@@ -387,7 +387,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_liens(page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/liens', options)
+          command = make_simple_command(:get, 'v1/liens', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListLiensResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::ListLiensResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -421,7 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Operation
           command.params['name'] = name unless name.nil?
@@ -452,7 +452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_organization_org_policy(resource, clear_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest::Representation
           command.request_object = clear_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
@@ -486,7 +486,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Organization::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Organization
           command.params['name'] = name unless name.nil?
@@ -521,7 +521,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_effective_org_policy(resource, get_effective_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest::Representation
           command.request_object = get_effective_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -559,7 +559,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
@@ -596,7 +596,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_org_policy(resource, get_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetOrgPolicyRequest::Representation
           command.request_object = get_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -629,7 +629,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_available_org_policy_constraints(resource, list_available_org_policy_constraints_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest::Representation
           command.request_object = list_available_org_policy_constraints_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse::Representation
@@ -662,7 +662,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_org_policies(resource, list_org_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest::Representation
           command.request_object = list_org_policies_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
@@ -698,7 +698,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_organizations(search_organizations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/organizations:search', options)
+          command = make_simple_command(:post, 'v1/organizations:search', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsRequest::Representation
           command.request_object = search_organizations_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::SearchOrganizationsResponse::Representation
@@ -735,7 +735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_organization_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
@@ -771,7 +771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_organization_org_policy(resource, set_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetOrgPolicyRequest::Representation
           command.request_object = set_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -808,7 +808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_organization_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse::Representation
@@ -841,7 +841,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_project_org_policy(resource, clear_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest::Representation
           command.request_object = clear_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
@@ -886,7 +886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project(project_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects', options)
+          command = make_simple_command(:post, 'v1/projects', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::Project::Representation
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Operation::Representation
@@ -934,7 +934,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project(project_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}', options)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -967,7 +967,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(project_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}', options)
+          command = make_simple_command(:get, 'v1/projects/{projectId}', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Project::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Project
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1001,7 +1001,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_ancestry(project_id, get_ancestry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}:getAncestry', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}:getAncestry', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryRequest::Representation
           command.request_object = get_ancestry_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::GetAncestryResponse::Representation
@@ -1038,7 +1038,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_effective_org_policy(resource, get_effective_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest::Representation
           command.request_object = get_effective_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -1077,7 +1077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1/projects/{resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
@@ -1114,7 +1114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_org_policy(resource, get_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:getOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::GetOrgPolicyRequest::Representation
           command.request_object = get_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -1194,7 +1194,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_projects(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects', options)
+          command = make_simple_command(:get, 'v1/projects', options)
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListProjectsResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::ListProjectsResponse
           command.query['filter'] = filter unless filter.nil?
@@ -1227,7 +1227,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_available_org_policy_constraints(resource, list_available_org_policy_constraints_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest::Representation
           command.request_object = list_available_org_policy_constraints_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse::Representation
@@ -1260,7 +1260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_org_policies(resource, list_org_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
+          command = make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest::Representation
           command.request_object = list_org_policies_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
@@ -1327,7 +1327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1/projects/{resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Policy::Representation
@@ -1363,7 +1363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_org_policy(resource, set_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
+          command = make_simple_command(:post, 'v1/{+resource}:setOrgPolicy', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::SetOrgPolicyRequest::Representation
           command.request_object = set_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
@@ -1398,7 +1398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_project_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1/projects/{resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::TestIamPermissionsResponse::Representation
@@ -1437,7 +1437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_project(project_id, undelete_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}:undelete', options)
+          command = make_simple_command(:post, 'v1/projects/{projectId}:undelete', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::UndeleteProjectRequest::Representation
           command.request_object = undelete_project_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
@@ -1473,7 +1473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project(project_id, project_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/projects/{projectId}', options)
+          command = make_simple_command(:put, 'v1/projects/{projectId}', options)
           command.request_representation = Google::Apis::CloudresourcemanagerV1::Project::Representation
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Project::Representation

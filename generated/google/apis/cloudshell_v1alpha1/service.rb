@@ -75,7 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def authorize_environment(name, authorize_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:authorize', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:authorize', options)
           command.request_representation = Google::Apis::CloudshellV1alpha1::AuthorizeEnvironmentRequest::Representation
           command.request_object = authorize_environment_request_object
           command.response_representation = Google::Apis::CloudshellV1alpha1::Empty::Representation
@@ -108,7 +108,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_environment(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::CloudshellV1alpha1::Environment::Representation
           command.response_class = Google::Apis::CloudshellV1alpha1::Environment
           command.params['name'] = name unless name.nil?
@@ -143,7 +143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_environment(name, environment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
           command.request_representation = Google::Apis::CloudshellV1alpha1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::CloudshellV1alpha1::Environment::Representation
@@ -184,7 +184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def start_environment(name, start_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+name}:start', options)
+          command = make_simple_command(:post, 'v1alpha1/{+name}:start', options)
           command.request_representation = Google::Apis::CloudshellV1alpha1::StartEnvironmentRequest::Representation
           command.request_object = start_environment_request_object
           command.response_representation = Google::Apis::CloudshellV1alpha1::Operation::Representation
@@ -220,7 +220,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_public_key(parent, create_public_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1alpha1/{+parent}/publicKeys', options)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/publicKeys', options)
           command.request_representation = Google::Apis::CloudshellV1alpha1::CreatePublicKeyRequest::Representation
           command.request_object = create_public_key_request_object
           command.response_representation = Google::Apis::CloudshellV1alpha1::PublicKey::Representation
@@ -254,7 +254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_environment_public_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::CloudshellV1alpha1::Empty::Representation
           command.response_class = Google::Apis::CloudshellV1alpha1::Empty
           command.params['name'] = name unless name.nil?

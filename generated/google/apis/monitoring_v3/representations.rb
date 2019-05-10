@@ -880,6 +880,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
         end

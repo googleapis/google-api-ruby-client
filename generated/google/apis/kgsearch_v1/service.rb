@@ -87,7 +87,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_entities(ids: nil, indent: nil, languages: nil, limit: nil, prefix: nil, query: nil, types: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/entities:search', options)
+          command = make_simple_command(:get, 'v1/entities:search', options)
           command.response_representation = Google::Apis::KgsearchV1::SearchResponse::Representation
           command.response_class = Google::Apis::KgsearchV1::SearchResponse
           command.query['ids'] = ids unless ids.nil?

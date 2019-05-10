@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_application(application_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'applications/{applicationId}', options)
+          command = make_simple_command(:get, 'applications/{applicationId}', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::Application::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::Application
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_applications(customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'applications', options)
+          command = make_simple_command(:get, 'applications', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::ApplicationsListResponse::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::ApplicationsListResponse
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -147,7 +147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_transfer(data_transfer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'transfers/{dataTransferId}', options)
+          command = make_simple_command(:get, 'transfers/{dataTransferId}', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::DataTransfer
           command.params['dataTransferId'] = data_transfer_id unless data_transfer_id.nil?
@@ -179,7 +179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_transfer(data_transfer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'transfers', options)
+          command = make_simple_command(:post, 'transfers', options)
           command.request_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
           command.request_object = data_transfer_object
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
@@ -223,7 +223,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_transfers(customer_id: nil, max_results: nil, new_owner_user_id: nil, old_owner_user_id: nil, page_token: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'transfers', options)
+          command = make_simple_command(:get, 'transfers', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfersListResponse::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::DataTransfersListResponse
           command.query['customerId'] = customer_id unless customer_id.nil?

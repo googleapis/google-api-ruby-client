@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(account_id, tree: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}', options)
+          command = make_simple_command(:get, 'accounts/{accountId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Account::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Account
           command.params['accountId'] = account_id unless account_id.nil?
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts', options)
+          command = make_simple_command(:get, 'accounts', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Accounts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Accounts
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_adclient_ad_code(account_id, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adcode', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['accountId'] = account_id unless account_id.nil?
@@ -189,7 +189,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_ad_clients(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
           command.params['accountId'] = account_id unless account_id.nil?
@@ -229,7 +229,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_ad_unit(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
           command.params['accountId'] = account_id unless account_id.nil?
@@ -268,7 +268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_ad_unit_ad_code(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['accountId'] = account_id unless account_id.nil?
@@ -312,7 +312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_ad_units(account_id, ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['accountId'] = account_id unless account_id.nil?
@@ -360,7 +360,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_ad_unit_custom_channels(account_id, ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['accountId'] = account_id unless account_id.nil?
@@ -400,7 +400,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_alert(account_id, alert_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'accounts/{accountId}/alerts/{alertId}', options)
+          command = make_simple_command(:delete, 'accounts/{accountId}/alerts/{alertId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['alertId'] = alert_id unless alert_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -436,7 +436,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_alerts(account_id, locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/alerts', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/alerts', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Alerts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Alerts
           command.params['accountId'] = account_id unless account_id.nil?
@@ -475,7 +475,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_custom_channel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
           command.params['accountId'] = account_id unless account_id.nil?
@@ -519,7 +519,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_custom_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['accountId'] = account_id unless account_id.nil?
@@ -566,7 +566,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_custom_channel_ad_units(account_id, ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['accountId'] = account_id unless account_id.nil?
@@ -604,7 +604,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_payments(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/payments', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/payments', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Payments::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Payments
           command.params['accountId'] = account_id unless account_id.nil?
@@ -669,7 +669,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_account_report(account_id, start_date, end_date, currency: nil, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'accounts/{accountId}/reports', options)
+            command = make_simple_command(:get, 'accounts/{accountId}/reports', options)
           else
             command = make_download_command(:get, 'accounts/{accountId}/reports', options)
             command.download_dest = download_dest
@@ -727,7 +727,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_account_saved_report(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/reports/{savedReportId}', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/reports/{savedReportId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
           command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -771,7 +771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_saved_reports(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/reports/saved', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/reports/saved', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedReports::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedReports
           command.params['accountId'] = account_id unless account_id.nil?
@@ -808,7 +808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_saved_ad_style(account_id, saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/savedadstyles/{savedAdStyleId}', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/savedadstyles/{savedAdStyleId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
           command.params['accountId'] = account_id unless account_id.nil?
@@ -849,7 +849,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_saved_ad_styles(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/savedadstyles', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/savedadstyles', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyles::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
           command.params['accountId'] = account_id unless account_id.nil?
@@ -892,7 +892,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_url_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/urlchannels', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/urlchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels
           command.params['accountId'] = account_id unless account_id.nil?
@@ -932,7 +932,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ad_clients(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients', options)
+          command = make_simple_command(:get, 'adclients', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -968,7 +968,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ad_unit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1004,7 +1004,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ad_code_ad_unit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1045,7 +1045,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ad_units(ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/adunits', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1090,7 +1090,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ad_unit_custom_channels(ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1126,7 +1126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_alert(alert_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'alerts/{alertId}', options)
+          command = make_simple_command(:delete, 'alerts/{alertId}', options)
           command.params['alertId'] = alert_id unless alert_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1159,7 +1159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_alerts(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'alerts', options)
+          command = make_simple_command(:get, 'alerts', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Alerts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Alerts
           command.query['locale'] = locale unless locale.nil?
@@ -1194,7 +1194,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_custom_channel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1235,7 +1235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_custom_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1279,7 +1279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_custom_channel_ad_units(ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1314,7 +1314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metadata_dimensions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'metadata/dimensions', options)
+          command = make_simple_command(:get, 'metadata/dimensions', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
           command.query['fields'] = fields unless fields.nil?
@@ -1344,7 +1344,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metadata_metrics(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'metadata/metrics', options)
+          command = make_simple_command(:get, 'metadata/metrics', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
           command.query['fields'] = fields unless fields.nil?
@@ -1374,7 +1374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_payments(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'payments', options)
+          command = make_simple_command(:get, 'payments', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Payments::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Payments
           command.query['fields'] = fields unless fields.nil?
@@ -1438,7 +1438,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_report(start_date, end_date, account_id: nil, currency: nil, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'reports', options)
+            command = make_simple_command(:get, 'reports', options)
           else
             command = make_download_command(:get, 'reports', options)
             command.download_dest = download_dest
@@ -1494,7 +1494,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def generate_saved_report(saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'reports/{savedReportId}', options)
+          command = make_simple_command(:get, 'reports/{savedReportId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
           command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
@@ -1535,7 +1535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_saved_reports(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'reports/saved', options)
+          command = make_simple_command(:get, 'reports/saved', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedReports::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedReports
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1569,7 +1569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_saved_ad_style(saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'savedadstyles/{savedAdStyleId}', options)
+          command = make_simple_command(:get, 'savedadstyles/{savedAdStyleId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
           command.params['savedAdStyleId'] = saved_ad_style_id unless saved_ad_style_id.nil?
@@ -1607,7 +1607,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_saved_ad_styles(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'savedadstyles', options)
+          command = make_simple_command(:get, 'savedadstyles', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyles::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1647,7 +1647,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_url_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'adclients/{adClientId}/urlchannels', options)
+          command = make_simple_command(:get, 'adclients/{adClientId}/urlchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?

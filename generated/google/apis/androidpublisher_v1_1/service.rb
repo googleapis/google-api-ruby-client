@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_inapppurchase(package_name, product_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{packageName}/inapp/{productId}/purchases/{token}', options)
+          command = make_simple_command(:get, '{packageName}/inapp/{productId}/purchases/{token}', options)
           command.response_representation = Google::Apis::AndroidpublisherV1_1::InappPurchase::Representation
           command.response_class = Google::Apis::AndroidpublisherV1_1::InappPurchase
           command.params['packageName'] = package_name unless package_name.nil?
@@ -120,7 +120,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_purchase(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}/cancel', options)
+          command = make_simple_command(:post, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}/cancel', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?
@@ -159,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_purchase(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}', options)
+          command = make_simple_command(:get, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}', options)
           command.response_representation = Google::Apis::AndroidpublisherV1_1::SubscriptionPurchase::Representation
           command.response_class = Google::Apis::AndroidpublisherV1_1::SubscriptionPurchase
           command.params['packageName'] = package_name unless package_name.nil?

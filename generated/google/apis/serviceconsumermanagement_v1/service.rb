@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Empty::Representation
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Empty::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::Empty
           command.params['name'] = name unless name.nil?
@@ -145,7 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
           command.params['name'] = name unless name.nil?
@@ -189,7 +189,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -248,7 +248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_services(parent, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}:search', options)
+          command = make_simple_command(:get, 'v1/{+parent}:search', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::SearchTenancyUnitsResponse::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::SearchTenancyUnitsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_service_tenancy_unit_project(parent, add_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:addProject', options)
+          command = make_simple_command(:post, 'v1/{+parent}:addProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::AddTenantProjectRequest::Representation
           command.request_object = add_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
@@ -338,7 +338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def apply_service_tenancy_unit_project_config(name, apply_tenant_project_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:applyProjectConfig', options)
+          command = make_simple_command(:post, 'v1/{+name}:applyProjectConfig', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::ApplyTenantProjectConfigRequest::Representation
           command.request_object = apply_tenant_project_config_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
@@ -382,7 +382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def attach_service_tenancy_unit_project(name, attach_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:attachProject', options)
+          command = make_simple_command(:post, 'v1/{+name}:attachProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::AttachTenantProjectRequest::Representation
           command.request_object = attach_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
@@ -420,7 +420,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_tenancy_unit(parent, create_tenancy_unit_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/tenancyUnits', options)
+          command = make_simple_command(:post, 'v1/{+parent}/tenancyUnits', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::CreateTenancyUnitRequest::Representation
           command.request_object = create_tenancy_unit_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::TenancyUnit::Representation
@@ -454,7 +454,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_service_tenancy_unit(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::Operation
           command.params['name'] = name unless name.nil?
@@ -495,7 +495,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_service_tenancy_unit_project(name, delete_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:deleteProject', options)
+          command = make_simple_command(:post, 'v1/{+name}:deleteProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::DeleteTenantProjectRequest::Representation
           command.request_object = delete_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
@@ -544,7 +544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_service_tenancy_units(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/tenancyUnits', options)
+          command = make_simple_command(:get, 'v1/{+parent}/tenancyUnits', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::ListTenancyUnitsResponse::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::ListTenancyUnitsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -586,7 +586,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_service_tenancy_unit_project(name, remove_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:removeProject', options)
+          command = make_simple_command(:post, 'v1/{+name}:removeProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::RemoveTenantProjectRequest::Representation
           command.request_object = remove_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation
@@ -626,7 +626,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def undelete_service_tenancy_unit_project(name, undelete_tenant_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:undeleteProject', options)
+          command = make_simple_command(:post, 'v1/{+name}:undeleteProject', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1::UndeleteTenantProjectRequest::Representation
           command.request_object = undelete_tenant_project_request_object
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::Operation::Representation

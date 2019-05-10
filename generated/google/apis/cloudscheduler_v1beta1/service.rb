@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Location::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -140,7 +140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_job(parent, job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/jobs', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/jobs', options)
           command.request_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
@@ -174,7 +174,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Empty::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -206,7 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::Job
           command.params['name'] = name unless name.nil?
@@ -252,7 +252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_jobs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/jobs', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::ListJobsResponse::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -308,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_job(name, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
@@ -349,7 +349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def pause_job(name, pause_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:pause', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:pause', options)
           command.request_representation = Google::Apis::CloudschedulerV1beta1::PauseJobRequest::Representation
           command.request_object = pause_job_request_object
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
@@ -388,7 +388,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resume_job(name, resume_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:resume', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:resume', options)
           command.request_representation = Google::Apis::CloudschedulerV1beta1::ResumeJobRequest::Representation
           command.request_object = resume_job_request_object
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation
@@ -425,7 +425,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def run_job(name, run_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:run', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:run', options)
           command.request_representation = Google::Apis::CloudschedulerV1beta1::RunJobRequest::Representation
           command.request_object = run_job_request_object
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Job::Representation

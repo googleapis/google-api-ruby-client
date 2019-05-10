@@ -49,6 +49,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Service that performs image detection and annotation for a batch of files.
+        # Now only "application/pdf", "image/tiff" and "image/gif" are supported.
+        # This service will extract at most 5 (customers can specify which 5 in
+        # AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        # file provided and perform detection and annotation for each image
+        # extracted.
+        # @param [Google::Apis::VisionV1::BatchAnnotateFilesRequest] batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::BatchAnnotateFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_file(batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/files:annotate', options)
+          command.request_representation = Google::Apis::VisionV1::BatchAnnotateFilesRequest::Representation
+          command.request_object = batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1::BatchAnnotateFilesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::BatchAnnotateFilesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Run asynchronous image detection and annotation for a list of generic
         # files, such as PDF files, which may contain multiple pages and multiple
         # images per page. Progress and results can be retrieved through the
@@ -74,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def async_batch_annotate_files(async_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/files:asyncBatchAnnotate', options)
+          command = make_simple_command(:post, 'v1/files:asyncBatchAnnotate', options)
           command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateFilesRequest::Representation
           command.request_object = async_batch_annotate_files_request_object
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
@@ -104,11 +139,47 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def annotate_image(batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/images:annotate', options)
+          command = make_simple_command(:post, 'v1/images:annotate', options)
           command.request_representation = Google::Apis::VisionV1::BatchAnnotateImagesRequest::Representation
           command.request_object = batch_annotate_images_request_object
           command.response_representation = Google::Apis::VisionV1::BatchAnnotateImagesResponse::Representation
           command.response_class = Google::Apis::VisionV1::BatchAnnotateImagesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of images.
+        # Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
+        # This service will write image annotation outputs to json files in customer
+        # GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+        # @param [Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest] async_batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_batch_annotate_images(async_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/images:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest::Representation
+          command.request_object = async_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -137,7 +208,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
           command.response_class = Google::Apis::VisionV1::Operation
           command.params['name'] = name unless name.nil?
@@ -177,7 +248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::VisionV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
@@ -212,7 +283,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
           command.response_class = Google::Apis::VisionV1::Empty
           command.params['name'] = name unless name.nil?
@@ -244,7 +315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
           command.response_class = Google::Apis::VisionV1::Operation
           command.params['name'] = name unless name.nil?
@@ -288,7 +359,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::VisionV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
@@ -323,7 +394,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
           command.response_class = Google::Apis::VisionV1::Operation
           command.params['name'] = name unless name.nil?
@@ -360,7 +431,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_product_to_product_set(name, add_product_to_product_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:addProduct', options)
+          command = make_simple_command(:post, 'v1/{+name}:addProduct', options)
           command.request_representation = Google::Apis::VisionV1::AddProductToProductSetRequest::Representation
           command.request_object = add_product_to_product_set_request_object
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
@@ -402,7 +473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_product_set(parent, product_set_object = nil, product_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/productSets', options)
+          command = make_simple_command(:post, 'v1/{+parent}/productSets', options)
           command.request_representation = Google::Apis::VisionV1::ProductSet::Representation
           command.request_object = product_set_object
           command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
@@ -417,8 +488,6 @@ module Google
         # Permanently deletes a ProductSet. Products and ReferenceImages in the
         # ProductSet are not deleted.
         # The actual image files are not deleted from Google Cloud Storage.
-        # Possible errors:
-        # none
         # @param [String] name
         #   Resource name of the ProductSet to delete.
         #   Format is:
@@ -441,7 +510,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_product_set(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
           command.response_class = Google::Apis::VisionV1::Empty
           command.params['name'] = name unless name.nil?
@@ -475,7 +544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_product_set(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
           command.response_class = Google::Apis::VisionV1::ProductSet
           command.params['name'] = name unless name.nil?
@@ -515,7 +584,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_product_sets(parent, import_product_sets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/productSets:import', options)
+          command = make_simple_command(:post, 'v1/{+parent}/productSets:import', options)
           command.request_representation = Google::Apis::VisionV1::ImportProductSetsRequest::Representation
           command.request_object = import_product_sets_request_object
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
@@ -555,7 +624,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_product_sets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/productSets', options)
+          command = make_simple_command(:get, 'v1/{+parent}/productSets', options)
           command.response_representation = Google::Apis::VisionV1::ListProductSetsResponse::Representation
           command.response_class = Google::Apis::VisionV1::ListProductSetsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -601,7 +670,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_product_set(name, product_set_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::VisionV1::ProductSet::Representation
           command.request_object = product_set_object
           command.response_representation = Google::Apis::VisionV1::ProductSet::Representation
@@ -614,8 +683,6 @@ module Google
         end
         
         # Removes a Product from the specified ProductSet.
-        # Possible errors:
-        # none
         # @param [String] name
         #   The resource name for the ProductSet to modify.
         #   Format is:
@@ -639,7 +706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def remove_product_from_product_set(name, remove_product_from_product_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:removeProduct', options)
+          command = make_simple_command(:post, 'v1/{+name}:removeProduct', options)
           command.request_representation = Google::Apis::VisionV1::RemoveProductFromProductSetRequest::Representation
           command.request_object = remove_product_from_product_set_request_object
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
@@ -681,7 +748,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_product_set_products(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/products', options)
+          command = make_simple_command(:get, 'v1/{+name}/products', options)
           command.response_representation = Google::Apis::VisionV1::ListProductsInProductSetResponse::Representation
           command.response_class = Google::Apis::VisionV1::ListProductsInProductSetResponse
           command.params['name'] = name unless name.nil?
@@ -726,7 +793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_product(parent, product_object = nil, product_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/products', options)
+          command = make_simple_command(:post, 'v1/{+parent}/products', options)
           command.request_representation = Google::Apis::VisionV1::Product::Representation
           command.request_object = product_object
           command.response_representation = Google::Apis::VisionV1::Product::Representation
@@ -742,8 +809,6 @@ module Google
         # Metadata of the product and all its images will be deleted right away, but
         # search queries against ProductSets containing the product may still work
         # until all related caches are refreshed.
-        # Possible errors:
-        # none
         # @param [String] name
         #   Resource name of product to delete.
         #   Format is:
@@ -766,7 +831,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_product(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
           command.response_class = Google::Apis::VisionV1::Empty
           command.params['name'] = name unless name.nil?
@@ -800,7 +865,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_product(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Product::Representation
           command.response_class = Google::Apis::VisionV1::Product
           command.params['name'] = name unless name.nil?
@@ -838,7 +903,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_products(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products', options)
+          command = make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::VisionV1::ListProductsResponse::Representation
           command.response_class = Google::Apis::VisionV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -891,7 +956,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_product(name, product_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::VisionV1::Product::Representation
           command.request_object = product_object
           command.response_representation = Google::Apis::VisionV1::Product::Representation
@@ -946,7 +1011,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_product_reference_image(parent, reference_image_object = nil, reference_image_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/referenceImages', options)
+          command = make_simple_command(:post, 'v1/{+parent}/referenceImages', options)
           command.request_representation = Google::Apis::VisionV1::ReferenceImage::Representation
           command.request_object = reference_image_object
           command.response_representation = Google::Apis::VisionV1::ReferenceImage::Representation
@@ -963,8 +1028,6 @@ module Google
         # against ProductSets containing the image may still work until all related
         # caches are refreshed.
         # The actual image files are not deleted from Google Cloud Storage.
-        # Possible errors:
-        # none
         # @param [String] name
         #   The resource name of the reference image to delete.
         #   Format is:
@@ -988,7 +1051,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_product_reference_image(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Empty::Representation
           command.response_class = Google::Apis::VisionV1::Empty
           command.params['name'] = name unless name.nil?
@@ -1023,7 +1086,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_product_reference_image(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::ReferenceImage::Representation
           command.response_class = Google::Apis::VisionV1::ReferenceImage
           command.params['name'] = name unless name.nil?
@@ -1065,7 +1128,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_product_reference_images(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/referenceImages', options)
+          command = make_simple_command(:get, 'v1/{+parent}/referenceImages', options)
           command.response_representation = Google::Apis::VisionV1::ListReferenceImagesResponse::Representation
           command.response_class = Google::Apis::VisionV1::ListReferenceImagesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -1099,7 +1162,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VisionV1::Operation::Representation
           command.response_class = Google::Apis::VisionV1::Operation
           command.params['name'] = name unless name.nil?

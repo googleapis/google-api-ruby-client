@@ -123,7 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def complete_project(name, company_name: nil, language_code: nil, language_codes: nil, page_size: nil, query: nil, scope: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}:complete', options)
+          command = make_simple_command(:get, 'v3/{+name}:complete', options)
           command.response_representation = Google::Apis::JobsV3::CompleteQueryResponse::Representation
           command.response_class = Google::Apis::JobsV3::CompleteQueryResponse
           command.params['name'] = name unless name.nil?
@@ -167,7 +167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_client_event(parent, create_client_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/clientEvents', options)
+          command = make_simple_command(:post, 'v3/{+parent}/clientEvents', options)
           command.request_representation = Google::Apis::JobsV3::CreateClientEventRequest::Representation
           command.request_object = create_client_event_request_object
           command.response_representation = Google::Apis::JobsV3::ClientEvent::Representation
@@ -203,7 +203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_company(parent, create_company_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/companies', options)
+          command = make_simple_command(:post, 'v3/{+parent}/companies', options)
           command.request_representation = Google::Apis::JobsV3::CreateCompanyRequest::Representation
           command.request_object = create_company_request_object
           command.response_representation = Google::Apis::JobsV3::Company::Representation
@@ -239,7 +239,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_company(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::JobsV3::Empty::Representation
           command.response_class = Google::Apis::JobsV3::Empty
           command.params['name'] = name unless name.nil?
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_company(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::JobsV3::Company::Representation
           command.response_class = Google::Apis::JobsV3::Company
           command.params['name'] = name unless name.nil?
@@ -318,7 +318,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_companies(parent, page_size: nil, page_token: nil, require_open_jobs: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+parent}/companies', options)
+          command = make_simple_command(:get, 'v3/{+parent}/companies', options)
           command.response_representation = Google::Apis::JobsV3::ListCompaniesResponse::Representation
           command.response_class = Google::Apis::JobsV3::ListCompaniesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -358,7 +358,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_company(name, update_company_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::JobsV3::UpdateCompanyRequest::Representation
           command.request_object = update_company_request_object
           command.response_representation = Google::Apis::JobsV3::Company::Representation
@@ -394,7 +394,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_jobs(parent, batch_delete_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/jobs:batchDelete', options)
+          command = make_simple_command(:post, 'v3/{+parent}/jobs:batchDelete', options)
           command.request_representation = Google::Apis::JobsV3::BatchDeleteJobsRequest::Representation
           command.request_object = batch_delete_jobs_request_object
           command.response_representation = Google::Apis::JobsV3::Empty::Representation
@@ -432,7 +432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_job(parent, create_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/jobs', options)
+          command = make_simple_command(:post, 'v3/{+parent}/jobs', options)
           command.request_representation = Google::Apis::JobsV3::CreateJobRequest::Representation
           command.request_object = create_job_request_object
           command.response_representation = Google::Apis::JobsV3::Job::Representation
@@ -469,7 +469,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
           command.response_representation = Google::Apis::JobsV3::Empty::Representation
           command.response_class = Google::Apis::JobsV3::Empty
           command.params['name'] = name unless name.nil?
@@ -503,7 +503,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_job(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::JobsV3::Job::Representation
           command.response_class = Google::Apis::JobsV3::Job
           command.params['name'] = name unless name.nil?
@@ -561,7 +561,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_jobs(parent, filter: nil, job_view: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v3/{+parent}/jobs', options)
+          command = make_simple_command(:get, 'v3/{+parent}/jobs', options)
           command.response_representation = Google::Apis::JobsV3::ListJobsResponse::Representation
           command.response_class = Google::Apis::JobsV3::ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -604,7 +604,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_job(name, update_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::JobsV3::UpdateJobRequest::Representation
           command.request_object = update_job_request_object
           command.response_representation = Google::Apis::JobsV3::Job::Representation
@@ -643,7 +643,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_jobs(parent, search_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/jobs:search', options)
+          command = make_simple_command(:post, 'v3/{+parent}/jobs:search', options)
           command.request_representation = Google::Apis::JobsV3::SearchJobsRequest::Representation
           command.request_object = search_jobs_request_object
           command.response_representation = Google::Apis::JobsV3::SearchJobsResponse::Representation
@@ -686,7 +686,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_job_for_alert(parent, search_jobs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v3/{+parent}/jobs:searchForAlert', options)
+          command = make_simple_command(:post, 'v3/{+parent}/jobs:searchForAlert', options)
           command.request_representation = Google::Apis::JobsV3::SearchJobsRequest::Representation
           command.request_object = search_jobs_request_object
           command.response_representation = Google::Apis::JobsV3::SearchJobsResponse::Representation

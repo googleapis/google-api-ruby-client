@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_job(job_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/jobs', options)
+          command = make_simple_command(:post, 'v1/jobs', options)
           command.request_representation = Google::Apis::YoutubereportingV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::YoutubereportingV1::Job::Representation
@@ -106,7 +106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_job(job_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/jobs/{jobId}', options)
+          command = make_simple_command(:delete, 'v1/jobs/{jobId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Empty::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Empty
           command.params['jobId'] = job_id unless job_id.nil?
@@ -140,7 +140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job(job_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Job::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Job
           command.params['jobId'] = job_id unless job_id.nil?
@@ -184,7 +184,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_jobs(include_system_managed: nil, on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs', options)
+          command = make_simple_command(:get, 'v1/jobs', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListJobsResponse
           command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?
@@ -222,7 +222,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job_report(job_id, report_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}/reports/{reportId}', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}/reports/{reportId}', options)
           command.response_representation = Google::Apis::YoutubereportingV1::Report::Representation
           command.response_class = Google::Apis::YoutubereportingV1::Report
           command.params['jobId'] = job_id unless job_id.nil?
@@ -274,7 +274,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_job_reports(job_id, created_after: nil, on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, start_time_at_or_after: nil, start_time_before: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/jobs/{jobId}/reports', options)
+          command = make_simple_command(:get, 'v1/jobs/{jobId}/reports', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportsResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportsResponse
           command.params['jobId'] = job_id unless job_id.nil?
@@ -314,7 +314,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_medium(resource_name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, 'v1/media/{+resourceName}', options)
+            command = make_simple_command(:get, 'v1/media/{+resourceName}', options)
           else
             command = make_download_command(:get, 'v1/media/{+resourceName}', options)
             command.download_dest = download_dest
@@ -361,7 +361,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_report_types(include_system_managed: nil, on_behalf_of_content_owner: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/reportTypes', options)
+          command = make_simple_command(:get, 'v1/reportTypes', options)
           command.response_representation = Google::Apis::YoutubereportingV1::ListReportTypesResponse::Representation
           command.response_class = Google::Apis::YoutubereportingV1::ListReportTypesResponse
           command.query['includeSystemManaged'] = include_system_managed unless include_system_managed.nil?

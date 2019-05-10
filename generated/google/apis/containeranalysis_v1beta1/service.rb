@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_create_notes(parent, batch_create_notes_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/notes:batchCreate', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/notes:batchCreate', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::BatchCreateNotesRequest::Representation
           command.request_object = batch_create_notes_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::BatchCreateNotesResponse::Representation
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_note(parent, note_object = nil, note_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/notes', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/notes', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
           command.request_object = note_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
@@ -141,7 +141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_note(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Empty::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -172,7 +172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_note(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::Note
           command.params['name'] = name unless name.nil?
@@ -210,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_note_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Policy::Representation
@@ -250,7 +250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_notes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/notes', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/notes', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListNotesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -287,7 +287,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_note(name, note_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
           command.request_object = note_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
@@ -328,7 +328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_note_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Policy::Representation
@@ -367,7 +367,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_note_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::TestIamPermissionsResponse::Representation
@@ -408,7 +408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_note_occurrences(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/occurrences', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/occurrences', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListNoteOccurrencesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListNoteOccurrencesResponse
           command.params['name'] = name unless name.nil?
@@ -443,7 +443,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_create_occurrences(parent, batch_create_occurrences_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/occurrences:batchCreate', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/occurrences:batchCreate', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::BatchCreateOccurrencesRequest::Representation
           command.request_object = batch_create_occurrences_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::BatchCreateOccurrencesResponse::Representation
@@ -477,7 +477,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_occurrence(parent, occurrence_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/occurrences', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/occurrences', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::Occurrence::Representation
           command.request_object = occurrence_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Occurrence::Representation
@@ -512,7 +512,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_occurrence(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Empty::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -543,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_occurrence(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Occurrence::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::Occurrence
           command.params['name'] = name unless name.nil?
@@ -581,7 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_occurrence_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::GetIamPolicyRequest::Representation
           command.request_object = get_iam_policy_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Policy::Representation
@@ -615,7 +615,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_occurrence_notes(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/notes', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/notes', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Note::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::Note
           command.params['name'] = name unless name.nil?
@@ -648,7 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_occurrence_vulnerability_summary(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/occurrences:vulnerabilitySummary', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences:vulnerabilitySummary', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::VulnerabilityOccurrencesSummary
           command.params['parent'] = parent unless parent.nil?
@@ -687,7 +687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_occurrences(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/occurrences', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/occurrences', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListOccurrencesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -724,7 +724,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_occurrence(name, occurrence_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::Occurrence::Representation
           command.request_object = occurrence_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Occurrence::Representation
@@ -765,7 +765,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_occurrence_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::Policy::Representation
@@ -804,7 +804,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_occurrence_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::TestIamPermissionsResponse::Representation
@@ -837,7 +837,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_scan_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ScanConfig::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ScanConfig
           command.params['name'] = name unless name.nil?
@@ -874,7 +874,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_scan_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/scanConfigs', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/scanConfigs', options)
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ListScanConfigsResponse::Representation
           command.response_class = Google::Apis::ContaineranalysisV1beta1::ListScanConfigsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -909,7 +909,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_scan_config(name, scan_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+name}', options)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ContaineranalysisV1beta1::ScanConfig::Representation
           command.request_object = scan_config_object
           command.response_representation = Google::Apis::ContaineranalysisV1beta1::ScanConfig::Representation

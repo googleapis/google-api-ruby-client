@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_achievement(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'achievements/{achievementId}/reset', options)
+          command = make_simple_command(:post, 'achievements/{achievementId}/reset', options)
           command.response_representation = Google::Apis::GamesManagementV1management::AchievementResetResponse::Representation
           command.response_class = Google::Apis::GamesManagementV1management::AchievementResetResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
@@ -109,7 +109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_achievement_all(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'achievements/reset', options)
+          command = make_simple_command(:post, 'achievements/reset', options)
           command.response_representation = Google::Apis::GamesManagementV1management::AchievementResetAllResponse::Representation
           command.response_class = Google::Apis::GamesManagementV1management::AchievementResetAllResponse
           command.query['fields'] = fields unless fields.nil?
@@ -140,7 +140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_achievement_all_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'achievements/resetAllForAllPlayers', options)
+          command = make_simple_command(:post, 'achievements/resetAllForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -172,7 +172,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_achievement_for_all_players(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'achievements/{achievementId}/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'achievements/{achievementId}/resetForAllPlayers', options)
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -204,7 +204,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_achievement_multiple_for_all_players(achievement_reset_multiple_for_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'achievements/resetMultipleForAllPlayers', options)
+          command = make_simple_command(:post, 'achievements/resetMultipleForAllPlayers', options)
           command.request_representation = Google::Apis::GamesManagementV1management::AchievementResetMultipleForAllRequest::Representation
           command.request_object = achievement_reset_multiple_for_all_request_object
           command.query['fields'] = fields unless fields.nil?
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_application_hidden(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'applications/{applicationId}/players/hidden', options)
+          command = make_simple_command(:get, 'applications/{applicationId}/players/hidden', options)
           command.response_representation = Google::Apis::GamesManagementV1management::HiddenPlayerList::Representation
           command.response_class = Google::Apis::GamesManagementV1management::HiddenPlayerList
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -281,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_event(event_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'events/{eventId}/reset', options)
+          command = make_simple_command(:post, 'events/{eventId}/reset', options)
           command.params['eventId'] = event_id unless event_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -312,7 +312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_event_all(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'events/reset', options)
+          command = make_simple_command(:post, 'events/reset', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -342,7 +342,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_event_all_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'events/resetAllForAllPlayers', options)
+          command = make_simple_command(:post, 'events/resetAllForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -374,7 +374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_event_for_all_players(event_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'events/{eventId}/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'events/{eventId}/resetForAllPlayers', options)
           command.params['eventId'] = event_id unless event_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -406,7 +406,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_event_multiple_for_all_players(events_reset_multiple_for_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'events/resetMultipleForAllPlayers', options)
+          command = make_simple_command(:post, 'events/resetMultipleForAllPlayers', options)
           command.request_representation = Google::Apis::GamesManagementV1management::EventsResetMultipleForAllRequest::Representation
           command.request_object = events_reset_multiple_for_all_request_object
           command.query['fields'] = fields unless fields.nil?
@@ -442,7 +442,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def hide_player(application_id, player_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'applications/{applicationId}/players/hidden/{playerId}', options)
+          command = make_simple_command(:post, 'applications/{applicationId}/players/hidden/{playerId}', options)
           command.params['applicationId'] = application_id unless application_id.nil?
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -478,7 +478,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unhide_player(application_id, player_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'applications/{applicationId}/players/hidden/{playerId}', options)
+          command = make_simple_command(:delete, 'applications/{applicationId}/players/hidden/{playerId}', options)
           command.params['applicationId'] = application_id unless application_id.nil?
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -512,7 +512,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_quest(quest_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'quests/{questId}/reset', options)
+          command = make_simple_command(:post, 'quests/{questId}/reset', options)
           command.params['questId'] = quest_id unless quest_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -543,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_quest_all(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'quests/reset', options)
+          command = make_simple_command(:post, 'quests/reset', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -572,7 +572,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_quest_all_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'quests/resetAllForAllPlayers', options)
+          command = make_simple_command(:post, 'quests/resetAllForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -604,7 +604,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_quest_for_all_players(quest_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'quests/{questId}/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'quests/{questId}/resetForAllPlayers', options)
           command.params['questId'] = quest_id unless quest_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -636,7 +636,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_quest_multiple_for_all_players(quests_reset_multiple_for_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'quests/resetMultipleForAllPlayers', options)
+          command = make_simple_command(:post, 'quests/resetMultipleForAllPlayers', options)
           command.request_representation = Google::Apis::GamesManagementV1management::QuestsResetMultipleForAllRequest::Representation
           command.request_object = quests_reset_multiple_for_all_request_object
           command.query['fields'] = fields unless fields.nil?
@@ -668,7 +668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_room(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'rooms/reset', options)
+          command = make_simple_command(:post, 'rooms/reset', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -698,7 +698,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_room_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'rooms/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'rooms/resetForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -730,7 +730,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_score(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'leaderboards/{leaderboardId}/scores/reset', options)
+          command = make_simple_command(:post, 'leaderboards/{leaderboardId}/scores/reset', options)
           command.response_representation = Google::Apis::GamesManagementV1management::PlayerScoreResetResponse::Representation
           command.response_class = Google::Apis::GamesManagementV1management::PlayerScoreResetResponse
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
@@ -763,7 +763,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_score_all(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'scores/reset', options)
+          command = make_simple_command(:post, 'scores/reset', options)
           command.response_representation = Google::Apis::GamesManagementV1management::PlayerScoreResetAllResponse::Representation
           command.response_class = Google::Apis::GamesManagementV1management::PlayerScoreResetAllResponse
           command.query['fields'] = fields unless fields.nil?
@@ -794,7 +794,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_score_all_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'scores/resetAllForAllPlayers', options)
+          command = make_simple_command(:post, 'scores/resetAllForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -826,7 +826,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_score_for_all_players(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'leaderboards/{leaderboardId}/scores/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'leaderboards/{leaderboardId}/scores/resetForAllPlayers', options)
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -858,7 +858,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_score_multiple_for_all_players(scores_reset_multiple_for_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'scores/resetMultipleForAllPlayers', options)
+          command = make_simple_command(:post, 'scores/resetMultipleForAllPlayers', options)
           command.request_representation = Google::Apis::GamesManagementV1management::ScoresResetMultipleForAllRequest::Representation
           command.request_object = scores_reset_multiple_for_all_request_object
           command.query['fields'] = fields unless fields.nil?
@@ -889,7 +889,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_turn_based_match(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'turnbasedmatches/reset', options)
+          command = make_simple_command(:post, 'turnbasedmatches/reset', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -919,7 +919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_turn_based_match_for_all_players(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'turnbasedmatches/resetForAllPlayers', options)
+          command = make_simple_command(:post, 'turnbasedmatches/resetForAllPlayers', options)
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_project(project_id, google_datastore_admin_v1beta1_export_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:export', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{projectId}:export', options)
           command.request_representation = Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1ExportEntitiesRequest::Representation
           command.request_object = google_datastore_admin_v1beta1_export_entities_request_object
           command.response_representation = Google::Apis::DatastoreV1beta1::GoogleLongrunningOperation::Representation
@@ -114,7 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_project(project_id, google_datastore_admin_v1beta1_import_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}:import', options)
+          command = make_simple_command(:post, 'v1beta1/projects/{projectId}:import', options)
           command.request_representation = Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1ImportEntitiesRequest::Representation
           command.request_object = google_datastore_admin_v1beta1_import_entities_request_object
           command.response_representation = Google::Apis::DatastoreV1beta1::GoogleLongrunningOperation::Representation

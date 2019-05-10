@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_managed_short_link(create_managed_short_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/managedShortLinks:create', options)
+          command = make_simple_command(:post, 'v1/managedShortLinks:create', options)
           command.request_representation = Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkRequest::Representation
           command.request_object = create_managed_short_link_request_object
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkResponse::Representation
@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_short_link_short_dynamic_link(create_short_dynamic_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/shortLinks', options)
+          command = make_simple_command(:post, 'v1/shortLinks', options)
           command.request_representation = Google::Apis::FirebasedynamiclinksV1::CreateShortDynamicLinkRequest::Representation
           command.request_object = create_short_dynamic_link_request_object
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::CreateShortDynamicLinkResponse::Representation
@@ -150,7 +150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_link_stats(dynamic_link, duration_days: nil, sdk_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{dynamicLink}/linkStats', options)
+          command = make_simple_command(:get, 'v1/{dynamicLink}/linkStats', options)
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats::Representation
           command.response_class = Google::Apis::FirebasedynamiclinksV1::DynamicLinkStats
           command.params['dynamicLink'] = dynamic_link unless dynamic_link.nil?
@@ -181,7 +181,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def install_attribution(get_ios_post_install_attribution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/installAttribution', options)
+          command = make_simple_command(:post, 'v1/installAttribution', options)
           command.request_representation = Google::Apis::FirebasedynamiclinksV1::GetIosPostInstallAttributionRequest::Representation
           command.request_object = get_ios_post_install_attribution_request_object
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::GetIosPostInstallAttributionResponse::Representation
@@ -211,7 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reopen_attribution(get_ios_reopen_attribution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/reopenAttribution', options)
+          command = make_simple_command(:post, 'v1/reopenAttribution', options)
           command.request_representation = Google::Apis::FirebasedynamiclinksV1::GetIosReopenAttributionRequest::Representation
           command.request_object = get_ios_reopen_attribution_request_object
           command.response_representation = Google::Apis::FirebasedynamiclinksV1::GetIosReopenAttributionResponse::Representation

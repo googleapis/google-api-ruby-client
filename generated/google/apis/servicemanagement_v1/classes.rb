@@ -1570,6 +1570,32 @@ module Google
         end
       end
       
+      # Encapsulation of flow-specific error details for debugging.
+      # Used as a details field on an error Status, not intended for external use.
+      class FlowErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The type of exception (as a class name).
+        # Corresponds to the JSON property `exceptionType`
+        # @return [String]
+        attr_accessor :exception_type
+      
+        # The step that failed.
+        # Corresponds to the JSON property `flowStepId`
+        # @return [String]
+        attr_accessor :flow_step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exception_type = args[:exception_type] if args.key?(:exception_type)
+          @flow_step_id = args[:flow_step_id] if args.key?(:flow_step_id)
+        end
+      end
+      
       # Request message for GenerateConfigReport method.
       class GenerateConfigReportRequest
         include Google::Apis::Core::Hashable
@@ -2670,6 +2696,11 @@ module Google
         # @return [Array<Google::Apis::ServicemanagementV1::LabelDescriptor>]
         attr_accessor :labels
       
+        # Optional. The launch stage of the monitored resource definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Optional. The resource name of the monitored resource descriptor:
         # `"projects/`project_id`/monitoredResourceDescriptors/`type`"` where
         # `type` is the value of the `type` field in this object and
@@ -2696,6 +2727,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end

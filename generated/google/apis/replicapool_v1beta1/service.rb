@@ -80,7 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_pool(project_name, zone, pool_name, pools_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta1::PoolsDeleteRequest::Representation
           command.request_object = pools_delete_request_object
           command.params['projectName'] = project_name unless project_name.nil?
@@ -119,7 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_pool(project_name, zone, pool_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}', options)
+          command = make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Pool::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::Pool
           command.params['projectName'] = project_name unless project_name.nil?
@@ -157,7 +157,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_pool(project_name, zone, pool_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta1::Pool::Representation
           command.request_object = pool_object
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Pool::Representation
@@ -201,7 +201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pools(project_name, zone, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{projectName}/zones/{zone}/pools', options)
+          command = make_simple_command(:get, '{projectName}/zones/{zone}/pools', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::PoolsListResponse::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::PoolsListResponse
           command.params['projectName'] = project_name unless project_name.nil?
@@ -247,7 +247,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_pool(project_name, zone, pool_name, num_replicas: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/resize', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/resize', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Pool::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::Pool
           command.params['projectName'] = project_name unless project_name.nil?
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updatetemplate_pool(project_name, zone, pool_name, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/updateTemplate', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/updateTemplate', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta1::Template::Representation
           command.request_object = template_object
           command.params['projectName'] = project_name unless project_name.nil?
@@ -330,7 +330,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_replica(project_name, zone, pool_name, replica_name, replicas_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta1::ReplicasDeleteRequest::Representation
           command.request_object = replicas_delete_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Replica::Representation
@@ -374,7 +374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_replica(project_name, zone, pool_name, replica_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}', options)
+          command = make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Replica::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::Replica
           command.params['projectName'] = project_name unless project_name.nil?
@@ -420,7 +420,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_replicas(project_name, zone, pool_name, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}/replicas', options)
+          command = make_simple_command(:get, '{projectName}/zones/{zone}/pools/{poolName}/replicas', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::ReplicasListResponse::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::ReplicasListResponse
           command.params['projectName'] = project_name unless project_name.nil?
@@ -463,7 +463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def restart_replica(project_name, zone, pool_name, replica_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}/restart', options)
+          command = make_simple_command(:post, '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}/restart', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta1::Replica::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta1::Replica
           command.params['projectName'] = project_name unless project_name.nil?

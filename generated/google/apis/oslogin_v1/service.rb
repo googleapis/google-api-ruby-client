@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_login_profile(name, project_id: nil, system_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/loginProfile', options)
+          command = make_simple_command(:get, 'v1/{+name}/loginProfile', options)
           command.response_representation = Google::Apis::OsloginV1::LoginProfile::Representation
           command.response_class = Google::Apis::OsloginV1::LoginProfile
           command.params['name'] = name unless name.nil?
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}:importSshPublicKey', options)
+          command = make_simple_command(:post, 'v1/{+parent}:importSshPublicKey', options)
           command.request_representation = Google::Apis::OsloginV1::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
           command.response_representation = Google::Apis::OsloginV1::ImportSshPublicKeyResponse::Representation
@@ -146,7 +146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_project(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::OsloginV1::Empty::Representation
           command.response_class = Google::Apis::OsloginV1::Empty
           command.params['name'] = name unless name.nil?
@@ -178,7 +178,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_ssh_public_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::OsloginV1::Empty::Representation
           command.response_class = Google::Apis::OsloginV1::Empty
           command.params['name'] = name unless name.nil?
@@ -210,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_ssh_public_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::OsloginV1::SshPublicKey::Representation
           command.response_class = Google::Apis::OsloginV1::SshPublicKey
           command.params['name'] = name unless name.nil?
@@ -246,7 +246,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_ssh_public_key(name, ssh_public_key_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::OsloginV1::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
           command.response_representation = Google::Apis::OsloginV1::SshPublicKey::Representation

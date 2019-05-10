@@ -99,7 +99,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_datum(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, max_results: nil, segment: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'data', options)
+          command = make_simple_command(:get, 'data', options)
           command.query['dimensions'] = dimensions unless dimensions.nil?
           command.query['end-date'] = end_date unless end_date.nil?
           command.query['filters'] = filters unless filters.nil?
@@ -142,7 +142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_management_accounts(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'management/accounts', options)
+          command = make_simple_command(:get, 'management/accounts', options)
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -187,7 +187,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_management_goals(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals', options)
+          command = make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
           command.params['profileId'] = profile_id unless profile_id.nil?
@@ -233,7 +233,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_management_profiles(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles', options)
+          command = make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
           command.query['max-results'] = max_results unless max_results.nil?
@@ -270,7 +270,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_management_segments(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'management/segments', options)
+          command = make_simple_command(:get, 'management/segments', options)
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -308,7 +308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_management_webproperties(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties', options)
+          command = make_simple_command(:get, 'management/accounts/{accountId}/webproperties', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?

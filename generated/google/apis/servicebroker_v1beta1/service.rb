@@ -71,7 +71,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_broker(parent, google_cloud_servicebroker_v1beta1__broker_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/brokers', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/brokers', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Broker::Representation
           command.request_object = google_cloud_servicebroker_v1beta1__broker_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Broker::Representation
@@ -103,7 +103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_broker(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -140,7 +140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_brokers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/brokers', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/brokers', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListBrokersResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListBrokersResponse
           command.params['parent'] = parent unless parent.nil?
@@ -181,7 +181,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance
           command.params['name'] = name unless name.nil?
@@ -221,7 +221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_instance_last_operation(name, operation: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation
           command.params['name'] = name unless name.nil?
@@ -263,7 +263,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_broker_instances(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/instances', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListServiceInstancesResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListServiceInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -305,7 +305,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_instance_binding_last_operation(name, operation: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation
           command.params['name'] = name unless name.nil?
@@ -349,7 +349,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_broker_instance_bindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/bindings', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/bindings', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListBindingsResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListBindingsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -390,7 +390,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_broker_v2_catalogs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/v2/catalog', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/v2/catalog', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListCatalogResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ListCatalogResponse
           command.params['parent'] = parent unless parent.nil?
@@ -446,7 +446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_broker_v2_service_instance(parent, instance_id, google_cloud_servicebroker_v1beta1__service_instance_object = nil, accepts_incomplete: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+parent}/v2/service_instances/{+instance_id}', options)
+          command = make_simple_command(:put, 'v1beta1/{+parent}/v2/service_instances/{+instance_id}', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance::Representation
           command.request_object = google_cloud_servicebroker_v1beta1__service_instance_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1CreateServiceInstanceResponse::Representation
@@ -493,7 +493,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_broker_v2_service_instance(name, accepts_incomplete: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1DeleteServiceInstanceResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1DeleteServiceInstanceResponse
           command.params['name'] = name unless name.nil?
@@ -535,7 +535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_v2_service_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance
           command.params['name'] = name unless name.nil?
@@ -575,7 +575,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_v2_service_instance_last_operation(name, operation: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation
           command.params['name'] = name unless name.nil?
@@ -613,7 +613,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_broker_v2_service_instance(name, google_cloud_servicebroker_v1beta1__service_instance_object = nil, accepts_incomplete: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1ServiceInstance::Representation
           command.request_object = google_cloud_servicebroker_v1beta1__service_instance_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1UpdateServiceInstanceResponse::Representation
@@ -656,7 +656,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_broker_v2_service_instance_service_binding(parent, binding_id, google_cloud_servicebroker_v1beta1__binding_object = nil, accepts_incomplete: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1beta1/{+parent}/service_bindings/{+binding_id}', options)
+          command = make_simple_command(:put, 'v1beta1/{+parent}/service_bindings/{+binding_id}', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Binding::Representation
           command.request_object = google_cloud_servicebroker_v1beta1__binding_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1CreateBindingResponse::Representation
@@ -705,7 +705,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_broker_v2_service_instance_service_binding(name, accepts_incomplete: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1DeleteBindingResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1DeleteBindingResponse
           command.params['name'] = name unless name.nil?
@@ -744,7 +744,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_v2_service_instance_service_binding(name, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1GetBindingResponse::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1GetBindingResponse
           command.params['name'] = name unless name.nil?
@@ -786,7 +786,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_broker_v2_service_instance_service_binding_last_operation(name, operation: nil, plan_id: nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/last_operation', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleCloudServicebrokerV1beta1Operation
           command.params['name'] = name unless name.nil?
@@ -822,7 +822,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
+          command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleIamV1Policy::Representation
           command.response_class = Google::Apis::ServicebrokerV1beta1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
@@ -855,7 +855,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_iam_policy(resource, google_iam_v1__set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1__set_iam_policy_request_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleIamV1Policy::Representation
@@ -894,7 +894,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_iam_permissions(resource, google_iam_v1__test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::ServicebrokerV1beta1::GoogleIamV1TestIamPermissionsRequest::Representation
           command.request_object = google_iam_v1__test_iam_permissions_request_object
           command.response_representation = Google::Apis::ServicebrokerV1beta1::GoogleIamV1TestIamPermissionsResponse::Representation

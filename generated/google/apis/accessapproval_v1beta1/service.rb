@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_folder_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
@@ -140,7 +140,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def approve_folder_approval_request(name, approve_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:approve', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:approve', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::ApproveApprovalRequestMessage::Representation
           command.request_object = approve_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -179,7 +179,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def dismiss_folder_approval_request(name, dismiss_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::DismissApprovalRequestMessage::Representation
           command.request_object = dismiss_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -211,7 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_folder_approval_request(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ApprovalRequest
           command.params['name'] = name unless name.nil?
@@ -258,7 +258,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_folder_approval_requests(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -291,7 +291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
@@ -328,7 +328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_organization_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
@@ -363,7 +363,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def approve_organization_approval_request(name, approve_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:approve', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:approve', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::ApproveApprovalRequestMessage::Representation
           command.request_object = approve_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -402,7 +402,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def dismiss_organization_approval_request(name, dismiss_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::DismissApprovalRequestMessage::Representation
           command.request_object = dismiss_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -434,7 +434,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_organization_approval_request(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ApprovalRequest
           command.params['name'] = name unless name.nil?
@@ -481,7 +481,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_organization_approval_requests(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -514,7 +514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
@@ -551,7 +551,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_project_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
@@ -586,7 +586,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def approve_project_approval_request(name, approve_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:approve', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:approve', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::ApproveApprovalRequestMessage::Representation
           command.request_object = approve_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -625,7 +625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def dismiss_project_approval_request(name, dismiss_approval_request_message_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:dismiss', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::DismissApprovalRequestMessage::Representation
           command.request_object = dismiss_approval_request_message_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
@@ -657,7 +657,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_approval_request(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ApprovalRequest::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ApprovalRequest
           command.params['name'] = name unless name.nil?
@@ -704,7 +704,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_approval_requests(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/approvalRequests', options)
           command.response_representation = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::ListApprovalRequestsResponse
           command.params['parent'] = parent unless parent.nil?

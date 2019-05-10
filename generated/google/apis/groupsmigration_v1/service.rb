@@ -79,7 +79,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_archive(group_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, '{groupId}/archive', options)
+            command = make_simple_command(:post, '{groupId}/archive', options)
           else
             command = make_upload_command(:post, '{groupId}/archive', options)
             command.upload_source = upload_source

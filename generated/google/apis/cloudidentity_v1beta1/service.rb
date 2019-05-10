@@ -67,7 +67,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_group(group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/groups', options)
+          command = make_simple_command(:post, 'v1beta1/groups', options)
           command.request_representation = Google::Apis::CloudidentityV1beta1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
@@ -100,7 +100,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -132,7 +132,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Group::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Group
           command.params['name'] = name unless name.nil?
@@ -171,7 +171,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lookup_group(group_key_id: nil, group_key_namespace: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/groups:lookup', options)
+          command = make_simple_command(:get, 'v1beta1/groups:lookup', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::LookupGroupNameResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::LookupGroupNameResponse
           command.query['groupKey.id'] = group_key_id unless group_key_id.nil?
@@ -208,7 +208,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_group(name, group_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::CloudidentityV1beta1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
@@ -255,7 +255,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_groups(page_size: nil, page_token: nil, query: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/groups:search', options)
+          command = make_simple_command(:get, 'v1beta1/groups:search', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::SearchGroupsResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::SearchGroupsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -291,7 +291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_group_membership(parent, membership_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/memberships', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memberships', options)
           command.request_representation = Google::Apis::CloudidentityV1beta1::Membership::Representation
           command.request_object = membership_object
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
@@ -327,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group_membership(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -361,7 +361,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_group_membership(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Membership::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Membership
           command.params['name'] = name unless name.nil?
@@ -401,7 +401,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_group_memberships(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/memberships', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::ListMembershipsResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::ListMembershipsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -448,7 +448,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lookup_group_membership(parent, member_key_id: nil, member_key_namespace: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/memberships:lookup', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:lookup', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::LookupMembershipNameResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::LookupMembershipNameResponse
           command.params['parent'] = parent unless parent.nil?

@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Location::Representation
           command.response_class = Google::Apis::RedisV1beta1::Location
           command.params['name'] = name unless name.nil?
@@ -104,7 +104,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/locations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/locations', options)
           command.response_representation = Google::Apis::RedisV1beta1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::RedisV1beta1::ListLocationsResponse
           command.params['name'] = name unless name.nil?
@@ -156,7 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_instance(parent, instance_object = nil, instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+parent}/instances', options)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/instances', options)
           command.request_representation = Google::Apis::RedisV1beta1::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
@@ -192,7 +192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
           command.response_class = Google::Apis::RedisV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -224,7 +224,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_instance(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Instance::Representation
           command.response_class = Google::Apis::RedisV1beta1::Instance
           command.params['name'] = name unless name.nil?
@@ -271,7 +271,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_instances(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+parent}/instances', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/instances', options)
           command.response_representation = Google::Apis::RedisV1beta1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::RedisV1beta1::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -322,7 +322,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_location_instance(name, instance_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::RedisV1beta1::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
@@ -364,7 +364,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1beta1/{+name}:cancel', options)
           command.response_representation = Google::Apis::RedisV1beta1::Empty::Representation
           command.response_class = Google::Apis::RedisV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -397,7 +397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Empty::Representation
           command.response_class = Google::Apis::RedisV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -429,7 +429,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
           command.response_class = Google::Apis::RedisV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -473,7 +473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/operations', options)
+          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::RedisV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::RedisV1beta1::ListOperationsResponse
           command.params['name'] = name unless name.nil?

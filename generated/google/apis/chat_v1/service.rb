@@ -69,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_space(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Space::Representation
           command.response_class = Google::Apis::ChatV1::Space
           command.params['name'] = name unless name.nil?
@@ -103,7 +103,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_spaces(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/spaces', options)
+          command = make_simple_command(:get, 'v1/spaces', options)
           command.response_representation = Google::Apis::ChatV1::ListSpacesResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListSpacesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -136,7 +136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_space_member(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Membership::Representation
           command.response_class = Google::Apis::ChatV1::Membership
           command.params['name'] = name unless name.nil?
@@ -174,7 +174,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_space_members(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/members', options)
+          command = make_simple_command(:get, 'v1/{+parent}/members', options)
           command.response_representation = Google::Apis::ChatV1::ListMembershipsResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListMembershipsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_space_message(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+parent}/messages', options)
+          command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
@@ -253,7 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_space_message(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Empty::Representation
           command.response_class = Google::Apis::ChatV1::Empty
           command.params['name'] = name unless name.nil?
@@ -285,7 +285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_space_message(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['name'] = name unless name.nil?
@@ -320,7 +320,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_space_message(name, message_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation

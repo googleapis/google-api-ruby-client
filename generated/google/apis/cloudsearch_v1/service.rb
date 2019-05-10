@@ -74,7 +74,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def check_debug_datasource_item_access(name, principal_object = nil, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/debug/{+name}:checkAccess', options)
+          command = make_simple_command(:post, 'v1/debug/{+name}:checkAccess', options)
           command.request_representation = Google::Apis::CloudsearchV1::Principal::Representation
           command.request_object = principal_object
           command.response_representation = Google::Apis::CloudsearchV1::CheckAccessResponse::Representation
@@ -110,7 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_debug_datasource_item_by_view_url(name, search_items_by_view_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/debug/{+name}/items:searchByViewUrl', options)
+          command = make_simple_command(:post, 'v1/debug/{+name}/items:searchByViewUrl', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchItemsByViewUrlRequest::Representation
           command.request_object = search_items_by_view_url_request_object
           command.response_representation = Google::Apis::CloudsearchV1::SearchItemsByViewUrlResponse::Representation
@@ -151,7 +151,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_debug_datasource_item_unmappedids(parent, debug_options_enable_debugging: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
+          command = make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -195,7 +195,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_debug_identitysource_item_forunmappedidentity(parent, debug_options_enable_debugging: nil, group_resource_name: nil, page_size: nil, page_token: nil, user_resource_name: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/debug/{+parent}/items:forunmappedidentity', options)
+          command = make_simple_command(:get, 'v1/debug/{+parent}/items:forunmappedidentity', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListItemNamesForUnmappedIdentityResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListItemNamesForUnmappedIdentityResponse
           command.params['parent'] = parent unless parent.nil?
@@ -241,7 +241,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_debug_identitysource_unmappedids(parent, debug_options_enable_debugging: nil, page_size: nil, page_token: nil, resolution_status_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
+          command = make_simple_command(:get, 'v1/debug/{+parent}/unmappedids', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListUnmappedIdentitiesResponse
           command.params['parent'] = parent unless parent.nil?
@@ -279,7 +279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_indexing_datasource_schema(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/indexing/{+name}/schema', options)
+          command = make_simple_command(:delete, 'v1/indexing/{+name}/schema', options)
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
@@ -314,7 +314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_indexing_datasource_schema(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/indexing/{+name}/schema', options)
+          command = make_simple_command(:get, 'v1/indexing/{+name}/schema', options)
           command.response_representation = Google::Apis::CloudsearchV1::Schema::Representation
           command.response_class = Google::Apis::CloudsearchV1::Schema
           command.params['name'] = name unless name.nil?
@@ -347,7 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_datasource_schema(name, update_schema_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/indexing/{+name}/schema', options)
+          command = make_simple_command(:put, 'v1/indexing/{+name}/schema', options)
           command.request_representation = Google::Apis::CloudsearchV1::UpdateSchemaRequest::Representation
           command.request_object = update_schema_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -399,7 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_indexing_datasource_item(name, connector_name: nil, debug_options_enable_debugging: nil, mode: nil, version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/indexing/{+name}', options)
+          command = make_simple_command(:delete, 'v1/indexing/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
@@ -436,7 +436,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_queue_items(name, delete_queue_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}/items:deleteQueueItems', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}/items:deleteQueueItems', options)
           command.request_representation = Google::Apis::CloudsearchV1::DeleteQueueItemsRequest::Representation
           command.request_object = delete_queue_items_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -475,7 +475,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_indexing_datasource_item(name, connector_name: nil, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/indexing/{+name}', options)
+          command = make_simple_command(:get, 'v1/indexing/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::Item::Representation
           command.response_class = Google::Apis::CloudsearchV1::Item
           command.params['name'] = name unless name.nil?
@@ -515,7 +515,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def index_item(name, index_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}:index', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}:index', options)
           command.request_representation = Google::Apis::CloudsearchV1::IndexItemRequest::Representation
           command.request_object = index_item_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -569,7 +569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_indexing_datasource_items(name, brief: nil, connector_name: nil, debug_options_enable_debugging: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/indexing/{+name}/items', options)
+          command = make_simple_command(:get, 'v1/indexing/{+name}/items', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListItemsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListItemsResponse
           command.params['name'] = name unless name.nil?
@@ -628,7 +628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def poll_items(name, poll_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}/items:poll', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}/items:poll', options)
           command.request_representation = Google::Apis::CloudsearchV1::PollItemsRequest::Representation
           command.request_object = poll_items_request_object
           command.response_representation = Google::Apis::CloudsearchV1::PollItemsResponse::Representation
@@ -665,7 +665,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def push_item(name, push_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}:push', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}:push', options)
           command.request_representation = Google::Apis::CloudsearchV1::PushItemRequest::Representation
           command.request_object = push_item_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Item::Representation
@@ -701,7 +701,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unreserve_items(name, unreserve_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}/items:unreserve', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}/items:unreserve', options)
           command.request_representation = Google::Apis::CloudsearchV1::UnreserveItemsRequest::Representation
           command.request_object = unreserve_items_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -738,7 +738,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_indexing_datasource_item(name, start_upload_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/indexing/{+name}:upload', options)
+          command = make_simple_command(:post, 'v1/indexing/{+name}:upload', options)
           command.request_representation = Google::Apis::CloudsearchV1::StartUploadItemRequest::Representation
           command.request_object = start_upload_item_request_object
           command.response_representation = Google::Apis::CloudsearchV1::UploadItemRef::Representation
@@ -788,7 +788,7 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_medium(resource_name, media_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, 'v1/media/{+resourceName}', options)
+            command = make_simple_command(:post, 'v1/media/{+resourceName}', options)
           else
             command = make_upload_command(:post, 'v1/media/{+resourceName}', options)
             command.upload_source = upload_source
@@ -827,7 +827,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
@@ -859,7 +859,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_query(search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/query/search', options)
+          command = make_simple_command(:post, 'v1/query/search', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchRequest::Representation
           command.request_object = search_request_object
           command.response_representation = Google::Apis::CloudsearchV1::SearchResponse::Representation
@@ -889,7 +889,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def suggest_query(suggest_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/query/suggest', options)
+          command = make_simple_command(:post, 'v1/query/suggest', options)
           command.request_representation = Google::Apis::CloudsearchV1::SuggestRequest::Representation
           command.request_object = suggest_request_object
           command.response_representation = Google::Apis::CloudsearchV1::SuggestResponse::Representation
@@ -940,7 +940,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_query_sources(page_token: nil, request_options_debug_options_enable_debugging: nil, request_options_language_code: nil, request_options_search_application_id: nil, request_options_time_zone: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/query/sources', options)
+          command = make_simple_command(:get, 'v1/query/sources', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListQuerySourcesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListQuerySourcesResponse
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -973,7 +973,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_setting_datasource(data_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/settings/datasources', options)
+          command = make_simple_command(:post, 'v1/settings/datasources', options)
           command.request_representation = Google::Apis::CloudsearchV1::DataSource::Representation
           command.request_object = data_source_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -1008,7 +1008,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_setting_datasource(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/settings/{+name}', options)
+          command = make_simple_command(:delete, 'v1/settings/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1043,7 +1043,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_setting_datasource(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/settings/{+name}', options)
+          command = make_simple_command(:get, 'v1/settings/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::DataSource::Representation
           command.response_class = Google::Apis::CloudsearchV1::DataSource
           command.params['name'] = name unless name.nil?
@@ -1081,7 +1081,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_setting_datasources(debug_options_enable_debugging: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/settings/datasources', options)
+          command = make_simple_command(:get, 'v1/settings/datasources', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListDataSourceResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListDataSourceResponse
           command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
@@ -1116,7 +1116,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_datasource_data_source(name, update_data_source_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/settings/{+name}', options)
+          command = make_simple_command(:put, 'v1/settings/{+name}', options)
           command.request_representation = Google::Apis::CloudsearchV1::UpdateDataSourceRequest::Representation
           command.request_object = update_data_source_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -1147,7 +1147,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_setting_searchapplication(search_application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/settings/searchapplications', options)
+          command = make_simple_command(:post, 'v1/settings/searchapplications', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchApplication::Representation
           command.request_object = search_application_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -1182,7 +1182,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_setting_searchapplication(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/settings/{+name}', options)
+          command = make_simple_command(:delete, 'v1/settings/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1217,7 +1217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_setting_searchapplication(name, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/settings/{+name}', options)
+          command = make_simple_command(:get, 'v1/settings/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::SearchApplication::Representation
           command.response_class = Google::Apis::CloudsearchV1::SearchApplication
           command.params['name'] = name unless name.nil?
@@ -1254,7 +1254,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_setting_searchapplications(debug_options_enable_debugging: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/settings/searchapplications', options)
+          command = make_simple_command(:get, 'v1/settings/searchapplications', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListSearchApplicationsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListSearchApplicationsResponse
           command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
@@ -1289,7 +1289,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_searchapplication_search_application(name, reset_search_application_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/settings/{+name}:reset', options)
+          command = make_simple_command(:post, 'v1/settings/{+name}:reset', options)
           command.request_representation = Google::Apis::CloudsearchV1::ResetSearchApplicationRequest::Representation
           command.request_object = reset_search_application_request_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -1323,7 +1323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_setting_searchapplication(name, search_application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/settings/{+name}', options)
+          command = make_simple_command(:put, 'v1/settings/{+name}', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchApplication::Representation
           command.request_object = search_application_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
@@ -1367,7 +1367,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_stat_index(from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/stats/index', options)
+          command = make_simple_command(:get, 'v1/stats/index', options)
           command.response_representation = Google::Apis::CloudsearchV1::GetCustomerIndexStatsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::GetCustomerIndexStatsResponse
           command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
@@ -1415,7 +1415,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_stat_index_datasource(name, from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/stats/index/{+name}', options)
+          command = make_simple_command(:get, 'v1/stats/index/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::GetDataSourceIndexStatsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::GetDataSourceIndexStatsResponse
           command.params['name'] = name unless name.nil?
