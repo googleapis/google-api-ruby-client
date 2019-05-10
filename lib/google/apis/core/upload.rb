@@ -18,7 +18,7 @@ require 'google/apis/core/api_command'
 require 'google/apis/errors'
 require 'addressable/uri'
 require 'tempfile'
-require 'mime-types'
+require 'mini_mime'
 
 module Google
   module Apis
@@ -55,8 +55,8 @@ module Google
           elsif self.upload_source.is_a?(String)
             self.upload_io = File.new(upload_source, 'r')
             if self.upload_content_type.nil?
-              type = MIME::Types.of(upload_source)
-              self.upload_content_type = type.first.content_type unless type.nil? || type.empty?
+              type = MiniMime.lookup_by_filename(upload_source)
+              self.upload_content_type = type && type.content_type
             end
             @close_io_on_finish = true
           else

@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'representable', '~> 3.0'
   spec.add_runtime_dependency 'retriable', '>= 2.0', '< 4.0'
   spec.add_runtime_dependency 'addressable', '~> 2.5', '>= 2.5.1'
-  spec.add_runtime_dependency 'mime-types', '~> 3.0'
+  spec.add_dependency 'mini_mime', '>= 0.1.1'
   spec.add_runtime_dependency 'signet', '~> 0.10'
   spec.add_runtime_dependency 'googleauth', '>= 0.5', '< 0.10.0'
   spec.add_runtime_dependency 'httpclient', '>= 2.8.1', '< 3.0'
