@@ -1216,8 +1216,8 @@ module Google
       
         # Required. The number of nodes allocated to this instance. This may be zero
         # in API responses for instances that are not yet in state `READY`.
-        # See [the documentation](https://cloud.google.com/spanner/docs/instances#
-        # node_count)
+        # See [the
+        # documentation](https://cloud.google.com/spanner/docs/instances#node_count)
         # for more information about nodes.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]

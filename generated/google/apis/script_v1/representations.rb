@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteStreamResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecutionError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScriptExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScriptStackTraceElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,7 +214,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Struct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +292,14 @@ module Google
           property :execution_api, as: 'executionApi', class: Google::Apis::ScriptV1::GoogleAppsScriptTypeExecutionApiEntryPoint, decorator: Google::Apis::ScriptV1::GoogleAppsScriptTypeExecutionApiEntryPoint::Representation
       
           property :web_app, as: 'webApp', class: Google::Apis::ScriptV1::GoogleAppsScriptTypeWebAppEntryPoint, decorator: Google::Apis::ScriptV1::GoogleAppsScriptTypeWebAppEntryPoint::Representation
+      
+        end
+      end
+      
+      class ExecuteStreamResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ScriptV1::ScriptExecutionResult, decorator: Google::Apis::ScriptV1::ScriptExecutionResult::Representation
       
         end
       end
@@ -417,6 +455,14 @@ module Google
         end
       end
       
+      class ListValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::ScriptV1::Value, decorator: Google::Apis::ScriptV1::Value::Representation
+      
+        end
+      end
+      
       class ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -472,6 +518,14 @@ module Google
         end
       end
       
+      class ScriptExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :return_value, as: 'returnValue', class: Google::Apis::ScriptV1::Value, decorator: Google::Apis::ScriptV1::Value::Representation
+      
+        end
+      end
+      
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -489,10 +543,35 @@ module Google
         end
       end
       
+      class Struct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :fields, as: 'fields', class: Google::Apis::ScriptV1::Value, decorator: Google::Apis::ScriptV1::Value::Representation
+      
+        end
+      end
+      
       class UpdateDeploymentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment_config, as: 'deploymentConfig', class: Google::Apis::ScriptV1::DeploymentConfig, decorator: Google::Apis::ScriptV1::DeploymentConfig::Representation
+      
+        end
+      end
+      
+      class Value
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :bytes_value, :base64 => true, as: 'bytesValue'
+          property :date_value, :numeric_string => true, as: 'dateValue'
+          property :list_value, as: 'listValue', class: Google::Apis::ScriptV1::ListValue, decorator: Google::Apis::ScriptV1::ListValue::Representation
+      
+          property :null_value, as: 'nullValue'
+          property :number_value, as: 'numberValue'
+          hash :proto_value, as: 'protoValue'
+          property :string_value, as: 'stringValue'
+          property :struct_value, as: 'structValue', class: Google::Apis::ScriptV1::Struct, decorator: Google::Apis::ScriptV1::Struct::Representation
       
         end
       end

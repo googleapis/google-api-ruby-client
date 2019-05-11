@@ -653,6 +653,11 @@ module Google
         # @return [String]
         attr_accessor :service_config_id
       
+        # Unimplemented. The current service rollout id used to process the request.
+        # Corresponds to the JSON property `serviceRolloutId`
+        # @return [String]
+        attr_accessor :service_rollout_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -664,6 +669,7 @@ module Google
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @quota_info = args[:quota_info] if args.key?(:quota_info)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @service_rollout_id = args[:service_rollout_id] if args.key?(:service_rollout_id)
         end
       end
       
@@ -1862,6 +1868,11 @@ module Google
         # @return [String]
         attr_accessor :service_config_id
       
+        # Unimplemented. The current service rollout id used to process the request.
+        # Corresponds to the JSON property `serviceRolloutId`
+        # @return [String]
+        attr_accessor :service_rollout_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1871,6 +1882,7 @@ module Google
           @report_errors = args[:report_errors] if args.key?(:report_errors)
           @report_infos = args[:report_infos] if args.key?(:report_infos)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @service_rollout_id = args[:service_rollout_id] if args.key?(:service_rollout_id)
         end
       end
       

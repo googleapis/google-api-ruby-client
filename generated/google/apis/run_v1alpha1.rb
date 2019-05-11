@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/run/
     module RunV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20190415'
+      REVISION = '20190508'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -399,6 +399,7 @@ module Google
           property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
       
           property :service_config_id, as: 'serviceConfigId'
+          property :service_rollout_id, as: 'serviceRolloutId'
         end
       end
       
@@ -656,6 +657,7 @@ module Google
           collection :report_infos, as: 'reportInfos', class: Google::Apis::ServicecontrolV1::ReportInfo, decorator: Google::Apis::ServicecontrolV1::ReportInfo::Representation
       
           property :service_config_id, as: 'serviceConfigId'
+          property :service_rollout_id, as: 'serviceRolloutId'
         end
       end
       

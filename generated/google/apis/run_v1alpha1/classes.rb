@@ -413,6 +413,13 @@ module Google
         # @return [Google::Apis::RunV1alpha1::RevisionTemplate]
         attr_accessor :revision_template
       
+        # RevisionTemplateSpec describes the data a revision should have when created
+        # from a template. Based on:
+        # https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1alpha1::RevisionTemplate]
+        attr_accessor :template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -421,6 +428,7 @@ module Google
         def update!(**args)
           @generation = args[:generation] if args.key?(:generation)
           @revision_template = args[:revision_template] if args.key?(:revision_template)
+          @template = args[:template] if args.key?(:template)
         end
       end
       
@@ -1615,6 +1623,51 @@ module Google
         end
       end
       
+      # ListTriggersResponse is a list of Trigger resources.
+      class ListTriggersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Triggers.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::Trigger>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "TriggerList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # LocalObjectReference contains enough information to let you locate the
       # referenced object inside the same namespace.
       class LocalObjectReference
@@ -1891,6 +1944,87 @@ module Google
           @owner_references = args[:owner_references] if args.key?(:owner_references)
           @resource_version = args[:resource_version] if args.key?(:resource_version)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # ObjectReference contains enough information to let you inspect or modify the
+      # referred object.
+      class ObjectReference
+        include Google::Apis::Core::Hashable
+      
+        # API version of the referent.
+        # +optional
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # If referring to a piece of an object instead of an entire object, this
+        # string should contain a valid JSON/Go field access statement, such as
+        # desiredState.manifest.containers[2]. For example, if the object reference
+        # is to a container within a pod, this would take on a value like:
+        # "spec.containers`name`" (where "name" refers to the name of the container
+        # that triggered the event) or if no container name is specified
+        # "spec.containers[2]" (container with index 2 in this pod). This syntax is
+        # chosen only to have some well-defined way of referencing a part of an
+        # object.
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # Kind of the referent.
+        # More info:
+        # https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        # +optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the referent.
+        # More info:
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        # +optional
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Namespace of the referent.
+        # More info:
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        # +optional
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Specific resourceVersion to which this reference is made, if any.
+        # More info:
+        # https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-
+        # control-and-consistency
+        # +optional
+        # Corresponds to the JSON property `resourceVersion`
+        # @return [String]
+        attr_accessor :resource_version
+      
+        # UID of the referent.
+        # More info:
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        # +optional
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @resource_version = args[:resource_version] if args.key?(:resource_version)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -2352,6 +2486,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :container_concurrency
       
+        # Containers holds the single container that defines the unit of execution
+        # for this Revision. In the context of a Revision, we disallow a number of
+        # fields on this Container, including: name and lifecycle.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV1alpha1::Container>]
+        attr_accessor :containers
+      
         # Deprecated and not currently populated by Cloud Run. See
         # metadata.generation instead, which is the sequence number containing the
         # latest generation of the desired state.
@@ -2391,6 +2532,7 @@ module Google
           @concurrency_model = args[:concurrency_model] if args.key?(:concurrency_model)
           @container = args[:container] if args.key?(:container)
           @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
+          @containers = args[:containers] if args.key?(:containers)
           @generation = args[:generation] if args.key?(:generation)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @serving_state = args[:serving_state] if args.key?(:serving_state)
@@ -2992,6 +3134,22 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ServiceSpecRunLatest]
         attr_accessor :run_latest
       
+        # RevisionTemplateSpec describes the data a revision should have when created
+        # from a template. Based on:
+        # https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1alpha1::RevisionTemplate]
+        attr_accessor :template
+      
+        # Traffic specifies how to distribute traffic over a collection of Knative
+        # Revisions and Configurations. This will replace existing service specs
+        # (ServiceSpecRunLatest, ServiceSpecPinnedType, ServiceSpecReleaseType, and
+        # ServiceSpecManualType).
+        # Not currently supported by Cloud Run.
+        # Corresponds to the JSON property `traffic`
+        # @return [Array<Google::Apis::RunV1alpha1::TrafficTarget>]
+        attr_accessor :traffic
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3003,6 +3161,8 @@ module Google
           @pinned = args[:pinned] if args.key?(:pinned)
           @release = args[:release] if args.key?(:release)
           @run_latest = args[:run_latest] if args.key?(:run_latest)
+          @template = args[:template] if args.key?(:template)
+          @traffic = args[:traffic] if args.key?(:traffic)
         end
       end
       
@@ -3250,6 +3410,34 @@ module Google
         end
       end
       
+      # 
+      class SubscriberSpec
+        include Google::Apis::Core::Hashable
+      
+        # ObjectReference contains enough information to let you inspect or modify the
+        # referred object.
+        # Corresponds to the JSON property `ref`
+        # @return [Google::Apis::RunV1alpha1::ObjectReference]
+        attr_accessor :ref
+      
+        # Reference to a 'known' endpoint where no resolving is done.
+        # http://k8s-service for example
+        # http://myexternalhandler.example.com/foo/bar
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ref = args[:ref] if args.key?(:ref)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # TCPSocketAction describes an action based on opening a socket
       class TcpSocketAction
         include Google::Apis::Core::Hashable
@@ -3369,6 +3557,214 @@ module Google
           @name = args[:name] if args.key?(:name)
           @percent = args[:percent] if args.key?(:percent)
           @revision_name = args[:revision_name] if args.key?(:revision_name)
+        end
+      end
+      
+      # 
+      class Trigger
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "Trigger".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # The desired state of the Trigger.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::TriggerSpec]
+        attr_accessor :spec
+      
+        # TriggerStatus represents the current state of a Trigger.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::TriggerStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # TriggerCondition contains state information for an Trigger.
+      class TriggerCondition
+        include Google::Apis::Core::Hashable
+      
+        # Last time the condition transitioned from one status to another.
+        # +optional
+        # Corresponds to the JSON property `lastTransitionTime`
+        # @return [String]
+        attr_accessor :last_transition_time
+      
+        # Human readable message indicating details about the current status.
+        # +optional
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # One-word CamelCase reason for the condition's current status.
+        # +optional
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Status of the condition, one of True, False, Unknown.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Type of Trigger condition.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
+          @message = args[:message] if args.key?(:message)
+          @reason = args[:reason] if args.key?(:reason)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class TriggerFilter
+        include Google::Apis::Core::Hashable
+      
+        # TriggerFilterSourceAndType filters events based on exact matches on the cloud
+        # event's type and source attributes. Only exact matches will pass the filter.
+        # Corresponds to the JSON property `sourceAndType`
+        # @return [Google::Apis::RunV1alpha1::TriggerFilterSourceAndType]
+        attr_accessor :source_and_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_and_type = args[:source_and_type] if args.key?(:source_and_type)
+        end
+      end
+      
+      # TriggerFilterSourceAndType filters events based on exact matches on the cloud
+      # event's type and source attributes. Only exact matches will pass the filter.
+      class TriggerFilterSourceAndType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The desired state of the Trigger.
+      class TriggerSpec
+        include Google::Apis::Core::Hashable
+      
+        # Broker is the broker that this trigger receives events from. If not
+        # specified, will default to 'default'.
+        # Not currently supported by Cloud Run.
+        # Corresponds to the JSON property `broker`
+        # @return [String]
+        attr_accessor :broker
+      
+        # Filter is the filter to apply against all events from the Broker. Only
+        # events that pass this filter will be sent to the Subscriber. If not
+        # specified, will default to allowing all events.
+        # This must be specified in Cloud Run.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::RunV1alpha1::TriggerFilter]
+        attr_accessor :filter
+      
+        # Subscriber is the addressable that receives events from the Broker that
+        # pass the Filter. It is required.
+        # E.g. https://us-central1-myproject.cloudfunctions.net/myfunction or
+        # /namespaces/my-project/services/my-service.
+        # Corresponds to the JSON property `subscriber`
+        # @return [Google::Apis::RunV1alpha1::SubscriberSpec]
+        attr_accessor :subscriber
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @broker = args[:broker] if args.key?(:broker)
+          @filter = args[:filter] if args.key?(:filter)
+          @subscriber = args[:subscriber] if args.key?(:subscriber)
+        end
+      end
+      
+      # TriggerStatus represents the current state of a Trigger.
+      class TriggerStatus
+        include Google::Apis::Core::Hashable
+      
+        # Array of observed TriggerConditions, indicating the current state
+        # of the Trigger.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::TriggerCondition>]
+        attr_accessor :conditions
+      
+        # ObservedGeneration is the 'Generation' of the Trigger that
+        # was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # SubscriberURI is the resolved URI of the receiver for this Trigger.
+        # Corresponds to the JSON property `subscriberUri`
+        # @return [String]
+        attr_accessor :subscriber_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @subscriber_uri = args[:subscriber_uri] if args.key?(:subscriber_uri)
         end
       end
       

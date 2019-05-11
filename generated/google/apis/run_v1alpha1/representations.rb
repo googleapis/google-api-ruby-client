@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTriggersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalObjectReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class ObjectMeta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscriberSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +461,42 @@ module Google
       end
       
       class TrafficTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Trigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerFilterSourceAndType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -549,6 +603,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generation, as: 'generation'
           property :revision_template, as: 'revisionTemplate', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
+      
+          property :template, as: 'template', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
       
         end
       end
@@ -857,6 +913,19 @@ module Google
         end
       end
       
+      class ListTriggersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Trigger, decorator: Google::Apis::RunV1alpha1::Trigger::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class LocalObjectReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -895,6 +964,19 @@ module Google
       
           property :resource_version, as: 'resourceVersion'
           property :self_link, as: 'selfLink'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class ObjectReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :field_path, as: 'fieldPath'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :namespace, as: 'namespace'
+          property :resource_version, as: 'resourceVersion'
           property :uid, as: 'uid'
         end
       end
@@ -996,6 +1078,8 @@ module Google
           property :container, as: 'container', class: Google::Apis::RunV1alpha1::Container, decorator: Google::Apis::RunV1alpha1::Container::Representation
       
           property :container_concurrency, as: 'containerConcurrency'
+          collection :containers, as: 'containers', class: Google::Apis::RunV1alpha1::Container, decorator: Google::Apis::RunV1alpha1::Container::Representation
+      
           property :generation, as: 'generation'
           property :service_account_name, as: 'serviceAccountName'
           property :serving_state, as: 'servingState'
@@ -1146,6 +1230,10 @@ module Google
       
           property :run_latest, as: 'runLatest', class: Google::Apis::RunV1alpha1::ServiceSpecRunLatest, decorator: Google::Apis::RunV1alpha1::ServiceSpecRunLatest::Representation
       
+          property :template, as: 'template', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
+      
+          collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
+      
         end
       end
       
@@ -1207,6 +1295,15 @@ module Google
         end
       end
       
+      class SubscriberSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ref, as: 'ref', class: Google::Apis::RunV1alpha1::ObjectReference, decorator: Google::Apis::RunV1alpha1::ObjectReference::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
       class TcpSocketAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1237,6 +1334,68 @@ module Google
           property :name, as: 'name'
           property :percent, as: 'percent'
           property :revision_name, as: 'revisionName'
+        end
+      end
+      
+      class Trigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::TriggerSpec, decorator: Google::Apis::RunV1alpha1::TriggerSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::TriggerStatus, decorator: Google::Apis::RunV1alpha1::TriggerStatus::Representation
+      
+        end
+      end
+      
+      class TriggerCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_transition_time, as: 'lastTransitionTime'
+          property :message, as: 'message'
+          property :reason, as: 'reason'
+          property :status, as: 'status'
+          property :type, as: 'type'
+        end
+      end
+      
+      class TriggerFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_and_type, as: 'sourceAndType', class: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType, decorator: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType::Representation
+      
+        end
+      end
+      
+      class TriggerFilterSourceAndType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :type, as: 'type'
+        end
+      end
+      
+      class TriggerSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :broker, as: 'broker'
+          property :filter, as: 'filter', class: Google::Apis::RunV1alpha1::TriggerFilter, decorator: Google::Apis::RunV1alpha1::TriggerFilter::Representation
+      
+          property :subscriber, as: 'subscriber', class: Google::Apis::RunV1alpha1::SubscriberSpec, decorator: Google::Apis::RunV1alpha1::SubscriberSpec::Representation
+      
+        end
+      end
+      
+      class TriggerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::TriggerCondition, decorator: Google::Apis::RunV1alpha1::TriggerCondition::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :subscriber_uri, as: 'subscriberUri'
         end
       end
       
