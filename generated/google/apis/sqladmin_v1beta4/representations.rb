@@ -413,6 +413,7 @@ module Google
           property :binary_log_enabled, as: 'binaryLogEnabled'
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
+          property :location, as: 'location'
           property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
         end
@@ -431,6 +432,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
+          property :location, as: 'location'
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime', type: DateTime
       

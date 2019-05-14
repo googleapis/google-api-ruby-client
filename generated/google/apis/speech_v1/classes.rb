@@ -201,7 +201,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
+        # `name` should be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -240,7 +240,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The audio data bytes encoded as specified in
-        # `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+        # `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a
         # pure binary representation, whereas JSON representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.

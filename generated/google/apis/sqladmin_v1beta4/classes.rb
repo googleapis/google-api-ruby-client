@@ -107,6 +107,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The location of the backup.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Reserved for future use.
         # Corresponds to the JSON property `replicationLogArchivingEnabled`
         # @return [Boolean]
@@ -128,6 +133,7 @@ module Google
           @binary_log_enabled = args[:binary_log_enabled] if args.key?(:binary_log_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -175,6 +181,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The location of the backup.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -215,6 +226,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
