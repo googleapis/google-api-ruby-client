@@ -12,27 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/dialogflow_v2/service.rb'
-require 'google/apis/dialogflow_v2/classes.rb'
-require 'google/apis/dialogflow_v2/representations.rb'
+require 'google/apis/healthcare_v1alpha2/service.rb'
+require 'google/apis/healthcare_v1alpha2/classes.rb'
+require 'google/apis/healthcare_v1alpha2/representations.rb'
 
 module Google
   module Apis
-    # Dialogflow API
+    # Cloud Healthcare API
     #
-    # Builds conversational interfaces (for example, chatbots, and voice-powered
-    # apps and devices).
+    # Manage, store, and access healthcare data in Google Cloud Platform.
     #
-    # @see https://cloud.google.com/dialogflow-enterprise/
-    module DialogflowV2
-      VERSION = 'V2'
-      REVISION = '20190514'
+    # @see https://cloud.google.com/healthcare
+    module HealthcareV1alpha2
+      VERSION = 'V1alpha2'
+      REVISION = '20190503'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View, manage and query your Dialogflow agents
-      AUTH_DIALOGFLOW = 'https://www.googleapis.com/auth/dialogflow'
     end
   end
 end

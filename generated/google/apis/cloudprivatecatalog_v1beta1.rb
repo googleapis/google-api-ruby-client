@@ -23,10 +23,10 @@ module Google
     # Enable cloud users to discover enterprise catalogs and products in their
     # organizations.
     #
-    # @see https://sites.google.com/corp/google.com/cloudprivatecatalog
+    # @see https://cloud.google.com/private-catalog/
     module CloudprivatecatalogV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190304'
+      REVISION = '20190511'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

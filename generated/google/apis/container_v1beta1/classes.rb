@@ -598,7 +598,8 @@ module Google
       
         # [Output only] The size of the address space on each node for hosting
         # containers. This is provisioned from within the `container_ipv4_cidr`
-        # range.
+        # range. This field will only be set when cluster is in route-based network
+        # mode.
         # Corresponds to the JSON property `nodeIpv4CidrSize`
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
@@ -688,6 +689,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
+        # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+        # policies.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -752,6 +759,7 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -893,9 +901,9 @@ module Google
         attr_accessor :desired_node_pool_autoscaling
       
         # The node pool to be upgraded. This field is mandatory if
-        # "desired_node_version", "desired_image_family" or
-        # "desired_node_pool_autoscaling" is specified and there is more than one
-        # node pool on the cluster.
+        # "desired_node_version", "desired_image_family",
+        # "desired_node_pool_autoscaling", or "desired_workload_metadata_config"
+        # is specified and there is more than one node pool on the cluster.
         # Corresponds to the JSON property `desiredNodePoolId`
         # @return [String]
         attr_accessor :desired_node_pool_id
@@ -918,6 +926,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
         attr_accessor :desired_pod_security_policy_config
       
+        # Configuration options for private clusters.
+        # Corresponds to the JSON property `desiredPrivateClusterConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
+        attr_accessor :desired_private_cluster_config
+      
         # Configuration for exporting cluster resource usages.
         # Corresponds to the JSON property `desiredResourceUsageExportConfig`
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
@@ -929,6 +942,12 @@ module Google
         # Corresponds to the JSON property `desiredVerticalPodAutoscaling`
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
+      
+        # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+        # policies.
+        # Corresponds to the JSON property `desiredWorkloadIdentityConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
+        attr_accessor :desired_workload_identity_config
       
         def initialize(**args)
            update!(**args)
@@ -951,8 +970,10 @@ module Google
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
+          @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
+          @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
       end
       
@@ -2611,6 +2632,12 @@ module Google
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Whether to enable route sharing over the network peering.
+        # Corresponds to the JSON property `enablePeeringRouteSharing`
+        # @return [Boolean]
+        attr_accessor :enable_peering_route_sharing
+        alias_method :enable_peering_route_sharing?, :enable_peering_route_sharing
+      
         # Whether the master's internal IP address is used as the cluster endpoint.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
@@ -2649,6 +2676,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_peering_route_sharing = args[:enable_peering_route_sharing] if args.key?(:enable_peering_route_sharing)
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
@@ -3853,6 +3881,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+      # policies.
+      class WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # IAM Identity Namespace to attach all Kubernetes Service Accounts to.
+        # Corresponds to the JSON property `identityNamespace`
+        # @return [String]
+        attr_accessor :identity_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_namespace = args[:identity_namespace] if args.key?(:identity_namespace)
         end
       end
       

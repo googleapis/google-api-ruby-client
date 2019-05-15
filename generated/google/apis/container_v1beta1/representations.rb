@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadMetadataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +677,8 @@ module Google
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -712,9 +720,13 @@ module Google
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
+          property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
+      
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
+      
+          property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig::Representation
       
         end
       end
@@ -1128,6 +1140,7 @@ module Google
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_peering_route_sharing, as: 'enablePeeringRouteSharing'
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
@@ -1406,6 +1419,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class WorkloadIdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity_namespace, as: 'identityNamespace'
         end
       end
       

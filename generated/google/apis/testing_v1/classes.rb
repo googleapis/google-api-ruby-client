@@ -27,7 +27,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Enables automatic Google account login.
-        # If set, the service will automatically generate a Google test account and add
+        # If set, the service automatically generates a Google test account and adds
         # it to the device, before executing the test. Note that test accounts might be
         # reused.
         # Many applications show their full set of functionalities when an account is
@@ -1027,7 +1027,7 @@ module Google
       end
       
       # Enables automatic Google account login.
-      # If set, the service will automatically generate a Google test account and add
+      # If set, the service automatically generates a Google test account and adds
       # it to the device, before executing the test. Note that test accounts might be
       # reused.
       # Many applications show their full set of functionalities when an account is
@@ -1277,7 +1277,7 @@ module Google
         end
       end
       
-      # A description of how to set up an iOS device prior to a test.
+      # A description of how to set up an iOS device prior to running the test.
       class IosTestSetup
         include Google::Apis::Core::Hashable
       
@@ -1627,6 +1627,11 @@ module Google
         # @return [Google::Apis::TestingV1::GoogleCloudStorage]
         attr_accessor :google_cloud_storage
       
+        # Output only. URL to the results in the Firebase Web Console.
+        # Corresponds to the JSON property `resultsUrl`
+        # @return [String]
+        attr_accessor :results_url
+      
         # Represents a tool results execution resource.
         # This has the results of a TestMatrix.
         # Corresponds to the JSON property `toolResultsExecution`
@@ -1645,6 +1650,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_cloud_storage = args[:google_cloud_storage] if args.key?(:google_cloud_storage)
+          @results_url = args[:results_url] if args.key?(:results_url)
           @tool_results_execution = args[:tool_results_execution] if args.key?(:tool_results_execution)
           @tool_results_history = args[:tool_results_history] if args.key?(:tool_results_history)
         end
@@ -1819,7 +1825,7 @@ module Google
         end
       end
       
-      # Specifies a single test to be executed in a single environment.
+      # A single test executed in a single environment.
       class TestExecution
         include Google::Apis::Core::Hashable
       
@@ -1828,7 +1834,7 @@ module Google
         # @return [Google::Apis::TestingV1::Environment]
         attr_accessor :environment
       
-        # Output only. Unique id set by the backend.
+        # Output only. Unique id set by the service.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1888,8 +1894,9 @@ module Google
         end
       end
       
-      # A group of one or more TestExecutions, built by taking a
-      # product of values over a pre-defined set of axes.
+      # TestMatrix captures all details about a test. It contains the environment
+      # configuration, test specification, test executions and overall state and
+      # outcome.
       class TestMatrix
         include Google::Apis::Core::Hashable
       
@@ -1917,6 +1924,12 @@ module Google
         # @return [String]
         attr_accessor :invalid_matrix_details
       
+        # Output Only. The overall outcome of the test.
+        # Only set when the test matrix state is FINISHED.
+        # Corresponds to the JSON property `outcomeSummary`
+        # @return [String]
+        attr_accessor :outcome_summary
+      
         # The cloud project that owns the test matrix.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -1927,8 +1940,7 @@ module Google
         # @return [Google::Apis::TestingV1::ResultStorage]
         attr_accessor :result_storage
       
-        # Output only. Indicates the current progress of the test matrix
-        # (e.g., FINISHED).
+        # Output only. Indicates the current progress of the test matrix.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1964,6 +1976,7 @@ module Google
           @environment_matrix = args[:environment_matrix] if args.key?(:environment_matrix)
           @flaky_test_attempts = args[:flaky_test_attempts] if args.key?(:flaky_test_attempts)
           @invalid_matrix_details = args[:invalid_matrix_details] if args.key?(:invalid_matrix_details)
+          @outcome_summary = args[:outcome_summary] if args.key?(:outcome_summary)
           @project_id = args[:project_id] if args.key?(:project_id)
           @result_storage = args[:result_storage] if args.key?(:result_storage)
           @state = args[:state] if args.key?(:state)
@@ -2063,19 +2076,19 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidTestLoop]
         attr_accessor :android_test_loop
       
-        # Disables performance metrics recording; may reduce test latency.
+        # Disables performance metrics recording. May reduce test latency.
         # Corresponds to the JSON property `disablePerformanceMetrics`
         # @return [Boolean]
         attr_accessor :disable_performance_metrics
         alias_method :disable_performance_metrics?, :disable_performance_metrics
       
-        # Disables video recording; may reduce test latency.
+        # Disables video recording. May reduce test latency.
         # Corresponds to the JSON property `disableVideoRecording`
         # @return [Boolean]
         attr_accessor :disable_video_recording
         alias_method :disable_video_recording?, :disable_video_recording
       
-        # A description of how to set up an iOS device prior to a test.
+        # A description of how to set up an iOS device prior to running the test.
         # Corresponds to the JSON property `iosTestSetup`
         # @return [Google::Apis::TestingV1::IosTestSetup]
         attr_accessor :ios_test_setup

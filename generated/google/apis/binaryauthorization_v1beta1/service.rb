@@ -48,6 +48,10 @@ module Google
           @batch_path = 'batch'
         end
         
+        # A policy specifies the attestors that must attest to
+        # a container image, before the project is allowed to deploy that
+        # image. There is at most one policy per project. All image admission
+        # requests are permitted if a project has no policy.
         # Gets the policy for this project. Returns a default
         # policy if the project does not have one.
         # @param [String] name

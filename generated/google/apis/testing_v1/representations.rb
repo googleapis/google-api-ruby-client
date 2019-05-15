@@ -839,6 +839,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_cloud_storage, as: 'googleCloudStorage', class: Google::Apis::TestingV1::GoogleCloudStorage, decorator: Google::Apis::TestingV1::GoogleCloudStorage::Representation
       
+          property :results_url, as: 'resultsUrl'
           property :tool_results_execution, as: 'toolResultsExecution', class: Google::Apis::TestingV1::ToolResultsExecution, decorator: Google::Apis::TestingV1::ToolResultsExecution::Representation
       
           property :tool_results_history, as: 'toolResultsHistory', class: Google::Apis::TestingV1::ToolResultsHistory, decorator: Google::Apis::TestingV1::ToolResultsHistory::Representation
@@ -925,6 +926,7 @@ module Google
       
           property :flaky_test_attempts, as: 'flakyTestAttempts'
           property :invalid_matrix_details, as: 'invalidMatrixDetails'
+          property :outcome_summary, as: 'outcomeSummary'
           property :project_id, as: 'projectId'
           property :result_storage, as: 'resultStorage', class: Google::Apis::TestingV1::ResultStorage, decorator: Google::Apis::TestingV1::ResultStorage::Representation
       

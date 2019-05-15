@@ -882,8 +882,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Optional. The list of platforms for which the first response will be
-        # taken from among the messages assigned to the DEFAULT_PLATFORM.
+        # Optional. The list of platforms for which the first responses will be
+        # copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         # Corresponds to the JSON property `defaultResponsePlatforms`
         # @return [Array<String>]
         attr_accessor :default_response_platforms
@@ -2948,8 +2948,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Optional. The list of platforms for which the first response will be
-        # taken from among the messages assigned to the DEFAULT_PLATFORM.
+        # Optional. The list of platforms for which the first responses will be
+        # copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         # Corresponds to the JSON property `defaultResponsePlatforms`
         # @return [Array<String>]
         attr_accessor :default_response_platforms

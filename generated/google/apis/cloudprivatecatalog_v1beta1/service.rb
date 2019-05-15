@@ -31,7 +31,7 @@ module Google
       #    Cloudprivatecatalog = Google::Apis::CloudprivatecatalogV1beta1 # Alias the module
       #    service = Cloudprivatecatalog::CloudPrivateCatalogService.new
       #
-      # @see https://sites.google.com/corp/google.com/cloudprivatecatalog
+      # @see https://cloud.google.com/private-catalog/
       class CloudPrivateCatalogService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

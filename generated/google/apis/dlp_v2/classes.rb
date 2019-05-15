@@ -33,7 +33,10 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
         attr_accessor :job_notification_emails
       
-        # Publish the results of a DlpJob to a pub sub channel.
+        # Publish a message into given Pub/Sub topic when DlpJob has completed. The
+        # message contains a single field, `DlpJobName`, which is equal to the
+        # finished job's
+        # [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
         # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `pubSub`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
@@ -4360,7 +4363,10 @@ module Google
         end
       end
       
-      # Publish the results of a DlpJob to a pub sub channel.
+      # Publish a message into given Pub/Sub topic when DlpJob has completed. The
+      # message contains a single field, `DlpJobName`, which is equal to the
+      # finished job's
+      # [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
       # Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2PublishToPubSub
         include Google::Apis::Core::Hashable
