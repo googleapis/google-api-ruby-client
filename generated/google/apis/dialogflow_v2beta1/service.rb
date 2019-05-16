@@ -1415,6 +1415,8 @@ module Google
         end
         
         # Creates a knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] parent
         #   Required. The project to create a knowledge base for.
         #   Format: `projects/<Project ID>`.
@@ -1449,6 +1451,8 @@ module Google
         end
         
         # Deletes the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -1484,6 +1488,8 @@ module Google
         end
         
         # Retrieves the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to retrieve.
         #   Format `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -1515,6 +1521,8 @@ module Google
         end
         
         # Returns the list of all knowledge bases of the specified agent.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] parent
         #   Required. The project to list of knowledge bases for.
         #   Format: `projects/<Project ID>`.
@@ -1553,6 +1561,8 @@ module Google
         end
         
         # Updates the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   The knowledge base resource name.
         #   The name must be empty when creating a knowledge base.
@@ -1593,6 +1603,8 @@ module Google
         end
         
         # Creates a new document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] parent
@@ -1629,6 +1641,8 @@ module Google
         end
         
         # Deletes the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: google.protobuf.Empty,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name
@@ -1663,6 +1677,8 @@ module Google
         end
         
         # Retrieves the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to retrieve.
         #   Format `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -1695,6 +1711,8 @@ module Google
         end
         
         # Returns the list of all documents of the knowledge base.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to list all documents for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -1733,6 +1751,8 @@ module Google
         end
         
         # Updates the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name
@@ -1779,6 +1799,8 @@ module Google
         # content. The previously loaded content of the document will be deleted.
         # Note: Even when the content of the document has not changed, there still
         # may be side effects because of internal implementation changes.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name
@@ -2284,6 +2306,8 @@ module Google
         end
         
         # Creates a knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] parent
         #   Required. The project to create a knowledge base for.
         #   Format: `projects/<Project ID>`.
@@ -2318,6 +2342,8 @@ module Google
         end
         
         # Deletes the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -2353,6 +2379,8 @@ module Google
         end
         
         # Retrieves the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to retrieve.
         #   Format `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -2384,6 +2412,8 @@ module Google
         end
         
         # Returns the list of all knowledge bases of the specified agent.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] parent
         #   Required. The project to list of knowledge bases for.
         #   Format: `projects/<Project ID>`.
@@ -2422,6 +2452,8 @@ module Google
         end
         
         # Updates the specified knowledge base.
+        # Note: The `projects.agent.knowledgeBases` resource is deprecated;
+        # only use `projects.knowledgeBases`.
         # @param [String] name
         #   The knowledge base resource name.
         #   The name must be empty when creating a knowledge base.
@@ -2462,6 +2494,8 @@ module Google
         end
         
         # Creates a new document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] parent
@@ -2498,6 +2532,8 @@ module Google
         end
         
         # Deletes the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: google.protobuf.Empty,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name
@@ -2532,6 +2568,8 @@ module Google
         end
         
         # Retrieves the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to retrieve.
         #   Format `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -2564,6 +2602,8 @@ module Google
         end
         
         # Returns the list of all documents of the knowledge base.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to list all documents for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -2602,6 +2642,8 @@ module Google
         end
         
         # Updates the specified document.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name
@@ -2648,6 +2690,8 @@ module Google
         # content. The previously loaded content of the document will be deleted.
         # Note: Even when the content of the document has not changed, there still
         # may be side effects because of internal implementation changes.
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # Operation <response: Document,
         # metadata: KnowledgeOperationMetadata>
         # @param [String] name

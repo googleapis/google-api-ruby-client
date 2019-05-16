@@ -2684,15 +2684,11 @@ module Google
         #   The maximum number of orders to return in the response, used for paging. The
         #   default value is 25 orders per page, and the maximum allowed value is 250
         #   orders per page.
-        #   Known issue: All List calls will return all Orders without limit regardless of
-        #   the value of this field.
         # @param [String] order_by
-        #   The ordering of the returned list. The only supported value are placedDate
-        #   desc and placedDate asc for now, which returns orders sorted by placement date.
-        #   "placedDate desc" stands for listing orders by placement date, from oldest to
-        #   most recent. "placedDate asc" stands for listing orders by placement date,
-        #   from most recent to oldest. In future releases we'll support other sorting
-        #   criteria.
+        #   Order results by placement date in descending or ascending order.
+        #   Acceptable values are:
+        #   - placedDateAsc
+        #   - placedDateDesc
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] placed_date_end
@@ -2703,7 +2699,7 @@ module Google
         #   Obtains orders that match any of the specified statuses. Multiple values can
         #   be specified with comma separation. Additionally, please note that active is a
         #   shortcut for pendingShipment and partiallyShipped, and completed is a shortcut
-        #   for shipped , partiallyDelivered, delivered, partiallyReturned, returned, and
+        #   for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and
         #   canceled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

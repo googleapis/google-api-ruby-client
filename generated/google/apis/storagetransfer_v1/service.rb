@@ -57,9 +57,8 @@ module Google
         # account is created and owned by Storage Transfer Service and can
         # only be used by Storage Transfer Service.
         # @param [String] project_id
-        #   The ID of the Google Cloud Platform Console project that the Google service
-        #   account is associated with.
-        #   Required.
+        #   Required. The ID of the Google Cloud Platform Console project that the
+        #   Google service account is associated with.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,11 +118,10 @@ module Google
         
         # Gets a transfer job.
         # @param [String] job_name
-        #   The job to get.
-        #   Required.
+        #   Required. The job to get.
         # @param [String] project_id
-        #   The ID of the Google Cloud Platform Console project that owns the job.
-        #   Required.
+        #   Required. The ID of the Google Cloud Platform Console project that owns the
+        #   job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -154,7 +152,7 @@ module Google
         
         # Lists transfer jobs.
         # @param [String] filter
-        #   A list of query parameters specified as JSON text in the form of
+        #   Required. A list of query parameters specified as JSON text in the form of:
         #   `"project_id":"my_project_id",
         #   "job_names":["jobid1","jobid2",...],
         #   "job_statuses":["status1","status2",...]`.
@@ -199,8 +197,7 @@ module Google
         # transfer operations that are running already. Updating the scheduling
         # of a job is not allowed.
         # @param [String] job_name
-        #   The name of job to update.
-        #   Required.
+        #   Required. The name of job to update.
         # @param [Google::Apis::StoragetransferV1::UpdateTransferJobRequest] update_transfer_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -334,14 +331,18 @@ module Google
         # collection id, however overriding users must ensure the name binding
         # is the parent resource, without the operations collection id.
         # @param [String] name
-        #   The value `transferOperations`.
+        #   Required. The value `transferOperations`.
         # @param [String] filter
-        #   A list of query parameters specified as JSON text in the form of `\"project_id\
-        #   " : \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"
-        #   operation_names\" : [\"opid1\", \"opid2\",...], \"transfer_statuses\":[\"
-        #   status1\", \"status2\",...]`. Since `job_names`, `operation_names`, and `
-        #   transfer_statuses` support multiple values, they must be specified with array
-        #   notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.
+        #   Required. A list of query parameters specified as JSON text in the form of: `"
+        #   project_id":"my_project_id",
+        #   "job_names":["jobid1","jobid2",...],
+        #   "operation_names":["opid1","opid2",...],
+        #   "transfer_statuses":["status1","status2",...]`.
+        #   Since `job_names`, `operation_names`, and `transfer_statuses` support multiple
+        #   values, they must be specified with array notation. `project_id` is required. `
+        #   job_names`, `operation_names`, and `transfer_statuses` are optional. The valid
+        #   values for `transfer_statuses` are case-insensitive: `IN_PROGRESS`, `PAUSED`, `
+        #   SUCCESS`, `FAILED`, and `ABORTED`.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.
         # @param [String] page_token
@@ -378,8 +379,7 @@ module Google
         
         # Pauses a transfer operation.
         # @param [String] name
-        #   The name of the transfer operation.
-        #   Required.
+        #   Required. The name of the transfer operation.
         # @param [Google::Apis::StoragetransferV1::PauseTransferOperationRequest] pause_transfer_operation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -412,8 +412,7 @@ module Google
         
         # Resumes a transfer operation that is paused.
         # @param [String] name
-        #   The name of the transfer operation.
-        #   Required.
+        #   Required. The name of the transfer operation.
         # @param [Google::Apis::StoragetransferV1::ResumeTransferOperationRequest] resume_transfer_operation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

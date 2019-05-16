@@ -29,14 +29,13 @@ module Google
       class AwsAccessKey
         include Google::Apis::Core::Hashable
       
-        # AWS access key ID.
-        # Required.
+        # Required. AWS access key ID.
         # Corresponds to the JSON property `accessKeyId`
         # @return [String]
         attr_accessor :access_key_id
       
-        # AWS secret access key. This field is not returned in RPC responses.
-        # Required.
+        # Required. AWS secret access key. This field is not returned in RPC
+        # responses.
         # Corresponds to the JSON property `secretAccessKey`
         # @return [String]
         attr_accessor :secret_access_key
@@ -65,11 +64,10 @@ module Google
         # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
         attr_accessor :aws_access_key
       
-        # S3 Bucket name (see
+        # Required. S3 Bucket name (see
         # [Creating a
         # bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-
         # location-example.html)).
-        # Required.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -155,9 +153,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :error_details
       
-        # A URL that refers to the target (a data source, a data sink,
+        # Required. A URL that refers to the target (a data source, a data sink,
         # or an object) with which the error is associated.
-        # Required.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -183,8 +180,7 @@ module Google
         # @return [String]
         attr_accessor :error_code
       
-        # Count of this type of error.
-        # Required.
+        # Required. Count of this type of error.
         # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
         attr_accessor :error_count
@@ -214,10 +210,9 @@ module Google
       class GcsData
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage bucket name (see
+        # Required. Google Cloud Storage bucket name (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
-        # Required.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -236,7 +231,7 @@ module Google
       class GoogleServiceAccount
         include Google::Apis::Core::Hashable
       
-        # Required.
+        # Email address of the service account.
         # Corresponds to the JSON property `accountEmail`
         # @return [String]
         attr_accessor :account_email
@@ -285,10 +280,9 @@ module Google
       class HttpData
         include Google::Apis::Core::Hashable
       
-        # The URL that points to the file that stores the object list entries.
-        # This file must allow public access.  Currently, only URLs with HTTP and
-        # HTTPS schemes are supported.
-        # Required.
+        # Required. The URL that points to the file that stores the object list
+        # entries. This file must allow public access.  Currently, only URLs with
+        # HTTP and HTTPS schemes are supported.
         # Corresponds to the JSON property `listUrl`
         # @return [String]
         attr_accessor :list_url
@@ -929,7 +923,6 @@ module Google
         attr_accessor :name
       
         # The ID of the Google Cloud Platform Project that owns the operation.
-        # Required.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1101,8 +1094,8 @@ module Google
       class UpdateTransferJobRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the Google Cloud Platform Console project that owns the job.
-        # Required.
+        # Required. The ID of the Google Cloud Platform Console project that owns the
+        # job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
