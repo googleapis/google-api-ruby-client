@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,12 +215,6 @@ module Google
       end
       
       class EnumValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Experimental
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -626,13 +614,6 @@ module Google
         end
       end
       
-      class AuthorizationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :provider, as: 'provider'
-        end
-      end
-      
       class Backend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -862,14 +843,6 @@ module Google
         end
       end
       
-      class Experimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization, as: 'authorization', class: Google::Apis::ServicemanagementV1::AuthorizationConfig, decorator: Google::Apis::ServicemanagementV1::AuthorizationConfig::Representation
-      
-        end
-      end
-      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1061,6 +1034,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::ServicemanagementV1::LabelDescriptor, decorator: Google::Apis::ServicemanagementV1::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :metadata, as: 'metadata', class: Google::Apis::ServicemanagementV1::MetricDescriptorMetadata, decorator: Google::Apis::ServicemanagementV1::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'
@@ -1251,8 +1225,6 @@ module Google
           collection :endpoints, as: 'endpoints', class: Google::Apis::ServicemanagementV1::Endpoint, decorator: Google::Apis::ServicemanagementV1::Endpoint::Representation
       
           collection :enums, as: 'enums', class: Google::Apis::ServicemanagementV1::Enum, decorator: Google::Apis::ServicemanagementV1::Enum::Representation
-      
-          property :experimental, as: 'experimental', class: Google::Apis::ServicemanagementV1::Experimental, decorator: Google::Apis::ServicemanagementV1::Experimental::Representation
       
           property :http, as: 'http', class: Google::Apis::ServicemanagementV1::Http, decorator: Google::Apis::ServicemanagementV1::Http::Representation
       

@@ -577,6 +577,168 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the model specified by modelId from the dataset.
+        # @param [String] project_id
+        #   Project ID of the model to delete.
+        # @param [String] dataset_id
+        #   Dataset ID of the model to delete.
+        # @param [String] model_id
+        #   Model ID of the model to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_model(project_id, dataset_id, model_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', options)
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['modelId'] = model_id unless model_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified model resource by model ID.
+        # @param [String] project_id
+        #   Project ID of the requested model.
+        # @param [String] dataset_id
+        #   Dataset ID of the requested model.
+        # @param [String] model_id
+        #   Model ID of the requested model.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::Model] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::Model]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_model(project_id, dataset_id, model_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', options)
+          command.response_representation = Google::Apis::BigqueryV2::Model::Representation
+          command.response_class = Google::Apis::BigqueryV2::Model
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['modelId'] = model_id unless model_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all models in the specified dataset. Requires the READER dataset
+        # role.
+        # @param [String] project_id
+        #   Project ID of the models to list.
+        # @param [String] dataset_id
+        #   Dataset ID of the models to list.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page.
+        # @param [String] page_token
+        #   Page token, returned by a previous call to request the next page of
+        #   results
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::ListModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::ListModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_models(project_id, dataset_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/models', options)
+          command.response_representation = Google::Apis::BigqueryV2::ListModelsResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::ListModelsResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patch specific fields in the specified model.
+        # @param [String] project_id
+        #   Project ID of the model to patch.
+        # @param [String] dataset_id
+        #   Dataset ID of the model to patch.
+        # @param [String] model_id
+        #   Model ID of the model to patch.
+        # @param [Google::Apis::BigqueryV2::Model] model_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::Model] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::Model]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_model(project_id, dataset_id, model_id, model_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', options)
+          command.request_representation = Google::Apis::BigqueryV2::Model::Representation
+          command.request_object = model_object
+          command.response_representation = Google::Apis::BigqueryV2::Model::Representation
+          command.response_class = Google::Apis::BigqueryV2::Model
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['modelId'] = model_id unless model_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the email address of the service account for your project used for
         # interactions with Google Cloud KMS.
         # @param [String] project_id

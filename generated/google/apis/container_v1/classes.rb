@@ -437,7 +437,8 @@ module Google
       
         # [Output only] The size of the address space on each node for hosting
         # containers. This is provisioned from within the `container_ipv4_cidr`
-        # range.
+        # range. This field will only be set when cluster is in route-based network
+        # mode.
         # Corresponds to the JSON property `nodeIpv4CidrSize`
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size

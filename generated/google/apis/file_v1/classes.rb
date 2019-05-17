@@ -135,6 +135,24 @@ module Google
       # b/instances/vm-1",
       # `
       # ],
+      # "maintenance_schedules": `
+      # "csa_rollout": `
+      # "start_time": `
+      # "seconds": 1526406431,
+      # `,
+      # "end_time": `
+      # "seconds": 1535406431,
+      # `,
+      # `,
+      # "ncsa_rollout": `
+      # "start_time": `
+      # "seconds": 1526406431,
+      # `,
+      # "end_time": `
+      # "seconds": 1535406431,
+      # `,
+      # `
+      # `
       # `
       # ```
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
@@ -160,6 +178,12 @@ module Google
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
         attr_accessor :maintenance_policy_names
+      
+        # The MaintenanceSchedule contains the scheduling information of published
+        # maintenance schedule.
+        # Corresponds to the JSON property `maintenanceSchedules`
+        # @return [Hash<String,Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>]
+        attr_accessor :maintenance_schedules
       
         # Unique name of the resource. It uses the form:
         # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
@@ -228,6 +252,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
+          @maintenance_schedules = args[:maintenance_schedules] if args.key?(:maintenance_schedules)
           @name = args[:name] if args.key?(:name)
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
@@ -237,6 +262,32 @@ module Google
           @state = args[:state] if args.key?(:state)
           @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Maintenance schedule which is exposed to customer and potentially end user,
+      # indicating published upcoming future maintenance schedule
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # The scheduled end time for the maintenance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The scheduled start time for the maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -801,7 +852,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
+        # `name` should be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudtasks_v2beta2/service.rb'
-require 'google/apis/cloudtasks_v2beta2/classes.rb'
-require 'google/apis/cloudtasks_v2beta2/representations.rb'
+require 'google/apis/fcm_v1/service.rb'
+require 'google/apis/fcm_v1/classes.rb'
+require 'google/apis/fcm_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Tasks API
+    # Firebase Cloud Messaging API
     #
-    # Manages the execution of large numbers of distributed requests.
+    # FCM send API that provides a cross-platform messaging solution to reliably
+    # deliver messages at no cost.
     #
-    # @see https://cloud.google.com/tasks/
-    module CloudtasksV2beta2
-      VERSION = 'V2beta2'
-      REVISION = '20190513'
+    # @see https://firebase.google.com/docs/cloud-messaging
+    module FcmV1
+      VERSION = 'V1'
+      REVISION = '20190516'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

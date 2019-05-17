@@ -874,12 +874,12 @@ module Google
         #   The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [Fixnum] page_size
-        #   Requested page size. Fewer tasks than requested might be returned.
-        #   The maximum page size is 1000. If unspecified, the page size will
-        #   be the maximum. Fewer tasks than requested might be returned,
-        #   even if more tasks exist; use
-        #   next_page_token in the
-        #   response to determine if more tasks exist.
+        #   Maximum page size.
+        #   Fewer tasks than requested might be returned, even if more tasks exist; use
+        #   next_page_token in the response to
+        #   determine if more tasks exist.
+        #   The maximum page size is 1000. If unspecified, the page size will be the
+        #   maximum.
         # @param [String] page_token
         #   A token identifying the page of results to return.
         #   To request the first page results, page_token must be empty. To

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -162,6 +168,8 @@ module Google
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           hash :maintenance_policy_names, as: 'maintenancePolicyNames'
+          hash :maintenance_schedules, as: 'maintenanceSchedules', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule::Representation
+      
           property :name, as: 'name'
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
@@ -174,6 +182,14 @@ module Google
           property :state, as: 'state'
           property :tenant_project_id, as: 'tenantProjectId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

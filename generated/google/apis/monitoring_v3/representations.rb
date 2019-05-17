@@ -829,6 +829,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::MetricDescriptorMetadata, decorator: Google::Apis::MonitoringV3::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'

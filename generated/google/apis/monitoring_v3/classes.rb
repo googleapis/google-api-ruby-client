@@ -1202,7 +1202,7 @@ module Google
       end
       
       # An internal checker allows uptime checks to run on private/internal GCP
-      # resources.DEPRECATED. Use PrivateChecker instead.
+      # resources.
       class InternalChecker
         include Google::Apis::Core::Hashable
       
@@ -1735,6 +1735,11 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
+        # Optional. The launch stage of the metric definition.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Additional annotations that can be used to guide the usage of a metric.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::MonitoringV3::MetricDescriptorMetadata]
@@ -1829,6 +1834,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @name = args[:name] if args.key?(:name)
@@ -1849,7 +1855,8 @@ module Google
         # @return [String]
         attr_accessor :ingest_delay
       
-        # The launch stage of the metric definition.
+        # Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch
+        # stage of the metric definition.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage

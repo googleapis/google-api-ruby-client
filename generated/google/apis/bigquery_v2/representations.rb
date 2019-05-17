@@ -22,6 +22,12 @@ module Google
   module Apis
     module BigqueryV2
       
+      class AggregateClassificationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryModelTraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryClassificationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BinaryConfusionMatrix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BqmlIterationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,7 +82,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Clustering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusteringMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfusionMatrix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +154,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvaluationMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +203,12 @@ module Google
       end
       
       class GoogleSheetsOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IterationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,7 +316,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListModelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaterializedViewDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Model
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -276,6 +348,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModelReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiClassClassificationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -352,7 +436,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegressionMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutineReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardSqlDataType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardSqlField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardSqlStructType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrainingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrainingRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDefinedFunctionResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -470,6 +596,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AggregateClassificationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy, as: 'accuracy'
+          property :f1_score, as: 'f1Score'
+          property :log_loss, as: 'logLoss'
+          property :precision, as: 'precision'
+          property :recall, as: 'recall'
+          property :roc_auc, as: 'rocAuc'
+          property :threshold, as: 'threshold'
+        end
       end
       
       class BigQueryModelTraining
@@ -514,6 +653,29 @@ module Google
         end
       end
       
+      class BinaryClassificationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_classification_metrics, as: 'aggregateClassificationMetrics', class: Google::Apis::BigqueryV2::AggregateClassificationMetrics, decorator: Google::Apis::BigqueryV2::AggregateClassificationMetrics::Representation
+      
+          collection :binary_confusion_matrix_list, as: 'binaryConfusionMatrixList', class: Google::Apis::BigqueryV2::BinaryConfusionMatrix, decorator: Google::Apis::BigqueryV2::BinaryConfusionMatrix::Representation
+      
+        end
+      end
+      
+      class BinaryConfusionMatrix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :false_negatives, :numeric_string => true, as: 'falseNegatives'
+          property :false_positives, :numeric_string => true, as: 'falsePositives'
+          property :positive_class_threshold, as: 'positiveClassThreshold'
+          property :precision, as: 'precision'
+          property :recall, as: 'recall'
+          property :true_negatives, :numeric_string => true, as: 'trueNegatives'
+          property :true_positives, :numeric_string => true, as: 'truePositives'
+        end
+      end
+      
       class BqmlIterationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -553,10 +715,36 @@ module Google
         end
       end
       
+      class ClusterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :centroid_id, :numeric_string => true, as: 'centroidId'
+          property :cluster_radius, as: 'clusterRadius'
+          property :cluster_size, :numeric_string => true, as: 'clusterSize'
+        end
+      end
+      
       class Clustering
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields'
+        end
+      end
+      
+      class ClusteringMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :davies_bouldin_index, as: 'daviesBouldinIndex'
+          property :mean_squared_distance, as: 'meanSquaredDistance'
+        end
+      end
+      
+      class ConfusionMatrix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_threshold, as: 'confidenceThreshold'
+          collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::Row, decorator: Google::Apis::BigqueryV2::Row::Representation
+      
         end
       end
       
@@ -656,6 +844,14 @@ module Google
         end
       end
       
+      class Entry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_count, :numeric_string => true, as: 'itemCount'
+          property :predicted_label, as: 'predictedLabel'
+        end
+      end
+      
       class ErrorProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -663,6 +859,20 @@ module Google
           property :location, as: 'location'
           property :message, as: 'message'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class EvaluationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_classification_metrics, as: 'binaryClassificationMetrics', class: Google::Apis::BigqueryV2::BinaryClassificationMetrics, decorator: Google::Apis::BigqueryV2::BinaryClassificationMetrics::Representation
+      
+          property :clustering_metrics, as: 'clusteringMetrics', class: Google::Apis::BigqueryV2::ClusteringMetrics, decorator: Google::Apis::BigqueryV2::ClusteringMetrics::Representation
+      
+          property :multi_class_classification_metrics, as: 'multiClassClassificationMetrics', class: Google::Apis::BigqueryV2::MultiClassClassificationMetrics, decorator: Google::Apis::BigqueryV2::MultiClassClassificationMetrics::Representation
+      
+          property :regression_metrics, as: 'regressionMetrics', class: Google::Apis::BigqueryV2::RegressionMetrics, decorator: Google::Apis::BigqueryV2::RegressionMetrics::Representation
+      
         end
       end
       
@@ -766,6 +976,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
+        end
+      end
+      
+      class IterationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_infos, as: 'clusterInfos', class: Google::Apis::BigqueryV2::ClusterInfo, decorator: Google::Apis::BigqueryV2::ClusterInfo::Representation
+      
+          property :duration_ms, :numeric_string => true, as: 'durationMs'
+          property :eval_loss, as: 'evalLoss'
+          property :index, as: 'index'
+          property :learn_rate, as: 'learnRate'
+          property :training_loss, as: 'trainingLoss'
         end
       end
       
@@ -1068,11 +1291,50 @@ module Google
         end
       end
       
+      class ListModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::BigqueryV2::Model, decorator: Google::Apis::BigqueryV2::Model::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_location_id, as: 'legacyLocationId'
+        end
+      end
+      
       class MaterializedViewDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
           property :query, as: 'query'
+        end
+      end
+      
+      class Model
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, :numeric_string => true, as: 'creationTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :expiration_time, :numeric_string => true, as: 'expirationTime'
+          collection :feature_columns, as: 'featureColumns', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
+      
+          property :friendly_name, as: 'friendlyName'
+          collection :label_columns, as: 'labelColumns', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
+      
+          hash :labels, as: 'labels'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :location, as: 'location'
+          property :model_reference, as: 'modelReference', class: Google::Apis::BigqueryV2::ModelReference, decorator: Google::Apis::BigqueryV2::ModelReference::Representation
+      
+          property :model_type, as: 'modelType'
+          collection :training_runs, as: 'trainingRuns', class: Google::Apis::BigqueryV2::TrainingRun, decorator: Google::Apis::BigqueryV2::TrainingRun::Representation
+      
         end
       end
       
@@ -1092,6 +1354,25 @@ module Google
             property :loss_type, as: 'lossType'
             property :model_type, as: 'modelType'
           end
+        end
+      end
+      
+      class ModelReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :model_id, as: 'modelId'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class MultiClassClassificationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_classification_metrics, as: 'aggregateClassificationMetrics', class: Google::Apis::BigqueryV2::AggregateClassificationMetrics, decorator: Google::Apis::BigqueryV2::AggregateClassificationMetrics::Representation
+      
+          collection :confusion_matrix_list, as: 'confusionMatrixList', class: Google::Apis::BigqueryV2::ConfusionMatrix, decorator: Google::Apis::BigqueryV2::ConfusionMatrix::Representation
+      
         end
       end
       
@@ -1239,12 +1520,60 @@ module Google
         end
       end
       
+      class RegressionMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mean_absolute_error, as: 'meanAbsoluteError'
+          property :mean_squared_error, as: 'meanSquaredError'
+          property :mean_squared_log_error, as: 'meanSquaredLogError'
+          property :median_absolute_error, as: 'medianAbsoluteError'
+          property :r_squared, as: 'rSquared'
+        end
+      end
+      
       class RoutineReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :project_id, as: 'projectId'
           property :routine_id, as: 'routineId'
+        end
+      end
+      
+      class Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_label, as: 'actualLabel'
+          collection :entries, as: 'entries', class: Google::Apis::BigqueryV2::Entry, decorator: Google::Apis::BigqueryV2::Entry::Representation
+      
+        end
+      end
+      
+      class StandardSqlDataType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :array_element_type, as: 'arrayElementType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
+          property :struct_type, as: 'structType', class: Google::Apis::BigqueryV2::StandardSqlStructType, decorator: Google::Apis::BigqueryV2::StandardSqlStructType::Representation
+      
+          property :type_kind, as: 'typeKind'
+        end
+      end
+      
+      class StandardSqlField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
+        end
+      end
+      
+      class StandardSqlStructType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
+      
         end
       end
       
@@ -1452,6 +1781,44 @@ module Google
           property :field, as: 'field'
           property :require_partition_filter, as: 'requirePartitionFilter'
           property :type, as: 'type'
+        end
+      end
+      
+      class TrainingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_split_column, as: 'dataSplitColumn'
+          property :data_split_eval_fraction, as: 'dataSplitEvalFraction'
+          property :data_split_method, as: 'dataSplitMethod'
+          property :distance_type, as: 'distanceType'
+          property :early_stop, as: 'earlyStop'
+          property :initial_learn_rate, as: 'initialLearnRate'
+          collection :input_label_columns, as: 'inputLabelColumns'
+          property :l1_regularization, as: 'l1Regularization'
+          property :l2_regularization, as: 'l2Regularization'
+          hash :label_class_weights, as: 'labelClassWeights'
+          property :learn_rate, as: 'learnRate'
+          property :learn_rate_strategy, as: 'learnRateStrategy'
+          property :loss_type, as: 'lossType'
+          property :max_iterations, :numeric_string => true, as: 'maxIterations'
+          property :min_relative_progress, as: 'minRelativeProgress'
+          property :model_uri, as: 'modelUri'
+          property :num_clusters, :numeric_string => true, as: 'numClusters'
+          property :optimization_strategy, as: 'optimizationStrategy'
+          property :warm_start, as: 'warmStart'
+        end
+      end
+      
+      class TrainingRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_metrics, as: 'evaluationMetrics', class: Google::Apis::BigqueryV2::EvaluationMetrics, decorator: Google::Apis::BigqueryV2::EvaluationMetrics::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation
+      
+          property :start_time, as: 'startTime'
+          property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingOptions::Representation
+      
         end
       end
       
