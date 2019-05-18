@@ -25,8 +25,6 @@ module Google
       # App Engine HTTP request.
       # The message defines the HTTP request that is sent to an App Engine app when
       # the task is dispatched.
-      # This proto can only be used for tasks in a queue which has
-      # app_engine_http_queue set.
       # Using AppEngineHttpRequest requires
       # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
       # api/access-control)
@@ -66,13 +64,17 @@ module Google
       # required`](https://cloud.google.com/appengine/docs/standard/python/config/
       # appref)
       # Task dispatches also do not follow redirects.
-      # The task attempt has succeeded if the app's request handler returns
-      # an HTTP response code in the range [`200` - `299`]. `503` is
-      # considered an App Engine system error instead of an application
-      # error. Requests returning error `503` will be retried regardless of
-      # retry configuration and not counted against retry counts.
-      # Any other response code or a failure to receive a response before the
-      # deadline is a failed attempt.
+      # The task attempt has succeeded if the app's request handler returns an HTTP
+      # response code in the range [`200` - `299`]. The task attempt has failed if
+      # the app's handler returns a non-2xx response code or Cloud Tasks does
+      # not receive response before the deadline. Failed
+      # tasks will be retried according to the
+      # retry configuration. `503` (Service Unavailable) is
+      # considered an App Engine system error instead of an application error and
+      # will cause Cloud Tasks' traffic congestion control to temporarily throttle
+      # the queue's dispatches. Unlike other types of task targets, a `429` (Too Many
+      # Requests) response from an app handler does not cause traffic congestion
+      # control to throttle the queue.
       class AppEngineHttpRequest
         include Google::Apis::Core::Hashable
       
@@ -1222,8 +1224,6 @@ module Google
         # App Engine HTTP request.
         # The message defines the HTTP request that is sent to an App Engine app when
         # the task is dispatched.
-        # This proto can only be used for tasks in a queue which has
-        # app_engine_http_queue set.
         # Using AppEngineHttpRequest requires
         # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
         # api/access-control)
@@ -1263,13 +1263,17 @@ module Google
         # required`](https://cloud.google.com/appengine/docs/standard/python/config/
         # appref)
         # Task dispatches also do not follow redirects.
-        # The task attempt has succeeded if the app's request handler returns
-        # an HTTP response code in the range [`200` - `299`]. `503` is
-        # considered an App Engine system error instead of an application
-        # error. Requests returning error `503` will be retried regardless of
-        # retry configuration and not counted against retry counts.
-        # Any other response code or a failure to receive a response before the
-        # deadline is a failed attempt.
+        # The task attempt has succeeded if the app's request handler returns an HTTP
+        # response code in the range [`200` - `299`]. The task attempt has failed if
+        # the app's handler returns a non-2xx response code or Cloud Tasks does
+        # not receive response before the deadline. Failed
+        # tasks will be retried according to the
+        # retry configuration. `503` (Service Unavailable) is
+        # considered an App Engine system error instead of an application error and
+        # will cause Cloud Tasks' traffic congestion control to temporarily throttle
+        # the queue's dispatches. Unlike other types of task targets, a `429` (Too Many
+        # Requests) response from an app handler does not cause traffic congestion
+        # control to throttle the queue.
         # Corresponds to the JSON property `appEngineHttpRequest`
         # @return [Google::Apis::CloudtasksV2::AppEngineHttpRequest]
         attr_accessor :app_engine_http_request

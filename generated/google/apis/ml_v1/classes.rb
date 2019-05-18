@@ -205,7 +205,7 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
-        # Cloud ML Engine runtime version on which the built-in algorithm was
+        # AI Platform runtime version on which the built-in algorithm was
         # trained.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
@@ -372,7 +372,7 @@ module Google
       
         # Optional. The search algorithm specified for the hyperparameter
         # tuning job.
-        # Uses the default CloudML Engine hyperparameter tuning
+        # Uses the default AI Platform hyperparameter tuning
         # algorithm if unspecified.
         # Corresponds to the JSON property `algorithm`
         # @return [String]
@@ -403,7 +403,7 @@ module Google
       
         # Optional. The number of failed trials that need to be seen before failing
         # the hyperparameter tuning job. You can specify this field to override the
-        # default failing criteria for Cloud ML Engine hyperparameter tuning jobs.
+        # default failing criteria for AI Platform hyperparameter tuning jobs.
         # Defaults to zero, which means the service decides when a hyperparameter
         # job should fail.
         # Corresponds to the JSON property `maxFailedTrials`
@@ -725,7 +725,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 30
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -762,13 +761,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. If true, enables logging of stderr and stdout streams
-        # for online prediction in Stackdriver Logging. These can be more verbose
-        # than the standard access logs (see `online_prediction_logging`) and thus
-        # can incur higher cost. However, they are helpful for debugging. Note that
-        # since Stackdriver logs may incur a cost, particularly if the total QPS
-        # in your project is high, be sure to estimate your costs before enabling
-        # this flag.
+        # Optional. If true, online prediction nodes send `stderr` and `stdout`
+        # streams to Stackdriver Logging. These can be more verbose than the standard
+        # access logs (see `onlinePredictionLogging`) and can incur higher cost.
+        # However, they are helpful for debugging. Note that
+        # [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if
+        # your project receives prediction requests at a high QPS. Estimate your
+        # costs before enabling this option.
         # Default is false.
         # Corresponds to the JSON property `onlinePredictionConsoleLogging`
         # @return [Boolean]
@@ -778,8 +777,9 @@ module Google
         # Optional. If true, online prediction access logs are sent to StackDriver
         # Logging. These logs are like standard server access logs, containing
         # information like timestamp and latency for each request. Note that
-        # Stackdriver logs may incur a cost, particular if the total QPS in your
-        # project is high.
+        # [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if
+        # your project receives prediction requests at a high queries per second rate
+        # (QPS). Estimate your costs before enabling this option.
         # Default is false.
         # Corresponds to the JSON property `onlinePredictionLogging`
         # @return [Boolean]
@@ -790,7 +790,7 @@ module Google
         # Currently only one region per model is supported.
         # Defaults to 'us-central1' if nothing is set.
         # See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-        # for ML Engine services.
+        # for AI Platform services.
         # Note:
         # *   No matter where a model is deployed, it can always be accessed by
         # users from anywhere, both for online and batch prediction.
@@ -870,7 +870,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 30
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1055,13 +1054,13 @@ module Google
       
         # Required. The Google Compute Engine region to run the prediction job in.
         # See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-        # for ML Engine services.
+        # for AI Platform services.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Optional. The Cloud ML Engine runtime version to use for this batch
-        # prediction. If not set, Cloud ML Engine will pick the runtime version used
+        # Optional. The AI Platform runtime version to use for this batch
+        # prediction. If not set, AI Platform will pick the runtime version used
         # during the CreateVersion request for this model version, or choose the
         # latest stable version when model version information is not available
         # such as when the model is specified by uri.
@@ -1364,7 +1363,7 @@ module Google
         # The supported values are the same as those described in the entry for
         # `master_type`.
         # This value must be consistent with the category of machine type that
-        # `masterType` uses. In other words, both must be Cloud ML Engine machine
+        # `masterType` uses. In other words, both must be AI Platform machine
         # types or both must be Compute Engine machine types.
         # This value must be present when `scaleTier` is set to `CUSTOM` and
         # `parameter_server_count` is greater than zero.
@@ -1387,13 +1386,13 @@ module Google
       
         # Required. The Google Compute Engine region to run the training job in.
         # See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-        # for ML Engine services.
+        # for AI Platform services.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Optional. The Cloud ML Engine runtime version to use for training. If not
-        # set, Cloud ML Engine uses the default stable version, 1.0. For more
+        # Optional. The AI Platform runtime version to use for training. If not
+        # set, AI Platform uses the default stable version, 1.0. For more
         # information, see the
         # <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
         # and
@@ -1427,7 +1426,7 @@ module Google
         # The supported values are the same as those described in the entry for
         # `masterType`.
         # This value must be consistent with the category of machine type that
-        # `masterType` uses. In other words, both must be Cloud ML Engine machine
+        # `masterType` uses. In other words, both must be AI Platform machine
         # types or both must be Compute Engine machine types.
         # If you use `cloud_tpu` for this value, see special instructions for
         # [configuring a custom TPU
@@ -1524,7 +1523,6 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 30
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
@@ -1538,7 +1536,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The Google Cloud Storage location of the trained model used to
+        # Required. The Cloud Storage location of the trained model used to
         # create the version. See the
         # [guide to model
         # deployment](/ml-engine/docs/tensorflow/deploying-models) for more
@@ -1576,12 +1574,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The machine learning framework Cloud ML Engine uses to train
+        # Optional. The machine learning framework AI Platform uses to train
         # this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
-        # `XGBOOST`. If you do not specify a framework, Cloud ML Engine
+        # `XGBOOST`. If you do not specify a framework, AI Platform
         # will analyze files in the deployment_uri to determine a framework. If you
         # choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version
         # of the model to 1.4 or greater.
+        # Do **not** specify a framework if you're deploying a [custom
+        # prediction routine](/ml-engine/docs/tensorflow/custom-prediction-routines).
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
@@ -1639,45 +1639,63 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The Google Cloud Storage location of the packages for custom
-        # prediction and any additional dependencies.
+        # Optional. Cloud Storage paths (`gs://…`) of packages for [custom
+        # prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines)
+        # or [scikit-learn pipelines with custom
+        # code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
+        # For a custom prediction routine, one of these packages must contain your
+        # Predictor class (see
+        # [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally,
+        # include any dependencies used by your Predictor or scikit-learn pipeline
+        # uses that are not already included in your selected [runtime
+        # version](/ml-engine/docs/tensorflow/runtime-version-list).
+        # If you specify this field, you must also set
+        # [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
         # Corresponds to the JSON property `packageUris`
         # @return [Array<String>]
         attr_accessor :package_uris
       
-        # class PredictionClass(object):
-        # """A Model performs predictions on a given list of instances.
-        # The input instances are the raw values sent by the user. It is the
-        # responsibility of a Model to translate these instances into
-        # actual predictions.
-        # The input instances and the output use python data types. The input
-        # instances have been decoded prior to being passed to the predict
-        # method. The output, which should use python data types is
-        # encoded after being returned from the predict method.
-        # """
+        # Optional. The fully qualified name
+        # (<var>module_name</var>.<var>class_name</var>) of a class that implements
+        # the Predictor interface described in this reference field. The module
+        # containing this class should be included in a package provided to the
+        # [`packageUris` field](#Version.FIELDS.package_uris).
+        # Specify this field if and only if you are deploying a [custom prediction
+        # routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines).
+        # If you specify this field, you must set
+        # [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+        # The following code sample provides the Predictor interface:
+        # ```py
+        # class Predictor(object):
+        # """Interface for constructing custom predictors."""
         # def predict(self, instances, **kwargs):
-        # """Returns predictions for the provided instances.
-        # Instances are the decoded values from the request. Clients need not
-        # worry about decoding json nor base64 decoding.
+        # """Performs custom prediction.
+        # Instances are the decoded values from the request. They have already
+        # been deserialized from JSON.
         # Args:
-        # instances: A list of instances, as described in the API.
-        # **kwargs: Additional keyword arguments, will be passed into the
-        # client's predict method.
+        # instances: A list of prediction input instances.
+        # **kwargs: A dictionary of keyword args provided as additional
+        # fields on the predict request body.
         # Returns:
-        # A list of outputs containing the prediction results.
+        # A list of outputs containing the prediction results. This list must
+        # be JSON serializable.
         # """
+        # raise NotImplementedError()
         # @classmethod
-        # def from_path(cls, model_path):
-        # """Creates a model using the given model path.
-        # Path is useful, e.g., to load files from the exported directory
-        # containing the model.
+        # def from_path(cls, model_dir):
+        # """Creates an instance of Predictor using the given path.
+        # Loading of the predictor should be done in this method.
         # Args:
-        # model_path: The local directory that contains the exported model
+        # model_dir: The local directory that contains the exported model
         # file along with any additional files uploaded when creating the
         # version resource.
         # Returns:
-        # An instance implementing this Model class.
+        # An instance implementing this Predictor class.
         # """
+        # raise NotImplementedError()
+        # ```
+        # Learn more about [the Predictor interface and custom prediction
+        # routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
         # Corresponds to the JSON property `predictionClass`
         # @return [String]
         attr_accessor :prediction_class
@@ -1689,8 +1707,8 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
-        # Optional. The Cloud ML Engine runtime version to use for this deployment.
-        # If not set, Cloud ML Engine uses the default stable version, 1.0. For more
+        # Optional. The AI Platform runtime version to use for this deployment.
+        # If not set, AI Platform uses the default stable version, 1.0. For more
         # information, see the
         # [runtime version list](/ml-engine/docs/runtime-version-list) and
         # [how to manage runtime versions](/ml-engine/docs/versioning).
@@ -2175,7 +2193,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
+        # `name` should be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

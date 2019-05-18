@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,18 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +167,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StackdriverLoggingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -260,6 +284,20 @@ module Google
         end
       end
       
+      class HttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, :base64 => true, as: 'body'
+          hash :headers, as: 'headers'
+          property :http_method, as: 'httpMethod'
+          property :oauth_token, as: 'oauthToken', class: Google::Apis::CloudtasksV2beta3::OAuthToken, decorator: Google::Apis::CloudtasksV2beta3::OAuthToken::Representation
+      
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::CloudtasksV2beta3::OidcToken, decorator: Google::Apis::CloudtasksV2beta3::OidcToken::Representation
+      
+          property :url, as: 'url'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -298,6 +336,22 @@ module Google
         end
       end
       
+      class OAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class OidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
       class PauseQueueRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -330,6 +384,8 @@ module Google
           property :rate_limits, as: 'rateLimits', class: Google::Apis::CloudtasksV2beta3::RateLimits, decorator: Google::Apis::CloudtasksV2beta3::RateLimits::Representation
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta3::RetryConfig, decorator: Google::Apis::CloudtasksV2beta3::RetryConfig::Representation
+      
+          property :stackdriver_logging_config, as: 'stackdriverLoggingConfig', class: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig, decorator: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig::Representation
       
           property :state, as: 'state'
         end
@@ -376,6 +432,13 @@ module Google
         end
       end
       
+      class StackdriverLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_ratio, as: 'samplingRatio'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -394,6 +457,8 @@ module Google
           property :dispatch_count, as: 'dispatchCount'
           property :dispatch_deadline, as: 'dispatchDeadline'
           property :first_attempt, as: 'firstAttempt', class: Google::Apis::CloudtasksV2beta3::Attempt, decorator: Google::Apis::CloudtasksV2beta3::Attempt::Representation
+      
+          property :http_request, as: 'httpRequest', class: Google::Apis::CloudtasksV2beta3::HttpRequest, decorator: Google::Apis::CloudtasksV2beta3::HttpRequest::Representation
       
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::CloudtasksV2beta3::Attempt, decorator: Google::Apis::CloudtasksV2beta3::Attempt::Representation
       
