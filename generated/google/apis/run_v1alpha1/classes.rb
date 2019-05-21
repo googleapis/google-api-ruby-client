@@ -3524,6 +3524,17 @@ module Google
         # @return [String]
         attr_accessor :configuration_name
       
+        # LatestRevision may be optionally provided to indicate that the latest
+        # ready Revision of the Configuration should be used for this traffic
+        # target. When provided LatestRevision must be true if RevisionName is
+        # empty; it must be false when RevisionName is non-empty.
+        # Not currently supported in Cloud Run.
+        # +optional
+        # Corresponds to the JSON property `latestRevision`
+        # @return [Boolean]
+        attr_accessor :latest_revision
+        alias_method :latest_revision?, :latest_revision
+      
         # Name is optionally used to expose a dedicated hostname for referencing this
         # target exclusively.
         # Not currently supported by Cloud Run.
@@ -3547,6 +3558,23 @@ module Google
         # @return [String]
         attr_accessor :revision_name
       
+        # Tag is optionally used to expose a dedicated url for referencing
+        # this target exclusively.
+        # Not currently supported in Cloud Run.
+        # +optional
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Output only. URL displays the URL for accessing named traffic targets. URL
+        # is displayed in status, and is disallowed on spec. URL must contain a
+        # scheme (e.g. http://) and a hostname, but may not contain anything else
+        # (e.g. basic auth, url path, etc.
+        # Not currently supported in Cloud Run.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3554,9 +3582,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configuration_name = args[:configuration_name] if args.key?(:configuration_name)
+          @latest_revision = args[:latest_revision] if args.key?(:latest_revision)
           @name = args[:name] if args.key?(:name)
           @percent = args[:percent] if args.key?(:percent)
           @revision_name = args[:revision_name] if args.key?(:revision_name)
+          @tag = args[:tag] if args.key?(:tag)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

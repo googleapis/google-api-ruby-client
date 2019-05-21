@@ -1744,7 +1744,7 @@ module Google
       
         # Optional.
         # This filter specifies a list of job names to be excluded during search.
-        # At most 200 excluded job names are allowed.
+        # At most 400 excluded job names are allowed.
         # Corresponds to the JSON property `excludedJobs`
         # @return [Array<String>]
         attr_accessor :excluded_jobs

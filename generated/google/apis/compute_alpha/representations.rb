@@ -1444,6 +1444,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusStateful
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatusVersionTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7805,8 +7811,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
+          property :stateful, as: 'stateful', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful::Representation
+      
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusStateful
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_stateful, as: 'isStateful'
         end
       end
       

@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'compute/beta/projects/')
+          super('https://compute.googleapis.com/', 'compute/beta/projects/')
           @batch_path = 'batch/compute/beta'
         end
         
@@ -2418,6 +2418,7 @@ module Google
         #   Name of the persistent disk to snapshot.
         # @param [Google::Apis::ComputeBeta::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
+        #   Application consistent snapshot (ie. VSS).
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

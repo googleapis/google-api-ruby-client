@@ -1331,9 +1331,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configuration_name, as: 'configurationName'
+          property :latest_revision, as: 'latestRevision'
           property :name, as: 'name'
           property :percent, as: 'percent'
           property :revision_name, as: 'revisionName'
+          property :tag, as: 'tag'
+          property :url, as: 'url'
         end
       end
       

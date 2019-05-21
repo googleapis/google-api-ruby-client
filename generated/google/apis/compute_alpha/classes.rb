@@ -11872,6 +11872,11 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
+        # [Output Only] Stateful status of the given Instance Group Manager.
+        # Corresponds to the JSON property `stateful`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful]
+        attr_accessor :stateful
+      
         # [Output Only] A status of consistency of Instances' versions with their target
         # version specified by version field on Instance Group Manager.
         # Corresponds to the JSON property `versionTarget`
@@ -11885,7 +11890,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
+          @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusStateful
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether the managed instance group is stateful,
+        # i.e. has any disks in Stateful Policy or at least one per-instance config.
+        # This is determined based on the user intent, the group may be reported as not
+        # stateful even when there is still some preserved state on managed instances.
+        # Corresponds to the JSON property `isStateful`
+        # @return [Boolean]
+        attr_accessor :is_stateful
+        alias_method :is_stateful?, :is_stateful
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_stateful = args[:is_stateful] if args.key?(:is_stateful)
         end
       end
       
