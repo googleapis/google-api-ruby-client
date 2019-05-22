@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/safe-browsing/
     module SafebrowsingV4
       VERSION = 'V4'
-      REVISION = '20180626'
+      REVISION = '20190520'
     end
   end
 end

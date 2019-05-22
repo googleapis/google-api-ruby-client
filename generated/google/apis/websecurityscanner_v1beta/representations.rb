@@ -343,6 +343,7 @@ module Google
       
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'
+          property :risk_level, as: 'riskLevel'
           property :schedule, as: 'schedule', class: Google::Apis::WebsecurityscannerV1beta::Schedule, decorator: Google::Apis::WebsecurityscannerV1beta::Schedule::Representation
       
           collection :starting_urls, as: 'startingUrls'

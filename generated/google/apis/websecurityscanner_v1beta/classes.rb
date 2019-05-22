@@ -532,7 +532,6 @@ module Google
       end
       
       # A ScanConfig resource contains the configurations to launch a scan.
-      # next id: 12
       class ScanConfig
         include Google::Apis::Core::Hashable
       
@@ -580,6 +579,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The risk level selected for the scan
+        # Corresponds to the JSON property `riskLevel`
+        # @return [String]
+        attr_accessor :risk_level
+      
         # Scan schedule configuration.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::WebsecurityscannerV1beta::Schedule]
@@ -615,6 +619,7 @@ module Google
           @latest_run = args[:latest_run] if args.key?(:latest_run)
           @max_qps = args[:max_qps] if args.key?(:max_qps)
           @name = args[:name] if args.key?(:name)
+          @risk_level = args[:risk_level] if args.key?(:risk_level)
           @schedule = args[:schedule] if args.key?(:schedule)
           @starting_urls = args[:starting_urls] if args.key?(:starting_urls)
           @target_platforms = args[:target_platforms] if args.key?(:target_platforms)

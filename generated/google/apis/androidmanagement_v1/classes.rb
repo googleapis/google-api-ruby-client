@@ -2110,7 +2110,7 @@ module Google
         # Rules declaring which mitigating actions to take when a device is not
         # compliant with its policy. When the conditions for multiple rules are
         # satisfied, all of the mitigating actions for the rules are taken. There is a
-        # maximum limit of 100 rules.
+        # maximum limit of 100 rules. Use policy enforcement rules instead.
         # Corresponds to the JSON property `complianceRules`
         # @return [Array<Google::Apis::AndroidmanagementV1::ComplianceRule>]
         attr_accessor :compliance_rules
@@ -2590,8 +2590,7 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::BlockAction]
         attr_accessor :block_action
       
-        # The top-level policy to enforce. For example, applications or
-        # passwordRequirements.
+        # The top-level policy to enforce. For example, applications or passwordPolicies.
         # Corresponds to the JSON property `settingName`
         # @return [String]
         attr_accessor :setting_name
