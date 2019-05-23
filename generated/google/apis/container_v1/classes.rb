@@ -817,7 +817,7 @@ module Google
       
         # Time within the maintenance window to start the maintenance operations.
         # Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-        # format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+        # format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

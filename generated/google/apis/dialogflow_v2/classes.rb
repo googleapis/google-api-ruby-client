@@ -2201,7 +2201,8 @@ module Google
         # - If natural language speech audio was provided as input, `query_text`
         # contains the speech recognition result. If speech recognizer produced
         # multiple alternatives, a particular one is picked.
-        # - If an event was provided as input, `query_text` is not set.
+        # - If automatic spell correction is enabled, `query_text` will contain the
+        # corrected user input.
         # Corresponds to the JSON property `queryText`
         # @return [String]
         attr_accessor :query_text
@@ -4228,7 +4229,8 @@ module Google
         # - If natural language speech audio was provided as input, `query_text`
         # contains the speech recognition result. If speech recognizer produced
         # multiple alternatives, a particular one is picked.
-        # - If an event was provided as input, `query_text` is not set.
+        # - If automatic spell correction is enabled, `query_text` will contain the
+        # corrected user input.
         # Corresponds to the JSON property `queryText`
         # @return [String]
         attr_accessor :query_text

@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildbotCommandStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -994,6 +1000,14 @@ module Google
           property :input_cache_miss, as: 'inputCacheMiss'
           property :num_errors, :numeric_string => true, as: 'numErrors'
           property :num_warnings, :numeric_string => true, as: 'numWarnings'
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildbotCommandStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
         end
       end
       

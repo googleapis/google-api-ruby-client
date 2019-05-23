@@ -2299,6 +2299,31 @@ module Google
         end
       end
       
+      # The internal status of the command result.
+      class GoogleDevtoolsRemotebuildbotCommandStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The error message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # The request used for `CreateInstance`.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         include Google::Apis::Core::Hashable

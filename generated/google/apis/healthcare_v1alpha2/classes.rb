@@ -1176,7 +1176,7 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # Configuration for the FHIR BigQuery schema. Determines how the server
+        # Configuration for the FHIR BigQuery and GCS schema. Determines how the server
         # generates the schema.
         # Corresponds to the JSON property `schemaConfig`
         # @return [Google::Apis::HealthcareV1alpha2::SchemaConfig]
@@ -2477,7 +2477,7 @@ module Google
         end
       end
       
-      # Configuration for the FHIR BigQuery schema. Determines how the server
+      # Configuration for the FHIR BigQuery and GCS schema. Determines how the server
       # generates the schema.
       class SchemaConfig
         include Google::Apis::Core::Hashable

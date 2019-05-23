@@ -22,25 +22,10 @@ module Google
     #
     # Retrieves your YouTube Analytics data.
     #
-    # @see http://developers.google.com/youtube/analytics/
+    # @see https://developers.google.com/youtube/analytics
     module YoutubeAnalyticsV1
       VERSION = 'V1'
-      REVISION = '20180805'
-
-      # Manage your YouTube account
-      AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'
-
-      # View your YouTube account
-      AUTH_YOUTUBE_READONLY = 'https://www.googleapis.com/auth/youtube.readonly'
-
-      # View and manage your assets and associated content on YouTube
-      AUTH_YOUTUBEPARTNER = 'https://www.googleapis.com/auth/youtubepartner'
-
-      # View monetary and non-monetary YouTube Analytics reports for your YouTube content
-      AUTH_YT_ANALYTICS_MONETARY_READONLY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'
-
-      # View YouTube Analytics reports for your YouTube content
-      AUTH_YT_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/yt-analytics.readonly'
+      REVISION = '20190521'
     end
   end
 end

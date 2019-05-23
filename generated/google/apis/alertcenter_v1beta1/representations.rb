@@ -400,6 +400,7 @@ module Google
       class MaliciousEntity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :from_header, as: 'fromHeader'
         end
       end

@@ -742,7 +742,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -780,7 +780,7 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -818,7 +818,7 @@ module Google
         end
         
         # SearchForStudies returns a list of matching studies. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -892,7 +892,7 @@ module Google
         
         # StoreInstances stores DICOM instances associated with study instance unique
         # identifiers (SUID). See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.6.1.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1009,7 +1009,7 @@ module Google
         
         # RetrieveStudyMetadata returns instance associated with the given study
         # presented as metadata with the bulk data removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.6.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1046,7 +1046,7 @@ module Google
         end
         
         # RetrieveStudy returns all instances within the given study. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.1.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1083,7 +1083,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1121,7 +1121,7 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1160,7 +1160,7 @@ module Google
         
         # StoreInstances stores DICOM instances associated with study instance unique
         # identifiers (SUID). See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.6.1.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1239,7 +1239,7 @@ module Google
         
         # RetrieveSeriesMetadata returns instance associated with the given study and
         # series, presented as metadata with the bulk data removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.6.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1276,7 +1276,7 @@ module Google
         end
         
         # RetrieveSeries returns all instances within the given study and series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.2.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1313,7 +1313,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.7
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1391,7 +1391,7 @@ module Google
         
         # RetrieveInstance returns instance associated with the given study, series,
         # and SOP Instance UID. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.3.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1399,7 +1399,7 @@ module Google
         # @param [String] dicom_web_path
         #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
         #   QIDO-RS standard (e.g.,
-        #   `studies/`study_id`/series/`series_id`/instance/`instance_id``).
+        #   `studies/`study_id`/series/`series_id`/instances/`instance_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1431,7 +1431,7 @@ module Google
         # RetrieveInstanceMetadata returns instance associated with the given study,
         # series, and SOP Instance UID presented as metadata with the bulk data
         # removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.6.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1470,7 +1470,7 @@ module Google
         
         # RetrieveRenderedInstance returns instance associated with the given study,
         # series, and SOP Instance UID in an acceptable Rendered Media Type. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.8.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1478,7 +1478,7 @@ module Google
         # @param [String] dicom_web_path
         #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
         #   QIDO-RS standard (e.g.,
-        #   `studies/`study_id`/series/`series_id`/instance/`instance_id`/rendered`).
+        #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/rendered`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1509,7 +1509,7 @@ module Google
         
         # RetrieveFrames returns instances associated with the given study, series,
         # SOP Instance UID and frame numbers. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.4.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1517,7 +1517,7 @@ module Google
         # @param [String] dicom_web_path
         #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
         #   QIDO-RS standard (e.g.,
-        #   `studies/`study_id`/series/`series_id`/instance/`instance_id`/frames/`
+        #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/frames/`
         #   frame_list``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1550,7 +1550,7 @@ module Google
         # RetrieveRenderedFrames returns instances associated with the given study,
         # series, SOP Instance UID and frame numbers in an acceptable Rendered Media
         # Type. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_6.5.8.
+        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1558,7 +1558,7 @@ module Google
         # @param [String] dicom_web_path
         #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
         #   QIDO-RS standard (e.g.,
-        #   `studies/`study_id`/series/`series_id`/instance/`instance_id`/frames/`
+        #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/frames/`
         #   frame_list`/rendered`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -788,6 +788,11 @@ module Google
       class MaliciousEntity
         include Google::Apis::Core::Hashable
       
+        # The header from display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The sender email address.
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
@@ -799,6 +804,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @from_header = args[:from_header] if args.key?(:from_header)
         end
       end
