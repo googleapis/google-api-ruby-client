@@ -1021,6 +1021,28 @@ module Google
         end
       end
       
+      # Parameters for controlling consumption metering.
+      class ConsumptionMeteringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable consumption metering for this cluster. If enabled, a
+        # second BigQuery table will be created to hold resource consumption
+        # records.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # CreateClusterRequest creates a cluster.
       class CreateClusterRequest
         include Google::Apis::Core::Hashable
@@ -1131,7 +1153,7 @@ module Google
         attr_accessor :duration
       
         # Time within the maintenance window to start the maintenance operations.
-        # It must be in format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+        # It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -2726,6 +2748,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::BigQueryDestination]
         attr_accessor :bigquery_destination
       
+        # Parameters for controlling consumption metering.
+        # Corresponds to the JSON property `consumptionMeteringConfig`
+        # @return [Google::Apis::ContainerV1beta1::ConsumptionMeteringConfig]
+        attr_accessor :consumption_metering_config
+      
         # Whether to enable network egress metering for this cluster. If enabled, a
         # daemonset will be created in the cluster to meter network egress traffic.
         # Corresponds to the JSON property `enableNetworkEgressMetering`
@@ -2740,6 +2767,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @consumption_metering_config = args[:consumption_metering_config] if args.key?(:consumption_metering_config)
           @enable_network_egress_metering = args[:enable_network_egress_metering] if args.key?(:enable_network_egress_metering)
         end
       end
@@ -3757,6 +3785,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # WorkloadMetadataConfig defines the metadata configuration to expose to
+        # workloads on the node pool.
+        # Corresponds to the JSON property `workloadMetadataConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadMetadataConfig]
+        attr_accessor :workload_metadata_config
+      
         # Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -3777,6 +3811,7 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end

@@ -1155,6 +1155,31 @@ module Google
         end
       end
       
+      # 
+      class ListTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All GTM Custom Templates of a GTM Container.
+        # Corresponds to the JSON property `template`
+        # @return [Array<Google::Apis::TagmanagerV2::CustomTemplate>]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
       # List triggers response.
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
@@ -1334,6 +1359,8 @@ module Google
         # - map: A map of parameters should be specified
         # - template: The value represents any text; this can include variable
         # references (even variable references that might return non-string types)
+        # - trigger_reference: The value represents a trigger, represented as the
+        # trigger id
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1471,6 +1498,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # The result of reverting a template in a workspace.
+      class RevertTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Google Tag Manager Custom Template's contents.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template = args[:template] if args.key?(:template)
         end
       end
       

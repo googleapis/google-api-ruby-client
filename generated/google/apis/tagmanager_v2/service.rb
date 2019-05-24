@@ -1909,6 +1909,225 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a GTM Custom Template.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [Google::Apis::TagmanagerV2::CustomTemplate] custom_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::CustomTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_container_workspace_template(parent, custom_template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{+parent}/templates', options)
+          command.request_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.request_object = custom_template_object
+          command.response_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.response_class = Google::Apis::TagmanagerV2::CustomTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GTM Template.
+        # @param [String] path
+        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_container_workspace_template(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{+path}', options)
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GTM Template.
+        # @param [String] path
+        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::CustomTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_container_workspace_template(path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{+path}', options)
+          command.response_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.response_class = Google::Apis::TagmanagerV2::CustomTemplate
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GTM Templates of a GTM container workspace.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::ListTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::ListTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_container_workspace_templates(parent, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{+parent}/templates', options)
+          command.response_representation = Google::Apis::TagmanagerV2::ListTemplatesResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::ListTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reverts changes to a GTM Template in a GTM Workspace.
+        # @param [String] path
+        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the template in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::RevertTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::RevertTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_account_container_workspace_template(path, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{+path}:revert', options)
+          command.response_representation = Google::Apis::TagmanagerV2::RevertTemplateResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::RevertTemplateResponse
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Template.
+        # @param [String] path
+        #   GTM Custom Template's API relative path. Example: accounts/`account_id`/
+        #   containers/`container_id`/workspaces/`workspace_id`/templates/`template_id`
+        # @param [Google::Apis::TagmanagerV2::CustomTemplate] custom_template_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the templates in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::CustomTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::CustomTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_workspace_template(path, custom_template_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:put, '{+path}', options)
+          command.request_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.request_object = custom_template_object
+          command.response_representation = Google::Apis::TagmanagerV2::CustomTemplate::Representation
+          command.response_class = Google::Apis::TagmanagerV2::CustomTemplate
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a GTM Trigger.
         # @param [String] parent
         #   GTM Workspaces's API relative path. Example: accounts/`account_id`/containers/`

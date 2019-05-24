@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumptionMeteringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,13 @@ module Google
         end
       end
       
+      class ConsumptionMeteringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class CreateClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1163,6 +1176,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::ContainerV1beta1::BigQueryDestination, decorator: Google::Apis::ContainerV1beta1::BigQueryDestination::Representation
       
+          property :consumption_metering_config, as: 'consumptionMeteringConfig', class: Google::Apis::ContainerV1beta1::ConsumptionMeteringConfig, decorator: Google::Apis::ContainerV1beta1::ConsumptionMeteringConfig::Representation
+      
           property :enable_network_egress_metering, as: 'enableNetworkEgressMetering'
         end
       end
@@ -1390,6 +1405,8 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
+      
           property :zone, as: 'zone'
         end
       end

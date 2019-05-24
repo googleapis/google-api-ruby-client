@@ -291,6 +291,55 @@ module Google
         end
       end
       
+      # Adapts a ConfigMap into a volume.
+      # The contents of the target ConfigMap's Data field will be presented in a
+      # volume as files using the keys in the Data field as the file names, unless
+      # the items element is populated with specific mappings of keys to paths.
+      class ConfigMapVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # Mode bits to use on created files by default. Must be a value between 0 and
+        # 0777. Defaults to 0644. Directories within the path are not affected by
+        # this setting. This might be in conflict with other options that affect the
+        # file mode, like fsGroup, and the result can be other mode bits set.
+        # Corresponds to the JSON property `defaultMode`
+        # @return [Fixnum]
+        attr_accessor :default_mode
+      
+        # If unspecified, each key-value pair in the Data field of the referenced
+        # Secret will be projected into the volume as a file whose name is the
+        # key and content is the value. If specified, the listed keys will be
+        # projected into the specified paths, and unlisted keys will not be
+        # present. If a key is specified which is not present in the Secret,
+        # the volume setup will error unless it is marked optional.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::KeyToPath>]
+        attr_accessor :items
+      
+        # Name of the config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specify whether the Secret or its keys must be defined.
+        # Corresponds to the JSON property `optional`
+        # @return [Boolean]
+        attr_accessor :optional
+        alias_method :optional?, :optional
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_mode = args[:default_mode] if args.key?(:default_mode)
+          @items = args[:items] if args.key?(:items)
+          @name = args[:name] if args.key?(:name)
+          @optional = args[:optional] if args.key?(:optional)
+        end
+      end
+      
       # Configuration represents the "floating HEAD" of a linear history of
       # Revisions, and optionally how the containers those revisions reference are
       # built. Users create new Revisions by updating the Configuration's spec. The
@@ -365,6 +414,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Status of the condition, one of True, False, Unknown.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -388,6 +443,7 @@ module Google
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -813,6 +869,12 @@ module Google
       class DomainMappingCondition
         include Google::Apis::Core::Hashable
       
+        # Last time the condition transitioned from one status to another.
+        # +optional
+        # Corresponds to the JSON property `lastTransitionTime`
+        # @return [String]
+        attr_accessor :last_transition_time
+      
         # Human readable message indicating details about the current status.
         # +optional
         # Corresponds to the JSON property `message`
@@ -824,6 +886,12 @@ module Google
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
+      
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
       
         # Status of the condition, one of True, False, Unknown.
         # Corresponds to the JSON property `status`
@@ -841,8 +909,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -1015,6 +1085,92 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class EventType
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "EventType".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # Spec defines the desired state of the EventType.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::EventTypeSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # 
+      class EventTypeSpec
+        include Google::Apis::Core::Hashable
+      
+        # Refers to the Broker that can provide the EventType.
+        # Corresponds to the JSON property `broker`
+        # @return [String]
+        attr_accessor :broker
+      
+        # Description is a string describing what the EventType is about.
+        # +optional
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Schema is a URI with the EventType schema. It may be a JSON schema, a
+        # protobuf schema, etc.
+        # +optional
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Source is a valid URI. Refers to the CloudEvent source as it enters into
+        # the eventing mesh.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Type is authoritative. This refers to the CloudEvent type as it enters
+        # into the eventing mesh.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @broker = args[:broker] if args.key?(:broker)
+          @description = args[:description] if args.key?(:description)
+          @schema = args[:schema] if args.key?(:schema)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1274,6 +1430,43 @@ module Google
         end
       end
       
+      # Maps a string key to a path within a volume.
+      class KeyToPath
+        include Google::Apis::Core::Hashable
+      
+        # The key to project.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Mode bits to use on this file, must be a value between 0 and 0777. If not
+        # specified, the volume defaultMode will be used. This might be in conflict
+        # with other options that affect the file mode, like fsGroup, and the result
+        # can be other mode bits set. +optional
+        # Corresponds to the JSON property `mode`
+        # @return [Fixnum]
+        attr_accessor :mode
+      
+        # The relative path of the file to map the key to.
+        # May not be an absolute path.
+        # May not contain the path element '..'.
+        # May not start with the string '..'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @mode = args[:mode] if args.key?(:mode)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # Lifecycle describes actions that the management system should take in
       # response to container lifecycle events. For the PostStart and PreStop
       # lifecycle handlers, management of the container blocks until the action is
@@ -1409,6 +1602,51 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # ListEventTypesResponse is a list of EventType resources.
+      class ListEventTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of EventTypes.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::EventType>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "EventTypeList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2422,6 +2660,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Status of the condition, one of True, False, Unknown.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -2450,6 +2694,7 @@ module Google
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -2523,6 +2768,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_seconds
       
+        # 
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV1alpha1::Volume>]
+        attr_accessor :volumes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2537,6 +2787,7 @@ module Google
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @serving_state = args[:serving_state] if args.key?(:serving_state)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+          @volumes = args[:volumes] if args.key?(:volumes)
         end
       end
       
@@ -2701,6 +2952,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Status of the condition, one of "True", "False", "Unknown".
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -2724,6 +2981,7 @@ module Google
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -2896,6 +3154,53 @@ module Google
         end
       end
       
+      # The contents of the target Secret's Data field will be presented in a volume
+      # as files using the keys in the Data field as the file names.
+      class SecretVolumeSource
+        include Google::Apis::Core::Hashable
+      
+        # Mode bits to use on created files by default. Must be a value between 0 and
+        # 0777. Defaults to 0644. Directories within the path are not affected by
+        # this setting. This might be in conflict with other options that affect the
+        # file mode, like fsGroup, and the result can be other mode bits set.
+        # Corresponds to the JSON property `defaultMode`
+        # @return [Fixnum]
+        attr_accessor :default_mode
+      
+        # If unspecified, each key-value pair in the Data field of the referenced
+        # Secret will be projected into the volume as a file whose name is the
+        # key and content is the value. If specified, the listed keys will be
+        # projected into the specified paths, and unlisted keys will not be
+        # present. If a key is specified which is not present in the Secret,
+        # the volume setup will error unless it is marked optional.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::KeyToPath>]
+        attr_accessor :items
+      
+        # Specify whether the Secret or its keys must be defined.
+        # Corresponds to the JSON property `optional`
+        # @return [Boolean]
+        attr_accessor :optional
+        alias_method :optional?, :optional
+      
+        # Name of the secret in the container's namespace to use.
+        # Corresponds to the JSON property `secretName`
+        # @return [String]
+        attr_accessor :secret_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_mode = args[:default_mode] if args.key?(:default_mode)
+          @items = args[:items] if args.key?(:items)
+          @optional = args[:optional] if args.key?(:optional)
+          @secret_name = args[:secret_name] if args.key?(:secret_name)
+        end
+      end
+      
       # SecurityContext holds security configuration that will be applied to a
       # container. Some fields are present in both SecurityContext and
       # PodSecurityContext.  When both are set, the values in SecurityContext take
@@ -3065,6 +3370,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Status of the condition, one of True, False, Unknown.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3089,6 +3400,7 @@ module Google
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -3657,6 +3969,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
+        # How to interpret failures of this condition, one of Error, Warning, Info
+        # +optional
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Status of the condition, one of True, False, Unknown.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3676,6 +3994,7 @@ module Google
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
         end
@@ -3796,6 +4115,41 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @subscriber_uri = args[:subscriber_uri] if args.key?(:subscriber_uri)
+        end
+      end
+      
+      # Volume represents a named volume in a container.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # Adapts a ConfigMap into a volume.
+        # The contents of the target ConfigMap's Data field will be presented in a
+        # volume as files using the keys in the Data field as the file names, unless
+        # the items element is populated with specific mappings of keys to paths.
+        # Corresponds to the JSON property `configMap`
+        # @return [Google::Apis::RunV1alpha1::ConfigMapVolumeSource]
+        attr_accessor :config_map
+      
+        # Volume's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The contents of the target Secret's Data field will be presented in a volume
+        # as files using the keys in the Data field as the file names.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::RunV1alpha1::SecretVolumeSource]
+        attr_accessor :secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_map = args[:config_map] if args.key?(:config_map)
+          @name = args[:name] if args.key?(:name)
+          @secret = args[:secret] if args.key?(:secret)
         end
       end
       

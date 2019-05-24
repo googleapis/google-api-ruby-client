@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigMapVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Configuration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventTypeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyToPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Lifecycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +233,12 @@ module Google
       end
       
       class ListDomainMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEventTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretVolumeSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VolumeDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -573,6 +615,17 @@ module Google
         end
       end
       
+      class ConfigMapVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_mode, as: 'defaultMode'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::KeyToPath, decorator: Google::Apis::RunV1alpha1::KeyToPath::Representation
+      
+          property :name, as: 'name'
+          property :optional, as: 'optional'
+        end
+      end
+      
       class Configuration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -593,6 +646,7 @@ module Google
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -685,8 +739,10 @@ module Google
       class DomainMappingCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -735,6 +791,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class EventType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::EventTypeSpec, decorator: Google::Apis::RunV1alpha1::EventTypeSpec::Representation
+      
+        end
+      end
+      
+      class EventTypeSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :broker, as: 'broker'
+          property :description, as: 'description'
+          property :schema, as: 'schema'
+          property :source, as: 'source'
+          property :type, as: 'type'
         end
       end
       
@@ -812,6 +891,15 @@ module Google
         end
       end
       
+      class KeyToPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :mode, as: 'mode'
+          property :path, as: 'path'
+        end
+      end
+      
       class Lifecycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -853,6 +941,19 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+        end
+      end
+      
+      class ListEventTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::EventType, decorator: Google::Apis::RunV1alpha1::EventType::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1066,6 +1167,7 @@ module Google
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -1084,6 +1186,8 @@ module Google
           property :service_account_name, as: 'serviceAccountName'
           property :serving_state, as: 'servingState'
           property :timeout_seconds, as: 'timeoutSeconds'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1alpha1::Volume, decorator: Google::Apis::RunV1alpha1::Volume::Representation
+      
         end
       end
       
@@ -1129,6 +1233,7 @@ module Google
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -1177,6 +1282,17 @@ module Google
         end
       end
       
+      class SecretVolumeSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_mode, as: 'defaultMode'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::KeyToPath, decorator: Google::Apis::RunV1alpha1::KeyToPath::Representation
+      
+          property :optional, as: 'optional'
+          property :secret_name, as: 'secretName'
+        end
+      end
+      
       class SecurityContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1213,6 +1329,7 @@ module Google
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -1360,6 +1477,7 @@ module Google
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
+          property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
         end
@@ -1399,6 +1517,17 @@ module Google
       
           property :observed_generation, as: 'observedGeneration'
           property :subscriber_uri, as: 'subscriberUri'
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_map, as: 'configMap', class: Google::Apis::RunV1alpha1::ConfigMapVolumeSource, decorator: Google::Apis::RunV1alpha1::ConfigMapVolumeSource::Representation
+      
+          property :name, as: 'name'
+          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretVolumeSource, decorator: Google::Apis::RunV1alpha1::SecretVolumeSource::Representation
+      
         end
       end
       

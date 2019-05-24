@@ -923,6 +923,8 @@ module Google
         # - map: A map of parameters should be specified
         # - template: The value represents any text; this can include variable
         # references (even variable references that might return non-string types)
+        # - trigger_reference: The value represents a trigger, represented as the
+        # trigger id
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

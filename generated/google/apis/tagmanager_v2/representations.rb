@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTriggersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,12 @@ module Google
       end
       
       class RevertTagResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevertTemplateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -641,6 +653,15 @@ module Google
         end
       end
       
+      class ListTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :template, as: 'template', class: Google::Apis::TagmanagerV2::CustomTemplate, decorator: Google::Apis::TagmanagerV2::CustomTemplate::Representation
+      
+        end
+      end
+      
       class ListTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -748,6 +769,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tag, as: 'tag', class: Google::Apis::TagmanagerV2::Tag, decorator: Google::Apis::TagmanagerV2::Tag::Representation
+      
+        end
+      end
+      
+      class RevertTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template, as: 'template', class: Google::Apis::TagmanagerV2::CustomTemplate, decorator: Google::Apis::TagmanagerV2::CustomTemplate::Representation
       
         end
       end

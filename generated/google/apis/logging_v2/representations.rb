@@ -455,6 +455,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :labels, as: 'labels', class: Google::Apis::LoggingV2::LabelDescriptor, decorator: Google::Apis::LoggingV2::LabelDescriptor::Representation
       
+          property :launch_stage, as: 'launchStage'
           property :metadata, as: 'metadata', class: Google::Apis::LoggingV2::MetricDescriptorMetadata, decorator: Google::Apis::LoggingV2::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'

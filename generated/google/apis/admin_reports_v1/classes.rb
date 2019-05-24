@@ -195,10 +195,20 @@ module Google
             # @return [Fixnum]
             attr_accessor :int_value
           
+            # Nested value of the parameter.
+            # Corresponds to the JSON property `messageValue`
+            # @return [Google::Apis::AdminReportsV1::Activity::Event::Parameter::MessageValue]
+            attr_accessor :message_value
+          
             # Multi-int value of the parameter.
             # Corresponds to the JSON property `multiIntValue`
             # @return [Array<Fixnum>]
             attr_accessor :multi_int_value
+          
+            # Nested values of the parameter.
+            # Corresponds to the JSON property `multiMessageValue`
+            # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue>]
+            attr_accessor :multi_message_value
           
             # Multi-string value of the parameter.
             # Corresponds to the JSON property `multiValue`
@@ -223,10 +233,50 @@ module Google
             def update!(**args)
               @bool_value = args[:bool_value] if args.key?(:bool_value)
               @int_value = args[:int_value] if args.key?(:int_value)
+              @message_value = args[:message_value] if args.key?(:message_value)
               @multi_int_value = args[:multi_int_value] if args.key?(:multi_int_value)
+              @multi_message_value = args[:multi_message_value] if args.key?(:multi_message_value)
               @multi_value = args[:multi_value] if args.key?(:multi_value)
               @name = args[:name] if args.key?(:name)
               @value = args[:value] if args.key?(:value)
+            end
+            
+            # Nested value of the parameter.
+            class MessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Looping to get parameter values.
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
+            end
+            
+            # 
+            class MultiMessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Parameter value.
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
             end
           end
         end
@@ -344,6 +394,62 @@ module Google
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @token = args[:token] if args.key?(:token)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # JSON template for a parameter used in various reports.
+      class NestedParameter
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value of the parameter.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Integral value of the parameter.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Multiple boolean values of the parameter.
+        # Corresponds to the JSON property `multiBoolValue`
+        # @return [Array<Boolean>]
+        attr_accessor :multi_bool_value
+      
+        # Multiple integral values of the parameter.
+        # Corresponds to the JSON property `multiIntValue`
+        # @return [Array<Fixnum>]
+        attr_accessor :multi_int_value
+      
+        # Multiple string values of the parameter.
+        # Corresponds to the JSON property `multiValue`
+        # @return [Array<String>]
+        attr_accessor :multi_value
+      
+        # The name of the parameter.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # String value of the parameter.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @multi_bool_value = args[:multi_bool_value] if args.key?(:multi_bool_value)
+          @multi_int_value = args[:multi_int_value] if args.key?(:multi_int_value)
+          @multi_value = args[:multi_value] if args.key?(:multi_value)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

@@ -42,6 +42,18 @@ module Google
           
           class Parameter
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class MessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+            
+            class MultiMessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -59,6 +71,12 @@ module Google
       end
       
       class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NestedParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -150,10 +168,30 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :bool_value, as: 'boolValue'
               property :int_value, :numeric_string => true, as: 'intValue'
+              property :message_value, as: 'messageValue', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MessageValue::Representation
+          
               collection :multi_int_value, as: 'multiIntValue'
+              collection :multi_message_value, as: 'multiMessageValue', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue::Representation
+          
               collection :multi_value, as: 'multiValue'
               property :name, as: 'name'
               property :value, as: 'value'
+            end
+            
+            class MessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
+            end
+            
+            class MultiMessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
             end
           end
         end
@@ -183,6 +221,19 @@ module Google
           property :resource_uri, as: 'resourceUri'
           property :token, as: 'token'
           property :type, as: 'type'
+        end
+      end
+      
+      class NestedParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          collection :multi_bool_value, as: 'multiBoolValue'
+          collection :multi_int_value, as: 'multiIntValue'
+          collection :multi_value, as: 'multiValue'
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
