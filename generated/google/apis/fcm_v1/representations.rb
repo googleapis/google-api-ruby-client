@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApnsFcmOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Message
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -104,8 +110,16 @@ module Google
       class ApnsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::ApnsFcmOptions, decorator: Google::Apis::FcmV1::ApnsFcmOptions::Representation
+      
           hash :headers, as: 'headers'
           hash :payload, as: 'payload'
+        end
+      end
+      
+      class ApnsFcmOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

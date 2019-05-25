@@ -207,6 +207,11 @@ module Google
       class ApnsConfig
         include Google::Apis::Core::Hashable
       
+        # Options for features provided by the FCM SDK for iOS.
+        # Corresponds to the JSON property `fcmOptions`
+        # @return [Google::Apis::FcmV1::ApnsFcmOptions]
+        attr_accessor :fcm_options
+      
         # HTTP request headers defined in Apple Push Notification Service. Refer to
         # [APNs request headers](https://goo.gl/C6Yhia) for
         # supported headers, e.g. "apns-priority": "10".
@@ -228,8 +233,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
           @headers = args[:headers] if args.key?(:headers)
           @payload = args[:payload] if args.key?(:payload)
+        end
+      end
+      
+      # Options for features provided by the FCM SDK for iOS.
+      class ApnsFcmOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
