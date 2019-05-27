@@ -1,3 +1,36 @@
+# 0.30.0
+* Breaking changes:
+  * Deleted `youtube_analytics_v1beta1`
+* Backwards compatible changes:
+  * Updated `admin_reports_v1`
+  * Updated `alertcenter_v1beta1`
+  * Updated `androidmanagement_v1`
+  * Updated `composer_v1`
+  * Updated `composer_v1beta1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataflow_v1b3`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `fcm_v1`
+  * Updated `games_v1`
+  * Updated `healthcare_v1alpha2`
+  * Updated `healthcare_v1beta1`
+  * Updated `logging_v2`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `run_v1alpha1`
+  * Updated `safebrowsing_v4`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `tagmanager_v1`
+  * Updated `tagmanager_v2`
+  * Updated `websecurityscanner_v1beta`
+  * Updated `youtube_analytics_v1`
+
 # 0.29.2
 * Backwards compatible changes:
   * Added `fcm_v1`
