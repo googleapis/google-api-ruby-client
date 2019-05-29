@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2LargeCustomDictionaryStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +899,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2StoredInfoTypeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2StoredInfoTypeStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2102,6 +2114,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2LargeCustomDictionaryStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approx_num_phrases, :numeric_string => true, as: 'approxNumPhrases'
+        end
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2561,6 +2580,14 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2StoredInfoTypeStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :large_custom_dictionary, as: 'largeCustomDictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryStats, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryStats::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2StoredInfoTypeVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2570,6 +2597,8 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Error, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Error::Representation
       
           property :state, as: 'state'
+          property :stats, as: 'stats', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeStats, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeStats::Representation
+      
         end
       end
       

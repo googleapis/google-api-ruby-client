@@ -247,6 +247,7 @@ module Google
       class SpeechContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
           collection :phrases, as: 'phrases'
         end
       end

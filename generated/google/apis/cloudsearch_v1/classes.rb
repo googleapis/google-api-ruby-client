@@ -2927,6 +2927,16 @@ module Google
         attr_accessor :is_sortable
         alias_method :is_sortable?, :is_sortable
       
+        # Indicates that users can perform wildcard search for this
+        # property. Only supported for Text properties. IsReturnable must be true to
+        # set this option. In a given datasource maximum of 5 properties can be
+        # marked as is_wildcard_searchable.
+        # Note: This is an alpha feature and is enabled for whitelisted users only.
+        # Corresponds to the JSON property `isWildcardSearchable`
+        # @return [Boolean]
+        attr_accessor :is_wildcard_searchable
+        alias_method :is_wildcard_searchable?, :is_wildcard_searchable
+      
         # The name of the property. Item indexing requests sent to the Indexing API
         # should set the property name
         # equal to this value. For example, if name is *subject_line*, then indexing
@@ -2974,6 +2984,7 @@ module Google
           @is_repeatable = args[:is_repeatable] if args.key?(:is_repeatable)
           @is_returnable = args[:is_returnable] if args.key?(:is_returnable)
           @is_sortable = args[:is_sortable] if args.key?(:is_sortable)
+          @is_wildcard_searchable = args[:is_wildcard_searchable] if args.key?(:is_wildcard_searchable)
           @name = args[:name] if args.key?(:name)
           @object_property_options = args[:object_property_options] if args.key?(:object_property_options)
           @text_property_options = args[:text_property_options] if args.key?(:text_property_options)

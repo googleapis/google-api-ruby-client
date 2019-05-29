@@ -3746,6 +3746,25 @@ module Google
         end
       end
       
+      # Summary statistics of a custom dictionary.
+      class GooglePrivacyDlpV2LargeCustomDictionaryStats
+        include Google::Apis::Core::Hashable
+      
+        # Approximate number of distinct phrases in the dictionary.
+        # Corresponds to the JSON property `approxNumPhrases`
+        # @return [Fixnum]
+        attr_accessor :approx_num_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approx_num_phrases = args[:approx_num_phrases] if args.key?(:approx_num_phrases)
+        end
+      end
+      
       # Message for specifying an adjustment to the likelihood of a finding as
       # part of a detection rule.
       class GooglePrivacyDlpV2LikelihoodAdjustment
@@ -5209,6 +5228,25 @@ module Google
         end
       end
       
+      # Statistics for a StoredInfoType.
+      class GooglePrivacyDlpV2StoredInfoTypeStats
+        include Google::Apis::Core::Hashable
+      
+        # Summary statistics of a custom dictionary.
+        # Corresponds to the JSON property `largeCustomDictionary`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryStats]
+        attr_accessor :large_custom_dictionary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @large_custom_dictionary = args[:large_custom_dictionary] if args.key?(:large_custom_dictionary)
+        end
+      end
+      
       # Version of a StoredInfoType, including the configuration used to build it,
       # create timestamp, and current state.
       class GooglePrivacyDlpV2StoredInfoTypeVersion
@@ -5246,6 +5284,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Statistics for a StoredInfoType.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeStats]
+        attr_accessor :stats
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5256,6 +5299,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @errors = args[:errors] if args.key?(:errors)
           @state = args[:state] if args.key?(:state)
+          @stats = args[:stats] if args.key?(:stats)
         end
       end
       

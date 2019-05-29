@@ -139,16 +139,19 @@ module Google
         # @return [String]
         attr_accessor :client_token
       
-        # Contains the language as detected from the text content.  If no language
-        # was specified in the request, the first (the most likely) language is used
-        # to select an appropriate model.  Sorted in order of likelihood.
+        # Contains the languages detected from the text content, sorted in order of
+        # likelihood.
         # Corresponds to the JSON property `detectedLanguages`
         # @return [Array<String>]
         attr_accessor :detected_languages
       
-        # The language(s) requested by the client, as specified in the request. If
-        # the request did not specify any language, this will be empty and the
-        # detected_languages field will be populated.
+        # The language(s) used by CommentAnalyzer service to choose which Model to
+        # use when analyzing the comment. Might better be called
+        # "effective_languages". The logic used to make the choice is as follows:
+        # if Request.languages.empty()
+        # effective_languages = detected_languages
+        # else
+        # effective_languages = Request.languages
         # Corresponds to the JSON property `languages`
         # @return [Array<String>]
         attr_accessor :languages

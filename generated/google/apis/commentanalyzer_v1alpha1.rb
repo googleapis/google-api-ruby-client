@@ -30,7 +30,7 @@ module Google
     # @see https://conversationai.github.io/
     module CommentanalyzerV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20190414'
+      REVISION = '20190526'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
