@@ -4020,7 +4020,7 @@ module Google
         # @return [Google::Apis::ContentV2::OrderCustomer]
         attr_accessor :customer
       
-        # The details for the delivery.
+        # Delivery details for shipments.
         # Corresponds to the JSON property `deliveryDetails`
         # @return [Google::Apis::ContentV2::OrderDeliveryDetails]
         attr_accessor :delivery_details

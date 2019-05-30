@@ -604,6 +604,7 @@ module Google
           property :prediction_class, as: 'predictionClass'
           property :python_version, as: 'pythonVersion'
           property :runtime_version, as: 'runtimeVersion'
+          property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
         end
       end

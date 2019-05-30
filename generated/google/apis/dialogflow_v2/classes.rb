@@ -836,10 +836,9 @@ module Google
         # @return [String]
         attr_accessor :model_variant
       
-        # Optional. The collection of phrase hints which are used to boost accuracy
-        # of speech recognition.
-        # Refer to
-        # [Cloud Speech API
+        # Optional. A list of strings containing words and phrases that the speech
+        # recognizer should recognize with higher likelihood.
+        # See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
         # hints)
         # for more details.

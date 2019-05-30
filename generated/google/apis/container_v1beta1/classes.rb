@@ -771,6 +771,12 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
+        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
+        # in which the NodePool's nodes can be created by NAP.
+        # Corresponds to the JSON property `autoprovisioningLocations`
+        # @return [Array<String>]
+        attr_accessor :autoprovisioning_locations
+      
         # AutoprovisioningNodePoolDefaults contains defaults for a node pool created
         # by NAP.
         # Corresponds to the JSON property `autoprovisioningNodePoolDefaults`
@@ -795,6 +801,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
@@ -2339,6 +2346,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
+        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
+        # in which the NodePool's nodes should be located.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # NodeManagement defines the set of node management services turned on for the
         # node pool.
         # Corresponds to the JSON property `management`
@@ -2392,6 +2405,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @locations = args[:locations] if args.key?(:locations)
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
@@ -3752,6 +3766,15 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # The desired list of Google Compute Engine
+        # [zones](/compute/docs/zones#available) in which the node pool's nodes
+        # should be located. Changing the locations for a node pool will result
+        # in nodes being either created or removed from the node pool, depending
+        # on whether locations are being added or removed.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # The name (project, location, cluster, node pool) of the node pool to
         # update. Specified in the format
         # 'projects/*/locations/*/clusters/*/nodePools/*'.
@@ -3807,6 +3830,7 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)

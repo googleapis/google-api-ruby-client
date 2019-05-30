@@ -1859,8 +1859,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2176,7 +2176,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
@@ -4052,8 +4054,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -4402,7 +4404,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
@@ -4481,8 +4485,12 @@ module Google
         attr_accessor :filter
       
         # The list of product categories to search in. Currently, we only consider
-        # the first category, and either "homegoods", "apparel", or "toys" should be
-        # specified.
+        # the first category, and either "homegoods-v2", "apparel-v2", or "toys-v2"
+        # should be specified. The legacy categories "homegoods", "apparel", and
+        # "toys" are still supported but will be deprecated. For new products, please
+        # use "homegoods-v2", "apparel-v2", or "toys-v2" for better product search
+        # accuracy. It is recommended to migrate existing products to these
+        # categories as well.
         # Corresponds to the JSON property `productCategories`
         # @return [Array<String>]
         attr_accessor :product_categories
@@ -5993,8 +6001,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -6310,7 +6318,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
@@ -7917,8 +7927,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -8234,7 +8244,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
@@ -9861,8 +9873,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p5beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -10246,7 +10258,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
@@ -11132,8 +11146,8 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf" and "image/tiff"
-        # are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and
+        # "image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -11629,7 +11643,9 @@ module Google
         attr_accessor :name
       
         # The category for the product identified by the reference image. This should
-        # be either "homegoods", "apparel", or "toys".
+        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+        # "homegoods", "apparel", and "toys" are still supported, but these should
+        # not be used for new products.
         # This field is immutable.
         # Corresponds to the JSON property `productCategory`
         # @return [String]

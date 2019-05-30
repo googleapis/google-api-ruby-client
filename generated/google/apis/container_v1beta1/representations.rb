@@ -692,6 +692,7 @@ module Google
       class ClusterAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :autoprovisioning_locations, as: 'autoprovisioningLocations'
           property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults::Representation
       
           property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
@@ -1076,6 +1077,7 @@ module Google
       
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
+          collection :locations, as: 'locations'
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
@@ -1401,6 +1403,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :image_type, as: 'imageType'
+          collection :locations, as: 'locations'
           property :name, as: 'name'
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'

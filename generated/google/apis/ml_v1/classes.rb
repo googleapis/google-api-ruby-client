@@ -1716,6 +1716,11 @@ module Google
         # @return [String]
         attr_accessor :runtime_version
       
+        # Optional. Specifies the service account for resource access control.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Output only. The state of a version.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1744,6 +1749,7 @@ module Google
           @prediction_class = args[:prediction_class] if args.key?(:prediction_class)
           @python_version = args[:python_version] if args.key?(:python_version)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end
