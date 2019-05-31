@@ -117,6 +117,50 @@ module Google
         end
       end
       
+      # Detected ad technology provider information.
+      class AdTechnologyProviders
+        include Google::Apis::Core::Hashable
+      
+        # The detected ad technology provider IDs for this creative.
+        # See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+        # mapping of provider ID to provided name, a privacy policy URL, and a list
+        # of domains which can be attributed to the provider.
+        # If the creative contains provider IDs that are outside of those listed in
+        # the `BidRequest.adslot.consented_providers_settings.consented_providers`
+        # field on the (Google bid
+        # protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/
+        # realtime-bidding-proto]
+        # and the
+        # `BidRequest.user.ext.consented_providers_settings.consented_providers`
+        # field on the (OpenRTB
+        # protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/
+        # openrtb-adx-proto],
+        # and a bid is submitted with that creative for an impression that will
+        # serve to an EEA user, the bid will be filtered before the auction.
+        # Corresponds to the JSON property `detectedProviderIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :detected_provider_ids
+      
+        # Whether the creative contains an unidentified ad technology provider.
+        # If true for a given creative, any bid submitted with that creative for an
+        # impression that will serve to an EEA user will be filtered before the
+        # auction.
+        # Corresponds to the JSON property `hasUnidentifiedProvider`
+        # @return [Boolean]
+        attr_accessor :has_unidentified_provider
+        alias_method :has_unidentified_provider?, :has_unidentified_provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_provider_ids = args[:detected_provider_ids] if args.key?(:detected_provider_ids)
+          @has_unidentified_provider = args[:has_unidentified_provider] if args.key?(:has_unidentified_provider)
+        end
+      end
+      
       # A request for associating a deal and a creative.
       class AddDealAssociationRequest
         include Google::Apis::Core::Hashable
@@ -638,6 +682,11 @@ module Google
         # @return [String]
         attr_accessor :ad_choices_destination_url
       
+        # Detected ad technology provider information.
+        # Corresponds to the JSON property `adTechnologyProviders`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::AdTechnologyProviders]
+        attr_accessor :ad_technology_providers
+      
         # The name of the company being advertised in the creative.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
@@ -793,6 +842,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @ad_choices_destination_url = args[:ad_choices_destination_url] if args.key?(:ad_choices_destination_url)
+          @ad_technology_providers = args[:ad_technology_providers] if args.key?(:ad_technology_providers)
           @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
           @api_update_time = args[:api_update_time] if args.key?(:api_update_time)

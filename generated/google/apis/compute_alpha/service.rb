@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://compute.googleapis.com/', 'compute/alpha/projects/')
+          super('https://www.googleapis.com/', 'compute/alpha/projects/')
           @batch_path = 'batch/compute/alpha'
         end
         
@@ -2534,7 +2534,9 @@ module Google
         #   Name of the persistent disk to snapshot.
         # @param [Google::Apis::ComputeAlpha::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
-        #   Application consistent snapshot (ie. VSS).
+        #   [Input Only] Specifies to create an application consistent snapshot by
+        #   informing the OS to prepare for the snapshot process. Currently only supported
+        #   on Windows instances using the Volume Shadow Copy Service (VSS).
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -12188,6 +12190,8 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12207,7 +12211,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_interconnect_attachment(project, region, interconnect_attachment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_interconnect_attachment(project, region, interconnect_attachment_object = nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments', options)
           command.request_representation = Google::Apis::ComputeAlpha::InterconnectAttachment::Representation
           command.request_object = interconnect_attachment_object
@@ -12216,6 +12220,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -19398,7 +19403,9 @@ module Google
         #   Name of the regional persistent disk to snapshot.
         # @param [Google::Apis::ComputeAlpha::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
-        #   Application consistent snapshot (ie. VSS).
+        #   [Input Only] Specifies to create an application consistent snapshot by
+        #   informing the OS to prepare for the snapshot process. Currently only supported
+        #   on Windows instances using the Volume Shadow Copy Service (VSS).
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

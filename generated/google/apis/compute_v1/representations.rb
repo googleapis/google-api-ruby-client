@@ -2524,6 +2524,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNatLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterNatSubnetworkToNat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3780,6 +3786,9 @@ module Google
           hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
         end
       end
@@ -8102,6 +8111,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::RouterNatLogConfig, decorator: Google::Apis::ComputeV1::RouterNatLogConfig::Representation
+      
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -8112,6 +8123,14 @@ module Google
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
+        end
+      end
+      
+      class RouterNatLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :filter, as: 'filter'
         end
       end
       

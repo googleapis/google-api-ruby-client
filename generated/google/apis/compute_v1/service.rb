@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://compute.googleapis.com/', 'compute/v1/projects/')
+          super('https://www.googleapis.com/', 'compute/v1/projects/')
           @batch_path = 'batch/compute/v1'
         end
         
@@ -2185,7 +2185,9 @@ module Google
         #   Name of the persistent disk to snapshot.
         # @param [Google::Apis::ComputeV1::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
-        #   Application consistent snapshot (ie. VSS).
+        #   [Input Only] Specifies to create an application consistent snapshot by
+        #   informing the OS to prepare for the snapshot process. Currently only supported
+        #   on Windows instances using the Volume Shadow Copy Service (VSS).
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

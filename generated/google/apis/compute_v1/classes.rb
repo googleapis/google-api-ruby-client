@@ -1216,6 +1216,22 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
+        # The source snapshot to create this disk. When creating a new instance, one of
+        # initializeParams.sourceSnapshot or disks.source is required except for local
+        # SSD.
+        # To create a disk with a snapshot that you created, specify the snapshot name
+        # in the following format:
+        # global/snapshots/my-backup
+        # If the source snapshot is deleted later, this field will not be set.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
+        attr_accessor :source_snapshot_encryption_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1229,6 +1245,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
         end
       end
       
@@ -3863,14 +3881,14 @@ module Google
         attr_accessor :status
       
         # URL of the disk type resource describing which disk type to use to create the
-        # disk. Provide this when creating the disk. For example: project/zones/zone/
-        # diskTypes/pd-standard or pd-ssd
+        # disk. Provide this when creating the disk. For example: projects/project/zones/
+        # zone/diskTypes/pd-standard or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # [Output Only] Links to the users of the disk (attached instances) in form:
-        # project/zones/zone/instances/instance
+        # projects/project/zones/zone/instances/instance
         # Corresponds to the JSON property `users`
         # @return [Array<String>]
         attr_accessor :users
@@ -7267,8 +7285,8 @@ module Google
           # @return [String]
           attr_accessor :container_type
         
-          # An optional SHA1 checksum of the disk image before unpackaging provided by the
-          # client when the disk image is created.
+          # [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk
+          # image before unpackaging provided by the client when the disk image is created.
           # Corresponds to the JSON property `sha1Checksum`
           # @return [String]
           attr_accessor :sha1_checksum
@@ -10173,8 +10191,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :interconnect_attachments
       
-        # Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "
-        # DEDICATED"
+        # Type of interconnect, which can take one of the following values:
+        # - PARTNER: A partner-managed interconnection shared between customers though a
+        # partner.
+        # - DEDICATED: A dedicated physical interconnection with the customer. Note that
+        # a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         # Corresponds to the JSON property `interconnectType`
         # @return [String]
         attr_accessor :interconnect_type
@@ -10185,8 +10206,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Type of link requested. This field indicates speed of each of the links in the
-        # bundle, not the entire bundle.
+        # Type of link requested, which can take one of the following values:
+        # - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
+        # - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        # field indicates the speed of each of the links in the bundle, not the speed of
+        # the entire bundle.
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -10215,8 +10239,14 @@ module Google
         # @return [String]
         attr_accessor :noc_contact_email
       
-        # [Output Only] The current status of whether or not this Interconnect is
-        # functional.
+        # [Output Only] The current status of this Interconnect's functionality, which
+        # can take one of the following values:
+        # - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use.
+        # Attachments may be provisioned on this Interconnect.
+        # - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No
+        # attachments may be provisioned on this Interconnect.
+        # - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal
+        # maintenance. No attachments may be provisioned or updated on this Interconnect.
         # Corresponds to the JSON property `operationalStatus`
         # @return [String]
         attr_accessor :operational_status
@@ -10244,8 +10274,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The current state of whether or not this Interconnect is
-        # functional.
+        # [Output Only] The current state of Interconnect functionality, which can take
+        # one of the following values:
+        # - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments
+        # may be provisioned on this Interconnect.
+        # - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may
+        # be provisioned on this Interconnect.
+        # - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No
+        # attachments may be provisioned or updated on this Interconnect.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10294,9 +10330,21 @@ module Google
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
       
-        # Provisioned bandwidth capacity for the interconnectAttachment. Can be set by
-        # the partner to update the customer's provisioned bandwidth. Output only for
-        # PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED.
+        # Provisioned bandwidth capacity for the interconnect attachment. For
+        # attachments of type DEDICATED, the user can set the bandwidth. For attachments
+        # of type PARTNER, the Google Partner that is operating the interconnect must
+        # set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER
+        # and DEDICATED, and can take one of the following values:
+        # - BPS_50M: 50 Mbit/s
+        # - BPS_100M: 100 Mbit/s
+        # - BPS_200M: 200 Mbit/s
+        # - BPS_300M: 300 Mbit/s
+        # - BPS_400M: 400 Mbit/s
+        # - BPS_500M: 500 Mbit/s
+        # - BPS_1G: 1 Gbit/s
+        # - BPS_2G: 2 Gbit/s
+        # - BPS_5G: 5 Gbit/s
+        # - BPS_10G: 10 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -10335,11 +10383,14 @@ module Google
         attr_accessor :description
       
         # Desired availability domain for the attachment. Only available for type
-        # PARTNER, at creation time. For improved reliability, customers should
-        # configure a pair of attachments with one per availability domain. The selected
-        # availability domain will be provided to the Partner via the pairing key so
-        # that the provisioned circuit will lie in the specified domain. If not
-        # specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        # PARTNER, at creation time, and can take one of the following values:
+        # - AVAILABILITY_DOMAIN_ANY
+        # - AVAILABILITY_DOMAIN_1
+        # - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a
+        # pair of attachments, one per availability domain. The selected availability
+        # domain will be provided to the Partner via the pairing key, so that the
+        # provisioned circuit will lie in the specified domain. If not specified, the
+        # value will default to AVAILABILITY_DOMAIN_ANY.
         # Corresponds to the JSON property `edgeAvailabilityDomain`
         # @return [String]
         attr_accessor :edge_availability_domain
@@ -10379,7 +10430,10 @@ module Google
         attr_accessor :name
       
         # [Output Only] The current status of whether or not this interconnect
-        # attachment is functional.
+        # attachment is functional, which can take one of the following values:
+        # - OS_ACTIVE: The attachment has been turned up and is ready to use.
+        # - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is
+        # not complete.
         # Corresponds to the JSON property `operationalStatus`
         # @return [String]
         attr_accessor :operational_status
@@ -10392,9 +10446,9 @@ module Google
         # @return [String]
         attr_accessor :pairing_key
       
-        # Optional BGP ASN for the router that should be supplied by a layer 3 Partner
-        # if they configured BGP on behalf of the customer. Output only for PARTNER type,
-        # input only for PARTNER_PROVIDER, not available for DEDICATED.
+        # Optional BGP ASN for the router supplied by a Layer 3 Partner if they
+        # configured BGP on behalf of the customer. Output only for PARTNER type, input
+        # only for PARTNER_PROVIDER, not available for DEDICATED.
         # Corresponds to the JSON property `partnerAsn`
         # @return [Fixnum]
         attr_accessor :partner_asn
@@ -10432,12 +10486,35 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The current state of this attachment's functionality.
+        # [Output Only] The current state of this attachment's functionality. Enum
+        # values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and
+        # PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER,
+        # PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and
+        # PARTNER_PROVIDER interconnect attachments. This state can take one of the
+        # following values:
+        # - ACTIVE: The attachment has been turned up and is ready to use.
+        # - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not
+        # complete.
+        # - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been
+        # configured on the Partner side.
+        # - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of
+        # provisioning after a PARTNER_PROVIDER attachment was created that references
+        # it.
+        # - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting
+        # for a customer to activate it.
+        # - DEFUNCT: The attachment was deleted externally and is no longer functional.
+        # This could be because the associated Interconnect was removed, or because the
+        # other side of a Partner attachment was deleted.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # 
+        # The type of interconnect attachment this is, which can take one of the
+        # following values:
+        # - DEDICATED: an attachment to a Dedicated Interconnect.
+        # - PARTNER: an attachment to a Partner Interconnect, created by the customer.
+        # - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the
+        # partner.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10738,7 +10815,7 @@ module Google
         attr_accessor :partner_name
       
         # URL of the Partner?s portal for this Attachment. Partners may customise this
-        # to be a deep-link to the specific resource on the Partner portal. This value
+        # to be a deep link to the specific resource on the Partner portal. This value
         # may be validated to match approved Partner values.
         # Corresponds to the JSON property `portalUrl`
         # @return [String]
@@ -10976,7 +11053,10 @@ module Google
         # @return [String]
         attr_accessor :neighbor_system_id
       
-        # 
+        # The state of a LACP link, which can take one of the following values:
+        # - ACTIVE: The link is configured and active within the bundle.
+        # - DETACHED: The link is not configured within the bundle. This means that the
+        # rest of the object should be empty.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -11222,7 +11302,13 @@ module Google
         # @return [String]
         attr_accessor :city
       
-        # [Output Only] Continent for this location.
+        # [Output Only] Continent for this location, which can take one of the following
+        # values:
+        # - AFRICA
+        # - ASIA_PAC
+        # - EUROPE
+        # - NORTH_AMERICA
+        # - SOUTH_AMERICA
         # Corresponds to the JSON property `continent`
         # @return [String]
         attr_accessor :continent
@@ -11283,9 +11369,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of this InterconnectLocation. If the status is
-        # AVAILABLE, new Interconnects may be provisioned in this InterconnectLocation.
-        # Otherwise, no new Interconnects may be provisioned.
+        # [Output Only] The status of this InterconnectLocation, which can take one of
+        # the following values:
+        # - CLOSED: The InterconnectLocation is closed and is unavailable for
+        # provisioning new Interconnects.
+        # - AVAILABLE: The InterconnectLocation is available for provisioning new
+        # Interconnects.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -11485,8 +11574,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :end_time
       
-        # Form this outage is expected to take. Note that the "IT_" versions of this
-        # enum have been deprecated in favor of the unprefixed values.
+        # Form this outage is expected to take, which can take one of the following
+        # values:
+        # - OUTAGE: The Interconnect may be completely out of service for some or all of
+        # the specified window.
+        # - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should
+        # remain up, but with reduced bandwidth. Note that the versions of this enum
+        # prefixed with "IT_" have been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `issueType`
         # @return [String]
         attr_accessor :issue_type
@@ -11496,8 +11590,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The party that generated this notification. Note that "NSRC_GOOGLE" has been
-        # deprecated in favor of "GOOGLE"
+        # The party that generated this notification, which can take the following value:
+        # 
+        # - GOOGLE: this notification as generated by Google. Note that the value of
+        # NSRC_GOOGLE has been deprecated in favor of GOOGLE.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -11507,8 +11603,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_time
       
-        # State of this notification. Note that the "NS_" versions of this enum have
-        # been deprecated in favor of the unprefixed values.
+        # State of this notification, which can take one of the following values:
+        # - ACTIVE: This outage notification is active. The event could be in the past,
+        # present, or future. See start_time and end_time for scheduling.
+        # - CANCELLED: The outage associated with this notification was cancelled before
+        # the outage was due to start. Note that the versions of this enum prefixed with
+        # "NS_" have been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -11983,10 +12083,6 @@ module Google
       
         # Whether Gin logging should happen in a fail-closed manner at the caller. This
         # is relevant only in the LocalIAM implementation, for now.
-        # NOTE: Logging to Gin in a fail-closed manner is currently unsupported while
-        # work is being done to satisfy the requirements of go/345. Currently, setting
-        # LOG_FAIL_CLOSED mode will have no effect, but still exists because there is
-        # active work being done to support it (b/115874152).
         # Corresponds to the JSON property `logMode`
         # @return [String]
         attr_accessor :log_mode
@@ -17908,9 +18004,9 @@ module Google
         # @return [Google::Apis::ComputeV1::RouterBgp]
         attr_accessor :bgp
       
-        # BGP information that needs to be configured into the routing stack to
-        # establish the BGP peering. It must specify peer ASN and either interface name,
-        # IP, or peer IP. Please refer to RFC4273.
+        # BGP information that must be configured into the routing stack to establish
+        # BGP peering. This information must specify the peer ASN and either the
+        # interface name, IP address, or peer IP address. Please refer to RFC4273.
         # Corresponds to the JSON property `bgpPeers`
         # @return [Array<Google::Apis::ComputeV1::RouterBgpPeer>]
         attr_accessor :bgp_peers
@@ -17932,8 +18028,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Router interfaces. Each interface requires either one linked resource (e.g.
-        # linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or both.
+        # Router interfaces. Each interface requires either one linked resource, (for
+        # example, linkedVpnTunnel), or IP address and IP address range (for example,
+        # ipRange), or both.
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeV1::RouterInterface>]
         attr_accessor :interfaces
@@ -17953,7 +18050,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A list of Nat services created in this router.
+        # A list of NAT services created in this router.
         # Corresponds to the JSON property `nats`
         # @return [Array<Google::Apis::ComputeV1::RouterNat>]
         attr_accessor :nats
@@ -18142,7 +18239,8 @@ module Google
       class RouterBgp
         include Google::Apis::Core::Hashable
       
-        # User-specified flag to indicate which mode to use for advertisement.
+        # User-specified flag to indicate which mode to use for advertisement. The
+        # options are DEFAULT or CUSTOM.
         # Corresponds to the JSON property `advertiseMode`
         # @return [String]
         attr_accessor :advertise_mode
@@ -18192,27 +18290,31 @@ module Google
         # @return [String]
         attr_accessor :advertise_mode
       
-        # User-specified list of prefix groups to advertise in custom mode. This field
-        # can only be populated if advertise_mode is CUSTOM and overrides the list
-        # defined for the router (in Bgp message). These groups will be advertised in
-        # addition to any specified prefixes. Leave this field blank to advertise no
-        # custom groups.
+        # User-specified list of prefix groups to advertise in custom mode, which can
+        # take one of the following options:
+        # - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
+        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
+        # - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network.
+        # Note that this field can only be populated if advertise_mode is CUSTOM and
+        # overrides the list defined for the router (in the "bgp" message). These groups
+        # are advertised in addition to any specified prefixes. Leave this field blank
+        # to advertise no custom groups.
         # Corresponds to the JSON property `advertisedGroups`
         # @return [Array<String>]
         attr_accessor :advertised_groups
       
         # User-specified list of individual IP ranges to advertise in custom mode. This
         # field can only be populated if advertise_mode is CUSTOM and overrides the list
-        # defined for the router (in Bgp message). These IP ranges will be advertised in
-        # addition to any specified groups. Leave this field blank to advertise no
+        # defined for the router (in the "bgp" message). These IP ranges are advertised
+        # in addition to any specified groups. Leave this field blank to advertise no
         # custom IP ranges.
         # Corresponds to the JSON property `advertisedIpRanges`
         # @return [Array<Google::Apis::ComputeV1::RouterAdvertisedIpRange>]
         attr_accessor :advertised_ip_ranges
       
-        # The priority of routes advertised to this BGP peer. In the case where there is
-        # more than one matching route of maximum length, the routes with lowest
-        # priority value win.
+        # The priority of routes advertised to this BGP peer. Where there is more than
+        # one matching route of maximum length, the routes with the lowest priority
+        # value win.
         # Corresponds to the JSON property `advertisedRoutePriority`
         # @return [Fixnum]
         attr_accessor :advertised_route_priority
@@ -18229,11 +18331,12 @@ module Google
         attr_accessor :ip_address
       
         # [Output Only] The resource that configures and manages this BGP peer.
-        # MANAGED_BY_USER is the default value and can be managed by you or other users;
-        # MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud
+        # - MANAGED_BY_USER is the default value and can be managed by you or other
+        # users
+        # - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud
         # Interconnect, specifically by an InterconnectAttachment of type PARTNER.
-        # Google will automatically create, update, and delete this type of BGP peer
-        # when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        # Google automatically creates, updates, and deletes this type of BGP peer when
+        # the PARTNER InterconnectAttachment is created, updated, or deleted.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -18244,13 +18347,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Peer BGP Autonomous System Number (ASN). For VPN use case, this value can be
-        # different for every tunnel.
+        # Peer BGP Autonomous System Number (ASN). Each BGP interface may use a
+        # different value.
         # Corresponds to the JSON property `peerAsn`
         # @return [Fixnum]
         attr_accessor :peer_asn
       
-        # IP address of the BGP interface outside Google cloud. Only IPv4 is supported.
+        # IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is
+        # supported.
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
@@ -18279,32 +18383,32 @@ module Google
         include Google::Apis::Core::Hashable
       
         # IP address and range of the interface. The IP range must be in the RFC3927
-        # link-local IP space. The value must be a CIDR-formatted string, for example:
-        # 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP
-        # address of the interface.
+        # link-local IP address space. The value must be a CIDR-formatted string, for
+        # example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents
+        # the IP address of the interface.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range
       
-        # URI of the linked interconnect attachment. It must be in the same region as
-        # the router. Each interface can have at most one linked resource and it could
-        # either be a VPN Tunnel or an interconnect attachment.
+        # URI of the linked Interconnect attachment. It must be in the same region as
+        # the router. Each interface can have one linked resource, which can be either
+        # be a VPN tunnel or an Interconnect attachment.
         # Corresponds to the JSON property `linkedInterconnectAttachment`
         # @return [String]
         attr_accessor :linked_interconnect_attachment
       
-        # URI of the linked VPN tunnel. It must be in the same region as the router.
-        # Each interface can have at most one linked resource and it could either be a
-        # VPN Tunnel or an interconnect attachment.
+        # URI of the linked VPN tunnel, which must be in the same region as the router.
+        # Each interface can have one linked resource, which can be either a VPN tunnel
+        # or an Interconnect attachment.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
         # [Output Only] The resource that configures and manages this interface.
-        # MANAGED_BY_USER is the default value and can be managed by you or other users;
-        # MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud
-        # Interconnect, specifically by an InterconnectAttachment of type PARTNER.
-        # Google will automatically create, update, and delete this type of interface
+        # - MANAGED_BY_USER is the default value and can be managed directly by users.
+        # - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by
+        # Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER.
+        # Google automatically creates, updates, and deletes this type of interface
         # when the PARTNER InterconnectAttachment is created, updated, or deleted.
         # Corresponds to the JSON property `managementType`
         # @return [String]
@@ -18460,10 +18564,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :icmp_idle_timeout_sec
       
+        # Configuration of logging on a NAT.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeV1::RouterNatLogConfig]
+        attr_accessor :log_config
+      
         # Minimum number of ports allocated to a VM from this NAT config. If not set, a
-        # default number of ports is allocated to a VM. This gets rounded up to the
-        # nearest power of 2. Eg. if the value of this field is 50, at least 64 ports
-        # will be allocated to a VM.
+        # default number of ports is allocated to a VM. This is rounded up to the
+        # nearest power of 2. For example, if the value of this field is 50, at least 64
+        # ports are allocated to a VM.
         # Corresponds to the JSON property `minPortsPerVm`
         # @return [Fixnum]
         attr_accessor :min_ports_per_vm
@@ -18474,21 +18583,31 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be
-        # empty.
+        # Specify the NatIpAllocateOption, which can take one of the following values:
+        # - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there
+        # are not enough specified Nat IPs, the Nat service fails for new VMs.
+        # - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't
+        # specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
         # Corresponds to the JSON property `natIpAllocateOption`
         # @return [String]
         attr_accessor :nat_ip_allocate_option
       
-        # A list of URLs of the IP resources used for this Nat service. These IPs must
-        # be valid static external IP addresses assigned to the project. max_length is
-        # subject to change post alpha.
+        # A list of URLs of the IP resources used for this Nat service. These IP
+        # addresses must be valid static external IP addresses assigned to the project.
         # Corresponds to the JSON property `natIps`
         # @return [Array<String>]
         attr_accessor :nat_ips
       
-        # Specify the Nat option. If this field contains ALL_SUBNETWORKS_ALL_IP_RANGES
-        # or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        # Specify the Nat option, which can take one of the following values:
+        # - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are
+        # allowed to Nat.
+        # - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every
+        # Subnetwork are allowed to Nat.
+        # - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in
+        # the field subnetwork below) The default is
+        # SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field
+        # contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        # ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
         # Router.Nat section in any Router for this network in this region.
         # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
         # @return [String]
@@ -18525,6 +18644,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
@@ -18537,11 +18657,38 @@ module Google
         end
       end
       
+      # Configuration of logging on a NAT.
+      class RouterNatLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not to export logs. This is false by default.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Specifies the desired filtering of logs on this NAT. If unspecified, logs are
+        # exported for all connections handled by this NAT.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
       # Defines the IP ranges that want to use NAT for a subnetwork.
       class RouterNatSubnetworkToNat
         include Google::Apis::Core::Hashable
       
-        # URL for the subnetwork resource to use NAT.
+        # URL for the subnetwork resource that will use NAT.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18553,7 +18700,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :secondary_ip_range_names
       
-        # Specify the options for NAT ranges in the Subnetwork. All usages of single
+        # Specify the options for NAT ranges in the Subnetwork. All options of a single
         # value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option
         # with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"]
         # Default: [ALL_IP_RANGES]

@@ -2405,6 +2405,7 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::HashProp]
         attr_accessor :content_hash
       
+        # Deprecated, do not use. Use uri instead.
         # The name of the resource. For example, the name of a Docker image -
         # "Debian".
         # Corresponds to the JSON property `name`

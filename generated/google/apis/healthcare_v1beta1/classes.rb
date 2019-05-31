@@ -1688,7 +1688,7 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # The datetime when the message was created. Set by the server.
+        # Output only. The datetime when the message was created. Set by the server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time

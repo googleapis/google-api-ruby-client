@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdTechnologyProviders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDealAssociationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -672,6 +678,14 @@ module Google
         end
       end
       
+      class AdTechnologyProviders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_provider_ids, as: 'detectedProviderIds'
+          property :has_unidentified_provider, as: 'hasUnidentifiedProvider'
+        end
+      end
+      
       class AddDealAssociationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -820,6 +834,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :ad_choices_destination_url, as: 'adChoicesDestinationUrl'
+          property :ad_technology_providers, as: 'adTechnologyProviders', class: Google::Apis::Adexchangebuyer2V2beta1::AdTechnologyProviders, decorator: Google::Apis::Adexchangebuyer2V2beta1::AdTechnologyProviders::Representation
+      
           property :advertiser_name, as: 'advertiserName'
           property :agency_id, :numeric_string => true, as: 'agencyId'
           property :api_update_time, as: 'apiUpdateTime'

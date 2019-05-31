@@ -7319,6 +7319,7 @@ module Google
       
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
       
+          property :service, as: 'service'
           property :url_redirect, as: 'urlRedirect', class: Google::Apis::ComputeAlpha::HttpRedirectAction, decorator: Google::Apis::ComputeAlpha::HttpRedirectAction::Representation
       
         end
@@ -9324,6 +9325,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancer_vm_encryption, as: 'loadBalancerVmEncryption'
+          property :mtu, as: 'mtu'
           property :multicast_mode, as: 'multicastMode'
           property :name, as: 'name'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
@@ -9607,6 +9609,7 @@ module Google
           property :import_subnet_routes_with_public_ip, as: 'importSubnetRoutesWithPublicIp'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :peer_mtu, as: 'peerMtu'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
         end
@@ -11544,6 +11547,7 @@ module Google
           property :mode, as: 'mode'
           property :multiplier, as: 'multiplier'
           property :packet_mode, as: 'packetMode'
+          property :session_initialization_mode, as: 'sessionInitializationMode'
           property :slow_timer_interval, as: 'slowTimerInterval'
         end
       end
@@ -11758,13 +11762,10 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :index, as: 'index'
-          property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams::Representation
-      
           property :interface, as: 'interface'
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
-          property :saved_state, as: 'savedState'
           property :source, as: 'source'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'

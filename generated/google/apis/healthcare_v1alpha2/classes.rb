@@ -1176,8 +1176,8 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # Configuration for the FHIR BigQuery and GCS schema. Determines how the server
-        # generates the schema.
+        # Configuration for the FHIR BigQuery and Cloud Storage schema. Determines
+        # how the server generates the schema.
         # Corresponds to the JSON property `schemaConfig`
         # @return [Google::Apis::HealthcareV1alpha2::SchemaConfig]
         attr_accessor :schema_config
@@ -2001,7 +2001,7 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # The datetime when the message was created. Set by the server.
+        # Output only. The datetime when the message was created. Set by the server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2273,7 +2273,8 @@ module Google
         alias_method :allow_null_header?, :allow_null_header
       
         # Byte(s) to be used as the segment terminator. If this is unset, '\r' will
-        # be used as segment terminator.
+        # be used as the segment terminator, matching the HL7 version 2
+        # specification.
         # Corresponds to the JSON property `segmentTerminator`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2477,8 +2478,8 @@ module Google
         end
       end
       
-      # Configuration for the FHIR BigQuery and GCS schema. Determines how the server
-      # generates the schema.
+      # Configuration for the FHIR BigQuery and Cloud Storage schema. Determines
+      # how the server generates the schema.
       class SchemaConfig
         include Google::Apis::Core::Hashable
       
