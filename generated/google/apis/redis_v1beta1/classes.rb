@@ -41,6 +41,64 @@ module Google
         end
       end
       
+      # Request for Export.
+      class ExportInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The output content
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RedisV1beta1::OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # The GCS location for the output content
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data destination URI (e.g.
+        # 'gs://my_bucket/my_object'). Existing files will be overwritten.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The GCS location for the input content
+      class GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Source data URI. (e.g. 'gs://my_bucket/my_object').
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudCommonOperationMetadata
         include Google::Apis::Core::Hashable
@@ -139,6 +197,44 @@ module Google
         end
       end
       
+      # Request for Import.
+      class ImportInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The input content
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::RedisV1beta1::InputConfig]
+        attr_accessor :input_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+        end
+      end
+      
+      # The input content
+      class InputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The GCS location for the input content
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::RedisV1beta1::GcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
       # A Google Cloud Redis instance.
       class Instance
         include Google::Apis::Core::Hashable
@@ -214,6 +310,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Cloud IAM identity used by import / export operations to
+        # transfer data to/from Cloud Storage. Format is
+        # "serviceAccount:<service_account_email>". The value may change over time
+        # for a given instance so should be checked before each import/export
+        # operation.
+        # Corresponds to the JSON property `persistenceIamIdentity`
+        # @return [String]
+        attr_accessor :persistence_iam_identity
+      
         # Output only. The port number of the exposed Redis endpoint.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
@@ -283,6 +388,7 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
+          @persistence_iam_identity = args[:persistence_iam_identity] if args.key?(:persistence_iam_identity)
           @port = args[:port] if args.key?(:port)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @redis_version = args[:redis_version] if args.key?(:redis_version)
@@ -534,6 +640,25 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The output content
+      class OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The GCS location for the output content
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::RedisV1beta1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
       

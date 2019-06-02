@@ -655,7 +655,10 @@ module Google
         attr_accessor :operation
       
         # The log entry payload, represented as a protocol buffer. Some Google Cloud
-        # Platform services use this field for their log entry payloads.
+        # Platform services use this field for their log entry payloads.The following
+        # protocol buffer types are supported; user-defined types are not supported:"
+        # type.googleapis.com/google.cloud.audit.AuditLog"  "type.googleapis.com/google.
+        # appengine.logging.v1.RequestLog"
         # Corresponds to the JSON property `protoPayload`
         # @return [Hash<String,Object>]
         attr_accessor :proto_payload

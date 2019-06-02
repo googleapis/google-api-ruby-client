@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -47,6 +65,18 @@ module Google
       end
       
       class GoogleCloudRedisV1ZoneMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,10 +136,32 @@ module Google
         end
       end
       
+      class ExportInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::RedisV1::OutputConfig, decorator: Google::Apis::RedisV1::OutputConfig::Representation
+      
+        end
+      end
+      
       class FailoverInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_protection_mode, as: 'dataProtectionMode'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -134,6 +192,22 @@ module Google
         end
       end
       
+      class ImportInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_config, as: 'inputConfig', class: Google::Apis::RedisV1::InputConfig, decorator: Google::Apis::RedisV1::InputConfig::Representation
+      
+        end
+      end
+      
+      class InputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1::GcsSource, decorator: Google::Apis::RedisV1::GcsSource::Representation
+      
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -147,6 +221,7 @@ module Google
           property :location_id, as: 'locationId'
           property :memory_size_gb, as: 'memorySizeGb'
           property :name, as: 'name'
+          property :persistence_iam_identity, as: 'persistenceIamIdentity'
           property :port, as: 'port'
           hash :redis_configs, as: 'redisConfigs'
           property :redis_version, as: 'redisVersion'
@@ -205,6 +280,14 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::RedisV1::GcsDestination, decorator: Google::Apis::RedisV1::GcsDestination::Representation
+      
         end
       end
       

@@ -201,6 +201,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Export Redis instance data into a Redis RDB format file in GCS.
+        # Redis will continue serving during this operation.
+        # The returned operation is automatically deleted after a few hours, so
+        # there is no need to call DeleteOperation.
+        # @param [String] name
+        #   Required. Redis instance resource name using the form:
+        #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
+        #   where `location_id` refers to a GCP region.
+        # @param [Google::Apis::RedisV1beta1::ExportInstanceRequest] export_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_instance(name, export_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:export', options)
+          command.request_representation = Google::Apis::RedisV1beta1::ExportInstanceRequest::Representation
+          command.request_object = export_instance_request_object
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the details of a specific Redis instance.
         # @param [String] name
         #   Required. Redis instance resource name using the form:
@@ -227,6 +265,46 @@ module Google
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::RedisV1beta1::Instance::Representation
           command.response_class = Google::Apis::RedisV1beta1::Instance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Import a Redis RDB snapshot file from GCS into a Redis instance.
+        # Redis may stop serving during this operation. Instance state will be
+        # IMPORTING for entire operation. When complete, the instance will contain
+        # only data from the imported file.
+        # The returned operation is automatically deleted after a few hours, so
+        # there is no need to call DeleteOperation.
+        # @param [String] name
+        #   Required. Redis instance resource name using the form:
+        #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
+        #   where `location_id` refers to a GCP region.
+        # @param [Google::Apis::RedisV1beta1::ImportInstanceRequest] import_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_instance(name, import_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:import', options)
+          command.request_representation = Google::Apis::RedisV1beta1::ImportInstanceRequest::Representation
+          command.request_object = import_instance_request_object
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -1255,7 +1255,7 @@ module Google
         #   filter must specify a single metric type, and can additionally specify metric
         #   labels and other information. For example:
         #   metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-        #   metric.label.instance_name = "my-instance-name"
+        #   metric.labels.instance_name = "my-instance-name"
         # @param [String] interval_end_time
         #   Required. The end of the time interval.
         # @param [String] interval_start_time
