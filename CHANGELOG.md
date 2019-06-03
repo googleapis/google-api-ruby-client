@@ -1,3 +1,47 @@
+# 0.30.1
+* Backwards compatible changes:
+  * Updated `accesscontextmanager_v1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `cloudidentity_v1`
+  * Updated `cloudidentity_v1beta1`
+  * Updated `cloudsearch_v1`
+  * Updated `commentanalyzer_v1alpha1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1beta1`
+  * Updated `containeranalysis_v1alpha1`
+  * Updated `containeranalysis_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2_1`
+  * Updated `dialogflow_v2`
+  * Updated `dlp_v2`
+  * Updated `docs_v1`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `healthcare_v1alpha2`
+  * Updated `healthcare_v1beta1`
+  * Updated `jobs_v2`
+  * Updated `jobs_v3`
+  * Updated `logging_v2`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicenetworking_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `speech_v1p1beta1`
+  * Updated `streetviewpublish_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+
 # 0.30.0
 * Breaking changes:
   * Deleted `youtube_analytics_v1beta1`
