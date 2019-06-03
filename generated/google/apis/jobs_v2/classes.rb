@@ -476,7 +476,7 @@ module Google
       
         # Optional.
         # Frequency of the specified amount.
-        # Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+        # Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -1237,7 +1237,7 @@ module Google
       
         # Optional.
         # Frequency of the specified amount.
-        # Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+        # Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
