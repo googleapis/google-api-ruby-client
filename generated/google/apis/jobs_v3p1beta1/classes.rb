@@ -511,14 +511,14 @@ module Google
       
         # Optional.
         # Compensation type.
-        # Default is CompensationUnit.OTHER_COMPENSATION_TYPE.
+        # Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # Optional.
         # Frequency of the specified amount.
-        # Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+        # Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -544,7 +544,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional.
-        # Whether to include jobs whose compensation range is unspecified.
+        # If set to true, jobs with unspecified compensation range fields are
+        # included.
         # Corresponds to the JSON property `includeJobsWithUnspecifiedCompensationRange`
         # @return [Boolean]
         attr_accessor :include_jobs_with_unspecified_compensation_range
