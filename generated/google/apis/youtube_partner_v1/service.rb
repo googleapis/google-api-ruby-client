@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module YoutubePartnerV1
-      # Youtube Content ID API
+      # YouTube Content ID API
       #
       # API for YouTube partners. To use this API a YouTube CMS account is required.
       #

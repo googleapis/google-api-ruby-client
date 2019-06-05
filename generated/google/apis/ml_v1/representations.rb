@@ -551,6 +551,7 @@ module Google
           property :master_config, as: 'masterConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
           property :master_type, as: 'masterType'
+          property :max_running_time, as: 'maxRunningTime'
           collection :package_uris, as: 'packageUris'
           property :parameter_server_config, as: 'parameterServerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
@@ -575,6 +576,7 @@ module Google
       
           property :completed_trial_count, :numeric_string => true, as: 'completedTrialCount'
           property :consumed_ml_units, as: 'consumedMLUnits'
+          property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'
           property :is_built_in_algorithm_job, as: 'isBuiltInAlgorithmJob'
           property :is_hyperparameter_tuning_job, as: 'isHyperparameterTuningJob'
           collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput::Representation

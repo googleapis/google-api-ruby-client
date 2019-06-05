@@ -18,14 +18,14 @@ require 'google/apis/youtube_partner_v1/representations.rb'
 
 module Google
   module Apis
-    # Youtube Content ID API
+    # YouTube Content ID API
     #
     # API for YouTube partners. To use this API a YouTube CMS account is required.
     #
     # @see https://developers.google.com/youtube/partner/
     module YoutubePartnerV1
       VERSION = 'V1'
-      REVISION = '20190502'
+      REVISION = '20190603'
 
       # View and manage your assets and associated content on YouTube
       AUTH_YOUTUBEPARTNER = 'https://www.googleapis.com/auth/youtubepartner'

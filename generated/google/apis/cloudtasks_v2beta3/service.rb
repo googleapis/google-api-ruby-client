@@ -608,8 +608,7 @@ module Google
         
         # Creates a task and adds it to a queue.
         # Tasks cannot be updated after creation; there is no UpdateTask command.
-        # * For App Engine queues, the maximum task size is
-        # 100KB.
+        # * The maximum task size is 100KB.
         # @param [String] parent
         #   Required.
         #   The queue name. For example:
