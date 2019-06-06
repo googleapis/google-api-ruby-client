@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidFcmOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidNotification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class ApnsFcmOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FcmOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -81,11 +93,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collapse_key, as: 'collapseKey'
           hash :data, as: 'data'
+          property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::AndroidFcmOptions, decorator: Google::Apis::FcmV1::AndroidFcmOptions::Representation
+      
           property :notification, as: 'notification', class: Google::Apis::FcmV1::AndroidNotification, decorator: Google::Apis::FcmV1::AndroidNotification::Representation
       
           property :priority, as: 'priority'
           property :restricted_package_name, as: 'restrictedPackageName'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class AndroidFcmOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_label, as: 'analyticsLabel'
         end
       end
       
@@ -120,6 +141,14 @@ module Google
       class ApnsFcmOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_label, as: 'analyticsLabel'
+        end
+      end
+      
+      class FcmOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_label, as: 'analyticsLabel'
         end
       end
       
@@ -132,6 +161,8 @@ module Google
       
           property :condition, as: 'condition'
           hash :data, as: 'data'
+          property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::FcmOptions, decorator: Google::Apis::FcmV1::FcmOptions::Representation
+      
           property :name, as: 'name'
           property :notification, as: 'notification', class: Google::Apis::FcmV1::Notification, decorator: Google::Apis::FcmV1::Notification::Representation
       

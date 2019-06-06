@@ -311,6 +311,16 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::BinaryConfusionMatrix>]
         attr_accessor :binary_confusion_matrix_list
       
+        # Label representing the negative class.
+        # Corresponds to the JSON property `negativeLabel`
+        # @return [String]
+        attr_accessor :negative_label
+      
+        # Label representing the positive class.
+        # Corresponds to the JSON property `positiveLabel`
+        # @return [String]
+        attr_accessor :positive_label
+      
         def initialize(**args)
            update!(**args)
         end
@@ -319,6 +329,8 @@ module Google
         def update!(**args)
           @aggregate_classification_metrics = args[:aggregate_classification_metrics] if args.key?(:aggregate_classification_metrics)
           @binary_confusion_matrix_list = args[:binary_confusion_matrix_list] if args.key?(:binary_confusion_matrix_list)
+          @negative_label = args[:negative_label] if args.key?(:negative_label)
+          @positive_label = args[:positive_label] if args.key?(:positive_label)
         end
       end
       
@@ -3160,7 +3172,6 @@ module Google
         attr_accessor :creation_time
       
         # [Optional] A user-friendly description of this model.
-        # @mutable bigquery.models.patch
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3175,7 +3186,6 @@ module Google
         # will be deleted and their storage reclaimed.  The defaultTableExpirationMs
         # property of the encapsulating dataset can be used to set a default
         # expirationTime on newly created models.
-        # @mutable bigquery.models.patch
         # Corresponds to the JSON property `expirationTime`
         # @return [Fixnum]
         attr_accessor :expiration_time
@@ -3186,7 +3196,6 @@ module Google
         attr_accessor :feature_columns
       
         # [Optional] A descriptive name for this model.
-        # @mutable bigquery.models.patch
         # Corresponds to the JSON property `friendlyName`
         # @return [String]
         attr_accessor :friendly_name
@@ -3203,7 +3212,6 @@ module Google
         # characters, underscores and dashes. International characters are allowed.
         # Label values are optional. Label keys must start with a letter and each
         # label in the list must have a different key.
-        # @mutable bigquery.models.patch
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

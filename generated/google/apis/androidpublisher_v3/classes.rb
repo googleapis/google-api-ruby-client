@@ -1482,6 +1482,13 @@ module Google
       class SubscriptionPurchase
         include Google::Apis::Core::Hashable
       
+        # The acknowledgement state of the subscription product. Possible values are:
+        # - Yet to be acknowledged
+        # - Acknowledged
+        # Corresponds to the JSON property `acknowledgementState`
+        # @return [Fixnum]
+        attr_accessor :acknowledgement_state
+      
         # Whether the subscription will automatically be renewed when it reaches its
         # current expiry time.
         # Corresponds to the JSON property `autoRenewing`
@@ -1642,6 +1649,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
           @auto_renewing = args[:auto_renewing] if args.key?(:auto_renewing)
           @auto_resume_time_millis = args[:auto_resume_time_millis] if args.key?(:auto_resume_time_millis)
           @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)

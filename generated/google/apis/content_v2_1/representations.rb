@@ -3854,6 +3854,8 @@ module Google
           property :brand, as: 'brand'
           property :condition, as: 'condition'
           property :content_language, as: 'contentLanguage'
+          collection :fees, as: 'fees', class: Google::Apis::ContentV2_1::OrderLineItemProductFee, decorator: Google::Apis::ContentV2_1::OrderLineItemProductFee::Representation
+      
           property :gtin, as: 'gtin'
           property :image_link, as: 'imageLink'
           property :item_group_id, as: 'itemGroupId'

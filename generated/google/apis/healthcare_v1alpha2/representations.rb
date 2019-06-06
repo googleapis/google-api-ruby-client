@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TagFilterList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -764,6 +770,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1alpha2::NotificationConfig, decorator: Google::Apis::HealthcareV1alpha2::NotificationConfig::Representation
+      
+          collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1alpha2::StreamConfig, decorator: Google::Apis::HealthcareV1alpha2::StreamConfig::Representation
       
         end
       end
@@ -1215,6 +1223,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StreamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1alpha2::GoogleCloudHealthcareV1alpha2FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1alpha2::GoogleCloudHealthcareV1alpha2FhirBigQueryDestination::Representation
+      
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       

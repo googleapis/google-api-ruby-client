@@ -808,6 +808,7 @@ module Google
       class SubscriptionPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement_state, as: 'acknowledgementState'
           property :auto_renewing, as: 'autoRenewing'
           property :auto_resume_time_millis, :numeric_string => true, as: 'autoResumeTimeMillis'
           property :cancel_reason, as: 'cancelReason'

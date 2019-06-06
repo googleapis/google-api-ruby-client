@@ -402,6 +402,31 @@ module Google
         end
       end
       
+      # List of states set by the app.
+      class AppState
+        include Google::Apis::Core::Hashable
+      
+        # List of keyed app states. This field will always be present.
+        # Corresponds to the JSON property `keyedAppState`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::KeyedAppState>]
+        attr_accessor :keyed_app_state
+      
+        # The package name of the app. This field will always be present.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyed_app_state = args[:keyed_app_state] if args.key?(:keyed_app_state)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # An event generated when a new version of an app is uploaded to Google Play.
       # Notifications are sent for new public versions only: alpha, beta, or canary
       # versions do not generate this event. To fetch up-to-date version history for
@@ -675,6 +700,12 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::Policy]
         attr_accessor :policy
       
+        # Device report updated with the latest app states for managed apps on the
+        # device.
+        # Corresponds to the JSON property `report`
+        # @return [Google::Apis::AndroidenterpriseV1::DeviceReport]
+        attr_accessor :report
+      
         def initialize(**args)
            update!(**args)
         end
@@ -685,6 +716,67 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @management_type = args[:management_type] if args.key?(:management_type)
           @policy = args[:policy] if args.key?(:policy)
+          @report = args[:report] if args.key?(:report)
+        end
+      end
+      
+      # Device report updated with the latest app states for managed apps on the
+      # device.
+      class DeviceReport
+        include Google::Apis::Core::Hashable
+      
+        # List of app states set by managed apps on the device. App states are defined
+        # by the app's developers. This field will always be present.
+        # Corresponds to the JSON property `appState`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::AppState>]
+        attr_accessor :app_state
+      
+        # The timestamp of the last report update in milliseconds since epoch. This
+        # field will always be present.
+        # Corresponds to the JSON property `lastUpdatedTimestampMillis`
+        # @return [Fixnum]
+        attr_accessor :last_updated_timestamp_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_state = args[:app_state] if args.key?(:app_state)
+          @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)
+        end
+      end
+      
+      # An event generated when an updated device report is available.
+      class DeviceReportUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # The Android ID of the device. This field will always be present.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Device report updated with the latest app states for managed apps on the
+        # device.
+        # Corresponds to the JSON property `report`
+        # @return [Google::Apis::AndroidenterpriseV1::DeviceReport]
+        attr_accessor :report
+      
+        # The ID of the user. This field will always be present.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @report = args[:report] if args.key?(:report)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -1234,6 +1326,57 @@ module Google
         end
       end
       
+      # Represents a keyed app state containing a key, timestamp, severity level,
+      # optional description, and optional data.
+      class KeyedAppState
+        include Google::Apis::Core::Hashable
+      
+        # Additional field intended for machine-readable data. For example, a number or
+        # JSON object. To prevent XSS, we recommend removing any HTML from the data
+        # before displaying it.
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        # Key indicating what the app is providing a state for. The content of the key
+        # is set by the app's developer. To prevent XSS, we recommend removing any HTML
+        # from the key before displaying it. This field will always be present.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Free-form, human-readable message describing the app state. For example, an
+        # error message. To prevent XSS, we recommend removing any HTML from the message
+        # before displaying it.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Severity of the app state. This field will always be present.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Timestamp of when the app set the state in milliseconds since epoch. This
+        # field will always be present.
+        # Corresponds to the JSON property `stateTimestampMillis`
+        # @return [Fixnum]
+        attr_accessor :state_timestamp_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @key = args[:key] if args.key?(:key)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+          @state_timestamp_millis = args[:state_timestamp_millis] if args.key?(:state_timestamp_millis)
+        end
+      end
+      
       # A localized string with its locale.
       class LocalizedText
         include Google::Apis::Core::Hashable
@@ -1635,6 +1778,11 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AppUpdateEvent]
         attr_accessor :app_update_event
       
+        # An event generated when an updated device report is available.
+        # Corresponds to the JSON property `deviceReportUpdateEvent`
+        # @return [Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent]
+        attr_accessor :device_report_update_event
+      
         # The ID of the enterprise for which the notification is sent. This will always
         # be present.
         # Corresponds to the JSON property `enterpriseId`
@@ -1685,6 +1833,7 @@ module Google
         def update!(**args)
           @app_restrictions_schema_change_event = args[:app_restrictions_schema_change_event] if args.key?(:app_restrictions_schema_change_event)
           @app_update_event = args[:app_update_event] if args.key?(:app_update_event)
+          @device_report_update_event = args[:device_report_update_event] if args.key?(:device_report_update_event)
           @enterprise_id = args[:enterprise_id] if args.key?(:enterprise_id)
           @install_failure_event = args[:install_failure_event] if args.key?(:install_failure_event)
           @new_device_event = args[:new_device_event] if args.key?(:new_device_event)
@@ -1820,6 +1969,12 @@ module Google
         # @return [String]
         attr_accessor :auto_update_policy
       
+        # Whether the device reports app states to the EMM. The default value is "
+        # deviceReportDisabled".
+        # Corresponds to the JSON property `deviceReportPolicy`
+        # @return [String]
+        attr_accessor :device_report_policy
+      
         # Maintenance window for managed Google Play Accounts. This allows Play store to
         # update the apps on the foreground in the designated window.
         # Corresponds to the JSON property `maintenanceWindow`
@@ -1849,6 +2004,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_update_policy = args[:auto_update_policy] if args.key?(:auto_update_policy)
+          @device_report_policy = args[:device_report_policy] if args.key?(:device_report_policy)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @product_availability_policy = args[:product_availability_policy] if args.key?(:product_availability_policy)
           @product_policy = args[:product_policy] if args.key?(:product_policy)

@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/fcm_v1/service.rb'
-require 'google/apis/fcm_v1/classes.rb'
-require 'google/apis/fcm_v1/representations.rb'
+require 'google/apis/securitycenter_v1p1alpha1/service.rb'
+require 'google/apis/securitycenter_v1p1alpha1/classes.rb'
+require 'google/apis/securitycenter_v1p1alpha1/representations.rb'
 
 module Google
   module Apis
-    # Firebase Cloud Messaging API
+    # Cloud Security Command Center API
     #
-    # FCM send API that provides a cross-platform messaging solution to reliably
-    # deliver messages at no cost.
+    # Cloud Security Command Center API provides access to temporal views of assets
+    # and findings within an organization.
     #
-    # @see https://firebase.google.com/docs/cloud-messaging
-    module FcmV1
-      VERSION = 'V1'
-      REVISION = '20190605'
+    # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
+    module SecuritycenterV1p1alpha1
+      VERSION = 'V1p1alpha1'
+      REVISION = '20190603'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

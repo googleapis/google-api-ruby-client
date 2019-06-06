@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppUpdateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,18 @@ module Google
       end
       
       class Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceReportUpdateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +239,12 @@ module Google
       end
       
       class ListInstallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyedAppState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -615,6 +639,15 @@ module Google
         end
       end
       
+      class AppState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keyed_app_state, as: 'keyedAppState', class: Google::Apis::AndroidenterpriseV1::KeyedAppState, decorator: Google::Apis::AndroidenterpriseV1::KeyedAppState::Representation
+      
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class AppUpdateEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -687,6 +720,27 @@ module Google
           property :management_type, as: 'managementType'
           property :policy, as: 'policy', class: Google::Apis::AndroidenterpriseV1::Policy, decorator: Google::Apis::AndroidenterpriseV1::Policy::Representation
       
+          property :report, as: 'report', class: Google::Apis::AndroidenterpriseV1::DeviceReport, decorator: Google::Apis::AndroidenterpriseV1::DeviceReport::Representation
+      
+        end
+      end
+      
+      class DeviceReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_state, as: 'appState', class: Google::Apis::AndroidenterpriseV1::AppState, decorator: Google::Apis::AndroidenterpriseV1::AppState::Representation
+      
+          property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
+        end
+      end
+      
+      class DeviceReportUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :report, as: 'report', class: Google::Apis::AndroidenterpriseV1::DeviceReport, decorator: Google::Apis::AndroidenterpriseV1::DeviceReport::Representation
+      
+          property :user_id, as: 'userId'
         end
       end
       
@@ -823,6 +877,17 @@ module Google
         end
       end
       
+      class KeyedAppState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :key, as: 'key'
+          property :message, as: 'message'
+          property :severity, as: 'severity'
+          property :state_timestamp_millis, :numeric_string => true, as: 'stateTimestampMillis'
+        end
+      end
+      
       class LocalizedText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -939,6 +1004,8 @@ module Google
       
           property :app_update_event, as: 'appUpdateEvent', class: Google::Apis::AndroidenterpriseV1::AppUpdateEvent, decorator: Google::Apis::AndroidenterpriseV1::AppUpdateEvent::Representation
       
+          property :device_report_update_event, as: 'deviceReportUpdateEvent', class: Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent, decorator: Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent::Representation
+      
           property :enterprise_id, as: 'enterpriseId'
           property :install_failure_event, as: 'installFailureEvent', class: Google::Apis::AndroidenterpriseV1::InstallFailureEvent, decorator: Google::Apis::AndroidenterpriseV1::InstallFailureEvent::Representation
       
@@ -988,6 +1055,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_update_policy, as: 'autoUpdatePolicy'
+          property :device_report_policy, as: 'deviceReportPolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::AndroidenterpriseV1::MaintenanceWindow, decorator: Google::Apis::AndroidenterpriseV1::MaintenanceWindow::Representation
       
           property :product_availability_policy, as: 'productAvailabilityPolicy'

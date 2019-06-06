@@ -426,7 +426,7 @@ module Google
         end
       end
       
-      # A temporal SLO exclusion specification.
+      # SloExclusion represents an excusion in SLI calculation applies to all SLOs.
       class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
         include Google::Apis::Core::Hashable
       
@@ -454,12 +454,12 @@ module Google
         # @return [String]
         attr_accessor :reason
       
-        # Name of an SLI/SLO that this exclusion applies to. Can be left empty,
-        # signaling that the instance should be excluded from all SLI/SLOs defined
+        # Name of an SLI that this exclusion applies to. Can be left empty,
+        # signaling that the instance should be excluded from all SLIs defined
         # in the service SLO configuration.
-        # Corresponds to the JSON property `sloName`
+        # Corresponds to the JSON property `sliName`
         # @return [String]
-        attr_accessor :slo_name
+        attr_accessor :sli_name
       
         def initialize(**args)
            update!(**args)
@@ -470,7 +470,7 @@ module Google
           @exclusion_duration = args[:exclusion_duration] if args.key?(:exclusion_duration)
           @exclusion_start_time = args[:exclusion_start_time] if args.key?(:exclusion_start_time)
           @reason = args[:reason] if args.key?(:reason)
-          @slo_name = args[:slo_name] if args.key?(:slo_name)
+          @sli_name = args[:sli_name] if args.key?(:sli_name)
         end
       end
       

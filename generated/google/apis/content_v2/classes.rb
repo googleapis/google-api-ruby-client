@@ -10743,6 +10743,11 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
+        # Fees for the item. Optional.
+        # Corresponds to the JSON property `fees`
+        # @return [Array<Google::Apis::ContentV2::OrderLineItemProductFee>]
+        attr_accessor :fees
+      
         # Global Trade Item Number (GTIN) of the item. Optional.
         # Corresponds to the JSON property `gtin`
         # @return [String]
@@ -10799,6 +10804,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @condition = args[:condition] if args.key?(:condition)
           @content_language = args[:content_language] if args.key?(:content_language)
+          @fees = args[:fees] if args.key?(:fees)
           @gtin = args[:gtin] if args.key?(:gtin)
           @image_link = args[:image_link] if args.key?(:image_link)
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)

@@ -40,6 +40,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :data
       
+        # Options for features provided by the FCM SDK for Android.
+        # Corresponds to the JSON property `fcmOptions`
+        # @return [Google::Apis::FcmV1::AndroidFcmOptions]
+        attr_accessor :fcm_options
+      
         # Notification to send to android devices.
         # Corresponds to the JSON property `notification`
         # @return [Google::Apis::FcmV1::AndroidNotification]
@@ -81,10 +86,30 @@ module Google
         def update!(**args)
           @collapse_key = args[:collapse_key] if args.key?(:collapse_key)
           @data = args[:data] if args.key?(:data)
+          @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
           @notification = args[:notification] if args.key?(:notification)
           @priority = args[:priority] if args.key?(:priority)
           @restricted_package_name = args[:restricted_package_name] if args.key?(:restricted_package_name)
           @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Options for features provided by the FCM SDK for Android.
+      class AndroidFcmOptions
+        include Google::Apis::Core::Hashable
+      
+        # Label that the message's analytics data will be associated with.
+        # Corresponds to the JSON property `analyticsLabel`
+        # @return [String]
+        attr_accessor :analytics_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
         end
       end
       
@@ -243,12 +268,37 @@ module Google
       class ApnsFcmOptions
         include Google::Apis::Core::Hashable
       
+        # Label that the message's analytics data will be associated with.
+        # Corresponds to the JSON property `analyticsLabel`
+        # @return [String]
+        attr_accessor :analytics_label
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
+        end
+      end
+      
+      # Platform independent options for features provided by the FCM SDKs.
+      class FcmOptions
+        include Google::Apis::Core::Hashable
+      
+        # Label that the message's analytics data will be associated with.
+        # Corresponds to the JSON property `analyticsLabel`
+        # @return [String]
+        attr_accessor :analytics_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
         end
       end
       
@@ -277,6 +327,11 @@ module Google
         # Corresponds to the JSON property `data`
         # @return [Hash<String,String>]
         attr_accessor :data
+      
+        # Platform independent options for features provided by the FCM SDKs.
+        # Corresponds to the JSON property `fcmOptions`
+        # @return [Google::Apis::FcmV1::FcmOptions]
+        attr_accessor :fcm_options
       
         # Output Only. The identifier of the message sent, in the format of
         # `projects/*/messages/`message_id``.
@@ -315,6 +370,7 @@ module Google
           @apns = args[:apns] if args.key?(:apns)
           @condition = args[:condition] if args.key?(:condition)
           @data = args[:data] if args.key?(:data)
+          @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
           @name = args[:name] if args.key?(:name)
           @notification = args[:notification] if args.key?(:notification)
           @token = args[:token] if args.key?(:token)

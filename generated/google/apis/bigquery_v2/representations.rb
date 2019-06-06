@@ -660,6 +660,8 @@ module Google
       
           collection :binary_confusion_matrix_list, as: 'binaryConfusionMatrixList', class: Google::Apis::BigqueryV2::BinaryConfusionMatrix, decorator: Google::Apis::BigqueryV2::BinaryConfusionMatrix::Representation
       
+          property :negative_label, as: 'negativeLabel'
+          property :positive_label, as: 'positiveLabel'
         end
       end
       

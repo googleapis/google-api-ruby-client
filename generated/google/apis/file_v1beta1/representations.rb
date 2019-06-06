@@ -236,7 +236,7 @@ module Google
           property :exclusion_duration, as: 'exclusionDuration'
           property :exclusion_start_time, as: 'exclusionStartTime'
           property :reason, as: 'reason'
-          property :slo_name, as: 'sloName'
+          property :sli_name, as: 'sliName'
         end
       end
       
