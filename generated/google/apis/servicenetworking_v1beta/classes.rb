@@ -2093,6 +2093,7 @@ module Google
       # Different APIs can support different monitored resource types. APIs generally
       # provide a `list` method that returns the monitored resource descriptors used
       # by the API.
+      # Next ID: 10
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       

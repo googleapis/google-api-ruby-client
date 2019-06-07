@@ -987,12 +987,6 @@ module Google
         # @return [String]
         attr_accessor :expression
       
-        # The kind of item this is. For storage, this is always storage#expr. This field
-        # is ignored on input.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
         # An optional string indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
@@ -1013,7 +1007,6 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @expression = args[:expression] if args.key?(:expression)
-          @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
         end

@@ -529,7 +529,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :expression, as: 'expression'
-          property :kind, as: 'kind'
           property :location, as: 'location'
           property :title, as: 'title'
         end
