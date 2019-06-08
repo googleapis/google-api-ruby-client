@@ -1992,7 +1992,7 @@ module Google
         # Represents the query input. It can contain either:
         # 1.  An audio config which
         # instructs the speech recognizer how to process the speech audio.
-        # 2.  A conversational query in the form of text,.
+        # 2.  A conversational query in the form of text.
         # 3.  An event that specifies which intent to trigger.
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryInput]
@@ -2061,43 +2061,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `webhookStatus`
         # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
         attr_accessor :webhook_status
@@ -2444,6 +2411,15 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
+        # Optional. If `true`, Dialogflow returns SpeechWordInfo in
+        # StreamingRecognitionResult with information about the recognized speech
+        # words, e.g. start and end time offsets. If false or unspecified, Speech
+        # doesn't return any word-level information.
+        # Corresponds to the JSON property `enableWordInfo`
+        # @return [Boolean]
+        attr_accessor :enable_word_info
+        alias_method :enable_word_info?, :enable_word_info
+      
         # Required. The language of the supplied audio. Dialogflow does not do
         # translations. See [Language
         # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
@@ -2475,10 +2451,9 @@ module Google
         # @return [String]
         attr_accessor :model_variant
       
-        # Optional. The collection of phrase hints which are used to boost accuracy
-        # of speech recognition.
-        # Refer to
-        # [Cloud Speech API
+        # Optional. A list of strings containing words and phrases that the speech
+        # recognizer should recognize with higher likelihood.
+        # See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
         # hints)
         # for more details.
@@ -2502,6 +2477,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
@@ -3964,7 +3940,7 @@ module Google
       # Represents the query input. It can contain either:
       # 1.  An audio config which
       # instructs the speech recognizer how to process the speech audio.
-      # 2.  A conversational query in the form of text,.
+      # 2.  A conversational query in the form of text.
       # 3.  An event that specifies which intent to trigger.
       class GoogleCloudDialogflowV2beta1QueryInput
         include Google::Apis::Core::Hashable
@@ -4698,43 +4674,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -4801,43 +4744,10 @@ module Google
       
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error
-      # message, and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` that can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       

@@ -1347,6 +1347,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
