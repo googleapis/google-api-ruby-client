@@ -1491,9 +1491,10 @@ module Google
         # @return [DateTime]
         attr_accessor :time_to_retire
       
-        # The type of this IP address. A PRIMARY address is an address that can accept
-        # incoming connections. An OUTGOING address is the source address of connections
-        # originating from the instance, if supported.
+        # The type of this IP address. A PRIMARY address is a public address that can
+        # accept incoming connections. A PRIVATE address is a private address that can
+        # accept incoming connections. An OUTGOING address is the source address of
+        # connections originating from the instance, if supported.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1952,6 +1953,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The full project ID of the source instance.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1961,6 +1967,7 @@ module Google
           @backup_run_id = args[:backup_run_id] if args.key?(:backup_run_id)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @kind = args[:kind] if args.key?(:kind)
+          @project = args[:project] if args.key?(:project)
         end
       end
       

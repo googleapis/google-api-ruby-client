@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SharedDriveInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -409,6 +415,7 @@ module Google
       class DriveOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_shared_drives, as: 'includeSharedDrives'
           property :include_team_drives, as: 'includeTeamDrives'
           property :version_date, as: 'versionDate'
         end
@@ -507,6 +514,7 @@ module Google
       class HeldDriveQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_shared_drive_files, as: 'includeSharedDriveFiles'
           property :include_team_drive_files, as: 'includeTeamDriveFiles'
         end
       end
@@ -662,9 +670,12 @@ module Google
       
           property :mail_options, as: 'mailOptions', class: Google::Apis::VaultV1::MailOptions, decorator: Google::Apis::VaultV1::MailOptions::Representation
       
+          property :method_prop, as: 'method'
           property :org_unit_info, as: 'orgUnitInfo', class: Google::Apis::VaultV1::OrgUnitInfo, decorator: Google::Apis::VaultV1::OrgUnitInfo::Representation
       
           property :search_method, as: 'searchMethod'
+          property :shared_drive_info, as: 'sharedDriveInfo', class: Google::Apis::VaultV1::SharedDriveInfo, decorator: Google::Apis::VaultV1::SharedDriveInfo::Representation
+      
           property :start_time, as: 'startTime'
           property :team_drive_info, as: 'teamDriveInfo', class: Google::Apis::VaultV1::TeamDriveInfo, decorator: Google::Apis::VaultV1::TeamDriveInfo::Representation
       
@@ -718,6 +729,13 @@ module Google
           property :query, as: 'query', class: Google::Apis::VaultV1::Query, decorator: Google::Apis::VaultV1::Query::Representation
       
           property :saved_query_id, as: 'savedQueryId'
+        end
+      end
+      
+      class SharedDriveInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :shared_drive_ids, as: 'sharedDriveIds'
         end
       end
       

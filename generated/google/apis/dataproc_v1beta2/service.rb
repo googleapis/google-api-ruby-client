@@ -185,7 +185,8 @@ module Google
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return in each response.
+        #   Optional. The maximum number of results to return in each response. Must be
+        #   less than or equal to 1000. Defaults to 100.
         # @param [String] page_token
         #   Optional. The page token, returned by a previous call, to request the next
         #   page of results.
@@ -848,7 +849,8 @@ module Google
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return in each response.
+        #   Optional. The maximum number of results to return in each response. Must be
+        #   less than or equal to 1000. Defaults to 100.
         # @param [String] page_token
         #   Optional. The page token, returned by a previous call, to request the next
         #   page of results.

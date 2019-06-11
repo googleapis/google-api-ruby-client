@@ -4623,8 +4623,6 @@ module Google
       end
       
       # A border around a table cell.
-      # Table cell borders cannot be transparent. To hide a table cell border, make
-      # its width 0.
       class TableCellBorder
         include Google::Apis::Core::Hashable
       
@@ -4700,29 +4698,21 @@ module Google
         attr_accessor :background_color
       
         # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
         # Corresponds to the JSON property `borderBottom`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_bottom
       
         # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
         # Corresponds to the JSON property `borderLeft`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_left
       
         # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
         # Corresponds to the JSON property `borderRight`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_right
       
         # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
         # Corresponds to the JSON property `borderTop`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_top

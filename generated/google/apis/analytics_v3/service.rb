@@ -1276,7 +1276,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a filters to which the user has access.
+        # Returns filters to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve filters for.
         # @param [String] filter_id

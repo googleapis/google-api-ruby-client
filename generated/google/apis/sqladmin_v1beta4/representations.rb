@@ -915,6 +915,7 @@ module Google
           property :backup_run_id, :numeric_string => true, as: 'backupRunId'
           property :instance_id, as: 'instanceId'
           property :kind, as: 'kind'
+          property :project, as: 'project'
         end
       end
       

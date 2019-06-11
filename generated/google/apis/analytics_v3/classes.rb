@@ -5603,7 +5603,7 @@ module Google
         # Set to true to reset the retention period of the user identifier with each new
         # event from that user (thus setting the expiration date to current time plus
         # retention period).
-        # Set to false to delete data associated with the user identifer automatically
+        # Set to false to delete data associated with the user identifier automatically
         # after the rentention period.
         # This property cannot be set on insert.
         # Corresponds to the JSON property `dataRetentionResetOnNewActivity`

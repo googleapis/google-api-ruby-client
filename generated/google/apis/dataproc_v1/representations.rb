@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KerberosConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class RegexValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -437,6 +449,8 @@ module Google
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
       
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
+      
+          property :security_config, as: 'securityConfig', class: Google::Apis::DataprocV1::SecurityConfig, decorator: Google::Apis::DataprocV1::SecurityConfig::Representation
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::DataprocV1::SoftwareConfig, decorator: Google::Apis::DataprocV1::SoftwareConfig::Representation
       
@@ -692,6 +706,26 @@ module Google
         end
       end
       
+      class KerberosConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_realm_trust_admin_server, as: 'crossRealmTrustAdminServer'
+          property :cross_realm_trust_kdc, as: 'crossRealmTrustKdc'
+          property :cross_realm_trust_realm, as: 'crossRealmTrustRealm'
+          property :cross_realm_trust_shared_password_uri, as: 'crossRealmTrustSharedPasswordUri'
+          property :enable_kerberos, as: 'enableKerberos'
+          property :kdc_db_key_uri, as: 'kdcDbKeyUri'
+          property :key_password_uri, as: 'keyPasswordUri'
+          property :keystore_password_uri, as: 'keystorePasswordUri'
+          property :keystore_uri, as: 'keystoreUri'
+          property :kms_key_uri, as: 'kmsKeyUri'
+          property :root_principal_password_uri, as: 'rootPrincipalPasswordUri'
+          property :tgt_lifetime_hours, as: 'tgtLifetimeHours'
+          property :truststore_password_uri, as: 'truststorePasswordUri'
+          property :truststore_uri, as: 'truststoreUri'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -857,6 +891,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class SecurityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::DataprocV1::KerberosConfig, decorator: Google::Apis::DataprocV1::KerberosConfig::Representation
+      
         end
       end
       

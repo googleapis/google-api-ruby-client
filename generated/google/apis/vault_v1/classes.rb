@@ -346,6 +346,12 @@ module Google
       class DriveOptions
         include Google::Apis::Core::Hashable
       
+        # Set to true to include shared drive.
+        # Corresponds to the JSON property `includeSharedDrives`
+        # @return [Boolean]
+        attr_accessor :include_shared_drives
+        alias_method :include_shared_drives?, :include_shared_drives
+      
         # Set to true to include Team Drive.
         # Corresponds to the JSON property `includeTeamDrives`
         # @return [Boolean]
@@ -365,6 +371,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_shared_drives = args[:include_shared_drives] if args.key?(:include_shared_drives)
           @include_team_drives = args[:include_team_drives] if args.key?(:include_team_drives)
           @version_date = args[:version_date] if args.key?(:version_date)
         end
@@ -663,6 +670,12 @@ module Google
       class HeldDriveQuery
         include Google::Apis::Core::Hashable
       
+        # If true, include files in shared drives in the hold.
+        # Corresponds to the JSON property `includeSharedDriveFiles`
+        # @return [Boolean]
+        attr_accessor :include_shared_drive_files
+        alias_method :include_shared_drive_files?, :include_shared_drive_files
+      
         # If true, include files in Team Drives in the hold.
         # Corresponds to the JSON property `includeTeamDriveFiles`
         # @return [Boolean]
@@ -675,6 +688,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_shared_drive_files = args[:include_shared_drive_files] if args.key?(:include_shared_drive_files)
           @include_team_drive_files = args[:include_team_drive_files] if args.key?(:include_team_drive_files)
         end
       end
@@ -1157,6 +1171,14 @@ module Google
         # @return [Google::Apis::VaultV1::MailOptions]
         attr_accessor :mail_options
       
+        # The search method to use. This field is similar to the search_method field
+        # but is introduced to support shared drives. It supports all
+        # search method types. In case the search_method is TEAM_DRIVE the response
+        # of this field will be SHARED_DRIVE only.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
         # Org Unit to search
         # Corresponds to the JSON property `orgUnitInfo`
         # @return [Google::Apis::VaultV1::OrgUnitInfo]
@@ -1166,6 +1188,11 @@ module Google
         # Corresponds to the JSON property `searchMethod`
         # @return [String]
         attr_accessor :search_method
+      
+        # Shared drives to search
+        # Corresponds to the JSON property `sharedDriveInfo`
+        # @return [Google::Apis::VaultV1::SharedDriveInfo]
+        attr_accessor :shared_drive_info
       
         # The start time range for the search query. These timestamps are in GMT and
         # rounded down to the start of the given date.
@@ -1208,8 +1235,10 @@ module Google
           @hangouts_chat_info = args[:hangouts_chat_info] if args.key?(:hangouts_chat_info)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
           @mail_options = args[:mail_options] if args.key?(:mail_options)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @org_unit_info = args[:org_unit_info] if args.key?(:org_unit_info)
           @search_method = args[:search_method] if args.key?(:search_method)
+          @shared_drive_info = args[:shared_drive_info] if args.key?(:shared_drive_info)
           @start_time = args[:start_time] if args.key?(:start_time)
           @team_drive_info = args[:team_drive_info] if args.key?(:team_drive_info)
           @terms = args[:terms] if args.key?(:terms)
@@ -1350,6 +1379,26 @@ module Google
           @matter_id = args[:matter_id] if args.key?(:matter_id)
           @query = args[:query] if args.key?(:query)
           @saved_query_id = args[:saved_query_id] if args.key?(:saved_query_id)
+        end
+      end
+      
+      # Shared drives to search
+      class SharedDriveInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of Shared drive ids, as provided by <a
+        # href="https://developers.google.com/drive">Drive API</a>.
+        # Corresponds to the JSON property `sharedDriveIds`
+        # @return [Array<String>]
+        attr_accessor :shared_drive_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shared_drive_ids = args[:shared_drive_ids] if args.key?(:shared_drive_ids)
         end
       end
       
