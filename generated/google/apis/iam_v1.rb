@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/iam/
     module IamV1
       VERSION = 'V1'
-      REVISION = '20190429'
+      REVISION = '20190607'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

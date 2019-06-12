@@ -1316,6 +1316,11 @@ module Google
         # @return [String]
         attr_accessor :key_algorithm
       
+        # The key origin.
+        # Corresponds to the JSON property `keyOrigin`
+        # @return [String]
+        attr_accessor :key_origin
+      
         # The resource name of the service account key in the following format
         # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
         # Corresponds to the JSON property `name`
@@ -1366,6 +1371,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
+          @key_origin = args[:key_origin] if args.key?(:key_origin)
           @name = args[:name] if args.key?(:name)
           @private_key_data = args[:private_key_data] if args.key?(:private_key_data)
           @private_key_type = args[:private_key_type] if args.key?(:private_key_type)

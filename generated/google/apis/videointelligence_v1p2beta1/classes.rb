@@ -584,6 +584,12 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Specifies which feature is being tracked if the request contains more than
+        # one features.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
+      
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
@@ -595,6 +601,11 @@ module Google
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1VideoSegment]
+        attr_accessor :segment
       
         # Time when the request was received.
         # Corresponds to the JSON property `startTime`
@@ -612,8 +623,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @segment = args[:segment] if args.key?(:segment)
           @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -625,43 +638,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -1386,6 +1366,12 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Specifies which feature is being tracked if the request contains more than
+        # one features.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
+      
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
@@ -1397,6 +1383,11 @@ module Google
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2VideoSegment]
+        attr_accessor :segment
       
         # Time when the request was received.
         # Corresponds to the JSON property `startTime`
@@ -1414,8 +1405,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @segment = args[:segment] if args.key?(:segment)
           @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1427,43 +1420,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -2188,6 +2148,12 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Specifies which feature is being tracked if the request contains more than
+        # one features.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
+      
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
@@ -2199,6 +2165,11 @@ module Google
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1VideoSegment]
+        attr_accessor :segment
       
         # Time when the request was received.
         # Corresponds to the JSON property `startTime`
@@ -2216,8 +2187,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @segment = args[:segment] if args.key?(:segment)
           @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2229,43 +2202,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -2940,6 +2880,27 @@ module Google
         end
       end
       
+      # Config for OBJECT_TRACKING.
+      class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Model to use for object tracking.
+        # Supported values: "builtin/stable" (the default if unset) and
+        # "builtin/latest".
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # Video frame level annotations for object detection and tracking. This field
       # stores per frame location, time offset, and confidence.
       class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame
@@ -3219,6 +3180,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :language_hints
       
+        # Model to use for text detection.
+        # Supported values: "builtin/stable" (the default if unset) and
+        # "builtin/latest".
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3226,6 +3194,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
@@ -3306,6 +3275,12 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Specifies which feature is being tracked if the request contains more than
+        # one features.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
+      
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
@@ -3317,6 +3292,11 @@ module Google
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
       
         # Time when the request was received.
         # Corresponds to the JSON property `startTime`
@@ -3334,8 +3314,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @segment = args[:segment] if args.key?(:segment)
           @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -3347,43 +3329,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -3474,6 +3423,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1LabelDetectionConfig]
         attr_accessor :label_detection_config
       
+        # Config for OBJECT_TRACKING.
+        # Corresponds to the JSON property `objectTrackingConfig`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingConfig]
+        attr_accessor :object_tracking_config
+      
         # Video segments to annotate. The segments may overlap and are not required
         # to be contiguous or span the whole video. If unspecified, each video is
         # treated as a single segment.
@@ -3504,6 +3458,7 @@ module Google
         def update!(**args)
           @explicit_content_detection_config = args[:explicit_content_detection_config] if args.key?(:explicit_content_detection_config)
           @label_detection_config = args[:label_detection_config] if args.key?(:label_detection_config)
+          @object_tracking_config = args[:object_tracking_config] if args.key?(:object_tracking_config)
           @segments = args[:segments] if args.key?(:segments)
           @shot_change_detection_config = args[:shot_change_detection_config] if args.key?(:shot_change_detection_config)
           @speech_transcription_config = args[:speech_transcription_config] if args.key?(:speech_transcription_config)
@@ -3636,6 +3591,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotation_results = args[:annotation_results] if args.key?(:annotation_results)
+        end
+      end
+      
+      # A generic detected attribute represented by name in string format.
+      class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Detected attribute confidence. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # A full list of supported type names will be provided in the document.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Text value of the detection result. For example, the value for "HairColor"
+        # can be "black", "blonde", etc.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -3807,6 +3795,39 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Annotation corresponding to one detected, tracked and recognized logo class.
+      class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Detected entity from video analysis.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Entity]
+        attr_accessor :entity
+      
+        # All video segments where the recognized logo appears. There might be
+        # multiple instances of the same logo class appearing in one VideoSegment.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment>]
+        attr_accessor :segments
+      
+        # All logo tracks where the recognized logo appears. Each track corresponds
+        # to one logo instance appearing in consecutive frames.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
+          @segments = args[:segments] if args.key?(:segments)
+          @tracks = args[:tracks] if args.key?(:tracks)
         end
       end
       
@@ -4077,43 +4098,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -4270,9 +4258,89 @@ module Google
         end
       end
       
+      # For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION,
+      # CELEBRITY_RECOGNITION, PERSON_DETECTION.
+      # An object at time_offset with attributes, and located with
+      # normalized_bounding_box.
+      class GoogleCloudVideointelligenceV1p3beta1TimestampedObject
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attributes of the object in the bounding box.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>]
+        attr_accessor :attributes
+      
+        # Normalized bounding box.
+        # The normalized vertex coordinates are relative to the original image.
+        # Range: [0, 1].
+        # Corresponds to the JSON property `normalizedBoundingBox`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox]
+        attr_accessor :normalized_bounding_box
+      
+        # Time-offset, relative to the beginning of the video,
+        # corresponding to the video frame for this object.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # A track of an object instance.
+      class GoogleCloudVideointelligenceV1p3beta1Track
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Attributes in the track level.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>]
+        attr_accessor :attributes
+      
+        # Optional. The confidence score of the tracked object.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
+        attr_accessor :segment
+      
+        # The object with timestamp and attributes per frame in the track.
+        # Corresponds to the JSON property `timestampedObjects`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1TimestampedObject>]
+        attr_accessor :timestamped_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @segment = args[:segment] if args.key?(:segment)
+          @timestamped_objects = args[:timestamped_objects] if args.key?(:timestamped_objects)
+        end
+      end
+      
       # Annotation progress for a single video.
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
+      
+        # Specifies which feature is being tracked if the request contains more than
+        # one features.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
       
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
@@ -4285,6 +4353,11 @@ module Google
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
+        attr_accessor :segment
       
         # Time when the request was received.
         # Corresponds to the JSON property `startTime`
@@ -4302,8 +4375,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @segment = args[:segment] if args.key?(:segment)
           @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -4315,43 +4390,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -4374,6 +4416,11 @@ module Google
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
+      
+        # Annotations for list of logos detected, tracked and recognized in video.
+        # Corresponds to the JSON property `logoRecognitionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>]
+        attr_accessor :logo_recognition_annotations
       
         # Annotations for list of objects detected and tracked in video.
         # Corresponds to the JSON property `objectAnnotations`
@@ -4419,6 +4466,7 @@ module Google
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
+          @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
@@ -4529,43 +4577,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus]
         attr_accessor :error
@@ -4580,7 +4595,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should have the format of `operations/some/unique/name`.
+        # `name` should be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4613,43 +4628,10 @@ module Google
       
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error
-      # message, and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` that can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       
