@@ -396,8 +396,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an address resource in the specified project using the data included
-        # in the request.
+        # Creates an address resource in the specified project by using the data
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -4195,8 +4195,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an address resource in the specified project using the data included
-        # in the request.
+        # Creates an address resource in the specified project by using the data
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Address] address_object
@@ -14626,8 +14626,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a serivce resource (a.k.a service project) associated with this host
-        # project.
+        # Disable a service resource (also known as service project) associated with
+        # this host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ProjectsDisableXpnResourceRequest] projects_disable_xpn_resource_request_object

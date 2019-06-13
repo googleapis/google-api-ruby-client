@@ -1303,9 +1303,9 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request (e.g.,
+        #   `instances` or `series/`series_uid`/instances` or
+        #   `studies/`study_uid`/instances`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1341,9 +1341,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `series`).
+        #   The path of the SearchForSeries DICOMweb request(e.g., `series` or
+        #   `studies/`study_uid`/series`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1379,9 +1378,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `studies`).
+        #   The path of the SearchForStudies DICOMweb request (e.g., `studies`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1418,8 +1415,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id``).
+        #   The path of the StoreInstances DICOMweb request (e.g.,
+        #   `studies/[`study_id`]`). Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1alpha2::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1458,8 +1455,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id``).
+        #   The path of the DeleteStudy request (e.g., `studies/`study_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1496,8 +1492,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id`/metadata`.
+        #   The path of the RetrieveStudyMetadata DICOMweb request (e.g.,
+        #   `studies/`study_id`/metadata`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1533,8 +1529,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id``).
+        #   The path of the RetrieveStudy DICOMweb request (e.g.,
+        #   `studies/`study_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1570,9 +1566,9 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request (e.g.,
+        #   `instances` or `series/`series_uid`/instances` or
+        #   `studies/`study_uid`/instances`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1608,9 +1604,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `series`).
+        #   The path of the SearchForSeries DICOMweb request(e.g., `series` or
+        #   `studies/`study_uid`/series`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1647,8 +1642,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id``).
+        #   The path of the StoreInstances DICOMweb request (e.g.,
+        #   `studies/[`study_id`]`). Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1alpha2::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1688,8 +1683,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id`/series/`series_id``).
+        #   The path of the DeleteSeries request (e.g.,
+        #   `studies/`study_id`/series/`series_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1726,8 +1721,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id`/series/`series_id`/metadata`.
+        #   The path of the RetrieveSeriesMetadata DICOMweb request (e.g.,
+        #   `studies/`study_id`/series/`series_id`/metadata`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1763,8 +1758,8 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g., `studies/`study_id`/series/`series_id``).
+        #   The path of the RetrieveSeries DICOMweb request (e.g.,
+        #   `studies/`study_id`/series/`series_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1800,9 +1795,9 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
-        #   `instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request (e.g.,
+        #   `instances` or `series/`series_uid`/instances` or
+        #   `studies/`study_uid`/instances`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1839,8 +1834,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the DeleteInstance request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1879,8 +1873,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the RetrieveInstanceMetadata DICOMweb request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/metadata`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1918,8 +1911,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the RetrieveRenderedInstance DICOMweb request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/rendered`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1957,8 +1949,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the RetrieveInstance DICOMweb request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id``).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1997,8 +1988,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the RetrieveRenderedFrames DICOMweb request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/frames/`
         #   frame_list`/rendered`).
         # @param [String] fields
@@ -2037,8 +2027,7 @@ module Google
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DICOMweb request, as specified in the STOW-RS, WADO-RS, or
-        #   QIDO-RS standard (e.g.,
+        #   The path of the RetrieveFrames DICOMweb request (e.g.,
         #   `studies/`study_id`/series/`series_id`/instances/`instance_id`/frames/`
         #   frame_list``).
         # @param [String] fields
@@ -3153,27 +3142,14 @@ module Google
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
-        # # Search Parameters
         # The server's capability statement, retrieved through
         # capabilities, indicates what search parameters
         # are supported on each FHIR resource. A list of all search parameters
         # defined by the specification can be found in the [FHIR Search Parameter
         # Registry](http://hl7.org/implement/standards/fhir/STU3/searchparameter-
         # registry.html).
-        # # Search Modifiers
-        # Modifier   | Supported
-        # ----------- | ---------
-        # `:missing`  | Yes
-        # `:exact`    | Yes
-        # `:contains` | Yes
-        # `:text`     | Yes
-        # `:in`       | Yes
-        # `:not-in`   | Yes
-        # `:above`    | Yes
-        # `:below`    | Yes
-        # `:[type]`   | Yes
-        # `:not`      | Yes
-        # `:recurse`  | No
+        # Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,
+        # `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1alpha2::SearchResourcesRequest] search_resources_request_object

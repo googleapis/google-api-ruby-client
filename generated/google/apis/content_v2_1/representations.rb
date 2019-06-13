@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderLineItemAdjustment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderLineItemProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2447,6 +2453,8 @@ module Google
       class OrderLineItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adjustments, as: 'adjustments', class: Google::Apis::ContentV2_1::OrderLineItemAdjustment, decorator: Google::Apis::ContentV2_1::OrderLineItemAdjustment::Representation
+      
           collection :annotations, as: 'annotations', class: Google::Apis::ContentV2_1::OrderMerchantProvidedAnnotation, decorator: Google::Apis::ContentV2_1::OrderMerchantProvidedAnnotation::Representation
       
           collection :cancellations, as: 'cancellations', class: Google::Apis::ContentV2_1::OrderCancellation, decorator: Google::Apis::ContentV2_1::OrderCancellation::Representation
@@ -2470,6 +2478,17 @@ module Google
       
           property :tax, as: 'tax', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+        end
+      end
+      
+      class OrderLineItemAdjustment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price_adjustment, as: 'priceAdjustment', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :tax_adjustment, as: 'taxAdjustment', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :type, as: 'type'
         end
       end
       

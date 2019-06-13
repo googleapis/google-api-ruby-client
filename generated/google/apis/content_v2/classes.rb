@@ -5147,9 +5147,13 @@ module Google
         # - "lasership"
         # - "mpx"
         # - "uds"
+        # - "efw"
         # Acceptable values for FR are:
         # - "colissimo"
         # - "chronopost"
+        # - "gls"
+        # - "dpd"
+        # - "bpost"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier

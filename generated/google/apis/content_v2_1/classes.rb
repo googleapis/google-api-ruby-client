@@ -3724,6 +3724,11 @@ module Google
       class OrderLineItem
         include Google::Apis::Core::Hashable
       
+        # Price and tax adjustments applied on the line item.
+        # Corresponds to the JSON property `adjustments`
+        # @return [Array<Google::Apis::ContentV2_1::OrderLineItemAdjustment>]
+        attr_accessor :adjustments
+      
         # Annotations that are attached to the line item.
         # Corresponds to the JSON property `annotations`
         # @return [Array<Google::Apis::ContentV2_1::OrderMerchantProvidedAnnotation>]
@@ -3809,6 +3814,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adjustments = args[:adjustments] if args.key?(:adjustments)
           @annotations = args[:annotations] if args.key?(:annotations)
           @cancellations = args[:cancellations] if args.key?(:cancellations)
           @id = args[:id] if args.key?(:id)
@@ -3824,6 +3830,37 @@ module Google
           @returns = args[:returns] if args.key?(:returns)
           @shipping_details = args[:shipping_details] if args.key?(:shipping_details)
           @tax = args[:tax] if args.key?(:tax)
+        end
+      end
+      
+      # 
+      class OrderLineItemAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # Adjustment for total price of the line item.
+        # Corresponds to the JSON property `priceAdjustment`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :price_adjustment
+      
+        # Adjustment for total tax of the line item.
+        # Corresponds to the JSON property `taxAdjustment`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :tax_adjustment
+      
+        # Type of this adjustment.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price_adjustment = args[:price_adjustment] if args.key?(:price_adjustment)
+          @tax_adjustment = args[:tax_adjustment] if args.key?(:tax_adjustment)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4434,9 +4471,13 @@ module Google
         # - "lasership"
         # - "mpx"
         # - "uds"
+        # - "efw"
         # Acceptable values for FR are:
         # - "colissimo"
         # - "chronopost"
+        # - "gls"
+        # - "dpd"
+        # - "bpost"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier

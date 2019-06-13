@@ -675,6 +675,11 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # Cluster tier settings.
+        # Corresponds to the JSON property `tierSettings`
+        # @return [Google::Apis::ContainerV1beta1::TierSettings]
+        attr_accessor :tier_settings
+      
         # [Output only] The IP address range of the Cloud TPUs in this cluster, in
         # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         # notation (e.g. `1.2.3.4/29`).
@@ -757,6 +762,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tier_settings = args[:tier_settings] if args.key?(:tier_settings)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
@@ -1884,8 +1890,7 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
-        # [Output only] Base64-encoded public certificate that is the root of
-        # trust for the cluster.
+        # 
         # Corresponds to the JSON property `clusterCaCertificate`
         # @return [String]
         attr_accessor :cluster_ca_certificate
@@ -2177,6 +2182,7 @@ module Google
         # "k8s-node-setup-psm1"
         # "install-ssh-psm1"
         # "user-profile-psm1"
+        # "serial-port-logging-enable"
         # Values are free-form strings, and only have meaning as interpreted by
         # the image running in the instance. The only restriction placed on them is
         # that each value's size must be less than or equal to 32 KB.
@@ -2231,6 +2237,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ContainerV1beta1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by
         # the client during cluster or node pool creation. Each tag within the list
@@ -2271,6 +2282,7 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
@@ -3570,6 +3582,40 @@ module Google
         end
       end
       
+      # A set of Shielded Instance options.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled.
+        # Enables monitoring and attestation of the boot integrity of the instance.
+        # The attestation is performed against the integrity policy baseline. This
+        # baseline is initially derived from the implicitly trusted boot image when
+        # the instance is created.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled.
+        # Secure Boot helps ensure that the system only runs authentic software by
+        # verifying the digital signature of all boot components, and halting the
+        # boot process if signature verification fails.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+        end
+      end
+      
       # StartIPRotationRequest creates a new IP for the cluster and then performs
       # a node upgrade on each node pool to point to the new IP.
       class StartIpRotationRequest
@@ -3645,6 +3691,25 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Cluster tier settings.
+      class TierSettings
+        include Google::Apis::Core::Hashable
+      
+        # Cluster tier.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tier = args[:tier] if args.key?(:tier)
         end
       end
       

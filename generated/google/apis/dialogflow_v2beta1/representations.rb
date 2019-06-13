@@ -1138,6 +1138,7 @@ module Google
       class GoogleCloudDialogflowV2beta1Agent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
           property :avatar_uri, as: 'avatarUri'
           property :classification_threshold, as: 'classificationThreshold'
           property :default_language_code, as: 'defaultLanguageCode'
@@ -1147,6 +1148,7 @@ module Google
           property :match_mode, as: 'matchMode'
           property :parent, as: 'parent'
           collection :supported_language_codes, as: 'supportedLanguageCodes'
+          property :tier, as: 'tier'
           property :time_zone, as: 'timeZone'
         end
       end

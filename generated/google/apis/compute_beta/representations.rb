@@ -5219,6 +5219,7 @@ module Google
           property :start_timestamp, as: 'startTimestamp'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :type, as: 'type'
         end
       end
       
@@ -9494,6 +9495,7 @@ module Google
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation::Representation
       
           property :specific_reservation_required, as: 'specificReservationRequired'
+          property :status, as: 'status'
           property :zone, as: 'zone'
         end
       end

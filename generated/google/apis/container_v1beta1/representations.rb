@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +467,12 @@ module Google
       end
       
       class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TierSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -680,6 +692,8 @@ module Google
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
+          property :tier_settings, as: 'tierSettings', class: Google::Apis::ContainerV1beta1::TierSettings, decorator: Google::Apis::ContainerV1beta1::TierSettings::Representation
+      
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
@@ -1048,6 +1062,8 @@ module Google
           property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1beta1::SandboxConfig, decorator: Google::Apis::ContainerV1beta1::SandboxConfig::Representation
       
           property :service_account, as: 'serviceAccount'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig::Representation
+      
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
       
@@ -1356,6 +1372,14 @@ module Google
         end
       end
       
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+        end
+      end
+      
       class StartIpRotationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1372,6 +1396,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class TierSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tier, as: 'tier'
         end
       end
       

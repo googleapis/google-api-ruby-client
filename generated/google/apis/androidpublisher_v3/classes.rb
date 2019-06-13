@@ -1612,8 +1612,8 @@ module Google
         # @return [String]
         attr_accessor :price_currency_code
       
-        # The profile id of the user when the subscription was purchased. Only present
-        # for purchases made with 'Subscribe with Google'.
+        # The Google profile id of the user when the subscription was purchased. Only
+        # present for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `profileId`
         # @return [String]
         attr_accessor :profile_id

@@ -1560,6 +1560,14 @@ module Google
       class GoogleCloudDialogflowV2beta1Agent
         include Google::Apis::Core::Hashable
       
+        # Optional. API version displayed in Dialogflow console. If not specified,
+        # V2 API is assumed. Clients are free to query different service endpoints
+        # for different API versions. However, bots connectors and webhook calls will
+        # follow the specified API version.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
         # Optional. The URI of the agent's avatar.
         # Avatars are used throughout the Dialogflow console and in the self-hosted
         # [Web
@@ -1625,6 +1633,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_language_codes
       
+        # Optional. The agent tier. If not specified, TIER_STANDARD is assumed.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
         # Required. The time zone of this agent from the
         # [time zone database](https://www.iana.org/time-zones), e.g.,
         # America/New_York, Europe/Paris.
@@ -1638,6 +1651,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
           @avatar_uri = args[:avatar_uri] if args.key?(:avatar_uri)
           @classification_threshold = args[:classification_threshold] if args.key?(:classification_threshold)
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
@@ -1647,6 +1661,7 @@ module Google
           @match_mode = args[:match_mode] if args.key?(:match_mode)
           @parent = args[:parent] if args.key?(:parent)
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
+          @tier = args[:tier] if args.key?(:tier)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end

@@ -120,6 +120,25 @@ module Google
         end
       end
       
+      # Parameters for using BigQuery as the destination of resource usage export.
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+        end
+      end
+      
       # CancelOperationRequest cancels a single operation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -366,6 +385,8 @@ module Google
       
         # The logging service the cluster should use to write logs.
         # Currently available options:
+        # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
+        # service with Kubernetes-native resource model in Stackdriver
         # * `logging.googleapis.com` - the Google Cloud Logging service.
         # * `none` - no logs will be exported from the cluster.
         # * if left as an empty string,`logging.googleapis.com` will be used.
@@ -461,6 +482,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
+        # Configuration for exporting cluster resource usages.
+        # Corresponds to the JSON property `resourceUsageExportConfig`
+        # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
+        attr_accessor :resource_usage_export_config
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -549,6 +575,7 @@ module Google
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @status = args[:status] if args.key?(:status)
@@ -587,6 +614,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :desired_locations
       
+        # The logging service the cluster should use to write logs.
+        # Currently available options:
+        # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
+        # service with Kubernetes-native resource model in Stackdriver
+        # * "logging.googleapis.com" - the Google Cloud Logging service
+        # * "none" - no logs will be exported from the cluster
+        # Corresponds to the JSON property `desiredLoggingService`
+        # @return [String]
+        attr_accessor :desired_logging_service
+      
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
         # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -609,6 +646,8 @@ module Google
       
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
+        # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
+        # service with Kubernetes-native resource model in Stackdriver
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `desiredMonitoringService`
@@ -642,6 +681,11 @@ module Google
         # @return [String]
         attr_accessor :desired_node_version
       
+        # Configuration for exporting cluster resource usages.
+        # Corresponds to the JSON property `desiredResourceUsageExportConfig`
+        # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
+        attr_accessor :desired_resource_usage_export_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -651,12 +695,14 @@ module Google
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
+          @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
+          @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
         end
       end
       
@@ -701,6 +747,28 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Parameters for controlling consumption metering.
+      class ConsumptionMeteringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable consumption metering for this cluster. If enabled, a
+        # second BigQuery table will be created to hold resource consumption
+        # records.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -1634,6 +1702,7 @@ module Google
         # "k8s-node-setup-psm1"
         # "install-ssh-psm1"
         # "user-profile-psm1"
+        # "serial-port-logging-enable"
         # Values are free-form strings, and only have meaning as interpreted by
         # the image running in the instance. The only restriction placed on them is
         # that each value's size must be less than or equal to 32 KB.
@@ -2081,6 +2150,39 @@ module Google
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # Configuration for exporting cluster resource usages.
+      class ResourceUsageExportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for using BigQuery as the destination of resource usage export.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::ContainerV1::BigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Parameters for controlling consumption metering.
+        # Corresponds to the JSON property `consumptionMeteringConfig`
+        # @return [Google::Apis::ContainerV1::ConsumptionMeteringConfig]
+        attr_accessor :consumption_metering_config
+      
+        # Whether to enable network egress metering for this cluster. If enabled, a
+        # daemonset will be created in the cluster to meter network egress traffic.
+        # Corresponds to the JSON property `enableNetworkEgressMetering`
+        # @return [Boolean]
+        attr_accessor :enable_network_egress_metering
+        alias_method :enable_network_egress_metering?, :enable_network_egress_metering
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @consumption_metering_config = args[:consumption_metering_config] if args.key?(:consumption_metering_config)
+          @enable_network_egress_metering = args[:enable_network_egress_metering] if args.key?(:enable_network_egress_metering)
         end
       end
       
@@ -2573,6 +2675,8 @@ module Google
       
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
+        # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
+        # service with Kubernetes-native resource model in Stackdriver
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `monitoringService`

@@ -48,6 +48,74 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates/updates the specified agent.
+        # @param [String] parent
+        #   Required. The project of this agent.
+        #   Format: `projects/<Project ID>`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent] google_cloud_dialogflow_v2_agent_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def agent_project(parent, google_cloud_dialogflow_v2_agent_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/agent', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent::Representation
+          command.request_object = google_cloud_dialogflow_v2_agent_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Agent
+          command.params['parent'] = parent unless parent.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified agent.
+        # @param [String] parent
+        #   Required. The project that the agent to delete is associated with.
+        #   Format: `projects/<Project ID>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+parent}/agent', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the specified agent.
         # @param [String] parent
         #   Required. The project that the agent to fetch is associated with.
