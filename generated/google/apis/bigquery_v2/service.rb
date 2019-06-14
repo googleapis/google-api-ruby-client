@@ -809,6 +809,212 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the routine specified by routineId from the dataset.
+        # @param [String] project_id
+        #   Project ID of the routine to delete
+        # @param [String] dataset_id
+        #   Dataset ID of the routine to delete
+        # @param [String] routine_id
+        #   Routine ID of the routine to delete
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_routine(project_id, dataset_id, routine_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', options)
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['routineId'] = routine_id unless routine_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified routine resource by routine ID.
+        # @param [String] project_id
+        #   Project ID of the requested routine
+        # @param [String] dataset_id
+        #   Dataset ID of the requested routine
+        # @param [String] routine_id
+        #   Routine ID of the requested routine
+        # @param [String] field_mask
+        #   If set, only the Routine fields in the field mask are returned in the
+        #   response. If unset, all Routine fields are returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::Routine] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::Routine]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_routine(project_id, dataset_id, routine_id, field_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', options)
+          command.response_representation = Google::Apis::BigqueryV2::Routine::Representation
+          command.response_class = Google::Apis::BigqueryV2::Routine
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['routineId'] = routine_id unless routine_id.nil?
+          command.query['fieldMask'] = field_mask unless field_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new routine in the dataset.
+        # @param [String] project_id
+        #   Project ID of the new routine
+        # @param [String] dataset_id
+        #   Dataset ID of the new routine
+        # @param [Google::Apis::BigqueryV2::Routine] routine_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::Routine] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::Routine]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_routine(project_id, dataset_id, routine_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{+projectId}/datasets/{+datasetId}/routines', options)
+          command.request_representation = Google::Apis::BigqueryV2::Routine::Representation
+          command.request_object = routine_object
+          command.response_representation = Google::Apis::BigqueryV2::Routine::Representation
+          command.response_class = Google::Apis::BigqueryV2::Routine
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all routines in the specified dataset. Requires the READER dataset
+        # role.
+        # @param [String] project_id
+        #   Project ID of the routines to list
+        # @param [String] dataset_id
+        #   Dataset ID of the routines to list
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page.
+        # @param [String] page_token
+        #   Page token, returned by a previous call, to request the next page of
+        #   results
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::ListRoutinesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::ListRoutinesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_routines(project_id, dataset_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/routines', options)
+          command.response_representation = Google::Apis::BigqueryV2::ListRoutinesResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::ListRoutinesResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates information in an existing routine. The update method replaces the
+        # entire Routine resource.
+        # @param [String] project_id
+        #   Project ID of the routine to update
+        # @param [String] dataset_id
+        #   Dataset ID of the routine to update
+        # @param [String] routine_id
+        #   Routine ID of the routine to update
+        # @param [Google::Apis::BigqueryV2::Routine] routine_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::Routine] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::Routine]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_routine(project_id, dataset_id, routine_id, routine_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:put, 'projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', options)
+          command.request_representation = Google::Apis::BigqueryV2::Routine::Representation
+          command.request_object = routine_object
+          command.response_representation = Google::Apis::BigqueryV2::Routine::Representation
+          command.response_class = Google::Apis::BigqueryV2::Routine
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['routineId'] = routine_id unless routine_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Streams data into BigQuery one record at a time without needing to run a load
         # job. Requires the WRITER dataset role.
         # @param [String] project_id

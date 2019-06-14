@@ -290,6 +290,20 @@ module Google
         # @param [String] parent
         #   Resource name of the instance.
         #   Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # @param [String] filter
+        #   Optional. A filter to constrain the pools returned. Filters have the form:
+        #   <field> <operator> <value> [[AND|OR] <field> <operator> <value>]...
+        #   <field> is the path for a field or map key in the Pool proto message.
+        #   e.g. "configuration.disk_size_gb" or "configuration.labels.key".
+        #   <operator> can be one of "<", "<=", ">=", ">", "=", "!=", ":".
+        #   ":" is a HAS operation for strings and repeated primitive fields.
+        #   <value> is the value to test, case-insensitive for strings. "*" stands for
+        #   any value and can be used to test for key presence.
+        #   Parenthesis determine AND/OR precedence. In space separated restrictions,
+        #   AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+        #   Example filter:
+        #   configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
+        #   This field is currently ignored in all requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -307,11 +321,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_workerpools(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_workerpools(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/workerpools', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

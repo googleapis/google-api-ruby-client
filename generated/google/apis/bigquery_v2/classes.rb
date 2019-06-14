@@ -91,6 +91,54 @@ module Google
         end
       end
       
+      # Input/output argument of a function or a stored procedure.
+      class Argument
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defaults to FIXED_TYPE.
+        # Corresponds to the JSON property `argumentKind`
+        # @return [String]
+        attr_accessor :argument_kind
+      
+        # The type of a variable, e.g., a function argument.
+        # Examples:
+        # INT64: `type_kind="INT64"`
+        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
+        # STRUCT<x STRING, y ARRAY<DATE>>:
+        # `type_kind="STRUCT",
+        # struct_type=`fields=[
+        # `name="x", type=`type_kind="STRING"``,
+        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
+        # ]``
+        # Corresponds to the JSON property `dataType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :data_type
+      
+        # Optional. Specifies whether the argument is input or output.
+        # Can be set for procedures only.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. The name of this argument. Can be absent for function return
+        # argument.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @argument_kind = args[:argument_kind] if args.key?(:argument_kind)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @mode = args[:mode] if args.key?(:mode)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # 
       class BigQueryModelTraining
         include Google::Apis::Core::Hashable
@@ -3113,6 +3161,33 @@ module Google
         end
       end
       
+      # 
+      class ListRoutinesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Routines in the requested dataset. Only the following fields are populated:
+        # etag, project_id, dataset_id, routine_id, routine_type, creation_time,
+        # last_modified_time, language.
+        # Corresponds to the JSON property `routines`
+        # @return [Array<Google::Apis::BigqueryV2::Routine>]
+        attr_accessor :routines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @routines = args[:routines] if args.key?(:routines)
+        end
+      end
+      
       # BigQuery-specific metadata about a location. This will be set on
       # google.cloud.location.Location.metadata in Cloud Location API
       # responses.
@@ -3974,6 +4049,103 @@ module Google
           @mean_squared_log_error = args[:mean_squared_log_error] if args.key?(:mean_squared_log_error)
           @median_absolute_error = args[:median_absolute_error] if args.key?(:median_absolute_error)
           @r_squared = args[:r_squared] if args.key?(:r_squared)
+        end
+      end
+      
+      # A user-defined function or a stored procedure.
+      class Routine
+        include Google::Apis::Core::Hashable
+      
+        # Optional.
+        # Corresponds to the JSON property `arguments`
+        # @return [Array<Google::Apis::BigqueryV2::Argument>]
+        attr_accessor :arguments
+      
+        # Output only. The time when this routine was created, in milliseconds since
+        # the epoch.
+        # Corresponds to the JSON property `creationTime`
+        # @return [Fixnum]
+        attr_accessor :creation_time
+      
+        # Required. The body of the routine.
+        # For functions, this is the expression in the AS clause.
+        # If language=SQL, it is the substring inside (but excluding) the
+        # parentheses. For example, for the function created with the following
+        # statement
+        # create function JoinLines(x string, y string) as (concat(x, "\n", y))
+        # definition_body = r'concat(x, "\n", y)' (\n is not replaced with
+        # linebreak).
+        # If language=JAVASCRIPT, it is the evaluated string in the AS clause.
+        # For example, for the function created with the following statement
+        # CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'
+        # definition_body = 'return "\n";\n' (both \n are replaced with
+        # linebreaks).
+        # Corresponds to the JSON property `definitionBody`
+        # @return [String]
+        attr_accessor :definition_body
+      
+        # Output only. A hash of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. If language = "JAVASCRIPT", this field stores the path of the
+        # imported JAVASCRIPT libraries.
+        # Corresponds to the JSON property `importedLibraries`
+        # @return [Array<String>]
+        attr_accessor :imported_libraries
+      
+        # Optional. Defaults to "SQL".
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Output only. The time when this routine was last modified, in milliseconds
+        # since the epoch.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [Fixnum]
+        attr_accessor :last_modified_time
+      
+        # The type of a variable, e.g., a function argument.
+        # Examples:
+        # INT64: `type_kind="INT64"`
+        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
+        # STRUCT<x STRING, y ARRAY<DATE>>:
+        # `type_kind="STRUCT",
+        # struct_type=`fields=[
+        # `name="x", type=`type_kind="STRING"``,
+        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
+        # ]``
+        # Corresponds to the JSON property `returnType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
+        attr_accessor :return_type
+      
+        # Required. Reference describing the ID of this routine.
+        # Corresponds to the JSON property `routineReference`
+        # @return [Google::Apis::BigqueryV2::RoutineReference]
+        attr_accessor :routine_reference
+      
+        # Required.
+        # Corresponds to the JSON property `routineType`
+        # @return [String]
+        attr_accessor :routine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @etag = args[:etag] if args.key?(:etag)
+          @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
+          @language = args[:language] if args.key?(:language)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @return_type = args[:return_type] if args.key?(:return_type)
+          @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
+          @routine_type = args[:routine_type] if args.key?(:routine_type)
         end
       end
       

@@ -48,6 +48,13 @@ module Google
         end
         
         # Retrieve a cached execution result.
+        # Implementations SHOULD ensure that any blobs referenced from the
+        # ContentAddressableStorage
+        # are available at the time of returning the
+        # ActionResult and will be
+        # for some period of time afterwards. The TTLs of the referenced blobs SHOULD be
+        # increased
+        # if necessary and applicable.
         # Errors:
         # * `NOT_FOUND`: The requested `ActionResult` is not in the cache.
         # @param [String] instance_name
@@ -61,6 +68,16 @@ module Google
         #   exactly 64 characters long.
         # @param [Fixnum] size_bytes
         #   The size of the blob, in bytes.
+        # @param [Array<String>, String] inline_output_files
+        #   A hint to the server to inline the contents of the listed output files.
+        #   Each path needs to exactly match one path in `output_files` in the
+        #   Command message.
+        # @param [Boolean] inline_stderr
+        #   A hint to the server to request inlining stderr in the
+        #   ActionResult message.
+        # @param [Boolean] inline_stdout
+        #   A hint to the server to request inlining stdout in the
+        #   ActionResult message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -78,13 +95,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_action_result(instance_name, hash_, size_bytes, fields: nil, quota_user: nil, options: nil, &block)
+        def get_action_result(instance_name, hash_, size_bytes, inline_output_files: nil, inline_stderr: nil, inline_stdout: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+instanceName}/actionResults/{hash}/{sizeBytes}', options)
           command.response_representation = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult::Representation
           command.response_class = Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ActionResult
           command.params['instanceName'] = instance_name unless instance_name.nil?
           command.params['hash'] = hash_ unless hash_.nil?
           command.params['sizeBytes'] = size_bytes unless size_bytes.nil?
+          command.query['inlineOutputFiles'] = inline_output_files unless inline_output_files.nil?
+          command.query['inlineStderr'] = inline_stderr unless inline_stderr.nil?
+          command.query['inlineStdout'] = inline_stdout unless inline_stdout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -497,7 +517,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetCapabilities returns the server capabilities configuration.
+        # GetCapabilities returns the server capabilities configuration of the
+        # remote endpoint.
+        # Only the capabilities of the services supported by the endpoint will
+        # be returned:
+        # * Execution + CAS + Action Cache endpoints should return both
+        # CacheCapabilities and ExecutionCapabilities.
+        # * Execution only endpoints should return ExecutionCapabilities.
+        # * CAS + Action Cache only endpoints should return CacheCapabilities.
         # @param [String] instance_name
         #   The instance of the execution system to operate against. A server may
         #   support multiple instances of the execution system (with their own workers,

@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageStoragePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModifyAckDeadlineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,13 @@ module Google
         end
       end
       
+      class MessageStoragePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_persistence_regions, as: 'allowedPersistenceRegions'
+        end
+      end
+      
       class ModifyAckDeadlineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -470,7 +483,10 @@ module Google
       class Topic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :message_storage_policy, as: 'messageStoragePolicy', class: Google::Apis::PubsubV1::MessageStoragePolicy, decorator: Google::Apis::PubsubV1::MessageStoragePolicy::Representation
+      
           property :name, as: 'name'
         end
       end

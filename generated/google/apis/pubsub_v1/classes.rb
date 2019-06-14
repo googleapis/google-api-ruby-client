@@ -348,6 +348,30 @@ module Google
         end
       end
       
+      # 
+      class MessageStoragePolicy
+        include Google::Apis::Core::Hashable
+      
+        # The list of GCP region IDs where messages that are published to the topic
+        # may be persisted in storage. Messages published by publishers running in
+        # non-allowed GCP regions (or running outside of GCP altogether) will be
+        # routed for storage in one of the allowed regions. An empty list indicates a
+        # misconfiguration at the project or organization level, which will result in
+        # all Publish operations failing.
+        # Corresponds to the JSON property `allowedPersistenceRegions`
+        # @return [Array<String>]
+        attr_accessor :allowed_persistence_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_persistence_regions = args[:allowed_persistence_regions] if args.key?(:allowed_persistence_regions)
+        end
+      end
+      
       # Request for the ModifyAckDeadline method.
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
@@ -1038,11 +1062,28 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
+        # The resource name of the Cloud KMS CryptoKey to be used to protect access
+        # to messages published on this topic.
+        # The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
         # managing labels</a>.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Policy constraining how messages published to the topic may be stored. It
+        # is determined when the topic is created based on the policy configured at
+        # the project level. It must not be set by the caller in the request to
+        # CreateTopic or to UpdateTopic. This field will be populated in the
+        # responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
+        # response, then no constraints are in effect.
+        # Corresponds to the JSON property `messageStoragePolicy`
+        # @return [Google::Apis::PubsubV1::MessageStoragePolicy]
+        attr_accessor :message_storage_policy
       
         # The name of the topic. It must have the format
         # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
@@ -1060,7 +1101,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
+          @message_storage_policy = args[:message_storage_policy] if args.key?(:message_storage_policy)
           @name = args[:name] if args.key?(:name)
         end
       end

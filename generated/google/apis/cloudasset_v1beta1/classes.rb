@@ -480,7 +480,7 @@ module Google
       
         # The server-assigned name, which is only unique within the same service that
         # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # `name` should have the format of `operations/some/unique/name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

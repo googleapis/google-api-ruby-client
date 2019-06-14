@@ -630,6 +630,7 @@ module Google
       class BuildBazelRemoteExecutionV2OutputFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, :base64 => true, as: 'contents'
           property :digest, as: 'digest', class: Google::Apis::RemotebuildexecutionV1::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV1::BuildBazelRemoteExecutionV2Digest::Representation
       
           property :is_executable, as: 'isExecutable'
@@ -812,6 +813,7 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :parent, as: 'parent'
         end
       end
@@ -838,6 +840,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :reserved, as: 'reserved'

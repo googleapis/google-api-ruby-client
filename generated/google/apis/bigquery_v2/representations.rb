@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Argument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryModelTraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRoutinesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +449,12 @@ module Google
       end
       
       class RegressionMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Routine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -608,6 +626,17 @@ module Google
           property :recall, as: 'recall'
           property :roc_auc, as: 'rocAuc'
           property :threshold, as: 'threshold'
+        end
+      end
+      
+      class Argument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :argument_kind, as: 'argumentKind'
+          property :data_type, as: 'dataType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
+          property :mode, as: 'mode'
+          property :name, as: 'name'
         end
       end
       
@@ -1302,6 +1331,15 @@ module Google
         end
       end
       
+      class ListRoutinesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :routines, as: 'routines', class: Google::Apis::BigqueryV2::Routine, decorator: Google::Apis::BigqueryV2::Routine::Representation
+      
+        end
+      end
+      
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1530,6 +1568,25 @@ module Google
           property :mean_squared_log_error, as: 'meanSquaredLogError'
           property :median_absolute_error, as: 'medianAbsoluteError'
           property :r_squared, as: 'rSquared'
+        end
+      end
+      
+      class Routine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arguments, as: 'arguments', class: Google::Apis::BigqueryV2::Argument, decorator: Google::Apis::BigqueryV2::Argument::Representation
+      
+          property :creation_time, :numeric_string => true, as: 'creationTime'
+          property :definition_body, as: 'definitionBody'
+          property :etag, as: 'etag'
+          collection :imported_libraries, as: 'importedLibraries'
+          property :language, as: 'language'
+          property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :return_type, as: 'returnType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
+      
+          property :routine_reference, as: 'routineReference', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
+      
+          property :routine_type, as: 'routineType'
         end
       end
       

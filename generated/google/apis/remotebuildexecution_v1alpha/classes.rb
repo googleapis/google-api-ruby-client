@@ -75,7 +75,8 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :command_digest
       
-        # If true, then the `Action`'s result cannot be cached.
+        # If true, then the `Action`'s result cannot be cached, and in-flight
+        # requests for the same `Action` may not be merged.
         # Corresponds to the JSON property `doNotCache`
         # @return [Boolean]
         attr_accessor :do_not_cache
@@ -216,6 +217,8 @@ module Google
         # `
         # `
         # ```
+        # If an output of the same name was found, but was not a directory, the
+        # server will return a FAILED_PRECONDITION.
         # Corresponds to the JSON property `outputDirectories`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputDirectory>]
         attr_accessor :output_directories
@@ -226,11 +229,12 @@ module Google
         # if the server supports
         # SymlinkAbsolutePathStrategy.ALLOWED.
         # For each output directory requested in the `output_directories` field of
-        # the Action, if the directory file existed after
-        # the action completed, a single entry will be present either in this field,
-        # or in the `output_directories` field, if the directory was not a symbolic link.
-        # If the action does not produce the requested output, or produces a
-        # file where a directory is expected or vice versa, then that output
+        # the Action, if the directory existed after the action completed, a
+        # single entry will be present either in this field, or in the
+        # `output_directories` field, if the directory was not a symbolic link.
+        # If an output of the same name was found, but was a symbolic link to a file
+        # instead of a directory, the server will return a FAILED_PRECONDITION.
+        # If the action does not produce the requested output, then that output
         # will be omitted from the list. The server is free to arrange the output
         # list as desired; clients MUST NOT assume that the output list is sorted.
         # Corresponds to the JSON property `outputDirectorySymlinks`
@@ -245,8 +249,9 @@ module Google
         # if the corresponding file existed after
         # the action completed, a single entry will be present either in this field,
         # or in the `output_files` field, if the file was not a symbolic link.
-        # If the action does not produce the requested output, or produces a
-        # directory where a regular file is expected or vice versa, then that output
+        # If an output symbolic link of the same name was found, but its target
+        # type was not a regular file, the server will return a FAILED_PRECONDITION.
+        # If the action does not produce the requested output, then that output
         # will be omitted from the list. The server is free to arrange the output
         # list as desired; clients MUST NOT assume that the output list is sorted.
         # Corresponds to the JSON property `outputFileSymlinks`
@@ -256,10 +261,11 @@ module Google
         # The output files of the action. For each output file requested in the
         # `output_files` field of the Action, if the corresponding file existed after
         # the action completed, a single entry will be present either in this field,
-        # or in the output_file_symlinks field, if the file was a symbolic link to
+        # or the `output_file_symlinks` field if the file was a symbolic link to
         # another file.
-        # If the action does not produce the requested output, or produces a
-        # directory where a regular file is expected or vice versa, then that output
+        # If an output of the same name was found, but was a directory rather
+        # than a regular file, the server will return a FAILED_PRECONDITION.
+        # If the action does not produce the requested output, then that output
         # will be omitted from the list. The server is free to arrange the output
         # list as desired; clients MUST NOT assume that the output list is sorted.
         # Corresponds to the JSON property `outputFiles`
@@ -297,12 +303,12 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :stderr_digest
       
-        # The standard error buffer of the action. The server will determine, based
-        # on the size of the buffer, whether to return it in raw form or to return
-        # a digest in `stderr_digest` that points to the buffer. If neither is set,
-        # then the buffer is empty. The client SHOULD NOT assume it will get one of
-        # the raw buffer or a digest on any given request and should be prepared to
-        # handle either.
+        # The standard error buffer of the action. The server SHOULD NOT inline
+        # stderr unless requested by the client in the
+        # GetActionResultRequest
+        # message. The server MAY omit inlining, even if requested, and MUST do so if
+        # inlining
+        # would cause the response to exceed message size limits.
         # Corresponds to the JSON property `stderrRaw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -339,12 +345,12 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :stdout_digest
       
-        # The standard output buffer of the action. The server will determine, based
-        # on the size of the buffer, whether to return it in raw form or to return
-        # a digest in `stdout_digest` that points to the buffer. If neither is set,
-        # then the buffer is empty. The client SHOULD NOT assume it will get one of
-        # the raw buffer or a digest on any given request and should be prepared to
-        # handle either.
+        # The standard output buffer of the action. The server SHOULD NOT inline
+        # stdout unless requested by the client in the
+        # GetActionResultRequest
+        # message. The server MAY omit inlining, even if requested, and MUST do so if
+        # inlining
+        # would cause the response to exceed message size limits.
         # Corresponds to the JSON property `stdoutRaw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -414,7 +420,8 @@ module Google
         # MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
         # bytes).
         # An output directory cannot be duplicated or have the same path as any of
-        # the listed output files.
+        # the listed output files. An output directory is allowed to be a parent of
+        # another output directory.
         # Directories leading up to the output directories (but not the output
         # directories themselves) are created by the worker prior to execution, even
         # if they are not explicitly part of the input root.
@@ -565,6 +572,11 @@ module Google
       # * Every child in the directory must have a path of exactly one segment.
       # Multiple levels of directory hierarchy may not be collapsed.
       # * Each child in the directory must have a unique path segment (file name).
+      # Note that while the API itself is case-sensitive, the environment where
+      # the Action is executed may or may not be case-sensitive. That is, it is
+      # legal to call the API with a Directory that has both "Foo" and "foo" as
+      # children, but the Action may be rejected by the remote system upon
+      # execution.
       # * The files, directories and symlinks in the directory must each be sorted
       # in lexicographical order by path. The path strings must be sorted by code
       # point, equivalently, by UTF-8 bytes.
@@ -730,7 +742,7 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :action_digest
       
-        # 
+        # The current stage of execution.
         # Corresponds to the JSON property `stage`
         # @return [String]
         attr_accessor :stage
@@ -1069,9 +1081,20 @@ module Google
       # FileNode, but it is used as an
       # output in an `ActionResult`. It allows a full file path rather than
       # only a name.
-      # `OutputFile` is binary-compatible with `FileNode`.
       class BuildBazelRemoteExecutionV2OutputFile
         include Google::Apis::Core::Hashable
+      
+        # The contents of the file if inlining was requested. The server SHOULD NOT
+        # inline
+        # file contents unless requested by the client in the
+        # GetActionResultRequest
+        # message. The server MAY omit inlining, even if requested, and MUST do so if
+        # inlining
+        # would cause the response to exceed message size limits.
+        # Corresponds to the JSON property `contents`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :contents
       
         # A content digest. A digest for a given blob consists of the size of the blob
         # and its hash. The hash algorithm to use is defined by the server, but servers
@@ -1123,6 +1146,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
           @digest = args[:digest] if args.key?(:digest)
           @is_executable = args[:is_executable] if args.key?(:is_executable)
           @path = args[:path] if args.key?(:path)
@@ -1235,6 +1259,12 @@ module Google
       # canonical proto serialization:
       # * name: `build.bazel.remote.execution.v2.requestmetadata-bin`
       # * contents: the base64 encoded binary `RequestMetadata` message.
+      # Note: the gRPC library serializes binary headers encoded in base 64 by
+      # default (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#
+      # requests).
+      # Therefore, if the gRPC library is used to pass/retrieve this
+      # metadata, the user may ignore the base64 encoding and assume it is simply
+      # serialized as a binary message.
       class BuildBazelRemoteExecutionV2RequestMetadata
         include Google::Apis::Core::Hashable
       
@@ -1357,6 +1387,11 @@ module Google
         # * Every child in the directory must have a path of exactly one segment.
         # Multiple levels of directory hierarchy may not be collapsed.
         # * Each child in the directory must have a unique path segment (file name).
+        # Note that while the API itself is case-sensitive, the environment where
+        # the Action is executed may or may not be case-sensitive. That is, it is
+        # legal to call the API with a Directory that has both "Foo" and "foo" as
+        # children, but the Action may be rejected by the remote system upon
+        # execution.
         # * The files, directories and symlinks in the directory must each be sorted
         # in lexicographical order by path. The path strings must be sorted by code
         # point, equivalently, by UTF-8 bytes.
@@ -1788,6 +1823,23 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. A filter to constrain the pools returned. Filters have the form:
+        # <field> <operator> <value> [[AND|OR] <field> <operator> <value>]...
+        # <field> is the path for a field or map key in the Pool proto message.
+        # e.g. "configuration.disk_size_gb" or "configuration.labels.key".
+        # <operator> can be one of "<", "<=", ">=", ">", "=", "!=", ":".
+        # ":" is a HAS operation for strings and repeated primitive fields.
+        # <value> is the value to test, case-insensitive for strings. "*" stands for
+        # any value and can be used to test for key presence.
+        # Parenthesis determine AND/OR precedence. In space separated restrictions,
+        # AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+        # Example filter:
+        # configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
+        # This field is currently ignored in all requests.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # Resource name of the instance.
         # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # Corresponds to the JSON property `parent`
@@ -1800,6 +1852,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
         end
       end
@@ -1874,6 +1927,16 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Labels associated with the workers.
+        # Label keys and values can be no longer than 63 characters, can only contain
+        # lowercase letters, numeric characters, underscores and dashes.
+        # International letters are permitted. Keys must start with a letter but
+        # values are optional.
+        # This field is currently ignored in all requests.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Required. Machine type of the worker, such as `n1-standard-2`.
         # See https://cloud.google.com/compute/docs/machine-types for a list of
         # supported machine types. Note that `f1-micro` and `g1-small` are not yet
@@ -1905,6 +1968,7 @@ module Google
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @reserved = args[:reserved] if args.key?(:reserved)
