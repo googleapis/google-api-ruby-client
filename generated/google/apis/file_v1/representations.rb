@@ -188,6 +188,7 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
         end

@@ -1972,7 +1972,7 @@ module Google
       # the use of the labels "instance_id" and "zone" to identify particular VM
       # instances.Different APIs can support different monitored resource types. APIs
       # generally provide a list method that returns the monitored resource
-      # descriptors used by the API.Next ID: 10
+      # descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
