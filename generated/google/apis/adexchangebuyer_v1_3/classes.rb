@@ -282,6 +282,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
+        # 
+        # Corresponds to the JSON property `adTechnologyProviders`
+        # @return [Google::Apis::AdexchangebuyerV1_3::Creative::AdTechnologyProviders]
+        attr_accessor :ad_technology_providers
+      
         # Detected advertiser id, if any. Read-only. This field should not be set in
         # requests.
         # Corresponds to the JSON property `advertiserId`
@@ -413,6 +418,7 @@ module Google
         def update!(**args)
           @html_snippet = args[:html_snippet] if args.key?(:html_snippet)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ad_technology_providers = args[:ad_technology_providers] if args.key?(:ad_technology_providers)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
@@ -435,6 +441,32 @@ module Google
           @version = args[:version] if args.key?(:version)
           @video_url = args[:video_url] if args.key?(:video_url)
           @width = args[:width] if args.key?(:width)
+        end
+        
+        # 
+        class AdTechnologyProviders
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `detectedProviderIds`
+          # @return [Array<Fixnum>]
+          attr_accessor :detected_provider_ids
+        
+          # 
+          # Corresponds to the JSON property `hasUnidentifiedProvider`
+          # @return [Boolean]
+          attr_accessor :has_unidentified_provider
+          alias_method :has_unidentified_provider?, :has_unidentified_provider
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @detected_provider_ids = args[:detected_provider_ids] if args.key?(:detected_provider_ids)
+            @has_unidentified_provider = args[:has_unidentified_provider] if args.key?(:has_unidentified_provider)
+          end
         end
         
         # 
@@ -600,11 +632,6 @@ module Google
           # @return [Float]
           attr_accessor :star_rating
         
-          # The URL to the app store to purchase/download the promoted app.
-          # Corresponds to the JSON property `store`
-          # @return [String]
-          attr_accessor :store
-        
           def initialize(**args)
              update!(**args)
           end
@@ -622,7 +649,6 @@ module Google
             @logo = args[:logo] if args.key?(:logo)
             @price = args[:price] if args.key?(:price)
             @star_rating = args[:star_rating] if args.key?(:star_rating)
-            @store = args[:store] if args.key?(:store)
           end
           
           # The app icon, for app download ads.

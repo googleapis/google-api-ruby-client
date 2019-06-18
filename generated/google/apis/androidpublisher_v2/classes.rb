@@ -1640,12 +1640,13 @@ module Google
       class Testers
         include Google::Apis::Core::Hashable
       
-        # 
+        # A list of all Google Groups, as email addresses, that define testers for this
+        # track.
         # Corresponds to the JSON property `googleGroups`
         # @return [Array<String>]
         attr_accessor :google_groups
       
-        # 
+        # A list of all Google+ Communities, as URLs, that define testers for this track.
         # Corresponds to the JSON property `googlePlusCommunities`
         # @return [Array<String>]
         attr_accessor :google_plus_communities

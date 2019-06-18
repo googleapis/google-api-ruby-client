@@ -109,6 +109,12 @@ module Google
       class Creative
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class AdTechnologyProviders
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Correction
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -635,6 +641,8 @@ module Google
           property :html_snippet, as: 'HTMLSnippet'
           property :account_id, as: 'accountId'
           property :ad_choices_destination_url, as: 'adChoicesDestinationUrl'
+          property :ad_technology_providers, as: 'adTechnologyProviders', class: Google::Apis::AdexchangebuyerV1_4::Creative::AdTechnologyProviders, decorator: Google::Apis::AdexchangebuyerV1_4::Creative::AdTechnologyProviders::Representation
+      
           collection :advertiser_id, as: 'advertiserId'
           property :advertiser_name, as: 'advertiserName'
           property :agency_id, :numeric_string => true, as: 'agencyId'
@@ -667,6 +675,14 @@ module Google
           property :video_url, as: 'videoURL'
           property :video_vast_xml, as: 'videoVastXML'
           property :width, as: 'width'
+        end
+        
+        class AdTechnologyProviders
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :detected_provider_ids, as: 'detectedProviderIds'
+            property :has_unidentified_provider, as: 'hasUnidentifiedProvider'
+          end
         end
         
         class Correction
@@ -724,7 +740,6 @@ module Google
         
             property :price, as: 'price'
             property :star_rating, as: 'starRating'
-            property :store, as: 'store'
             property :video_url, as: 'videoURL'
           end
           
