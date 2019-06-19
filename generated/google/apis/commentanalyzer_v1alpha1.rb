@@ -27,10 +27,10 @@ module Google
     # doNotStore" flag to ensure that all submitted comments are automatically
     # deleted after scores are returned.
     #
-    # @see https://conversationai.github.io/
+    # @see https://github.com/conversationai/perspectiveapi/blob/master/README.md
     module CommentanalyzerV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20190526'
+      REVISION = '20190616'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'

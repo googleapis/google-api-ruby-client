@@ -936,6 +936,8 @@ module Google
       class TestSuiteOverview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :elapsed_time, as: 'elapsedTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
           property :error_count, as: 'errorCount'
           property :failure_count, as: 'failureCount'
           property :name, as: 'name'

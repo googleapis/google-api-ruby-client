@@ -35,7 +35,7 @@ module Google
       #    Commentanalyzer = Google::Apis::CommentanalyzerV1alpha1 # Alias the module
       #    service = Commentanalyzer::CommentAnalyzerService.new
       #
-      # @see https://conversationai.github.io/
+      # @see https://github.com/conversationai/perspectiveapi/blob/master/README.md
       class CommentAnalyzerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
