@@ -348,10 +348,13 @@ module Google
       
           property :built_in_algorithm_output, as: 'builtInAlgorithmOutput', class: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput::Representation
       
+          property :end_time, as: 'endTime'
           property :final_metric, as: 'finalMetric', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric::Representation
       
           hash :hyperparameters, as: 'hyperparameters'
           property :is_trial_stopped_early, as: 'isTrialStoppedEarly'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
           property :trial_id, as: 'trialId'
         end
       end

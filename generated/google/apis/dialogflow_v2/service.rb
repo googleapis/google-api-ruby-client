@@ -31,7 +31,7 @@ module Google
       #    Dialogflow = Google::Apis::DialogflowV2 # Alias the module
       #    service = Dialogflow::DialogflowService.new
       #
-      # @see https://cloud.google.com/dialogflow-enterprise/
+      # @see https://cloud.google.com/dialogflow/
       class DialogflowService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -415,8 +415,7 @@ module Google
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -488,8 +487,7 @@ module Google
         #   Optional. The language to retrieve entity synonyms for. If not specified,
         #   the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -528,8 +526,7 @@ module Google
         #   Optional. The language to list entity synonyms for. If not specified,
         #   the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [Fixnum] page_size
@@ -578,8 +575,7 @@ module Google
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] update_mask
@@ -803,8 +799,7 @@ module Google
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
         #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -880,8 +875,7 @@ module Google
         #   Optional. The language to retrieve training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -923,8 +917,7 @@ module Google
         #   Optional. The language to list training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [Fixnum] page_size
@@ -976,8 +969,7 @@ module Google
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
         #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] update_mask

@@ -12,30 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/bigquerydatatransfer_v1/service.rb'
-require 'google/apis/bigquerydatatransfer_v1/classes.rb'
-require 'google/apis/bigquerydatatransfer_v1/representations.rb'
+require 'google/apis/firebase_v1beta1/service.rb'
+require 'google/apis/firebase_v1beta1/classes.rb'
+require 'google/apis/firebase_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # BigQuery Data Transfer API
+    # Firebase Management API
     #
-    # Schedule queries or transfer external data from SaaS applications to Google
-    # BigQuery on a regular basis.
+    # The Firebase Management API enables programmatic setup and management of
+    # Firebase projects, including a project's Firebase resources and Firebase apps.
     #
-    # @see https://cloud.google.com/bigquery/
-    module BigquerydatatransferV1
-      VERSION = 'V1'
-      REVISION = '20190615'
-
-      # View and manage your data in Google BigQuery
-      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+    # @see https://firebase.google.com
+    module FirebaseV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20190618'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
+
+      # View and administer all your Firebase data and settings
+      AUTH_FIREBASE = 'https://www.googleapis.com/auth/firebase'
+
+      # View all your Firebase data and settings
+      AUTH_FIREBASE_READONLY = 'https://www.googleapis.com/auth/firebase.readonly'
     end
   end
 end

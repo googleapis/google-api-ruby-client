@@ -82,8 +82,7 @@ module Google
       
         # Optional. The collection of parameters associated with this context.
         # Refer to [this
-        # doc](https://cloud.google.com/dialogflow-enterprise/docs/intents-actions-
-        # parameters)
+        # doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
         # for syntax.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
@@ -195,8 +194,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this query. See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes. Note that queries in
         # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
@@ -1074,7 +1072,7 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of prompts that the agent can present to the
-        # user in order to collect value for the parameter.
+        # user in order to collect a value for the parameter.
         # Corresponds to the JSON property `prompts`
         # @return [Array<String>]
         attr_accessor :prompts
@@ -1301,8 +1299,7 @@ module Google
       
         # The language that was triggered during intent detection.
         # See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -1571,8 +1568,7 @@ module Google
         # Optional. The URI of the agent's avatar.
         # Avatars are used throughout the Dialogflow console and in the self-hosted
         # [Web
-        # Demo](https://cloud.google.com/dialogflow-enterprise/docs/integrations/web-
-        # demo)
+        # Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
         # integration.
         # Corresponds to the JSON property `avatarUri`
         # @return [String]
@@ -1591,8 +1587,7 @@ module Google
       
         # Required. The default language of the agent as a language tag. See
         # [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes. This field cannot be
         # set by the `Update` method.
         # Corresponds to the JSON property `defaultLanguageCode`
@@ -1678,8 +1673,7 @@ module Google
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
         # [Many
-        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
         # are supported. Note: languages must be enabled in the agent before they can
         # be used.
         # Corresponds to the JSON property `languageCode`
@@ -1711,8 +1705,7 @@ module Google
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
         # [Many
-        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
         # are supported. Note: languages must be enabled in the agent before they can
         # be used.
         # Corresponds to the JSON property `languageCode`
@@ -1782,8 +1775,7 @@ module Google
         # Optional. The language of entity synonyms defined in `entities`. If not
         # specified, the agent's default language is used.
         # [Many
-        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
         # are supported. Note: languages must be enabled in the agent before they can
         # be used.
         # Corresponds to the JSON property `languageCode`
@@ -1827,8 +1819,7 @@ module Google
         # Optional. The language of entity synonyms defined in `entity_types`. If not
         # specified, the agent's default language is used.
         # [Many
-        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
         # are supported. Note: languages must be enabled in the agent before they can
         # be used.
         # Corresponds to the JSON property `languageCode`
@@ -1896,8 +1887,7 @@ module Google
         # Optional. The language of training phrases, parameters and rich messages
         # defined in `intents`. If not specified, the agent's default language is
         # used. [Many
-        # languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
         # are supported. Note: languages must be enabled in the agent before they can
         # be used.
         # Corresponds to the JSON property `languageCode`
@@ -1968,8 +1958,7 @@ module Google
       
         # Optional. The collection of parameters associated with this context.
         # Refer to [this
-        # doc](https://cloud.google.com/dialogflow-enterprise/docs/intents-actions-
-        # parameters)
+        # doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
         # for syntax.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
@@ -2284,8 +2273,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this query. See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes. Note that queries in
         # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
@@ -2437,8 +2425,7 @@ module Google
       
         # Required. The language of the supplied audio. Dialogflow does not do
         # translations. See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes. Note that queries in
         # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
@@ -3457,7 +3444,7 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of prompts that the agent can present to the
-        # user in order to collect value for the parameter.
+        # user in order to collect a value for the parameter.
         # Corresponds to the JSON property `prompts`
         # @return [Array<String>]
         attr_accessor :prompts
@@ -4126,8 +4113,7 @@ module Google
       
         # The language that was triggered during intent detection.
         # See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -4471,8 +4457,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The language of this conversational query. See [Language
-        # Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        # language)
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language)
         # for a list of the currently supported language codes. Note that queries in
         # the same session do not necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`

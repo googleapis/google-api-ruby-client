@@ -1137,6 +1137,7 @@ module Google
         # The purchase state of the order. Possible values are:
         # - Purchased
         # - Canceled
+        # - Pending
         # Corresponds to the JSON property `purchaseState`
         # @return [Fixnum]
         attr_accessor :purchase_state

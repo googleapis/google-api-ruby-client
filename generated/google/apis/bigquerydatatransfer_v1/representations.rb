@@ -190,6 +190,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_values, as: 'allowedValues'
+          property :deprecated, as: 'deprecated'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :fields, as: 'fields', class: Google::Apis::BigquerydatatransferV1::DataSourceParameter, decorator: Google::Apis::BigquerydatatransferV1::DataSourceParameter::Representation

@@ -31,7 +31,7 @@ module Google
       #    Dialogflow = Google::Apis::DialogflowV2beta1 # Alias the module
       #    service = Dialogflow::DialogflowService.new
       #
-      # @see https://cloud.google.com/dialogflow-enterprise/
+      # @see https://cloud.google.com/dialogflow/
       class DialogflowService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -415,8 +415,7 @@ module Google
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -488,8 +487,7 @@ module Google
         #   Optional. The language to retrieve entity synonyms for. If not specified,
         #   the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -528,8 +526,7 @@ module Google
         #   Optional. The language to list entity synonyms for. If not specified,
         #   the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [Fixnum] page_size
@@ -578,8 +575,7 @@ module Google
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] update_mask
@@ -766,7 +762,7 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
         #   default 'draft' environment. If `User ID` is not specified, we are using
-        #   "-". It’s up to the API caller to choose an appropriate `Session ID` and
+        #   "-". It's up to the API caller to choose an appropriate `Session ID` and
         #   `User Id`. They can be a random numbers or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.
@@ -1271,8 +1267,7 @@ module Google
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
         #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -1348,8 +1343,7 @@ module Google
         #   Optional. The language to retrieve training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] fields
@@ -1391,8 +1385,7 @@ module Google
         #   Optional. The language to list training phrases, parameters and rich
         #   messages for. If not specified, the agent's default language is used.
         #   [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [Fixnum] page_size
@@ -1444,8 +1437,7 @@ module Google
         #   Optional. The language of training phrases, parameters and rich messages
         #   defined in `intent`. If not specified, the agent's default language is
         #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/
-        #   language)
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
         #   are supported. Note: languages must be enabled in the agent before they can
         #   be used.
         # @param [String] update_mask
@@ -1949,7 +1941,7 @@ module Google
         #   `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
         #   ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
         #   default 'draft' environment. If `User ID` is not specified, we are using
-        #   "-". It’s up to the API caller to choose an appropriate `Session ID` and
+        #   "-". It's up to the API caller to choose an appropriate `Session ID` and
         #   `User Id`. They can be a random numbers or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.

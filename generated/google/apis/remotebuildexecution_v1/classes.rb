@@ -1854,7 +1854,6 @@ module Google
         # AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
         # Example filter:
         # configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
-        # This field is currently ignored in all requests.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1951,7 +1950,7 @@ module Google
         # lowercase letters, numeric characters, underscores and dashes.
         # International letters are permitted. Keys must start with a letter but
         # values are optional.
-        # This field is currently ignored in all requests.
+        # There can not be more than 64 labels per resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

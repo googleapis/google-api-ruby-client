@@ -213,6 +213,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_values
       
+        # If true, it should not be used in new transfers, and it should not be
+        # visible to users.
+        # Corresponds to the JSON property `deprecated`
+        # @return [Boolean]
+        attr_accessor :deprecated
+        alias_method :deprecated?, :deprecated
+      
         # Parameter description.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -295,6 +302,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fields = args[:fields] if args.key?(:fields)
@@ -922,8 +930,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # For batch transfer runs, specifies the date and time that
-        # data should be ingested.
+        # For batch transfer runs, specifies the date and time of the data should be
+        # ingested.
         # Corresponds to the JSON property `runTime`
         # @return [String]
         attr_accessor :run_time

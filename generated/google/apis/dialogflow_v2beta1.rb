@@ -23,10 +23,10 @@ module Google
     # Builds conversational interfaces (for example, chatbots, and voice-powered
     # apps and devices).
     #
-    # @see https://cloud.google.com/dialogflow-enterprise/
+    # @see https://cloud.google.com/dialogflow/
     module DialogflowV2beta1
       VERSION = 'V2beta1'
-      REVISION = '20190610'
+      REVISION = '20190616'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -330,6 +330,11 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1BuiltInAlgorithmOutput]
         attr_accessor :built_in_algorithm_output
       
+        # Output only. End time for the trial.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # An observed value of a metric.
         # Corresponds to the JSON property `finalMetric`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric]
@@ -346,6 +351,16 @@ module Google
         attr_accessor :is_trial_stopped_early
         alias_method :is_trial_stopped_early?, :is_trial_stopped_early
       
+        # Output only. Start time for the trial.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The detailed state of the trial.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The trial id for these results.
         # Corresponds to the JSON property `trialId`
         # @return [String]
@@ -359,9 +374,12 @@ module Google
         def update!(**args)
           @all_metrics = args[:all_metrics] if args.key?(:all_metrics)
           @built_in_algorithm_output = args[:built_in_algorithm_output] if args.key?(:built_in_algorithm_output)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @final_metric = args[:final_metric] if args.key?(:final_metric)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
           @is_trial_stopped_early = args[:is_trial_stopped_early] if args.key?(:is_trial_stopped_early)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
           @trial_id = args[:trial_id] if args.key?(:trial_id)
         end
       end

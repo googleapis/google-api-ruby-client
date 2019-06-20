@@ -303,7 +303,6 @@ module Google
         #   AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
         #   Example filter:
         #   configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
-        #   This field is currently ignored in all requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
