@@ -11025,7 +11025,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :preserved_state_size_gb
       
-        # AllocationAffinity is the configuration of desired allocation which this
+        # ReservationAffinity is the configuration of desired reservation which this
         # instance could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
@@ -13759,7 +13759,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # AllocationAffinity is the configuration of desired allocation which this
+        # ReservationAffinity is the configuration of desired reservation which this
         # instance could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
@@ -17693,11 +17693,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
-        # Overrides of stateful properties for a given instance
-        # Corresponds to the JSON property `override`
-        # @return [Google::Apis::ComputeAlpha::ManagedInstanceOverride]
-        attr_accessor :override
-      
         # Preserved state for a given instance.
         # Corresponds to the JSON property `preservedStateFromConfig`
         # @return [Google::Apis::ComputeAlpha::PreservedState]
@@ -17731,7 +17726,6 @@ module Google
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
-          @override = args[:override] if args.key?(:override)
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @tag = args[:tag] if args.key?(:tag)
@@ -17840,104 +17834,6 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
           end
-        end
-      end
-      
-      # Overrides of stateful properties for a given instance
-      class ManagedInstanceOverride
-        include Google::Apis::Core::Hashable
-      
-        # Disk overrides defined for this instance. According to documentation the
-        # maximum number of disks attached to an instance is 128: https://cloud.google.
-        # com/compute/docs/disks/ However, compute API defines the limit at 140, so this
-        # is what we check.
-        # Corresponds to the JSON property `disks`
-        # @return [Array<Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride>]
-        attr_accessor :disks
-      
-        # Metadata overrides defined for this instance. TODO(b/69785416) validate the
-        # total length is <9 KB
-        # Corresponds to the JSON property `metadata`
-        # @return [Array<Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum>]
-        attr_accessor :metadata
-      
-        # [Output Only] Indicates where does the override come from.
-        # Corresponds to the JSON property `origin`
-        # @return [String]
-        attr_accessor :origin
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disks = args[:disks] if args.key?(:disks)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @origin = args[:origin] if args.key?(:origin)
-        end
-        
-        # 
-        class Metadatum
-          include Google::Apis::Core::Hashable
-        
-          # Key for the metadata entry. Keys must conform to the following regexp: [a-zA-
-          # Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a
-          # URL in the metadata server. Additionally, to avoid ambiguity, keys must not
-          # conflict with any other metadata keys for the project.
-          # Corresponds to the JSON property `key`
-          # @return [String]
-          attr_accessor :key
-        
-          # Value for the metadata entry. These are free-form strings, and only have
-          # meaning as interpreted by the image running in the instance. The only
-          # restriction placed on values is that their size must be less than or equal to
-          # 262144 bytes (256 KiB).
-          # Corresponds to the JSON property `value`
-          # @return [String]
-          attr_accessor :value
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @key = args[:key] if args.key?(:key)
-            @value = args[:value] if args.key?(:value)
-          end
-        end
-      end
-      
-      # 
-      class ManagedInstanceOverrideDiskOverride
-        include Google::Apis::Core::Hashable
-      
-        # The name of the device on the VM
-        # Corresponds to the JSON property `deviceName`
-        # @return [String]
-        attr_accessor :device_name
-      
-        # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
-        # specified, the default is to attach the disk in READ_WRITE mode.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
-        # The disk that is/will be mounted
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_name = args[:device_name] if args.key?(:device_name)
-          @mode = args[:mode] if args.key?(:mode)
-          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -19639,9 +19535,9 @@ module Google
         attr_accessor :kind
       
         # 
-        # Corresponds to the JSON property `managedHoldback`
+        # Corresponds to the JSON property `maintenancePolicy`
         # @return [String]
-        attr_accessor :managed_holdback
+        attr_accessor :maintenance_policy
       
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
@@ -19696,7 +19592,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @managed_holdback = args[:managed_holdback] if args.key?(:managed_holdback)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @name = args[:name] if args.key?(:name)
           @node_template = args[:node_template] if args.key?(:node_template)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -20306,7 +20202,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for
-      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID: 16
+      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16 ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -20383,7 +20279,12 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Binding properties for the physical server.
+        # Sets the binding properties for the physical server. Valid values include:
+        # - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical
+        # server
+        # - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server
+        # whenever possible
+        # See Sole-tenant node options for more information.
         # Corresponds to the JSON property `serverBinding`
         # @return [Google::Apis::ComputeAlpha::ServerBinding]
         attr_accessor :server_binding
@@ -22576,15 +22477,15 @@ module Google
       
         # Protocols that apply as filter on mirrored traffic. If no protocols are
         # specified, all traffic that matches the specified CIDR ranges is mirrored. If
-        # neither cidrRanges nor IpProtocols is specified, all traffic is mirrored.
-        # Corresponds to the JSON property `IPProtocol`
+        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # Corresponds to the JSON property `IPProtocols`
         # @return [Array<String>]
-        attr_accessor :ip_protocol
+        attr_accessor :ip_protocols
       
         # IP CIDR ranges that apply as filter on the source (ingress) or destination (
         # egress) IP in the IP header. Only IPv4 is supported. If no ranges are
         # specified, all traffic that matches the specified IPProtocols is mirrored. If
-        # neither cidrRanges nor IpProtocols is specified, all traffic is mirrored.
+        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         # Corresponds to the JSON property `cidrRanges`
         # @return [Array<String>]
         attr_accessor :cidr_ranges
@@ -22595,7 +22496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
           @cidr_ranges = args[:cidr_ranges] if args.key?(:cidr_ranges)
         end
       end
@@ -23153,13 +23054,6 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # The URL of the instance. Serves as a merge key during UpdatePerInstanceConfigs
-        # operation, i.e. if per-instance config with the same instance URL exists then
-        # it will be updated, otherwise a new one will be created.
-        # Corresponds to the JSON property `instance`
-        # @return [String]
-        attr_accessor :instance
-      
         # The name of the per-instance config and the corresponding instance. Serves as
         # a merge key during UpdatePerInstanceConfigs operation, i.e. if per-instance
         # config with the same name exists then it will be updated, otherwise a new one
@@ -23169,11 +23063,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Overrides of stateful properties for a given instance
-        # Corresponds to the JSON property `override`
-        # @return [Google::Apis::ComputeAlpha::ManagedInstanceOverride]
-        attr_accessor :override
       
         # Preserved state for a given instance.
         # Corresponds to the JSON property `preservedState`
@@ -23187,9 +23076,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @instance = args[:instance] if args.key?(:instance)
           @name = args[:name] if args.key?(:name)
-          @override = args[:override] if args.key?(:override)
           @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
         end
       end
@@ -25466,7 +25353,7 @@ module Google
         end
       end
       
-      # AllocationAffinity is the configuration of desired allocation which this
+      # ReservationAffinity is the configuration of desired reservation which this
       # instance could take capacity from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
@@ -26572,6 +26459,15 @@ module Google
       class ResourcePolicyVmMaintenancePolicy
         include Google::Apis::Core::Hashable
       
+        # A concurrency control configuration. Defines a group config that, when
+        # attached to an instance, recognizes that instance as part of a group of
+        # instances where only up the concurrency_limit of instances in that group can
+        # undergo simultaneous maintenance. For more information: go/concurrency-control-
+        # design-doc
+        # Corresponds to the JSON property `concurrencyControlGroup`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicyConcurrencyControl]
+        attr_accessor :concurrency_control_group
+      
         # A maintenance window for VMs. When set, we restrict our maintenance operations
         # to this window.
         # Corresponds to the JSON property `maintenanceWindow`
@@ -26584,7 +26480,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_control_group = args[:concurrency_control_group] if args.key?(:concurrency_control_group)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+        end
+      end
+      
+      # A concurrency control configuration. Defines a group config that, when
+      # attached to an instance, recognizes that instance as part of a group of
+      # instances where only up the concurrency_limit of instances in that group can
+      # undergo simultaneous maintenance. For more information: go/concurrency-control-
+      # design-doc
+      class ResourcePolicyVmMaintenancePolicyConcurrencyControl
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `concurrencyLimit`
+        # @return [Fixnum]
+        attr_accessor :concurrency_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrency_limit = args[:concurrency_limit] if args.key?(:concurrency_limit)
         end
       end
       
@@ -28602,6 +28522,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyAssociation>]
         attr_accessor :associations
       
+        # Configuration options for Cloud Armor.
+        # Corresponds to the JSON property `cloudArmorConfig`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyCloudArmorConfig]
+        attr_accessor :cloud_armor_config
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -28702,6 +28627,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
+          @cloud_armor_config = args[:cloud_armor_config] if args.key?(:cloud_armor_config)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -28746,6 +28672,26 @@ module Google
           @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
           @name = args[:name] if args.key?(:name)
           @security_policy_id = args[:security_policy_id] if args.key?(:security_policy_id)
+        end
+      end
+      
+      # Configuration options for Cloud Armor.
+      class SecurityPolicyCloudArmorConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, enables Cloud Armor Machine Learning.
+        # Corresponds to the JSON property `enableMl`
+        # @return [Boolean]
+        attr_accessor :enable_ml
+        alias_method :enable_ml?, :enable_ml
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_ml = args[:enable_ml] if args.key?(:enable_ml)
         end
       end
       
@@ -30864,11 +30810,6 @@ module Google
       class StatefulPolicy
         include Google::Apis::Core::Hashable
       
-        # Configuration of all preserved resources.
-        # Corresponds to the JSON property `preservedResources`
-        # @return [Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources]
-        attr_accessor :preserved_resources
-      
         # Configuration of preserved resources.
         # Corresponds to the JSON property `preservedState`
         # @return [Google::Apis::ComputeAlpha::StatefulPolicyPreservedState]
@@ -30880,47 +30821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @preserved_resources = args[:preserved_resources] if args.key?(:preserved_resources)
           @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
-        end
-      end
-      
-      # 
-      class StatefulPolicyPreservedDisk
-        include Google::Apis::Core::Hashable
-      
-        # Device name of the disk to be preserved
-        # Corresponds to the JSON property `deviceName`
-        # @return [String]
-        attr_accessor :device_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_name = args[:device_name] if args.key?(:device_name)
-        end
-      end
-      
-      # Configuration of all preserved resources.
-      class StatefulPolicyPreservedResources
-        include Google::Apis::Core::Hashable
-      
-        # Disks created on the instances that will be preserved on instance delete,
-        # resize down, etc.
-        # Corresponds to the JSON property `disks`
-        # @return [Array<Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk>]
-        attr_accessor :disks
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disks = args[:disks] if args.key?(:disks)
         end
       end
       
@@ -31497,9 +31398,9 @@ module Google
         # @return [Float]
         attr_accessor :flow_sampling
       
-        # Can only be specified if VPC flow logging for this subnetwork is enabled.
-        # Configures whether metadata fields should be added to the reported VPC flow
-        # logs. Default is INCLUDE_ALL_METADATA.
+        # Can only be specified if VPC flow logs for this subnetwork is enabled.
+        # Configures whether all, none or a subset of metadata fields should be added to
+        # the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata

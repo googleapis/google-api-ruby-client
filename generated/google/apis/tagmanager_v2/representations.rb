@@ -298,12 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Timestamp
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Trigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -535,8 +529,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :authorization_code, as: 'authorizationCode'
-          property :authorization_timestamp, as: 'authorizationTimestamp', class: Google::Apis::TagmanagerV2::Timestamp, decorator: Google::Apis::TagmanagerV2::Timestamp::Representation
-      
+          property :authorization_timestamp, as: 'authorizationTimestamp'
           property :container_id, as: 'containerId'
           property :container_version_id, as: 'containerVersionId'
           property :description, as: 'description'
@@ -870,14 +863,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stop_teardown_on_failure, as: 'stopTeardownOnFailure'
           property :tag_name, as: 'tagName'
-        end
-      end
-      
-      class Timestamp
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :nanos, as: 'nanos'
-          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       

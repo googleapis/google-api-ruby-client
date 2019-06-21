@@ -9725,7 +9725,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # AllocationAffinity is the configuration of desired allocation which this
+        # ReservationAffinity is the configuration of desired reservation which this
         # instance could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeBeta::ReservationAffinity]
@@ -12050,7 +12050,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # AllocationAffinity is the configuration of desired allocation which this
+        # ReservationAffinity is the configuration of desired reservation which this
         # instance could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeBeta::ReservationAffinity]
@@ -17288,7 +17288,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for
-      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID: 16
+      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16 ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -17355,7 +17355,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Binding properties for the physical server.
+        # Sets the binding properties for the physical server. Valid values include:
+        # - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical
+        # server
+        # - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server
+        # whenever possible
+        # See Sole-tenant node options for more information.
         # Corresponds to the JSON property `serverBinding`
         # @return [Google::Apis::ComputeBeta::ServerBinding]
         attr_accessor :server_binding
@@ -20814,7 +20819,7 @@ module Google
         end
       end
       
-      # AllocationAffinity is the configuration of desired allocation which this
+      # ReservationAffinity is the configuration of desired reservation which this
       # instance could take capacity from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
@@ -25818,9 +25823,9 @@ module Google
         # @return [Float]
         attr_accessor :flow_sampling
       
-        # Can only be specified if VPC flow logging for this subnetwork is enabled.
-        # Configures whether metadata fields should be added to the reported VPC flow
-        # logs. Default is INCLUDE_ALL_METADATA.
+        # Can only be specified if VPC flow logs for this subnetwork is enabled.
+        # Configures whether all, none or a subset of metadata fields should be added to
+        # the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata

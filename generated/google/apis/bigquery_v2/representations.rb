@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HivePartitioningOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IterationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -697,6 +703,8 @@ module Google
       class BinaryConfusionMatrix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy, as: 'accuracy'
+          property :f1_score, as: 'f1Score'
           property :false_negatives, :numeric_string => true, as: 'falseNegatives'
           property :false_positives, :numeric_string => true, as: 'falsePositives'
           property :positive_class_threshold, as: 'positiveClassThreshold'
@@ -963,6 +971,8 @@ module Google
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
       
           property :hive_partitioning_mode, as: 'hivePartitioningMode'
+          property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
+      
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
@@ -1007,6 +1017,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
+        end
+      end
+      
+      class HivePartitioningOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :source_uri_prefix, as: 'sourceUriPrefix'
         end
       end
       
@@ -1101,6 +1119,8 @@ module Google
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
           property :hive_partitioning_mode, as: 'hivePartitioningMode'
+          property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
+      
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
           property :null_marker, as: 'nullMarker'

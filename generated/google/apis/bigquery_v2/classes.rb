@@ -386,6 +386,16 @@ module Google
       class BinaryConfusionMatrix
         include Google::Apis::Core::Hashable
       
+        # The fraction of predictions given the correct label.
+        # Corresponds to the JSON property `accuracy`
+        # @return [Float]
+        attr_accessor :accuracy
+      
+        # The equally weighted average of recall and precision.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
         # Number of false samples predicted as false.
         # Corresponds to the JSON property `falseNegatives`
         # @return [Fixnum]
@@ -401,12 +411,14 @@ module Google
         # @return [Float]
         attr_accessor :positive_class_threshold
       
-        # Aggregate precision.
+        # The fraction of actual positive predictions that had positive actual
+        # labels.
         # Corresponds to the JSON property `precision`
         # @return [Float]
         attr_accessor :precision
       
-        # Aggregate recall.
+        # The fraction of actual positive labels that were given a positive
+        # prediction.
         # Corresponds to the JSON property `recall`
         # @return [Float]
         attr_accessor :recall
@@ -427,6 +439,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accuracy = args[:accuracy] if args.key?(:accuracy)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
           @false_negatives = args[:false_negatives] if args.key?(:false_negatives)
           @false_positives = args[:false_positives] if args.key?(:false_positives)
           @positive_class_threshold = args[:positive_class_threshold] if args.key?(:positive_class_threshold)
@@ -1514,14 +1528,21 @@ module Google
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
         attr_accessor :google_sheets_options
       
-        # [Optional, Experimental] If hive partitioning is enabled, which mode to use.
+        # [Optional, Trusted Tester] If hive partitioning is enabled, which mode to use.
         # Two modes are supported: - AUTO: automatically infer partition key name(s) and
         # type(s). - STRINGS: automatic infer partition key name(s). All types are
         # strings. Not all storage formats support hive partitioning -- requesting hive
-        # partitioning on an unsupported format will lead to an error.
+        # partitioning on an unsupported format will lead to an error. Note: this
+        # setting is in the process of being deprecated in favor of
+        # hivePartitioningOptions.
         # Corresponds to the JSON property `hivePartitioningMode`
         # @return [String]
         attr_accessor :hive_partitioning_mode
+      
+        # [Optional, Trusted Tester] Options to configure hive partitioning support.
+        # Corresponds to the JSON property `hivePartitioningOptions`
+        # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
+        attr_accessor :hive_partitioning_options
       
         # [Optional] Indicates if BigQuery should allow extra values that are not
         # represented in the table schema. If true, the extra values are ignored. If
@@ -1586,6 +1607,7 @@ module Google
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
+          @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @schema = args[:schema] if args.key?(:schema)
@@ -1754,6 +1776,44 @@ module Google
         def update!(**args)
           @range = args[:range] if args.key?(:range)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
+        end
+      end
+      
+      # 
+      class HivePartitioningOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Optional, Trusted Tester] When set, what mode of hive partitioning to use
+        # when reading data. Two modes are supported. (1) AUTO: automatically infer
+        # partition key name(s) and type(s). (2) STRINGS: automatically infer partition
+        # key name(s). All types are interpreted as strings. Not all storage formats
+        # support hive partitioning. Requesting hive partitioning on an unsupported
+        # format will lead to an error. Currently supported types include: AVRO, CSV,
+        # JSON, ORC and Parquet.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # [Optional, Trusted Tester] When hive partition detection is requested, a
+        # common prefix for all source uris should be supplied. The prefix must end
+        # immediately before the partition key encoding begins. For example, consider
+        # files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/
+        # country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/
+        # id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS
+        # detection, the common prefix can be either of gs://bucket/path_to_table or gs:/
+        # /bucket/path_to_table/ (trailing slash does not matter).
+        # Corresponds to the JSON property `sourceUriPrefix`
+        # @return [String]
+        attr_accessor :source_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @source_uri_prefix = args[:source_uri_prefix] if args.key?(:source_uri_prefix)
         end
       end
       
@@ -2113,7 +2173,7 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
-        # [Optional, Experimental] If hive partitioning is enabled, which mode to use.
+        # [Optional, Trusted Tester] If hive partitioning is enabled, which mode to use.
         # Two modes are supported: - AUTO: automatically infer partition key name(s) and
         # type(s). - STRINGS: automatic infer partition key name(s). All types are
         # strings. Not all storage formats support hive partitioning -- requesting hive
@@ -2121,6 +2181,11 @@ module Google
         # Corresponds to the JSON property `hivePartitioningMode`
         # @return [String]
         attr_accessor :hive_partitioning_mode
+      
+        # [Optional, Trusted Tester] Options to configure hive partitioning support.
+        # Corresponds to the JSON property `hivePartitioningOptions`
+        # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
+        attr_accessor :hive_partitioning_options
       
         # [Optional] Indicates if BigQuery should allow extra values that are not
         # represented in the table schema. If true, the extra values are ignored. If
@@ -2278,6 +2343,7 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
+          @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)

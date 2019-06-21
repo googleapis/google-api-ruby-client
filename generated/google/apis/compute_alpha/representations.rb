@@ -2290,24 +2290,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ManagedInstanceOverride
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Metadatum
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ManagedInstanceOverrideDiskOverride
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3634,6 +3616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyVmMaintenancePolicyConcurrencyControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyVmMaintenancePolicyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3881,6 +3869,12 @@ module Google
       end
       
       class SecurityPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyCloudArmorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4187,18 +4181,6 @@ module Google
       end
       
       class StatefulPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StatefulPolicyPreservedDisk
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StatefulPolicyPreservedResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9465,8 +9447,6 @@ module Google
           property :instance_template, as: 'instanceTemplate'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt::Representation
       
-          property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
-      
           property :preserved_state_from_config, as: 'preservedStateFromConfig', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
@@ -9508,34 +9488,6 @@ module Google
               property :message, as: 'message'
             end
           end
-        end
-      end
-      
-      class ManagedInstanceOverride
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride::Representation
-      
-          collection :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum::Representation
-      
-          property :origin, as: 'origin'
-        end
-        
-        class Metadatum
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-      
-      class ManagedInstanceOverrideDiskOverride
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_name, as: 'deviceName'
-          property :mode, as: 'mode'
-          property :source, as: 'source'
         end
       end
       
@@ -9970,7 +9922,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :managed_holdback, as: 'managedHoldback'
+          property :maintenance_policy, as: 'maintenancePolicy'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -10735,7 +10687,7 @@ module Google
       class PacketMirroringFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ip_protocol, as: 'IPProtocol'
+          collection :ip_protocols, as: 'IPProtocols'
           collection :cidr_ranges, as: 'cidrRanges'
         end
       end
@@ -10893,10 +10845,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          property :instance, as: 'instance'
           property :name, as: 'name'
-          property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
-      
           property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
         end
@@ -11844,8 +11793,17 @@ module Google
       class ResourcePolicyVmMaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_control_group, as: 'concurrencyControlGroup', class: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicyConcurrencyControl, decorator: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicyConcurrencyControl::Representation
+      
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicyMaintenanceWindow, decorator: Google::Apis::ComputeAlpha::ResourcePolicyVmMaintenancePolicyMaintenanceWindow::Representation
       
+        end
+      end
+      
+      class ResourcePolicyVmMaintenancePolicyConcurrencyControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_limit, as: 'concurrencyLimit'
         end
       end
       
@@ -12333,6 +12291,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::SecurityPolicyAssociation, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
       
+          property :cloud_armor_config, as: 'cloudArmorConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyCloudArmorConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyCloudArmorConfig::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -12356,6 +12316,13 @@ module Google
           property :attachment_id, as: 'attachmentId'
           property :name, as: 'name'
           property :security_policy_id, as: 'securityPolicyId'
+        end
+      end
+      
+      class SecurityPolicyCloudArmorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_ml, as: 'enableMl'
         end
       end
       
@@ -12909,24 +12876,7 @@ module Google
       class StatefulPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :preserved_resources, as: 'preservedResources', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources::Representation
-      
           property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedState, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedState::Representation
-      
-        end
-      end
-      
-      class StatefulPolicyPreservedDisk
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_name, as: 'deviceName'
-        end
-      end
-      
-      class StatefulPolicyPreservedResources
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk::Representation
       
         end
       end

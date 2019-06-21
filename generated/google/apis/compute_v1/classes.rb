@@ -1043,6 +1043,104 @@ module Google
         end
       end
       
+      # 
+      class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size of the disk in base-2 GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Specifies the disk interface to use for attaching this disk, which is either
+        # SCSI or NVME. The default is SCSI. For performance characteristics of SCSI
+        # over NVMe, see Local SSD performance.
+        # Corresponds to the JSON property `interface`
+        # @return [String]
+        attr_accessor :interface
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @interface = args[:interface] if args.key?(:interface)
+        end
+      end
+      
+      # Properties of the SKU instances being reserved.
+      class AllocationSpecificSkuAllocationReservedInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Specifies accelerator type and count.
+        # Corresponds to the JSON property `guestAccelerators`
+        # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
+        attr_accessor :guest_accelerators
+      
+        # Specifies amount of local ssd to reserve with each instance. The type of disk
+        # is local-ssd.
+        # Corresponds to the JSON property `localSsds`
+        # @return [Array<Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk>]
+        attr_accessor :local_ssds
+      
+        # Specifies type of machine (name only) which has fixed number of vCPUs and
+        # fixed amount of memory. This also includes specifying custom machine type
+        # following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Minimum cpu platform the reservation.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+        end
+      end
+      
+      # This reservation type allows to pre allocate specific instance configuration.
+      class AllocationSpecificSkuReservation
+        include Google::Apis::Core::Hashable
+      
+        # Specifies number of resources that are allocated.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # [OutputOnly] Indicates how many resource are in use.
+        # Corresponds to the JSON property `inUseCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_count
+      
+        # Properties of the SKU instances being reserved.
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties]
+        attr_accessor :instance_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+        end
+      end
+      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -3163,6 +3261,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # List of reservations for this commitment.
+        # Corresponds to the JSON property `reservations`
+        # @return [Array<Google::Apis::ComputeV1::Reservation>]
+        attr_accessor :reservations
+      
         # A list of commitment amounts for particular resources. Note that VCPU and
         # MEMORY resource commitments must occur together.
         # Corresponds to the JSON property `resources`
@@ -3205,6 +3308,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
+          @reservations = args[:reservations] if args.key?(:reservations)
           @resources = args[:resources] if args.key?(:resources)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
@@ -7754,6 +7858,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # ReservationAffinity is the configuration of desired reservation which this
+        # instance could take capacity from.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::ComputeV1::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Sets the scheduling options for an Instance. NextID: 9
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
@@ -7838,6 +7948,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -9816,6 +9927,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # ReservationAffinity is the configuration of desired reservation which this
+        # instance could take capacity from.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::ComputeV1::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Sets the scheduling options for an Instance. NextID: 9
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
@@ -9853,6 +9970,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -14814,7 +14932,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for
-      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID: 16
+      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16 ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -14881,7 +14999,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Binding properties for the physical server.
+        # Sets the binding properties for the physical server. Valid values include:
+        # - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical
+        # server
+        # - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server
+        # whenever possible
+        # See Sole-tenant node options for more information.
         # Corresponds to the JSON property `serverBinding`
         # @return [Google::Apis::ComputeV1::ServerBinding]
         attr_accessor :server_binding
@@ -17909,10 +18032,490 @@ module Google
         end
       end
       
+      # Reservation resource NextID: 13
+      class Reservation
+        include Google::Apis::Core::Hashable
+      
+        # [OutputOnly] Full or partial url for parent commitment for reservations which
+        # are tied to a commitment.
+        # Corresponds to the JSON property `commitment`
+        # @return [String]
+        attr_accessor :commitment
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#reservations for
+        # reservations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of the resource, provided by the client when initially creating the
+        # resource. The resource name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # This reservation type allows to pre allocate specific instance configuration.
+        # Corresponds to the JSON property `specificReservation`
+        # @return [Google::Apis::ComputeV1::AllocationSpecificSkuReservation]
+        attr_accessor :specific_reservation
+      
+        # Indicates whether the reservation can be consumed by VMs with "any reservation"
+        # defined. If the field is set, then only VMs that target the reservation by
+        # name using --reservation-affinity can consume this reservation.
+        # Corresponds to the JSON property `specificReservationRequired`
+        # @return [Boolean]
+        attr_accessor :specific_reservation_required
+        alias_method :specific_reservation_required?, :specific_reservation_required
+      
+        # [Output Only] The status of the reservation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Zone in which the reservation resides, must be provided if reservation is
+        # created with commitment creation.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment = args[:commitment] if args.key?(:commitment)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @specific_reservation = args[:specific_reservation] if args.key?(:specific_reservation)
+          @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # ReservationAffinity is the configuration of desired reservation which this
+      # instance could take capacity from.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the type of reservation from which this instance can consume
+        # resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION.
+        # See  Consuming reserved instances for examples.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Corresponds to the label values of reservation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Contains a list of reservations.
+      class ReservationAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Allocation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::ReservationsScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ReservationAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ReservationAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class ReservationList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of Allocation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::Reservation>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource.Always compute#reservationsList for listsof
+        # reservations
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ReservationList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ReservationList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class ReservationsResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Number of allocated resources can be resized with minimum = 1 and maximum =
+        # 1000.
+        # Corresponds to the JSON property `specificSkuCount`
+        # @return [Fixnum]
+        attr_accessor :specific_sku_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @specific_sku_count = args[:specific_sku_count] if args.key?(:specific_sku_count)
+        end
+      end
+      
+      # 
+      class ReservationsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of reservations contained in this scope.
+        # Corresponds to the JSON property `reservations`
+        # @return [Array<Google::Apis::ComputeV1::Reservation>]
+        attr_accessor :reservations
+      
+        # Informational warning which replaces the list of reservations when the list is
+        # empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ReservationsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reservations = args[:reservations] if args.key?(:reservations)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of reservations when the list is
+        # empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ReservationsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Commitment for a particular resource (a Commitment is composed of one or more
       # of these).
       class ResourceCommitment
         include Google::Apis::Core::Hashable
+      
+        # Name of the accelerator type resource. Applicable only when the type is
+        # ACCELERATOR.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
       
         # The amount of the resource purchased (in a type-dependent unit, such as bytes).
         # For vCPUs, this can just be an integer. For memory, this must be provided in
@@ -17934,6 +18537,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @amount = args[:amount] if args.key?(:amount)
           @type = args[:type] if args.key?(:type)
         end

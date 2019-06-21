@@ -31,13 +31,15 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # The fingerprint of the GTM Account as computed at storage time. This value is
-        # recomputed whenever the account is modified.
+        # The fingerprint of the GTM Account as computed at storage time.
+        # This value is recomputed whenever the account is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
       
         # Account display name.
+        # @mutable tagmanager.accounts.create
+        # @mutable tagmanager.accounts.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -47,11 +49,13 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Whether the account shares data anonymously with Google and others. This flag
-        # enables benchmarking by sharing your data in an anonymous form. Google will
-        # remove all identifiable information about your website, combine the data with
-        # hundreds of other anonymous sites and report aggregate trends in the
-        # benchmarking service.
+        # Whether the account shares data anonymously with Google and others.
+        # This flag enables benchmarking by sharing your data in an anonymous form.
+        # Google will remove all identifiable information about your website, combine
+        # the data with hundreds of other anonymous sites and report aggregate trends
+        # in the benchmarking service.
+        # @mutable tagmanager.accounts.create
+        # @mutable tagmanager.accounts.update
         # Corresponds to the JSON property `shareData`
         # @return [Boolean]
         attr_accessor :share_data
@@ -82,6 +86,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the user has no access, user access, or admin access to an account.
+        # @mutable tagmanager.accounts.permissions.create
+        # @mutable tagmanager.accounts.permissions.update
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
@@ -98,8 +104,8 @@ module Google
       
       # Built-in variables are a special category of variables that are pre-created
       # and non-customizable. They provide common functionality like accessing
-      # propeties of the gtm data layer, monitoring clicks, or accessing elements of a
-      # page URL.
+      # propeties of the gtm data layer, monitoring clicks, or accessing elements
+      # of a page URL.
       class BuiltInVariable
         include Google::Apis::Core::Hashable
       
@@ -124,6 +130,8 @@ module Google
         attr_accessor :path
       
         # Type of built-in variable.
+        # @required.tagmanager.accounts.containers.workspaces.built_in_variable.update
+        # @mutable tagmanager.accounts.containers.workspaces.built_in_variable.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -153,20 +161,29 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of named parameters (key/value), depending on the condition's type.
-        # Notes:
-        # - For binary operators, include parameters named arg0 and arg1 for specifying
-        # the left and right operands, respectively.
-        # - At this time, the left operand (arg0) must be a reference to a variable.
-        # - For case-insensitive Regex matching, include a boolean parameter named
-        # ignore_case that is set to true. If not specified or set to any other value,
-        # the matching will be case sensitive.
-        # - To negate an operator, include a boolean parameter named negate boolean
-        # parameter that is set to true.
+        # Notes:<ul>
+        # <li>For binary operators, include parameters named <code>arg0</code> and
+        # <code>arg1</code> for specifying the left and right operands,
+        # respectively.</li>
+        # <li>At this time, the left operand (<code>arg0</code>) must be a reference
+        # to a variable.</li>
+        # <li>For case-insensitive Regex matching, include a boolean parameter named
+        # <code>ignore_case</code> that is set to <code>true</code>.
+        # If not specified or set to any other value, the matching will be case
+        # sensitive.</li>
+        # <li>To negate an operator, include a boolean parameter named
+        # <code>negate</code> boolean parameter that is set to <code>true</code>.
+        # </li>
+        # </ul>
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `parameter`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :parameter
       
         # The type of operator for this condition.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -198,22 +215,28 @@ module Google
         attr_accessor :container_id
       
         # List of domain names associated with the Container.
+        # @mutable tagmanager.accounts.containers.create
+        # @mutable tagmanager.accounts.containers.update
         # Corresponds to the JSON property `domainName`
         # @return [Array<String>]
         attr_accessor :domain_name
       
-        # The fingerprint of the GTM Container as computed at storage time. This value
-        # is recomputed whenever the account is modified.
+        # The fingerprint of the GTM Container as computed at storage time.  This
+        # value is recomputed whenever the account is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
       
         # Container display name.
+        # @mutable tagmanager.accounts.containers.create
+        # @mutable tagmanager.accounts.containers.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Container Notes.
+        # @mutable tagmanager.accounts.containers.create
+        # @mutable tagmanager.accounts.containers.update
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -233,8 +256,10 @@ module Google
         # @return [String]
         attr_accessor :tag_manager_url
       
-        # List of Usage Contexts for the Container. Valid values include: web, android,
-        # or ios.
+        # List of Usage Contexts for the Container. Valid values include: <code>web,
+        # android, or ios</code>.
+        # @mutable tagmanager.accounts.containers.create
+        # @mutable tagmanager.accounts.containers.update
         # Corresponds to the JSON property `usageContext`
         # @return [Array<String>]
         attr_accessor :usage_context
@@ -263,11 +288,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # GTM Container ID.
+        # @mutable tagmanager.accounts.permissions.create
+        # @mutable tagmanager.accounts.permissions.update
         # Corresponds to the JSON property `containerId`
         # @return [String]
         attr_accessor :container_id
       
         # List of Container permissions.
+        # @mutable tagmanager.accounts.permissions.create
+        # @mutable tagmanager.accounts.permissions.update
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
@@ -325,12 +354,14 @@ module Google
         alias_method :deleted?, :deleted
       
         # Container version description.
+        # @mutable tagmanager.accounts.containers.versions.update
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The fingerprint of the GTM Container Version as computed at storage time. This
-        # value is recomputed whenever the container version is modified.
+        # The fingerprint of the GTM Container Version as computed at
+        # storage time. This value is recomputed whenever the container version is
+        # modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -341,6 +372,7 @@ module Google
         attr_accessor :folder
       
         # Container version display name.
+        # @mutable tagmanager.accounts.containers.versions.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -553,7 +585,8 @@ module Google
         attr_accessor :container_version
       
         # Auto generated workspace path created as a result of version creation. This
-        # field should only be populated if the created version was not a quick preview.
+        # field should only be populated if the created version was not a quick
+        # preview.
         # Corresponds to the JSON property `newWorkspacePath`
         # @return [String]
         attr_accessor :new_workspace_path
@@ -590,8 +623,8 @@ module Google
         # @return [String]
         attr_accessor :container_id
       
-        # The fingerprint of the GTM Custom Template as computed at storage time. This
-        # value is recomputed whenever the template is modified.
+        # The fingerprint of the GTM Custom Template as computed at storage time.
+        # This value is recomputed whenever the template is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -704,61 +737,9 @@ module Google
         # @return [String]
         attr_accessor :authorization_code
       
-        # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
-        # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
-        # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # The last update time-stamp for the authorization code.
         # Corresponds to the JSON property `authorizationTimestamp`
-        # @return [Google::Apis::TagmanagerV2::Timestamp]
+        # @return [String]
         attr_accessor :authorization_timestamp
       
         # GTM Container ID.
@@ -773,11 +754,15 @@ module Google
       
         # The environment description. Can be set or changed only on USER type
         # environments.
+        # @mutable tagmanager.accounts.containers.environments.create
+        # @mutable tagmanager.accounts.containers.environments.update
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Whether or not to enable debug by default for the environment.
+        # @mutable tagmanager.accounts.containers.environments.create
+        # @mutable tagmanager.accounts.containers.environments.update
         # Corresponds to the JSON property `enableDebug`
         # @return [Boolean]
         attr_accessor :enable_debug
@@ -788,14 +773,16 @@ module Google
         # @return [String]
         attr_accessor :environment_id
       
-        # The fingerprint of the GTM environment as computed at storage time. This value
-        # is recomputed whenever the environment is modified.
+        # The fingerprint of the GTM environment as computed at storage time.
+        # This value is recomputed whenever the environment is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
       
         # The environment display name. Can be set or changed only on USER type
         # environments.
+        # @mutable tagmanager.accounts.containers.environments.create
+        # @mutable tagmanager.accounts.containers.environments.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -816,6 +803,8 @@ module Google
         attr_accessor :type
       
         # Default preview page url for the environment.
+        # @mutable tagmanager.accounts.containers.environments.create
+        # @mutable tagmanager.accounts.containers.environments.update
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -863,8 +852,8 @@ module Google
         # @return [String]
         attr_accessor :container_id
       
-        # The fingerprint of the GTM Folder as computed at storage time. This value is
-        # recomputed whenever the folder is modified.
+        # The fingerprint of the GTM Folder as computed at storage time.
+        # This value is recomputed whenever the folder is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -875,11 +864,15 @@ module Google
         attr_accessor :folder_id
       
         # Folder display name.
+        # @mutable tagmanager.accounts.containers.workspaces.folders.create
+        # @mutable tagmanager.accounts.containers.workspaces.folders.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # User notes on how to apply this folder in the container.
+        # @mutable tagmanager.accounts.containers.workspaces.folders.create
+        # @mutable tagmanager.accounts.containers.workspaces.folders.update
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -1336,37 +1329,72 @@ module Google
       class Parameter
         include Google::Apis::Core::Hashable
       
-        # The named key that uniquely identifies a parameter. Required for top-level
-        # parameters, as well as map values. Ignored for list values.
+        # The named key that uniquely identifies a parameter.  Required for top-level
+        # parameters, as well as map values.  Ignored for list values.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
         # This list parameter's parameters (keys will be ignored).
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `list`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :list
       
         # This map parameter's parameters (must have keys; keys must be unique).
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `map`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :map
       
-        # The parameter type. Valid values are:
-        # - boolean: The value represents a boolean, represented as 'true' or 'false'
-        # - integer: The value represents a 64-bit signed integer value, in base 10
-        # - list: A list of parameters should be specified
-        # - map: A map of parameters should be specified
-        # - template: The value represents any text; this can include variable
-        # references (even variable references that might return non-string types)
-        # - trigger_reference: The value represents a trigger, represented as the
-        # trigger id
+        # The parameter type.  Valid values are:<ul>
+        # <li><code>boolean</code>: The value represents a boolean, represented as
+        # 'true' or 'false'</li>
+        # <li><code>integer</code>: The value represents a 64-bit signed integer
+        # value, in base 10</li>
+        # <li><code>list</code>: A list of parameters should be specified</li>
+        # <li><code>map</code>: A map of parameters should be specified</li>
+        # <li><code>template</code>: The value represents any text; this can include
+        # variable references (even variable references that might return
+        # non-string types)</li>
+        # <li><code>trigger_reference</code>: The value represents a trigger,
+        # represented as the trigger id</li>
+        # </ul>
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # A parameter's value (may contain variable references such as "``myVariable``")
+        # A parameter's value (may contain variable references such as
+        # "``myVariable``")
         # as appropriate to the specified type.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1577,13 +1605,14 @@ module Google
         end
       end
       
-      # Represents a reference to atag that fires before another tag in order to set
-      # up dependencies.
+      # Represents a reference to atag that fires before another tag in order to
+      # set up dependencies.
       class SetupTag
         include Google::Apis::Core::Hashable
       
-        # If true, fire the main tag if and only if the setup tag fires successfully. If
-        # false, fire the main tag regardless of setup tag firing status.
+        # If true, fire the main tag if and only if the setup tag fires
+        # successfully.
+        # If false, fire the main tag regardless of setup tag firing status.
         # Corresponds to the JSON property `stopOnSetupFailure`
         # @return [Boolean]
         attr_accessor :stop_on_setup_failure
@@ -1636,9 +1665,9 @@ module Google
       class SyncWorkspaceResponse
         include Google::Apis::Core::Hashable
       
-        # The merge conflict after sync. If this field is not empty, the sync is still
-        # treated as successful. But a version cannot be created until all conflicts are
-        # resolved.
+        # The merge conflict after sync.
+        # If this field is not empty, the sync is still treated as successful.
+        # But a version cannot be created until all conflicts are resolved.
         # Corresponds to the JSON property `mergeConflict`
         # @return [Array<Google::Apis::TagmanagerV2::MergeConflict>]
         attr_accessor :merge_conflict
@@ -1668,14 +1697,18 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Blocking rule IDs. If any of the listed rules evaluate to true, the tag will
-        # not fire.
+        # Blocking rule IDs. If any of the listed rules evaluate to true, the tag
+        # will not fire.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `blockingRuleId`
         # @return [Array<String>]
         attr_accessor :blocking_rule_id
       
-        # Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag
-        # will not fire.
+        # Blocking trigger IDs. If any of the listed triggers evaluate to true, the
+        # tag will not fire.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `blockingTriggerId`
         # @return [Array<String>]
         attr_accessor :blocking_trigger_id
@@ -1685,42 +1718,55 @@ module Google
         # @return [String]
         attr_accessor :container_id
       
-        # The fingerprint of the GTM Tag as computed at storage time. This value is
-        # recomputed whenever the tag is modified.
+        # The fingerprint of the GTM Tag as computed at storage time.
+        # This value is recomputed whenever the tag is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
       
-        # Firing rule IDs. A tag will fire when any of the listed rules are true and all
-        # of its blockingRuleIds (if any specified) are false.
+        # Firing rule IDs. A tag will fire when any of the listed rules are true and
+        # all of its <code>blockingRuleIds</code> (if any specified) are false.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `firingRuleId`
         # @return [Array<String>]
         attr_accessor :firing_rule_id
       
-        # Firing trigger IDs. A tag will fire when any of the listed triggers are true
-        # and all of its blockingTriggerIds (if any specified) are false.
+        # Firing trigger IDs. A tag will fire when any of the listed triggers are
+        # true and all of its <code>blockingTriggerIds</code> (if any specified) are
+        # false.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `firingTriggerId`
         # @return [Array<String>]
         attr_accessor :firing_trigger_id
       
-        # If set to true, this tag will only fire in the live environment (e.g. not in
-        # preview or debug mode).
+        # If set to true, this tag will only fire in the live environment (e.g. not
+        # in preview or debug mode).
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `liveOnly`
         # @return [Boolean]
         attr_accessor :live_only
         alias_method :live_only?, :live_only
       
         # Tag display name.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # User notes on how to apply this tag in the container.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
         # The tag's parameters.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `parameter`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :parameter
@@ -1736,6 +1782,8 @@ module Google
         attr_accessor :path
       
         # Indicates whether the tag is paused, which prevents the tag from firing.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `paused`
         # @return [Boolean]
         attr_accessor :paused
@@ -1747,11 +1795,15 @@ module Google
         attr_accessor :priority
       
         # The end timestamp in milliseconds to schedule a tag.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `scheduleEndMs`
         # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a tag.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `scheduleStartMs`
         # @return [Fixnum]
         attr_accessor :schedule_start_ms
@@ -1782,6 +1834,8 @@ module Google
         attr_accessor :teardown_tag
       
         # GTM Tag Type.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1829,7 +1883,8 @@ module Google
       class TeardownTag
         include Google::Apis::Core::Hashable
       
-        # If true, fire the teardown tag if and only if the main tag fires successfully.
+        # If true, fire the teardown tag if and only if the main tag fires
+        # successfully.
         # If false, fire the teardown tag regardless of main tag firing status.
         # Corresponds to the JSON property `stopTeardownOnFailure`
         # @return [Boolean]
@@ -1852,86 +1907,6 @@ module Google
         end
       end
       
-      # A Timestamp represents a point in time independent of any time zone or local
-      # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-      # resolution. The count is relative to an epoch at UTC midnight on January 1,
-      # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-      # backwards to year one.
-      # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-      # second table is needed for interpretation, using a [24-hour linear smear](
-      # https://developers.google.com/time/smear).
-      # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-      # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-      # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-      # # Examples
-      # Example 1: Compute Timestamp from POSIX `time()`.
-      # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-      # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-      # struct timeval tv; gettimeofday(&tv, NULL);
-      # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-      # tv_usec * 1000);
-      # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-      # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-      # dwHighDateTime) << 32) | ft.dwLowDateTime;
-      # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-      # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-      # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-      # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-      # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-      # long millis = System.currentTimeMillis();
-      # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-      # setNanos((int) ((millis % 1000) * 1000000)).build();
-      # Example 5: Compute Timestamp from current time in Python.
-      # timestamp = Timestamp() timestamp.GetCurrentTime()
-      # # JSON Mapping
-      # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-      # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-      # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-      # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-      # zero-padded to two digits each. The fractional seconds, which can go up to 9
-      # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-      # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-      # serializer should always use UTC (as indicated by "Z") when printing the
-      # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-      # other timezones (as indicated by an offset).
-      # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-      # January 15, 2017.
-      # In JavaScript, one can convert a Date object to this format using the standard
-      # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-      # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-      # datetime.datetime` object can be converted to this format using [`strftime`](
-      # https://docs.python.org/2/library/time.html#time.strftime) with the time
-      # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-      # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-      # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-      # formatter capable of generating timestamps in this format.
-      class Timestamp
-        include Google::Apis::Core::Hashable
-      
-        # Non-negative fractions of a second at nanosecond resolution. Negative second
-        # values with fractions must still have non-negative nanos values that count
-        # forward in time. Must be from 0 to 999,999,999 inclusive.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        # Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be
-        # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
-        # Corresponds to the JSON property `seconds`
-        # @return [Fixnum]
-        attr_accessor :seconds
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @nanos = args[:nanos] if args.key?(:nanos)
-          @seconds = args[:seconds] if args.key?(:seconds)
-        end
-      end
-      
       # Represents a Google Tag Manager Trigger
       class Trigger
         include Google::Apis::Core::Hashable
@@ -1942,6 +1917,8 @@ module Google
         attr_accessor :account_id
       
         # Used in the case of auto event tracking.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `autoEventFilter`
         # @return [Array<Google::Apis::TagmanagerV2::Condition>]
         attr_accessor :auto_event_filter
@@ -1961,7 +1938,10 @@ module Google
         # @return [Google::Apis::TagmanagerV2::Parameter]
         attr_accessor :continuous_time_min_milliseconds
       
-        # Used in the case of custom event, which is fired iff all Conditions are true.
+        # Used in the case of custom event, which is fired iff all Conditions are
+        # true.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `customEventFilter`
         # @return [Array<Google::Apis::TagmanagerV2::Condition>]
         attr_accessor :custom_event_filter
@@ -1972,12 +1952,14 @@ module Google
         attr_accessor :event_name
       
         # The trigger will only fire iff all Conditions are true.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `filter`
         # @return [Array<Google::Apis::TagmanagerV2::Condition>]
         attr_accessor :filter
       
-        # The fingerprint of the GTM Trigger as computed at storage time. This value is
-        # recomputed whenever the trigger is modified.
+        # The fingerprint of the GTM Trigger as computed at storage time.
+        # This value is recomputed whenever the trigger is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -2008,16 +1990,22 @@ module Google
         attr_accessor :max_timer_length_seconds
       
         # Trigger display name.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # User notes on how to apply this trigger in the container.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
         # Additional parameters.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `parameter`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :parameter
@@ -2053,6 +2041,8 @@ module Google
         attr_accessor :trigger_id
       
         # Defines the data layer event that causes this trigger.
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        # @mutable tagmanager.accounts.containers.workspaces.triggers.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2153,11 +2143,14 @@ module Google
         attr_accessor :account_id
       
         # GTM Container access permissions.
+        # @mutable tagmanager.accounts.permissions.create
+        # @mutable tagmanager.accounts.permissions.update
         # Corresponds to the JSON property `containerAccess`
         # @return [Array<Google::Apis::TagmanagerV2::ContainerAccess>]
         attr_accessor :container_access
       
         # User's email address.
+        # @mutable tagmanager.accounts.permissions.create
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
@@ -2198,6 +2191,8 @@ module Google
         # For mobile containers only: A list of trigger IDs for disabling conditional
         # variables; the variable is enabled if one of the enabling trigger is true
         # while all the disabling trigger are false. Treated as an unordered set.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `disablingTriggerId`
         # @return [Array<String>]
         attr_accessor :disabling_trigger_id
@@ -2205,12 +2200,14 @@ module Google
         # For mobile containers only: A list of trigger IDs for enabling conditional
         # variables; the variable is enabled if one of the enabling triggers is true
         # while all the disabling triggers are false. Treated as an unordered set.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `enablingTriggerId`
         # @return [Array<String>]
         attr_accessor :enabling_trigger_id
       
-        # The fingerprint of the GTM Variable as computed at storage time. This value is
-        # recomputed whenever the variable is modified.
+        # The fingerprint of the GTM Variable as computed at storage time.
+        # This value is recomputed whenever the variable is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -2221,16 +2218,22 @@ module Google
         attr_accessor :format_value
       
         # Variable display name.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # User notes on how to apply this variable in the container.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
         # The variable's parameters.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `parameter`
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :parameter
@@ -2246,11 +2249,15 @@ module Google
         attr_accessor :path
       
         # The end timestamp in milliseconds to schedule a variable.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `scheduleEndMs`
         # @return [Fixnum]
         attr_accessor :schedule_end_ms
       
         # The start timestamp in milliseconds to schedule a variable.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `scheduleStartMs`
         # @return [Fixnum]
         attr_accessor :schedule_start_ms
@@ -2261,6 +2268,8 @@ module Google
         attr_accessor :tag_manager_url
       
         # GTM Variable Type.
+        # @mutable tagmanager.accounts.containers.workspaces.variables.create
+        # @mutable tagmanager.accounts.containers.workspaces.variables.update
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2360,17 +2369,21 @@ module Google
         attr_accessor :container_id
       
         # Workspace description.
+        # @mutable tagmanager.accounts.containers.workspaces.create
+        # @mutable tagmanager.accounts.containers.workspaces.update
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The fingerprint of the GTM Workspace as computed at storage time. This value
-        # is recomputed whenever the workspace is modified.
+        # The fingerprint of the GTM Workspace as computed at storage time. This
+        # value is recomputed whenever the workspace is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
       
         # Workspace display name.
+        # @mutable tagmanager.accounts.containers.workspaces.create
+        # @mutable tagmanager.accounts.containers.workspaces.update
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2431,8 +2444,8 @@ module Google
         # @return [String]
         attr_accessor :container_id
       
-        # The fingerprint of the GTM Zone as computed at storage time. This value is
-        # recomputed whenever the zone is modified.
+        # The fingerprint of the GTM Zone as computed at storage time.
+        # This value is recomputed whenever the zone is modified.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -2502,8 +2515,8 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV2::Condition>]
         attr_accessor :condition
       
-        # Custom evaluation trigger IDs. A zone will evaluate its boundary conditions
-        # when any of the listed triggers are true.
+        # Custom evaluation trigger IDs. A zone will evaluate its boundary
+        # conditions when any of the listed triggers are true.
         # Corresponds to the JSON property `customEvaluationTriggerId`
         # @return [Array<String>]
         attr_accessor :custom_evaluation_trigger_id

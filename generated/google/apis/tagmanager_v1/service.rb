@@ -22,7 +22,8 @@ module Google
     module TagmanagerV1
       # Tag Manager API
       #
-      # Accesses Tag Manager accounts and containers.
+      # This API allows clients to access and modify container and tag
+      #  configuration.
       #
       # @example
       #    require 'google/apis/tagmanager_v1'
@@ -30,7 +31,7 @@ module Google
       #    Tagmanager = Google::Apis::TagmanagerV1 # Alias the module
       #    service = Tagmanager::TagManagerService.new
       #
-      # @see https://developers.google.com/tag-manager/api/v1/
+      # @see https://developers.google.com/tag-manager
       class TagManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -38,17 +39,13 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'tagmanager/v1/')
-          @batch_path = 'batch/tagmanager/v1'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Gets a GTM Account.
@@ -57,10 +54,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -73,14 +68,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}', options)
+        def get_account(account_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Account::Representation
           command.response_class = Google::Apis::TagmanagerV1::Account
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -88,10 +82,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -104,13 +96,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts', options)
+        def list_accounts(fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListAccountsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListAccountsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -119,15 +110,13 @@ module Google
         #   The GTM Account ID.
         # @param [Google::Apis::TagmanagerV1::Account] account_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the account in
-        #   storage.
+        #   When provided, this fingerprint must match the fingerprint of the account
+        #   in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -140,8 +129,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account(account_id, account_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}', options)
+        def update_account(account_id, account_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::TagmanagerV1::Account::Representation
@@ -150,7 +139,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -161,10 +149,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -177,8 +163,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_container(account_id, container_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers', options)
+        def create_container(account_id, container_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers', options)
           command.request_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.request_object = container_object
           command.response_representation = Google::Apis::TagmanagerV1::Container::Representation
@@ -186,7 +172,6 @@ module Google
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -198,10 +183,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -214,13 +197,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}', options)
+        def delete_container(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -232,10 +214,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -248,15 +228,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}', options)
+        def get_container(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.response_class = Google::Apis::TagmanagerV1::Container
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -266,10 +245,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -282,14 +259,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_containers(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers', options)
+        def list_containers(account_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListContainersResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -300,15 +276,13 @@ module Google
         #   The GTM Container ID.
         # @param [Google::Apis::TagmanagerV1::Container] container_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the container in
-        #   storage.
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   container in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -321,8 +295,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_container(account_id, container_id, container_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}', options)
+        def update_container(account_id, container_id, container_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.request_object = container_object
           command.response_representation = Google::Apis::TagmanagerV1::Container::Representation
@@ -332,7 +306,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -345,10 +318,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -361,8 +332,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_environment(account_id, container_id, environment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/environments', options)
+        def create_account_container_environment(account_id, container_id, environment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', options)
           command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
@@ -371,7 +342,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -385,10 +355,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -401,14 +369,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+        def delete_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['environmentId'] = environment_id unless environment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -422,10 +389,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -438,8 +403,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+        def get_account_container_environment(account_id, container_id, environment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
           command.response_class = Google::Apis::TagmanagerV1::Environment
           command.params['accountId'] = account_id unless account_id.nil?
@@ -447,7 +412,6 @@ module Google
           command.params['environmentId'] = environment_id unless environment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -459,10 +423,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -475,15 +437,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_environments(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/environments', options)
+        def list_account_container_environments(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListEnvironmentsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListEnvironmentsResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -496,15 +457,13 @@ module Google
         #   The GTM Environment ID.
         # @param [Google::Apis::TagmanagerV1::Environment] environment_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the environment
-        #   in storage.
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   environment in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -517,8 +476,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_environment(account_id, container_id, environment_id, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
+        def update_account_container_environment(account_id, container_id, environment_id, environment_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
@@ -529,7 +488,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -542,10 +500,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -558,8 +514,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_folder(account_id, container_id, folder_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/folders', options)
+        def create_account_container_folder(account_id, container_id, folder_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', options)
           command.request_representation = Google::Apis::TagmanagerV1::Folder::Representation
           command.request_object = folder_object
           command.response_representation = Google::Apis::TagmanagerV1::Folder::Representation
@@ -568,7 +524,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -582,10 +537,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -598,14 +551,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_container_folder(account_id, container_id, folder_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
+        def delete_account_container_folder(account_id, container_id, folder_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -619,10 +571,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -635,8 +585,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_container_folder(account_id, container_id, folder_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
+        def get_account_container_folder(account_id, container_id, folder_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Folder::Representation
           command.response_class = Google::Apis::TagmanagerV1::Folder
           command.params['accountId'] = account_id unless account_id.nil?
@@ -644,7 +594,6 @@ module Google
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -656,10 +605,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -672,15 +619,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_folders(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/folders', options)
+        def list_account_container_folders(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListFoldersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListFoldersResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -698,10 +644,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -714,8 +658,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_folder(account_id, container_id, folder_id, folder_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
+        def update_account_container_folder(account_id, container_id, folder_id, folder_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Folder::Representation
           command.request_object = folder_object
           command.response_representation = Google::Apis::TagmanagerV1::Folder::Representation
@@ -726,7 +670,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -740,10 +683,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -756,8 +697,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_folder_entities(account_id, container_id, folder_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities', options)
+        def list_account_container_folder_entities(account_id, container_id, folder_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities', options)
           command.response_representation = Google::Apis::TagmanagerV1::FolderEntities::Representation
           command.response_class = Google::Apis::TagmanagerV1::FolderEntities
           command.params['accountId'] = account_id unless account_id.nil?
@@ -765,7 +706,6 @@ module Google
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -786,10 +726,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -802,8 +740,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_move_folder(account_id, container_id, folder_id, folder_object = nil, tag_id: nil, trigger_id: nil, variable_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', options)
+        def update_account_container_move_folder(account_id, container_id, folder_id, folder_object = nil, tag_id: nil, trigger_id: nil, variable_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Folder::Representation
           command.request_object = folder_object
           command.params['accountId'] = account_id unless account_id.nil?
@@ -814,7 +752,6 @@ module Google
           command.query['variableId'] = variable_id unless variable_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -829,10 +766,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -845,8 +780,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_reauthorize_environment(account_id, container_id, environment_id, environment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', options)
+        def update_account_container_reauthorize_environment(account_id, container_id, environment_id, environment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Environment::Representation
           command.request_object = environment_object
           command.response_representation = Google::Apis::TagmanagerV1::Environment::Representation
@@ -856,7 +791,6 @@ module Google
           command.params['environmentId'] = environment_id unless environment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -869,10 +803,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -885,8 +817,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_tag(account_id, container_id, tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/tags', options)
+        def create_tag(account_id, container_id, tag_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', options)
           command.request_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.request_object = tag_object
           command.response_representation = Google::Apis::TagmanagerV1::Tag::Representation
@@ -895,7 +827,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -909,10 +840,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -925,14 +854,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
+        def delete_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['tagId'] = tag_id unless tag_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -946,10 +874,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -962,8 +888,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
+        def get_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.response_class = Google::Apis::TagmanagerV1::Tag
           command.params['accountId'] = account_id unless account_id.nil?
@@ -971,7 +897,6 @@ module Google
           command.params['tagId'] = tag_id unless tag_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -983,10 +908,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -999,15 +922,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tags(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/tags', options)
+        def list_tags(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTagsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListTagsResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1025,10 +947,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1041,8 +961,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tag(account_id, container_id, tag_id, tag_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
+        def update_tag(account_id, container_id, tag_id, tag_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.request_object = tag_object
           command.response_representation = Google::Apis::TagmanagerV1::Tag::Representation
@@ -1053,7 +973,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1066,10 +985,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1082,8 +999,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_trigger(account_id, container_id, trigger_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/triggers', options)
+        def create_trigger(account_id, container_id, trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', options)
           command.request_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.request_object = trigger_object
           command.response_representation = Google::Apis::TagmanagerV1::Trigger::Representation
@@ -1092,7 +1009,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1106,10 +1022,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1122,14 +1036,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
+        def delete_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['triggerId'] = trigger_id unless trigger_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1143,10 +1056,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1159,8 +1070,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
+        def get_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.response_class = Google::Apis::TagmanagerV1::Trigger
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1168,7 +1079,6 @@ module Google
           command.params['triggerId'] = trigger_id unless trigger_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1180,10 +1090,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1196,15 +1104,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_triggers(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/triggers', options)
+        def list_triggers(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTriggersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListTriggersResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1217,15 +1124,13 @@ module Google
         #   The GTM Trigger ID.
         # @param [Google::Apis::TagmanagerV1::Trigger] trigger_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the trigger in
-        #   storage.
+        #   When provided, this fingerprint must match the fingerprint of the trigger
+        #   in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1238,8 +1143,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_trigger(account_id, container_id, trigger_id, trigger_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
+        def update_trigger(account_id, container_id, trigger_id, trigger_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.request_object = trigger_object
           command.response_representation = Google::Apis::TagmanagerV1::Trigger::Representation
@@ -1250,7 +1155,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1263,10 +1167,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1279,8 +1181,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_variable(account_id, container_id, variable_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/variables', options)
+        def create_variable(account_id, container_id, variable_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', options)
           command.request_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.request_object = variable_object
           command.response_representation = Google::Apis::TagmanagerV1::Variable::Representation
@@ -1289,7 +1191,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1303,10 +1204,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1319,14 +1218,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
+        def delete_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['variableId'] = variable_id unless variable_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1340,10 +1238,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1356,8 +1252,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
+        def get_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.response_class = Google::Apis::TagmanagerV1::Variable
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1365,7 +1261,6 @@ module Google
           command.params['variableId'] = variable_id unless variable_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1377,10 +1272,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1393,15 +1286,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_variables(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/variables', options)
+        def list_variables(account_id, container_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListVariablesResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListVariablesResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1414,15 +1306,13 @@ module Google
         #   The GTM Variable ID.
         # @param [Google::Apis::TagmanagerV1::Variable] variable_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the variable in
-        #   storage.
+        #   When provided, this fingerprint must match the fingerprint of the variable
+        #   in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1435,8 +1325,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_variable(account_id, container_id, variable_id, variable_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
+        def update_variable(account_id, container_id, variable_id, variable_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.request_object = variable_object
           command.response_representation = Google::Apis::TagmanagerV1::Variable::Representation
@@ -1447,7 +1337,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1460,10 +1349,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1476,8 +1363,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_version(account_id, container_id, create_container_version_request_version_options_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions', options)
+        def create_version(account_id, container_id, create_container_version_request_version_options_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', options)
           command.request_representation = Google::Apis::TagmanagerV1::CreateContainerVersionRequestVersionOptions::Representation
           command.request_object = create_container_version_request_version_options_object
           command.response_representation = Google::Apis::TagmanagerV1::CreateContainerVersionResponse::Representation
@@ -1486,7 +1373,6 @@ module Google
           command.params['containerId'] = container_id unless container_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1500,10 +1386,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1516,14 +1400,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
+        def delete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
           command.params['containerVersionId'] = container_version_id unless container_version_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1533,15 +1416,13 @@ module Google
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] container_version_id
-        #   The GTM Container Version ID. Specify published to retrieve the currently
-        #   published version.
+        #   The GTM Container Version ID. Specify <code>published</code> to retrieve
+        #   the currently published version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1554,8 +1435,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
+        def get_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1563,7 +1444,6 @@ module Google
           command.params['containerVersionId'] = container_version_id unless container_version_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1579,10 +1459,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1595,8 +1473,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_versions(account_id, container_id, headers: nil, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/versions', options)
+        def list_versions(account_id, container_id, headers: nil, include_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainerVersionsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListContainerVersionsResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1605,7 +1483,6 @@ module Google
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1617,15 +1494,13 @@ module Google
         # @param [String] container_version_id
         #   The GTM Container Version ID.
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the container
-        #   version in storage.
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   container version in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1638,8 +1513,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish', options)
+        def publish_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish', options)
           command.response_representation = Google::Apis::TagmanagerV1::PublishContainerVersionResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::PublishContainerVersionResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1648,14 +1523,13 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Restores a Container Version. This will overwrite the container's current
-        # configuration (including its variables, triggers and tags). The operation will
-        # not have any effect on the version that is being served (i.e. the published
-        # version).
+        # configuration (including its variables, triggers and tags). The operation
+        # will not have any effect on the version that is being served (i.e. the
+        # published version).
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
@@ -1665,10 +1539,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1681,8 +1553,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', options)
+        def restore_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1690,7 +1562,6 @@ module Google
           command.params['containerVersionId'] = container_version_id unless container_version_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1704,10 +1575,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1720,8 +1589,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def undelete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete', options)
+        def undelete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1729,7 +1598,6 @@ module Google
           command.params['containerVersionId'] = container_version_id unless container_version_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1742,15 +1610,13 @@ module Google
         #   The GTM Container Version ID.
         # @param [Google::Apis::TagmanagerV1::ContainerVersion] container_version_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the container
-        #   version in storage.
+        #   When provided, this fingerprint must match the fingerprint of the
+        #   container version in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1763,8 +1629,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_version(account_id, container_id, container_version_id, container_version_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
+        def update_version(account_id, container_id, container_version_id, container_version_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.request_object = container_version_object
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
@@ -1775,7 +1641,6 @@ module Google
           command.query['fingerprint'] = fingerprint unless fingerprint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1786,10 +1651,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1802,8 +1665,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_permission(account_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'accounts/{accountId}/permissions', options)
+        def create_permission(account_id, user_access_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v1/accounts/{accountId}/permissions', options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.request_object = user_access_object
           command.response_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
@@ -1811,7 +1674,6 @@ module Google
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1824,10 +1686,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1840,13 +1700,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'accounts/{accountId}/permissions/{permissionId}', options)
+        def delete_permission(account_id, permission_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1858,10 +1717,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1874,29 +1731,26 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/permissions/{permissionId}', options)
+        def get_permission(account_id, permission_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.response_class = Google::Apis::TagmanagerV1::UserAccess
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # List all users that have access to the account along with Account and
         # Container Permissions granted to each of them.
         # @param [String] account_id
-        #   The GTM Account ID. @required tagmanager.accounts.permissions.list
+        #   The GTM Account ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1909,14 +1763,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/{accountId}/permissions', options)
+        def list_permissions(account_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v1/accounts/{accountId}/permissions', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListAccountUsersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListAccountUsersResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1929,10 +1782,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1945,8 +1796,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(account_id, permission_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'accounts/{accountId}/permissions/{permissionId}', options)
+        def update_permission(account_id, permission_id, user_access_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.request_object = user_access_object
           command.response_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
@@ -1955,7 +1806,6 @@ module Google
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -1964,7 +1814,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

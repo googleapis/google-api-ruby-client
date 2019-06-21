@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HotKeyDetection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstructionInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1281,6 +1287,15 @@ module Google
         end
       end
       
+      class HotKeyDetection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hot_key_age, as: 'hotKeyAge'
+          property :system_name, as: 'systemName'
+          property :user_step_name, as: 'userStepName'
+        end
+      end
+      
       class InstructionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2256,6 +2271,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :harness_data, as: 'harnessData'
+          property :hot_key_detection, as: 'hotKeyDetection', class: Google::Apis::DataflowV1b3::HotKeyDetection, decorator: Google::Apis::DataflowV1b3::HotKeyDetection::Representation
+      
           property :lease_expire_time, as: 'leaseExpireTime'
           collection :metric_short_id, as: 'metricShortId', class: Google::Apis::DataflowV1b3::MetricShortId, decorator: Google::Apis::DataflowV1b3::MetricShortId::Representation
       
