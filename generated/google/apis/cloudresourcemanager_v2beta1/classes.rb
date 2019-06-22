@@ -254,7 +254,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only.  The lifecycle state of the folder.
+        # Output only. The lifecycle state of the folder.
         # Updates to the lifecycle_state must be performed via
         # DeleteFolder and
         # UndeleteFolder.

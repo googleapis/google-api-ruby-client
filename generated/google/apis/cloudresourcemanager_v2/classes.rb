@@ -254,7 +254,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only.  The lifecycle state of the folder.
+        # Output only. The lifecycle state of the folder.
         # Updates to the lifecycle_state must be performed via
         # DeleteFolder and
         # UndeleteFolder.
@@ -619,14 +619,16 @@ module Google
         # The displayName field in a query expression should use escaped quotes
         # for values that include whitespace to prevent unexpected behavior.
         # Some example queries are:
-        # |Query | Description|
-        # |----- | -----------|
-        # |displayName=Test* | Folders whose display name starts with "Test".|
-        # |lifecycleState=ACTIVE | Folders whose lifecycleState is ACTIVE.|
-        # |parent=folders/123 | Folders whose parent is "folders/123".|
-        # |parent=folders/123 AND lifecycleState=ACTIVE | Active folders whose parent
-        # is "folders/123".| |displayName=\\"Test String\\"|Folders whose display
-        # name includes both "Test" and "String".|
+        # * Query `displayName=Test*` returns Folder resources whose display name
+        # starts with "Test".
+        # * Query `lifecycleState=ACTIVE` returns Folder resources with
+        # `lifecycleState` set to `ACTIVE`.
+        # * Query `parent=folders/123` returns Folder resources that have
+        # `folders/123` as a parent resource.
+        # * Query `parent=folders/123 AND lifecycleState=ACTIVE` returns active
+        # Folder resources that have `folders/123` as a parent resource.
+        # * Query `displayName=\\"Test String\\"` returns Folder resources with
+        # display names that include both "Test" and "String".
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

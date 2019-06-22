@@ -672,6 +672,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Example points. Must be in increasing order of `value` field.
+        # Corresponds to the JSON property `exemplars`
+        # @return [Array<Google::Apis::ServicecontrolV1::Exemplar>]
+        attr_accessor :exemplars
+      
         # Describing buckets with arbitrary user-provided width.
         # Corresponds to the JSON property `explicitBuckets`
         # @return [Google::Apis::ServicecontrolV1::ExplicitBuckets]
@@ -719,6 +724,7 @@ module Google
         def update!(**args)
           @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
           @count = args[:count] if args.key?(:count)
+          @exemplars = args[:exemplars] if args.key?(:exemplars)
           @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
           @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
           @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
@@ -726,6 +732,48 @@ module Google
           @mean = args[:mean] if args.key?(:mean)
           @minimum = args[:minimum] if args.key?(:minimum)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+        end
+      end
+      
+      # Exemplars are example points that may be used to annotate aggregated
+      # distribution values. They are metadata that gives information about a
+      # particular value added to a Distribution bucket, such as a trace ID that
+      # was active when a value was added. They may contain further information,
+      # such as a example values and timestamps, origin, etc.
+      class Exemplar
+        include Google::Apis::Core::Hashable
+      
+        # Contextual information about the example value. Examples are:
+        # Trace: type.googleapis.com/google.monitoring.v3.SpanContext
+        # Literal string: type.googleapis.com/google.protobuf.StringValue
+        # Labels dropped during aggregation:
+        # type.googleapis.com/google.monitoring.v3.DroppedLabels
+        # There may be only a single attachment of any given message type in a
+        # single exemplar, and this is enforced by the system.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :attachments
+      
+        # The observation (sampling) time of the above value.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Value of the exemplar point. This value determines to which bucket the
+        # exemplar belongs.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

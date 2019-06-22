@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Exemplar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExplicitBuckets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -417,6 +423,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bucket_counts, as: 'bucketCounts'
           property :count, :numeric_string => true, as: 'count'
+          collection :exemplars, as: 'exemplars', class: Google::Apis::ServicecontrolV1::Exemplar, decorator: Google::Apis::ServicecontrolV1::Exemplar::Representation
+      
           property :explicit_buckets, as: 'explicitBuckets', class: Google::Apis::ServicecontrolV1::ExplicitBuckets, decorator: Google::Apis::ServicecontrolV1::ExplicitBuckets::Representation
       
           property :exponential_buckets, as: 'exponentialBuckets', class: Google::Apis::ServicecontrolV1::ExponentialBuckets, decorator: Google::Apis::ServicecontrolV1::ExponentialBuckets::Representation
@@ -427,6 +435,15 @@ module Google
           property :mean, as: 'mean'
           property :minimum, as: 'minimum'
           property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
+        end
+      end
+      
+      class Exemplar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments'
+          property :timestamp, as: 'timestamp'
+          property :value, as: 'value'
         end
       end
       
