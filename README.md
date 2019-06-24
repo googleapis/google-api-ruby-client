@@ -287,6 +287,22 @@ To set the logging level for the client:
 Google::Apis.logger.level = Logger::DEBUG
 ```
 
+## Customizing endpoints
+
+By default, client objects will connect to the default Google endpoints for =
+their respective APIs. If you need to connect to a regional endpoint, a test
+endpoint, or other custom endpoint, modify the `root_url` attribute of the
+client object. For example:
+
+```ruby
+require "google/apis/docs_v1"
+docs_service = Google::Apis::DocsV1::DocsService.new
+
+docs_service.root_url = "https://my-custom-docs-endpoint.example.com/"
+
+document = docs_service.get_document("my-document-id")
+```
+
 ## Samples
 
 See the [samples](https://github.com/google/google-api-ruby-client/tree/master/samples) for examples on how to use the client library for various
