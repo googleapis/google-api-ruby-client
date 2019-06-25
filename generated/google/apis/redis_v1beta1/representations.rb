@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailoverInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,6 +141,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::RedisV1beta1::OutputConfig, decorator: Google::Apis::RedisV1beta1::OutputConfig::Representation
       
+        end
+      end
+      
+      class FailoverInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_protection_mode, as: 'dataProtectionMode'
         end
       end
       

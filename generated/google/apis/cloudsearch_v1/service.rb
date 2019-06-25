@@ -31,7 +31,7 @@ module Google
       #    Cloudsearch = Google::Apis::CloudsearchV1 # Alias the module
       #    service = Cloudsearch::CloudSearchService.new
       #
-      # @see https://gsuite.google.com/products/cloud-search/
+      # @see https://developers.google.com/cloud-search/docs/guides/
       class CloudSearchService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

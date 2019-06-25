@@ -26,12 +26,14 @@ module Google
       class AddFirebaseRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. Instead, call FinalizeDefaultLocation after you add
-        # Firebase services to your project.
+        # Deprecated. Instead, to set your project's default GCP resource location,
+        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
+        # after you add Firebase services to your project.
         # <br>
-        # <br>The ID of the project's Cloud resource location. The location should be
-        # one of the AppEngine locations defined here:
-        # https://cloud.google.com/appengine/docs/locations
+        # <br>The ID of the project's default GCP resource location. The location
+        # must be one of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -72,9 +74,14 @@ module Google
         # @return [String]
         attr_accessor :database_url
       
-        # The default resource location of other Firebase resources
-        # (such as Cloud Firestore).
-        # <br>For examples, see https://cloud.google.com/appengine/docs/locations.
+        # The ID of the project's default GCP resource location. The location is one
+        # of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br>
+        # <br>This field is omitted if the default GCP resource location has not been
+        # finalized yet. To set your project's default GCP resource location,
+        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
+        # after you add Firebase services to your project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -197,10 +204,14 @@ module Google
         # @return [String]
         attr_accessor :hosting_site
       
-        # The default resource location of other Firebase resources, such as
-        # Cloud Firestore. This field is omitted if the default resource location has
-        # not been finalized yet.
-        # <br>For examples, see https://cloud.google.com/appengine/docs/locations.
+        # The ID of the project's default GCP resource location. The location is one
+        # of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br>
+        # <br>This field is omitted if the default GCP resource location has not been
+        # finalized yet. To set your project's default GCP resource location,
+        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
+        # after you add Firebase services to your project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -221,8 +232,7 @@ module Google
         attr_accessor :realtime_database_instance
       
         # The default Cloud Storage for Firebase storage bucket, in the format:
-        # <br><code><var>projectId</var>.appspot.com</code>. This field is omitted
-        # if the default resource location has not been finalized yet.
+        # <br><code><var>projectId</var>.appspot.com</code>
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
@@ -256,6 +266,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class FinalizeDefaultLocationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the default GCP resource location for the Project. The location
+        # must be one of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations).
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_id = args[:location_id] if args.key?(:location_id)
         end
       end
       
@@ -477,6 +509,38 @@ module Google
       end
       
       # 
+      class ListAvailableLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # One page of results from a call to `ListAvailableLocations`.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::FirebaseV1beta1::Location>]
+        attr_accessor :locations
+      
+        # If the result list is too large to fit in a single response, then a token
+        # is returned. If the string is empty, then this response is the last page of
+        # results and all available locations have been listed.
+        # <br>
+        # <br>This token can be used in a subsequent call to
+        # `ListAvailableLocations` to find more locations.
+        # <br>
+        # <br>Page tokens are short-lived and should not be persisted.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class ListAvailableProjectsResponse
         include Google::Apis::Core::Hashable
       
@@ -623,6 +687,28 @@ module Google
         end
       end
       
+      # A GCP resource location that can be selected for a Project.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the default GCP resource location. It must be one of the
+        # available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations).
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_id = args[:location_id] if args.key?(:location_id)
+        end
+      end
+      
       # This is proto2's version of MessageSet.
       class MessageSet
         include Google::Apis::Core::Hashable
@@ -710,13 +796,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The default resource location of other Firebase resources
-        # (such as Cloud Firestore).
-        # <br>Not all projects will have this field populated. If it is
-        # not populated, it means that the project is not yet associated with any
-        # region. Consequently, a call to AddFirebase <b>must</b> provide a location
-        # in this case.
-        # <br>For examples, see https://cloud.google.com/appengine/docs/locations.
+        # The ID of the project's default GCP resource location. The location is one
+        # of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br> <br>
+        # Not all projects will have this field populated. If it is not populated, it
+        # means that the project does not yet have a default GCP resource location.
+        # To set your project's default GCP resource location, call
+        # [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you
+        # add Firebase services to your project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1019,9 +1107,14 @@ module Google
         # @return [String]
         attr_accessor :database_url
       
-        # The default resource location of other Firebase resources
-        # (such as Cloud Firestore).
-        # <br>For examples, see https://cloud.google.com/appengine/docs/locations.
+        # The ID of the project's default GCP resource location. The location is one
+        # of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br>
+        # <br>This field is omitted if the default GCP resource location has not been
+        # finalized yet. To set your project's default GCP resource location,
+        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
+        # after you add Firebase services to your project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id

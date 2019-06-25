@@ -709,6 +709,145 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a list of valid Google Cloud Platform (GCP) resource locations for
+        # the specified Project (including a FirebaseProject).
+        # <br>
+        # <br>The default GCP resource location of a project defines the geographical
+        # location where project resources, such as Cloud Firestore, will be
+        # provisioned by default.
+        # <br>
+        # <br>The returned list are the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br>
+        # <br>This call checks for any location restrictions for the specified
+        # Project and, thus, might return a subset of all possible GCP resource
+        # locations. To list all GCP resource locations (regardless of any
+        # restrictions), call the endpoint without specifying a `projectId` (that is,
+        # `/v1beta1/`parent=projects/-`/listAvailableLocations`).
+        # <br>
+        # <br>To call `ListAvailableLocations` with a specified project, a member
+        # must be at minimum a Viewer of the project. Calls without a specified
+        # project do not require any specific project permissions.
+        # @param [String] parent
+        #   The Project for which to list GCP resource locations, in the format:
+        #   <br><code>projects/<var>projectId</var></code>
+        #   <br>If no project is specified (that is, `projects/-`), the returned list
+        #   does not take into account org-specific or project-specific location
+        #   restrictions.
+        # @param [Fixnum] page_size
+        #   The maximum number of locations to return in the response.
+        #   <br>
+        #   <br>The server may return fewer than this value at its discretion.
+        #   If no value is specified (or too large a value is specified), then the
+        #   server will impose its own limit.
+        #   <br>
+        #   <br>This value cannot be negative.
+        # @param [String] page_token
+        #   Token returned from a previous call to `ListAvailableLocations` indicating
+        #   where in the list of locations to resume listing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseV1beta1::ListAvailableLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseV1beta1::ListAvailableLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_available_locations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/availableLocations', options)
+          command.response_representation = Google::Apis::FirebaseV1beta1::ListAvailableLocationsResponse::Representation
+          command.response_class = Google::Apis::FirebaseV1beta1::ListAvailableLocationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the default Google Cloud Platform (GCP) resource location for the
+        # specified FirebaseProject.
+        # <br>
+        # <br>This method creates an App Engine application with a
+        # [default Cloud Storage
+        # bucket](https://cloud.google.com/appengine/docs/standard/python/
+        # googlecloudstorageclient/setting-up-cloud-storage#
+        # activating_a_cloud_storage_bucket),
+        # located in the specified
+        # [`location_id`](#body.request_body.FIELDS.location_id).
+        # This location must be one of the available
+        # [GCP resource
+        # locations](https://firebase.google.com/docs/projects/locations). <br>
+        # <br>After the default GCP resource location is finalized, or if it was
+        # already set, it cannot be changed. The default GCP resource location for
+        # the specified FirebaseProject might already be set because either the
+        # GCP `Project` already has an App Engine application or
+        # `FinalizeDefaultLocation` was previously called with a specified
+        # `location_id`. Any new calls to `FinalizeDefaultLocation` with a
+        # <em>different</em> specified `location_id` will return a 409 error.
+        # <br>
+        # <br>The result of this call is an [`Operation`](../../v1beta1/operations),
+        # which can be used to track the provisioning process. The
+        # [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of
+        # the `Operation` is google.protobuf.Empty.
+        # <br>
+        # <br>The `Operation` can be polled by its `name` using
+        # GetOperation until `done` is
+        # true. When `done` is true, the `Operation` has either succeeded or failed.
+        # If the `Operation` has succeeded, its
+        # [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be
+        # set to a google.protobuf.Empty; if the `Operation` has failed, its
+        # `error` will be set to a google.rpc.Status. The `Operation` is
+        # automatically deleted after completion, so there is no need to call
+        # DeleteOperation.
+        # <br>
+        # <br>All fields listed in the [request body](#request-body) are required.
+        # <br>
+        # <br>To call `FinalizeDefaultLocation`, a member must be an Owner
+        # of the project.
+        # @param [String] parent
+        #   The resource name of the Project for which the default GCP resource
+        #   location will be set, in the format:
+        #   <br><code>projects/<var>projectId</var></code>
+        # @param [Google::Apis::FirebaseV1beta1::FinalizeDefaultLocationRequest] finalize_default_location_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def finalize_default_location(parent, finalize_default_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/defaultLocation:finalize', options)
+          command.request_representation = Google::Apis::FirebaseV1beta1::FinalizeDefaultLocationRequest::Representation
+          command.request_object = finalize_default_location_request_object
+          command.response_representation = Google::Apis::FirebaseV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebaseV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Requests that a new IosApp be created.
         # <br>
         # <br>The result of this call is an `Operation` which can be used to track

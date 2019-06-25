@@ -88,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CheckSuiteFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -369,12 +363,6 @@ module Google
         end
       end
       
-      class CheckSuiteFilter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -392,8 +380,6 @@ module Google
       class GitHubEventsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :check_suite, as: 'checkSuite', class: Google::Apis::CloudbuildV1::CheckSuiteFilter, decorator: Google::Apis::CloudbuildV1::CheckSuiteFilter::Representation
-      
           property :installation_id, :numeric_string => true, as: 'installationId'
           property :name, as: 'name'
           property :owner, as: 'owner'

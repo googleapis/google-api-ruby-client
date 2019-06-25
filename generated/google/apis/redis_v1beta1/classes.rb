@@ -60,6 +60,26 @@ module Google
         end
       end
       
+      # Request for Failover.
+      class FailoverInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Available data protection modes that the user can choose. If it's
+        # unspecified, data protection mode will be LIMITED_DATA_LOSS by default.
+        # Corresponds to the JSON property `dataProtectionMode`
+        # @return [String]
+        attr_accessor :data_protection_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_protection_mode = args[:data_protection_mode] if args.key?(:data_protection_mode)
+        end
+      end
+      
       # The Cloud Storage location for the output content
       class GcsDestination
         include Google::Apis::Core::Hashable
@@ -342,8 +362,8 @@ module Google
         # If not provided, latest supported version will be used. Updating the
         # version will perform an upgrade/downgrade to the new version. Currently,
         # the supported values are:
-        # *   `REDIS_4_0` for Redis 4.0 compatibility
-        # *   `REDIS_3_2` for Redis 3.2 compatibility (default)
+        # *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+        # *   `REDIS_3_2` for Redis 3.2 compatibility
         # Corresponds to the JSON property `redisVersion`
         # @return [String]
         attr_accessor :redis_version

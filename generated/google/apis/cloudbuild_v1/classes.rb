@@ -743,20 +743,6 @@ module Google
         end
       end
       
-      # A CheckSuiteFilter is a filter that indicates that we should build on all
-      # check suite events.
-      class CheckSuiteFilter
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -802,13 +788,7 @@ module Google
       class GitHubEventsConfig
         include Google::Apis::Core::Hashable
       
-        # A CheckSuiteFilter is a filter that indicates that we should build on all
-        # check suite events.
-        # Corresponds to the JSON property `checkSuite`
-        # @return [Google::Apis::CloudbuildV1::CheckSuiteFilter]
-        attr_accessor :check_suite
-      
-        # The installationID that emmits the GitHub event.
+        # The installationID that emits the GitHub event.
         # Corresponds to the JSON property `installationId`
         # @return [Fixnum]
         attr_accessor :installation_id
@@ -840,7 +820,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @check_suite = args[:check_suite] if args.key?(:check_suite)
           @installation_id = args[:installation_id] if args.key?(:installation_id)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)

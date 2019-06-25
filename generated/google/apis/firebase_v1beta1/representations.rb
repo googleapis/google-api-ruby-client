@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FinalizeDefaultLocationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirebaseAppInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAvailableLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAvailableProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +125,12 @@ module Google
       end
       
       class ListWebAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +250,13 @@ module Google
         end
       end
       
+      class FinalizeDefaultLocationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_id, as: 'locationId'
+        end
+      end
+      
       class FirebaseAppInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -283,6 +308,15 @@ module Google
         end
       end
       
+      class ListAvailableLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::FirebaseV1beta1::Location, decorator: Google::Apis::FirebaseV1beta1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAvailableProjectsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -324,6 +358,13 @@ module Google
           collection :apps, as: 'apps', class: Google::Apis::FirebaseV1beta1::WebApp, decorator: Google::Apis::FirebaseV1beta1::WebApp::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_id, as: 'locationId'
         end
       end
       
