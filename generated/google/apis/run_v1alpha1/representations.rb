@@ -560,6 +560,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hostname, as: 'hostname'
+          property :url, as: 'url'
         end
       end
       
@@ -1260,6 +1261,7 @@ module Google
           property :observed_generation, as: 'observedGeneration'
           collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
       
+          property :url, as: 'url'
         end
       end
       
@@ -1400,6 +1402,7 @@ module Google
           property :observed_generation, as: 'observedGeneration'
           collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
       
+          property :url, as: 'url'
         end
       end
       

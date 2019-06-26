@@ -31,6 +31,11 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
+        # 
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38,6 +43,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @hostname = args[:hostname] if args.key?(:hostname)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -2746,7 +2752,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Not currently used by Cloud Run.
+        # Email address of the IAM service account associated with the revision
+        # of the service. The service account represents the identity of the
+        # running revision, and determines what permissions the revision has. If
+        # not provided, the revision will use the project's default service account.
         # Corresponds to the JSON property `serviceAccountName`
         # @return [String]
         attr_accessor :service_account_name
@@ -3067,6 +3076,13 @@ module Google
         # @return [Array<Google::Apis::RunV1alpha1::TrafficTarget>]
         attr_accessor :traffic
       
+        # URL holds the url that will distribute traffic over the provided traffic
+        # targets. It generally has the form
+        # https://`route-hash`-`project-hash`-`cluster-level-suffix`.a.run.app
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3079,6 +3095,7 @@ module Google
           @domain_internal = args[:domain_internal] if args.key?(:domain_internal)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @traffic = args[:traffic] if args.key?(:traffic)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -3641,6 +3658,14 @@ module Google
         # @return [Array<Google::Apis::RunV1alpha1::TrafficTarget>]
         attr_accessor :traffic
       
+        # From RouteStatus.
+        # URL holds the url that will distribute traffic over the provided traffic
+        # targets. It generally has the form
+        # https://`route-hash`-`project-hash`-`cluster-level-suffix`.a.run.app
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3654,6 +3679,7 @@ module Google
           @latest_ready_revision_name = args[:latest_ready_revision_name] if args.key?(:latest_ready_revision_name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @traffic = args[:traffic] if args.key?(:traffic)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

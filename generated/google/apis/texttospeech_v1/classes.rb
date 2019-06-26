@@ -34,9 +34,9 @@ module Google
         # Input only. Optional. An identifier which selects 'audio effects' profiles
         # that are applied on (post synthesized) text to speech. Effects are applied
         # on top of each other in the order they are given. See
-        # [audio-profiles](https:
-        # //cloud.google.com/text-to-speech/docs/audio-profiles)
-        # for current supported profile ids.
+        # [audio
+        # profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for
+        # current supported profile ids.
         # Corresponds to the JSON property `effectsProfileId`
         # @return [Array<String>]
         attr_accessor :effects_profile_id
