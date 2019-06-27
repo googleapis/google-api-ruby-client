@@ -1310,7 +1310,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a set of file IDs which can be provided in insert requests.
+        # Generates a set of file IDs which can be provided in insert or copy requests.
         # @param [Fixnum] max_results
         #   Maximum number of IDs to return.
         # @param [String] space

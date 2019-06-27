@@ -909,6 +909,7 @@ module Google
           property :model_variant, as: 'modelVariant'
           collection :phrase_hints, as: 'phraseHints'
           property :sample_rate_hertz, as: 'sampleRateHertz'
+          property :single_utterance, as: 'singleUtterance'
         end
       end
       

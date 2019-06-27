@@ -2472,6 +2472,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
+        # Optional. If `false` (default), recognition does not cease until the
+        # client closes the stream.
+        # If `true`, the recognizer will detect a single spoken utterance in input
+        # audio. Recognition ceases when it detects the audio's voice has
+        # stopped or paused. In this case, once a detected intent is received, the
+        # client should close the stream and start a new request with a new stream as
+        # needed.
+        # Note: This setting is relevant only for streaming methods.
+        # Note: When specified, InputAudioConfig.single_utterance takes precedence
+        # over StreamingDetectIntentRequest.single_utterance.
+        # Corresponds to the JSON property `singleUtterance`
+        # @return [Boolean]
+        attr_accessor :single_utterance
+        alias_method :single_utterance?, :single_utterance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2485,6 +2500,7 @@ module Google
           @model_variant = args[:model_variant] if args.key?(:model_variant)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
         end
       end
       

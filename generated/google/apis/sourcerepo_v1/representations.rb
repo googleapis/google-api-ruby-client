@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SyncRepoMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SyncRepoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,16 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SyncRepoMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :status_message, as: 'statusMessage'
+          property :update_time, as: 'updateTime'
         end
       end
       

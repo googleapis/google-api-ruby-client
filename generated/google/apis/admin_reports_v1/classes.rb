@@ -340,7 +340,7 @@ module Google
         attr_accessor :id
       
         # Identifies this as a notification channel used to watch for changes to a
-        # resource, which is "api#channel".
+        # resource. Value: the fixed string "api#channel".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

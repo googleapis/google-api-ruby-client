@@ -443,7 +443,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies parameters that will be used for generating initial DnsKeys for this
-        # ManagedZone. Output only while state is not OFF.
+        # ManagedZone. Can only be changed while state is OFF.
         # Corresponds to the JSON property `defaultKeySpecs`
         # @return [Array<Google::Apis::DnsV2beta1::DnsKeySpec>]
         attr_accessor :default_key_specs
@@ -455,7 +455,7 @@ module Google
         attr_accessor :kind
       
         # Specifies the mechanism used to provide authenticated denial-of-existence
-        # responses. Output only while state is not OFF.
+        # responses. Can only be changed while state is OFF.
         # Corresponds to the JSON property `nonExistence`
         # @return [String]
         attr_accessor :non_existence

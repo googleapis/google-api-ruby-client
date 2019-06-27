@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'dns/v1/projects/')
+          super('https://dns.googleapis.com/', 'dns/v1/projects/')
           @batch_path = 'batch/dns/v1'
         end
         

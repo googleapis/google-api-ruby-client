@@ -1017,7 +1017,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a set of file IDs which can be provided in create requests.
+        # Generates a set of file IDs which can be provided in create or copy requests.
         # @param [Fixnum] count
         #   The number of IDs to return.
         # @param [String] space

@@ -26,7 +26,7 @@ module Google
       class Addressable
         include Google::Apis::Core::Hashable
       
-        # 
+        # Deprecated - use url instead.
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
@@ -2740,6 +2740,7 @@ module Google
         # Containers holds the single container that defines the unit of execution
         # for this Revision. In the context of a Revision, we disallow a number of
         # fields on this Container, including: name and lifecycle.
+        # In Cloud Run, only a single container may be provided.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV1alpha1::Container>]
         attr_accessor :containers
@@ -3043,13 +3044,14 @@ module Google
         # @return [Array<Google::Apis::RunV1alpha1::RouteCondition>]
         attr_accessor :conditions
       
+        # Deprecated - use url instead.
         # Domain holds the top-level domain that will distribute traffic over the
-        # provided targets. It generally has the form
-        # https://`route-hash`-`project-hash`-`cluster-level-suffix`.a.run.app
+        # provided targets.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
+        # Deprecated - use address instead.
         # For Cloud Run, identifical to domain.
         # Corresponds to the JSON property `domainInternal`
         # @return [String]
