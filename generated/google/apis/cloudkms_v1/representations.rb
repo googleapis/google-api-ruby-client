@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyOperationAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +155,12 @@ module Google
       end
       
       class ListCryptoKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListImportJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +227,12 @@ module Google
       end
       
       class UpdateCryptoKeyPrimaryVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WrappingPublicKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -296,6 +320,9 @@ module Google
           property :destroy_event_time, as: 'destroyEventTime'
           property :destroy_time, as: 'destroyTime'
           property :generate_time, as: 'generateTime'
+          property :import_failure_reason, as: 'importFailureReason'
+          property :import_job, as: 'importJob'
+          property :import_time, as: 'importTime'
           property :name, as: 'name'
           property :protection_level, as: 'protectionLevel'
           property :state, as: 'state'
@@ -366,6 +393,33 @@ module Google
         end
       end
       
+      class ImportCryptoKeyVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :import_job, as: 'importJob'
+          property :rsa_aes_wrapped_key, :base64 => true, as: 'rsaAesWrappedKey'
+        end
+      end
+      
+      class ImportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation, as: 'attestation', class: Google::Apis::CloudkmsV1::KeyOperationAttestation, decorator: Google::Apis::CloudkmsV1::KeyOperationAttestation::Representation
+      
+          property :create_time, as: 'createTime'
+          property :expire_event_time, as: 'expireEventTime'
+          property :expire_time, as: 'expireTime'
+          property :generate_time, as: 'generateTime'
+          property :import_method, as: 'importMethod'
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :public_key, as: 'publicKey', class: Google::Apis::CloudkmsV1::WrappingPublicKey, decorator: Google::Apis::CloudkmsV1::WrappingPublicKey::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class KeyOperationAttestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -396,6 +450,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :crypto_keys, as: 'cryptoKeys', class: Google::Apis::CloudkmsV1::CryptoKey, decorator: Google::Apis::CloudkmsV1::CryptoKey::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class ListImportJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :import_jobs, as: 'importJobs', class: Google::Apis::CloudkmsV1::ImportJob, decorator: Google::Apis::CloudkmsV1::ImportJob::Representation
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
@@ -492,6 +556,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key_version_id, as: 'cryptoKeyVersionId'
+        end
+      end
+      
+      class WrappingPublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pem, as: 'pem'
         end
       end
     end

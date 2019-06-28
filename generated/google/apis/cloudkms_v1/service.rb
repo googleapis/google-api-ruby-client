@@ -191,6 +191,11 @@ module Google
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The policy format version to be returned.
+        #   Acceptable values are 0 and 1.
+        #   If the value is 0, or the field is omitted, policy format version 1 will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -208,11 +213,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -222,6 +228,13 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the location associated with the
         #   KeyRings, in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of KeyRings to include in the
         #   response.  Further KeyRings can subsequently be obtained by
@@ -247,11 +260,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_rings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_rings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/keyRings', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListKeyRingsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListKeyRingsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -344,6 +359,12 @@ module Google
         # @param [String] crypto_key_id
         #   Required. It must be unique within a KeyRing and match the regular
         #   expression `[a-zA-Z0-9_-]`1,63``
+        # @param [Boolean] skip_initial_version_creation
+        #   If set to true, the request will create a CryptoKey without any
+        #   CryptoKeyVersions. You must manually call
+        #   CreateCryptoKeyVersion or
+        #   ImportCryptoKeyVersion
+        #   before you can use this CryptoKey.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -361,7 +382,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_key_ring_crypto_key(parent, crypto_key_object = nil, crypto_key_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_key_ring_crypto_key(parent, crypto_key_object = nil, crypto_key_id: nil, skip_initial_version_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/cryptoKeys', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.request_object = crypto_key_object
@@ -369,6 +390,7 @@ module Google
           command.response_class = Google::Apis::CloudkmsV1::CryptoKey
           command.params['parent'] = parent unless parent.nil?
           command.query['cryptoKeyId'] = crypto_key_id unless crypto_key_id.nil?
+          command.query['skipInitialVersionCreation'] = skip_initial_version_creation unless skip_initial_version_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -484,6 +506,11 @@ module Google
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The policy format version to be returned.
+        #   Acceptable values are 0 and 1.
+        #   If the value is 0, or the field is omitted, policy format version 1 will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -501,11 +528,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_crypto_key_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_crypto_key_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -515,6 +543,13 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the KeyRing to list, in the format
         #   `projects/*/locations/*/keyRings/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of CryptoKeys to include in the
         #   response.  Further CryptoKeys can subsequently be obtained by
@@ -542,11 +577,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_ring_crypto_keys(parent, page_size: nil, page_token: nil, version_view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_ring_crypto_keys(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, version_view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/cryptoKeys', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeysResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeysResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['versionView'] = version_view unless version_view.nil?
@@ -914,10 +951,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports a new CryptoKeyVersion into an existing CryptoKey using the
+        # wrapped key material provided in the request.
+        # The version ID will be assigned the next sequential id within the
+        # CryptoKey.
+        # @param [String] parent
+        #   Required. The name of the CryptoKey to
+        #   be imported into.
+        # @param [Google::Apis::CloudkmsV1::ImportCryptoKeyVersionRequest] import_crypto_key_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::CryptoKeyVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::CryptoKeyVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_crypto_key_version(parent, import_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/cryptoKeyVersions:import', options)
+          command.request_representation = Google::Apis::CloudkmsV1::ImportCryptoKeyVersionRequest::Representation
+          command.request_object = import_crypto_key_version_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
+          command.response_class = Google::Apis::CloudkmsV1::CryptoKeyVersion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists CryptoKeyVersions.
         # @param [String] parent
         #   Required. The resource name of the CryptoKey to list, in the format
         #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of CryptoKeyVersions to
         #   include in the response. Further CryptoKeyVersions can
@@ -946,11 +1027,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_key_ring_crypto_key_crypto_key_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/cryptoKeyVersions', options)
           command.response_representation = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ListCryptoKeyVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
@@ -1039,12 +1122,86 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new ImportJob within a KeyRing.
+        # ImportJob.import_method is required.
+        # @param [String] parent
+        #   Required. The name of the KeyRing associated with the
+        #   ImportJobs.
+        # @param [Google::Apis::CloudkmsV1::ImportJob] import_job_object
+        # @param [String] import_job_id
+        #   Required. It must be unique within a KeyRing and match the regular
+        #   expression `[a-zA-Z0-9_-]`1,63``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ImportJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ImportJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_key_ring_import_job(parent, import_job_object = nil, import_job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/importJobs', options)
+          command.request_representation = Google::Apis::CloudkmsV1::ImportJob::Representation
+          command.request_object = import_job_object
+          command.response_representation = Google::Apis::CloudkmsV1::ImportJob::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ImportJob
+          command.params['parent'] = parent unless parent.nil?
+          command.query['importJobId'] = import_job_id unless import_job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for a given ImportJob.
+        # @param [String] name
+        #   The name of the ImportJob to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ImportJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ImportJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_key_ring_import_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ImportJob::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ImportJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The policy format version to be returned.
+        #   Acceptable values are 0 and 1.
+        #   If the value is 0, or the field is omitted, policy format version 1 will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1062,11 +1219,62 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_import_job_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_import_job_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::CloudkmsV1::Policy::Representation
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ImportJobs.
+        # @param [String] parent
+        #   Required. The resource name of the KeyRing to list, in the format
+        #   `projects/*/locations/*/keyRings/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order
+        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        # @param [Fixnum] page_size
+        #   Optional limit on the number of ImportJobs to include in the
+        #   response. Further ImportJobs can subsequently be obtained by
+        #   including the ListImportJobsResponse.next_page_token in a subsequent
+        #   request. If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional pagination token, returned earlier via
+        #   ListImportJobsResponse.next_page_token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListImportJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListImportJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_key_ring_import_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/importJobs', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListImportJobsResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListImportJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

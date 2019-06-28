@@ -352,12 +352,11 @@ module Google
       class MessageStoragePolicy
         include Google::Apis::Core::Hashable
       
-        # The list of GCP region IDs where messages that are published to the topic
+        # A list of IDs of GCP regions where messages that are published to the topic
         # may be persisted in storage. Messages published by publishers running in
         # non-allowed GCP regions (or running outside of GCP altogether) will be
-        # routed for storage in one of the allowed regions. An empty list indicates a
-        # misconfiguration at the project or organization level, which will result in
-        # all Publish operations failing.
+        # routed for storage in one of the allowed regions. An empty list means that
+        # no regions are allowed, and is not a valid configuration.
         # Corresponds to the JSON property `allowedPersistenceRegions`
         # @return [Array<String>]
         attr_accessor :allowed_persistence_regions
@@ -1075,12 +1074,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Policy constraining how messages published to the topic may be stored. It
-        # is determined when the topic is created based on the policy configured at
-        # the project level. It must not be set by the caller in the request to
-        # CreateTopic or to UpdateTopic. This field will be populated in the
-        # responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-        # response, then no constraints are in effect.
+        # Policy constraining the set of Google Cloud Platform regions where messages
+        # published to the topic may be stored. If not present, then no constraints
+        # are in effect.
         # Corresponds to the JSON property `messageStoragePolicy`
         # @return [Google::Apis::PubsubV1::MessageStoragePolicy]
         attr_accessor :message_storage_policy

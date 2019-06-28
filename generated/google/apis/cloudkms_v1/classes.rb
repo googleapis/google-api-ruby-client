@@ -322,7 +322,8 @@ module Google
         attr_accessor :purpose
       
         # next_rotation_time will be advanced by this period when the service
-        # automatically rotates a key. Must be at least one day.
+        # automatically rotates a key. Must be at least 24 hours and at most
+        # 876,000 hours.
         # If rotation_period is set, next_rotation_time must also be set.
         # Keys with purpose
         # ENCRYPT_DECRYPT support
@@ -405,6 +406,26 @@ module Google
         # @return [String]
         attr_accessor :generate_time
       
+        # Output only. The root cause of an import failure. Only present if
+        # state is
+        # IMPORT_FAILED.
+        # Corresponds to the JSON property `importFailureReason`
+        # @return [String]
+        attr_accessor :import_failure_reason
+      
+        # Output only. The name of the ImportJob used to import this
+        # CryptoKeyVersion. Only present if the underlying key material was
+        # imported.
+        # Corresponds to the JSON property `importJob`
+        # @return [String]
+        attr_accessor :import_job
+      
+        # Output only. The time at which this CryptoKeyVersion's key material
+        # was imported.
+        # Corresponds to the JSON property `importTime`
+        # @return [String]
+        attr_accessor :import_time
+      
         # Output only. The resource name for this CryptoKeyVersion in the format
         # `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         # Corresponds to the JSON property `name`
@@ -434,6 +455,9 @@ module Google
           @destroy_event_time = args[:destroy_event_time] if args.key?(:destroy_event_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
+          @import_failure_reason = args[:import_failure_reason] if args.key?(:import_failure_reason)
+          @import_job = args[:import_job] if args.key?(:import_job)
+          @import_time = args[:import_time] if args.key?(:import_time)
           @name = args[:name] if args.key?(:name)
           @protection_level = args[:protection_level] if args.key?(:protection_level)
           @state = args[:state] if args.key?(:state)
@@ -682,6 +706,164 @@ module Google
         end
       end
       
+      # Request message for KeyManagementService.ImportCryptoKeyVersion.
+      class ImportCryptoKeyVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The algorithm of
+        # the key being imported. This does not need to match the
+        # version_template of the CryptoKey this
+        # version imports into.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # Required. The name of the ImportJob that was used to
+        # wrap this key material.
+        # Corresponds to the JSON property `importJob`
+        # @return [String]
+        attr_accessor :import_job
+      
+        # Wrapped key material produced with
+        # RSA_OAEP_3072_SHA1_AES_256
+        # or
+        # RSA_OAEP_4096_SHA1_AES_256.
+        # This field contains the concatenation of two wrapped keys:
+        # <ol>
+        # <li>An ephemeral AES-256 wrapping key wrapped with the
+        # public_key using RSAES-OAEP with SHA-1,
+        # MGF1 with SHA-1, and an empty label.
+        # </li>
+        # <li>The key to be imported, wrapped with the ephemeral AES-256 key
+        # using AES-KWP (RFC 5649).
+        # </li>
+        # </ol>
+        # This format is the same as the format produced by PKCS#11 mechanism
+        # CKM_RSA_AES_KEY_WRAP.
+        # Corresponds to the JSON property `rsaAesWrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :rsa_aes_wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @import_job = args[:import_job] if args.key?(:import_job)
+          @rsa_aes_wrapped_key = args[:rsa_aes_wrapped_key] if args.key?(:rsa_aes_wrapped_key)
+        end
+      end
+      
+      # An ImportJob can be used to create CryptoKeys and
+      # CryptoKeyVersions using pre-existing key material,
+      # generated outside of Cloud KMS.
+      # When an ImportJob is created, Cloud KMS will generate a "wrapping key",
+      # which is a public/private key pair. You use the wrapping key to encrypt (also
+      # known as wrap) the pre-existing key material to protect it during the import
+      # process. The nature of the wrapping key depends on the choice of
+      # import_method. When the wrapping key generation
+      # is complete, the state will be set to
+      # ACTIVE and the public_key
+      # can be fetched. The fetched public key can then be used to wrap your
+      # pre-existing key material.
+      # Once the key material is wrapped, it can be imported into a new
+      # CryptoKeyVersion in an existing CryptoKey by calling
+      # ImportCryptoKeyVersion.
+      # Multiple CryptoKeyVersions can be imported with a single
+      # ImportJob. Cloud KMS uses the private key portion of the wrapping key to
+      # unwrap the key material. Only Cloud KMS has access to the private key.
+      # An ImportJob expires 3 days after it is created. Once expired, Cloud KMS
+      # will no longer be able to import or unwrap any key material that was wrapped
+      # with the ImportJob's public key.
+      # For more information, see
+      # [Importing a key](https://cloud.google.com/kms/docs/importing-a-key).
+      class ImportJob
+        include Google::Apis::Core::Hashable
+      
+        # Contains an HSM-generated attestation about a key operation. For more
+        # information, see [Verifying attestations]
+        # (https://cloud.google.com/kms/docs/attest-key).
+        # Corresponds to the JSON property `attestation`
+        # @return [Google::Apis::CloudkmsV1::KeyOperationAttestation]
+        attr_accessor :attestation
+      
+        # Output only. The time at which this ImportJob was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time this ImportJob expired. Only present if
+        # state is EXPIRED.
+        # Corresponds to the JSON property `expireEventTime`
+        # @return [String]
+        attr_accessor :expire_event_time
+      
+        # Output only. The time at which this ImportJob is scheduled for
+        # expiration and can no longer be used to import key material.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The time this ImportJob's key material was generated.
+        # Corresponds to the JSON property `generateTime`
+        # @return [String]
+        attr_accessor :generate_time
+      
+        # Required and immutable. The wrapping method to be used for incoming
+        # key material.
+        # Corresponds to the JSON property `importMethod`
+        # @return [String]
+        attr_accessor :import_method
+      
+        # Output only. The resource name for this ImportJob in the format
+        # `projects/*/locations/*/keyRings/*/importJobs/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required and immutable. The protection level of the ImportJob. This
+        # must match the
+        # protection_level of the
+        # version_template on the CryptoKey you
+        # attempt to import into.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # The public key component of the wrapping key. For details of the type of
+        # key this public key corresponds to, see the ImportMethod.
+        # Corresponds to the JSON property `publicKey`
+        # @return [Google::Apis::CloudkmsV1::WrappingPublicKey]
+        attr_accessor :public_key
+      
+        # Output only. The current state of the ImportJob, indicating if it can
+        # be used.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation = args[:attestation] if args.key?(:attestation)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_event_time = args[:expire_event_time] if args.key?(:expire_event_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generate_time = args[:generate_time] if args.key?(:generate_time)
+          @import_method = args[:import_method] if args.key?(:import_method)
+          @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Contains an HSM-generated attestation about a key operation. For more
       # information, see [Verifying attestations]
       # (https://cloud.google.com/kms/docs/attest-key).
@@ -798,6 +980,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_keys = args[:crypto_keys] if args.key?(:crypto_keys)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for KeyManagementService.ListImportJobs.
+      class ListImportJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ImportJobs.
+        # Corresponds to the JSON property `importJobs`
+        # @return [Array<Google::Apis::CloudkmsV1::ImportJob>]
+        attr_accessor :import_jobs
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListImportJobsRequest.page_token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The total number of ImportJobs that matched the query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_jobs = args[:import_jobs] if args.key?(:import_jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
         end
@@ -1179,6 +1393,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key_version_id = args[:crypto_key_version_id] if args.key?(:crypto_key_version_id)
+        end
+      end
+      
+      # The public key component of the wrapping key. For details of the type of
+      # key this public key corresponds to, see the ImportMethod.
+      class WrappingPublicKey
+        include Google::Apis::Core::Hashable
+      
+        # The public key, encoded in PEM format. For more information, see the [RFC
+        # 7468](https://tools.ietf.org/html/rfc7468) sections for [General
+        # Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
+        # [Textual Encoding of Subject Public Key Info]
+        # (https://tools.ietf.org/html/rfc7468#section-13).
+        # Corresponds to the JSON property `pem`
+        # @return [String]
+        attr_accessor :pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem = args[:pem] if args.key?(:pem)
         end
       end
     end

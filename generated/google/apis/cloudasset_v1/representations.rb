@@ -70,6 +70,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV1BooleanPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1ListPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1RestoreDefault
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +143,8 @@ module Google
           property :iam_policy, as: 'iamPolicy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
       
           property :name, as: 'name'
+          collection :org_policy, as: 'orgPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy::Representation
+      
           property :resource, as: 'resource', class: Google::Apis::CloudassetV1::Resource, decorator: Google::Apis::CloudassetV1::Resource::Representation
       
         end
@@ -185,6 +211,46 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
           property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1BooleanPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforced, as: 'enforced'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1ListPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_values, as: 'allValues'
+          collection :allowed_values, as: 'allowedValues'
+          collection :denied_values, as: 'deniedValues'
+          property :inherit_from_parent, as: 'inheritFromParent'
+          property :suggested_value, as: 'suggestedValue'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boolean_policy, as: 'booleanPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1BooleanPolicy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1BooleanPolicy::Representation
+      
+          property :constraint, as: 'constraint'
+          property :etag, :base64 => true, as: 'etag'
+          property :list_policy, as: 'listPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1ListPolicy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1ListPolicy::Representation
+      
+          property :restore_default, as: 'restoreDefault', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1RestoreDefault, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1RestoreDefault::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1RestoreDefault
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
