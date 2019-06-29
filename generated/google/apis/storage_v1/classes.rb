@@ -312,6 +312,11 @@ module Google
           # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly]
           attr_accessor :bucket_policy_only
         
+          # The bucket's uniform bucket-level access configuration.
+          # Corresponds to the JSON property `uniformBucketLevelAccess`
+          # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess]
+          attr_accessor :uniform_bucket_level_access
+        
           def initialize(**args)
              update!(**args)
           end
@@ -319,22 +324,52 @@ module Google
           # Update properties of this object
           def update!(**args)
             @bucket_policy_only = args[:bucket_policy_only] if args.key?(:bucket_policy_only)
+            @uniform_bucket_level_access = args[:uniform_bucket_level_access] if args.key?(:uniform_bucket_level_access)
           end
           
           # The bucket's Bucket Policy Only configuration.
           class BucketPolicyOnly
             include Google::Apis::Core::Hashable
           
-            # If set, access checks only use bucket-level IAM policies or above.
+            # If set, access is controlled only by bucket-level or above IAM policies.
             # Corresponds to the JSON property `enabled`
             # @return [Boolean]
             attr_accessor :enabled
             alias_method :enabled?, :enabled
           
-            # The deadline time for changing iamConfiguration.bucketPolicyOnly.enabled from
-            # true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled
-            # may be changed from true to false until the locked time, after which the field
-            # is immutable.
+            # The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true
+            # to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be
+            # changed from true to false until the locked time, after which the field is
+            # immutable.
+            # Corresponds to the JSON property `lockedTime`
+            # @return [DateTime]
+            attr_accessor :locked_time
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @enabled = args[:enabled] if args.key?(:enabled)
+              @locked_time = args[:locked_time] if args.key?(:locked_time)
+            end
+          end
+          
+          # The bucket's uniform bucket-level access configuration.
+          class UniformBucketLevelAccess
+            include Google::Apis::Core::Hashable
+          
+            # If set, access is controlled only by bucket-level or above IAM policies.
+            # Corresponds to the JSON property `enabled`
+            # @return [Boolean]
+            attr_accessor :enabled
+            alias_method :enabled?, :enabled
+          
+            # The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled
+            # from true to false in RFC 3339  format. iamConfiguration.
+            # uniformBucketLevelAccess.enabled may be changed from true to false until the
+            # locked time, after which the field is immutable.
             # Corresponds to the JSON property `lockedTime`
             # @return [DateTime]
             attr_accessor :locked_time

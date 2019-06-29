@@ -820,6 +820,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dataset_reference
       
+        # 
+        # Corresponds to the JSON property `defaultEncryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :default_encryption_configuration
+      
         # [Optional] The default partition expiration for all partitioned tables in the
         # dataset, in milliseconds. Once this property is set, all newly-created
         # partitioned tables in the dataset will have an expirationMs property in the
@@ -912,6 +917,7 @@ module Google
           @access = args[:access] if args.key?(:access)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
+          @default_encryption_configuration = args[:default_encryption_configuration] if args.key?(:default_encryption_configuration)
           @default_partition_expiration_ms = args[:default_partition_expiration_ms] if args.key?(:default_partition_expiration_ms)
           @default_table_expiration_ms = args[:default_table_expiration_ms] if args.key?(:default_table_expiration_ms)
           @description = args[:description] if args.key?(:description)
@@ -2822,6 +2828,13 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::JobStatistics::ReservationUsage>]
         attr_accessor :reservation_usage
       
+        # [Output-only] Name of the primary reservation assigned to this job. Note that
+        # this could be different than reservations reported in the reservation usage
+        # field if parent reservations were used to execute this job.
+        # Corresponds to the JSON property `reservation_id`
+        # @return [String]
+        attr_accessor :reservation_id
+      
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
@@ -2856,6 +2869,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
+          @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
@@ -4137,15 +4151,16 @@ module Google
         # For functions, this is the expression in the AS clause.
         # If language=SQL, it is the substring inside (but excluding) the
         # parentheses. For example, for the function created with the following
-        # statement
-        # create function JoinLines(x string, y string) as (concat(x, "\n", y))
-        # definition_body = r'concat(x, "\n", y)' (\n is not replaced with
+        # statement:
+        # `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))`
+        # The definition_body is `concat(x, "\n", y)` (\n is not replaced with
         # linebreak).
         # If language=JAVASCRIPT, it is the evaluated string in the AS clause.
-        # For example, for the function created with the following statement
-        # CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'
-        # definition_body = 'return "\n";\n' (both \n are replaced with
-        # linebreaks).
+        # For example, for the function created with the following statement:
+        # `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'`
+        # The definition_body is
+        # `return "\n";\n`
+        # Note that both \n are replaced with linebreaks.
         # Corresponds to the JSON property `definitionBody`
         # @return [String]
         attr_accessor :definition_body

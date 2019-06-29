@@ -807,6 +807,8 @@ module Google
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
+          property :default_encryption_configuration, as: 'defaultEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
+      
           property :default_partition_expiration_ms, :numeric_string => true, as: 'defaultPartitionExpirationMs'
           property :default_table_expiration_ms, :numeric_string => true, as: 'defaultTableExpirationMs'
           property :description, as: 'description'
@@ -1253,6 +1255,7 @@ module Google
           collection :quota_deferments, as: 'quotaDeferments'
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage::Representation
       
+          property :reservation_id, as: 'reservation_id'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'

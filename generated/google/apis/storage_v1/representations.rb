@@ -51,6 +51,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class UniformBucketLevelAccess
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -342,9 +348,20 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bucket_policy_only, as: 'bucketPolicyOnly', class: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly::Representation
         
+            property :uniform_bucket_level_access, as: 'uniformBucketLevelAccess', class: Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess::Representation
+        
           end
           
           class BucketPolicyOnly
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :enabled, as: 'enabled'
+              property :locked_time, as: 'lockedTime', type: DateTime
+          
+            end
+          end
+          
+          class UniformBucketLevelAccess
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :enabled, as: 'enabled'

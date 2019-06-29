@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'compute/alpha/projects/')
+          super('https://compute.googleapis.com/', 'compute/alpha/projects/')
           @batch_path = 'batch/compute/alpha'
         end
         
@@ -24827,7 +24827,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new reservation.
+        # Creates a new reservation. For more information, read Reserving zonal
+        # resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

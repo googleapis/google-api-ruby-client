@@ -20235,7 +20235,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new reservation.
+        # Creates a new reservation. For more information, read Reserving zonal
+        # resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

@@ -7858,8 +7858,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # ReservationAffinity is the configuration of desired reservation which this
-        # instance could take capacity from.
+        # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
         attr_accessor :reservation_affinity
@@ -7971,7 +7970,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A list of InstancesScopedList resources.
+        # An object that contains a list of instances scoped by zone.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::InstancesScopedList>]
         attr_accessor :items
@@ -9927,8 +9926,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # ReservationAffinity is the configuration of desired reservation which this
-        # instance could take capacity from.
+        # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
         attr_accessor :reservation_affinity
@@ -18032,7 +18030,10 @@ module Google
         end
       end
       
-      # Reservation resource NextID: 13
+      # Represents a reservation resource. A reservation ensures that capacity is held
+      # in a specific zone even if the reserved VMs are not running. For more
+      # information, read  Reserving zonal resources. (== resource_for beta.
+      # reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)
       class Reservation
         include Google::Apis::Core::Hashable
       
@@ -18086,9 +18087,9 @@ module Google
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuReservation]
         attr_accessor :specific_reservation
       
-        # Indicates whether the reservation can be consumed by VMs with "any reservation"
-        # defined. If the field is set, then only VMs that target the reservation by
-        # name using --reservation-affinity can consume this reservation.
+        # Indicates whether the reservation can be consumed by VMs with affinity for "
+        # any" reservation. If the field is set, then only VMs that target the
+        # reservation by name can consume from this reservation.
         # Corresponds to the JSON property `specificReservationRequired`
         # @return [Boolean]
         attr_accessor :specific_reservation_required
@@ -18125,8 +18126,7 @@ module Google
         end
       end
       
-      # ReservationAffinity is the configuration of desired reservation which this
-      # instance could take capacity from.
+      # Specifies the reservations that this instance can consume from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
       
@@ -18137,12 +18137,14 @@ module Google
         # @return [String]
         attr_accessor :consume_reservation_type
       
-        # Corresponds to the label key of reservation resource.
+        # Corresponds to the label key of a reservation resource. To target a
+        # SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as the
+        # key and specify the name of your reservation as its value.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Corresponds to the label values of reservation resource.
+        # Corresponds to the label values of a reservation resource.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values

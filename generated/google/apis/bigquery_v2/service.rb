@@ -660,7 +660,8 @@ module Google
         # @param [String] dataset_id
         #   Dataset ID of the models to list.
         # @param [Fixnum] max_results
-        #   The maximum number of results per page.
+        #   The maximum number of results to return in a single response page.
+        #   Leverage the page tokens to iterate through the entire collection.
         # @param [String] page_token
         #   Page token, returned by a previous call to request the next page of
         #   results
@@ -935,7 +936,8 @@ module Google
         # @param [String] dataset_id
         #   Dataset ID of the routines to list
         # @param [Fixnum] max_results
-        #   The maximum number of results per page.
+        #   The maximum number of results to return in a single response page.
+        #   Leverage the page tokens to iterate through the entire collection.
         # @param [String] page_token
         #   Page token, returned by a previous call, to request the next page of
         #   results

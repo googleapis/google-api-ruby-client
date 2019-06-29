@@ -98,7 +98,7 @@ module Google
       class AndroidFcmOptions
         include Google::Apis::Core::Hashable
       
-        # Label that the message's analytics data will be associated with.
+        # Label associated with the message's analytics data.
         # Corresponds to the JSON property `analyticsLabel`
         # @return [String]
         attr_accessor :analytics_label
@@ -268,7 +268,7 @@ module Google
       class ApnsFcmOptions
         include Google::Apis::Core::Hashable
       
-        # Label that the message's analytics data will be associated with.
+        # Label associated with the message's analytics data.
         # Corresponds to the JSON property `analyticsLabel`
         # @return [String]
         attr_accessor :analytics_label
@@ -287,7 +287,7 @@ module Google
       class FcmOptions
         include Google::Apis::Core::Hashable
       
-        # Label that the message's analytics data will be associated with.
+        # Label associated with the message's analytics data.
         # Corresponds to the JSON property `analyticsLabel`
         # @return [String]
         attr_accessor :analytics_label
