@@ -1845,7 +1845,7 @@ module Google
       
         # Optional.
         # Allows the client to return jobs without a
-        # set location, specifically, telecommuting jobs (telecomuting is considered
+        # set location, specifically, telecommuting jobs (telecommuting is considered
         # by the service as a special location.
         # Job.posting_region indicates if a job permits telecommuting.
         # If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED,
@@ -2394,28 +2394,28 @@ module Google
         # The criteria determining how search results are sorted. Default is
         # "relevance desc".
         # Supported options are:
-        # * "relevance desc": By relevance descending, as determined by the API
+        # * `"relevance desc"`: By relevance descending, as determined by the API
         # algorithms. Relevance thresholding of query results is only available
         # with this ordering.
-        # * "posting`_`publish`_`time desc": By Job.posting_publish_time
+        # * `"posting_publish_time desc"`: By Job.posting_publish_time
         # descending.
-        # * "posting`_`update`_`time desc": By Job.posting_update_time
+        # * `"posting_update_time desc"`: By Job.posting_update_time
         # descending.
-        # * "title": By Job.title ascending.
-        # * "title desc": By Job.title descending.
-        # * "annualized`_`base`_`compensation": By job's
+        # * `"title"`: By Job.title ascending.
+        # * `"title desc"`: By Job.title descending.
+        # * `"annualized_base_compensation"`: By job's
         # CompensationInfo.annualized_base_compensation_range ascending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`base`_`compensation desc": By job's
+        # * `"annualized_base_compensation desc"`: By job's
         # CompensationInfo.annualized_base_compensation_range descending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`total`_`compensation": By job's
+        # * `"annualized_total_compensation"`: By job's
         # CompensationInfo.annualized_total_compensation_range ascending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`total`_`compensation desc": By job's
+        # * `"annualized_total_compensation desc"`: By job's
         # CompensationInfo.annualized_total_compensation_range descending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.

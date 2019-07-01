@@ -2024,7 +2024,7 @@ module Google
       
         # Optional.
         # Allows the client to return jobs without a
-        # set location, specifically, telecommuting jobs (telecomuting is considered
+        # set location, specifically, telecommuting jobs (telecommuting is considered
         # by the service as a special location.
         # Job.posting_region indicates if a job permits telecommuting.
         # If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED,
@@ -2229,43 +2229,10 @@ module Google
       
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error
-        # message, and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::JobsV3p1beta1::Status]
         attr_accessor :error
@@ -2682,49 +2649,51 @@ module Google
         # The criteria determining how search results are sorted. Default is
         # "relevance desc".
         # Supported options are:
-        # * "relevance desc": By relevance descending, as determined by the API
+        # * `"relevance desc"`: By relevance descending, as determined by the API
         # algorithms. Relevance thresholding of query results is only available
         # with this ordering.
-        # * "posting`_`publish`_`time desc": By Job.posting_publish_time
+        # * `"posting_publish_time desc"`: By Job.posting_publish_time
         # descending.
-        # * "posting`_`update`_`time desc": By Job.posting_update_time
+        # * `"posting_update_time desc"`: By Job.posting_update_time
         # descending.
-        # * "title": By Job.title ascending.
-        # * "title desc": By Job.title descending.
-        # * "annualized`_`base`_`compensation": By job's
+        # * `"title"`: By Job.title ascending.
+        # * `"title desc"`: By Job.title descending.
+        # * `"annualized_base_compensation"`: By job's
         # CompensationInfo.annualized_base_compensation_range ascending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`base`_`compensation desc": By job's
+        # * `"annualized_base_compensation desc"`: By job's
         # CompensationInfo.annualized_base_compensation_range descending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`total`_`compensation": By job's
+        # * `"annualized_total_compensation"`: By job's
         # CompensationInfo.annualized_total_compensation_range ascending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "annualized`_`total`_`compensation desc": By job's
+        # * `"annualized_total_compensation desc"`: By job's
         # CompensationInfo.annualized_total_compensation_range descending. Jobs
         # whose annualized base compensation is unspecified are put at the end of
         # search results.
-        # * "custom`_`ranking desc": By the relevance score adjusted to the
+        # * `"custom_ranking desc"`: By the relevance score adjusted to the
         # SearchJobsRequest.custom_ranking_info.ranking_expression with weight
         # factor assigned by
         # SearchJobsRequest.custom_ranking_info.importance_level in descending
         # order.
-        # * "location`_`distance": By the distance between the location on jobs and
-        # locations specified in the
-        # SearchJobsRequest.job_query.location_filters.
-        # When this order is selected, the
-        # SearchJobsRequest.job_query.location_filters must not be empty. When
-        # a job has multiple locations, the location closest to one of the locations
-        # specified in the location filter will be used to calculate location
-        # distance. Distance is calculated by the distance between two lat/long
-        # coordinates, with a precision of 10e-4 degrees (11.3 meters).
-        # Jobs that don't have locations specified will be ranked below jobs having
-        # locations.
-        # Diversification strategy is still applied unless explicitly disabled in
-        # SearchJobsRequest.diversification_level.
+        # * Location sorting: Use the special syntax to order jobs by distance:<br>
+        # "`distance_from('Hawaii')`": Order by distance from Hawaii.<br>
+        # "`distance_from(19.89, 155.5)`": Order by distance from a coordinate.<br>
+        # "`distance_from('Hawaii'), distance_from('Puerto Rico')`": Order by
+        # multiple locations. See details below.<br>
+        # "`distance_from('Hawaii'), distance_from(19.89, 155.5)`": Order by
+        # multiple locations. See details below.<br>
+        # The string can have a maximum of 256 characters. When multiple distance
+        # centers are provided, a job that is close to any of the distance centers
+        # would have a high rank. When a job has multiple locations, the job location
+        # closest to one of the distance centers will be used. Jobs that don't have
+        # locations will be ranked at the bottom. Distance is calculated with a
+        # precision of 11.3 meters (37.4 feet). Diversification strategy is still
+        # applied unless explicitly disabled in
+        # diversification_level.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -2918,43 +2887,10 @@ module Google
       
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error
-      # message, and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` that can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
