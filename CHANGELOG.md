@@ -1,3 +1,46 @@
+# 0.30.4
+* Backwards compatible changes:
+  * Added `websecurityscanner_v1`
+  * Updated `bigquery_v2`
+  * Updated `calendar_v3`
+  * Updated `cloudasset_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudsearch_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `containeranalysis_v1alpha1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dns_v1`
+  * Updated `dns_v1beta2`
+  * Updated `dns_v2beta1`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `fcm_v1`
+  * Updated `firebase_v1beta1`
+  * Updated `genomics_v2alpha1`
+  * Updated `healthcare_v1alpha2`
+  * Updated `healthcare_v1beta1`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `monitoring_v3`
+  * Updated `pubsub_v1`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `run_v1alpha1`
+  * Updated `sourcerepo_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1p1beta1`
+  * Updated `storage_v1`
+  * Updated `storage_v1beta2`
+  * Updated `texttospeech_v1`
+  * Updated `texttospeech_v1beta1`
+  * Updated `vault_v1`
+  * Updated `videointelligence_v1beta2`
+
 # 0.30.3
 * Backwards compatible changes:
   * Added `firebase_v1beta1`
