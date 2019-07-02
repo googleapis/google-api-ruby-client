@@ -42,6 +42,20 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
       
+        # Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the
+        # results of the DlpJob will be applied to the entry for the resource scanned
+        # in Cloud Data Catalog. Any labels previously written by another DlpJob will
+        # be deleted. InfoType naming patterns are strictly enforced when using this
+        # feature. Note that the findings will be persisted in Cloud Data Catalog
+        # storage and are governed by Data Catalog service-specific policy, see
+        # https://cloud.google.com/terms/service-terms
+        # Only a single instance of this action can be specified and only allowed if
+        # all resources being scanned are BigQuery tables.
+        # Compatible with: Inspect
+        # Corresponds to the JSON property `publishFindingsToCloudDataCatalog`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog]
+        attr_accessor :publish_findings_to_cloud_data_catalog
+      
         # Publish the result summary of a DlpJob to the Cloud Security
         # Command Center (CSCC Alpha).
         # This action is only available for projects which are parts of
@@ -72,6 +86,7 @@ module Google
         def update!(**args)
           @job_notification_emails = args[:job_notification_emails] if args.key?(:job_notification_emails)
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
+          @publish_findings_to_cloud_data_catalog = args[:publish_findings_to_cloud_data_catalog] if args.key?(:publish_findings_to_cloud_data_catalog)
           @publish_summary_to_cscc = args[:publish_summary_to_cscc] if args.key?(:publish_summary_to_cscc)
           @save_findings = args[:save_findings] if args.key?(:save_findings)
         end
@@ -1670,6 +1685,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
+        # The geographic location to process de-identification. Reserved for future
+        # extensions.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1681,6 +1702,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -4325,6 +4347,28 @@ module Google
         def update!(**args)
           @window_after = args[:window_after] if args.key?(:window_after)
           @window_before = args[:window_before] if args.key?(:window_before)
+        end
+      end
+      
+      # Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the
+      # results of the DlpJob will be applied to the entry for the resource scanned
+      # in Cloud Data Catalog. Any labels previously written by another DlpJob will
+      # be deleted. InfoType naming patterns are strictly enforced when using this
+      # feature. Note that the findings will be persisted in Cloud Data Catalog
+      # storage and are governed by Data Catalog service-specific policy, see
+      # https://cloud.google.com/terms/service-terms
+      # Only a single instance of this action can be specified and only allowed if
+      # all resources being scanned are BigQuery tables.
+      # Compatible with: Inspect
+      class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

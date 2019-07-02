@@ -1186,6 +1186,13 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # TensorFlow version used in the custom container. This field is required if
+        # the replica is a TPU worker that uses a custom container. Otherwise, do not
+        # specify this field.
+        # Corresponds to the JSON property `tpuTfVersion`
+        # @return [String]
+        attr_accessor :tpu_tf_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1194,6 +1201,7 @@ module Google
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @tpu_tf_version = args[:tpu_tf_version] if args.key?(:tpu_tf_version)
         end
       end
       

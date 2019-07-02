@@ -1669,6 +1669,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # De-identifies potentially sensitive info from a ContentItem.
+        # This method has limits on input size and output size.
+        # See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to
+        # learn more.
+        # When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
+        # @param [String] parent
+        #   The parent resource name, for example projects/my-project-id.
+        # @param [String] location
+        #   The geographic location to process de-identification. Reserved for future
+        #   extensions.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deidentify_project_location_content(parent, location, google_privacy_dlp_v2_deidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/locations/{location}/content:deidentify', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest::Representation
+          command.request_object = google_privacy_dlp_v2_deidentify_content_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a pre-built stored infoType to be used for inspection.
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.

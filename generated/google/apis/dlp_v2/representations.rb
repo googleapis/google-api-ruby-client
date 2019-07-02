@@ -724,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2PublishSummaryToCscc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1072,6 +1078,8 @@ module Google
           property :job_notification_emails, as: 'jobNotificationEmails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails::Representation
       
           property :pub_sub, as: 'pubSub', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub::Representation
+      
+          property :publish_findings_to_cloud_data_catalog, as: 'publishFindingsToCloudDataCatalog', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog::Representation
       
           property :publish_summary_to_cscc, as: 'publishSummaryToCscc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc::Representation
       
@@ -1522,6 +1530,7 @@ module Google
           property :inspect_template_name, as: 'inspectTemplateName'
           property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
       
+          property :location, as: 'location'
         end
       end
       
@@ -2291,6 +2300,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :window_after, as: 'windowAfter'
           property :window_before, as: 'windowBefore'
+        end
+      end
+      
+      class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

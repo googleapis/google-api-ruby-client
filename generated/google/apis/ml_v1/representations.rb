@@ -535,6 +535,7 @@ module Google
           property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
       
           property :image_uri, as: 'imageUri'
+          property :tpu_tf_version, as: 'tpuTfVersion'
         end
       end
       

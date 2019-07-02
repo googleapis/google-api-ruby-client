@@ -178,8 +178,8 @@ module Google
         #   If compare_duration is not specified, then the only possible state is
         #   "UNUSED", which indicates that the asset is present at read_time.
         # @param [String] field_mask
-        #   Optional.
-        #   A field mask to specify the ListAssetsResult fields to be listed in the
+        #   Optional. A field mask to specify the ListAssetsResult fields to be listed in
+        #   the
         #   response.
         #   An empty field mask will list all fields.
         # @param [String] filter
@@ -827,8 +827,8 @@ module Google
         #   sources provide a source_id of `-`. For example:
         #   organizations/123/sources/-
         # @param [String] field_mask
-        #   Optional.
-        #   A field mask to specify the Finding fields to be listed in the response.
+        #   Optional. A field mask to specify the Finding fields to be listed in the
+        #   response.
         #   An empty field mask will list all fields.
         # @param [String] filter
         #   Expression that defines the filter to apply across findings.
