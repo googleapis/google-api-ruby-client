@@ -713,7 +713,7 @@ module Google
         # @return [Google::Apis::DocsV1::Body]
         attr_accessor :body
       
-        # The ID of the document.
+        # Output only. The ID of the document.
         # Corresponds to the JSON property `documentId`
         # @return [String]
         attr_accessor :document_id
@@ -723,32 +723,32 @@ module Google
         # @return [Google::Apis::DocsV1::DocumentStyle]
         attr_accessor :document_style
       
-        # The footers in the document, keyed by footer ID.
+        # Output only. The footers in the document, keyed by footer ID.
         # Corresponds to the JSON property `footers`
         # @return [Hash<String,Google::Apis::DocsV1::Footer>]
         attr_accessor :footers
       
-        # The footnotes in the document, keyed by footnote ID.
+        # Output only. The footnotes in the document, keyed by footnote ID.
         # Corresponds to the JSON property `footnotes`
         # @return [Hash<String,Google::Apis::DocsV1::Footnote>]
         attr_accessor :footnotes
       
-        # The headers in the document, keyed by header ID.
+        # Output only. The headers in the document, keyed by header ID.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,Google::Apis::DocsV1::Header>]
         attr_accessor :headers
       
-        # The inline objects in the document, keyed by object ID.
+        # Output only. The inline objects in the document, keyed by object ID.
         # Corresponds to the JSON property `inlineObjects`
         # @return [Hash<String,Google::Apis::DocsV1::InlineObject>]
         attr_accessor :inline_objects
       
-        # The lists in the document, keyed by list ID.
+        # Output only. The lists in the document, keyed by list ID.
         # Corresponds to the JSON property `lists`
         # @return [Hash<String,Google::Apis::DocsV1::List>]
         attr_accessor :lists
       
-        # The named ranges in the document, keyed by name.
+        # Output only. The named ranges in the document, keyed by name.
         # Corresponds to the JSON property `namedRanges`
         # @return [Hash<String,Google::Apis::DocsV1::NamedRanges>]
         attr_accessor :named_ranges
@@ -760,15 +760,15 @@ module Google
         # @return [Google::Apis::DocsV1::NamedStyles]
         attr_accessor :named_styles
       
-        # The positioned objects in the document, keyed by object ID.
+        # Output only. The positioned objects in the document, keyed by object ID.
         # Corresponds to the JSON property `positionedObjects`
         # @return [Hash<String,Google::Apis::DocsV1::PositionedObject>]
         attr_accessor :positioned_objects
       
-        # The revision ID of the document. Can be used in update requests to specify
-        # which revision of a document to apply updates to and how the request should
-        # behave if the document has been edited since that revision. Only populated
-        # if the user has edit access to the document.
+        # Output only. The revision ID of the document. Can be used in update
+        # requests to specify which revision of a document to apply updates to and
+        # how the request should behave if the document has been edited since that
+        # revision. Only populated if the user has edit access to the document.
         # The format of the revision ID may change over time, so it should be treated
         # opaquely. A returned revision ID is only guaranteed to be valid for 24
         # hours after it has been returned and cannot be shared across users. If the
@@ -780,18 +780,19 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
-        # The suggested changes to the style of the document, keyed by suggestion ID.
+        # Output only. The suggested changes to the style of the document, keyed by
+        # suggestion ID.
         # Corresponds to the JSON property `suggestedDocumentStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedDocumentStyle>]
         attr_accessor :suggested_document_style_changes
       
-        # The suggested changes to the named styles of the document, keyed by
-        # suggestion ID.
+        # Output only. The suggested changes to the named styles of the document,
+        # keyed by suggestion ID.
         # Corresponds to the JSON property `suggestedNamedStylesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedNamedStyles>]
         attr_accessor :suggested_named_styles_changes
       
-        # The suggestions view mode applied to the document.
+        # Output only. The suggestions view mode applied to the document.
         # Note: When editing a document, changes must be based on a document with
         # SUGGESTIONS_INLINE.
         # Corresponds to the JSON property `suggestionsViewMode`

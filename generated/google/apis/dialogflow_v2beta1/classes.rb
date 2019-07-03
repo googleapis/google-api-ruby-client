@@ -2785,6 +2785,35 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageQuickReplies]
         attr_accessor :quick_replies
       
+        # Carousel Rich Business Messaging (RBM) rich card.
+        # Rich cards allow you to respond to users with more vivid content, e.g.
+        # with media and suggestions.
+        # For more details about RBM rich cards, please see:
+        # https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-
+        # messages#rich-cards.
+        # If you want to show a single card with more control over the layout,
+        # please use RbmStandaloneCard instead.
+        # Corresponds to the JSON property `rbmCarouselRichCard`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard]
+        attr_accessor :rbm_carousel_rich_card
+      
+        # Standalone Rich Business Messaging (RBM) rich card.
+        # Rich cards allow you to respond to users with more vivid content, e.g.
+        # with media and suggestions.
+        # For more details about RBM rich cards, please see:
+        # https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-
+        # messages#rich-cards.
+        # You can group multiple rich cards into one using RbmCarouselCard but
+        # carousel cards will give you less control over the card layout.
+        # Corresponds to the JSON property `rbmStandaloneRichCard`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard]
+        attr_accessor :rbm_standalone_rich_card
+      
+        # Rich Business Messaging (RBM) text response with suggestions.
+        # Corresponds to the JSON property `rbmText`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmText]
+        attr_accessor :rbm_text
+      
         # The collection of simple response candidates.
         # This message in `QueryResult.fulfillment_messages` and
         # `WebhookResponse.fulfillment_messages` should contain only one
@@ -2837,6 +2866,9 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @platform = args[:platform] if args.key?(:platform)
           @quick_replies = args[:quick_replies] if args.key?(:quick_replies)
+          @rbm_carousel_rich_card = args[:rbm_carousel_rich_card] if args.key?(:rbm_carousel_rich_card)
+          @rbm_standalone_rich_card = args[:rbm_standalone_rich_card] if args.key?(:rbm_standalone_rich_card)
+          @rbm_text = args[:rbm_text] if args.key?(:rbm_text)
           @simple_responses = args[:simple_responses] if args.key?(:simple_responses)
           @suggestions = args[:suggestions] if args.key?(:suggestions)
           @telephony_play_audio = args[:telephony_play_audio] if args.key?(:telephony_play_audio)
@@ -3191,6 +3223,376 @@ module Google
         def update!(**args)
           @quick_replies = args[:quick_replies] if args.key?(:quick_replies)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) Card content
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the card (at most 2000 bytes).
+        # At least one of the title, description or media must be set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Rich Business Messaging (RBM) Media displayed in Cards
+        # The following media-types are currently supported:
+        # ## Image Types
+        # image/jpeg
+        # image/jpg'
+        # image/gif
+        # image/png
+        # ## Video Types
+        # video/h263
+        # video/m4v
+        # video/mp4
+        # video/mpeg
+        # video/mpeg4
+        # video/webm
+        # Corresponds to the JSON property `media`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia]
+        attr_accessor :media
+      
+        # Optional. List of suggestions to include in the card.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>]
+        attr_accessor :suggestions
+      
+        # Optional. Title of the card (at most 200 bytes).
+        # At least one of the title, description or media must be set.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @media = args[:media] if args.key?(:media)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) Media displayed in Cards
+      # The following media-types are currently supported:
+      # ## Image Types
+      # image/jpeg
+      # image/jpg'
+      # image/gif
+      # image/png
+      # ## Video Types
+      # video/h263
+      # video/m4v
+      # video/mp4
+      # video/mpeg
+      # video/mpeg4
+      # video/webm
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+        include Google::Apis::Core::Hashable
+      
+        # Required. Publicly reachable URI of the file. The RBM platform
+        # determines the MIME type of the file from the content-type field in
+        # the HTTP headers when the platform fetches the file. The content-type
+        # field must be present and accurate in the HTTP response from the URL.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # Required for cards with vertical orientation. The height of the media
+        # within a rich card with a vertical layout. (https://goo.gl/NeFCjz).
+        # For a standalone card with horizontal layout, height is not
+        # customizable, and this field is ignored.
+        # Corresponds to the JSON property `height`
+        # @return [String]
+        attr_accessor :height
+      
+        # Optional. Publicly reachable URI of the thumbnail.If you don't
+        # provide a thumbnail URI, the RBM platform displays a blank
+        # placeholder thumbnail until the user's device downloads the file.
+        # Depending on the user's setting, the file may not download
+        # automatically and may require the user to tap a download button.
+        # Corresponds to the JSON property `thumbnailUri`
+        # @return [String]
+        attr_accessor :thumbnail_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @height = args[:height] if args.key?(:height)
+          @thumbnail_uri = args[:thumbnail_uri] if args.key?(:thumbnail_uri)
+        end
+      end
+      
+      # Carousel Rich Business Messaging (RBM) rich card.
+      # Rich cards allow you to respond to users with more vivid content, e.g.
+      # with media and suggestions.
+      # For more details about RBM rich cards, please see:
+      # https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-
+      # messages#rich-cards.
+      # If you want to show a single card with more control over the layout,
+      # please use RbmStandaloneCard instead.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cards in the carousel. A carousel must have at least
+        # 2 cards and at most 10.
+        # Corresponds to the JSON property `cardContents`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>]
+        attr_accessor :card_contents
+      
+        # Required. The width of the cards in the carousel.
+        # Corresponds to the JSON property `cardWidth`
+        # @return [String]
+        attr_accessor :card_width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_contents = args[:card_contents] if args.key?(:card_contents)
+          @card_width = args[:card_width] if args.key?(:card_width)
+        end
+      end
+      
+      # Standalone Rich Business Messaging (RBM) rich card.
+      # Rich cards allow you to respond to users with more vivid content, e.g.
+      # with media and suggestions.
+      # For more details about RBM rich cards, please see:
+      # https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-
+      # messages#rich-cards.
+      # You can group multiple rich cards into one using RbmCarouselCard but
+      # carousel cards will give you less control over the card layout.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
+        include Google::Apis::Core::Hashable
+      
+        # Rich Business Messaging (RBM) Card content
+        # Corresponds to the JSON property `cardContent`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent]
+        attr_accessor :card_content
+      
+        # Required. Orientation of the card.
+        # Corresponds to the JSON property `cardOrientation`
+        # @return [String]
+        attr_accessor :card_orientation
+      
+        # Required if orientation is horizontal.
+        # Image preview alignment for standalone cards with horizontal layout.
+        # Corresponds to the JSON property `thumbnailImageAlignment`
+        # @return [String]
+        attr_accessor :thumbnail_image_alignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_content = args[:card_content] if args.key?(:card_content)
+          @card_orientation = args[:card_orientation] if args.key?(:card_orientation)
+          @thumbnail_image_alignment = args[:thumbnail_image_alignment] if args.key?(:thumbnail_image_alignment)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) suggested client-side action that the user
+      # can choose from the card.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction
+        include Google::Apis::Core::Hashable
+      
+        # Opens the user's default dialer app with the specified phone number
+        # but does not dial automatically (https://goo.gl/ergbB2).
+        # Corresponds to the JSON property `dial`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial]
+        attr_accessor :dial
+      
+        # Opens the user's default web browser app to the specified uri
+        # (https://goo.gl/6GLJD2). If the user has an app installed that is
+        # registered as the default handler for the URL, then this app will be
+        # opened instead, and its icon will be used in the suggested action UI.
+        # Corresponds to the JSON property `openUrl`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri]
+        attr_accessor :open_url
+      
+        # Opaque payload that the Dialogflow receives in a user event
+        # when the user taps the suggested action. This data will be also
+        # forwarded to webhook to allow performing custom business logic.
+        # Corresponds to the JSON property `postbackData`
+        # @return [String]
+        attr_accessor :postback_data
+      
+        # Opens the device's location chooser so the user can pick a location
+        # to send back to the agent (https://goo.gl/GXotJW).
+        # Corresponds to the JSON property `shareLocation`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation]
+        attr_accessor :share_location
+      
+        # Text to display alongside the action.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dial = args[:dial] if args.key?(:dial)
+          @open_url = args[:open_url] if args.key?(:open_url)
+          @postback_data = args[:postback_data] if args.key?(:postback_data)
+          @share_location = args[:share_location] if args.key?(:share_location)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Opens the user's default dialer app with the specified phone number
+      # but does not dial automatically (https://goo.gl/ergbB2).
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+        include Google::Apis::Core::Hashable
+      
+        # Required. The phone number to fill in the default dialer app.
+        # This field should be in [E.164](https://en.wikipedia.org/wiki/E.164)
+        # format. An example of a correctly formatted phone number:
+        # +15556767888.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # Opens the user's default web browser app to the specified uri
+      # (https://goo.gl/6GLJD2). If the user has an app installed that is
+      # registered as the default handler for the URL, then this app will be
+      # opened instead, and its icon will be used in the suggested action UI.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+        include Google::Apis::Core::Hashable
+      
+        # Required. The uri to open on the user device
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Opens the device's location chooser so the user can pick a location
+      # to send back to the agent (https://goo.gl/GXotJW).
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) suggested reply that the user can click
+      # instead of typing in their own response.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+        include Google::Apis::Core::Hashable
+      
+        # Opaque payload that the Dialogflow receives in a user event
+        # when the user taps the suggested reply. This data will be also
+        # forwarded to webhook to allow performing custom business logic.
+        # Corresponds to the JSON property `postbackData`
+        # @return [String]
+        attr_accessor :postback_data
+      
+        # Suggested reply text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postback_data = args[:postback_data] if args.key?(:postback_data)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) suggestion. Suggestions allow user to
+      # easily select/click a predefined response or perform an action (like
+      # opening a web uri).
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Rich Business Messaging (RBM) suggested client-side action that the user
+        # can choose from the card.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction]
+        attr_accessor :action
+      
+        # Rich Business Messaging (RBM) suggested reply that the user can click
+        # instead of typing in their own response.
+        # Corresponds to the JSON property `reply`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply]
+        attr_accessor :reply
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @reply = args[:reply] if args.key?(:reply)
+        end
+      end
+      
+      # Rich Business Messaging (RBM) text response with suggestions.
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmText
+        include Google::Apis::Core::Hashable
+      
+        # Optional. One or more suggestions to show to the user.
+        # Corresponds to the JSON property `rbmSuggestion`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>]
+        attr_accessor :rbm_suggestion
+      
+        # Required. Text sent and displayed to the user.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rbm_suggestion = args[:rbm_suggestion] if args.key?(:rbm_suggestion)
+          @text = args[:text] if args.key?(:text)
         end
       end
       

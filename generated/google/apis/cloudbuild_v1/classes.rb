@@ -793,12 +793,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :installation_id
       
-        # Name of the repository.
+        # Name of the repository. For example: The name for
+        # https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Owner of the repository.
+        # Owner of the repository. For example: The owner for
+        # https://github.com/googlecloudplatform/cloud-builders is
+        # "googlecloudplatform".
         # Corresponds to the JSON property `owner`
         # @return [String]
         attr_accessor :owner

@@ -267,8 +267,7 @@ module Google
         
         # Updates the settings of a specific instance.
         # @param [String] name
-        #   Output only.
-        #   The resource name of the instance, in the format
+        #   Output only. The resource name of the instance, in the format
         #   projects/`project_id`/locations/`location_id`/instances/`instance_id`.
         # @param [Google::Apis::FileV1beta1::Instance] instance_object
         # @param [String] update_mask

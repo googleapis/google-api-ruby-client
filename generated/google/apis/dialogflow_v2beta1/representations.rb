@@ -472,6 +472,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1425,6 +1491,12 @@ module Google
           property :platform, as: 'platform'
           property :quick_replies, as: 'quickReplies', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageQuickReplies, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageQuickReplies::Representation
       
+          property :rbm_carousel_rich_card, as: 'rbmCarouselRichCard', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard::Representation
+      
+          property :rbm_standalone_rich_card, as: 'rbmStandaloneRichCard', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard::Representation
+      
+          property :rbm_text, as: 'rbmText', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmText, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmText::Representation
+      
           property :simple_responses, as: 'simpleResponses', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses::Representation
       
           property :suggestions, as: 'suggestions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageSuggestions, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageSuggestions::Representation
@@ -1550,6 +1622,107 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :quick_replies, as: 'quickReplies'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :media, as: 'media', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia::Representation
+      
+          collection :suggestions, as: 'suggestions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_uri, as: 'fileUri'
+          property :height, as: 'height'
+          property :thumbnail_uri, as: 'thumbnailUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :card_contents, as: 'cardContents', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent::Representation
+      
+          property :card_width, as: 'cardWidth'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :card_content, as: 'cardContent', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent::Representation
+      
+          property :card_orientation, as: 'cardOrientation'
+          property :thumbnail_image_alignment, as: 'thumbnailImageAlignment'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dial, as: 'dial', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial::Representation
+      
+          property :open_url, as: 'openUrl', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri::Representation
+      
+          property :postback_data, as: 'postbackData'
+          property :share_location, as: 'shareLocation', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation::Representation
+      
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :postback_data, as: 'postbackData'
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction::Representation
+      
+          property :reply, as: 'reply', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageRbmText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rbm_suggestion, as: 'rbmSuggestion', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion::Representation
+      
+          property :text, as: 'text'
         end
       end
       

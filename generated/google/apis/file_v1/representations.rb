@@ -199,6 +199,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
+          property :location, as: 'location'
           property :node_id, as: 'nodeId'
         end
       end

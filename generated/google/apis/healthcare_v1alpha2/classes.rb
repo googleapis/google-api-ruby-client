@@ -950,6 +950,17 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1alpha2::StreamConfig>]
         attr_accessor :stream_configs
       
+        # Configuration of FHIR Subscription:
+        # https://www.hl7.org/fhir/subscription.html.
+        # Corresponds to the JSON property `subscriptionConfig`
+        # @return [Google::Apis::HealthcareV1alpha2::SubscriptionConfig]
+        attr_accessor :subscription_config
+      
+        # This structure contains the configuration for FHIR profiles and validation.
+        # Corresponds to the JSON property `validationConfig`
+        # @return [Google::Apis::HealthcareV1alpha2::ValidationConfig]
+        attr_accessor :validation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -964,6 +975,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
+          @subscription_config = args[:subscription_config] if args.key?(:subscription_config)
+          @validation_config = args[:validation_config] if args.key?(:validation_config)
         end
       end
       
@@ -2707,6 +2720,65 @@ module Google
         end
       end
       
+      # Configuration of FHIR Subscription:
+      # https://www.hl7.org/fhir/subscription.html.
+      class SubscriptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # REST hook endpoints that are allowed to receive subscription notifications.
+        # The create or update operation on a FHIR Subscription resource will fail if
+        # the FHIR Subscription resource contains a REST hook endpoint that is not in
+        # this list.
+        # A subscription notification push will fail if the FHIR Subscription
+        # resource contains a REST hook endpoint that is not in this list.
+        # The REST hook endpoint in a subscription resource will be compared with the
+        # endpoints in this list by exact matching.
+        # Users must verify their ownership of the domain of an endpoint before
+        # adding it to this list. To verify domain ownership, go to
+        # https://search.google.com/search-console/welcome.
+        # Corresponds to the JSON property `allowedRestHookEndpoints`
+        # @return [Array<Google::Apis::HealthcareV1alpha2::SubscriptionRestHookEndpoint>]
+        attr_accessor :allowed_rest_hook_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_rest_hook_endpoints = args[:allowed_rest_hook_endpoints] if args.key?(:allowed_rest_hook_endpoints)
+        end
+      end
+      
+      # REST hook endpoint of FHIR Subscription.
+      class SubscriptionRestHookEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Whether this endpoint is allowed to receive full resource payloads. If set
+        # to false, the subscription notificiation sending to this endpoint with full
+        # resource payload will be blocked.
+        # Corresponds to the JSON property `allowResourcePayload`
+        # @return [Boolean]
+        attr_accessor :allow_resource_payload
+        alias_method :allow_resource_payload?, :allow_resource_payload
+      
+        # Address of the REST hook endpoint. It must be a valid HTTPS URL with TLS
+        # certificate.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_resource_payload = args[:allow_resource_payload] if args.key?(:allow_resource_payload)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+        end
+      end
+      
       # List of tags to be filtered.
       class TagFilterList
         include Google::Apis::Core::Hashable
@@ -2795,6 +2867,41 @@ module Google
         def update!(**args)
           @experimental_config = args[:experimental_config] if args.key?(:experimental_config)
           @transformations = args[:transformations] if args.key?(:transformations)
+        end
+      end
+      
+      # This structure contains the configuration for FHIR profiles and validation.
+      class ValidationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether profile validation should be disabled for this FHIR store. Set
+        # this to true to disable checking incoming resources for conformance
+        # against StructureDefinitions in this FHIR store.
+        # Corresponds to the JSON property `disableProfileValidation`
+        # @return [Boolean]
+        attr_accessor :disable_profile_validation
+        alias_method :disable_profile_validation?, :disable_profile_validation
+      
+        # A list of ImplementationGuide IDs in this FHIR store that will be used to
+        # configure which profiles are used for validation. For example, to enable
+        # an implementation guide with ID 1 set `enabled_implementation_guides` to
+        # `["1"]`. If `enabled_implementation_guides` is empty or omitted then
+        # incoming resources will only be required to conform to the base FHIR
+        # profiles. Otherwise, a resource must conform to at least one profile
+        # listed in the `global` property of one of the enabled
+        # ImplementationGuides.
+        # Corresponds to the JSON property `enabledImplementationGuides`
+        # @return [Array<String>]
+        attr_accessor :enabled_implementation_guides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
+          @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
       

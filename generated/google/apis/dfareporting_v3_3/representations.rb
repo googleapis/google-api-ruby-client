@@ -1960,6 +1960,7 @@ module Google
           property :gclid, as: 'gclid'
           property :kind, as: 'kind'
           property :limit_ad_tracking, as: 'limitAdTracking'
+          property :match_id, as: 'matchId'
           property :mobile_device_id, as: 'mobileDeviceId'
           property :non_personalized_ad, as: 'nonPersonalizedAd'
           property :ordinal, as: 'ordinal'

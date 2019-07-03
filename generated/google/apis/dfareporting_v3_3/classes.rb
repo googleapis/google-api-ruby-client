@@ -2376,8 +2376,8 @@ module Google
       
         # The alphanumeric encrypted user ID. When set, encryptionInfo should also be
         # specified. This field is mutually exclusive with encryptedUserIdCandidates[],
-        # mobileDeviceId and gclid. This or encryptedUserIdCandidates[] or
-        # mobileDeviceId or gclid is a required field.
+        # matchId, mobileDeviceId and gclid. This or encryptedUserIdCandidates[] or
+        # matchId or mobileDeviceId or gclid is a required field.
         # Corresponds to the JSON property `encryptedUserId`
         # @return [String]
         attr_accessor :encrypted_user_id
@@ -2387,9 +2387,9 @@ module Google
         # such user ID is found then the conversion will be rejected with
         # NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be specified.
         # This field may only be used when calling batchinsert; it is not supported by
-        # batchupdate. This field is mutually exclusive with encryptedUserId,
-        # mobileDeviceId and gclid. This or encryptedUserId or mobileDeviceId or gclid
-        # is a required field.
+        # batchupdate. This field is mutually exclusive with encryptedUserId, matchId,
+        # mobileDeviceId and gclid. This or encryptedUserId or matchId or mobileDeviceId
+        # or gclid is a required field.
         # Corresponds to the JSON property `encryptedUserIdCandidates`
         # @return [Array<String>]
         attr_accessor :encrypted_user_id_candidates
@@ -2405,8 +2405,9 @@ module Google
         attr_accessor :floodlight_configuration_id
       
         # The Google click ID. This field is mutually exclusive with encryptedUserId,
-        # encryptedUserIdCandidates[] and mobileDeviceId. This or encryptedUserId or
-        # encryptedUserIdCandidates[] or mobileDeviceId is a required field.
+        # encryptedUserIdCandidates[], matchId and mobileDeviceId. This or
+        # encryptedUserId or encryptedUserIdCandidates[] or matchId or mobileDeviceId is
+        # a required field.
         # Corresponds to the JSON property `gclid`
         # @return [String]
         attr_accessor :gclid
@@ -2424,9 +2425,18 @@ module Google
         attr_accessor :limit_ad_tracking
         alias_method :limit_ad_tracking?, :limit_ad_tracking
       
+        # The match ID field. A match ID is your own first-party identifier that has
+        # been synced with Google using the match ID feature in Floodlight. This field
+        # is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
+        # mobileDeviceId and gclid. This or encryptedUserId or encryptedUserIdCandidates[
+        # ] or mobileDeviceId or gclid is a required field.
+        # Corresponds to the JSON property `matchId`
+        # @return [String]
+        attr_accessor :match_id
+      
         # The mobile device ID. This field is mutually exclusive with encryptedUserId,
-        # encryptedUserIdCandidates[] and gclid. This or encryptedUserId or
-        # encryptedUserIdCandidates[] or gclid is a required field.
+        # encryptedUserIdCandidates[], matchId and gclid. This or encryptedUserId or
+        # encryptedUserIdCandidates[] or matchId or gclid is a required field.
         # Corresponds to the JSON property `mobileDeviceId`
         # @return [String]
         attr_accessor :mobile_device_id
@@ -2481,6 +2491,7 @@ module Google
           @gclid = args[:gclid] if args.key?(:gclid)
           @kind = args[:kind] if args.key?(:kind)
           @limit_ad_tracking = args[:limit_ad_tracking] if args.key?(:limit_ad_tracking)
+          @match_id = args[:match_id] if args.key?(:match_id)
           @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
           @non_personalized_ad = args[:non_personalized_ad] if args.key?(:non_personalized_ad)
           @ordinal = args[:ordinal] if args.key?(:ordinal)

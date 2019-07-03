@@ -502,6 +502,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscriptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionRestHookEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TagFilterList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +533,12 @@ module Google
       end
       
       class TextConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -778,6 +796,10 @@ module Google
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1alpha2::NotificationConfig, decorator: Google::Apis::HealthcareV1alpha2::NotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1alpha2::StreamConfig, decorator: Google::Apis::HealthcareV1alpha2::StreamConfig::Representation
+      
+          property :subscription_config, as: 'subscriptionConfig', class: Google::Apis::HealthcareV1alpha2::SubscriptionConfig, decorator: Google::Apis::HealthcareV1alpha2::SubscriptionConfig::Representation
+      
+          property :validation_config, as: 'validationConfig', class: Google::Apis::HealthcareV1alpha2::ValidationConfig, decorator: Google::Apis::HealthcareV1alpha2::ValidationConfig::Representation
       
         end
       end
@@ -1250,6 +1272,22 @@ module Google
         end
       end
       
+      class SubscriptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_rest_hook_endpoints, as: 'allowedRestHookEndpoints', class: Google::Apis::HealthcareV1alpha2::SubscriptionRestHookEndpoint, decorator: Google::Apis::HealthcareV1alpha2::SubscriptionRestHookEndpoint::Representation
+      
+        end
+      end
+      
+      class SubscriptionRestHookEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_resource_payload, as: 'allowResourcePayload'
+          property :endpoint, as: 'endpoint'
+        end
+      end
+      
       class TagFilterList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1277,6 +1315,14 @@ module Google
           property :experimental_config, as: 'experimentalConfig'
           collection :transformations, as: 'transformations', class: Google::Apis::HealthcareV1alpha2::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1alpha2::InfoTypeTransformation::Representation
       
+        end
+      end
+      
+      class ValidationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_profile_validation, as: 'disableProfileValidation'
+          collection :enabled_implementation_guides, as: 'enabledImplementationGuides'
         end
       end
       

@@ -38,7 +38,10 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Due date of the task (as a RFC 3339 timestamp). Optional.
+        # Due date of the task (as a RFC 3339 timestamp). Optional. The due date only
+        # records date information; the time portion of the timestamp is discarded when
+        # setting the due date. It isn't possible to read or write the time that a task
+        # is due via the API.
         # Corresponds to the JSON property `due`
         # @return [DateTime]
         attr_accessor :due

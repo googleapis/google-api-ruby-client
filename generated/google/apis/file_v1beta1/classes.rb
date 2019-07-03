@@ -316,6 +316,11 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
       
+        # The location of the node, if different from instance location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The id of the node.
         # This should be equal to SaasInstanceNode.node_id.
         # Corresponds to the JSON property `nodeId`
@@ -329,6 +334,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
         end
       end
@@ -535,8 +541,7 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The time when the instance was created.
+        # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -563,8 +568,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only.
-        # The resource name of the instance, in the format
+        # Output only. The resource name of the instance, in the format
         # projects/`project_id`/locations/`location_id`/instances/`instance_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -576,14 +580,12 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
         attr_accessor :networks
       
-        # Output only.
-        # The instance state.
+        # Output only. The instance state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only.
-        # Additional information about the instance state, if available.
+        # Output only. Additional information about the instance state, if available.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -749,8 +751,7 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # IPv4 addresses in the format
+        # Output only. IPv4 addresses in the format
         # `octet 1`.`octet 2`.`octet 3`.`octet 4` or IPv6 addresses in the format
         # `block 1`:`block 2`:`block 3`:`block 4`:`block 5`:`block 6`:`block
         # 7`:`block 8`.

@@ -151,9 +151,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :end_time_millis
       
-        # DO NOT POPULATE THIS FIELD. As data quality standards are deprecated, filling
-        # it in will result in no data sources being returned. It will be removed in a
-        # future version entirely.
+        # DO NOT POPULATE THIS FIELD. It is ignored.
         # Corresponds to the JSON property `filteredDataQualityStandard`
         # @return [Array<String>]
         attr_accessor :filtered_data_quality_standard

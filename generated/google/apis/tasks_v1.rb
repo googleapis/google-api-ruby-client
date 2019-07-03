@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/tasks/firstapp
     module TasksV1
       VERSION = 'V1'
-      REVISION = '20190222'
+      REVISION = '20190628'
 
       # Create, edit, organize, and delete all your tasks
       AUTH_TASKS = 'https://www.googleapis.com/auth/tasks'
