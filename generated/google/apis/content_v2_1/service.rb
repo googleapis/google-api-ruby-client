@@ -2185,11 +2185,10 @@ module Google
         # @param [String] placed_date_start
         #   Obtains orders placed after this date (inclusively), in ISO 8601 format.
         # @param [Array<String>, String] statuses
-        #   Obtains orders that match any of the specified statuses. Multiple values can
-        #   be specified with comma separation. Additionally, please note that active is a
-        #   shortcut for pendingShipment and partiallyShipped, and completed is a shortcut
-        #   for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and
-        #   canceled.
+        #   Obtains orders that match any of the specified statuses. Please note that
+        #   active is a shortcut for pendingShipment and partiallyShipped, and completed
+        #   is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned,
+        #   returned, and canceled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2813,6 +2812,8 @@ module Google
         #   multi-client account.
         # @param [String] product_id
         #   The REST ID of the product.
+        # @param [Fixnum] feed_id
+        #   The Content API Supplemental Feed ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2832,10 +2833,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_product(merchant_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_product(merchant_id, product_id, feed_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, '{merchantId}/products/{productId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['feedId'] = feed_id unless feed_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2886,6 +2888,8 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [Google::Apis::ContentV2_1::Product] product_object
+        # @param [Fixnum] feed_id
+        #   The Content API Supplemental Feed ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2905,13 +2909,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_product(merchant_id, product_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_product(merchant_id, product_object = nil, feed_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, '{merchantId}/products', options)
           command.request_representation = Google::Apis::ContentV2_1::Product::Representation
           command.request_object = product_object
           command.response_representation = Google::Apis::ContentV2_1::Product::Representation
           command.response_class = Google::Apis::ContentV2_1::Product
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['feedId'] = feed_id unless feed_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -1506,6 +1506,25 @@ module Google
       end
       
       # 
+      class BusinessDayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Regular business days. May not be empty.
+        # Corresponds to the JSON property `businessDays`
+        # @return [Array<String>]
+        attr_accessor :business_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_days = args[:business_days] if args.key?(:business_days)
+        end
+      end
+      
+      # 
       class CarrierRate
         include Google::Apis::Core::Hashable
       
@@ -2448,6 +2467,12 @@ module Google
         # @return [Google::Apis::ContentV2::CutoffTime]
         attr_accessor :cutoff_time
       
+        # The business days during which orders can be handled. If not provided, Monday
+        # to Friday business days will be assumed.
+        # Corresponds to the JSON property `handlingBusinessDayConfig`
+        # @return [Google::Apis::ContentV2::BusinessDayConfig]
+        attr_accessor :handling_business_day_config
+      
         # Holiday cutoff definitions. If configured, they specify order cutoff times for
         # holiday-specific shipping.
         # Corresponds to the JSON property `holidayCutoffs`
@@ -2475,14 +2500,20 @@ module Google
         attr_accessor :min_handling_time_in_days
       
         # Minimum number of business days that is spent in transit. 0 means same day
-        # delivery, 1 means next day delivery. Either `min,max`transitTimeInDays or
+        # delivery, 1 means next day delivery. Either `min,max`TransitTimeInDays or
         # transitTimeTable must be set, but not both.
         # Corresponds to the JSON property `minTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :min_transit_time_in_days
       
+        # The business days during which orders can be in-transit. If not provided,
+        # Monday to Friday business days will be assumed.
+        # Corresponds to the JSON property `transitBusinessDayConfig`
+        # @return [Google::Apis::ContentV2::BusinessDayConfig]
+        attr_accessor :transit_business_day_config
+      
         # Transit time table, number of business days spent in transit based on row and
-        # column dimensions. Either `min,max`transitTimeInDays or transitTimeTable can
+        # column dimensions. Either `min,max`TransitTimeInDays or transitTimeTable can
         # be set, but not both.
         # Corresponds to the JSON property `transitTimeTable`
         # @return [Google::Apis::ContentV2::TransitTable]
@@ -2495,11 +2526,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cutoff_time = args[:cutoff_time] if args.key?(:cutoff_time)
+          @handling_business_day_config = args[:handling_business_day_config] if args.key?(:handling_business_day_config)
           @holiday_cutoffs = args[:holiday_cutoffs] if args.key?(:holiday_cutoffs)
           @max_handling_time_in_days = args[:max_handling_time_in_days] if args.key?(:max_handling_time_in_days)
           @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
           @min_handling_time_in_days = args[:min_handling_time_in_days] if args.key?(:min_handling_time_in_days)
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
+          @transit_business_day_config = args[:transit_business_day_config] if args.key?(:transit_business_day_config)
           @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
         end
       end
@@ -9595,6 +9628,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
+        # The ContentAPI feed id.
+        # Corresponds to the JSON property `feedId`
+        # @return [Fixnum]
+        attr_accessor :feed_id
+      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -9624,6 +9662,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @feed_id = args[:feed_id] if args.key?(:feed_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
           @product = args[:product] if args.key?(:product)

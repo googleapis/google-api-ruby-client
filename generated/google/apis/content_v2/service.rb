@@ -2696,11 +2696,10 @@ module Google
         # @param [String] placed_date_start
         #   Obtains orders placed after this date (inclusively), in ISO 8601 format.
         # @param [Array<String>, String] statuses
-        #   Obtains orders that match any of the specified statuses. Multiple values can
-        #   be specified with comma separation. Additionally, please note that active is a
-        #   shortcut for pendingShipment and partiallyShipped, and completed is a shortcut
-        #   for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and
-        #   canceled.
+        #   Obtains orders that match any of the specified statuses. Please note that
+        #   active is a shortcut for pendingShipment and partiallyShipped, and completed
+        #   is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned,
+        #   returned, and canceled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

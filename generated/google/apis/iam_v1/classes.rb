@@ -304,7 +304,7 @@ module Google
         # @return [Google::Apis::IamV1::Role]
         attr_accessor :role
       
-        # The role id to use for this role.
+        # The role ID to use for this role.
         # Corresponds to the JSON property `roleId`
         # @return [String]
         attr_accessor :role_id

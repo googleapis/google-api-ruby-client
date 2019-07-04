@@ -575,6 +575,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aborted_by_user, as: 'abortedByUser'
+          property :has_error_logs, as: 'hasErrorLogs'
           property :infrastructure_failure, as: 'infrastructureFailure'
         end
       end

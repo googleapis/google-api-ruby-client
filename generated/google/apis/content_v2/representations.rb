@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BusinessDayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CarrierRate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2055,6 +2061,13 @@ module Google
         end
       end
       
+      class BusinessDayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_days, as: 'businessDays'
+        end
+      end
+      
       class CarrierRate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2318,12 +2331,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cutoff_time, as: 'cutoffTime', class: Google::Apis::ContentV2::CutoffTime, decorator: Google::Apis::ContentV2::CutoffTime::Representation
       
+          property :handling_business_day_config, as: 'handlingBusinessDayConfig', class: Google::Apis::ContentV2::BusinessDayConfig, decorator: Google::Apis::ContentV2::BusinessDayConfig::Representation
+      
           collection :holiday_cutoffs, as: 'holidayCutoffs', class: Google::Apis::ContentV2::HolidayCutoff, decorator: Google::Apis::ContentV2::HolidayCutoff::Representation
       
           property :max_handling_time_in_days, as: 'maxHandlingTimeInDays'
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
           property :min_handling_time_in_days, as: 'minHandlingTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
+          property :transit_business_day_config, as: 'transitBusinessDayConfig', class: Google::Apis::ContentV2::BusinessDayConfig, decorator: Google::Apis::ContentV2::BusinessDayConfig::Representation
+      
           property :transit_time_table, as: 'transitTimeTable', class: Google::Apis::ContentV2::TransitTable, decorator: Google::Apis::ContentV2::TransitTable::Representation
       
         end
@@ -4269,6 +4286,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
+          property :feed_id, :numeric_string => true, as: 'feedId'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
           property :product, as: 'product', class: Google::Apis::ContentV2::Product, decorator: Google::Apis::ContentV2::Product::Representation

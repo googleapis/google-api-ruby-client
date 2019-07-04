@@ -994,6 +994,13 @@ module Google
         attr_accessor :aborted_by_user
         alias_method :aborted_by_user?, :aborted_by_user
       
+        # If results are being provided to the user in certain cases of infrastructure
+        # failures
+        # Corresponds to the JSON property `hasErrorLogs`
+        # @return [Boolean]
+        attr_accessor :has_error_logs
+        alias_method :has_error_logs?, :has_error_logs
+      
         # If the test runner could not determine success or failure because the test
         # depends on a component other than the system under test which failed.
         # For example, a mobile test requires provisioning a device where the test
@@ -1010,6 +1017,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aborted_by_user = args[:aborted_by_user] if args.key?(:aborted_by_user)
+          @has_error_logs = args[:has_error_logs] if args.key?(:has_error_logs)
           @infrastructure_failure = args[:infrastructure_failure] if args.key?(:infrastructure_failure)
         end
       end

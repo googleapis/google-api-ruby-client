@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntroductoryPriceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Listing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -638,6 +644,16 @@ module Google
         end
       end
       
+      class IntroductoryPriceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :introductory_price_amount_micros, :numeric_string => true, as: 'introductoryPriceAmountMicros'
+          property :introductory_price_currency_code, as: 'introductoryPriceCurrencyCode'
+          property :introductory_price_cycles, as: 'introductoryPriceCycles'
+          property :introductory_price_period, as: 'introductoryPricePeriod'
+        end
+      end
+      
       class Listing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -820,6 +836,8 @@ module Google
           property :expiry_time_millis, :numeric_string => true, as: 'expiryTimeMillis'
           property :family_name, as: 'familyName'
           property :given_name, as: 'givenName'
+          property :introductory_price_info, as: 'introductoryPriceInfo', class: Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo, decorator: Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo::Representation
+      
           property :kind, as: 'kind'
           property :linked_purchase_token, as: 'linkedPurchaseToken'
           property :order_id, as: 'orderId'

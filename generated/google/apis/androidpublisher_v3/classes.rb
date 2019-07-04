@@ -922,6 +922,50 @@ module Google
         end
       end
       
+      # Contains the introductory price information for a subscription.
+      class IntroductoryPriceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Introductory price of the subscription, not including tax. The currency is the
+        # same as price_currency_code. Price is expressed in micro-units, where 1,000,
+        # 000 micro-units represents one unit of the currency. For example, if the
+        # subscription price is €1.99, price_amount_micros is 1990000.
+        # Corresponds to the JSON property `introductoryPriceAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :introductory_price_amount_micros
+      
+        # ISO 4217 currency code for the introductory subscription price. For example,
+        # if the price is specified in British pounds sterling, price_currency_code is "
+        # GBP".
+        # Corresponds to the JSON property `introductoryPriceCurrencyCode`
+        # @return [String]
+        attr_accessor :introductory_price_currency_code
+      
+        # The number of billing period to offer introductory pricing.
+        # Corresponds to the JSON property `introductoryPriceCycles`
+        # @return [Fixnum]
+        attr_accessor :introductory_price_cycles
+      
+        # Introductory price period, specified in ISO 8601 format. Common values are (
+        # but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three months),
+        # "P6M" (six months), and "P1Y" (one year).
+        # Corresponds to the JSON property `introductoryPricePeriod`
+        # @return [String]
+        attr_accessor :introductory_price_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @introductory_price_amount_micros = args[:introductory_price_amount_micros] if args.key?(:introductory_price_amount_micros)
+          @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
+          @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
+          @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
+        end
+      end
+      
       # 
       class Listing
         include Google::Apis::Core::Hashable
@@ -1556,6 +1600,11 @@ module Google
         # @return [String]
         attr_accessor :given_name
       
+        # Contains the introductory price information for a subscription.
+        # Corresponds to the JSON property `introductoryPriceInfo`
+        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo]
+        attr_accessor :introductory_price_info
+      
         # This kind represents a subscriptionPurchase object in the androidpublisher
         # service.
         # Corresponds to the JSON property `kind`
@@ -1661,6 +1710,7 @@ module Google
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
           @family_name = args[:family_name] if args.key?(:family_name)
           @given_name = args[:given_name] if args.key?(:given_name)
+          @introductory_price_info = args[:introductory_price_info] if args.key?(:introductory_price_info)
           @kind = args[:kind] if args.key?(:kind)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
           @order_id = args[:order_id] if args.key?(:order_id)
