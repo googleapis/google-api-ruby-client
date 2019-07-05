@@ -1460,6 +1460,8 @@ module Google
       
           property :job_name, as: 'jobName'
           hash :parameters, as: 'parameters'
+          hash :transform_name_mapping, as: 'transformNameMapping'
+          property :update, as: 'update'
         end
       end
       
@@ -1770,6 +1772,7 @@ module Google
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
+          property :kms_key_name, as: 'kmsKeyName'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'
           property :network, as: 'network'

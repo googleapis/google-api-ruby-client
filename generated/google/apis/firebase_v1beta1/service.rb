@@ -646,7 +646,10 @@ module Google
         # @param [String] name
         #   The fully qualified resource name of the `sha-key`, in the format:
         #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>
-        #   shaHash</var></code>
+        #   shaId</var></code>
+        #   <br>You can obtain the full name from the response of
+        #   [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
+        #   [`CreateShaCertificate`](../projects.androidApps.sha/create).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

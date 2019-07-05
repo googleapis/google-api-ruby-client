@@ -870,7 +870,7 @@ module Google
       
         # The fully qualified resource name of the `sha-key`, in the format:
         # <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>
-        # shaHash</var></code>
+        # shaId</var></code>
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

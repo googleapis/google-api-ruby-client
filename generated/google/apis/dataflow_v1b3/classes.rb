@@ -2209,6 +2209,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :parameters
       
+        # Only applicable when updating a pipeline. Map of transform name prefixes of
+        # the job to be replaced to the corresponding name prefixes of the new job.
+        # Corresponds to the JSON property `transformNameMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :transform_name_mapping
+      
+        # If set, replace the existing pipeline with the name specified by jobName
+        # with this pipeline, preserving state.
+        # Corresponds to the JSON property `update`
+        # @return [Boolean]
+        attr_accessor :update
+        alias_method :update?, :update
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2218,6 +2231,8 @@ module Google
           @environment = args[:environment] if args.key?(:environment)
           @job_name = args[:job_name] if args.key?(:job_name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @transform_name_mapping = args[:transform_name_mapping] if args.key?(:transform_name_mapping)
+          @update = args[:update] if args.key?(:update)
         end
       end
       
@@ -3330,6 +3345,13 @@ module Google
         attr_accessor :bypass_temp_dir_validation
         alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
       
+        # Optional. Name for the Cloud KMS key for the job.
+        # Key format is:
+        # projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # The machine type to use for the job. Defaults to the value from the
         # template if not specified.
         # Corresponds to the JSON property `machineType`
@@ -3386,6 +3408,7 @@ module Google
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
