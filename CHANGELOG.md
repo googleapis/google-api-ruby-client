@@ -1,3 +1,47 @@
+# 0.30.5
+* Backwards compatible changes:
+  * Updated `androidpublisher_v3`
+  * Updated `bigquery_v2`
+  * Updated `bigtableadmin_v2`
+  * Updated `binaryauthorization_v1beta1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `content_v2`
+  * Updated `content_v2_1`
+  * Updated `dataflow_v1b3`
+  * Updated `dfareporting_v3_1`
+  * Updated `dfareporting_v3_2`
+  * Updated `dfareporting_v3_3`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `docs_v1`
+  * Updated `file_v1`
+  * Updated `file_v1beta1`
+  * Updated `firebase_v1beta1`
+  * Updated `fitness_v1`
+  * Updated `healthcare_v1alpha2`
+  * Updated `iam_v1`
+  * Updated `iap_v1`
+  * Updated `iap_v1beta1`
+  * Updated `ml_v1`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `servicemanagement_v1`
+  * Updated `slides_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1p1beta1`
+  * Updated `tasks_v1`
+  * Updated `texttospeech_v1`
+  * Updated `texttospeech_v1beta1`
+  * Updated `toolresults_v1beta3`
+  * Updated `websecurityscanner_v1alpha`
+  * Updated `websecurityscanner_v1beta`
+  * Updated `youtube_partner_v1`
+
 # 0.30.4
 * Backwards compatible changes:
   * Added `websecurityscanner_v1`
