@@ -12,21 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/androiddeviceprovisioning_v1/service.rb'
-require 'google/apis/androiddeviceprovisioning_v1/classes.rb'
-require 'google/apis/androiddeviceprovisioning_v1/representations.rb'
+require 'google/apis/run_v1beta1/service.rb'
+require 'google/apis/run_v1beta1/classes.rb'
+require 'google/apis/run_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Android Device Provisioning Partner API
+    # Cloud Run API
     #
-    # Automates Android zero-touch enrollment for device resellers, customers, and
-    # EMMs.
+    # Deploy and manage user provided container images that scale automatically
+    # based on HTTP traffic.
     #
-    # @see https://developers.google.com/zero-touch/
-    module AndroiddeviceprovisioningV1
-      VERSION = 'V1'
-      REVISION = '20190704'
+    # @see https://cloud.google.com/run/
+    module RunV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20190701'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

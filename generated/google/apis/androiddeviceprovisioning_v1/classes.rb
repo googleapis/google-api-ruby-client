@@ -113,7 +113,7 @@ module Google
       class Company
         include Google::Apis::Core::Hashable
       
-        # Input only. Optional. Email address of customer's users in the admin role.
+        # Optional. Input only. Email address of customer's users in the admin role.
         # Each email address must be associated with a Google Account.
         # Corresponds to the JSON property `adminEmails`
         # @return [Array<String>]

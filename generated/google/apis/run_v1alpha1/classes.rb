@@ -356,7 +356,7 @@ module Google
       class Configuration
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -831,7 +831,7 @@ module Google
       class DomainMapping
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "domains.cloudrun.com/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1098,7 +1098,7 @@ module Google
       class EventType
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "eventing.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1531,7 +1531,7 @@ module Google
       class ListConfigurationsResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1576,7 +1576,7 @@ module Google
       class ListDomainMappingsResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "domains.cloudrun.com/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1615,7 +1615,7 @@ module Google
       class ListEventTypesResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "eventing.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1736,7 +1736,7 @@ module Google
       class ListRevisionsResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1781,7 +1781,7 @@ module Google
       class ListRoutesResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1826,7 +1826,7 @@ module Google
       class ListServicesResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -1871,7 +1871,7 @@ module Google
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "eventing.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -2603,7 +2603,7 @@ module Google
       class Revision
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -2899,7 +2899,7 @@ module Google
       class Route
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -3326,7 +3326,7 @@ module Google
       class Service
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "serving.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
@@ -3473,10 +3473,7 @@ module Google
         attr_accessor :template
       
         # Traffic specifies how to distribute traffic over a collection of Knative
-        # Revisions and Configurations. This will replace existing service specs
-        # (ServiceSpecRunLatest, ServiceSpecPinnedType, ServiceSpecReleaseType, and
-        # ServiceSpecManualType).
-        # Not currently supported by Cloud Run.
+        # Revisions and Configurations.
         # Corresponds to the JSON property `traffic`
         # @return [Array<Google::Apis::RunV1alpha1::TrafficTarget>]
         attr_accessor :traffic
@@ -3935,7 +3932,7 @@ module Google
       class Trigger
         include Google::Apis::Core::Hashable
       
-        # The API version for this call such as "v1alpha1".
+        # The API version for this call such as "eventing.knative.dev/v1alpha1".
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
